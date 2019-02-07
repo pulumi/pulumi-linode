@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true
+    },
+    "files": [
+        "config/index.ts",
+        "config/vars.ts",
+        "domain.ts",
+        "domainRecord.ts",
+        "getAccount.ts",
+        "getDomain.ts",
+        "getImage.ts",
+        "getInstanceType.ts",
+        "getProfile.ts",
+        "getRegion.ts",
+        "getSSHKey.ts",
+        "getUser.ts",
+        "image.ts",
+        "index.ts",
+        "instance.ts",
+        "nodeBalancer.ts",
+        "nodeBalancerConfig.ts",
+        "nodeBalancerNode.ts",
+        "provider.ts",
+        "sSHKey.ts",
+        "stackScript.ts",
+        "token.ts",
+        "utilities.ts",
+        "volume.ts"
+    ]
+}
+
