@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package linode
 
 import (
 	"unicode"
@@ -22,13 +22,13 @@ import (
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
+	"github.com/terraform-providers/terraform-provider-linode/linode"
 )
 
 // all of the token components used below.
 const (
 	// packages:
-	mainPkg = "xyz"
+	mainPkg = "linode"
 	// modules:
 	mainMod = "index" // the y module
 )
@@ -87,42 +87,72 @@ var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := xyz.Provider().(*schema.Provider)
+	p := linode.Provider().(*schema.Provider)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
-		Name:        "xyz",
-		Description: "A Pulumi package for creating and managing xyz cloud resources.",
-		Keywords:    []string{"pulumi", "xyz"},
+		Name:        "linode",
+		Description: "A Pulumi package for creating and managing linode cloud resources.",
+		Keywords:    []string{"pulumi", "linode"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-xyz",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Repository:  "https://github.com/pulumi/pulumi-linode",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_TOKEN", "LINODE_API_TOKEN"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. An example
 			// is below.
-			// "aws_acm_certificate": {
-			// 	Tok: makeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: makeType(mainPkg, "Tags")},
-			// 	},
-			// },
+
+			"linode_image": {
+				Tok: makeResource(mainMod, "Image"),
+			},
+			"linode_instance": {
+				Tok: makeResource(mainMod, "Instance"),
+			},
+			"linode_domain": {
+				Tok: makeResource(mainMod, "Domain"),
+			},
+			"linode_domain_record": {
+				Tok: makeResource(mainMod, "DomainRecord"),
+			},
+			"linode_nodebalancer": {
+				Tok: makeResource(mainMod, "NodeBalancer"),
+			},
+			"linode_nodebalancer_config": {
+				Tok: makeResource(mainMod, "NodeBalancerConfig"),
+			},
+			"linode_nodebalancer_node": {
+				Tok: makeResource(mainMod, "NodeBalancerNode"),
+			},
+			"linode_sshkey": {
+				Tok: makeResource(mainMod, "SSHKey"),
+			},
+			"linode_stackscript": {
+				Tok: makeResource(mainMod, "StackScript"),
+			},
+			"linode_token": {
+				Tok: makeResource(mainMod, "Token"),
+			},
+			"linode_volume": {
+				Tok: makeResource(mainMod, "Volume"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
+			"linode_account":       {Tok: makeDataSource(mainMod, "getAccount")},
+			"linode_domain":        {Tok: makeDataSource(mainMod, "getDomain")},
+			"linode_image":         {Tok: makeDataSource(mainMod, "getImage")},
+			"linode_instance_type": {Tok: makeDataSource(mainMod, "getInstanceType")},
+			"linode_profile":       {Tok: makeDataSource(mainMod, "getProfile")},
+			"linode_region":        {Tok: makeDataSource(mainMod, "getRegion")},
+			"linode_sshkey":        {Tok: makeDataSource(mainMod, "getSSHKey")},
+			"linode_user":          {Tok: makeDataSource(mainMod, "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

@@ -5,6 +5,7 @@ package examples
 import (
 	"io/ioutil"
 	"net/http"
+	"os"
 	"testing"
 	"time"
 
@@ -15,14 +16,14 @@ import (
 
 func TestExamples(t *testing.T) {
 	// Ensure we have any required configuration points
-	// region := os.Getenv("AWS_REGION")
-	// if region == "" {
-	// 	t.Skipf("Skipping test due to missing AWS_REGION environment variable")
-	// }
-	// cwd, err := os.Getwd()
-	// if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-	// 	return
-	// }
+	token := os.Getenv("LINODE_TOKEN")
+	if token == "" {
+		t.Skipf("Skipping test due to missing LINODE_TOKEN environment variable")
+	}
+	cwd, err := os.Getwd()
+	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
+		return
+	}
 
 	// base options shared amongst all tests.
 	base := integration.ProgramTestOptions{
