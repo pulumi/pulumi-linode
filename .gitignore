@@ -9,3 +9,5 @@ Pulumi.*.yaml
 *.iml
 
 yarn.lock
+
+node_modules/
