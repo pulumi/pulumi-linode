@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+ * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+ * 
+ * The Linode Guide, [Deploy a WordPress Site Using Terraform and Linode StackScripts](https://www.linode.com/docs/applications/configuration-management/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/), demonstrates the management of Linode Domain resources in the context of Linode Instance running WordPress.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const foobarDomain = new linode.Domain("foobar", {
+ *     domain: "foobar.example",
+ *     soaEmail: "example@foobar.example",
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ * });
+ * const foobarDomainRecord = new linode.DomainRecord("foobar", {
+ *     domainId: foobarDomain.id,
+ *     name: "www",
+ *     recordType: "CNAME",
+ *     target: "foobar.example",
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports no additional attributes, however `status` may reflect degraded states.
+ */
 export class Domain extends pulumi.CustomResource {
     /**
      * Get an existing Domain resource's state with the given name, ID, and optional extra
@@ -18,8 +52,7 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set
-     * to an empty list unless you intend to use it.
+     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
     public readonly axfrIps: pulumi.Output<string[] | undefined>;
     /**
@@ -27,14 +60,11 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the
-     * same domain.
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      */
     public readonly domain: pulumi.Output<string>;
     /**
-     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300,
-     * 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be
-     * rounded to the nearest valid value.
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     public readonly expireSec: pulumi.Output<number | undefined>;
     /**
@@ -46,15 +76,11 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly masterIps: pulumi.Output<string[] | undefined>;
     /**
-     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     public readonly refreshSec: pulumi.Output<number | undefined>;
     /**
-     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     public readonly retrySec: pulumi.Output<number | undefined>;
     /**
@@ -62,22 +88,19 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly soaEmail: pulumi.Output<string | undefined>;
     /**
-     * Used to control whether this Domain is currently being rendered.
+     * Used to control whether this Domain is currently being rendered (defaults to "active").
      */
     public readonly status: pulumi.Output<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
-     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain
-     * servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200
-     * - any other value will be rounded to the nearest valid value.
+     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     public readonly ttlSec: pulumi.Output<number | undefined>;
     /**
-     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a
-     * read-only copy of a master (also called a slave).
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      */
     public readonly type: pulumi.Output<string>;
 
@@ -137,8 +160,7 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set
-     * to an empty list unless you intend to use it.
+     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
     readonly axfrIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -146,14 +168,11 @@ export interface DomainState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the
-     * same domain.
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      */
     readonly domain?: pulumi.Input<string>;
     /**
-     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300,
-     * 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be
-     * rounded to the nearest valid value.
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly expireSec?: pulumi.Input<number>;
     /**
@@ -165,15 +184,11 @@ export interface DomainState {
      */
     readonly masterIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly refreshSec?: pulumi.Input<number>;
     /**
-     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly retrySec?: pulumi.Input<number>;
     /**
@@ -181,22 +196,19 @@ export interface DomainState {
      */
     readonly soaEmail?: pulumi.Input<string>;
     /**
-     * Used to control whether this Domain is currently being rendered.
+     * Used to control whether this Domain is currently being rendered (defaults to "active").
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain
-     * servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200
-     * - any other value will be rounded to the nearest valid value.
+     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly ttlSec?: pulumi.Input<number>;
     /**
-     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a
-     * read-only copy of a master (also called a slave).
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -206,8 +218,7 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set
-     * to an empty list unless you intend to use it.
+     * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
     readonly axfrIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -215,14 +226,11 @@ export interface DomainArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the
-     * same domain.
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      */
     readonly domain: pulumi.Input<string>;
     /**
-     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300,
-     * 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be
-     * rounded to the nearest valid value.
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly expireSec?: pulumi.Input<number>;
     /**
@@ -234,15 +242,11 @@ export interface DomainArgs {
      */
     readonly masterIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly refreshSec?: pulumi.Input<number>;
     /**
-     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400,
-     * 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest
-     * valid value.
+     * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly retrySec?: pulumi.Input<number>;
     /**
@@ -250,22 +254,19 @@ export interface DomainArgs {
      */
     readonly soaEmail?: pulumi.Input<string>;
     /**
-     * Used to control whether this Domain is currently being rendered.
+     * Used to control whether this Domain is currently being rendered (defaults to "active").
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain
-     * servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200
-     * - any other value will be rounded to the nearest valid value.
+     * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     readonly ttlSec?: pulumi.Input<number>;
     /**
-     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a
-     * read-only copy of a master (also called a slave).
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      */
     readonly type: pulumi.Input<string>;
 }

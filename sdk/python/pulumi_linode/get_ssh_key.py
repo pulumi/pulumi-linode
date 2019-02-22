@@ -8,9 +8,9 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetSSHKeyResult(object):
+class GetSshKeyResult(object):
     """
-    A collection of values returned by getSSHKey.
+    A collection of values returned by getSshKey.
     """
     def __init__(__self__, created=None, ssh_key=None, id=None):
         if created and not isinstance(created, str):
@@ -33,9 +33,9 @@ async def get_ssh_key(label=None):
     __args__ = dict()
 
     __args__['label'] = label
-    __ret__ = await pulumi.runtime.invoke('linode:index/getSSHKey:getSSHKey', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__)
 
-    return GetSSHKeyResult(
+    return GetSshKeyResult(
         created=__ret__.get('created'),
         ssh_key=__ret__.get('sshKey'),
         id=__ret__.get('id'))

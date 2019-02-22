@@ -4,6 +4,38 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
+ * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
+ * 
+ * The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a NodeBalancer.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     clientConnThrottle: 20,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ *     tags: ["foobar"],
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports the following attributes:
+ * 
+ * * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+ * 
+ * * `ipv4` - The Public IPv4 Address of this NodeBalancer
+ * 
+ * * `ipv6` - The Public IPv6 Address of this NodeBalancer
+ */
 export class NodeBalancer extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancer resource's state with the given name, ID, and optional extra
@@ -18,7 +50,7 @@ export class NodeBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.
+     * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     public readonly clientConnThrottle: pulumi.Output<number | undefined>;
     public /*out*/ readonly created: pulumi.Output<string>;
@@ -35,15 +67,15 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
-     * The label of the Linode NodeBalancer.
+     * The label of the Linode NodeBalancer
      */
     public readonly label: pulumi.Output<string | undefined>;
     /**
-     * The region where this NodeBalancer will be deployed.
+     * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
     public readonly region: pulumi.Output<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly transfer: pulumi.Output<{ in: number, out: number, total: number }>;
@@ -96,7 +128,7 @@ export class NodeBalancer extends pulumi.CustomResource {
  */
 export interface NodeBalancerState {
     /**
-     * Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.
+     * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     readonly clientConnThrottle?: pulumi.Input<number>;
     readonly created?: pulumi.Input<string>;
@@ -113,15 +145,15 @@ export interface NodeBalancerState {
      */
     readonly ipv6?: pulumi.Input<string>;
     /**
-     * The label of the Linode NodeBalancer.
+     * The label of the Linode NodeBalancer
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The region where this NodeBalancer will be deployed.
+     * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     readonly transfer?: pulumi.Input<{ in?: pulumi.Input<number>, out?: pulumi.Input<number>, total?: pulumi.Input<number> }>;
@@ -133,19 +165,19 @@ export interface NodeBalancerState {
  */
 export interface NodeBalancerArgs {
     /**
-     * Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.
+     * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     readonly clientConnThrottle?: pulumi.Input<number>;
     /**
-     * The label of the Linode NodeBalancer.
+     * The label of the Linode NodeBalancer
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The region where this NodeBalancer will be deployed.
+     * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
     readonly region: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

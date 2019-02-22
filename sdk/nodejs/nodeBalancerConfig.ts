@@ -4,6 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+ * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+ * 
+ * The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     clientConnThrottle: 20,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ * });
+ * const foofig = new linode.NodeBalancerConfig("foofig", {
+ *     algorithm: "source",
+ *     check: "http",
+ *     checkAttempts: 3,
+ *     checkPath: "/foo",
+ *     checkTimeout: 30,
+ *     nodebalancerId: foobar.id,
+ *     port: 8088,
+ *     protocol: "http",
+ *     stickiness: "http_cookie",
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports the following attributes:
+ * 
+ * * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+ * 
+ * * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+ * 
+ * * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+ * 
+ * * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+ */
 export class NodeBalancerConfig extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancerConfig resource's state with the given name, ID, and optional extra
@@ -22,10 +66,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly algorithm: pulumi.Output<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if
-     * backends are up or down. If none no check is performed. connection requires only a connection to the backend to
-     * succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is
-     * expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     public readonly check: pulumi.Output<string>;
     /**
@@ -42,8 +83,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly checkInterval: pulumi.Output<number>;
     /**
-     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and
-     * taken out of rotation.
+     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      */
     public readonly checkPassive: pulumi.Output<boolean>;
     /**
@@ -55,8 +95,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly checkTimeout: pulumi.Output<number>;
     /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only
-     * be used if necessary.
+     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     public readonly cipherSuite: pulumi.Output<string>;
     public /*out*/ readonly nodeStatus: pulumi.Output<{ statusDown: number, statusUp: number }>;
@@ -65,19 +104,15 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly nodebalancerId: pulumi.Output<number>;
     /**
-     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have
-     * two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may
-     * configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you
-     * do not need SSL configured to have a NodeBalancer listening on port 443.
+     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      */
     public readonly port: pulumi.Output<number | undefined>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key.
+     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
      */
     public readonly protocol: pulumi.Output<string | undefined>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`.
-     * Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     public readonly sslCert: pulumi.Output<string | undefined>;
     /**
@@ -89,8 +124,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslFingerprint: pulumi.Output<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as
-     * `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     public readonly sslKey: pulumi.Output<string | undefined>;
     /**
@@ -165,10 +199,7 @@ export interface NodeBalancerConfigState {
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if
-     * backends are up or down. If none no check is performed. connection requires only a connection to the backend to
-     * succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is
-     * expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -185,8 +216,7 @@ export interface NodeBalancerConfigState {
      */
     readonly checkInterval?: pulumi.Input<number>;
     /**
-     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and
-     * taken out of rotation.
+     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      */
     readonly checkPassive?: pulumi.Input<boolean>;
     /**
@@ -198,8 +228,7 @@ export interface NodeBalancerConfigState {
      */
     readonly checkTimeout?: pulumi.Input<number>;
     /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only
-     * be used if necessary.
+     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     readonly cipherSuite?: pulumi.Input<string>;
     readonly nodeStatus?: pulumi.Input<{ statusDown?: pulumi.Input<number>, statusUp?: pulumi.Input<number> }>;
@@ -208,19 +237,15 @@ export interface NodeBalancerConfigState {
      */
     readonly nodebalancerId?: pulumi.Input<number>;
     /**
-     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have
-     * two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may
-     * configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you
-     * do not need SSL configured to have a NodeBalancer listening on port 443.
+     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key.
+     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`.
-     * Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     readonly sslCert?: pulumi.Input<string>;
     /**
@@ -232,8 +257,7 @@ export interface NodeBalancerConfigState {
      */
     readonly sslFingerprint?: pulumi.Input<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as
-     * `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     readonly sslKey?: pulumi.Input<string>;
     /**
@@ -251,10 +275,7 @@ export interface NodeBalancerConfigArgs {
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if
-     * backends are up or down. If none no check is performed. connection requires only a connection to the backend to
-     * succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is
-     * expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -271,8 +292,7 @@ export interface NodeBalancerConfigArgs {
      */
     readonly checkInterval?: pulumi.Input<number>;
     /**
-     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and
-     * taken out of rotation.
+     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      */
     readonly checkPassive?: pulumi.Input<boolean>;
     /**
@@ -284,8 +304,7 @@ export interface NodeBalancerConfigArgs {
      */
     readonly checkTimeout?: pulumi.Input<number>;
     /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only
-     * be used if necessary.
+     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     readonly cipherSuite?: pulumi.Input<string>;
     /**
@@ -293,24 +312,19 @@ export interface NodeBalancerConfigArgs {
      */
     readonly nodebalancerId: pulumi.Input<number>;
     /**
-     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have
-     * two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may
-     * configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you
-     * do not need SSL configured to have a NodeBalancer listening on port 443.
+     * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key.
+     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`.
-     * Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     readonly sslCert?: pulumi.Input<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as
-     * `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      */
     readonly sslKey?: pulumi.Input<string>;
     /**

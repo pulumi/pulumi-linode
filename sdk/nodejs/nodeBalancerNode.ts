@@ -4,6 +4,67 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
+ * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
+ * 
+ * The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const web: linode.Instance[] = [];
+ * for (let i = 0; i < 3; i++) {
+ *     web.push(new linode.Instance(`web-${i}`, {
+ *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *         image: "linode/ubuntu18.04",
+ *         label: `web-${(i + 1)}`,
+ *         privateIp: true,
+ *         region: "us-east",
+ *         rootPass: "terraform-test",
+ *         type: "g6-standard-1",
+ *     }));
+ * }
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     clientConnThrottle: 20,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ * });
+ * const foofig = new linode.NodeBalancerConfig("foofig", {
+ *     algorithm: "source",
+ *     check: "http",
+ *     checkAttempts: 3,
+ *     checkPath: "/foo",
+ *     checkTimeout: 30,
+ *     nodebalancerId: foobar.id,
+ *     port: 80,
+ *     protocol: "http",
+ *     stickiness: "http_cookie",
+ * });
+ * const foonode = new linode.NodeBalancerNode("foonode", {
+ *     address: pulumi.all(web.map(v => v.privateIpAddress)).apply(privateIpAddress => `${privateIpAddress.map(v => v)}:80`),
+ *     configId: foofig.id,
+ *     label: "mynodebalancernode",
+ *     nodebalancerId: foobar.id,
+ *     weight: 50,
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports the following attributes:
+ * 
+ * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+ * 
+ * * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
+ * 
+ * * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+ */
 export class NodeBalancerNode extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancerNode resource's state with the given name, ID, and optional extra
@@ -18,7 +79,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
     }
 
     /**
-     * The private IP Address and port (IP:PORT) where this backend can be reached. This must be a private IP address.
+     * The private IP Address where this backend can be reached. This must be a private IP address.
      */
     public readonly address: pulumi.Output<string>;
     /**
@@ -26,13 +87,11 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     public readonly configId: pulumi.Output<number>;
     /**
-     * The label for this node. This is for display purposes only.
+     * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
     public readonly label: pulumi.Output<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is
-     * accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not
-     * receive new traffic, but connections already pinned to it will continue to be routed to it.
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
      */
     public readonly mode: pulumi.Output<string>;
     /**
@@ -44,8 +103,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight
-     * will receive more traffic. (1-255)
+     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     public readonly weight: pulumi.Output<number>;
 
@@ -99,7 +157,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
  */
 export interface NodeBalancerNodeState {
     /**
-     * The private IP Address and port (IP:PORT) where this backend can be reached. This must be a private IP address.
+     * The private IP Address where this backend can be reached. This must be a private IP address.
      */
     readonly address?: pulumi.Input<string>;
     /**
@@ -107,13 +165,11 @@ export interface NodeBalancerNodeState {
      */
     readonly configId?: pulumi.Input<number>;
     /**
-     * The label for this node. This is for display purposes only.
+     * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is
-     * accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not
-     * receive new traffic, but connections already pinned to it will continue to be routed to it.
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
      */
     readonly mode?: pulumi.Input<string>;
     /**
@@ -125,8 +181,7 @@ export interface NodeBalancerNodeState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight
-     * will receive more traffic. (1-255)
+     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     readonly weight?: pulumi.Input<number>;
 }
@@ -136,7 +191,7 @@ export interface NodeBalancerNodeState {
  */
 export interface NodeBalancerNodeArgs {
     /**
-     * The private IP Address and port (IP:PORT) where this backend can be reached. This must be a private IP address.
+     * The private IP Address where this backend can be reached. This must be a private IP address.
      */
     readonly address: pulumi.Input<string>;
     /**
@@ -144,13 +199,11 @@ export interface NodeBalancerNodeArgs {
      */
     readonly configId: pulumi.Input<number>;
     /**
-     * The label for this node. This is for display purposes only.
+     * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
     readonly label: pulumi.Input<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is
-     * accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not
-     * receive new traffic, but connections already pinned to it will continue to be routed to it.
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
      */
     readonly mode?: pulumi.Input<string>;
     /**
@@ -158,8 +211,7 @@ export interface NodeBalancerNodeArgs {
      */
     readonly nodebalancerId: pulumi.Input<number>;
     /**
-     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight
-     * will receive more traffic. (1-255)
+     * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     readonly weight?: pulumi.Input<number>;
 }

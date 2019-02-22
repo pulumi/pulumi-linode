@@ -4,17 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export class SSHKey extends pulumi.CustomResource {
+/**
+ * Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
+ * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const fooSshKey = new linode.SshKey("foo", {
+ *     label: "foo",
+ *     sshKey: fs.readFileSync("~/.ssh/id_rsa.pub", "utf-8").replace(/(\n|\r\n)*$/, ""),
+ * });
+ * const fooInstance = new linode.Instance("foo", {
+ *     authorizedKeys: [fooSshKey.sshKey],
+ *     image: "linode/ubuntu18.04",
+ *     label: "foo",
+ *     region: "us-east",
+ *     rootPass: "...",
+ *     type: "g6-nanode-1",
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports the following attributes:
+ * 
+ * * `created` - The date this SSH Key was created.
+ */
+export class SshKey extends pulumi.CustomResource {
     /**
-     * Get an existing SSHKey resource's state with the given name, ID, and optional extra
+     * Get an existing SshKey resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SSHKeyState, opts?: pulumi.CustomResourceOptions): SSHKey {
-        return new SSHKey(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SshKeyState, opts?: pulumi.CustomResourceOptions): SshKey {
+        return new SshKey(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -22,7 +55,7 @@ export class SSHKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly created: pulumi.Output<string>;
     /**
-     * The label of the Linode SSH Key.
+     * A label for the SSH Key.
      */
     public readonly label: pulumi.Output<string>;
     /**
@@ -31,22 +64,22 @@ export class SSHKey extends pulumi.CustomResource {
     public readonly sshKey: pulumi.Output<string>;
 
     /**
-     * Create a SSHKey resource with the given unique name, arguments, and options.
+     * Create a SshKey resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SSHKeyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SSHKeyArgs | SSHKeyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SshKeyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SshKeyArgs | SshKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SSHKeyState = argsOrState as SSHKeyState | undefined;
+            const state: SshKeyState = argsOrState as SshKeyState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["label"] = state ? state.label : undefined;
             inputs["sshKey"] = state ? state.sshKey : undefined;
         } else {
-            const args = argsOrState as SSHKeyArgs | undefined;
+            const args = argsOrState as SshKeyArgs | undefined;
             if (!args || args.label === undefined) {
                 throw new Error("Missing required property 'label'");
             }
@@ -57,20 +90,20 @@ export class SSHKey extends pulumi.CustomResource {
             inputs["sshKey"] = args ? args.sshKey : undefined;
             inputs["created"] = undefined /*out*/;
         }
-        super("linode:index/sSHKey:SSHKey", name, inputs, opts);
+        super("linode:index/sshKey:SshKey", name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SSHKey resources.
+ * Input properties used for looking up and filtering SshKey resources.
  */
-export interface SSHKeyState {
+export interface SshKeyState {
     /**
      * The date this key was added.
      */
     readonly created?: pulumi.Input<string>;
     /**
-     * The label of the Linode SSH Key.
+     * A label for the SSH Key.
      */
     readonly label?: pulumi.Input<string>;
     /**
@@ -80,11 +113,11 @@ export interface SSHKeyState {
 }
 
 /**
- * The set of arguments for constructing a SSHKey resource.
+ * The set of arguments for constructing a SshKey resource.
  */
-export interface SSHKeyArgs {
+export interface SshKeyArgs {
     /**
-     * The label of the Linode SSH Key.
+     * A label for the SSH Key.
      */
     readonly label: pulumi.Input<string>;
     /**

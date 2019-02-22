@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * `linode_region` provides details about a specific Linode region.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how the resource might be used to obtain additional information about a Linode region.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const region = pulumi.output(linode.getRegion({
+ *     id: "us-east",
+ * }));
+ * ```
+ */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
     return pulumi.runtime.invoke("linode:index/getRegion:getRegion", {
         "country": args.country,

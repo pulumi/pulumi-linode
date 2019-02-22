@@ -4,6 +4,61 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
+ * 
+ * For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const foobaz = new linode.Instance("foobaz", {
+ *     region: "us-west",
+ *     rootPass: "3X4mp13",
+ *     tags: ["foobaz"],
+ *     type: "g6-nanode-1",
+ * });
+ * const foobar = new linode.Volume("foobar", {
+ *     label: "foo-volume",
+ *     linodeId: foobaz.id,
+ *     region: foobaz.region,
+ * });
+ * ```
+ * 
+ * Volumes can also be attached using the Linode Instance config device map.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const foo = new linode.Instance("foo", {
+ *     configs: [{
+ *         devices: {
+ *             sda: {
+ *                 volumeId: 123,
+ *             },
+ *         },
+ *         kernel: "linode/latest-64bit",
+ *         label: "boot-existing-volume",
+ *     }],
+ *     region: "us-east",
+ *     type: "g6-nanode-1",
+ * });
+ * ```
+ * 
+ * ## Attributes
+ * 
+ * This resource exports the following attributes:
+ * 
+ * * `status` - The label of the Linode Volume.
+ * 
+ * * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
+ */
 export class Volume extends pulumi.CustomResource {
     /**
      * Get an existing Volume resource's state with the given name, ID, and optional extra
@@ -23,19 +78,19 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly filesystemPath: pulumi.Output<string>;
     /**
-     * The label of the Linode Volume.
+     * The label of the Linode Volume
      */
     public readonly label: pulumi.Output<string>;
     /**
-     * The Linode ID where the Volume should be attached.
+     * The ID of a Linode Instance where the the Volume should be attached.
      */
     public readonly linodeId: pulumi.Output<number>;
     /**
-     * The region where this volume will be deployed.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
      */
     public readonly region: pulumi.Output<string>;
     /**
-     * Size of the Volume in GB
+     * Size of the Volume in GB.
      */
     public readonly size: pulumi.Output<number>;
     /**
@@ -43,7 +98,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
 
@@ -96,19 +151,19 @@ export interface VolumeState {
      */
     readonly filesystemPath?: pulumi.Input<string>;
     /**
-     * The label of the Linode Volume.
+     * The label of the Linode Volume
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The Linode ID where the Volume should be attached.
+     * The ID of a Linode Instance where the the Volume should be attached.
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Size of the Volume in GB
+     * Size of the Volume in GB.
      */
     readonly size?: pulumi.Input<number>;
     /**
@@ -116,7 +171,7 @@ export interface VolumeState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -126,23 +181,23 @@ export interface VolumeState {
  */
 export interface VolumeArgs {
     /**
-     * The label of the Linode Volume.
+     * The label of the Linode Volume
      */
     readonly label: pulumi.Input<string>;
     /**
-     * The Linode ID where the Volume should be attached.
+     * The ID of a Linode Instance where the the Volume should be attached.
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
      */
     readonly region: pulumi.Input<string>;
     /**
-     * Size of the Volume in GB
+     * Size of the Volume in GB.
      */
     readonly size?: pulumi.Input<number>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

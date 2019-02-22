@@ -16,13 +16,13 @@ import (
 // This resource exports the following attributes:
 // 
 // * `created` - The date this SSH Key was created.
-type SSHKey struct {
+type SshKey struct {
 	s *pulumi.ResourceState
 }
 
-// NewSSHKey registers a new resource with the given unique name, arguments, and options.
-func NewSSHKey(ctx *pulumi.Context,
-	name string, args *SSHKeyArgs, opts ...pulumi.ResourceOpt) (*SSHKey, error) {
+// NewSshKey registers a new resource with the given unique name, arguments, and options.
+func NewSshKey(ctx *pulumi.Context,
+	name string, args *SshKeyArgs, opts ...pulumi.ResourceOpt) (*SshKey, error) {
 	if args == nil || args.Label == nil {
 		return nil, errors.New("missing required argument 'Label'")
 	}
@@ -38,57 +38,57 @@ func NewSSHKey(ctx *pulumi.Context,
 		inputs["sshKey"] = args.SshKey
 	}
 	inputs["created"] = nil
-	s, err := ctx.RegisterResource("linode:index/sSHKey:SSHKey", name, true, inputs, opts...)
+	s, err := ctx.RegisterResource("linode:index/sshKey:SshKey", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &SSHKey{s: s}, nil
+	return &SshKey{s: s}, nil
 }
 
-// GetSSHKey gets an existing SSHKey resource's state with the given name, ID, and optional
+// GetSshKey gets an existing SshKey resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetSSHKey(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *SSHKeyState, opts ...pulumi.ResourceOpt) (*SSHKey, error) {
+func GetSshKey(ctx *pulumi.Context,
+	name string, id pulumi.ID, state *SshKeyState, opts ...pulumi.ResourceOpt) (*SshKey, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["created"] = state.Created
 		inputs["label"] = state.Label
 		inputs["sshKey"] = state.SshKey
 	}
-	s, err := ctx.ReadResource("linode:index/sSHKey:SSHKey", name, id, inputs, opts...)
+	s, err := ctx.ReadResource("linode:index/sshKey:SshKey", name, id, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &SSHKey{s: s}, nil
+	return &SshKey{s: s}, nil
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SSHKey) URN() *pulumi.URNOutput {
+func (r *SshKey) URN() *pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SSHKey) ID() *pulumi.IDOutput {
+func (r *SshKey) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date this key was added.
-func (r *SSHKey) Created() *pulumi.StringOutput {
+func (r *SshKey) Created() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["created"])
 }
 
 // A label for the SSH Key.
-func (r *SSHKey) Label() *pulumi.StringOutput {
+func (r *SshKey) Label() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-func (r *SSHKey) SshKey() *pulumi.StringOutput {
+func (r *SshKey) SshKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sshKey"])
 }
 
-// Input properties used for looking up and filtering SSHKey resources.
-type SSHKeyState struct {
+// Input properties used for looking up and filtering SshKey resources.
+type SshKeyState struct {
 	// The date this key was added.
 	Created interface{}
 	// A label for the SSH Key.
@@ -97,8 +97,8 @@ type SSHKeyState struct {
 	SshKey interface{}
 }
 
-// The set of arguments for constructing a SSHKey resource.
-type SSHKeyArgs struct {
+// The set of arguments for constructing a SshKey resource.
+type SshKeyArgs struct {
 	// A label for the SSH Key.
 	Label interface{}
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.

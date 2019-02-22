@@ -6,7 +6,7 @@
   branch = "master"
   name = "github.com/pulumi/pulumi-terraform"
 
-# Change the `name` of this constraint to be the import path of the upstream 
+# Change the `name` of this constraint to be the import path of the upstream
 # Terraform provider, and set the `version` to be the tag name of the release
 # you wish to pin to.
 #
@@ -23,10 +23,6 @@
     govendor-exclude-prefixes = [
       "github.com/golang/protobuf",
     ]
-
-[prune]
-  go-tests = true
-  unused-packages = true
 
 [[constraint]]
   name = "github.com/hashicorp/terraform"

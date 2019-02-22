@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class SSHKey(pulumi.CustomResource):
+class SshKey(pulumi.CustomResource):
     created: pulumi.Output[str]
     label: pulumi.Output[str]
     """
@@ -59,8 +59,8 @@ class SSHKey(pulumi.CustomResource):
 
         __props__['created'] = None
 
-        super(SSHKey, __self__).__init__(
-            'linode:index/sSHKey:SSHKey',
+        super(SshKey, __self__).__init__(
+            'linode:index/sshKey:SshKey',
             resource_name,
             __props__,
             opts)
