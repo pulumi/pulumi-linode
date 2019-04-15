@@ -1,42 +1,9 @@
-# Terraform Bridge Provider Boilerplate
+[![Build Status](https://travis-ci.com/pulumi/pulumi-linode.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-linode)
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider.
+# Linode Resource Provider
 
-Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `linode`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-linode
-```
-
-Next, replace references to `linode` with the name of your provider:
-- Search/replace the string `linode` with the name of your provider throughout this repo
-- Rename the `cmd/pulumi-{resource,tfgen}-linode` directories to match the provider name
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-
-Lock in dependency versions:
-
-- `go get github.com/pulumi/scripts/govendor-override`
-- Update the version number of the Terraform provider in `Gopkg.template.toml` to match the latest available version.
-- `govendor-override < Gopkg.template.toml > Gopkg.toml`
-- `make ensure`
-
-Finally, build the provider:
-
-- Edit `resources.go` to map each resource, and specify provider information
-- Enumerate any examples in `examples/examples_test.go`
-- `make`
+The Linode resource provider for Pulumi lets you use Linode resources in your cloud programs.  To use
+this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 ## Installing
 
@@ -66,7 +33,5 @@ To use from Go, use `go get` to grab the latest version of the library
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://pulumi.io/reference/pkg/nodejs/@pulumi/linode/index.html
+For detailed reference documentation, please visit [the API docs](
+https://pulumi.io/reference/pkg/nodejs/@pulumi/linode/index.html).
