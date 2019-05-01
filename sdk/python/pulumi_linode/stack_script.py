@@ -10,8 +10,8 @@ from . import utilities, tables
 
 class StackScript(pulumi.CustomResource):
     created: pulumi.Output[str]
-    deployments_active: pulumi.Output[int]
-    deployments_total: pulumi.Output[int]
+    deployments_active: pulumi.Output[float]
+    deployments_total: pulumi.Output[float]
     description: pulumi.Output[str]
     """
     A description for the StackScript.
@@ -54,7 +54,7 @@ class StackScript(pulumi.CustomResource):
         
         * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
         
-        * `user_gravatar_id"` - The Gravatar ID for the User who created the StackScript.
+        * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
         
         * `deployments_total` - The total number of times this StackScript has been deployed.
         
@@ -103,23 +103,23 @@ class StackScript(pulumi.CustomResource):
         __props__ = dict()
 
         if description is None:
-            raise TypeError('Missing required property description')
+            raise TypeError("Missing required property 'description'")
         __props__['description'] = description
 
         if images is None:
-            raise TypeError('Missing required property images')
+            raise TypeError("Missing required property 'images'")
         __props__['images'] = images
 
         __props__['is_public'] = is_public
 
         if label is None:
-            raise TypeError('Missing required property label')
+            raise TypeError("Missing required property 'label'")
         __props__['label'] = label
 
         __props__['rev_note'] = rev_note
 
         if script is None:
-            raise TypeError('Missing required property script')
+            raise TypeError("Missing required property 'script'")
         __props__['script'] = script
 
         __props__['created'] = None

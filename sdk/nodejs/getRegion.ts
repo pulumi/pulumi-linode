@@ -40,4 +40,5 @@ export interface GetRegionArgs {
  */
 export interface GetRegionResult {
     readonly country: string;
+    readonly id: string;
 }

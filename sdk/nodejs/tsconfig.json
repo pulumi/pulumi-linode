@@ -5,7 +5,12 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
     },
     "files": [
         "config/index.ts",
@@ -16,6 +21,7 @@
         "getDomain.ts",
         "getImage.ts",
         "getInstanceType.ts",
+        "getNetworkingIp.ts",
         "getProfile.ts",
         "getRegion.ts",
         "getSshKey.ts",
@@ -27,6 +33,7 @@
         "nodeBalancerConfig.ts",
         "nodeBalancerNode.ts",
         "provider.ts",
+        "rdns.ts",
         "sshKey.ts",
         "stackScript.ts",
         "token.ts",

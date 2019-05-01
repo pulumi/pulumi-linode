@@ -16,7 +16,7 @@ class Image(pulumi.CustomResource):
     """
     A detailed description of this Image.
     """
-    disk_id: pulumi.Output[int]
+    disk_id: pulumi.Output[float]
     """
     The ID of the Linode Disk that this Image will be created from.
     """
@@ -26,11 +26,11 @@ class Image(pulumi.CustomResource):
     """
     A short description of the Image. Labels cannot contain special characters.
     """
-    linode_id: pulumi.Output[int]
+    linode_id: pulumi.Output[float]
     """
     The ID of the Linode that this Image will be created from.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     type: pulumi.Output[str]
     vendor: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, disk_id=None, label=None, linode_id=None, __name__=None, __opts__=None):
@@ -64,9 +64,9 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.
-        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
-        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,15 +86,15 @@ class Image(pulumi.CustomResource):
         __props__['description'] = description
 
         if disk_id is None:
-            raise TypeError('Missing required property disk_id')
+            raise TypeError("Missing required property 'disk_id'")
         __props__['disk_id'] = disk_id
 
         if label is None:
-            raise TypeError('Missing required property label')
+            raise TypeError("Missing required property 'label'")
         __props__['label'] = label
 
         if linode_id is None:
-            raise TypeError('Missing required property linode_id')
+            raise TypeError("Missing required property 'linode_id'")
         __props__['linode_id'] = linode_id
 
         __props__['created'] = None

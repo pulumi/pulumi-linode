@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  * 
  * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
  * 
- * * `user_gravatar_id"` - The Gravatar ID for the User who created the StackScript.
+ * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
  * 
  * * `deployments_total` - The total number of times this StackScript has been deployed.
  * 
@@ -92,56 +92,56 @@ export class StackScript extends pulumi.CustomResource {
     /**
      * The date this StackScript was created.
      */
-    public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * Count of currently active, deployed Linodes created from this StackScript.
      */
-    public /*out*/ readonly deploymentsActive: pulumi.Output<number>;
+    public /*out*/ readonly deploymentsActive!: pulumi.Output<number>;
     /**
      * The total number of times this StackScript has been deployed.
      */
-    public /*out*/ readonly deploymentsTotal: pulumi.Output<number>;
+    public /*out*/ readonly deploymentsTotal!: pulumi.Output<number>;
     /**
      * A description for the StackScript.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
      */
-    public readonly images: pulumi.Output<string[]>;
+    public readonly images!: pulumi.Output<string[]>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
      */
-    public readonly isPublic: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    public readonly label: pulumi.Output<string>;
+    public readonly label!: pulumi.Output<string>;
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    public readonly revNote: pulumi.Output<string | undefined>;
+    public readonly revNote!: pulumi.Output<string | undefined>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
-    public readonly script: pulumi.Output<string>;
+    public readonly script!: pulumi.Output<string>;
     /**
      * The date this StackScript was updated.
      */
-    public /*out*/ readonly updated: pulumi.Output<string>;
+    public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    public /*out*/ readonly userDefinedFields: pulumi.Output<{ default: string, example: string, label: string, manyOf: string, name: string, oneOf: string }[]>;
+    public /*out*/ readonly userDefinedFields!: pulumi.Output<{ default: string, example: string, label: string, manyOf: string, name: string, oneOf: string }[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
-    public /*out*/ readonly userGravatarId: pulumi.Output<string>;
+    public /*out*/ readonly userGravatarId!: pulumi.Output<string>;
     /**
      * The User who created the StackScript.
      */
-    public /*out*/ readonly username: pulumi.Output<string>;
+    public /*out*/ readonly username!: pulumi.Output<string>;
 
     /**
      * Create a StackScript resource with the given unique name, arguments, and options.
@@ -154,7 +154,7 @@ export class StackScript extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: StackScriptArgs | StackScriptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: StackScriptState = argsOrState as StackScriptState | undefined;
+            const state = argsOrState as StackScriptState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["deploymentsActive"] = state ? state.deploymentsActive : undefined;
             inputs["deploymentsTotal"] = state ? state.deploymentsTotal : undefined;

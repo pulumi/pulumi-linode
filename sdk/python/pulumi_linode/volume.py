@@ -14,7 +14,7 @@ class Volume(pulumi.CustomResource):
     """
     The label of the Linode Volume
     """
-    linode_id: pulumi.Output[int]
+    linode_id: pulumi.Output[float]
     """
     The ID of a Linode Instance where the the Volume should be attached.
     """
@@ -22,7 +22,7 @@ class Volume(pulumi.CustomResource):
     """
     The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     Size of the Volume in GB.
     """
@@ -48,9 +48,9 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
-        :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the the Volume should be attached.
+        :param pulumi.Input[float] linode_id: The ID of a Linode Instance where the the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
-        :param pulumi.Input[int] size: Size of the Volume in GB.
+        :param pulumi.Input[float] size: Size of the Volume in GB.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         if __name__ is not None:
@@ -69,13 +69,13 @@ class Volume(pulumi.CustomResource):
         __props__ = dict()
 
         if label is None:
-            raise TypeError('Missing required property label')
+            raise TypeError("Missing required property 'label'")
         __props__['label'] = label
 
         __props__['linode_id'] = linode_id
 
         if region is None:
-            raise TypeError('Missing required property region')
+            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         __props__['size'] = size

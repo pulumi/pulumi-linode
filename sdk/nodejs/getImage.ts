@@ -67,6 +67,7 @@ export interface GetImageResult {
     readonly deprecated: boolean;
     readonly description: string;
     readonly expiry: string;
+    readonly id: string;
     readonly isPublic: boolean;
     readonly label: string;
     readonly size: number;

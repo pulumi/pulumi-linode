@@ -53,8 +53,10 @@ func LookupDomain(ctx *pulumi.Context, args *GetDomainArgs) (*GetDomainResult, e
 	return &GetDomainResult{
 		AxfrIps: outputs["axfrIps"],
 		Description: outputs["description"],
+		Domain: outputs["domain"],
 		ExpireSec: outputs["expireSec"],
 		Group: outputs["group"],
+		Id: outputs["id"],
 		MasterIps: outputs["masterIps"],
 		RefreshSec: outputs["refreshSec"],
 		RetrySec: outputs["retrySec"],
@@ -78,8 +80,10 @@ type GetDomainArgs struct {
 type GetDomainResult struct {
 	AxfrIps interface{}
 	Description interface{}
+	Domain interface{}
 	ExpireSec interface{}
 	Group interface{}
+	Id interface{}
 	MasterIps interface{}
 	RefreshSec interface{}
 	RetrySec interface{}

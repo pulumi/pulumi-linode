@@ -81,31 +81,31 @@ export class NodeBalancerNode extends pulumi.CustomResource {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      */
-    public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The ID of the NodeBalancerConfig to access.
      */
-    public readonly configId: pulumi.Output<number>;
+    public readonly configId!: pulumi.Output<number>;
     /**
      * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
-    public readonly label: pulumi.Output<string>;
+    public readonly label!: pulumi.Output<string>;
     /**
      * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
      */
-    public readonly mode: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * The ID of the NodeBalancer to access.
      */
-    public readonly nodebalancerId: pulumi.Output<number>;
+    public readonly nodebalancerId!: pulumi.Output<number>;
     /**
      * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
-    public readonly weight: pulumi.Output<number>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a NodeBalancerNode resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeBalancerNodeArgs | NodeBalancerNodeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeBalancerNodeState = argsOrState as NodeBalancerNodeState | undefined;
+            const state = argsOrState as NodeBalancerNodeState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["configId"] = state ? state.configId : undefined;
             inputs["label"] = state ? state.label : undefined;

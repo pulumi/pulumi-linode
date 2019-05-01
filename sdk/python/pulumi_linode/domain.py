@@ -21,7 +21,7 @@ class Domain(pulumi.CustomResource):
     """
     The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
     """
-    expire_sec: pulumi.Output[int]
+    expire_sec: pulumi.Output[float]
     """
     The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
     """
@@ -33,11 +33,11 @@ class Domain(pulumi.CustomResource):
     """
     The IP addresses representing the master DNS for this Domain.
     """
-    refresh_sec: pulumi.Output[int]
+    refresh_sec: pulumi.Output[float]
     """
     The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
     """
-    retry_sec: pulumi.Output[int]
+    retry_sec: pulumi.Output[float]
     """
     The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
     """
@@ -53,7 +53,7 @@ class Domain(pulumi.CustomResource):
     """
     A list of tags applied to this object. Tags are for organizational purposes only.
     """
-    ttl_sec: pulumi.Output[int]
+    ttl_sec: pulumi.Output[float]
     """
     'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
     """
@@ -77,15 +77,15 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[list] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         :param pulumi.Input[str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
-        :param pulumi.Input[int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] group: The group this Domain belongs to. This is for display purposes only.
         :param pulumi.Input[list] master_ips: The IP addresses representing the master DNS for this Domain.
-        :param pulumi.Input[int] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[int] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] soa_email: Start of Authority email address. This is required for master Domains.
         :param pulumi.Input[str] status: Used to control whether this Domain is currently being rendered (defaults to "active").
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """
         if __name__ is not None:
@@ -108,7 +108,7 @@ class Domain(pulumi.CustomResource):
         __props__['description'] = description
 
         if domain is None:
-            raise TypeError('Missing required property domain')
+            raise TypeError("Missing required property 'domain'")
         __props__['domain'] = domain
 
         __props__['expire_sec'] = expire_sec
@@ -130,7 +130,7 @@ class Domain(pulumi.CustomResource):
         __props__['ttl_sec'] = ttl_sec
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         super(Domain, __self__).__init__(

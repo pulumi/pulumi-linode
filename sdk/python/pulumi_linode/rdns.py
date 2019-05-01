@@ -8,31 +8,27 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class SshKey(pulumi.CustomResource):
-    created: pulumi.Output[str]
-    label: pulumi.Output[str]
+class Rdns(pulumi.CustomResource):
+    address: pulumi.Output[str]
     """
-    A label for the SSH Key.
+    The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
     """
-    ssh_key: pulumi.Output[str]
+    rdns: pulumi.Output[str]
     """
-    The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+    The name of the RDNS address.
     """
-    def __init__(__self__, resource_name, opts=None, label=None, ssh_key=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, rdns=None, __name__=None, __opts__=None):
         """
-        Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
-        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
+        Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.
         
-        ## Attributes
+        Linode RDNS names must have a matching address value in an A or AAAA record.  This A or AAAA name must be resolvable at the time the RDNS resource is being associated.
         
-        This resource exports the following attributes:
-        
-        * `created` - The date this SSH Key was created.
+        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/docs/v4#operation/updateIP) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] label: A label for the SSH Key.
-        :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
+        :param pulumi.Input[str] rdns: The name of the RDNS address.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -49,18 +45,16 @@ class SshKey(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if label is None:
-            raise TypeError("Missing required property 'label'")
-        __props__['label'] = label
+        if address is None:
+            raise TypeError("Missing required property 'address'")
+        __props__['address'] = address
 
-        if ssh_key is None:
-            raise TypeError("Missing required property 'ssh_key'")
-        __props__['ssh_key'] = ssh_key
+        if rdns is None:
+            raise TypeError("Missing required property 'rdns'")
+        __props__['rdns'] = rdns
 
-        __props__['created'] = None
-
-        super(SshKey, __self__).__init__(
-            'linode:index/sshKey:SshKey',
+        super(Rdns, __self__).__init__(
+            'linode:index/rdns:Rdns',
             resource_name,
             __props__,
             opts)

@@ -9,7 +9,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class NodeBalancer(pulumi.CustomResource):
-    client_conn_throttle: pulumi.Output[int]
+    client_conn_throttle: pulumi.Output[float]
     """
     Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
     """
@@ -50,7 +50,7 @@ class NodeBalancer(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -75,7 +75,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__['label'] = label
 
         if region is None:
-            raise TypeError('Missing required property region')
+            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         __props__['tags'] = tags

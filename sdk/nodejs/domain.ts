@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  *         "foo",
  *         "bar",
  *     ],
+ *     type: "master",
  * });
  * const foobarDomainRecord = new linode.DomainRecord("foobar", {
  *     domainId: foobarDomain.id,
@@ -54,55 +55,55 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
-    public readonly axfrIps: pulumi.Output<string[] | undefined>;
+    public readonly axfrIps!: pulumi.Output<string[] | undefined>;
     /**
      * A description for this Domain. This is for display purposes only.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      */
-    public readonly domain: pulumi.Output<string>;
+    public readonly domain!: pulumi.Output<string>;
     /**
      * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly expireSec: pulumi.Output<number | undefined>;
+    public readonly expireSec!: pulumi.Output<number | undefined>;
     /**
      * The group this Domain belongs to. This is for display purposes only.
      */
-    public readonly group: pulumi.Output<string | undefined>;
+    public readonly group!: pulumi.Output<string | undefined>;
     /**
      * The IP addresses representing the master DNS for this Domain.
      */
-    public readonly masterIps: pulumi.Output<string[] | undefined>;
+    public readonly masterIps!: pulumi.Output<string[] | undefined>;
     /**
      * The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly refreshSec: pulumi.Output<number | undefined>;
+    public readonly refreshSec!: pulumi.Output<number | undefined>;
     /**
      * The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly retrySec: pulumi.Output<number | undefined>;
+    public readonly retrySec!: pulumi.Output<number | undefined>;
     /**
      * Start of Authority email address. This is required for master Domains.
      */
-    public readonly soaEmail: pulumi.Output<string | undefined>;
+    public readonly soaEmail!: pulumi.Output<string | undefined>;
     /**
      * Used to control whether this Domain is currently being rendered (defaults to "active").
      */
-    public readonly status: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly ttlSec: pulumi.Output<number | undefined>;
+    public readonly ttlSec!: pulumi.Output<number | undefined>;
     /**
      * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -115,7 +116,7 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DomainState = argsOrState as DomainState | undefined;
+            const state = argsOrState as DomainState | undefined;
             inputs["axfrIps"] = state ? state.axfrIps : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domain"] = state ? state.domain : undefined;

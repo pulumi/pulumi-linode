@@ -53,15 +53,15 @@ export class SshKey extends pulumi.CustomResource {
     /**
      * The date this key was added.
      */
-    public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * A label for the SSH Key.
      */
-    public readonly label: pulumi.Output<string>;
+    public readonly label!: pulumi.Output<string>;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
-    public readonly sshKey: pulumi.Output<string>;
+    public readonly sshKey!: pulumi.Output<string>;
 
     /**
      * Create a SshKey resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class SshKey extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SshKeyArgs | SshKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SshKeyState = argsOrState as SshKeyState | undefined;
+            const state = argsOrState as SshKeyState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["label"] = state ? state.label : undefined;
             inputs["sshKey"] = state ? state.sshKey : undefined;

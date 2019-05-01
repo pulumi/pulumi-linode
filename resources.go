@@ -114,6 +114,9 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_nodebalancer_node": {
 				Tok: makeResource(mainMod, "NodeBalancerNode"),
 			},
+			"linode_rdns": {
+				Tok: makeResource(mainMod, "Rdns"),
+			},
 			"linode_sshkey": {
 				Tok: makeResource(mainMod, "SshKey"),
 			},
@@ -132,6 +135,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_domain":        {Tok: makeDataSource(mainMod, "getDomain")},
 			"linode_image":         {Tok: makeDataSource(mainMod, "getImage")},
 			"linode_instance_type": {Tok: makeDataSource(mainMod, "getInstanceType")},
+			"linode_networking_ip": {Tok: makeDataSource(mainMod, "getNetworkingIp")},
 			"linode_profile":       {Tok: makeDataSource(mainMod, "getProfile")},
 			"linode_region":        {Tok: makeDataSource(mainMod, "getRegion")},
 			"linode_sshkey":        {Tok: makeDataSource(mainMod, "getSshKey")},
@@ -154,7 +158,7 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=0.16.4,<0.17.0",
+				"pulumi": ">=0.17.1,<0.18.0",
 			},
 		},
 	}

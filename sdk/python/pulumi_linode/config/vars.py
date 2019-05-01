@@ -15,3 +15,13 @@ token = utilities.require_with_default(lambda: __config__.require('token'), util
 The token that allows you access to your Linode account
 """
 
+ua_prefix = __config__.get('uaPrefix')
+"""
+An HTTP User-Agent Prefix to prepend in API requests.
+"""
+
+url = __config__.get('url')
+"""
+The HTTP(S) API address of the Linode API to use.
+"""
+

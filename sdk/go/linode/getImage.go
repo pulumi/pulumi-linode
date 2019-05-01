@@ -45,6 +45,7 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 		Deprecated: outputs["deprecated"],
 		Description: outputs["description"],
 		Expiry: outputs["expiry"],
+		Id: outputs["id"],
 		IsPublic: outputs["isPublic"],
 		Label: outputs["label"],
 		Size: outputs["size"],
@@ -66,6 +67,7 @@ type GetImageResult struct {
 	Deprecated interface{}
 	Description interface{}
 	Expiry interface{}
+	Id interface{}
 	IsPublic interface{}
 	Label interface{}
 	Size interface{}

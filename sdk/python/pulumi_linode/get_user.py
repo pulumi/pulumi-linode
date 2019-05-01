@@ -8,28 +8,31 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetUserResult(object):
+class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, email=None, restricted=None, ssh_keys=None, id=None):
+    def __init__(__self__, email=None, restricted=None, ssh_keys=None, username=None, id=None):
         if email and not isinstance(email, str):
-            raise TypeError('Expected argument email to be a str')
+            raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
         if restricted and not isinstance(restricted, bool):
-            raise TypeError('Expected argument restricted to be a bool')
+            raise TypeError("Expected argument 'restricted' to be a bool")
         __self__.restricted = restricted
         if ssh_keys and not isinstance(ssh_keys, list):
-            raise TypeError('Expected argument ssh_keys to be a list')
+            raise TypeError("Expected argument 'ssh_keys' to be a list")
         __self__.ssh_keys = ssh_keys
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        __self__.username = username
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_user(username=None):
+async def get_user(username=None,opts=None):
     """
     Provides information about a Linode user
     
@@ -46,10 +49,11 @@ async def get_user(username=None):
     __args__ = dict()
 
     __args__['username'] = username
-    __ret__ = await pulumi.runtime.invoke('linode:index/getUser:getUser', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts)
 
     return GetUserResult(
         email=__ret__.get('email'),
         restricted=__ret__.get('restricted'),
         ssh_keys=__ret__.get('sshKeys'),
+        username=__ret__.get('username'),
         id=__ret__.get('id'))

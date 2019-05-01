@@ -72,52 +72,52 @@ export class Image extends pulumi.CustomResource {
     /**
      * When this Image was created.
      */
-    public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * The name of the User who created this Image.
      */
-    public /*out*/ readonly createdBy: pulumi.Output<string>;
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
      * Whether or not this Image is deprecated. Will only be True for deprecated public Images.
      */
-    public /*out*/ readonly deprecated: pulumi.Output<boolean>;
+    public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
     /**
      * A detailed description of this Image.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    public readonly diskId: pulumi.Output<number>;
+    public readonly diskId!: pulumi.Output<number>;
     /**
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      */
-    public /*out*/ readonly expiry: pulumi.Output<string>;
+    public /*out*/ readonly expiry!: pulumi.Output<string>;
     /**
      * True if the Image is public.
      */
-    public /*out*/ readonly isPublic: pulumi.Output<boolean>;
+    public /*out*/ readonly isPublic!: pulumi.Output<boolean>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
-    public readonly label: pulumi.Output<string>;
+    public readonly label!: pulumi.Output<string>;
     /**
      * The ID of the Linode that this Image will be created from.
      */
-    public readonly linodeId: pulumi.Output<number>;
+    public readonly linodeId!: pulumi.Output<number>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
-    public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically
      * from a deleted Linode.
      */
-    public /*out*/ readonly type: pulumi.Output<string>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * The upstream distribution vendor. Nil for private Images.
      */
-    public /*out*/ readonly vendor: pulumi.Output<string>;
+    public /*out*/ readonly vendor!: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -130,7 +130,7 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ImageState = argsOrState as ImageState | undefined;
+            const state = argsOrState as ImageState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["createdBy"] = state ? state.createdBy : undefined;
             inputs["deprecated"] = state ? state.deprecated : undefined;
