@@ -53,6 +53,7 @@ export interface GetUserResult {
     readonly email: string;
     readonly restricted: boolean;
     readonly sshKeys: string[];
+    readonly username: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

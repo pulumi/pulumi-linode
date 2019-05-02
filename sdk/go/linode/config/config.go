@@ -20,3 +20,13 @@ func GetToken(ctx *pulumi.Context) string {
 	panic(err.Error())
 	return v
 }
+
+// An HTTP User-Agent Prefix to prepend in API requests.
+func GetUaPrefix(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:uaPrefix")
+}
+
+// The HTTP(S) API address of the Linode API to use.
+func GetUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:url")
+}

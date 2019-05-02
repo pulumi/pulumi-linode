@@ -8,55 +8,55 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetAccountResult(object):
+class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
     def __init__(__self__, address1=None, address2=None, balance=None, city=None, company=None, country=None, email=None, first_name=None, last_name=None, phone=None, state=None, zip=None, id=None):
         if address1 and not isinstance(address1, str):
-            raise TypeError('Expected argument address1 to be a str')
+            raise TypeError("Expected argument 'address1' to be a str")
         __self__.address1 = address1
         if address2 and not isinstance(address2, str):
-            raise TypeError('Expected argument address2 to be a str')
+            raise TypeError("Expected argument 'address2' to be a str")
         __self__.address2 = address2
-        if balance and not isinstance(balance, int):
-            raise TypeError('Expected argument balance to be a int')
+        if balance and not isinstance(balance, float):
+            raise TypeError("Expected argument 'balance' to be a float")
         __self__.balance = balance
         if city and not isinstance(city, str):
-            raise TypeError('Expected argument city to be a str')
+            raise TypeError("Expected argument 'city' to be a str")
         __self__.city = city
         if company and not isinstance(company, str):
-            raise TypeError('Expected argument company to be a str')
+            raise TypeError("Expected argument 'company' to be a str")
         __self__.company = company
         if country and not isinstance(country, str):
-            raise TypeError('Expected argument country to be a str')
+            raise TypeError("Expected argument 'country' to be a str")
         __self__.country = country
         if email and not isinstance(email, str):
-            raise TypeError('Expected argument email to be a str')
+            raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
         if first_name and not isinstance(first_name, str):
-            raise TypeError('Expected argument first_name to be a str')
+            raise TypeError("Expected argument 'first_name' to be a str")
         __self__.first_name = first_name
         if last_name and not isinstance(last_name, str):
-            raise TypeError('Expected argument last_name to be a str')
+            raise TypeError("Expected argument 'last_name' to be a str")
         __self__.last_name = last_name
         if phone and not isinstance(phone, str):
-            raise TypeError('Expected argument phone to be a str')
+            raise TypeError("Expected argument 'phone' to be a str")
         __self__.phone = phone
         if state and not isinstance(state, str):
-            raise TypeError('Expected argument state to be a str')
+            raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
         if zip and not isinstance(zip, str):
-            raise TypeError('Expected argument zip to be a str')
+            raise TypeError("Expected argument 'zip' to be a str")
         __self__.zip = zip
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account():
+async def get_account(opts=None):
     """
     Provides information about a Linode account.
     
@@ -92,7 +92,7 @@ async def get_account():
     """
     __args__ = dict()
 
-    __ret__ = await pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts)
 
     return GetAccountResult(
         address1=__ret__.get('address1'),

@@ -20,6 +20,7 @@ func LookupRegion(ctx *pulumi.Context, args *GetRegionArgs) (*GetRegionResult, e
 	}
 	return &GetRegionResult{
 		Country: outputs["country"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -32,4 +33,5 @@ type GetRegionArgs struct {
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
 	Country interface{}
+	Id interface{}
 }

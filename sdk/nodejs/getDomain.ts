@@ -83,8 +83,10 @@ export interface GetDomainArgs {
 export interface GetDomainResult {
     readonly axfrIps: string[];
     readonly description: string;
+    readonly domain?: string;
     readonly expireSec: number;
     readonly group: string;
+    readonly id?: string;
     readonly masterIps: string[];
     readonly refreshSec: number;
     readonly retrySec: number;

@@ -65,6 +65,7 @@ export interface GetInstanceTypeResult {
     readonly addons: { backups: { price: { hourly: number, monthly: number } } };
     readonly class: string;
     readonly disk: number;
+    readonly id: string;
     readonly label: string;
     readonly memory: number;
     readonly networkOut: number;

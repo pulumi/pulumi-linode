@@ -10,3 +10,11 @@ let __config = new pulumi.Config("linode");
  * The token that allows you access to your Linode account
  */
 export let token: string = utilities.requireWithDefault(() => __config.require("token"), utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN"));
+/**
+ * An HTTP User-Agent Prefix to prepend in API requests.
+ */
+export let uaPrefix: string | undefined = __config.get("uaPrefix");
+/**
+ * The HTTP(S) API address of the Linode API to use.
+ */
+export let url: string | undefined = __config.get("url");

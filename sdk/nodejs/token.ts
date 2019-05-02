@@ -51,23 +51,23 @@ export class Token extends pulumi.CustomResource {
     /**
      * The date and time this token was created.
      */
-    public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
      */
-    public readonly expiry: pulumi.Output<string | undefined>;
+    public readonly expiry!: pulumi.Output<string | undefined>;
     /**
      * A label for the Token.
      */
-    public readonly label: pulumi.Output<string | undefined>;
+    public readonly label!: pulumi.Output<string | undefined>;
     /**
      * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
      */
-    public readonly scopes: pulumi.Output<string>;
+    public readonly scopes!: pulumi.Output<string>;
     /**
      * The token used to access the API.
      */
-    public /*out*/ readonly token: pulumi.Output<string>;
+    public /*out*/ readonly token!: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class Token extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TokenState = argsOrState as TokenState | undefined;
+            const state = argsOrState as TokenState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["expiry"] = state ? state.expiry : undefined;
             inputs["label"] = state ? state.label : undefined;

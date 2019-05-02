@@ -8,16 +8,19 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetRegionResult(object):
+class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, country=None):
+    def __init__(__self__, country=None, id=None):
         if country and not isinstance(country, str):
-            raise TypeError('Expected argument country to be a str')
+            raise TypeError("Expected argument 'country' to be a str")
         __self__.country = country
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
 
-async def get_region(country=None, id=None):
+async def get_region(country=None,id=None,opts=None):
     """
     `linode_region` provides details about a specific Linode region.
     """
@@ -25,7 +28,8 @@ async def get_region(country=None, id=None):
 
     __args__['country'] = country
     __args__['id'] = id
-    __ret__ = await pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts)
 
     return GetRegionResult(
-        country=__ret__.get('country'))
+        country=__ret__.get('country'),
+        id=__ret__.get('id'))

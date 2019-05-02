@@ -8,40 +8,43 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetInstanceTypeResult(object):
+class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
     """
-    def __init__(__self__, addons=None, class_=None, disk=None, label=None, memory=None, network_out=None, price=None, transfer=None, vcpus=None):
+    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, transfer=None, vcpus=None):
         if addons and not isinstance(addons, dict):
-            raise TypeError('Expected argument addons to be a dict')
+            raise TypeError("Expected argument 'addons' to be a dict")
         __self__.addons = addons
         if class_ and not isinstance(class_, str):
-            raise TypeError('Expected argument class_ to be a str')
+            raise TypeError("Expected argument 'class_' to be a str")
         __self__.class_ = class_
-        if disk and not isinstance(disk, int):
-            raise TypeError('Expected argument disk to be a int')
+        if disk and not isinstance(disk, float):
+            raise TypeError("Expected argument 'disk' to be a float")
         __self__.disk = disk
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
         if label and not isinstance(label, str):
-            raise TypeError('Expected argument label to be a str')
+            raise TypeError("Expected argument 'label' to be a str")
         __self__.label = label
-        if memory and not isinstance(memory, int):
-            raise TypeError('Expected argument memory to be a int')
+        if memory and not isinstance(memory, float):
+            raise TypeError("Expected argument 'memory' to be a float")
         __self__.memory = memory
-        if network_out and not isinstance(network_out, int):
-            raise TypeError('Expected argument network_out to be a int')
+        if network_out and not isinstance(network_out, float):
+            raise TypeError("Expected argument 'network_out' to be a float")
         __self__.network_out = network_out
         if price and not isinstance(price, dict):
-            raise TypeError('Expected argument price to be a dict')
+            raise TypeError("Expected argument 'price' to be a dict")
         __self__.price = price
-        if transfer and not isinstance(transfer, int):
-            raise TypeError('Expected argument transfer to be a int')
+        if transfer and not isinstance(transfer, float):
+            raise TypeError("Expected argument 'transfer' to be a float")
         __self__.transfer = transfer
-        if vcpus and not isinstance(vcpus, int):
-            raise TypeError('Expected argument vcpus to be a int')
+        if vcpus and not isinstance(vcpus, float):
+            raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
 
-async def get_instance_type(id=None, label=None):
+async def get_instance_type(id=None,label=None,opts=None):
     """
     Provides information about a Linode instance type
     
@@ -69,12 +72,13 @@ async def get_instance_type(id=None, label=None):
 
     __args__['id'] = id
     __args__['label'] = label
-    __ret__ = await pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts)
 
     return GetInstanceTypeResult(
         addons=__ret__.get('addons'),
         class_=__ret__.get('class'),
         disk=__ret__.get('disk'),
+        id=__ret__.get('id'),
         label=__ret__.get('label'),
         memory=__ret__.get('memory'),
         network_out=__ret__.get('networkOut'),

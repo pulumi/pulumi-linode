@@ -8,49 +8,49 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetProfileResult(object):
+class GetProfileResult:
     """
     A collection of values returned by getProfile.
     """
     def __init__(__self__, authorized_keys=None, email=None, email_notifications=None, ip_whitelist_enabled=None, lish_auth_method=None, referrals=None, restricted=None, timezone=None, two_factor_auth=None, username=None, id=None):
         if authorized_keys and not isinstance(authorized_keys, list):
-            raise TypeError('Expected argument authorized_keys to be a list')
+            raise TypeError("Expected argument 'authorized_keys' to be a list")
         __self__.authorized_keys = authorized_keys
         if email and not isinstance(email, str):
-            raise TypeError('Expected argument email to be a str')
+            raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
         if email_notifications and not isinstance(email_notifications, bool):
-            raise TypeError('Expected argument email_notifications to be a bool')
+            raise TypeError("Expected argument 'email_notifications' to be a bool")
         __self__.email_notifications = email_notifications
         if ip_whitelist_enabled and not isinstance(ip_whitelist_enabled, bool):
-            raise TypeError('Expected argument ip_whitelist_enabled to be a bool')
+            raise TypeError("Expected argument 'ip_whitelist_enabled' to be a bool")
         __self__.ip_whitelist_enabled = ip_whitelist_enabled
         if lish_auth_method and not isinstance(lish_auth_method, str):
-            raise TypeError('Expected argument lish_auth_method to be a str')
+            raise TypeError("Expected argument 'lish_auth_method' to be a str")
         __self__.lish_auth_method = lish_auth_method
         if referrals and not isinstance(referrals, dict):
-            raise TypeError('Expected argument referrals to be a dict')
+            raise TypeError("Expected argument 'referrals' to be a dict")
         __self__.referrals = referrals
         if restricted and not isinstance(restricted, bool):
-            raise TypeError('Expected argument restricted to be a bool')
+            raise TypeError("Expected argument 'restricted' to be a bool")
         __self__.restricted = restricted
         if timezone and not isinstance(timezone, str):
-            raise TypeError('Expected argument timezone to be a str')
+            raise TypeError("Expected argument 'timezone' to be a str")
         __self__.timezone = timezone
         if two_factor_auth and not isinstance(two_factor_auth, bool):
-            raise TypeError('Expected argument two_factor_auth to be a bool')
+            raise TypeError("Expected argument 'two_factor_auth' to be a bool")
         __self__.two_factor_auth = two_factor_auth
         if username and not isinstance(username, str):
-            raise TypeError('Expected argument username to be a str')
+            raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_profile():
+async def get_profile(opts=None):
     """
     Provides information about a Linode profile.
     
@@ -92,7 +92,7 @@ async def get_profile():
     """
     __args__ = dict()
 
-    __ret__ = await pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__)
+    __ret__ = await pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__, opts=opts)
 
     return GetProfileResult(
         authorized_keys=__ret__.get('authorizedKeys'),

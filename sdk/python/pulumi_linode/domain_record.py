@@ -9,7 +9,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class DomainRecord(pulumi.CustomResource):
-    domain_id: pulumi.Output[int]
+    domain_id: pulumi.Output[float]
     """
     The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
     """
@@ -17,11 +17,11 @@ class DomainRecord(pulumi.CustomResource):
     """
     The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
     """
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     """
     The port this Record points to.
     """
-    priority: pulumi.Output[int]
+    priority: pulumi.Output[float]
     """
     The priority of the target host. Lower values are preferred.
     """
@@ -46,11 +46,11 @@ class DomainRecord(pulumi.CustomResource):
     The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
     - - -
     """
-    ttl_sec: pulumi.Output[int]
+    ttl_sec: pulumi.Output[float]
     """
     'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
     """
-    weight: pulumi.Output[int]
+    weight: pulumi.Output[float]
     """
     The relative weight of this Record. Higher values are preferred.
     """
@@ -65,18 +65,18 @@ class DomainRecord(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] domain_id: The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+        :param pulumi.Input[float] domain_id: The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] name: The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
-        :param pulumi.Input[int] port: The port this Record points to.
-        :param pulumi.Input[int] priority: The priority of the target host. Lower values are preferred.
+        :param pulumi.Input[float] port: The port this Record points to.
+        :param pulumi.Input[float] priority: The priority of the target host. Lower values are preferred.
         :param pulumi.Input[str] protocol: The protocol this Record's service communicates with. Only valid for SRV records.
         :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
                - - -
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[int] weight: The relative weight of this Record. Higher values are preferred.
+        :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] weight: The relative weight of this Record. Higher values are preferred.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,11 +94,11 @@ class DomainRecord(pulumi.CustomResource):
         __props__ = dict()
 
         if domain_id is None:
-            raise TypeError('Missing required property domain_id')
+            raise TypeError("Missing required property 'domain_id'")
         __props__['domain_id'] = domain_id
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['port'] = port
@@ -108,7 +108,7 @@ class DomainRecord(pulumi.CustomResource):
         __props__['protocol'] = protocol
 
         if record_type is None:
-            raise TypeError('Missing required property record_type')
+            raise TypeError("Missing required property 'record_type'")
         __props__['record_type'] = record_type
 
         __props__['service'] = service
@@ -116,7 +116,7 @@ class DomainRecord(pulumi.CustomResource):
         __props__['tag'] = tag
 
         if target is None:
-            raise TypeError('Missing required property target')
+            raise TypeError("Missing required property 'target'")
         __props__['target'] = target
 
         __props__['ttl_sec'] = ttl_sec

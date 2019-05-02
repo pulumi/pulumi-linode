@@ -76,31 +76,31 @@ export class Volume extends pulumi.CustomResource {
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
      * Volume label.
      */
-    public /*out*/ readonly filesystemPath: pulumi.Output<string>;
+    public /*out*/ readonly filesystemPath!: pulumi.Output<string>;
     /**
      * The label of the Linode Volume
      */
-    public readonly label: pulumi.Output<string>;
+    public readonly label!: pulumi.Output<string>;
     /**
      * The ID of a Linode Instance where the the Volume should be attached.
      */
-    public readonly linodeId: pulumi.Output<number>;
+    public readonly linodeId!: pulumi.Output<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Size of the Volume in GB.
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The status of the volume, indicating the current readiness state.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -113,7 +113,7 @@ export class Volume extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeArgs | VolumeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeState = argsOrState as VolumeState | undefined;
+            const state = argsOrState as VolumeState | undefined;
             inputs["filesystemPath"] = state ? state.filesystemPath : undefined;
             inputs["label"] = state ? state.label : undefined;
             inputs["linodeId"] = state ? state.linodeId : undefined;

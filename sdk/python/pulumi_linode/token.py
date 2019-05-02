@@ -65,7 +65,7 @@ class Token(pulumi.CustomResource):
         __props__['label'] = label
 
         if scopes is None:
-            raise TypeError('Missing required property scopes')
+            raise TypeError("Missing required property 'scopes'")
         __props__['scopes'] = scopes
 
         __props__['created'] = None

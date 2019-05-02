@@ -52,34 +52,34 @@ export class NodeBalancer extends pulumi.CustomResource {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    public readonly clientConnThrottle: pulumi.Output<number | undefined>;
-    public /*out*/ readonly created: pulumi.Output<string>;
+    public readonly clientConnThrottle!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
-    public /*out*/ readonly hostname: pulumi.Output<string>;
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
     /**
      * The Public IPv4 Address of this NodeBalancer
      */
-    public /*out*/ readonly ipv4: pulumi.Output<string>;
+    public /*out*/ readonly ipv4!: pulumi.Output<string>;
     /**
      * The Public IPv6 Address of this NodeBalancer
      */
-    public /*out*/ readonly ipv6: pulumi.Output<string>;
+    public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
      * The label of the Linode NodeBalancer
      */
-    public readonly label: pulumi.Output<string | undefined>;
+    public readonly label!: pulumi.Output<string | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly transfer: pulumi.Output<{ in: number, out: number, total: number }>;
-    public /*out*/ readonly updated: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly transfer!: pulumi.Output<{ in: number, out: number, total: number }>;
+    public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
      * Create a NodeBalancer resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class NodeBalancer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeBalancerArgs | NodeBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeBalancerState = argsOrState as NodeBalancerState | undefined;
+            const state = argsOrState as NodeBalancerState | undefined;
             inputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;

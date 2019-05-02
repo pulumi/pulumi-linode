@@ -42,6 +42,7 @@ func LookupInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs) (*GetIns
 		Addons: outputs["addons"],
 		Class: outputs["class"],
 		Disk: outputs["disk"],
+		Id: outputs["id"],
 		Label: outputs["label"],
 		Memory: outputs["memory"],
 		NetworkOut: outputs["networkOut"],
@@ -63,6 +64,7 @@ type GetInstanceTypeResult struct {
 	Addons interface{}
 	Class interface{}
 	Disk interface{}
+	Id interface{}
 	Label interface{}
 	Memory interface{}
 	NetworkOut interface{}

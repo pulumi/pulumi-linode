@@ -31,6 +31,7 @@ func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) 
 		Email: outputs["email"],
 		Restricted: outputs["restricted"],
 		SshKeys: outputs["sshKeys"],
+		Username: outputs["username"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -46,6 +47,7 @@ type GetUserResult struct {
 	Email interface{}
 	Restricted interface{}
 	SshKeys interface{}
+	Username interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

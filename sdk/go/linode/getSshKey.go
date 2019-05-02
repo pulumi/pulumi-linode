@@ -19,6 +19,7 @@ func LookupSshKey(ctx *pulumi.Context, args *GetSshKeyArgs) (*GetSshKeyResult, e
 	}
 	return &GetSshKeyResult{
 		Created: outputs["created"],
+		Label: outputs["label"],
 		SshKey: outputs["sshKey"],
 		Id: outputs["id"],
 	}, nil
@@ -32,6 +33,7 @@ type GetSshKeyArgs struct {
 // A collection of values returned by getSshKey.
 type GetSshKeyResult struct {
 	Created interface{}
+	Label interface{}
 	SshKey interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

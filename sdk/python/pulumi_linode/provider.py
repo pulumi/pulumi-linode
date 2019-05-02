@@ -9,7 +9,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, token=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, token=None, ua_prefix=None, url=None, __name__=None, __opts__=None):
         """
         The provider type for the linode package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -18,7 +18,6 @@ class Provider(pulumi.ProviderResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] token
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -38,6 +37,10 @@ class Provider(pulumi.ProviderResource):
         if token is None:
             token = utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
         __props__['token'] = token
+
+        __props__['ua_prefix'] = ua_prefix
+
+        __props__['url'] = url
 
         super(Provider, __self__).__init__(
             'linode',
