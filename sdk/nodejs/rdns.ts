@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const fooRdns = new linode.Rdns("foo", {
  *     address: fooInstance.ipAddress,
- *     rdns: fooInstance.ipAddress.apply(ipAddress => `${ipAddress}.nip.io`),
+ *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
  * });
  * ```
  */

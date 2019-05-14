@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const bar = new linode.Image("bar", {
  *     description: "Image taken from foo",
- *     diskId: foo.disks.apply(disks => disks[0].id),
+ *     diskId: foo.disks[0].id,
  *     label: "foo-sda-image",
  *     linodeId: foo.id,
  * });

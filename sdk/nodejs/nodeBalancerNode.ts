@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  *     stickiness: "http_cookie",
  * });
  * const foonode = new linode.NodeBalancerNode("foonode", {
- *     address: pulumi.all(web.map(v => v.privateIpAddress)).apply(privateIpAddress => `${privateIpAddress.map(v => v)}:80`),
+ *     address: pulumi.interpolate`${web.map(v => v.privateIpAddress)}:80`,
  *     configId: foofig.id,
  *     label: "mynodebalancernode",
  *     nodebalancerId: foobar.id,
