@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  *         // Any of authorized_keys, authorized_users, and root_pass
  *         // can be used for provisioning.
  *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
- *         authorizedUsers: [me.apply(me => me.username)],
+ *         authorizedUsers: [me.username],
  *         image: "linode/ubuntu18.04",
  *         label: "boot",
  *         rootPass: "terr4form-test",
