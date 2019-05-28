@@ -17,7 +17,6 @@ func GetToken(ctx *pulumi.Context) string {
 	if dv, ok := getEnvOrDefault("", nil, "LINODE_TOKEN", "LINODE_API_TOKEN").(string); ok {
 		return dv
 	}
-	panic(err.Error())
 	return v
 }
 
