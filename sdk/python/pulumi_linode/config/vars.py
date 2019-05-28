@@ -10,7 +10,7 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('linode')
 
-token = utilities.require_with_default(lambda: __config__.require('token'), utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN'))
+token = __config__.get('token') or utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
 """
 The token that allows you access to your Linode account
 """
