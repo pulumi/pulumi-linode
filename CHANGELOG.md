@@ -1,4 +1,6 @@
-## 0.18.1 (unreleased)
+## 0.18.2 (unreleased)
+
+## 0.18.1 (Released May 28, 2019)
 
 - Updated `pulumi-terraform` to the latest version.
 
