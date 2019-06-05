@@ -48,6 +48,20 @@ export class Token extends pulumi.CustomResource {
         return new Token(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/token:Token';
+
+    /**
+     * Returns true if the given object is an instance of Token.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Token {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Token.__pulumiType;
+    }
+
     /**
      * The date and time this token was created.
      */
@@ -97,7 +111,7 @@ export class Token extends pulumi.CustomResource {
             inputs["created"] = undefined /*out*/;
             inputs["token"] = undefined /*out*/;
         }
-        super("linode:index/token:Token", name, inputs, opts);
+        super(Token.__pulumiType, name, inputs, opts);
     }
 }
 

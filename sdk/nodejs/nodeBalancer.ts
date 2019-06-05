@@ -49,6 +49,20 @@ export class NodeBalancer extends pulumi.CustomResource {
         return new NodeBalancer(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/nodeBalancer:NodeBalancer';
+
+    /**
+     * Returns true if the given object is an instance of NodeBalancer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodeBalancer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NodeBalancer.__pulumiType;
+    }
+
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
@@ -119,7 +133,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["transfer"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
-        super("linode:index/nodeBalancer:NodeBalancer", name, inputs, opts);
+        super(NodeBalancer.__pulumiType, name, inputs, opts);
     }
 }
 

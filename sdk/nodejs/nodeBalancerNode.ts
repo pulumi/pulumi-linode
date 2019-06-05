@@ -78,6 +78,20 @@ export class NodeBalancerNode extends pulumi.CustomResource {
         return new NodeBalancerNode(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/nodeBalancerNode:NodeBalancerNode';
+
+    /**
+     * Returns true if the given object is an instance of NodeBalancerNode.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodeBalancerNode {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NodeBalancerNode.__pulumiType;
+    }
+
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      */
@@ -148,7 +162,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        super("linode:index/nodeBalancerNode:NodeBalancerNode", name, inputs, opts);
+        super(NodeBalancerNode.__pulumiType, name, inputs, opts);
     }
 }
 

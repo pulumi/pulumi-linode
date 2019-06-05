@@ -52,6 +52,20 @@ export class Domain extends pulumi.CustomResource {
         return new Domain(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/domain:Domain';
+
+    /**
+     * Returns true if the given object is an instance of Domain.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Domain {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Domain.__pulumiType;
+    }
+
     /**
      * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
@@ -152,7 +166,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["ttlSec"] = args ? args.ttlSec : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        super("linode:index/domain:Domain", name, inputs, opts);
+        super(Domain.__pulumiType, name, inputs, opts);
     }
 }
 
