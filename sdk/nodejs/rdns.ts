@@ -43,6 +43,20 @@ export class Rdns extends pulumi.CustomResource {
         return new Rdns(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/rdns:Rdns';
+
+    /**
+     * Returns true if the given object is an instance of Rdns.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Rdns {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Rdns.__pulumiType;
+    }
+
     /**
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      */
@@ -77,7 +91,7 @@ export class Rdns extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["rdns"] = args ? args.rdns : undefined;
         }
-        super("linode:index/rdns:Rdns", name, inputs, opts);
+        super(Rdns.__pulumiType, name, inputs, opts);
     }
 }
 

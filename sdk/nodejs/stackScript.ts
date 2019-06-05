@@ -89,6 +89,20 @@ export class StackScript extends pulumi.CustomResource {
         return new StackScript(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/stackScript:StackScript';
+
+    /**
+     * Returns true if the given object is an instance of StackScript.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is StackScript {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === StackScript.__pulumiType;
+    }
+
     /**
      * The date this StackScript was created.
      */
@@ -196,7 +210,7 @@ export class StackScript extends pulumi.CustomResource {
             inputs["userGravatarId"] = undefined /*out*/;
             inputs["username"] = undefined /*out*/;
         }
-        super("linode:index/stackScript:StackScript", name, inputs, opts);
+        super(StackScript.__pulumiType, name, inputs, opts);
     }
 }
 

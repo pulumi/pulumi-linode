@@ -46,6 +46,20 @@ export class DomainRecord extends pulumi.CustomResource {
         return new DomainRecord(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/domainRecord:DomainRecord';
+
+    /**
+     * Returns true if the given object is an instance of DomainRecord.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DomainRecord {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DomainRecord.__pulumiType;
+    }
+
     /**
      * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
      */
@@ -141,7 +155,7 @@ export class DomainRecord extends pulumi.CustomResource {
             inputs["ttlSec"] = args ? args.ttlSec : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        super("linode:index/domainRecord:DomainRecord", name, inputs, opts);
+        super(DomainRecord.__pulumiType, name, inputs, opts);
     }
 }
 

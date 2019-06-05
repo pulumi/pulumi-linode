@@ -129,6 +129,20 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
+    }
+
     public readonly alerts!: pulumi.Output<{ cpu: number, io: number, networkIn: number, networkOut: number, transferQuota: number }>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
@@ -304,7 +318,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["specs"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("linode:index/instance:Instance", name, inputs, opts);
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 

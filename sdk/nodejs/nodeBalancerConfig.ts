@@ -61,6 +61,20 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
         return new NodeBalancerConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'linode:index/nodeBalancerConfig:NodeBalancerConfig';
+
+    /**
+     * Returns true if the given object is an instance of NodeBalancerConfig.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodeBalancerConfig {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NodeBalancerConfig.__pulumiType;
+    }
+
     /**
      * What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
      */
@@ -186,7 +200,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["sslCommonname"] = undefined /*out*/;
             inputs["sslFingerprint"] = undefined /*out*/;
         }
-        super("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, inputs, opts);
+        super(NodeBalancerConfig.__pulumiType, name, inputs, opts);
     }
 }
 
