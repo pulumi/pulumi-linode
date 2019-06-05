@@ -1,9 +1,14 @@
-## 0.18.2 (unreleased)
+CHANGELOG
+=========
 
-## 0.18.1 (Released May 28, 2019)
+## HEAD (Unreleased)
+_(none)_
 
-- Updated `pulumi-terraform` to the latest version.
+---
 
-## 0.18.0 (Released May 6, 2019)
+## 0.18.1 (2019-05-28)
+* Update `pulumi-terraform` to the latest version
 
-- Initial Release of `pulumi-linode`, based on v1.6.0 of the Linode Terraform provider.
+## 0.18.0 (2019-05-06)
+* Initial release of the Linode provider, based on v1.6.0 of the Linode Terraform provider
+
