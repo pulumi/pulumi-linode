@@ -2,8 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
-
+* Update to v1.7.0 of the Linode Terraform Provider
 ---
 
 ## 0.18.3 (2019-07-08)
