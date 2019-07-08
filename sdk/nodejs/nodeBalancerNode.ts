@@ -46,13 +46,16 @@ import * as utilities from "./utilities";
  *     protocol: "http",
  *     stickiness: "http_cookie",
  * });
- * const foonode = new linode.NodeBalancerNode("foonode", {
- *     address: pulumi.interpolate`${web.map(v => v.privateIpAddress)}:80`,
- *     configId: foofig.id,
- *     label: "mynodebalancernode",
- *     nodebalancerId: foobar.id,
- *     weight: 50,
- * });
+ * const foonode: linode.NodeBalancerNode[] = [];
+ * for (let i = 0; i < 3; i++) {
+ *     foonode.push(new linode.NodeBalancerNode(`foonode-${i}`, {
+ *         address: pulumi.all(web.map(v => v.privateIpAddress)).apply(privateIpAddress => `${privateIpAddress.map(v => v)[i]}:80`),
+ *         configId: foofig.id,
+ *         label: "mynodebalancernode",
+ *         nodebalancerId: foobar.id,
+ *         weight: 50,
+ *     }));
+ * }
  * ```
  * 
  * ## Attributes
