@@ -40,7 +40,7 @@ class StackScript(pulumi.CustomResource):
     user_defined_fields: pulumi.Output[list]
     user_gravatar_id: pulumi.Output[str]
     username: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, user_defined_fields=None, __name__=None, __opts__=None):
         """
         Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  
         
@@ -122,11 +122,12 @@ class StackScript(pulumi.CustomResource):
             raise TypeError("Missing required property 'script'")
         __props__['script'] = script
 
+        __props__['user_defined_fields'] = user_defined_fields
+
         __props__['created'] = None
         __props__['deployments_active'] = None
         __props__['deployments_total'] = None
         __props__['updated'] = None
-        __props__['user_defined_fields'] = None
         __props__['user_gravatar_id'] = None
         __props__['username'] = None
 

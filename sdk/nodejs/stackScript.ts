@@ -147,7 +147,7 @@ export class StackScript extends pulumi.CustomResource {
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    public /*out*/ readonly userDefinedFields!: pulumi.Output<{ default: string, example: string, label: string, manyOf: string, name: string, oneOf: string }[]>;
+    public readonly userDefinedFields!: pulumi.Output<{ default: string, example: string, label: string, manyOf: string, name: string, oneOf: string }[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
@@ -202,11 +202,11 @@ export class StackScript extends pulumi.CustomResource {
             inputs["label"] = args ? args.label : undefined;
             inputs["revNote"] = args ? args.revNote : undefined;
             inputs["script"] = args ? args.script : undefined;
+            inputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
             inputs["created"] = undefined /*out*/;
             inputs["deploymentsActive"] = undefined /*out*/;
             inputs["deploymentsTotal"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
-            inputs["userDefinedFields"] = undefined /*out*/;
             inputs["userGravatarId"] = undefined /*out*/;
             inputs["username"] = undefined /*out*/;
         }
@@ -301,4 +301,9 @@ export interface StackScriptArgs {
      * The script to execute when provisioning a new Linode with this StackScript.
      */
     readonly script: pulumi.Input<string>;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+     * parameters during deployment.
+     */
+    readonly userDefinedFields?: pulumi.Input<pulumi.Input<{ default?: pulumi.Input<string>, example?: pulumi.Input<string>, label?: pulumi.Input<string>, manyOf?: pulumi.Input<string>, name?: pulumi.Input<string>, oneOf?: pulumi.Input<string> }>[]>;
 }

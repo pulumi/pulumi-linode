@@ -70,6 +70,7 @@ func NewStackScript(ctx *pulumi.Context,
 		inputs["label"] = nil
 		inputs["revNote"] = nil
 		inputs["script"] = nil
+		inputs["userDefinedFields"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["images"] = args.Images
@@ -77,12 +78,12 @@ func NewStackScript(ctx *pulumi.Context,
 		inputs["label"] = args.Label
 		inputs["revNote"] = args.RevNote
 		inputs["script"] = args.Script
+		inputs["userDefinedFields"] = args.UserDefinedFields
 	}
 	inputs["created"] = nil
 	inputs["deploymentsActive"] = nil
 	inputs["deploymentsTotal"] = nil
 	inputs["updated"] = nil
-	inputs["userDefinedFields"] = nil
 	inputs["userGravatarId"] = nil
 	inputs["username"] = nil
 	s, err := ctx.RegisterResource("linode:index/stackScript:StackScript", name, true, inputs, opts...)
@@ -240,4 +241,7 @@ type StackScriptArgs struct {
 	RevNote interface{}
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script interface{}
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+	// parameters during deployment.
+	UserDefinedFields interface{}
 }
