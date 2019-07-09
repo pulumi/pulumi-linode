@@ -28,6 +28,8 @@ import (
 // * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
 // 
 // * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.markdown.
 func LookupInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs) (*GetInstanceTypeResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

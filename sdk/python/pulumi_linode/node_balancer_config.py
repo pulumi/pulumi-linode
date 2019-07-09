@@ -71,22 +71,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, algorithm=None, check=None, check_attempts=None, check_body=None, check_interval=None, check_passive=None, check_path=None, check_timeout=None, cipher_suite=None, nodebalancer_id=None, port=None, protocol=None, ssl_cert=None, ssl_key=None, stickiness=None, __name__=None, __opts__=None):
         """
-        Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
-        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
-        
-        The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
-        
-        ## Attributes
-        
-        This resource exports the following attributes:
-        
-        * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
-        
-        * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
-        
-        * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
-        
-        * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        Create a NodeBalancerConfig resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,6 +89,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

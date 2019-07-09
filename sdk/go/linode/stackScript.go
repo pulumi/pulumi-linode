@@ -8,41 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  
-// 
-// For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
-// 
-// The Linode Guide, [Deploy a WordPress Site Using Terraform and Linode StackScripts](https://www.linode.com/docs/applications/configuration-management/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/), shows how a public StackScript can be used to provision a Linode Instance.   The guide, [Create a Terraform Module](https://www.linode.com/docs/applications/configuration-management/create-terraform-module/), demonstrates StackScript use through a wrapping module.
-// 
-// ## Attributes
-// 
-// This resource exports the following attributes:
-// 
-// * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-// 
-// * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-// 
-// * `deployments_total` - The total number of times this StackScript has been deployed.
-// 
-// * `username` - The User who created the StackScript.
-// 
-// * `created` - The date this StackScript was created.
-// 
-// * `updated` - The date this StackScript was updated.
-// 
-// * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-// 
-//   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-// 
-//   * `name` - The name of the field.
-// 
-//   * `example` - An example value for the field.
-// 
-//   * `one_of` - A list of acceptable single values for the field.
-// 
-//   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-// 
-//   * `default` - The default value. If not specified, this value will be used.
 type StackScript struct {
 	s *pulumi.ResourceState
 }

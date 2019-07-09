@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     id: "us-east",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
     return pulumi.runtime.invoke("linode:index/getRegion:getRegion", {

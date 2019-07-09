@@ -72,6 +72,8 @@ async def get_networking_ip(address=None,opts=None):
     * `linode_id` - The ID of the Linode this address currently belongs to.
     
     * `region` - The Region this IP address resides in.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
     """
     __args__ = dict()
 

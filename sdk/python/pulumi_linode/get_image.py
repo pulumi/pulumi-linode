@@ -72,6 +72,8 @@ async def get_image(id=None,opts=None):
     * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
     
     * `vendor` - The upstream distribution vendor. `None` for private Images. 
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
     """
     __args__ = dict()
 

@@ -23,6 +23,8 @@ class GetRegionResult:
 async def get_region(country=None,id=None,opts=None):
     """
     `linode_region` provides details about a specific Linode region.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
     """
     __args__ = dict()
 

@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
  * 
  * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.markdown.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     return pulumi.runtime.invoke("linode:index/getUser:getUser", {

@@ -67,6 +67,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

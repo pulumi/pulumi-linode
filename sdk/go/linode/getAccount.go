@@ -38,6 +38,8 @@ import (
 // * `zip` - The zip code of this Account's billing address.
 // 
 // * `balance` - This Account's balance, in US dollars.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
 func LookupAccount(ctx *pulumi.Context) (*GetAccountResult, error) {
 	outputs, err := ctx.Invoke("linode:index/getAccount:getAccount", nil)
 	if err != nil {

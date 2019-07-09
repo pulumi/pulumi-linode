@@ -33,6 +33,8 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

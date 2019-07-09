@@ -91,6 +91,8 @@ async def get_domain(domain=None,id=None,opts=None):
     * `soa_email` - Start of Authority email address.
     
     * `tags` - An array of tags applied to this object.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
     """
     __args__ = dict()
 

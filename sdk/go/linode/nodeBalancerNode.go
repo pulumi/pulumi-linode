@@ -8,20 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
-// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
-// 
-// The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
-// 
-// ## Attributes
-// 
-// This resource exports the following attributes:
-// 
-// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
-// 
-// * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-// 
-// * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
 type NodeBalancerNode struct {
 	s *pulumi.ResourceState
 }

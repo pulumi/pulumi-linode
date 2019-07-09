@@ -30,6 +30,8 @@ import (
 // * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
 // 
 // * `vendor` - The upstream distribution vendor. `None` for private Images. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
 func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

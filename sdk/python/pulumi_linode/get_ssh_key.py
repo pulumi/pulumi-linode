@@ -32,6 +32,8 @@ class GetSshKeyResult:
 async def get_ssh_key(label=None,opts=None):
     """
     `linode_sshkey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
     """
     __args__ = dict()
 

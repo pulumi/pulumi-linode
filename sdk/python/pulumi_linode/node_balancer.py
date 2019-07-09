@@ -33,20 +33,7 @@ class NodeBalancer(pulumi.CustomResource):
     updated: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, client_conn_throttle=None, label=None, region=None, tags=None, __name__=None, __opts__=None):
         """
-        Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
-        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
-        
-        The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
-        
-        ## Attributes
-        
-        This resource exports the following attributes:
-        
-        * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-        
-        * `ipv4` - The Public IPv4 Address of this NodeBalancer
-        
-        * `ipv6` - The Public IPv6 Address of this NodeBalancer
+        Create a NodeBalancer resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -54,6 +41,8 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

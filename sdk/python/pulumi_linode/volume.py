@@ -52,6 +52,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[float] size: Size of the Volume in GB.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

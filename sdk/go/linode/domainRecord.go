@@ -14,6 +14,8 @@ import (
 // ## Attributes
 // 
 // This resource exports no additional attributes.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.markdown.
 type DomainRecord struct {
 	s *pulumi.ResourceState
 }

@@ -53,6 +53,8 @@ import * as utilities from "./utilities";
  * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
  * 
  * * `referrals.0.url` - The referral URL.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.markdown.
  */
 export function getProfile(opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
     return pulumi.runtime.invoke("linode:index/getProfile:getProfile", {
