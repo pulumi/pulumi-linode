@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ## Attributes
  * 
  * This resource exports no additional attributes.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.markdown.
  */
 export class DomainRecord extends pulumi.CustomResource {
     /**

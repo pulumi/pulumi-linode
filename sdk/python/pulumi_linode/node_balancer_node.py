@@ -36,20 +36,7 @@ class NodeBalancerNode(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, address=None, config_id=None, label=None, mode=None, nodebalancer_id=None, weight=None, __name__=None, __opts__=None):
         """
-        Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
-        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
-        
-        The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
-        
-        ## Attributes
-        
-        This resource exports the following attributes:
-        
-        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
-        
-        * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-        
-        * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+        Create a NodeBalancerNode resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,6 +46,8 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
         :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[float] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_node.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/rdns.html.markdown.
  */
 export class Rdns extends pulumi.CustomResource {
     /**

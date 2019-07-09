@@ -41,6 +41,8 @@ import * as utilities from "./utilities";
  * * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
  * 
  * * `vendor` - The upstream distribution vendor. `None` for private Images. 
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     return pulumi.runtime.invoke("linode:index/getImage:getImage", {

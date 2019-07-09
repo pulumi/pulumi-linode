@@ -8,6 +8,8 @@ import (
 )
 
 // `linode_region` provides details about a specific Linode region.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
 func LookupRegion(ctx *pulumi.Context, args *GetRegionArgs) (*GetRegionResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

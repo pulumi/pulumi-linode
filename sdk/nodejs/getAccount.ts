@@ -47,6 +47,8 @@ import * as utilities from "./utilities";
  * * `zip` - The zip code of this Account's billing address.
  * 
  * * `balance` - This Account's balance, in US dollars.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     return pulumi.runtime.invoke("linode:index/getAccount:getAccount", {

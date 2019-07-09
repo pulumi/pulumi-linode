@@ -16,6 +16,8 @@ import (
 // This resource exports the following attributes:
 // 
 // * `created` - The date this SSH Key was created.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
 type SshKey struct {
 	s *pulumi.ResourceState
 }

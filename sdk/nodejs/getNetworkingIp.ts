@@ -41,6 +41,8 @@ import * as utilities from "./utilities";
  * * `linode_id` - The ID of the Linode this address currently belongs to.
  * 
  * * `region` - The Region this IP address resides in.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
     return pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {

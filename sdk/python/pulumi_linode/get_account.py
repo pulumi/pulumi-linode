@@ -89,6 +89,8 @@ async def get_account(opts=None):
     * `zip` - The zip code of this Account's billing address.
     
     * `balance` - This Account's balance, in US dollars.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
     """
     __args__ = dict()
 

@@ -67,6 +67,8 @@ async def get_instance_type(id=None,label=None,opts=None):
     * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
     
     * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.markdown.
     """
     __args__ = dict()
 

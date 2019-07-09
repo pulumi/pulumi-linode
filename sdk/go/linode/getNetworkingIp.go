@@ -30,6 +30,8 @@ import (
 // * `linode_id` - The ID of the Linode this address currently belongs to.
 // 
 // * `region` - The Region this IP address resides in.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
 func LookupNetworkingIp(ctx *pulumi.Context, args *GetNetworkingIpArgs) (*GetNetworkingIpResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

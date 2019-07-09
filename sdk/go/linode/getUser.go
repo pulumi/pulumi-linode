@@ -18,6 +18,8 @@ import (
 // * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
 // 
 // * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

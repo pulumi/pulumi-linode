@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
- * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
- * 
- * The Linode Guide, [Create a NodeBalancer with Terraform](https://www.linode.com/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/), provides step-by-step guidance and additional examples.
- * 
- * ## Example Usage
- * 
- * The following example shows how one might use this resource to configure a NodeBalancer.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- * 
- * const foobar = new linode.NodeBalancer("foobar", {
- *     clientConnThrottle: 20,
- *     label: "mynodebalancer",
- *     region: "us-east",
- *     tags: ["foobar"],
- * });
- * ```
- * 
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
- * 
- * * `ipv4` - The Public IPv4 Address of this NodeBalancer
- * 
- * * `ipv6` - The Public IPv6 Address of this NodeBalancer
- */
 export class NodeBalancer extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancer resource's state with the given name, ID, and optional extra

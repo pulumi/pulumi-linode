@@ -55,6 +55,8 @@ import * as utilities from "./utilities";
  * * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
  * 
  * * `vendor` - The upstream distribution vendor. Nil for private Images.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.markdown.
  */
 export class Image extends pulumi.CustomResource {
     /**
