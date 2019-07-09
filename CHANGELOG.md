@@ -6,6 +6,9 @@ ___NULL___
 
 ---
 
+## 0.18.5 (2019-07-09)
+* Fix detailed diffs with nested computed values.
+
 ## 0.18.4 (2019-07-08)
 * Update to v1.7.0 of the Linode Terraform Provider
 
