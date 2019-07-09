@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-    $ npm install @pulumi/linode
+   $ npm install @pulumi/linode
 
 or ``yarn``:
 
 ::
 
-    $ yarn add @pulumi/linode
+   $ yarn add @pulumi/linode
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-    $ pip install pulumi_linode
+   $ pip install pulumi_linode
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-    $ go get github.com/pulumi/pulumi-linode/sdk/go/...
+   $ go get github.com/pulumi/pulumi-linode/sdk/go/...
 
 Reference
 ---------
