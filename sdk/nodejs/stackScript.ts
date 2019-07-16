@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
+ */
 export class StackScript extends pulumi.CustomResource {
     /**
      * Get an existing StackScript resource's state with the given name, ID, and optional extra

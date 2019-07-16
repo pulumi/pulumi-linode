@@ -8,6 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_config.html.markdown.
 type NodeBalancerConfig struct {
 	s *pulumi.ResourceState
 }
