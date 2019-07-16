@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.8.0 of the Linode Terraform Provider
+___NULL___
 
 ---
+
+## 0.18.6 (2019-07-16)
+* Upgrade to v1.8.0 of the Linode Terraform Provider
 
 ## 0.18.5 (2019-07-09)
 * Fix detailed diffs with nested computed values.
