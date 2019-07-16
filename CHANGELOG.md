@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Upgrade to v1.8.0 of the Linode Terraform Provider
 
 ---
 

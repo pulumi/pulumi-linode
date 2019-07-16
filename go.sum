@@ -592,6 +592,8 @@ github.com/terraform-providers/terraform-provider-linode v1.6.0 h1:Jbq02DJe0Sxna
 github.com/terraform-providers/terraform-provider-linode v1.6.0/go.mod h1:CHWByrihE4K3VAO33Uf604Edw11ma104h3snYHHTIEw=
 github.com/terraform-providers/terraform-provider-linode v1.7.0 h1:sk7WO/Aurq/GxlR3s/FYE1IrVPfha9L+OXtOrCAUutg=
 github.com/terraform-providers/terraform-provider-linode v1.7.0/go.mod h1:pdksTDsLDOLeBZCAmkZjM8GB9nJAAt93mEr7zNqQMsM=
+github.com/terraform-providers/terraform-provider-linode v1.8.0 h1:CD3i4+dayvLb6HvMFkQ9cNoITSx8uosGtM3zU8gQ3O4=
+github.com/terraform-providers/terraform-provider-linode v1.8.0/go.mod h1:pdksTDsLDOLeBZCAmkZjM8GB9nJAAt93mEr7zNqQMsM=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
 github.com/terraform-providers/terraform-provider-tls v1.2.0/go.mod h1:Mxe/v5u31LDW4m32O1z6Ursdh95dpc9Puq6otkYg7tU=
