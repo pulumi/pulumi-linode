@@ -44,10 +44,12 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
  */
-export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
-    return pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {
+export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> & GetNetworkingIpResult {
+    const promise: Promise<GetNetworkingIpResult> = pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {
         "address": args.address,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
