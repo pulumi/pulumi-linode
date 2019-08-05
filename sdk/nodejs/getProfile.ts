@@ -56,9 +56,18 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.markdown.
  */
-export function getProfile(opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
-    return pulumi.runtime.invoke("linode:index/getProfile:getProfile", {
+export function getProfile(opts?: pulumi.InvokeOptions): Promise<GetProfileResult> & GetProfileResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetProfileResult> = pulumi.runtime.invoke("linode:index/getProfile:getProfile", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -76,6 +76,10 @@ class NodeBalancer(pulumi.CustomResource):
         __props__['transfer'] = None
         __props__['updated'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NodeBalancer, __self__).__init__(
             'linode:index/nodeBalancer:NodeBalancer',
             resource_name,

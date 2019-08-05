@@ -99,6 +99,10 @@ class StackScript(pulumi.CustomResource):
         __props__['user_gravatar_id'] = None
         __props__['username'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(StackScript, __self__).__init__(
             'linode:index/stackScript:StackScript',
             resource_name,

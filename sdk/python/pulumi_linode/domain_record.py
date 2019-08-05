@@ -125,6 +125,10 @@ class DomainRecord(pulumi.CustomResource):
 
         __props__['weight'] = weight
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DomainRecord, __self__).__init__(
             'linode:index/domainRecord:DomainRecord',
             resource_name,

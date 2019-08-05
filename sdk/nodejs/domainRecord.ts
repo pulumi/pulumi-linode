@@ -157,6 +157,13 @@ export class DomainRecord extends pulumi.CustomResource {
             inputs["ttlSec"] = args ? args.ttlSec : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DomainRecord.__pulumiType, name, inputs, opts);
     }
 }

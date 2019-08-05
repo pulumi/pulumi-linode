@@ -83,6 +83,13 @@ export class Token extends pulumi.CustomResource {
             inputs["created"] = undefined /*out*/;
             inputs["token"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Token.__pulumiType, name, inputs, opts);
     }
 }

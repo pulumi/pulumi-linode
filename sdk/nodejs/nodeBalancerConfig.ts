@@ -159,6 +159,13 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["sslCommonname"] = undefined /*out*/;
             inputs["sslFingerprint"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NodeBalancerConfig.__pulumiType, name, inputs, opts);
     }
 }

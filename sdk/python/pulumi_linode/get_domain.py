@@ -56,7 +56,15 @@ class GetDomainResult:
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
 
-async def get_domain(domain=None,id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_domain(domain=None,id=None,opts=None):
     """
     Provides information about a Linode domain.
     
@@ -98,7 +106,11 @@ async def get_domain(domain=None,id=None,opts=None):
 
     __args__['domain'] = domain
     __args__['id'] = id
-    __ret__ = await pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts).value
 
     return GetDomainResult(
         axfr_ips=__ret__.get('axfrIps'),

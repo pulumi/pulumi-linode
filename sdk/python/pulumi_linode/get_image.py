@@ -47,7 +47,15 @@ class GetImageResult:
             raise TypeError("Expected argument 'vendor' to be a str")
         __self__.vendor = vendor
 
-async def get_image(id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_image(id=None,opts=None):
     """
     Provides information about a Linode image
     
@@ -78,7 +86,11 @@ async def get_image(id=None,opts=None):
     __args__ = dict()
 
     __args__['id'] = id
-    __ret__ = await pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts).value
 
     return GetImageResult(
         created=__ret__.get('created'),

@@ -104,6 +104,13 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["transfer"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NodeBalancer.__pulumiType, name, inputs, opts);
     }
 }

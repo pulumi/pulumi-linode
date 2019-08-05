@@ -29,7 +29,15 @@ class GetSshKeyResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_ssh_key(label=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_ssh_key(label=None,opts=None):
     """
     `linode_sshkey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
 
@@ -38,7 +46,11 @@ async def get_ssh_key(label=None,opts=None):
     __args__ = dict()
 
     __args__['label'] = label
-    __ret__ = await pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts).value
 
     return GetSshKeyResult(
         created=__ret__.get('created'),

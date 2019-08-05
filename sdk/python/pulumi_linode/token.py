@@ -61,6 +61,10 @@ class Token(pulumi.CustomResource):
         __props__['created'] = None
         __props__['token'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Token, __self__).__init__(
             'linode:index/token:Token',
             resource_name,

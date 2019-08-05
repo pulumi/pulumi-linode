@@ -47,7 +47,15 @@ class GetNetworkingIpResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_networking_ip(address=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_networking_ip(address=None,opts=None):
     """
     Provides information about a Linode Networking IP Address
     
@@ -78,7 +86,11 @@ async def get_networking_ip(address=None,opts=None):
     __args__ = dict()
 
     __args__['address'] = address
-    __ret__ = await pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts).value
 
     return GetNetworkingIpResult(
         address=__ret__.get('address'),

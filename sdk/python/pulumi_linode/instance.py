@@ -174,6 +174,10 @@ class Instance(pulumi.CustomResource):
         __props__['specs'] = None
         __props__['status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Instance, __self__).__init__(
             'linode:index/instance:Instance',
             resource_name,

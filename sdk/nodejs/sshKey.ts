@@ -106,6 +106,13 @@ export class SshKey extends pulumi.CustomResource {
             inputs["sshKey"] = args ? args.sshKey : undefined;
             inputs["created"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SshKey.__pulumiType, name, inputs, opts);
     }
 }

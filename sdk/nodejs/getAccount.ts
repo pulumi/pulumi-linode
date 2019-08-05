@@ -50,9 +50,18 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
  */
-export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    return pulumi.runtime.invoke("linode:index/getAccount:getAccount", {
+export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> & GetAccountResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetAccountResult> = pulumi.runtime.invoke("linode:index/getAccount:getAccount", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
