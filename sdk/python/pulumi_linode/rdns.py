@@ -55,6 +55,10 @@ class Rdns(pulumi.CustomResource):
             raise TypeError("Missing required property 'rdns'")
         __props__['rdns'] = rdns
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Rdns, __self__).__init__(
             'linode:index/rdns:Rdns',
             resource_name,

@@ -22,10 +22,19 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
  */
-export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
-    return pulumi.runtime.invoke("linode:index/getSshKey:getSshKey", {
+export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> & GetSshKeyResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetSshKeyResult> = pulumi.runtime.invoke("linode:index/getSshKey:getSshKey", {
         "label": args.label,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

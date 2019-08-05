@@ -143,6 +143,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
         __props__['ssl_commonname'] = None
         __props__['ssl_fingerprint'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NodeBalancerConfig, __self__).__init__(
             'linode:index/nodeBalancerConfig:NodeBalancerConfig',
             resource_name,

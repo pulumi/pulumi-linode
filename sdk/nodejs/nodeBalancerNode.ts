@@ -104,6 +104,13 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["status"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NodeBalancerNode.__pulumiType, name, inputs, opts);
     }
 }

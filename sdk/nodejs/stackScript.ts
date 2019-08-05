@@ -141,6 +141,13 @@ export class StackScript extends pulumi.CustomResource {
             inputs["userGravatarId"] = undefined /*out*/;
             inputs["username"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(StackScript.__pulumiType, name, inputs, opts);
     }
 }

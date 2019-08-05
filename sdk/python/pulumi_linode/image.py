@@ -108,6 +108,10 @@ class Image(pulumi.CustomResource):
         __props__['type'] = None
         __props__['vendor'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Image, __self__).__init__(
             'linode:index/image:Image',
             resource_name,

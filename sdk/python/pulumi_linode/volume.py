@@ -87,6 +87,10 @@ class Volume(pulumi.CustomResource):
         __props__['filesystem_path'] = None
         __props__['status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Volume, __self__).__init__(
             'linode:index/volume:Volume',
             resource_name,

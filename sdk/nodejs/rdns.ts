@@ -93,6 +93,13 @@ export class Rdns extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["rdns"] = args ? args.rdns : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Rdns.__pulumiType, name, inputs, opts);
     }
 }

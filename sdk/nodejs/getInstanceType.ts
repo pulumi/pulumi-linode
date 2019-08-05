@@ -42,11 +42,20 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.markdown.
  */
-export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> {
-    return pulumi.runtime.invoke("linode:index/getInstanceType:getInstanceType", {
+export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> & GetInstanceTypeResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstanceTypeResult> = pulumi.runtime.invoke("linode:index/getInstanceType:getInstanceType", {
         "id": args.id,
         "label": args.label,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -44,7 +44,15 @@ class GetInstanceTypeResult:
             raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
 
-async def get_instance_type(id=None,label=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_instance_type(id=None,label=None,opts=None):
     """
     Provides information about a Linode instance type
     
@@ -74,7 +82,11 @@ async def get_instance_type(id=None,label=None,opts=None):
 
     __args__['id'] = id
     __args__['label'] = label
-    __ret__ = await pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts).value
 
     return GetInstanceTypeResult(
         addons=__ret__.get('addons'),
