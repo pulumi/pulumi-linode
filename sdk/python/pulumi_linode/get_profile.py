@@ -49,14 +49,23 @@ class GetProfileResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProfileResult(GetProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProfileResult(
+            authorized_keys=self.authorized_keys,
+            email=self.email,
+            email_notifications=self.email_notifications,
+            ip_whitelist_enabled=self.ip_whitelist_enabled,
+            lish_auth_method=self.lish_auth_method,
+            referrals=self.referrals,
+            restricted=self.restricted,
+            timezone=self.timezone,
+            two_factor_auth=self.two_factor_auth,
+            username=self.username,
+            id=self.id)
 
 def get_profile(opts=None):
     """
@@ -108,7 +117,7 @@ def get_profile(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__, opts=opts).value
 
-    return GetProfileResult(
+    return AwaitableGetProfileResult(
         authorized_keys=__ret__.get('authorizedKeys'),
         email=__ret__.get('email'),
         email_notifications=__ret__.get('emailNotifications'),

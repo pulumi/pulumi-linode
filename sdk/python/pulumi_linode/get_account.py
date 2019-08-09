@@ -55,14 +55,25 @@ class GetAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAccountResult(
+            address1=self.address1,
+            address2=self.address2,
+            balance=self.balance,
+            city=self.city,
+            company=self.company,
+            country=self.country,
+            email=self.email,
+            first_name=self.first_name,
+            last_name=self.last_name,
+            phone=self.phone,
+            state=self.state,
+            zip=self.zip,
+            id=self.id)
 
 def get_account(opts=None):
     """
@@ -108,7 +119,7 @@ def get_account(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts).value
 
-    return GetAccountResult(
+    return AwaitableGetAccountResult(
         address1=__ret__.get('address1'),
         address2=__ret__.get('address2'),
         balance=__ret__.get('balance'),

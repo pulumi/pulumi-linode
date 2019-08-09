@@ -121,7 +121,7 @@ func (r *StackScript) Images() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["images"])
 }
 
-// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 func (r *StackScript) IsPublic() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["isPublic"])
 }
@@ -174,7 +174,7 @@ type StackScriptState struct {
 	Description interface{}
 	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 	Images interface{}
-	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic interface{}
 	// The StackScript's label is for display purposes only.
 	Label interface{}
@@ -199,7 +199,7 @@ type StackScriptArgs struct {
 	Description interface{}
 	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 	Images interface{}
-	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic interface{}
 	// The StackScript's label is for display purposes only.
 	Label interface{}

@@ -20,11 +20,11 @@ import (
 // 
 // * `created` - When this Image was created.
 // 
-// * `created_by` - The name of the User who created this Image.
+// * `createdBy` - The name of the User who created this Image.
 // 
 // * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 // 
-// * `is_public` - True if the Image is public.
+// * `isPublic` - True if the Image is public.
 // 
 // * `size` - The minimum size this Image needs to deploy. Size is in MB.
 // 

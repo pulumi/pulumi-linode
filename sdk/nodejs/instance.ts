@@ -36,15 +36,15 @@ export class Instance extends pulumi.CustomResource {
 
     public readonly alerts!: pulumi.Output<{ cpu: number, io: number, networkIn: number, networkOut: number, transferQuota: number }>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
     public readonly authorizedUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
      */
     public readonly backupId!: pulumi.Output<number | undefined>;
     /**
@@ -56,7 +56,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupsEnabled!: pulumi.Output<boolean>;
     /**
-     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
      */
     public readonly bootConfigLabel!: pulumi.Output<string>;
     /**
@@ -87,7 +87,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
-     * The Config's label for display purposes.  Also used by `boot_config_label`.
+     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
      */
     public readonly label!: pulumi.Output<string>;
     /**
@@ -109,11 +109,11 @@ export class Instance extends pulumi.CustomResource {
     public readonly rootPass!: pulumi.Output<string | undefined>;
     public /*out*/ readonly specs!: pulumi.Output<{ disk: number, memory: number, transfer: number, vcpus: number }>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
     public readonly stackscriptData!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
     public readonly stackscriptId!: pulumi.Output<number | undefined>;
     /**
@@ -226,15 +226,15 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     readonly alerts?: pulumi.Input<{ cpu?: pulumi.Input<number>, io?: pulumi.Input<number>, networkIn?: pulumi.Input<number>, networkOut?: pulumi.Input<number>, transferQuota?: pulumi.Input<number> }>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     readonly authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
     readonly authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
      */
     readonly backupId?: pulumi.Input<number>;
     /**
@@ -246,7 +246,7 @@ export interface InstanceState {
      */
     readonly backupsEnabled?: pulumi.Input<boolean>;
     /**
-     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
      */
     readonly bootConfigLabel?: pulumi.Input<string>;
     /**
@@ -277,7 +277,7 @@ export interface InstanceState {
      */
     readonly ipv6?: pulumi.Input<string>;
     /**
-     * The Config's label for display purposes.  Also used by `boot_config_label`.
+     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
      */
     readonly label?: pulumi.Input<string>;
     /**
@@ -299,11 +299,11 @@ export interface InstanceState {
     readonly rootPass?: pulumi.Input<string>;
     readonly specs?: pulumi.Input<{ disk?: pulumi.Input<number>, memory?: pulumi.Input<number>, transfer?: pulumi.Input<number>, vcpus?: pulumi.Input<number> }>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
     readonly stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
     readonly stackscriptId?: pulumi.Input<number>;
     /**
@@ -334,15 +334,15 @@ export interface InstanceState {
 export interface InstanceArgs {
     readonly alerts?: pulumi.Input<{ cpu?: pulumi.Input<number>, io?: pulumi.Input<number>, networkIn?: pulumi.Input<number>, networkOut?: pulumi.Input<number>, transferQuota?: pulumi.Input<number> }>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     readonly authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
     readonly authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
      */
     readonly backupId?: pulumi.Input<number>;
     /**
@@ -350,7 +350,7 @@ export interface InstanceArgs {
      */
     readonly backupsEnabled?: pulumi.Input<boolean>;
     /**
-     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
      */
     readonly bootConfigLabel?: pulumi.Input<string>;
     /**
@@ -367,7 +367,7 @@ export interface InstanceArgs {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * The Config's label for display purposes.  Also used by `boot_config_label`.
+     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
      */
     readonly label?: pulumi.Input<string>;
     /**
@@ -383,11 +383,11 @@ export interface InstanceArgs {
      */
     readonly rootPass?: pulumi.Input<string>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
     readonly stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
     readonly stackscriptId?: pulumi.Input<number>;
     /**

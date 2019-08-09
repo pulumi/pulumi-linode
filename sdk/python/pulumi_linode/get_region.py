@@ -19,18 +19,18 @@ class GetRegionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
-
+class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRegionResult(
+            country=self.country,
+            id=self.id)
 
 def get_region(country=None,id=None,opts=None):
     """
-    `linode_region` provides details about a specific Linode region.
+    `.getRegion` provides details about a specific Linode region.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
     """
@@ -44,6 +44,6 @@ def get_region(country=None,id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts).value
 
-    return GetRegionResult(
+    return AwaitableGetRegionResult(
         country=__ret__.get('country'),
         id=__ret__.get('id'))

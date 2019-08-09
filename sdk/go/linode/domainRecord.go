@@ -103,7 +103,7 @@ func (r *DomainRecord) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+// The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
 func (r *DomainRecord) DomainId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["domainId"])
 }
@@ -128,7 +128,7 @@ func (r *DomainRecord) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 func (r *DomainRecord) RecordType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["recordType"])
 }
@@ -161,7 +161,7 @@ func (r *DomainRecord) Weight() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering DomainRecord resources.
 type DomainRecordState struct {
-	// The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+	// The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
 	DomainId interface{}
 	// The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
 	Name interface{}
@@ -171,7 +171,7 @@ type DomainRecordState struct {
 	Priority interface{}
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol interface{}
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType interface{}
 	// The service this Record identified. Only valid for SRV records.
 	Service interface{}
@@ -188,7 +188,7 @@ type DomainRecordState struct {
 
 // The set of arguments for constructing a DomainRecord resource.
 type DomainRecordArgs struct {
-	// The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+	// The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
 	DomainId interface{}
 	// The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
 	Name interface{}
@@ -198,7 +198,7 @@ type DomainRecordArgs struct {
 	Priority interface{}
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol interface{}
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType interface{}
 	// The service this Record identified. Only valid for SRV records.
 	Service interface{}

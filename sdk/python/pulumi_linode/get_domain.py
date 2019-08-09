@@ -55,14 +55,26 @@ class GetDomainResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
-
+class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDomainResult(
+            axfr_ips=self.axfr_ips,
+            description=self.description,
+            domain=self.domain,
+            expire_sec=self.expire_sec,
+            group=self.group,
+            id=self.id,
+            master_ips=self.master_ips,
+            refresh_sec=self.refresh_sec,
+            retry_sec=self.retry_sec,
+            soa_email=self.soa_email,
+            status=self.status,
+            tags=self.tags,
+            ttl_sec=self.ttl_sec,
+            type=self.type)
 
 def get_domain(domain=None,id=None,opts=None):
     """
@@ -112,7 +124,7 @@ def get_domain(domain=None,id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts).value
 
-    return GetDomainResult(
+    return AwaitableGetDomainResult(
         axfr_ips=__ret__.get('axfrIps'),
         description=__ret__.get('description'),
         domain=__ret__.get('domain'),

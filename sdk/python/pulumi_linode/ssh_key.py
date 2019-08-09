@@ -18,7 +18,7 @@ class SshKey(pulumi.CustomResource):
     """
     The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
     """
-    def __init__(__self__, resource_name, opts=None, label=None, ssh_key=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, label=None, ssh_key=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
@@ -42,36 +42,50 @@ class SshKey(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if label is None:
-            raise TypeError("Missing required property 'label'")
-        __props__['label'] = label
-
-        if ssh_key is None:
-            raise TypeError("Missing required property 'ssh_key'")
-        __props__['ssh_key'] = ssh_key
-
-        __props__['created'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if label is None:
+                raise TypeError("Missing required property 'label'")
+            __props__['label'] = label
+            if ssh_key is None:
+                raise TypeError("Missing required property 'ssh_key'")
+            __props__['ssh_key'] = ssh_key
+            __props__['created'] = None
         super(SshKey, __self__).__init__(
             'linode:index/sshKey:SshKey',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, created=None, label=None, ssh_key=None):
+        """
+        Get an existing SshKey resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] label: A label for the SSH Key.
+        :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["created"] = created
+        __props__["label"] = label
+        __props__["ssh_key"] = ssh_key
+        return SshKey(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -31,14 +31,17 @@ class GetUserResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetUserResult(
+            email=self.email,
+            restricted=self.restricted,
+            ssh_keys=self.ssh_keys,
+            username=self.username,
+            id=self.id)
 
 def get_user(username=None,opts=None):
     """
@@ -65,7 +68,7 @@ def get_user(username=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts).value
 
-    return GetUserResult(
+    return AwaitableGetUserResult(
         email=__ret__.get('email'),
         restricted=__ret__.get('restricted'),
         ssh_keys=__ret__.get('sshKeys'),

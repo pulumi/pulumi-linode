@@ -39,19 +39,19 @@ import * as utilities from "./utilities";
  * 
  * * `description` - A description for this Domain.
  * 
- * * `master_ips` - The IP addresses representing the master DNS for this Domain.
+ * * `masterIps` - The IP addresses representing the master DNS for this Domain.
  * 
- * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
+ * * `axfrIps` - The list of IPs that may perform a zone transfer for this Domain.
  * 
- * * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+ * * `ttlSec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
  * 
- * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
+ * * `retrySec` - The interval, in seconds, at which a failed refresh should be retried.
  * *
- * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
+ * * `expireSec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
  * 
- * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
+ * * `refreshSec` - The amount of time in seconds before this Domain should be refreshed.
  * 
- * * `soa_email` - Start of Authority email address.
+ * * `soaEmail` - Start of Authority email address.
  * 
  * * `tags` - An array of tags applied to this object.
  *

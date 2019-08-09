@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * `linode_sshkey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+ * `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
  * 
  * ## Example Usage
  * 

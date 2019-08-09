@@ -46,14 +46,22 @@ class GetNetworkingIpResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNetworkingIpResult(
+            address=self.address,
+            gateway=self.gateway,
+            linode_id=self.linode_id,
+            prefix=self.prefix,
+            public=self.public,
+            rdns=self.rdns,
+            region=self.region,
+            subnet_mask=self.subnet_mask,
+            type=self.type,
+            id=self.id)
 
 def get_networking_ip(address=None,opts=None):
     """
@@ -92,7 +100,7 @@ def get_networking_ip(address=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts).value
 
-    return GetNetworkingIpResult(
+    return AwaitableGetNetworkingIpResult(
         address=__ret__.get('address'),
         gateway=__ret__.get('gateway'),
         linode_id=__ret__.get('linodeId'),

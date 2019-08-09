@@ -63,7 +63,7 @@ export class DomainRecord extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      */
     public readonly domainId!: pulumi.Output<number>;
     /**
@@ -83,7 +83,7 @@ export class DomainRecord extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      */
     public readonly recordType!: pulumi.Output<string>;
     /**
@@ -173,7 +173,7 @@ export class DomainRecord extends pulumi.CustomResource {
  */
 export interface DomainRecordState {
     /**
-     * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      */
     readonly domainId?: pulumi.Input<number>;
     /**
@@ -193,7 +193,7 @@ export interface DomainRecordState {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      */
     readonly recordType?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface DomainRecordState {
  */
 export interface DomainRecordArgs {
     /**
-     * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      */
     readonly domainId: pulumi.Input<number>;
     /**
@@ -244,7 +244,7 @@ export interface DomainRecordArgs {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      */
     readonly recordType: pulumi.Input<string>;
     /**

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * `linode_region` provides details about a specific Linode region.
+ * `linode..getRegion` provides details about a specific Linode region.
  * 
  * ## Example Usage
  * 
