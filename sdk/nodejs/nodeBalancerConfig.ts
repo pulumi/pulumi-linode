@@ -39,7 +39,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly algorithm!: pulumi.Output<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     public readonly check!: pulumi.Output<string>;
     /**
@@ -81,11 +81,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     public readonly sslCert!: pulumi.Output<string | undefined>;
     /**
@@ -97,7 +97,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     public readonly sslKey!: pulumi.Output<string | undefined>;
     /**
@@ -179,7 +179,7 @@ export interface NodeBalancerConfigState {
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -221,11 +221,11 @@ export interface NodeBalancerConfigState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     readonly sslCert?: pulumi.Input<string>;
     /**
@@ -237,7 +237,7 @@ export interface NodeBalancerConfigState {
      */
     readonly sslFingerprint?: pulumi.Input<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     readonly sslKey?: pulumi.Input<string>;
     /**
@@ -255,7 +255,7 @@ export interface NodeBalancerConfigArgs {
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -296,15 +296,15 @@ export interface NodeBalancerConfigArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     readonly sslCert?: pulumi.Input<string>;
     /**
-     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     readonly sslKey?: pulumi.Input<string>;
     /**

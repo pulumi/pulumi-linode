@@ -17,15 +17,15 @@ import (
 // 
 // * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
 // 
-// * `first_name` - The first name of the person associated with this Account.
+// * `firstName` - The first name of the person associated with this Account.
 // 
-// * `last_name` - The last name of the person associated with this Account.
+// * `lastName` - The last name of the person associated with this Account.
 // 
 // * `company` - The company name associated with this Account.
 // 
-// * `address_1` - First line of this Account's billing address.
+// * `address1` - First line of this Account's billing address.
 // 
-// * `address_2` - Second line of this Account's billing address.
+// * `address2` - Second line of this Account's billing address.
 // 
 // * `phone` - The phone number associated with this Account.
 // 

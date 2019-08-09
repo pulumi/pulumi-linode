@@ -28,13 +28,13 @@ import * as utilities from "./utilities";
  * 
  * * `created` - When this Image was created.
  * 
- * * `created_by` - The name of the User who created this Image, or "linode" for official Images.
+ * * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
  * 
  * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
  * 
  * * `description` - A detailed description of this Image.
  * 
- * * `is_public` - True if the Image is public.
+ * * `isPublic` - True if the Image is public.
  * 
  * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
  * 

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// `linode_region` provides details about a specific Linode region.
+// `.getRegion` provides details about a specific Linode region.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
 func LookupRegion(ctx *pulumi.Context, args *GetRegionArgs) (*GetRegionResult, error) {

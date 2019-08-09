@@ -18,7 +18,7 @@ import (
 // 
 // * `status` - The label of the Linode Volume.
 // 
-// * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
+// * `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.markdown.
 type Volume struct {

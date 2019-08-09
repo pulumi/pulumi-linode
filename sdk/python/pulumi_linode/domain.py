@@ -61,7 +61,7 @@ class Domain(pulumi.CustomResource):
     """
     If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
     """
-    def __init__(__self__, resource_name, opts=None, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Domain resource with the given unique name, props, and options.
         
@@ -89,56 +89,81 @@ class Domain(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['axfr_ips'] = axfr_ips
-
-        __props__['description'] = description
-
-        if domain is None:
-            raise TypeError("Missing required property 'domain'")
-        __props__['domain'] = domain
-
-        __props__['expire_sec'] = expire_sec
-
-        __props__['group'] = group
-
-        __props__['master_ips'] = master_ips
-
-        __props__['refresh_sec'] = refresh_sec
-
-        __props__['retry_sec'] = retry_sec
-
-        __props__['soa_email'] = soa_email
-
-        __props__['status'] = status
-
-        __props__['tags'] = tags
-
-        __props__['ttl_sec'] = ttl_sec
-
-        if type is None:
-            raise TypeError("Missing required property 'type'")
-        __props__['type'] = type
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['axfr_ips'] = axfr_ips
+            __props__['description'] = description
+            if domain is None:
+                raise TypeError("Missing required property 'domain'")
+            __props__['domain'] = domain
+            __props__['expire_sec'] = expire_sec
+            __props__['group'] = group
+            __props__['master_ips'] = master_ips
+            __props__['refresh_sec'] = refresh_sec
+            __props__['retry_sec'] = retry_sec
+            __props__['soa_email'] = soa_email
+            __props__['status'] = status
+            __props__['tags'] = tags
+            __props__['ttl_sec'] = ttl_sec
+            if type is None:
+                raise TypeError("Missing required property 'type'")
+            __props__['type'] = type
         super(Domain, __self__).__init__(
             'linode:index/domain:Domain',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None):
+        """
+        Get an existing Domain resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+        :param pulumi.Input[str] description: A description for this Domain. This is for display purposes only.
+        :param pulumi.Input[str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
+        :param pulumi.Input[float] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[str] group: The group this Domain belongs to. This is for display purposes only.
+        :param pulumi.Input[list] master_ips: The IP addresses representing the master DNS for this Domain.
+        :param pulumi.Input[float] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[float] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[str] soa_email: Start of Authority email address. This is required for master Domains.
+        :param pulumi.Input[str] status: Used to control whether this Domain is currently being rendered (defaults to "active").
+        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["axfr_ips"] = axfr_ips
+        __props__["description"] = description
+        __props__["domain"] = domain
+        __props__["expire_sec"] = expire_sec
+        __props__["group"] = group
+        __props__["master_ips"] = master_ips
+        __props__["refresh_sec"] = refresh_sec
+        __props__["retry_sec"] = retry_sec
+        __props__["soa_email"] = soa_email
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["ttl_sec"] = ttl_sec
+        __props__["type"] = type
+        return Domain(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

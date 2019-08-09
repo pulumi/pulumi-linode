@@ -84,7 +84,7 @@ class Instance(pulumi.CustomResource):
     """
     The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
     """
-    def __init__(__self__, resource_name, opts=None, alerts=None, authorized_keys=None, authorized_users=None, backup_id=None, backups_enabled=None, boot_config_label=None, configs=None, disks=None, group=None, image=None, label=None, private_ip=None, region=None, root_pass=None, stackscript_data=None, stackscript_id=None, swap_size=None, tags=None, type=None, watchdog_enabled=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alerts=None, authorized_keys=None, authorized_users=None, backup_id=None, backups_enabled=None, boot_config_label=None, configs=None, disks=None, group=None, image=None, label=None, private_ip=None, region=None, root_pass=None, stackscript_data=None, stackscript_id=None, swap_size=None, tags=None, type=None, watchdog_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         
@@ -115,76 +115,110 @@ class Instance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['alerts'] = alerts
-
-        __props__['authorized_keys'] = authorized_keys
-
-        __props__['authorized_users'] = authorized_users
-
-        __props__['backup_id'] = backup_id
-
-        __props__['backups_enabled'] = backups_enabled
-
-        __props__['boot_config_label'] = boot_config_label
-
-        __props__['configs'] = configs
-
-        __props__['disks'] = disks
-
-        __props__['group'] = group
-
-        __props__['image'] = image
-
-        __props__['label'] = label
-
-        __props__['private_ip'] = private_ip
-
-        if region is None:
-            raise TypeError("Missing required property 'region'")
-        __props__['region'] = region
-
-        __props__['root_pass'] = root_pass
-
-        __props__['stackscript_data'] = stackscript_data
-
-        __props__['stackscript_id'] = stackscript_id
-
-        __props__['swap_size'] = swap_size
-
-        __props__['tags'] = tags
-
-        __props__['type'] = type
-
-        __props__['watchdog_enabled'] = watchdog_enabled
-
-        __props__['backups'] = None
-        __props__['ip_address'] = None
-        __props__['ipv4s'] = None
-        __props__['ipv6'] = None
-        __props__['private_ip_address'] = None
-        __props__['specs'] = None
-        __props__['status'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['alerts'] = alerts
+            __props__['authorized_keys'] = authorized_keys
+            __props__['authorized_users'] = authorized_users
+            __props__['backup_id'] = backup_id
+            __props__['backups_enabled'] = backups_enabled
+            __props__['boot_config_label'] = boot_config_label
+            __props__['configs'] = configs
+            __props__['disks'] = disks
+            __props__['group'] = group
+            __props__['image'] = image
+            __props__['label'] = label
+            __props__['private_ip'] = private_ip
+            if region is None:
+                raise TypeError("Missing required property 'region'")
+            __props__['region'] = region
+            __props__['root_pass'] = root_pass
+            __props__['stackscript_data'] = stackscript_data
+            __props__['stackscript_id'] = stackscript_id
+            __props__['swap_size'] = swap_size
+            __props__['tags'] = tags
+            __props__['type'] = type
+            __props__['watchdog_enabled'] = watchdog_enabled
+            __props__['backups'] = None
+            __props__['ip_address'] = None
+            __props__['ipv4s'] = None
+            __props__['ipv6'] = None
+            __props__['private_ip_address'] = None
+            __props__['specs'] = None
+            __props__['status'] = None
         super(Instance, __self__).__init__(
             'linode:index/instance:Instance',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, alerts=None, authorized_keys=None, authorized_users=None, backup_id=None, backups=None, backups_enabled=None, boot_config_label=None, configs=None, disks=None, group=None, image=None, ip_address=None, ipv4s=None, ipv6=None, label=None, private_ip=None, private_ip_address=None, region=None, root_pass=None, specs=None, stackscript_data=None, stackscript_id=None, status=None, swap_size=None, tags=None, type=None, watchdog_enabled=None):
+        """
+        Get an existing Instance resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[list] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[float] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
+        :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[str] group: The display group of the Linode instance.
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
+        :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
+        :param pulumi.Input[dict] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[float] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[float] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance.  Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc.
+        :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/instance.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["alerts"] = alerts
+        __props__["authorized_keys"] = authorized_keys
+        __props__["authorized_users"] = authorized_users
+        __props__["backup_id"] = backup_id
+        __props__["backups"] = backups
+        __props__["backups_enabled"] = backups_enabled
+        __props__["boot_config_label"] = boot_config_label
+        __props__["configs"] = configs
+        __props__["disks"] = disks
+        __props__["group"] = group
+        __props__["image"] = image
+        __props__["ip_address"] = ip_address
+        __props__["ipv4s"] = ipv4s
+        __props__["ipv6"] = ipv6
+        __props__["label"] = label
+        __props__["private_ip"] = private_ip
+        __props__["private_ip_address"] = private_ip_address
+        __props__["region"] = region
+        __props__["root_pass"] = root_pass
+        __props__["specs"] = specs
+        __props__["stackscript_data"] = stackscript_data
+        __props__["stackscript_id"] = stackscript_id
+        __props__["status"] = status
+        __props__["swap_size"] = swap_size
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["watchdog_enabled"] = watchdog_enabled
+        return Instance(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

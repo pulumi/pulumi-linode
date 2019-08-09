@@ -46,14 +46,23 @@ class GetImageResult:
         if vendor and not isinstance(vendor, str):
             raise TypeError("Expected argument 'vendor' to be a str")
         __self__.vendor = vendor
-
+class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetImageResult(
+            created=self.created,
+            created_by=self.created_by,
+            deprecated=self.deprecated,
+            description=self.description,
+            expiry=self.expiry,
+            id=self.id,
+            is_public=self.is_public,
+            label=self.label,
+            size=self.size,
+            type=self.type,
+            vendor=self.vendor)
 
 def get_image(id=None,opts=None):
     """
@@ -92,7 +101,7 @@ def get_image(id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts).value
 
-    return GetImageResult(
+    return AwaitableGetImageResult(
         created=__ret__.get('created'),
         created_by=__ret__.get('createdBy'),
         deprecated=__ret__.get('deprecated'),

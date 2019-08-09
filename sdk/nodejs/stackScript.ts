@@ -55,7 +55,7 @@ export class StackScript extends pulumi.CustomResource {
      */
     public readonly images!: pulumi.Output<string[]>;
     /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
     public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
@@ -177,7 +177,7 @@ export interface StackScriptState {
      */
     readonly images?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
     readonly isPublic?: pulumi.Input<boolean>;
     /**
@@ -224,7 +224,7 @@ export interface StackScriptArgs {
      */
     readonly images: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
     readonly isPublic?: pulumi.Input<boolean>;
     /**

@@ -110,7 +110,7 @@ func (r *NodeBalancerConfig) Algorithm() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["algorithm"])
 }
 
-// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
 func (r *NodeBalancerConfig) Check() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["check"])
 }
@@ -165,12 +165,12 @@ func (r *NodeBalancerConfig) Port() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["port"])
 }
 
-// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 func (r *NodeBalancerConfig) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 func (r *NodeBalancerConfig) SslCert() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sslCert"])
 }
@@ -185,7 +185,7 @@ func (r *NodeBalancerConfig) SslFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sslFingerprint"])
 }
 
-// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 func (r *NodeBalancerConfig) SslKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sslKey"])
 }
@@ -199,7 +199,7 @@ func (r *NodeBalancerConfig) Stickiness() *pulumi.StringOutput {
 type NodeBalancerConfigState struct {
 	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
 	Algorithm interface{}
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
 	Check interface{}
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts interface{}
@@ -221,15 +221,15 @@ type NodeBalancerConfigState struct {
 	NodebalancerId interface{}
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port interface{}
-	// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol interface{}
-	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert interface{}
 	// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
 	SslCommonname interface{}
 	// The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
 	SslFingerprint interface{}
-	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey interface{}
 	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
 	Stickiness interface{}
@@ -239,7 +239,7 @@ type NodeBalancerConfigState struct {
 type NodeBalancerConfigArgs struct {
 	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
 	Algorithm interface{}
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
 	Check interface{}
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts interface{}
@@ -260,11 +260,11 @@ type NodeBalancerConfigArgs struct {
 	NodebalancerId interface{}
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port interface{}
-	// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol interface{}
-	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert interface{}
-	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey interface{}
 	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
 	Stickiness interface{}

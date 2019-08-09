@@ -40,7 +40,7 @@ class StackScript(pulumi.CustomResource):
     user_defined_fields: pulumi.Output[list]
     user_gravatar_id: pulumi.Output[str]
     username: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, user_defined_fields=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, user_defined_fields=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a StackScript resource with the given unique name, props, and options.
         
@@ -61,55 +61,78 @@ class StackScript(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if description is None:
-            raise TypeError("Missing required property 'description'")
-        __props__['description'] = description
-
-        if images is None:
-            raise TypeError("Missing required property 'images'")
-        __props__['images'] = images
-
-        __props__['is_public'] = is_public
-
-        if label is None:
-            raise TypeError("Missing required property 'label'")
-        __props__['label'] = label
-
-        __props__['rev_note'] = rev_note
-
-        if script is None:
-            raise TypeError("Missing required property 'script'")
-        __props__['script'] = script
-
-        __props__['user_defined_fields'] = user_defined_fields
-
-        __props__['created'] = None
-        __props__['deployments_active'] = None
-        __props__['deployments_total'] = None
-        __props__['updated'] = None
-        __props__['user_gravatar_id'] = None
-        __props__['username'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if description is None:
+                raise TypeError("Missing required property 'description'")
+            __props__['description'] = description
+            if images is None:
+                raise TypeError("Missing required property 'images'")
+            __props__['images'] = images
+            __props__['is_public'] = is_public
+            if label is None:
+                raise TypeError("Missing required property 'label'")
+            __props__['label'] = label
+            __props__['rev_note'] = rev_note
+            if script is None:
+                raise TypeError("Missing required property 'script'")
+            __props__['script'] = script
+            __props__['user_defined_fields'] = user_defined_fields
+            __props__['created'] = None
+            __props__['deployments_active'] = None
+            __props__['deployments_total'] = None
+            __props__['updated'] = None
+            __props__['user_gravatar_id'] = None
+            __props__['username'] = None
         super(StackScript, __self__).__init__(
             'linode:index/stackScript:StackScript',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, created=None, deployments_active=None, deployments_total=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, updated=None, user_defined_fields=None, user_gravatar_id=None, username=None):
+        """
+        Get an existing StackScript resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description for the StackScript.
+        :param pulumi.Input[list] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+        :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
+        :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
+        :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["created"] = created
+        __props__["deployments_active"] = deployments_active
+        __props__["deployments_total"] = deployments_total
+        __props__["description"] = description
+        __props__["images"] = images
+        __props__["is_public"] = is_public
+        __props__["label"] = label
+        __props__["rev_note"] = rev_note
+        __props__["script"] = script
+        __props__["updated"] = updated
+        __props__["user_defined_fields"] = user_defined_fields
+        __props__["user_gravatar_id"] = user_gravatar_id
+        __props__["username"] = username
+        return StackScript(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

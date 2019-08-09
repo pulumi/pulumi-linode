@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     label: "foo-sda-image",
  *     linodeId: foo.id,
  * });
- * const barBased = new linode.Instance("bar_based", {
+ * const barBased = new linode.Instance("barBased", {
  *     image: bar.id,
  *     region: "eu-west",
  *     type: foo.type,
@@ -42,11 +42,11 @@ import * as utilities from "./utilities";
  * 
  * * `created` - When this Image was created.
  * 
- * * `created_by` - The name of the User who created this Image.
+ * * `createdBy` - The name of the User who created this Image.
  * 
  * * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
  * 
- * * `is_public` - True if the Image is public.
+ * * `isPublic` - True if the Image is public.
  * 
  * * `size` - The minimum size this Image needs to deploy. Size is in MB.
  * 

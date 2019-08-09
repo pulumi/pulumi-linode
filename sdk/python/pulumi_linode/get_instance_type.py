@@ -43,14 +43,22 @@ class GetInstanceTypeResult:
         if vcpus and not isinstance(vcpus, float):
             raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
-
+class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetInstanceTypeResult(
+            addons=self.addons,
+            class_=self.class_,
+            disk=self.disk,
+            id=self.id,
+            label=self.label,
+            memory=self.memory,
+            network_out=self.network_out,
+            price=self.price,
+            transfer=self.transfer,
+            vcpus=self.vcpus)
 
 def get_instance_type(id=None,label=None,opts=None):
     """
@@ -88,7 +96,7 @@ def get_instance_type(id=None,label=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts).value
 
-    return GetInstanceTypeResult(
+    return AwaitableGetInstanceTypeResult(
         addons=__ret__.get('addons'),
         class_=__ret__.get('class'),
         disk=__ret__.get('disk'),
