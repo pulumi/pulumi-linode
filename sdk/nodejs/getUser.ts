@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const foo = pulumi.output(linode.getUser({
+ * const foo = linode.getUser({
  *     username: "foo",
- * }));
+ * });
  * ```
  * 
  * ## Attributes

@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const k8Master = pulumi.output(linode.getImage({
+ * const k8Master = linode.getImage({
  *     id: "linode/debian8",
- * }));
+ * });
  * ```
  * 
  * ## Attributes

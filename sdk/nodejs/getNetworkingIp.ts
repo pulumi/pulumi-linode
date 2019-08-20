@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const ns1LinodeCom = pulumi.output(linode.NetworkIp({
+ * const ns1LinodeCom = linode.NetworkIp({
  *     address: "162.159.27.72",
- * }));
+ * });
  * ```
  * 
  * ## Attributes

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const account = pulumi.output(linode.getAccount({}));
+ * const account = linode.getAccount({});
  * ```
  * 
  * ## Attributes
