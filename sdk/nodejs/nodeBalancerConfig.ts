@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -71,7 +73,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     public readonly cipherSuite!: pulumi.Output<string>;
-    public /*out*/ readonly nodeStatus!: pulumi.Output<{ statusDown: number, statusUp: number }>;
+    public /*out*/ readonly nodeStatus!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus>;
     /**
      * The ID of the NodeBalancer to access.
      */
@@ -211,7 +213,7 @@ export interface NodeBalancerConfigState {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     readonly cipherSuite?: pulumi.Input<string>;
-    readonly nodeStatus?: pulumi.Input<{ statusDown?: pulumi.Input<number>, statusUp?: pulumi.Input<number> }>;
+    readonly nodeStatus?: pulumi.Input<inputs.NodeBalancerConfigNodeStatus>;
     /**
      * The ID of the NodeBalancer to access.
      */

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class NodeBalancerConfig(pulumi.CustomResource):
@@ -140,6 +141,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         """
         Get an existing NodeBalancerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -157,10 +159,15 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        
+        The **node_status** object supports the following:
+        
+          * `status_down` (`pulumi.Input[float]`)
+          * `status_up` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_config.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["algorithm"] = algorithm

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,7 +81,7 @@ export interface GetProfileResult {
     readonly emailNotifications: boolean;
     readonly ipWhitelistEnabled: boolean;
     readonly lishAuthMethod: string;
-    readonly referrals: { code: string, completed: number, credit: number, pending: number, total: number, url: string };
+    readonly referrals: outputs.GetProfileReferrals;
     readonly restricted: boolean;
     readonly timezone: string;
     readonly twoFactorAuth: boolean;

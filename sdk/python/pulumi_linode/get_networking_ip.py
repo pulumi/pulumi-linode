@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetNetworkingIpResult:
@@ -88,6 +89,8 @@ def get_networking_ip(address=None,opts=None):
     * `linode_id` - The ID of the Linode this address currently belongs to.
     
     * `region` - The Region this IP address resides in.
+    
+    :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
     """
@@ -95,7 +98,7 @@ def get_networking_ip(address=None,opts=None):
 
     __args__['address'] = address
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class StackScript(pulumi.CustomResource):
@@ -52,6 +53,15 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
+        
+        The **user_defined_fields** object supports the following:
+        
+          * `default` (`pulumi.Input[str]`)
+          * `example` (`pulumi.Input[str]`)
+          * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
+          * `manyOf` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`)
+          * `oneOf` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
         """
@@ -104,6 +114,7 @@ class StackScript(pulumi.CustomResource):
         """
         Get an existing StackScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,10 +124,19 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
+        
+        The **user_defined_fields** object supports the following:
+        
+          * `default` (`pulumi.Input[str]`)
+          * `example` (`pulumi.Input[str]`)
+          * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
+          * `manyOf` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`)
+          * `oneOf` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["created"] = created
