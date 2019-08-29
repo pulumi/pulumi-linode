@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -63,7 +65,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly transfer!: pulumi.Output<{ in: number, out: number, total: number }>;
+    public /*out*/ readonly transfer!: pulumi.Output<outputs.NodeBalancerTransfer>;
     public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
@@ -148,7 +150,7 @@ export interface NodeBalancerState {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly transfer?: pulumi.Input<{ in?: pulumi.Input<number>, out?: pulumi.Input<number>, total?: pulumi.Input<number> }>;
+    readonly transfer?: pulumi.Input<inputs.NodeBalancerTransfer>;
     readonly updated?: pulumi.Input<string>;
 }
 

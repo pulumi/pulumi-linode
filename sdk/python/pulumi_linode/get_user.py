@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetUserResult:
@@ -56,6 +57,8 @@ def get_user(username=None,opts=None):
     * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
     
     * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+    
+    :param str username: The unique username of this User.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.markdown.
     """
@@ -63,7 +66,7 @@ def get_user(username=None,opts=None):
 
     __args__['username'] = username
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts).value

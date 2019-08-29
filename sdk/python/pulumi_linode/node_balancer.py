@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class NodeBalancer(pulumi.CustomResource):
@@ -84,6 +85,7 @@ class NodeBalancer(pulumi.CustomResource):
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,10 +93,16 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        
+        The **transfer** object supports the following:
+        
+          * `in_` (`pulumi.Input[float]`)
+          * `out` (`pulumi.Input[float]`)
+          * `total` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["client_conn_throttle"] = client_conn_throttle

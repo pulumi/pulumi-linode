@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetSshKeyResult:
@@ -42,6 +43,7 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 def get_ssh_key(label=None,opts=None):
     """
     `.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
     """
@@ -49,7 +51,7 @@ def get_ssh_key(label=None,opts=None):
 
     __args__['label'] = label
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts).value

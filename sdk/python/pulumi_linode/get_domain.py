@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDomainResult:
@@ -111,6 +112,9 @@ def get_domain(domain=None,id=None,opts=None):
     * `soa_email` - Start of Authority email address.
     
     * `tags` - An array of tags applied to this object.
+    
+    :param str domain: The unique domain name of the Domain record to query.
+    :param str id: The unique numeric ID of the Domain record to query.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
     """
@@ -119,7 +123,7 @@ def get_domain(domain=None,id=None,opts=None):
     __args__['domain'] = domain
     __args__['id'] = id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetAccountResult:
@@ -114,7 +115,7 @@ def get_account(opts=None):
     __args__ = dict()
 
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts).value

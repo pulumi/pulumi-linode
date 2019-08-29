@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetInstanceTypeResult:
@@ -83,6 +84,8 @@ def get_instance_type(id=None,label=None,opts=None):
     * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
     
     * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
+    
+    :param str id: Label used to identify instance type
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.markdown.
     """
@@ -91,7 +94,7 @@ def get_instance_type(id=None,label=None,opts=None):
     __args__['id'] = id
     __args__['label'] = label
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts).value

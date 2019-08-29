@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -73,14 +75,14 @@ export interface GetInstanceTypeArgs {
  * A collection of values returned by getInstanceType.
  */
 export interface GetInstanceTypeResult {
-    readonly addons: { backups: { price: { hourly: number, monthly: number } } };
+    readonly addons: outputs.GetInstanceTypeAddons;
     readonly class: string;
     readonly disk: number;
     readonly id: string;
     readonly label: string;
     readonly memory: number;
     readonly networkOut: number;
-    readonly price: { hourly: number, monthly: number };
+    readonly price: outputs.GetInstanceTypePrice;
     readonly transfer: number;
     readonly vcpus: number;
 }

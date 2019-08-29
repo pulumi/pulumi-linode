@@ -27,4 +27,5 @@ export * from "./volume";
 
 // Export sub-modules:
 import * as config from "./config/index";
-export {config};
+import * as types from "./types/index";
+export {config, types};

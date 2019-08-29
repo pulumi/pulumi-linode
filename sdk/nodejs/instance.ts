@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -34,7 +36,7 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
-    public readonly alerts!: pulumi.Output<{ cpu: number, io: number, networkIn: number, networkOut: number, transferQuota: number }>;
+    public readonly alerts!: pulumi.Output<outputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
@@ -50,7 +52,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Information about this Linode's backups status.
      */
-    public /*out*/ readonly backups!: pulumi.Output<{ enabled: boolean, schedule: { day: string, window: string } }>;
+    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackups>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -62,8 +64,8 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
-    public readonly configs!: pulumi.Output<{ comments?: string, devices: { sda: { diskId: number, diskLabel?: string, volumeId?: number }, sdb: { diskId: number, diskLabel?: string, volumeId?: number }, sdc: { diskId: number, diskLabel?: string, volumeId?: number }, sdd: { diskId: number, diskLabel?: string, volumeId?: number }, sde: { diskId: number, diskLabel?: string, volumeId?: number }, sdf: { diskId: number, diskLabel?: string, volumeId?: number }, sdg: { diskId: number, diskLabel?: string, volumeId?: number }, sdh: { diskId: number, diskLabel?: string, volumeId?: number } }, helpers: { devtmpfsAutomount?: boolean, distro?: boolean, modulesDep?: boolean, network?: boolean, updatedbDisabled?: boolean }, kernel?: string, label: string, memoryLimit?: number, rootDevice: string, runLevel?: string, virtMode?: string }[] | undefined>;
-    public readonly disks!: pulumi.Output<{ authorizedKeys?: string[], authorizedUsers?: string[], filesystem: string, id: number, image: string, label: string, readOnly: boolean, rootPass?: string, size: number, stackscriptData: {[key: string]: any}, stackscriptId: number }[] | undefined>;
+    public readonly configs!: pulumi.Output<outputs.InstanceConfig[] | undefined>;
+    public readonly disks!: pulumi.Output<outputs.InstanceDisk[] | undefined>;
     /**
      * The display group of the Linode instance.
      */
@@ -107,7 +109,7 @@ export class Instance extends pulumi.CustomResource {
      * The password that will be initialially assigned to the 'root' user account.
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly specs!: pulumi.Output<{ disk: number, memory: number, transfer: number, vcpus: number }>;
+    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
@@ -224,7 +226,7 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    readonly alerts?: pulumi.Input<{ cpu?: pulumi.Input<number>, io?: pulumi.Input<number>, networkIn?: pulumi.Input<number>, networkOut?: pulumi.Input<number>, transferQuota?: pulumi.Input<number> }>;
+    readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
@@ -240,7 +242,7 @@ export interface InstanceState {
     /**
      * Information about this Linode's backups status.
      */
-    readonly backups?: pulumi.Input<{ enabled?: pulumi.Input<boolean>, schedule?: pulumi.Input<{ day?: pulumi.Input<string>, window?: pulumi.Input<string> }> }>;
+    readonly backups?: pulumi.Input<inputs.InstanceBackups>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -252,8 +254,8 @@ export interface InstanceState {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
-    readonly configs?: pulumi.Input<pulumi.Input<{ comments?: pulumi.Input<string>, devices?: pulumi.Input<{ sda?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdb?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdc?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdd?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sde?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdf?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdg?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdh?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }> }>, helpers?: pulumi.Input<{ devtmpfsAutomount?: pulumi.Input<boolean>, distro?: pulumi.Input<boolean>, modulesDep?: pulumi.Input<boolean>, network?: pulumi.Input<boolean>, updatedbDisabled?: pulumi.Input<boolean> }>, kernel?: pulumi.Input<string>, label: pulumi.Input<string>, memoryLimit?: pulumi.Input<number>, rootDevice?: pulumi.Input<string>, runLevel?: pulumi.Input<string>, virtMode?: pulumi.Input<string> }>[]>;
-    readonly disks?: pulumi.Input<pulumi.Input<{ authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>, authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>, filesystem?: pulumi.Input<string>, id?: pulumi.Input<number>, image?: pulumi.Input<string>, label: pulumi.Input<string>, readOnly?: pulumi.Input<boolean>, rootPass?: pulumi.Input<string>, size: pulumi.Input<number>, stackscriptData?: pulumi.Input<{[key: string]: any}>, stackscriptId?: pulumi.Input<number> }>[]>;
+    readonly configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.
      */
@@ -297,7 +299,7 @@ export interface InstanceState {
      * The password that will be initialially assigned to the 'root' user account.
      */
     readonly rootPass?: pulumi.Input<string>;
-    readonly specs?: pulumi.Input<{ disk?: pulumi.Input<number>, memory?: pulumi.Input<number>, transfer?: pulumi.Input<number>, vcpus?: pulumi.Input<number> }>;
+    readonly specs?: pulumi.Input<inputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
@@ -332,7 +334,7 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    readonly alerts?: pulumi.Input<{ cpu?: pulumi.Input<number>, io?: pulumi.Input<number>, networkIn?: pulumi.Input<number>, networkOut?: pulumi.Input<number>, transferQuota?: pulumi.Input<number> }>;
+    readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
@@ -356,8 +358,8 @@ export interface InstanceArgs {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
-    readonly configs?: pulumi.Input<pulumi.Input<{ comments?: pulumi.Input<string>, devices?: pulumi.Input<{ sda?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdb?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdc?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdd?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sde?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdf?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdg?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }>, sdh?: pulumi.Input<{ diskId?: pulumi.Input<number>, diskLabel?: pulumi.Input<string>, volumeId?: pulumi.Input<number> }> }>, helpers?: pulumi.Input<{ devtmpfsAutomount?: pulumi.Input<boolean>, distro?: pulumi.Input<boolean>, modulesDep?: pulumi.Input<boolean>, network?: pulumi.Input<boolean>, updatedbDisabled?: pulumi.Input<boolean> }>, kernel?: pulumi.Input<string>, label: pulumi.Input<string>, memoryLimit?: pulumi.Input<number>, rootDevice?: pulumi.Input<string>, runLevel?: pulumi.Input<string>, virtMode?: pulumi.Input<string> }>[]>;
-    readonly disks?: pulumi.Input<pulumi.Input<{ authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>, authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>, filesystem?: pulumi.Input<string>, id?: pulumi.Input<number>, image?: pulumi.Input<string>, label: pulumi.Input<string>, readOnly?: pulumi.Input<boolean>, rootPass?: pulumi.Input<string>, size: pulumi.Input<number>, stackscriptData?: pulumi.Input<{[key: string]: any}>, stackscriptId?: pulumi.Input<number> }>[]>;
+    readonly configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.
      */

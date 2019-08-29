@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -78,7 +80,7 @@ export class StackScript extends pulumi.CustomResource {
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    public readonly userDefinedFields!: pulumi.Output<{ default: string, example: string, label: string, manyOf: string, name: string, oneOf: string }[]>;
+    public readonly userDefinedFields!: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
@@ -200,7 +202,7 @@ export interface StackScriptState {
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    readonly userDefinedFields?: pulumi.Input<pulumi.Input<{ default?: pulumi.Input<string>, example?: pulumi.Input<string>, label?: pulumi.Input<string>, manyOf?: pulumi.Input<string>, name?: pulumi.Input<string>, oneOf?: pulumi.Input<string> }>[]>;
+    readonly userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
@@ -243,5 +245,5 @@ export interface StackScriptArgs {
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    readonly userDefinedFields?: pulumi.Input<pulumi.Input<{ default?: pulumi.Input<string>, example?: pulumi.Input<string>, label?: pulumi.Input<string>, manyOf?: pulumi.Input<string>, name?: pulumi.Input<string>, oneOf?: pulumi.Input<string> }>[]>;
+    readonly userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
 }
