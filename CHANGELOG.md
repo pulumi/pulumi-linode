@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.18.10 (2019-08-29)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.18.9 (2019-08-20)
 * Depend on latest pulumi package
@@ -36,4 +39,3 @@ CHANGELOG
 
 ## 0.18.0 (2019-05-06)
 * Initial release of the Linode provider, based on v1.6.0 of the Linode Terraform provider
-
