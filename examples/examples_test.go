@@ -1,5 +1,3 @@
-// Copyright 2016-2018, Pulumi Corporation.
-//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -20,26 +18,39 @@ import (
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
-
-	"github.com/stretchr/testify/assert"
 )
 
-var base = integration.ProgramTestOptions{
-	ExpectRefreshChanges: true,
-	// Note: no Config! This package should be usable without any config.
+func TestAccWebserver(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "webserver"),
+		})
+
+	integration.ProgramTest(t, &test)
 }
 
-func TestWebserver(t *testing.T) {
+func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
-	if !assert.NoError(t, err) {
-		t.FailNow()
+	if err != nil {
+		t.Error("expected a valid working directory", err)
 	}
 
-	opts := base.With(integration.ProgramTestOptions{
+	return cwd
+}
+
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
+		ExpectRefreshChanges: true,
+	}
+}
+
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
+	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"@pulumi/linode",
 		},
-		Dir: path.Join(cwd, "webserver"),
 	})
-	integration.ProgramTest(t, &opts)
+
+	return baseJS
 }
