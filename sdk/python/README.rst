@@ -47,6 +47,20 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
    $ go get github.com/pulumi/pulumi-linode/sdk/go/...
 
+Configuration
+-------------
+
+The following configuration points are available:
+
+-  ``linode:token`` - (Required) This is your Linode APIv4 Token. May be
+   specified using the ``LINODE_TOKEN`` environment variable.
+-  ``linode:url`` - (Optional) The HTTP(S) API address of the Linode API
+   to use. May be specified using the ``LINODE_URL`` environment
+   variable.
+-  ``linode:uaPrefix`` - (Optional) An HTTP User-Agent Prefix to prepend
+   in API requests. May be specified using the ``LINODE_UA_PREFIX``
+   environment variable.
+
 Reference
 ---------
 
