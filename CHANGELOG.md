@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Regenerate SDK based on tf2pulumi 0.6.0
+* Add support for DotNet SDK Generation
 
 ---
 
