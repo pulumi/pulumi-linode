@@ -101,6 +101,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"linode_domain": {
 				Tok: makeResource(mainMod, "Domain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"domain": {
+						CSharpName: "DomainName",
+					},
+				},
 			},
 			"linode_domain_record": {
 				Tok: makeResource(mainMod, "DomainRecord"),
@@ -116,15 +121,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"linode_rdns": {
 				Tok: makeResource(mainMod, "Rdns"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rdns": {
+						CSharpName: "RdnsName",
+					},
+				},
 			},
 			"linode_sshkey": {
 				Tok: makeResource(mainMod, "SshKey"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"ssh_key": {
+						CSharpName: "SshKeyName",
+					},
+				},
 			},
 			"linode_stackscript": {
 				Tok: makeResource(mainMod, "StackScript"),
 			},
 			"linode_token": {
 				Tok: makeResource(mainMod, "Token"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"token": {
+						CSharpName: "TokenName",
+					},
+				},
 			},
 			"linode_volume": {
 				Tok: makeResource(mainMod, "Volume"),

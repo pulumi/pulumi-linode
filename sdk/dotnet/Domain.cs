@@ -28,7 +28,7 @@ namespace Pulumi.Linode
         /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         /// </summary>
         [Output("domain")]
-        public Output<string> Domain { get; private set; } = null!;
+        public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
@@ -158,7 +158,7 @@ namespace Pulumi.Linode
         /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         /// </summary>
         [Input("domain", required: true)]
-        public Input<string> Domain { get; set; } = null!;
+        public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
         /// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
@@ -261,7 +261,7 @@ namespace Pulumi.Linode
         /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         /// </summary>
         [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        public Input<string>? DomainName { get; set; }
 
         /// <summary>
         /// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.

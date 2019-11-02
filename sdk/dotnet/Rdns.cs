@@ -28,7 +28,7 @@ namespace Pulumi.Linode
         /// The name of the RDNS address.
         /// </summary>
         [Output("rdns")]
-        public Output<string> Rdns { get; private set; } = null!;
+        public Output<string> RdnsName { get; private set; } = null!;
 
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         /// The name of the RDNS address.
         /// </summary>
         [Input("rdns", required: true)]
-        public Input<string> Rdns { get; set; } = null!;
+        public Input<string> RdnsName { get; set; } = null!;
 
         public RdnsArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Linode
         /// The name of the RDNS address.
         /// </summary>
         [Input("rdns")]
-        public Input<string>? Rdns { get; set; }
+        public Input<string>? RdnsName { get; set; }
 
         public RdnsState()
         {

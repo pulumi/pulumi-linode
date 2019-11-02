@@ -37,7 +37,7 @@ namespace Pulumi.Linode
         /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         /// </summary>
         [Output("sshKey")]
-        public Output<string> SshKey { get; private set; } = null!;
+        public Output<string> SshKeyName { get; private set; } = null!;
 
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         /// </summary>
         [Input("sshKey", required: true)]
-        public Input<string> SshKey { get; set; } = null!;
+        public Input<string> SshKeyName { get; set; } = null!;
 
         public SshKeyArgs()
         {
@@ -120,7 +120,7 @@ namespace Pulumi.Linode
         /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         /// </summary>
         [Input("sshKey")]
-        public Input<string>? SshKey { get; set; }
+        public Input<string>? SshKeyName { get; set; }
 
         public SshKeyState()
         {

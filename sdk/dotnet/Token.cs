@@ -40,7 +40,7 @@ namespace Pulumi.Linode
         /// The token used to access the API.
         /// </summary>
         [Output("token")]
-        public Output<string> Token { get; private set; } = null!;
+        public Output<string> TokenName { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Pulumi.Linode
         /// The token used to access the API.
         /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? TokenName { get; set; }
 
         public TokenState()
         {
