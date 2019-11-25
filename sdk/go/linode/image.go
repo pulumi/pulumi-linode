@@ -105,74 +105,74 @@ func GetImage(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Image) URN() *pulumi.URNOutput {
+func (r *Image) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Image) ID() *pulumi.IDOutput {
+func (r *Image) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // When this Image was created.
-func (r *Image) Created() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["created"])
+func (r *Image) Created() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["created"])
 }
 
 // The name of the User who created this Image.
-func (r *Image) CreatedBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdBy"])
+func (r *Image) CreatedBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdBy"])
 }
 
 // Whether or not this Image is deprecated. Will only be True for deprecated public Images.
-func (r *Image) Deprecated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deprecated"])
+func (r *Image) Deprecated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deprecated"])
 }
 
 // A detailed description of this Image.
-func (r *Image) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Image) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The ID of the Linode Disk that this Image will be created from.
-func (r *Image) DiskId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["diskId"])
+func (r *Image) DiskId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["diskId"])
 }
 
 // Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-func (r *Image) Expiry() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiry"])
+func (r *Image) Expiry() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiry"])
 }
 
 // True if the Image is public.
-func (r *Image) IsPublic() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isPublic"])
+func (r *Image) IsPublic() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isPublic"])
 }
 
 // A short description of the Image. Labels cannot contain special characters.
-func (r *Image) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *Image) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The ID of the Linode that this Image will be created from.
-func (r *Image) LinodeId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["linodeId"])
+func (r *Image) LinodeId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["linodeId"])
 }
 
 // The minimum size this Image needs to deploy. Size is in MB.
-func (r *Image) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Image) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
 // a deleted Linode.
-func (r *Image) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Image) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The upstream distribution vendor. Nil for private Images.
-func (r *Image) Vendor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vendor"])
+func (r *Image) Vendor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vendor"])
 }
 
 // Input properties used for looking up and filtering Image resources.

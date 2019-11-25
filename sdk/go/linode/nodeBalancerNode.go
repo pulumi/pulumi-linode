@@ -74,48 +74,48 @@ func GetNodeBalancerNode(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NodeBalancerNode) URN() *pulumi.URNOutput {
+func (r *NodeBalancerNode) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NodeBalancerNode) ID() *pulumi.IDOutput {
+func (r *NodeBalancerNode) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The private IP Address where this backend can be reached. This must be a private IP address.
-func (r *NodeBalancerNode) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *NodeBalancerNode) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The ID of the NodeBalancerConfig to access.
-func (r *NodeBalancerNode) ConfigId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["configId"])
+func (r *NodeBalancerNode) ConfigId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["configId"])
 }
 
 // The label of the Linode NodeBalancer Node. This is for display purposes only.
-func (r *NodeBalancerNode) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *NodeBalancerNode) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
-func (r *NodeBalancerNode) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *NodeBalancerNode) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // The ID of the NodeBalancer to access.
-func (r *NodeBalancerNode) NodebalancerId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodebalancerId"])
+func (r *NodeBalancerNode) NodebalancerId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodebalancerId"])
 }
 
 // The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
-func (r *NodeBalancerNode) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *NodeBalancerNode) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
-func (r *NodeBalancerNode) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *NodeBalancerNode) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering NodeBalancerNode resources.

@@ -69,60 +69,60 @@ func GetNodeBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NodeBalancer) URN() *pulumi.URNOutput {
+func (r *NodeBalancer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NodeBalancer) ID() *pulumi.IDOutput {
+func (r *NodeBalancer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-func (r *NodeBalancer) ClientConnThrottle() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["clientConnThrottle"])
+func (r *NodeBalancer) ClientConnThrottle() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["clientConnThrottle"])
 }
 
-func (r *NodeBalancer) Created() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["created"])
+func (r *NodeBalancer) Created() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["created"])
 }
 
 // This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-func (r *NodeBalancer) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *NodeBalancer) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // The Public IPv4 Address of this NodeBalancer
-func (r *NodeBalancer) Ipv4() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv4"])
+func (r *NodeBalancer) Ipv4() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv4"])
 }
 
 // The Public IPv6 Address of this NodeBalancer
-func (r *NodeBalancer) Ipv6() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv6"])
+func (r *NodeBalancer) Ipv6() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv6"])
 }
 
 // The label of the Linode NodeBalancer
-func (r *NodeBalancer) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *NodeBalancer) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-func (r *NodeBalancer) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *NodeBalancer) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A list of tags applied to this object. Tags are for organizational purposes only.
-func (r *NodeBalancer) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *NodeBalancer) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *NodeBalancer) Transfer() *pulumi.Output {
+func (r *NodeBalancer) Transfer() pulumi.Output {
 	return r.s.State["transfer"]
 }
 
-func (r *NodeBalancer) Updated() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updated"])
+func (r *NodeBalancer) Updated() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updated"])
 }
 
 // Input properties used for looking up and filtering NodeBalancer resources.

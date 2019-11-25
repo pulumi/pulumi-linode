@@ -9,18 +9,25 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_version=None, token=None, ua_prefix=None, url=None, __props__=None, __name__=None, __opts__=None):
+class ObjectStorageBucket(pulumi.CustomResource):
+    cluster: pulumi.Output[str]
+    """
+    The cluster of the Linode Object Storage Bucket.
+    """
+    label: pulumi.Output[str]
+    """
+    The label of the Linode Object Storage Bucket.
+    """
+    def __init__(__self__, resource_name, opts=None, cluster=None, label=None, __props__=None, __name__=None, __opts__=None):
         """
-        The provider type for the linode package. By default, resources use package-wide configuration
-        settings, however an explicit `Provider` instance may be created and passed during resource
-        construction to achieve fine-grained programmatic control over provider settings. See the
-        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+        Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/index.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -39,34 +46,38 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_version'] = api_version
-            if token is None:
-                token = utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
-            __props__['token'] = token
-            __props__['ua_prefix'] = ua_prefix
-            __props__['url'] = url
-        super(Provider, __self__).__init__(
-            'linode',
+            if cluster is None:
+                raise TypeError("Missing required property 'cluster'")
+            __props__['cluster'] = cluster
+            if label is None:
+                raise TypeError("Missing required property 'label'")
+            __props__['label'] = label
+        super(ObjectStorageBucket, __self__).__init__(
+            'linode:index/objectStorageBucket:ObjectStorageBucket',
             resource_name,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None):
+    def get(resource_name, id, opts=None, cluster=None, label=None):
         """
-        Get an existing Provider resource's state with the given name, id, and optional extra
+        Get an existing ObjectStorageBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
         
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/index.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
+        __props__["cluster"] = cluster
+        __props__["label"] = label
+        return ObjectStorageBucket(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

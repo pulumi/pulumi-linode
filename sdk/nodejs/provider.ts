@@ -40,6 +40,7 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
+            inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
             inputs["uaPrefix"] = args ? args.uaPrefix : undefined;
             inputs["url"] = args ? args.url : undefined;
@@ -59,6 +60,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * An HTTP User-Agent Prefix to prepend in API requests.
+     */
+    readonly apiVersion?: pulumi.Input<string>;
     /**
      * The token that allows you access to your Linode account
      */

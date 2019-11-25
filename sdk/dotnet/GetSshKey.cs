@@ -15,7 +15,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
         /// </summary>
         public static Task<GetSshKeyResult> GetSshKey(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSshKeyArgs : Pulumi.ResourceArgs

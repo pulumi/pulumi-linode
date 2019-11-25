@@ -8,6 +8,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+// An HTTP User-Agent Prefix to prepend in API requests.
+func GetApiVersion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:apiVersion")
+}
+
 // The token that allows you access to your Linode account
 func GetToken(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "linode:token")

@@ -100,7 +100,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StackScript(string name, StackScriptArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/stackScript:StackScript", name, args, MakeResourceOptions(options, ""))
+            : base("linode:index/stackScript:StackScript", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

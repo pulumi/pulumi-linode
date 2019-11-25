@@ -47,7 +47,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
         /// </summary>
         public static Task<GetDomainResult> GetDomain(GetDomainArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("linode:index/getDomain:getDomain", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("linode:index/getDomain:getDomain", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDomainArgs : Pulumi.ResourceArgs

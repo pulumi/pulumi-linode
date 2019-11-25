@@ -3,11 +3,16 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Linode.Config
+namespace Pulumi.Linode
 {
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("linode");
+
+        /// <summary>
+        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// </summary>
+        public static string? ApiVersion { get; set; } = __config.Get("apiVersion");
 
         /// <summary>
         /// The token that allows you access to your Linode account

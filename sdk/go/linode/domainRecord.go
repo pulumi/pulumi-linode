@@ -94,69 +94,69 @@ func GetDomainRecord(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DomainRecord) URN() *pulumi.URNOutput {
+func (r *DomainRecord) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DomainRecord) ID() *pulumi.IDOutput {
+func (r *DomainRecord) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
-func (r *DomainRecord) DomainId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["domainId"])
+func (r *DomainRecord) DomainId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["domainId"])
 }
 
 // The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
-func (r *DomainRecord) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DomainRecord) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port this Record points to.
-func (r *DomainRecord) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *DomainRecord) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The priority of the target host. Lower values are preferred.
-func (r *DomainRecord) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *DomainRecord) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The protocol this Record's service communicates with. Only valid for SRV records.
-func (r *DomainRecord) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *DomainRecord) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
-func (r *DomainRecord) RecordType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["recordType"])
+func (r *DomainRecord) RecordType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["recordType"])
 }
 
 // The service this Record identified. Only valid for SRV records.
-func (r *DomainRecord) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *DomainRecord) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // The tag portion of a CAA record. It is invalid to set this on other record types.
-func (r *DomainRecord) Tag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tag"])
+func (r *DomainRecord) Tag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tag"])
 }
 
 // The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 // - - -
-func (r *DomainRecord) Target() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["target"])
+func (r *DomainRecord) Target() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["target"])
 }
 
 // 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-func (r *DomainRecord) TtlSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttlSec"])
+func (r *DomainRecord) TtlSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttlSec"])
 }
 
 // The relative weight of this Record. Higher values are preferred.
-func (r *DomainRecord) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *DomainRecord) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering DomainRecord resources.

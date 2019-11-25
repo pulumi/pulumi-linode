@@ -87,79 +87,79 @@ func GetStackScript(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *StackScript) URN() *pulumi.URNOutput {
+func (r *StackScript) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *StackScript) ID() *pulumi.IDOutput {
+func (r *StackScript) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date this StackScript was created.
-func (r *StackScript) Created() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["created"])
+func (r *StackScript) Created() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["created"])
 }
 
 // Count of currently active, deployed Linodes created from this StackScript.
-func (r *StackScript) DeploymentsActive() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["deploymentsActive"])
+func (r *StackScript) DeploymentsActive() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["deploymentsActive"])
 }
 
 // The total number of times this StackScript has been deployed.
-func (r *StackScript) DeploymentsTotal() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["deploymentsTotal"])
+func (r *StackScript) DeploymentsTotal() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["deploymentsTotal"])
 }
 
 // A description for the StackScript.
-func (r *StackScript) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *StackScript) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-func (r *StackScript) Images() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["images"])
+func (r *StackScript) Images() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["images"])
 }
 
 // This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
-func (r *StackScript) IsPublic() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isPublic"])
+func (r *StackScript) IsPublic() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isPublic"])
 }
 
 // The StackScript's label is for display purposes only.
-func (r *StackScript) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *StackScript) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // This field allows you to add notes for the set of revisions made to this StackScript.
-func (r *StackScript) RevNote() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["revNote"])
+func (r *StackScript) RevNote() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["revNote"])
 }
 
 // The script to execute when provisioning a new Linode with this StackScript.
-func (r *StackScript) Script() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["script"])
+func (r *StackScript) Script() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["script"])
 }
 
 // The date this StackScript was updated.
-func (r *StackScript) Updated() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updated"])
+func (r *StackScript) Updated() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updated"])
 }
 
 // This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
 // parameters during deployment.
-func (r *StackScript) UserDefinedFields() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["userDefinedFields"])
+func (r *StackScript) UserDefinedFields() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["userDefinedFields"])
 }
 
 // The Gravatar ID for the User who created the StackScript.
-func (r *StackScript) UserGravatarId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userGravatarId"])
+func (r *StackScript) UserGravatarId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userGravatarId"])
 }
 
 // The User who created the StackScript.
-func (r *StackScript) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *StackScript) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering StackScript resources.

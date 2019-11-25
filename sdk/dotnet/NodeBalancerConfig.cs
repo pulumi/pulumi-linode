@@ -127,7 +127,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeBalancerConfig(string name, NodeBalancerConfigArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args, MakeResourceOptions(options, ""))
+            : base("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -37,7 +37,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
         /// </summary>
         public static Task<GetNetworkingIpResult> GetNetworkingIp(GetNetworkingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNetworkingIpArgs : Pulumi.ResourceArgs
