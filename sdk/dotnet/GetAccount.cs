@@ -45,7 +45,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
         /// </summary>
         public static Task<GetAccountResult> GetAccount(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("linode:index/getAccount:getAccount", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("linode:index/getAccount:getAccount", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

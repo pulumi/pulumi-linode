@@ -65,28 +65,28 @@ func GetSshKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SshKey) URN() *pulumi.URNOutput {
+func (r *SshKey) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SshKey) ID() *pulumi.IDOutput {
+func (r *SshKey) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date this key was added.
-func (r *SshKey) Created() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["created"])
+func (r *SshKey) Created() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["created"])
 }
 
 // A label for the SSH Key.
-func (r *SshKey) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *SshKey) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-func (r *SshKey) SshKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sshKey"])
+func (r *SshKey) SshKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sshKey"])
 }
 
 // Input properties used for looking up and filtering SshKey resources.

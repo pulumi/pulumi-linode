@@ -79,49 +79,49 @@ func GetVolume(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Volume) URN() *pulumi.URNOutput {
+func (r *Volume) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Volume) ID() *pulumi.IDOutput {
+func (r *Volume) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
 // Volume label.
-func (r *Volume) FilesystemPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filesystemPath"])
+func (r *Volume) FilesystemPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filesystemPath"])
 }
 
 // The label of the Linode Volume
-func (r *Volume) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *Volume) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The ID of a Linode Instance where the the Volume should be attached.
-func (r *Volume) LinodeId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["linodeId"])
+func (r *Volume) LinodeId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["linodeId"])
 }
 
 // The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
-func (r *Volume) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Volume) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Size of the Volume in GB.
-func (r *Volume) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Volume) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The status of the volume, indicating the current readiness state.
-func (r *Volume) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Volume) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A list of tags applied to this object. Tags are for organizational purposes only.
-func (r *Volume) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Volume) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Volume resources.

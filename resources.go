@@ -17,9 +17,9 @@ package linode
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-linode/linode"
@@ -149,6 +149,12 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_volume": {
 				Tok: makeResource(mainMod, "Volume"),
 			},
+			"linode_object_storage_bucket": {
+				Tok: makeResource(mainMod, "ObjectStorageBucket"),
+			},
+			"linode_object_storage_key": {
+				Tok: makeResource(mainMod, "ObjectStorageKey"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_account":       {Tok: makeDataSource(mainMod, "getAccount")},
@@ -160,6 +166,9 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_region":        {Tok: makeDataSource(mainMod, "getRegion")},
 			"linode_sshkey":        {Tok: makeDataSource(mainMod, "getSshKey")},
 			"linode_user":          {Tok: makeDataSource(mainMod, "getUser")},
+			"linode_object_storage_cluster": {
+				Tok: makeDataSource(mainMod, "getObjectStorageCluster"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

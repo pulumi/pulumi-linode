@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, ResourceOptions? options = null)
-            : base("linode", name, args, MakeResourceOptions(options, ""))
+            : base("linode", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -44,6 +44,12 @@ namespace Pulumi.Linode
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// </summary>
+        [Input("apiVersion")]
+        public Input<string>? ApiVersion { get; set; }
+
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>

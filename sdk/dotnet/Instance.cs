@@ -178,7 +178,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/instance:Instance", name, args, MakeResourceOptions(options, ""))
+            : base("linode:index/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,6 +11,11 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('linode')
 
+api_version = __config__.get('apiVersion')
+"""
+An HTTP User-Agent Prefix to prepend in API requests.
+"""
+
 token = __config__.get('token') or utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
 """
 The token that allows you access to your Linode account

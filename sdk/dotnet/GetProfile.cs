@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.markdown.
         /// </summary>
         public static Task<GetProfileResult> GetProfile(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

@@ -60,23 +60,23 @@ func GetRdns(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Rdns) URN() *pulumi.URNOutput {
+func (r *Rdns) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Rdns) ID() *pulumi.IDOutput {
+func (r *Rdns) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
-func (r *Rdns) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Rdns) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The name of the RDNS address.
-func (r *Rdns) Rdns() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["rdns"])
+func (r *Rdns) Rdns() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rdns"])
 }
 
 // Input properties used for looking up and filtering Rdns resources.

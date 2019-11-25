@@ -58,38 +58,38 @@ func GetToken(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Token) URN() *pulumi.URNOutput {
+func (r *Token) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Token) ID() *pulumi.IDOutput {
+func (r *Token) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date and time this token was created.
-func (r *Token) Created() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["created"])
+func (r *Token) Created() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["created"])
 }
 
 // When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
-func (r *Token) Expiry() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiry"])
+func (r *Token) Expiry() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiry"])
 }
 
 // A label for the Token.
-func (r *Token) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *Token) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
-func (r *Token) Scopes() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scopes"])
+func (r *Token) Scopes() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scopes"])
 }
 
 // The token used to access the API.
-func (r *Token) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *Token) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering Token resources.

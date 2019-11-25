@@ -35,7 +35,7 @@ namespace Pulumi.Linode
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.markdown.
         /// </summary>
         public static Task<GetInstanceTypeResult> GetInstanceType(GetInstanceTypeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetInstanceTypeArgs : Pulumi.ResourceArgs

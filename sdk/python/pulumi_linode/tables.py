@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
+    "access_key": "accessKey",
+    "api_version": "apiVersion",
     "authorized_keys": "authorizedKeys",
     "authorized_users": "authorizedUsers",
     "axfr_ips": "axfrIps",
@@ -39,6 +41,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "retry_sec": "retrySec",
     "rev_note": "revNote",
     "root_pass": "rootPass",
+    "secret_key": "secretKey",
     "soa_email": "soaEmail",
     "ssh_key": "sshKey",
     "ssl_cert": "sslCert",
@@ -58,6 +61,8 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 }
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
+    "accessKey": "access_key",
+    "apiVersion": "api_version",
     "authorizedKeys": "authorized_keys",
     "authorizedUsers": "authorized_users",
     "axfrIps": "axfr_ips",
@@ -94,6 +99,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "retrySec": "retry_sec",
     "revNote": "rev_note",
     "rootPass": "root_pass",
+    "secretKey": "secret_key",
     "soaEmail": "soa_email",
     "sshKey": "ssh_key",
     "sslCert": "ssl_cert",

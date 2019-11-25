@@ -119,148 +119,148 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Instance) Alerts() *pulumi.Output {
+func (r *Instance) Alerts() pulumi.Output {
 	return r.s.State["alerts"]
 }
 
 // A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
-func (r *Instance) AuthorizedKeys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["authorizedKeys"])
+func (r *Instance) AuthorizedKeys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedKeys"])
 }
 
 // A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
-func (r *Instance) AuthorizedUsers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["authorizedUsers"])
+func (r *Instance) AuthorizedUsers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedUsers"])
 }
 
 // A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
-func (r *Instance) BackupId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["backupId"])
+func (r *Instance) BackupId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["backupId"])
 }
 
 // Information about this Linode's backups status.
-func (r *Instance) Backups() *pulumi.Output {
+func (r *Instance) Backups() pulumi.Output {
 	return r.s.State["backups"]
 }
 
 // If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
-func (r *Instance) BackupsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["backupsEnabled"])
+func (r *Instance) BackupsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["backupsEnabled"])
 }
 
 // The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
-func (r *Instance) BootConfigLabel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bootConfigLabel"])
+func (r *Instance) BootConfigLabel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bootConfigLabel"])
 }
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-func (r *Instance) Configs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["configs"])
+func (r *Instance) Configs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["configs"])
 }
 
-func (r *Instance) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *Instance) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
 // The display group of the Linode instance.
-func (r *Instance) Group() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["group"])
+func (r *Instance) Group() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["group"])
 }
 
 // An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
-func (r *Instance) Image() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["image"])
+func (r *Instance) Image() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["image"])
 }
 
 // This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
 // will be used for this field.
-func (r *Instance) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *Instance) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
 // private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-func (r *Instance) Ipv4s() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ipv4s"])
+func (r *Instance) Ipv4s() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ipv4s"])
 }
 
 // This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
-func (r *Instance) Ipv6() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipv6"])
+func (r *Instance) Ipv6() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipv6"])
 }
 
 // The Config's label for display purposes.  Also used by `bootConfigLabel`.
-func (r *Instance) Label() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["label"])
+func (r *Instance) Label() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["label"])
 }
 
 // If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
-func (r *Instance) PrivateIp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["privateIp"])
+func (r *Instance) PrivateIp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["privateIp"])
 }
 
 // This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
 // Instances in a region.
-func (r *Instance) PrivateIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateIpAddress"])
+func (r *Instance) PrivateIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateIpAddress"])
 }
 
 // This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
-func (r *Instance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Instance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The password that will be initialially assigned to the 'root' user account.
-func (r *Instance) RootPass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["rootPass"])
+func (r *Instance) RootPass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rootPass"])
 }
 
-func (r *Instance) Specs() *pulumi.Output {
+func (r *Instance) Specs() pulumi.Output {
 	return r.s.State["specs"]
 }
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
-func (r *Instance) StackscriptData() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["stackscriptData"])
+func (r *Instance) StackscriptData() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["stackscriptData"])
 }
 
 // The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
-func (r *Instance) StackscriptId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["stackscriptId"])
+func (r *Instance) StackscriptId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["stackscriptId"])
 }
 
 // The status of the instance, indicating the current readiness state.
-func (r *Instance) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Instance) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-func (r *Instance) SwapSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["swapSize"])
+func (r *Instance) SwapSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["swapSize"])
 }
 
 // A list of tags applied to this object. Tags are for organizational purposes only.
-func (r *Instance) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Instance) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The Linode type defines the pricing, CPU, disk, and RAM specs of the instance.  Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc.
-func (r *Instance) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Instance) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-func (r *Instance) WatchdogEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["watchdogEnabled"])
+func (r *Instance) WatchdogEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["watchdogEnabled"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

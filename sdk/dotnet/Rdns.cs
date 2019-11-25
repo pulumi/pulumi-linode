@@ -39,7 +39,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Rdns(string name, RdnsArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/rdns:Rdns", name, args, MakeResourceOptions(options, ""))
+            : base("linode:index/rdns:Rdns", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

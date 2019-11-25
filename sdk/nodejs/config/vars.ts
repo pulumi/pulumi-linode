@@ -7,6 +7,10 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("linode");
 
 /**
+ * An HTTP User-Agent Prefix to prepend in API requests.
+ */
+export let apiVersion: string | undefined = __config.get("apiVersion");
+/**
  * The token that allows you access to your Linode account
  */
 export let token: string | undefined = __config.get("token") || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");

@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
 	linode "github.com/pulumi/pulumi-linode"
 	"github.com/pulumi/pulumi-linode/pkg/version"

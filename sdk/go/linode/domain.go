@@ -87,78 +87,78 @@ func GetDomain(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Domain) URN() *pulumi.URNOutput {
+func (r *Domain) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Domain) ID() *pulumi.IDOutput {
+func (r *Domain) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
-func (r *Domain) AxfrIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["axfrIps"])
+func (r *Domain) AxfrIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["axfrIps"])
 }
 
 // A description for this Domain. This is for display purposes only.
-func (r *Domain) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Domain) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
-func (r *Domain) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *Domain) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-func (r *Domain) ExpireSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["expireSec"])
+func (r *Domain) ExpireSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["expireSec"])
 }
 
 // The group this Domain belongs to. This is for display purposes only.
-func (r *Domain) Group() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["group"])
+func (r *Domain) Group() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["group"])
 }
 
 // The IP addresses representing the master DNS for this Domain.
-func (r *Domain) MasterIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masterIps"])
+func (r *Domain) MasterIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masterIps"])
 }
 
 // The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-func (r *Domain) RefreshSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["refreshSec"])
+func (r *Domain) RefreshSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["refreshSec"])
 }
 
 // The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-func (r *Domain) RetrySec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retrySec"])
+func (r *Domain) RetrySec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retrySec"])
 }
 
 // Start of Authority email address. This is required for master Domains.
-func (r *Domain) SoaEmail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["soaEmail"])
+func (r *Domain) SoaEmail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["soaEmail"])
 }
 
 // Used to control whether this Domain is currently being rendered (defaults to "active").
-func (r *Domain) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Domain) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A list of tags applied to this object. Tags are for organizational purposes only.
-func (r *Domain) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Domain) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-func (r *Domain) TtlSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttlSec"])
+func (r *Domain) TtlSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttlSec"])
 }
 
 // If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
-func (r *Domain) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Domain) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering Domain resources.
