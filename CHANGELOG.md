@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to support go 1.13.x
-* Upgrade to pulumi-terraform-bridge v1.4.2
+* Upgrade to pulumi-terraform-bridge v1.4.3
 * Upgrade to v1.9.0 of the Linode Terraform Provider
 
 ---
