@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.1.0 (2019-12-04)
 * Upgrade to support go 1.13.x
 * Upgrade to pulumi-terraform-bridge v1.4.3
 * Upgrade to v1.9.0 of the Linode Terraform Provider
-
----
 
 ## 1.0.0 (2019-11-15)
 * Regenerate SDK based on tf2pulumi 0.6.0
