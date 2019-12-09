@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.9.1 of the Linode Terraform Provider
+_(none)_
 
 ---
+
+## 1.2.0 (2019-12-09)
+* Upgrade to v1.9.1 of the Linode Terraform Provider
 
 ## 1.1.0 (2019-12-04)
 * Upgrade to support go 1.13.x
