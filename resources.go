@@ -87,6 +87,21 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"LINODE_TOKEN", "LINODE_API_TOKEN"},
 				},
 			},
+			"url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_URL"},
+				},
+			},
+			"ua_prefix": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_UA_PREFIX"},
+				},
+			},
+			"api_version": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_API_VERSION"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{

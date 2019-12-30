@@ -39,11 +39,17 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if api_version is None:
+                api_version = utilities.get_env('LINODE_API_VERSION')
             __props__['api_version'] = api_version
             if token is None:
                 token = utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
             __props__['token'] = token
+            if ua_prefix is None:
+                ua_prefix = utilities.get_env('LINODE_UA_PREFIX')
             __props__['ua_prefix'] = ua_prefix
+            if url is None:
+                url = utilities.get_env('LINODE_URL')
             __props__['url'] = url
         super(Provider, __self__).__init__(
             'linode',

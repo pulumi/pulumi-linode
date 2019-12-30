@@ -12,7 +12,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
         /// </summary>
-        public static string? ApiVersion { get; set; } = __config.Get("apiVersion");
+        public static string? ApiVersion { get; set; } = __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION");
 
         /// <summary>
         /// The token that allows you access to your Linode account
@@ -22,12 +22,12 @@ namespace Pulumi.Linode
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
         /// </summary>
-        public static string? UaPrefix { get; set; } = __config.Get("uaPrefix");
+        public static string? UaPrefix { get; set; } = __config.Get("uaPrefix") ?? Utilities.GetEnv("LINODE_UA_PREFIX");
 
         /// <summary>
         /// The HTTP(S) API address of the Linode API to use.
         /// </summary>
-        public static string? Url { get; set; } = __config.Get("url");
+        public static string? Url { get; set; } = __config.Get("url") ?? Utilities.GetEnv("LINODE_URL");
 
     }
     namespace ConfigTypes

@@ -70,7 +70,10 @@ namespace Pulumi.Linode
 
         public ProviderArgs()
         {
+            ApiVersion = Utilities.GetEnv("LINODE_API_VERSION");
             Token = Utilities.GetEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
+            UaPrefix = Utilities.GetEnv("LINODE_UA_PREFIX");
+            Url = Utilities.GetEnv("LINODE_URL");
         }
     }
 }

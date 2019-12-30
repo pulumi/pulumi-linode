@@ -9,7 +9,7 @@ let __config = new pulumi.Config("linode");
 /**
  * An HTTP User-Agent Prefix to prepend in API requests.
  */
-export let apiVersion: string | undefined = __config.get("apiVersion");
+export let apiVersion: string | undefined = __config.get("apiVersion") || utilities.getEnv("LINODE_API_VERSION");
 /**
  * The token that allows you access to your Linode account
  */
@@ -17,8 +17,8 @@ export let token: string | undefined = __config.get("token") || utilities.getEnv
 /**
  * An HTTP User-Agent Prefix to prepend in API requests.
  */
-export let uaPrefix: string | undefined = __config.get("uaPrefix");
+export let uaPrefix: string | undefined = __config.get("uaPrefix") || utilities.getEnv("LINODE_UA_PREFIX");
 /**
  * The HTTP(S) API address of the Linode API to use.
  */
-export let url: string | undefined = __config.get("url");
+export let url: string | undefined = __config.get("url") || utilities.getEnv("LINODE_URL");

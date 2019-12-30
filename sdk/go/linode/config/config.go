@@ -10,7 +10,14 @@ import (
 
 // An HTTP User-Agent Prefix to prepend in API requests.
 func GetApiVersion(ctx *pulumi.Context) string {
-	return config.Get(ctx, "linode:apiVersion")
+	v, err := config.Try(ctx, "linode:apiVersion")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "LINODE_API_VERSION").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The token that allows you access to your Linode account
@@ -27,10 +34,24 @@ func GetToken(ctx *pulumi.Context) string {
 
 // An HTTP User-Agent Prefix to prepend in API requests.
 func GetUaPrefix(ctx *pulumi.Context) string {
-	return config.Get(ctx, "linode:uaPrefix")
+	v, err := config.Try(ctx, "linode:uaPrefix")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "LINODE_UA_PREFIX").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The HTTP(S) API address of the Linode API to use.
 func GetUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "linode:url")
+	v, err := config.Try(ctx, "linode:url")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "LINODE_URL").(string); ok {
+		return dv
+	}
+	return v
 }
