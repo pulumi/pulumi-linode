@@ -87,6 +87,21 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"LINODE_TOKEN", "LINODE_API_TOKEN"},
 				},
 			},
+			"url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_URL"},
+				},
+			},
+			"ua_prefix": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_UA_PREFIX"},
+				},
+			},
+			"api_version": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LINODE_API_VERSION"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
@@ -192,7 +207,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

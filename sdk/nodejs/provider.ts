@@ -40,10 +40,10 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["apiVersion"] = args ? args.apiVersion : undefined;
+            inputs["apiVersion"] = (args ? args.apiVersion : undefined) || utilities.getEnv("LINODE_API_VERSION");
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
-            inputs["uaPrefix"] = args ? args.uaPrefix : undefined;
-            inputs["url"] = args ? args.url : undefined;
+            inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) || utilities.getEnv("LINODE_UA_PREFIX");
+            inputs["url"] = (args ? args.url : undefined) || utilities.getEnv("LINODE_URL");
         }
         if (!opts) {
             opts = {}
