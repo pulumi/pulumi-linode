@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
  */
-export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> & GetDomainResult {
+export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -68,12 +68,10 @@ export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainResult> = pulumi.runtime.invoke("linode:index/getDomain:getDomain", {
+    return pulumi.runtime.invoke("linode:index/getDomain:getDomain", {
         "domain": args.domain,
         "id": args.id,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

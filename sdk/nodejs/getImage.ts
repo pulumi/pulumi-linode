@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
  */
-export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
+export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     if (!opts) {
         opts = {}
     }
@@ -54,11 +54,9 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImageResult> = pulumi.runtime.invoke("linode:index/getImage:getImage", {
+    return pulumi.runtime.invoke("linode:index/getImage:getImage", {
         "id": args.id,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
