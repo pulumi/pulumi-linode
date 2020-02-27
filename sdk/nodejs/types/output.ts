@@ -31,6 +31,15 @@ export interface GetProfileReferrals {
     url: string;
 }
 
+export interface GetStackScriptUserDefinedField {
+    default: string;
+    example: string;
+    label: string;
+    manyOf: string;
+    name: string;
+    oneOf: string;
+}
+
 export interface InstanceAlerts {
     cpu: number;
     io: number;

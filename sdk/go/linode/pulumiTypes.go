@@ -2958,6 +2958,122 @@ func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func (v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
 }
 
+type GetStackScriptUserDefinedField struct {
+	Default string `pulumi:"default"`
+	Example string `pulumi:"example"`
+	Label string `pulumi:"label"`
+	ManyOf string `pulumi:"manyOf"`
+	Name string `pulumi:"name"`
+	OneOf string `pulumi:"oneOf"`
+}
+
+type GetStackScriptUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToGetStackScriptUserDefinedFieldOutput() GetStackScriptUserDefinedFieldOutput
+	ToGetStackScriptUserDefinedFieldOutputWithContext(context.Context) GetStackScriptUserDefinedFieldOutput
+}
+
+type GetStackScriptUserDefinedFieldArgs struct {
+	Default pulumi.StringInput `pulumi:"default"`
+	Example pulumi.StringInput `pulumi:"example"`
+	Label pulumi.StringInput `pulumi:"label"`
+	ManyOf pulumi.StringInput `pulumi:"manyOf"`
+	Name pulumi.StringInput `pulumi:"name"`
+	OneOf pulumi.StringInput `pulumi:"oneOf"`
+}
+
+func (GetStackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptUserDefinedField)(nil)).Elem()
+}
+
+func (i GetStackScriptUserDefinedFieldArgs) ToGetStackScriptUserDefinedFieldOutput() GetStackScriptUserDefinedFieldOutput {
+	return i.ToGetStackScriptUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptUserDefinedFieldArgs) ToGetStackScriptUserDefinedFieldOutputWithContext(ctx context.Context) GetStackScriptUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptUserDefinedFieldOutput)
+}
+
+type GetStackScriptUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetStackScriptUserDefinedFieldArrayOutput() GetStackScriptUserDefinedFieldArrayOutput
+	ToGetStackScriptUserDefinedFieldArrayOutputWithContext(context.Context) GetStackScriptUserDefinedFieldArrayOutput
+}
+
+type GetStackScriptUserDefinedFieldArray []GetStackScriptUserDefinedFieldInput
+
+func (GetStackScriptUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptUserDefinedField)(nil)).Elem()
+}
+
+func (i GetStackScriptUserDefinedFieldArray) ToGetStackScriptUserDefinedFieldArrayOutput() GetStackScriptUserDefinedFieldArrayOutput {
+	return i.ToGetStackScriptUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptUserDefinedFieldArray) ToGetStackScriptUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetStackScriptUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptUserDefinedFieldArrayOutput)
+}
+
+type GetStackScriptUserDefinedFieldOutput struct { *pulumi.OutputState }
+
+func (GetStackScriptUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptUserDefinedField)(nil)).Elem()
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) ToGetStackScriptUserDefinedFieldOutput() GetStackScriptUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) ToGetStackScriptUserDefinedFieldOutputWithContext(ctx context.Context) GetStackScriptUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
+	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
+}
+
+type GetStackScriptUserDefinedFieldArrayOutput struct { *pulumi.OutputState}
+
+func (GetStackScriptUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptUserDefinedField)(nil)).Elem()
+}
+
+func (o GetStackScriptUserDefinedFieldArrayOutput) ToGetStackScriptUserDefinedFieldArrayOutput() GetStackScriptUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetStackScriptUserDefinedFieldArrayOutput) ToGetStackScriptUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetStackScriptUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetStackScriptUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetStackScriptUserDefinedField {
+		return vs[0].([]GetStackScriptUserDefinedField)[vs[1].(int)]
+	}).(GetStackScriptUserDefinedFieldOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceAlertsOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsPtrOutput{})
@@ -3002,4 +3118,6 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
+	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
 }

@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface GetStackScriptUserDefinedField {
+    default?: string;
+    example?: string;
+    label?: string;
+    manyOf?: string;
+    name?: string;
+    oneOf?: string;
+}
+
 export interface InstanceAlerts {
     cpu?: pulumi.Input<number>;
     io?: pulumi.Input<number>;

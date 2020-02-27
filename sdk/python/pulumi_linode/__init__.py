@@ -26,6 +26,7 @@ from .token import *
 from .volume import *
 from .get_account import *
 from .get_domain import *
+from .get_domain_record import *
 from .get_image import *
 from .get_instance_type import *
 from .get_networking_ip import *
@@ -33,5 +34,7 @@ from .get_object_storage_cluster import *
 from .get_profile import *
 from .get_region import *
 from .get_ssh_key import *
+from .get_stack_script import *
 from .get_user import *
+from .get_volume import *
 from .provider import *
