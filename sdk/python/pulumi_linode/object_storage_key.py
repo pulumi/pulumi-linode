@@ -11,28 +11,34 @@ from . import utilities, tables
 
 class ObjectStorageKey(pulumi.CustomResource):
     access_key: pulumi.Output[str]
+    """
+    This keypair's access key. This is not secret.
+    """
     label: pulumi.Output[str]
     """
     The label given to this key. For display purposes only.
     """
     secret_key: pulumi.Output[str]
+    """
+    This keypair's secret key.
+    """
     def __init__(__self__, resource_name, opts=None, label=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
-        
+
         ## Attributes
-        
+
         This resource exports the following attributes:
-        
+
         * `access_key` - This keypair's access key. This is not secret.
-        
+
         * `secret_key` - This keypair's secret key.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,17 +73,18 @@ class ObjectStorageKey(pulumi.CustomResource):
         """
         Get an existing ObjectStorageKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_key: This keypair's access key. This is not secret.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.markdown.
+        :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_key"] = access_key
         __props__["label"] = label
         __props__["secret_key"] = secret_key

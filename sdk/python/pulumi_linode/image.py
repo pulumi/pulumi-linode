@@ -11,8 +11,17 @@ from . import utilities, tables
 
 class Image(pulumi.CustomResource):
     created: pulumi.Output[str]
+    """
+    When this Image was created.
+    """
     created_by: pulumi.Output[str]
+    """
+    The name of the User who created this Image.
+    """
     deprecated: pulumi.Output[bool]
+    """
+    Whether or not this Image is deprecated. Will only be True for deprecated public Images.
+    """
     description: pulumi.Output[str]
     """
     A detailed description of this Image.
@@ -22,7 +31,13 @@ class Image(pulumi.CustomResource):
     The ID of the Linode Disk that this Image will be created from.
     """
     expiry: pulumi.Output[str]
+    """
+    Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+    """
     is_public: pulumi.Output[bool]
+    """
+    True if the Image is public.
+    """
     label: pulumi.Output[str]
     """
     A short description of the Image. Labels cannot contain special characters.
@@ -32,44 +47,54 @@ class Image(pulumi.CustomResource):
     The ID of the Linode that this Image will be created from.
     """
     size: pulumi.Output[float]
+    """
+    The minimum size this Image needs to deploy. Size is in MB.
+    """
     type: pulumi.Output[str]
+    """
+    How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+    a deleted Linode.
+    """
     vendor: pulumi.Output[str]
+    """
+    The upstream distribution vendor. Nil for private Images.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, disk_id=None, label=None, linode_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
-        
+
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
-        
+
         ## Attributes
-        
+
         This resource exports the following attributes:
-        
+
         * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-        
+
         * `created` - When this Image was created.
-        
+
         * `created_by` - The name of the User who created this Image.
-        
+
         * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
-        
+
         * `is_public` - True if the Image is public.
-        
+
         * `size` - The minimum size this Image needs to deploy. Size is in MB.
-        
+
         * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
-        
+
         * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-        
+
         * `vendor` - The upstream distribution vendor. Nil for private Images.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.
         :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,20 +142,28 @@ class Image(pulumi.CustomResource):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created: When this Image was created.
+        :param pulumi.Input[str] created_by: The name of the User who created this Image.
+        :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
         :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.markdown.
+        :param pulumi.Input[float] size: The minimum size this Image needs to deploy. Size is in MB.
+        :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+               a deleted Linode.
+        :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created"] = created
         __props__["created_by"] = created_by
         __props__["deprecated"] = deprecated

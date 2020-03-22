@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class SshKey(pulumi.CustomResource):
     created: pulumi.Output[str]
+    """
+    The date this key was added.
+    """
     label: pulumi.Output[str]
     """
     A label for the SSH Key.
@@ -23,19 +26,19 @@ class SshKey(pulumi.CustomResource):
         """
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
-        
+
         ## Attributes
-        
+
         This resource exports the following attributes:
-        
+
         * `created` - The date this SSH Key was created.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,18 +75,18 @@ class SshKey(pulumi.CustomResource):
         """
         Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created: The date this key was added.
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created"] = created
         __props__["label"] = label
         __props__["ssh_key"] = ssh_key

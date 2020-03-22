@@ -9,8 +9,8 @@ import (
 )
 
 // `.getRegion` provides details about a specific Linode region.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	var rv GetRegionResult
 	err := ctx.Invoke("linode:index/getRegion:getRegion", args, &rv, opts...)

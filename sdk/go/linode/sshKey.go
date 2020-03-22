@@ -13,14 +13,14 @@ import (
 
 // Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
 // For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
-// 
+//
 // ## Attributes
-// 
+//
 // This resource exports the following attributes:
-// 
+//
 // * `created` - The date this SSH Key was created.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.md.
 type SshKey struct {
 	pulumi.CustomResourceState
 

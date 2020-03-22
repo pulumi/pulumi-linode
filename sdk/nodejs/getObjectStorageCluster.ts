@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * 
  * * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
  */
 export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> & GetObjectStorageClusterResult {
     if (!opts) {

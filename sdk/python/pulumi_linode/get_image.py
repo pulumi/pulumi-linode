@@ -68,34 +68,36 @@ class AwaitableGetImageResult(GetImageResult):
 def get_image(id=None,opts=None):
     """
     Provides information about a Linode image
-    
-    ## Attributes
-    
-    The Linode Image resource exports the following attributes:
-    
-    * `label` - A short description of the Image.
-    
-    * `created` - When this Image was created.
-    
-    * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-    
-    * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-    
-    * `description` - A detailed description of this Image.
-    
-    * `is_public` - True if the Image is public.
-    
-    * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-    
-    * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
-    
-    * `vendor` - The upstream distribution vendor. `None` for private Images. 
-    
-    :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
+    ## Attributes
+
+    The Linode Image resource exports the following attributes:
+
+    * `label` - A short description of the Image.
+
+    * `created` - When this Image was created.
+
+    * `created_by` - The name of the User who created this Image, or "linode" for official Images.
+
+    * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+
+    * `description` - A detailed description of this Image.
+
+    * `is_public` - True if the Image is public.
+
+    * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
+
+    * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
+
+    * `vendor` - The upstream distribution vendor. `None` for private Images. 
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
+
+
+    :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
     """
     __args__ = dict()
+
 
     __args__['id'] = id
     if opts is None:

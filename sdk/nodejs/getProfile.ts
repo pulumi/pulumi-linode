@@ -56,7 +56,7 @@ import * as utilities from "./utilities";
  * 
  * * `referrals.0.url` - The referral URL.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.md.
  */
 export function getProfile(opts?: pulumi.InvokeOptions): Promise<GetProfileResult> & GetProfileResult {
     if (!opts) {

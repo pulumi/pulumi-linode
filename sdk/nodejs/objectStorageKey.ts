@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * 
  * * `secretKey` - This keypair's secret key.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.md.
  */
 export class ObjectStorageKey extends pulumi.CustomResource {
     /**

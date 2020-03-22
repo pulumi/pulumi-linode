@@ -257,9 +257,6 @@ export interface InstanceDisk {
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
     authorizedUsers?: string[];
-    /**
-     * <elided>
-     */
     filesystem: string;
     /**
      * The ID of the disk in the Linode API.
@@ -274,9 +271,6 @@ export interface InstanceDisk {
      */
     label: string;
     readOnly: boolean;
-    /**
-     * <elided>
-     */
     rootPass?: string;
     /**
      * The size of the Disk in MB.

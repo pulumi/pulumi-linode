@@ -12,16 +12,16 @@ import (
 )
 
 // Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
-// 
+//
 // ## Attributes
-// 
+//
 // This resource exports the following attributes:
-// 
+//
 // * `accessKey` - This keypair's access key. This is not secret.
-// 
+//
 // * `secretKey` - This keypair's secret key.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.md.
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 

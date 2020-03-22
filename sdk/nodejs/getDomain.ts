@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  * 
  * * `tags` - An array of tags applied to this object.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.md.
  */
 export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> & GetDomainResult {
     args = args || {};

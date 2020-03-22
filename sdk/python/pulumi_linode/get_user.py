@@ -13,10 +13,16 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, email=None, restricted=None, ssh_keys=None, username=None, id=None):
+    def __init__(__self__, email=None, id=None, restricted=None, ssh_keys=None, username=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")
         __self__.restricted = restricted
@@ -26,12 +32,6 @@ class GetUserResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         __self__.username = username
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,30 +39,32 @@ class AwaitableGetUserResult(GetUserResult):
             yield self
         return GetUserResult(
             email=self.email,
+            id=self.id,
             restricted=self.restricted,
             ssh_keys=self.ssh_keys,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_user(username=None,opts=None):
     """
     Provides information about a Linode user
-    
-    ## Attributes
-    
-    The Linode User resource exports the following attributes:
-    
-    * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-    
-    * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-    
-    * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
-    
-    :param str username: The unique username of this User.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.markdown.
+    ## Attributes
+
+    The Linode User resource exports the following attributes:
+
+    * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+
+    * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
+
+    * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.md.
+
+
+    :param str username: The unique username of this User.
     """
     __args__ = dict()
+
 
     __args__['username'] = username
     if opts is None:
@@ -73,7 +75,7 @@ def get_user(username=None,opts=None):
 
     return AwaitableGetUserResult(
         email=__ret__.get('email'),
+        id=__ret__.get('id'),
         restricted=__ret__.get('restricted'),
         ssh_keys=__ret__.get('sshKeys'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

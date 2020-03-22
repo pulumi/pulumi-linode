@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  * 
  * * `region` - The Region this IP address resides in.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.md.
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> & GetNetworkingIpResult {
     if (!opts) {

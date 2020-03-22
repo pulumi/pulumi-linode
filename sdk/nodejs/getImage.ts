@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  * 
  * * `vendor` - The upstream distribution vendor. `None` for private Images. 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
     if (!opts) {

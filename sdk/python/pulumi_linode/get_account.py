@@ -13,7 +13,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, address1=None, address2=None, balance=None, city=None, company=None, country=None, email=None, first_name=None, last_name=None, phone=None, state=None, zip=None, id=None):
+    def __init__(__self__, address1=None, address2=None, balance=None, city=None, company=None, country=None, email=None, first_name=None, id=None, last_name=None, phone=None, state=None, zip=None):
         if address1 and not isinstance(address1, str):
             raise TypeError("Expected argument 'address1' to be a str")
         __self__.address1 = address1
@@ -38,6 +38,12 @@ class GetAccountResult:
         if first_name and not isinstance(first_name, str):
             raise TypeError("Expected argument 'first_name' to be a str")
         __self__.first_name = first_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if last_name and not isinstance(last_name, str):
             raise TypeError("Expected argument 'last_name' to be a str")
         __self__.last_name = last_name
@@ -50,12 +56,6 @@ class GetAccountResult:
         if zip and not isinstance(zip, str):
             raise TypeError("Expected argument 'zip' to be a str")
         __self__.zip = zip
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,49 +70,50 @@ class AwaitableGetAccountResult(GetAccountResult):
             country=self.country,
             email=self.email,
             first_name=self.first_name,
+            id=self.id,
             last_name=self.last_name,
             phone=self.phone,
             state=self.state,
-            zip=self.zip,
-            id=self.id)
+            zip=self.zip)
 
 def get_account(opts=None):
     """
     Provides information about a Linode account.
-    
+
     This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
-    
+
     ## Attributes
-    
+
     The Linode Account resource exports the following attributes:
-    
+
     * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
-    
+
     * `first_name` - The first name of the person associated with this Account.
-    
+
     * `last_name` - The last name of the person associated with this Account.
-    
+
     * `company` - The company name associated with this Account.
-    
+
     * `address_1` - First line of this Account's billing address.
-    
+
     * `address_2` - Second line of this Account's billing address.
-    
+
     * `phone` - The phone number associated with this Account.
-    
+
     * `city` - The city for this Account's billing address.
-    
+
     * `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-    
+
     * `country` - The two-letter country code of this Account's billing address.
-    
+
     * `zip` - The zip code of this Account's billing address.
-    
+
     * `balance` - This Account's balance, in US dollars.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.md.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -129,8 +130,8 @@ def get_account(opts=None):
         country=__ret__.get('country'),
         email=__ret__.get('email'),
         first_name=__ret__.get('firstName'),
+        id=__ret__.get('id'),
         last_name=__ret__.get('lastName'),
         phone=__ret__.get('phone'),
         state=__ret__.get('state'),
-        zip=__ret__.get('zip'),
-        id=__ret__.get('id'))
+        zip=__ret__.get('zip'))

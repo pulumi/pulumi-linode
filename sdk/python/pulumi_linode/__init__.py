@@ -12,18 +12,6 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .domain import *
 from .domain_record import *
-from .image import *
-from .instance import *
-from .node_balancer import *
-from .node_balancer_config import *
-from .node_balancer_node import *
-from .object_storage_bucket import *
-from .object_storage_key import *
-from .rdns import *
-from .ssh_key import *
-from .stack_script import *
-from .token import *
-from .volume import *
 from .get_account import *
 from .get_domain import *
 from .get_domain_record import *
@@ -37,4 +25,16 @@ from .get_ssh_key import *
 from .get_stack_script import *
 from .get_user import *
 from .get_volume import *
+from .image import *
+from .instance import *
+from .node_balancer import *
+from .node_balancer_config import *
+from .node_balancer_node import *
+from .object_storage_bucket import *
+from .object_storage_key import *
 from .provider import *
+from .rdns import *
+from .ssh_key import *
+from .stack_script import *
+from .token import *
+from .volume import *

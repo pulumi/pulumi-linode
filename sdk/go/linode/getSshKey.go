@@ -9,8 +9,8 @@ import (
 )
 
 // `.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	var rv LookupSshKeyResult
 	err := ctx.Invoke("linode:index/getSshKey:getSshKey", args, &rv, opts...)

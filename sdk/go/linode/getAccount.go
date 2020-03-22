@@ -9,38 +9,38 @@ import (
 )
 
 // Provides information about a Linode account.
-// 
+//
 // This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
-// 
+//
 // ## Attributes
-// 
+//
 // The Linode Account resource exports the following attributes:
-// 
+//
 // * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
-// 
+//
 // * `firstName` - The first name of the person associated with this Account.
-// 
+//
 // * `lastName` - The last name of the person associated with this Account.
-// 
+//
 // * `company` - The company name associated with this Account.
-// 
+//
 // * `address1` - First line of this Account's billing address.
-// 
+//
 // * `address2` - Second line of this Account's billing address.
-// 
+//
 // * `phone` - The phone number associated with this Account.
-// 
+//
 // * `city` - The city for this Account's billing address.
-// 
+//
 // * `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-// 
+//
 // * `country` - The two-letter country code of this Account's billing address.
-// 
+//
 // * `zip` - The zip code of this Account's billing address.
-// 
+//
 // * `balance` - This Account's balance, in US dollars.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.md.
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	var rv GetAccountResult
 	err := ctx.Invoke("linode:index/getAccount:getAccount", nil, &rv, opts...)

@@ -186,7 +186,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"linode_stackscript":   {Tok: makeDataSource(mainMod, "getStackScript")},
 			"linode_domain_record": {Tok: makeDataSource(mainMod, "getDomainRecord")},
-			"linode_volume": {Tok: makeDataSource(mainMod, "getVolume")},
+			"linode_volume":        {Tok: makeDataSource(mainMod, "getVolume")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -206,7 +206,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.9.1-preview",
+				"Pulumi":                       "1.12.1-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

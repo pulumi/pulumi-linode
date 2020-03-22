@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_node.html.markdown.
- */
 export class NodeBalancerNode extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancerNode resource's state with the given name, ID, and optional extra

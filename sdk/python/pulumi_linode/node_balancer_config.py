@@ -23,6 +23,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
     How many times to attempt a check before considering a backend to be down. (1-30)
     """
     check_body: pulumi.Output[str]
+    """
+    This value must be present in the response body of the check in order for it to pass. If this value is not present in
+    the response body of a check request, the backend is considered to be down
+    """
     check_interval: pulumi.Output[float]
     """
     How often, in seconds, to check that backends are up and serving requests.
@@ -61,7 +65,13 @@ class NodeBalancerConfig(pulumi.CustomResource):
     The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
     """
     ssl_commonname: pulumi.Output[str]
+    """
+    The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+    """
     ssl_fingerprint: pulumi.Output[str]
+    """
+    The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+    """
     ssl_key: pulumi.Output[str]
     """
     The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
@@ -73,12 +83,13 @@ class NodeBalancerConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, algorithm=None, check=None, check_attempts=None, check_body=None, check_interval=None, check_passive=None, check_path=None, check_timeout=None, cipher_suite=None, nodebalancer_id=None, port=None, protocol=None, ssl_cert=None, ssl_key=None, stickiness=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NodeBalancerConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
         :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
         :param pulumi.Input[float] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
+               the response body of a check request, the backend is considered to be down
         :param pulumi.Input[float] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
@@ -90,8 +101,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,13 +150,15 @@ class NodeBalancerConfig(pulumi.CustomResource):
         """
         Get an existing NodeBalancerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
         :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
         :param pulumi.Input[float] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
+               the response body of a check request, the backend is considered to be down
         :param pulumi.Input[float] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
@@ -157,19 +168,20 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[float] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        :param pulumi.Input[str] ssl_commonname: The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        :param pulumi.Input[str] ssl_fingerprint: The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
-        
+
         The **node_status** object supports the following:
-        
+
           * `status_down` (`pulumi.Input[float]`)
           * `status_up` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["algorithm"] = algorithm
         __props__["check"] = check
         __props__["check_attempts"] = check_attempts
