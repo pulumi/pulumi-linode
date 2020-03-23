@@ -31,6 +31,9 @@ class NodeBalancerNode(pulumi.CustomResource):
     The ID of the NodeBalancer to access.
     """
     status: pulumi.Output[str]
+    """
+    The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+    """
     weight: pulumi.Output[float]
     """
     Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
@@ -38,7 +41,6 @@ class NodeBalancerNode(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, config_id=None, label=None, mode=None, nodebalancer_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NodeBalancerNode resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
@@ -47,8 +49,6 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
         :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[float] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_node.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         """
         Get an existing NodeBalancerNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,13 +102,13 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
         :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         :param pulumi.Input[float] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer_node.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["config_id"] = config_id
         __props__["label"] = label

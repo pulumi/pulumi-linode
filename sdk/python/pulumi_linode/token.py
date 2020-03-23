@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class Token(pulumi.CustomResource):
     created: pulumi.Output[str]
+    """
+    The date and time this token was created.
+    """
     expiry: pulumi.Output[str]
     """
     When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
@@ -24,17 +27,17 @@ class Token(pulumi.CustomResource):
     The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
     """
     token: pulumi.Output[str]
+    """
+    The token used to access the API.
+    """
     def __init__(__self__, resource_name, opts=None, expiry=None, label=None, scopes=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Token resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         :param pulumi.Input[str] label: A label for the Token.
         :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/token.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +74,20 @@ class Token(pulumi.CustomResource):
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created: The date and time this token was created.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         :param pulumi.Input[str] label: A label for the Token.
         :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/token.html.markdown.
+        :param pulumi.Input[str] token: The token used to access the API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created"] = created
         __props__["expiry"] = expiry
         __props__["label"] = label

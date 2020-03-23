@@ -80,45 +80,47 @@ class AwaitableGetDomainResult(GetDomainResult):
 def get_domain(domain=None,id=None,opts=None):
     """
     Provides information about a Linode domain.
-    
+
     ## Attributes
-    
+
     The Linode Domain resource exports the following attributes:
-    
+
     * `id` - The unique ID of this Domain.
-    
+
     * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-    
+
     * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave)
-    
+
     * `group` - The group this Domain belongs to.
-    
+
     * `status` - Used to control whether this Domain is currently being rendered.
-    
+
     * `description` - A description for this Domain.
-    
+
     * `master_ips` - The IP addresses representing the master DNS for this Domain.
-    
+
     * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-    
+
     * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-    
+
     * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
     *
     * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-    
+
     * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-    
+
     * `soa_email` - Start of Authority email address.
-    
+
     * `tags` - An array of tags applied to this object.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.md.
+
+
     :param str domain: The unique domain name of the Domain record to query.
     :param str id: The unique numeric ID of the Domain record to query.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domain'] = domain
     __args__['id'] = id

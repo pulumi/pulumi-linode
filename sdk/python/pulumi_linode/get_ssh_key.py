@@ -13,22 +13,22 @@ class GetSshKeyResult:
     """
     A collection of values returned by getSshKey.
     """
-    def __init__(__self__, created=None, label=None, ssh_key=None, id=None):
+    def __init__(__self__, created=None, id=None, label=None, ssh_key=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         __self__.created = created
-        if label and not isinstance(label, str):
-            raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
-        if ssh_key and not isinstance(ssh_key, str):
-            raise TypeError("Expected argument 'ssh_key' to be a str")
-        __self__.ssh_key = ssh_key
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if label and not isinstance(label, str):
+            raise TypeError("Expected argument 'label' to be a str")
+        __self__.label = label
+        if ssh_key and not isinstance(ssh_key, str):
+            raise TypeError("Expected argument 'ssh_key' to be a str")
+        __self__.ssh_key = ssh_key
 class AwaitableGetSshKeyResult(GetSshKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,18 +36,18 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
             yield self
         return GetSshKeyResult(
             created=self.created,
+            id=self.id,
             label=self.label,
-            ssh_key=self.ssh_key,
-            id=self.id)
+            ssh_key=self.ssh_key)
 
 def get_ssh_key(label=None,opts=None):
     """
     `.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
-    
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
     """
     __args__ = dict()
+
 
     __args__['label'] = label
     if opts is None:
@@ -58,6 +58,6 @@ def get_ssh_key(label=None,opts=None):
 
     return AwaitableGetSshKeyResult(
         created=__ret__.get('created'),
+        id=__ret__.get('id'),
         label=__ret__.get('label'),
-        ssh_key=__ret__.get('sshKey'),
-        id=__ret__.get('id'))
+        ssh_key=__ret__.get('sshKey'))

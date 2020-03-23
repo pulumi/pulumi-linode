@@ -16,8 +16,17 @@ class NodeBalancer(pulumi.CustomResource):
     """
     created: pulumi.Output[str]
     hostname: pulumi.Output[str]
+    """
+    This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+    """
     ipv4: pulumi.Output[str]
+    """
+    The Public IPv4 Address of this NodeBalancer
+    """
     ipv6: pulumi.Output[str]
+    """
+    The Public IPv6 Address of this NodeBalancer
+    """
     label: pulumi.Output[str]
     """
     The label of the Linode NodeBalancer
@@ -35,15 +44,12 @@ class NodeBalancer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, client_conn_throttle=None, label=None, region=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NodeBalancer resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,26 +91,28 @@ class NodeBalancer(pulumi.CustomResource):
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+        :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
+        :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-        
+
         The **transfer** object supports the following:
-        
+
           * `in_` (`pulumi.Input[float]`)
           * `out` (`pulumi.Input[float]`)
           * `total` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/nodebalancer.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["client_conn_throttle"] = client_conn_throttle
         __props__["created"] = created
         __props__["hostname"] = hostname

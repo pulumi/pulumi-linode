@@ -9,20 +9,20 @@ import (
 )
 
 // Provides information about a Linode Object Storage Cluster
-// 
+//
 // ## Attributes
-// 
+//
 // The Linode Object Storage Cluster resource exports the following attributes:
-// 
+//
 // * `domain` - The base URL for this cluster.
-// 
+//
 // * `status` - This cluster's status.
-// 
+//
 // * `region` - The region this cluster is located in.
-// 
+//
 // * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
 func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageClusterResult, error) {
 	var rv GetObjectStorageClusterResult
 	err := ctx.Invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", args, &rv, opts...)

@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  * 
  * * `balance` - This Account's balance, in US dollars.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.md.
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> & GetAccountResult {
     if (!opts) {

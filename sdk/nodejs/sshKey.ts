@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  * 
  * * `created` - The date this SSH Key was created.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.md.
  */
 export class SshKey extends pulumi.CustomResource {
     /**

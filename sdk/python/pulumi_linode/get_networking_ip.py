@@ -13,13 +13,19 @@ class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
     """
-    def __init__(__self__, address=None, gateway=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, subnet_mask=None, type=None, id=None):
+    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, subnet_mask=None, type=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         __self__.address = address
         if gateway and not isinstance(gateway, str):
             raise TypeError("Expected argument 'gateway' to be a str")
         __self__.gateway = gateway
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if linode_id and not isinstance(linode_id, float):
             raise TypeError("Expected argument 'linode_id' to be a float")
         __self__.linode_id = linode_id
@@ -41,12 +47,6 @@ class GetNetworkingIpResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,46 +55,48 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
         return GetNetworkingIpResult(
             address=self.address,
             gateway=self.gateway,
+            id=self.id,
             linode_id=self.linode_id,
             prefix=self.prefix,
             public=self.public,
             rdns=self.rdns,
             region=self.region,
             subnet_mask=self.subnet_mask,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_networking_ip(address=None,opts=None):
     """
     Provides information about a Linode Networking IP Address
-    
-    ## Attributes
-    
-    The Linode Network IP Address resource exports the following attributes:
-    
-    * `address` - The IP address.
-    
-    * `gateway` - The default gateway for this address.
-    
-    * `subnet_mask` - The mask that separates host bits from network bits for this address.
-    
-    * `prefix` - The number of bits set in the subnet mask.
-    
-    * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-    
-    * `public` - Whether this is a public or private IP address.
-    
-    * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-    
-    * `linode_id` - The ID of the Linode this address currently belongs to.
-    
-    * `region` - The Region this IP address resides in.
-    
-    :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.markdown.
+    ## Attributes
+
+    The Linode Network IP Address resource exports the following attributes:
+
+    * `address` - The IP address.
+
+    * `gateway` - The default gateway for this address.
+
+    * `subnet_mask` - The mask that separates host bits from network bits for this address.
+
+    * `prefix` - The number of bits set in the subnet mask.
+
+    * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+
+    * `public` - Whether this is a public or private IP address.
+
+    * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+
+    * `linode_id` - The ID of the Linode this address currently belongs to.
+
+    * `region` - The Region this IP address resides in.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.md.
+
+
+    :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
     """
     __args__ = dict()
+
 
     __args__['address'] = address
     if opts is None:
@@ -106,11 +108,11 @@ def get_networking_ip(address=None,opts=None):
     return AwaitableGetNetworkingIpResult(
         address=__ret__.get('address'),
         gateway=__ret__.get('gateway'),
+        id=__ret__.get('id'),
         linode_id=__ret__.get('linodeId'),
         prefix=__ret__.get('prefix'),
         public=__ret__.get('public'),
         rdns=__ret__.get('rdns'),
         region=__ret__.get('region'),
         subnet_mask=__ret__.get('subnetMask'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

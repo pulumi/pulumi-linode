@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  * 
  * - `tag` - The tag portion of a CAA record.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.md.
  */
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> & GetDomainRecordResult {
     if (!opts) {

@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  * 
  * - `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> & GetVolumeResult {
     if (!opts) {

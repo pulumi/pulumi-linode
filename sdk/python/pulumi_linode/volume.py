@@ -11,6 +11,10 @@ from . import utilities, tables
 
 class Volume(pulumi.CustomResource):
     filesystem_path: pulumi.Output[str]
+    """
+    The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+    Volume label.
+    """
     label: pulumi.Output[str]
     """
     The label of the Linode Volume
@@ -28,6 +32,9 @@ class Volume(pulumi.CustomResource):
     Size of the Volume in GB.
     """
     status: pulumi.Output[str]
+    """
+    The status of the volume, indicating the current readiness state.
+    """
     tags: pulumi.Output[list]
     """
     A list of tags applied to this object. Tags are for organizational purposes only.
@@ -35,17 +42,19 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, label=None, linode_id=None, region=None, size=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
-        
+
         For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
-        
+
         ## Attributes
-        
+
         This resource exports the following attributes:
-        
+
         * `status` - The label of the Linode Volume.
-        
+
         * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
@@ -53,8 +62,6 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[float] size: Size of the Volume in GB.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,21 +102,23 @@ class Volume(pulumi.CustomResource):
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+               Volume label.
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[float] linode_id: The ID of a Linode Instance where the the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[float] size: Size of the Volume in GB.
+        :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
         :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["filesystem_path"] = filesystem_path
         __props__["label"] = label
         __props__["linode_id"] = linode_id

@@ -59,11 +59,13 @@ class DomainRecord(pulumi.CustomResource):
         """
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
-        
+
         ## Attributes
-        
+
         This resource exports no additional attributes.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] domain_id: The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
@@ -78,8 +80,6 @@ class DomainRecord(pulumi.CustomResource):
                - - -
         :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[float] weight: The relative weight of this Record. Higher values are preferred.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,7 +126,7 @@ class DomainRecord(pulumi.CustomResource):
         """
         Get an existing DomainRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,12 +142,11 @@ class DomainRecord(pulumi.CustomResource):
                - - -
         :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[float] weight: The relative weight of this Record. Higher values are preferred.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["domain_id"] = domain_id
         __props__["name"] = name
         __props__["port"] = port

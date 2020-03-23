@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * 
  * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.md.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
     if (!opts) {

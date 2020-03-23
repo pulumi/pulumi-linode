@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  * 
  *   * `default` - The default value. If not specified, this value will be used.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/stackscript.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/stackscript.html.md.
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> & GetStackScriptResult {
     if (!opts) {

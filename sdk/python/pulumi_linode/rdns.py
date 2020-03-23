@@ -21,17 +21,17 @@ class Rdns(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, rdns=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.
-        
+
         Linode RDNS names must have a matching address value in an A or AAAA record.  This A or AAAA name must be resolvable at the time the RDNS resource is being associated.
-        
+
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/docs/v4#operation/updateIP) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/rdns.html.md.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/rdns.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,18 +67,17 @@ class Rdns(pulumi.CustomResource):
         """
         Get an existing Rdns resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/rdns.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["rdns"] = rdns
         return Rdns(resource_name, opts=opts, __props__=__props__)

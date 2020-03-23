@@ -72,39 +72,39 @@ class AwaitableGetDomainRecordResult(GetDomainRecordResult):
 def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     """
     Provides information about a Linode Domain Record.
-    
-    ## Attributes
-    
-    The Linode Volume resource exports the following attributes:
-    
-    - `id` - The unique ID of the Domain Record.
-    
-    - `name` - The name of the Record.
-    
-    - `domain_id` - The associated domain's unique ID.
-    
-    - `type` - The type of Record this is in the DNS system.
-    
-    - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-    
-    - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-    
-    - `priority` - The priority of the target host. Lower values are preferred.
-    
-    - `weight` - The relative weight of this Record. Higher values are preferred.
-    
-    - `port` - The port this Record points to.
-    
-    - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-    
-    - `service` - The service this Record identified. Only valid for SRV records.
-    
-    - `tag` - The tag portion of a CAA record.
-    
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.markdown.
+    ## Attributes
+
+    The Linode Volume resource exports the following attributes:
+
+    - `id` - The unique ID of the Domain Record.
+
+    - `name` - The name of the Record.
+
+    - `domain_id` - The associated domain's unique ID.
+
+    - `type` - The type of Record this is in the DNS system.
+
+    - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+
+    - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+
+    - `priority` - The priority of the target host. Lower values are preferred.
+
+    - `weight` - The relative weight of this Record. Higher values are preferred.
+
+    - `port` - The port this Record points to.
+
+    - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
+
+    - `service` - The service this Record identified. Only valid for SRV records.
+
+    - `tag` - The tag portion of a CAA record.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.md.
     """
     __args__ = dict()
+
 
     __args__['domainId'] = domain_id
     __args__['id'] = id

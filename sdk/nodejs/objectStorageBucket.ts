@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.md.
  */
 export class ObjectStorageBucket extends pulumi.CustomResource {
     /**

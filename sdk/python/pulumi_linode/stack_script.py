@@ -11,8 +11,17 @@ from . import utilities, tables
 
 class StackScript(pulumi.CustomResource):
     created: pulumi.Output[str]
+    """
+    The date this StackScript was created.
+    """
     deployments_active: pulumi.Output[float]
+    """
+    Count of currently active, deployed Linodes created from this StackScript.
+    """
     deployments_total: pulumi.Output[float]
+    """
+    The total number of times this StackScript has been deployed.
+    """
     description: pulumi.Output[str]
     """
     A description for the StackScript.
@@ -38,13 +47,32 @@ class StackScript(pulumi.CustomResource):
     The script to execute when provisioning a new Linode with this StackScript.
     """
     updated: pulumi.Output[str]
+    """
+    The date this StackScript was updated.
+    """
     user_defined_fields: pulumi.Output[list]
+    """
+    This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+    parameters during deployment.
+
+      * `default` (`str`)
+      * `example` (`str`)
+      * `label` (`str`) - The StackScript's label is for display purposes only.
+      * `manyOf` (`str`)
+      * `name` (`str`)
+      * `oneOf` (`str`)
+    """
     user_gravatar_id: pulumi.Output[str]
+    """
+    The Gravatar ID for the User who created the StackScript.
+    """
     username: pulumi.Output[str]
+    """
+    The User who created the StackScript.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, user_defined_fields=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a StackScript resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the StackScript.
@@ -53,17 +81,17 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
-        
+        :param pulumi.Input[list] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+               parameters during deployment.
+
         The **user_defined_fields** object supports the following:
-        
+
           * `default` (`pulumi.Input[str]`)
           * `example` (`pulumi.Input[str]`)
           * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
           * `manyOf` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `oneOf` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,31 +142,38 @@ class StackScript(pulumi.CustomResource):
         """
         Get an existing StackScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created: The date this StackScript was created.
+        :param pulumi.Input[float] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
+        :param pulumi.Input[float] deployments_total: The total number of times this StackScript has been deployed.
         :param pulumi.Input[str] description: A description for the StackScript.
         :param pulumi.Input[list] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
-        
+        :param pulumi.Input[str] updated: The date this StackScript was updated.
+        :param pulumi.Input[list] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+               parameters during deployment.
+        :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
+        :param pulumi.Input[str] username: The User who created the StackScript.
+
         The **user_defined_fields** object supports the following:
-        
+
           * `default` (`pulumi.Input[str]`)
           * `example` (`pulumi.Input[str]`)
           * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
           * `manyOf` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `oneOf` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/stackscript.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created"] = created
         __props__["deployments_active"] = deployments_active
         __props__["deployments_total"] = deployments_total
