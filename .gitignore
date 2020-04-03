@@ -1,4 +1,4 @@
-/vendor/
+**/vendor/
 .pulumi
 **/bin/
 **/obj/
@@ -12,3 +12,4 @@ Pulumi.*.yaml
 yarn.lock
 
 node_modules/
+**/pulumiManifest.go
