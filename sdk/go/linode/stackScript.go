@@ -186,4 +186,3 @@ type StackScriptArgs struct {
 func (StackScriptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackScriptArgs)(nil)).Elem()
 }
-

@@ -12,10 +12,10 @@ import (
 )
 
 type InstanceAlerts struct {
-	Cpu *int `pulumi:"cpu"`
-	Io *int `pulumi:"io"`
-	NetworkIn *int `pulumi:"networkIn"`
-	NetworkOut *int `pulumi:"networkOut"`
+	Cpu           *int `pulumi:"cpu"`
+	Io            *int `pulumi:"io"`
+	NetworkIn     *int `pulumi:"networkIn"`
+	NetworkOut    *int `pulumi:"networkOut"`
 	TransferQuota *int `pulumi:"transferQuota"`
 }
 
@@ -27,10 +27,10 @@ type InstanceAlertsInput interface {
 }
 
 type InstanceAlertsArgs struct {
-	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
-	Io pulumi.IntPtrInput `pulumi:"io"`
-	NetworkIn pulumi.IntPtrInput `pulumi:"networkIn"`
-	NetworkOut pulumi.IntPtrInput `pulumi:"networkOut"`
+	Cpu           pulumi.IntPtrInput `pulumi:"cpu"`
+	Io            pulumi.IntPtrInput `pulumi:"io"`
+	NetworkIn     pulumi.IntPtrInput `pulumi:"networkIn"`
+	NetworkOut    pulumi.IntPtrInput `pulumi:"networkOut"`
 	TransferQuota pulumi.IntPtrInput `pulumi:"transferQuota"`
 }
 
@@ -63,7 +63,8 @@ type InstanceAlertsPtrInput interface {
 
 type instanceAlertsPtrType InstanceAlertsArgs
 
-func InstanceAlertsPtr(v *InstanceAlertsArgs) InstanceAlertsPtrInput {	return (*instanceAlertsPtrType)(v)
+func InstanceAlertsPtr(v *InstanceAlertsArgs) InstanceAlertsPtrInput {
+	return (*instanceAlertsPtrType)(v)
 }
 
 func (*instanceAlertsPtrType) ElementType() reflect.Type {
@@ -78,7 +79,7 @@ func (i *instanceAlertsPtrType) ToInstanceAlertsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAlertsPtrOutput)
 }
 
-type InstanceAlertsOutput struct { *pulumi.OutputState }
+type InstanceAlertsOutput struct{ *pulumi.OutputState }
 
 func (InstanceAlertsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceAlerts)(nil)).Elem()
@@ -102,26 +103,26 @@ func (o InstanceAlertsOutput) ToInstanceAlertsPtrOutputWithContext(ctx context.C
 	}).(InstanceAlertsPtrOutput)
 }
 func (o InstanceAlertsOutput) Cpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsOutput) Io() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsOutput) NetworkIn() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsOutput) NetworkOut() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsOutput) TransferQuota() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
 }
 
-type InstanceAlertsPtrOutput struct { *pulumi.OutputState}
+type InstanceAlertsPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceAlertsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceAlerts)(nil)).Elem()
@@ -136,31 +137,31 @@ func (o InstanceAlertsPtrOutput) ToInstanceAlertsPtrOutputWithContext(ctx contex
 }
 
 func (o InstanceAlertsPtrOutput) Elem() InstanceAlertsOutput {
-	return o.ApplyT(func (v *InstanceAlerts) InstanceAlerts { return *v }).(InstanceAlertsOutput)
+	return o.ApplyT(func(v *InstanceAlerts) InstanceAlerts { return *v }).(InstanceAlertsOutput)
 }
 
 func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsPtrOutput) Io() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsPtrOutput) NetworkIn() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
 }
 
 type InstanceBackups struct {
-	Enabled *bool `pulumi:"enabled"`
+	Enabled  *bool                    `pulumi:"enabled"`
 	Schedule *InstanceBackupsSchedule `pulumi:"schedule"`
 }
 
@@ -172,7 +173,7 @@ type InstanceBackupsInput interface {
 }
 
 type InstanceBackupsArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled  pulumi.BoolPtrInput             `pulumi:"enabled"`
 	Schedule InstanceBackupsSchedulePtrInput `pulumi:"schedule"`
 }
 
@@ -205,7 +206,8 @@ type InstanceBackupsPtrInput interface {
 
 type instanceBackupsPtrType InstanceBackupsArgs
 
-func InstanceBackupsPtr(v *InstanceBackupsArgs) InstanceBackupsPtrInput {	return (*instanceBackupsPtrType)(v)
+func InstanceBackupsPtr(v *InstanceBackupsArgs) InstanceBackupsPtrInput {
+	return (*instanceBackupsPtrType)(v)
 }
 
 func (*instanceBackupsPtrType) ElementType() reflect.Type {
@@ -220,7 +222,7 @@ func (i *instanceBackupsPtrType) ToInstanceBackupsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsPtrOutput)
 }
 
-type InstanceBackupsOutput struct { *pulumi.OutputState }
+type InstanceBackupsOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackupsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceBackups)(nil)).Elem()
@@ -244,14 +246,14 @@ func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context
 	}).(InstanceBackupsPtrOutput)
 }
 func (o InstanceBackupsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o InstanceBackupsOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func (v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
+	return o.ApplyT(func(v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
 }
 
-type InstanceBackupsPtrOutput struct { *pulumi.OutputState}
+type InstanceBackupsPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackupsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceBackups)(nil)).Elem()
@@ -266,19 +268,19 @@ func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutputWithContext(ctx cont
 }
 
 func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
-	return o.ApplyT(func (v *InstanceBackups) InstanceBackups { return *v }).(InstanceBackupsOutput)
+	return o.ApplyT(func(v *InstanceBackups) InstanceBackups { return *v }).(InstanceBackupsOutput)
 }
 
 func (o InstanceBackupsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o InstanceBackupsPtrOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func (v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
+	return o.ApplyT(func(v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
 }
 
 type InstanceBackupsSchedule struct {
-	Day *string `pulumi:"day"`
+	Day    *string `pulumi:"day"`
 	Window *string `pulumi:"window"`
 }
 
@@ -290,7 +292,7 @@ type InstanceBackupsScheduleInput interface {
 }
 
 type InstanceBackupsScheduleArgs struct {
-	Day pulumi.StringPtrInput `pulumi:"day"`
+	Day    pulumi.StringPtrInput `pulumi:"day"`
 	Window pulumi.StringPtrInput `pulumi:"window"`
 }
 
@@ -323,7 +325,8 @@ type InstanceBackupsSchedulePtrInput interface {
 
 type instanceBackupsSchedulePtrType InstanceBackupsScheduleArgs
 
-func InstanceBackupsSchedulePtr(v *InstanceBackupsScheduleArgs) InstanceBackupsSchedulePtrInput {	return (*instanceBackupsSchedulePtrType)(v)
+func InstanceBackupsSchedulePtr(v *InstanceBackupsScheduleArgs) InstanceBackupsSchedulePtrInput {
+	return (*instanceBackupsSchedulePtrType)(v)
 }
 
 func (*instanceBackupsSchedulePtrType) ElementType() reflect.Type {
@@ -338,7 +341,7 @@ func (i *instanceBackupsSchedulePtrType) ToInstanceBackupsSchedulePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsSchedulePtrOutput)
 }
 
-type InstanceBackupsScheduleOutput struct { *pulumi.OutputState }
+type InstanceBackupsScheduleOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackupsScheduleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceBackupsSchedule)(nil)).Elem()
@@ -362,14 +365,14 @@ func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutputWithCon
 	}).(InstanceBackupsSchedulePtrOutput)
 }
 func (o InstanceBackupsScheduleOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceBackupsScheduleOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
 }
 
-type InstanceBackupsSchedulePtrOutput struct { *pulumi.OutputState}
+type InstanceBackupsSchedulePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackupsSchedulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceBackupsSchedule)(nil)).Elem()
@@ -384,15 +387,15 @@ func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutputWith
 }
 
 func (o InstanceBackupsSchedulePtrOutput) Elem() InstanceBackupsScheduleOutput {
-	return o.ApplyT(func (v *InstanceBackupsSchedule) InstanceBackupsSchedule { return *v }).(InstanceBackupsScheduleOutput)
+	return o.ApplyT(func(v *InstanceBackupsSchedule) InstanceBackupsSchedule { return *v }).(InstanceBackupsScheduleOutput)
 }
 
 func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
 }
 
 type InstanceConfig struct {
@@ -477,7 +480,7 @@ func (i InstanceConfigArray) ToInstanceConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigArrayOutput)
 }
 
-type InstanceConfigOutput struct { *pulumi.OutputState }
+type InstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfig)(nil)).Elem()
@@ -493,50 +496,50 @@ func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Cont
 
 // - Arbitrary user comments about this `config`.
 func (o InstanceConfigOutput) Comments() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *string { return v.Comments }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *string { return v.Comments }).(pulumi.StringPtrOutput)
 }
 
 // A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 func (o InstanceConfigOutput) Devices() InstanceConfigDevicesPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
 }
 
 // Helpers enabled when booting to this Linode Config.
 func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
 // - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
 
 // The Config's label for display purposes.  Also used by `bootConfigLabel`.
 func (o InstanceConfigOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceConfig) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceConfig) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // - Defaults to the total RAM of the Linode
 func (o InstanceConfigOutput) MemoryLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
 // - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
 func (o InstanceConfigOutput) RootDevice() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *string { return v.RootDevice }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *string { return v.RootDevice }).(pulumi.StringPtrOutput)
 }
 
 // - Defines the state of your Linode after booting. Defaults to `"default"`.
 func (o InstanceConfigOutput) RunLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *string { return v.RunLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *string { return v.RunLevel }).(pulumi.StringPtrOutput)
 }
 
 // - Controls the virtualization mode. Defaults to `"paravirt"`.
 func (o InstanceConfigOutput) VirtMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfig) *string { return v.VirtMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfig) *string { return v.VirtMode }).(pulumi.StringPtrOutput)
 }
 
-type InstanceConfigArrayOutput struct { *pulumi.OutputState}
+type InstanceConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceConfig)(nil)).Elem()
@@ -551,7 +554,7 @@ func (o InstanceConfigArrayOutput) ToInstanceConfigArrayOutputWithContext(ctx co
 }
 
 func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfig {
 		return vs[0].([]InstanceConfig)[vs[1].(int)]
 	}).(InstanceConfigOutput)
 }
@@ -614,7 +617,8 @@ type InstanceConfigDevicesPtrInput interface {
 
 type instanceConfigDevicesPtrType InstanceConfigDevicesArgs
 
-func InstanceConfigDevicesPtr(v *InstanceConfigDevicesArgs) InstanceConfigDevicesPtrInput {	return (*instanceConfigDevicesPtrType)(v)
+func InstanceConfigDevicesPtr(v *InstanceConfigDevicesArgs) InstanceConfigDevicesPtrInput {
+	return (*instanceConfigDevicesPtrType)(v)
 }
 
 func (*instanceConfigDevicesPtrType) ElementType() reflect.Type {
@@ -629,7 +633,7 @@ func (i *instanceConfigDevicesPtrType) ToInstanceConfigDevicesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesPtrOutput)
 }
 
-type InstanceConfigDevicesOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevices)(nil)).Elem()
@@ -653,38 +657,38 @@ func (o InstanceConfigDevicesOutput) ToInstanceConfigDevicesPtrOutputWithContext
 	}).(InstanceConfigDevicesPtrOutput)
 }
 func (o InstanceConfigDevicesOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdb() InstanceConfigDevicesSdbPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdb { return v.Sdb }).(InstanceConfigDevicesSdbPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdb { return v.Sdb }).(InstanceConfigDevicesSdbPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdc() InstanceConfigDevicesSdcPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdc { return v.Sdc }).(InstanceConfigDevicesSdcPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdc { return v.Sdc }).(InstanceConfigDevicesSdcPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdd() InstanceConfigDevicesSddPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdd { return v.Sdd }).(InstanceConfigDevicesSddPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdd { return v.Sdd }).(InstanceConfigDevicesSddPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sde() InstanceConfigDevicesSdePtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSde { return v.Sde }).(InstanceConfigDevicesSdePtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSde { return v.Sde }).(InstanceConfigDevicesSdePtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdf() InstanceConfigDevicesSdfPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdf { return v.Sdf }).(InstanceConfigDevicesSdfPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdf { return v.Sdf }).(InstanceConfigDevicesSdfPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdg() InstanceConfigDevicesSdgPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdg { return v.Sdg }).(InstanceConfigDevicesSdgPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdg { return v.Sdg }).(InstanceConfigDevicesSdgPtrOutput)
 }
 
 func (o InstanceConfigDevicesOutput) Sdh() InstanceConfigDevicesSdhPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdh { return v.Sdh }).(InstanceConfigDevicesSdhPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdh { return v.Sdh }).(InstanceConfigDevicesSdhPtrOutput)
 }
 
-type InstanceConfigDevicesPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevices)(nil)).Elem()
@@ -699,39 +703,39 @@ func (o InstanceConfigDevicesPtrOutput) ToInstanceConfigDevicesPtrOutputWithCont
 }
 
 func (o InstanceConfigDevicesPtrOutput) Elem() InstanceConfigDevicesOutput {
-	return o.ApplyT(func (v *InstanceConfigDevices) InstanceConfigDevices { return *v }).(InstanceConfigDevicesOutput)
+	return o.ApplyT(func(v *InstanceConfigDevices) InstanceConfigDevices { return *v }).(InstanceConfigDevicesOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdb() InstanceConfigDevicesSdbPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdb { return v.Sdb }).(InstanceConfigDevicesSdbPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdb { return v.Sdb }).(InstanceConfigDevicesSdbPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdc() InstanceConfigDevicesSdcPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdc { return v.Sdc }).(InstanceConfigDevicesSdcPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdc { return v.Sdc }).(InstanceConfigDevicesSdcPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdd() InstanceConfigDevicesSddPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdd { return v.Sdd }).(InstanceConfigDevicesSddPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdd { return v.Sdd }).(InstanceConfigDevicesSddPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sde() InstanceConfigDevicesSdePtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSde { return v.Sde }).(InstanceConfigDevicesSdePtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSde { return v.Sde }).(InstanceConfigDevicesSdePtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdf() InstanceConfigDevicesSdfPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdf { return v.Sdf }).(InstanceConfigDevicesSdfPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdf { return v.Sdf }).(InstanceConfigDevicesSdfPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdg() InstanceConfigDevicesSdgPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdg { return v.Sdg }).(InstanceConfigDevicesSdgPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdg { return v.Sdg }).(InstanceConfigDevicesSdgPtrOutput)
 }
 
 func (o InstanceConfigDevicesPtrOutput) Sdh() InstanceConfigDevicesSdhPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevices) *InstanceConfigDevicesSdh { return v.Sdh }).(InstanceConfigDevicesSdhPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdh { return v.Sdh }).(InstanceConfigDevicesSdhPtrOutput)
 }
 
 type InstanceConfigDevicesSda struct {
@@ -788,7 +792,8 @@ type InstanceConfigDevicesSdaPtrInput interface {
 
 type instanceConfigDevicesSdaPtrType InstanceConfigDevicesSdaArgs
 
-func InstanceConfigDevicesSdaPtr(v *InstanceConfigDevicesSdaArgs) InstanceConfigDevicesSdaPtrInput {	return (*instanceConfigDevicesSdaPtrType)(v)
+func InstanceConfigDevicesSdaPtr(v *InstanceConfigDevicesSdaArgs) InstanceConfigDevicesSdaPtrInput {
+	return (*instanceConfigDevicesSdaPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdaPtrType) ElementType() reflect.Type {
@@ -803,7 +808,7 @@ func (i *instanceConfigDevicesSdaPtrType) ToInstanceConfigDevicesSdaPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdaPtrOutput)
 }
 
-type InstanceConfigDevicesSdaOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdaOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSda)(nil)).Elem()
@@ -826,22 +831,23 @@ func (o InstanceConfigDevicesSdaOutput) ToInstanceConfigDevicesSdaPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdaPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdaOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdaOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdaOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdaPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdaPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSda)(nil)).Elem()
@@ -856,22 +862,22 @@ func (o InstanceConfigDevicesSdaPtrOutput) ToInstanceConfigDevicesSdaPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdaPtrOutput) Elem() InstanceConfigDevicesSdaOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSda) InstanceConfigDevicesSda { return *v }).(InstanceConfigDevicesSdaOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSda) InstanceConfigDevicesSda { return *v }).(InstanceConfigDevicesSdaOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdaPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdaPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdaPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdb struct {
@@ -928,7 +934,8 @@ type InstanceConfigDevicesSdbPtrInput interface {
 
 type instanceConfigDevicesSdbPtrType InstanceConfigDevicesSdbArgs
 
-func InstanceConfigDevicesSdbPtr(v *InstanceConfigDevicesSdbArgs) InstanceConfigDevicesSdbPtrInput {	return (*instanceConfigDevicesSdbPtrType)(v)
+func InstanceConfigDevicesSdbPtr(v *InstanceConfigDevicesSdbArgs) InstanceConfigDevicesSdbPtrInput {
+	return (*instanceConfigDevicesSdbPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdbPtrType) ElementType() reflect.Type {
@@ -943,7 +950,7 @@ func (i *instanceConfigDevicesSdbPtrType) ToInstanceConfigDevicesSdbPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdbPtrOutput)
 }
 
-type InstanceConfigDevicesSdbOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdbOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdbOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdb)(nil)).Elem()
@@ -966,22 +973,23 @@ func (o InstanceConfigDevicesSdbOutput) ToInstanceConfigDevicesSdbPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdbPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdbOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdbOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdbOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdbPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdbPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdbPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdb)(nil)).Elem()
@@ -996,22 +1004,22 @@ func (o InstanceConfigDevicesSdbPtrOutput) ToInstanceConfigDevicesSdbPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdbPtrOutput) Elem() InstanceConfigDevicesSdbOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdb) InstanceConfigDevicesSdb { return *v }).(InstanceConfigDevicesSdbOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdb) InstanceConfigDevicesSdb { return *v }).(InstanceConfigDevicesSdbOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdbPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdbPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdbPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdc struct {
@@ -1068,7 +1076,8 @@ type InstanceConfigDevicesSdcPtrInput interface {
 
 type instanceConfigDevicesSdcPtrType InstanceConfigDevicesSdcArgs
 
-func InstanceConfigDevicesSdcPtr(v *InstanceConfigDevicesSdcArgs) InstanceConfigDevicesSdcPtrInput {	return (*instanceConfigDevicesSdcPtrType)(v)
+func InstanceConfigDevicesSdcPtr(v *InstanceConfigDevicesSdcArgs) InstanceConfigDevicesSdcPtrInput {
+	return (*instanceConfigDevicesSdcPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdcPtrType) ElementType() reflect.Type {
@@ -1083,7 +1092,7 @@ func (i *instanceConfigDevicesSdcPtrType) ToInstanceConfigDevicesSdcPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdcPtrOutput)
 }
 
-type InstanceConfigDevicesSdcOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdcOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdcOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdc)(nil)).Elem()
@@ -1106,22 +1115,23 @@ func (o InstanceConfigDevicesSdcOutput) ToInstanceConfigDevicesSdcPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdcPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdcOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdcOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdcOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdcPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdcPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdcPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdc)(nil)).Elem()
@@ -1136,22 +1146,22 @@ func (o InstanceConfigDevicesSdcPtrOutput) ToInstanceConfigDevicesSdcPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdcPtrOutput) Elem() InstanceConfigDevicesSdcOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdc) InstanceConfigDevicesSdc { return *v }).(InstanceConfigDevicesSdcOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdc) InstanceConfigDevicesSdc { return *v }).(InstanceConfigDevicesSdcOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdcPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdcPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdcPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdd struct {
@@ -1208,7 +1218,8 @@ type InstanceConfigDevicesSddPtrInput interface {
 
 type instanceConfigDevicesSddPtrType InstanceConfigDevicesSddArgs
 
-func InstanceConfigDevicesSddPtr(v *InstanceConfigDevicesSddArgs) InstanceConfigDevicesSddPtrInput {	return (*instanceConfigDevicesSddPtrType)(v)
+func InstanceConfigDevicesSddPtr(v *InstanceConfigDevicesSddArgs) InstanceConfigDevicesSddPtrInput {
+	return (*instanceConfigDevicesSddPtrType)(v)
 }
 
 func (*instanceConfigDevicesSddPtrType) ElementType() reflect.Type {
@@ -1223,7 +1234,7 @@ func (i *instanceConfigDevicesSddPtrType) ToInstanceConfigDevicesSddPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSddPtrOutput)
 }
 
-type InstanceConfigDevicesSddOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSddOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSddOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdd)(nil)).Elem()
@@ -1246,22 +1257,23 @@ func (o InstanceConfigDevicesSddOutput) ToInstanceConfigDevicesSddPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSddPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSddOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSddOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSddOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSddPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSddPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSddPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdd)(nil)).Elem()
@@ -1276,22 +1288,22 @@ func (o InstanceConfigDevicesSddPtrOutput) ToInstanceConfigDevicesSddPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSddPtrOutput) Elem() InstanceConfigDevicesSddOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdd) InstanceConfigDevicesSdd { return *v }).(InstanceConfigDevicesSddOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdd) InstanceConfigDevicesSdd { return *v }).(InstanceConfigDevicesSddOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSddPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSddPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSddPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSde struct {
@@ -1348,7 +1360,8 @@ type InstanceConfigDevicesSdePtrInput interface {
 
 type instanceConfigDevicesSdePtrType InstanceConfigDevicesSdeArgs
 
-func InstanceConfigDevicesSdePtr(v *InstanceConfigDevicesSdeArgs) InstanceConfigDevicesSdePtrInput {	return (*instanceConfigDevicesSdePtrType)(v)
+func InstanceConfigDevicesSdePtr(v *InstanceConfigDevicesSdeArgs) InstanceConfigDevicesSdePtrInput {
+	return (*instanceConfigDevicesSdePtrType)(v)
 }
 
 func (*instanceConfigDevicesSdePtrType) ElementType() reflect.Type {
@@ -1363,7 +1376,7 @@ func (i *instanceConfigDevicesSdePtrType) ToInstanceConfigDevicesSdePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdePtrOutput)
 }
 
-type InstanceConfigDevicesSdeOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdeOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSde)(nil)).Elem()
@@ -1386,22 +1399,23 @@ func (o InstanceConfigDevicesSdeOutput) ToInstanceConfigDevicesSdePtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdePtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdeOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdeOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdeOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdePtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSde)(nil)).Elem()
@@ -1416,22 +1430,22 @@ func (o InstanceConfigDevicesSdePtrOutput) ToInstanceConfigDevicesSdePtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdePtrOutput) Elem() InstanceConfigDevicesSdeOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSde) InstanceConfigDevicesSde { return *v }).(InstanceConfigDevicesSdeOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSde) InstanceConfigDevicesSde { return *v }).(InstanceConfigDevicesSdeOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdePtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdePtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdePtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdf struct {
@@ -1488,7 +1502,8 @@ type InstanceConfigDevicesSdfPtrInput interface {
 
 type instanceConfigDevicesSdfPtrType InstanceConfigDevicesSdfArgs
 
-func InstanceConfigDevicesSdfPtr(v *InstanceConfigDevicesSdfArgs) InstanceConfigDevicesSdfPtrInput {	return (*instanceConfigDevicesSdfPtrType)(v)
+func InstanceConfigDevicesSdfPtr(v *InstanceConfigDevicesSdfArgs) InstanceConfigDevicesSdfPtrInput {
+	return (*instanceConfigDevicesSdfPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdfPtrType) ElementType() reflect.Type {
@@ -1503,7 +1518,7 @@ func (i *instanceConfigDevicesSdfPtrType) ToInstanceConfigDevicesSdfPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdfPtrOutput)
 }
 
-type InstanceConfigDevicesSdfOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdfOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdfOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdf)(nil)).Elem()
@@ -1526,22 +1541,23 @@ func (o InstanceConfigDevicesSdfOutput) ToInstanceConfigDevicesSdfPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdfPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdfOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdfOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdfOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdfPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdfPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdfPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdf)(nil)).Elem()
@@ -1556,22 +1572,22 @@ func (o InstanceConfigDevicesSdfPtrOutput) ToInstanceConfigDevicesSdfPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdfPtrOutput) Elem() InstanceConfigDevicesSdfOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdf) InstanceConfigDevicesSdf { return *v }).(InstanceConfigDevicesSdfOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdf) InstanceConfigDevicesSdf { return *v }).(InstanceConfigDevicesSdfOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdfPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdfPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdfPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdg struct {
@@ -1628,7 +1644,8 @@ type InstanceConfigDevicesSdgPtrInput interface {
 
 type instanceConfigDevicesSdgPtrType InstanceConfigDevicesSdgArgs
 
-func InstanceConfigDevicesSdgPtr(v *InstanceConfigDevicesSdgArgs) InstanceConfigDevicesSdgPtrInput {	return (*instanceConfigDevicesSdgPtrType)(v)
+func InstanceConfigDevicesSdgPtr(v *InstanceConfigDevicesSdgArgs) InstanceConfigDevicesSdgPtrInput {
+	return (*instanceConfigDevicesSdgPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdgPtrType) ElementType() reflect.Type {
@@ -1643,7 +1660,7 @@ func (i *instanceConfigDevicesSdgPtrType) ToInstanceConfigDevicesSdgPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdgPtrOutput)
 }
 
-type InstanceConfigDevicesSdgOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdgOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdgOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdg)(nil)).Elem()
@@ -1666,22 +1683,23 @@ func (o InstanceConfigDevicesSdgOutput) ToInstanceConfigDevicesSdgPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdgPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdgOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdgOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdgOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdgPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdgPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdgPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdg)(nil)).Elem()
@@ -1696,22 +1714,22 @@ func (o InstanceConfigDevicesSdgPtrOutput) ToInstanceConfigDevicesSdgPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdgPtrOutput) Elem() InstanceConfigDevicesSdgOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdg) InstanceConfigDevicesSdg { return *v }).(InstanceConfigDevicesSdgOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdg) InstanceConfigDevicesSdg { return *v }).(InstanceConfigDevicesSdgOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdgPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdgPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdgPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigDevicesSdh struct {
@@ -1768,7 +1786,8 @@ type InstanceConfigDevicesSdhPtrInput interface {
 
 type instanceConfigDevicesSdhPtrType InstanceConfigDevicesSdhArgs
 
-func InstanceConfigDevicesSdhPtr(v *InstanceConfigDevicesSdhArgs) InstanceConfigDevicesSdhPtrInput {	return (*instanceConfigDevicesSdhPtrType)(v)
+func InstanceConfigDevicesSdhPtr(v *InstanceConfigDevicesSdhArgs) InstanceConfigDevicesSdhPtrInput {
+	return (*instanceConfigDevicesSdhPtrType)(v)
 }
 
 func (*instanceConfigDevicesSdhPtrType) ElementType() reflect.Type {
@@ -1783,7 +1802,7 @@ func (i *instanceConfigDevicesSdhPtrType) ToInstanceConfigDevicesSdhPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDevicesSdhPtrOutput)
 }
 
-type InstanceConfigDevicesSdhOutput struct { *pulumi.OutputState }
+type InstanceConfigDevicesSdhOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdhOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigDevicesSdh)(nil)).Elem()
@@ -1806,22 +1825,23 @@ func (o InstanceConfigDevicesSdhOutput) ToInstanceConfigDevicesSdhPtrOutputWithC
 		return &v
 	}).(InstanceConfigDevicesSdhPtrOutput)
 }
+
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdhOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdhOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdhOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceConfigDevicesSdhPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigDevicesSdhPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigDevicesSdhPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigDevicesSdh)(nil)).Elem()
@@ -1836,22 +1856,22 @@ func (o InstanceConfigDevicesSdhPtrOutput) ToInstanceConfigDevicesSdhPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdhPtrOutput) Elem() InstanceConfigDevicesSdhOutput {
-	return o.ApplyT(func (v *InstanceConfigDevicesSdh) InstanceConfigDevicesSdh { return *v }).(InstanceConfigDevicesSdhOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdh) InstanceConfigDevicesSdh { return *v }).(InstanceConfigDevicesSdhOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
 func (o InstanceConfigDevicesSdhPtrOutput) DiskId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
 // The `label` of the `disk` to map to this `device` slot.
 func (o InstanceConfigDevicesSdhPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
 // The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdhPtrOutput) VolumeId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigHelpers struct {
@@ -1914,7 +1934,8 @@ type InstanceConfigHelpersPtrInput interface {
 
 type instanceConfigHelpersPtrType InstanceConfigHelpersArgs
 
-func InstanceConfigHelpersPtr(v *InstanceConfigHelpersArgs) InstanceConfigHelpersPtrInput {	return (*instanceConfigHelpersPtrType)(v)
+func InstanceConfigHelpersPtr(v *InstanceConfigHelpersArgs) InstanceConfigHelpersPtrInput {
+	return (*instanceConfigHelpersPtrType)(v)
 }
 
 func (*instanceConfigHelpersPtrType) ElementType() reflect.Type {
@@ -1929,7 +1950,7 @@ func (i *instanceConfigHelpersPtrType) ToInstanceConfigHelpersPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigHelpersPtrOutput)
 }
 
-type InstanceConfigHelpersOutput struct { *pulumi.OutputState }
+type InstanceConfigHelpersOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigHelpersOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceConfigHelpers)(nil)).Elem()
@@ -1953,30 +1974,30 @@ func (o InstanceConfigHelpersOutput) ToInstanceConfigHelpersPtrOutputWithContext
 	}).(InstanceConfigHelpersPtrOutput)
 }
 func (o InstanceConfigHelpersOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
 }
 
 // Controls the behavior of the Linode Config's Distribution Helper setting.
 func (o InstanceConfigHelpersOutput) Distro() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.Distro }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.Distro }).(pulumi.BoolPtrOutput)
 }
 
 // Creates a modules dependency file for the Kernel you run.
 func (o InstanceConfigHelpersOutput) ModulesDep() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.ModulesDep }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.ModulesDep }).(pulumi.BoolPtrOutput)
 }
 
 // Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
 func (o InstanceConfigHelpersOutput) Network() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.Network }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.Network }).(pulumi.BoolPtrOutput)
 }
 
 // Disables updatedb cron job to avoid disk thrashing.
 func (o InstanceConfigHelpersOutput) UpdatedbDisabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.UpdatedbDisabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.UpdatedbDisabled }).(pulumi.BoolPtrOutput)
 }
 
-type InstanceConfigHelpersPtrOutput struct { *pulumi.OutputState}
+type InstanceConfigHelpersPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigHelpersPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceConfigHelpers)(nil)).Elem()
@@ -1991,31 +2012,31 @@ func (o InstanceConfigHelpersPtrOutput) ToInstanceConfigHelpersPtrOutputWithCont
 }
 
 func (o InstanceConfigHelpersPtrOutput) Elem() InstanceConfigHelpersOutput {
-	return o.ApplyT(func (v *InstanceConfigHelpers) InstanceConfigHelpers { return *v }).(InstanceConfigHelpersOutput)
+	return o.ApplyT(func(v *InstanceConfigHelpers) InstanceConfigHelpers { return *v }).(InstanceConfigHelpersOutput)
 }
 
 func (o InstanceConfigHelpersPtrOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
 }
 
 // Controls the behavior of the Linode Config's Distribution Helper setting.
 func (o InstanceConfigHelpersPtrOutput) Distro() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.Distro }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.Distro }).(pulumi.BoolPtrOutput)
 }
 
 // Creates a modules dependency file for the Kernel you run.
 func (o InstanceConfigHelpersPtrOutput) ModulesDep() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.ModulesDep }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.ModulesDep }).(pulumi.BoolPtrOutput)
 }
 
 // Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
 func (o InstanceConfigHelpersPtrOutput) Network() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.Network }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.Network }).(pulumi.BoolPtrOutput)
 }
 
 // Disables updatedb cron job to avoid disk thrashing.
 func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceConfigHelpers) *bool { return v.UpdatedbDisabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.UpdatedbDisabled }).(pulumi.BoolPtrOutput)
 }
 
 type InstanceDisk struct {
@@ -2023,14 +2044,14 @@ type InstanceDisk struct {
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	Filesystem *string `pulumi:"filesystem"`
+	Filesystem      *string  `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
-	Label string `pulumi:"label"`
-	ReadOnly *bool `pulumi:"readOnly"`
+	Label    string  `pulumi:"label"`
+	ReadOnly *bool   `pulumi:"readOnly"`
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -2052,14 +2073,14 @@ type InstanceDiskArgs struct {
 	AuthorizedKeys pulumi.StringArrayInput `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers pulumi.StringArrayInput `pulumi:"authorizedUsers"`
-	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
+	Filesystem      pulumi.StringPtrInput   `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
-	Label pulumi.StringInput `pulumi:"label"`
-	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	Label    pulumi.StringInput    `pulumi:"label"`
+	ReadOnly pulumi.BoolPtrInput   `pulumi:"readOnly"`
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -2102,7 +2123,7 @@ func (i InstanceDiskArray) ToInstanceDiskArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskArrayOutput)
 }
 
-type InstanceDiskOutput struct { *pulumi.OutputState }
+type InstanceDiskOutput struct{ *pulumi.OutputState }
 
 func (InstanceDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDisk)(nil)).Elem()
@@ -2118,57 +2139,57 @@ func (o InstanceDiskOutput) ToInstanceDiskOutputWithContext(ctx context.Context)
 
 // A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) AuthorizedKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceDisk) []string { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceDisk) []string { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
 }
 
 // A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) AuthorizedUsers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceDisk) []string { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceDisk) []string { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
 
 func (o InstanceDiskOutput) Filesystem() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *string { return v.Filesystem }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *string { return v.Filesystem }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the disk in the Linode API.
 func (o InstanceDiskOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *int { return v.Id }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 // The Config's label for display purposes.  Also used by `bootConfigLabel`.
 func (o InstanceDiskOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDisk) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o InstanceDiskOutput) ReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o InstanceDiskOutput) RootPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *string { return v.RootPass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *string { return v.RootPass }).(pulumi.StringPtrOutput)
 }
 
 // The size of the Disk in MB.
 func (o InstanceDiskOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func (v InstanceDisk) int { return v.Size }).(pulumi.IntOutput)
+	return o.ApplyT(func(v InstanceDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) StackscriptData() pulumi.MapOutput {
-	return o.ApplyT(func (v InstanceDisk) map[string]interface{} { return v.StackscriptData }).(pulumi.MapOutput)
+	return o.ApplyT(func(v InstanceDisk) map[string]interface{} { return v.StackscriptData }).(pulumi.MapOutput)
 }
 
 // The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) StackscriptId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceDisk) *int { return v.StackscriptId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceDisk) *int { return v.StackscriptId }).(pulumi.IntPtrOutput)
 }
 
-type InstanceDiskArrayOutput struct { *pulumi.OutputState}
+type InstanceDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceDisk)(nil)).Elem()
@@ -2183,16 +2204,16 @@ func (o InstanceDiskArrayOutput) ToInstanceDiskArrayOutputWithContext(ctx contex
 }
 
 func (o InstanceDiskArrayOutput) Index(i pulumi.IntInput) InstanceDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDisk {
 		return vs[0].([]InstanceDisk)[vs[1].(int)]
 	}).(InstanceDiskOutput)
 }
 
 type InstanceSpecs struct {
-	Disk *int `pulumi:"disk"`
-	Memory *int `pulumi:"memory"`
+	Disk     *int `pulumi:"disk"`
+	Memory   *int `pulumi:"memory"`
 	Transfer *int `pulumi:"transfer"`
-	Vcpus *int `pulumi:"vcpus"`
+	Vcpus    *int `pulumi:"vcpus"`
 }
 
 type InstanceSpecsInput interface {
@@ -2203,10 +2224,10 @@ type InstanceSpecsInput interface {
 }
 
 type InstanceSpecsArgs struct {
-	Disk pulumi.IntPtrInput `pulumi:"disk"`
-	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	Disk     pulumi.IntPtrInput `pulumi:"disk"`
+	Memory   pulumi.IntPtrInput `pulumi:"memory"`
 	Transfer pulumi.IntPtrInput `pulumi:"transfer"`
-	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
+	Vcpus    pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (InstanceSpecsArgs) ElementType() reflect.Type {
@@ -2238,7 +2259,8 @@ type InstanceSpecsPtrInput interface {
 
 type instanceSpecsPtrType InstanceSpecsArgs
 
-func InstanceSpecsPtr(v *InstanceSpecsArgs) InstanceSpecsPtrInput {	return (*instanceSpecsPtrType)(v)
+func InstanceSpecsPtr(v *InstanceSpecsArgs) InstanceSpecsPtrInput {
+	return (*instanceSpecsPtrType)(v)
 }
 
 func (*instanceSpecsPtrType) ElementType() reflect.Type {
@@ -2253,7 +2275,7 @@ func (i *instanceSpecsPtrType) ToInstanceSpecsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsPtrOutput)
 }
 
-type InstanceSpecsOutput struct { *pulumi.OutputState }
+type InstanceSpecsOutput struct{ *pulumi.OutputState }
 
 func (InstanceSpecsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceSpecs)(nil)).Elem()
@@ -2277,22 +2299,22 @@ func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Con
 	}).(InstanceSpecsPtrOutput)
 }
 func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
-type InstanceSpecsPtrOutput struct { *pulumi.OutputState}
+type InstanceSpecsPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceSpecsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceSpecs)(nil)).Elem()
@@ -2307,28 +2329,28 @@ func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.
 }
 
 func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
-	return o.ApplyT(func (v *InstanceSpecs) InstanceSpecs { return *v }).(InstanceSpecsOutput)
+	return o.ApplyT(func(v *InstanceSpecs) InstanceSpecs { return *v }).(InstanceSpecsOutput)
 }
 
 func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsPtrOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
 type NodeBalancerConfigNodeStatus struct {
 	StatusDown *int `pulumi:"statusDown"`
-	StatusUp *int `pulumi:"statusUp"`
+	StatusUp   *int `pulumi:"statusUp"`
 }
 
 type NodeBalancerConfigNodeStatusInput interface {
@@ -2340,7 +2362,7 @@ type NodeBalancerConfigNodeStatusInput interface {
 
 type NodeBalancerConfigNodeStatusArgs struct {
 	StatusDown pulumi.IntPtrInput `pulumi:"statusDown"`
-	StatusUp pulumi.IntPtrInput `pulumi:"statusUp"`
+	StatusUp   pulumi.IntPtrInput `pulumi:"statusUp"`
 }
 
 func (NodeBalancerConfigNodeStatusArgs) ElementType() reflect.Type {
@@ -2372,7 +2394,8 @@ type NodeBalancerConfigNodeStatusPtrInput interface {
 
 type nodeBalancerConfigNodeStatusPtrType NodeBalancerConfigNodeStatusArgs
 
-func NodeBalancerConfigNodeStatusPtr(v *NodeBalancerConfigNodeStatusArgs) NodeBalancerConfigNodeStatusPtrInput {	return (*nodeBalancerConfigNodeStatusPtrType)(v)
+func NodeBalancerConfigNodeStatusPtr(v *NodeBalancerConfigNodeStatusArgs) NodeBalancerConfigNodeStatusPtrInput {
+	return (*nodeBalancerConfigNodeStatusPtrType)(v)
 }
 
 func (*nodeBalancerConfigNodeStatusPtrType) ElementType() reflect.Type {
@@ -2387,7 +2410,7 @@ func (i *nodeBalancerConfigNodeStatusPtrType) ToNodeBalancerConfigNodeStatusPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerConfigNodeStatusPtrOutput)
 }
 
-type NodeBalancerConfigNodeStatusOutput struct { *pulumi.OutputState }
+type NodeBalancerConfigNodeStatusOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerConfigNodeStatusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeBalancerConfigNodeStatus)(nil)).Elem()
@@ -2411,14 +2434,14 @@ func (o NodeBalancerConfigNodeStatusOutput) ToNodeBalancerConfigNodeStatusPtrOut
 	}).(NodeBalancerConfigNodeStatusPtrOutput)
 }
 func (o NodeBalancerConfigNodeStatusOutput) StatusDown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodeBalancerConfigNodeStatus) *int { return v.StatusDown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.StatusDown }).(pulumi.IntPtrOutput)
 }
 
 func (o NodeBalancerConfigNodeStatusOutput) StatusUp() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodeBalancerConfigNodeStatus) *int { return v.StatusUp }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.StatusUp }).(pulumi.IntPtrOutput)
 }
 
-type NodeBalancerConfigNodeStatusPtrOutput struct { *pulumi.OutputState}
+type NodeBalancerConfigNodeStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerConfigNodeStatusPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeBalancerConfigNodeStatus)(nil)).Elem()
@@ -2433,20 +2456,20 @@ func (o NodeBalancerConfigNodeStatusPtrOutput) ToNodeBalancerConfigNodeStatusPtr
 }
 
 func (o NodeBalancerConfigNodeStatusPtrOutput) Elem() NodeBalancerConfigNodeStatusOutput {
-	return o.ApplyT(func (v *NodeBalancerConfigNodeStatus) NodeBalancerConfigNodeStatus { return *v }).(NodeBalancerConfigNodeStatusOutput)
+	return o.ApplyT(func(v *NodeBalancerConfigNodeStatus) NodeBalancerConfigNodeStatus { return *v }).(NodeBalancerConfigNodeStatusOutput)
 }
 
 func (o NodeBalancerConfigNodeStatusPtrOutput) StatusDown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodeBalancerConfigNodeStatus) *int { return v.StatusDown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.StatusDown }).(pulumi.IntPtrOutput)
 }
 
 func (o NodeBalancerConfigNodeStatusPtrOutput) StatusUp() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodeBalancerConfigNodeStatus) *int { return v.StatusUp }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.StatusUp }).(pulumi.IntPtrOutput)
 }
 
 type NodeBalancerTransfer struct {
-	In *float64 `pulumi:"in"`
-	Out *float64 `pulumi:"out"`
+	In    *float64 `pulumi:"in"`
+	Out   *float64 `pulumi:"out"`
 	Total *float64 `pulumi:"total"`
 }
 
@@ -2458,8 +2481,8 @@ type NodeBalancerTransferInput interface {
 }
 
 type NodeBalancerTransferArgs struct {
-	In pulumi.Float64PtrInput `pulumi:"in"`
-	Out pulumi.Float64PtrInput `pulumi:"out"`
+	In    pulumi.Float64PtrInput `pulumi:"in"`
+	Out   pulumi.Float64PtrInput `pulumi:"out"`
 	Total pulumi.Float64PtrInput `pulumi:"total"`
 }
 
@@ -2492,7 +2515,8 @@ type NodeBalancerTransferPtrInput interface {
 
 type nodeBalancerTransferPtrType NodeBalancerTransferArgs
 
-func NodeBalancerTransferPtr(v *NodeBalancerTransferArgs) NodeBalancerTransferPtrInput {	return (*nodeBalancerTransferPtrType)(v)
+func NodeBalancerTransferPtr(v *NodeBalancerTransferArgs) NodeBalancerTransferPtrInput {
+	return (*nodeBalancerTransferPtrType)(v)
 }
 
 func (*nodeBalancerTransferPtrType) ElementType() reflect.Type {
@@ -2507,7 +2531,7 @@ func (i *nodeBalancerTransferPtrType) ToNodeBalancerTransferPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerTransferPtrOutput)
 }
 
-type NodeBalancerTransferOutput struct { *pulumi.OutputState }
+type NodeBalancerTransferOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerTransferOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeBalancerTransfer)(nil)).Elem()
@@ -2531,18 +2555,18 @@ func (o NodeBalancerTransferOutput) ToNodeBalancerTransferPtrOutputWithContext(c
 	}).(NodeBalancerTransferPtrOutput)
 }
 func (o NodeBalancerTransferOutput) In() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
 }
 
 func (o NodeBalancerTransferOutput) Out() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
 }
 
 func (o NodeBalancerTransferOutput) Total() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
 }
 
-type NodeBalancerTransferPtrOutput struct { *pulumi.OutputState}
+type NodeBalancerTransferPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerTransferPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeBalancerTransfer)(nil)).Elem()
@@ -2557,29 +2581,29 @@ func (o NodeBalancerTransferPtrOutput) ToNodeBalancerTransferPtrOutputWithContex
 }
 
 func (o NodeBalancerTransferPtrOutput) Elem() NodeBalancerTransferOutput {
-	return o.ApplyT(func (v *NodeBalancerTransfer) NodeBalancerTransfer { return *v }).(NodeBalancerTransferOutput)
+	return o.ApplyT(func(v *NodeBalancerTransfer) NodeBalancerTransfer { return *v }).(NodeBalancerTransferOutput)
 }
 
 func (o NodeBalancerTransferPtrOutput) In() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
 }
 
 func (o NodeBalancerTransferPtrOutput) Out() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
 }
 
 func (o NodeBalancerTransferPtrOutput) Total() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
 }
 
 type StackScriptUserDefinedField struct {
 	Default *string `pulumi:"default"`
 	Example *string `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label *string `pulumi:"label"`
+	Label  *string `pulumi:"label"`
 	ManyOf *string `pulumi:"manyOf"`
-	Name *string `pulumi:"name"`
-	OneOf *string `pulumi:"oneOf"`
+	Name   *string `pulumi:"name"`
+	OneOf  *string `pulumi:"oneOf"`
 }
 
 type StackScriptUserDefinedFieldInput interface {
@@ -2593,10 +2617,10 @@ type StackScriptUserDefinedFieldArgs struct {
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	Example pulumi.StringPtrInput `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label pulumi.StringPtrInput `pulumi:"label"`
+	Label  pulumi.StringPtrInput `pulumi:"label"`
 	ManyOf pulumi.StringPtrInput `pulumi:"manyOf"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	OneOf pulumi.StringPtrInput `pulumi:"oneOf"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
+	OneOf  pulumi.StringPtrInput `pulumi:"oneOf"`
 }
 
 func (StackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
@@ -2632,7 +2656,7 @@ func (i StackScriptUserDefinedFieldArray) ToStackScriptUserDefinedFieldArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptUserDefinedFieldArrayOutput)
 }
 
-type StackScriptUserDefinedFieldOutput struct { *pulumi.OutputState }
+type StackScriptUserDefinedFieldOutput struct{ *pulumi.OutputState }
 
 func (StackScriptUserDefinedFieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StackScriptUserDefinedField)(nil)).Elem()
@@ -2647,31 +2671,31 @@ func (o StackScriptUserDefinedFieldOutput) ToStackScriptUserDefinedFieldOutputWi
 }
 
 func (o StackScriptUserDefinedFieldOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.Default }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
 func (o StackScriptUserDefinedFieldOutput) Example() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.Example }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Example }).(pulumi.StringPtrOutput)
 }
 
 // The StackScript's label is for display purposes only.
 func (o StackScriptUserDefinedFieldOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 func (o StackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.ManyOf }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.ManyOf }).(pulumi.StringPtrOutput)
 }
 
 func (o StackScriptUserDefinedFieldOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o StackScriptUserDefinedFieldOutput) OneOf() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackScriptUserDefinedField) *string { return v.OneOf }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.OneOf }).(pulumi.StringPtrOutput)
 }
 
-type StackScriptUserDefinedFieldArrayOutput struct { *pulumi.OutputState}
+type StackScriptUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (StackScriptUserDefinedFieldArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StackScriptUserDefinedField)(nil)).Elem()
@@ -2686,7 +2710,7 @@ func (o StackScriptUserDefinedFieldArrayOutput) ToStackScriptUserDefinedFieldArr
 }
 
 func (o StackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) StackScriptUserDefinedFieldOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StackScriptUserDefinedField {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackScriptUserDefinedField {
 		return vs[0].([]StackScriptUserDefinedField)[vs[1].(int)]
 	}).(StackScriptUserDefinedFieldOutput)
 }
@@ -2718,7 +2742,7 @@ func (i GetInstanceTypeAddonsArgs) ToGetInstanceTypeAddonsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsOutput)
 }
 
-type GetInstanceTypeAddonsOutput struct { *pulumi.OutputState }
+type GetInstanceTypeAddonsOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypeAddonsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypeAddons)(nil)).Elem()
@@ -2733,7 +2757,7 @@ func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutputWithContext(ct
 }
 
 func (o GetInstanceTypeAddonsOutput) Backups() GetInstanceTypeAddonsBackupsOutput {
-	return o.ApplyT(func (v GetInstanceTypeAddons) GetInstanceTypeAddonsBackups { return v.Backups }).(GetInstanceTypeAddonsBackupsOutput)
+	return o.ApplyT(func(v GetInstanceTypeAddons) GetInstanceTypeAddonsBackups { return v.Backups }).(GetInstanceTypeAddonsBackupsOutput)
 }
 
 type GetInstanceTypeAddonsBackups struct {
@@ -2763,7 +2787,7 @@ func (i GetInstanceTypeAddonsBackupsArgs) ToGetInstanceTypeAddonsBackupsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsOutput)
 }
 
-type GetInstanceTypeAddonsBackupsOutput struct { *pulumi.OutputState }
+type GetInstanceTypeAddonsBackupsOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypeAddonsBackupsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypeAddonsBackups)(nil)).Elem()
@@ -2778,11 +2802,11 @@ func (o GetInstanceTypeAddonsBackupsOutput) ToGetInstanceTypeAddonsBackupsOutput
 }
 
 func (o GetInstanceTypeAddonsBackupsOutput) Price() GetInstanceTypeAddonsBackupsPriceOutput {
-	return o.ApplyT(func (v GetInstanceTypeAddonsBackups) GetInstanceTypeAddonsBackupsPrice { return v.Price }).(GetInstanceTypeAddonsBackupsPriceOutput)
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackups) GetInstanceTypeAddonsBackupsPrice { return v.Price }).(GetInstanceTypeAddonsBackupsPriceOutput)
 }
 
 type GetInstanceTypeAddonsBackupsPrice struct {
-	Hourly float64 `pulumi:"hourly"`
+	Hourly  float64 `pulumi:"hourly"`
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -2794,7 +2818,7 @@ type GetInstanceTypeAddonsBackupsPriceInput interface {
 }
 
 type GetInstanceTypeAddonsBackupsPriceArgs struct {
-	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -2810,7 +2834,7 @@ func (i GetInstanceTypeAddonsBackupsPriceArgs) ToGetInstanceTypeAddonsBackupsPri
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsPriceOutput)
 }
 
-type GetInstanceTypeAddonsBackupsPriceOutput struct { *pulumi.OutputState }
+type GetInstanceTypeAddonsBackupsPriceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypeAddonsBackupsPriceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypeAddonsBackupsPrice)(nil)).Elem()
@@ -2825,15 +2849,15 @@ func (o GetInstanceTypeAddonsBackupsPriceOutput) ToGetInstanceTypeAddonsBackupsP
 }
 
 func (o GetInstanceTypeAddonsBackupsPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
 func (o GetInstanceTypeAddonsBackupsPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
 type GetInstanceTypePrice struct {
-	Hourly float64 `pulumi:"hourly"`
+	Hourly  float64 `pulumi:"hourly"`
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -2845,7 +2869,7 @@ type GetInstanceTypePriceInput interface {
 }
 
 type GetInstanceTypePriceArgs struct {
-	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -2861,7 +2885,7 @@ func (i GetInstanceTypePriceArgs) ToGetInstanceTypePriceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypePriceOutput)
 }
 
-type GetInstanceTypePriceOutput struct { *pulumi.OutputState }
+type GetInstanceTypePriceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypePriceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypePrice)(nil)).Elem()
@@ -2876,20 +2900,20 @@ func (o GetInstanceTypePriceOutput) ToGetInstanceTypePriceOutputWithContext(ctx 
 }
 
 func (o GetInstanceTypePriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetInstanceTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
 func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func (v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
 type GetProfileReferrals struct {
-	Code string `pulumi:"code"`
-	Completed int `pulumi:"completed"`
-	Credit float64 `pulumi:"credit"`
-	Pending int `pulumi:"pending"`
-	Total int `pulumi:"total"`
-	Url string `pulumi:"url"`
+	Code      string  `pulumi:"code"`
+	Completed int     `pulumi:"completed"`
+	Credit    float64 `pulumi:"credit"`
+	Pending   int     `pulumi:"pending"`
+	Total     int     `pulumi:"total"`
+	Url       string  `pulumi:"url"`
 }
 
 type GetProfileReferralsInput interface {
@@ -2900,12 +2924,12 @@ type GetProfileReferralsInput interface {
 }
 
 type GetProfileReferralsArgs struct {
-	Code pulumi.StringInput `pulumi:"code"`
-	Completed pulumi.IntInput `pulumi:"completed"`
-	Credit pulumi.Float64Input `pulumi:"credit"`
-	Pending pulumi.IntInput `pulumi:"pending"`
-	Total pulumi.IntInput `pulumi:"total"`
-	Url pulumi.StringInput `pulumi:"url"`
+	Code      pulumi.StringInput  `pulumi:"code"`
+	Completed pulumi.IntInput     `pulumi:"completed"`
+	Credit    pulumi.Float64Input `pulumi:"credit"`
+	Pending   pulumi.IntInput     `pulumi:"pending"`
+	Total     pulumi.IntInput     `pulumi:"total"`
+	Url       pulumi.StringInput  `pulumi:"url"`
 }
 
 func (GetProfileReferralsArgs) ElementType() reflect.Type {
@@ -2920,7 +2944,7 @@ func (i GetProfileReferralsArgs) ToGetProfileReferralsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralsOutput)
 }
 
-type GetProfileReferralsOutput struct { *pulumi.OutputState }
+type GetProfileReferralsOutput struct{ *pulumi.OutputState }
 
 func (GetProfileReferralsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProfileReferrals)(nil)).Elem()
@@ -2935,36 +2959,36 @@ func (o GetProfileReferralsOutput) ToGetProfileReferralsOutputWithContext(ctx co
 }
 
 func (o GetProfileReferralsOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProfileReferrals) string { return v.Code }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProfileReferrals) string { return v.Code }).(pulumi.StringOutput)
 }
 
 func (o GetProfileReferralsOutput) Completed() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProfileReferrals) int { return v.Completed }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProfileReferrals) int { return v.Completed }).(pulumi.IntOutput)
 }
 
 func (o GetProfileReferralsOutput) Credit() pulumi.Float64Output {
-	return o.ApplyT(func (v GetProfileReferrals) float64 { return v.Credit }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetProfileReferrals) float64 { return v.Credit }).(pulumi.Float64Output)
 }
 
 func (o GetProfileReferralsOutput) Pending() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProfileReferrals) int { return v.Pending }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProfileReferrals) int { return v.Pending }).(pulumi.IntOutput)
 }
 
 func (o GetProfileReferralsOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProfileReferrals) int { return v.Total }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProfileReferrals) int { return v.Total }).(pulumi.IntOutput)
 }
 
 func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetStackScriptUserDefinedField struct {
 	Default string `pulumi:"default"`
 	Example string `pulumi:"example"`
-	Label string `pulumi:"label"`
-	ManyOf string `pulumi:"manyOf"`
-	Name string `pulumi:"name"`
-	OneOf string `pulumi:"oneOf"`
+	Label   string `pulumi:"label"`
+	ManyOf  string `pulumi:"manyOf"`
+	Name    string `pulumi:"name"`
+	OneOf   string `pulumi:"oneOf"`
 }
 
 type GetStackScriptUserDefinedFieldInput interface {
@@ -2977,10 +3001,10 @@ type GetStackScriptUserDefinedFieldInput interface {
 type GetStackScriptUserDefinedFieldArgs struct {
 	Default pulumi.StringInput `pulumi:"default"`
 	Example pulumi.StringInput `pulumi:"example"`
-	Label pulumi.StringInput `pulumi:"label"`
-	ManyOf pulumi.StringInput `pulumi:"manyOf"`
-	Name pulumi.StringInput `pulumi:"name"`
-	OneOf pulumi.StringInput `pulumi:"oneOf"`
+	Label   pulumi.StringInput `pulumi:"label"`
+	ManyOf  pulumi.StringInput `pulumi:"manyOf"`
+	Name    pulumi.StringInput `pulumi:"name"`
+	OneOf   pulumi.StringInput `pulumi:"oneOf"`
 }
 
 func (GetStackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
@@ -3016,7 +3040,7 @@ func (i GetStackScriptUserDefinedFieldArray) ToGetStackScriptUserDefinedFieldArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptUserDefinedFieldArrayOutput)
 }
 
-type GetStackScriptUserDefinedFieldOutput struct { *pulumi.OutputState }
+type GetStackScriptUserDefinedFieldOutput struct{ *pulumi.OutputState }
 
 func (GetStackScriptUserDefinedFieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetStackScriptUserDefinedField)(nil)).Elem()
@@ -3031,30 +3055,30 @@ func (o GetStackScriptUserDefinedFieldOutput) ToGetStackScriptUserDefinedFieldOu
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetStackScriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
-	return o.ApplyT(func (v GetStackScriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
 }
 
-type GetStackScriptUserDefinedFieldArrayOutput struct { *pulumi.OutputState}
+type GetStackScriptUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (GetStackScriptUserDefinedFieldArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetStackScriptUserDefinedField)(nil)).Elem()
@@ -3069,7 +3093,7 @@ func (o GetStackScriptUserDefinedFieldArrayOutput) ToGetStackScriptUserDefinedFi
 }
 
 func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetStackScriptUserDefinedFieldOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetStackScriptUserDefinedField {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackScriptUserDefinedField {
 		return vs[0].([]GetStackScriptUserDefinedField)[vs[1].(int)]
 	}).(GetStackScriptUserDefinedFieldOutput)
 }

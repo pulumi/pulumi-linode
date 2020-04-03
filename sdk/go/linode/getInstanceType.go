@@ -43,22 +43,20 @@ func GetInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs, opts ...pul
 // A collection of arguments for invoking getInstanceType.
 type GetInstanceTypeArgs struct {
 	// Label used to identify instance type
-	Id string `pulumi:"id"`
+	Id    string  `pulumi:"id"`
 	Label *string `pulumi:"label"`
 }
 
-
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
-	Addons GetInstanceTypeAddons `pulumi:"addons"`
-	Class string `pulumi:"class"`
-	Disk int `pulumi:"disk"`
-	Id string `pulumi:"id"`
-	Label string `pulumi:"label"`
-	Memory int `pulumi:"memory"`
-	NetworkOut int `pulumi:"networkOut"`
-	Price GetInstanceTypePrice `pulumi:"price"`
-	Transfer int `pulumi:"transfer"`
-	Vcpus int `pulumi:"vcpus"`
+	Addons     GetInstanceTypeAddons `pulumi:"addons"`
+	Class      string                `pulumi:"class"`
+	Disk       int                   `pulumi:"disk"`
+	Id         string                `pulumi:"id"`
+	Label      string                `pulumi:"label"`
+	Memory     int                   `pulumi:"memory"`
+	NetworkOut int                   `pulumi:"networkOut"`
+	Price      GetInstanceTypePrice  `pulumi:"price"`
+	Transfer   int                   `pulumi:"transfer"`
+	Vcpus      int                   `pulumi:"vcpus"`
 }
-

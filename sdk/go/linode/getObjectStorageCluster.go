@@ -35,20 +35,18 @@ func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterA
 // A collection of arguments for invoking getObjectStorageCluster.
 type GetObjectStorageClusterArgs struct {
 	Domain *string `pulumi:"domain"`
-	// The unique ID of this cluster. 
-	Id string `pulumi:"id"`
-	Region *string `pulumi:"region"`
+	// The unique ID of this cluster.
+	Id               string  `pulumi:"id"`
+	Region           *string `pulumi:"region"`
 	StaticSiteDomain *string `pulumi:"staticSiteDomain"`
-	Status *string `pulumi:"status"`
+	Status           *string `pulumi:"status"`
 }
-
 
 // A collection of values returned by getObjectStorageCluster.
 type GetObjectStorageClusterResult struct {
-	Domain string `pulumi:"domain"`
-	Id string `pulumi:"id"`
-	Region string `pulumi:"region"`
+	Domain           string `pulumi:"domain"`
+	Id               string `pulumi:"id"`
+	Region           string `pulumi:"region"`
 	StaticSiteDomain string `pulumi:"staticSiteDomain"`
-	Status string `pulumi:"status"`
+	Status           string `pulumi:"status"`
 }
-

@@ -92,4 +92,3 @@ type ObjectStorageBucketArgs struct {
 func (ObjectStorageBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketArgs)(nil)).Elem()
 }
-

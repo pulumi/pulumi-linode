@@ -49,18 +49,16 @@ type LookupVolumeArgs struct {
 	Id int `pulumi:"id"`
 }
 
-
 // A collection of values returned by getVolume.
 type LookupVolumeResult struct {
-	Created string `pulumi:"created"`
-	FilesystemPath string `pulumi:"filesystemPath"`
-	Id int `pulumi:"id"`
-	Label string `pulumi:"label"`
-	LinodeId int `pulumi:"linodeId"`
-	Region string `pulumi:"region"`
-	Size int `pulumi:"size"`
-	Status string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	Updated string `pulumi:"updated"`
+	Created        string   `pulumi:"created"`
+	FilesystemPath string   `pulumi:"filesystemPath"`
+	Id             int      `pulumi:"id"`
+	Label          string   `pulumi:"label"`
+	LinodeId       int      `pulumi:"linodeId"`
+	Region         string   `pulumi:"region"`
+	Size           int      `pulumi:"size"`
+	Status         string   `pulumi:"status"`
+	Tags           []string `pulumi:"tags"`
+	Updated        string   `pulumi:"updated"`
 }
-

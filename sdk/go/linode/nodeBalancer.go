@@ -16,7 +16,7 @@ type NodeBalancer struct {
 
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrOutput `pulumi:"clientConnThrottle"`
-	Created pulumi.StringOutput `pulumi:"created"`
+	Created            pulumi.StringOutput `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The Public IPv4 Address of this NodeBalancer
@@ -28,9 +28,9 @@ type NodeBalancer struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	Tags     pulumi.StringArrayOutput   `pulumi:"tags"`
 	Transfer NodeBalancerTransferOutput `pulumi:"transfer"`
-	Updated pulumi.StringOutput `pulumi:"updated"`
+	Updated  pulumi.StringOutput        `pulumi:"updated"`
 }
 
 // NewNodeBalancer registers a new resource with the given unique name, arguments, and options.
@@ -65,8 +65,8 @@ func GetNodeBalancer(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NodeBalancer resources.
 type nodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
-	Created *string `pulumi:"created"`
+	ClientConnThrottle *int    `pulumi:"clientConnThrottle"`
+	Created            *string `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname *string `pulumi:"hostname"`
 	// The Public IPv4 Address of this NodeBalancer
@@ -78,15 +78,15 @@ type nodeBalancerState struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags []string `pulumi:"tags"`
+	Tags     []string              `pulumi:"tags"`
 	Transfer *NodeBalancerTransfer `pulumi:"transfer"`
-	Updated *string `pulumi:"updated"`
+	Updated  *string               `pulumi:"updated"`
 }
 
 type NodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
-	Created pulumi.StringPtrInput
+	Created            pulumi.StringPtrInput
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringPtrInput
 	// The Public IPv4 Address of this NodeBalancer
@@ -98,9 +98,9 @@ type NodeBalancerState struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags pulumi.StringArrayInput
+	Tags     pulumi.StringArrayInput
 	Transfer NodeBalancerTransferPtrInput
-	Updated pulumi.StringPtrInput
+	Updated  pulumi.StringPtrInput
 }
 
 func (NodeBalancerState) ElementType() reflect.Type {
@@ -133,4 +133,3 @@ type NodeBalancerArgs struct {
 func (NodeBalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerArgs)(nil)).Elem()
 }
-

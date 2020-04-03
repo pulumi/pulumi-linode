@@ -199,4 +199,3 @@ type DomainArgs struct {
 func (DomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainArgs)(nil)).Elem()
 }
-

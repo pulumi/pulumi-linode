@@ -99,4 +99,3 @@ type ObjectStorageKeyArgs struct {
 func (ObjectStorageKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageKeyArgs)(nil)).Elem()
 }
-

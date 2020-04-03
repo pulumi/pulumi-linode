@@ -190,4 +190,3 @@ type ImageArgs struct {
 func (ImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageArgs)(nil)).Elem()
 }
-

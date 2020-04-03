@@ -29,7 +29,7 @@ type Instance struct {
 	BootConfigLabel pulumi.StringOutput `pulumi:"bootConfigLabel"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
-	Disks InstanceDiskArrayOutput `pulumi:"disks"`
+	Disks   InstanceDiskArrayOutput   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
@@ -53,7 +53,7 @@ type Instance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The password that will be initialially assigned to the 'root' user account.
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
-	Specs InstanceSpecsOutput `pulumi:"specs"`
+	Specs    InstanceSpecsOutput    `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.StringMapOutput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -116,7 +116,7 @@ type instanceState struct {
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
-	Disks []InstanceDisk `pulumi:"disks"`
+	Disks   []InstanceDisk   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
@@ -139,8 +139,8 @@ type instanceState struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
 	// The password that will be initialially assigned to the 'root' user account.
-	RootPass *string `pulumi:"rootPass"`
-	Specs *InstanceSpecs `pulumi:"specs"`
+	RootPass *string        `pulumi:"rootPass"`
+	Specs    *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -173,7 +173,7 @@ type InstanceState struct {
 	BootConfigLabel pulumi.StringPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
-	Disks InstanceDiskArrayInput
+	Disks   InstanceDiskArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
@@ -197,7 +197,7 @@ type InstanceState struct {
 	Region pulumi.StringPtrInput
 	// The password that will be initialially assigned to the 'root' user account.
 	RootPass pulumi.StringPtrInput
-	Specs InstanceSpecsPtrInput
+	Specs    InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.StringMapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -232,7 +232,7 @@ type instanceArgs struct {
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
-	Disks []InstanceDisk `pulumi:"disks"`
+	Disks   []InstanceDisk   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
@@ -274,7 +274,7 @@ type InstanceArgs struct {
 	BootConfigLabel pulumi.StringPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
-	Disks InstanceDiskArrayInput
+	Disks   InstanceDiskArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
@@ -304,4 +304,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

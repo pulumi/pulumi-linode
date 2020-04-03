@@ -30,7 +30,7 @@ import (
 //
 // * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
 //
-// * `vendor` - The upstream distribution vendor. `None` for private Images. 
+// * `vendor` - The upstream distribution vendor. `None` for private Images.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
@@ -48,19 +48,17 @@ type LookupImageArgs struct {
 	Id string `pulumi:"id"`
 }
 
-
 // A collection of values returned by getImage.
 type LookupImageResult struct {
-	Created string `pulumi:"created"`
-	CreatedBy string `pulumi:"createdBy"`
-	Deprecated bool `pulumi:"deprecated"`
+	Created     string `pulumi:"created"`
+	CreatedBy   string `pulumi:"createdBy"`
+	Deprecated  bool   `pulumi:"deprecated"`
 	Description string `pulumi:"description"`
-	Expiry string `pulumi:"expiry"`
-	Id string `pulumi:"id"`
-	IsPublic bool `pulumi:"isPublic"`
-	Label string `pulumi:"label"`
-	Size int `pulumi:"size"`
-	Type string `pulumi:"type"`
-	Vendor string `pulumi:"vendor"`
+	Expiry      string `pulumi:"expiry"`
+	Id          string `pulumi:"id"`
+	IsPublic    bool   `pulumi:"isPublic"`
+	Label       string `pulumi:"label"`
+	Size        int    `pulumi:"size"`
+	Type        string `pulumi:"type"`
+	Vendor      string `pulumi:"vendor"`
 }
-

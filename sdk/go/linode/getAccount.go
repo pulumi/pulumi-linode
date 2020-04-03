@@ -52,19 +52,18 @@ func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountRe
 
 // A collection of values returned by getAccount.
 type GetAccountResult struct {
-	Address1 string `pulumi:"address1"`
-	Address2 string `pulumi:"address2"`
-	Balance int `pulumi:"balance"`
-	City string `pulumi:"city"`
-	Company string `pulumi:"company"`
-	Country string `pulumi:"country"`
-	Email string `pulumi:"email"`
+	Address1  string `pulumi:"address1"`
+	Address2  string `pulumi:"address2"`
+	Balance   int    `pulumi:"balance"`
+	City      string `pulumi:"city"`
+	Company   string `pulumi:"company"`
+	Country   string `pulumi:"country"`
+	Email     string `pulumi:"email"`
 	FirstName string `pulumi:"firstName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string `pulumi:"id"`
 	LastName string `pulumi:"lastName"`
-	Phone string `pulumi:"phone"`
-	State string `pulumi:"state"`
-	Zip string `pulumi:"zip"`
+	Phone    string `pulumi:"phone"`
+	State    string `pulumi:"state"`
+	Zip      string `pulumi:"zip"`
 }
-
