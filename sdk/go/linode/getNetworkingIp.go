@@ -48,19 +48,17 @@ type GetNetworkingIpArgs struct {
 	Address string `pulumi:"address"`
 }
 
-
 // A collection of values returned by getNetworkingIp.
 type GetNetworkingIpResult struct {
 	Address string `pulumi:"address"`
 	Gateway string `pulumi:"gateway"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	LinodeId int `pulumi:"linodeId"`
-	Prefix int `pulumi:"prefix"`
-	Public bool `pulumi:"public"`
-	Rdns string `pulumi:"rdns"`
-	Region string `pulumi:"region"`
+	Id         string `pulumi:"id"`
+	LinodeId   int    `pulumi:"linodeId"`
+	Prefix     int    `pulumi:"prefix"`
+	Public     bool   `pulumi:"public"`
+	Rdns       string `pulumi:"rdns"`
+	Region     string `pulumi:"region"`
 	SubnetMask string `pulumi:"subnetMask"`
-	Type string `pulumi:"type"`
+	Type       string `pulumi:"type"`
 }
-

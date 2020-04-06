@@ -60,22 +60,20 @@ type LookupDomainArgs struct {
 	Id *string `pulumi:"id"`
 }
 
-
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
-	AxfrIps []string `pulumi:"axfrIps"`
-	Description string `pulumi:"description"`
-	Domain *string `pulumi:"domain"`
-	ExpireSec int `pulumi:"expireSec"`
-	Group string `pulumi:"group"`
-	Id *string `pulumi:"id"`
-	MasterIps []string `pulumi:"masterIps"`
-	RefreshSec int `pulumi:"refreshSec"`
-	RetrySec int `pulumi:"retrySec"`
-	SoaEmail string `pulumi:"soaEmail"`
-	Status string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	TtlSec int `pulumi:"ttlSec"`
-	Type string `pulumi:"type"`
+	AxfrIps     []string `pulumi:"axfrIps"`
+	Description string   `pulumi:"description"`
+	Domain      *string  `pulumi:"domain"`
+	ExpireSec   int      `pulumi:"expireSec"`
+	Group       string   `pulumi:"group"`
+	Id          *string  `pulumi:"id"`
+	MasterIps   []string `pulumi:"masterIps"`
+	RefreshSec  int      `pulumi:"refreshSec"`
+	RetrySec    int      `pulumi:"retrySec"`
+	SoaEmail    string   `pulumi:"soaEmail"`
+	Status      string   `pulumi:"status"`
+	Tags        []string `pulumi:"tags"`
+	TtlSec      int      `pulumi:"ttlSec"`
+	Type        string   `pulumi:"type"`
 }
-

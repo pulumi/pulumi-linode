@@ -65,26 +65,24 @@ func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ..
 // A collection of arguments for invoking getStackScript.
 type LookupStackScriptArgs struct {
 	// The unique numeric ID of the StackScript to query.
-	Id int `pulumi:"id"`
+	Id                int                              `pulumi:"id"`
 	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
 }
-
 
 // A collection of values returned by getStackScript.
 type LookupStackScriptResult struct {
-	Created string `pulumi:"created"`
-	DeploymentsActive int `pulumi:"deploymentsActive"`
-	DeploymentsTotal int `pulumi:"deploymentsTotal"`
-	Description string `pulumi:"description"`
-	Id int `pulumi:"id"`
-	Images []string `pulumi:"images"`
-	IsPublic bool `pulumi:"isPublic"`
-	Label string `pulumi:"label"`
-	RevNote string `pulumi:"revNote"`
-	Script string `pulumi:"script"`
-	Updated string `pulumi:"updated"`
+	Created           string                           `pulumi:"created"`
+	DeploymentsActive int                              `pulumi:"deploymentsActive"`
+	DeploymentsTotal  int                              `pulumi:"deploymentsTotal"`
+	Description       string                           `pulumi:"description"`
+	Id                int                              `pulumi:"id"`
+	Images            []string                         `pulumi:"images"`
+	IsPublic          bool                             `pulumi:"isPublic"`
+	Label             string                           `pulumi:"label"`
+	RevNote           string                           `pulumi:"revNote"`
+	Script            string                           `pulumi:"script"`
+	Updated           string                           `pulumi:"updated"`
 	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
-	UserGravatarId string `pulumi:"userGravatarId"`
-	Username string `pulumi:"username"`
+	UserGravatarId    string                           `pulumi:"userGravatarId"`
+	Username          string                           `pulumi:"username"`
 }
-

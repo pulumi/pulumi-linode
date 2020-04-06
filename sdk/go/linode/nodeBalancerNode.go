@@ -141,4 +141,3 @@ type NodeBalancerNodeArgs struct {
 func (NodeBalancerNodeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerNodeArgs)(nil)).Elem()
 }
-

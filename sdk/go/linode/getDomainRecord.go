@@ -50,25 +50,23 @@ func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts 
 
 // A collection of arguments for invoking getDomainRecord.
 type LookupDomainRecordArgs struct {
-	DomainId int `pulumi:"domainId"`
-	Id *int `pulumi:"id"`
-	Name *string `pulumi:"name"`
+	DomainId int     `pulumi:"domainId"`
+	Id       *int    `pulumi:"id"`
+	Name     *string `pulumi:"name"`
 }
-
 
 // A collection of values returned by getDomainRecord.
 type LookupDomainRecordResult struct {
-	DomainId int `pulumi:"domainId"`
-	Id *int `pulumi:"id"`
-	Name *string `pulumi:"name"`
-	Port int `pulumi:"port"`
-	Priority int `pulumi:"priority"`
-	Protocol string `pulumi:"protocol"`
-	Service string `pulumi:"service"`
-	Tag string `pulumi:"tag"`
-	Target string `pulumi:"target"`
-	TtlSec int `pulumi:"ttlSec"`
-	Type string `pulumi:"type"`
-	Weight int `pulumi:"weight"`
+	DomainId int     `pulumi:"domainId"`
+	Id       *int    `pulumi:"id"`
+	Name     *string `pulumi:"name"`
+	Port     int     `pulumi:"port"`
+	Priority int     `pulumi:"priority"`
+	Protocol string  `pulumi:"protocol"`
+	Service  string  `pulumi:"service"`
+	Tag      string  `pulumi:"tag"`
+	Target   string  `pulumi:"target"`
+	TtlSec   int     `pulumi:"ttlSec"`
+	Type     string  `pulumi:"type"`
+	Weight   int     `pulumi:"weight"`
 }
-

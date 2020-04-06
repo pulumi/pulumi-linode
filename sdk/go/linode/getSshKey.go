@@ -25,13 +25,11 @@ type LookupSshKeyArgs struct {
 	Label string `pulumi:"label"`
 }
 
-
 // A collection of values returned by getSshKey.
 type LookupSshKeyResult struct {
 	Created string `pulumi:"created"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Label string `pulumi:"label"`
+	Id     string `pulumi:"id"`
+	Label  string `pulumi:"label"`
 	SshKey string `pulumi:"sshKey"`
 }
-

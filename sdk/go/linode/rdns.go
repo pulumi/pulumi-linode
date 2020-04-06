@@ -96,4 +96,3 @@ type RdnsArgs struct {
 func (RdnsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdnsArgs)(nil)).Elem()
 }
-

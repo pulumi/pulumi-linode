@@ -58,17 +58,16 @@ func GetProfile(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetProfileRe
 
 // A collection of values returned by getProfile.
 type GetProfileResult struct {
-	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	Email string `pulumi:"email"`
-	EmailNotifications bool `pulumi:"emailNotifications"`
+	AuthorizedKeys     []string `pulumi:"authorizedKeys"`
+	Email              string   `pulumi:"email"`
+	EmailNotifications bool     `pulumi:"emailNotifications"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IpWhitelistEnabled bool `pulumi:"ipWhitelistEnabled"`
-	LishAuthMethod string `pulumi:"lishAuthMethod"`
-	Referrals GetProfileReferrals `pulumi:"referrals"`
-	Restricted bool `pulumi:"restricted"`
-	Timezone string `pulumi:"timezone"`
-	TwoFactorAuth bool `pulumi:"twoFactorAuth"`
-	Username string `pulumi:"username"`
+	Id                 string              `pulumi:"id"`
+	IpWhitelistEnabled bool                `pulumi:"ipWhitelistEnabled"`
+	LishAuthMethod     string              `pulumi:"lishAuthMethod"`
+	Referrals          GetProfileReferrals `pulumi:"referrals"`
+	Restricted         bool                `pulumi:"restricted"`
+	Timezone           string              `pulumi:"timezone"`
+	TwoFactorAuth      bool                `pulumi:"twoFactorAuth"`
+	Username           string              `pulumi:"username"`
 }
-

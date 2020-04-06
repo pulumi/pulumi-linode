@@ -36,14 +36,12 @@ type GetUserArgs struct {
 	Username string `pulumi:"username"`
 }
 
-
 // A collection of values returned by getUser.
 type GetUserResult struct {
 	Email string `pulumi:"email"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Restricted bool `pulumi:"restricted"`
-	SshKeys []string `pulumi:"sshKeys"`
-	Username string `pulumi:"username"`
+	Id         string   `pulumi:"id"`
+	Restricted bool     `pulumi:"restricted"`
+	SshKeys    []string `pulumi:"sshKeys"`
+	Username   string   `pulumi:"username"`
 }
-

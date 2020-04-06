@@ -48,7 +48,50 @@ namespace Pulumi.Linode
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.md.
         /// </summary>
+        [Obsolete("Use GetDomain.InvokeAsync() instead")]
         public static Task<GetDomainResult> GetDomain(GetDomainArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("linode:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomain
+    {
+        /// <summary>
+        /// Provides information about a Linode domain.
+        /// 
+        /// ## Attributes
+        /// 
+        /// The Linode Domain resource exports the following attributes:
+        /// 
+        /// * `id` - The unique ID of this Domain.
+        /// 
+        /// * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+        /// 
+        /// * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave)
+        /// 
+        /// * `group` - The group this Domain belongs to.
+        /// 
+        /// * `status` - Used to control whether this Domain is currently being rendered.
+        /// 
+        /// * `description` - A description for this Domain.
+        /// 
+        /// * `master_ips` - The IP addresses representing the master DNS for this Domain.
+        /// 
+        /// * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
+        /// 
+        /// * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        /// 
+        /// * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
+        /// *
+        /// * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
+        /// 
+        /// * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
+        /// 
+        /// * `soa_email` - Start of Authority email address.
+        /// 
+        /// * `tags` - An array of tags applied to this object.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.md.
+        /// </summary>
+        public static Task<GetDomainResult> InvokeAsync(GetDomainArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("linode:index/getDomain:getDomain", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
