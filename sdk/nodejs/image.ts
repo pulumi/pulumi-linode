@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

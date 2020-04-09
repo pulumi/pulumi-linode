@@ -69,6 +69,7 @@ def get_image(id=None,opts=None):
     """
     Provides information about a Linode image
 
+
     ## Attributes
 
     The Linode Image resource exports the following attributes:

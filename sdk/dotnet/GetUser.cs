@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode user
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode User resource exports the following attributes:
@@ -34,6 +35,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode user
+        /// 
         /// 
         /// ## Attributes
         /// 

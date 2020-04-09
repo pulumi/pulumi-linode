@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode domain.
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Domain resource exports the following attributes:
@@ -56,6 +57,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode domain.
+        /// 
         /// 
         /// ## Attributes
         /// 

@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides details about a specific Linode StackScript.
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// This resource exports the following attributes:
@@ -66,6 +67,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a specific Linode StackScript.
+        /// 
         /// 
         /// ## Attributes
         /// 

@@ -65,6 +65,7 @@ def get_instance_type(id=None,label=None,opts=None):
     """
     Provides information about a Linode instance type
 
+
     ## Attributes
 
     The Linode Instance Type resource exports the following attributes:

@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode image
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Image resource exports the following attributes:
@@ -46,6 +47,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode image
+        /// 
         /// 
         /// ## Attributes
         /// 

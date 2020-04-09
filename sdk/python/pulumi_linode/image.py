@@ -65,6 +65,7 @@ class Image(pulumi.CustomResource):
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
+
         ## Attributes
 
         This resource exports the following attributes:

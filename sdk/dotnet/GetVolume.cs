@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode Volume.
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Volume resource exports the following attributes:
@@ -48,6 +49,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Volume.
+        /// 
         /// 
         /// ## Attributes
         /// 

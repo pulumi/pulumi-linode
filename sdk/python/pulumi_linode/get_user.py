@@ -48,6 +48,7 @@ def get_user(username=None,opts=None):
     """
     Provides information about a Linode user
 
+
     ## Attributes
 
     The Linode User resource exports the following attributes:

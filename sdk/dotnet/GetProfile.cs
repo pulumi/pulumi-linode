@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode profile.
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Profile resource exports the following attributes:
@@ -60,6 +61,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode profile.
+        /// 
         /// 
         /// ## Attributes
         /// 

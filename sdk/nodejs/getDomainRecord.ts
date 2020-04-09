@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this data source to access information about a Linode Domain Record.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.md.
  */
-export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> & GetDomainRecordResult {
+export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
     if (!opts) {
         opts = {}
     }
@@ -65,13 +65,11 @@ export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainRecordResult> = pulumi.runtime.invoke("linode:index/getDomainRecord:getDomainRecord", {
+    return pulumi.runtime.invoke("linode:index/getDomainRecord:getDomainRecord", {
         "domainId": args.domainId,
         "id": args.id,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

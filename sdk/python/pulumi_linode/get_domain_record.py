@@ -73,6 +73,7 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     """
     Provides information about a Linode Domain Record.
 
+
     ## Attributes
 
     The Linode Volume resource exports the following attributes:

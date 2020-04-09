@@ -72,6 +72,7 @@ def get_profile(opts=None):
     """
     Provides information about a Linode profile.
 
+
     ## Attributes
 
     The Linode Profile resource exports the following attributes:

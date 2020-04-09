@@ -81,6 +81,7 @@ def get_domain(domain=None,id=None,opts=None):
     """
     Provides information about a Linode domain.
 
+
     ## Attributes
 
     The Linode Domain resource exports the following attributes:

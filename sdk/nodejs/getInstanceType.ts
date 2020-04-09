@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this data source to access information about a Linode Instance type.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.md.
  */
-export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> & GetInstanceTypeResult {
+export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> {
     if (!opts) {
         opts = {}
     }
@@ -52,12 +52,10 @@ export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceTypeResult> = pulumi.runtime.invoke("linode:index/getInstanceType:getInstanceType", {
+    return pulumi.runtime.invoke("linode:index/getInstanceType:getInstanceType", {
         "id": args.id,
         "label": args.label,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

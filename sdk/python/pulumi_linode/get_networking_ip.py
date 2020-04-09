@@ -68,6 +68,7 @@ def get_networking_ip(address=None,opts=None):
     """
     Provides information about a Linode Networking IP Address
 
+
     ## Attributes
 
     The Linode Network IP Address resource exports the following attributes:

@@ -45,6 +45,7 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     """
     Provides information about a Linode Object Storage Cluster
 
+
     ## Attributes
 
     The Linode Object Storage Cluster resource exports the following attributes:

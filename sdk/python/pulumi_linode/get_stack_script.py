@@ -81,6 +81,7 @@ def get_stack_script(id=None,user_defined_fields=None,opts=None):
     """
     Provides details about a specific Linode StackScript.
 
+
     ## Attributes
 
     This resource exports the following attributes:

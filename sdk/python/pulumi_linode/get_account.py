@@ -82,6 +82,7 @@ def get_account(opts=None):
 
     This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
 
+
     ## Attributes
 
     The Linode Account resource exports the following attributes:

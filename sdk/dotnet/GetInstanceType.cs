@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode instance type
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Instance Type resource exports the following attributes:
@@ -44,6 +45,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode instance type
+        /// 
         /// 
         /// ## Attributes
         /// 

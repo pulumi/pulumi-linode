@@ -65,6 +65,7 @@ def get_volume(id=None,opts=None):
     """
     Provides information about a Linode Volume.
 
+
     ## Attributes
 
     The Linode Volume resource exports the following attributes:

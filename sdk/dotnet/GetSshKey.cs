@@ -14,6 +14,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
         /// </summary>
         [Obsolete("Use GetSshKey.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
         /// </summary>

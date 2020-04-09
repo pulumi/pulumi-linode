@@ -14,6 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode Object Storage Cluster
         /// 
+        /// 
         /// ## Attributes
         /// 
         /// The Linode Object Storage Cluster resource exports the following attributes:
@@ -36,6 +37,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Object Storage Cluster
+        /// 
         /// 
         /// ## Attributes
         /// 

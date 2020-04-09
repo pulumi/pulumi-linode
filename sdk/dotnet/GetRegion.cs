@@ -14,6 +14,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode..getRegion` provides details about a specific Linode region.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
         /// </summary>
         [Obsolete("Use GetRegion.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// `linode..getRegion` provides details about a specific Linode region.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
         /// </summary>

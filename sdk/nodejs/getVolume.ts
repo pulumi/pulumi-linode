@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this data source to access information about a Linode Volume.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +48,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
  */
-export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> & GetVolumeResult {
+export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {
         opts = {}
     }
@@ -56,11 +56,9 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetVolumeResult> = pulumi.runtime.invoke("linode:index/getVolume:getVolume", {
+    return pulumi.runtime.invoke("linode:index/getVolume:getVolume", {
         "id": args.id,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
