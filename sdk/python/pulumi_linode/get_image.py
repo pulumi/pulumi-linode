@@ -92,8 +92,6 @@ def get_image(id=None,opts=None):
 
     * `vendor` - The upstream distribution vendor. `None` for private Images. 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
-
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
     """

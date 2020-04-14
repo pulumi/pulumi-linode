@@ -34,8 +34,6 @@ class SshKey(pulumi.CustomResource):
 
         * `created` - The date this SSH Key was created.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.md.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: A label for the SSH Key.

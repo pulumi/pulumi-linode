@@ -108,8 +108,6 @@ def get_profile(opts=None):
     * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 
     * `referrals.0.url` - The referral URL.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/profile.html.md.
     """
     __args__ = dict()
 

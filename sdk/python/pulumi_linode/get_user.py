@@ -59,8 +59,6 @@ def get_user(username=None,opts=None):
 
     * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.md.
-
 
     :param str username: The unique username of this User.
     """

@@ -114,8 +114,6 @@ def get_domain(domain=None,id=None,opts=None):
 
     * `tags` - An array of tags applied to this object.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain.html.md.
-
 
     :param str domain: The unique domain name of the Domain record to query.
     :param str id: The unique numeric ID of the Domain record to query.

@@ -88,8 +88,6 @@ class Image(pulumi.CustomResource):
 
         * `vendor` - The upstream distribution vendor. Nil for private Images.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.md.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.

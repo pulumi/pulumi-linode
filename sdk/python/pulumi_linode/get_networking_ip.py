@@ -91,8 +91,6 @@ def get_networking_ip(address=None,opts=None):
 
     * `region` - The Region this IP address resides in.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.md.
-
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
     """
