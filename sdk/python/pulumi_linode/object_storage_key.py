@@ -26,6 +26,7 @@ class ObjectStorageKey(pulumi.CustomResource):
         """
         Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
 
+
         ## Attributes
 
         This resource exports the following attributes:
@@ -33,8 +34,6 @@ class ObjectStorageKey(pulumi.CustomResource):
         * `access_key` - This keypair's access key. This is not secret.
 
         * `secret_key` - This keypair's secret key.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.md.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

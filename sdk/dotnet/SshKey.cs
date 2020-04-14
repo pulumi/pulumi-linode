@@ -13,13 +13,12 @@ namespace Pulumi.Linode
     /// Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
     /// For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
     /// 
+    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
     /// 
     /// * `created` - The date this SSH Key was created.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/sshkey.html.md.
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {
@@ -50,7 +49,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SshKey(string name, SshKeyArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/sshKey:SshKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/sshKey:SshKey", name, args ?? new SshKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

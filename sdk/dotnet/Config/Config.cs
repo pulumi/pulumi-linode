@@ -8,7 +8,6 @@ namespace Pulumi.Linode
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("linode");
-
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
         /// </summary>
@@ -29,8 +28,5 @@ namespace Pulumi.Linode
         /// </summary>
         public static string? Url { get; set; } = __config.Get("url") ?? Utilities.GetEnv("LINODE_URL");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

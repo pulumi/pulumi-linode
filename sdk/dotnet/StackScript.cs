@@ -72,11 +72,11 @@ namespace Pulumi.Linode
         public Output<string> Updated { get; private set; } = null!;
 
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying
-        /// customized parameters during deployment.
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        /// parameters during deployment.
         /// </summary>
         [Output("userDefinedFields")]
-        public Output<ImmutableArray<Outputs.StackScriptUserDefinedFields>> UserDefinedFields { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StackScriptUserDefinedField>> UserDefinedFields { get; private set; } = null!;
 
         /// <summary>
         /// The Gravatar ID for the User who created the StackScript.
@@ -99,7 +99,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StackScript(string name, StackScriptArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/stackScript:StackScript", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/stackScript:StackScript", name, args ?? new StackScriptArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -179,15 +179,15 @@ namespace Pulumi.Linode
         public Input<string> Script { get; set; } = null!;
 
         [Input("userDefinedFields")]
-        private InputList<Inputs.StackScriptUserDefinedFieldsArgs>? _userDefinedFields;
+        private InputList<Inputs.StackScriptUserDefinedFieldArgs>? _userDefinedFields;
 
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying
-        /// customized parameters during deployment.
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        /// parameters during deployment.
         /// </summary>
-        public InputList<Inputs.StackScriptUserDefinedFieldsArgs> UserDefinedFields
+        public InputList<Inputs.StackScriptUserDefinedFieldArgs> UserDefinedFields
         {
-            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.StackScriptUserDefinedFieldsArgs>());
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.StackScriptUserDefinedFieldArgs>());
             set => _userDefinedFields = value;
         }
 
@@ -265,15 +265,15 @@ namespace Pulumi.Linode
         public Input<string>? Updated { get; set; }
 
         [Input("userDefinedFields")]
-        private InputList<Inputs.StackScriptUserDefinedFieldsGetArgs>? _userDefinedFields;
+        private InputList<Inputs.StackScriptUserDefinedFieldGetArgs>? _userDefinedFields;
 
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying
-        /// customized parameters during deployment.
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        /// parameters during deployment.
         /// </summary>
-        public InputList<Inputs.StackScriptUserDefinedFieldsGetArgs> UserDefinedFields
+        public InputList<Inputs.StackScriptUserDefinedFieldGetArgs> UserDefinedFields
         {
-            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.StackScriptUserDefinedFieldsGetArgs>());
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.StackScriptUserDefinedFieldGetArgs>());
             set => _userDefinedFields = value;
         }
 
@@ -292,100 +292,5 @@ namespace Pulumi.Linode
         public StackScriptState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class StackScriptUserDefinedFieldsArgs : Pulumi.ResourceArgs
-    {
-        [Input("default")]
-        public Input<string>? Default { get; set; }
-
-        [Input("example")]
-        public Input<string>? Example { get; set; }
-
-        /// <summary>
-        /// The StackScript's label is for display purposes only.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("manyOf")]
-        public Input<string>? ManyOf { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("oneOf")]
-        public Input<string>? OneOf { get; set; }
-
-        public StackScriptUserDefinedFieldsArgs()
-        {
-        }
-    }
-
-    public sealed class StackScriptUserDefinedFieldsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("default")]
-        public Input<string>? Default { get; set; }
-
-        [Input("example")]
-        public Input<string>? Example { get; set; }
-
-        /// <summary>
-        /// The StackScript's label is for display purposes only.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("manyOf")]
-        public Input<string>? ManyOf { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("oneOf")]
-        public Input<string>? OneOf { get; set; }
-
-        public StackScriptUserDefinedFieldsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class StackScriptUserDefinedFields
-    {
-        public readonly string Default;
-        public readonly string Example;
-        /// <summary>
-        /// The StackScript's label is for display purposes only.
-        /// </summary>
-        public readonly string Label;
-        public readonly string ManyOf;
-        public readonly string Name;
-        public readonly string OneOf;
-
-        [OutputConstructor]
-        private StackScriptUserDefinedFields(
-            string @default,
-            string example,
-            string label,
-            string manyOf,
-            string name,
-            string oneOf)
-        {
-            Default = @default;
-            Example = example;
-            Label = label;
-            ManyOf = manyOf;
-            Name = name;
-            OneOf = oneOf;
-        }
-    }
     }
 }

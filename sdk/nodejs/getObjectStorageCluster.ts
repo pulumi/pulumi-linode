@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
  */
-export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> & GetObjectStorageClusterResult {
+export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> {
     if (!opts) {
         opts = {}
     }
@@ -44,15 +44,13 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetObjectStorageClusterResult> = pulumi.runtime.invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
+    return pulumi.runtime.invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
         "domain": args.domain,
         "id": args.id,
         "region": args.region,
         "staticSiteDomain": args.staticSiteDomain,
         "status": args.status,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

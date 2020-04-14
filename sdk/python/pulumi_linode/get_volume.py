@@ -65,6 +65,7 @@ def get_volume(id=None,opts=None):
     """
     Provides information about a Linode Volume.
 
+
     ## Attributes
 
     The Linode Volume resource exports the following attributes:
@@ -88,8 +89,6 @@ def get_volume(id=None,opts=None):
     - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
 
     - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
     """
     __args__ = dict()
 

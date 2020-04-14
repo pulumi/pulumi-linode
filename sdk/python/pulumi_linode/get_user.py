@@ -48,6 +48,7 @@ def get_user(username=None,opts=None):
     """
     Provides information about a Linode user
 
+
     ## Attributes
 
     The Linode User resource exports the following attributes:
@@ -57,8 +58,6 @@ def get_user(username=None,opts=None):
     * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
 
     * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.md.
 
 
     :param str username: The unique username of this User.

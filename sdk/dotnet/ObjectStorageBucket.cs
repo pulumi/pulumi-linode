@@ -11,8 +11,6 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.md.
     /// </summary>
     public partial class ObjectStorageBucket : Pulumi.CustomResource
     {
@@ -37,7 +35,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ObjectStorageBucket(string name, ObjectStorageBucketArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/objectStorageBucket:ObjectStorageBucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/objectStorageBucket:ObjectStorageBucket", name, args ?? new ObjectStorageBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 

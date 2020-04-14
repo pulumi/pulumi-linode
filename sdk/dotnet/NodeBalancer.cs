@@ -71,7 +71,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeBalancer(string name, NodeBalancerArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/nodeBalancer:NodeBalancer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/nodeBalancer:NodeBalancer", name, args ?? new NodeBalancerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -205,48 +205,5 @@ namespace Pulumi.Linode
         public NodeBalancerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodeBalancerTransferGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("in")]
-        public Input<double>? In { get; set; }
-
-        [Input("out")]
-        public Input<double>? Out { get; set; }
-
-        [Input("total")]
-        public Input<double>? Total { get; set; }
-
-        public NodeBalancerTransferGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodeBalancerTransfer
-    {
-        public readonly double In;
-        public readonly double Out;
-        public readonly double Total;
-
-        [OutputConstructor]
-        private NodeBalancerTransfer(
-            double @in,
-            double @out,
-            double total)
-        {
-            In = @in;
-            Out = @out;
-            Total = total;
-        }
-    }
     }
 }

@@ -81,6 +81,7 @@ def get_stack_script(id=None,user_defined_fields=None,opts=None):
     """
     Provides details about a specific Linode StackScript.
 
+
     ## Attributes
 
     This resource exports the following attributes:
@@ -122,8 +123,6 @@ def get_stack_script(id=None,user_defined_fields=None,opts=None):
       * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
 
       * `default` - The default value. If not specified, this value will be used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/stackscript.html.md.
 
 
     :param float id: The unique numeric ID of the StackScript to query.

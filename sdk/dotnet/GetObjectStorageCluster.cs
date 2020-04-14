@@ -9,34 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides information about a Linode Object Storage Cluster
-        /// 
-        /// ## Attributes
-        /// 
-        /// The Linode Object Storage Cluster resource exports the following attributes:
-        /// 
-        /// * `domain` - The base URL for this cluster.
-        /// 
-        /// * `status` - This cluster's status.
-        /// 
-        /// * `region` - The region this cluster is located in.
-        /// 
-        /// * `static_site_domain` - The base URL for this cluster used when hosting static sites.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
-        /// </summary>
-        [Obsolete("Use GetObjectStorageCluster.InvokeAsync() instead")]
-        public static Task<GetObjectStorageClusterResult> GetObjectStorageCluster(GetObjectStorageClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageClusterResult>("linode:index/getObjectStorageCluster:getObjectStorageCluster", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetObjectStorageCluster
     {
         /// <summary>
         /// Provides information about a Linode Object Storage Cluster
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ## Attributes
         /// 
         /// The Linode Object Storage Cluster resource exports the following attributes:
@@ -48,12 +27,11 @@ namespace Pulumi.Linode
         /// * `region` - The region this cluster is located in.
         /// 
         /// * `static_site_domain` - The base URL for this cluster used when hosting static sites.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
         /// </summary>
         public static Task<GetObjectStorageClusterResult> InvokeAsync(GetObjectStorageClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageClusterResult>("linode:index/getObjectStorageCluster:getObjectStorageCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageClusterResult>("linode:index/getObjectStorageCluster:getObjectStorageCluster", args ?? new GetObjectStorageClusterArgs(), options.WithVersion());
     }
+
 
     public sealed class GetObjectStorageClusterArgs : Pulumi.InvokeArgs
     {
@@ -80,6 +58,7 @@ namespace Pulumi.Linode
         }
     }
 
+
     [OutputType]
     public sealed class GetObjectStorageClusterResult
     {
@@ -92,9 +71,13 @@ namespace Pulumi.Linode
         [OutputConstructor]
         private GetObjectStorageClusterResult(
             string domain,
+
             string id,
+
             string region,
+
             string staticSiteDomain,
+
             string status)
         {
             Domain = domain;

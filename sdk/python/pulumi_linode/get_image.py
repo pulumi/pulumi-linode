@@ -69,6 +69,7 @@ def get_image(id=None,opts=None):
     """
     Provides information about a Linode image
 
+
     ## Attributes
 
     The Linode Image resource exports the following attributes:
@@ -90,8 +91,6 @@ def get_image(id=None,opts=None):
     * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
 
     * `vendor` - The upstream distribution vendor. `None` for private Images. 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.

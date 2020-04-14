@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this data source to access information about a Linode StackScript.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +61,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/stackscript.html.md.
  */
-export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> & GetStackScriptResult {
+export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
     if (!opts) {
         opts = {}
     }
@@ -69,12 +69,10 @@ export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetStackScriptResult> = pulumi.runtime.invoke("linode:index/getStackScript:getStackScript", {
+    return pulumi.runtime.invoke("linode:index/getStackScript:getStackScript", {
         "id": args.id,
         "userDefinedFields": args.userDefinedFields,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

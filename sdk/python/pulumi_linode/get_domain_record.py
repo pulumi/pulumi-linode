@@ -73,6 +73,7 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     """
     Provides information about a Linode Domain Record.
 
+
     ## Attributes
 
     The Linode Volume resource exports the following attributes:
@@ -100,8 +101,6 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     - `service` - The service this Record identified. Only valid for SRV records.
 
     - `tag` - The tag portion of a CAA record.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/domain_record.html.md.
     """
     __args__ = dict()
 

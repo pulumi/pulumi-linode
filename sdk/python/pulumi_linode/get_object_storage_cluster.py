@@ -45,6 +45,7 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     """
     Provides information about a Linode Object Storage Cluster
 
+
     ## Attributes
 
     The Linode Object Storage Cluster resource exports the following attributes:
@@ -56,8 +57,6 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     * `region` - The region this cluster is located in.
 
     * `static_site_domain` - The base URL for this cluster used when hosting static sites.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
 
 
     :param str id: The unique ID of this cluster. 

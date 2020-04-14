@@ -14,6 +14,7 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
     /// 
+    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
@@ -21,14 +22,12 @@ namespace Pulumi.Linode
     /// * `status` - The label of the Linode Volume.
     /// 
     /// * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/volume.html.md.
     /// </summary>
     public partial class Volume : Pulumi.CustomResource
     {
         /// <summary>
-        /// The full filesystem path for the Volume based on the Volume's label. Path is
-        /// /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.
+        /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+        /// Volume label.
         /// </summary>
         [Output("filesystemPath")]
         public Output<string> FilesystemPath { get; private set; } = null!;
@@ -78,7 +77,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Volume(string name, VolumeArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/volume:Volume", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/volume:Volume", name, args ?? new VolumeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -159,8 +158,8 @@ namespace Pulumi.Linode
     public sealed class VolumeState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full filesystem path for the Volume based on the Volume's label. Path is
-        /// /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.
+        /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+        /// Volume label.
         /// </summary>
         [Input("filesystemPath")]
         public Input<string>? FilesystemPath { get; set; }

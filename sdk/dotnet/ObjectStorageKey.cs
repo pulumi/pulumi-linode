@@ -12,6 +12,7 @@ namespace Pulumi.Linode
     /// <summary>
     /// Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
     /// 
+    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
@@ -19,8 +20,6 @@ namespace Pulumi.Linode
     /// * `access_key` - This keypair's access key. This is not secret.
     /// 
     /// * `secret_key` - This keypair's secret key.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_key.html.md.
     /// </summary>
     public partial class ObjectStorageKey : Pulumi.CustomResource
     {
@@ -51,7 +50,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ObjectStorageKey(string name, ObjectStorageKeyArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/objectStorageKey:ObjectStorageKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/objectStorageKey:ObjectStorageKey", name, args ?? new ObjectStorageKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

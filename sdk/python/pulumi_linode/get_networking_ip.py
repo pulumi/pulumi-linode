@@ -68,6 +68,7 @@ def get_networking_ip(address=None,opts=None):
     """
     Provides information about a Linode Networking IP Address
 
+
     ## Attributes
 
     The Linode Network IP Address resource exports the following attributes:
@@ -89,8 +90,6 @@ def get_networking_ip(address=None,opts=None):
     * `linode_id` - The ID of the Linode this address currently belongs to.
 
     * `region` - The Region this IP address resides in.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/networking_ip.html.md.
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.

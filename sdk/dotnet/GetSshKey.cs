@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
-        /// </summary>
-        [Obsolete("Use GetSshKey.InvokeAsync() instead")]
-        public static Task<GetSshKeyResult> GetSshKey(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSshKey
     {
         /// <summary>
         /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
     {
@@ -41,28 +32,32 @@ namespace Pulumi.Linode
         }
     }
 
+
     [OutputType]
     public sealed class GetSshKeyResult
     {
         public readonly string Created;
-        public readonly string Label;
-        public readonly string SshKey;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Label;
+        public readonly string SshKey;
 
         [OutputConstructor]
         private GetSshKeyResult(
             string created,
+
+            string id,
+
             string label,
-            string sshKey,
-            string id)
+
+            string sshKey)
         {
             Created = created;
+            Id = id;
             Label = label;
             SshKey = sshKey;
-            Id = id;
         }
     }
 }

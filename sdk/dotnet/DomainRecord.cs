@@ -13,11 +13,10 @@ namespace Pulumi.Linode
     /// Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
     /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
     /// 
+    /// 
     /// ## Attributes
     /// 
     /// This resource exports no additional attributes.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.md.
     /// </summary>
     public partial class DomainRecord : Pulumi.CustomResource
     {
@@ -97,7 +96,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainRecord(string name, DomainRecordArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/domainRecord:DomainRecord", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/domainRecord:DomainRecord", name, args ?? new DomainRecordArgs(), MakeResourceOptions(options, ""))
         {
         }
 

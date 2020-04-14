@@ -9,46 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides information about a Linode Volume.
-        /// 
-        /// ## Attributes
-        /// 
-        /// The Linode Volume resource exports the following attributes:
-        /// 
-        /// - `id` - The unique ID of this Volume.
-        /// 
-        /// - `created` - When this Volume was created.
-        /// 
-        /// - `status` - The current status of the Volume. Can be one of "creating", "active", "resizing", or "contact_support".
-        /// 
-        /// - `label` - This Volume's label is for display purposes only.
-        /// 
-        /// - `tags` - An array of tags applied to this object.
-        /// 
-        /// - `size` - The Volume's size, in GiB.
-        /// 
-        /// - `region` - The datacenter in which this Volume is located.
-        /// 
-        /// - `updated` - When this Volume was last updated.
-        /// 
-        /// - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-        /// 
-        /// - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
-        /// </summary>
-        [Obsolete("Use GetVolume.InvokeAsync() instead")]
-        public static Task<GetVolumeResult> GetVolume(GetVolumeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("linode:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVolume
     {
         /// <summary>
         /// Provides information about a Linode Volume.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ## Attributes
         /// 
         /// The Linode Volume resource exports the following attributes:
@@ -72,12 +39,11 @@ namespace Pulumi.Linode
         /// - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
         /// 
         /// - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("linode:index/getVolume:getVolume", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("linode:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVolumeArgs : Pulumi.InvokeArgs
     {
@@ -88,6 +54,7 @@ namespace Pulumi.Linode
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetVolumeResult
@@ -106,14 +73,23 @@ namespace Pulumi.Linode
         [OutputConstructor]
         private GetVolumeResult(
             string created,
+
             string filesystemPath,
+
             int id,
+
             string label,
+
             int linodeId,
+
             string region,
+
             int size,
+
             string status,
+
             ImmutableArray<string> tags,
+
             string updated)
         {
             Created = created;

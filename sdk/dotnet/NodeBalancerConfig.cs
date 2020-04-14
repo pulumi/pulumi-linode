@@ -30,8 +30,8 @@ namespace Pulumi.Linode
         public Output<int> CheckAttempts { get; private set; } = null!;
 
         /// <summary>
-        /// This value must be present in the response body of the check in order for it to pass. If this value is not
-        /// present in the response body of a check request, the backend is considered to be down
+        /// This value must be present in the response body of the check in order for it to pass. If this value is not present in
+        /// the response body of a check request, the backend is considered to be down
         /// </summary>
         [Output("checkBody")]
         public Output<string> CheckBody { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeBalancerConfig(string name, NodeBalancerConfigArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args ?? new NodeBalancerConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -182,8 +182,8 @@ namespace Pulumi.Linode
         public Input<int>? CheckAttempts { get; set; }
 
         /// <summary>
-        /// This value must be present in the response body of the check in order for it to pass. If this value is not
-        /// present in the response body of a check request, the backend is considered to be down
+        /// This value must be present in the response body of the check in order for it to pass. If this value is not present in
+        /// the response body of a check request, the backend is considered to be down
         /// </summary>
         [Input("checkBody")]
         public Input<string>? CheckBody { get; set; }
@@ -280,8 +280,8 @@ namespace Pulumi.Linode
         public Input<int>? CheckAttempts { get; set; }
 
         /// <summary>
-        /// This value must be present in the response body of the check in order for it to pass. If this value is not
-        /// present in the response body of a check request, the backend is considered to be down
+        /// This value must be present in the response body of the check in order for it to pass. If this value is not present in
+        /// the response body of a check request, the backend is considered to be down
         /// </summary>
         [Input("checkBody")]
         public Input<string>? CheckBody { get; set; }
@@ -370,42 +370,5 @@ namespace Pulumi.Linode
         public NodeBalancerConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodeBalancerConfigNodeStatusGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("statusDown")]
-        public Input<int>? StatusDown { get; set; }
-
-        [Input("statusUp")]
-        public Input<int>? StatusUp { get; set; }
-
-        public NodeBalancerConfigNodeStatusGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodeBalancerConfigNodeStatus
-    {
-        public readonly int StatusDown;
-        public readonly int StatusUp;
-
-        [OutputConstructor]
-        private NodeBalancerConfigNodeStatus(
-            int statusDown,
-            int statusUp)
-        {
-            StatusDown = statusDown;
-            StatusUp = statusUp;
-        }
-    }
     }
 }

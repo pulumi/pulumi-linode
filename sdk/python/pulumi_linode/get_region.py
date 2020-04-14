@@ -32,8 +32,6 @@ class AwaitableGetRegionResult(GetRegionResult):
 def get_region(country=None,id=None,opts=None):
     """
     `.getRegion` provides details about a specific Linode region.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
     """
     __args__ = dict()
 

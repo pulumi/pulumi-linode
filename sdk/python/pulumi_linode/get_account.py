@@ -82,6 +82,7 @@ def get_account(opts=None):
 
     This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
 
+
     ## Attributes
 
     The Linode Account resource exports the following attributes:
@@ -109,8 +110,6 @@ def get_account(opts=None):
     * `zip` - The zip code of this Account's billing address.
 
     * `balance` - This Account's balance, in US dollars.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/account.html.md.
     """
     __args__ = dict()
 

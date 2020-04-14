@@ -14,6 +14,7 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
     /// 
+    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
@@ -35,8 +36,6 @@ namespace Pulumi.Linode
     /// * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
     /// 
     /// * `vendor` - The upstream distribution vendor. Nil for private Images.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.md.
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {
@@ -101,8 +100,8 @@ namespace Pulumi.Linode
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created
-        /// automatically from a deleted Linode.
+        /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+        /// a deleted Linode.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -122,7 +121,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Image(string name, ImageArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/image:Image", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/image:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -251,8 +250,8 @@ namespace Pulumi.Linode
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created
-        /// automatically from a deleted Linode.
+        /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+        /// a deleted Linode.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

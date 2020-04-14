@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// `linode..getRegion` provides details about a specific Linode region.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
-        /// </summary>
-        [Obsolete("Use GetRegion.InvokeAsync() instead")]
-        public static Task<GetRegionResult> GetRegion(GetRegionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("linode:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegion
     {
         /// <summary>
         /// `linode..getRegion` provides details about a specific Linode region.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/region.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("linode:index/getRegion:getRegion", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionArgs : Pulumi.InvokeArgs
     {
@@ -44,6 +35,7 @@ namespace Pulumi.Linode
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionResult
     {
@@ -53,6 +45,7 @@ namespace Pulumi.Linode
         [OutputConstructor]
         private GetRegionResult(
             string country,
+
             string id)
         {
             Country = country;

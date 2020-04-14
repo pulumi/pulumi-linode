@@ -42,8 +42,7 @@ namespace Pulumi.Linode
         public Output<int> NodebalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP,
-        /// DOWN)
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -63,7 +62,7 @@ namespace Pulumi.Linode
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeBalancerNode(string name, NodeBalancerNodeArgs args, CustomResourceOptions? options = null)
-            : base("linode:index/nodeBalancerNode:NodeBalancerNode", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("linode:index/nodeBalancerNode:NodeBalancerNode", name, args ?? new NodeBalancerNodeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -174,8 +173,7 @@ namespace Pulumi.Linode
         public Input<int>? NodebalancerId { get; set; }
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP,
-        /// DOWN)
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

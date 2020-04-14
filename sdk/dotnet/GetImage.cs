@@ -9,44 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides information about a Linode image
-        /// 
-        /// ## Attributes
-        /// 
-        /// The Linode Image resource exports the following attributes:
-        /// 
-        /// * `label` - A short description of the Image.
-        /// 
-        /// * `created` - When this Image was created.
-        /// 
-        /// * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-        /// 
-        /// * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-        /// 
-        /// * `description` - A detailed description of this Image.
-        /// 
-        /// * `is_public` - True if the Image is public.
-        /// 
-        /// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        /// 
-        /// * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
-        /// 
-        /// * `vendor` - The upstream distribution vendor. `None` for private Images. 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
-        /// </summary>
-        [Obsolete("Use GetImage.InvokeAsync() instead")]
-        public static Task<GetImageResult> GetImage(GetImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetImage
     {
         /// <summary>
         /// Provides information about a Linode image
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ## Attributes
         /// 
         /// The Linode Image resource exports the following attributes:
@@ -68,12 +37,11 @@ namespace Pulumi.Linode
         /// * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
         /// 
         /// * `vendor` - The upstream distribution vendor. `None` for private Images. 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
     }
+
 
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
@@ -87,6 +55,7 @@ namespace Pulumi.Linode
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetImageResult
@@ -106,15 +75,25 @@ namespace Pulumi.Linode
         [OutputConstructor]
         private GetImageResult(
             string created,
+
             string createdBy,
+
             bool deprecated,
+
             string description,
+
             string expiry,
+
             string id,
+
             bool isPublic,
+
             string label,
+
             int size,
+
             string type,
+
             string vendor)
         {
             Created = created;
