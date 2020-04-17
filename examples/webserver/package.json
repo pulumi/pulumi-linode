@@ -1,5 +1,5 @@
 {
-    "name": "minimal",
+    "name": "webserver",
     "version": "0.1.0",
     "license": "Apache-2.0",
     "main": "bin/index.js",
@@ -8,12 +8,10 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "dev"
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/packet": "latest"
     },
     "devDependencies": {
         "typescript": "^3.0.3"
-    },
-    "peerDependencies": {
-        "@pulumi/packet": "latest"
     }
 }
