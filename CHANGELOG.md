@@ -2,13 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to Pulumi v2.0.0
+* Upgrade to pulumi-terraform-bridge v2.0.0
 
 ---
 
 ## 1.7.0 (2020-04-14)
-* Upgrade to Pulumi v1.13.1
-* Upgrade to pulumi-terraform-bridge v1.8.4
 * Refactor layout to use Go modules
 
 ## 1.6.0 (2020-03-23)
