@@ -59,7 +59,7 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     * `static_site_domain` - The base URL for this cluster used when hosting static sites.
 
 
-    :param str id: The unique ID of this cluster. 
+    :param str id: The unique ID of this cluster.
     """
     __args__ = dict()
 

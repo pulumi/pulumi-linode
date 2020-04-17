@@ -90,7 +90,7 @@ def get_image(id=None,opts=None):
 
     * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
 
-    * `vendor` - The upstream distribution vendor. `None` for private Images. 
+    * `vendor` - The upstream distribution vendor. `None` for private Images.
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
