@@ -21,12 +21,12 @@ export interface InstanceAlerts {
     transferQuota?: pulumi.Input<number>;
 }
 
-export interface InstanceBackup {
+export interface InstanceBackups {
     enabled?: pulumi.Input<boolean>;
-    schedules?: pulumi.Input<pulumi.Input<inputs.InstanceBackupSchedule>[]>;
+    schedule?: pulumi.Input<inputs.InstanceBackupsSchedule>;
 }
 
-export interface InstanceBackupSchedule {
+export interface InstanceBackupsSchedule {
     day?: pulumi.Input<string>;
     window?: pulumi.Input<string>;
 }
@@ -259,7 +259,7 @@ export interface InstanceDisk {
     stackscriptId?: pulumi.Input<number>;
 }
 
-export interface InstanceSpec {
+export interface InstanceSpecs {
     disk?: pulumi.Input<number>;
     memory?: pulumi.Input<number>;
     transfer?: pulumi.Input<number>;

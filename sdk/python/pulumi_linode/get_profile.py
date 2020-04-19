@@ -35,8 +35,8 @@ class GetProfileResult:
         if lish_auth_method and not isinstance(lish_auth_method, str):
             raise TypeError("Expected argument 'lish_auth_method' to be a str")
         __self__.lish_auth_method = lish_auth_method
-        if referrals and not isinstance(referrals, list):
-            raise TypeError("Expected argument 'referrals' to be a list")
+        if referrals and not isinstance(referrals, dict):
+            raise TypeError("Expected argument 'referrals' to be a dict")
         __self__.referrals = referrals
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")

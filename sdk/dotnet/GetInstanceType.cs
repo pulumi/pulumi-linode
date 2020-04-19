@@ -61,20 +61,20 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetInstanceTypeResult
     {
-        public readonly ImmutableArray<Outputs.GetInstanceTypeAddonResult> Addons;
+        public readonly Outputs.GetInstanceTypeAddonsResult Addons;
         public readonly string Class;
         public readonly int Disk;
         public readonly string Id;
         public readonly string Label;
         public readonly int Memory;
         public readonly int NetworkOut;
-        public readonly ImmutableArray<Outputs.GetInstanceTypePriceResult> Prices;
+        public readonly Outputs.GetInstanceTypePriceResult Price;
         public readonly int Transfer;
         public readonly int Vcpus;
 
         [OutputConstructor]
         private GetInstanceTypeResult(
-            ImmutableArray<Outputs.GetInstanceTypeAddonResult> addons,
+            Outputs.GetInstanceTypeAddonsResult addons,
 
             string @class,
 
@@ -88,7 +88,7 @@ namespace Pulumi.Linode
 
             int networkOut,
 
-            ImmutableArray<Outputs.GetInstanceTypePriceResult> prices,
+            Outputs.GetInstanceTypePriceResult price,
 
             int transfer,
 
@@ -101,7 +101,7 @@ namespace Pulumi.Linode
             Label = label;
             Memory = memory;
             NetworkOut = networkOut;
-            Prices = prices;
+            Price = price;
             Transfer = transfer;
             Vcpus = vcpus;
         }

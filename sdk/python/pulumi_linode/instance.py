@@ -23,12 +23,12 @@ class Instance(pulumi.CustomResource):
     """
     A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
     """
-    backups: pulumi.Output[list]
+    backups: pulumi.Output[dict]
     """
     Information about this Linode's backups status.
 
       * `enabled` (`bool`)
-      * `schedules` (`list`)
+      * `schedule` (`dict`)
         * `day` (`str`)
         * `window` (`str`)
     """
@@ -144,7 +144,7 @@ class Instance(pulumi.CustomResource):
     """
     The password that will be initialially assigned to the 'root' user account.
     """
-    specs: pulumi.Output[list]
+    specs: pulumi.Output[dict]
     stackscript_data: pulumi.Output[dict]
     """
     An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -341,7 +341,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param pulumi.Input[list] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[list] backups: Information about this Linode's backups status.
+        :param pulumi.Input[dict] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         :param pulumi.Input[list] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -377,7 +377,7 @@ class Instance(pulumi.CustomResource):
         The **backups** object supports the following:
 
           * `enabled` (`pulumi.Input[bool]`)
-          * `schedules` (`pulumi.Input[list]`)
+          * `schedule` (`pulumi.Input[dict]`)
             * `day` (`pulumi.Input[str]`)
             * `window` (`pulumi.Input[str]`)
 

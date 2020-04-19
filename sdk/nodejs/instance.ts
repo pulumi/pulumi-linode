@@ -49,7 +49,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Information about this Linode's backups status.
      */
-    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackup[]>;
+    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackups>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -106,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      * The password that will be initialially assigned to the 'root' user account.
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpec[]>;
+    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
@@ -239,7 +239,7 @@ export interface InstanceState {
     /**
      * Information about this Linode's backups status.
      */
-    readonly backups?: pulumi.Input<pulumi.Input<inputs.InstanceBackup>[]>;
+    readonly backups?: pulumi.Input<inputs.InstanceBackups>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -296,7 +296,7 @@ export interface InstanceState {
      * The password that will be initialially assigned to the 'root' user account.
      */
     readonly rootPass?: pulumi.Input<string>;
-    readonly specs?: pulumi.Input<pulumi.Input<inputs.InstanceSpec>[]>;
+    readonly specs?: pulumi.Input<inputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */

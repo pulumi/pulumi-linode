@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         /// Information about this Linode's backups status.
         /// </summary>
         [Output("backups")]
-        public Output<ImmutableArray<Outputs.InstanceBackup>> Backups { get; private set; } = null!;
+        public Output<Outputs.InstanceBackups> Backups { get; private set; } = null!;
 
         /// <summary>
         /// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
@@ -123,7 +123,7 @@ namespace Pulumi.Linode
         public Output<string?> RootPass { get; private set; } = null!;
 
         [Output("specs")]
-        public Output<ImmutableArray<Outputs.InstanceSpec>> Specs { get; private set; } = null!;
+        public Output<Outputs.InstanceSpecs> Specs { get; private set; } = null!;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -402,17 +402,11 @@ namespace Pulumi.Linode
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
 
-        [Input("backups")]
-        private InputList<Inputs.InstanceBackupGetArgs>? _backups;
-
         /// <summary>
         /// Information about this Linode's backups status.
         /// </summary>
-        public InputList<Inputs.InstanceBackupGetArgs> Backups
-        {
-            get => _backups ?? (_backups = new InputList<Inputs.InstanceBackupGetArgs>());
-            set => _backups = value;
-        }
+        [Input("backups")]
+        public Input<Inputs.InstanceBackupsGetArgs>? Backups { get; set; }
 
         /// <summary>
         /// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
@@ -516,12 +510,7 @@ namespace Pulumi.Linode
         public Input<string>? RootPass { get; set; }
 
         [Input("specs")]
-        private InputList<Inputs.InstanceSpecGetArgs>? _specs;
-        public InputList<Inputs.InstanceSpecGetArgs> Specs
-        {
-            get => _specs ?? (_specs = new InputList<Inputs.InstanceSpecGetArgs>());
-            set => _specs = value;
-        }
+        public Input<Inputs.InstanceSpecsGetArgs>? Specs { get; set; }
 
         [Input("stackscriptData")]
         private InputMap<object>? _stackscriptData;

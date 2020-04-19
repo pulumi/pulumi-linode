@@ -69,7 +69,7 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly bool IpWhitelistEnabled;
         public readonly string LishAuthMethod;
-        public readonly ImmutableArray<Outputs.GetProfileReferralResult> Referrals;
+        public readonly Outputs.GetProfileReferralsResult Referrals;
         public readonly bool Restricted;
         public readonly string Timezone;
         public readonly bool TwoFactorAuth;
@@ -89,7 +89,7 @@ namespace Pulumi.Linode
 
             string lishAuthMethod,
 
-            ImmutableArray<Outputs.GetProfileReferralResult> referrals,
+            Outputs.GetProfileReferralsResult referrals,
 
             bool restricted,
 

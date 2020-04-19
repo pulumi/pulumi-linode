@@ -4,15 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
-export interface GetInstanceTypeAddon {
-    backups: outputs.GetInstanceTypeAddonBackup[];
+export interface GetInstanceTypeAddons {
+    backups: outputs.GetInstanceTypeAddonsBackups;
 }
 
-export interface GetInstanceTypeAddonBackup {
-    prices: outputs.GetInstanceTypeAddonBackupPrice[];
+export interface GetInstanceTypeAddonsBackups {
+    price: outputs.GetInstanceTypeAddonsBackupsPrice;
 }
 
-export interface GetInstanceTypeAddonBackupPrice {
+export interface GetInstanceTypeAddonsBackupsPrice {
     hourly: number;
     monthly: number;
 }
@@ -22,7 +22,7 @@ export interface GetInstanceTypePrice {
     monthly: number;
 }
 
-export interface GetProfileReferral {
+export interface GetProfileReferrals {
     code: string;
     completed: number;
     credit: number;
@@ -48,12 +48,12 @@ export interface InstanceAlerts {
     transferQuota: number;
 }
 
-export interface InstanceBackup {
+export interface InstanceBackups {
     enabled: boolean;
-    schedules: outputs.InstanceBackupSchedule[];
+    schedule: outputs.InstanceBackupsSchedule;
 }
 
-export interface InstanceBackupSchedule {
+export interface InstanceBackupsSchedule {
     day: string;
     window: string;
 }
@@ -286,7 +286,7 @@ export interface InstanceDisk {
     stackscriptId: number;
 }
 
-export interface InstanceSpec {
+export interface InstanceSpecs {
     disk: number;
     memory: number;
     transfer: number;

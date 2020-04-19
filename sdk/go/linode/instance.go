@@ -21,7 +21,7 @@ type Instance struct {
 	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
 	BackupId pulumi.IntPtrOutput `pulumi:"backupId"`
 	// Information about this Linode's backups status.
-	Backups InstanceBackupArrayOutput `pulumi:"backups"`
+	Backups InstanceBackupsOutput `pulumi:"backups"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
@@ -51,8 +51,8 @@ type Instance struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The password that will be initialially assigned to the 'root' user account.
-	RootPass pulumi.StringPtrOutput  `pulumi:"rootPass"`
-	Specs    InstanceSpecArrayOutput `pulumi:"specs"`
+	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
+	Specs    InstanceSpecsOutput    `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -108,7 +108,7 @@ type instanceState struct {
 	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
 	BackupId *int `pulumi:"backupId"`
 	// Information about this Linode's backups status.
-	Backups []InstanceBackup `pulumi:"backups"`
+	Backups *InstanceBackups `pulumi:"backups"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
@@ -139,7 +139,7 @@ type instanceState struct {
 	Region *string `pulumi:"region"`
 	// The password that will be initialially assigned to the 'root' user account.
 	RootPass *string        `pulumi:"rootPass"`
-	Specs    []InstanceSpec `pulumi:"specs"`
+	Specs    *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -165,7 +165,7 @@ type InstanceState struct {
 	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
 	BackupId pulumi.IntPtrInput
 	// Information about this Linode's backups status.
-	Backups InstanceBackupArrayInput
+	Backups InstanceBackupsPtrInput
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
@@ -196,7 +196,7 @@ type InstanceState struct {
 	Region pulumi.StringPtrInput
 	// The password that will be initialially assigned to the 'root' user account.
 	RootPass pulumi.StringPtrInput
-	Specs    InstanceSpecArrayInput
+	Specs    InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*

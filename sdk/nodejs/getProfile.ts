@@ -79,7 +79,7 @@ export interface GetProfileResult {
     readonly emailNotifications: boolean;
     readonly ipWhitelistEnabled: boolean;
     readonly lishAuthMethod: string;
-    readonly referrals: outputs.GetProfileReferral[];
+    readonly referrals: outputs.GetProfileReferrals;
     readonly restricted: boolean;
     readonly timezone: string;
     readonly twoFactorAuth: boolean;
