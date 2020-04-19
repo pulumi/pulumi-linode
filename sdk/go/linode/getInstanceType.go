@@ -47,14 +47,14 @@ type GetInstanceTypeArgs struct {
 
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
-	Addons     GetInstanceTypeAddons `pulumi:"addons"`
-	Class      string                `pulumi:"class"`
-	Disk       int                   `pulumi:"disk"`
-	Id         string                `pulumi:"id"`
-	Label      string                `pulumi:"label"`
-	Memory     int                   `pulumi:"memory"`
-	NetworkOut int                   `pulumi:"networkOut"`
-	Price      GetInstanceTypePrice  `pulumi:"price"`
-	Transfer   int                   `pulumi:"transfer"`
-	Vcpus      int                   `pulumi:"vcpus"`
+	Addons     []GetInstanceTypeAddon `pulumi:"addons"`
+	Class      string                 `pulumi:"class"`
+	Disk       int                    `pulumi:"disk"`
+	Id         string                 `pulumi:"id"`
+	Label      string                 `pulumi:"label"`
+	Memory     int                    `pulumi:"memory"`
+	NetworkOut int                    `pulumi:"networkOut"`
+	Prices     []GetInstanceTypePrice `pulumi:"prices"`
+	Transfer   int                    `pulumi:"transfer"`
+	Vcpus      int                    `pulumi:"vcpus"`
 }

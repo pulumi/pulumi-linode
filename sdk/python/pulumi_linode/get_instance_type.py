@@ -13,9 +13,9 @@ class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
     """
-    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, transfer=None, vcpus=None):
-        if addons and not isinstance(addons, dict):
-            raise TypeError("Expected argument 'addons' to be a dict")
+    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, prices=None, transfer=None, vcpus=None):
+        if addons and not isinstance(addons, list):
+            raise TypeError("Expected argument 'addons' to be a list")
         __self__.addons = addons
         if class_ and not isinstance(class_, str):
             raise TypeError("Expected argument 'class_' to be a str")
@@ -35,9 +35,9 @@ class GetInstanceTypeResult:
         if network_out and not isinstance(network_out, float):
             raise TypeError("Expected argument 'network_out' to be a float")
         __self__.network_out = network_out
-        if price and not isinstance(price, dict):
-            raise TypeError("Expected argument 'price' to be a dict")
-        __self__.price = price
+        if prices and not isinstance(prices, list):
+            raise TypeError("Expected argument 'prices' to be a list")
+        __self__.prices = prices
         if transfer and not isinstance(transfer, float):
             raise TypeError("Expected argument 'transfer' to be a float")
         __self__.transfer = transfer
@@ -57,7 +57,7 @@ class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
             label=self.label,
             memory=self.memory,
             network_out=self.network_out,
-            price=self.price,
+            prices=self.prices,
             transfer=self.transfer,
             vcpus=self.vcpus)
 
@@ -108,6 +108,6 @@ def get_instance_type(id=None,label=None,opts=None):
         label=__ret__.get('label'),
         memory=__ret__.get('memory'),
         network_out=__ret__.get('networkOut'),
-        price=__ret__.get('price'),
+        prices=__ret__.get('prices'),
         transfer=__ret__.get('transfer'),
         vcpus=__ret__.get('vcpus'))

@@ -4,15 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
-export interface GetInstanceTypeAddons {
-    backups: outputs.GetInstanceTypeAddonsBackups;
+export interface GetInstanceTypeAddon {
+    backups: outputs.GetInstanceTypeAddonBackup[];
 }
 
-export interface GetInstanceTypeAddonsBackups {
-    price: outputs.GetInstanceTypeAddonsBackupsPrice;
+export interface GetInstanceTypeAddonBackup {
+    prices: outputs.GetInstanceTypeAddonBackupPrice[];
 }
 
-export interface GetInstanceTypeAddonsBackupsPrice {
+export interface GetInstanceTypeAddonBackupPrice {
     hourly: number;
     monthly: number;
 }
@@ -22,7 +22,7 @@ export interface GetInstanceTypePrice {
     monthly: number;
 }
 
-export interface GetProfileReferrals {
+export interface GetProfileReferral {
     code: string;
     completed: number;
     credit: number;
@@ -48,12 +48,12 @@ export interface InstanceAlerts {
     transferQuota: number;
 }
 
-export interface InstanceBackups {
+export interface InstanceBackup {
     enabled: boolean;
-    schedule: outputs.InstanceBackupsSchedule;
+    schedules: outputs.InstanceBackupSchedule[];
 }
 
-export interface InstanceBackupsSchedule {
+export interface InstanceBackupSchedule {
     day: string;
     window: string;
 }
@@ -72,7 +72,7 @@ export interface InstanceConfig {
      */
     helpers: outputs.InstanceConfigHelpers;
     /**
-     * - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
      */
     kernel?: string;
     /**
@@ -263,7 +263,7 @@ export interface InstanceDisk {
      */
     id: number;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image: string;
     /**
@@ -286,7 +286,7 @@ export interface InstanceDisk {
     stackscriptId: number;
 }
 
-export interface InstanceSpecs {
+export interface InstanceSpec {
     disk: number;
     memory: number;
     transfer: number;

@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         /// Information about this Linode's backups status.
         /// </summary>
         [Output("backups")]
-        public Output<Outputs.InstanceBackups> Backups { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceBackup>> Backups { get; private set; } = null!;
 
         /// <summary>
         /// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
@@ -66,7 +66,7 @@ namespace Pulumi.Linode
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("image")]
         public Output<string?> Image { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Linode
         public Output<string> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.Linode
         public Output<string?> RootPass { get; private set; } = null!;
 
         [Output("specs")]
-        public Output<Outputs.InstanceSpecs> Specs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceSpec>> Specs { get; private set; } = null!;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("stackscriptData")]
-        public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
         /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -156,7 +156,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance.  Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc.
+        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.Linode
         public Input<bool>? PrivateIp { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -315,14 +315,14 @@ namespace Pulumi.Linode
         public Input<string>? RootPass { get; set; }
 
         [Input("stackscriptData")]
-        private InputMap<string>? _stackscriptData;
+        private InputMap<object>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         /// </summary>
-        public InputMap<string> StackscriptData
+        public InputMap<object> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
             set => _stackscriptData = value;
         }
 
@@ -351,7 +351,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance.  Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc.
+        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -402,11 +402,17 @@ namespace Pulumi.Linode
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
 
+        [Input("backups")]
+        private InputList<Inputs.InstanceBackupGetArgs>? _backups;
+
         /// <summary>
         /// Information about this Linode's backups status.
         /// </summary>
-        [Input("backups")]
-        public Input<Inputs.InstanceBackupsGetArgs>? Backups { get; set; }
+        public InputList<Inputs.InstanceBackupGetArgs> Backups
+        {
+            get => _backups ?? (_backups = new InputList<Inputs.InstanceBackupGetArgs>());
+            set => _backups = value;
+        }
 
         /// <summary>
         /// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
@@ -447,7 +453,7 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -498,7 +504,7 @@ namespace Pulumi.Linode
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -510,17 +516,22 @@ namespace Pulumi.Linode
         public Input<string>? RootPass { get; set; }
 
         [Input("specs")]
-        public Input<Inputs.InstanceSpecsGetArgs>? Specs { get; set; }
+        private InputList<Inputs.InstanceSpecGetArgs>? _specs;
+        public InputList<Inputs.InstanceSpecGetArgs> Specs
+        {
+            get => _specs ?? (_specs = new InputList<Inputs.InstanceSpecGetArgs>());
+            set => _specs = value;
+        }
 
         [Input("stackscriptData")]
-        private InputMap<string>? _stackscriptData;
+        private InputMap<object>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         /// </summary>
-        public InputMap<string> StackscriptData
+        public InputMap<object> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
             set => _stackscriptData = value;
         }
 
@@ -555,7 +566,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance.  Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc.
+        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

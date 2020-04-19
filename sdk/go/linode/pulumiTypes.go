@@ -173,270 +173,208 @@ func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
 }
 
-type InstanceBackups struct {
-	Enabled  *bool                    `pulumi:"enabled"`
-	Schedule *InstanceBackupsSchedule `pulumi:"schedule"`
+type InstanceBackup struct {
+	Enabled   *bool                    `pulumi:"enabled"`
+	Schedules []InstanceBackupSchedule `pulumi:"schedules"`
 }
 
-// InstanceBackupsInput is an input type that accepts InstanceBackupsArgs and InstanceBackupsOutput values.
-// You can construct a concrete instance of `InstanceBackupsInput` via:
+// InstanceBackupInput is an input type that accepts InstanceBackupArgs and InstanceBackupOutput values.
+// You can construct a concrete instance of `InstanceBackupInput` via:
 //
-// 		 InstanceBackupsArgs{...}
+// 		 InstanceBackupArgs{...}
 //
-type InstanceBackupsInput interface {
+type InstanceBackupInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsOutput() InstanceBackupsOutput
-	ToInstanceBackupsOutputWithContext(context.Context) InstanceBackupsOutput
+	ToInstanceBackupOutput() InstanceBackupOutput
+	ToInstanceBackupOutputWithContext(context.Context) InstanceBackupOutput
 }
 
-type InstanceBackupsArgs struct {
-	Enabled  pulumi.BoolPtrInput             `pulumi:"enabled"`
-	Schedule InstanceBackupsSchedulePtrInput `pulumi:"schedule"`
+type InstanceBackupArgs struct {
+	Enabled   pulumi.BoolPtrInput              `pulumi:"enabled"`
+	Schedules InstanceBackupScheduleArrayInput `pulumi:"schedules"`
 }
 
-func (InstanceBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackups)(nil)).Elem()
+func (InstanceBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackup)(nil)).Elem()
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsOutput() InstanceBackupsOutput {
-	return i.ToInstanceBackupsOutputWithContext(context.Background())
+func (i InstanceBackupArgs) ToInstanceBackupOutput() InstanceBackupOutput {
+	return i.ToInstanceBackupOutputWithContext(context.Background())
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsOutputWithContext(ctx context.Context) InstanceBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsOutput)
+func (i InstanceBackupArgs) ToInstanceBackupOutputWithContext(ctx context.Context) InstanceBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupOutput)
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return i.ToInstanceBackupsPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceBackupsArgs) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsOutput).ToInstanceBackupsPtrOutputWithContext(ctx)
-}
-
-// InstanceBackupsPtrInput is an input type that accepts InstanceBackupsArgs, InstanceBackupsPtr and InstanceBackupsPtrOutput values.
-// You can construct a concrete instance of `InstanceBackupsPtrInput` via:
+// InstanceBackupArrayInput is an input type that accepts InstanceBackupArray and InstanceBackupArrayOutput values.
+// You can construct a concrete instance of `InstanceBackupArrayInput` via:
 //
-// 		 InstanceBackupsArgs{...}
+// 		 InstanceBackupArray{ InstanceBackupArgs{...} }
 //
-//  or:
-//
-// 		 nil
-//
-type InstanceBackupsPtrInput interface {
+type InstanceBackupArrayInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput
-	ToInstanceBackupsPtrOutputWithContext(context.Context) InstanceBackupsPtrOutput
+	ToInstanceBackupArrayOutput() InstanceBackupArrayOutput
+	ToInstanceBackupArrayOutputWithContext(context.Context) InstanceBackupArrayOutput
 }
 
-type instanceBackupsPtrType InstanceBackupsArgs
+type InstanceBackupArray []InstanceBackupInput
 
-func InstanceBackupsPtr(v *InstanceBackupsArgs) InstanceBackupsPtrInput {
-	return (*instanceBackupsPtrType)(v)
+func (InstanceBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackup)(nil)).Elem()
 }
 
-func (*instanceBackupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackups)(nil)).Elem()
+func (i InstanceBackupArray) ToInstanceBackupArrayOutput() InstanceBackupArrayOutput {
+	return i.ToInstanceBackupArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceBackupsPtrType) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return i.ToInstanceBackupsPtrOutputWithContext(context.Background())
+func (i InstanceBackupArray) ToInstanceBackupArrayOutputWithContext(ctx context.Context) InstanceBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupArrayOutput)
 }
 
-func (i *instanceBackupsPtrType) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsPtrOutput)
+type InstanceBackupOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackup)(nil)).Elem()
 }
 
-type InstanceBackupsOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackups)(nil)).Elem()
-}
-
-func (o InstanceBackupsOutput) ToInstanceBackupsOutput() InstanceBackupsOutput {
+func (o InstanceBackupOutput) ToInstanceBackupOutput() InstanceBackupOutput {
 	return o
 }
 
-func (o InstanceBackupsOutput) ToInstanceBackupsOutputWithContext(ctx context.Context) InstanceBackupsOutput {
+func (o InstanceBackupOutput) ToInstanceBackupOutputWithContext(ctx context.Context) InstanceBackupOutput {
 	return o
 }
 
-func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return o.ToInstanceBackupsPtrOutputWithContext(context.Background())
+func (o InstanceBackupOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceBackup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *InstanceBackups {
-		return &v
-	}).(InstanceBackupsPtrOutput)
-}
-func (o InstanceBackupsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o InstanceBackupOutput) Schedules() InstanceBackupScheduleArrayOutput {
+	return o.ApplyT(func(v InstanceBackup) []InstanceBackupSchedule { return v.Schedules }).(InstanceBackupScheduleArrayOutput)
 }
 
-func (o InstanceBackupsOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
+type InstanceBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackup)(nil)).Elem()
 }
 
-type InstanceBackupsPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackups)(nil)).Elem()
-}
-
-func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
+func (o InstanceBackupArrayOutput) ToInstanceBackupArrayOutput() InstanceBackupArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
+func (o InstanceBackupArrayOutput) ToInstanceBackupArrayOutputWithContext(ctx context.Context) InstanceBackupArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
-	return o.ApplyT(func(v *InstanceBackups) InstanceBackups { return *v }).(InstanceBackupsOutput)
+func (o InstanceBackupArrayOutput) Index(i pulumi.IntInput) InstanceBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBackup {
+		return vs[0].([]InstanceBackup)[vs[1].(int)]
+	}).(InstanceBackupOutput)
 }
 
-func (o InstanceBackupsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o InstanceBackupsPtrOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
-}
-
-type InstanceBackupsSchedule struct {
+type InstanceBackupSchedule struct {
 	Day    *string `pulumi:"day"`
 	Window *string `pulumi:"window"`
 }
 
-// InstanceBackupsScheduleInput is an input type that accepts InstanceBackupsScheduleArgs and InstanceBackupsScheduleOutput values.
-// You can construct a concrete instance of `InstanceBackupsScheduleInput` via:
+// InstanceBackupScheduleInput is an input type that accepts InstanceBackupScheduleArgs and InstanceBackupScheduleOutput values.
+// You can construct a concrete instance of `InstanceBackupScheduleInput` via:
 //
-// 		 InstanceBackupsScheduleArgs{...}
+// 		 InstanceBackupScheduleArgs{...}
 //
-type InstanceBackupsScheduleInput interface {
+type InstanceBackupScheduleInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput
-	ToInstanceBackupsScheduleOutputWithContext(context.Context) InstanceBackupsScheduleOutput
+	ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput
+	ToInstanceBackupScheduleOutputWithContext(context.Context) InstanceBackupScheduleOutput
 }
 
-type InstanceBackupsScheduleArgs struct {
+type InstanceBackupScheduleArgs struct {
 	Day    pulumi.StringPtrInput `pulumi:"day"`
 	Window pulumi.StringPtrInput `pulumi:"window"`
 }
 
-func (InstanceBackupsScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackupsSchedule)(nil)).Elem()
+func (InstanceBackupScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackupSchedule)(nil)).Elem()
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput {
-	return i.ToInstanceBackupsScheduleOutputWithContext(context.Background())
+func (i InstanceBackupScheduleArgs) ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput {
+	return i.ToInstanceBackupScheduleOutputWithContext(context.Background())
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsScheduleOutputWithContext(ctx context.Context) InstanceBackupsScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsScheduleOutput)
+func (i InstanceBackupScheduleArgs) ToInstanceBackupScheduleOutputWithContext(ctx context.Context) InstanceBackupScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupScheduleOutput)
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return i.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsScheduleOutput).ToInstanceBackupsSchedulePtrOutputWithContext(ctx)
-}
-
-// InstanceBackupsSchedulePtrInput is an input type that accepts InstanceBackupsScheduleArgs, InstanceBackupsSchedulePtr and InstanceBackupsSchedulePtrOutput values.
-// You can construct a concrete instance of `InstanceBackupsSchedulePtrInput` via:
+// InstanceBackupScheduleArrayInput is an input type that accepts InstanceBackupScheduleArray and InstanceBackupScheduleArrayOutput values.
+// You can construct a concrete instance of `InstanceBackupScheduleArrayInput` via:
 //
-// 		 InstanceBackupsScheduleArgs{...}
+// 		 InstanceBackupScheduleArray{ InstanceBackupScheduleArgs{...} }
 //
-//  or:
-//
-// 		 nil
-//
-type InstanceBackupsSchedulePtrInput interface {
+type InstanceBackupScheduleArrayInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput
-	ToInstanceBackupsSchedulePtrOutputWithContext(context.Context) InstanceBackupsSchedulePtrOutput
+	ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput
+	ToInstanceBackupScheduleArrayOutputWithContext(context.Context) InstanceBackupScheduleArrayOutput
 }
 
-type instanceBackupsSchedulePtrType InstanceBackupsScheduleArgs
+type InstanceBackupScheduleArray []InstanceBackupScheduleInput
 
-func InstanceBackupsSchedulePtr(v *InstanceBackupsScheduleArgs) InstanceBackupsSchedulePtrInput {
-	return (*instanceBackupsSchedulePtrType)(v)
+func (InstanceBackupScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackupSchedule)(nil)).Elem()
 }
 
-func (*instanceBackupsSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackupsSchedule)(nil)).Elem()
+func (i InstanceBackupScheduleArray) ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput {
+	return i.ToInstanceBackupScheduleArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceBackupsSchedulePtrType) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return i.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
+func (i InstanceBackupScheduleArray) ToInstanceBackupScheduleArrayOutputWithContext(ctx context.Context) InstanceBackupScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupScheduleArrayOutput)
 }
 
-func (i *instanceBackupsSchedulePtrType) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsSchedulePtrOutput)
+type InstanceBackupScheduleOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackupSchedule)(nil)).Elem()
 }
 
-type InstanceBackupsScheduleOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackupsSchedule)(nil)).Elem()
-}
-
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput {
+func (o InstanceBackupScheduleOutput) ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput {
 	return o
 }
 
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsScheduleOutputWithContext(ctx context.Context) InstanceBackupsScheduleOutput {
+func (o InstanceBackupScheduleOutput) ToInstanceBackupScheduleOutputWithContext(ctx context.Context) InstanceBackupScheduleOutput {
 	return o
 }
 
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return o.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
+func (o InstanceBackupScheduleOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBackupSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *InstanceBackupsSchedule {
-		return &v
-	}).(InstanceBackupsSchedulePtrOutput)
-}
-func (o InstanceBackupsScheduleOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
+func (o InstanceBackupScheduleOutput) Window() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBackupSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceBackupsScheduleOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
+type InstanceBackupScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackupSchedule)(nil)).Elem()
 }
 
-type InstanceBackupsSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackupsSchedule)(nil)).Elem()
-}
-
-func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
+func (o InstanceBackupScheduleArrayOutput) ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
+func (o InstanceBackupScheduleArrayOutput) ToInstanceBackupScheduleArrayOutputWithContext(ctx context.Context) InstanceBackupScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsSchedulePtrOutput) Elem() InstanceBackupsScheduleOutput {
-	return o.ApplyT(func(v *InstanceBackupsSchedule) InstanceBackupsSchedule { return *v }).(InstanceBackupsScheduleOutput)
-}
-
-func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
+func (o InstanceBackupScheduleArrayOutput) Index(i pulumi.IntInput) InstanceBackupScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBackupSchedule {
+		return vs[0].([]InstanceBackupSchedule)[vs[1].(int)]
+	}).(InstanceBackupScheduleOutput)
 }
 
 type InstanceConfig struct {
@@ -446,7 +384,7 @@ type InstanceConfig struct {
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 	Kernel *string `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label string `pulumi:"label"`
@@ -479,7 +417,7 @@ type InstanceConfigArgs struct {
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -560,7 +498,7 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
-// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
@@ -2238,7 +2176,7 @@ type InstanceDisk struct {
 	Filesystem      *string  `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label    string  `pulumi:"label"`
@@ -2272,7 +2210,7 @@ type InstanceDiskArgs struct {
 	Filesystem      pulumi.StringPtrInput   `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label    pulumi.StringInput    `pulumi:"label"`
@@ -2357,7 +2295,7 @@ func (o InstanceDiskOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -2410,157 +2348,118 @@ func (o InstanceDiskArrayOutput) Index(i pulumi.IntInput) InstanceDiskOutput {
 	}).(InstanceDiskOutput)
 }
 
-type InstanceSpecs struct {
+type InstanceSpec struct {
 	Disk     *int `pulumi:"disk"`
 	Memory   *int `pulumi:"memory"`
 	Transfer *int `pulumi:"transfer"`
 	Vcpus    *int `pulumi:"vcpus"`
 }
 
-// InstanceSpecsInput is an input type that accepts InstanceSpecsArgs and InstanceSpecsOutput values.
-// You can construct a concrete instance of `InstanceSpecsInput` via:
+// InstanceSpecInput is an input type that accepts InstanceSpecArgs and InstanceSpecOutput values.
+// You can construct a concrete instance of `InstanceSpecInput` via:
 //
-// 		 InstanceSpecsArgs{...}
+// 		 InstanceSpecArgs{...}
 //
-type InstanceSpecsInput interface {
+type InstanceSpecInput interface {
 	pulumi.Input
 
-	ToInstanceSpecsOutput() InstanceSpecsOutput
-	ToInstanceSpecsOutputWithContext(context.Context) InstanceSpecsOutput
+	ToInstanceSpecOutput() InstanceSpecOutput
+	ToInstanceSpecOutputWithContext(context.Context) InstanceSpecOutput
 }
 
-type InstanceSpecsArgs struct {
+type InstanceSpecArgs struct {
 	Disk     pulumi.IntPtrInput `pulumi:"disk"`
 	Memory   pulumi.IntPtrInput `pulumi:"memory"`
 	Transfer pulumi.IntPtrInput `pulumi:"transfer"`
 	Vcpus    pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
-func (InstanceSpecsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceSpecs)(nil)).Elem()
+func (InstanceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsOutput() InstanceSpecsOutput {
-	return i.ToInstanceSpecsOutputWithContext(context.Background())
+func (i InstanceSpecArgs) ToInstanceSpecOutput() InstanceSpecOutput {
+	return i.ToInstanceSpecOutputWithContext(context.Background())
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsOutputWithContext(ctx context.Context) InstanceSpecsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsOutput)
+func (i InstanceSpecArgs) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecOutput)
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return i.ToInstanceSpecsPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceSpecsArgs) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsOutput).ToInstanceSpecsPtrOutputWithContext(ctx)
-}
-
-// InstanceSpecsPtrInput is an input type that accepts InstanceSpecsArgs, InstanceSpecsPtr and InstanceSpecsPtrOutput values.
-// You can construct a concrete instance of `InstanceSpecsPtrInput` via:
+// InstanceSpecArrayInput is an input type that accepts InstanceSpecArray and InstanceSpecArrayOutput values.
+// You can construct a concrete instance of `InstanceSpecArrayInput` via:
 //
-// 		 InstanceSpecsArgs{...}
+// 		 InstanceSpecArray{ InstanceSpecArgs{...} }
 //
-//  or:
-//
-// 		 nil
-//
-type InstanceSpecsPtrInput interface {
+type InstanceSpecArrayInput interface {
 	pulumi.Input
 
-	ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput
-	ToInstanceSpecsPtrOutputWithContext(context.Context) InstanceSpecsPtrOutput
+	ToInstanceSpecArrayOutput() InstanceSpecArrayOutput
+	ToInstanceSpecArrayOutputWithContext(context.Context) InstanceSpecArrayOutput
 }
 
-type instanceSpecsPtrType InstanceSpecsArgs
+type InstanceSpecArray []InstanceSpecInput
 
-func InstanceSpecsPtr(v *InstanceSpecsArgs) InstanceSpecsPtrInput {
-	return (*instanceSpecsPtrType)(v)
+func (InstanceSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSpec)(nil)).Elem()
 }
 
-func (*instanceSpecsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecs)(nil)).Elem()
+func (i InstanceSpecArray) ToInstanceSpecArrayOutput() InstanceSpecArrayOutput {
+	return i.ToInstanceSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceSpecsPtrType) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return i.ToInstanceSpecsPtrOutputWithContext(context.Background())
+func (i InstanceSpecArray) ToInstanceSpecArrayOutputWithContext(ctx context.Context) InstanceSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecArrayOutput)
 }
 
-func (i *instanceSpecsPtrType) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsPtrOutput)
+type InstanceSpecOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
 }
 
-type InstanceSpecsOutput struct{ *pulumi.OutputState }
-
-func (InstanceSpecsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceSpecs)(nil)).Elem()
-}
-
-func (o InstanceSpecsOutput) ToInstanceSpecsOutput() InstanceSpecsOutput {
+func (o InstanceSpecOutput) ToInstanceSpecOutput() InstanceSpecOutput {
 	return o
 }
 
-func (o InstanceSpecsOutput) ToInstanceSpecsOutputWithContext(ctx context.Context) InstanceSpecsOutput {
+func (o InstanceSpecOutput) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
 	return o
 }
 
-func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return o.ToInstanceSpecsPtrOutputWithContext(context.Background())
+func (o InstanceSpecOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
-func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *InstanceSpecs {
-		return &v
-	}).(InstanceSpecsPtrOutput)
-}
-func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
-func (o InstanceSpecsOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Transfer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Transfer }).(pulumi.IntPtrOutput)
 }
 
-func (o InstanceSpecsOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
-func (o InstanceSpecsOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+type InstanceSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSpec)(nil)).Elem()
 }
 
-type InstanceSpecsPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceSpecsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecs)(nil)).Elem()
-}
-
-func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
+func (o InstanceSpecArrayOutput) ToInstanceSpecArrayOutput() InstanceSpecArrayOutput {
 	return o
 }
 
-func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
+func (o InstanceSpecArrayOutput) ToInstanceSpecArrayOutputWithContext(ctx context.Context) InstanceSpecArrayOutput {
 	return o
 }
 
-func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
-	return o.ApplyT(func(v *InstanceSpecs) InstanceSpecs { return *v }).(InstanceSpecsOutput)
-}
-
-func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
-}
-
-func (o InstanceSpecsPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
-}
-
-func (o InstanceSpecsPtrOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
-}
-
-func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+func (o InstanceSpecArrayOutput) Index(i pulumi.IntInput) InstanceSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSpec {
+		return vs[0].([]InstanceSpec)[vs[1].(int)]
+	}).(InstanceSpecOutput)
 }
 
 type NodeBalancerConfigNodeStatus struct {
@@ -2968,160 +2867,298 @@ func (o StackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) StackSc
 	}).(StackScriptUserDefinedFieldOutput)
 }
 
-type GetInstanceTypeAddons struct {
-	Backups GetInstanceTypeAddonsBackups `pulumi:"backups"`
+type GetInstanceTypeAddon struct {
+	Backups []GetInstanceTypeAddonBackup `pulumi:"backups"`
 }
 
-// GetInstanceTypeAddonsInput is an input type that accepts GetInstanceTypeAddonsArgs and GetInstanceTypeAddonsOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsInput` via:
+// GetInstanceTypeAddonInput is an input type that accepts GetInstanceTypeAddonArgs and GetInstanceTypeAddonOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonInput` via:
 //
-// 		 GetInstanceTypeAddonsArgs{...}
+// 		 GetInstanceTypeAddonArgs{...}
 //
-type GetInstanceTypeAddonsInput interface {
+type GetInstanceTypeAddonInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput
-	ToGetInstanceTypeAddonsOutputWithContext(context.Context) GetInstanceTypeAddonsOutput
+	ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput
+	ToGetInstanceTypeAddonOutputWithContext(context.Context) GetInstanceTypeAddonOutput
 }
 
-type GetInstanceTypeAddonsArgs struct {
-	Backups GetInstanceTypeAddonsBackupsInput `pulumi:"backups"`
+type GetInstanceTypeAddonArgs struct {
+	Backups GetInstanceTypeAddonBackupArrayInput `pulumi:"backups"`
 }
 
-func (GetInstanceTypeAddonsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddons)(nil)).Elem()
+func (GetInstanceTypeAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddon)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsArgs) ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput {
-	return i.ToGetInstanceTypeAddonsOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonArgs) ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput {
+	return i.ToGetInstanceTypeAddonOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsArgs) ToGetInstanceTypeAddonsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsOutput)
+func (i GetInstanceTypeAddonArgs) ToGetInstanceTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypeAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonOutput)
 }
 
-type GetInstanceTypeAddonsOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceTypeAddonsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddons)(nil)).Elem()
-}
-
-func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput {
-	return o
-}
-
-func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsOutput {
-	return o
-}
-
-func (o GetInstanceTypeAddonsOutput) Backups() GetInstanceTypeAddonsBackupsOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddons) GetInstanceTypeAddonsBackups { return v.Backups }).(GetInstanceTypeAddonsBackupsOutput)
-}
-
-type GetInstanceTypeAddonsBackups struct {
-	Price GetInstanceTypeAddonsBackupsPrice `pulumi:"price"`
-}
-
-// GetInstanceTypeAddonsBackupsInput is an input type that accepts GetInstanceTypeAddonsBackupsArgs and GetInstanceTypeAddonsBackupsOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupsInput` via:
+// GetInstanceTypeAddonArrayInput is an input type that accepts GetInstanceTypeAddonArray and GetInstanceTypeAddonArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonArrayInput` via:
 //
-// 		 GetInstanceTypeAddonsBackupsArgs{...}
+// 		 GetInstanceTypeAddonArray{ GetInstanceTypeAddonArgs{...} }
 //
-type GetInstanceTypeAddonsBackupsInput interface {
+type GetInstanceTypeAddonArrayInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput
-	ToGetInstanceTypeAddonsBackupsOutputWithContext(context.Context) GetInstanceTypeAddonsBackupsOutput
+	ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput
+	ToGetInstanceTypeAddonArrayOutputWithContext(context.Context) GetInstanceTypeAddonArrayOutput
 }
 
-type GetInstanceTypeAddonsBackupsArgs struct {
-	Price GetInstanceTypeAddonsBackupsPriceInput `pulumi:"price"`
+type GetInstanceTypeAddonArray []GetInstanceTypeAddonInput
+
+func (GetInstanceTypeAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddon)(nil)).Elem()
 }
 
-func (GetInstanceTypeAddonsBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackups)(nil)).Elem()
+func (i GetInstanceTypeAddonArray) ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput {
+	return i.ToGetInstanceTypeAddonArrayOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupsArgs) ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput {
-	return i.ToGetInstanceTypeAddonsBackupsOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonArray) ToGetInstanceTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonArrayOutput)
 }
 
-func (i GetInstanceTypeAddonsBackupsArgs) ToGetInstanceTypeAddonsBackupsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsOutput)
+type GetInstanceTypeAddonOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddon)(nil)).Elem()
 }
 
-type GetInstanceTypeAddonsBackupsOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceTypeAddonsBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackups)(nil)).Elem()
-}
-
-func (o GetInstanceTypeAddonsBackupsOutput) ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput {
+func (o GetInstanceTypeAddonOutput) ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsOutput) ToGetInstanceTypeAddonsBackupsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsOutput {
+func (o GetInstanceTypeAddonOutput) ToGetInstanceTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypeAddonOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsOutput) Price() GetInstanceTypeAddonsBackupsPriceOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackups) GetInstanceTypeAddonsBackupsPrice { return v.Price }).(GetInstanceTypeAddonsBackupsPriceOutput)
+func (o GetInstanceTypeAddonOutput) Backups() GetInstanceTypeAddonBackupArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddon) []GetInstanceTypeAddonBackup { return v.Backups }).(GetInstanceTypeAddonBackupArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackupsPrice struct {
+type GetInstanceTypeAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddon)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonArrayOutput) ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonArrayOutput) ToGetInstanceTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddon {
+		return vs[0].([]GetInstanceTypeAddon)[vs[1].(int)]
+	}).(GetInstanceTypeAddonOutput)
+}
+
+type GetInstanceTypeAddonBackup struct {
+	Prices []GetInstanceTypeAddonBackupPrice `pulumi:"prices"`
+}
+
+// GetInstanceTypeAddonBackupInput is an input type that accepts GetInstanceTypeAddonBackupArgs and GetInstanceTypeAddonBackupOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupInput` via:
+//
+// 		 GetInstanceTypeAddonBackupArgs{...}
+//
+type GetInstanceTypeAddonBackupInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput
+	ToGetInstanceTypeAddonBackupOutputWithContext(context.Context) GetInstanceTypeAddonBackupOutput
+}
+
+type GetInstanceTypeAddonBackupArgs struct {
+	Prices GetInstanceTypeAddonBackupPriceArrayInput `pulumi:"prices"`
+}
+
+func (GetInstanceTypeAddonBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonBackupArgs) ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput {
+	return i.ToGetInstanceTypeAddonBackupOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonBackupArgs) ToGetInstanceTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupOutput)
+}
+
+// GetInstanceTypeAddonBackupArrayInput is an input type that accepts GetInstanceTypeAddonBackupArray and GetInstanceTypeAddonBackupArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupArrayInput` via:
+//
+// 		 GetInstanceTypeAddonBackupArray{ GetInstanceTypeAddonBackupArgs{...} }
+//
+type GetInstanceTypeAddonBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput
+	ToGetInstanceTypeAddonBackupArrayOutputWithContext(context.Context) GetInstanceTypeAddonBackupArrayOutput
+}
+
+type GetInstanceTypeAddonBackupArray []GetInstanceTypeAddonBackupInput
+
+func (GetInstanceTypeAddonBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonBackupArray) ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput {
+	return i.ToGetInstanceTypeAddonBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonBackupArray) ToGetInstanceTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupArrayOutput)
+}
+
+type GetInstanceTypeAddonBackupOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonBackupOutput) ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupOutput) ToGetInstanceTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupOutput) Prices() GetInstanceTypeAddonBackupPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackup) []GetInstanceTypeAddonBackupPrice { return v.Prices }).(GetInstanceTypeAddonBackupPriceArrayOutput)
+}
+
+type GetInstanceTypeAddonBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonBackupArrayOutput) ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupArrayOutput) ToGetInstanceTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonBackup {
+		return vs[0].([]GetInstanceTypeAddonBackup)[vs[1].(int)]
+	}).(GetInstanceTypeAddonBackupOutput)
+}
+
+type GetInstanceTypeAddonBackupPrice struct {
 	Hourly  float64 `pulumi:"hourly"`
 	Monthly float64 `pulumi:"monthly"`
 }
 
-// GetInstanceTypeAddonsBackupsPriceInput is an input type that accepts GetInstanceTypeAddonsBackupsPriceArgs and GetInstanceTypeAddonsBackupsPriceOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupsPriceInput` via:
+// GetInstanceTypeAddonBackupPriceInput is an input type that accepts GetInstanceTypeAddonBackupPriceArgs and GetInstanceTypeAddonBackupPriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupPriceInput` via:
 //
-// 		 GetInstanceTypeAddonsBackupsPriceArgs{...}
+// 		 GetInstanceTypeAddonBackupPriceArgs{...}
 //
-type GetInstanceTypeAddonsBackupsPriceInput interface {
+type GetInstanceTypeAddonBackupPriceInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput
-	ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(context.Context) GetInstanceTypeAddonsBackupsPriceOutput
+	ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput
+	ToGetInstanceTypeAddonBackupPriceOutputWithContext(context.Context) GetInstanceTypeAddonBackupPriceOutput
 }
 
-type GetInstanceTypeAddonsBackupsPriceArgs struct {
+type GetInstanceTypeAddonBackupPriceArgs struct {
 	Hourly  pulumi.Float64Input `pulumi:"hourly"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
-func (GetInstanceTypeAddonsBackupsPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupsPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupsPriceArgs) ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput {
-	return i.ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonBackupPriceArgs) ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput {
+	return i.ToGetInstanceTypeAddonBackupPriceOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupsPriceArgs) ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsPriceOutput)
+func (i GetInstanceTypeAddonBackupPriceArgs) ToGetInstanceTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupPriceOutput)
 }
 
-type GetInstanceTypeAddonsBackupsPriceOutput struct{ *pulumi.OutputState }
+// GetInstanceTypeAddonBackupPriceArrayInput is an input type that accepts GetInstanceTypeAddonBackupPriceArray and GetInstanceTypeAddonBackupPriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupPriceArrayInput` via:
+//
+// 		 GetInstanceTypeAddonBackupPriceArray{ GetInstanceTypeAddonBackupPriceArgs{...} }
+//
+type GetInstanceTypeAddonBackupPriceArrayInput interface {
+	pulumi.Input
 
-func (GetInstanceTypeAddonsBackupsPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupsPrice)(nil)).Elem()
+	ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput
+	ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonBackupPriceArrayOutput
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput {
+type GetInstanceTypeAddonBackupPriceArray []GetInstanceTypeAddonBackupPriceInput
+
+func (GetInstanceTypeAddonBackupPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonBackupPriceArray) ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput {
+	return i.ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonBackupPriceArray) ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupPriceArrayOutput)
+}
+
+type GetInstanceTypeAddonBackupPriceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonBackupPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonBackupPriceOutput) ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsPriceOutput {
+func (o GetInstanceTypeAddonBackupPriceOutput) ToGetInstanceTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetInstanceTypeAddonBackupPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonBackupPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonBackupPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonBackupPrice {
+		return vs[0].([]GetInstanceTypeAddonBackupPrice)[vs[1].(int)]
+	}).(GetInstanceTypeAddonBackupPriceOutput)
 }
 
 type GetInstanceTypePrice struct {
@@ -3158,6 +3195,32 @@ func (i GetInstanceTypePriceArgs) ToGetInstanceTypePriceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypePriceOutput)
 }
 
+// GetInstanceTypePriceArrayInput is an input type that accepts GetInstanceTypePriceArray and GetInstanceTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypePriceArrayInput` via:
+//
+// 		 GetInstanceTypePriceArray{ GetInstanceTypePriceArgs{...} }
+//
+type GetInstanceTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput
+	ToGetInstanceTypePriceArrayOutputWithContext(context.Context) GetInstanceTypePriceArrayOutput
+}
+
+type GetInstanceTypePriceArray []GetInstanceTypePriceInput
+
+func (GetInstanceTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypePrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypePriceArray) ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput {
+	return i.ToGetInstanceTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypePriceArray) ToGetInstanceTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypePriceArrayOutput)
+}
+
 type GetInstanceTypePriceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypePriceOutput) ElementType() reflect.Type {
@@ -3180,7 +3243,27 @@ func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
-type GetProfileReferrals struct {
+type GetInstanceTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypePrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypePriceArrayOutput) ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypePriceArrayOutput) ToGetInstanceTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypePriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypePrice {
+		return vs[0].([]GetInstanceTypePrice)[vs[1].(int)]
+	}).(GetInstanceTypePriceOutput)
+}
+
+type GetProfileReferral struct {
 	Code      string  `pulumi:"code"`
 	Completed int     `pulumi:"completed"`
 	Credit    float64 `pulumi:"credit"`
@@ -3189,19 +3272,19 @@ type GetProfileReferrals struct {
 	Url       string  `pulumi:"url"`
 }
 
-// GetProfileReferralsInput is an input type that accepts GetProfileReferralsArgs and GetProfileReferralsOutput values.
-// You can construct a concrete instance of `GetProfileReferralsInput` via:
+// GetProfileReferralInput is an input type that accepts GetProfileReferralArgs and GetProfileReferralOutput values.
+// You can construct a concrete instance of `GetProfileReferralInput` via:
 //
-// 		 GetProfileReferralsArgs{...}
+// 		 GetProfileReferralArgs{...}
 //
-type GetProfileReferralsInput interface {
+type GetProfileReferralInput interface {
 	pulumi.Input
 
-	ToGetProfileReferralsOutput() GetProfileReferralsOutput
-	ToGetProfileReferralsOutputWithContext(context.Context) GetProfileReferralsOutput
+	ToGetProfileReferralOutput() GetProfileReferralOutput
+	ToGetProfileReferralOutputWithContext(context.Context) GetProfileReferralOutput
 }
 
-type GetProfileReferralsArgs struct {
+type GetProfileReferralArgs struct {
 	Code      pulumi.StringInput  `pulumi:"code"`
 	Completed pulumi.IntInput     `pulumi:"completed"`
 	Credit    pulumi.Float64Input `pulumi:"credit"`
@@ -3210,54 +3293,100 @@ type GetProfileReferralsArgs struct {
 	Url       pulumi.StringInput  `pulumi:"url"`
 }
 
-func (GetProfileReferralsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProfileReferrals)(nil)).Elem()
+func (GetProfileReferralArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProfileReferral)(nil)).Elem()
 }
 
-func (i GetProfileReferralsArgs) ToGetProfileReferralsOutput() GetProfileReferralsOutput {
-	return i.ToGetProfileReferralsOutputWithContext(context.Background())
+func (i GetProfileReferralArgs) ToGetProfileReferralOutput() GetProfileReferralOutput {
+	return i.ToGetProfileReferralOutputWithContext(context.Background())
 }
 
-func (i GetProfileReferralsArgs) ToGetProfileReferralsOutputWithContext(ctx context.Context) GetProfileReferralsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralsOutput)
+func (i GetProfileReferralArgs) ToGetProfileReferralOutputWithContext(ctx context.Context) GetProfileReferralOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralOutput)
 }
 
-type GetProfileReferralsOutput struct{ *pulumi.OutputState }
+// GetProfileReferralArrayInput is an input type that accepts GetProfileReferralArray and GetProfileReferralArrayOutput values.
+// You can construct a concrete instance of `GetProfileReferralArrayInput` via:
+//
+// 		 GetProfileReferralArray{ GetProfileReferralArgs{...} }
+//
+type GetProfileReferralArrayInput interface {
+	pulumi.Input
 
-func (GetProfileReferralsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProfileReferrals)(nil)).Elem()
+	ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput
+	ToGetProfileReferralArrayOutputWithContext(context.Context) GetProfileReferralArrayOutput
 }
 
-func (o GetProfileReferralsOutput) ToGetProfileReferralsOutput() GetProfileReferralsOutput {
+type GetProfileReferralArray []GetProfileReferralInput
+
+func (GetProfileReferralArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProfileReferral)(nil)).Elem()
+}
+
+func (i GetProfileReferralArray) ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput {
+	return i.ToGetProfileReferralArrayOutputWithContext(context.Background())
+}
+
+func (i GetProfileReferralArray) ToGetProfileReferralArrayOutputWithContext(ctx context.Context) GetProfileReferralArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralArrayOutput)
+}
+
+type GetProfileReferralOutput struct{ *pulumi.OutputState }
+
+func (GetProfileReferralOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProfileReferral)(nil)).Elem()
+}
+
+func (o GetProfileReferralOutput) ToGetProfileReferralOutput() GetProfileReferralOutput {
 	return o
 }
 
-func (o GetProfileReferralsOutput) ToGetProfileReferralsOutputWithContext(ctx context.Context) GetProfileReferralsOutput {
+func (o GetProfileReferralOutput) ToGetProfileReferralOutputWithContext(ctx context.Context) GetProfileReferralOutput {
 	return o
 }
 
-func (o GetProfileReferralsOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProfileReferrals) string { return v.Code }).(pulumi.StringOutput)
+func (o GetProfileReferralOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProfileReferral) string { return v.Code }).(pulumi.StringOutput)
 }
 
-func (o GetProfileReferralsOutput) Completed() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Completed }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Completed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Completed }).(pulumi.IntOutput)
 }
 
-func (o GetProfileReferralsOutput) Credit() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProfileReferrals) float64 { return v.Credit }).(pulumi.Float64Output)
+func (o GetProfileReferralOutput) Credit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetProfileReferral) float64 { return v.Credit }).(pulumi.Float64Output)
 }
 
-func (o GetProfileReferralsOutput) Pending() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Pending }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Pending() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Pending }).(pulumi.IntOutput)
 }
 
-func (o GetProfileReferralsOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Total }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Total }).(pulumi.IntOutput)
 }
 
-func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
+func (o GetProfileReferralOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProfileReferral) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetProfileReferralArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProfileReferralArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProfileReferral)(nil)).Elem()
+}
+
+func (o GetProfileReferralArrayOutput) ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput {
+	return o
+}
+
+func (o GetProfileReferralArrayOutput) ToGetProfileReferralArrayOutputWithContext(ctx context.Context) GetProfileReferralArrayOutput {
+	return o
+}
+
+func (o GetProfileReferralArrayOutput) Index(i pulumi.IntInput) GetProfileReferralOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProfileReferral {
+		return vs[0].([]GetProfileReferral)[vs[1].(int)]
+	}).(GetProfileReferralOutput)
 }
 
 type GetStackScriptUserDefinedField struct {
@@ -3389,10 +3518,10 @@ func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetS
 func init() {
 	pulumi.RegisterOutputType(InstanceAlertsOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsPtrOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsPtrOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsScheduleOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsSchedulePtrOutput{})
+	pulumi.RegisterOutputType(InstanceBackupOutput{})
+	pulumi.RegisterOutputType(InstanceBackupArrayOutput{})
+	pulumi.RegisterOutputType(InstanceBackupScheduleOutput{})
+	pulumi.RegisterOutputType(InstanceBackupScheduleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesOutput{})
@@ -3417,19 +3546,24 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConfigHelpersPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDiskArrayOutput{})
-	pulumi.RegisterOutputType(InstanceSpecsOutput{})
-	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSpecOutput{})
+	pulumi.RegisterOutputType(InstanceSpecArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusPtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
-	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetProfileReferralOutput{})
+	pulumi.RegisterOutputType(GetProfileReferralArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
 }

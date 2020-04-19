@@ -73,14 +73,14 @@ export interface GetInstanceTypeArgs {
  * A collection of values returned by getInstanceType.
  */
 export interface GetInstanceTypeResult {
-    readonly addons: outputs.GetInstanceTypeAddons;
+    readonly addons: outputs.GetInstanceTypeAddon[];
     readonly class: string;
     readonly disk: number;
     readonly id: string;
     readonly label: string;
     readonly memory: number;
     readonly networkOut: number;
-    readonly price: outputs.GetInstanceTypePrice;
+    readonly prices: outputs.GetInstanceTypePrice[];
     readonly transfer: number;
     readonly vcpus: number;
 }

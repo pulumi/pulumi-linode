@@ -48,7 +48,7 @@ import * as utilities from "./utilities";
  * * `ttlSec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
  * 
  * * `retrySec` - The interval, in seconds, at which a failed refresh should be retried.
- * *
+ * 
  * * `expireSec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
  * 
  * * `refreshSec` - The amount of time in seconds before this Domain should be refreshed.

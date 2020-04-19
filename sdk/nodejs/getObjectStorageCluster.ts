@@ -59,7 +59,7 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
 export interface GetObjectStorageClusterArgs {
     readonly domain?: string;
     /**
-     * The unique ID of this cluster. 
+     * The unique ID of this cluster.
      */
     readonly id: string;
     readonly region?: string;

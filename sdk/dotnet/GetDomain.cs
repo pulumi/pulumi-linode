@@ -39,7 +39,7 @@ namespace Pulumi.Linode
         /// * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
         /// 
         /// * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-        /// *
+        /// 
         /// * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
         /// 
         /// * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
