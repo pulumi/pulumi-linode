@@ -67,6 +67,10 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 	return nil
 }
 
+func boolRef(b bool) *bool {
+	return &b
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -107,12 +111,26 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. An example
 			// is below.
-
 			"linode_image": {
 				Tok: makeResource(mainMod, "Image"),
 			},
 			"linode_instance": {
 				Tok: makeResource(mainMod, "Instance"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"specs": {
+						MaxItemsOne: boolRef(true),
+					},
+					"backups": {
+						MaxItemsOne: boolRef(true),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"schedule": {
+									MaxItemsOne: boolRef(true),
+								},
+							},
+						},
+					},
+				},
 			},
 			"linode_domain": {
 				Tok: makeResource(mainMod, "Domain"),
@@ -172,15 +190,46 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"linode_account":       {Tok: makeDataSource(mainMod, "getAccount")},
-			"linode_domain":        {Tok: makeDataSource(mainMod, "getDomain")},
-			"linode_image":         {Tok: makeDataSource(mainMod, "getImage")},
-			"linode_instance_type": {Tok: makeDataSource(mainMod, "getInstanceType")},
+			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},
+			"linode_domain":  {Tok: makeDataSource(mainMod, "getDomain")},
+			"linode_image":   {Tok: makeDataSource(mainMod, "getImage")},
+			"linode_instance_type": {
+				Tok: makeDataSource(mainMod, "getInstanceType"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"price": {
+						MaxItemsOne: boolRef(true),
+					},
+					"addons": {
+						MaxItemsOne: boolRef(true),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"backups": {
+									MaxItemsOne: boolRef(true),
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"price": {
+												MaxItemsOne: boolRef(true),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 			"linode_networking_ip": {Tok: makeDataSource(mainMod, "getNetworkingIp")},
-			"linode_profile":       {Tok: makeDataSource(mainMod, "getProfile")},
-			"linode_region":        {Tok: makeDataSource(mainMod, "getRegion")},
-			"linode_sshkey":        {Tok: makeDataSource(mainMod, "getSshKey")},
-			"linode_user":          {Tok: makeDataSource(mainMod, "getUser")},
+			"linode_profile": {
+				Tok: makeDataSource(mainMod, "getProfile"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"referrals": {
+						MaxItemsOne: boolRef(true),
+					},
+				},
+			},
+			"linode_region": {Tok: makeDataSource(mainMod, "getRegion")},
+			"linode_sshkey": {Tok: makeDataSource(mainMod, "getSshKey")},
+			"linode_user":   {Tok: makeDataSource(mainMod, "getUser")},
 			"linode_object_storage_cluster": {
 				Tok: makeDataSource(mainMod, "getObjectStorageCluster"),
 			},

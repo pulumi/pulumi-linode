@@ -39,7 +39,7 @@ namespace Pulumi.Linode
         public string? Domain { get; set; }
 
         /// <summary>
-        /// The unique ID of this cluster. 
+        /// The unique ID of this cluster.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;

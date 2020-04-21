@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         /// 
         /// * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
         /// 
-        /// * `vendor` - The upstream distribution vendor. `None` for private Images. 
+        /// * `vendor` - The upstream distribution vendor. `None` for private Images.
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());

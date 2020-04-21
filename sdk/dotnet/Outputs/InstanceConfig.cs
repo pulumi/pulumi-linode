@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.InstanceConfigHelpers? Helpers;
         /// <summary>
-        /// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+        /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         /// </summary>
         public readonly string? Kernel;
         /// <summary>

@@ -446,7 +446,7 @@ type InstanceConfig struct {
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 	Kernel *string `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label string `pulumi:"label"`
@@ -479,7 +479,7 @@ type InstanceConfigArgs struct {
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -560,7 +560,7 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
-// - A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
@@ -2238,7 +2238,7 @@ type InstanceDisk struct {
 	Filesystem      *string  `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label    string  `pulumi:"label"`
@@ -2272,7 +2272,7 @@ type InstanceDiskArgs struct {
 	Filesystem      pulumi.StringPtrInput   `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label    pulumi.StringInput    `pulumi:"label"`
@@ -2357,7 +2357,7 @@ func (o InstanceDiskOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
