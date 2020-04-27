@@ -46,7 +46,7 @@ class Instance(pulumi.CustomResource):
 
       * `comments` (`str`) - - Arbitrary user comments about this `config`.
       * `devices` (`dict`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-        * `sda` (`dict`)
+        * `sda` (`dict`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
           * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
           * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
           * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
@@ -209,7 +209,7 @@ class Instance(pulumi.CustomResource):
 
           * `comments` (`pulumi.Input[str]`) - - Arbitrary user comments about this `config`.
           * `devices` (`pulumi.Input[dict]`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-            * `sda` (`pulumi.Input[dict]`)
+            * `sda` (`pulumi.Input[dict]`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
               * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
               * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
               * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
@@ -385,7 +385,7 @@ class Instance(pulumi.CustomResource):
 
           * `comments` (`pulumi.Input[str]`) - - Arbitrary user comments about this `config`.
           * `devices` (`pulumi.Input[dict]`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-            * `sda` (`pulumi.Input[dict]`)
+            * `sda` (`pulumi.Input[dict]`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
               * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
               * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
               * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.

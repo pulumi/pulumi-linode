@@ -71,6 +71,9 @@ export interface InstanceConfig {
 }
 
 export interface InstanceConfigDevices {
+    /**
+     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     */
     sda?: pulumi.Input<inputs.InstanceConfigDevicesSda>;
     sdb?: pulumi.Input<inputs.InstanceConfigDevicesSdb>;
     sdc?: pulumi.Input<inputs.InstanceConfigDevicesSdc>;

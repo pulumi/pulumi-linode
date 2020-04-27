@@ -24,7 +24,7 @@ class GetNetworkingIpResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if linode_id and not isinstance(linode_id, float):
             raise TypeError("Expected argument 'linode_id' to be a float")
