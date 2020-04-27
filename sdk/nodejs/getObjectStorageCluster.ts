@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const primary = linode.getObjectStorageCluster({
+ * const primary = pulumi.output(linode.getObjectStorageCluster({
  *     id: "us-east-1",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ## Attributes

@@ -59,7 +59,7 @@ type GetProfileResult struct {
 	AuthorizedKeys     []string `pulumi:"authorizedKeys"`
 	Email              string   `pulumi:"email"`
 	EmailNotifications bool     `pulumi:"emailNotifications"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                 string              `pulumi:"id"`
 	IpWhitelistEnabled bool                `pulumi:"ipWhitelistEnabled"`
 	LishAuthMethod     string              `pulumi:"lishAuthMethod"`

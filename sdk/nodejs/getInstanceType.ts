@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const defaultInstanceType = linode.getInstanceType({
+ * const defaultInstanceType = pulumi.output(linode.getInstanceType({
  *     id: "g6-standard-2",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ## Attributes

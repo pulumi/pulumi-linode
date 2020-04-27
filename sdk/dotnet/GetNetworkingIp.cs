@@ -63,7 +63,7 @@ namespace Pulumi.Linode
         public readonly string Address;
         public readonly string Gateway;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly int LinodeId;

@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const foo = linode.getSshKey({
+ * const foo = pulumi.output(linode.getSshKey({
  *     label: "foo",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
@@ -52,7 +52,7 @@ export interface GetSshKeyResult {
     readonly label: string;
     readonly sshKey: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

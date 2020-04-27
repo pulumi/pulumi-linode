@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const foo = linode.getDomain({
+ * const foo = pulumi.output(linode.getDomain({
  *     id: "1234567",
- * });
- * const bar = linode.getDomain({
+ * }, { async: true }));
+ * const bar = pulumi.output(linode.getDomain({
  *     domain: "bar.example.com",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ## Attributes

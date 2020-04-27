@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const profile = linode.getProfile();
+ * const profile = pulumi.output(linode.getProfile({ async: true }));
  * ```
  * 
  * ## Attributes
@@ -85,7 +85,7 @@ export interface GetProfileResult {
     readonly twoFactorAuth: boolean;
     readonly username: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

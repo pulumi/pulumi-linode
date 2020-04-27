@@ -64,7 +64,7 @@ namespace Pulumi.Linode
         public readonly string Email;
         public readonly bool EmailNotifications;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly bool IpWhitelistEnabled;

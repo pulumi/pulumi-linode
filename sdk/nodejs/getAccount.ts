@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  * 
- * const account = linode.getAccount();
+ * const account = pulumi.output(linode.getAccount({ async: true }));
  * ```
  * 
  * ## Attributes
@@ -81,7 +81,7 @@ export interface GetAccountResult {
     readonly state: string;
     readonly zip: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -58,7 +58,7 @@ type GetAccountResult struct {
 	Country   string `pulumi:"country"`
 	Email     string `pulumi:"email"`
 	FirstName string `pulumi:"firstName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	LastName string `pulumi:"lastName"`
 	Phone    string `pulumi:"phone"`
