@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-linode/sdk
+module github.com/pulumi/pulumi-linode/sdk/v2
 
 go 1.13
 
