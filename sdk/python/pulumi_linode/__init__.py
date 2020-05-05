@@ -27,6 +27,7 @@ from .get_user import *
 from .get_volume import *
 from .image import *
 from .instance import *
+from .lke_cluster import *
 from .node_balancer import *
 from .node_balancer_config import *
 from .node_balancer_node import *

@@ -2818,6 +2818,246 @@ func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type LkeClusterPool struct {
+	// The number of nodes in the Node Pool.
+	Count int `pulumi:"count"`
+	// The ID of the node.
+	Id    *int                 `pulumi:"id"`
+	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
+	// A Linode Type for all of the nodes in the Node Pool.
+	Type string `pulumi:"type"`
+}
+
+// LkeClusterPoolInput is an input type that accepts LkeClusterPoolArgs and LkeClusterPoolOutput values.
+// You can construct a concrete instance of `LkeClusterPoolInput` via:
+//
+// 		 LkeClusterPoolArgs{...}
+//
+type LkeClusterPoolInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolOutput() LkeClusterPoolOutput
+	ToLkeClusterPoolOutputWithContext(context.Context) LkeClusterPoolOutput
+}
+
+type LkeClusterPoolArgs struct {
+	// The number of nodes in the Node Pool.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The ID of the node.
+	Id    pulumi.IntPtrInput           `pulumi:"id"`
+	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
+	// A Linode Type for all of the nodes in the Node Pool.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (LkeClusterPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPool)(nil)).Elem()
+}
+
+func (i LkeClusterPoolArgs) ToLkeClusterPoolOutput() LkeClusterPoolOutput {
+	return i.ToLkeClusterPoolOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolArgs) ToLkeClusterPoolOutputWithContext(ctx context.Context) LkeClusterPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolOutput)
+}
+
+// LkeClusterPoolArrayInput is an input type that accepts LkeClusterPoolArray and LkeClusterPoolArrayOutput values.
+// You can construct a concrete instance of `LkeClusterPoolArrayInput` via:
+//
+// 		 LkeClusterPoolArray{ LkeClusterPoolArgs{...} }
+//
+type LkeClusterPoolArrayInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolArrayOutput() LkeClusterPoolArrayOutput
+	ToLkeClusterPoolArrayOutputWithContext(context.Context) LkeClusterPoolArrayOutput
+}
+
+type LkeClusterPoolArray []LkeClusterPoolInput
+
+func (LkeClusterPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPool)(nil)).Elem()
+}
+
+func (i LkeClusterPoolArray) ToLkeClusterPoolArrayOutput() LkeClusterPoolArrayOutput {
+	return i.ToLkeClusterPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolArray) ToLkeClusterPoolArrayOutputWithContext(ctx context.Context) LkeClusterPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolArrayOutput)
+}
+
+type LkeClusterPoolOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPool)(nil)).Elem()
+}
+
+func (o LkeClusterPoolOutput) ToLkeClusterPoolOutput() LkeClusterPoolOutput {
+	return o
+}
+
+func (o LkeClusterPoolOutput) ToLkeClusterPoolOutputWithContext(ctx context.Context) LkeClusterPoolOutput {
+	return o
+}
+
+// The number of nodes in the Node Pool.
+func (o LkeClusterPoolOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The ID of the node.
+func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
+	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
+}
+
+// A Linode Type for all of the nodes in the Node Pool.
+func (o LkeClusterPoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type LkeClusterPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPool)(nil)).Elem()
+}
+
+func (o LkeClusterPoolArrayOutput) ToLkeClusterPoolArrayOutput() LkeClusterPoolArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolArrayOutput) ToLkeClusterPoolArrayOutputWithContext(ctx context.Context) LkeClusterPoolArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPool {
+		return vs[0].([]LkeClusterPool)[vs[1].(int)]
+	}).(LkeClusterPoolOutput)
+}
+
+type LkeClusterPoolNode struct {
+	// The ID of the node.
+	Id *string `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId *int `pulumi:"instanceId"`
+	// The status of the node.
+	Status *string `pulumi:"status"`
+}
+
+// LkeClusterPoolNodeInput is an input type that accepts LkeClusterPoolNodeArgs and LkeClusterPoolNodeOutput values.
+// You can construct a concrete instance of `LkeClusterPoolNodeInput` via:
+//
+// 		 LkeClusterPoolNodeArgs{...}
+//
+type LkeClusterPoolNodeInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolNodeOutput() LkeClusterPoolNodeOutput
+	ToLkeClusterPoolNodeOutputWithContext(context.Context) LkeClusterPoolNodeOutput
+}
+
+type LkeClusterPoolNodeArgs struct {
+	// The ID of the node.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId pulumi.IntPtrInput `pulumi:"instanceId"`
+	// The status of the node.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (LkeClusterPoolNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolNode)(nil)).Elem()
+}
+
+func (i LkeClusterPoolNodeArgs) ToLkeClusterPoolNodeOutput() LkeClusterPoolNodeOutput {
+	return i.ToLkeClusterPoolNodeOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolNodeArgs) ToLkeClusterPoolNodeOutputWithContext(ctx context.Context) LkeClusterPoolNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolNodeOutput)
+}
+
+// LkeClusterPoolNodeArrayInput is an input type that accepts LkeClusterPoolNodeArray and LkeClusterPoolNodeArrayOutput values.
+// You can construct a concrete instance of `LkeClusterPoolNodeArrayInput` via:
+//
+// 		 LkeClusterPoolNodeArray{ LkeClusterPoolNodeArgs{...} }
+//
+type LkeClusterPoolNodeArrayInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolNodeArrayOutput() LkeClusterPoolNodeArrayOutput
+	ToLkeClusterPoolNodeArrayOutputWithContext(context.Context) LkeClusterPoolNodeArrayOutput
+}
+
+type LkeClusterPoolNodeArray []LkeClusterPoolNodeInput
+
+func (LkeClusterPoolNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPoolNode)(nil)).Elem()
+}
+
+func (i LkeClusterPoolNodeArray) ToLkeClusterPoolNodeArrayOutput() LkeClusterPoolNodeArrayOutput {
+	return i.ToLkeClusterPoolNodeArrayOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolNodeArray) ToLkeClusterPoolNodeArrayOutputWithContext(ctx context.Context) LkeClusterPoolNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolNodeArrayOutput)
+}
+
+type LkeClusterPoolNodeOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolNode)(nil)).Elem()
+}
+
+func (o LkeClusterPoolNodeOutput) ToLkeClusterPoolNodeOutput() LkeClusterPoolNodeOutput {
+	return o
+}
+
+func (o LkeClusterPoolNodeOutput) ToLkeClusterPoolNodeOutputWithContext(ctx context.Context) LkeClusterPoolNodeOutput {
+	return o
+}
+
+// The ID of the node.
+func (o LkeClusterPoolNodeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the underlying Linode instance.
+func (o LkeClusterPoolNodeOutput) InstanceId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterPoolNode) *int { return v.InstanceId }).(pulumi.IntPtrOutput)
+}
+
+// The status of the node.
+func (o LkeClusterPoolNodeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type LkeClusterPoolNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPoolNode)(nil)).Elem()
+}
+
+func (o LkeClusterPoolNodeArrayOutput) ToLkeClusterPoolNodeArrayOutput() LkeClusterPoolNodeArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolNodeArrayOutput) ToLkeClusterPoolNodeArrayOutputWithContext(ctx context.Context) LkeClusterPoolNodeArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPoolNode {
+		return vs[0].([]LkeClusterPoolNode)[vs[1].(int)]
+	}).(LkeClusterPoolNodeOutput)
+}
+
 type NodeBalancerConfigNodeStatus struct {
 	StatusDown *int `pulumi:"statusDown"`
 	StatusUp   *int `pulumi:"statusUp"`
@@ -3699,6 +3939,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolArrayOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolNodeOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusPtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferOutput{})

@@ -4,6 +4,7 @@
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "access_key": "accessKey",
+    "api_endpoints": "apiEndpoints",
     "api_version": "apiVersion",
     "authorized_keys": "authorizedKeys",
     "authorized_users": "authorizedUsers",
@@ -30,6 +31,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "in_": "in",
     "ip_address": "ipAddress",
     "is_public": "isPublic",
+    "k8s_version": "k8sVersion",
     "linode_id": "linodeId",
     "master_ips": "masterIps",
     "node_status": "nodeStatus",
@@ -62,6 +64,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "accessKey": "access_key",
+    "apiEndpoints": "api_endpoints",
     "apiVersion": "api_version",
     "authorizedKeys": "authorized_keys",
     "authorizedUsers": "authorized_users",
@@ -88,6 +91,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "in": "in_",
     "ipAddress": "ip_address",
     "isPublic": "is_public",
+    "k8sVersion": "k8s_version",
     "linodeId": "linode_id",
     "masterIps": "master_ips",
     "nodeStatus": "node_status",

@@ -269,6 +269,37 @@ export interface InstanceSpecs {
     vcpus?: pulumi.Input<number>;
 }
 
+export interface LkeClusterPool {
+    /**
+     * The number of nodes in the Node Pool.
+     */
+    count: pulumi.Input<number>;
+    /**
+     * The ID of the node.
+     */
+    id?: pulumi.Input<number>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
+    /**
+     * A Linode Type for all of the nodes in the Node Pool.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface LkeClusterPoolNode {
+    /**
+     * The ID of the node.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The ID of the underlying Linode instance.
+     */
+    instanceId?: pulumi.Input<number>;
+    /**
+     * The status of the node.
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface NodeBalancerConfigNodeStatus {
     statusDown?: pulumi.Input<number>;
     statusUp?: pulumi.Input<number>;

@@ -19,6 +19,7 @@ export * from "./getUser";
 export * from "./getVolume";
 export * from "./image";
 export * from "./instance";
+export * from "./lkeCluster";
 export * from "./nodeBalancer";
 export * from "./nodeBalancerConfig";
 export * from "./nodeBalancerNode";
