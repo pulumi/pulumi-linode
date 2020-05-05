@@ -188,6 +188,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_object_storage_key": {
 				Tok: makeResource(mainMod, "ObjectStorageKey"),
 			},
+			"linode_lke_cluster": {Tok: makeResource(mainMod, "LkeCluster")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},

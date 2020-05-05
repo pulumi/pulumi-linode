@@ -296,6 +296,37 @@ export interface InstanceSpecs {
     vcpus: number;
 }
 
+export interface LkeClusterPool {
+    /**
+     * The number of nodes in the Node Pool.
+     */
+    count: number;
+    /**
+     * The ID of the node.
+     */
+    id: number;
+    nodes: outputs.LkeClusterPoolNode[];
+    /**
+     * A Linode Type for all of the nodes in the Node Pool.
+     */
+    type: string;
+}
+
+export interface LkeClusterPoolNode {
+    /**
+     * The ID of the node.
+     */
+    id: string;
+    /**
+     * The ID of the underlying Linode instance.
+     */
+    instanceId: number;
+    /**
+     * The status of the node.
+     */
+    status: string;
+}
+
 export interface NodeBalancerConfigNodeStatus {
     statusDown: number;
     statusUp: number;
