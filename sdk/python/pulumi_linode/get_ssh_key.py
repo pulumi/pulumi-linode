@@ -43,6 +43,17 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 def get_ssh_key(label=None,opts=None):
     """
     `.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_ssh_key(label="foo")
+    ```
     """
     __args__ = dict()
 

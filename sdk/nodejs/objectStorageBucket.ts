@@ -9,6 +9,22 @@ import * as utilities from "./utilities";
 /**
  * Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * 
+ * const primary = linode.getObjectStorageCluster({
+ *     id: "us-east-1",
+ * });
+ * const foobar = new linode.ObjectStorageBucket("foobar", {
+ *     cluster: primary.then(primary => primary.id),
+ *     label: `%s`,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/object_storage_bucket.html.md.
  */

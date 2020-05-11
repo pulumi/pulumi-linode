@@ -55,6 +55,24 @@ class LkeCluster(pulumi.CustomResource):
         """
         Manages an LKE cluster.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.17",
+            label="my-cluster",
+            pools=[{
+                "count": 3,
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
+        ```
 
 
         :param str resource_name: The name of the resource.

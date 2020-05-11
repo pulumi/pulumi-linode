@@ -72,6 +72,16 @@ def get_profile(opts=None):
     """
     Provides information about a Linode profile.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    profile = linode.get_profile()
+    ```
 
     ## Attributes
 

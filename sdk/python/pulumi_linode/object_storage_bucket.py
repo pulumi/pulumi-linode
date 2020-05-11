@@ -22,6 +22,19 @@ class ObjectStorageBucket(pulumi.CustomResource):
         """
         Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        primary = linode.get_object_storage_cluster(id="us-east-1")
+        foobar = linode.ObjectStorageBucket("foobar",
+            cluster=primary.id,
+            label="%s")
+        ```
 
 
         :param str resource_name: The name of the resource.

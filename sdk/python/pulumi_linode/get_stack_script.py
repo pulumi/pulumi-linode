@@ -81,6 +81,13 @@ def get_stack_script(id=None,user_defined_fields=None,opts=None):
     """
     Provides details about a specific Linode StackScript.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    ```
 
     ## Attributes
 

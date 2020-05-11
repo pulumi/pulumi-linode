@@ -59,6 +59,24 @@ class DomainRecord(pulumi.CustomResource):
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            domain="foobar.example",
+            soa_email="example@foobar.example",
+            type="master")
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
 
         ## Attributes
 

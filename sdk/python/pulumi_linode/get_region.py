@@ -32,6 +32,17 @@ class AwaitableGetRegionResult(GetRegionResult):
 def get_region(country=None,id=None,opts=None):
     """
     `.getRegion` provides details about a specific Linode region.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    region = linode.get_region(id="us-east")
+    ```
     """
     __args__ = dict()
 

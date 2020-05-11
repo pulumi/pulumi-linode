@@ -65,6 +65,27 @@ class Image(pulumi.CustomResource):
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            region="us-central",
+            type="g6-nanode-1")
+        bar = linode.Image("bar",
+            description="Image taken from foo",
+            disk_id=foo.disks[0]["id"],
+            label="foo-sda-image",
+            linode_id=foo.id)
+        bar_based = linode.Instance("barBased",
+            image=bar.id,
+            region="eu-west",
+            type=foo.type)
+        ```
 
         ## Attributes
 
