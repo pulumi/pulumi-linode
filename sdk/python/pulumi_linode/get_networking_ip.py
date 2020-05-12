@@ -68,6 +68,16 @@ def get_networking_ip(address=None,opts=None):
     """
     Provides information about a Linode Networking IP Address
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    ns1_linode_com = linode.get_networking_ip(address="162.159.27.72")
+    ```
 
     ## Attributes
 

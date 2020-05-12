@@ -69,6 +69,16 @@ def get_image(id=None,opts=None):
     """
     Provides information about a Linode image
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    k8_master = linode.get_image(id="linode/debian8")
+    ```
 
     ## Attributes
 

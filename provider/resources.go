@@ -239,7 +239,6 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_volume":        {Tok: makeDataSource(mainMod, "getVolume")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",

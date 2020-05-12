@@ -45,6 +45,16 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     """
     Provides information about a Linode Object Storage Cluster
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    primary = linode.get_object_storage_cluster(id="us-east-1")
+    ```
 
     ## Attributes
 

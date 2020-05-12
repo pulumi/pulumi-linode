@@ -48,6 +48,16 @@ def get_user(username=None,opts=None):
     """
     Provides information about a Linode user
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_user(username="foo")
+    ```
 
     ## Attributes
 

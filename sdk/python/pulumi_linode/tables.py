@@ -5,7 +5,6 @@
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "access_key": "accessKey",
     "api_endpoints": "apiEndpoints",
-    "api_version": "apiVersion",
     "authorized_keys": "authorizedKeys",
     "authorized_users": "authorizedUsers",
     "axfr_ips": "axfrIps",
@@ -56,7 +55,6 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "status_up": "statusUp",
     "swap_size": "swapSize",
     "ttl_sec": "ttlSec",
-    "ua_prefix": "uaPrefix",
     "user_defined_fields": "userDefinedFields",
     "user_gravatar_id": "userGravatarId",
     "watchdog_enabled": "watchdogEnabled",
@@ -65,7 +63,6 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "accessKey": "access_key",
     "apiEndpoints": "api_endpoints",
-    "apiVersion": "api_version",
     "authorizedKeys": "authorized_keys",
     "authorizedUsers": "authorized_users",
     "axfrIps": "axfr_ips",
@@ -116,7 +113,6 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "statusUp": "status_up",
     "swapSize": "swap_size",
     "ttlSec": "ttl_sec",
-    "uaPrefix": "ua_prefix",
     "userDefinedFields": "user_defined_fields",
     "userGravatarId": "user_gravatar_id",
     "watchdogEnabled": "watchdog_enabled",

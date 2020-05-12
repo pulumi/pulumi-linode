@@ -45,6 +45,24 @@ class Volume(pulumi.CustomResource):
 
         For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobaz = linode.Instance("foobaz",
+            region="us-west",
+            root_pass="3X4mp13",
+            tags=["foobaz"],
+            type="g6-nanode-1")
+        foobar = linode.Volume("foobar",
+            label="foo-volume",
+            linode_id=foobaz.id,
+            region=foobaz.region)
+        ```
 
         ## Attributes
 

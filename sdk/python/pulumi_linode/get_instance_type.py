@@ -65,6 +65,16 @@ def get_instance_type(id=None,label=None,opts=None):
     """
     Provides information about a Linode instance type
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    default = linode.get_instance_type(id="g6-standard-2")
+    ```
 
     ## Attributes
 

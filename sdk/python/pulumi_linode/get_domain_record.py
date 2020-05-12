@@ -73,6 +73,19 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     """
     Provides information about a Linode Domain Record.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_record = linode.get_domain_record(domain_id="3150401",
+        id="14950401")
+    my_www_record = linode.get_domain_record(domain_id="3150401",
+        name="www")
+    ```
 
     ## Attributes
 

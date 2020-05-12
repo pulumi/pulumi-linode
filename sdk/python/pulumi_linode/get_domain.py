@@ -81,6 +81,17 @@ def get_domain(domain=None,id=None,opts=None):
     """
     Provides information about a Linode domain.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_domain(id="1234567")
+    bar = linode.get_domain(domain="bar.example.com")
+    ```
 
     ## Attributes
 

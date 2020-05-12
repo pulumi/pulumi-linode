@@ -65,6 +65,16 @@ def get_volume(id=None,opts=None):
     """
     Provides information about a Linode Volume.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_volume(id="1234567")
+    ```
 
     ## Attributes
 
