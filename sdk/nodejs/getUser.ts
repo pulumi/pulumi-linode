@@ -8,31 +8,29 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode user
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const foo = pulumi.output(linode.getUser({
  *     username: "foo",
  * }, { async: true }));
  * ```
- * 
- * ## Attributes
- * 
- * The Linode User resource exports the following attributes:
- * 
- * * `sshKeys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
- * 
- * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
- * 
- * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/user.html.md.
+ * ## Attributes
+ *
+ * The Linode User resource exports the following attributes:
+ *
+ * * `sshKeys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
+ *
+ * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
+ *
+ * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     if (!opts) {

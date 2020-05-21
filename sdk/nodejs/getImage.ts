@@ -8,43 +8,41 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode image
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const k8Master = pulumi.output(linode.getImage({
  *     id: "linode/debian8",
  * }, { async: true }));
  * ```
- * 
- * ## Attributes
- * 
- * The Linode Image resource exports the following attributes:
- * 
- * * `label` - A short description of the Image.
- * 
- * * `created` - When this Image was created.
- * 
- * * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
- * 
- * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
- * 
- * * `description` - A detailed description of this Image.
- * 
- * * `isPublic` - True if the Image is public.
- * 
- * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
- * 
- * * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
- * 
- * * `vendor` - The upstream distribution vendor. `None` for private Images.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/image.html.md.
+ * ## Attributes
+ *
+ * The Linode Image resource exports the following attributes:
+ *
+ * * `label` - A short description of the Image.
+ *
+ * * `created` - When this Image was created.
+ *
+ * * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
+ *
+ * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+ *
+ * * `description` - A detailed description of this Image.
+ *
+ * * `isPublic` - True if the Image is public.
+ *
+ * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
+ *
+ * * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
+ *
+ * * `vendor` - The upstream distribution vendor. `None` for private Images.
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     if (!opts) {

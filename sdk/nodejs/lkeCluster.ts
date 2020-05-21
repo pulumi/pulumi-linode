@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Manages an LKE cluster.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const myCluster = new linode.LkeCluster("my-cluster", {
  *     k8sVersion: "1.17",
  *     label: "my-cluster",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     tags: ["prod"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/lke_cluster.html.md.
  */
 export class LkeCluster extends pulumi.CustomResource {
     /**

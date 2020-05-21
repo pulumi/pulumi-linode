@@ -8,41 +8,39 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode instance type
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const defaultInstanceType = pulumi.output(linode.getInstanceType({
  *     id: "g6-standard-2",
  * }, { async: true }));
  * ```
- * 
- * ## Attributes
- * 
- * The Linode Instance Type resource exports the following attributes:
- * 
- * * `id` - The ID representing the Linode Type
- * 
- * * `label` - The Linode Type's label is for display purposes only
- * 
- * * `class` - The class of the Linode Type
- * 
- * * `disk` - The Disk size, in MB, of the Linode Type
- * 
- * * `price.0.hourly` -  Cost (in US dollars) per hour.
- * 
- * * `price.0.monthly` - Cost (in US dollars) per month.
- * 
- * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
- * 
- * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/instance_type.html.md.
+ * ## Attributes
+ *
+ * The Linode Instance Type resource exports the following attributes:
+ *
+ * * `id` - The ID representing the Linode Type
+ *
+ * * `label` - The Linode Type's label is for display purposes only
+ *
+ * * `class` - The class of the Linode Type
+ *
+ * * `disk` - The Disk size, in MB, of the Linode Type
+ *
+ * * `price.0.hourly` -  Cost (in US dollars) per hour.
+ *
+ * * `price.0.monthly` - Cost (in US dollars) per month.
+ *
+ * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
+ *
+ * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
  */
 export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> {
     if (!opts) {

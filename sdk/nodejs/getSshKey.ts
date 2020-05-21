@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const foo = pulumi.output(linode.getSshKey({
  *     label: "foo",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/sshkey.html.md.
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
     if (!opts) {
