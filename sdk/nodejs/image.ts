@@ -6,17 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
- * 
+ *
  * For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const foo = new linode.Instance("foo", {
  *     region: "us-central",
  *     type: "g6-nanode-1",
@@ -33,30 +33,28 @@ import * as utilities from "./utilities";
  *     type: foo.type,
  * });
  * ```
- * 
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
- * 
- * * `created` - When this Image was created.
- * 
- * * `createdBy` - The name of the User who created this Image.
- * 
- * * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
- * 
- * * `isPublic` - True if the Image is public.
- * 
- * * `size` - The minimum size this Image needs to deploy. Size is in MB.
- * 
- * * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
- * 
- * * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
- * 
- * * `vendor` - The upstream distribution vendor. Nil for private Images.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/image.html.md.
+ * ## Attributes
+ *
+ * This resource exports the following attributes:
+ *
+ * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+ *
+ * * `created` - When this Image was created.
+ *
+ * * `createdBy` - The name of the User who created this Image.
+ *
+ * * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
+ *
+ * * `isPublic` - True if the Image is public.
+ *
+ * * `size` - The minimum size this Image needs to deploy. Size is in MB.
+ *
+ * * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
+ *
+ * * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+ *
+ * * `vendor` - The upstream distribution vendor. Nil for private Images.
  */
 export class Image extends pulumi.CustomResource {
     /**

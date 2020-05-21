@@ -8,45 +8,43 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Volume.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const foo = pulumi.output(linode.getVolume({
  *     id: 1234567,
  * }, { async: true }));
  * ```
- * 
- * ## Attributes
- * 
- * The Linode Volume resource exports the following attributes:
- * 
- * - `id` - The unique ID of this Volume.
- * 
- * - `created` - When this Volume was created.
- * 
- * - `status` - The current status of the Volume. Can be one of "creating", "active", "resizing", or "contactSupport".
- * 
- * - `label` - This Volume's label is for display purposes only.
- * 
- * - `tags` - An array of tags applied to this object.
- * 
- * - `size` - The Volume's size, in GiB.
- * 
- * - `region` - The datacenter in which this Volume is located.
- * 
- * - `updated` - When this Volume was last updated.
- * 
- * - `linodeId` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
- * 
- * - `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/volume.html.md.
+ * ## Attributes
+ *
+ * The Linode Volume resource exports the following attributes:
+ *
+ * - `id` - The unique ID of this Volume.
+ *
+ * - `created` - When this Volume was created.
+ *
+ * - `status` - The current status of the Volume. Can be one of "creating", "active", "resizing", or "contactSupport".
+ *
+ * - `label` - This Volume's label is for display purposes only.
+ *
+ * - `tags` - An array of tags applied to this object.
+ *
+ * - `size` - The Volume's size, in GiB.
+ *
+ * - `region` - The datacenter in which this Volume is located.
+ *
+ * - `updated` - When this Volume was last updated.
+ *
+ * - `linodeId` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+ *
+ * - `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {

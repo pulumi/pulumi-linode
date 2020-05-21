@@ -8,33 +8,31 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Object Storage Cluster
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const primary = pulumi.output(linode.getObjectStorageCluster({
  *     id: "us-east-1",
  * }, { async: true }));
  * ```
- * 
- * ## Attributes
- * 
- * The Linode Object Storage Cluster resource exports the following attributes:
- * 
- * * `domain` - The base URL for this cluster.
- * 
- * * `status` - This cluster's status.
- * 
- * * `region` - The region this cluster is located in.
- * 
- * * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/object_storage_cluster.html.md.
+ * ## Attributes
+ *
+ * The Linode Object Storage Cluster resource exports the following attributes:
+ *
+ * * `domain` - The base URL for this cluster.
+ *
+ * * `status` - This cluster's status.
+ *
+ * * `region` - The region this cluster is located in.
+ *
+ * * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
  */
 export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> {
     if (!opts) {

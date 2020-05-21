@@ -7,15 +7,15 @@ import * as utilities from "./utilities";
 /**
  * Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
  * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
- * 
+ *
  * const foobarDomain = new linode.Domain("foobar", {
  *     domain: "foobar.example",
  *     soaEmail: "example@foobar.example",
@@ -28,12 +28,10 @@ import * as utilities from "./utilities";
  *     target: "foobar.example",
  * });
  * ```
- * 
- * ## Attributes
- * 
- * This resource exports no additional attributes.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/r/domain_record.html.md.
+ * ## Attributes
+ *
+ * This resource exports no additional attributes.
  */
 export class DomainRecord extends pulumi.CustomResource {
     /**

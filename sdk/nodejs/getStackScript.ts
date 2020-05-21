@@ -8,58 +8,56 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a specific Linode StackScript.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `label` - The StackScript's label is for display purposes only.
- * 
- * * `script` - The script to execute when provisioning a new Linode with this StackScript.
- * 
- * * `description` - A description for the StackScript.
- * 
- * * `revNote` - This field allows you to add notes for the set of revisions made to this StackScript.
- * 
- * * `isPublic` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
- * 
- * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
- * 
- * * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
- * 
- * * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
- * 
- * * `deploymentsTotal` - The total number of times this StackScript has been deployed.
- * 
- * * `username` - The User who created the StackScript.
- * 
- * * `created` - The date this StackScript was created.
- * 
- * * `updated` - The date this StackScript was updated.
- * 
- * * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
- * 
- *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
- * 
- *   * `name` - The name of the field.
- * 
- *   * `example` - An example value for the field.
- * 
- *   * `oneOf` - A list of acceptable single values for the field.
- * 
- *   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
- * 
- *   * `default` - The default value. If not specified, this value will be used.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-linode/blob/master/website/docs/d/stackscript.html.md.
+ * ## Attributes
+ *
+ * This resource exports the following attributes:
+ *
+ * * `label` - The StackScript's label is for display purposes only.
+ *
+ * * `script` - The script to execute when provisioning a new Linode with this StackScript.
+ *
+ * * `description` - A description for the StackScript.
+ *
+ * * `revNote` - This field allows you to add notes for the set of revisions made to this StackScript.
+ *
+ * * `isPublic` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+ *
+ * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+ *
+ * * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
+ *
+ * * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
+ *
+ * * `deploymentsTotal` - The total number of times this StackScript has been deployed.
+ *
+ * * `username` - The User who created the StackScript.
+ *
+ * * `created` - The date this StackScript was created.
+ *
+ * * `updated` - The date this StackScript was updated.
+ *
+ * * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+ *
+ *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+ *
+ *   * `name` - The name of the field.
+ *
+ *   * `example` - An example value for the field.
+ *
+ *   * `oneOf` - A list of acceptable single values for the field.
+ *
+ *   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
+ *
+ *   * `default` - The default value. If not specified, this value will be used.
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
     if (!opts) {
