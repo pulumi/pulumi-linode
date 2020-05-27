@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface FirewallDevice {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
+    entityId?: pulumi.Input<number>;
+    /**
+     * The ID of the Firewall Device.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * This Firewall's unique label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The type of Firewall Device.
+     */
+    type?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+}
+
+export interface FirewallInbound {
+    /**
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     */
+    addresses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     */
+    ports: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: pulumi.Input<string>;
+}
+
+export interface FirewallOutbound {
+    /**
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     */
+    addresses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     */
+    ports: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: pulumi.Input<string>;
+}
+
 export interface GetStackScriptUserDefinedField {
     default?: string;
     example?: string;

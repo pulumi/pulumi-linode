@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `linode..getRegion` provides details about a specific Linode region.
+ * `linode..getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
  *
  * ## Example Usage
  *

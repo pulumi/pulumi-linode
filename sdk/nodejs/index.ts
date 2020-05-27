@@ -4,6 +4,7 @@
 // Export members:
 export * from "./domain";
 export * from "./domainRecord";
+export * from "./firewall";
 export * from "./getAccount";
 export * from "./getDomain";
 export * from "./getDomainRecord";

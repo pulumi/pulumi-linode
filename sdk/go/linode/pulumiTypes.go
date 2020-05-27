@@ -10,6 +10,372 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type FirewallDevice struct {
+	// The ID of the underlying entity this device references (i.e. the Linode's ID).
+	EntityId *int `pulumi:"entityId"`
+	// The ID of the Firewall Device.
+	Id *int `pulumi:"id"`
+	// This Firewall's unique label.
+	Label *string `pulumi:"label"`
+	// The type of Firewall Device.
+	Type *string `pulumi:"type"`
+	Url  *string `pulumi:"url"`
+}
+
+// FirewallDeviceInput is an input type that accepts FirewallDeviceArgs and FirewallDeviceOutput values.
+// You can construct a concrete instance of `FirewallDeviceInput` via:
+//
+// 		 FirewallDeviceArgs{...}
+//
+type FirewallDeviceInput interface {
+	pulumi.Input
+
+	ToFirewallDeviceOutput() FirewallDeviceOutput
+	ToFirewallDeviceOutputWithContext(context.Context) FirewallDeviceOutput
+}
+
+type FirewallDeviceArgs struct {
+	// The ID of the underlying entity this device references (i.e. the Linode's ID).
+	EntityId pulumi.IntPtrInput `pulumi:"entityId"`
+	// The ID of the Firewall Device.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// This Firewall's unique label.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// The type of Firewall Device.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	Url  pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (FirewallDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallDevice)(nil)).Elem()
+}
+
+func (i FirewallDeviceArgs) ToFirewallDeviceOutput() FirewallDeviceOutput {
+	return i.ToFirewallDeviceOutputWithContext(context.Background())
+}
+
+func (i FirewallDeviceArgs) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceOutput)
+}
+
+// FirewallDeviceArrayInput is an input type that accepts FirewallDeviceArray and FirewallDeviceArrayOutput values.
+// You can construct a concrete instance of `FirewallDeviceArrayInput` via:
+//
+// 		 FirewallDeviceArray{ FirewallDeviceArgs{...} }
+//
+type FirewallDeviceArrayInput interface {
+	pulumi.Input
+
+	ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput
+	ToFirewallDeviceArrayOutputWithContext(context.Context) FirewallDeviceArrayOutput
+}
+
+type FirewallDeviceArray []FirewallDeviceInput
+
+func (FirewallDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallDevice)(nil)).Elem()
+}
+
+func (i FirewallDeviceArray) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput {
+	return i.ToFirewallDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallDeviceArray) ToFirewallDeviceArrayOutputWithContext(ctx context.Context) FirewallDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceArrayOutput)
+}
+
+type FirewallDeviceOutput struct{ *pulumi.OutputState }
+
+func (FirewallDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallDevice)(nil)).Elem()
+}
+
+func (o FirewallDeviceOutput) ToFirewallDeviceOutput() FirewallDeviceOutput {
+	return o
+}
+
+func (o FirewallDeviceOutput) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
+	return o
+}
+
+// The ID of the underlying entity this device references (i.e. the Linode's ID).
+func (o FirewallDeviceOutput) EntityId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallDevice) *int { return v.EntityId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Firewall Device.
+func (o FirewallDeviceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallDevice) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// This Firewall's unique label.
+func (o FirewallDeviceOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDevice) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The type of Firewall Device.
+func (o FirewallDeviceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o FirewallDeviceOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDevice) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type FirewallDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallDevice)(nil)).Elem()
+}
+
+func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput {
+	return o
+}
+
+func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutputWithContext(ctx context.Context) FirewallDeviceArrayOutput {
+	return o
+}
+
+func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallDevice {
+		return vs[0].([]FirewallDevice)[vs[1].(int)]
+	}).(FirewallDeviceOutput)
+}
+
+type FirewallInbound struct {
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	Addresses []string `pulumi:"addresses"`
+	// A list of ports and/or port ranges (i.e. "443" or "80-90").
+	Ports []string `pulumi:"ports"`
+	// The network protocol this rule controls.
+	Protocol string `pulumi:"protocol"`
+}
+
+// FirewallInboundInput is an input type that accepts FirewallInboundArgs and FirewallInboundOutput values.
+// You can construct a concrete instance of `FirewallInboundInput` via:
+//
+// 		 FirewallInboundArgs{...}
+//
+type FirewallInboundInput interface {
+	pulumi.Input
+
+	ToFirewallInboundOutput() FirewallInboundOutput
+	ToFirewallInboundOutputWithContext(context.Context) FirewallInboundOutput
+}
+
+type FirewallInboundArgs struct {
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	// A list of ports and/or port ranges (i.e. "443" or "80-90").
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The network protocol this rule controls.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (FirewallInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallInbound)(nil)).Elem()
+}
+
+func (i FirewallInboundArgs) ToFirewallInboundOutput() FirewallInboundOutput {
+	return i.ToFirewallInboundOutputWithContext(context.Background())
+}
+
+func (i FirewallInboundArgs) ToFirewallInboundOutputWithContext(ctx context.Context) FirewallInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallInboundOutput)
+}
+
+// FirewallInboundArrayInput is an input type that accepts FirewallInboundArray and FirewallInboundArrayOutput values.
+// You can construct a concrete instance of `FirewallInboundArrayInput` via:
+//
+// 		 FirewallInboundArray{ FirewallInboundArgs{...} }
+//
+type FirewallInboundArrayInput interface {
+	pulumi.Input
+
+	ToFirewallInboundArrayOutput() FirewallInboundArrayOutput
+	ToFirewallInboundArrayOutputWithContext(context.Context) FirewallInboundArrayOutput
+}
+
+type FirewallInboundArray []FirewallInboundInput
+
+func (FirewallInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallInbound)(nil)).Elem()
+}
+
+func (i FirewallInboundArray) ToFirewallInboundArrayOutput() FirewallInboundArrayOutput {
+	return i.ToFirewallInboundArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallInboundArray) ToFirewallInboundArrayOutputWithContext(ctx context.Context) FirewallInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallInboundArrayOutput)
+}
+
+type FirewallInboundOutput struct{ *pulumi.OutputState }
+
+func (FirewallInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallInbound)(nil)).Elem()
+}
+
+func (o FirewallInboundOutput) ToFirewallInboundOutput() FirewallInboundOutput {
+	return o
+}
+
+func (o FirewallInboundOutput) ToFirewallInboundOutputWithContext(ctx context.Context) FirewallInboundOutput {
+	return o
+}
+
+// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+func (o FirewallInboundOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallInbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// A list of ports and/or port ranges (i.e. "443" or "80-90").
+func (o FirewallInboundOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallInbound) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+// The network protocol this rule controls.
+func (o FirewallInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type FirewallInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallInbound)(nil)).Elem()
+}
+
+func (o FirewallInboundArrayOutput) ToFirewallInboundArrayOutput() FirewallInboundArrayOutput {
+	return o
+}
+
+func (o FirewallInboundArrayOutput) ToFirewallInboundArrayOutputWithContext(ctx context.Context) FirewallInboundArrayOutput {
+	return o
+}
+
+func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallInbound {
+		return vs[0].([]FirewallInbound)[vs[1].(int)]
+	}).(FirewallInboundOutput)
+}
+
+type FirewallOutbound struct {
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	Addresses []string `pulumi:"addresses"`
+	// A list of ports and/or port ranges (i.e. "443" or "80-90").
+	Ports []string `pulumi:"ports"`
+	// The network protocol this rule controls.
+	Protocol string `pulumi:"protocol"`
+}
+
+// FirewallOutboundInput is an input type that accepts FirewallOutboundArgs and FirewallOutboundOutput values.
+// You can construct a concrete instance of `FirewallOutboundInput` via:
+//
+// 		 FirewallOutboundArgs{...}
+//
+type FirewallOutboundInput interface {
+	pulumi.Input
+
+	ToFirewallOutboundOutput() FirewallOutboundOutput
+	ToFirewallOutboundOutputWithContext(context.Context) FirewallOutboundOutput
+}
+
+type FirewallOutboundArgs struct {
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	// A list of ports and/or port ranges (i.e. "443" or "80-90").
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The network protocol this rule controls.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (FirewallOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutbound)(nil)).Elem()
+}
+
+func (i FirewallOutboundArgs) ToFirewallOutboundOutput() FirewallOutboundOutput {
+	return i.ToFirewallOutboundOutputWithContext(context.Background())
+}
+
+func (i FirewallOutboundArgs) ToFirewallOutboundOutputWithContext(ctx context.Context) FirewallOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutboundOutput)
+}
+
+// FirewallOutboundArrayInput is an input type that accepts FirewallOutboundArray and FirewallOutboundArrayOutput values.
+// You can construct a concrete instance of `FirewallOutboundArrayInput` via:
+//
+// 		 FirewallOutboundArray{ FirewallOutboundArgs{...} }
+//
+type FirewallOutboundArrayInput interface {
+	pulumi.Input
+
+	ToFirewallOutboundArrayOutput() FirewallOutboundArrayOutput
+	ToFirewallOutboundArrayOutputWithContext(context.Context) FirewallOutboundArrayOutput
+}
+
+type FirewallOutboundArray []FirewallOutboundInput
+
+func (FirewallOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallOutbound)(nil)).Elem()
+}
+
+func (i FirewallOutboundArray) ToFirewallOutboundArrayOutput() FirewallOutboundArrayOutput {
+	return i.ToFirewallOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallOutboundArray) ToFirewallOutboundArrayOutputWithContext(ctx context.Context) FirewallOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutboundArrayOutput)
+}
+
+type FirewallOutboundOutput struct{ *pulumi.OutputState }
+
+func (FirewallOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutbound)(nil)).Elem()
+}
+
+func (o FirewallOutboundOutput) ToFirewallOutboundOutput() FirewallOutboundOutput {
+	return o
+}
+
+func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.Context) FirewallOutboundOutput {
+	return o
+}
+
+// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+func (o FirewallOutboundOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallOutbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// A list of ports and/or port ranges (i.e. "443" or "80-90").
+func (o FirewallOutboundOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+// The network protocol this rule controls.
+func (o FirewallOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type FirewallOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallOutbound)(nil)).Elem()
+}
+
+func (o FirewallOutboundArrayOutput) ToFirewallOutboundArrayOutput() FirewallOutboundArrayOutput {
+	return o
+}
+
+func (o FirewallOutboundArrayOutput) ToFirewallOutboundArrayOutputWithContext(ctx context.Context) FirewallOutboundArrayOutput {
+	return o
+}
+
+func (o FirewallOutboundArrayOutput) Index(i pulumi.IntInput) FirewallOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallOutbound {
+		return vs[0].([]FirewallOutbound)[vs[1].(int)]
+	}).(FirewallOutboundOutput)
+}
+
 type InstanceAlerts struct {
 	Cpu           *int `pulumi:"cpu"`
 	Io            *int `pulumi:"io"`
@@ -3907,6 +4273,12 @@ func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 func init() {
+	pulumi.RegisterOutputType(FirewallDeviceOutput{})
+	pulumi.RegisterOutputType(FirewallDeviceArrayOutput{})
+	pulumi.RegisterOutputType(FirewallInboundOutput{})
+	pulumi.RegisterOutputType(FirewallInboundArrayOutput{})
+	pulumi.RegisterOutputType(FirewallOutboundOutput{})
+	pulumi.RegisterOutputType(FirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceBackupsOutput{})

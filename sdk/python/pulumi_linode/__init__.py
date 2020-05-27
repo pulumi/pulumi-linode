@@ -12,6 +12,7 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .domain import *
 from .domain_record import *
+from .firewall import *
 from .get_account import *
 from .get_domain import *
 from .get_domain_record import *

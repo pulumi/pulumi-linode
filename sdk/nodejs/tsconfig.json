@@ -17,6 +17,7 @@
         "config/vars.ts",
         "domain.ts",
         "domainRecord.ts",
+        "firewall.ts",
         "getAccount.ts",
         "getDomain.ts",
         "getDomainRecord.ts",
