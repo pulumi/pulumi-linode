@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
+export interface FirewallDevice {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
+    entityId: number;
+    /**
+     * The ID of the Firewall Device.
+     */
+    id: number;
+    /**
+     * This Firewall's unique label.
+     */
+    label: string;
+    /**
+     * The type of Firewall Device.
+     */
+    type: string;
+    url: string;
+}
+
+export interface FirewallInbound {
+    /**
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     */
+    addresses: string[];
+    /**
+     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     */
+    ports: string[];
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: string;
+}
+
+export interface FirewallOutbound {
+    /**
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     */
+    addresses: string[];
+    /**
+     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     */
+    ports: string[];
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: string;
+}
+
 export interface GetInstanceTypeAddons {
     backups: outputs.GetInstanceTypeAddonsBackups;
 }

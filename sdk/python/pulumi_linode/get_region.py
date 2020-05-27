@@ -31,7 +31,7 @@ class AwaitableGetRegionResult(GetRegionResult):
 
 def get_region(country=None,id=None,opts=None):
     """
-    `.getRegion` provides details about a specific Linode region.
+    `.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
 
     ## Example Usage
 

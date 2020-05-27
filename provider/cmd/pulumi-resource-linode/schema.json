@@ -57,6 +57,141 @@
         ]
     },
     "types": {
+        "linode:/FirewallDevice:FirewallDevice": {
+            "properties": {
+                "entityId": {
+                    "type": "integer",
+                    "description": "The ID of the underlying entity this device references (i.e. the Linode's ID).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the Firewall Device.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "This Firewall's unique label.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of Firewall Device.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "linode:/FirewallInbound:FirewallInbound": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The network protocol this rule controls.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addresses",
+                "ports",
+                "protocol"
+            ]
+        },
+        "linode:/FirewallOutbound:FirewallOutbound": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The network protocol this rule controls.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addresses",
+                "ports",
+                "protocol"
+            ]
+        },
         "linode:/InstanceAlerts:InstanceAlerts": {
             "properties": {
                 "cpu": {
@@ -1535,6 +1670,158 @@
                     "weight": {
                         "type": "integer",
                         "description": "The relative weight of this Record. Higher values are preferred.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/firewall:Firewall": {
+            "description": "Manages a Linode Firewall.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "devices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:/FirewallDevice:FirewallDevice"
+                    },
+                    "description": "The devices associated with this firewall.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
+                },
+                "inbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                    },
+                    "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "This Firewall's unique label.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                },
+                "outbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                    },
+                    "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the Firewall.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                }
+            },
+            "required": [
+                "devices",
+                "label",
+                "linodes",
+                "status"
+            ],
+            "inputProperties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
+                },
+                "inbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                    },
+                    "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "This Firewall's unique label.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                },
+                "outbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                    },
+                    "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                }
+            },
+            "requiredInputs": [
+                "linodes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Firewall resources.\n",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:/FirewallDevice:FirewallDevice"
+                        },
+                        "description": "The devices associated with this firewall.\n"
+                    },
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
+                    },
+                    "inbounds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                        },
+                        "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "This Firewall's unique label.\n"
+                    },
+                    "linodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                    },
+                    "outbounds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                        },
+                        "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the Firewall.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
                     }
                 },
                 "type": "object"
@@ -3801,7 +4088,7 @@
             }
         },
         "linode:index/getRegion:getRegion": {
-            "description": "`linode..getRegion` provides details about a specific Linode region.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how the resource might be used to obtain additional information about a Linode region.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst region = pulumi.output(linode.getRegion({\n    id: \"us-east\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nregion = linode.get_region(id=\"us-east\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "`linode..getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how the resource might be used to obtain additional information about a Linode region.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst region = pulumi.output(linode.getRegion({\n    id: \"us-east\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nregion = linode.get_region(id=\"us-east\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRegion.\n",
                 "properties": {
