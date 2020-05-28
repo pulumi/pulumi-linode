@@ -448,8 +448,8 @@ github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+
 github.com/lib/pq v1.0.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/lib/pq v1.1.1/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/lib/pq v1.2.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
-github.com/linode/linodego v0.17.0 h1:YP6ItAMRCW46leDJaHK1qlIR6hBhuZ+wRqIWxn67/Ag=
-github.com/linode/linodego v0.17.0/go.mod h1:vlzb2glsL9XrRYTRJ5JrgUoKZ5yfZBe11GYfEB68McY=
+github.com/linode/linodego v0.18.0 h1:w/udLSLov9PVYNYMKEBj4Cu0ZtZlOvBd/+0wD2VU2Gk=
+github.com/linode/linodego v0.18.0/go.mod h1:vlzb2glsL9XrRYTRJ5JrgUoKZ5yfZBe11GYfEB68McY=
 github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
 github.com/magiconair/properties v1.8.1/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
@@ -645,8 +645,8 @@ github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
-github.com/terraform-providers/terraform-provider-linode v1.11.0 h1:WP567KXpaRatvbk1zT30us4fEy0rqOv76Om7dIuXNiE=
-github.com/terraform-providers/terraform-provider-linode v1.11.0/go.mod h1:d9OQSS++t9SnZXk423gsumYHpacqsCuCMtri1jmSieg=
+github.com/terraform-providers/terraform-provider-linode v1.11.1 h1:htPKKHKgPVooJX6abnLsFvJ2WD3h3GsBRXPBmmSgUos=
+github.com/terraform-providers/terraform-provider-linode v1.11.1/go.mod h1:HYcAboAVEjUIxW1YsfwVmQW1pfDLxr3AaJB211WmKqc=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/timakin/bodyclose v0.0.0-20190930140734-f7f2e9bca95e/go.mod h1:Qimiffbc6q9tBWlVV6x0P9sat/ao1xEkREYPPj9hphk=
