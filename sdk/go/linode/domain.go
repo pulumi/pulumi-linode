@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+//
+//
+// ## Attributes
+//
+// This resource exports no additional attributes, however `status` may reflect degraded states.
 type Domain struct {
 	pulumi.CustomResourceState
 

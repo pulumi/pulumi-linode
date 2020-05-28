@@ -9,6 +9,49 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+    /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarDomain = new Linode.Domain("foobarDomain", new Linode.DomainArgs
+    ///         {
+    ///             Domain = "foobar.example",
+    ///             SoaEmail = "example@foobar.example",
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Type = "master",
+    ///         });
+    ///         var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new Linode.DomainRecordArgs
+    ///         {
+    ///             DomainId = foobarDomain.Id,
+    ///             Name = "www",
+    ///             RecordType = "CNAME",
+    ///             Target = "foobar.example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Attributes
+    /// 
+    /// This resource exports no additional attributes, however `status` may reflect degraded states.
+    /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

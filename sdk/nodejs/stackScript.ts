@@ -6,6 +6,76 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  
+ *
+ * For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooStackScript = new linode.StackScript("foo", {
+ *     description: "Installs a Package",
+ *     images: [
+ *         "linode/ubuntu18.04",
+ *         "linode/ubuntu16.04lts",
+ *     ],
+ *     label: "foo",
+ *     revNote: "initial version",
+ *     script: `#!/bin/bash
+ * # <UDF name="package" label="System Package to Install" example="nginx" default="">
+ * apt-get -q update && apt-get -q -y install $PACKAGE
+ * `,
+ * });
+ * const fooInstance = new linode.Instance("foo", {
+ *     authorizedKeys: ["..."],
+ *     image: "linode/ubuntu18.04",
+ *     label: "foo",
+ *     region: "us-east",
+ *     rootPass: "...",
+ *     stackscriptData: {
+ *         package: "nginx",
+ *     },
+ *     stackscriptId: linode_stackscript_install_nginx.id,
+ *     type: "g6-nanode-1",
+ * });
+ * ```
+ *
+ * ## Attributes
+ *
+ * This resource exports the following attributes:
+ *
+ * * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
+ *
+ * * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
+ *
+ * * `deploymentsTotal` - The total number of times this StackScript has been deployed.
+ *
+ * * `username` - The User who created the StackScript.
+ *
+ * * `created` - The date this StackScript was created.
+ *
+ * * `updated` - The date this StackScript was updated.
+ *
+ * * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+ *
+ *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+ *
+ *   * `name` - The name of the field.
+ *
+ *   * `example` - An example value for the field.
+ *
+ *   * `oneOf` - A list of acceptable single values for the field.
+ *
+ *   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
+ *
+ *   * `default` - The default value. If not specified, this value will be used.
+ */
 export class StackScript extends pulumi.CustomResource {
     /**
      * Get an existing StackScript resource's state with the given name, ID, and optional extra

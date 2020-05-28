@@ -10,6 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
+// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
+//
+//
+// ## Attributes
+//
+// This resource exports the following attributes:
+//
+// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+//
+// * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
+//
+// * `nodebalancerId` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
 type NodeBalancerNode struct {
 	pulumi.CustomResourceState
 

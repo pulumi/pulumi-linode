@@ -64,7 +64,36 @@ class Domain(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Domain resource with the given unique name, props, and options.
+        Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            domain="foobar.example",
+            soa_email="example@foobar.example",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            type="master")
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
+
+        ## Attributes
+
+        This resource exports no additional attributes, however `status` may reflect degraded states.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.

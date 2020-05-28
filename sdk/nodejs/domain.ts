@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+ * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobarDomain = new linode.Domain("foobar", {
+ *     domain: "foobar.example",
+ *     soaEmail: "example@foobar.example",
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     type: "master",
+ * });
+ * const foobarDomainRecord = new linode.DomainRecord("foobar", {
+ *     domainId: foobarDomain.id,
+ *     name: "www",
+ *     recordType: "CNAME",
+ *     target: "foobar.example",
+ * });
+ * ```
+ *
+ * ## Attributes
+ *
+ * This resource exports no additional attributes, however `status` may reflect degraded states.
+ */
 export class Domain extends pulumi.CustomResource {
     /**
      * Get an existing Domain resource's state with the given name, ID, and optional extra

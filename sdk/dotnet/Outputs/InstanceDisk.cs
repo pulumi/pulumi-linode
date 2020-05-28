@@ -21,6 +21,9 @@ namespace Pulumi.Linode.Outputs
         /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedUsers;
+        /// <summary>
+        /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+        /// </summary>
         public readonly string? Filesystem;
         /// <summary>
         /// The ID of the disk in the Linode API.
@@ -35,6 +38,9 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         public readonly bool? ReadOnly;
+        /// <summary>
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        /// </summary>
         public readonly string? RootPass;
         /// <summary>
         /// The size of the Disk in MB.

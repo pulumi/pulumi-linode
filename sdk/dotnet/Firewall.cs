@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
+    /// &gt; **NOTICE:** The Firewall feature is currently available through early access. 
+    /// 
     /// Manages a Linode Firewall.
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource

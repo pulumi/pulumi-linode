@@ -6,6 +6,48 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+ * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     clientConnThrottle: 20,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ * });
+ * const foofig = new linode.NodeBalancerConfig("foofig", {
+ *     algorithm: "source",
+ *     check: "http",
+ *     checkAttempts: 3,
+ *     checkPath: "/foo",
+ *     checkTimeout: 30,
+ *     nodebalancerId: foobar.id,
+ *     port: 8088,
+ *     protocol: "http",
+ *     stickiness: "httpCookie",
+ * });
+ * ```
+ *
+ * ## Attributes
+ *
+ * This resource exports the following attributes:
+ *
+ * * `sslCommonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+ *
+ * * `sslFingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+ *
+ * * `nodeStatusUp` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+ *
+ * * `nodeStatusDown` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+ */
 export class NodeBalancerConfig extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancerConfig resource's state with the given name, ID, and optional extra

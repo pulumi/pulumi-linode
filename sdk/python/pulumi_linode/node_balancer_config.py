@@ -82,7 +82,45 @@ class NodeBalancerConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, algorithm=None, check=None, check_attempts=None, check_body=None, check_interval=None, check_passive=None, check_path=None, check_timeout=None, cipher_suite=None, nodebalancer_id=None, port=None, protocol=None, ssl_cert=None, ssl_key=None, stickiness=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NodeBalancerConfig resource with the given unique name, props, and options.
+        Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            client_conn_throttle=20,
+            label="mynodebalancer",
+            region="us-east")
+        foofig = linode.NodeBalancerConfig("foofig",
+            algorithm="source",
+            check="http",
+            check_attempts=3,
+            check_path="/foo",
+            check_timeout=30,
+            nodebalancer_id=foobar.id,
+            port=8088,
+            protocol="http",
+            stickiness="http_cookie")
+        ```
+
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+
+        * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+
+        * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+
+        * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source

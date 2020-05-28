@@ -6,6 +6,110 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
+ * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
+ *
+ * ## Example Usage
+ *
+ * ### Simple Linode Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const web = new linode.Instance("web", {
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *     group: "foo",
+ *     image: "linode/ubuntu18.04",
+ *     label: "simpleInstance",
+ *     privateIp: true,
+ *     region: "us-central",
+ *     rootPass: "terr4form-test",
+ *     swapSize: 256,
+ *     tags: ["foo"],
+ *     type: "g6-standard-1",
+ * });
+ * ```
+ *
+ * ### Linode Instance with explicit Configs and Disks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const me = pulumi.output(linode.getProfile({ async: true }));
+ * const webVolume = new linode.Volume("webVolume", {
+ *     label: "webVolume",
+ *     region: "us-central",
+ *     size: 20,
+ * });
+ * const web = new linode.Instance("web", {
+ *     bootConfigLabel: "bootConfig",
+ *     configs: [{
+ *         devices: {
+ *             sda: {
+ *                 diskLabel: "boot",
+ *             },
+ *             sdb: {
+ *                 volumeId: webVolume.id,
+ *             },
+ *         },
+ *         kernel: "linode/latest-64bit",
+ *         label: "bootConfig",
+ *         rootDevice: "/dev/sda",
+ *     }],
+ *     disks: [{
+ *         // Any of authorized_keys, authorized_users, and rootPass
+ *         // can be used for provisioning.
+ *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *         authorizedUsers: [me.username],
+ *         image: "linode/ubuntu18.04",
+ *         label: "boot",
+ *         rootPass: "terr4form-test",
+ *         size: 3000,
+ *     }],
+ *     group: "foo",
+ *     label: "complexInstance",
+ *     privateIp: true,
+ *     region: "us-central",
+ *     tags: ["foo"],
+ *     type: "g6-nanode-1",
+ * });
+ * ```
+ *
+ * ## Attributes
+ *
+ * This Linode Instance resource exports the following attributes:
+ *
+ * * `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+ *
+ * * `ipAddress` - A string containing the Linode's public IP address.
+ *
+ * * `privateIpAddress` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+ *
+ * * `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+ *
+ * * `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+ *
+ * * `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+ *
+ * * `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+ *
+ * * `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+ *
+ * * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
+ *
+ * * `backups` - Information about this Linode's backups status.
+ *
+ *   * `enabled` - If this Linode has the Backup service enabled.
+ *
+ *   * `schedule`
+ *
+ *     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+ *
+ *     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -103,7 +207,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The password that will be initialially assigned to the 'root' user account.
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
     public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpecs>;
@@ -293,7 +397,7 @@ export interface InstanceState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The password that will be initialially assigned to the 'root' user account.
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     readonly rootPass?: pulumi.Input<string>;
     readonly specs?: pulumi.Input<inputs.InstanceSpecs>;
@@ -378,7 +482,7 @@ export interface InstanceArgs {
      */
     readonly region: pulumi.Input<string>;
     /**
-     * The password that will be initialially assigned to the 'root' user account.
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     readonly rootPass?: pulumi.Input<string>;
     /**

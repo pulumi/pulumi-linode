@@ -10,6 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
+// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
+//
+//
+// ## Attributes
+//
+// This resource exports the following attributes:
+//
+// * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+//
+// * `ipv4` - The Public IPv4 Address of this NodeBalancer
+//
+// * `ipv6` - The Public IPv6 Address of this NodeBalancer
 type NodeBalancer struct {
 	pulumi.CustomResourceState
 

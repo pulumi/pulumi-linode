@@ -10,6 +10,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
+// For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
+//
+//
+// ## Attributes
+//
+// This Linode Instance resource exports the following attributes:
+//
+// * `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+//
+// * `ipAddress` - A string containing the Linode's public IP address.
+//
+// * `privateIpAddress` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+//
+// * `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+//
+// * `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+//
+// * `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+//
+// * `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+//
+// * `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+//
+// * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
+//
+// * `backups` - Information about this Linode's backups status.
+//
+//   * `enabled` - If this Linode has the Backup service enabled.
+//
+//   * `schedule`
+//
+//     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+//
+//     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -50,7 +85,7 @@ type Instance struct {
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The password that will be initialially assigned to the 'root' user account.
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	Specs    InstanceSpecsOutput    `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -137,7 +172,7 @@ type instanceState struct {
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
-	// The password that will be initialially assigned to the 'root' user account.
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string        `pulumi:"rootPass"`
 	Specs    *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -194,7 +229,7 @@ type InstanceState struct {
 	PrivateIpAddress pulumi.StringPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringPtrInput
-	// The password that will be initialially assigned to the 'root' user account.
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
 	Specs    InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -242,7 +277,7 @@ type instanceArgs struct {
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region string `pulumi:"region"`
-	// The password that will be initialially assigned to the 'root' user account.
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
@@ -284,7 +319,7 @@ type InstanceArgs struct {
 	PrivateIp pulumi.BoolPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringInput
-	// The password that will be initialially assigned to the 'root' user account.
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput

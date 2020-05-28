@@ -58,6 +58,8 @@ class Firewall(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, disabled=None, inbounds=None, label=None, linodes=None, outbounds=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
+        > **NOTICE:** The Firewall feature is currently available through early access. 
+
         Manages a Linode Firewall.
 
         ## Example Usage

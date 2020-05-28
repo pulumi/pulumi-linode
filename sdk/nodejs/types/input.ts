@@ -283,6 +283,9 @@ export interface InstanceDisk {
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     */
     filesystem?: pulumi.Input<string>;
     /**
      * The ID of the disk in the Linode API.
@@ -297,6 +300,9 @@ export interface InstanceDisk {
      */
     label: pulumi.Input<string>;
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     */
     rootPass?: pulumi.Input<string>;
     /**
      * The size of the Disk in MB.

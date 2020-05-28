@@ -2836,14 +2836,16 @@ type InstanceDisk struct {
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	Filesystem      *string  `pulumi:"filesystem"`
+	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+	Filesystem *string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
-	Label    string  `pulumi:"label"`
-	ReadOnly *bool   `pulumi:"readOnly"`
+	Label    string `pulumi:"label"`
+	ReadOnly *bool  `pulumi:"readOnly"`
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -2870,14 +2872,16 @@ type InstanceDiskArgs struct {
 	AuthorizedKeys pulumi.StringArrayInput `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers pulumi.StringArrayInput `pulumi:"authorizedUsers"`
-	Filesystem      pulumi.StringPtrInput   `pulumi:"filesystem"`
+	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
-	Label    pulumi.StringInput    `pulumi:"label"`
-	ReadOnly pulumi.BoolPtrInput   `pulumi:"readOnly"`
+	Label    pulumi.StringInput  `pulumi:"label"`
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -2949,6 +2953,7 @@ func (o InstanceDiskOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceDisk) []string { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
 
+// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 func (o InstanceDiskOutput) Filesystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.Filesystem }).(pulumi.StringPtrOutput)
 }
@@ -2972,6 +2977,7 @@ func (o InstanceDiskOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 func (o InstanceDiskOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.RootPass }).(pulumi.StringPtrOutput)
 }
