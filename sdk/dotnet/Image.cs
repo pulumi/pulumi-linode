@@ -14,6 +14,40 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Linode.Instance("foo", new Linode.InstanceArgs
+    ///         {
+    ///             Region = "us-central",
+    ///             Type = "g6-nanode-1",
+    ///         });
+    ///         var bar = new Linode.Image("bar", new Linode.ImageArgs
+    ///         {
+    ///             Description = "Image taken from foo",
+    ///             DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
+    ///             Label = "foo-sda-image",
+    ///             LinodeId = foo.Id,
+    ///         });
+    ///         var barBased = new Linode.Instance("barBased", new Linode.InstanceArgs
+    ///         {
+    ///             Image = bar.Id,
+    ///             Region = "eu-west",
+    ///             Type = foo.Type,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Attributes
     /// 

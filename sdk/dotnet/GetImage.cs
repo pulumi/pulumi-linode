@@ -15,6 +15,29 @@ namespace Pulumi.Linode
         /// Provides information about a Linode image
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode image.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var k8Master = Output.Create(Linode.GetImage.InvokeAsync(new Linode.GetImageArgs
+        ///         {
+        ///             Id = "linode/debian8",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Attributes
         /// 

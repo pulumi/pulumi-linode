@@ -15,6 +15,29 @@ namespace Pulumi.Linode
         /// `linode..getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain additional information about a Linode region.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var region = Output.Create(Linode.GetRegion.InvokeAsync(new Linode.GetRegionArgs
+        ///         {
+        ///             Id = "us-east",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
