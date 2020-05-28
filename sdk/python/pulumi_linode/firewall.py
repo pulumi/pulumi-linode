@@ -58,40 +58,7 @@ class Firewall(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, disabled=None, inbounds=None, label=None, linodes=None, outbounds=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a Linode Firewall.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("myInstance",
-            label="my_instance",
-            image="linode/ubuntu18.04",
-            region="us-east",
-            type="g6-standard-1",
-            root_pass="bogusPassword$",
-            swap_size=256)
-        my_firewall = linode.Firewall("myFirewall",
-            label="my_firewall",
-            tags=["test"],
-            inbound=[{
-                "protocol": "TCP",
-                "ports": ["80"],
-                "addresses": ["0.0.0.0/0"],
-            }],
-            outbound=[{
-                "protocol": "TCP",
-                "ports": ["80"],
-                "addresses": ["0.0.0.0/0"],
-            }],
-            linodes=[my_instance.id])
-        ```
-
-
+        Create a Firewall resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).

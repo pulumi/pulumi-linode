@@ -1676,7 +1676,6 @@
             }
         },
         "linode:index/firewall:Firewall": {
-            "description": "Manages a Linode Firewall.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "devices": {
                     "type": "array",

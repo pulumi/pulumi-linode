@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Linode Firewall.
 type Firewall struct {
 	pulumi.CustomResourceState
 

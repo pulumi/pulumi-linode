@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    /// <summary>
-    /// Manages a Linode Firewall.
-    /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>

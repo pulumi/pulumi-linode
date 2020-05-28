@@ -6,42 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a Linode Firewall.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const myInstance = new linode.Instance("myInstance", {
- *     label: "myInstance",
- *     image: "linode/ubuntu18.04",
- *     region: "us-east",
- *     type: "g6-standard-1",
- *     rootPass: `bogusPassword$`,
- *     swapSize: 256,
- * });
- * const myFirewall = new linode.Firewall("myFirewall", {
- *     label: "myFirewall",
- *     tags: ["test"],
- *     inbound: [{
- *         protocol: "TCP",
- *         ports: ["80"],
- *         addresses: ["0.0.0.0/0"],
- *     }],
- *     outbound: [{
- *         protocol: "TCP",
- *         ports: ["80"],
- *         addresses: ["0.0.0.0/0"],
- *     }],
- *     linodes: [myInstance.id],
- * });
- * ```
- */
 export class Firewall extends pulumi.CustomResource {
     /**
      * Get an existing Firewall resource's state with the given name, ID, and optional extra
