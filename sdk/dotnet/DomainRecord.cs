@@ -13,6 +13,35 @@ namespace Pulumi.Linode
     /// Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
     /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarDomain = new Linode.Domain("foobarDomain", new Linode.DomainArgs
+    ///         {
+    ///             Domain = "foobar.example",
+    ///             SoaEmail = "example@foobar.example",
+    ///             Type = "master",
+    ///         });
+    ///         var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new Linode.DomainRecordArgs
+    ///         {
+    ///             DomainId = foobarDomain.Id,
+    ///             Name = "www",
+    ///             RecordType = "CNAME",
+    ///             Target = "foobar.example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Attributes
     /// 

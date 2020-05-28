@@ -15,6 +15,29 @@ namespace Pulumi.Linode
         /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Linode.GetSshKey.InvokeAsync(new Linode.GetSshKeyArgs
+        ///         {
+        ///             Label = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)

@@ -11,6 +11,32 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs
+    ///         {
+    ///             Id = "us-east-1",
+    ///         }));
+    ///         var foobar = new Linode.ObjectStorageBucket("foobar", new Linode.ObjectStorageBucketArgs
+    ///         {
+    ///             Cluster = primary.Apply(primary =&gt; primary.Id),
+    ///             Label = "%s",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ObjectStorageBucket : Pulumi.CustomResource
     {

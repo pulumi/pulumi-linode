@@ -12,6 +12,26 @@ namespace Pulumi.Linode
     /// <summary>
     /// Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Linode.ObjectStorageKey("foo", new Linode.ObjectStorageKeyArgs
+    ///         {
+    ///             Label = "image-access",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Attributes
     /// 

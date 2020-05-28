@@ -15,6 +15,33 @@ namespace Pulumi.Linode
         /// Provides information about a Linode domain.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode domain.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
+        ///         {
+        ///             Id = "1234567",
+        ///         }));
+        ///         var bar = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
+        ///         {
+        ///             Domain = "bar.example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Attributes
         /// 
