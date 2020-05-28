@@ -9,6 +9,88 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
+    /// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var web = new List&lt;Linode.Instance&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             web.Add(new Linode.Instance($"web-{range.Value}", new Linode.InstanceArgs
+    ///             {
+    ///                 AuthorizedKeys = 
+    ///                 {
+    ///                     "ssh-rsa AAAA...Gw== user@example.local",
+    ///                 },
+    ///                 Image = "linode/ubuntu18.04",
+    ///                 Label = $"web-{range.Value + 1}",
+    ///                 PrivateIp = true,
+    ///                 Region = "us-east",
+    ///                 RootPass = "test",
+    ///                 Type = "g6-standard-1",
+    ///             }));
+    ///         }
+    ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
+    ///         {
+    ///             ClientConnThrottle = 20,
+    ///             Label = "mynodebalancer",
+    ///             Region = "us-east",
+    ///         });
+    ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
+    ///         {
+    ///             Algorithm = "source",
+    ///             Check = "http",
+    ///             CheckAttempts = 3,
+    ///             CheckPath = "/foo",
+    ///             CheckTimeout = 30,
+    ///             NodebalancerId = foobar.Id,
+    ///             Port = 80,
+    ///             Protocol = "http",
+    ///             Stickiness = "http_cookie",
+    ///         });
+    ///         var foonode = new List&lt;Linode.NodeBalancerNode&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             foonode.Add(new Linode.NodeBalancerNode($"foonode-{range.Value}", new Linode.NodeBalancerNodeArgs
+    ///             {
+    ///                 Address = web.Select(__item =&gt; __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =&gt; $"{privateIpAddresses}:80"),
+    ///                 ConfigId = foofig.Id,
+    ///                 Label = "mynodebalancernode",
+    ///                 NodebalancerId = foobar.Id,
+    ///                 Weight = 50,
+    ///             }));
+    ///         }
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Attributes
+    /// 
+    /// This resource exports the following attributes:
+    /// 
+    /// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+    /// 
+    /// * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
+    /// 
+    /// * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+    /// </summary>
     public partial class NodeBalancerNode : Pulumi.CustomResource
     {
         /// <summary>

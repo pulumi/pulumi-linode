@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// > **NOTICE:** The Firewall feature is currently available through early access.
+//
 // Manages a Linode Firewall.
 type Firewall struct {
 	pulumi.CustomResourceState

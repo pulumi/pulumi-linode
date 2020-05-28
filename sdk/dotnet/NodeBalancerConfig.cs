@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+    /// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
+    ///         {
+    ///             ClientConnThrottle = 20,
+    ///             Label = "mynodebalancer",
+    ///             Region = "us-east",
+    ///         });
+    ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
+    ///         {
+    ///             Algorithm = "source",
+    ///             Check = "http",
+    ///             CheckAttempts = 3,
+    ///             CheckPath = "/foo",
+    ///             CheckTimeout = 30,
+    ///             NodebalancerId = foobar.Id,
+    ///             Port = 8088,
+    ///             Protocol = "http",
+    ///             Stickiness = "http_cookie",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Attributes
+    /// 
+    /// This resource exports the following attributes:
+    /// 
+    /// * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+    /// 
+    /// * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+    /// 
+    /// * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+    /// 
+    /// * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+    /// </summary>
     public partial class NodeBalancerConfig : Pulumi.CustomResource
     {
         /// <summary>

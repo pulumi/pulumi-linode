@@ -32,7 +32,35 @@ class Token(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, expiry=None, label=None, scopes=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Token resource with the given unique name, props, and options.
+        Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, to interact with Linode services on a user's behalf.
+
+        It is common for the provider itself to be configured with broadly scoped Personal Access Tokens.  Provisioning scripts or tools configured within a Linode Instance should follow the principle of least privilege to afford only the required roles for tools to perform their necessary tasks.  The `.Token` resource allows for the management of Personal Access Tokens with scopes mirroring or narrowing the scope of the parent token.
+
+        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
+            label="token",
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
+        ```
+
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `token` - The token used to access the API.
+
+        * `created` - The date this Token was created.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.

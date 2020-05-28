@@ -6,6 +6,68 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
+ * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const web: linode.Instance[] = [];
+ * for (let i = 0; i < 3; i++) {
+ *     web.push(new linode.Instance(`web-${i}`, {
+ *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *         image: "linode/ubuntu18.04",
+ *         label: `web-${(i + 1)}`,
+ *         privateIp: true,
+ *         region: "us-east",
+ *         rootPass: "test",
+ *         type: "g6-standard-1",
+ *     }));
+ * }
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     clientConnThrottle: 20,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ * });
+ * const foofig = new linode.NodeBalancerConfig("foofig", {
+ *     algorithm: "source",
+ *     check: "http",
+ *     checkAttempts: 3,
+ *     checkPath: "/foo",
+ *     checkTimeout: 30,
+ *     nodebalancerId: foobar.id,
+ *     port: 80,
+ *     protocol: "http",
+ *     stickiness: "httpCookie",
+ * });
+ * const foonode: linode.NodeBalancerNode[] = [];
+ * for (let i = 0; i < 3; i++) {
+ *     foonode.push(new linode.NodeBalancerNode(`foonode-${i}`, {
+ *         address: pulumi.all(web.map(v => v.privateIpAddress)).apply(privateIpAddress => `${privateIpAddress.map(v => v)[i]}:80`),
+ *         configId: foofig.id,
+ *         label: "mynodebalancernode",
+ *         nodebalancerId: foobar.id,
+ *         weight: 50,
+ *     }));
+ * }
+ * ```
+ *
+ * ## Attributes
+ *
+ * This resource exports the following attributes:
+ *
+ * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+ *
+ * * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
+ *
+ * * `nodebalancerId` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+ */
 export class NodeBalancerNode extends pulumi.CustomResource {
     /**
      * Get an existing NodeBalancerNode resource's state with the given name, ID, and optional extra

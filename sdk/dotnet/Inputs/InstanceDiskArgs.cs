@@ -36,6 +36,9 @@ namespace Pulumi.Linode.Inputs
             set => _authorizedUsers = value;
         }
 
+        /// <summary>
+        /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+        /// </summary>
         [Input("filesystem")]
         public Input<string>? Filesystem { get; set; }
 
@@ -60,6 +63,9 @@ namespace Pulumi.Linode.Inputs
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        /// </summary>
         [Input("rootPass")]
         public Input<string>? RootPass { get; set; }
 

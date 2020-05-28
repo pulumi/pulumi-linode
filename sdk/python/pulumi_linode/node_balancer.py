@@ -43,7 +43,34 @@ class NodeBalancer(pulumi.CustomResource):
     updated: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, client_conn_throttle=None, label=None, region=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NodeBalancer resource with the given unique name, props, and options.
+        Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
+        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            client_conn_throttle=20,
+            label="mynodebalancer",
+            region="us-east",
+            tags=["foobar"])
+        ```
+
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+
+        * `ipv4` - The Public IPv4 Address of this NodeBalancer
+
+        * `ipv6` - The Public IPv6 Address of this NodeBalancer
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.

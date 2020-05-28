@@ -10,6 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+//
+//
+// ## Attributes
+//
+// This resource exports the following attributes:
+//
+// * `sslCommonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+//
+// * `sslFingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+//
+// * `nodeStatusUp` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+//
+// * `nodeStatusDown` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState
 

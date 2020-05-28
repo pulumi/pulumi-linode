@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **NOTICE:** The Firewall feature is currently available through early access. 
+ *
  * Manages a Linode Firewall.
  *
  * ## Example Usage

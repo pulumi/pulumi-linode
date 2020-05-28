@@ -40,7 +40,61 @@ class NodeBalancerNode(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, address=None, config_id=None, label=None, mode=None, nodebalancer_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NodeBalancerNode resource with the given unique name, props, and options.
+        Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
+        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        web = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            web.append(linode.Instance(f"web-{range['value']}",
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+                image="linode/ubuntu18.04",
+                label=f"web-{range['value'] + 1}",
+                private_ip=True,
+                region="us-east",
+                root_pass="test",
+                type="g6-standard-1"))
+        foobar = linode.NodeBalancer("foobar",
+            client_conn_throttle=20,
+            label="mynodebalancer",
+            region="us-east")
+        foofig = linode.NodeBalancerConfig("foofig",
+            algorithm="source",
+            check="http",
+            check_attempts=3,
+            check_path="/foo",
+            check_timeout=30,
+            nodebalancer_id=foobar.id,
+            port=80,
+            protocol="http",
+            stickiness="http_cookie")
+        foonode = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            foonode.append(linode.NodeBalancerNode(f"foonode-{range['value']}",
+                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
+                config_id=foofig.id,
+                label="mynodebalancernode",
+                nodebalancer_id=foobar.id,
+                weight=50))
+        ```
+
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+
+        * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
+
+        * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
