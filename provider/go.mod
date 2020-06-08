@@ -12,5 +12,5 @@ require (
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/terraform-providers/terraform-provider-linode => github.com/pulumi/terraform-provider-linode v1.11.2-0.20200605172332-581de1f2aa1d
+	github.com/terraform-providers/terraform-provider-linode => github.com/pulumi/terraform-provider-linode v1.11.2-0.20200608172651-b34e6e561291
 )
