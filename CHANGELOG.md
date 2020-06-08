@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 _(none)_
+* Upgrade to v1.12.3 of the Linode Terraform Provider
+  **Please Note:** v1.12.3 was a mistagged Terraform release
 
 ---
 
