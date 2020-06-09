@@ -73,6 +73,10 @@ export interface GetNetworkingIpArgs {
 export interface GetNetworkingIpResult {
     readonly address: string;
     readonly gateway: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly linodeId: number;
     readonly prefix: number;
     readonly public: boolean;
@@ -80,8 +84,4 @@ export interface GetNetworkingIpResult {
     readonly region: string;
     readonly subnetMask: string;
     readonly type: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

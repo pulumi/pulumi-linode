@@ -30,12 +30,12 @@ namespace Pulumi.Linode
         ///     {
         ///         var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
         ///         {
-        ///             DomainId = "3150401",
-        ///             Id = "14950401",
+        ///             DomainId = 3150401,
+        ///             Id = 14950401,
         ///         }));
         ///         var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
         ///         {
-        ///             DomainId = "3150401",
+        ///             DomainId = 3150401,
         ///             Name = "www",
         ///         }));
         ///     }

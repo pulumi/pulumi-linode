@@ -74,12 +74,12 @@ export interface GetAccountResult {
     readonly country: string;
     readonly email: string;
     readonly firstName: string;
-    readonly lastName: string;
-    readonly phone: string;
-    readonly state: string;
-    readonly zip: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly lastName: string;
+    readonly phone: string;
+    readonly state: string;
+    readonly zip: string;
 }

@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,12 +35,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        {
-            inputs["apiVersion"] = (args ? args.apiVersion : undefined) || utilities.getEnv("LINODE_API_VERSION");
-            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
-            inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) || utilities.getEnv("LINODE_UA_PREFIX");
-            inputs["url"] = (args ? args.url : undefined) || utilities.getEnv("LINODE_URL");
-        }
+        inputs["apiVersion"] = (args ? args.apiVersion : undefined) || utilities.getEnv("LINODE_API_VERSION");
+        inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
+        inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) || utilities.getEnv("LINODE_UA_PREFIX");
+        inputs["url"] = (args ? args.url : undefined) || utilities.getEnv("LINODE_URL");
         if (!opts) {
             opts = {}
         }

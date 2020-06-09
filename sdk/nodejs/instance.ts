@@ -118,6 +118,7 @@ export class Instance extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
         return new Instance(name, <any>state, { ...opts, id: id });
@@ -176,13 +177,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
-     * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary
-     * address will be used for this field.
+     * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
+     * will be used for this field.
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a
-     * single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      */
     public /*out*/ readonly ipv4s!: pulumi.Output<string[]>;
     /**
@@ -198,8 +199,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateIp!: pulumi.Output<boolean | undefined>;
     /**
-     * This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all
-     * Linode Instances in a region.
+     * This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
+     * Instances in a region.
      */
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
@@ -366,13 +367,13 @@ export interface InstanceState {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary
-     * address will be used for this field.
+     * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
+     * will be used for this field.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a
-     * single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      */
     readonly ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -388,8 +389,8 @@ export interface InstanceState {
      */
     readonly privateIp?: pulumi.Input<boolean>;
     /**
-     * This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all
-     * Linode Instances in a region.
+     * This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
+     * Instances in a region.
      */
     readonly privateIpAddress?: pulumi.Input<string>;
     /**

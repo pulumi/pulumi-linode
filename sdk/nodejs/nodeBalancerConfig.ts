@@ -56,6 +56,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NodeBalancerConfigState, opts?: pulumi.CustomResourceOptions): NodeBalancerConfig {
         return new NodeBalancerConfig(name, <any>state, { ...opts, id: id });
@@ -88,8 +89,8 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly checkAttempts!: pulumi.Output<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present
-     * in the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
+     * the response body of a check request, the backend is considered to be down
      */
     public readonly checkBody!: pulumi.Output<string>;
     /**
@@ -228,8 +229,8 @@ export interface NodeBalancerConfigState {
      */
     readonly checkAttempts?: pulumi.Input<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present
-     * in the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
+     * the response body of a check request, the backend is considered to be down
      */
     readonly checkBody?: pulumi.Input<string>;
     /**
@@ -304,8 +305,8 @@ export interface NodeBalancerConfigArgs {
      */
     readonly checkAttempts?: pulumi.Input<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present
-     * in the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
+     * the response body of a check request, the backend is considered to be down
      */
     readonly checkBody?: pulumi.Input<string>;
     /**

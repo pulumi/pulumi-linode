@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         ///     {
         ///         var foo = Output.Create(Linode.GetVolume.InvokeAsync(new Linode.GetVolumeArgs
         ///         {
-        ///             Id = "1234567",
+        ///             Id = 1234567,
         ///         }));
         ///     }
         /// 

@@ -47,10 +47,10 @@ export interface GetSshKeyArgs {
  */
 export interface GetSshKeyResult {
     readonly created: string;
-    readonly label: string;
-    readonly sshKey: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly label: string;
+    readonly sshKey: string;
 }
