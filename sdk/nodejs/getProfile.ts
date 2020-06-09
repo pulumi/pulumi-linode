@@ -75,6 +75,10 @@ export interface GetProfileResult {
     readonly authorizedKeys: string[];
     readonly email: string;
     readonly emailNotifications: boolean;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ipWhitelistEnabled: boolean;
     readonly lishAuthMethod: string;
     readonly referrals: outputs.GetProfileReferrals;
@@ -82,8 +86,4 @@ export interface GetProfileResult {
     readonly timezone: string;
     readonly twoFactorAuth: boolean;
     readonly username: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

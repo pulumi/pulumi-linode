@@ -60,11 +60,11 @@ export interface GetUserArgs {
  */
 export interface GetUserResult {
     readonly email: string;
-    readonly restricted: boolean;
-    readonly sshKeys: string[];
-    readonly username: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly restricted: boolean;
+    readonly sshKeys: string[];
+    readonly username: string;
 }

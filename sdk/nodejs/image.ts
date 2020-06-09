@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -27,7 +25,7 @@ import * as utilities from "./utilities";
  *     description: "Image taken from foo",
  *     diskId: foo.disks.apply(disks => disks[0].id),
  *     label: "foo-sda-image",
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(id => Number.parseFloat(id)),
  * });
  * const barBased = new linode.Instance("barBased", {
  *     image: bar.id,
@@ -66,6 +64,7 @@ export class Image extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image {
         return new Image(name, <any>state, { ...opts, id: id });
@@ -126,8 +125,8 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
     /**
-     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically
-     * from a deleted Linode.
+     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+     * a deleted Linode.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -239,8 +238,8 @@ export interface ImageState {
      */
     readonly size?: pulumi.Input<number>;
     /**
-     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically
-     * from a deleted Linode.
+     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+     * a deleted Linode.
      */
     readonly type?: pulumi.Input<string>;
     /**
