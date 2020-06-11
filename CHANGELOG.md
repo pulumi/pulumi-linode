@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.4.4 (2020-06-11)
+* Switch to GitHub actions for build
+
 ## 2.4.3 (2020-06-08)
 * Upgrade to v1.12.3 of the Linode Terraform Provider
   **Please Note:** v1.12.3 was a mistagged Terraform release
