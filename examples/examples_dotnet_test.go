@@ -9,27 +9,23 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+// +build dotnet all
 
 package examples
 
 import (
-	"os"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
-func getCwd(t *testing.T) string {
-	cwd, err := os.Getwd()
-	if err != nil {
-		t.FailNow()
-	}
+func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
+	baseCsharp := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"Pulumi.Linode",
+		},
+	})
 
-	return cwd
-}
-
-func getBaseOptions() integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
-	}
+	return baseCsharp
 }
