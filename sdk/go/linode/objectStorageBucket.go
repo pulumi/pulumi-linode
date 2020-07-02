@@ -11,6 +11,40 @@ import (
 )
 
 // Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+//
+// ## Example Usage
+//
+// The following example shows how one might use this resource to create an Object Storage Bucket.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		primary, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
+// 			Id: "us-east-1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
+// 			Cluster: pulumi.String(primary.Id),
+// 			Label:   pulumi.String(fmt.Sprintf("%v%v", "%", "s")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
 

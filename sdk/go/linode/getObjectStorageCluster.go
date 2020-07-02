@@ -9,7 +9,30 @@ import (
 
 // Provides information about a Linode Object Storage Cluster
 //
+// ## Example Usage
 //
+// The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
+// 			Id: "us-east-1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // The Linode Object Storage Cluster resource exports the following attributes:

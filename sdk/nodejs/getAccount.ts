@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access account details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *
  * const account = pulumi.output(linode.getAccount({ async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Account resource exports the following attributes:

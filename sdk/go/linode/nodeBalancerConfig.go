@@ -13,7 +13,46 @@ import (
 // Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
 // For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
 //
+// ## Example Usage
 //
+// The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobar, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
+// 			ClientConnThrottle: pulumi.Int(20),
+// 			Label:              pulumi.String("mynodebalancer"),
+// 			Region:             pulumi.String("us-east"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewNodeBalancerConfig(ctx, "foofig", &linode.NodeBalancerConfigArgs{
+// 			Algorithm:      pulumi.String("source"),
+// 			Check:          pulumi.String("http"),
+// 			CheckAttempts:  pulumi.Int(3),
+// 			CheckPath:      pulumi.String("/foo"),
+// 			CheckTimeout:   pulumi.Int(30),
+// 			NodebalancerId: foobar.ID(),
+// 			Port:           pulumi.Int(8088),
+// 			Protocol:       pulumi.String("http"),
+// 			Stickiness:     pulumi.String("http_cookie"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This resource exports the following attributes:

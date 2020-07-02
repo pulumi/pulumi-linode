@@ -15,7 +15,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,7 +42,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This resource exports no additional attributes.

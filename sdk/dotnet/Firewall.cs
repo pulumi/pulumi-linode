@@ -10,9 +10,75 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
-    /// &gt; **NOTICE:** The Firewall feature is currently available through early access. 
+    /// &gt; **NOTICE:** The Firewall feature is currently available through early access.
     /// 
     /// Manages a Linode Firewall.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
+    ///         {
+    ///             Label = "my_instance",
+    ///             Image = "linode/ubuntu18.04",
+    ///             Region = "us-east",
+    ///             Type = "g6-standard-1",
+    ///             RootPass = "bogusPassword$",
+    ///             SwapSize = 256,
+    ///         });
+    ///         var myFirewall = new Linode.Firewall("myFirewall", new Linode.FirewallArgs
+    ///         {
+    ///             Label = "my_firewall",
+    ///             Tags = 
+    ///             {
+    ///                 "test",
+    ///             },
+    ///             Inbounds = 
+    ///             {
+    ///                 new Linode.Inputs.FirewallInboundArgs
+    ///                 {
+    ///                     Protocol = "TCP",
+    ///                     Ports = 
+    ///                     {
+    ///                         "80",
+    ///                     },
+    ///                     Addresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Outbounds = 
+    ///             {
+    ///                 new Linode.Inputs.FirewallOutboundArgs
+    ///                 {
+    ///                     Protocol = "TCP",
+    ///                     Ports = 
+    ///                     {
+    ///                         "80",
+    ///                     },
+    ///                     Addresses = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Linodes = 
+    ///             {
+    ///                 myInstance.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {

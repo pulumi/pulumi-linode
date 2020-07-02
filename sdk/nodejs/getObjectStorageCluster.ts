@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *     id: "us-east-1",
  * }, { async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Object Storage Cluster resource exports the following attributes:

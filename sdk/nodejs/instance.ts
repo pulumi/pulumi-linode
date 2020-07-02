@@ -11,8 +11,9 @@ import * as utilities from "./utilities";
  * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
  *
  * ## Example Usage
- *
  * ### Simple Linode Instance
+ *
+ * The following example shows how one might use this resource to configure a Linode instance.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,7 +23,7 @@ import * as utilities from "./utilities";
  *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
  *     group: "foo",
  *     image: "linode/ubuntu18.04",
- *     label: "simpleInstance",
+ *     label: "simple_instance",
  *     privateIp: true,
  *     region: "us-central",
  *     rootPass: "terr4form-test",
@@ -31,36 +32,37 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
- *
  * ### Linode Instance with explicit Configs and Disks
+ *
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const me = pulumi.output(linode.getProfile({ async: true }));
- * const webVolume = new linode.Volume("webVolume", {
- *     label: "webVolume",
+ * const webVolume = new linode.Volume("web_volume", {
+ *     label: "web_volume",
  *     region: "us-central",
  *     size: 20,
  * });
  * const web = new linode.Instance("web", {
- *     bootConfigLabel: "bootConfig",
+ *     bootConfigLabel: "boot_config",
  *     configs: [{
  *         devices: {
  *             sda: {
  *                 diskLabel: "boot",
  *             },
  *             sdb: {
- *                 volumeId: webVolume.id,
+ *                 volumeId: webVolume.id.apply(id => Number.parseFloat(id)),
  *             },
  *         },
  *         kernel: "linode/latest-64bit",
- *         label: "bootConfig",
+ *         label: "boot_config",
  *         rootDevice: "/dev/sda",
  *     }],
  *     disks: [{
- *         // Any of authorized_keys, authorized_users, and rootPass
+ *         // Any of authorized_keys, authorized_users, and root_pass
  *         // can be used for provisioning.
  *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
  *         authorizedUsers: [me.username],
@@ -70,14 +72,13 @@ import * as utilities from "./utilities";
  *         size: 3000,
  *     }],
  *     group: "foo",
- *     label: "complexInstance",
+ *     label: "complex_instance",
  *     privateIp: true,
  *     region: "us-central",
  *     tags: ["foo"],
  *     type: "g6-nanode-1",
  * });
  * ```
- *
  * ## Attributes
  *
  * This Linode Instance resource exports the following attributes:
@@ -101,13 +102,13 @@ import * as utilities from "./utilities";
  * * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
  *
  * * `backups` - Information about this Linode's backups status.
- *
+ *   
  *   * `enabled` - If this Linode has the Backup service enabled.
- *
+ *   
  *   * `schedule`
- *
+ *     
  *     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
- *
+ *     
  *     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
  */
 export class Instance extends pulumi.CustomResource {

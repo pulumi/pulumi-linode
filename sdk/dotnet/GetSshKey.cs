@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetSshKey
     {
         /// <summary>
-        /// `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -36,7 +36,6 @@ namespace Pulumi.Linode
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

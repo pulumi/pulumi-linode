@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access information about a Linode domain.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  *     domain: "bar.example.com",
  * }, { async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Domain resource exports the following attributes:

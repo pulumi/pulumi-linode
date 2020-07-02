@@ -7,11 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `linode..getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+ * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
  *
  * ## Example Usage
  *
- *
+ * The following example shows how the resource might be used to obtain additional information about a Linode region.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

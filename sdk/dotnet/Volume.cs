@@ -16,7 +16,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,40 @@ namespace Pulumi.Linode
     /// }
     /// ```
     /// 
+    /// Volumes can also be attached using the Linode Instance config device map.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Linode.Instance("foo", new Linode.InstanceArgs
+    ///         {
+    ///             Configs = 
+    ///             {
+    ///                 new Linode.Inputs.InstanceConfigArgs
+    ///                 {
+    ///                     Devices = new Linode.Inputs.InstanceConfigDevicesArgs
+    ///                     {
+    ///                         Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
+    ///                         {
+    ///                             VolumeId = 123,
+    ///                         },
+    ///                     },
+    ///                     Kernel = "linode/latest-64bit",
+    ///                     Label = "boot-existing-volume",
+    ///                 },
+    ///             },
+    ///             Region = "us-east",
+    ///             Type = "g6-nanode-1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:

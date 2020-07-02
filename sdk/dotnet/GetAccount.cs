@@ -35,7 +35,6 @@ namespace Pulumi.Linode
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Attributes

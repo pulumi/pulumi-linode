@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myCluster = new linode.LkeCluster("my-cluster", {
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
  *     k8sVersion: "1.17",
  *     label: "my-cluster",
  *     pools: [{

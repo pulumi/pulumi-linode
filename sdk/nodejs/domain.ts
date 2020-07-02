@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,13 +26,12 @@ import * as utilities from "./utilities";
  *     type: "master",
  * });
  * const foobarDomainRecord = new linode.DomainRecord("foobar", {
- *     domainId: foobarDomain.id,
+ *     domainId: foobarDomain.id.apply(id => Number.parseFloat(id)),
  *     name: "www",
  *     recordType: "CNAME",
  *     target: "foobar.example",
  * });
  * ```
- *
  * ## Attributes
  *
  * This resource exports no additional attributes, however `status` may reflect degraded states.

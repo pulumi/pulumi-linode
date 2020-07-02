@@ -14,7 +14,78 @@ import (
 //
 // For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
 //
+// ## Example Usage
 //
+// The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobaz, err := linode.NewInstance(ctx, "foobaz", &linode.InstanceArgs{
+// 			Region:   pulumi.String("us-west"),
+// 			RootPass: pulumi.String("3X4mp13"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foobaz"),
+// 			},
+// 			Type: pulumi.String("g6-nanode-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
+// 			Label:    pulumi.String("foo-volume"),
+// 			LinodeId: foobaz.ID(),
+// 			Region:   foobaz.Region,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Volumes can also be attached using the Linode Instance config device map.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+// 			Configs: linode.InstanceConfigArray{
+// 				&linode.InstanceConfigArgs{
+// 					Devices: &linode.InstanceConfigDevicesArgs{
+// 						Sda: &linode.InstanceConfigDevicesSdaArgs{
+// 							VolumeId: pulumi.Int(123),
+// 						},
+// 					},
+// 					Kernel: pulumi.String("linode/latest-64bit"),
+// 					Label:  pulumi.String("boot-existing-volume"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-east"),
+// 			Type:   pulumi.String("g6-nanode-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This resource exports the following attributes:

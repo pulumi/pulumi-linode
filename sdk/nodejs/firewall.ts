@@ -7,20 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **NOTICE:** The Firewall feature is currently available through early access. 
+ * > **NOTICE:** The Firewall feature is currently available through early access.
  *
  * Manages a Linode Firewall.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const myInstance = new linode.Instance("myInstance", {
- *     label: "myInstance",
+ *     label: "my_instance",
  *     image: "linode/ubuntu18.04",
  *     region: "us-east",
  *     type: "g6-standard-1",
@@ -28,14 +26,14 @@ import * as utilities from "./utilities";
  *     swapSize: 256,
  * });
  * const myFirewall = new linode.Firewall("myFirewall", {
- *     label: "myFirewall",
+ *     label: "my_firewall",
  *     tags: ["test"],
- *     inbound: [{
+ *     inbounds: [{
  *         protocol: "TCP",
  *         ports: ["80"],
  *         addresses: ["0.0.0.0/0"],
  *     }],
- *     outbound: [{
+ *     outbounds: [{
  *         protocol: "TCP",
  *         ports: ["80"],
  *         addresses: ["0.0.0.0/0"],

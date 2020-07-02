@@ -14,8 +14,9 @@ namespace Pulumi.Linode
     /// For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
     /// 
     /// ## Example Usage
-    /// 
     /// ### Simple Linode Instance
+    /// 
+    /// The following example shows how one might use this resource to configure a Linode instance.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,8 +49,9 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ### Linode Instance with explicit Configs and Disks
+    /// 
+    /// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -121,7 +123,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This Linode Instance resource exports the following attributes:
@@ -145,13 +146,13 @@ namespace Pulumi.Linode
     /// * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
     /// 
     /// * `backups` - Information about this Linode's backups status.
-    /// 
+    ///   
     ///   * `enabled` - If this Linode has the Backup service enabled.
-    /// 
+    ///   
     ///   * `schedule`
-    /// 
+    ///     
     ///     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-    /// 
+    ///     
     ///     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

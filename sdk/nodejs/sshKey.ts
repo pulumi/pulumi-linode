@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- *
  * ## Attributes
  *
  * This resource exports the following attributes:
