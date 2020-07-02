@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,13 +27,12 @@ import * as utilities from "./utilities";
  *     label: "foo-sda-image",
  *     linodeId: foo.id.apply(id => Number.parseFloat(id)),
  * });
- * const barBased = new linode.Instance("barBased", {
+ * const barBased = new linode.Instance("bar_based", {
  *     image: bar.id,
  *     region: "eu-west",
  *     type: foo.type,
  * });
  * ```
- *
  * ## Attributes
  *
  * This resource exports the following attributes:

@@ -7,7 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+// `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+//
+// ## Example Usage
+//
+// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.LookupSshKey(ctx, &linode.LookupSshKeyArgs{
+// 			Label: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	var rv LookupSshKeyResult
 	err := ctx.Invoke("linode:index/getSshKey:getSshKey", args, &rv, opts...)

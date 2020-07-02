@@ -7,11 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `linode..SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+ * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
  *
  * ## Example Usage
  *
- *
+ * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

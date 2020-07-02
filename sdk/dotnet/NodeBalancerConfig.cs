@@ -15,7 +15,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,7 +47,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:

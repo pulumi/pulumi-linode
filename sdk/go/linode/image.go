@@ -14,7 +14,50 @@ import (
 //
 // For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 //
+// ## Example Usage
 //
+// The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+// 			Region: pulumi.String("us-central"),
+// 			Type:   pulumi.String("g6-nanode-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bar, err := linode.NewImage(ctx, "bar", &linode.ImageArgs{
+// 			Description: pulumi.String("Image taken from foo"),
+// 			DiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDisk) (int, error) {
+// 				return disks[0].Id, nil
+// 			}).(pulumi.IntOutput)),
+// 			Label:    pulumi.String("foo-sda-image"),
+// 			LinodeId: foo.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
+// 			Image:  bar.ID(),
+// 			Region: pulumi.String("eu-west"),
+// 			Type:   foo.Type,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This resource exports the following attributes:

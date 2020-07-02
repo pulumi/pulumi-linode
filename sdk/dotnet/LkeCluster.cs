@@ -14,8 +14,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;

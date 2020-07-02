@@ -14,7 +14,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to create an Object Storage Key.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,7 +32,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:

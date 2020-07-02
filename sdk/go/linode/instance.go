@@ -13,7 +13,117 @@ import (
 // Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
 // For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 //
+// ## Example Usage
+// ### Simple Linode Instance
 //
+// The following example shows how one might use this resource to configure a Linode instance.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+// 			AuthorizedKeys: pulumi.StringArray{
+// 				pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+// 			},
+// 			Group:     pulumi.String("foo"),
+// 			Image:     pulumi.String("linode/ubuntu18.04"),
+// 			Label:     pulumi.String("simple_instance"),
+// 			PrivateIp: pulumi.Bool(true),
+// 			Region:    pulumi.String("us-central"),
+// 			RootPass:  pulumi.String("terr4form-test"),
+// 			SwapSize:  pulumi.Int(256),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 			},
+// 			Type: pulumi.String("g6-standard-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Linode Instance with explicit Configs and Disks
+//
+// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		me, err := linode.GetProfile(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		webVolume, err := linode.NewVolume(ctx, "webVolume", &linode.VolumeArgs{
+// 			Label:  pulumi.String("web_volume"),
+// 			Region: pulumi.String("us-central"),
+// 			Size:   pulumi.Int(20),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+// 			BootConfigLabel: pulumi.String("boot_config"),
+// 			Configs: linode.InstanceConfigArray{
+// 				&linode.InstanceConfigArgs{
+// 					Devices: &linode.InstanceConfigDevicesArgs{
+// 						Sda: &linode.InstanceConfigDevicesSdaArgs{
+// 							DiskLabel: pulumi.String("boot"),
+// 						},
+// 						Sdb: &linode.InstanceConfigDevicesSdbArgs{
+// 							VolumeId: webVolume.ID(),
+// 						},
+// 					},
+// 					Kernel:     pulumi.String("linode/latest-64bit"),
+// 					Label:      pulumi.String("boot_config"),
+// 					RootDevice: pulumi.String("/dev/sda"),
+// 				},
+// 			},
+// 			Disks: linode.InstanceDiskArray{
+// 				&linode.InstanceDiskArgs{
+// 					AuthorizedKeys: pulumi.StringArray{
+// 						pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+// 					},
+// 					AuthorizedUsers: pulumi.StringArray{
+// 						pulumi.String(me.Username),
+// 					},
+// 					Image:    pulumi.String("linode/ubuntu18.04"),
+// 					Label:    pulumi.String("boot"),
+// 					RootPass: pulumi.String("terr4form-test"),
+// 					Size:     pulumi.Int(3000),
+// 				},
+// 			},
+// 			Group:     pulumi.String("foo"),
+// 			Label:     pulumi.String("complex_instance"),
+// 			PrivateIp: pulumi.Bool(true),
+// 			Region:    pulumi.String("us-central"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 			},
+// 			Type: pulumi.String("g6-nanode-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This Linode Instance resource exports the following attributes:

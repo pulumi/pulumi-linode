@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,26 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Volumes can also be attached using the Linode Instance config device map.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = new linode.Instance("foo", {
+ *     configs: [{
+ *         devices: {
+ *             sda: {
+ *                 volumeId: 123,
+ *             },
+ *         },
+ *         kernel: "linode/latest-64bit",
+ *         label: "boot-existing-volume",
+ *     }],
+ *     region: "us-east",
+ *     type: "g6-nanode-1",
+ * });
+ * ```
  * ## Attributes
  *
  * This resource exports the following attributes:

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access profile details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * const profile = pulumi.output(linode.getProfile({ async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Profile resource exports the following attributes:

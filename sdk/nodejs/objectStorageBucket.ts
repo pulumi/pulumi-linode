@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to create an Object Storage Bucket.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *     address: "162.159.27.72",
  * }, { async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Network IP Address resource exports the following attributes:

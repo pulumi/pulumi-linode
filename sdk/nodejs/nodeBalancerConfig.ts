@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,13 +29,12 @@ import * as utilities from "./utilities";
  *     checkAttempts: 3,
  *     checkPath: "/foo",
  *     checkTimeout: 30,
- *     nodebalancerId: foobar.id,
+ *     nodebalancerId: foobar.id.apply(id => Number.parseFloat(id)),
  *     port: 8088,
  *     protocol: "http",
- *     stickiness: "httpCookie",
+ *     stickiness: "http_cookie",
  * });
  * ```
- *
  * ## Attributes
  *
  * This resource exports the following attributes:

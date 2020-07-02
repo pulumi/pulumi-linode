@@ -14,7 +14,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to create an Object Storage Bucket.
     /// 
     /// ```csharp
     /// using Pulumi;

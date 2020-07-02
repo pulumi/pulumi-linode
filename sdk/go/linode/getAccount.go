@@ -11,7 +11,28 @@ import (
 //
 // This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
 //
+// ## Example Usage
 //
+// The following example shows how one might use this data source to access account details.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.GetAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // The Linode Account resource exports the following attributes:

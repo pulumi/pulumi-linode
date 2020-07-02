@@ -7,7 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+// `getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+//
+// ## Example Usage
+//
+// The following example shows how the resource might be used to obtain additional information about a Linode region.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.GetRegion(ctx, &linode.GetRegionArgs{
+// 			Id: "us-east",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	var rv GetRegionResult
 	err := ctx.Invoke("linode:index/getRegion:getRegion", args, &rv, opts...)

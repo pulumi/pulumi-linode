@@ -14,7 +14,56 @@ import (
 //
 // For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
 //
+// ## Example Usage
 //
+// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!/`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscriptData` field.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+// 			Description: pulumi.String("Installs a Package"),
+// 			Images: pulumi.StringArray{
+// 				pulumi.String("linode/ubuntu18.04"),
+// 				pulumi.String("linode/ubuntu16.04lts"),
+// 			},
+// 			Label:   pulumi.String("foo"),
+// 			RevNote: pulumi.String("initial version"),
+// 			Script:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v", "#!/bin/bash\n", "# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\n", "apt-get -q update && apt-get -q -y install ", "$", "PACKAGE\n", "\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+// 			AuthorizedKeys: pulumi.StringArray{
+// 				pulumi.String("..."),
+// 			},
+// 			Image:    pulumi.String("linode/ubuntu18.04"),
+// 			Label:    pulumi.String("foo"),
+// 			Region:   pulumi.String("us-east"),
+// 			RootPass: pulumi.String("..."),
+// 			StackscriptData: pulumi.StringMap{
+// 				"package": pulumi.String("nginx"),
+// 			},
+// 			StackscriptId: pulumi.Any(linode_stackscript.Install - nginx.Id),
+// 			Type:          pulumi.String("g6-nanode-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This resource exports the following attributes:

@@ -11,6 +11,40 @@ import (
 )
 
 // Manages an LKE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewLkeCluster(ctx, "my_cluster", &linode.LkeClusterArgs{
+// 			K8sVersion: pulumi.String("1.17"),
+// 			Label:      pulumi.String("my-cluster"),
+// 			Pools: linode.LkeClusterPoolArray{
+// 				&linode.LkeClusterPoolArgs{
+// 					Count: pulumi.Int(3),
+// 					Type:  pulumi.String("g6-standard-2"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("prod"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LkeCluster struct {
 	pulumi.CustomResourceState
 

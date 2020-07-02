@@ -9,7 +9,38 @@ import (
 
 // Provides information about a Linode domain.
 //
+// ## Example Usage
 //
+// The following example shows how one might use this data source to access information about a Linode domain.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "1234567"
+// 		_, err := linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+// 			Id: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "bar.example.com"
+// 		_, err = linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+// 			Domain: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // The Linode Domain resource exports the following attributes:

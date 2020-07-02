@@ -13,6 +13,70 @@ import (
 // > **NOTICE:** The Firewall feature is currently available through early access.
 //
 // Manages a Linode Firewall.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+// 			Label:    pulumi.String("my_instance"),
+// 			Image:    pulumi.String("linode/ubuntu18.04"),
+// 			Region:   pulumi.String("us-east"),
+// 			Type:     pulumi.String("g6-standard-1"),
+// 			RootPass: pulumi.String(fmt.Sprintf("%v%v", "bogusPassword", "$")),
+// 			SwapSize: pulumi.Int(256),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+// 			Label: pulumi.String("my_firewall"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("test"),
+// 			},
+// 			Inbounds: linode.FirewallInboundArray{
+// 				&linode.FirewallInboundArgs{
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 					},
+// 					Addresses: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 				},
+// 			},
+// 			Outbounds: linode.FirewallOutboundArray{
+// 				&linode.FirewallOutboundArgs{
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 					},
+// 					Addresses: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 				},
+// 			},
+// 			Linodes: pulumi.IntArray{
+// 				myInstance.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 

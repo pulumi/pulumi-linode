@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * The following example shows how one might use this data source to access information about a Linode image.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *     id: "linode/debian8",
  * }, { async: true }));
  * ```
- *
  * ## Attributes
  *
  * The Linode Image resource exports the following attributes:

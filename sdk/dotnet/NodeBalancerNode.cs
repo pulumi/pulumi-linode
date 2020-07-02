@@ -15,7 +15,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -80,7 +80,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:

@@ -16,7 +16,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,7 +48,6 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
-    /// 
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
