@@ -5,61 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Image']
 
 
 class Image(pulumi.CustomResource):
-    created: pulumi.Output[str]
-    """
-    When this Image was created.
-    """
-    created_by: pulumi.Output[str]
-    """
-    The name of the User who created this Image.
-    """
-    deprecated: pulumi.Output[bool]
-    """
-    Whether or not this Image is deprecated. Will only be True for deprecated public Images.
-    """
-    description: pulumi.Output[str]
-    """
-    A detailed description of this Image.
-    """
-    disk_id: pulumi.Output[float]
-    """
-    The ID of the Linode Disk that this Image will be created from.
-    """
-    expiry: pulumi.Output[str]
-    """
-    Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-    """
-    is_public: pulumi.Output[bool]
-    """
-    True if the Image is public.
-    """
-    label: pulumi.Output[str]
-    """
-    A short description of the Image. Labels cannot contain special characters.
-    """
-    linode_id: pulumi.Output[float]
-    """
-    The ID of the Linode that this Image will be created from.
-    """
-    size: pulumi.Output[float]
-    """
-    The minimum size this Image needs to deploy. Size is in MB.
-    """
-    type: pulumi.Output[str]
-    """
-    How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-    a deleted Linode.
-    """
-    vendor: pulumi.Output[str]
-    """
-    The upstream distribution vendor. Nil for private Images.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, disk_id=None, label=None, linode_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[float]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 linode_id: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
 
@@ -78,7 +40,7 @@ class Image(pulumi.CustomResource):
             type="g6-nanode-1")
         bar = linode.Image("bar",
             description="Image taken from foo",
-            disk_id=foo.disks[0]["id"],
+            disk_id=foo.disks[0].id,
             label="foo-sda-image",
             linode_id=foo.id)
         bar_based = linode.Instance("barBased",
@@ -126,7 +88,7 @@ class Image(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -157,13 +119,27 @@ class Image(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created=None, created_by=None, deprecated=None, description=None, disk_id=None, expiry=None, is_public=None, label=None, linode_id=None, size=None, type=None, vendor=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            created_by: Optional[pulumi.Input[str]] = None,
+            deprecated: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            disk_id: Optional[pulumi.Input[float]] = None,
+            expiry: Optional[pulumi.Input[str]] = None,
+            is_public: Optional[pulumi.Input[bool]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            linode_id: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            vendor: Optional[pulumi.Input[str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: When this Image was created.
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
@@ -197,8 +173,106 @@ class Image(pulumi.CustomResource):
         __props__["vendor"] = vendor
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Image was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The name of the User who created this Image.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> bool:
+        """
+        Whether or not this Image is deprecated. Will only be True for deprecated public Images.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A detailed description of this Image.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> float:
+        """
+        The ID of the Linode Disk that this Image will be created from.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> str:
+        """
+        Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        """
+        return pulumi.get(self, "expiry")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        """
+        True if the Image is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A short description of the Image. Labels cannot contain special characters.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> float:
+        """
+        The ID of the Linode that this Image will be created from.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The minimum size this Image needs to deploy. Size is in MB.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+        a deleted Linode.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        """
+        The upstream distribution vendor. Nil for private Images.
+        """
+        return pulumi.get(self, "vendor")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

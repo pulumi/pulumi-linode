@@ -5,43 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['NodeBalancer']
 
 
 class NodeBalancer(pulumi.CustomResource):
-    client_conn_throttle: pulumi.Output[float]
-    """
-    Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-    """
-    created: pulumi.Output[str]
-    hostname: pulumi.Output[str]
-    """
-    This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-    """
-    ipv4: pulumi.Output[str]
-    """
-    The Public IPv4 Address of this NodeBalancer
-    """
-    ipv6: pulumi.Output[str]
-    """
-    The Public IPv6 Address of this NodeBalancer
-    """
-    label: pulumi.Output[str]
-    """
-    The label of the Linode NodeBalancer
-    """
-    region: pulumi.Output[str]
-    """
-    The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of tags applied to this object. Tags are for organizational purposes only.
-    """
-    transfer: pulumi.Output[dict]
-    updated: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, client_conn_throttle=None, label=None, region=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 client_conn_throttle: Optional[pulumi.Input[float]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
@@ -75,7 +57,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +70,7 @@ class NodeBalancer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,13 +95,25 @@ class NodeBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_conn_throttle=None, created=None, hostname=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfer=None, updated=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_conn_throttle: Optional[pulumi.Input[float]] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            ipv4: Optional[pulumi.Input[str]] = None,
+            ipv6: Optional[pulumi.Input[str]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            transfer: Optional[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]] = None,
+            updated: Optional[pulumi.Input[str]] = None) -> 'NodeBalancer':
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -127,13 +121,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-
-        The **transfer** object supports the following:
-
-          * `in` (`pulumi.Input[float]`)
-          * `out` (`pulumi.Input[float]`)
-          * `total` (`pulumi.Input[float]`)
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -151,8 +139,80 @@ class NodeBalancer(pulumi.CustomResource):
         __props__["updated"] = updated
         return NodeBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clientConnThrottle")
+    def client_conn_throttle(self) -> Optional[float]:
+        """
+        Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        """
+        return pulumi.get(self, "client_conn_throttle")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The Public IPv4 Address of this NodeBalancer
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The Public IPv6 Address of this NodeBalancer
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        The label of the Linode NodeBalancer
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def transfer(self) -> 'outputs.NodeBalancerTransfer':
+        return pulumi.get(self, "transfer")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        return pulumi.get(self, "updated")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetUserResult',
+    'AwaitableGetUserResult',
+    'get_user',
+]
+
+@pulumi.output_type
 class GetUserResult:
     """
     A collection of values returned by getUser.
@@ -15,22 +22,49 @@ class GetUserResult:
     def __init__(__self__, email=None, id=None, restricted=None, ssh_keys=None, username=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if restricted and not isinstance(restricted, bool):
+            raise TypeError("Expected argument 'restricted' to be a bool")
+        pulumi.set(__self__, "restricted", restricted)
+        if ssh_keys and not isinstance(ssh_keys, list):
+            raise TypeError("Expected argument 'ssh_keys' to be a list")
+        pulumi.set(__self__, "ssh_keys", ssh_keys)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if restricted and not isinstance(restricted, bool):
-            raise TypeError("Expected argument 'restricted' to be a bool")
-        __self__.restricted = restricted
-        if ssh_keys and not isinstance(ssh_keys, list):
-            raise TypeError("Expected argument 'ssh_keys' to be a list")
-        __self__.ssh_keys = ssh_keys
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> bool:
+        return pulumi.get(self, "restricted")
+
+    @property
+    @pulumi.getter(name="sshKeys")
+    def ssh_keys(self) -> List[str]:
+        return pulumi.get(self, "ssh_keys")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +77,9 @@ class AwaitableGetUserResult(GetUserResult):
             ssh_keys=self.ssh_keys,
             username=self.username)
 
-def get_user(username=None,opts=None):
+
+def get_user(username: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Provides information about a Linode user
 
@@ -71,18 +107,16 @@ def get_user(username=None,opts=None):
     :param str username: The unique username of this User.
     """
     __args__ = dict()
-
-
     __args__['username'] = username
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        email=__ret__.get('email'),
-        id=__ret__.get('id'),
-        restricted=__ret__.get('restricted'),
-        ssh_keys=__ret__.get('sshKeys'),
-        username=__ret__.get('username'))
+        email=__ret__.email,
+        id=__ret__.id,
+        restricted=__ret__.restricted,
+        ssh_keys=__ret__.ssh_keys,
+        username=__ret__.username)

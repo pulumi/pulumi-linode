@@ -67,6 +67,7 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getVolume.
 type LookupVolumeArgs struct {
+	// The unique numeric ID of the Volume record to query.
 	Id int `pulumi:"id"`
 }
 

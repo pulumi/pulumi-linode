@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDomainResult',
+    'AwaitableGetDomainResult',
+    'get_domain',
+]
+
+@pulumi.output_type
 class GetDomainResult:
     """
     A collection of values returned by getDomain.
@@ -15,46 +22,118 @@ class GetDomainResult:
     def __init__(__self__, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, id=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None):
         if axfr_ips and not isinstance(axfr_ips, list):
             raise TypeError("Expected argument 'axfr_ips' to be a list")
-        __self__.axfr_ips = axfr_ips
+        pulumi.set(__self__, "axfr_ips", axfr_ips)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
-        __self__.domain = domain
+        pulumi.set(__self__, "domain", domain)
         if expire_sec and not isinstance(expire_sec, float):
             raise TypeError("Expected argument 'expire_sec' to be a float")
-        __self__.expire_sec = expire_sec
+        pulumi.set(__self__, "expire_sec", expire_sec)
         if group and not isinstance(group, str):
             raise TypeError("Expected argument 'group' to be a str")
-        __self__.group = group
+        pulumi.set(__self__, "group", group)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if master_ips and not isinstance(master_ips, list):
             raise TypeError("Expected argument 'master_ips' to be a list")
-        __self__.master_ips = master_ips
+        pulumi.set(__self__, "master_ips", master_ips)
         if refresh_sec and not isinstance(refresh_sec, float):
             raise TypeError("Expected argument 'refresh_sec' to be a float")
-        __self__.refresh_sec = refresh_sec
+        pulumi.set(__self__, "refresh_sec", refresh_sec)
         if retry_sec and not isinstance(retry_sec, float):
             raise TypeError("Expected argument 'retry_sec' to be a float")
-        __self__.retry_sec = retry_sec
+        pulumi.set(__self__, "retry_sec", retry_sec)
         if soa_email and not isinstance(soa_email, str):
             raise TypeError("Expected argument 'soa_email' to be a str")
-        __self__.soa_email = soa_email
+        pulumi.set(__self__, "soa_email", soa_email)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        pulumi.set(__self__, "tags", tags)
         if ttl_sec and not isinstance(ttl_sec, float):
             raise TypeError("Expected argument 'ttl_sec' to be a float")
-        __self__.ttl_sec = ttl_sec
+        pulumi.set(__self__, "ttl_sec", ttl_sec)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="axfrIps")
+    def axfr_ips(self) -> List[str]:
+        return pulumi.get(self, "axfr_ips")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="expireSec")
+    def expire_sec(self) -> float:
+        return pulumi.get(self, "expire_sec")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="masterIps")
+    def master_ips(self) -> List[str]:
+        return pulumi.get(self, "master_ips")
+
+    @property
+    @pulumi.getter(name="refreshSec")
+    def refresh_sec(self) -> float:
+        return pulumi.get(self, "refresh_sec")
+
+    @property
+    @pulumi.getter(name="retrySec")
+    def retry_sec(self) -> float:
+        return pulumi.get(self, "retry_sec")
+
+    @property
+    @pulumi.getter(name="soaEmail")
+    def soa_email(self) -> str:
+        return pulumi.get(self, "soa_email")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="ttlSec")
+    def ttl_sec(self) -> float:
+        return pulumi.get(self, "ttl_sec")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +155,10 @@ class AwaitableGetDomainResult(GetDomainResult):
             ttl_sec=self.ttl_sec,
             type=self.type)
 
-def get_domain(domain=None,id=None,opts=None):
+
+def get_domain(domain: Optional[str] = None,
+               id: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     Provides information about a Linode domain.
 
@@ -128,28 +210,26 @@ def get_domain(domain=None,id=None,opts=None):
     :param str id: The unique numeric ID of the Domain record to query.
     """
     __args__ = dict()
-
-
     __args__['domain'] = domain
     __args__['id'] = id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        axfr_ips=__ret__.get('axfrIps'),
-        description=__ret__.get('description'),
-        domain=__ret__.get('domain'),
-        expire_sec=__ret__.get('expireSec'),
-        group=__ret__.get('group'),
-        id=__ret__.get('id'),
-        master_ips=__ret__.get('masterIps'),
-        refresh_sec=__ret__.get('refreshSec'),
-        retry_sec=__ret__.get('retrySec'),
-        soa_email=__ret__.get('soaEmail'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        ttl_sec=__ret__.get('ttlSec'),
-        type=__ret__.get('type'))
+        axfr_ips=__ret__.axfr_ips,
+        description=__ret__.description,
+        domain=__ret__.domain,
+        expire_sec=__ret__.expire_sec,
+        group=__ret__.group,
+        id=__ret__.id,
+        master_ips=__ret__.master_ips,
+        refresh_sec=__ret__.refresh_sec,
+        retry_sec=__ret__.retry_sec,
+        soa_email=__ret__.soa_email,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        ttl_sec=__ret__.ttl_sec,
+        type=__ret__.type)

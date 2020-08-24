@@ -44,12 +44,15 @@ func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getRegion.
 type GetRegionArgs struct {
+	// The country the region resides in.
 	Country *string `pulumi:"country"`
-	Id      string  `pulumi:"id"`
+	// The code name of the region to select.
+	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
+	// The country the region resides in.
 	Country string `pulumi:"country"`
 	Id      string `pulumi:"id"`
 }

@@ -79,12 +79,21 @@ namespace Pulumi.Linode
 
     public sealed class GetDomainRecordArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The associated domain's unique ID.
+        /// </summary>
         [Input("domainId", required: true)]
         public int DomainId { get; set; }
 
+        /// <summary>
+        /// The unique ID of the Domain Record.
+        /// </summary>
         [Input("id")]
         public int? Id { get; set; }
 
+        /// <summary>
+        /// The name of the Record.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

@@ -5,72 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['StackScript']
 
 
 class StackScript(pulumi.CustomResource):
-    created: pulumi.Output[str]
-    """
-    The date this StackScript was created.
-    """
-    deployments_active: pulumi.Output[float]
-    """
-    Count of currently active, deployed Linodes created from this StackScript.
-    """
-    deployments_total: pulumi.Output[float]
-    """
-    The total number of times this StackScript has been deployed.
-    """
-    description: pulumi.Output[str]
-    """
-    A description for the StackScript.
-    """
-    images: pulumi.Output[list]
-    """
-    An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-    """
-    is_public: pulumi.Output[bool]
-    """
-    This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
-    """
-    label: pulumi.Output[str]
-    """
-    The StackScript's label is for display purposes only.
-    """
-    rev_note: pulumi.Output[str]
-    """
-    This field allows you to add notes for the set of revisions made to this StackScript.
-    """
-    script: pulumi.Output[str]
-    """
-    The script to execute when provisioning a new Linode with this StackScript.
-    """
-    updated: pulumi.Output[str]
-    """
-    The date this StackScript was updated.
-    """
-    user_defined_fields: pulumi.Output[list]
-    """
-    This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-    parameters during deployment.
-
-      * `default` (`str`)
-      * `example` (`str`)
-      * `label` (`str`) - The StackScript's label is for display purposes only.
-      * `manyOf` (`str`)
-      * `name` (`str`)
-      * `oneOf` (`str`)
-    """
-    user_gravatar_id: pulumi.Output[str]
-    """
-    The Gravatar ID for the User who created the StackScript.
-    """
-    username: pulumi.Output[str]
-    """
-    The User who created the StackScript.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, user_defined_fields=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 is_public: Optional[pulumi.Input[bool]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 rev_note: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
+                 user_defined_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
 
@@ -142,22 +98,13 @@ class StackScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[list] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[List[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
-        :param pulumi.Input[list] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
                parameters during deployment.
-
-        The **user_defined_fields** object supports the following:
-
-          * `default` (`pulumi.Input[str]`)
-          * `example` (`pulumi.Input[str]`)
-          * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
-          * `manyOf` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `oneOf` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -170,7 +117,7 @@ class StackScript(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -204,37 +151,43 @@ class StackScript(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created=None, deployments_active=None, deployments_total=None, description=None, images=None, is_public=None, label=None, rev_note=None, script=None, updated=None, user_defined_fields=None, user_gravatar_id=None, username=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            deployments_active: Optional[pulumi.Input[float]] = None,
+            deployments_total: Optional[pulumi.Input[float]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            is_public: Optional[pulumi.Input[bool]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            rev_note: Optional[pulumi.Input[str]] = None,
+            script: Optional[pulumi.Input[str]] = None,
+            updated: Optional[pulumi.Input[str]] = None,
+            user_defined_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
+            user_gravatar_id: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'StackScript':
         """
         Get an existing StackScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: The date this StackScript was created.
         :param pulumi.Input[float] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
         :param pulumi.Input[float] deployments_total: The total number of times this StackScript has been deployed.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[list] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[List[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[str] updated: The date this StackScript was updated.
-        :param pulumi.Input[list] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
                parameters during deployment.
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
-
-        The **user_defined_fields** object supports the following:
-
-          * `default` (`pulumi.Input[str]`)
-          * `example` (`pulumi.Input[str]`)
-          * `label` (`pulumi.Input[str]`) - The StackScript's label is for display purposes only.
-          * `manyOf` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `oneOf` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -255,8 +208,114 @@ class StackScript(pulumi.CustomResource):
         __props__["username"] = username
         return StackScript(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date this StackScript was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="deploymentsActive")
+    def deployments_active(self) -> float:
+        """
+        Count of currently active, deployed Linodes created from this StackScript.
+        """
+        return pulumi.get(self, "deployments_active")
+
+    @property
+    @pulumi.getter(name="deploymentsTotal")
+    def deployments_total(self) -> float:
+        """
+        The total number of times this StackScript has been deployed.
+        """
+        return pulumi.get(self, "deployments_total")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description for the StackScript.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def images(self) -> List[str]:
+        """
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        """
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[bool]:
+        """
+        This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+        """
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The StackScript's label is for display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="revNote")
+    def rev_note(self) -> Optional[str]:
+        """
+        This field allows you to add notes for the set of revisions made to this StackScript.
+        """
+        return pulumi.get(self, "rev_note")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        """
+        The script to execute when provisioning a new Linode with this StackScript.
+        """
+        return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date this StackScript was updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> List['outputs.StackScriptUserDefinedField']:
+        """
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        parameters during deployment.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+    @property
+    @pulumi.getter(name="userGravatarId")
+    def user_gravatar_id(self) -> str:
+        """
+        The Gravatar ID for the User who created the StackScript.
+        """
+        return pulumi.get(self, "user_gravatar_id")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The User who created the StackScript.
+        """
+        return pulumi.get(self, "username")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

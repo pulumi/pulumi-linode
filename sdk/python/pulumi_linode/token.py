@@ -5,32 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Token']
 
 
 class Token(pulumi.CustomResource):
-    created: pulumi.Output[str]
-    """
-    The date and time this token was created.
-    """
-    expiry: pulumi.Output[str]
-    """
-    When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
-    """
-    label: pulumi.Output[str]
-    """
-    A label for the Token.
-    """
-    scopes: pulumi.Output[str]
-    """
-    The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
-    """
-    token: pulumi.Output[str]
-    """
-    The token used to access the API.
-    """
-    def __init__(__self__, resource_name, opts=None, expiry=None, label=None, scopes=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 expiry: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, to interact with Linode services on a user's behalf.
 
@@ -77,7 +67,7 @@ class Token(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -97,13 +87,20 @@ class Token(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created=None, expiry=None, label=None, scopes=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            expiry: Optional[pulumi.Input[str]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            scopes: Optional[pulumi.Input[str]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'Token':
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: The date and time this token was created.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
@@ -122,8 +119,49 @@ class Token(pulumi.CustomResource):
         __props__["token"] = token
         return Token(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date and time this token was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> Optional[str]:
+        """
+        When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+        """
+        return pulumi.get(self, "expiry")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        A label for the Token.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> str:
+        """
+        The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        The token used to access the API.
+        """
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

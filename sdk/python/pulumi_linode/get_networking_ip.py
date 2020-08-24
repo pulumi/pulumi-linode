@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetNetworkingIpResult',
+    'AwaitableGetNetworkingIpResult',
+    'get_networking_ip',
+]
+
+@pulumi.output_type
 class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
@@ -15,37 +22,89 @@ class GetNetworkingIpResult:
     def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, subnet_mask=None, type=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
-        __self__.address = address
+        pulumi.set(__self__, "address", address)
         if gateway and not isinstance(gateway, str):
             raise TypeError("Expected argument 'gateway' to be a str")
-        __self__.gateway = gateway
+        pulumi.set(__self__, "gateway", gateway)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if linode_id and not isinstance(linode_id, float):
+            raise TypeError("Expected argument 'linode_id' to be a float")
+        pulumi.set(__self__, "linode_id", linode_id)
+        if prefix and not isinstance(prefix, float):
+            raise TypeError("Expected argument 'prefix' to be a float")
+        pulumi.set(__self__, "prefix", prefix)
+        if public and not isinstance(public, bool):
+            raise TypeError("Expected argument 'public' to be a bool")
+        pulumi.set(__self__, "public", public)
+        if rdns and not isinstance(rdns, str):
+            raise TypeError("Expected argument 'rdns' to be a str")
+        pulumi.set(__self__, "rdns", rdns)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if subnet_mask and not isinstance(subnet_mask, str):
+            raise TypeError("Expected argument 'subnet_mask' to be a str")
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if linode_id and not isinstance(linode_id, float):
-            raise TypeError("Expected argument 'linode_id' to be a float")
-        __self__.linode_id = linode_id
-        if prefix and not isinstance(prefix, float):
-            raise TypeError("Expected argument 'prefix' to be a float")
-        __self__.prefix = prefix
-        if public and not isinstance(public, bool):
-            raise TypeError("Expected argument 'public' to be a bool")
-        __self__.public = public
-        if rdns and not isinstance(rdns, str):
-            raise TypeError("Expected argument 'rdns' to be a str")
-        __self__.rdns = rdns
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if subnet_mask and not isinstance(subnet_mask, str):
-            raise TypeError("Expected argument 'subnet_mask' to be a str")
-        __self__.subnet_mask = subnet_mask
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> float:
+        return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> float:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        return pulumi.get(self, "public")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
 class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +122,9 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             subnet_mask=self.subnet_mask,
             type=self.type)
 
-def get_networking_ip(address=None,opts=None):
+
+def get_networking_ip(address: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkingIpResult:
     """
     Provides information about a Linode Networking IP Address
 
@@ -103,23 +164,21 @@ def get_networking_ip(address=None,opts=None):
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
     """
     __args__ = dict()
-
-
     __args__['address'] = address
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts, typ=GetNetworkingIpResult).value
 
     return AwaitableGetNetworkingIpResult(
-        address=__ret__.get('address'),
-        gateway=__ret__.get('gateway'),
-        id=__ret__.get('id'),
-        linode_id=__ret__.get('linodeId'),
-        prefix=__ret__.get('prefix'),
-        public=__ret__.get('public'),
-        rdns=__ret__.get('rdns'),
-        region=__ret__.get('region'),
-        subnet_mask=__ret__.get('subnetMask'),
-        type=__ret__.get('type'))
+        address=__ret__.address,
+        gateway=__ret__.gateway,
+        id=__ret__.id,
+        linode_id=__ret__.linode_id,
+        prefix=__ret__.prefix,
+        public=__ret__.public,
+        rdns=__ret__.rdns,
+        region=__ret__.region,
+        subnet_mask=__ret__.subnet_mask,
+        type=__ret__.type)

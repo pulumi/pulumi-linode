@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetImageResult',
+    'AwaitableGetImageResult',
+    'get_image',
+]
+
+@pulumi.output_type
 class GetImageResult:
     """
     A collection of values returned by getImage.
@@ -15,37 +22,94 @@ class GetImageResult:
     def __init__(__self__, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, type=None, vendor=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
-        __self__.created = created
+        pulumi.set(__self__, "created", created)
         if created_by and not isinstance(created_by, str):
             raise TypeError("Expected argument 'created_by' to be a str")
-        __self__.created_by = created_by
+        pulumi.set(__self__, "created_by", created_by)
         if deprecated and not isinstance(deprecated, bool):
             raise TypeError("Expected argument 'deprecated' to be a bool")
-        __self__.deprecated = deprecated
+        pulumi.set(__self__, "deprecated", deprecated)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if expiry and not isinstance(expiry, str):
             raise TypeError("Expected argument 'expiry' to be a str")
-        __self__.expiry = expiry
+        pulumi.set(__self__, "expiry", expiry)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
-        __self__.is_public = is_public
+        pulumi.set(__self__, "is_public", is_public)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
+        pulumi.set(__self__, "label", label)
         if size and not isinstance(size, float):
             raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        pulumi.set(__self__, "size", size)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        pulumi.set(__self__, "type", type)
         if vendor and not isinstance(vendor, str):
             raise TypeError("Expected argument 'vendor' to be a str")
-        __self__.vendor = vendor
+        pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> bool:
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> str:
+        return pulumi.get(self, "expiry")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        return pulumi.get(self, "vendor")
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,7 +128,9 @@ class AwaitableGetImageResult(GetImageResult):
             type=self.type,
             vendor=self.vendor)
 
-def get_image(id=None,opts=None):
+
+def get_image(id: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Provides information about a Linode image
 
@@ -104,24 +170,22 @@ def get_image(id=None,opts=None):
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        created=__ret__.get('created'),
-        created_by=__ret__.get('createdBy'),
-        deprecated=__ret__.get('deprecated'),
-        description=__ret__.get('description'),
-        expiry=__ret__.get('expiry'),
-        id=__ret__.get('id'),
-        is_public=__ret__.get('isPublic'),
-        label=__ret__.get('label'),
-        size=__ret__.get('size'),
-        type=__ret__.get('type'),
-        vendor=__ret__.get('vendor'))
+        created=__ret__.created,
+        created_by=__ret__.created_by,
+        deprecated=__ret__.deprecated,
+        description=__ret__.description,
+        expiry=__ret__.expiry,
+        id=__ret__.id,
+        is_public=__ret__.is_public,
+        label=__ret__.label,
+        size=__ret__.size,
+        type=__ret__.type,
+        vendor=__ret__.vendor)

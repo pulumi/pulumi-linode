@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetInstanceTypeResult',
+    'AwaitableGetInstanceTypeResult',
+    'get_instance_type',
+]
+
+@pulumi.output_type
 class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
@@ -15,34 +23,86 @@ class GetInstanceTypeResult:
     def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, transfer=None, vcpus=None):
         if addons and not isinstance(addons, dict):
             raise TypeError("Expected argument 'addons' to be a dict")
-        __self__.addons = addons
+        pulumi.set(__self__, "addons", addons)
         if class_ and not isinstance(class_, str):
             raise TypeError("Expected argument 'class_' to be a str")
-        __self__.class_ = class_
+        pulumi.set(__self__, "class_", class_)
         if disk and not isinstance(disk, float):
             raise TypeError("Expected argument 'disk' to be a float")
-        __self__.disk = disk
+        pulumi.set(__self__, "disk", disk)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
+        pulumi.set(__self__, "label", label)
         if memory and not isinstance(memory, float):
             raise TypeError("Expected argument 'memory' to be a float")
-        __self__.memory = memory
+        pulumi.set(__self__, "memory", memory)
         if network_out and not isinstance(network_out, float):
             raise TypeError("Expected argument 'network_out' to be a float")
-        __self__.network_out = network_out
+        pulumi.set(__self__, "network_out", network_out)
         if price and not isinstance(price, dict):
             raise TypeError("Expected argument 'price' to be a dict")
-        __self__.price = price
+        pulumi.set(__self__, "price", price)
         if transfer and not isinstance(transfer, float):
             raise TypeError("Expected argument 'transfer' to be a float")
-        __self__.transfer = transfer
+        pulumi.set(__self__, "transfer", transfer)
         if vcpus and not isinstance(vcpus, float):
             raise TypeError("Expected argument 'vcpus' to be a float")
-        __self__.vcpus = vcpus
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def addons(self) -> 'outputs.GetInstanceTypeAddonsResult':
+        return pulumi.get(self, "addons")
+
+    @property
+    @pulumi.getter(name="class")
+    def class_(self) -> str:
+        return pulumi.get(self, "class_")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> float:
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="networkOut")
+    def network_out(self) -> float:
+        return pulumi.get(self, "network_out")
+
+    @property
+    @pulumi.getter
+    def price(self) -> 'outputs.GetInstanceTypePriceResult':
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter
+    def transfer(self) -> float:
+        return pulumi.get(self, "transfer")
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> float:
+        return pulumi.get(self, "vcpus")
+
+
 class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +120,10 @@ class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
             transfer=self.transfer,
             vcpus=self.vcpus)
 
-def get_instance_type(id=None,label=None,opts=None):
+
+def get_instance_type(id: Optional[str] = None,
+                      label: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypeResult:
     """
     Provides information about a Linode instance type
 
@@ -98,24 +161,22 @@ def get_instance_type(id=None,label=None,opts=None):
     :param str id: Label used to identify instance type
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['label'] = label
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult).value
 
     return AwaitableGetInstanceTypeResult(
-        addons=__ret__.get('addons'),
-        class_=__ret__.get('class'),
-        disk=__ret__.get('disk'),
-        id=__ret__.get('id'),
-        label=__ret__.get('label'),
-        memory=__ret__.get('memory'),
-        network_out=__ret__.get('networkOut'),
-        price=__ret__.get('price'),
-        transfer=__ret__.get('transfer'),
-        vcpus=__ret__.get('vcpus'))
+        addons=__ret__.addons,
+        class_=__ret__.class_,
+        disk=__ret__.disk,
+        id=__ret__.id,
+        label=__ret__.label,
+        memory=__ret__.memory,
+        network_out=__ret__.network_out,
+        price=__ret__.price,
+        transfer=__ret__.transfer,
+        vcpus=__ret__.vcpus)

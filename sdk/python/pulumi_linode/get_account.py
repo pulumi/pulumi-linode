@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
+@pulumi.output_type
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -15,46 +22,113 @@ class GetAccountResult:
     def __init__(__self__, address1=None, address2=None, balance=None, city=None, company=None, country=None, email=None, first_name=None, id=None, last_name=None, phone=None, state=None, zip=None):
         if address1 and not isinstance(address1, str):
             raise TypeError("Expected argument 'address1' to be a str")
-        __self__.address1 = address1
+        pulumi.set(__self__, "address1", address1)
         if address2 and not isinstance(address2, str):
             raise TypeError("Expected argument 'address2' to be a str")
-        __self__.address2 = address2
+        pulumi.set(__self__, "address2", address2)
         if balance and not isinstance(balance, float):
             raise TypeError("Expected argument 'balance' to be a float")
-        __self__.balance = balance
+        pulumi.set(__self__, "balance", balance)
         if city and not isinstance(city, str):
             raise TypeError("Expected argument 'city' to be a str")
-        __self__.city = city
+        pulumi.set(__self__, "city", city)
         if company and not isinstance(company, str):
             raise TypeError("Expected argument 'company' to be a str")
-        __self__.company = company
+        pulumi.set(__self__, "company", company)
         if country and not isinstance(country, str):
             raise TypeError("Expected argument 'country' to be a str")
-        __self__.country = country
+        pulumi.set(__self__, "country", country)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
         if first_name and not isinstance(first_name, str):
             raise TypeError("Expected argument 'first_name' to be a str")
-        __self__.first_name = first_name
+        pulumi.set(__self__, "first_name", first_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if last_name and not isinstance(last_name, str):
+            raise TypeError("Expected argument 'last_name' to be a str")
+        pulumi.set(__self__, "last_name", last_name)
+        if phone and not isinstance(phone, str):
+            raise TypeError("Expected argument 'phone' to be a str")
+        pulumi.set(__self__, "phone", phone)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if zip and not isinstance(zip, str):
+            raise TypeError("Expected argument 'zip' to be a str")
+        pulumi.set(__self__, "zip", zip)
+
+    @property
+    @pulumi.getter
+    def address1(self) -> str:
+        return pulumi.get(self, "address1")
+
+    @property
+    @pulumi.getter
+    def address2(self) -> str:
+        return pulumi.get(self, "address2")
+
+    @property
+    @pulumi.getter
+    def balance(self) -> float:
+        return pulumi.get(self, "balance")
+
+    @property
+    @pulumi.getter
+    def city(self) -> str:
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter
+    def company(self) -> str:
+        return pulumi.get(self, "company")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> str:
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if last_name and not isinstance(last_name, str):
-            raise TypeError("Expected argument 'last_name' to be a str")
-        __self__.last_name = last_name
-        if phone and not isinstance(phone, str):
-            raise TypeError("Expected argument 'phone' to be a str")
-        __self__.phone = phone
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
-        if zip and not isinstance(zip, str):
-            raise TypeError("Expected argument 'zip' to be a str")
-        __self__.zip = zip
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> str:
+        return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter
+    def phone(self) -> str:
+        return pulumi.get(self, "phone")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def zip(self) -> str:
+        return pulumi.get(self, "zip")
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,7 +149,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             state=self.state,
             zip=self.zip)
 
-def get_account(opts=None):
+
+def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Provides information about a Linode account.
 
@@ -120,25 +195,23 @@ def get_account(opts=None):
     * `balance` - This Account's balance, in US dollars.
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        address1=__ret__.get('address1'),
-        address2=__ret__.get('address2'),
-        balance=__ret__.get('balance'),
-        city=__ret__.get('city'),
-        company=__ret__.get('company'),
-        country=__ret__.get('country'),
-        email=__ret__.get('email'),
-        first_name=__ret__.get('firstName'),
-        id=__ret__.get('id'),
-        last_name=__ret__.get('lastName'),
-        phone=__ret__.get('phone'),
-        state=__ret__.get('state'),
-        zip=__ret__.get('zip'))
+        address1=__ret__.address1,
+        address2=__ret__.address2,
+        balance=__ret__.balance,
+        city=__ret__.city,
+        company=__ret__.company,
+        country=__ret__.country,
+        email=__ret__.email,
+        first_name=__ret__.first_name,
+        id=__ret__.id,
+        last_name=__ret__.last_name,
+        phone=__ret__.phone,
+        state=__ret__.state,
+        zip=__ret__.zip)

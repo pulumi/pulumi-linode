@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetStackScriptResult',
+    'AwaitableGetStackScriptResult',
+    'get_stack_script',
+]
+
+@pulumi.output_type
 class GetStackScriptResult:
     """
     A collection of values returned by getStackScript.
@@ -15,46 +24,118 @@ class GetStackScriptResult:
     def __init__(__self__, created=None, deployments_active=None, deployments_total=None, description=None, id=None, images=None, is_public=None, label=None, rev_note=None, script=None, updated=None, user_defined_fields=None, user_gravatar_id=None, username=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
-        __self__.created = created
+        pulumi.set(__self__, "created", created)
         if deployments_active and not isinstance(deployments_active, float):
             raise TypeError("Expected argument 'deployments_active' to be a float")
-        __self__.deployments_active = deployments_active
+        pulumi.set(__self__, "deployments_active", deployments_active)
         if deployments_total and not isinstance(deployments_total, float):
             raise TypeError("Expected argument 'deployments_total' to be a float")
-        __self__.deployments_total = deployments_total
+        pulumi.set(__self__, "deployments_total", deployments_total)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, float):
             raise TypeError("Expected argument 'id' to be a float")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
-        __self__.images = images
+        pulumi.set(__self__, "images", images)
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
-        __self__.is_public = is_public
+        pulumi.set(__self__, "is_public", is_public)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
+        pulumi.set(__self__, "label", label)
         if rev_note and not isinstance(rev_note, str):
             raise TypeError("Expected argument 'rev_note' to be a str")
-        __self__.rev_note = rev_note
+        pulumi.set(__self__, "rev_note", rev_note)
         if script and not isinstance(script, str):
             raise TypeError("Expected argument 'script' to be a str")
-        __self__.script = script
+        pulumi.set(__self__, "script", script)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
-        __self__.updated = updated
+        pulumi.set(__self__, "updated", updated)
         if user_defined_fields and not isinstance(user_defined_fields, list):
             raise TypeError("Expected argument 'user_defined_fields' to be a list")
-        __self__.user_defined_fields = user_defined_fields
+        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
         if user_gravatar_id and not isinstance(user_gravatar_id, str):
             raise TypeError("Expected argument 'user_gravatar_id' to be a str")
-        __self__.user_gravatar_id = user_gravatar_id
+        pulumi.set(__self__, "user_gravatar_id", user_gravatar_id)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="deploymentsActive")
+    def deployments_active(self) -> float:
+        return pulumi.get(self, "deployments_active")
+
+    @property
+    @pulumi.getter(name="deploymentsTotal")
+    def deployments_total(self) -> float:
+        return pulumi.get(self, "deployments_total")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def images(self) -> List[str]:
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="revNote")
+    def rev_note(self) -> str:
+        return pulumi.get(self, "rev_note")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> List['outputs.GetStackScriptUserDefinedFieldResult']:
+        return pulumi.get(self, "user_defined_fields")
+
+    @property
+    @pulumi.getter(name="userGravatarId")
+    def user_gravatar_id(self) -> str:
+        return pulumi.get(self, "user_gravatar_id")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+
 class AwaitableGetStackScriptResult(GetStackScriptResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +157,10 @@ class AwaitableGetStackScriptResult(GetStackScriptResult):
             user_gravatar_id=self.user_gravatar_id,
             username=self.username)
 
-def get_stack_script(id=None,user_defined_fields=None,opts=None):
+
+def get_stack_script(id: Optional[float] = None,
+                     user_defined_fields: Optional[List[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptResult:
     """
     Provides details about a specific Linode StackScript.
 
@@ -131,39 +215,28 @@ def get_stack_script(id=None,user_defined_fields=None,opts=None):
 
 
     :param float id: The unique numeric ID of the StackScript to query.
-
-    The **user_defined_fields** object supports the following:
-
-      * `default` (`str`)
-      * `example` (`str`)
-      * `label` (`str`)
-      * `manyOf` (`str`)
-      * `name` (`str`)
-      * `oneOf` (`str`)
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['userDefinedFields'] = user_defined_fields
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getStackScript:getStackScript', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getStackScript:getStackScript', __args__, opts=opts, typ=GetStackScriptResult).value
 
     return AwaitableGetStackScriptResult(
-        created=__ret__.get('created'),
-        deployments_active=__ret__.get('deploymentsActive'),
-        deployments_total=__ret__.get('deploymentsTotal'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        images=__ret__.get('images'),
-        is_public=__ret__.get('isPublic'),
-        label=__ret__.get('label'),
-        rev_note=__ret__.get('revNote'),
-        script=__ret__.get('script'),
-        updated=__ret__.get('updated'),
-        user_defined_fields=__ret__.get('userDefinedFields'),
-        user_gravatar_id=__ret__.get('userGravatarId'),
-        username=__ret__.get('username'))
+        created=__ret__.created,
+        deployments_active=__ret__.deployments_active,
+        deployments_total=__ret__.deployments_total,
+        description=__ret__.description,
+        id=__ret__.id,
+        images=__ret__.images,
+        is_public=__ret__.is_public,
+        label=__ret__.label,
+        rev_note=__ret__.rev_note,
+        script=__ret__.script,
+        updated=__ret__.updated,
+        user_defined_fields=__ret__.user_defined_fields,
+        user_gravatar_id=__ret__.user_gravatar_id,
+        username=__ret__.username)

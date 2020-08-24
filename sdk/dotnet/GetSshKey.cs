@@ -46,6 +46,9 @@ namespace Pulumi.Linode
 
     public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The label of the SSH Key to select.
+        /// </summary>
         [Input("label", required: true)]
         public string Label { get; set; } = null!;
 
@@ -58,12 +61,18 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetSshKeyResult
     {
+        /// <summary>
+        /// The date this key was added.
+        /// </summary>
         public readonly string Created;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Label;
+        /// <summary>
+        /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        /// </summary>
         public readonly string SshKey;
 
         [OutputConstructor]

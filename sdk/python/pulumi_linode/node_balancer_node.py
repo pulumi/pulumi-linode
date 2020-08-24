@@ -5,40 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['NodeBalancerNode']
 
 
 class NodeBalancerNode(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The private IP Address where this backend can be reached. This must be a private IP address.
-    """
-    config_id: pulumi.Output[float]
-    """
-    The ID of the NodeBalancerConfig to access.
-    """
-    label: pulumi.Output[str]
-    """
-    The label of the Linode NodeBalancer Node. This is for display purposes only.
-    """
-    mode: pulumi.Output[str]
-    """
-    The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
-    """
-    nodebalancer_id: pulumi.Output[float]
-    """
-    The ID of the NodeBalancer to access.
-    """
-    status: pulumi.Output[str]
-    """
-    The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
-    """
-    weight: pulumi.Output[float]
-    """
-    Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
-    """
-    def __init__(__self__, resource_name, opts=None, address=None, config_id=None, label=None, mode=None, nodebalancer_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[float]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 nodebalancer_id: Optional[pulumi.Input[float]] = None,
+                 weight: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
@@ -114,7 +99,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -142,13 +127,22 @@ class NodeBalancerNode(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, config_id=None, label=None, mode=None, nodebalancer_id=None, status=None, weight=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            config_id: Optional[pulumi.Input[float]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
+            nodebalancer_id: Optional[pulumi.Input[float]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            weight: Optional[pulumi.Input[float]] = None) -> 'NodeBalancerNode':
         """
         Get an existing NodeBalancerNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
         :param pulumi.Input[float] config_id: The ID of the NodeBalancerConfig to access.
@@ -171,8 +165,65 @@ class NodeBalancerNode(pulumi.CustomResource):
         __props__["weight"] = weight
         return NodeBalancerNode(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The private IP Address where this backend can be reached. This must be a private IP address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> float:
+        """
+        The ID of the NodeBalancerConfig to access.
+        """
+        return pulumi.get(self, "config_id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the Linode NodeBalancer Node. This is for display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="nodebalancerId")
+    def nodebalancer_id(self) -> float:
+        """
+        The ID of the NodeBalancer to access.
+        """
+        return pulumi.get(self, "nodebalancer_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        """
+        Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
+        """
+        return pulumi.get(self, "weight")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

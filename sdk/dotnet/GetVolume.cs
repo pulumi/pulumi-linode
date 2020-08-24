@@ -69,6 +69,9 @@ namespace Pulumi.Linode
 
     public sealed class GetVolumeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique numeric ID of the Volume record to query.
+        /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
 

@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetVolumeResult',
+    'AwaitableGetVolumeResult',
+    'get_volume',
+]
+
+@pulumi.output_type
 class GetVolumeResult:
     """
     A collection of values returned by getVolume.
@@ -15,34 +22,86 @@ class GetVolumeResult:
     def __init__(__self__, created=None, filesystem_path=None, id=None, label=None, linode_id=None, region=None, size=None, status=None, tags=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
-        __self__.created = created
+        pulumi.set(__self__, "created", created)
         if filesystem_path and not isinstance(filesystem_path, str):
             raise TypeError("Expected argument 'filesystem_path' to be a str")
-        __self__.filesystem_path = filesystem_path
+        pulumi.set(__self__, "filesystem_path", filesystem_path)
         if id and not isinstance(id, float):
             raise TypeError("Expected argument 'id' to be a float")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
+        pulumi.set(__self__, "label", label)
         if linode_id and not isinstance(linode_id, float):
             raise TypeError("Expected argument 'linode_id' to be a float")
-        __self__.linode_id = linode_id
+        pulumi.set(__self__, "linode_id", linode_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        pulumi.set(__self__, "region", region)
         if size and not isinstance(size, float):
             raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        pulumi.set(__self__, "size", size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        pulumi.set(__self__, "tags", tags)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
-        __self__.updated = updated
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="filesystemPath")
+    def filesystem_path(self) -> str:
+        return pulumi.get(self, "filesystem_path")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> float:
+        return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        return pulumi.get(self, "updated")
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +119,9 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             tags=self.tags,
             updated=self.updated)
 
-def get_volume(id=None,opts=None):
+
+def get_volume(id: Optional[float] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Provides information about a Linode Volume.
 
@@ -72,7 +133,7 @@ def get_volume(id=None,opts=None):
     import pulumi
     import pulumi_linode as linode
 
-    foo = linode.get_volume(id="1234567")
+    foo = linode.get_volume(id=1234567)
     ```
     ## Attributes
 
@@ -97,25 +158,26 @@ def get_volume(id=None,opts=None):
     - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
 
     - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+
+
+    :param float id: The unique numeric ID of the Volume record to query.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getVolume:getVolume', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult).value
 
     return AwaitableGetVolumeResult(
-        created=__ret__.get('created'),
-        filesystem_path=__ret__.get('filesystemPath'),
-        id=__ret__.get('id'),
-        label=__ret__.get('label'),
-        linode_id=__ret__.get('linodeId'),
-        region=__ret__.get('region'),
-        size=__ret__.get('size'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        updated=__ret__.get('updated'))
+        created=__ret__.created,
+        filesystem_path=__ret__.filesystem_path,
+        id=__ret__.id,
+        label=__ret__.label,
+        linode_id=__ret__.linode_id,
+        region=__ret__.region,
+        size=__ret__.size,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        updated=__ret__.updated)

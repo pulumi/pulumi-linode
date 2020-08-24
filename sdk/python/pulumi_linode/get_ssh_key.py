@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetSshKeyResult',
+    'AwaitableGetSshKeyResult',
+    'get_ssh_key',
+]
+
+@pulumi.output_type
 class GetSshKeyResult:
     """
     A collection of values returned by getSshKey.
@@ -15,19 +22,47 @@ class GetSshKeyResult:
     def __init__(__self__, created=None, id=None, label=None, ssh_key=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
-        __self__.created = created
+        pulumi.set(__self__, "created", created)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if label and not isinstance(label, str):
+            raise TypeError("Expected argument 'label' to be a str")
+        pulumi.set(__self__, "label", label)
+        if ssh_key and not isinstance(ssh_key, str):
+            raise TypeError("Expected argument 'ssh_key' to be a str")
+        pulumi.set(__self__, "ssh_key", ssh_key)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date this key was added.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if label and not isinstance(label, str):
-            raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
-        if ssh_key and not isinstance(ssh_key, str):
-            raise TypeError("Expected argument 'ssh_key' to be a str")
-        __self__.ssh_key = ssh_key
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> str:
+        """
+        The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        return pulumi.get(self, "ssh_key")
+
+
 class AwaitableGetSshKeyResult(GetSshKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +74,9 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
             label=self.label,
             ssh_key=self.ssh_key)
 
-def get_ssh_key(label=None,opts=None):
+
+def get_ssh_key(label: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
 
@@ -53,19 +90,20 @@ def get_ssh_key(label=None,opts=None):
 
     foo = linode.get_ssh_key(label="foo")
     ```
+
+
+    :param str label: The label of the SSH Key to select.
     """
     __args__ = dict()
-
-
     __args__['label'] = label
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult).value
 
     return AwaitableGetSshKeyResult(
-        created=__ret__.get('created'),
-        id=__ret__.get('id'),
-        label=__ret__.get('label'),
-        ssh_key=__ret__.get('sshKey'))
+        created=__ret__.created,
+        id=__ret__.id,
+        label=__ret__.label,
+        ssh_key=__ret__.ssh_key)

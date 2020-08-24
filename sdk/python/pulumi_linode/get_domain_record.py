@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDomainRecordResult',
+    'AwaitableGetDomainRecordResult',
+    'get_domain_record',
+]
+
+@pulumi.output_type
 class GetDomainRecordResult:
     """
     A collection of values returned by getDomainRecord.
@@ -15,40 +22,102 @@ class GetDomainRecordResult:
     def __init__(__self__, domain_id=None, id=None, name=None, port=None, priority=None, protocol=None, service=None, tag=None, target=None, ttl_sec=None, type=None, weight=None):
         if domain_id and not isinstance(domain_id, float):
             raise TypeError("Expected argument 'domain_id' to be a float")
-        __self__.domain_id = domain_id
+        pulumi.set(__self__, "domain_id", domain_id)
         if id and not isinstance(id, float):
             raise TypeError("Expected argument 'id' to be a float")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        pulumi.set(__self__, "name", name)
         if port and not isinstance(port, float):
             raise TypeError("Expected argument 'port' to be a float")
-        __self__.port = port
+        pulumi.set(__self__, "port", port)
         if priority and not isinstance(priority, float):
             raise TypeError("Expected argument 'priority' to be a float")
-        __self__.priority = priority
+        pulumi.set(__self__, "priority", priority)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
-        __self__.protocol = protocol
+        pulumi.set(__self__, "protocol", protocol)
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
-        __self__.service = service
+        pulumi.set(__self__, "service", service)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
+        pulumi.set(__self__, "tag", tag)
         if target and not isinstance(target, str):
             raise TypeError("Expected argument 'target' to be a str")
-        __self__.target = target
+        pulumi.set(__self__, "target", target)
         if ttl_sec and not isinstance(ttl_sec, float):
             raise TypeError("Expected argument 'ttl_sec' to be a float")
-        __self__.ttl_sec = ttl_sec
+        pulumi.set(__self__, "ttl_sec", ttl_sec)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        pulumi.set(__self__, "type", type)
         if weight and not isinstance(weight, float):
             raise TypeError("Expected argument 'weight' to be a float")
-        __self__.weight = weight
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> float:
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[float]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="ttlSec")
+    def ttl_sec(self) -> float:
+        return pulumi.get(self, "ttl_sec")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        return pulumi.get(self, "weight")
+
+
 class AwaitableGetDomainRecordResult(GetDomainRecordResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +137,11 @@ class AwaitableGetDomainRecordResult(GetDomainRecordResult):
             type=self.type,
             weight=self.weight)
 
-def get_domain_record(domain_id=None,id=None,name=None,opts=None):
+
+def get_domain_record(domain_id: Optional[float] = None,
+                      id: Optional[float] = None,
+                      name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordResult:
     """
     Provides information about a Linode Domain Record.
 
@@ -80,9 +153,9 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     import pulumi
     import pulumi_linode as linode
 
-    my_record = linode.get_domain_record(domain_id="3150401",
-        id="14950401")
-    my_www_record = linode.get_domain_record(domain_id="3150401",
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
         name="www")
     ```
     ## Attributes
@@ -112,29 +185,32 @@ def get_domain_record(domain_id=None,id=None,name=None,opts=None):
     - `service` - The service this Record identified. Only valid for SRV records.
 
     - `tag` - The tag portion of a CAA record.
+
+
+    :param float domain_id: The associated domain's unique ID.
+    :param float id: The unique ID of the Domain Record.
+    :param str name: The name of the Record.
     """
     __args__ = dict()
-
-
     __args__['domainId'] = domain_id
     __args__['id'] = id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getDomainRecord:getDomainRecord', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getDomainRecord:getDomainRecord', __args__, opts=opts, typ=GetDomainRecordResult).value
 
     return AwaitableGetDomainRecordResult(
-        domain_id=__ret__.get('domainId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        port=__ret__.get('port'),
-        priority=__ret__.get('priority'),
-        protocol=__ret__.get('protocol'),
-        service=__ret__.get('service'),
-        tag=__ret__.get('tag'),
-        target=__ret__.get('target'),
-        ttl_sec=__ret__.get('ttlSec'),
-        type=__ret__.get('type'),
-        weight=__ret__.get('weight'))
+        domain_id=__ret__.domain_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        port=__ret__.port,
+        priority=__ret__.priority,
+        protocol=__ret__.protocol,
+        service=__ret__.service,
+        tag=__ret__.tag,
+        target=__ret__.target,
+        ttl_sec=__ret__.ttl_sec,
+        type=__ret__.type,
+        weight=__ret__.weight)
