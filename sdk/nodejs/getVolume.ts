@@ -62,6 +62,9 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeArgs {
+    /**
+     * The unique numeric ID of the Volume record to query.
+     */
     readonly id: number;
 }
 

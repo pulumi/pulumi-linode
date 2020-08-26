@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetObjectStorageClusterResult',
+    'AwaitableGetObjectStorageClusterResult',
+    'get_object_storage_cluster',
+]
+
+@pulumi.output_type
 class GetObjectStorageClusterResult:
     """
     A collection of values returned by getObjectStorageCluster.
@@ -15,19 +22,46 @@ class GetObjectStorageClusterResult:
     def __init__(__self__, domain=None, id=None, region=None, static_site_domain=None, status=None):
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
-        __self__.domain = domain
+        pulumi.set(__self__, "domain", domain)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        pulumi.set(__self__, "region", region)
         if static_site_domain and not isinstance(static_site_domain, str):
             raise TypeError("Expected argument 'static_site_domain' to be a str")
-        __self__.static_site_domain = static_site_domain
+        pulumi.set(__self__, "static_site_domain", static_site_domain)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="staticSiteDomain")
+    def static_site_domain(self) -> str:
+        return pulumi.get(self, "static_site_domain")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+
 class AwaitableGetObjectStorageClusterResult(GetObjectStorageClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -40,7 +74,13 @@ class AwaitableGetObjectStorageClusterResult(GetObjectStorageClusterResult):
             static_site_domain=self.static_site_domain,
             status=self.status)
 
-def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domain=None,status=None,opts=None):
+
+def get_object_storage_cluster(domain: Optional[str] = None,
+                               id: Optional[str] = None,
+                               region: Optional[str] = None,
+                               static_site_domain: Optional[str] = None,
+                               status: Optional[str] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageClusterResult:
     """
     Provides information about a Linode Object Storage Cluster
 
@@ -70,8 +110,6 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     :param str id: The unique ID of this cluster.
     """
     __args__ = dict()
-
-
     __args__['domain'] = domain
     __args__['id'] = id
     __args__['region'] = region
@@ -80,12 +118,12 @@ def get_object_storage_cluster(domain=None,id=None,region=None,static_site_domai
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts, typ=GetObjectStorageClusterResult).value
 
     return AwaitableGetObjectStorageClusterResult(
-        domain=__ret__.get('domain'),
-        id=__ret__.get('id'),
-        region=__ret__.get('region'),
-        static_site_domain=__ret__.get('staticSiteDomain'),
-        status=__ret__.get('status'))
+        domain=__ret__.domain,
+        id=__ret__.id,
+        region=__ret__.region,
+        static_site_domain=__ret__.static_site_domain,
+        status=__ret__.status)

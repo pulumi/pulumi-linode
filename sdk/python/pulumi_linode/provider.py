@@ -5,12 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_version=None, token=None, ua_prefix=None, url=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 ua_prefix: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the linode package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -35,23 +46,23 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             if api_version is None:
-                api_version = utilities.get_env('LINODE_API_VERSION')
+                api_version = _utilities.get_env('LINODE_API_VERSION')
             __props__['api_version'] = api_version
             if token is None:
-                token = utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
+                token = _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
             __props__['token'] = token
             if ua_prefix is None:
-                ua_prefix = utilities.get_env('LINODE_UA_PREFIX')
+                ua_prefix = _utilities.get_env('LINODE_UA_PREFIX')
             __props__['ua_prefix'] = ua_prefix
             if url is None:
-                url = utilities.get_env('LINODE_URL')
+                url = _utilities.get_env('LINODE_URL')
             __props__['url'] = url
         super(Provider, __self__).__init__(
             'linode',
@@ -60,7 +71,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

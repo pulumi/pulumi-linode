@@ -5,24 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['SshKey']
 
 
 class SshKey(pulumi.CustomResource):
-    created: pulumi.Output[str]
-    """
-    The date this key was added.
-    """
-    label: pulumi.Output[str]
-    """
-    A label for the SSH Key.
-    """
-    ssh_key: pulumi.Output[str]
-    """
-    The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-    """
-    def __init__(__self__, resource_name, opts=None, label=None, ssh_key=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 ssh_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
@@ -49,7 +46,7 @@ class SshKey(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -69,13 +66,18 @@ class SshKey(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created=None, label=None, ssh_key=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            ssh_key: Optional[pulumi.Input[str]] = None) -> 'SshKey':
         """
         Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: The date this key was added.
         :param pulumi.Input[str] label: A label for the SSH Key.
@@ -90,8 +92,33 @@ class SshKey(pulumi.CustomResource):
         __props__["ssh_key"] = ssh_key
         return SshKey(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date this key was added.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A label for the SSH Key.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> str:
+        """
+        The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        return pulumi.get(self, "ssh_key")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

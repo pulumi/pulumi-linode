@@ -73,8 +73,17 @@ export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getDomainRecord.
  */
 export interface GetDomainRecordArgs {
+    /**
+     * The associated domain's unique ID.
+     */
     readonly domainId: number;
+    /**
+     * The unique ID of the Domain Record.
+     */
     readonly id?: number;
+    /**
+     * The name of the Record.
+     */
     readonly name?: string;
 }
 

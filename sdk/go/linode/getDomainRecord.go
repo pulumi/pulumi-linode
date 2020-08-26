@@ -81,9 +81,12 @@ func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts 
 
 // A collection of arguments for invoking getDomainRecord.
 type LookupDomainRecordArgs struct {
-	DomainId int     `pulumi:"domainId"`
-	Id       *int    `pulumi:"id"`
-	Name     *string `pulumi:"name"`
+	// The associated domain's unique ID.
+	DomainId int `pulumi:"domainId"`
+	// The unique ID of the Domain Record.
+	Id *int `pulumi:"id"`
+	// The name of the Record.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getDomainRecord.

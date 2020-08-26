@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetRegionResult',
+    'AwaitableGetRegionResult',
+    'get_region',
+]
+
+@pulumi.output_type
 class GetRegionResult:
     """
     A collection of values returned by getRegion.
@@ -15,10 +22,25 @@ class GetRegionResult:
     def __init__(__self__, country=None, id=None):
         if country and not isinstance(country, str):
             raise TypeError("Expected argument 'country' to be a str")
-        __self__.country = country
+        pulumi.set(__self__, "country", country)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The country the region resides in.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -28,7 +50,10 @@ class AwaitableGetRegionResult(GetRegionResult):
             country=self.country,
             id=self.id)
 
-def get_region(country=None,id=None,opts=None):
+
+def get_region(country: Optional[str] = None,
+               id: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
 
@@ -42,18 +67,20 @@ def get_region(country=None,id=None,opts=None):
 
     region = linode.get_region(id="us-east")
     ```
+
+
+    :param str country: The country the region resides in.
+    :param str id: The code name of the region to select.
     """
     __args__ = dict()
-
-
     __args__['country'] = country
     __args__['id'] = id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
     return AwaitableGetRegionResult(
-        country=__ret__.get('country'),
-        id=__ret__.get('id'))
+        country=__ret__.country,
+        id=__ret__.id)

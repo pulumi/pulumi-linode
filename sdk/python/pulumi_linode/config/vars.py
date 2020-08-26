@@ -5,27 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'api_version',
+    'token',
+    'ua_prefix',
+    'url',
+]
 
 __config__ = pulumi.Config('linode')
 
-api_version = __config__.get('apiVersion') or utilities.get_env('LINODE_API_VERSION')
+api_version = __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 """
 An HTTP User-Agent Prefix to prepend in API requests.
 """
 
-token = __config__.get('token') or utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
+token = __config__.get('token') or _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
 """
 The token that allows you access to your Linode account
 """
 
-ua_prefix = __config__.get('uaPrefix') or utilities.get_env('LINODE_UA_PREFIX')
+ua_prefix = __config__.get('uaPrefix') or _utilities.get_env('LINODE_UA_PREFIX')
 """
 An HTTP User-Agent Prefix to prepend in API requests.
 """
 
-url = __config__.get('url') or utilities.get_env('LINODE_URL')
+url = __config__.get('url') or _utilities.get_env('LINODE_URL')
 """
 The HTTP(S) API address of the Linode API to use.
 """

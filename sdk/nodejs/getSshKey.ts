@@ -39,6 +39,9 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getSshKey.
  */
 export interface GetSshKeyArgs {
+    /**
+     * The label of the SSH Key to select.
+     */
     readonly label: string;
 }
 
@@ -46,11 +49,17 @@ export interface GetSshKeyArgs {
  * A collection of values returned by getSshKey.
  */
 export interface GetSshKeyResult {
+    /**
+     * The date this key was added.
+     */
     readonly created: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly label: string;
+    /**
+     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+     */
     readonly sshKey: string;
 }

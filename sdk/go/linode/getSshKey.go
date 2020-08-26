@@ -44,14 +44,17 @@ func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSshKey.
 type LookupSshKeyArgs struct {
+	// The label of the SSH Key to select.
 	Label string `pulumi:"label"`
 }
 
 // A collection of values returned by getSshKey.
 type LookupSshKeyResult struct {
+	// The date this key was added.
 	Created string `pulumi:"created"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Label  string `pulumi:"label"`
+	Id    string `pulumi:"id"`
+	Label string `pulumi:"label"`
+	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
 	SshKey string `pulumi:"sshKey"`
 }

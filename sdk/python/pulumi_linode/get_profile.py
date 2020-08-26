@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetProfileResult',
+    'AwaitableGetProfileResult',
+    'get_profile',
+]
+
+@pulumi.output_type
 class GetProfileResult:
     """
     A collection of values returned by getProfile.
@@ -15,40 +23,97 @@ class GetProfileResult:
     def __init__(__self__, authorized_keys=None, email=None, email_notifications=None, id=None, ip_whitelist_enabled=None, lish_auth_method=None, referrals=None, restricted=None, timezone=None, two_factor_auth=None, username=None):
         if authorized_keys and not isinstance(authorized_keys, list):
             raise TypeError("Expected argument 'authorized_keys' to be a list")
-        __self__.authorized_keys = authorized_keys
+        pulumi.set(__self__, "authorized_keys", authorized_keys)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
         if email_notifications and not isinstance(email_notifications, bool):
             raise TypeError("Expected argument 'email_notifications' to be a bool")
-        __self__.email_notifications = email_notifications
+        pulumi.set(__self__, "email_notifications", email_notifications)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ip_whitelist_enabled and not isinstance(ip_whitelist_enabled, bool):
+            raise TypeError("Expected argument 'ip_whitelist_enabled' to be a bool")
+        pulumi.set(__self__, "ip_whitelist_enabled", ip_whitelist_enabled)
+        if lish_auth_method and not isinstance(lish_auth_method, str):
+            raise TypeError("Expected argument 'lish_auth_method' to be a str")
+        pulumi.set(__self__, "lish_auth_method", lish_auth_method)
+        if referrals and not isinstance(referrals, dict):
+            raise TypeError("Expected argument 'referrals' to be a dict")
+        pulumi.set(__self__, "referrals", referrals)
+        if restricted and not isinstance(restricted, bool):
+            raise TypeError("Expected argument 'restricted' to be a bool")
+        pulumi.set(__self__, "restricted", restricted)
+        if timezone and not isinstance(timezone, str):
+            raise TypeError("Expected argument 'timezone' to be a str")
+        pulumi.set(__self__, "timezone", timezone)
+        if two_factor_auth and not isinstance(two_factor_auth, bool):
+            raise TypeError("Expected argument 'two_factor_auth' to be a bool")
+        pulumi.set(__self__, "two_factor_auth", two_factor_auth)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="authorizedKeys")
+    def authorized_keys(self) -> List[str]:
+        return pulumi.get(self, "authorized_keys")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> bool:
+        return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ip_whitelist_enabled and not isinstance(ip_whitelist_enabled, bool):
-            raise TypeError("Expected argument 'ip_whitelist_enabled' to be a bool")
-        __self__.ip_whitelist_enabled = ip_whitelist_enabled
-        if lish_auth_method and not isinstance(lish_auth_method, str):
-            raise TypeError("Expected argument 'lish_auth_method' to be a str")
-        __self__.lish_auth_method = lish_auth_method
-        if referrals and not isinstance(referrals, dict):
-            raise TypeError("Expected argument 'referrals' to be a dict")
-        __self__.referrals = referrals
-        if restricted and not isinstance(restricted, bool):
-            raise TypeError("Expected argument 'restricted' to be a bool")
-        __self__.restricted = restricted
-        if timezone and not isinstance(timezone, str):
-            raise TypeError("Expected argument 'timezone' to be a str")
-        __self__.timezone = timezone
-        if two_factor_auth and not isinstance(two_factor_auth, bool):
-            raise TypeError("Expected argument 'two_factor_auth' to be a bool")
-        __self__.two_factor_auth = two_factor_auth
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipWhitelistEnabled")
+    def ip_whitelist_enabled(self) -> bool:
+        return pulumi.get(self, "ip_whitelist_enabled")
+
+    @property
+    @pulumi.getter(name="lishAuthMethod")
+    def lish_auth_method(self) -> str:
+        return pulumi.get(self, "lish_auth_method")
+
+    @property
+    @pulumi.getter
+    def referrals(self) -> 'outputs.GetProfileReferralsResult':
+        return pulumi.get(self, "referrals")
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> bool:
+        return pulumi.get(self, "restricted")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> str:
+        return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter(name="twoFactorAuth")
+    def two_factor_auth(self) -> bool:
+        return pulumi.get(self, "two_factor_auth")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+
 class AwaitableGetProfileResult(GetProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +132,8 @@ class AwaitableGetProfileResult(GetProfileResult):
             two_factor_auth=self.two_factor_auth,
             username=self.username)
 
-def get_profile(opts=None):
+
+def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProfileResult:
     """
     Provides information about a Linode profile.
 
@@ -118,23 +184,21 @@ def get_profile(opts=None):
     * `referrals.0.url` - The referral URL.
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__, opts=opts, typ=GetProfileResult).value
 
     return AwaitableGetProfileResult(
-        authorized_keys=__ret__.get('authorizedKeys'),
-        email=__ret__.get('email'),
-        email_notifications=__ret__.get('emailNotifications'),
-        id=__ret__.get('id'),
-        ip_whitelist_enabled=__ret__.get('ipWhitelistEnabled'),
-        lish_auth_method=__ret__.get('lishAuthMethod'),
-        referrals=__ret__.get('referrals'),
-        restricted=__ret__.get('restricted'),
-        timezone=__ret__.get('timezone'),
-        two_factor_auth=__ret__.get('twoFactorAuth'),
-        username=__ret__.get('username'))
+        authorized_keys=__ret__.authorized_keys,
+        email=__ret__.email,
+        email_notifications=__ret__.email_notifications,
+        id=__ret__.id,
+        ip_whitelist_enabled=__ret__.ip_whitelist_enabled,
+        lish_auth_method=__ret__.lish_auth_method,
+        referrals=__ret__.referrals,
+        restricted=__ret__.restricted,
+        timezone=__ret__.timezone,
+        two_factor_auth=__ret__.two_factor_auth,
+        username=__ret__.username)

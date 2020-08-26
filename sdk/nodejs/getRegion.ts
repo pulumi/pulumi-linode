@@ -40,7 +40,13 @@ export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getRegion.
  */
 export interface GetRegionArgs {
+    /**
+     * The country the region resides in.
+     */
     readonly country?: string;
+    /**
+     * The code name of the region to select.
+     */
     readonly id: string;
 }
 
@@ -48,6 +54,9 @@ export interface GetRegionArgs {
  * A collection of values returned by getRegion.
  */
 export interface GetRegionResult {
+    /**
+     * The country the region resides in.
+     */
     readonly country: string;
     readonly id: string;
 }

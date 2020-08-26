@@ -5,175 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Instance']
 
 
 class Instance(pulumi.CustomResource):
-    alerts: pulumi.Output[dict]
-    authorized_keys: pulumi.Output[list]
-    """
-    A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-    """
-    authorized_users: pulumi.Output[list]
-    """
-    A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
-    """
-    backup_id: pulumi.Output[float]
-    """
-    A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
-    """
-    backups: pulumi.Output[dict]
-    """
-    Information about this Linode's backups status.
-
-      * `enabled` (`bool`)
-      * `schedule` (`dict`)
-        * `day` (`str`)
-        * `window` (`str`)
-    """
-    backups_enabled: pulumi.Output[bool]
-    """
-    If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
-    """
-    boot_config_label: pulumi.Output[str]
-    """
-    The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-    """
-    configs: pulumi.Output[list]
-    """
-    Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-
-      * `comments` (`str`) - - Arbitrary user comments about this `config`.
-      * `devices` (`dict`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-        * `sda` (`dict`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdb` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdc` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdd` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sde` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdf` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdg` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-        * `sdh` (`dict`)
-          * `disk_id` (`float`) - The Disk ID of the associated `disk_label`, if used.
-          * `diskLabel` (`str`) - The `label` of the `disk` to map to this `device` slot.
-          * `volumeId` (`float`) - The Volume ID to map to this `device` slot.
-
-      * `helpers` (`dict`) - Helpers enabled when booting to this Linode Config.
-        * `devtmpfsAutomount` (`bool`)
-        * `distro` (`bool`) - Controls the behavior of the Linode Config's Distribution Helper setting.
-        * `modulesDep` (`bool`) - Creates a modules dependency file for the Kernel you run.
-        * `network` (`bool`) - Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
-        * `updatedbDisabled` (`bool`) - Disables updatedb cron job to avoid disk thrashing.
-
-      * `kernel` (`str`) - - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
-      * `label` (`str`) - The Config's label for display purposes.  Also used by `boot_config_label`.
-      * `memoryLimit` (`float`) - - Defaults to the total RAM of the Linode
-      * `rootDevice` (`str`) - - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-      * `runLevel` (`str`) - - Defines the state of your Linode after booting. Defaults to `"default"`.
-      * `virtMode` (`str`) - - Controls the virtualization mode. Defaults to `"paravirt"`.
-    """
-    disks: pulumi.Output[list]
-    group: pulumi.Output[str]
-    """
-    The display group of the Linode instance.
-    """
-    image: pulumi.Output[str]
-    """
-    An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
-    """
-    ip_address: pulumi.Output[str]
-    """
-    This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-    will be used for this field.
-    """
-    ipv4s: pulumi.Output[list]
-    """
-    This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-    private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-    """
-    ipv6: pulumi.Output[str]
-    """
-    This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
-    """
-    label: pulumi.Output[str]
-    """
-    The Config's label for display purposes.  Also used by `boot_config_label`.
-    """
-    private_ip: pulumi.Output[bool]
-    """
-    If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
-    """
-    private_ip_address: pulumi.Output[str]
-    """
-    This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-    Instances in a region.
-    """
-    region: pulumi.Output[str]
-    """
-    This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
-    """
-    root_pass: pulumi.Output[str]
-    """
-    The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-    """
-    specs: pulumi.Output[dict]
-    stackscript_data: pulumi.Output[dict]
-    """
-    An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-    """
-    stackscript_id: pulumi.Output[float]
-    """
-    The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
-    """
-    status: pulumi.Output[str]
-    """
-    The status of the instance, indicating the current readiness state.
-    """
-    swap_size: pulumi.Output[float]
-    """
-    When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of tags applied to this object. Tags are for organizational purposes only.
-    """
-    type: pulumi.Output[str]
-    """
-    The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-    """
-    watchdog_enabled: pulumi.Output[bool]
-    """
-    The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-    """
-    def __init__(__self__, resource_name, opts=None, alerts=None, authorized_keys=None, authorized_users=None, backup_id=None, backups_enabled=None, boot_config_label=None, configs=None, disks=None, group=None, image=None, label=None, private_ip=None, region=None, root_pass=None, stackscript_data=None, stackscript_id=None, swap_size=None, tags=None, type=None, watchdog_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alerts: Optional[pulumi.Input[pulumi.InputType['InstanceAlertsArgs']]] = None,
+                 authorized_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 authorized_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 backup_id: Optional[pulumi.Input[float]] = None,
+                 backups_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_config_label: Optional[pulumi.Input[str]] = None,
+                 configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 root_pass: Optional[pulumi.Input[str]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_id: Optional[pulumi.Input[float]] = None,
+                 swap_size: Optional[pulumi.Input[float]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 watchdog_enabled: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
         For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
@@ -214,27 +80,27 @@ class Instance(pulumi.CustomResource):
             size=20)
         web = linode.Instance("web",
             boot_config_label="boot_config",
-            configs=[{
-                "devices": {
-                    "sda": {
-                        "diskLabel": "boot",
-                    },
-                    "sdb": {
-                        "volumeId": web_volume.id,
-                    },
-                },
-                "kernel": "linode/latest-64bit",
-                "label": "boot_config",
-                "rootDevice": "/dev/sda",
-            }],
-            disks=[{
-                "authorized_keys": ["ssh-rsa AAAA...Gw== user@example.local"],
-                "authorized_users": [me.username],
-                "image": "linode/ubuntu18.04",
-                "label": "boot",
-                "root_pass": "terr4form-test",
-                "size": 3000,
-            }],
+            configs=[linode.InstanceConfigArgs(
+                devices=linode.InstanceConfigDevicesArgs(
+                    sda=linode.InstanceConfigDevicesSdaArgs(
+                        disk_label="boot",
+                    ),
+                    sdb=linode.InstanceConfigDevicesSdbArgs(
+                        volume_id=web_volume.id,
+                    ),
+                ),
+                kernel="linode/latest-64bit",
+                label="boot_config",
+                root_device="/dev/sda",
+            )],
+            disks=[linode.InstanceDiskArgs(
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+                authorized_users=[me.username],
+                image="linode/ubuntu18.04",
+                label="boot",
+                root_pass="terr4form-test",
+                size=3000,
+            )],
             group="foo",
             label="complex_instance",
             private_ip=True,
@@ -276,104 +142,24 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[list] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[list] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-        :param pulumi.Input[dict] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-
-        The **alerts** object supports the following:
-
-          * `cpu` (`pulumi.Input[float]`)
-          * `io` (`pulumi.Input[float]`)
-          * `networkIn` (`pulumi.Input[float]`)
-          * `networkOut` (`pulumi.Input[float]`)
-          * `transferQuota` (`pulumi.Input[float]`)
-
-        The **configs** object supports the following:
-
-          * `comments` (`pulumi.Input[str]`) - - Arbitrary user comments about this `config`.
-          * `devices` (`pulumi.Input[dict]`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-            * `sda` (`pulumi.Input[dict]`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdb` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdc` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdd` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sde` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdf` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdg` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdh` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-          * `helpers` (`pulumi.Input[dict]`) - Helpers enabled when booting to this Linode Config.
-            * `devtmpfsAutomount` (`pulumi.Input[bool]`)
-            * `distro` (`pulumi.Input[bool]`) - Controls the behavior of the Linode Config's Distribution Helper setting.
-            * `modulesDep` (`pulumi.Input[bool]`) - Creates a modules dependency file for the Kernel you run.
-            * `network` (`pulumi.Input[bool]`) - Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
-            * `updatedbDisabled` (`pulumi.Input[bool]`) - Disables updatedb cron job to avoid disk thrashing.
-
-          * `kernel` (`pulumi.Input[str]`) - - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
-          * `label` (`pulumi.Input[str]`) - The Config's label for display purposes.  Also used by `boot_config_label`.
-          * `memoryLimit` (`pulumi.Input[float]`) - - Defaults to the total RAM of the Linode
-          * `rootDevice` (`pulumi.Input[str]`) - - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-          * `runLevel` (`pulumi.Input[str]`) - - Defines the state of your Linode after booting. Defaults to `"default"`.
-          * `virtMode` (`pulumi.Input[str]`) - - Controls the virtualization mode. Defaults to `"paravirt"`.
-
-        The **disks** object supports the following:
-
-          * `authorized_keys` (`pulumi.Input[list]`) - A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-          * `authorized_users` (`pulumi.Input[list]`) - A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
-          * `filesystem` (`pulumi.Input[str]`) - The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-          * `id` (`pulumi.Input[float]`) - The ID of the disk in the Linode API.
-          * `image` (`pulumi.Input[str]`) - An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
-          * `label` (`pulumi.Input[str]`) - The Config's label for display purposes.  Also used by `boot_config_label`.
-          * `readOnly` (`pulumi.Input[bool]`)
-          * `root_pass` (`pulumi.Input[str]`) - The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-          * `size` (`pulumi.Input[float]`) - The size of the Disk in MB.
-          * `stackscript_data` (`pulumi.Input[dict]`) - An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-          * `stackscript_id` (`pulumi.Input[float]`) - The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -386,7 +172,7 @@ class Instance(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -428,26 +214,55 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alerts=None, authorized_keys=None, authorized_users=None, backup_id=None, backups=None, backups_enabled=None, boot_config_label=None, configs=None, disks=None, group=None, image=None, ip_address=None, ipv4s=None, ipv6=None, label=None, private_ip=None, private_ip_address=None, region=None, root_pass=None, specs=None, stackscript_data=None, stackscript_id=None, status=None, swap_size=None, tags=None, type=None, watchdog_enabled=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alerts: Optional[pulumi.Input[pulumi.InputType['InstanceAlertsArgs']]] = None,
+            authorized_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            authorized_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            backup_id: Optional[pulumi.Input[float]] = None,
+            backups: Optional[pulumi.Input[pulumi.InputType['InstanceBackupsArgs']]] = None,
+            backups_enabled: Optional[pulumi.Input[bool]] = None,
+            boot_config_label: Optional[pulumi.Input[str]] = None,
+            configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
+            disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
+            group: Optional[pulumi.Input[str]] = None,
+            image: Optional[pulumi.Input[str]] = None,
+            ip_address: Optional[pulumi.Input[str]] = None,
+            ipv4s: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ipv6: Optional[pulumi.Input[str]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            private_ip: Optional[pulumi.Input[bool]] = None,
+            private_ip_address: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            root_pass: Optional[pulumi.Input[str]] = None,
+            specs: Optional[pulumi.Input[pulumi.InputType['InstanceSpecsArgs']]] = None,
+            stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            stackscript_id: Optional[pulumi.Input[float]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            swap_size: Optional[pulumi.Input[float]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            watchdog_enabled: Optional[pulumi.Input[bool]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[list] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[dict] backups: Information about this Linode's backups status.
+        :param pulumi.Input[pulumi.InputType['InstanceBackupsArgs']] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[list] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
                will be used for this field.
-        :param pulumi.Input[list] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+        :param pulumi.Input[List[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
                private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
         :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
@@ -456,107 +271,13 @@ class Instance(pulumi.CustomResource):
                Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-        :param pulumi.Input[dict] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[float] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] status: The status of the instance, indicating the current readiness state.
         :param pulumi.Input[float] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-        :param pulumi.Input[list] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-
-        The **alerts** object supports the following:
-
-          * `cpu` (`pulumi.Input[float]`)
-          * `io` (`pulumi.Input[float]`)
-          * `networkIn` (`pulumi.Input[float]`)
-          * `networkOut` (`pulumi.Input[float]`)
-          * `transferQuota` (`pulumi.Input[float]`)
-
-        The **backups** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`)
-          * `schedule` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[str]`)
-            * `window` (`pulumi.Input[str]`)
-
-        The **configs** object supports the following:
-
-          * `comments` (`pulumi.Input[str]`) - - Arbitrary user comments about this `config`.
-          * `devices` (`pulumi.Input[dict]`) - A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-            * `sda` (`pulumi.Input[dict]`) - ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdb` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdc` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdd` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sde` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdf` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdg` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-            * `sdh` (`pulumi.Input[dict]`)
-              * `disk_id` (`pulumi.Input[float]`) - The Disk ID of the associated `disk_label`, if used.
-              * `diskLabel` (`pulumi.Input[str]`) - The `label` of the `disk` to map to this `device` slot.
-              * `volumeId` (`pulumi.Input[float]`) - The Volume ID to map to this `device` slot.
-
-          * `helpers` (`pulumi.Input[dict]`) - Helpers enabled when booting to this Linode Config.
-            * `devtmpfsAutomount` (`pulumi.Input[bool]`)
-            * `distro` (`pulumi.Input[bool]`) - Controls the behavior of the Linode Config's Distribution Helper setting.
-            * `modulesDep` (`pulumi.Input[bool]`) - Creates a modules dependency file for the Kernel you run.
-            * `network` (`pulumi.Input[bool]`) - Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
-            * `updatedbDisabled` (`pulumi.Input[bool]`) - Disables updatedb cron job to avoid disk thrashing.
-
-          * `kernel` (`pulumi.Input[str]`) - - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
-          * `label` (`pulumi.Input[str]`) - The Config's label for display purposes.  Also used by `boot_config_label`.
-          * `memoryLimit` (`pulumi.Input[float]`) - - Defaults to the total RAM of the Linode
-          * `rootDevice` (`pulumi.Input[str]`) - - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-          * `runLevel` (`pulumi.Input[str]`) - - Defines the state of your Linode after booting. Defaults to `"default"`.
-          * `virtMode` (`pulumi.Input[str]`) - - Controls the virtualization mode. Defaults to `"paravirt"`.
-
-        The **disks** object supports the following:
-
-          * `authorized_keys` (`pulumi.Input[list]`) - A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-          * `authorized_users` (`pulumi.Input[list]`) - A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
-          * `filesystem` (`pulumi.Input[str]`) - The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-          * `id` (`pulumi.Input[float]`) - The ID of the disk in the Linode API.
-          * `image` (`pulumi.Input[str]`) - An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
-          * `label` (`pulumi.Input[str]`) - The Config's label for display purposes.  Also used by `boot_config_label`.
-          * `readOnly` (`pulumi.Input[bool]`)
-          * `root_pass` (`pulumi.Input[str]`) - The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-          * `size` (`pulumi.Input[float]`) - The size of the Disk in MB.
-          * `stackscript_data` (`pulumi.Input[dict]`) - An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-          * `stackscript_id` (`pulumi.Input[float]`) - The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
-
-        The **specs** object supports the following:
-
-          * `disk` (`pulumi.Input[float]`)
-          * `memory` (`pulumi.Input[float]`)
-          * `transfer` (`pulumi.Input[float]`)
-          * `vcpus` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -591,8 +312,219 @@ class Instance(pulumi.CustomResource):
         __props__["watchdog_enabled"] = watchdog_enabled
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def alerts(self) -> 'outputs.InstanceAlerts':
+        return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter(name="authorizedKeys")
+    def authorized_keys(self) -> Optional[List[str]]:
+        """
+        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "authorized_keys")
+
+    @property
+    @pulumi.getter(name="authorizedUsers")
+    def authorized_users(self) -> Optional[List[str]]:
+        """
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "authorized_users")
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[float]:
+        """
+        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
+    @pulumi.getter
+    def backups(self) -> 'outputs.InstanceBackups':
+        """
+        Information about this Linode's backups status.
+        """
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter(name="backupsEnabled")
+    def backups_enabled(self) -> bool:
+        """
+        If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
+        """
+        return pulumi.get(self, "backups_enabled")
+
+    @property
+    @pulumi.getter(name="bootConfigLabel")
+    def boot_config_label(self) -> str:
+        """
+        The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        """
+        return pulumi.get(self, "boot_config_label")
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[List['outputs.InstanceConfig']]:
+        """
+        Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[List['outputs.InstanceDisk']]:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        The display group of the Linode instance.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
+        will be used for this field.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> List[str]:
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+        private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The Config's label for display purposes.  Also used by `boot_config_label`.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[bool]:
+        """
+        If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> str:
+        """
+        This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
+        Instances in a region.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="rootPass")
+    def root_pass(self) -> Optional[str]:
+        """
+        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        """
+        return pulumi.get(self, "root_pass")
+
+    @property
+    @pulumi.getter
+    def specs(self) -> 'outputs.InstanceSpecs':
+        return pulumi.get(self, "specs")
+
+    @property
+    @pulumi.getter(name="stackscriptData")
+    def stackscript_data(self) -> Optional[Mapping[str, Any]]:
+        """
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "stackscript_data")
+
+    @property
+    @pulumi.getter(name="stackscriptId")
+    def stackscript_id(self) -> Optional[float]:
+        """
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "stackscript_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the instance, indicating the current readiness state.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="swapSize")
+    def swap_size(self) -> float:
+        """
+        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+        """
+        return pulumi.get(self, "swap_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="watchdogEnabled")
+    def watchdog_enabled(self) -> Optional[bool]:
+        """
+        The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+        """
+        return pulumi.get(self, "watchdog_enabled")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

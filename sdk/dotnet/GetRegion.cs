@@ -46,9 +46,15 @@ namespace Pulumi.Linode
 
     public sealed class GetRegionArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The country the region resides in.
+        /// </summary>
         [Input("country")]
         public string? Country { get; set; }
 
+        /// <summary>
+        /// The code name of the region to select.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -61,6 +67,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetRegionResult
     {
+        /// <summary>
+        /// The country the region resides in.
+        /// </summary>
         public readonly string Country;
         public readonly string Id;
 
