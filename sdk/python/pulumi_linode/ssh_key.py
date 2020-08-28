@@ -13,7 +13,7 @@ __all__ = ['SshKey']
 
 class SshKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class SshKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def created(self) -> str:
+    def created(self) -> pulumi.Output[str]:
         """
         The date this key was added.
         """
@@ -102,7 +102,7 @@ class SshKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         A label for the SSH Key.
         """
@@ -110,7 +110,7 @@ class SshKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sshKey")
-    def ssh_key(self) -> str:
+    def ssh_key(self) -> pulumi.Output[str]:
         """
         The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """

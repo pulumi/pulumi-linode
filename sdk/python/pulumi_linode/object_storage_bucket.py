@@ -13,7 +13,7 @@ __all__ = ['ObjectStorageBucket']
 
 class ObjectStorageBucket(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cluster(self) -> str:
+    def cluster(self) -> pulumi.Output[str]:
         """
         The cluster of the Linode Object Storage Bucket.
         """
@@ -105,7 +105,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The label of the Linode Object Storage Bucket.
         """

@@ -15,7 +15,7 @@ __all__ = ['NodeBalancerConfig']
 
 class NodeBalancerConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  check: Optional[pulumi.Input[str]] = None,
@@ -210,7 +210,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def algorithm(self) -> str:
+    def algorithm(self) -> pulumi.Output[str]:
         """
         What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
         """
@@ -218,7 +218,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def check(self) -> str:
+    def check(self) -> pulumi.Output[str]:
         """
         The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
         """
@@ -226,7 +226,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkAttempts")
-    def check_attempts(self) -> float:
+    def check_attempts(self) -> pulumi.Output[float]:
         """
         How many times to attempt a check before considering a backend to be down. (1-30)
         """
@@ -234,7 +234,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkBody")
-    def check_body(self) -> str:
+    def check_body(self) -> pulumi.Output[str]:
         """
         This value must be present in the response body of the check in order for it to pass. If this value is not present in
         the response body of a check request, the backend is considered to be down
@@ -243,7 +243,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> float:
+    def check_interval(self) -> pulumi.Output[float]:
         """
         How often, in seconds, to check that backends are up and serving requests.
         """
@@ -251,7 +251,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkPassive")
-    def check_passive(self) -> bool:
+    def check_passive(self) -> pulumi.Output[bool]:
         """
         If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         """
@@ -259,7 +259,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkPath")
-    def check_path(self) -> str:
+    def check_path(self) -> pulumi.Output[str]:
         """
         The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         """
@@ -267,7 +267,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkTimeout")
-    def check_timeout(self) -> float:
+    def check_timeout(self) -> pulumi.Output[float]:
         """
         How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         """
@@ -275,7 +275,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cipherSuite")
-    def cipher_suite(self) -> str:
+    def cipher_suite(self) -> pulumi.Output[str]:
         """
         What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         """
@@ -283,12 +283,12 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeStatus")
-    def node_status(self) -> 'outputs.NodeBalancerConfigNodeStatus':
+    def node_status(self) -> pulumi.Output['outputs.NodeBalancerConfigNodeStatus']:
         return pulumi.get(self, "node_status")
 
     @property
     @pulumi.getter(name="nodebalancerId")
-    def nodebalancer_id(self) -> float:
+    def nodebalancer_id(self) -> pulumi.Output[float]:
         """
         The ID of the NodeBalancer to access.
         """
@@ -296,7 +296,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         """
@@ -304,7 +304,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[str]:
+    def protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         """
@@ -312,7 +312,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCert")
-    def ssl_cert(self) -> Optional[str]:
+    def ssl_cert(self) -> pulumi.Output[Optional[str]]:
         """
         The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
@@ -320,7 +320,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCommonname")
-    def ssl_commonname(self) -> str:
+    def ssl_commonname(self) -> pulumi.Output[str]:
         """
         The common name for the SSL certification this port is serving if this port is not configured to use SSL.
         """
@@ -328,7 +328,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslFingerprint")
-    def ssl_fingerprint(self) -> str:
+    def ssl_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
         """
@@ -336,7 +336,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslKey")
-    def ssl_key(self) -> Optional[str]:
+    def ssl_key(self) -> pulumi.Output[Optional[str]]:
         """
         The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
@@ -344,7 +344,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def stickiness(self) -> str:
+    def stickiness(self) -> pulumi.Output[str]:
         """
         Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
         """

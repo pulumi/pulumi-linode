@@ -13,7 +13,7 @@ __all__ = ['Rdns']
 
 class Rdns(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
@@ -87,7 +87,7 @@ class Rdns(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         """
@@ -95,7 +95,7 @@ class Rdns(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rdns(self) -> str:
+    def rdns(self) -> pulumi.Output[str]:
         """
         The name of the RDNS address.
         """

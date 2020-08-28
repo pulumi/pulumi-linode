@@ -13,7 +13,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  axfr_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -176,7 +176,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axfrIps")
-    def axfr_ips(self) -> Optional[List[str]]:
+    def axfr_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         """
@@ -184,7 +184,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for this Domain. This is for display purposes only.
         """
@@ -192,7 +192,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         """
@@ -200,7 +200,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expireSec")
-    def expire_sec(self) -> Optional[float]:
+    def expire_sec(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -208,7 +208,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> Optional[str]:
+    def group(self) -> pulumi.Output[Optional[str]]:
         """
         The group this Domain belongs to. This is for display purposes only.
         """
@@ -216,7 +216,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterIps")
-    def master_ips(self) -> Optional[List[str]]:
+    def master_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IP addresses representing the master DNS for this Domain.
         """
@@ -224,7 +224,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshSec")
-    def refresh_sec(self) -> Optional[float]:
+    def refresh_sec(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -232,7 +232,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retrySec")
-    def retry_sec(self) -> Optional[float]:
+    def retry_sec(self) -> pulumi.Output[Optional[float]]:
         """
         The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -240,7 +240,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="soaEmail")
-    def soa_email(self) -> Optional[str]:
+    def soa_email(self) -> pulumi.Output[Optional[str]]:
         """
         Start of Authority email address. This is required for master Domains.
         """
@@ -248,7 +248,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Used to control whether this Domain is currently being rendered (defaults to "active").
         """
@@ -256,7 +256,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """
@@ -264,7 +264,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ttlSec")
-    def ttl_sec(self) -> Optional[float]:
+    def ttl_sec(self) -> pulumi.Output[Optional[float]]:
         """
         'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -272,7 +272,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """

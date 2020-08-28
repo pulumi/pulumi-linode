@@ -13,7 +13,7 @@ __all__ = ['ObjectStorageKey']
 
 class ObjectStorageKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -101,7 +101,7 @@ class ObjectStorageKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
+    def access_key(self) -> pulumi.Output[str]:
         """
         This keypair's access key. This is not secret.
         """
@@ -109,7 +109,7 @@ class ObjectStorageKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The label given to this key. For display purposes only.
         """
@@ -117,7 +117,7 @@ class ObjectStorageKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
+    def secret_key(self) -> pulumi.Output[str]:
         """
         This keypair's secret key.
         """

@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alerts: Optional[pulumi.Input[pulumi.InputType['InstanceAlertsArgs']]] = None,
                  authorized_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -314,12 +314,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def alerts(self) -> 'outputs.InstanceAlerts':
+    def alerts(self) -> pulumi.Output['outputs.InstanceAlerts']:
         return pulumi.get(self, "alerts")
 
     @property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> Optional[List[str]]:
+    def authorized_keys(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
@@ -327,7 +327,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedUsers")
-    def authorized_users(self) -> Optional[List[str]]:
+    def authorized_users(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         """
@@ -335,7 +335,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupId")
-    def backup_id(self) -> Optional[float]:
+    def backup_id(self) -> pulumi.Output[Optional[float]]:
         """
         A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         """
@@ -343,7 +343,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backups(self) -> 'outputs.InstanceBackups':
+    def backups(self) -> pulumi.Output['outputs.InstanceBackups']:
         """
         Information about this Linode's backups status.
         """
@@ -351,7 +351,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupsEnabled")
-    def backups_enabled(self) -> bool:
+    def backups_enabled(self) -> pulumi.Output[bool]:
         """
         If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         """
@@ -359,7 +359,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootConfigLabel")
-    def boot_config_label(self) -> str:
+    def boot_config_label(self) -> pulumi.Output[str]:
         """
         The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         """
@@ -367,7 +367,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configs(self) -> Optional[List['outputs.InstanceConfig']]:
+    def configs(self) -> pulumi.Output[Optional[List['outputs.InstanceConfig']]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
@@ -375,12 +375,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[List['outputs.InstanceDisk']]:
+    def disks(self) -> pulumi.Output[Optional[List['outputs.InstanceDisk']]]:
         return pulumi.get(self, "disks")
 
     @property
     @pulumi.getter
-    def group(self) -> Optional[str]:
+    def group(self) -> pulumi.Output[Optional[str]]:
         """
         The display group of the Linode instance.
         """
@@ -388,7 +388,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def image(self) -> Optional[str]:
+    def image(self) -> pulumi.Output[Optional[str]]:
         """
         An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         """
@@ -396,7 +396,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
         will be used for this field.
@@ -405,7 +405,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ipv4s(self) -> List[str]:
+    def ipv4s(self) -> pulumi.Output[List[str]]:
         """
         This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
         private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -414,7 +414,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ipv6(self) -> str:
+    def ipv6(self) -> pulumi.Output[str]:
         """
         This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
         """
@@ -422,7 +422,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The Config's label for display purposes.  Also used by `boot_config_label`.
         """
@@ -430,7 +430,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[bool]:
+    def private_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         """
@@ -438,7 +438,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> str:
+    def private_ip_address(self) -> pulumi.Output[str]:
         """
         This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
         Instances in a region.
@@ -447,7 +447,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         """
@@ -455,7 +455,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootPass")
-    def root_pass(self) -> Optional[str]:
+    def root_pass(self) -> pulumi.Output[Optional[str]]:
         """
         The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         """
@@ -463,12 +463,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specs(self) -> 'outputs.InstanceSpecs':
+    def specs(self) -> pulumi.Output['outputs.InstanceSpecs']:
         return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[Mapping[str, Any]]:
+    def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         """
@@ -476,7 +476,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stackscriptId")
-    def stackscript_id(self) -> Optional[float]:
+    def stackscript_id(self) -> pulumi.Output[Optional[float]]:
         """
         The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
@@ -484,7 +484,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the instance, indicating the current readiness state.
         """
@@ -492,7 +492,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="swapSize")
-    def swap_size(self) -> float:
+    def swap_size(self) -> pulumi.Output[float]:
         """
         When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         """
@@ -500,7 +500,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """
@@ -508,7 +508,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         """
@@ -516,7 +516,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="watchdogEnabled")
-    def watchdog_enabled(self) -> Optional[bool]:
+    def watchdog_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
