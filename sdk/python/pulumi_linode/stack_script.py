@@ -15,7 +15,7 @@ __all__ = ['StackScript']
 
 class StackScript(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -210,7 +210,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def created(self) -> str:
+    def created(self) -> pulumi.Output[str]:
         """
         The date this StackScript was created.
         """
@@ -218,7 +218,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentsActive")
-    def deployments_active(self) -> float:
+    def deployments_active(self) -> pulumi.Output[float]:
         """
         Count of currently active, deployed Linodes created from this StackScript.
         """
@@ -226,7 +226,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentsTotal")
-    def deployments_total(self) -> float:
+    def deployments_total(self) -> pulumi.Output[float]:
         """
         The total number of times this StackScript has been deployed.
         """
@@ -234,7 +234,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A description for the StackScript.
         """
@@ -242,7 +242,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def images(self) -> List[str]:
+    def images(self) -> pulumi.Output[List[str]]:
         """
         An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         """
@@ -250,7 +250,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[bool]:
+    def is_public(self) -> pulumi.Output[Optional[bool]]:
         """
         This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         """
@@ -258,7 +258,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The StackScript's label is for display purposes only.
         """
@@ -266,7 +266,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revNote")
-    def rev_note(self) -> Optional[str]:
+    def rev_note(self) -> pulumi.Output[Optional[str]]:
         """
         This field allows you to add notes for the set of revisions made to this StackScript.
         """
@@ -274,7 +274,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def script(self) -> str:
+    def script(self) -> pulumi.Output[str]:
         """
         The script to execute when provisioning a new Linode with this StackScript.
         """
@@ -282,7 +282,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def updated(self) -> str:
+    def updated(self) -> pulumi.Output[str]:
         """
         The date this StackScript was updated.
         """
@@ -290,7 +290,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> List['outputs.StackScriptUserDefinedField']:
+    def user_defined_fields(self) -> pulumi.Output[List['outputs.StackScriptUserDefinedField']]:
         """
         This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
         parameters during deployment.
@@ -299,7 +299,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userGravatarId")
-    def user_gravatar_id(self) -> str:
+    def user_gravatar_id(self) -> pulumi.Output[str]:
         """
         The Gravatar ID for the User who created the StackScript.
         """
@@ -307,7 +307,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         The User who created the StackScript.
         """

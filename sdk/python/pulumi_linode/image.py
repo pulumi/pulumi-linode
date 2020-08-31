@@ -13,7 +13,7 @@ __all__ = ['Image']
 
 class Image(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[float]] = None,
@@ -175,7 +175,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def created(self) -> str:
+    def created(self) -> pulumi.Output[str]:
         """
         When this Image was created.
         """
@@ -183,7 +183,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> str:
+    def created_by(self) -> pulumi.Output[str]:
         """
         The name of the User who created this Image.
         """
@@ -191,7 +191,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def deprecated(self) -> bool:
+    def deprecated(self) -> pulumi.Output[bool]:
         """
         Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         """
@@ -199,7 +199,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A detailed description of this Image.
         """
@@ -207,7 +207,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> float:
+    def disk_id(self) -> pulumi.Output[float]:
         """
         The ID of the Linode Disk that this Image will be created from.
         """
@@ -215,7 +215,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expiry(self) -> str:
+    def expiry(self) -> pulumi.Output[str]:
         """
         Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         """
@@ -223,7 +223,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> bool:
+    def is_public(self) -> pulumi.Output[bool]:
         """
         True if the Image is public.
         """
@@ -231,7 +231,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         A short description of the Image. Labels cannot contain special characters.
         """
@@ -239,7 +239,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> float:
+    def linode_id(self) -> pulumi.Output[float]:
         """
         The ID of the Linode that this Image will be created from.
         """
@@ -247,7 +247,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The minimum size this Image needs to deploy. Size is in MB.
         """
@@ -255,7 +255,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
         a deleted Linode.
@@ -264,7 +264,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vendor(self) -> str:
+    def vendor(self) -> pulumi.Output[str]:
         """
         The upstream distribution vendor. Nil for private Images.
         """

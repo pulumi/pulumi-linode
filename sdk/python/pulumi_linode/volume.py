@@ -13,7 +13,7 @@ __all__ = ['Volume']
 
 class Volume(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[float]] = None,
@@ -158,7 +158,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filesystemPath")
-    def filesystem_path(self) -> str:
+    def filesystem_path(self) -> pulumi.Output[str]:
         """
         The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
         Volume label.
@@ -167,7 +167,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The label of the Linode Volume
         """
@@ -175,7 +175,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> float:
+    def linode_id(self) -> pulumi.Output[float]:
         """
         The ID of a Linode Instance where the the Volume should be attached.
         """
@@ -183,7 +183,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
         """
@@ -191,7 +191,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         Size of the Volume in GB.
         """
@@ -199,7 +199,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the volume, indicating the current readiness state.
         """
@@ -207,7 +207,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """

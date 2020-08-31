@@ -15,7 +15,7 @@ __all__ = ['Firewall']
 
 class Firewall(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  inbounds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
@@ -146,7 +146,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def devices(self) -> List['outputs.FirewallDevice']:
+    def devices(self) -> pulumi.Output[List['outputs.FirewallDevice']]:
         """
         The devices associated with this firewall.
         """
@@ -154,7 +154,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         If `true`, the Firewall's rules are not enforced (defaults to `false`).
         """
@@ -162,7 +162,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inbounds(self) -> Optional[List['outputs.FirewallInbound']]:
+    def inbounds(self) -> pulumi.Output[Optional[List['outputs.FirewallInbound']]]:
         """
         A firewall rule that specifies what inbound network traffic is allowed.
         """
@@ -170,7 +170,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         This Firewall's unique label.
         """
@@ -178,7 +178,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def linodes(self) -> List[float]:
+    def linodes(self) -> pulumi.Output[List[float]]:
         """
         A list of IDs of Linodes this Firewall should govern it's network traffic for.
         """
@@ -186,7 +186,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def outbounds(self) -> Optional[List['outputs.FirewallOutbound']]:
+    def outbounds(self) -> pulumi.Output[Optional[List['outputs.FirewallOutbound']]]:
         """
         A firewall rule that specifies what outbound network traffic is allowed.
         """
@@ -194,7 +194,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the Firewall.
         """
@@ -202,7 +202,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """

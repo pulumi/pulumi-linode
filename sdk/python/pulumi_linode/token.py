@@ -13,7 +13,7 @@ __all__ = ['Token']
 
 class Token(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expiry: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def created(self) -> str:
+    def created(self) -> pulumi.Output[str]:
         """
         The date and time this token was created.
         """
@@ -129,7 +129,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expiry(self) -> Optional[str]:
+    def expiry(self) -> pulumi.Output[Optional[str]]:
         """
         When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         """
@@ -137,7 +137,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> Optional[str]:
+    def label(self) -> pulumi.Output[Optional[str]]:
         """
         A label for the Token.
         """
@@ -145,7 +145,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> str:
+    def scopes(self) -> pulumi.Output[str]:
         """
         The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
         """
@@ -153,7 +153,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         """
         The token used to access the API.
         """

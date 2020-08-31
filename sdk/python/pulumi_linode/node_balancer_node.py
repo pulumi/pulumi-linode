@@ -13,7 +13,7 @@ __all__ = ['NodeBalancerNode']
 
 class NodeBalancerNode(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  config_id: Optional[pulumi.Input[float]] = None,
@@ -167,7 +167,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The private IP Address where this backend can be reached. This must be a private IP address.
         """
@@ -175,7 +175,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configId")
-    def config_id(self) -> float:
+    def config_id(self) -> pulumi.Output[float]:
         """
         The ID of the NodeBalancerConfig to access.
         """
@@ -183,7 +183,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The label of the Linode NodeBalancer Node. This is for display purposes only.
         """
@@ -191,7 +191,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def mode(self) -> pulumi.Output[str]:
         """
         The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
         """
@@ -199,7 +199,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodebalancerId")
-    def nodebalancer_id(self) -> float:
+    def nodebalancer_id(self) -> pulumi.Output[float]:
         """
         The ID of the NodeBalancer to access.
         """
@@ -207,7 +207,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         """
@@ -215,7 +215,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         """
         Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """

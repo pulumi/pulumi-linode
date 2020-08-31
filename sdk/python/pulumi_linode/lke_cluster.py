@@ -15,7 +15,7 @@ __all__ = ['LkeCluster']
 
 class LkeCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiEndpoints")
-    def api_endpoints(self) -> List[str]:
+    def api_endpoints(self) -> pulumi.Output[List[str]]:
         """
         The endpoints for the Kubernetes API server.
         """
@@ -144,7 +144,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="k8sVersion")
-    def k8s_version(self) -> str:
+    def k8s_version(self) -> pulumi.Output[str]:
         """
         The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         """
@@ -152,7 +152,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kubeconfig(self) -> str:
+    def kubeconfig(self) -> pulumi.Output[str]:
         """
         The base64 encoded kubeconfig for the Kubernetes cluster.
         """
@@ -160,7 +160,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         This Kubernetes cluster's unique label.
         """
@@ -168,7 +168,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pools(self) -> List['outputs.LkeClusterPool']:
+    def pools(self) -> pulumi.Output[List['outputs.LkeClusterPool']]:
         """
         Additional nested attributes:
         """
@@ -176,7 +176,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         This Kubernetes cluster's location.
         """
@@ -184,7 +184,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the node.
         """
@@ -192,7 +192,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
