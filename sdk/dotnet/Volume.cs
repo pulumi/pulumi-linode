@@ -105,7 +105,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a Linode Instance where the the Volume should be attached.
+        /// The ID of a Linode Instance where the Volume should be attached.
         /// </summary>
         [Output("linodeId")]
         public Output<int> LinodeId { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a Linode Instance where the the Volume should be attached.
+        /// The ID of a Linode Instance where the Volume should be attached.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The ID of a Linode Instance where the the Volume should be attached.
+        /// The ID of a Linode Instance where the Volume should be attached.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class FirewallOutbound
     {
         /// <summary>
-        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         /// </summary>
         public readonly ImmutableArray<string> Addresses;
         /// <summary>

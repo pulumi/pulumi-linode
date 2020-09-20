@@ -26,6 +26,7 @@ export * from "./nodeBalancerConfig";
 export * from "./nodeBalancerNode";
 export * from "./objectStorageBucket";
 export * from "./objectStorageKey";
+export * from "./objectStorageObject";
 export * from "./provider";
 export * from "./rdns";
 export * from "./sshKey";

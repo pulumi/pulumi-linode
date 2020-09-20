@@ -27,7 +27,7 @@ export interface FirewallDevice {
 
 export interface FirewallInbound {
     /**
-     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
     addresses: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -42,7 +42,7 @@ export interface FirewallInbound {
 
 export interface FirewallOutbound {
     /**
-     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
     addresses: pulumi.Input<pulumi.Input<string>[]>;
     /**

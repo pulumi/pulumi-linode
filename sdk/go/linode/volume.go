@@ -101,7 +101,7 @@ type Volume struct {
 	FilesystemPath pulumi.StringOutput `pulumi:"filesystemPath"`
 	// The label of the Linode Volume
 	Label pulumi.StringOutput `pulumi:"label"`
-	// The ID of a Linode Instance where the the Volume should be attached.
+	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
 	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -152,7 +152,7 @@ type volumeState struct {
 	FilesystemPath *string `pulumi:"filesystemPath"`
 	// The label of the Linode Volume
 	Label *string `pulumi:"label"`
-	// The ID of a Linode Instance where the the Volume should be attached.
+	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
 	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
 	Region *string `pulumi:"region"`
@@ -170,7 +170,7 @@ type VolumeState struct {
 	FilesystemPath pulumi.StringPtrInput
 	// The label of the Linode Volume
 	Label pulumi.StringPtrInput
-	// The ID of a Linode Instance where the the Volume should be attached.
+	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
 	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringPtrInput
@@ -189,7 +189,7 @@ func (VolumeState) ElementType() reflect.Type {
 type volumeArgs struct {
 	// The label of the Linode Volume
 	Label string `pulumi:"label"`
-	// The ID of a Linode Instance where the the Volume should be attached.
+	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
 	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
 	Region string `pulumi:"region"`
@@ -203,7 +203,7 @@ type volumeArgs struct {
 type VolumeArgs struct {
 	// The label of the Linode Volume
 	Label pulumi.StringInput
-	// The ID of a Linode Instance where the the Volume should be attached.
+	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
 	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringInput

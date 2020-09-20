@@ -115,7 +115,7 @@ class FirewallInbound(dict):
                  ports: List[str],
                  protocol: str):
         """
-        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         :param List[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
         """
@@ -127,7 +127,7 @@ class FirewallInbound(dict):
     @pulumi.getter
     def addresses(self) -> List[str]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 
@@ -158,7 +158,7 @@ class FirewallOutbound(dict):
                  ports: List[str],
                  protocol: str):
         """
-        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         :param List[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
         """
@@ -170,7 +170,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def addresses(self) -> List[str]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 

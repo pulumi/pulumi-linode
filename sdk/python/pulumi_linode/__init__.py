@@ -27,6 +27,7 @@ from .node_balancer_config import *
 from .node_balancer_node import *
 from .object_storage_bucket import *
 from .object_storage_key import *
+from .object_storage_object import *
 from .provider import *
 from .rdns import *
 from .ssh_key import *

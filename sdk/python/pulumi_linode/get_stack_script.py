@@ -170,6 +170,9 @@ def get_stack_script(id: Optional[float] = None,
 
     ```python
     import pulumi
+    import pulumi_linode as linode
+
+    my_stackscript = linode.get_stack_script(id=355872)
     ```
     ## Attributes
 

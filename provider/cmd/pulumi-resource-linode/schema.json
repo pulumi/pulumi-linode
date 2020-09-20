@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`linode` Terraform Provider](https://github.com/terraform-providers/terraform-provider-linode).",
+    "attribution": "This Pulumi package is based on the [`linode` Terraform Provider](https://github.com/linode/terraform-provider-linode).",
     "repository": "https://github.com/pulumi/pulumi-linode",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -124,7 +124,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.\n",
+                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -167,7 +167,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.\n",
+                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3268,6 +3268,266 @@
                 "type": "object"
             }
         },
+        "linode:index/objectStorageObject:ObjectStorageObject": {
+            "description": "Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Uploading plaintext to a bucket\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    secretKey: linode_object_storage_key.my_key.secret_key,\n    accessKey: linode_object_storage_key.my_key.access_key,\n    content: \"This is the content of the Object...\",\n    contentType: \"text/plain\",\n    contentLanguage: \"en\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    secret_key=linode_object_storage_key[\"my_key\"][\"secret_key\"],\n    access_key=linode_object_storage_key[\"my_key\"][\"access_key\"],\n    content=\"This is the content of the Object...\",\n    content_type=\"text/plain\",\n    content_language=\"en\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @object = new Linode.ObjectStorageObject(\"object\", new Linode.ObjectStorageObjectArgs\n        {\n            Bucket = \"my-bucket\",\n            Cluster = \"us-east-1\",\n            Key = \"my-object\",\n            SecretKey = linode_object_storage_key.My_key.Secret_key,\n            AccessKey = linode_object_storage_key.My_key.Access_key,\n            Content = \"This is the content of the Object...\",\n            ContentType = \"text/plain\",\n            ContentLanguage = \"en\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:          pulumi.String(\"my-bucket\"),\n\t\t\tCluster:         pulumi.String(\"us-east-1\"),\n\t\t\tKey:             pulumi.String(\"my-object\"),\n\t\t\tSecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),\n\t\t\tAccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),\n\t\t\tContent:         pulumi.String(\"This is the content of the Object...\"),\n\t\t\tContentType:     pulumi.String(\"text/plain\"),\n\t\t\tContentLanguage: pulumi.String(\"en\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "The access key to authenticate with.\n"
+                },
+                "acl": {
+                    "type": "string",
+                    "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket to put the object in.\n"
+                },
+                "cacheControl": {
+                    "type": "string",
+                    "description": "Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.\n"
+                },
+                "cluster": {
+                    "type": "string",
+                    "description": "The cluster the bucket is in.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.\n"
+                },
+                "contentBase64": {
+                    "type": "string",
+                    "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
+                },
+                "contentDisposition": {
+                    "type": "string",
+                    "description": "Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.\n"
+                },
+                "contentEncoding": {
+                    "type": "string",
+                    "description": "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.\n"
+                },
+                "contentLanguage": {
+                    "type": "string",
+                    "description": "The language the content is in e.g. en-US or en-GB.\n"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "They name of the object once it is in the bucket.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of keys/values to provision metadata.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "The secret key to authenitcate with.\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.\n"
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "A unique version ID value for the object.\n"
+                },
+                "websiteRedirect": {
+                    "type": "string",
+                    "description": "Specifies a target URL for website redirect.\n"
+                }
+            },
+            "required": [
+                "accessKey",
+                "bucket",
+                "cluster",
+                "contentType",
+                "etag",
+                "key",
+                "secretKey",
+                "versionId"
+            ],
+            "inputProperties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "The access key to authenticate with.\n"
+                },
+                "acl": {
+                    "type": "string",
+                    "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket to put the object in.\n"
+                },
+                "cacheControl": {
+                    "type": "string",
+                    "description": "Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.\n"
+                },
+                "cluster": {
+                    "type": "string",
+                    "description": "The cluster the bucket is in.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.\n"
+                },
+                "contentBase64": {
+                    "type": "string",
+                    "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
+                },
+                "contentDisposition": {
+                    "type": "string",
+                    "description": "Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.\n"
+                },
+                "contentEncoding": {
+                    "type": "string",
+                    "description": "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.\n"
+                },
+                "contentLanguage": {
+                    "type": "string",
+                    "description": "The language the content is in e.g. en-US or en-GB.\n"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "They name of the object once it is in the bucket.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of keys/values to provision metadata.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "The secret key to authenitcate with.\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.\n"
+                },
+                "websiteRedirect": {
+                    "type": "string",
+                    "description": "Specifies a target URL for website redirect.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessKey",
+                "bucket",
+                "cluster",
+                "key",
+                "secretKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ObjectStorageObject resources.\n",
+                "properties": {
+                    "accessKey": {
+                        "type": "string",
+                        "description": "The access key to authenticate with.\n"
+                    },
+                    "acl": {
+                        "type": "string",
+                        "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                    },
+                    "bucket": {
+                        "type": "string",
+                        "description": "The name of the bucket to put the object in.\n"
+                    },
+                    "cacheControl": {
+                        "type": "string",
+                        "description": "Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.\n"
+                    },
+                    "cluster": {
+                        "type": "string",
+                        "description": "The cluster the bucket is in.\n"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.\n"
+                    },
+                    "contentBase64": {
+                        "type": "string",
+                        "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
+                    },
+                    "contentDisposition": {
+                        "type": "string",
+                        "description": "Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.\n"
+                    },
+                    "contentEncoding": {
+                        "type": "string",
+                        "description": "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.\n"
+                    },
+                    "contentLanguage": {
+                        "type": "string",
+                        "description": "The language the content is in e.g. en-US or en-GB.\n"
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
+                    },
+                    "etag": {
+                        "type": "string"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "They name of the object once it is in the bucket.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of keys/values to provision metadata.\n"
+                    },
+                    "secretKey": {
+                        "type": "string",
+                        "description": "The secret key to authenitcate with.\n"
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.\n"
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "A unique version ID value for the object.\n"
+                    },
+                    "websiteRedirect": {
+                        "type": "string",
+                        "description": "Specifies a target URL for website redirect.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "linode:index/rdns:Rdns": {
             "description": "Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.\n\nLinode RDNS names must have a matching address value in an A or AAAA record.  This A or AAAA name must be resolvable at the time the RDNS resource is being associated.\n\nFor more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.\n",
             "properties": {
@@ -3675,7 +3935,7 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of a Linode Instance where the the Volume should be attached.\n"
+                    "description": "The ID of a Linode Instance where the Volume should be attached.\n"
                 },
                 "region": {
                     "type": "string",
@@ -3712,7 +3972,7 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of a Linode Instance where the the Volume should be attached.\n"
+                    "description": "The ID of a Linode Instance where the Volume should be attached.\n"
                 },
                 "region": {
                     "type": "string",
@@ -3747,7 +4007,7 @@
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of a Linode Instance where the the Volume should be attached.\n"
+                        "description": "The ID of a Linode Instance where the Volume should be attached.\n"
                     },
                     "region": {
                         "type": "string",
@@ -3775,7 +4035,7 @@
     },
     "functions": {
         "linode:index/getAccount:getAccount": {
-            "description": "Provides information about a Linode account.\n\nThis data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access account details.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst account = pulumi.output(linode.getAccount({ async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\naccount = linode.get_account()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var account = Output.Create(Linode.GetAccount.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetAccount(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Account resource exports the following attributes:\n\n* `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.\n\n* `first_name` - The first name of the person associated with this Account.\n\n* `last_name` - The last name of the person associated with this Account.\n\n* `company` - The company name associated with this Account.\n\n* `address_1` - First line of this Account's billing address.\n\n* `address_2` - Second line of this Account's billing address.\n\n* `phone` - The phone number associated with this Account.\n\n* `city` - The city for this Account's billing address.\n\n* `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.\n\n* `country` - The two-letter country code of this Account's billing address.\n\n* `zip` - The zip code of this Account's billing address.\n\n* `balance` - This Account's balance, in US dollars.\n",
+            "description": "Provides information about a Linode account.\n\nThis data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access account details.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst account = pulumi.output(linode.getAccount({ async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\naccount = linode.get_account()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var account = Output.Create(Linode.GetAccount.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetAccount(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Account resource exports the following attributes:\n\n* `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.\n\n* `first_name` - The first name of the person associated with this Account.\n\n* `last_name` - The last name of the person associated with this Account.\n\n* `company` - The company name associated with this Account.\n\n* `address_1` - First line of this Account's billing address.\n\n* `address_2` - Second line of this Account's billing address.\n\n* `phone` - The phone number associated with this Account.\n\n* `city` - The city for this Account's billing address.\n\n* `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.\n\n* `country` - The two-letter country code of this Account's billing address.\n\n* `zip` - The zip code of this Account's billing address.\n\n* `balance` - This Account's balance, in US dollars.\n",
             "outputs": {
                 "description": "A collection of values returned by getAccount.\n",
                 "properties": {
@@ -4400,7 +4660,7 @@
             }
         },
         "linode:index/getStackScript:getStackScript": {
-            "description": "Provides details about a specific Linode StackScript.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode StackScript.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `label` - The StackScript's label is for display purposes only.\n\n* `script` - The script to execute when provisioning a new Linode with this StackScript.\n\n* `description` - A description for the StackScript.\n\n* `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.\n\n* `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.\n\n* `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n",
+            "description": "Provides details about a specific Linode StackScript.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode StackScript.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myStackscript = pulumi.output(linode.getStackScript({\n    id: 355872,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_stackscript = linode.get_stack_script(id=355872)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myStackscript = Output.Create(Linode.GetStackScript.InvokeAsync(new Linode.GetStackScriptArgs\n        {\n            Id = 355872,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupStackScript(ctx, \u0026linode.LookupStackScriptArgs{\n\t\t\tId: 355872,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `label` - The StackScript's label is for display purposes only.\n\n* `script` - The script to execute when provisioning a new Linode with this StackScript.\n\n* `description` - A description for the StackScript.\n\n* `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.\n\n* `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.\n\n* `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getStackScript.\n",
                 "properties": {
@@ -4628,11 +4888,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing linode cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-linode` repo](https://github.com/terraform-providers/terraform-provider-linode/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`linode/terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-linode` repo](https://github.com/terraform-providers/terraform-provider-linode/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`linode/terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
             },

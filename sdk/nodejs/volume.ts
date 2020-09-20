@@ -96,7 +96,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * The ID of a Linode Instance where the the Volume should be attached.
+     * The ID of a Linode Instance where the Volume should be attached.
      */
     public readonly linodeId!: pulumi.Output<number>;
     /**
@@ -176,7 +176,7 @@ export interface VolumeState {
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The ID of a Linode Instance where the the Volume should be attached.
+     * The ID of a Linode Instance where the Volume should be attached.
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
@@ -206,7 +206,7 @@ export interface VolumeArgs {
      */
     readonly label: pulumi.Input<string>;
     /**
-     * The ID of a Linode Instance where the the Volume should be attached.
+     * The ID of a Linode Instance where the Volume should be attached.
      */
     readonly linodeId?: pulumi.Input<number>;
     /**

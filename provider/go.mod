@@ -6,10 +6,10 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.11.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0
 	github.com/pulumi/pulumi/sdk/v2 v2.10.0
-	github.com/terraform-providers/terraform-provider-linode v1.11.0
+	github.com/linode/terraform-provider-linode v1.11.0
 )
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/terraform-providers/terraform-provider-linode => github.com/pulumi/terraform-provider-linode v1.11.2-0.20200608172651-b34e6e561291
+	github.com/linode/terraform-provider-linode => github.com/pulumi/terraform-provider-linode v1.11.2-0.20200920184430-b6b797a936cb
 )

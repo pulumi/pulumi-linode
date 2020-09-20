@@ -141,7 +141,7 @@ func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput
 }
 
 type FirewallInbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 	Addresses []string `pulumi:"addresses"`
 	// A list of ports and/or port ranges (i.e. "443" or "80-90").
 	Ports []string `pulumi:"ports"`
@@ -161,7 +161,7 @@ type FirewallInboundInput interface {
 }
 
 type FirewallInboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// A list of ports and/or port ranges (i.e. "443" or "80-90").
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
@@ -220,7 +220,7 @@ func (o FirewallInboundOutput) ToFirewallInboundOutputWithContext(ctx context.Co
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 func (o FirewallInboundOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -256,7 +256,7 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 	Addresses []string `pulumi:"addresses"`
 	// A list of ports and/or port ranges (i.e. "443" or "80-90").
 	Ports []string `pulumi:"ports"`
@@ -276,7 +276,7 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// A list of ports and/or port ranges (i.e. "443" or "80-90").
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
@@ -335,7 +335,7 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
 func (o FirewallOutboundOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
