@@ -15,6 +15,11 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myStackscript = pulumi.output(linode.getStackScript({
+ *     id: 355872,
+ * }, { async: true }));
  * ```
  * ## Attributes
  *

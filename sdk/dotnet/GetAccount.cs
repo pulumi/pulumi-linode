@@ -14,7 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode account.
         /// 
-        /// This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/docs/providers/linode/index.html#debugging) for more details.
+        /// This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

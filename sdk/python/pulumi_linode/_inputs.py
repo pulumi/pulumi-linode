@@ -126,7 +126,7 @@ class FirewallInboundArgs:
                  ports: pulumi.Input[List[pulumi.Input[str]]],
                  protocol: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         :param pulumi.Input[List[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
         """
@@ -138,7 +138,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def addresses(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 
@@ -178,7 +178,7 @@ class FirewallOutboundArgs:
                  ports: pulumi.Input[List[pulumi.Input[str]]],
                  protocol: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         :param pulumi.Input[List[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
         """
@@ -190,7 +190,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def addresses(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 

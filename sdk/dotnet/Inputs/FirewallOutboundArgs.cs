@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to whitelist all) this rule applies to.
+        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         /// </summary>
         public InputList<string> Addresses
         {

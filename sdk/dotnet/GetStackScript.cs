@@ -22,11 +22,16 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
         /// 
         /// class MyStack : Stack
         /// {
         ///     public MyStack()
         ///     {
+        ///         var myStackscript = Output.Create(Linode.GetStackScript.InvokeAsync(new Linode.GetStackScriptArgs
+        ///         {
+        ///             Id = 355872,
+        ///         }));
         ///     }
         /// 
         /// }

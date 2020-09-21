@@ -19,10 +19,10 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/linode/terraform-provider-linode/linode"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-linode/linode"
 )
 
 // all of the token components used below.
@@ -85,6 +85,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-linode",
+		GitHubOrg:   "linode",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"token": {
 				Default: &tfbridge.DefaultInfo{
@@ -188,8 +189,9 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_object_storage_key": {
 				Tok: makeResource(mainMod, "ObjectStorageKey"),
 			},
-			"linode_lke_cluster": {Tok: makeResource(mainMod, "LkeCluster")},
-			"linode_firewall":    {Tok: makeResource(mainMod, "Firewall")},
+			"linode_lke_cluster":           {Tok: makeResource(mainMod, "LkeCluster")},
+			"linode_firewall":              {Tok: makeResource(mainMod, "Firewall")},
+			"linode_object_storage_object": {Tok: makeResource(mainMod, "ObjectStorageObject")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},
