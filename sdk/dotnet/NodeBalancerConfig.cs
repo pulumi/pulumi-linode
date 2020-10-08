@@ -138,6 +138,12 @@ namespace Pulumi.Linode
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// </summary>
+        [Output("proxyProtocol")]
+        public Output<string?> ProxyProtocol { get; private set; } = null!;
+
+        /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
         [Output("sslCert")]
@@ -287,6 +293,12 @@ namespace Pulumi.Linode
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// </summary>
+        [Input("proxyProtocol")]
+        public Input<string>? ProxyProtocol { get; set; }
+
+        /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
         [Input("sslCert")]
@@ -386,6 +398,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// </summary>
+        [Input("proxyProtocol")]
+        public Input<string>? ProxyProtocol { get; set; }
 
         /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.

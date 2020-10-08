@@ -348,7 +348,7 @@
                 },
                 "kernel": {
                     "type": "string",
-                    "description": "- A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).\n",
+                    "description": "- A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1177,6 +1177,33 @@
                     ]
                 }
             }
+        },
+        "linode:/ObjectStorageBucketCert:ObjectStorageBucketCert": {
+            "properties": {
+                "certificate": {
+                    "type": "string",
+                    "description": "The Base64 encoded and PEM formatted SSL certificate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The private key associated with the TLS/SSL certificate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificate",
+                "privateKey"
+            ]
         },
         "linode:/StackScriptUserDefinedField:StackScriptUserDefinedField": {
             "properties": {
@@ -2886,6 +2913,10 @@
                     "type": "string",
                     "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
                 },
+                "proxyProtocol": {
+                    "type": "string",
+                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                },
                 "sslCert": {
                     "type": "string",
                     "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
@@ -2972,6 +3003,10 @@
                     "type": "string",
                     "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
                 },
+                "proxyProtocol": {
+                    "type": "string",
+                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                },
                 "sslCert": {
                     "type": "string",
                     "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
@@ -3041,6 +3076,10 @@
                     "protocol": {
                         "type": "string",
                         "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
+                    },
+                    "proxyProtocol": {
+                        "type": "string",
+                        "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
                     },
                     "sslCert": {
                         "type": "string",
@@ -3177,6 +3216,9 @@
         "linode:index/objectStorageBucket:ObjectStorageBucket": {
             "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Bucket.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: `%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"%s\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n        var foobar = new Linode.ObjectStorageBucket(\"foobar\", new Linode.ObjectStorageBucketArgs\n        {\n            Cluster = primary.Apply(primary =\u003e primary.Id),\n            Label = \"%s\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(fmt.Sprintf(\"%v%v\", \"%\", \"s\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "cert": {
+                    "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                },
                 "cluster": {
                     "type": "string",
                     "description": "The cluster of the Linode Object Storage Bucket.\n"
@@ -3191,6 +3233,9 @@
                 "label"
             ],
             "inputProperties": {
+                "cert": {
+                    "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                },
                 "cluster": {
                     "type": "string",
                     "description": "The cluster of the Linode Object Storage Bucket.\n"
@@ -3207,6 +3252,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ObjectStorageBucket resources.\n",
                 "properties": {
+                    "cert": {
+                        "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                    },
                     "cluster": {
                         "type": "string",
                         "description": "The cluster of the Linode Object Storage Bucket.\n"

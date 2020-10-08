@@ -96,7 +96,7 @@ export interface InstanceConfig {
      */
     helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
     /**
-     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      */
     kernel?: pulumi.Input<string>;
     /**
@@ -366,6 +366,17 @@ export interface NodeBalancerTransfer {
     in?: pulumi.Input<number>;
     out?: pulumi.Input<number>;
     total?: pulumi.Input<number>;
+}
+
+export interface ObjectStorageBucketCert {
+    /**
+     * The Base64 encoded and PEM formatted SSL certificate.
+     */
+    certificate: pulumi.Input<string>;
+    /**
+     * The private key associated with the TLS/SSL certificate.
+     */
+    privateKey: pulumi.Input<string>;
 }
 
 export interface StackScriptUserDefinedField {

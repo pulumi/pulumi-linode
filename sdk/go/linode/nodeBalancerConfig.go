@@ -93,6 +93,8 @@ type NodeBalancerConfig struct {
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrOutput `pulumi:"sslCert"`
 	// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
@@ -162,6 +164,8 @@ type nodeBalancerConfigState struct {
 	Port *int `pulumi:"port"`
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol *string `pulumi:"protocol"`
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert *string `pulumi:"sslCert"`
 	// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
@@ -201,6 +205,8 @@ type NodeBalancerConfigState struct {
 	Port pulumi.IntPtrInput
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol pulumi.StringPtrInput
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	ProxyProtocol pulumi.StringPtrInput
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrInput
 	// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
@@ -243,6 +249,8 @@ type nodeBalancerConfigArgs struct {
 	Port *int `pulumi:"port"`
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol *string `pulumi:"protocol"`
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert *string `pulumi:"sslCert"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
@@ -278,6 +286,8 @@ type NodeBalancerConfigArgs struct {
 	Port pulumi.IntPtrInput
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
 	Protocol pulumi.StringPtrInput
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	ProxyProtocol pulumi.StringPtrInput
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrInput
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.

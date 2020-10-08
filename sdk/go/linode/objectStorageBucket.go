@@ -48,6 +48,7 @@ import (
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
 
+	Cert ObjectStorageBucketCertPtrOutput `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The label of the Linode Object Storage Bucket.
@@ -88,6 +89,7 @@ func GetObjectStorageBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObjectStorageBucket resources.
 type objectStorageBucketState struct {
+	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster *string `pulumi:"cluster"`
 	// The label of the Linode Object Storage Bucket.
@@ -95,6 +97,7 @@ type objectStorageBucketState struct {
 }
 
 type ObjectStorageBucketState struct {
+	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringPtrInput
 	// The label of the Linode Object Storage Bucket.
@@ -106,6 +109,7 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 }
 
 type objectStorageBucketArgs struct {
+	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster string `pulumi:"cluster"`
 	// The label of the Linode Object Storage Bucket.
@@ -114,6 +118,7 @@ type objectStorageBucketArgs struct {
 
 // The set of arguments for constructing a ObjectStorageBucket resource.
 type ObjectStorageBucketArgs struct {
+	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringInput
 	// The label of the Linode Object Storage Bucket.

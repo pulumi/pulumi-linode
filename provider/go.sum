@@ -505,6 +505,8 @@ github.com/linode/linodego v0.18.0/go.mod h1:vlzb2glsL9XrRYTRJ5JrgUoKZ5yfZBe11GY
 github.com/linode/linodego v0.20.1/go.mod h1:XOWXRHjqeU2uPS84tKLgfWIfTlv3TYzCS0io4GOQzEI=
 github.com/linode/linodego v0.21.0 h1:XykohqzVIV6hvjBn03cj7FGxYARFSrlfJodQrtHynqk=
 github.com/linode/linodego v0.21.0/go.mod h1:UTpq1JUZD0CZsJ8rt+0CRkqbzrp1MbGakVPt2DXY5Mk=
+github.com/linode/linodego v0.21.2 h1:/78bNl10ST/doO+6ET0UrXB3uAGEHSpPxXV7GUxVetI=
+github.com/linode/linodego v0.21.2/go.mod h1:UTpq1JUZD0CZsJ8rt+0CRkqbzrp1MbGakVPt2DXY5Mk=
 github.com/linode/linodego/k8s v0.0.0-20200831124119-58d5d5bb7947 h1:e+tpC7AIiEgfYGEDq9Rjtdybq+V10S6OXzWjeGV/CEk=
 github.com/linode/linodego/k8s v0.0.0-20200831124119-58d5d5bb7947/go.mod h1:MWI0tFyaJqRpirMv0VO7CGYT4V3IhHvml2rs/DlRQmY=
 github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
@@ -670,6 +672,8 @@ github.com/pulumi/terraform-provider-linode v1.11.2-0.20200920184430-b6b797a936c
 github.com/pulumi/terraform-provider-linode v1.11.2-0.20200920184430-b6b797a936cb/go.mod h1:+IB/dS2/4TvxEHlgTlKgUlcTYqtGLt5iP8a7q/0ussU=
 github.com/pulumi/terraform-provider-linode v1.11.2-0.20200922160536-fa37189d7356 h1:F/Ft0udhFSXUBsPnPX5kaCuTQ9+ygU31g8CnFCP5EO0=
 github.com/pulumi/terraform-provider-linode v1.11.2-0.20200922160536-fa37189d7356/go.mod h1:+IB/dS2/4TvxEHlgTlKgUlcTYqtGLt5iP8a7q/0ussU=
+github.com/pulumi/terraform-provider-linode v1.11.2-0.20201008110714-f8ef9276320b h1:cTeNf1KRAdfEbbRMzBvhlgwBBpYGjoD1E9va6G4+kEM=
+github.com/pulumi/terraform-provider-linode v1.11.2-0.20201008110714-f8ef9276320b/go.mod h1:NBSKEhW0KP8+jtgPfkQyMGd2/pZg+OoP65wNhNsncUQ=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=

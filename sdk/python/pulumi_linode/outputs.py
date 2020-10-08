@@ -33,6 +33,7 @@ __all__ = [
     'LkeClusterPoolNode',
     'NodeBalancerConfigNodeStatus',
     'NodeBalancerTransfer',
+    'ObjectStorageBucketCert',
     'StackScriptUserDefinedField',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupsResult',
@@ -307,7 +308,7 @@ class InstanceConfig(dict):
         :param str comments: - Arbitrary user comments about this `config`.
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
-        :param str kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+        :param str kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param float memory_limit: - Defaults to the total RAM of the Linode
         :param str root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param str run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
@@ -367,7 +368,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def kernel(self) -> Optional[str]:
         """
-        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         """
         return pulumi.get(self, "kernel")
 
@@ -1244,6 +1245,38 @@ class NodeBalancerTransfer(dict):
     @pulumi.getter
     def total(self) -> Optional[float]:
         return pulumi.get(self, "total")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ObjectStorageBucketCert(dict):
+    def __init__(__self__, *,
+                 certificate: str,
+                 private_key: str):
+        """
+        :param str certificate: The Base64 encoded and PEM formatted SSL certificate.
+        :param str private_key: The private key associated with the TLS/SSL certificate.
+        """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> str:
+        """
+        The Base64 encoded and PEM formatted SSL certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        """
+        The private key associated with the TLS/SSL certificate.
+        """
+        return pulumi.get(self, "private_key")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -32,6 +32,7 @@ __all__ = [
     'LkeClusterPoolNodeArgs',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerTransferArgs',
+    'ObjectStorageBucketCertArgs',
     'StackScriptUserDefinedFieldArgs',
     'GetStackScriptUserDefinedFieldArgs',
 ]
@@ -363,7 +364,7 @@ class InstanceConfigArgs:
         :param pulumi.Input[str] comments: - Arbitrary user comments about this `config`.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
-        :param pulumi.Input[str] kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+        :param pulumi.Input[str] kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param pulumi.Input[float] memory_limit: - Defaults to the total RAM of the Linode
         :param pulumi.Input[str] root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param pulumi.Input[str] run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
@@ -439,7 +440,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def kernel(self) -> Optional[pulumi.Input[str]]:
         """
-        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         """
         return pulumi.get(self, "kernel")
 
@@ -1544,6 +1545,43 @@ class NodeBalancerTransferArgs:
     @total.setter
     def total(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "total", value)
+
+
+@pulumi.input_type
+class ObjectStorageBucketCertArgs:
+    def __init__(__self__, *,
+                 certificate: pulumi.Input[str],
+                 private_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] certificate: The Base64 encoded and PEM formatted SSL certificate.
+        :param pulumi.Input[str] private_key: The private key associated with the TLS/SSL certificate.
+        """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Input[str]:
+        """
+        The Base64 encoded and PEM formatted SSL certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        """
+        The private key associated with the TLS/SSL certificate.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
 
 
 @pulumi.input_type

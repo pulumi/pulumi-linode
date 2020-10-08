@@ -845,7 +845,7 @@ type InstanceConfig struct {
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel *string `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label string `pulumi:"label"`
@@ -877,7 +877,7 @@ type InstanceConfigArgs struct {
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
-	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -957,7 +957,7 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
-// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
@@ -3685,6 +3685,156 @@ func (o NodeBalancerTransferPtrOutput) Total() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+type ObjectStorageBucketCert struct {
+	// The Base64 encoded and PEM formatted SSL certificate.
+	Certificate string `pulumi:"certificate"`
+	// The private key associated with the TLS/SSL certificate.
+	PrivateKey string `pulumi:"privateKey"`
+}
+
+// ObjectStorageBucketCertInput is an input type that accepts ObjectStorageBucketCertArgs and ObjectStorageBucketCertOutput values.
+// You can construct a concrete instance of `ObjectStorageBucketCertInput` via:
+//
+//          ObjectStorageBucketCertArgs{...}
+type ObjectStorageBucketCertInput interface {
+	pulumi.Input
+
+	ToObjectStorageBucketCertOutput() ObjectStorageBucketCertOutput
+	ToObjectStorageBucketCertOutputWithContext(context.Context) ObjectStorageBucketCertOutput
+}
+
+type ObjectStorageBucketCertArgs struct {
+	// The Base64 encoded and PEM formatted SSL certificate.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// The private key associated with the TLS/SSL certificate.
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+}
+
+func (ObjectStorageBucketCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageBucketCert)(nil)).Elem()
+}
+
+func (i ObjectStorageBucketCertArgs) ToObjectStorageBucketCertOutput() ObjectStorageBucketCertOutput {
+	return i.ToObjectStorageBucketCertOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageBucketCertArgs) ToObjectStorageBucketCertOutputWithContext(ctx context.Context) ObjectStorageBucketCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketCertOutput)
+}
+
+func (i ObjectStorageBucketCertArgs) ToObjectStorageBucketCertPtrOutput() ObjectStorageBucketCertPtrOutput {
+	return i.ToObjectStorageBucketCertPtrOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageBucketCertArgs) ToObjectStorageBucketCertPtrOutputWithContext(ctx context.Context) ObjectStorageBucketCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketCertOutput).ToObjectStorageBucketCertPtrOutputWithContext(ctx)
+}
+
+// ObjectStorageBucketCertPtrInput is an input type that accepts ObjectStorageBucketCertArgs, ObjectStorageBucketCertPtr and ObjectStorageBucketCertPtrOutput values.
+// You can construct a concrete instance of `ObjectStorageBucketCertPtrInput` via:
+//
+//          ObjectStorageBucketCertArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectStorageBucketCertPtrInput interface {
+	pulumi.Input
+
+	ToObjectStorageBucketCertPtrOutput() ObjectStorageBucketCertPtrOutput
+	ToObjectStorageBucketCertPtrOutputWithContext(context.Context) ObjectStorageBucketCertPtrOutput
+}
+
+type objectStorageBucketCertPtrType ObjectStorageBucketCertArgs
+
+func ObjectStorageBucketCertPtr(v *ObjectStorageBucketCertArgs) ObjectStorageBucketCertPtrInput {
+	return (*objectStorageBucketCertPtrType)(v)
+}
+
+func (*objectStorageBucketCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageBucketCert)(nil)).Elem()
+}
+
+func (i *objectStorageBucketCertPtrType) ToObjectStorageBucketCertPtrOutput() ObjectStorageBucketCertPtrOutput {
+	return i.ToObjectStorageBucketCertPtrOutputWithContext(context.Background())
+}
+
+func (i *objectStorageBucketCertPtrType) ToObjectStorageBucketCertPtrOutputWithContext(ctx context.Context) ObjectStorageBucketCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketCertPtrOutput)
+}
+
+type ObjectStorageBucketCertOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageBucketCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageBucketCert)(nil)).Elem()
+}
+
+func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertOutput() ObjectStorageBucketCertOutput {
+	return o
+}
+
+func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertOutputWithContext(ctx context.Context) ObjectStorageBucketCertOutput {
+	return o
+}
+
+func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertPtrOutput() ObjectStorageBucketCertPtrOutput {
+	return o.ToObjectStorageBucketCertPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertPtrOutputWithContext(ctx context.Context) ObjectStorageBucketCertPtrOutput {
+	return o.ApplyT(func(v ObjectStorageBucketCert) *ObjectStorageBucketCert {
+		return &v
+	}).(ObjectStorageBucketCertPtrOutput)
+}
+
+// The Base64 encoded and PEM formatted SSL certificate.
+func (o ObjectStorageBucketCertOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageBucketCert) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// The private key associated with the TLS/SSL certificate.
+func (o ObjectStorageBucketCertOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageBucketCert) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+type ObjectStorageBucketCertPtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageBucketCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageBucketCert)(nil)).Elem()
+}
+
+func (o ObjectStorageBucketCertPtrOutput) ToObjectStorageBucketCertPtrOutput() ObjectStorageBucketCertPtrOutput {
+	return o
+}
+
+func (o ObjectStorageBucketCertPtrOutput) ToObjectStorageBucketCertPtrOutputWithContext(ctx context.Context) ObjectStorageBucketCertPtrOutput {
+	return o
+}
+
+func (o ObjectStorageBucketCertPtrOutput) Elem() ObjectStorageBucketCertOutput {
+	return o.ApplyT(func(v *ObjectStorageBucketCert) ObjectStorageBucketCert { return *v }).(ObjectStorageBucketCertOutput)
+}
+
+// The Base64 encoded and PEM formatted SSL certificate.
+func (o ObjectStorageBucketCertPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucketCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private key associated with the TLS/SSL certificate.
+func (o ObjectStorageBucketCertPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucketCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type StackScriptUserDefinedField struct {
 	Default *string `pulumi:"default"`
 	Example *string `pulumi:"example"`
@@ -4270,6 +4420,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusPtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferPtrOutput{})
+	pulumi.RegisterOutputType(ObjectStorageBucketCertOutput{})
+	pulumi.RegisterOutputType(ObjectStorageBucketCertPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
