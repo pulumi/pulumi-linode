@@ -29,6 +29,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
                  nodebalancer_id: Optional[pulumi.Input[float]] = None,
                  port: Optional[pulumi.Input[float]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_cert: Optional[pulumi.Input[str]] = None,
                  ssl_key: Optional[pulumi.Input[str]] = None,
                  stickiness: Optional[pulumi.Input[str]] = None,
@@ -89,6 +90,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[float] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
@@ -124,6 +126,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             __props__['nodebalancer_id'] = nodebalancer_id
             __props__['port'] = port
             __props__['protocol'] = protocol
+            __props__['proxy_protocol'] = proxy_protocol
             __props__['ssl_cert'] = ssl_cert
             __props__['ssl_key'] = ssl_key
             __props__['stickiness'] = stickiness
@@ -153,6 +156,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             nodebalancer_id: Optional[pulumi.Input[float]] = None,
             port: Optional[pulumi.Input[float]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
+            proxy_protocol: Optional[pulumi.Input[str]] = None,
             ssl_cert: Optional[pulumi.Input[str]] = None,
             ssl_commonname: Optional[pulumi.Input[str]] = None,
             ssl_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -178,6 +182,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[float] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_commonname: The common name for the SSL certification this port is serving if this port is not configured to use SSL.
         :param pulumi.Input[str] ssl_fingerprint: The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
@@ -201,6 +206,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         __props__["nodebalancer_id"] = nodebalancer_id
         __props__["port"] = port
         __props__["protocol"] = protocol
+        __props__["proxy_protocol"] = proxy_protocol
         __props__["ssl_cert"] = ssl_cert
         __props__["ssl_commonname"] = ssl_commonname
         __props__["ssl_fingerprint"] = ssl_fingerprint
@@ -309,6 +315,14 @@ class NodeBalancerConfig(pulumi.CustomResource):
         The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="proxyProtocol")
+    def proxy_protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        """
+        return pulumi.get(self, "proxy_protocol")
 
     @property
     @pulumi.getter(name="sslCert")

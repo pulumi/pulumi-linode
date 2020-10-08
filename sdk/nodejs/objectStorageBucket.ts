@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -52,6 +54,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === ObjectStorageBucket.__pulumiType;
     }
 
+    public readonly cert!: pulumi.Output<outputs.ObjectStorageBucketCert | undefined>;
     /**
      * The cluster of the Linode Object Storage Bucket.
      */
@@ -73,6 +76,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ObjectStorageBucketState | undefined;
+            inputs["cert"] = state ? state.cert : undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["label"] = state ? state.label : undefined;
         } else {
@@ -83,6 +87,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             if (!args || args.label === undefined) {
                 throw new Error("Missing required property 'label'");
             }
+            inputs["cert"] = args ? args.cert : undefined;
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["label"] = args ? args.label : undefined;
         }
@@ -101,6 +106,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ObjectStorageBucket resources.
  */
 export interface ObjectStorageBucketState {
+    readonly cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
     /**
      * The cluster of the Linode Object Storage Bucket.
      */
@@ -115,6 +121,7 @@ export interface ObjectStorageBucketState {
  * The set of arguments for constructing a ObjectStorageBucket resource.
  */
 export interface ObjectStorageBucketArgs {
+    readonly cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
     /**
      * The cluster of the Linode Object Storage Bucket.
      */

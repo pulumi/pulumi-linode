@@ -40,6 +40,9 @@ namespace Pulumi.Linode
     /// </summary>
     public partial class ObjectStorageBucket : Pulumi.CustomResource
     {
+        [Output("cert")]
+        public Output<Outputs.ObjectStorageBucketCert?> Cert { get; private set; } = null!;
+
         /// <summary>
         /// The cluster of the Linode Object Storage Bucket.
         /// </summary>
@@ -98,6 +101,9 @@ namespace Pulumi.Linode
 
     public sealed class ObjectStorageBucketArgs : Pulumi.ResourceArgs
     {
+        [Input("cert")]
+        public Input<Inputs.ObjectStorageBucketCertArgs>? Cert { get; set; }
+
         /// <summary>
         /// The cluster of the Linode Object Storage Bucket.
         /// </summary>
@@ -117,6 +123,9 @@ namespace Pulumi.Linode
 
     public sealed class ObjectStorageBucketState : Pulumi.ResourceArgs
     {
+        [Input("cert")]
+        public Input<Inputs.ObjectStorageBucketCertGetArgs>? Cert { get; set; }
+
         /// <summary>
         /// The cluster of the Linode Object Storage Bucket.
         /// </summary>

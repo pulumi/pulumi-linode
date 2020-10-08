@@ -126,6 +126,10 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     */
+    public readonly proxyProtocol!: pulumi.Output<string | undefined>;
+    /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
     public readonly sslCert!: pulumi.Output<string | undefined>;
@@ -171,6 +175,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
+            inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
             inputs["sslCert"] = state ? state.sslCert : undefined;
             inputs["sslCommonname"] = state ? state.sslCommonname : undefined;
             inputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
@@ -193,6 +198,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
+            inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
             inputs["sslCert"] = args ? args.sslCert : undefined;
             inputs["sslKey"] = args ? args.sslKey : undefined;
             inputs["stickiness"] = args ? args.stickiness : undefined;
@@ -265,6 +271,10 @@ export interface NodeBalancerConfigState {
      * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
+    /**
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     */
+    readonly proxyProtocol?: pulumi.Input<string>;
     /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
@@ -340,6 +350,10 @@ export interface NodeBalancerConfigArgs {
      * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
      */
     readonly protocol?: pulumi.Input<string>;
+    /**
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     */
+    readonly proxyProtocol?: pulumi.Input<string>;
     /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */

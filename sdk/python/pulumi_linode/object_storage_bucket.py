@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ObjectStorageBucket']
 
@@ -15,6 +17,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -59,6 +62,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['cert'] = cert
             if cluster is None:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
@@ -75,6 +79,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None) -> 'ObjectStorageBucket':
         """
@@ -91,9 +96,15 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cert"] = cert
         __props__["cluster"] = cluster
         __props__["label"] = label
         return ObjectStorageBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> pulumi.Output[Optional['outputs.ObjectStorageBucketCert']]:
+        return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter

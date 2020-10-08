@@ -31,7 +31,7 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceConfigHelpersArgs>? Helpers { get; set; }
 
         /// <summary>
-        /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+        /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         /// </summary>
         [Input("kernel")]
         public Input<string>? Kernel { get; set; }
