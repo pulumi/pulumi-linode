@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,11 +29,11 @@ class GetNetworkingIpResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if linode_id and not isinstance(linode_id, float):
-            raise TypeError("Expected argument 'linode_id' to be a float")
+        if linode_id and not isinstance(linode_id, int):
+            raise TypeError("Expected argument 'linode_id' to be a int")
         pulumi.set(__self__, "linode_id", linode_id)
-        if prefix and not isinstance(prefix, float):
-            raise TypeError("Expected argument 'prefix' to be a float")
+        if prefix and not isinstance(prefix, int):
+            raise TypeError("Expected argument 'prefix' to be a int")
         pulumi.set(__self__, "prefix", prefix)
         if public and not isinstance(public, bool):
             raise TypeError("Expected argument 'public' to be a bool")
@@ -71,12 +71,12 @@ class GetNetworkingIpResult:
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> float:
+    def linode_id(self) -> int:
         return pulumi.get(self, "linode_id")
 
     @property
     @pulumi.getter
-    def prefix(self) -> float:
+    def prefix(self) -> int:
         return pulumi.get(self, "prefix")
 
     @property

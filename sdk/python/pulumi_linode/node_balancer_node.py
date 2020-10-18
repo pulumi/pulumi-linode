@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['NodeBalancerNode']
@@ -16,11 +16,11 @@ class NodeBalancerNode(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 config_id: Optional[pulumi.Input[float]] = None,
+                 config_id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 nodebalancer_id: Optional[pulumi.Input[float]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 nodebalancer_id: Optional[pulumi.Input[int]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -82,11 +82,11 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
-        :param pulumi.Input[float] config_id: The ID of the NodeBalancerConfig to access.
+        :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
-        :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[float] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
+        :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,12 +131,12 @@ class NodeBalancerNode(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
-            config_id: Optional[pulumi.Input[float]] = None,
+            config_id: Optional[pulumi.Input[int]] = None,
             label: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
-            nodebalancer_id: Optional[pulumi.Input[float]] = None,
+            nodebalancer_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'NodeBalancerNode':
+            weight: Optional[pulumi.Input[int]] = None) -> 'NodeBalancerNode':
         """
         Get an existing NodeBalancerNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -145,12 +145,12 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
-        :param pulumi.Input[float] config_id: The ID of the NodeBalancerConfig to access.
+        :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
-        :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
-        :param pulumi.Input[float] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
+        :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,7 +175,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configId")
-    def config_id(self) -> pulumi.Output[float]:
+    def config_id(self) -> pulumi.Output[int]:
         """
         The ID of the NodeBalancerConfig to access.
         """
@@ -199,7 +199,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodebalancerId")
-    def nodebalancer_id(self) -> pulumi.Output[float]:
+    def nodebalancer_id(self) -> pulumi.Output[int]:
         """
         The ID of the NodeBalancer to access.
         """
@@ -215,7 +215,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[float]:
+    def weight(self) -> pulumi.Output[int]:
         """
         Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """

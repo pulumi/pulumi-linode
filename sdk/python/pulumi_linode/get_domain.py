@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetDomainResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
-        if expire_sec and not isinstance(expire_sec, float):
-            raise TypeError("Expected argument 'expire_sec' to be a float")
+        if expire_sec and not isinstance(expire_sec, int):
+            raise TypeError("Expected argument 'expire_sec' to be a int")
         pulumi.set(__self__, "expire_sec", expire_sec)
         if group and not isinstance(group, str):
             raise TypeError("Expected argument 'group' to be a str")
@@ -41,11 +41,11 @@ class GetDomainResult:
         if master_ips and not isinstance(master_ips, list):
             raise TypeError("Expected argument 'master_ips' to be a list")
         pulumi.set(__self__, "master_ips", master_ips)
-        if refresh_sec and not isinstance(refresh_sec, float):
-            raise TypeError("Expected argument 'refresh_sec' to be a float")
+        if refresh_sec and not isinstance(refresh_sec, int):
+            raise TypeError("Expected argument 'refresh_sec' to be a int")
         pulumi.set(__self__, "refresh_sec", refresh_sec)
-        if retry_sec and not isinstance(retry_sec, float):
-            raise TypeError("Expected argument 'retry_sec' to be a float")
+        if retry_sec and not isinstance(retry_sec, int):
+            raise TypeError("Expected argument 'retry_sec' to be a int")
         pulumi.set(__self__, "retry_sec", retry_sec)
         if soa_email and not isinstance(soa_email, str):
             raise TypeError("Expected argument 'soa_email' to be a str")
@@ -56,8 +56,8 @@ class GetDomainResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
-        if ttl_sec and not isinstance(ttl_sec, float):
-            raise TypeError("Expected argument 'ttl_sec' to be a float")
+        if ttl_sec and not isinstance(ttl_sec, int):
+            raise TypeError("Expected argument 'ttl_sec' to be a int")
         pulumi.set(__self__, "ttl_sec", ttl_sec)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -65,7 +65,7 @@ class GetDomainResult:
 
     @property
     @pulumi.getter(name="axfrIps")
-    def axfr_ips(self) -> List[str]:
+    def axfr_ips(self) -> Sequence[str]:
         return pulumi.get(self, "axfr_ips")
 
     @property
@@ -80,7 +80,7 @@ class GetDomainResult:
 
     @property
     @pulumi.getter(name="expireSec")
-    def expire_sec(self) -> float:
+    def expire_sec(self) -> int:
         return pulumi.get(self, "expire_sec")
 
     @property
@@ -95,17 +95,17 @@ class GetDomainResult:
 
     @property
     @pulumi.getter(name="masterIps")
-    def master_ips(self) -> List[str]:
+    def master_ips(self) -> Sequence[str]:
         return pulumi.get(self, "master_ips")
 
     @property
     @pulumi.getter(name="refreshSec")
-    def refresh_sec(self) -> float:
+    def refresh_sec(self) -> int:
         return pulumi.get(self, "refresh_sec")
 
     @property
     @pulumi.getter(name="retrySec")
-    def retry_sec(self) -> float:
+    def retry_sec(self) -> int:
         return pulumi.get(self, "retry_sec")
 
     @property
@@ -120,12 +120,12 @@ class GetDomainResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="ttlSec")
-    def ttl_sec(self) -> float:
+    def ttl_sec(self) -> int:
         return pulumi.get(self, "ttl_sec")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Domain']
@@ -15,18 +15,18 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 axfr_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 expire_sec: Optional[pulumi.Input[float]] = None,
+                 expire_sec: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 master_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 refresh_sec: Optional[pulumi.Input[float]] = None,
-                 retry_sec: Optional[pulumi.Input[float]] = None,
+                 master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 refresh_sec: Optional[pulumi.Input[int]] = None,
+                 retry_sec: Optional[pulumi.Input[int]] = None,
                  soa_email: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 ttl_sec: Optional[pulumi.Input[float]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl_sec: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -63,18 +63,18 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         :param pulumi.Input[str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
-        :param pulumi.Input[float] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] group: The group this Domain belongs to. This is for display purposes only.
-        :param pulumi.Input[List[pulumi.Input[str]]] master_ips: The IP addresses representing the master DNS for this Domain.
-        :param pulumi.Input[float] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[float] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_ips: The IP addresses representing the master DNS for this Domain.
+        :param pulumi.Input[int] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] soa_email: Start of Authority email address. This is required for master Domains.
         :param pulumi.Input[str] status: Used to control whether this Domain is currently being rendered (defaults to "active").
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """
         if __name__ is not None:
@@ -121,18 +121,18 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            axfr_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
-            expire_sec: Optional[pulumi.Input[float]] = None,
+            expire_sec: Optional[pulumi.Input[int]] = None,
             group: Optional[pulumi.Input[str]] = None,
-            master_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            refresh_sec: Optional[pulumi.Input[float]] = None,
-            retry_sec: Optional[pulumi.Input[float]] = None,
+            master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            refresh_sec: Optional[pulumi.Input[int]] = None,
+            retry_sec: Optional[pulumi.Input[int]] = None,
             soa_email: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            ttl_sec: Optional[pulumi.Input[float]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ttl_sec: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -141,18 +141,18 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         :param pulumi.Input[str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
-        :param pulumi.Input[float] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] group: The group this Domain belongs to. This is for display purposes only.
-        :param pulumi.Input[List[pulumi.Input[str]]] master_ips: The IP addresses representing the master DNS for this Domain.
-        :param pulumi.Input[float] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[float] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_ips: The IP addresses representing the master DNS for this Domain.
+        :param pulumi.Input[int] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] soa_email: Start of Authority email address. This is required for master Domains.
         :param pulumi.Input[str] status: Used to control whether this Domain is currently being rendered (defaults to "active").
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[float] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -176,7 +176,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axfrIps")
-    def axfr_ips(self) -> pulumi.Output[Optional[List[str]]]:
+    def axfr_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         """
@@ -200,7 +200,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expireSec")
-    def expire_sec(self) -> pulumi.Output[Optional[float]]:
+    def expire_sec(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -216,7 +216,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterIps")
-    def master_ips(self) -> pulumi.Output[Optional[List[str]]]:
+    def master_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IP addresses representing the master DNS for this Domain.
         """
@@ -224,7 +224,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshSec")
-    def refresh_sec(self) -> pulumi.Output[Optional[float]]:
+    def refresh_sec(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -232,7 +232,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retrySec")
-    def retry_sec(self) -> pulumi.Output[Optional[float]]:
+    def retry_sec(self) -> pulumi.Output[Optional[int]]:
         """
         The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
@@ -256,7 +256,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """
@@ -264,7 +264,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ttlSec")
-    def ttl_sec(self) -> pulumi.Output[Optional[float]]:
+    def ttl_sec(self) -> pulumi.Output[Optional[int]]:
         """
         'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """

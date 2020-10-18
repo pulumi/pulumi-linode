@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -26,8 +26,8 @@ class GetAccountResult:
         if address2 and not isinstance(address2, str):
             raise TypeError("Expected argument 'address2' to be a str")
         pulumi.set(__self__, "address2", address2)
-        if balance and not isinstance(balance, float):
-            raise TypeError("Expected argument 'balance' to be a float")
+        if balance and not isinstance(balance, int):
+            raise TypeError("Expected argument 'balance' to be a int")
         pulumi.set(__self__, "balance", balance)
         if city and not isinstance(city, str):
             raise TypeError("Expected argument 'city' to be a str")
@@ -72,7 +72,7 @@ class GetAccountResult:
 
     @property
     @pulumi.getter
-    def balance(self) -> float:
+    def balance(self) -> int:
         return pulumi.get(self, "balance")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -27,8 +27,8 @@ class GetInstanceTypeResult:
         if class_ and not isinstance(class_, str):
             raise TypeError("Expected argument 'class_' to be a str")
         pulumi.set(__self__, "class_", class_)
-        if disk and not isinstance(disk, float):
-            raise TypeError("Expected argument 'disk' to be a float")
+        if disk and not isinstance(disk, int):
+            raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -36,20 +36,20 @@ class GetInstanceTypeResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
-        if memory and not isinstance(memory, float):
-            raise TypeError("Expected argument 'memory' to be a float")
+        if memory and not isinstance(memory, int):
+            raise TypeError("Expected argument 'memory' to be a int")
         pulumi.set(__self__, "memory", memory)
-        if network_out and not isinstance(network_out, float):
-            raise TypeError("Expected argument 'network_out' to be a float")
+        if network_out and not isinstance(network_out, int):
+            raise TypeError("Expected argument 'network_out' to be a int")
         pulumi.set(__self__, "network_out", network_out)
         if price and not isinstance(price, dict):
             raise TypeError("Expected argument 'price' to be a dict")
         pulumi.set(__self__, "price", price)
-        if transfer and not isinstance(transfer, float):
-            raise TypeError("Expected argument 'transfer' to be a float")
+        if transfer and not isinstance(transfer, int):
+            raise TypeError("Expected argument 'transfer' to be a int")
         pulumi.set(__self__, "transfer", transfer)
-        if vcpus and not isinstance(vcpus, float):
-            raise TypeError("Expected argument 'vcpus' to be a float")
+        if vcpus and not isinstance(vcpus, int):
+            raise TypeError("Expected argument 'vcpus' to be a int")
         pulumi.set(__self__, "vcpus", vcpus)
 
     @property
@@ -64,7 +64,7 @@ class GetInstanceTypeResult:
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> int:
         return pulumi.get(self, "disk")
 
     @property
@@ -79,12 +79,12 @@ class GetInstanceTypeResult:
 
     @property
     @pulumi.getter
-    def memory(self) -> float:
+    def memory(self) -> int:
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter(name="networkOut")
-    def network_out(self) -> float:
+    def network_out(self) -> int:
         return pulumi.get(self, "network_out")
 
     @property
@@ -94,12 +94,12 @@ class GetInstanceTypeResult:
 
     @property
     @pulumi.getter
-    def transfer(self) -> float:
+    def transfer(self) -> int:
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> int:
         return pulumi.get(self, "vcpus")
 
 

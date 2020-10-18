@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Volume']
@@ -16,10 +16,10 @@ class Volume(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 linode_id: Optional[pulumi.Input[float]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -77,10 +77,10 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
-        :param pulumi.Input[float] linode_id: The ID of a Linode Instance where the Volume should be attached.
+        :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
-        :param pulumi.Input[float] size: Size of the Volume in GB.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[int] size: Size of the Volume in GB.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,11 +122,11 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             filesystem_path: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            linode_id: Optional[pulumi.Input[float]] = None,
+            linode_id: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Volume':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -137,11 +137,11 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
                Volume label.
         :param pulumi.Input[str] label: The label of the Linode Volume
-        :param pulumi.Input[float] linode_id: The ID of a Linode Instance where the Volume should be attached.
+        :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
-        :param pulumi.Input[float] size: Size of the Volume in GB.
+        :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,7 +175,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> pulumi.Output[float]:
+    def linode_id(self) -> pulumi.Output[int]:
         """
         The ID of a Linode Instance where the Volume should be attached.
         """
@@ -191,7 +191,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         Size of the Volume in GB.
         """
@@ -207,7 +207,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """

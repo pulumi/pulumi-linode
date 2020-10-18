@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -25,17 +25,17 @@ class GetStackScriptResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if deployments_active and not isinstance(deployments_active, float):
-            raise TypeError("Expected argument 'deployments_active' to be a float")
+        if deployments_active and not isinstance(deployments_active, int):
+            raise TypeError("Expected argument 'deployments_active' to be a int")
         pulumi.set(__self__, "deployments_active", deployments_active)
-        if deployments_total and not isinstance(deployments_total, float):
-            raise TypeError("Expected argument 'deployments_total' to be a float")
+        if deployments_total and not isinstance(deployments_total, int):
+            raise TypeError("Expected argument 'deployments_total' to be a int")
         pulumi.set(__self__, "deployments_total", deployments_total)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
@@ -72,12 +72,12 @@ class GetStackScriptResult:
 
     @property
     @pulumi.getter(name="deploymentsActive")
-    def deployments_active(self) -> float:
+    def deployments_active(self) -> int:
         return pulumi.get(self, "deployments_active")
 
     @property
     @pulumi.getter(name="deploymentsTotal")
-    def deployments_total(self) -> float:
+    def deployments_total(self) -> int:
         return pulumi.get(self, "deployments_total")
 
     @property
@@ -87,12 +87,12 @@ class GetStackScriptResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def images(self) -> List[str]:
+    def images(self) -> Sequence[str]:
         return pulumi.get(self, "images")
 
     @property
@@ -122,7 +122,7 @@ class GetStackScriptResult:
 
     @property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> List['outputs.GetStackScriptUserDefinedFieldResult']:
+    def user_defined_fields(self) -> Sequence['outputs.GetStackScriptUserDefinedFieldResult']:
         return pulumi.get(self, "user_defined_fields")
 
     @property
@@ -158,8 +158,8 @@ class AwaitableGetStackScriptResult(GetStackScriptResult):
             username=self.username)
 
 
-def get_stack_script(id: Optional[float] = None,
-                     user_defined_fields: Optional[List[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']]] = None,
+def get_stack_script(id: Optional[int] = None,
+                     user_defined_fields: Optional[Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptResult:
     """
     Provides details about a specific Linode StackScript.
@@ -217,7 +217,7 @@ def get_stack_script(id: Optional[float] = None,
       * `default` - The default value. If not specified, this value will be used.
 
 
-    :param float id: The unique numeric ID of the StackScript to query.
+    :param int id: The unique numeric ID of the StackScript to query.
     """
     __args__ = dict()
     __args__['id'] = id
