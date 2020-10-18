@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,15 +19,15 @@ class NodeBalancerConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  check: Optional[pulumi.Input[str]] = None,
-                 check_attempts: Optional[pulumi.Input[float]] = None,
+                 check_attempts: Optional[pulumi.Input[int]] = None,
                  check_body: Optional[pulumi.Input[str]] = None,
-                 check_interval: Optional[pulumi.Input[float]] = None,
+                 check_interval: Optional[pulumi.Input[int]] = None,
                  check_passive: Optional[pulumi.Input[bool]] = None,
                  check_path: Optional[pulumi.Input[str]] = None,
-                 check_timeout: Optional[pulumi.Input[float]] = None,
+                 check_timeout: Optional[pulumi.Input[int]] = None,
                  cipher_suite: Optional[pulumi.Input[str]] = None,
-                 nodebalancer_id: Optional[pulumi.Input[float]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 nodebalancer_id: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_cert: Optional[pulumi.Input[str]] = None,
@@ -79,16 +79,16 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
         :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
-        :param pulumi.Input[float] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
-        :param pulumi.Input[float] check_interval: How often, in seconds, to check that backends are up and serving requests.
+        :param pulumi.Input[int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
-        :param pulumi.Input[float] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-        :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[float] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
+        :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
@@ -145,16 +145,16 @@ class NodeBalancerConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
             check: Optional[pulumi.Input[str]] = None,
-            check_attempts: Optional[pulumi.Input[float]] = None,
+            check_attempts: Optional[pulumi.Input[int]] = None,
             check_body: Optional[pulumi.Input[str]] = None,
-            check_interval: Optional[pulumi.Input[float]] = None,
+            check_interval: Optional[pulumi.Input[int]] = None,
             check_passive: Optional[pulumi.Input[bool]] = None,
             check_path: Optional[pulumi.Input[str]] = None,
-            check_timeout: Optional[pulumi.Input[float]] = None,
+            check_timeout: Optional[pulumi.Input[int]] = None,
             cipher_suite: Optional[pulumi.Input[str]] = None,
             node_status: Optional[pulumi.Input[pulumi.InputType['NodeBalancerConfigNodeStatusArgs']]] = None,
-            nodebalancer_id: Optional[pulumi.Input[float]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            nodebalancer_id: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             proxy_protocol: Optional[pulumi.Input[str]] = None,
             ssl_cert: Optional[pulumi.Input[str]] = None,
@@ -171,16 +171,16 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
         :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
-        :param pulumi.Input[float] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
-        :param pulumi.Input[float] check_interval: How often, in seconds, to check that backends are up and serving requests.
+        :param pulumi.Input[int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
-        :param pulumi.Input[float] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-        :param pulumi.Input[float] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[float] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
+        :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
@@ -232,7 +232,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkAttempts")
-    def check_attempts(self) -> pulumi.Output[float]:
+    def check_attempts(self) -> pulumi.Output[int]:
         """
         How many times to attempt a check before considering a backend to be down. (1-30)
         """
@@ -249,7 +249,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> pulumi.Output[float]:
+    def check_interval(self) -> pulumi.Output[int]:
         """
         How often, in seconds, to check that backends are up and serving requests.
         """
@@ -273,7 +273,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkTimeout")
-    def check_timeout(self) -> pulumi.Output[float]:
+    def check_timeout(self) -> pulumi.Output[int]:
         """
         How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         """
@@ -294,7 +294,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodebalancerId")
-    def nodebalancer_id(self) -> pulumi.Output[float]:
+    def nodebalancer_id(self) -> pulumi.Output[int]:
         """
         The ID of the NodeBalancer to access.
         """
@@ -302,7 +302,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         """

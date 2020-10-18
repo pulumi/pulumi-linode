@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -46,14 +46,14 @@ __all__ = [
 @pulumi.output_type
 class FirewallDevice(dict):
     def __init__(__self__, *,
-                 entity_id: Optional[float] = None,
-                 id: Optional[float] = None,
+                 entity_id: Optional[int] = None,
+                 id: Optional[int] = None,
                  label: Optional[str] = None,
                  type: Optional[str] = None,
                  url: Optional[str] = None):
         """
-        :param float entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
-        :param float id: The ID of the Firewall Device.
+        :param int entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
+        :param int id: The ID of the Firewall Device.
         :param str label: This Firewall's unique label.
         :param str type: The type of Firewall Device.
         """
@@ -70,7 +70,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[float]:
+    def entity_id(self) -> Optional[int]:
         """
         The ID of the underlying entity this device references (i.e. the Linode's ID).
         """
@@ -78,7 +78,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[float]:
+    def id(self) -> Optional[int]:
         """
         The ID of the Firewall Device.
         """
@@ -112,12 +112,12 @@ class FirewallDevice(dict):
 @pulumi.output_type
 class FirewallInbound(dict):
     def __init__(__self__, *,
-                 addresses: List[str],
-                 ports: List[str],
+                 addresses: Sequence[str],
+                 ports: Sequence[str],
                  protocol: str):
         """
-        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param List[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param Sequence[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param Sequence[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
         """
         pulumi.set(__self__, "addresses", addresses)
@@ -126,7 +126,7 @@ class FirewallInbound(dict):
 
     @property
     @pulumi.getter
-    def addresses(self) -> List[str]:
+    def addresses(self) -> Sequence[str]:
         """
         A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
@@ -134,7 +134,7 @@ class FirewallInbound(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> List[str]:
+    def ports(self) -> Sequence[str]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
@@ -155,12 +155,12 @@ class FirewallInbound(dict):
 @pulumi.output_type
 class FirewallOutbound(dict):
     def __init__(__self__, *,
-                 addresses: List[str],
-                 ports: List[str],
+                 addresses: Sequence[str],
+                 ports: Sequence[str],
                  protocol: str):
         """
-        :param List[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param List[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param Sequence[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param Sequence[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
         """
         pulumi.set(__self__, "addresses", addresses)
@@ -169,7 +169,7 @@ class FirewallOutbound(dict):
 
     @property
     @pulumi.getter
-    def addresses(self) -> List[str]:
+    def addresses(self) -> Sequence[str]:
         """
         A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
@@ -177,7 +177,7 @@ class FirewallOutbound(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> List[str]:
+    def ports(self) -> Sequence[str]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
@@ -198,11 +198,11 @@ class FirewallOutbound(dict):
 @pulumi.output_type
 class InstanceAlerts(dict):
     def __init__(__self__, *,
-                 cpu: Optional[float] = None,
-                 io: Optional[float] = None,
-                 network_in: Optional[float] = None,
-                 network_out: Optional[float] = None,
-                 transfer_quota: Optional[float] = None):
+                 cpu: Optional[int] = None,
+                 io: Optional[int] = None,
+                 network_in: Optional[int] = None,
+                 network_out: Optional[int] = None,
+                 transfer_quota: Optional[int] = None):
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if io is not None:
@@ -216,27 +216,27 @@ class InstanceAlerts(dict):
 
     @property
     @pulumi.getter
-    def cpu(self) -> Optional[float]:
+    def cpu(self) -> Optional[int]:
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter
-    def io(self) -> Optional[float]:
+    def io(self) -> Optional[int]:
         return pulumi.get(self, "io")
 
     @property
     @pulumi.getter(name="networkIn")
-    def network_in(self) -> Optional[float]:
+    def network_in(self) -> Optional[int]:
         return pulumi.get(self, "network_in")
 
     @property
     @pulumi.getter(name="networkOut")
-    def network_out(self) -> Optional[float]:
+    def network_out(self) -> Optional[int]:
         return pulumi.get(self, "network_out")
 
     @property
     @pulumi.getter(name="transferQuota")
-    def transfer_quota(self) -> Optional[float]:
+    def transfer_quota(self) -> Optional[int]:
         return pulumi.get(self, "transfer_quota")
 
     def _translate_property(self, prop):
@@ -299,7 +299,7 @@ class InstanceConfig(dict):
                  devices: Optional['outputs.InstanceConfigDevices'] = None,
                  helpers: Optional['outputs.InstanceConfigHelpers'] = None,
                  kernel: Optional[str] = None,
-                 memory_limit: Optional[float] = None,
+                 memory_limit: Optional[int] = None,
                  root_device: Optional[str] = None,
                  run_level: Optional[str] = None,
                  virt_mode: Optional[str] = None):
@@ -309,7 +309,7 @@ class InstanceConfig(dict):
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
         :param str kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
-        :param float memory_limit: - Defaults to the total RAM of the Linode
+        :param int memory_limit: - Defaults to the total RAM of the Linode
         :param str root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param str run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
         :param str virt_mode: - Controls the virtualization mode. Defaults to `"paravirt"`.
@@ -374,7 +374,7 @@ class InstanceConfig(dict):
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[float]:
+    def memory_limit(self) -> Optional[int]:
         """
         - Defaults to the total RAM of the Linode
         """
@@ -489,13 +489,13 @@ class InstanceConfigDevices(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSda(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -506,7 +506,7 @@ class InstanceConfigDevicesSda(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -522,7 +522,7 @@ class InstanceConfigDevicesSda(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -535,13 +535,13 @@ class InstanceConfigDevicesSda(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdb(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -552,7 +552,7 @@ class InstanceConfigDevicesSdb(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -568,7 +568,7 @@ class InstanceConfigDevicesSdb(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -581,13 +581,13 @@ class InstanceConfigDevicesSdb(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdc(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -598,7 +598,7 @@ class InstanceConfigDevicesSdc(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -614,7 +614,7 @@ class InstanceConfigDevicesSdc(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -627,13 +627,13 @@ class InstanceConfigDevicesSdc(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdd(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -644,7 +644,7 @@ class InstanceConfigDevicesSdd(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -660,7 +660,7 @@ class InstanceConfigDevicesSdd(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -673,13 +673,13 @@ class InstanceConfigDevicesSdd(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSde(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -690,7 +690,7 @@ class InstanceConfigDevicesSde(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -706,7 +706,7 @@ class InstanceConfigDevicesSde(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -719,13 +719,13 @@ class InstanceConfigDevicesSde(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdf(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -736,7 +736,7 @@ class InstanceConfigDevicesSdf(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -752,7 +752,7 @@ class InstanceConfigDevicesSdf(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -765,13 +765,13 @@ class InstanceConfigDevicesSdf(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdg(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -782,7 +782,7 @@ class InstanceConfigDevicesSdg(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -798,7 +798,7 @@ class InstanceConfigDevicesSdg(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -811,13 +811,13 @@ class InstanceConfigDevicesSdg(dict):
 @pulumi.output_type
 class InstanceConfigDevicesSdh(dict):
     def __init__(__self__, *,
-                 disk_id: Optional[float] = None,
+                 disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
-                 volume_id: Optional[float] = None):
+                 volume_id: Optional[int] = None):
         """
-        :param float disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param float volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -828,7 +828,7 @@ class InstanceConfigDevicesSdh(dict):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[float]:
+    def disk_id(self) -> Optional[int]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
@@ -844,7 +844,7 @@ class InstanceConfigDevicesSdh(dict):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[float]:
+    def volume_id(self) -> Optional[int]:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -924,27 +924,27 @@ class InstanceConfigHelpers(dict):
 class InstanceDisk(dict):
     def __init__(__self__, *,
                  label: str,
-                 size: float,
-                 authorized_keys: Optional[List[str]] = None,
-                 authorized_users: Optional[List[str]] = None,
+                 size: int,
+                 authorized_keys: Optional[Sequence[str]] = None,
+                 authorized_users: Optional[Sequence[str]] = None,
                  filesystem: Optional[str] = None,
-                 id: Optional[float] = None,
+                 id: Optional[int] = None,
                  image: Optional[str] = None,
                  read_only: Optional[bool] = None,
                  root_pass: Optional[str] = None,
                  stackscript_data: Optional[Mapping[str, Any]] = None,
-                 stackscript_id: Optional[float] = None):
+                 stackscript_id: Optional[int] = None):
         """
         :param str label: The Config's label for display purposes.  Also used by `boot_config_label`.
-        :param float size: The size of the Disk in MB.
-        :param List[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-        :param List[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param int size: The size of the Disk in MB.
+        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-        :param float id: The ID of the disk in the Linode API.
+        :param int id: The ID of the disk in the Linode API.
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-        :param float stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
@@ -977,7 +977,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The size of the Disk in MB.
         """
@@ -985,7 +985,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> Optional[List[str]]:
+    def authorized_keys(self) -> Optional[Sequence[str]]:
         """
         A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
@@ -993,7 +993,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter(name="authorizedUsers")
-    def authorized_users(self) -> Optional[List[str]]:
+    def authorized_users(self) -> Optional[Sequence[str]]:
         """
         A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         """
@@ -1009,7 +1009,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[float]:
+    def id(self) -> Optional[int]:
         """
         The ID of the disk in the Linode API.
         """
@@ -1046,7 +1046,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter(name="stackscriptId")
-    def stackscript_id(self) -> Optional[float]:
+    def stackscript_id(self) -> Optional[int]:
         """
         The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
@@ -1059,10 +1059,10 @@ class InstanceDisk(dict):
 @pulumi.output_type
 class InstanceSpecs(dict):
     def __init__(__self__, *,
-                 disk: Optional[float] = None,
-                 memory: Optional[float] = None,
-                 transfer: Optional[float] = None,
-                 vcpus: Optional[float] = None):
+                 disk: Optional[int] = None,
+                 memory: Optional[int] = None,
+                 transfer: Optional[int] = None,
+                 vcpus: Optional[int] = None):
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if memory is not None:
@@ -1074,22 +1074,22 @@ class InstanceSpecs(dict):
 
     @property
     @pulumi.getter
-    def disk(self) -> Optional[float]:
+    def disk(self) -> Optional[int]:
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter
-    def memory(self) -> Optional[float]:
+    def memory(self) -> Optional[int]:
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
-    def transfer(self) -> Optional[float]:
+    def transfer(self) -> Optional[int]:
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
-    def vcpus(self) -> Optional[float]:
+    def vcpus(self) -> Optional[int]:
         return pulumi.get(self, "vcpus")
 
     def _translate_property(self, prop):
@@ -1099,14 +1099,14 @@ class InstanceSpecs(dict):
 @pulumi.output_type
 class LkeClusterPool(dict):
     def __init__(__self__, *,
-                 count: float,
+                 count: int,
                  type: str,
-                 id: Optional[float] = None,
-                 nodes: Optional[List['outputs.LkeClusterPoolNode']] = None):
+                 id: Optional[int] = None,
+                 nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None):
         """
-        :param float count: The number of nodes in the Node Pool.
+        :param int count: The number of nodes in the Node Pool.
         :param str type: A Linode Type for all of the nodes in the Node Pool.
-        :param float id: The ID of the node.
+        :param int id: The ID of the node.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -1117,7 +1117,7 @@ class LkeClusterPool(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of nodes in the Node Pool.
         """
@@ -1133,7 +1133,7 @@ class LkeClusterPool(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[float]:
+    def id(self) -> Optional[int]:
         """
         The ID of the node.
         """
@@ -1141,7 +1141,7 @@ class LkeClusterPool(dict):
 
     @property
     @pulumi.getter
-    def nodes(self) -> Optional[List['outputs.LkeClusterPoolNode']]:
+    def nodes(self) -> Optional[Sequence['outputs.LkeClusterPoolNode']]:
         return pulumi.get(self, "nodes")
 
     def _translate_property(self, prop):
@@ -1152,11 +1152,11 @@ class LkeClusterPool(dict):
 class LkeClusterPoolNode(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
-                 instance_id: Optional[float] = None,
+                 instance_id: Optional[int] = None,
                  status: Optional[str] = None):
         """
         :param str id: The ID of the node.
-        :param float instance_id: The ID of the underlying Linode instance.
+        :param int instance_id: The ID of the underlying Linode instance.
         :param str status: The status of the node.
         """
         if id is not None:
@@ -1176,7 +1176,7 @@ class LkeClusterPoolNode(dict):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[float]:
+    def instance_id(self) -> Optional[int]:
         """
         The ID of the underlying Linode instance.
         """
@@ -1197,8 +1197,8 @@ class LkeClusterPoolNode(dict):
 @pulumi.output_type
 class NodeBalancerConfigNodeStatus(dict):
     def __init__(__self__, *,
-                 status_down: Optional[float] = None,
-                 status_up: Optional[float] = None):
+                 status_down: Optional[int] = None,
+                 status_up: Optional[int] = None):
         if status_down is not None:
             pulumi.set(__self__, "status_down", status_down)
         if status_up is not None:
@@ -1206,12 +1206,12 @@ class NodeBalancerConfigNodeStatus(dict):
 
     @property
     @pulumi.getter(name="statusDown")
-    def status_down(self) -> Optional[float]:
+    def status_down(self) -> Optional[int]:
         return pulumi.get(self, "status_down")
 
     @property
     @pulumi.getter(name="statusUp")
-    def status_up(self) -> Optional[float]:
+    def status_up(self) -> Optional[int]:
         return pulumi.get(self, "status_up")
 
     def _translate_property(self, prop):
@@ -1410,10 +1410,10 @@ class GetInstanceTypePriceResult(dict):
 class GetProfileReferralsResult(dict):
     def __init__(__self__, *,
                  code: str,
-                 completed: float,
+                 completed: int,
                  credit: float,
-                 pending: float,
-                 total: float,
+                 pending: int,
+                 total: int,
                  url: str):
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "completed", completed)
@@ -1429,7 +1429,7 @@ class GetProfileReferralsResult(dict):
 
     @property
     @pulumi.getter
-    def completed(self) -> float:
+    def completed(self) -> int:
         return pulumi.get(self, "completed")
 
     @property
@@ -1439,12 +1439,12 @@ class GetProfileReferralsResult(dict):
 
     @property
     @pulumi.getter
-    def pending(self) -> float:
+    def pending(self) -> int:
         return pulumi.get(self, "pending")
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> int:
         return pulumi.get(self, "total")
 
     @property

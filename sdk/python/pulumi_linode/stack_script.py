@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,12 +18,12 @@ class StackScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  rev_note: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -98,12 +98,12 @@ class StackScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[List[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
                parameters during deployment.
         """
         if __name__ is not None:
@@ -155,16 +155,16 @@ class StackScript(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created: Optional[pulumi.Input[str]] = None,
-            deployments_active: Optional[pulumi.Input[float]] = None,
-            deployments_total: Optional[pulumi.Input[float]] = None,
+            deployments_active: Optional[pulumi.Input[int]] = None,
+            deployments_total: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             label: Optional[pulumi.Input[str]] = None,
             rev_note: Optional[pulumi.Input[str]] = None,
             script: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
-            user_defined_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
+            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
             user_gravatar_id: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'StackScript':
         """
@@ -175,16 +175,16 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: The date this StackScript was created.
-        :param pulumi.Input[float] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
-        :param pulumi.Input[float] deployments_total: The total number of times this StackScript has been deployed.
+        :param pulumi.Input[int] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
+        :param pulumi.Input[int] deployments_total: The total number of times this StackScript has been deployed.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[List[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[str] updated: The date this StackScript was updated.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
                parameters during deployment.
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
@@ -218,7 +218,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentsActive")
-    def deployments_active(self) -> pulumi.Output[float]:
+    def deployments_active(self) -> pulumi.Output[int]:
         """
         Count of currently active, deployed Linodes created from this StackScript.
         """
@@ -226,7 +226,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentsTotal")
-    def deployments_total(self) -> pulumi.Output[float]:
+    def deployments_total(self) -> pulumi.Output[int]:
         """
         The total number of times this StackScript has been deployed.
         """
@@ -242,7 +242,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def images(self) -> pulumi.Output[List[str]]:
+    def images(self) -> pulumi.Output[Sequence[str]]:
         """
         An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         """
@@ -290,7 +290,7 @@ class StackScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> pulumi.Output[List['outputs.StackScriptUserDefinedField']]:
+    def user_defined_fields(self) -> pulumi.Output[Sequence['outputs.StackScriptUserDefinedField']]:
         """
         This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
         parameters during deployment.

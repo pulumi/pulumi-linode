@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -40,14 +40,14 @@ __all__ = [
 @pulumi.input_type
 class FirewallDeviceArgs:
     def __init__(__self__, *,
-                 entity_id: Optional[pulumi.Input[float]] = None,
-                 id: Optional[pulumi.Input[float]] = None,
+                 entity_id: Optional[pulumi.Input[int]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
-        :param pulumi.Input[float] id: The ID of the Firewall Device.
+        :param pulumi.Input[int] entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
+        :param pulumi.Input[int] id: The ID of the Firewall Device.
         :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] type: The type of Firewall Device.
         """
@@ -64,26 +64,26 @@ class FirewallDeviceArgs:
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[float]]:
+    def entity_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the underlying entity this device references (i.e. the Linode's ID).
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[float]]):
+    def entity_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "entity_id", value)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[float]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the Firewall Device.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[float]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property
@@ -123,12 +123,12 @@ class FirewallDeviceArgs:
 @pulumi.input_type
 class FirewallInboundArgs:
     def __init__(__self__, *,
-                 addresses: pulumi.Input[List[pulumi.Input[str]]],
-                 ports: pulumi.Input[List[pulumi.Input[str]]],
+                 addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ports: pulumi.Input[Sequence[pulumi.Input[str]]],
                  protocol: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[List[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
         """
         pulumi.set(__self__, "addresses", addresses)
@@ -137,26 +137,26 @@ class FirewallInboundArgs:
 
     @property
     @pulumi.getter
-    def addresses(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def addresses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "addresses", value)
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -175,12 +175,12 @@ class FirewallInboundArgs:
 @pulumi.input_type
 class FirewallOutboundArgs:
     def __init__(__self__, *,
-                 addresses: pulumi.Input[List[pulumi.Input[str]]],
-                 ports: pulumi.Input[List[pulumi.Input[str]]],
+                 addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ports: pulumi.Input[Sequence[pulumi.Input[str]]],
                  protocol: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[List[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
         """
         pulumi.set(__self__, "addresses", addresses)
@@ -189,26 +189,26 @@ class FirewallOutboundArgs:
 
     @property
     @pulumi.getter
-    def addresses(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def addresses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "addresses", value)
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -227,11 +227,11 @@ class FirewallOutboundArgs:
 @pulumi.input_type
 class InstanceAlertsArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[float]] = None,
-                 io: Optional[pulumi.Input[float]] = None,
-                 network_in: Optional[pulumi.Input[float]] = None,
-                 network_out: Optional[pulumi.Input[float]] = None,
-                 transfer_quota: Optional[pulumi.Input[float]] = None):
+                 cpu: Optional[pulumi.Input[int]] = None,
+                 io: Optional[pulumi.Input[int]] = None,
+                 network_in: Optional[pulumi.Input[int]] = None,
+                 network_out: Optional[pulumi.Input[int]] = None,
+                 transfer_quota: Optional[pulumi.Input[int]] = None):
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if io is not None:
@@ -245,47 +245,47 @@ class InstanceAlertsArgs:
 
     @property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[float]]:
+    def cpu(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[float]]):
+    def cpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu", value)
 
     @property
     @pulumi.getter
-    def io(self) -> Optional[pulumi.Input[float]]:
+    def io(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "io")
 
     @io.setter
-    def io(self, value: Optional[pulumi.Input[float]]):
+    def io(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "io", value)
 
     @property
     @pulumi.getter(name="networkIn")
-    def network_in(self) -> Optional[pulumi.Input[float]]:
+    def network_in(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "network_in")
 
     @network_in.setter
-    def network_in(self, value: Optional[pulumi.Input[float]]):
+    def network_in(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "network_in", value)
 
     @property
     @pulumi.getter(name="networkOut")
-    def network_out(self) -> Optional[pulumi.Input[float]]:
+    def network_out(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "network_out")
 
     @network_out.setter
-    def network_out(self, value: Optional[pulumi.Input[float]]):
+    def network_out(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "network_out", value)
 
     @property
     @pulumi.getter(name="transferQuota")
-    def transfer_quota(self) -> Optional[pulumi.Input[float]]:
+    def transfer_quota(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "transfer_quota")
 
     @transfer_quota.setter
-    def transfer_quota(self, value: Optional[pulumi.Input[float]]):
+    def transfer_quota(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "transfer_quota", value)
 
 
@@ -355,7 +355,7 @@ class InstanceConfigArgs:
                  devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
                  helpers: Optional[pulumi.Input['InstanceConfigHelpersArgs']] = None,
                  kernel: Optional[pulumi.Input[str]] = None,
-                 memory_limit: Optional[pulumi.Input[float]] = None,
+                 memory_limit: Optional[pulumi.Input[int]] = None,
                  root_device: Optional[pulumi.Input[str]] = None,
                  run_level: Optional[pulumi.Input[str]] = None,
                  virt_mode: Optional[pulumi.Input[str]] = None):
@@ -365,7 +365,7 @@ class InstanceConfigArgs:
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param pulumi.Input[str] kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
-        :param pulumi.Input[float] memory_limit: - Defaults to the total RAM of the Linode
+        :param pulumi.Input[int] memory_limit: - Defaults to the total RAM of the Linode
         :param pulumi.Input[str] root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param pulumi.Input[str] run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
         :param pulumi.Input[str] virt_mode: - Controls the virtualization mode. Defaults to `"paravirt"`.
@@ -450,14 +450,14 @@ class InstanceConfigArgs:
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[float]]:
+    def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
         - Defaults to the total RAM of the Linode
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[float]]):
+    def memory_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_limit", value)
 
     @property
@@ -607,13 +607,13 @@ class InstanceConfigDevicesArgs:
 @pulumi.input_type
 class InstanceConfigDevicesSdaArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -624,14 +624,14 @@ class InstanceConfigDevicesSdaArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -648,27 +648,27 @@ class InstanceConfigDevicesSdaArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdbArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -679,14 +679,14 @@ class InstanceConfigDevicesSdbArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -703,27 +703,27 @@ class InstanceConfigDevicesSdbArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdcArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -734,14 +734,14 @@ class InstanceConfigDevicesSdcArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -758,27 +758,27 @@ class InstanceConfigDevicesSdcArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSddArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -789,14 +789,14 @@ class InstanceConfigDevicesSddArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -813,27 +813,27 @@ class InstanceConfigDevicesSddArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdeArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -844,14 +844,14 @@ class InstanceConfigDevicesSdeArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -868,27 +868,27 @@ class InstanceConfigDevicesSdeArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdfArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -899,14 +899,14 @@ class InstanceConfigDevicesSdfArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -923,27 +923,27 @@ class InstanceConfigDevicesSdfArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdgArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -954,14 +954,14 @@ class InstanceConfigDevicesSdgArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -978,27 +978,27 @@ class InstanceConfigDevicesSdgArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class InstanceConfigDevicesSdhArgs:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  disk_label: Optional[pulumi.Input[str]] = None,
-                 volume_id: Optional[pulumi.Input[float]] = None):
+                 volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param pulumi.Input[int] disk_id: The Disk ID of the associated `disk_label`, if used.
         :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[float] volume_id: The Volume ID to map to this `device` slot.
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1009,14 +1009,14 @@ class InstanceConfigDevicesSdhArgs:
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[float]]:
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Disk ID of the associated `disk_label`, if used.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[float]]):
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
 
     @property
@@ -1033,14 +1033,14 @@ class InstanceConfigDevicesSdhArgs:
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[float]]:
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[float]]):
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
 
@@ -1131,27 +1131,27 @@ class InstanceConfigHelpersArgs:
 class InstanceDiskArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[str],
-                 size: pulumi.Input[float],
-                 authorized_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 authorized_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 size: pulumi.Input[int],
+                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filesystem: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[float]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 stackscript_id: Optional[pulumi.Input[float]] = None):
+                 stackscript_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
-        :param pulumi.Input[float] size: The size of the Disk in MB.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] size: The size of the Disk in MB.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-        :param pulumi.Input[float] id: The ID of the disk in the Linode API.
+        :param pulumi.Input[int] id: The ID of the disk in the Linode API.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[float] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
@@ -1188,38 +1188,38 @@ class InstanceDiskArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[float]:
+    def size(self) -> pulumi.Input[int]:
         """
         The size of the Disk in MB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[float]):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "authorized_keys")
 
     @authorized_keys.setter
-    def authorized_keys(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def authorized_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "authorized_keys", value)
 
     @property
     @pulumi.getter(name="authorizedUsers")
-    def authorized_users(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "authorized_users")
 
     @authorized_users.setter
-    def authorized_users(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def authorized_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "authorized_users", value)
 
     @property
@@ -1236,14 +1236,14 @@ class InstanceDiskArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[float]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the disk in the Linode API.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[float]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property
@@ -1293,24 +1293,24 @@ class InstanceDiskArgs:
 
     @property
     @pulumi.getter(name="stackscriptId")
-    def stackscript_id(self) -> Optional[pulumi.Input[float]]:
+    def stackscript_id(self) -> Optional[pulumi.Input[int]]:
         """
         The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "stackscript_id")
 
     @stackscript_id.setter
-    def stackscript_id(self, value: Optional[pulumi.Input[float]]):
+    def stackscript_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stackscript_id", value)
 
 
 @pulumi.input_type
 class InstanceSpecsArgs:
     def __init__(__self__, *,
-                 disk: Optional[pulumi.Input[float]] = None,
-                 memory: Optional[pulumi.Input[float]] = None,
-                 transfer: Optional[pulumi.Input[float]] = None,
-                 vcpus: Optional[pulumi.Input[float]] = None):
+                 disk: Optional[pulumi.Input[int]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
+                 transfer: Optional[pulumi.Input[int]] = None,
+                 vcpus: Optional[pulumi.Input[int]] = None):
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if memory is not None:
@@ -1322,52 +1322,52 @@ class InstanceSpecsArgs:
 
     @property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[float]]:
+    def disk(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[float]]):
+    def disk(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk", value)
 
     @property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[float]]:
+    def memory(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[float]]):
+    def memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory", value)
 
     @property
     @pulumi.getter
-    def transfer(self) -> Optional[pulumi.Input[float]]:
+    def transfer(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "transfer")
 
     @transfer.setter
-    def transfer(self, value: Optional[pulumi.Input[float]]):
+    def transfer(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "transfer", value)
 
     @property
     @pulumi.getter
-    def vcpus(self) -> Optional[pulumi.Input[float]]:
+    def vcpus(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "vcpus")
 
     @vcpus.setter
-    def vcpus(self, value: Optional[pulumi.Input[float]]):
+    def vcpus(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vcpus", value)
 
 
 @pulumi.input_type
 class LkeClusterPoolArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float],
+                 count: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 id: Optional[pulumi.Input[float]] = None,
-                 nodes: Optional[pulumi.Input[List[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
+                 id: Optional[pulumi.Input[int]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
         """
-        :param pulumi.Input[float] count: The number of nodes in the Node Pool.
+        :param pulumi.Input[int] count: The number of nodes in the Node Pool.
         :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool.
-        :param pulumi.Input[float] id: The ID of the node.
+        :param pulumi.Input[int] id: The ID of the node.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -1378,14 +1378,14 @@ class LkeClusterPoolArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of nodes in the Node Pool.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
@@ -1402,23 +1402,23 @@ class LkeClusterPoolArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[float]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the node.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[float]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[List[pulumi.Input['LkeClusterPoolNodeArgs']]]]:
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]]:
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[List[pulumi.Input['LkeClusterPoolNodeArgs']]]]):
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
 
@@ -1426,11 +1426,11 @@ class LkeClusterPoolArgs:
 class LkeClusterPoolNodeArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[float]] = None,
+                 instance_id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] id: The ID of the node.
-        :param pulumi.Input[float] instance_id: The ID of the underlying Linode instance.
+        :param pulumi.Input[int] instance_id: The ID of the underlying Linode instance.
         :param pulumi.Input[str] status: The status of the node.
         """
         if id is not None:
@@ -1454,14 +1454,14 @@ class LkeClusterPoolNodeArgs:
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[float]]:
+    def instance_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the underlying Linode instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[float]]):
+    def instance_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_id", value)
 
     @property
@@ -1480,8 +1480,8 @@ class LkeClusterPoolNodeArgs:
 @pulumi.input_type
 class NodeBalancerConfigNodeStatusArgs:
     def __init__(__self__, *,
-                 status_down: Optional[pulumi.Input[float]] = None,
-                 status_up: Optional[pulumi.Input[float]] = None):
+                 status_down: Optional[pulumi.Input[int]] = None,
+                 status_up: Optional[pulumi.Input[int]] = None):
         if status_down is not None:
             pulumi.set(__self__, "status_down", status_down)
         if status_up is not None:
@@ -1489,20 +1489,20 @@ class NodeBalancerConfigNodeStatusArgs:
 
     @property
     @pulumi.getter(name="statusDown")
-    def status_down(self) -> Optional[pulumi.Input[float]]:
+    def status_down(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "status_down")
 
     @status_down.setter
-    def status_down(self, value: Optional[pulumi.Input[float]]):
+    def status_down(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "status_down", value)
 
     @property
     @pulumi.getter(name="statusUp")
-    def status_up(self) -> Optional[pulumi.Input[float]]:
+    def status_up(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "status_up")
 
     @status_up.setter
-    def status_up(self, value: Optional[pulumi.Input[float]]):
+    def status_up(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "status_up", value)
 
 

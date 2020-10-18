@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Image']
@@ -16,9 +16,9 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_id: Optional[pulumi.Input[float]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 linode_id: Optional[pulumi.Input[float]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -73,9 +73,9 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.
-        :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
-        :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,12 +126,12 @@ class Image(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[str]] = None,
             deprecated: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_id: Optional[pulumi.Input[float]] = None,
+            disk_id: Optional[pulumi.Input[int]] = None,
             expiry: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            linode_id: Optional[pulumi.Input[float]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            linode_id: Optional[pulumi.Input[int]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vendor: Optional[pulumi.Input[str]] = None) -> 'Image':
         """
@@ -145,12 +145,12 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
-        :param pulumi.Input[float] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
-        :param pulumi.Input[float] linode_id: The ID of the Linode that this Image will be created from.
-        :param pulumi.Input[float] size: The minimum size this Image needs to deploy. Size is in MB.
+        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
                a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
@@ -207,7 +207,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> pulumi.Output[float]:
+    def disk_id(self) -> pulumi.Output[int]:
         """
         The ID of the Linode Disk that this Image will be created from.
         """
@@ -239,7 +239,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> pulumi.Output[float]:
+    def linode_id(self) -> pulumi.Output[int]:
         """
         The ID of the Linode that this Image will be created from.
         """
@@ -247,7 +247,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The minimum size this Image needs to deploy. Size is in MB.
         """

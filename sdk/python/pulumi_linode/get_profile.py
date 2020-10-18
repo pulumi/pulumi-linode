@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -57,7 +57,7 @@ class GetProfileResult:
 
     @property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> List[str]:
+    def authorized_keys(self) -> Sequence[str]:
         return pulumi.get(self, "authorized_keys")
 
     @property

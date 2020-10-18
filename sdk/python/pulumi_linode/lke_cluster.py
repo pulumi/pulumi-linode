@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,9 +19,9 @@ class LkeCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
+                 pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -49,9 +49,9 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,14 +96,14 @@ class LkeCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             k8s_version: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
+            pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'LkeCluster':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'LkeCluster':
         """
         Get an existing LkeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -111,14 +111,14 @@ class LkeCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
         :param pulumi.Input[str] status: The status of the node.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,7 +136,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiEndpoints")
-    def api_endpoints(self) -> pulumi.Output[List[str]]:
+    def api_endpoints(self) -> pulumi.Output[Sequence[str]]:
         """
         The endpoints for the Kubernetes API server.
         """
@@ -168,7 +168,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pools(self) -> pulumi.Output[List['outputs.LkeClusterPool']]:
+    def pools(self) -> pulumi.Output[Sequence['outputs.LkeClusterPool']]:
         """
         Additional nested attributes:
         """
@@ -192,7 +192,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,11 +18,11 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 inbounds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 linodes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 outbounds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -63,11 +63,11 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
-        :param pulumi.Input[List[pulumi.Input[float]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,14 +106,14 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]]] = None,
+            devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            inbounds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+            inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            linodes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-            outbounds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+            linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Firewall':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -121,14 +121,14 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]] devices: The devices associated with this firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]] devices: The devices associated with this firewall.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
-        :param pulumi.Input[List[pulumi.Input[float]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -146,7 +146,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def devices(self) -> pulumi.Output[List['outputs.FirewallDevice']]:
+    def devices(self) -> pulumi.Output[Sequence['outputs.FirewallDevice']]:
         """
         The devices associated with this firewall.
         """
@@ -162,7 +162,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inbounds(self) -> pulumi.Output[Optional[List['outputs.FirewallInbound']]]:
+    def inbounds(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallInbound']]]:
         """
         A firewall rule that specifies what inbound network traffic is allowed.
         """
@@ -178,7 +178,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def linodes(self) -> pulumi.Output[List[float]]:
+    def linodes(self) -> pulumi.Output[Sequence[int]]:
         """
         A list of IDs of Linodes this Firewall should govern it's network traffic for.
         """
@@ -186,7 +186,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def outbounds(self) -> pulumi.Output[Optional[List['outputs.FirewallOutbound']]]:
+    def outbounds(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallOutbound']]]:
         """
         A firewall rule that specifies what outbound network traffic is allowed.
         """
@@ -202,7 +202,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """

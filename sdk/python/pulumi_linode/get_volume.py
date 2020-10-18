@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -26,20 +26,20 @@ class GetVolumeResult:
         if filesystem_path and not isinstance(filesystem_path, str):
             raise TypeError("Expected argument 'filesystem_path' to be a str")
         pulumi.set(__self__, "filesystem_path", filesystem_path)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
-        if linode_id and not isinstance(linode_id, float):
-            raise TypeError("Expected argument 'linode_id' to be a float")
+        if linode_id and not isinstance(linode_id, int):
+            raise TypeError("Expected argument 'linode_id' to be a int")
         pulumi.set(__self__, "linode_id", linode_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
@@ -63,7 +63,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
@@ -73,7 +73,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> float:
+    def linode_id(self) -> int:
         return pulumi.get(self, "linode_id")
 
     @property
@@ -83,7 +83,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         return pulumi.get(self, "size")
 
     @property
@@ -93,7 +93,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
     @property
@@ -120,7 +120,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             updated=self.updated)
 
 
-def get_volume(id: Optional[float] = None,
+def get_volume(id: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Provides information about a Linode Volume.
@@ -160,7 +160,7 @@ def get_volume(id: Optional[float] = None,
     - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 
 
-    :param float id: The unique numeric ID of the Volume record to query.
+    :param int id: The unique numeric ID of the Volume record to query.
     """
     __args__ = dict()
     __args__['id'] = id

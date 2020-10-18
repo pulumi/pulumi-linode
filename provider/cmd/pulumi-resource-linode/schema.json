@@ -57,7 +57,7 @@
         ]
     },
     "types": {
-        "linode:/FirewallDevice:FirewallDevice": {
+        "linode:index/FirewallDevice:FirewallDevice": {
             "properties": {
                 "entityId": {
                     "type": "integer",
@@ -117,7 +117,7 @@
                 }
             }
         },
-        "linode:/FirewallInbound:FirewallInbound": {
+        "linode:index/FirewallInbound:FirewallInbound": {
             "properties": {
                 "addresses": {
                     "type": "array",
@@ -160,7 +160,7 @@
                 "protocol"
             ]
         },
-        "linode:/FirewallOutbound:FirewallOutbound": {
+        "linode:index/FirewallOutbound:FirewallOutbound": {
             "properties": {
                 "addresses": {
                     "type": "array",
@@ -203,7 +203,7 @@
                 "protocol"
             ]
         },
-        "linode:/InstanceAlerts:InstanceAlerts": {
+        "linode:index/InstanceAlerts:InstanceAlerts": {
             "properties": {
                 "cpu": {
                     "type": "integer",
@@ -259,7 +259,7 @@
                 }
             }
         },
-        "linode:/InstanceBackups:InstanceBackups": {
+        "linode:index/InstanceBackups:InstanceBackups": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -270,7 +270,7 @@
                     }
                 },
                 "schedule": {
-                    "$ref": "#/types/linode:/InstanceBackupsSchedule:InstanceBackupsSchedule",
+                    "$ref": "#/types/linode:index/InstanceBackupsSchedule:InstanceBackupsSchedule",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -288,7 +288,7 @@
                 }
             }
         },
-        "linode:/InstanceBackupsSchedule:InstanceBackupsSchedule": {
+        "linode:index/InstanceBackupsSchedule:InstanceBackupsSchedule": {
             "properties": {
                 "day": {
                     "type": "string",
@@ -317,7 +317,7 @@
                 }
             }
         },
-        "linode:/InstanceConfig:InstanceConfig": {
+        "linode:index/InstanceConfig:InstanceConfig": {
             "properties": {
                 "comments": {
                     "type": "string",
@@ -329,7 +329,7 @@
                     }
                 },
                 "devices": {
-                    "$ref": "#/types/linode:/InstanceConfigDevices:InstanceConfigDevices",
+                    "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
                     "description": "A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.\n",
                     "language": {
                         "python": {
@@ -338,7 +338,7 @@
                     }
                 },
                 "helpers": {
-                    "$ref": "#/types/linode:/InstanceConfigHelpers:InstanceConfigHelpers",
+                    "$ref": "#/types/linode:index/InstanceConfigHelpers:InstanceConfigHelpers",
                     "description": "Helpers enabled when booting to this Linode Config.\n",
                     "language": {
                         "python": {
@@ -416,10 +416,10 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevices:InstanceConfigDevices": {
+        "linode:index/InstanceConfigDevices:InstanceConfigDevices": {
             "properties": {
                 "sda": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSda:InstanceConfigDevicesSda",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSda:InstanceConfigDevicesSda",
                     "description": "... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `\"fullvirt\"` `virt_mode`.\n",
                     "language": {
                         "python": {
@@ -428,7 +428,7 @@
                     }
                 },
                 "sdb": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -436,7 +436,7 @@
                     }
                 },
                 "sdc": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -444,7 +444,7 @@
                     }
                 },
                 "sdd": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -452,7 +452,7 @@
                     }
                 },
                 "sde": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSde:InstanceConfigDevicesSde",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSde:InstanceConfigDevicesSde",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -460,7 +460,7 @@
                     }
                 },
                 "sdf": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -468,7 +468,7 @@
                     }
                 },
                 "sdg": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -476,7 +476,7 @@
                     }
                 },
                 "sdh": {
-                    "$ref": "#/types/linode:/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh",
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -500,7 +500,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSda:InstanceConfigDevicesSda": {
+        "linode:index/InstanceConfigDevicesSda:InstanceConfigDevicesSda": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -539,7 +539,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb": {
+        "linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -578,7 +578,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc": {
+        "linode:index/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -617,7 +617,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd": {
+        "linode:index/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -656,7 +656,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSde:InstanceConfigDevicesSde": {
+        "linode:index/InstanceConfigDevicesSde:InstanceConfigDevicesSde": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -695,7 +695,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf": {
+        "linode:index/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -734,7 +734,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg": {
+        "linode:index/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -773,7 +773,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh": {
+        "linode:index/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh": {
             "properties": {
                 "diskId": {
                     "type": "integer",
@@ -812,7 +812,7 @@
                 }
             }
         },
-        "linode:/InstanceConfigHelpers:InstanceConfigHelpers": {
+        "linode:index/InstanceConfigHelpers:InstanceConfigHelpers": {
             "properties": {
                 "devtmpfsAutomount": {
                     "type": "boolean",
@@ -861,7 +861,7 @@
             },
             "type": "object"
         },
-        "linode:/InstanceDisk:InstanceDisk": {
+        "linode:index/InstanceDisk:InstanceDisk": {
             "properties": {
                 "authorizedKeys": {
                     "type": "array",
@@ -991,7 +991,7 @@
                 }
             }
         },
-        "linode:/InstanceSpecs:InstanceSpecs": {
+        "linode:index/InstanceSpecs:InstanceSpecs": {
             "properties": {
                 "disk": {
                     "type": "integer",
@@ -1038,7 +1038,7 @@
                 }
             }
         },
-        "linode:/LkeClusterPool:LkeClusterPool": {
+        "linode:index/LkeClusterPool:LkeClusterPool": {
             "properties": {
                 "count": {
                     "type": "integer",
@@ -1061,7 +1061,7 @@
                 "nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/LkeClusterPoolNode:LkeClusterPoolNode"
+                        "$ref": "#/types/linode:index/LkeClusterPoolNode:LkeClusterPoolNode"
                     },
                     "language": {
                         "python": {
@@ -1095,7 +1095,7 @@
                 }
             }
         },
-        "linode:/LkeClusterPoolNode:LkeClusterPoolNode": {
+        "linode:index/LkeClusterPoolNode:LkeClusterPoolNode": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -1136,7 +1136,7 @@
                 }
             }
         },
-        "linode:/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
+        "linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
             "properties": {
                 "statusDown": {
                     "type": "integer"
@@ -1155,7 +1155,7 @@
                 }
             }
         },
-        "linode:/NodeBalancerTransfer:NodeBalancerTransfer": {
+        "linode:index/NodeBalancerTransfer:NodeBalancerTransfer": {
             "properties": {
                 "in": {
                     "type": "number"
@@ -1178,7 +1178,7 @@
                 }
             }
         },
-        "linode:/ObjectStorageBucketCert:ObjectStorageBucketCert": {
+        "linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert": {
             "properties": {
                 "certificate": {
                     "type": "string",
@@ -1205,7 +1205,7 @@
                 "privateKey"
             ]
         },
-        "linode:/StackScriptUserDefinedField:StackScriptUserDefinedField": {
+        "linode:index/StackScriptUserDefinedField:StackScriptUserDefinedField": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -1271,10 +1271,10 @@
                 }
             }
         },
-        "linode:/getInstanceTypeAddons:getInstanceTypeAddons": {
+        "linode:index/getInstanceTypeAddons:getInstanceTypeAddons": {
             "properties": {
                 "backups": {
-                    "$ref": "#/types/linode:/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups",
+                    "$ref": "#/types/linode:index/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1292,10 +1292,10 @@
                 }
             }
         },
-        "linode:/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups": {
+        "linode:index/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups": {
             "properties": {
                 "price": {
-                    "$ref": "#/types/linode:/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice",
+                    "$ref": "#/types/linode:index/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1313,7 +1313,7 @@
                 }
             }
         },
-        "linode:/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice": {
+        "linode:index/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice": {
             "properties": {
                 "hourly": {
                     "type": "number",
@@ -1343,7 +1343,7 @@
                 }
             }
         },
-        "linode:/getInstanceTypePrice:getInstanceTypePrice": {
+        "linode:index/getInstanceTypePrice:getInstanceTypePrice": {
             "properties": {
                 "hourly": {
                     "type": "number",
@@ -1373,7 +1373,7 @@
                 }
             }
         },
-        "linode:/getProfileReferrals:getProfileReferrals": {
+        "linode:index/getProfileReferrals:getProfileReferrals": {
             "properties": {
                 "code": {
                     "type": "string",
@@ -1439,7 +1439,7 @@
                 }
             }
         },
-        "linode:/getStackScriptUserDefinedField:getStackScriptUserDefinedField": {
+        "linode:index/getStackScriptUserDefinedField:getStackScriptUserDefinedField": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -1931,7 +1931,7 @@
                 "devices": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/FirewallDevice:FirewallDevice"
+                        "$ref": "#/types/linode:index/FirewallDevice:FirewallDevice"
                     },
                     "description": "The devices associated with this firewall.\n"
                 },
@@ -1942,7 +1942,7 @@
                 "inbounds": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                        "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                     },
                     "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
                 },
@@ -1960,7 +1960,7 @@
                 "outbounds": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                        "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                     },
                     "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
                 },
@@ -1990,7 +1990,7 @@
                 "inbounds": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                        "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                     },
                     "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
                 },
@@ -2008,7 +2008,7 @@
                 "outbounds": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                        "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                     },
                     "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
                 },
@@ -2029,7 +2029,7 @@
                     "devices": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/FirewallDevice:FirewallDevice"
+                            "$ref": "#/types/linode:index/FirewallDevice:FirewallDevice"
                         },
                         "description": "The devices associated with this firewall.\n"
                     },
@@ -2040,7 +2040,7 @@
                     "inbounds": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/FirewallInbound:FirewallInbound"
+                            "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                         },
                         "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
                     },
@@ -2058,7 +2058,7 @@
                     "outbounds": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/FirewallOutbound:FirewallOutbound"
+                            "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                         },
                         "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
                     },
@@ -2224,7 +2224,7 @@
             "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group: \"foo\",\n    image: \"linode/ubuntu18.04\",\n    label: \"simple_instance\",\n    privateIp: true,\n    region: \"us-central\",\n    rootPass: \"terr4form-test\",\n    swapSize: 256,\n    tags: [\"foo\"],\n    type: \"g6-standard-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group=\"foo\",\n    image=\"linode/ubuntu18.04\",\n    label=\"simple_instance\",\n    private_ip=True,\n    region=\"us-central\",\n    root_pass=\"terr4form-test\",\n    swap_size=256,\n    tags=[\"foo\"],\n    type=\"g6-standard-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new Linode.Instance(\"web\", new Linode.InstanceArgs\n        {\n            AuthorizedKeys = \n            {\n                \"ssh-rsa AAAA...Gw== user@example.local\",\n            },\n            Group = \"foo\",\n            Image = \"linode/ubuntu18.04\",\n            Label = \"simple_instance\",\n            PrivateIp = true,\n            Region = \"us-central\",\n            RootPass = \"terr4form-test\",\n            SwapSize = 256,\n            Tags = \n            {\n                \"foo\",\n            },\n            Type = \"g6-standard-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tGroup:     pulumi.String(\"foo\"),\n\t\t\tImage:     pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:     pulumi.String(\"simple_instance\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tRootPass:  pulumi.String(\"terr4form-test\"),\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Linode Instance with explicit Configs and Disks\n\nUsing explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst me = pulumi.output(linode.getProfile({ async: true }));\nconst webVolume = new linode.Volume(\"web_volume\", {\n    label: \"web_volume\",\n    region: \"us-central\",\n    size: 20,\n});\nconst web = new linode.Instance(\"web\", {\n    bootConfigLabel: \"boot_config\",\n    configs: [{\n        devices: {\n            sda: {\n                diskLabel: \"boot\",\n            },\n            sdb: {\n                volumeId: webVolume.id.apply(id =\u003e Number.parseFloat(id)),\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot_config\",\n        rootDevice: \"/dev/sda\",\n    }],\n    disks: [{\n        // Any of authorized_keys, authorized_users, and root_pass\n        // can be used for provisioning.\n        authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n        authorizedUsers: [me.username],\n        image: \"linode/ubuntu18.04\",\n        label: \"boot\",\n        rootPass: \"terr4form-test\",\n        size: 3000,\n    }],\n    group: \"foo\",\n    label: \"complex_instance\",\n    privateIp: true,\n    region: \"us-central\",\n    tags: [\"foo\"],\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nme = linode.get_profile()\nweb_volume = linode.Volume(\"webVolume\",\n    label=\"web_volume\",\n    region=\"us-central\",\n    size=20)\nweb = linode.Instance(\"web\",\n    boot_config_label=\"boot_config\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                disk_label=\"boot\",\n            ),\n            sdb=linode.InstanceConfigDevicesSdbArgs(\n                volume_id=web_volume.id,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot_config\",\n        root_device=\"/dev/sda\",\n    )],\n    disks=[linode.InstanceDiskArgs(\n        authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n        authorized_users=[me.username],\n        image=\"linode/ubuntu18.04\",\n        label=\"boot\",\n        root_pass=\"terr4form-test\",\n        size=3000,\n    )],\n    group=\"foo\",\n    label=\"complex_instance\",\n    private_ip=True,\n    region=\"us-central\",\n    tags=[\"foo\"],\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var me = Output.Create(Linode.GetProfile.InvokeAsync());\n        var webVolume = new Linode.Volume(\"webVolume\", new Linode.VolumeArgs\n        {\n            Label = \"web_volume\",\n            Region = \"us-central\",\n            Size = 20,\n        });\n        var web = new Linode.Instance(\"web\", new Linode.InstanceArgs\n        {\n            BootConfigLabel = \"boot_config\",\n            Configs = \n            {\n                new Linode.Inputs.InstanceConfigArgs\n                {\n                    Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                    {\n                        Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                        {\n                            DiskLabel = \"boot\",\n                        },\n                        Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs\n                        {\n                            VolumeId = webVolume.Id,\n                        },\n                    },\n                    Kernel = \"linode/latest-64bit\",\n                    Label = \"boot_config\",\n                    RootDevice = \"/dev/sda\",\n                },\n            },\n            Disks = \n            {\n                new Linode.Inputs.InstanceDiskArgs\n                {\n                    AuthorizedKeys = \n                    {\n                        \"ssh-rsa AAAA...Gw== user@example.local\",\n                    },\n                    AuthorizedUsers = \n                    {\n                        me.Apply(me =\u003e me.Username),\n                    },\n                    Image = \"linode/ubuntu18.04\",\n                    Label = \"boot\",\n                    RootPass = \"terr4form-test\",\n                    Size = 3000,\n                },\n            },\n            Group = \"foo\",\n            Label = \"complex_instance\",\n            PrivateIp = true,\n            Region = \"us-central\",\n            Tags = \n            {\n                \"foo\",\n            },\n            Type = \"g6-nanode-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tme, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\twebVolume, err := linode.NewVolume(ctx, \"webVolume\", \u0026linode.VolumeArgs{\n\t\t\tLabel:  pulumi.String(\"web_volume\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tSize:   pulumi.Int(20),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tBootConfigLabel: pulumi.String(\"boot_config\"),\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tDiskLabel: pulumi.String(\"boot\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSdb: \u0026linode.InstanceConfigDevicesSdbArgs{\n\t\t\t\t\t\t\tVolumeId: webVolume.ID(),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel:     pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:      pulumi.String(\"boot_config\"),\n\t\t\t\t\tRootDevice: pulumi.String(\"/dev/sda\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDisks: linode.InstanceDiskArray{\n\t\t\t\t\u0026linode.InstanceDiskArgs{\n\t\t\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t\t\t},\n\t\t\t\t\tAuthorizedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(me.Username),\n\t\t\t\t\t},\n\t\t\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\t\t\tRootPass: pulumi.String(\"terr4form-test\"),\n\t\t\t\t\tSize:     pulumi.Int(3000),\n\t\t\t\t},\n\t\t\t},\n\t\t\tGroup:     pulumi.String(\"foo\"),\n\t\t\tLabel:     pulumi.String(\"complex_instance\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis Linode Instance resource exports the following attributes:\n\n* `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)\n\n* `ip_address` - A string containing the Linode's public IP address.\n\n* `private_ip_address` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.\n\n* `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.\n\n* `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n\n* `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.\n\n* `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.\n\n* `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.\n\n* `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.\n\n* `backups` - Information about this Linode's backups status.\n\n  * `enabled` - If this Linode has the Backup service enabled.\n\n  * `schedule`\n\n    * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as \"Scheduling\" until the day is automatically selected.\n\n    * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.\n",
             "properties": {
                 "alerts": {
-                    "$ref": "#/types/linode:/InstanceAlerts:InstanceAlerts"
+                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
                 },
                 "authorizedKeys": {
                     "type": "array",
@@ -2245,7 +2245,7 @@
                     "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*\n"
                 },
                 "backups": {
-                    "$ref": "#/types/linode:/InstanceBackups:InstanceBackups",
+                    "$ref": "#/types/linode:index/InstanceBackups:InstanceBackups",
                     "description": "Information about this Linode's backups status.\n"
                 },
                 "backupsEnabled": {
@@ -2259,14 +2259,14 @@
                 "configs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/InstanceConfig:InstanceConfig"
+                        "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
                     "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
                 },
                 "disks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/InstanceDisk:InstanceDisk"
+                        "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                     }
                 },
                 "group": {
@@ -2313,7 +2313,7 @@
                     "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n"
                 },
                 "specs": {
-                    "$ref": "#/types/linode:/InstanceSpecs:InstanceSpecs"
+                    "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -2367,7 +2367,7 @@
             ],
             "inputProperties": {
                 "alerts": {
-                    "$ref": "#/types/linode:/InstanceAlerts:InstanceAlerts"
+                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
                 },
                 "authorizedKeys": {
                     "type": "array",
@@ -2398,14 +2398,14 @@
                 "configs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/InstanceConfig:InstanceConfig"
+                        "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
                     "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
                 },
                 "disks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/InstanceDisk:InstanceDisk"
+                        "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                     }
                 },
                 "group": {
@@ -2470,7 +2470,7 @@
                 "description": "Input properties used for looking up and filtering Instance resources.\n",
                 "properties": {
                     "alerts": {
-                        "$ref": "#/types/linode:/InstanceAlerts:InstanceAlerts"
+                        "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
                     },
                     "authorizedKeys": {
                         "type": "array",
@@ -2491,7 +2491,7 @@
                         "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*\n"
                     },
                     "backups": {
-                        "$ref": "#/types/linode:/InstanceBackups:InstanceBackups",
+                        "$ref": "#/types/linode:index/InstanceBackups:InstanceBackups",
                         "description": "Information about this Linode's backups status.\n"
                     },
                     "backupsEnabled": {
@@ -2505,14 +2505,14 @@
                     "configs": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/InstanceConfig:InstanceConfig"
+                            "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                         },
                         "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
                     },
                     "disks": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/InstanceDisk:InstanceDisk"
+                            "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                         }
                     },
                     "group": {
@@ -2559,7 +2559,7 @@
                         "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n"
                     },
                     "specs": {
-                        "$ref": "#/types/linode:/InstanceSpecs:InstanceSpecs"
+                        "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs"
                     },
                     "stackscriptData": {
                         "type": "object",
@@ -2624,7 +2624,7 @@
                 "pools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/LkeClusterPool:LkeClusterPool"
+                        "$ref": "#/types/linode:index/LkeClusterPool:LkeClusterPool"
                     },
                     "description": "Additional nested attributes:\n"
                 },
@@ -2665,7 +2665,7 @@
                 "pools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/LkeClusterPool:LkeClusterPool"
+                        "$ref": "#/types/linode:index/LkeClusterPool:LkeClusterPool"
                     },
                     "description": "Additional nested attributes:\n"
                 },
@@ -2712,7 +2712,7 @@
                     "pools": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/LkeClusterPool:LkeClusterPool"
+                            "$ref": "#/types/linode:index/LkeClusterPool:LkeClusterPool"
                         },
                         "description": "Additional nested attributes:\n"
                     },
@@ -2773,7 +2773,7 @@
                     "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
                 },
                 "transfer": {
-                    "$ref": "#/types/linode:/NodeBalancerTransfer:NodeBalancerTransfer"
+                    "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
                 },
                 "updated": {
                     "type": "string"
@@ -2850,7 +2850,7 @@
                         "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
                     },
                     "transfer": {
-                        "$ref": "#/types/linode:/NodeBalancerTransfer:NodeBalancerTransfer"
+                        "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
                     },
                     "updated": {
                         "type": "string"
@@ -2899,7 +2899,7 @@
                     "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.\n"
                 },
                 "nodeStatus": {
-                    "$ref": "#/types/linode:/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                    "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -3063,7 +3063,7 @@
                         "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.\n"
                     },
                     "nodeStatus": {
-                        "$ref": "#/types/linode:/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                        "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
                     },
                     "nodebalancerId": {
                         "type": "integer",
@@ -3217,7 +3217,7 @@
             "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Bucket.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: `%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"%s\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n        var foobar = new Linode.ObjectStorageBucket(\"foobar\", new Linode.ObjectStorageBucketArgs\n        {\n            Cluster = primary.Apply(primary =\u003e primary.Id),\n            Label = \"%s\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(fmt.Sprintf(\"%v%v\", \"%\", \"s\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cert": {
-                    "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
                 },
                 "cluster": {
                     "type": "string",
@@ -3234,7 +3234,7 @@
             ],
             "inputProperties": {
                 "cert": {
-                    "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
                 },
                 "cluster": {
                     "type": "string",
@@ -3253,7 +3253,7 @@
                 "description": "Input properties used for looking up and filtering ObjectStorageBucket resources.\n",
                 "properties": {
                     "cert": {
-                        "$ref": "#/types/linode:/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                        "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
                     },
                     "cluster": {
                         "type": "string",
@@ -3754,7 +3754,7 @@
                 "userDefinedFields": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/StackScriptUserDefinedField:StackScriptUserDefinedField"
+                        "$ref": "#/types/linode:index/StackScriptUserDefinedField:StackScriptUserDefinedField"
                     },
                     "description": "This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized\nparameters during deployment.\n"
                 },
@@ -3811,7 +3811,7 @@
                 "userDefinedFields": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/linode:/StackScriptUserDefinedField:StackScriptUserDefinedField"
+                        "$ref": "#/types/linode:index/StackScriptUserDefinedField:StackScriptUserDefinedField"
                     },
                     "description": "This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized\nparameters during deployment.\n"
                 }
@@ -3871,7 +3871,7 @@
                     "userDefinedFields": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/StackScriptUserDefinedField:StackScriptUserDefinedField"
+                            "$ref": "#/types/linode:index/StackScriptUserDefinedField:StackScriptUserDefinedField"
                         },
                         "description": "This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized\nparameters during deployment.\n"
                     },
@@ -4402,7 +4402,7 @@
                 "description": "A collection of values returned by getInstanceType.\n",
                 "properties": {
                     "addons": {
-                        "$ref": "#/types/linode:/getInstanceTypeAddons:getInstanceTypeAddons"
+                        "$ref": "#/types/linode:index/getInstanceTypeAddons:getInstanceTypeAddons"
                     },
                     "class": {
                         "type": "string"
@@ -4423,7 +4423,7 @@
                         "type": "integer"
                     },
                     "price": {
-                        "$ref": "#/types/linode:/getInstanceTypePrice:getInstanceTypePrice"
+                        "$ref": "#/types/linode:index/getInstanceTypePrice:getInstanceTypePrice"
                     },
                     "transfer": {
                         "type": "integer"
@@ -4596,7 +4596,7 @@
                         "type": "string"
                     },
                     "referrals": {
-                        "$ref": "#/types/linode:/getProfileReferrals:getProfileReferrals"
+                        "$ref": "#/types/linode:index/getProfileReferrals:getProfileReferrals"
                     },
                     "restricted": {
                         "type": "boolean"
@@ -4719,7 +4719,7 @@
                     "userDefinedFields": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/getStackScriptUserDefinedField:getStackScriptUserDefinedField"
+                            "$ref": "#/types/linode:index/getStackScriptUserDefinedField:getStackScriptUserDefinedField"
                         }
                     }
                 },
@@ -4770,7 +4770,7 @@
                     "userDefinedFields": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/linode:/getStackScriptUserDefinedField:getStackScriptUserDefinedField"
+                            "$ref": "#/types/linode:index/getStackScriptUserDefinedField:getStackScriptUserDefinedField"
                         }
                     },
                     "userGravatarId": {

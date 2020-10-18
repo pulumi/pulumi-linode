@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -20,20 +20,20 @@ class GetDomainRecordResult:
     A collection of values returned by getDomainRecord.
     """
     def __init__(__self__, domain_id=None, id=None, name=None, port=None, priority=None, protocol=None, service=None, tag=None, target=None, ttl_sec=None, type=None, weight=None):
-        if domain_id and not isinstance(domain_id, float):
-            raise TypeError("Expected argument 'domain_id' to be a float")
+        if domain_id and not isinstance(domain_id, int):
+            raise TypeError("Expected argument 'domain_id' to be a int")
         pulumi.set(__self__, "domain_id", domain_id)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
-        if priority and not isinstance(priority, float):
-            raise TypeError("Expected argument 'priority' to be a float")
+        if priority and not isinstance(priority, int):
+            raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
@@ -47,24 +47,24 @@ class GetDomainRecordResult:
         if target and not isinstance(target, str):
             raise TypeError("Expected argument 'target' to be a str")
         pulumi.set(__self__, "target", target)
-        if ttl_sec and not isinstance(ttl_sec, float):
-            raise TypeError("Expected argument 'ttl_sec' to be a float")
+        if ttl_sec and not isinstance(ttl_sec, int):
+            raise TypeError("Expected argument 'ttl_sec' to be a int")
         pulumi.set(__self__, "ttl_sec", ttl_sec)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-        if weight and not isinstance(weight, float):
-            raise TypeError("Expected argument 'weight' to be a float")
+        if weight and not isinstance(weight, int):
+            raise TypeError("Expected argument 'weight' to be a int")
         pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> float:
+    def domain_id(self) -> int:
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[float]:
+    def id(self) -> Optional[int]:
         return pulumi.get(self, "id")
 
     @property
@@ -74,12 +74,12 @@ class GetDomainRecordResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         return pulumi.get(self, "priority")
 
     @property
@@ -104,7 +104,7 @@ class GetDomainRecordResult:
 
     @property
     @pulumi.getter(name="ttlSec")
-    def ttl_sec(self) -> float:
+    def ttl_sec(self) -> int:
         return pulumi.get(self, "ttl_sec")
 
     @property
@@ -114,7 +114,7 @@ class GetDomainRecordResult:
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         return pulumi.get(self, "weight")
 
 
@@ -138,8 +138,8 @@ class AwaitableGetDomainRecordResult(GetDomainRecordResult):
             weight=self.weight)
 
 
-def get_domain_record(domain_id: Optional[float] = None,
-                      id: Optional[float] = None,
+def get_domain_record(domain_id: Optional[int] = None,
+                      id: Optional[int] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordResult:
     """
@@ -187,8 +187,8 @@ def get_domain_record(domain_id: Optional[float] = None,
     - `tag` - The tag portion of a CAA record.
 
 
-    :param float domain_id: The associated domain's unique ID.
-    :param float id: The unique ID of the Domain Record.
+    :param int domain_id: The associated domain's unique ID.
+    :param int id: The unique ID of the Domain Record.
     :param str name: The name of the Record.
     """
     __args__ = dict()

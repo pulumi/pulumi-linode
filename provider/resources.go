@@ -18,9 +18,10 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/linode/terraform-provider-linode/linode"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
@@ -63,7 +64,7 @@ func makeResource(mod string, res string) tokens.Type {
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
 // for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
+func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
 
@@ -74,7 +75,7 @@ func boolRef(b bool) *bool {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := linode.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(linode.Provider().(*schema.Provider))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
