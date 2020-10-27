@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ObjectStorageKey']
 
@@ -15,6 +17,7 @@ class ObjectStorageKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -40,8 +43,11 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         * `secret_key` - This keypair's secret key.
 
+        * `limited` - Whether or not this key is a limited access key.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
         """
         if __name__ is not None:
@@ -61,10 +67,12 @@ class ObjectStorageKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['bucket_accesses'] = bucket_accesses
             if label is None:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
             __props__['access_key'] = None
+            __props__['limited'] = None
             __props__['secret_key'] = None
         super(ObjectStorageKey, __self__).__init__(
             'linode:index/objectStorageKey:ObjectStorageKey',
@@ -77,7 +85,9 @@ class ObjectStorageKey(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: Optional[pulumi.Input[str]] = None,
+            bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
             label: Optional[pulumi.Input[str]] = None,
+            limited: Optional[pulumi.Input[bool]] = None,
             secret_key: Optional[pulumi.Input[str]] = None) -> 'ObjectStorageKey':
         """
         Get an existing ObjectStorageKey resource's state with the given name, id, and optional extra
@@ -87,7 +97,9 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: This keypair's access key. This is not secret.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
+        :param pulumi.Input[bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -95,7 +107,9 @@ class ObjectStorageKey(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["access_key"] = access_key
+        __props__["bucket_accesses"] = bucket_accesses
         __props__["label"] = label
+        __props__["limited"] = limited
         __props__["secret_key"] = secret_key
         return ObjectStorageKey(resource_name, opts=opts, __props__=__props__)
 
@@ -108,12 +122,28 @@ class ObjectStorageKey(pulumi.CustomResource):
         return pulumi.get(self, "access_key")
 
     @property
+    @pulumi.getter(name="bucketAccesses")
+    def bucket_accesses(self) -> pulumi.Output[Optional[Sequence['outputs.ObjectStorageKeyBucketAccess']]]:
+        """
+        Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        """
+        return pulumi.get(self, "bucket_accesses")
+
+    @property
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
         """
         The label given to this key. For display purposes only.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def limited(self) -> pulumi.Output[bool]:
+        """
+        Whether or not this key is a limited access key.
+        """
+        return pulumi.get(self, "limited")
 
     @property
     @pulumi.getter(name="secretKey")

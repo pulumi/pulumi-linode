@@ -406,6 +406,21 @@ export interface ObjectStorageBucketCert {
     privateKey: string;
 }
 
+export interface ObjectStorageKeyBucketAccess {
+    /**
+     * The unique label of the bucket to which the key will grant limited access.
+     */
+    bucketName: string;
+    /**
+     * The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     */
+    cluster: string;
+    /**
+     * This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+     */
+    permissions: string;
+}
+
 export interface StackScriptUserDefinedField {
     default: string;
     example: string;
