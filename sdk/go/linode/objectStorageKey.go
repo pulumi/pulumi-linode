@@ -43,13 +43,19 @@ import (
 // * `accessKey` - This keypair's access key. This is not secret.
 //
 // * `secretKey` - This keypair's secret key.
+//
+// * `limited` - Whether or not this key is a limited access key.
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 
 	// This keypair's access key. This is not secret.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
+	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+	BucketAccesses ObjectStorageKeyBucketAccessArrayOutput `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
 	Label pulumi.StringOutput `pulumi:"label"`
+	// Whether or not this key is a limited access key.
+	Limited pulumi.BoolOutput `pulumi:"limited"`
 	// This keypair's secret key.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 }
@@ -87,8 +93,12 @@ func GetObjectStorageKey(ctx *pulumi.Context,
 type objectStorageKeyState struct {
 	// This keypair's access key. This is not secret.
 	AccessKey *string `pulumi:"accessKey"`
+	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+	BucketAccesses []ObjectStorageKeyBucketAccess `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
 	Label *string `pulumi:"label"`
+	// Whether or not this key is a limited access key.
+	Limited *bool `pulumi:"limited"`
 	// This keypair's secret key.
 	SecretKey *string `pulumi:"secretKey"`
 }
@@ -96,8 +106,12 @@ type objectStorageKeyState struct {
 type ObjectStorageKeyState struct {
 	// This keypair's access key. This is not secret.
 	AccessKey pulumi.StringPtrInput
+	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+	BucketAccesses ObjectStorageKeyBucketAccessArrayInput
 	// The label given to this key. For display purposes only.
 	Label pulumi.StringPtrInput
+	// Whether or not this key is a limited access key.
+	Limited pulumi.BoolPtrInput
 	// This keypair's secret key.
 	SecretKey pulumi.StringPtrInput
 }
@@ -107,12 +121,16 @@ func (ObjectStorageKeyState) ElementType() reflect.Type {
 }
 
 type objectStorageKeyArgs struct {
+	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+	BucketAccesses []ObjectStorageKeyBucketAccess `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
 	Label string `pulumi:"label"`
 }
 
 // The set of arguments for constructing a ObjectStorageKey resource.
 type ObjectStorageKeyArgs struct {
+	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+	BucketAccesses ObjectStorageKeyBucketAccessArrayInput
 	// The label given to this key. For display purposes only.
 	Label pulumi.StringInput
 }

@@ -39,6 +39,8 @@ namespace Pulumi.Linode
     /// * `access_key` - This keypair's access key. This is not secret.
     /// 
     /// * `secret_key` - This keypair's secret key.
+    /// 
+    /// * `limited` - Whether or not this key is a limited access key.
     /// </summary>
     public partial class ObjectStorageKey : Pulumi.CustomResource
     {
@@ -49,10 +51,22 @@ namespace Pulumi.Linode
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// </summary>
+        [Output("bucketAccesses")]
+        public Output<ImmutableArray<Outputs.ObjectStorageKeyBucketAccess>> BucketAccesses { get; private set; } = null!;
+
+        /// <summary>
         /// The label given to this key. For display purposes only.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not this key is a limited access key.
+        /// </summary>
+        [Output("limited")]
+        public Output<bool> Limited { get; private set; } = null!;
 
         /// <summary>
         /// This keypair's secret key.
@@ -106,6 +120,18 @@ namespace Pulumi.Linode
 
     public sealed class ObjectStorageKeyArgs : Pulumi.ResourceArgs
     {
+        [Input("bucketAccesses")]
+        private InputList<Inputs.ObjectStorageKeyBucketAccessArgs>? _bucketAccesses;
+
+        /// <summary>
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// </summary>
+        public InputList<Inputs.ObjectStorageKeyBucketAccessArgs> BucketAccesses
+        {
+            get => _bucketAccesses ?? (_bucketAccesses = new InputList<Inputs.ObjectStorageKeyBucketAccessArgs>());
+            set => _bucketAccesses = value;
+        }
+
         /// <summary>
         /// The label given to this key. For display purposes only.
         /// </summary>
@@ -125,11 +151,29 @@ namespace Pulumi.Linode
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        [Input("bucketAccesses")]
+        private InputList<Inputs.ObjectStorageKeyBucketAccessGetArgs>? _bucketAccesses;
+
+        /// <summary>
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// </summary>
+        public InputList<Inputs.ObjectStorageKeyBucketAccessGetArgs> BucketAccesses
+        {
+            get => _bucketAccesses ?? (_bucketAccesses = new InputList<Inputs.ObjectStorageKeyBucketAccessGetArgs>());
+            set => _bucketAccesses = value;
+        }
+
         /// <summary>
         /// The label given to this key. For display purposes only.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// Whether or not this key is a limited access key.
+        /// </summary>
+        [Input("limited")]
+        public Input<bool>? Limited { get; set; }
 
         /// <summary>
         /// This keypair's secret key.

@@ -34,6 +34,7 @@ __all__ = [
     'NodeBalancerConfigNodeStatus',
     'NodeBalancerTransfer',
     'ObjectStorageBucketCert',
+    'ObjectStorageKeyBucketAccess',
     'StackScriptUserDefinedField',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupsResult',
@@ -1277,6 +1278,49 @@ class ObjectStorageBucketCert(dict):
         The private key associated with the TLS/SSL certificate.
         """
         return pulumi.get(self, "private_key")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ObjectStorageKeyBucketAccess(dict):
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 cluster: str,
+                 permissions: str):
+        """
+        :param str bucket_name: The unique label of the bucket to which the key will grant limited access.
+        :param str cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
+        :param str permissions: This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        The unique label of the bucket to which the key will grant limited access.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        The Object Storage cluster where a bucket to which the key is granting access is hosted.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        """
+        return pulumi.get(self, "permissions")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

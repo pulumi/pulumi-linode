@@ -379,6 +379,21 @@ export interface ObjectStorageBucketCert {
     privateKey: pulumi.Input<string>;
 }
 
+export interface ObjectStorageKeyBucketAccess {
+    /**
+     * The unique label of the bucket to which the key will grant limited access.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     */
+    cluster: pulumi.Input<string>;
+    /**
+     * This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+     */
+    permissions: pulumi.Input<string>;
+}
+
 export interface StackScriptUserDefinedField {
     default?: pulumi.Input<string>;
     example?: pulumi.Input<string>;

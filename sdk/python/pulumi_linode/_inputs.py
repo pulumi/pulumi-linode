@@ -33,6 +33,7 @@ __all__ = [
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerTransferArgs',
     'ObjectStorageBucketCertArgs',
+    'ObjectStorageKeyBucketAccessArgs',
     'StackScriptUserDefinedFieldArgs',
     'GetStackScriptUserDefinedFieldArgs',
 ]
@@ -1582,6 +1583,58 @@ class ObjectStorageBucketCertArgs:
     @private_key.setter
     def private_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_key", value)
+
+
+@pulumi.input_type
+class ObjectStorageKeyBucketAccessArgs:
+    def __init__(__self__, *,
+                 bucket_name: pulumi.Input[str],
+                 cluster: pulumi.Input[str],
+                 permissions: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket_name: The unique label of the bucket to which the key will grant limited access.
+        :param pulumi.Input[str] cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
+        :param pulumi.Input[str] permissions: This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[str]:
+        """
+        The unique label of the bucket to which the key will grant limited access.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[str]:
+        """
+        The Object Storage cluster where a bucket to which the key is granting access is hosted.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        """
+        This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
 
 
 @pulumi.input_type

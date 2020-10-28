@@ -3835,6 +3835,121 @@ func (o ObjectStorageBucketCertPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ObjectStorageKeyBucketAccess struct {
+	// The unique label of the bucket to which the key will grant limited access.
+	BucketName string `pulumi:"bucketName"`
+	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
+	Cluster string `pulumi:"cluster"`
+	// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+	Permissions string `pulumi:"permissions"`
+}
+
+// ObjectStorageKeyBucketAccessInput is an input type that accepts ObjectStorageKeyBucketAccessArgs and ObjectStorageKeyBucketAccessOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyBucketAccessInput` via:
+//
+//          ObjectStorageKeyBucketAccessArgs{...}
+type ObjectStorageKeyBucketAccessInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyBucketAccessOutput() ObjectStorageKeyBucketAccessOutput
+	ToObjectStorageKeyBucketAccessOutputWithContext(context.Context) ObjectStorageKeyBucketAccessOutput
+}
+
+type ObjectStorageKeyBucketAccessArgs struct {
+	// The unique label of the bucket to which the key will grant limited access.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (ObjectStorageKeyBucketAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKeyBucketAccess)(nil)).Elem()
+}
+
+func (i ObjectStorageKeyBucketAccessArgs) ToObjectStorageKeyBucketAccessOutput() ObjectStorageKeyBucketAccessOutput {
+	return i.ToObjectStorageKeyBucketAccessOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyBucketAccessArgs) ToObjectStorageKeyBucketAccessOutputWithContext(ctx context.Context) ObjectStorageKeyBucketAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyBucketAccessOutput)
+}
+
+// ObjectStorageKeyBucketAccessArrayInput is an input type that accepts ObjectStorageKeyBucketAccessArray and ObjectStorageKeyBucketAccessArrayOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyBucketAccessArrayInput` via:
+//
+//          ObjectStorageKeyBucketAccessArray{ ObjectStorageKeyBucketAccessArgs{...} }
+type ObjectStorageKeyBucketAccessArrayInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyBucketAccessArrayOutput() ObjectStorageKeyBucketAccessArrayOutput
+	ToObjectStorageKeyBucketAccessArrayOutputWithContext(context.Context) ObjectStorageKeyBucketAccessArrayOutput
+}
+
+type ObjectStorageKeyBucketAccessArray []ObjectStorageKeyBucketAccessInput
+
+func (ObjectStorageKeyBucketAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageKeyBucketAccess)(nil)).Elem()
+}
+
+func (i ObjectStorageKeyBucketAccessArray) ToObjectStorageKeyBucketAccessArrayOutput() ObjectStorageKeyBucketAccessArrayOutput {
+	return i.ToObjectStorageKeyBucketAccessArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyBucketAccessArray) ToObjectStorageKeyBucketAccessArrayOutputWithContext(ctx context.Context) ObjectStorageKeyBucketAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyBucketAccessArrayOutput)
+}
+
+type ObjectStorageKeyBucketAccessOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyBucketAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKeyBucketAccess)(nil)).Elem()
+}
+
+func (o ObjectStorageKeyBucketAccessOutput) ToObjectStorageKeyBucketAccessOutput() ObjectStorageKeyBucketAccessOutput {
+	return o
+}
+
+func (o ObjectStorageKeyBucketAccessOutput) ToObjectStorageKeyBucketAccessOutputWithContext(ctx context.Context) ObjectStorageKeyBucketAccessOutput {
+	return o
+}
+
+// The unique label of the bucket to which the key will grant limited access.
+func (o ObjectStorageKeyBucketAccessOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The Object Storage cluster where a bucket to which the key is granting access is hosted.
+func (o ObjectStorageKeyBucketAccessOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+func (o ObjectStorageKeyBucketAccessOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type ObjectStorageKeyBucketAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyBucketAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageKeyBucketAccess)(nil)).Elem()
+}
+
+func (o ObjectStorageKeyBucketAccessArrayOutput) ToObjectStorageKeyBucketAccessArrayOutput() ObjectStorageKeyBucketAccessArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyBucketAccessArrayOutput) ToObjectStorageKeyBucketAccessArrayOutputWithContext(ctx context.Context) ObjectStorageKeyBucketAccessArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) ObjectStorageKeyBucketAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKeyBucketAccess {
+		return vs[0].([]ObjectStorageKeyBucketAccess)[vs[1].(int)]
+	}).(ObjectStorageKeyBucketAccessOutput)
+}
+
 type StackScriptUserDefinedField struct {
 	Default *string `pulumi:"default"`
 	Example *string `pulumi:"example"`
@@ -4422,6 +4537,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeBalancerTransferPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketCertOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketCertPtrOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessArrayOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})

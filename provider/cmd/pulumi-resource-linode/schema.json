@@ -1205,6 +1205,43 @@
                 "privateKey"
             ]
         },
+        "linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The unique label of the bucket to which the key will grant limited access.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cluster": {
+                    "type": "string",
+                    "description": "The Object Storage cluster where a bucket to which the key is granting access is hosted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "This Limited Access Key’s permissions for the selected bucket. Can be one of `\"read_write\"` or `\"read_only\"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "bucketName",
+                "cluster",
+                "permissions"
+            ]
+        },
         "linode:index/StackScriptUserDefinedField:StackScriptUserDefinedField": {
             "properties": {
                 "default": {
@@ -3268,15 +3305,26 @@
             }
         },
         "linode:index/objectStorageKey:ObjectStorageKey": {
-            "description": "Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Key.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.ObjectStorageKey(\"foo\", {\n    label: \"image-access\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.ObjectStorageKey(\"foo\", label=\"image-access\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.ObjectStorageKey(\"foo\", new Linode.ObjectStorageKeyArgs\n        {\n            Label = \"image-access\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageKey(ctx, \"foo\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `access_key` - This keypair's access key. This is not secret.\n\n* `secret_key` - This keypair's secret key.\n",
+            "description": "Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Key.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.ObjectStorageKey(\"foo\", {\n    label: \"image-access\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.ObjectStorageKey(\"foo\", label=\"image-access\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.ObjectStorageKey(\"foo\", new Linode.ObjectStorageKeyArgs\n        {\n            Label = \"image-access\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageKey(ctx, \"foo\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `access_key` - This keypair's access key. This is not secret.\n\n* `secret_key` - This keypair's secret key.\n\n* `limited` - Whether or not this key is a limited access key.\n",
             "properties": {
                 "accessKey": {
                     "type": "string",
                     "description": "This keypair's access key. This is not secret.\n"
                 },
+                "bucketAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess"
+                    },
+                    "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n"
+                },
                 "label": {
                     "type": "string",
                     "description": "The label given to this key. For display purposes only.\n"
+                },
+                "limited": {
+                    "type": "boolean",
+                    "description": "Whether or not this key is a limited access key.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -3286,9 +3334,17 @@
             "required": [
                 "accessKey",
                 "label",
+                "limited",
                 "secretKey"
             ],
             "inputProperties": {
+                "bucketAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess"
+                    },
+                    "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n"
+                },
                 "label": {
                     "type": "string",
                     "description": "The label given to this key. For display purposes only.\n"
@@ -3304,9 +3360,20 @@
                         "type": "string",
                         "description": "This keypair's access key. This is not secret.\n"
                     },
+                    "bucketAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess"
+                        },
+                        "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n"
+                    },
                     "label": {
                         "type": "string",
                         "description": "The label given to this key. For display purposes only.\n"
+                    },
+                    "limited": {
+                        "type": "boolean",
+                        "description": "Whether or not this key is a limited access key.\n"
                     },
                     "secretKey": {
                         "type": "string",
