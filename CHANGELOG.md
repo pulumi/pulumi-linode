@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.12.1
+_(none)_
 
 ---
+
+## 2.7.2 (2020-11-09)
+* Upgrade to pulumi-terraform-bridge v2.12.1
 
 ## 2.7.1 (2020-10-28)
 * Upgrade to v1.13.3 of the Linode Terraform Provider
