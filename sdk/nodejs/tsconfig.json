@@ -50,6 +50,7 @@
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
+        "vlan.ts",
         "volume.ts"
     ]
 }

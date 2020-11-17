@@ -4077,6 +4077,121 @@ func (o StackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) StackSc
 	}).(StackScriptUserDefinedFieldOutput)
 }
 
+type VlanAttachedLinode struct {
+	// The ID of the Linode.
+	Id *int `pulumi:"id"`
+	// The IPv4 address of the Linode.
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// The mac address of the Linode.
+	MacAddress *string `pulumi:"macAddress"`
+}
+
+// VlanAttachedLinodeInput is an input type that accepts VlanAttachedLinodeArgs and VlanAttachedLinodeOutput values.
+// You can construct a concrete instance of `VlanAttachedLinodeInput` via:
+//
+//          VlanAttachedLinodeArgs{...}
+type VlanAttachedLinodeInput interface {
+	pulumi.Input
+
+	ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput
+	ToVlanAttachedLinodeOutputWithContext(context.Context) VlanAttachedLinodeOutput
+}
+
+type VlanAttachedLinodeArgs struct {
+	// The ID of the Linode.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The IPv4 address of the Linode.
+	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
+	// The mac address of the Linode.
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+}
+
+func (VlanAttachedLinodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanAttachedLinode)(nil)).Elem()
+}
+
+func (i VlanAttachedLinodeArgs) ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput {
+	return i.ToVlanAttachedLinodeOutputWithContext(context.Background())
+}
+
+func (i VlanAttachedLinodeArgs) ToVlanAttachedLinodeOutputWithContext(ctx context.Context) VlanAttachedLinodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanAttachedLinodeOutput)
+}
+
+// VlanAttachedLinodeArrayInput is an input type that accepts VlanAttachedLinodeArray and VlanAttachedLinodeArrayOutput values.
+// You can construct a concrete instance of `VlanAttachedLinodeArrayInput` via:
+//
+//          VlanAttachedLinodeArray{ VlanAttachedLinodeArgs{...} }
+type VlanAttachedLinodeArrayInput interface {
+	pulumi.Input
+
+	ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput
+	ToVlanAttachedLinodeArrayOutputWithContext(context.Context) VlanAttachedLinodeArrayOutput
+}
+
+type VlanAttachedLinodeArray []VlanAttachedLinodeInput
+
+func (VlanAttachedLinodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VlanAttachedLinode)(nil)).Elem()
+}
+
+func (i VlanAttachedLinodeArray) ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput {
+	return i.ToVlanAttachedLinodeArrayOutputWithContext(context.Background())
+}
+
+func (i VlanAttachedLinodeArray) ToVlanAttachedLinodeArrayOutputWithContext(ctx context.Context) VlanAttachedLinodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanAttachedLinodeArrayOutput)
+}
+
+type VlanAttachedLinodeOutput struct{ *pulumi.OutputState }
+
+func (VlanAttachedLinodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanAttachedLinode)(nil)).Elem()
+}
+
+func (o VlanAttachedLinodeOutput) ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput {
+	return o
+}
+
+func (o VlanAttachedLinodeOutput) ToVlanAttachedLinodeOutputWithContext(ctx context.Context) VlanAttachedLinodeOutput {
+	return o
+}
+
+// The ID of the Linode.
+func (o VlanAttachedLinodeOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VlanAttachedLinode) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The IPv4 address of the Linode.
+func (o VlanAttachedLinodeOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VlanAttachedLinode) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// The mac address of the Linode.
+func (o VlanAttachedLinodeOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VlanAttachedLinode) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+type VlanAttachedLinodeArrayOutput struct{ *pulumi.OutputState }
+
+func (VlanAttachedLinodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VlanAttachedLinode)(nil)).Elem()
+}
+
+func (o VlanAttachedLinodeArrayOutput) ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput {
+	return o
+}
+
+func (o VlanAttachedLinodeArrayOutput) ToVlanAttachedLinodeArrayOutputWithContext(ctx context.Context) VlanAttachedLinodeArrayOutput {
+	return o
+}
+
+func (o VlanAttachedLinodeArrayOutput) Index(i pulumi.IntInput) VlanAttachedLinodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VlanAttachedLinode {
+		return vs[0].([]VlanAttachedLinode)[vs[1].(int)]
+	}).(VlanAttachedLinodeOutput)
+}
+
 type GetInstanceTypeAddons struct {
 	Backups GetInstanceTypeAddonsBackups `pulumi:"backups"`
 }
@@ -4541,6 +4656,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessArrayOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(VlanAttachedLinodeOutput{})
+	pulumi.RegisterOutputType(VlanAttachedLinodeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})

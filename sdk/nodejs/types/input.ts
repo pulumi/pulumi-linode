@@ -405,3 +405,18 @@ export interface StackScriptUserDefinedField {
     name?: pulumi.Input<string>;
     oneOf?: pulumi.Input<string>;
 }
+
+export interface VlanAttachedLinode {
+    /**
+     * The ID of the Linode.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The IPv4 address of the Linode.
+     */
+    ipv4Address?: pulumi.Input<string>;
+    /**
+     * The mac address of the Linode.
+     */
+    macAddress?: pulumi.Input<string>;
+}
