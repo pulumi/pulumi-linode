@@ -432,3 +432,18 @@ export interface StackScriptUserDefinedField {
     name: string;
     oneOf: string;
 }
+
+export interface VlanAttachedLinode {
+    /**
+     * The ID of the Linode.
+     */
+    id: number;
+    /**
+     * The IPv4 address of the Linode.
+     */
+    ipv4Address: string;
+    /**
+     * The mac address of the Linode.
+     */
+    macAddress: string;
+}

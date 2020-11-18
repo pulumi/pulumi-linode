@@ -1308,6 +1308,47 @@
                 }
             }
         },
+        "linode:index/VlanAttachedLinode:VlanAttachedLinode": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the Linode.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipv4Address": {
+                    "type": "string",
+                    "description": "The IPv4 address of the Linode.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "macAddress": {
+                    "type": "string",
+                    "description": "The mac address of the Linode.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "ipv4Address",
+                        "macAddress"
+                    ]
+                }
+            }
+        },
         "linode:index/getInstanceTypeAddons:getInstanceTypeAddons": {
             "properties": {
                 "backups": {
@@ -4032,6 +4073,96 @@
                                 "name": "TokenName"
                             }
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/vlan:Vlan": {
+            "properties": {
+                "attachedLinodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/VlanAttachedLinode:VlanAttachedLinode"
+                    },
+                    "description": "The Linodes attached to this vlan.\n"
+                },
+                "cidrBlock": {
+                    "type": "string",
+                    "description": "The CIDR block for this VLAN.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the vlan for display purposes only.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of Linodes to attach to this VLAN.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of where the VLAN is deployed.\n"
+                }
+            },
+            "required": [
+                "attachedLinodes",
+                "region"
+            ],
+            "inputProperties": {
+                "cidrBlock": {
+                    "type": "string",
+                    "description": "The CIDR block for this VLAN.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the vlan for display purposes only.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of Linodes to attach to this VLAN.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of where the VLAN is deployed.\n"
+                }
+            },
+            "requiredInputs": [
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vlan resources.\n",
+                "properties": {
+                    "attachedLinodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/VlanAttachedLinode:VlanAttachedLinode"
+                        },
+                        "description": "The Linodes attached to this vlan.\n"
+                    },
+                    "cidrBlock": {
+                        "type": "string",
+                        "description": "The CIDR block for this VLAN.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the vlan for display purposes only.\n"
+                    },
+                    "linodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "A list of IDs of Linodes to attach to this VLAN.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of where the VLAN is deployed.\n"
                     }
                 },
                 "type": "object"

@@ -33,6 +33,7 @@ from .rdns import *
 from .ssh_key import *
 from .stack_script import *
 from .token import *
+from .vlan import *
 from .volume import *
 from ._inputs import *
 from . import outputs

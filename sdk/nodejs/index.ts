@@ -32,6 +32,7 @@ export * from "./rdns";
 export * from "./sshKey";
 export * from "./stackScript";
 export * from "./token";
+export * from "./vlan";
 export * from "./volume";
 
 // Export sub-modules:

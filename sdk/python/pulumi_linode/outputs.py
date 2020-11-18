@@ -36,6 +36,7 @@ __all__ = [
     'ObjectStorageBucketCert',
     'ObjectStorageKeyBucketAccess',
     'StackScriptUserDefinedField',
+    'VlanAttachedLinode',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupsResult',
     'GetInstanceTypeAddonsBackupsPriceResult',
@@ -1383,6 +1384,52 @@ class StackScriptUserDefinedField(dict):
     @pulumi.getter(name="oneOf")
     def one_of(self) -> Optional[str]:
         return pulumi.get(self, "one_of")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class VlanAttachedLinode(dict):
+    def __init__(__self__, *,
+                 id: Optional[int] = None,
+                 ipv4_address: Optional[str] = None,
+                 mac_address: Optional[str] = None):
+        """
+        :param int id: The ID of the Linode.
+        :param str ipv4_address: The IPv4 address of the Linode.
+        :param str mac_address: The mac address of the Linode.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ipv4_address is not None:
+            pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> Optional[str]:
+        """
+        The IPv4 address of the Linode.
+        """
+        return pulumi.get(self, "ipv4_address")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[str]:
+        """
+        The mac address of the Linode.
+        """
+        return pulumi.get(self, "mac_address")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
