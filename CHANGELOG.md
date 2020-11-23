@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.7.3 (2020-11-23)
 * Upgrade to v1.13.4 of the Linode Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
-
----
 
 ## 2.7.2 (2020-11-09)
 * Upgrade to pulumi-terraform-bridge v2.12.1
