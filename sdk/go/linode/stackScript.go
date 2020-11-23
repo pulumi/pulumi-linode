@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,6 +94,14 @@ import (
 //   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
 //
 //   * `default` - The default value. If not specified, this value will be used.
+//
+// ## Import
+//
+// Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+// ```
 type StackScript struct {
 	pulumi.CustomResourceState
 
@@ -267,4 +276,43 @@ type StackScriptArgs struct {
 
 func (StackScriptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackScriptArgs)(nil)).Elem()
+}
+
+type StackScriptInput interface {
+	pulumi.Input
+
+	ToStackScriptOutput() StackScriptOutput
+	ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput
+}
+
+func (StackScript) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackScript)(nil)).Elem()
+}
+
+func (i StackScript) ToStackScriptOutput() StackScriptOutput {
+	return i.ToStackScriptOutputWithContext(context.Background())
+}
+
+func (i StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackScriptOutput)
+}
+
+type StackScriptOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackScriptOutput)(nil)).Elem()
+}
+
+func (o StackScriptOutput) ToStackScriptOutput() StackScriptOutput {
+	return o
+}
+
+func (o StackScriptOutput) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StackScriptOutput{})
 }

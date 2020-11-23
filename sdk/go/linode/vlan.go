@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,4 +111,43 @@ type VlanArgs struct {
 
 func (VlanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vlanArgs)(nil)).Elem()
+}
+
+type VlanInput interface {
+	pulumi.Input
+
+	ToVlanOutput() VlanOutput
+	ToVlanOutputWithContext(ctx context.Context) VlanOutput
+}
+
+func (Vlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vlan)(nil)).Elem()
+}
+
+func (i Vlan) ToVlanOutput() VlanOutput {
+	return i.ToVlanOutputWithContext(context.Background())
+}
+
+func (i Vlan) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanOutput)
+}
+
+type VlanOutput struct {
+	*pulumi.OutputState
+}
+
+func (VlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanOutput)(nil)).Elem()
+}
+
+func (o VlanOutput) ToVlanOutput() VlanOutput {
+	return o
+}
+
+func (o VlanOutput) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VlanOutput{})
 }

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -34,6 +33,16 @@ import * as utilities from "./utilities";
  * * `ipv4` - The Public IPv4 Address of this NodeBalancer
  *
  * * `ipv6` - The Public IPv6 Address of this NodeBalancer
+ *
+ * ## Import
+ *
+ * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+ * ```
+ *
+ *  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
  */
 export class NodeBalancer extends pulumi.CustomResource {
     /**

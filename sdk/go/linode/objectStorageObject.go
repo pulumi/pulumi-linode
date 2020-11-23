@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -289,4 +290,43 @@ type ObjectStorageObjectArgs struct {
 
 func (ObjectStorageObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageObjectArgs)(nil)).Elem()
+}
+
+type ObjectStorageObjectInput interface {
+	pulumi.Input
+
+	ToObjectStorageObjectOutput() ObjectStorageObjectOutput
+	ToObjectStorageObjectOutputWithContext(ctx context.Context) ObjectStorageObjectOutput
+}
+
+func (ObjectStorageObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageObject)(nil)).Elem()
+}
+
+func (i ObjectStorageObject) ToObjectStorageObjectOutput() ObjectStorageObjectOutput {
+	return i.ToObjectStorageObjectOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageObject) ToObjectStorageObjectOutputWithContext(ctx context.Context) ObjectStorageObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectOutput)
+}
+
+type ObjectStorageObjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectStorageObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageObjectOutput)(nil)).Elem()
+}
+
+func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutput() ObjectStorageObjectOutput {
+	return o
+}
+
+func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutputWithContext(ctx context.Context) ObjectStorageObjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ObjectStorageObjectOutput{})
 }

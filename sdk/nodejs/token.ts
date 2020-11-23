@@ -33,6 +33,16 @@ import * as utilities from "./utilities";
  * * `token` - The token used to access the API.
  *
  * * `created` - The date this Token was created.
+ *
+ * ## Import
+ *
+ * Linodes Tokens can be imported using the Linode Token `id`, e.g.
+ *
+ * The secret token will not be imported.
+ *
+ * ```sh
+ *  $ pulumi import linode:index/token:Token mytoken 1234567
+ * ```
  */
 export class Token extends pulumi.CustomResource {
     /**

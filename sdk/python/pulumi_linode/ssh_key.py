@@ -30,6 +30,14 @@ class SshKey(pulumi.CustomResource):
 
         * `created` - The date this SSH Key was created.
 
+        ## Import
+
+        Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: A label for the SSH Key.

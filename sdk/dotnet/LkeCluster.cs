@@ -44,6 +44,14 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// LKE Clusters can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+    /// ```
     /// </summary>
     public partial class LkeCluster : Pulumi.CustomResource
     {

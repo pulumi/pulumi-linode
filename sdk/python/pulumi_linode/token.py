@@ -50,6 +50,16 @@ class Token(pulumi.CustomResource):
 
         * `created` - The date this Token was created.
 
+        ## Import
+
+        Linodes Tokens can be imported using the Linode Token `id`, e.g.
+
+        The secret token will not be imported.
+
+        ```sh
+         $ pulumi import linode:index/token:Token mytoken 1234567
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.

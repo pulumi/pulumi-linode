@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,14 @@ import (
 // Linode RDNS names must have a matching address value in an A or AAAA record.  This A or AAAA name must be resolvable at the time the RDNS resource is being associated.
 //
 // For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
+//
+// ## Import
+//
+// Linodes RDNS resources can be imported using the address as the `id`.
+//
+// ```sh
+//  $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+// ```
 type Rdns struct {
 	pulumi.CustomResourceState
 
@@ -92,4 +101,43 @@ type RdnsArgs struct {
 
 func (RdnsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdnsArgs)(nil)).Elem()
+}
+
+type RdnsInput interface {
+	pulumi.Input
+
+	ToRdnsOutput() RdnsOutput
+	ToRdnsOutputWithContext(ctx context.Context) RdnsOutput
+}
+
+func (Rdns) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rdns)(nil)).Elem()
+}
+
+func (i Rdns) ToRdnsOutput() RdnsOutput {
+	return i.ToRdnsOutputWithContext(context.Background())
+}
+
+func (i Rdns) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdnsOutput)
+}
+
+type RdnsOutput struct {
+	*pulumi.OutputState
+}
+
+func (RdnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdnsOutput)(nil)).Elem()
+}
+
+func (o RdnsOutput) ToRdnsOutput() RdnsOutput {
+	return o
+}
+
+func (o RdnsOutput) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RdnsOutput{})
 }

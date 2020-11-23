@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -74,6 +73,14 @@ import * as utilities from "./utilities";
  *   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
  *   
  *   * `default` - The default value. If not specified, this value will be used.
+ *
+ * ## Import
+ *
+ * Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+ * ```
  */
 export class StackScript extends pulumi.CustomResource {
     /**

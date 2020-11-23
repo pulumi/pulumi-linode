@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,6 +52,16 @@ import (
 // ## Attributes
 //
 // This resource exports no additional attributes.
+//
+// ## Import
+//
+// Linodes Domain Records can be imported using the Linode Domain `id` followed by the Domain Record `id` separated by a comma, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/domainRecord:DomainRecord www-foobar 1234567,7654321
+// ```
+//
+//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domain Records and other Linode resource types.
 type DomainRecord struct {
 	pulumi.CustomResourceState
 
@@ -221,4 +232,43 @@ type DomainRecordArgs struct {
 
 func (DomainRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainRecordArgs)(nil)).Elem()
+}
+
+type DomainRecordInput interface {
+	pulumi.Input
+
+	ToDomainRecordOutput() DomainRecordOutput
+	ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput
+}
+
+func (DomainRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRecord)(nil)).Elem()
+}
+
+func (i DomainRecord) ToDomainRecordOutput() DomainRecordOutput {
+	return i.ToDomainRecordOutputWithContext(context.Background())
+}
+
+func (i DomainRecord) ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainRecordOutput)
+}
+
+type DomainRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRecordOutput)(nil)).Elem()
+}
+
+func (o DomainRecordOutput) ToDomainRecordOutput() DomainRecordOutput {
+	return o
+}
+
+func (o DomainRecordOutput) ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainRecordOutput{})
 }

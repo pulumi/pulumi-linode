@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type ObjectStorageKeyArgs struct {
 
 func (ObjectStorageKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageKeyArgs)(nil)).Elem()
+}
+
+type ObjectStorageKeyInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyOutput() ObjectStorageKeyOutput
+	ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput
+}
+
+func (ObjectStorageKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKey)(nil)).Elem()
+}
+
+func (i ObjectStorageKey) ToObjectStorageKeyOutput() ObjectStorageKeyOutput {
+	return i.ToObjectStorageKeyOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyOutput)
+}
+
+type ObjectStorageKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectStorageKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKeyOutput)(nil)).Elem()
+}
+
+func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutput() ObjectStorageKeyOutput {
+	return o
+}
+
+func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ObjectStorageKeyOutput{})
 }

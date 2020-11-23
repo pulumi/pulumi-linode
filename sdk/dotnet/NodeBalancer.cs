@@ -48,6 +48,16 @@ namespace Pulumi.Linode
     /// * `ipv4` - The Public IPv4 Address of this NodeBalancer
     /// 
     /// * `ipv6` - The Public IPv6 Address of this NodeBalancer
+    /// 
+    /// ## Import
+    /// 
+    /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+    /// ```
+    /// 
+    ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
     /// </summary>
     public partial class NodeBalancer : Pulumi.CustomResource
     {

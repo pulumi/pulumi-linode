@@ -88,6 +88,16 @@ namespace Pulumi.Linode
     /// * `status` - The label of the Linode Volume.
     /// 
     /// * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
+    /// 
+    /// ## Import
+    /// 
+    /// Linodes Volumes can be imported using the Linode Volume `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/volume:Volume myvolume 1234567
+    /// ```
+    /// 
+    ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
     /// </summary>
     public partial class Volume : Pulumi.CustomResource
     {
