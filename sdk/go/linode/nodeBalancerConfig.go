@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,6 +65,16 @@ import (
 // * `nodeStatusUp` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
 //
 // * `nodeStatusDown` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+//
+// ## Import
+//
+// NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
+// ```
+//
+//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState
 
@@ -298,4 +309,43 @@ type NodeBalancerConfigArgs struct {
 
 func (NodeBalancerConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerConfigArgs)(nil)).Elem()
+}
+
+type NodeBalancerConfigInput interface {
+	pulumi.Input
+
+	ToNodeBalancerConfigOutput() NodeBalancerConfigOutput
+	ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput
+}
+
+func (NodeBalancerConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerConfig)(nil)).Elem()
+}
+
+func (i NodeBalancerConfig) ToNodeBalancerConfigOutput() NodeBalancerConfigOutput {
+	return i.ToNodeBalancerConfigOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerConfig) ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerConfigOutput)
+}
+
+type NodeBalancerConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeBalancerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerConfigOutput)(nil)).Elem()
+}
+
+func (o NodeBalancerConfigOutput) ToNodeBalancerConfigOutput() NodeBalancerConfigOutput {
+	return o
+}
+
+func (o NodeBalancerConfigOutput) ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodeBalancerConfigOutput{})
 }

@@ -27,6 +27,14 @@ class Rdns(pulumi.CustomResource):
 
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
 
+        ## Import
+
+        Linodes RDNS resources can be imported using the address as the `id`.
+
+        ```sh
+         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.

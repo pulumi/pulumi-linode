@@ -89,6 +89,16 @@ namespace Pulumi.Linode
     /// * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
     /// 
     /// * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
+    /// 
+    /// ## Import
+    /// 
+    /// NodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999
+    /// ```
+    /// 
+    ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types.
     /// </summary>
     public partial class NodeBalancerNode : Pulumi.CustomResource
     {

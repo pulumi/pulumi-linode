@@ -70,6 +70,14 @@ class Image(pulumi.CustomResource):
 
         * `vendor` - The upstream distribution vendor. Nil for private Images.
 
+        ## Import
+
+        Linodes Images can be imported using the Linode Image `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/image:Image myimage 1234567
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.

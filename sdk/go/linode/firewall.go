@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,6 +77,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Firewalls can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/firewall:Firewall my_firewall 12345
 // ```
 type Firewall struct {
 	pulumi.CustomResourceState
@@ -203,4 +212,43 @@ type FirewallArgs struct {
 
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
+}
+
+type FirewallInput interface {
+	pulumi.Input
+
+	ToFirewallOutput() FirewallOutput
+	ToFirewallOutputWithContext(ctx context.Context) FirewallOutput
+}
+
+func (Firewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*Firewall)(nil)).Elem()
+}
+
+func (i Firewall) ToFirewallOutput() FirewallOutput {
+	return i.ToFirewallOutputWithContext(context.Background())
+}
+
+func (i Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutput)
+}
+
+type FirewallOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutput)(nil)).Elem()
+}
+
+func (o FirewallOutput) ToFirewallOutput() FirewallOutput {
+	return o
+}
+
+func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallOutput{})
 }

@@ -45,6 +45,14 @@ class LkeCluster(pulumi.CustomResource):
             tags=["prod"])
         ```
 
+        ## Import
+
+        LKE Clusters can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.

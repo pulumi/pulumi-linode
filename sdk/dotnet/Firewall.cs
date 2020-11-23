@@ -79,6 +79,14 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Firewalls can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+    /// ```
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {

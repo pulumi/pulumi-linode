@@ -69,6 +69,14 @@ namespace Pulumi.Linode
     /// * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
     /// 
     /// * `vendor` - The upstream distribution vendor. Nil for private Images.
+    /// 
+    /// ## Import
+    /// 
+    /// Linodes Images can be imported using the Linode Image `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/image:Image myimage 1234567
+    /// ```
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {

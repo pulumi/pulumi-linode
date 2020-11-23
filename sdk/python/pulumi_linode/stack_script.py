@@ -95,6 +95,14 @@ class StackScript(pulumi.CustomResource):
           
           * `default` - The default value. If not specified, this value will be used.
 
+        ## Import
+
+        Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the StackScript.

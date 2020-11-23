@@ -92,6 +92,14 @@ namespace Pulumi.Linode
     ///   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
     ///   
     ///   * `default` - The default value. If not specified, this value will be used.
+    /// 
+    /// ## Import
+    /// 
+    /// Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+    /// ```
     /// </summary>
     public partial class StackScript : Pulumi.CustomResource
     {

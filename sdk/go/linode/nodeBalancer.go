@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,6 +52,16 @@ import (
 // * `ipv4` - The Public IPv4 Address of this NodeBalancer
 //
 // * `ipv6` - The Public IPv6 Address of this NodeBalancer
+//
+// ## Import
+//
+// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+// ```
+//
+//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
 type NodeBalancer struct {
 	pulumi.CustomResourceState
 
@@ -172,4 +183,43 @@ type NodeBalancerArgs struct {
 
 func (NodeBalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerArgs)(nil)).Elem()
+}
+
+type NodeBalancerInput interface {
+	pulumi.Input
+
+	ToNodeBalancerOutput() NodeBalancerOutput
+	ToNodeBalancerOutputWithContext(ctx context.Context) NodeBalancerOutput
+}
+
+func (NodeBalancer) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancer)(nil)).Elem()
+}
+
+func (i NodeBalancer) ToNodeBalancerOutput() NodeBalancerOutput {
+	return i.ToNodeBalancerOutputWithContext(context.Background())
+}
+
+func (i NodeBalancer) ToNodeBalancerOutputWithContext(ctx context.Context) NodeBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerOutput)
+}
+
+type NodeBalancerOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerOutput)(nil)).Elem()
+}
+
+func (o NodeBalancerOutput) ToNodeBalancerOutput() NodeBalancerOutput {
+	return o
+}
+
+func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context) NodeBalancerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodeBalancerOutput{})
 }

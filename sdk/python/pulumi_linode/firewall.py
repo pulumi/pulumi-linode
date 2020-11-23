@@ -60,6 +60,14 @@ class Firewall(pulumi.CustomResource):
             linodes=[my_instance.id])
         ```
 
+        ## Import
+
+        Firewalls can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).

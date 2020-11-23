@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,6 +45,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// LKE Clusters can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
 // ```
 type LkeCluster struct {
 	pulumi.CustomResourceState
@@ -176,4 +185,43 @@ type LkeClusterArgs struct {
 
 func (LkeClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lkeClusterArgs)(nil)).Elem()
+}
+
+type LkeClusterInput interface {
+	pulumi.Input
+
+	ToLkeClusterOutput() LkeClusterOutput
+	ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput
+}
+
+func (LkeCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeCluster)(nil)).Elem()
+}
+
+func (i LkeCluster) ToLkeClusterOutput() LkeClusterOutput {
+	return i.ToLkeClusterOutputWithContext(context.Background())
+}
+
+func (i LkeCluster) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterOutput)
+}
+
+type LkeClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (LkeClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterOutput)(nil)).Elem()
+}
+
+func (o LkeClusterOutput) ToLkeClusterOutput() LkeClusterOutput {
+	return o
+}
+
+func (o LkeClusterOutput) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LkeClusterOutput{})
 }
