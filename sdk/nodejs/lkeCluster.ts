@@ -117,16 +117,16 @@ export class LkeCluster extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
-            if (!args || args.k8sVersion === undefined) {
+            if ((!args || args.k8sVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'k8sVersion'");
             }
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
-            if (!args || args.pools === undefined) {
+            if ((!args || args.pools === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pools'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["k8sVersion"] = args ? args.k8sVersion : undefined;

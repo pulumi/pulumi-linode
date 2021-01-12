@@ -296,7 +296,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["watchdogEnabled"] = state ? state.watchdogEnabled : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["alerts"] = args ? args.alerts : undefined;

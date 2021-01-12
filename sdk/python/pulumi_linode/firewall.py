@@ -97,7 +97,7 @@ class Firewall(pulumi.CustomResource):
             __props__['disabled'] = disabled
             __props__['inbounds'] = inbounds
             __props__['label'] = label
-            if linodes is None:
+            if linodes is None and not opts.urn:
                 raise TypeError("Missing required property 'linodes'")
             __props__['linodes'] = linodes
             __props__['outbounds'] = outbounds

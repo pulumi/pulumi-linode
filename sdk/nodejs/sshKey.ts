@@ -102,10 +102,10 @@ export class SshKey extends pulumi.CustomResource {
             inputs["sshKey"] = state ? state.sshKey : undefined;
         } else {
             const args = argsOrState as SshKeyArgs | undefined;
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
-            if (!args || args.sshKey === undefined) {
+            if ((!args || args.sshKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sshKey'");
             }
             inputs["label"] = args ? args.label : undefined;

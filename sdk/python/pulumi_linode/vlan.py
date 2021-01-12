@@ -53,7 +53,7 @@ class Vlan(pulumi.CustomResource):
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
             __props__['linodes'] = linodes
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['attached_linodes'] = None

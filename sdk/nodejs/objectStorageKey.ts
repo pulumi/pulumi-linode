@@ -98,7 +98,7 @@ export class ObjectStorageKey extends pulumi.CustomResource {
             inputs["secretKey"] = state ? state.secretKey : undefined;
         } else {
             const args = argsOrState as ObjectStorageKeyArgs | undefined;
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
             inputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;

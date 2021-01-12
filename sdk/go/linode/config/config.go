@@ -17,6 +17,11 @@ func GetApiVersion(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "LINODE_API_VERSION").(string)
 }
 
+// Skip waiting for a linode_instance resource to be running.
+func GetSkipInstanceReadyPoll(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:skipInstanceReadyPoll")
+}
+
 // The token that allows you access to your Linode account
 func GetToken(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "linode:token")

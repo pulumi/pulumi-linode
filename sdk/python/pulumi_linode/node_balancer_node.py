@@ -115,17 +115,17 @@ class NodeBalancerNode(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
-            if config_id is None:
+            if config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'config_id'")
             __props__['config_id'] = config_id
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
             __props__['mode'] = mode
-            if nodebalancer_id is None:
+            if nodebalancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nodebalancer_id'")
             __props__['nodebalancer_id'] = nodebalancer_id
             __props__['weight'] = weight

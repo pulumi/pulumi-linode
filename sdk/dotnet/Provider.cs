@@ -51,6 +51,12 @@ namespace Pulumi.Linode
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
+        /// Skip waiting for a linode_instance resource to be running.
+        /// </summary>
+        [Input("skipInstanceReadyPoll", json: true)]
+        public Input<bool>? SkipInstanceReadyPoll { get; set; }
+
+        /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
         [Input("token")]

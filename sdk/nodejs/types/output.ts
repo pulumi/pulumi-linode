@@ -384,8 +384,8 @@ export interface LkeClusterPoolNode {
 }
 
 export interface NodeBalancerConfigNodeStatus {
-    statusDown: number;
-    statusUp: number;
+    down: number;
+    up: number;
 }
 
 export interface NodeBalancerTransfer {

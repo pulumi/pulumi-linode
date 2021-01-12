@@ -59,7 +59,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     public readonly accessKey!: pulumi.Output<string>;
     /**
-     * The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     /**
@@ -161,19 +161,19 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as ObjectStorageObjectArgs | undefined;
-            if (!args || args.accessKey === undefined) {
+            if ((!args || args.accessKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessKey'");
             }
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.cluster === undefined) {
+            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.secretKey === undefined) {
+            if ((!args || args.secretKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretKey'");
             }
             inputs["accessKey"] = args ? args.accessKey : undefined;
@@ -216,7 +216,7 @@ export interface ObjectStorageObjectState {
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
      */
     readonly acl?: pulumi.Input<string>;
     /**
@@ -295,7 +295,7 @@ export interface ObjectStorageObjectArgs {
      */
     readonly accessKey: pulumi.Input<string>;
     /**
-     * The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
      */
     readonly acl?: pulumi.Input<string>;
     /**

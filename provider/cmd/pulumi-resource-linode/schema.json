@@ -23,6 +23,10 @@
                     ]
                 }
             },
+            "skipInstanceReadyPoll": {
+                "type": "boolean",
+                "description": "Skip waiting for a linode_instance resource to be running.\n"
+            },
             "token": {
                 "type": "string",
                 "description": "The token that allows you access to your Linode account\n",
@@ -1138,19 +1142,29 @@
         },
         "linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
             "properties": {
-                "statusDown": {
-                    "type": "integer"
+                "down": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 },
-                "statusUp": {
-                    "type": "integer"
+                "up": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "statusDown",
-                        "statusUp"
+                        "down",
+                        "up"
                     ]
                 }
             }
@@ -1158,13 +1172,28 @@
         "linode:index/NodeBalancerTransfer:NodeBalancerTransfer": {
             "properties": {
                 "in": {
-                    "type": "number"
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 },
                 "out": {
-                    "type": "number"
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 },
                 "total": {
-                    "type": "number"
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -1595,6 +1624,10 @@
                         "LINODE_API_VERSION"
                     ]
                 }
+            },
+            "skipInstanceReadyPoll": {
+                "type": "boolean",
+                "description": "Skip waiting for a linode_instance resource to be running.\n"
             },
             "token": {
                 "type": "string",
@@ -2814,7 +2847,7 @@
             }
         },
         "linode:index/nodeBalancer:NodeBalancer": {
-            "description": "Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    tags: [\"foobar\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    tags=[\"foobar\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            Tags = \n            {\n                \"foobar\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n\n* `ipv4` - The Public IPv4 Address of this NodeBalancer\n\n* `ipv6` - The Public IPv6 Address of this NodeBalancer\n\n\n## Import\n\nLinodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types. ",
+            "description": "Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    tags: [\"foobar\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    tags=[\"foobar\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            Tags = \n            {\n                \"foobar\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n\n* `ipv4` - The Public IPv4 Address of this NodeBalancer\n\n* `ipv6` - The Public IPv6 Address of this NodeBalancer\n\n* `transfer` - The network transfer stats for the current month\n\n### transfer\n\nThe following attributes are available on transfer:\n\n* `in` - The total transfer, in MB, used by this NodeBalancer for the current month\n\n* `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month\n\n* `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month\n\n\n## Import\n\nLinodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types. ",
             "properties": {
                 "clientConnThrottle": {
                     "type": "integer",
@@ -2850,8 +2883,11 @@
                     },
                     "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
                 },
-                "transfer": {
-                    "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
+                "transfers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
+                    }
                 },
                 "updated": {
                     "type": "string"
@@ -2863,7 +2899,7 @@
                 "ipv4",
                 "ipv6",
                 "region",
-                "transfer",
+                "transfers",
                 "updated"
             ],
             "inputProperties": {
@@ -2927,8 +2963,11 @@
                         },
                         "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
                     },
-                    "transfer": {
-                        "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
+                    "transfers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
+                        }
                     },
                     "updated": {
                         "type": "string"
@@ -2938,7 +2977,7 @@
             }
         },
         "linode:index/nodeBalancerConfig:NodeBalancerConfig": {
-            "description": "Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n});\nconst foofig = new linode.NodeBalancerConfig(\"foofig\", {\n    algorithm: \"source\",\n    check: \"http\",\n    checkAttempts: 3,\n    checkPath: \"/foo\",\n    checkTimeout: 30,\n    nodebalancerId: foobar.id.apply(id =\u003e Number.parseFloat(id)),\n    port: 8088,\n    protocol: \"http\",\n    stickiness: \"http_cookie\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\")\nfoofig = linode.NodeBalancerConfig(\"foofig\",\n    algorithm=\"source\",\n    check=\"http\",\n    check_attempts=3,\n    check_path=\"/foo\",\n    check_timeout=30,\n    nodebalancer_id=foobar.id,\n    port=8088,\n    protocol=\"http\",\n    stickiness=\"http_cookie\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n        });\n        var foofig = new Linode.NodeBalancerConfig(\"foofig\", new Linode.NodeBalancerConfigArgs\n        {\n            Algorithm = \"source\",\n            Check = \"http\",\n            CheckAttempts = 3,\n            CheckPath = \"/foo\",\n            CheckTimeout = 30,\n            NodebalancerId = foobar.Id,\n            Port = 8088,\n            Protocol = \"http\",\n            Stickiness = \"http_cookie\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewNodeBalancerConfig(ctx, \"foofig\", \u0026linode.NodeBalancerConfigArgs{\n\t\t\tAlgorithm:      pulumi.String(\"source\"),\n\t\t\tCheck:          pulumi.String(\"http\"),\n\t\t\tCheckAttempts:  pulumi.Int(3),\n\t\t\tCheckPath:      pulumi.String(\"/foo\"),\n\t\t\tCheckTimeout:   pulumi.Int(30),\n\t\t\tNodebalancerId: foobar.ID(),\n\t\t\tPort:           pulumi.Int(8088),\n\t\t\tProtocol:       pulumi.String(\"http\"),\n\t\t\tStickiness:     pulumi.String(\"http_cookie\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.\n\n* `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.\n\n* `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.\n\n* `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.\n\n\n## Import\n\nNodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types. ",
+            "description": "Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n});\nconst foofig = new linode.NodeBalancerConfig(\"foofig\", {\n    algorithm: \"source\",\n    check: \"http\",\n    checkAttempts: 3,\n    checkPath: \"/foo\",\n    checkTimeout: 30,\n    nodebalancerId: foobar.id.apply(id =\u003e Number.parseFloat(id)),\n    port: 8088,\n    protocol: \"http\",\n    stickiness: \"http_cookie\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\")\nfoofig = linode.NodeBalancerConfig(\"foofig\",\n    algorithm=\"source\",\n    check=\"http\",\n    check_attempts=3,\n    check_path=\"/foo\",\n    check_timeout=30,\n    nodebalancer_id=foobar.id,\n    port=8088,\n    protocol=\"http\",\n    stickiness=\"http_cookie\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n        });\n        var foofig = new Linode.NodeBalancerConfig(\"foofig\", new Linode.NodeBalancerConfigArgs\n        {\n            Algorithm = \"source\",\n            Check = \"http\",\n            CheckAttempts = 3,\n            CheckPath = \"/foo\",\n            CheckTimeout = 30,\n            NodebalancerId = foobar.Id,\n            Port = 8088,\n            Protocol = \"http\",\n            Stickiness = \"http_cookie\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewNodeBalancerConfig(ctx, \"foofig\", \u0026linode.NodeBalancerConfigArgs{\n\t\t\tAlgorithm:      pulumi.String(\"source\"),\n\t\t\tCheck:          pulumi.String(\"http\"),\n\t\t\tCheckAttempts:  pulumi.Int(3),\n\t\t\tCheckPath:      pulumi.String(\"/foo\"),\n\t\t\tCheckTimeout:   pulumi.Int(30),\n\t\t\tNodebalancerId: foobar.ID(),\n\t\t\tPort:           pulumi.Int(8088),\n\t\t\tProtocol:       pulumi.String(\"http\"),\n\t\t\tStickiness:     pulumi.String(\"http_cookie\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.\n\n* `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.\n\n* `node_status` - The status of the attached nodes.\n\n### node_status\n\nThe following attributes are available on node_status:\n\n* `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.\n\n* `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.\n\n\n## Import\n\nNodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types. ",
             "properties": {
                 "algorithm": {
                     "type": "string",
@@ -2976,8 +3015,11 @@
                     "type": "string",
                     "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.\n"
                 },
-                "nodeStatus": {
-                    "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                "nodeStatuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                    }
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -3026,7 +3068,7 @@
                 "checkPath",
                 "checkTimeout",
                 "cipherSuite",
-                "nodeStatus",
+                "nodeStatuses",
                 "nodebalancerId",
                 "sslCommonname",
                 "sslFingerprint",
@@ -3140,8 +3182,11 @@
                         "type": "string",
                         "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.\n"
                     },
-                    "nodeStatus": {
-                        "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                    "nodeStatuses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
+                        }
                     },
                     "nodebalancerId": {
                         "type": "integer",
@@ -3433,7 +3478,7 @@
                 },
                 "acl": {
                     "type": "string",
-                    "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                    "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
                 },
                 "bucket": {
                     "type": "string",
@@ -3523,7 +3568,7 @@
                 },
                 "acl": {
                     "type": "string",
-                    "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                    "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
                 },
                 "bucket": {
                     "type": "string",
@@ -3608,7 +3653,7 @@
                     },
                     "acl": {
                         "type": "string",
-                        "description": "The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).\n"
+                        "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
                     },
                     "bucket": {
                         "type": "string",
@@ -3814,7 +3859,7 @@
             }
         },
         "linode:index/stackScript:StackScript": {
-            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  \n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!/`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooStackScript = new linode.StackScript(\"foo\", {\n    description: \"Installs a Package\",\n    images: [\n        \"linode/ubuntu18.04\",\n        \"linode/ubuntu16.04lts\",\n    ],\n    label: \"foo\",\n    revNote: \"initial version\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n`,\n});\nconst fooInstance = new linode.Instance(\"foo\", {\n    authorizedKeys: [\"...\"],\n    image: \"linode/ubuntu18.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    rootPass: \"...\",\n    stackscriptData: {\n        package: \"nginx\",\n    },\n    stackscriptId: linode_stackscript_install_nginx.id,\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo_stack_script = linode.StackScript(\"fooStackScript\",\n    description=\"Installs a Package\",\n    images=[\n        \"linode/ubuntu18.04\",\n        \"linode/ubuntu16.04lts\",\n    ],\n    label=\"foo\",\n    rev_note=\"initial version\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\n\"\"\")\nfoo_instance = linode.Instance(\"fooInstance\",\n    authorized_keys=[\"...\"],\n    image=\"linode/ubuntu18.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    root_pass=\"...\",\n    stackscript_data={\n        \"package\": \"nginx\",\n    },\n    stackscript_id=linode_stackscript[\"install-nginx\"][\"id\"],\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooStackScript = new Linode.StackScript(\"fooStackScript\", new Linode.StackScriptArgs\n        {\n            Description = \"Installs a Package\",\n            Images = \n            {\n                \"linode/ubuntu18.04\",\n                \"linode/ubuntu16.04lts\",\n            },\n            Label = \"foo\",\n            RevNote = \"initial version\",\n            Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\n\",\n        });\n        var fooInstance = new Linode.Instance(\"fooInstance\", new Linode.InstanceArgs\n        {\n            AuthorizedKeys = \n            {\n                \"...\",\n            },\n            Image = \"linode/ubuntu18.04\",\n            Label = \"foo\",\n            Region = \"us-east\",\n            RootPass = \"...\",\n            StackscriptData = \n            {\n                { \"package\", \"nginx\" },\n            },\n            StackscriptId = linode_stackscript.Install_nginx.Id,\n            Type = \"g6-nanode-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewStackScript(ctx, \"fooStackScript\", \u0026linode.StackScriptArgs{\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu18.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu16.04lts\"),\n\t\t\t},\n\t\t\tLabel:   pulumi.String(\"foo\"),\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t\tScript:  pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v\", \"#!/bin/bash\\n\", \"# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\n\", \"apt-get -q update \u0026\u0026 apt-get -q -y install \", \"$\", \"PACKAGE\\n\", \"\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"fooInstance\", \u0026linode.InstanceArgs{\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:    pulumi.String(\"foo\"),\n\t\t\tRegion:   pulumi.String(\"us-east\"),\n\t\t\tRootPass: pulumi.String(\"...\"),\n\t\t\tStackscriptData: pulumi.StringMap{\n\t\t\t\t\"package\": pulumi.String(\"nginx\"),\n\t\t\t},\n\t\t\tStackscriptId: pulumi.Any(linode_stackscript.Install - nginx.Id),\n\t\t\tType:          pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n ",
+            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  \n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!/`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooStackScript = new linode.StackScript(\"fooStackScript\", {\n    label: \"foo\",\n    description: \"Installs a Package\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n`,\n    images: [\n        \"linode/ubuntu18.04\",\n        \"linode/ubuntu16.04lts\",\n    ],\n    revNote: \"initial version\",\n});\nconst fooInstance = new linode.Instance(\"fooInstance\", {\n    image: \"linode/ubuntu18.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    authorizedKeys: [\"...\"],\n    rootPass: \"...\",\n    stackscriptId: fooStackScript.id,\n    stackscriptData: {\n        \"package\": \"nginx\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo_stack_script = linode.StackScript(\"fooStackScript\",\n    label=\"foo\",\n    description=\"Installs a Package\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\"\"\",\n    images=[\n        \"linode/ubuntu18.04\",\n        \"linode/ubuntu16.04lts\",\n    ],\n    rev_note=\"initial version\")\nfoo_instance = linode.Instance(\"fooInstance\",\n    image=\"linode/ubuntu18.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    authorized_keys=[\"...\"],\n    root_pass=\"...\",\n    stackscript_id=foo_stack_script.id,\n    stackscript_data={\n        \"package\": \"nginx\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooStackScript = new Linode.StackScript(\"fooStackScript\", new Linode.StackScriptArgs\n        {\n            Label = \"foo\",\n            Description = \"Installs a Package\",\n            Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\",\n            Images = \n            {\n                \"linode/ubuntu18.04\",\n                \"linode/ubuntu16.04lts\",\n            },\n            RevNote = \"initial version\",\n        });\n        var fooInstance = new Linode.Instance(\"fooInstance\", new Linode.InstanceArgs\n        {\n            Image = \"linode/ubuntu18.04\",\n            Label = \"foo\",\n            Region = \"us-east\",\n            Type = \"g6-nanode-1\",\n            AuthorizedKeys = \n            {\n                \"...\",\n            },\n            RootPass = \"...\",\n            StackscriptId = fooStackScript.Id,\n            StackscriptData = \n            {\n                { \"package\", \"nginx\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooStackScript, err := linode.NewStackScript(ctx, \"fooStackScript\", \u0026linode.StackScriptArgs{\n\t\t\tLabel:       pulumi.String(\"foo\"),\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tScript:      pulumi.String(fmt.Sprintf(\"%v%v%v%v%v\", \"#!/bin/bash\\n\", \"# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\n\", \"apt-get -q update \u0026\u0026 apt-get -q -y install \", \"$\", \"PACKAGE\\n\")),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu18.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu16.04lts\"),\n\t\t\t},\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"fooInstance\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:  pulumi.String(\"foo\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tRootPass:      pulumi.String(\"...\"),\n\t\t\tStackscriptId: fooStackScript.ID(),\n\t\t\tStackscriptData: pulumi.StringMap{\n\t\t\t\t\"package\": pulumi.String(\"nginx\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n ",
             "properties": {
                 "created": {
                     "type": "string",
@@ -5125,7 +5170,7 @@
         },
         "nodejs": {
             "dependencies": {
-                "@pulumi/pulumi": "^2.0.0"
+                "@pulumi/pulumi": "^2.15.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -5140,9 +5185,8 @@
         "python": {
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`linode/terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "requires": {
-                "pulumi": "\u003e=2.9.0,\u003c3.0.0"
-            },
-            "usesIOClasses": true
+                "pulumi": "\u003e=2.15.0,\u003c3.0.0"
+            }
         }
     }
 }

@@ -78,20 +78,21 @@ type LkeCluster struct {
 // NewLkeCluster registers a new resource with the given unique name, arguments, and options.
 func NewLkeCluster(ctx *pulumi.Context,
 	name string, args *LkeClusterArgs, opts ...pulumi.ResourceOption) (*LkeCluster, error) {
-	if args == nil || args.K8sVersion == nil {
-		return nil, errors.New("missing required argument 'K8sVersion'")
-	}
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
-	if args == nil || args.Pools == nil {
-		return nil, errors.New("missing required argument 'Pools'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &LkeClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.K8sVersion == nil {
+		return nil, errors.New("invalid value for required argument 'K8sVersion'")
+	}
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.Pools == nil {
+		return nil, errors.New("invalid value for required argument 'Pools'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource LkeCluster
 	err := ctx.RegisterResource("linode:index/lkeCluster:LkeCluster", name, args, &resource, opts...)

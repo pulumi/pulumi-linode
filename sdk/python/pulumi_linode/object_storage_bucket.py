@@ -63,10 +63,10 @@ class ObjectStorageBucket(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cert'] = cert
-            if cluster is None:
+            if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
         super(ObjectStorageBucket, __self__).__init__(

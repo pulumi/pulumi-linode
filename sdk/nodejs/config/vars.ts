@@ -11,6 +11,10 @@ let __config = new pulumi.Config("linode");
  */
 export let apiVersion: string | undefined = __config.get("apiVersion") || utilities.getEnv("LINODE_API_VERSION");
 /**
+ * Skip waiting for a linode_instance resource to be running.
+ */
+export let skipInstanceReadyPoll: boolean | undefined = __config.getObject<boolean>("skipInstanceReadyPoll");
+/**
  * The token that allows you access to your Linode account
  */
 export let token: string | undefined = __config.get("token") || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");

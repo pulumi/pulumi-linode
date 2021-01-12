@@ -36,14 +36,15 @@ type Rdns struct {
 // NewRdns registers a new resource with the given unique name, arguments, and options.
 func NewRdns(ctx *pulumi.Context,
 	name string, args *RdnsArgs, opts ...pulumi.ResourceOption) (*Rdns, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.Rdns == nil {
-		return nil, errors.New("missing required argument 'Rdns'")
-	}
 	if args == nil {
-		args = &RdnsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.Rdns == nil {
+		return nil, errors.New("invalid value for required argument 'Rdns'")
 	}
 	var resource Rdns
 	err := ctx.RegisterResource("linode:index/rdns:Rdns", name, args, &resource, opts...)

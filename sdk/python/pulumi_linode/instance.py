@@ -204,7 +204,7 @@ class Instance(pulumi.CustomResource):
             __props__['image'] = image
             __props__['label'] = label
             __props__['private_ip'] = private_ip
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['root_pass'] = root_pass

@@ -18,30 +18,30 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooStackScript = new linode.StackScript("foo", {
- *     description: "Installs a Package",
- *     images: [
- *         "linode/ubuntu18.04",
- *         "linode/ubuntu16.04lts",
- *     ],
+ * const fooStackScript = new linode.StackScript("fooStackScript", {
  *     label: "foo",
- *     revNote: "initial version",
+ *     description: "Installs a Package",
  *     script: `#!/bin/bash
  * # <UDF name="package" label="System Package to Install" example="nginx" default="">
  * apt-get -q update && apt-get -q -y install $PACKAGE
  * `,
+ *     images: [
+ *         "linode/ubuntu18.04",
+ *         "linode/ubuntu16.04lts",
+ *     ],
+ *     revNote: "initial version",
  * });
- * const fooInstance = new linode.Instance("foo", {
- *     authorizedKeys: ["..."],
+ * const fooInstance = new linode.Instance("fooInstance", {
  *     image: "linode/ubuntu18.04",
  *     label: "foo",
  *     region: "us-east",
- *     rootPass: "...",
- *     stackscriptData: {
- *         package: "nginx",
- *     },
- *     stackscriptId: linode_stackscript_install_nginx.id,
  *     type: "g6-nanode-1",
+ *     authorizedKeys: ["..."],
+ *     rootPass: "...",
+ *     stackscriptId: fooStackScript.id,
+ *     stackscriptData: {
+ *         "package": "nginx",
+ *     },
  * });
  * ```
  * ## Attributes
@@ -191,16 +191,16 @@ export class StackScript extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as StackScriptArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.images === undefined) {
+            if ((!args || args.images === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'images'");
             }
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
-            if (!args || args.script === undefined) {
+            if ((!args || args.script === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'script'");
             }
             inputs["description"] = args ? args.description : undefined;

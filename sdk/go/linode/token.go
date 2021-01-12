@@ -82,11 +82,12 @@ type Token struct {
 // NewToken registers a new resource with the given unique name, arguments, and options.
 func NewToken(ctx *pulumi.Context,
 	name string, args *TokenArgs, opts ...pulumi.ResourceOption) (*Token, error) {
-	if args == nil || args.Scopes == nil {
-		return nil, errors.New("missing required argument 'Scopes'")
-	}
 	if args == nil {
-		args = &TokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	var resource Token
 	err := ctx.RegisterResource("linode:index/token:Token", name, args, &resource, opts...)

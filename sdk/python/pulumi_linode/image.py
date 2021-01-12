@@ -103,13 +103,13 @@ class Image(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if disk_id is None:
+            if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__['disk_id'] = disk_id
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
-            if linode_id is None:
+            if linode_id is None and not opts.urn:
                 raise TypeError("Missing required property 'linode_id'")
             __props__['linode_id'] = linode_id
             __props__['created'] = None

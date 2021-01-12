@@ -78,16 +78,16 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if k8s_version is None:
+            if k8s_version is None and not opts.urn:
                 raise TypeError("Missing required property 'k8s_version'")
             __props__['k8s_version'] = k8s_version
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
-            if pools is None:
+            if pools is None and not opts.urn:
                 raise TypeError("Missing required property 'pools'")
             __props__['pools'] = pools
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['tags'] = tags

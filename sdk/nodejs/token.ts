@@ -112,7 +112,7 @@ export class Token extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            if (!args || args.scopes === undefined) {
+            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["expiry"] = args ? args.expiry : undefined;

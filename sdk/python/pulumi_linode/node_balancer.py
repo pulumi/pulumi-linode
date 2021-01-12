@@ -52,6 +52,18 @@ class NodeBalancer(pulumi.CustomResource):
 
         * `ipv6` - The Public IPv6 Address of this NodeBalancer
 
+        * `transfer` - The network transfer stats for the current month
+
+        ### transfer
+
+        The following attributes are available on transfer:
+
+        * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
+
+        * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
+
+        * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
+
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -88,7 +100,7 @@ class NodeBalancer(pulumi.CustomResource):
 
             __props__['client_conn_throttle'] = client_conn_throttle
             __props__['label'] = label
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['tags'] = tags
@@ -96,7 +108,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__['hostname'] = None
             __props__['ipv4'] = None
             __props__['ipv6'] = None
-            __props__['transfer'] = None
+            __props__['transfers'] = None
             __props__['updated'] = None
         super(NodeBalancer, __self__).__init__(
             'linode:index/nodeBalancer:NodeBalancer',
@@ -116,7 +128,7 @@ class NodeBalancer(pulumi.CustomResource):
             label: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            transfer: Optional[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]] = None,
+            transfers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]]] = None,
             updated: Optional[pulumi.Input[str]] = None) -> 'NodeBalancer':
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
@@ -145,7 +157,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__["label"] = label
         __props__["region"] = region
         __props__["tags"] = tags
-        __props__["transfer"] = transfer
+        __props__["transfers"] = transfers
         __props__["updated"] = updated
         return NodeBalancer(resource_name, opts=opts, __props__=__props__)
 
@@ -212,8 +224,8 @@ class NodeBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def transfer(self) -> pulumi.Output['outputs.NodeBalancerTransfer']:
-        return pulumi.get(self, "transfer")
+    def transfers(self) -> pulumi.Output[Sequence['outputs.NodeBalancerTransfer']]:
+        return pulumi.get(self, "transfers")
 
     @property
     @pulumi.getter

@@ -62,9 +62,15 @@ import (
 //
 // * `sslFingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
 //
-// * `nodeStatusUp` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+// * `nodeStatus` - The status of the attached nodes.
 //
-// * `nodeStatusDown` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+// ### nodeStatus
+//
+// The following attributes are available on node_status:
+//
+// * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+//
+// * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 //
 // ## Import
 //
@@ -96,8 +102,8 @@ type NodeBalancerConfig struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout pulumi.IntOutput `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite pulumi.StringOutput                `pulumi:"cipherSuite"`
-	NodeStatus  NodeBalancerConfigNodeStatusOutput `pulumi:"nodeStatus"`
+	CipherSuite  pulumi.StringOutput                     `pulumi:"cipherSuite"`
+	NodeStatuses NodeBalancerConfigNodeStatusArrayOutput `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
@@ -121,11 +127,12 @@ type NodeBalancerConfig struct {
 // NewNodeBalancerConfig registers a new resource with the given unique name, arguments, and options.
 func NewNodeBalancerConfig(ctx *pulumi.Context,
 	name string, args *NodeBalancerConfigArgs, opts ...pulumi.ResourceOption) (*NodeBalancerConfig, error) {
-	if args == nil || args.NodebalancerId == nil {
-		return nil, errors.New("missing required argument 'NodebalancerId'")
-	}
 	if args == nil {
-		args = &NodeBalancerConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodebalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'NodebalancerId'")
 	}
 	var resource NodeBalancerConfig
 	err := ctx.RegisterResource("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args, &resource, opts...)
@@ -167,8 +174,8 @@ type nodeBalancerConfigState struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout *int `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite *string                       `pulumi:"cipherSuite"`
-	NodeStatus  *NodeBalancerConfigNodeStatus `pulumi:"nodeStatus"`
+	CipherSuite  *string                        `pulumi:"cipherSuite"`
+	NodeStatuses []NodeBalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId *int `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
@@ -208,8 +215,8 @@ type NodeBalancerConfigState struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout pulumi.IntPtrInput
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite pulumi.StringPtrInput
-	NodeStatus  NodeBalancerConfigNodeStatusPtrInput
+	CipherSuite  pulumi.StringPtrInput
+	NodeStatuses NodeBalancerConfigNodeStatusArrayInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntPtrInput
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)

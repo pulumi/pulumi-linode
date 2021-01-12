@@ -73,7 +73,7 @@ export class Vlan extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as VlanArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;

@@ -92,17 +92,18 @@ type DomainRecord struct {
 // NewDomainRecord registers a new resource with the given unique name, arguments, and options.
 func NewDomainRecord(ctx *pulumi.Context,
 	name string, args *DomainRecordArgs, opts ...pulumi.ResourceOption) (*DomainRecord, error) {
-	if args == nil || args.DomainId == nil {
-		return nil, errors.New("missing required argument 'DomainId'")
-	}
-	if args == nil || args.RecordType == nil {
-		return nil, errors.New("missing required argument 'RecordType'")
-	}
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
 	if args == nil {
-		args = &DomainRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainId'")
+	}
+	if args.RecordType == nil {
+		return nil, errors.New("invalid value for required argument 'RecordType'")
+	}
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
 	}
 	var resource DomainRecord
 	err := ctx.RegisterResource("linode:index/domainRecord:DomainRecord", name, args, &resource, opts...)

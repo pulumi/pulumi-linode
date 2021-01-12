@@ -53,6 +53,18 @@ import (
 //
 // * `ipv6` - The Public IPv6 Address of this NodeBalancer
 //
+// * `transfer` - The network transfer stats for the current month
+//
+// ### transfer
+//
+// The following attributes are available on transfer:
+//
+// * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
+//
+// * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
+//
+// * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
+//
 // ## Import
 //
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -79,19 +91,20 @@ type NodeBalancer struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags     pulumi.StringArrayOutput   `pulumi:"tags"`
-	Transfer NodeBalancerTransferOutput `pulumi:"transfer"`
-	Updated  pulumi.StringOutput        `pulumi:"updated"`
+	Tags      pulumi.StringArrayOutput        `pulumi:"tags"`
+	Transfers NodeBalancerTransferArrayOutput `pulumi:"transfers"`
+	Updated   pulumi.StringOutput             `pulumi:"updated"`
 }
 
 // NewNodeBalancer registers a new resource with the given unique name, arguments, and options.
 func NewNodeBalancer(ctx *pulumi.Context,
 	name string, args *NodeBalancerArgs, opts ...pulumi.ResourceOption) (*NodeBalancer, error) {
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &NodeBalancerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource NodeBalancer
 	err := ctx.RegisterResource("linode:index/nodeBalancer:NodeBalancer", name, args, &resource, opts...)
@@ -129,9 +142,9 @@ type nodeBalancerState struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags     []string              `pulumi:"tags"`
-	Transfer *NodeBalancerTransfer `pulumi:"transfer"`
-	Updated  *string               `pulumi:"updated"`
+	Tags      []string               `pulumi:"tags"`
+	Transfers []NodeBalancerTransfer `pulumi:"transfers"`
+	Updated   *string                `pulumi:"updated"`
 }
 
 type NodeBalancerState struct {
@@ -149,9 +162,9 @@ type NodeBalancerState struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags     pulumi.StringArrayInput
-	Transfer NodeBalancerTransferPtrInput
-	Updated  pulumi.StringPtrInput
+	Tags      pulumi.StringArrayInput
+	Transfers NodeBalancerTransferArrayInput
+	Updated   pulumi.StringPtrInput
 }
 
 func (NodeBalancerState) ElementType() reflect.Type {

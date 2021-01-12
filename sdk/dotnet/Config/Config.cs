@@ -14,6 +14,11 @@ namespace Pulumi.Linode
         public static string? ApiVersion { get; set; } = __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION");
 
         /// <summary>
+        /// Skip waiting for a linode_instance resource to be running.
+        /// </summary>
+        public static bool? SkipInstanceReadyPoll { get; set; } = __config.GetBoolean("skipInstanceReadyPoll");
+
+        /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("LINODE_TOKEN", "LINODE_API_TOKEN");

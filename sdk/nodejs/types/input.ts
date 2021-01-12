@@ -357,8 +357,8 @@ export interface LkeClusterPoolNode {
 }
 
 export interface NodeBalancerConfigNodeStatus {
-    statusDown?: pulumi.Input<number>;
-    statusUp?: pulumi.Input<number>;
+    down?: pulumi.Input<number>;
+    up?: pulumi.Input<number>;
 }
 
 export interface NodeBalancerTransfer {

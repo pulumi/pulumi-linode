@@ -29,11 +29,12 @@ type Vlan struct {
 // NewVlan registers a new resource with the given unique name, arguments, and options.
 func NewVlan(ctx *pulumi.Context,
 	name string, args *VlanArgs, opts ...pulumi.ResourceOption) (*Vlan, error) {
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &VlanArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Vlan
 	err := ctx.RegisterResource("linode:index/vlan:Vlan", name, args, &resource, opts...)

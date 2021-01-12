@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["apiVersion"] = (args ? args.apiVersion : undefined) || utilities.getEnv("LINODE_API_VERSION");
+            inputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
             inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) || utilities.getEnv("LINODE_UA_PREFIX");
             inputs["url"] = (args ? args.url : undefined) || utilities.getEnv("LINODE_URL");
@@ -60,6 +61,10 @@ export interface ProviderArgs {
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
     readonly apiVersion?: pulumi.Input<string>;
+    /**
+     * Skip waiting for a linode_instance resource to be running.
+     */
+    readonly skipInstanceReadyPoll?: pulumi.Input<boolean>;
     /**
      * The token that allows you access to your Linode account
      */

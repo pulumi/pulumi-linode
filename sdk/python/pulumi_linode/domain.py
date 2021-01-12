@@ -106,7 +106,7 @@ class Domain(pulumi.CustomResource):
 
             __props__['axfr_ips'] = axfr_ips
             __props__['description'] = description
-            if domain is None:
+            if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             __props__['expire_sec'] = expire_sec
@@ -118,7 +118,7 @@ class Domain(pulumi.CustomResource):
             __props__['status'] = status
             __props__['tags'] = tags
             __props__['ttl_sec'] = ttl_sec
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(Domain, __self__).__init__(

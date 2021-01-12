@@ -48,7 +48,7 @@ namespace Pulumi.Linode
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        /// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Linode
         public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
-        /// The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        /// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Linode
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        /// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }

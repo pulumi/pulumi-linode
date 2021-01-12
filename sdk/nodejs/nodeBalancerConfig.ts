@@ -42,9 +42,15 @@ import * as utilities from "./utilities";
  *
  * * `sslFingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
  *
- * * `nodeStatusUp` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+ * * `nodeStatus` - The status of the attached nodes.
  *
- * * `nodeStatusDown` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+ * ### nodeStatus
+ *
+ * The following attributes are available on node_status:
+ *
+ * * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+ *
+ * * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
  *
  * ## Import
  *
@@ -121,7 +127,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     public readonly cipherSuite!: pulumi.Output<string>;
-    public /*out*/ readonly nodeStatus!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus>;
+    public /*out*/ readonly nodeStatuses!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus[]>;
     /**
      * The ID of the NodeBalancer to access.
      */
@@ -180,7 +186,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["checkPath"] = state ? state.checkPath : undefined;
             inputs["checkTimeout"] = state ? state.checkTimeout : undefined;
             inputs["cipherSuite"] = state ? state.cipherSuite : undefined;
-            inputs["nodeStatus"] = state ? state.nodeStatus : undefined;
+            inputs["nodeStatuses"] = state ? state.nodeStatuses : undefined;
             inputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
@@ -192,7 +198,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["stickiness"] = state ? state.stickiness : undefined;
         } else {
             const args = argsOrState as NodeBalancerConfigArgs | undefined;
-            if (!args || args.nodebalancerId === undefined) {
+            if ((!args || args.nodebalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;
@@ -211,7 +217,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["sslCert"] = args ? args.sslCert : undefined;
             inputs["sslKey"] = args ? args.sslKey : undefined;
             inputs["stickiness"] = args ? args.stickiness : undefined;
-            inputs["nodeStatus"] = undefined /*out*/;
+            inputs["nodeStatuses"] = undefined /*out*/;
             inputs["sslCommonname"] = undefined /*out*/;
             inputs["sslFingerprint"] = undefined /*out*/;
         }
@@ -267,7 +273,7 @@ export interface NodeBalancerConfigState {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     readonly cipherSuite?: pulumi.Input<string>;
-    readonly nodeStatus?: pulumi.Input<inputs.NodeBalancerConfigNodeStatus>;
+    readonly nodeStatuses?: pulumi.Input<pulumi.Input<inputs.NodeBalancerConfigNodeStatus>[]>;
     /**
      * The ID of the NodeBalancer to access.
      */
