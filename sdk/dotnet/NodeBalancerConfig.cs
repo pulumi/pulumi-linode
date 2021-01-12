@@ -55,9 +55,15 @@ namespace Pulumi.Linode
     /// 
     /// * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
     /// 
-    /// * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+    /// * `node_status` - The status of the attached nodes.
     /// 
-    /// * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+    /// ### node_status
+    /// 
+    /// The following attributes are available on node_status:
+    /// 
+    /// * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+    /// 
+    /// * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
     /// 
     /// ## Import
     /// 
@@ -126,8 +132,8 @@ namespace Pulumi.Linode
         [Output("cipherSuite")]
         public Output<string> CipherSuite { get; private set; } = null!;
 
-        [Output("nodeStatus")]
-        public Output<Outputs.NodeBalancerConfigNodeStatus> NodeStatus { get; private set; } = null!;
+        [Output("nodeStatuses")]
+        public Output<ImmutableArray<Outputs.NodeBalancerConfigNodeStatus>> NodeStatuses { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the NodeBalancer to access.
@@ -388,8 +394,13 @@ namespace Pulumi.Linode
         [Input("cipherSuite")]
         public Input<string>? CipherSuite { get; set; }
 
-        [Input("nodeStatus")]
-        public Input<Inputs.NodeBalancerConfigNodeStatusGetArgs>? NodeStatus { get; set; }
+        [Input("nodeStatuses")]
+        private InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs>? _nodeStatuses;
+        public InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs> NodeStatuses
+        {
+            get => _nodeStatuses ?? (_nodeStatuses = new InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs>());
+            set => _nodeStatuses = value;
+        }
 
         /// <summary>
         /// The ID of the NodeBalancer to access.

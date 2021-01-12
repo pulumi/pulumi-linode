@@ -80,10 +80,10 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             inputs["label"] = state ? state.label : undefined;
         } else {
             const args = argsOrState as ObjectStorageBucketArgs | undefined;
-            if (!args || args.cluster === undefined) {
+            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
             inputs["cert"] = args ? args.cert : undefined;

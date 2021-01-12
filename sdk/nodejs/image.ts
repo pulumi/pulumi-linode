@@ -167,13 +167,13 @@ export class Image extends pulumi.CustomResource {
             inputs["vendor"] = state ? state.vendor : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if (!args || args.diskId === undefined) {
+            if ((!args || args.diskId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
-            if (!args || args.linodeId === undefined) {
+            if ((!args || args.linodeId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'linodeId'");
             }
             inputs["description"] = args ? args.description : undefined;

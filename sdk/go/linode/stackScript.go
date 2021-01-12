@@ -31,32 +31,32 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+// 		fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+// 			Label:       pulumi.String("foo"),
 // 			Description: pulumi.String("Installs a Package"),
+// 			Script:      pulumi.String(fmt.Sprintf("%v%v%v%v%v", "#!/bin/bash\n", "# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\n", "apt-get -q update && apt-get -q -y install ", "$", "PACKAGE\n")),
 // 			Images: pulumi.StringArray{
 // 				pulumi.String("linode/ubuntu18.04"),
 // 				pulumi.String("linode/ubuntu16.04lts"),
 // 			},
-// 			Label:   pulumi.String("foo"),
 // 			RevNote: pulumi.String("initial version"),
-// 			Script:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v", "#!/bin/bash\n", "# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\n", "apt-get -q update && apt-get -q -y install ", "$", "PACKAGE\n", "\n")),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+// 			Image:  pulumi.String("linode/ubuntu18.04"),
+// 			Label:  pulumi.String("foo"),
+// 			Region: pulumi.String("us-east"),
+// 			Type:   pulumi.String("g6-nanode-1"),
 // 			AuthorizedKeys: pulumi.StringArray{
 // 				pulumi.String("..."),
 // 			},
-// 			Image:    pulumi.String("linode/ubuntu18.04"),
-// 			Label:    pulumi.String("foo"),
-// 			Region:   pulumi.String("us-east"),
-// 			RootPass: pulumi.String("..."),
+// 			RootPass:      pulumi.String("..."),
+// 			StackscriptId: fooStackScript.ID(),
 // 			StackscriptData: pulumi.StringMap{
 // 				"package": pulumi.String("nginx"),
 // 			},
-// 			StackscriptId: pulumi.Any(linode_stackscript.Install - nginx.Id),
-// 			Type:          pulumi.String("g6-nanode-1"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -137,20 +137,21 @@ type StackScript struct {
 // NewStackScript registers a new resource with the given unique name, arguments, and options.
 func NewStackScript(ctx *pulumi.Context,
 	name string, args *StackScriptArgs, opts ...pulumi.ResourceOption) (*StackScript, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Images == nil {
-		return nil, errors.New("missing required argument 'Images'")
-	}
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
-	if args == nil || args.Script == nil {
-		return nil, errors.New("missing required argument 'Script'")
-	}
 	if args == nil {
-		args = &StackScriptArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Images == nil {
+		return nil, errors.New("invalid value for required argument 'Images'")
+	}
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.Script == nil {
+		return nil, errors.New("invalid value for required argument 'Script'")
 	}
 	var resource StackScript
 	err := ctx.RegisterResource("linode:index/stackScript:StackScript", name, args, &resource, opts...)

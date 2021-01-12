@@ -41,29 +41,28 @@ class StackScript(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo_stack_script = linode.StackScript("fooStackScript",
+            label="foo",
             description="Installs a Package",
+            script=\"\"\"#!/bin/bash
+        # <UDF name="package" label="System Package to Install" example="nginx" default="">
+        apt-get -q update && apt-get -q -y install $PACKAGE
+        \"\"\",
             images=[
                 "linode/ubuntu18.04",
                 "linode/ubuntu16.04lts",
             ],
-            label="foo",
-            rev_note="initial version",
-            script=\"\"\"#!/bin/bash
-        # <UDF name="package" label="System Package to Install" example="nginx" default="">
-        apt-get -q update && apt-get -q -y install $PACKAGE
-
-        \"\"\")
+            rev_note="initial version")
         foo_instance = linode.Instance("fooInstance",
-            authorized_keys=["..."],
             image="linode/ubuntu18.04",
             label="foo",
             region="us-east",
+            type="g6-nanode-1",
+            authorized_keys=["..."],
             root_pass="...",
+            stackscript_id=foo_stack_script.id,
             stackscript_data={
                 "package": "nginx",
-            },
-            stackscript_id=linode_stackscript["install-nginx"]["id"],
-            type="g6-nanode-1")
+            })
         ```
         ## Attributes
 
@@ -131,18 +130,18 @@ class StackScript(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
-            if images is None:
+            if images is None and not opts.urn:
                 raise TypeError("Missing required property 'images'")
             __props__['images'] = images
             __props__['is_public'] = is_public
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
             __props__['rev_note'] = rev_note
-            if script is None:
+            if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")
             __props__['script'] = script
             __props__['user_defined_fields'] = user_defined_fields

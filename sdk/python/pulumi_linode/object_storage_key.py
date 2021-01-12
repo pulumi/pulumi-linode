@@ -68,7 +68,7 @@ class ObjectStorageKey(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['bucket_accesses'] = bucket_accesses
-            if label is None:
+            if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__['label'] = label
             __props__['access_key'] = None

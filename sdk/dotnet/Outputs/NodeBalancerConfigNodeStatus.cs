@@ -13,17 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class NodeBalancerConfigNodeStatus
     {
-        public readonly int? StatusDown;
-        public readonly int? StatusUp;
+        public readonly int? Down;
+        public readonly int? Up;
 
         [OutputConstructor]
         private NodeBalancerConfigNodeStatus(
-            int? statusDown,
+            int? down,
 
-            int? statusUp)
+            int? up)
         {
-            StatusDown = statusDown;
-            StatusUp = statusUp;
+            Down = down;
+            Up = up;
         }
     }
 }

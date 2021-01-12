@@ -34,6 +34,18 @@ import * as utilities from "./utilities";
  *
  * * `ipv6` - The Public IPv6 Address of this NodeBalancer
  *
+ * * `transfer` - The network transfer stats for the current month
+ *
+ * ### transfer
+ *
+ * The following attributes are available on transfer:
+ *
+ * * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
+ *
+ * * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
+ *
+ * * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
+ *
  * ## Import
  *
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -101,7 +113,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly transfer!: pulumi.Output<outputs.NodeBalancerTransfer>;
+    public /*out*/ readonly transfers!: pulumi.Output<outputs.NodeBalancerTransfer[]>;
     public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
@@ -124,11 +136,11 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["label"] = state ? state.label : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["tags"] = state ? state.tags : undefined;
-            inputs["transfer"] = state ? state.transfer : undefined;
+            inputs["transfers"] = state ? state.transfers : undefined;
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
@@ -139,7 +151,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["hostname"] = undefined /*out*/;
             inputs["ipv4"] = undefined /*out*/;
             inputs["ipv6"] = undefined /*out*/;
-            inputs["transfer"] = undefined /*out*/;
+            inputs["transfers"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
         if (!opts) {
@@ -186,7 +198,7 @@ export interface NodeBalancerState {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly transfer?: pulumi.Input<inputs.NodeBalancerTransfer>;
+    readonly transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
     readonly updated?: pulumi.Input<string>;
 }
 

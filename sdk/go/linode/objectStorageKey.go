@@ -64,11 +64,12 @@ type ObjectStorageKey struct {
 // NewObjectStorageKey registers a new resource with the given unique name, arguments, and options.
 func NewObjectStorageKey(ctx *pulumi.Context,
 	name string, args *ObjectStorageKeyArgs, opts ...pulumi.ResourceOption) (*ObjectStorageKey, error) {
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
 	if args == nil {
-		args = &ObjectStorageKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
 	}
 	var resource ObjectStorageKey
 	err := ctx.RegisterResource("linode:index/objectStorageKey:ObjectStorageKey", name, args, &resource, opts...)

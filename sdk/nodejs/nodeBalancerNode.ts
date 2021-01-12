@@ -153,16 +153,16 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as NodeBalancerNodeArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.configId === undefined) {
+            if ((!args || args.configId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'configId'");
             }
-            if (!args || args.label === undefined) {
+            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'label'");
             }
-            if (!args || args.nodebalancerId === undefined) {
+            if ((!args || args.nodebalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
             inputs["address"] = args ? args.address : undefined;

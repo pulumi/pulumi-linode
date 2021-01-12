@@ -132,7 +132,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if (!args || args.linodes === undefined) {
+            if ((!args || args.linodes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'linodes'");
             }
             inputs["disabled"] = args ? args.disabled : undefined;

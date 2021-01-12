@@ -140,13 +140,13 @@ export class DomainRecord extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as DomainRecordArgs | undefined;
-            if (!args || args.domainId === undefined) {
+            if ((!args || args.domainId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainId'");
             }
-            if (!args || args.recordType === undefined) {
+            if ((!args || args.recordType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'recordType'");
             }
-            if (!args || args.target === undefined) {
+            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["domainId"] = args ? args.domainId : undefined;

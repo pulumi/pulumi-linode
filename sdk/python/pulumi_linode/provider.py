@@ -16,6 +16,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
+                 skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  ua_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
         :param pulumi.Input[str] token: The token that allows you access to your Linode account
         :param pulumi.Input[str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[str] url: The HTTP(S) API address of the Linode API to use.
@@ -55,6 +57,7 @@ class Provider(pulumi.ProviderResource):
             if api_version is None:
                 api_version = _utilities.get_env('LINODE_API_VERSION')
             __props__['api_version'] = api_version
+            __props__['skip_instance_ready_poll'] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None
             if token is None:
                 token = _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
             __props__['token'] = token

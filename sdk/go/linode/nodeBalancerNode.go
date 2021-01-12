@@ -55,20 +55,21 @@ type NodeBalancerNode struct {
 // NewNodeBalancerNode registers a new resource with the given unique name, arguments, and options.
 func NewNodeBalancerNode(ctx *pulumi.Context,
 	name string, args *NodeBalancerNodeArgs, opts ...pulumi.ResourceOption) (*NodeBalancerNode, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.ConfigId == nil {
-		return nil, errors.New("missing required argument 'ConfigId'")
-	}
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
-	if args == nil || args.NodebalancerId == nil {
-		return nil, errors.New("missing required argument 'NodebalancerId'")
-	}
 	if args == nil {
-		args = &NodeBalancerNodeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
+	}
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.NodebalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'NodebalancerId'")
 	}
 	var resource NodeBalancerNode
 	err := ctx.RegisterResource("linode:index/nodeBalancerNode:NodeBalancerNode", name, args, &resource, opts...)

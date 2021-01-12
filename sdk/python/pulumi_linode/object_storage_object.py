@@ -60,7 +60,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
@@ -94,15 +94,15 @@ class ObjectStorageObject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_key is None:
+            if access_key is None and not opts.urn:
                 raise TypeError("Missing required property 'access_key'")
             __props__['access_key'] = access_key
             __props__['acl'] = acl
-            if bucket is None:
+            if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
             __props__['cache_control'] = cache_control
-            if cluster is None:
+            if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
             __props__['content'] = content
@@ -113,11 +113,11 @@ class ObjectStorageObject(pulumi.CustomResource):
             __props__['content_type'] = content_type
             __props__['etag'] = etag
             __props__['force_destroy'] = force_destroy
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['metadata'] = metadata
-            if secret_key is None:
+            if secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_key'")
             __props__['secret_key'] = secret_key
             __props__['source'] = source
@@ -160,7 +160,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
@@ -215,7 +215,7 @@ class ObjectStorageObject(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[str]]:
         """
-        The canned ACL to apply. Can be either `private` or `public-read` (defaults to `private`).
+        The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
         """
         return pulumi.get(self, "acl")
 

@@ -1199,22 +1199,22 @@ class LkeClusterPoolNode(dict):
 @pulumi.output_type
 class NodeBalancerConfigNodeStatus(dict):
     def __init__(__self__, *,
-                 status_down: Optional[int] = None,
-                 status_up: Optional[int] = None):
-        if status_down is not None:
-            pulumi.set(__self__, "status_down", status_down)
-        if status_up is not None:
-            pulumi.set(__self__, "status_up", status_up)
+                 down: Optional[int] = None,
+                 up: Optional[int] = None):
+        if down is not None:
+            pulumi.set(__self__, "down", down)
+        if up is not None:
+            pulumi.set(__self__, "up", up)
 
     @property
-    @pulumi.getter(name="statusDown")
-    def status_down(self) -> Optional[int]:
-        return pulumi.get(self, "status_down")
+    @pulumi.getter
+    def down(self) -> Optional[int]:
+        return pulumi.get(self, "down")
 
     @property
-    @pulumi.getter(name="statusUp")
-    def status_up(self) -> Optional[int]:
-        return pulumi.get(self, "status_up")
+    @pulumi.getter
+    def up(self) -> Optional[int]:
+        return pulumi.get(self, "up")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

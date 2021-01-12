@@ -41,14 +41,15 @@ type SshKey struct {
 // NewSshKey registers a new resource with the given unique name, arguments, and options.
 func NewSshKey(ctx *pulumi.Context,
 	name string, args *SshKeyArgs, opts ...pulumi.ResourceOption) (*SshKey, error) {
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
-	if args == nil || args.SshKey == nil {
-		return nil, errors.New("missing required argument 'SshKey'")
-	}
 	if args == nil {
-		args = &SshKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.SshKey == nil {
+		return nil, errors.New("invalid value for required argument 'SshKey'")
 	}
 	var resource SshKey
 	err := ctx.RegisterResource("linode:index/sshKey:SshKey", name, args, &resource, opts...)

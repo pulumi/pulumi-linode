@@ -49,6 +49,18 @@ namespace Pulumi.Linode
     /// 
     /// * `ipv6` - The Public IPv6 Address of this NodeBalancer
     /// 
+    /// * `transfer` - The network transfer stats for the current month
+    /// 
+    /// ### transfer
+    /// 
+    /// The following attributes are available on transfer:
+    /// 
+    /// * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
+    /// 
+    /// * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
+    /// 
+    /// * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
+    /// 
     /// ## Import
     /// 
     /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -106,8 +118,8 @@ namespace Pulumi.Linode
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
-        [Output("transfer")]
-        public Output<Outputs.NodeBalancerTransfer> Transfer { get; private set; } = null!;
+        [Output("transfers")]
+        public Output<ImmutableArray<Outputs.NodeBalancerTransfer>> Transfers { get; private set; } = null!;
 
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
@@ -246,8 +258,13 @@ namespace Pulumi.Linode
             set => _tags = value;
         }
 
-        [Input("transfer")]
-        public Input<Inputs.NodeBalancerTransferGetArgs>? Transfer { get; set; }
+        [Input("transfers")]
+        private InputList<Inputs.NodeBalancerTransferGetArgs>? _transfers;
+        public InputList<Inputs.NodeBalancerTransferGetArgs> Transfers
+        {
+            get => _transfers ?? (_transfers = new InputList<Inputs.NodeBalancerTransferGetArgs>());
+            set => _transfers = value;
+        }
 
         [Input("updated")]
         public Input<string>? Updated { get; set; }

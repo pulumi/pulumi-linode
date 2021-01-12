@@ -12,11 +12,11 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class NodeBalancerConfigNodeStatusArgs : Pulumi.ResourceArgs
     {
-        [Input("statusDown")]
-        public Input<int>? StatusDown { get; set; }
+        [Input("down")]
+        public Input<int>? Down { get; set; }
 
-        [Input("statusUp")]
-        public Input<int>? StatusUp { get; set; }
+        [Input("up")]
+        public Input<int>? Up { get; set; }
 
         public NodeBalancerConfigNodeStatusArgs()
         {

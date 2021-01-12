@@ -85,7 +85,7 @@ class Token(pulumi.CustomResource):
 
             __props__['expiry'] = expiry
             __props__['label'] = label
-            if scopes is None:
+            if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__['scopes'] = scopes
             __props__['created'] = None

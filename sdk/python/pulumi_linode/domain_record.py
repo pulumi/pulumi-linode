@@ -96,19 +96,19 @@ class DomainRecord(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain_id is None:
+            if domain_id is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_id'")
             __props__['domain_id'] = domain_id
             __props__['name'] = name
             __props__['port'] = port
             __props__['priority'] = priority
             __props__['protocol'] = protocol
-            if record_type is None:
+            if record_type is None and not opts.urn:
                 raise TypeError("Missing required property 'record_type'")
             __props__['record_type'] = record_type
             __props__['service'] = service
             __props__['tag'] = tag
-            if target is None:
+            if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
             __props__['ttl_sec'] = ttl_sec

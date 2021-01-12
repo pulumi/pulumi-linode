@@ -59,14 +59,15 @@ type ObjectStorageBucket struct {
 // NewObjectStorageBucket registers a new resource with the given unique name, arguments, and options.
 func NewObjectStorageBucket(ctx *pulumi.Context,
 	name string, args *ObjectStorageBucketArgs, opts ...pulumi.ResourceOption) (*ObjectStorageBucket, error) {
-	if args == nil || args.Cluster == nil {
-		return nil, errors.New("missing required argument 'Cluster'")
-	}
-	if args == nil || args.Label == nil {
-		return nil, errors.New("missing required argument 'Label'")
-	}
 	if args == nil {
-		args = &ObjectStorageBucketArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Cluster == nil {
+		return nil, errors.New("invalid value for required argument 'Cluster'")
+	}
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
 	}
 	var resource ObjectStorageBucket
 	err := ctx.RegisterResource("linode:index/objectStorageBucket:ObjectStorageBucket", name, args, &resource, opts...)

@@ -1482,30 +1482,30 @@ class LkeClusterPoolNodeArgs:
 @pulumi.input_type
 class NodeBalancerConfigNodeStatusArgs:
     def __init__(__self__, *,
-                 status_down: Optional[pulumi.Input[int]] = None,
-                 status_up: Optional[pulumi.Input[int]] = None):
-        if status_down is not None:
-            pulumi.set(__self__, "status_down", status_down)
-        if status_up is not None:
-            pulumi.set(__self__, "status_up", status_up)
+                 down: Optional[pulumi.Input[int]] = None,
+                 up: Optional[pulumi.Input[int]] = None):
+        if down is not None:
+            pulumi.set(__self__, "down", down)
+        if up is not None:
+            pulumi.set(__self__, "up", up)
 
     @property
-    @pulumi.getter(name="statusDown")
-    def status_down(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "status_down")
+    @pulumi.getter
+    def down(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "down")
 
-    @status_down.setter
-    def status_down(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "status_down", value)
+    @down.setter
+    def down(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "down", value)
 
     @property
-    @pulumi.getter(name="statusUp")
-    def status_up(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "status_up")
+    @pulumi.getter
+    def up(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "up")
 
-    @status_up.setter
-    def status_up(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "status_up", value)
+    @up.setter
+    def up(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "up", value)
 
 
 @pulumi.input_type

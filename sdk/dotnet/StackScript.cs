@@ -28,36 +28,35 @@ namespace Pulumi.Linode
     ///     {
     ///         var fooStackScript = new Linode.StackScript("fooStackScript", new Linode.StackScriptArgs
     ///         {
+    ///             Label = "foo",
     ///             Description = "Installs a Package",
+    ///             Script = @"#!/bin/bash
+    /// # &lt;UDF name=""package"" label=""System Package to Install"" example=""nginx"" default=""""&gt;
+    /// apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
+    /// ",
     ///             Images = 
     ///             {
     ///                 "linode/ubuntu18.04",
     ///                 "linode/ubuntu16.04lts",
     ///             },
-    ///             Label = "foo",
     ///             RevNote = "initial version",
-    ///             Script = @"#!/bin/bash
-    /// # &lt;UDF name=""package"" label=""System Package to Install"" example=""nginx"" default=""""&gt;
-    /// apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
-    /// 
-    /// ",
     ///         });
     ///         var fooInstance = new Linode.Instance("fooInstance", new Linode.InstanceArgs
     ///         {
+    ///             Image = "linode/ubuntu18.04",
+    ///             Label = "foo",
+    ///             Region = "us-east",
+    ///             Type = "g6-nanode-1",
     ///             AuthorizedKeys = 
     ///             {
     ///                 "...",
     ///             },
-    ///             Image = "linode/ubuntu18.04",
-    ///             Label = "foo",
-    ///             Region = "us-east",
     ///             RootPass = "...",
+    ///             StackscriptId = fooStackScript.Id,
     ///             StackscriptData = 
     ///             {
     ///                 { "package", "nginx" },
     ///             },
-    ///             StackscriptId = linode_stackscript.Install_nginx.Id,
-    ///             Type = "g6-nanode-1",
     ///         });
     ///     }
     /// 

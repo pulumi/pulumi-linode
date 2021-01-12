@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'api_version',
+    'skip_instance_ready_poll',
     'token',
     'ua_prefix',
     'url',
@@ -20,6 +21,11 @@ __config__ = pulumi.Config('linode')
 api_version = __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 """
 An HTTP User-Agent Prefix to prepend in API requests.
+"""
+
+skip_instance_ready_poll = __config__.get('skipInstanceReadyPoll')
+"""
+Skip waiting for a linode_instance resource to be running.
 """
 
 token = __config__.get('token') or _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')

@@ -71,9 +71,15 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
         * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
 
-        * `node_status_up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        * `node_status` - The status of the attached nodes.
 
-        * `node_status_down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        ### node_status
+
+        The following attributes are available on node_status:
+
+        * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+
+        * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 
         ## Import
 
@@ -131,7 +137,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             __props__['check_path'] = check_path
             __props__['check_timeout'] = check_timeout
             __props__['cipher_suite'] = cipher_suite
-            if nodebalancer_id is None:
+            if nodebalancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nodebalancer_id'")
             __props__['nodebalancer_id'] = nodebalancer_id
             __props__['port'] = port
@@ -140,7 +146,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             __props__['ssl_cert'] = ssl_cert
             __props__['ssl_key'] = ssl_key
             __props__['stickiness'] = stickiness
-            __props__['node_status'] = None
+            __props__['node_statuses'] = None
             __props__['ssl_commonname'] = None
             __props__['ssl_fingerprint'] = None
         super(NodeBalancerConfig, __self__).__init__(
@@ -162,7 +168,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             check_path: Optional[pulumi.Input[str]] = None,
             check_timeout: Optional[pulumi.Input[int]] = None,
             cipher_suite: Optional[pulumi.Input[str]] = None,
-            node_status: Optional[pulumi.Input[pulumi.InputType['NodeBalancerConfigNodeStatusArgs']]] = None,
+            node_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerConfigNodeStatusArgs']]]]] = None,
             nodebalancer_id: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
@@ -212,7 +218,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         __props__["check_path"] = check_path
         __props__["check_timeout"] = check_timeout
         __props__["cipher_suite"] = cipher_suite
-        __props__["node_status"] = node_status
+        __props__["node_statuses"] = node_statuses
         __props__["nodebalancer_id"] = nodebalancer_id
         __props__["port"] = port
         __props__["protocol"] = protocol
@@ -298,9 +304,9 @@ class NodeBalancerConfig(pulumi.CustomResource):
         return pulumi.get(self, "cipher_suite")
 
     @property
-    @pulumi.getter(name="nodeStatus")
-    def node_status(self) -> pulumi.Output['outputs.NodeBalancerConfigNodeStatus']:
-        return pulumi.get(self, "node_status")
+    @pulumi.getter(name="nodeStatuses")
+    def node_statuses(self) -> pulumi.Output[Sequence['outputs.NodeBalancerConfigNodeStatus']]:
+        return pulumi.get(self, "node_statuses")
 
     @property
     @pulumi.getter(name="nodebalancerId")

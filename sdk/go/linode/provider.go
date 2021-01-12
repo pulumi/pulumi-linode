@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ApiVersion == nil {
 		args.ApiVersion = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_API_VERSION").(string))
 	}
@@ -47,6 +48,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion *string `pulumi:"apiVersion"`
+	// Skip waiting for a linode_instance resource to be running.
+	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
 	// The token that allows you access to your Linode account
 	Token *string `pulumi:"token"`
 	// An HTTP User-Agent Prefix to prepend in API requests.
@@ -59,6 +62,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion pulumi.StringPtrInput
+	// Skip waiting for a linode_instance resource to be running.
+	SkipInstanceReadyPoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account
 	Token pulumi.StringPtrInput
 	// An HTTP User-Agent Prefix to prepend in API requests.
