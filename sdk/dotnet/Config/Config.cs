@@ -14,6 +14,16 @@ namespace Pulumi.Linode
         public static string? ApiVersion { get; set; } = __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION");
 
         /// <summary>
+        /// Maximum delay in milliseconds before retrying a request.
+        /// </summary>
+        public static int? MaxRetryDelayMs { get; set; } = __config.GetInt32("maxRetryDelayMs");
+
+        /// <summary>
+        /// Minimum delay in milliseconds before retrying a request.
+        /// </summary>
+        public static int? MinRetryDelayMs { get; set; } = __config.GetInt32("minRetryDelayMs");
+
+        /// <summary>
         /// Skip waiting for a linode_instance resource to be running.
         /// </summary>
         public static bool? SkipInstanceReadyPoll { get; set; } = __config.GetBoolean("skipInstanceReadyPoll");

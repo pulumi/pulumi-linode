@@ -37,6 +37,8 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["apiVersion"] = (args ? args.apiVersion : undefined) || utilities.getEnv("LINODE_API_VERSION");
+            inputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
+            inputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
             inputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
             inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) || utilities.getEnv("LINODE_UA_PREFIX");
@@ -61,6 +63,14 @@ export interface ProviderArgs {
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
     readonly apiVersion?: pulumi.Input<string>;
+    /**
+     * Maximum delay in milliseconds before retrying a request.
+     */
+    readonly maxRetryDelayMs?: pulumi.Input<number>;
+    /**
+     * Minimum delay in milliseconds before retrying a request.
+     */
+    readonly minRetryDelayMs?: pulumi.Input<number>;
     /**
      * Skip waiting for a linode_instance resource to be running.
      */

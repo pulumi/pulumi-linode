@@ -11,6 +11,14 @@ let __config = new pulumi.Config("linode");
  */
 export let apiVersion: string | undefined = __config.get("apiVersion") || utilities.getEnv("LINODE_API_VERSION");
 /**
+ * Maximum delay in milliseconds before retrying a request.
+ */
+export let maxRetryDelayMs: number | undefined = __config.getObject<number>("maxRetryDelayMs");
+/**
+ * Minimum delay in milliseconds before retrying a request.
+ */
+export let minRetryDelayMs: number | undefined = __config.getObject<number>("minRetryDelayMs");
+/**
  * Skip waiting for a linode_instance resource to be running.
  */
 export let skipInstanceReadyPoll: boolean | undefined = __config.getObject<boolean>("skipInstanceReadyPoll");

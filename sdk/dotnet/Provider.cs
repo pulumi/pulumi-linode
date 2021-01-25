@@ -51,6 +51,18 @@ namespace Pulumi.Linode
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
+        /// Maximum delay in milliseconds before retrying a request.
+        /// </summary>
+        [Input("maxRetryDelayMs", json: true)]
+        public Input<int>? MaxRetryDelayMs { get; set; }
+
+        /// <summary>
+        /// Minimum delay in milliseconds before retrying a request.
+        /// </summary>
+        [Input("minRetryDelayMs", json: true)]
+        public Input<int>? MinRetryDelayMs { get; set; }
+
+        /// <summary>
         /// Skip waiting for a linode_instance resource to be running.
         /// </summary>
         [Input("skipInstanceReadyPoll", json: true)]
