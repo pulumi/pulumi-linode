@@ -17,6 +17,16 @@ func GetApiVersion(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "LINODE_API_VERSION").(string)
 }
 
+// Maximum delay in milliseconds before retrying a request.
+func GetMaxRetryDelayMs(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "linode:maxRetryDelayMs")
+}
+
+// Minimum delay in milliseconds before retrying a request.
+func GetMinRetryDelayMs(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "linode:minRetryDelayMs")
+}
+
 // Skip waiting for a linode_instance resource to be running.
 func GetSkipInstanceReadyPoll(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "linode:skipInstanceReadyPoll")

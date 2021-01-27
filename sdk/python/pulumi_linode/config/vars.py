@@ -10,6 +10,8 @@ from .. import _utilities, _tables
 
 __all__ = [
     'api_version',
+    'max_retry_delay_ms',
+    'min_retry_delay_ms',
     'skip_instance_ready_poll',
     'token',
     'ua_prefix',
@@ -21,6 +23,16 @@ __config__ = pulumi.Config('linode')
 api_version = __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 """
 An HTTP User-Agent Prefix to prepend in API requests.
+"""
+
+max_retry_delay_ms = __config__.get('maxRetryDelayMs')
+"""
+Maximum delay in milliseconds before retrying a request.
+"""
+
+min_retry_delay_ms = __config__.get('minRetryDelayMs')
+"""
+Minimum delay in milliseconds before retrying a request.
 """
 
 skip_instance_ready_poll = __config__.get('skipInstanceReadyPoll')

@@ -48,6 +48,10 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion *string `pulumi:"apiVersion"`
+	// Maximum delay in milliseconds before retrying a request.
+	MaxRetryDelayMs *int `pulumi:"maxRetryDelayMs"`
+	// Minimum delay in milliseconds before retrying a request.
+	MinRetryDelayMs *int `pulumi:"minRetryDelayMs"`
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
 	// The token that allows you access to your Linode account
@@ -62,6 +66,10 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion pulumi.StringPtrInput
+	// Maximum delay in milliseconds before retrying a request.
+	MaxRetryDelayMs pulumi.IntPtrInput
+	// Minimum delay in milliseconds before retrying a request.
+	MinRetryDelayMs pulumi.IntPtrInput
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account

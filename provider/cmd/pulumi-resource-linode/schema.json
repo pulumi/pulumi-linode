@@ -23,6 +23,14 @@
                     ]
                 }
             },
+            "maxRetryDelayMs": {
+                "type": "integer",
+                "description": "Maximum delay in milliseconds before retrying a request.\n"
+            },
+            "minRetryDelayMs": {
+                "type": "integer",
+                "description": "Minimum delay in milliseconds before retrying a request.\n"
+            },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
                 "description": "Skip waiting for a linode_instance resource to be running.\n"
@@ -1624,6 +1632,14 @@
                         "LINODE_API_VERSION"
                     ]
                 }
+            },
+            "maxRetryDelayMs": {
+                "type": "integer",
+                "description": "Maximum delay in milliseconds before retrying a request.\n"
+            },
+            "minRetryDelayMs": {
+                "type": "integer",
+                "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
