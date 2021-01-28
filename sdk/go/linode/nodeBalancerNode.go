@@ -172,15 +172,15 @@ type NodeBalancerNodeInput interface {
 	ToNodeBalancerNodeOutputWithContext(ctx context.Context) NodeBalancerNodeOutput
 }
 
-func (NodeBalancerNode) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancerNode)(nil)).Elem()
+func (*NodeBalancerNode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerNode)(nil))
 }
 
-func (i NodeBalancerNode) ToNodeBalancerNodeOutput() NodeBalancerNodeOutput {
+func (i *NodeBalancerNode) ToNodeBalancerNodeOutput() NodeBalancerNodeOutput {
 	return i.ToNodeBalancerNodeOutputWithContext(context.Background())
 }
 
-func (i NodeBalancerNode) ToNodeBalancerNodeOutputWithContext(ctx context.Context) NodeBalancerNodeOutput {
+func (i *NodeBalancerNode) ToNodeBalancerNodeOutputWithContext(ctx context.Context) NodeBalancerNodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeOutput)
 }
 
@@ -189,7 +189,7 @@ type NodeBalancerNodeOutput struct {
 }
 
 func (NodeBalancerNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancerNodeOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodeBalancerNode)(nil))
 }
 
 func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutput() NodeBalancerNodeOutput {

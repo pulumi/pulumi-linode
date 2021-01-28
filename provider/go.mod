@@ -5,8 +5,8 @@ go 1.14
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.11.0 // indirect
 	github.com/linode/terraform-provider-linode v1.11.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.17.1-0.20201219002337-a0c25bd3e147
-	github.com/pulumi/pulumi/sdk/v2 v2.16.2
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.1
+	github.com/pulumi/pulumi/sdk/v2 v2.18.0
 )
 
 replace (

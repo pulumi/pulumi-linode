@@ -42,6 +42,7 @@ namespace Pulumi.Linode
     /// 
     /// * `limited` - Whether or not this key is a limited access key.
     /// </summary>
+    [LinodeResourceType("linode:index/objectStorageKey:ObjectStorageKey")]
     public partial class ObjectStorageKey : Pulumi.CustomResource
     {
         /// <summary>

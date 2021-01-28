@@ -71,6 +71,7 @@ namespace Pulumi.Linode
     /// 
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
     /// </summary>
+    [LinodeResourceType("linode:index/nodeBalancer:NodeBalancer")]
     public partial class NodeBalancer : Pulumi.CustomResource
     {
         /// <summary>

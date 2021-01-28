@@ -88,6 +88,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/firewall:Firewall my_firewall 12345
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/firewall:Firewall")]
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>

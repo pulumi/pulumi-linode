@@ -38,6 +38,7 @@ namespace Pulumi.Linode
     /// }
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/objectStorageBucket:ObjectStorageBucket")]
     public partial class ObjectStorageBucket : Pulumi.CustomResource
     {
         [Output("cert")]

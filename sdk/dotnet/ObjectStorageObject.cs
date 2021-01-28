@@ -39,6 +39,7 @@ namespace Pulumi.Linode
     /// }
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/objectStorageObject:ObjectStorageObject")]
     public partial class ObjectStorageObject : Pulumi.CustomResource
     {
         /// <summary>

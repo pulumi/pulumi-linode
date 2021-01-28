@@ -25,7 +25,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -170,15 +170,15 @@ type TokenInput interface {
 	ToTokenOutputWithContext(ctx context.Context) TokenOutput
 }
 
-func (Token) ElementType() reflect.Type {
-	return reflect.TypeOf((*Token)(nil)).Elem()
+func (*Token) ElementType() reflect.Type {
+	return reflect.TypeOf((*Token)(nil))
 }
 
-func (i Token) ToTokenOutput() TokenOutput {
+func (i *Token) ToTokenOutput() TokenOutput {
 	return i.ToTokenOutputWithContext(context.Background())
 }
 
-func (i Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
+func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenOutput)
 }
 
@@ -187,7 +187,7 @@ type TokenOutput struct {
 }
 
 func (TokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*Token)(nil))
 }
 
 func (o TokenOutput) ToTokenOutput() TokenOutput {

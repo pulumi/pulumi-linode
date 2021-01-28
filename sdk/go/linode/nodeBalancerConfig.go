@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -325,15 +325,15 @@ type NodeBalancerConfigInput interface {
 	ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput
 }
 
-func (NodeBalancerConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancerConfig)(nil)).Elem()
+func (*NodeBalancerConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerConfig)(nil))
 }
 
-func (i NodeBalancerConfig) ToNodeBalancerConfigOutput() NodeBalancerConfigOutput {
+func (i *NodeBalancerConfig) ToNodeBalancerConfigOutput() NodeBalancerConfigOutput {
 	return i.ToNodeBalancerConfigOutputWithContext(context.Background())
 }
 
-func (i NodeBalancerConfig) ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput {
+func (i *NodeBalancerConfig) ToNodeBalancerConfigOutputWithContext(ctx context.Context) NodeBalancerConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerConfigOutput)
 }
 
@@ -342,7 +342,7 @@ type NodeBalancerConfigOutput struct {
 }
 
 func (NodeBalancerConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancerConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodeBalancerConfig)(nil))
 }
 
 func (o NodeBalancerConfigOutput) ToNodeBalancerConfigOutput() NodeBalancerConfigOutput {

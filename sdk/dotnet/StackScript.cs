@@ -100,6 +100,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/stackScript:StackScript")]
     public partial class StackScript : Pulumi.CustomResource
     {
         /// <summary>

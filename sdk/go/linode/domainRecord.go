@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -242,15 +242,15 @@ type DomainRecordInput interface {
 	ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput
 }
 
-func (DomainRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainRecord)(nil)).Elem()
+func (*DomainRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRecord)(nil))
 }
 
-func (i DomainRecord) ToDomainRecordOutput() DomainRecordOutput {
+func (i *DomainRecord) ToDomainRecordOutput() DomainRecordOutput {
 	return i.ToDomainRecordOutputWithContext(context.Background())
 }
 
-func (i DomainRecord) ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput {
+func (i *DomainRecord) ToDomainRecordOutputWithContext(ctx context.Context) DomainRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRecordOutput)
 }
 
@@ -259,7 +259,7 @@ type DomainRecordOutput struct {
 }
 
 func (DomainRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainRecord)(nil))
 }
 
 func (o DomainRecordOutput) ToDomainRecordOutput() DomainRecordOutput {

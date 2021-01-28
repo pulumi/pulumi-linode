@@ -15,6 +15,7 @@ namespace Pulumi.Linode
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
+    [LinodeResourceType("pulumi:providers:linode")]
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>

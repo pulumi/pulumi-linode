@@ -61,6 +61,7 @@ namespace Pulumi.Linode
     /// 
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
     /// </summary>
+    [LinodeResourceType("linode:index/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

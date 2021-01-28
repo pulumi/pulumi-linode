@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -195,15 +196,15 @@ type LkeClusterInput interface {
 	ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput
 }
 
-func (LkeCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*LkeCluster)(nil)).Elem()
+func (*LkeCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeCluster)(nil))
 }
 
-func (i LkeCluster) ToLkeClusterOutput() LkeClusterOutput {
+func (i *LkeCluster) ToLkeClusterOutput() LkeClusterOutput {
 	return i.ToLkeClusterOutputWithContext(context.Background())
 }
 
-func (i LkeCluster) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
+func (i *LkeCluster) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterOutput)
 }
 
@@ -212,7 +213,7 @@ type LkeClusterOutput struct {
 }
 
 func (LkeClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LkeClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*LkeCluster)(nil))
 }
 
 func (o LkeClusterOutput) ToLkeClusterOutput() LkeClusterOutput {
