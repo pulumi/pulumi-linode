@@ -121,15 +121,15 @@ type VlanInput interface {
 	ToVlanOutputWithContext(ctx context.Context) VlanOutput
 }
 
-func (Vlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vlan)(nil)).Elem()
+func (*Vlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vlan)(nil))
 }
 
-func (i Vlan) ToVlanOutput() VlanOutput {
+func (i *Vlan) ToVlanOutput() VlanOutput {
 	return i.ToVlanOutputWithContext(context.Background())
 }
 
-func (i Vlan) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
+func (i *Vlan) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VlanOutput)
 }
 
@@ -138,7 +138,7 @@ type VlanOutput struct {
 }
 
 func (VlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VlanOutput)(nil)).Elem()
+	return reflect.TypeOf((*Vlan)(nil))
 }
 
 func (o VlanOutput) ToVlanOutput() VlanOutput {

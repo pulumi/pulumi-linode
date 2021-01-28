@@ -59,6 +59,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/token:Token mytoken 1234567
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/token:Token")]
     public partial class Token : Pulumi.CustomResource
     {
         /// <summary>

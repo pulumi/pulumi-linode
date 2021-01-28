@@ -24,6 +24,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -138,15 +139,15 @@ type ObjectStorageBucketInput interface {
 	ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput
 }
 
-func (ObjectStorageBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageBucket)(nil)).Elem()
+func (*ObjectStorageBucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageBucket)(nil))
 }
 
-func (i ObjectStorageBucket) ToObjectStorageBucketOutput() ObjectStorageBucketOutput {
+func (i *ObjectStorageBucket) ToObjectStorageBucketOutput() ObjectStorageBucketOutput {
 	return i.ToObjectStorageBucketOutputWithContext(context.Background())
 }
 
-func (i ObjectStorageBucket) ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput {
+func (i *ObjectStorageBucket) ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketOutput)
 }
 
@@ -155,7 +156,7 @@ type ObjectStorageBucketOutput struct {
 }
 
 func (ObjectStorageBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageBucketOutput)(nil)).Elem()
+	return reflect.TypeOf((*ObjectStorageBucket)(nil))
 }
 
 func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutput() ObjectStorageBucketOutput {

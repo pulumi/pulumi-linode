@@ -24,6 +24,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/rdns:Rdns")]
     public partial class Rdns : Pulumi.CustomResource
     {
         /// <summary>

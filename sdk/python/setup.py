@@ -48,7 +48,7 @@ setup(name='pulumi_linode',
       packages=find_packages(),
       package_data={
           'pulumi_linode': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

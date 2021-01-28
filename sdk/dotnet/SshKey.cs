@@ -27,6 +27,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/sshKey:SshKey")]
     public partial class SshKey : Pulumi.CustomResource
     {
         /// <summary>

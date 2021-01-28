@@ -111,15 +111,15 @@ type RdnsInput interface {
 	ToRdnsOutputWithContext(ctx context.Context) RdnsOutput
 }
 
-func (Rdns) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rdns)(nil)).Elem()
+func (*Rdns) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rdns)(nil))
 }
 
-func (i Rdns) ToRdnsOutput() RdnsOutput {
+func (i *Rdns) ToRdnsOutput() RdnsOutput {
 	return i.ToRdnsOutputWithContext(context.Background())
 }
 
-func (i Rdns) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
+func (i *Rdns) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdnsOutput)
 }
 
@@ -128,7 +128,7 @@ type RdnsOutput struct {
 }
 
 func (RdnsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdnsOutput)(nil)).Elem()
+	return reflect.TypeOf((*Rdns)(nil))
 }
 
 func (o RdnsOutput) ToRdnsOutput() RdnsOutput {

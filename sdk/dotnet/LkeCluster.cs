@@ -53,6 +53,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/lkeCluster:LkeCluster")]
     public partial class LkeCluster : Pulumi.CustomResource
     {
         /// <summary>

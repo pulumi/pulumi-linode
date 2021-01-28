@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -148,15 +148,15 @@ type ObjectStorageKeyInput interface {
 	ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput
 }
 
-func (ObjectStorageKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageKey)(nil)).Elem()
+func (*ObjectStorageKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKey)(nil))
 }
 
-func (i ObjectStorageKey) ToObjectStorageKeyOutput() ObjectStorageKeyOutput {
+func (i *ObjectStorageKey) ToObjectStorageKeyOutput() ObjectStorageKeyOutput {
 	return i.ToObjectStorageKeyOutputWithContext(context.Background())
 }
 
-func (i ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput {
+func (i *ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyOutput)
 }
 
@@ -165,7 +165,7 @@ type ObjectStorageKeyOutput struct {
 }
 
 func (ObjectStorageKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ObjectStorageKey)(nil))
 }
 
 func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutput() ObjectStorageKeyOutput {

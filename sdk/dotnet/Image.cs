@@ -78,6 +78,7 @@ namespace Pulumi.Linode
     ///  $ pulumi import linode:index/image:Image myimage 1234567
     /// ```
     /// </summary>
+    [LinodeResourceType("linode:index/image:Image")]
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>

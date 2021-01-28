@@ -25,7 +25,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -286,15 +286,15 @@ type StackScriptInput interface {
 	ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput
 }
 
-func (StackScript) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackScript)(nil)).Elem()
+func (*StackScript) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackScript)(nil))
 }
 
-func (i StackScript) ToStackScriptOutput() StackScriptOutput {
+func (i *StackScript) ToStackScriptOutput() StackScriptOutput {
 	return i.ToStackScriptOutputWithContext(context.Background())
 }
 
-func (i StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
+func (i *StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptOutput)
 }
 
@@ -303,7 +303,7 @@ type StackScriptOutput struct {
 }
 
 func (StackScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackScriptOutput)(nil)).Elem()
+	return reflect.TypeOf((*StackScript)(nil))
 }
 
 func (o StackScriptOutput) ToStackScriptOutput() StackScriptOutput {

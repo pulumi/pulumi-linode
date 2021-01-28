@@ -169,6 +169,7 @@ namespace Pulumi.Linode
     /// 
     /// The instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types.
     /// </summary>
+    [LinodeResourceType("linode:index/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         [Output("alerts")]

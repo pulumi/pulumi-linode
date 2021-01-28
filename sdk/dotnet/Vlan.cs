@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    [LinodeResourceType("linode:index/vlan:Vlan")]
     public partial class Vlan : Pulumi.CustomResource
     {
         /// <summary>
