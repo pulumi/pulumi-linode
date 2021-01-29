@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/instance:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+	case "linode:index/instanceIp:InstanceIp":
+		r, err = NewInstanceIp(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/lkeCluster:LkeCluster":
 		r, err = NewLkeCluster(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/nodeBalancer:NodeBalancer":
@@ -107,6 +109,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/instanceIp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
