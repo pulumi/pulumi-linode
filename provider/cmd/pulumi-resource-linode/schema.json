@@ -2726,6 +2726,116 @@
                 "type": "object"
             }
         },
+        "linode:index/instanceIp:InstanceIp": {
+            "description": "\u003e **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.\n\nManages a Linode instance IP.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooInstance = new linode.Instance(\"fooInstance\", {\n    image: \"linode/alpine3.12\",\n    label: \"foobar-test\",\n    type: \"g6-nanode-1\",\n    region: \"us-east\",\n});\nconst fooInstanceIp = new linode.InstanceIp(\"fooInstanceIp\", {\n    linodeId: fooInstance.id,\n    \"public\": true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo_instance = linode.Instance(\"fooInstance\",\n    image=\"linode/alpine3.12\",\n    label=\"foobar-test\",\n    type=\"g6-nanode-1\",\n    region=\"us-east\")\nfoo_instance_ip = linode.InstanceIp(\"fooInstanceIp\",\n    linode_id=foo_instance.id,\n    public=True)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooInstance = new Linode.Instance(\"fooInstance\", new Linode.InstanceArgs\n        {\n            Image = \"linode/alpine3.12\",\n            Label = \"foobar-test\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-east\",\n        });\n        var fooInstanceIp = new Linode.InstanceIp(\"fooInstanceIp\", new Linode.InstanceIpArgs\n        {\n            LinodeId = fooInstance.Id,\n            Public = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooInstance, err := linode.NewInstance(ctx, \"fooInstance\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/alpine3.12\"),\n\t\t\tLabel:  pulumi.String(\"foobar-test\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceIp(ctx, \"fooInstanceIp\", \u0026linode.InstanceIpArgs{\n\t\t\tLinodeId: fooInstance.ID(),\n\t\t\tPublic:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The resulting IPv4 address.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The default gateway for this address\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "The number of bits set in the subnet mask.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address is public or private. Defaults to true.\n"
+                },
+                "rdns": {
+                    "type": "string",
+                    "description": "The reverse DNS assigned to this address.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region this IP resides in.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "The mask that separates host bits from network bits for this address.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of IP address.\n"
+                }
+            },
+            "required": [
+                "address",
+                "gateway",
+                "linodeId",
+                "prefix",
+                "rdns",
+                "region",
+                "subnetMask",
+                "type"
+            ],
+            "inputProperties": {
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address is public or private. Defaults to true.\n"
+                },
+                "rdns": {
+                    "type": "string",
+                    "description": "The reverse DNS assigned to this address.\n"
+                }
+            },
+            "requiredInputs": [
+                "linodeId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InstanceIp resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The resulting IPv4 address.\n"
+                    },
+                    "gateway": {
+                        "type": "string",
+                        "description": "The default gateway for this address\n"
+                    },
+                    "linodeId": {
+                        "type": "integer",
+                        "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                    },
+                    "prefix": {
+                        "type": "integer",
+                        "description": "The number of bits set in the subnet mask.\n"
+                    },
+                    "public": {
+                        "type": "boolean",
+                        "description": "Whether the IPv4 address is public or private. Defaults to true.\n"
+                    },
+                    "rdns": {
+                        "type": "string",
+                        "description": "The reverse DNS assigned to this address.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region this IP resides in.\n"
+                    },
+                    "subnetMask": {
+                        "type": "string",
+                        "description": "The mask that separates host bits from network bits for this address.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of IP address.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "linode:index/lkeCluster:LkeCluster": {
             "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.17\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.17\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.17\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.17\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: linode.LkeClusterPoolArray{\n\t\t\t\t\u0026linode.LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
             "properties": {

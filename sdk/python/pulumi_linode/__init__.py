@@ -21,6 +21,7 @@ from .get_user import *
 from .get_volume import *
 from .image import *
 from .instance import *
+from .instance_ip import *
 from .lke_cluster import *
 from .node_balancer import *
 from .node_balancer_config import *
@@ -65,6 +66,8 @@ def _register_module():
                 return Image(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "linode:index/instanceIp:InstanceIp":
+                return InstanceIp(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/lkeCluster:LkeCluster":
                 return LkeCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/nodeBalancer:NodeBalancer":
@@ -101,6 +104,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("linode", "index/firewall", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/image", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/instance", _module_instance)
+    pulumi.runtime.register_resource_module("linode", "index/instanceIp", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/lkeCluster", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/nodeBalancer", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/nodeBalancerConfig", _module_instance)
