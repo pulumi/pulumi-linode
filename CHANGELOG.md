@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.9.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
   **Please Note:** This includes a bug fix that stops mutating resources options in the nodejs provider
 * Avoid storing config from the environment into the state
-
----
 
 ## 2.9.0 (2021-02-01)
 * Upgrade to v1.14.3 of the Linode Terraform Provider
