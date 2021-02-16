@@ -89,7 +89,8 @@ export class ObjectStorageKey extends pulumi.CustomResource {
     constructor(name: string, args: ObjectStorageKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectStorageKeyArgs | ObjectStorageKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ObjectStorageKeyState | undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["bucketAccesses"] = state ? state.bucketAccesses : undefined;
@@ -98,7 +99,7 @@ export class ObjectStorageKey extends pulumi.CustomResource {
             inputs["secretKey"] = state ? state.secretKey : undefined;
         } else {
             const args = argsOrState as ObjectStorageKeyArgs | undefined;
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
             inputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;
@@ -107,12 +108,8 @@ export class ObjectStorageKey extends pulumi.CustomResource {
             inputs["limited"] = undefined /*out*/;
             inputs["secretKey"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ObjectStorageKey.__pulumiType, name, inputs, opts);
     }

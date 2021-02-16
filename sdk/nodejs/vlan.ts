@@ -64,7 +64,8 @@ export class Vlan extends pulumi.CustomResource {
     constructor(name: string, args: VlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VlanArgs | VlanState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VlanState | undefined;
             inputs["attachedLinodes"] = state ? state.attachedLinodes : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
@@ -73,7 +74,7 @@ export class Vlan extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as VlanArgs | undefined;
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
@@ -82,12 +83,8 @@ export class Vlan extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["attachedLinodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Vlan.__pulumiType, name, inputs, opts);
     }

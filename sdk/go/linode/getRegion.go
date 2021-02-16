@@ -18,7 +18,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //

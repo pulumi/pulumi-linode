@@ -142,7 +142,8 @@ export class NodeBalancerNode extends pulumi.CustomResource {
     constructor(name: string, args: NodeBalancerNodeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerNodeArgs | NodeBalancerNodeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodeBalancerNodeState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["configId"] = state ? state.configId : undefined;
@@ -153,16 +154,16 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as NodeBalancerNodeArgs | undefined;
-            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.configId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.nodebalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -173,12 +174,8 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             inputs["weight"] = args ? args.weight : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeBalancerNode.__pulumiType, name, inputs, opts);
     }

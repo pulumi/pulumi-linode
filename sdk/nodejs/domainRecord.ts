@@ -125,7 +125,8 @@ export class DomainRecord extends pulumi.CustomResource {
     constructor(name: string, args: DomainRecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainRecordArgs | DomainRecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainRecordState | undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -140,13 +141,13 @@ export class DomainRecord extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as DomainRecordArgs | undefined;
-            if ((!args || args.domainId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            if ((!args || args.recordType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.recordType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recordType'");
             }
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["domainId"] = args ? args.domainId : undefined;
@@ -161,12 +162,8 @@ export class DomainRecord extends pulumi.CustomResource {
             inputs["ttlSec"] = args ? args.ttlSec : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainRecord.__pulumiType, name, inputs, opts);
     }

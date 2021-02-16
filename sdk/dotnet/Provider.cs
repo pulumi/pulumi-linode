@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("linode", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -72,8 +72,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
 
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
@@ -90,7 +90,6 @@ namespace Pulumi.Linode
         public ProviderArgs()
         {
             ApiVersion = Utilities.GetEnv("LINODE_API_VERSION");
-            Token = Utilities.GetEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
             UaPrefix = Utilities.GetEnv("LINODE_UA_PREFIX");
             Url = Utilities.GetEnv("LINODE_URL");
         }

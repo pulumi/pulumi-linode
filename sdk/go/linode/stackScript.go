@@ -25,7 +25,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -298,6 +298,85 @@ func (i *StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackS
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptOutput)
 }
 
+func (i *StackScript) ToStackScriptPtrOutput() StackScriptPtrOutput {
+	return i.ToStackScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *StackScript) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackScriptPtrOutput)
+}
+
+type StackScriptPtrInput interface {
+	pulumi.Input
+
+	ToStackScriptPtrOutput() StackScriptPtrOutput
+	ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput
+}
+
+type stackScriptPtrType StackScriptArgs
+
+func (*stackScriptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackScript)(nil))
+}
+
+func (i *stackScriptPtrType) ToStackScriptPtrOutput() StackScriptPtrOutput {
+	return i.ToStackScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *stackScriptPtrType) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackScriptPtrOutput)
+}
+
+// StackScriptArrayInput is an input type that accepts StackScriptArray and StackScriptArrayOutput values.
+// You can construct a concrete instance of `StackScriptArrayInput` via:
+//
+//          StackScriptArray{ StackScriptArgs{...} }
+type StackScriptArrayInput interface {
+	pulumi.Input
+
+	ToStackScriptArrayOutput() StackScriptArrayOutput
+	ToStackScriptArrayOutputWithContext(context.Context) StackScriptArrayOutput
+}
+
+type StackScriptArray []StackScriptInput
+
+func (StackScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*StackScript)(nil))
+}
+
+func (i StackScriptArray) ToStackScriptArrayOutput() StackScriptArrayOutput {
+	return i.ToStackScriptArrayOutputWithContext(context.Background())
+}
+
+func (i StackScriptArray) ToStackScriptArrayOutputWithContext(ctx context.Context) StackScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackScriptArrayOutput)
+}
+
+// StackScriptMapInput is an input type that accepts StackScriptMap and StackScriptMapOutput values.
+// You can construct a concrete instance of `StackScriptMapInput` via:
+//
+//          StackScriptMap{ "key": StackScriptArgs{...} }
+type StackScriptMapInput interface {
+	pulumi.Input
+
+	ToStackScriptMapOutput() StackScriptMapOutput
+	ToStackScriptMapOutputWithContext(context.Context) StackScriptMapOutput
+}
+
+type StackScriptMap map[string]StackScriptInput
+
+func (StackScriptMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*StackScript)(nil))
+}
+
+func (i StackScriptMap) ToStackScriptMapOutput() StackScriptMapOutput {
+	return i.ToStackScriptMapOutputWithContext(context.Background())
+}
+
+func (i StackScriptMap) ToStackScriptMapOutputWithContext(ctx context.Context) StackScriptMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackScriptMapOutput)
+}
+
 type StackScriptOutput struct {
 	*pulumi.OutputState
 }
@@ -314,6 +393,75 @@ func (o StackScriptOutput) ToStackScriptOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o StackScriptOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
+	return o.ToStackScriptPtrOutputWithContext(context.Background())
+}
+
+func (o StackScriptOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
+	return o.ApplyT(func(v StackScript) *StackScript {
+		return &v
+	}).(StackScriptPtrOutput)
+}
+
+type StackScriptPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackScriptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackScript)(nil))
+}
+
+func (o StackScriptPtrOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
+	return o
+}
+
+func (o StackScriptPtrOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
+	return o
+}
+
+type StackScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (StackScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackScript)(nil))
+}
+
+func (o StackScriptArrayOutput) ToStackScriptArrayOutput() StackScriptArrayOutput {
+	return o
+}
+
+func (o StackScriptArrayOutput) ToStackScriptArrayOutputWithContext(ctx context.Context) StackScriptArrayOutput {
+	return o
+}
+
+func (o StackScriptArrayOutput) Index(i pulumi.IntInput) StackScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackScript {
+		return vs[0].([]StackScript)[vs[1].(int)]
+	}).(StackScriptOutput)
+}
+
+type StackScriptMapOutput struct{ *pulumi.OutputState }
+
+func (StackScriptMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StackScript)(nil))
+}
+
+func (o StackScriptMapOutput) ToStackScriptMapOutput() StackScriptMapOutput {
+	return o
+}
+
+func (o StackScriptMapOutput) ToStackScriptMapOutputWithContext(ctx context.Context) StackScriptMapOutput {
+	return o
+}
+
+func (o StackScriptMapOutput) MapIndex(k pulumi.StringInput) StackScriptOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackScript {
+		return vs[0].(map[string]StackScript)[vs[1].(string)]
+	}).(StackScriptOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackScriptOutput{})
+	pulumi.RegisterOutputType(StackScriptPtrOutput{})
+	pulumi.RegisterOutputType(StackScriptArrayOutput{})
+	pulumi.RegisterOutputType(StackScriptMapOutput{})
 }

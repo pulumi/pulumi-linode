@@ -31,7 +31,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
-        public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("LINODE_TOKEN", "LINODE_API_TOKEN");
+        public static string? Token { get; set; } = __config.Get("token");
 
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.

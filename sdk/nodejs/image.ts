@@ -151,7 +151,8 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["createdBy"] = state ? state.createdBy : undefined;
@@ -167,13 +168,13 @@ export class Image extends pulumi.CustomResource {
             inputs["vendor"] = state ? state.vendor : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.diskId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.diskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.linodeId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.linodeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -189,12 +190,8 @@ export class Image extends pulumi.CustomResource {
             inputs["type"] = undefined /*out*/;
             inputs["vendor"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Image.__pulumiType, name, inputs, opts);
     }

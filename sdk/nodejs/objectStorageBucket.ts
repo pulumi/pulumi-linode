@@ -73,29 +73,26 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     constructor(name: string, args: ObjectStorageBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectStorageBucketArgs | ObjectStorageBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ObjectStorageBucketState | undefined;
             inputs["cert"] = state ? state.cert : undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["label"] = state ? state.label : undefined;
         } else {
             const args = argsOrState as ObjectStorageBucketArgs | undefined;
-            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
             inputs["cert"] = args ? args.cert : undefined;
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["label"] = args ? args.label : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ObjectStorageBucket.__pulumiType, name, inputs, opts);
     }

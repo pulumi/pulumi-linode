@@ -133,6 +133,85 @@ func (i *Vlan) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VlanOutput)
 }
 
+func (i *Vlan) ToVlanPtrOutput() VlanPtrOutput {
+	return i.ToVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *Vlan) ToVlanPtrOutputWithContext(ctx context.Context) VlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanPtrOutput)
+}
+
+type VlanPtrInput interface {
+	pulumi.Input
+
+	ToVlanPtrOutput() VlanPtrOutput
+	ToVlanPtrOutputWithContext(ctx context.Context) VlanPtrOutput
+}
+
+type vlanPtrType VlanArgs
+
+func (*vlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vlan)(nil))
+}
+
+func (i *vlanPtrType) ToVlanPtrOutput() VlanPtrOutput {
+	return i.ToVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *vlanPtrType) ToVlanPtrOutputWithContext(ctx context.Context) VlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanPtrOutput)
+}
+
+// VlanArrayInput is an input type that accepts VlanArray and VlanArrayOutput values.
+// You can construct a concrete instance of `VlanArrayInput` via:
+//
+//          VlanArray{ VlanArgs{...} }
+type VlanArrayInput interface {
+	pulumi.Input
+
+	ToVlanArrayOutput() VlanArrayOutput
+	ToVlanArrayOutputWithContext(context.Context) VlanArrayOutput
+}
+
+type VlanArray []VlanInput
+
+func (VlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Vlan)(nil))
+}
+
+func (i VlanArray) ToVlanArrayOutput() VlanArrayOutput {
+	return i.ToVlanArrayOutputWithContext(context.Background())
+}
+
+func (i VlanArray) ToVlanArrayOutputWithContext(ctx context.Context) VlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanArrayOutput)
+}
+
+// VlanMapInput is an input type that accepts VlanMap and VlanMapOutput values.
+// You can construct a concrete instance of `VlanMapInput` via:
+//
+//          VlanMap{ "key": VlanArgs{...} }
+type VlanMapInput interface {
+	pulumi.Input
+
+	ToVlanMapOutput() VlanMapOutput
+	ToVlanMapOutputWithContext(context.Context) VlanMapOutput
+}
+
+type VlanMap map[string]VlanInput
+
+func (VlanMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Vlan)(nil))
+}
+
+func (i VlanMap) ToVlanMapOutput() VlanMapOutput {
+	return i.ToVlanMapOutputWithContext(context.Background())
+}
+
+func (i VlanMap) ToVlanMapOutputWithContext(ctx context.Context) VlanMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanMapOutput)
+}
+
 type VlanOutput struct {
 	*pulumi.OutputState
 }
@@ -149,6 +228,75 @@ func (o VlanOutput) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 	return o
 }
 
+func (o VlanOutput) ToVlanPtrOutput() VlanPtrOutput {
+	return o.ToVlanPtrOutputWithContext(context.Background())
+}
+
+func (o VlanOutput) ToVlanPtrOutputWithContext(ctx context.Context) VlanPtrOutput {
+	return o.ApplyT(func(v Vlan) *Vlan {
+		return &v
+	}).(VlanPtrOutput)
+}
+
+type VlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vlan)(nil))
+}
+
+func (o VlanPtrOutput) ToVlanPtrOutput() VlanPtrOutput {
+	return o
+}
+
+func (o VlanPtrOutput) ToVlanPtrOutputWithContext(ctx context.Context) VlanPtrOutput {
+	return o
+}
+
+type VlanArrayOutput struct{ *pulumi.OutputState }
+
+func (VlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Vlan)(nil))
+}
+
+func (o VlanArrayOutput) ToVlanArrayOutput() VlanArrayOutput {
+	return o
+}
+
+func (o VlanArrayOutput) ToVlanArrayOutputWithContext(ctx context.Context) VlanArrayOutput {
+	return o
+}
+
+func (o VlanArrayOutput) Index(i pulumi.IntInput) VlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Vlan {
+		return vs[0].([]Vlan)[vs[1].(int)]
+	}).(VlanOutput)
+}
+
+type VlanMapOutput struct{ *pulumi.OutputState }
+
+func (VlanMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vlan)(nil))
+}
+
+func (o VlanMapOutput) ToVlanMapOutput() VlanMapOutput {
+	return o
+}
+
+func (o VlanMapOutput) ToVlanMapOutputWithContext(ctx context.Context) VlanMapOutput {
+	return o
+}
+
+func (o VlanMapOutput) MapIndex(k pulumi.StringInput) VlanOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vlan {
+		return vs[0].(map[string]Vlan)[vs[1].(string)]
+	}).(VlanOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VlanOutput{})
+	pulumi.RegisterOutputType(VlanPtrOutput{})
+	pulumi.RegisterOutputType(VlanArrayOutput{})
+	pulumi.RegisterOutputType(VlanMapOutput{})
 }

@@ -102,7 +102,8 @@ export class InstanceIp extends pulumi.CustomResource {
     constructor(name: string, args: InstanceIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceIpArgs | InstanceIpState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["gateway"] = state ? state.gateway : undefined;
@@ -115,7 +116,7 @@ export class InstanceIp extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as InstanceIpArgs | undefined;
-            if ((!args || args.linodeId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.linodeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
             inputs["linodeId"] = args ? args.linodeId : undefined;
@@ -128,12 +129,8 @@ export class InstanceIp extends pulumi.CustomResource {
             inputs["subnetMask"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceIp.__pulumiType, name, inputs, opts);
     }

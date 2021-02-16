@@ -138,7 +138,8 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     constructor(name: string, args: ObjectStorageObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectStorageObjectArgs | ObjectStorageObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ObjectStorageObjectState | undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["acl"] = state ? state.acl : undefined;
@@ -161,19 +162,19 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as ObjectStorageObjectArgs | undefined;
-            if ((!args || args.accessKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessKey'");
             }
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.secretKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.secretKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
             inputs["accessKey"] = args ? args.accessKey : undefined;
@@ -196,12 +197,8 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             inputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
             inputs["versionId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ObjectStorageObject.__pulumiType, name, inputs, opts);
     }

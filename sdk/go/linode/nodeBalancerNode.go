@@ -184,6 +184,85 @@ func (i *NodeBalancerNode) ToNodeBalancerNodeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeOutput)
 }
 
+func (i *NodeBalancerNode) ToNodeBalancerNodePtrOutput() NodeBalancerNodePtrOutput {
+	return i.ToNodeBalancerNodePtrOutputWithContext(context.Background())
+}
+
+func (i *NodeBalancerNode) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodePtrOutput)
+}
+
+type NodeBalancerNodePtrInput interface {
+	pulumi.Input
+
+	ToNodeBalancerNodePtrOutput() NodeBalancerNodePtrOutput
+	ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput
+}
+
+type nodeBalancerNodePtrType NodeBalancerNodeArgs
+
+func (*nodeBalancerNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeBalancerNode)(nil))
+}
+
+func (i *nodeBalancerNodePtrType) ToNodeBalancerNodePtrOutput() NodeBalancerNodePtrOutput {
+	return i.ToNodeBalancerNodePtrOutputWithContext(context.Background())
+}
+
+func (i *nodeBalancerNodePtrType) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodePtrOutput)
+}
+
+// NodeBalancerNodeArrayInput is an input type that accepts NodeBalancerNodeArray and NodeBalancerNodeArrayOutput values.
+// You can construct a concrete instance of `NodeBalancerNodeArrayInput` via:
+//
+//          NodeBalancerNodeArray{ NodeBalancerNodeArgs{...} }
+type NodeBalancerNodeArrayInput interface {
+	pulumi.Input
+
+	ToNodeBalancerNodeArrayOutput() NodeBalancerNodeArrayOutput
+	ToNodeBalancerNodeArrayOutputWithContext(context.Context) NodeBalancerNodeArrayOutput
+}
+
+type NodeBalancerNodeArray []NodeBalancerNodeInput
+
+func (NodeBalancerNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NodeBalancerNode)(nil))
+}
+
+func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutput() NodeBalancerNodeArrayOutput {
+	return i.ToNodeBalancerNodeArrayOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutputWithContext(ctx context.Context) NodeBalancerNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeArrayOutput)
+}
+
+// NodeBalancerNodeMapInput is an input type that accepts NodeBalancerNodeMap and NodeBalancerNodeMapOutput values.
+// You can construct a concrete instance of `NodeBalancerNodeMapInput` via:
+//
+//          NodeBalancerNodeMap{ "key": NodeBalancerNodeArgs{...} }
+type NodeBalancerNodeMapInput interface {
+	pulumi.Input
+
+	ToNodeBalancerNodeMapOutput() NodeBalancerNodeMapOutput
+	ToNodeBalancerNodeMapOutputWithContext(context.Context) NodeBalancerNodeMapOutput
+}
+
+type NodeBalancerNodeMap map[string]NodeBalancerNodeInput
+
+func (NodeBalancerNodeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NodeBalancerNode)(nil))
+}
+
+func (i NodeBalancerNodeMap) ToNodeBalancerNodeMapOutput() NodeBalancerNodeMapOutput {
+	return i.ToNodeBalancerNodeMapOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerNodeMap) ToNodeBalancerNodeMapOutputWithContext(ctx context.Context) NodeBalancerNodeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeMapOutput)
+}
+
 type NodeBalancerNodeOutput struct {
 	*pulumi.OutputState
 }
@@ -200,6 +279,75 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutputWithContext(ctx context.
 	return o
 }
 
+func (o NodeBalancerNodeOutput) ToNodeBalancerNodePtrOutput() NodeBalancerNodePtrOutput {
+	return o.ToNodeBalancerNodePtrOutputWithContext(context.Background())
+}
+
+func (o NodeBalancerNodeOutput) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
+	return o.ApplyT(func(v NodeBalancerNode) *NodeBalancerNode {
+		return &v
+	}).(NodeBalancerNodePtrOutput)
+}
+
+type NodeBalancerNodePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeBalancerNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeBalancerNode)(nil))
+}
+
+func (o NodeBalancerNodePtrOutput) ToNodeBalancerNodePtrOutput() NodeBalancerNodePtrOutput {
+	return o
+}
+
+func (o NodeBalancerNodePtrOutput) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
+	return o
+}
+
+type NodeBalancerNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerNode)(nil))
+}
+
+func (o NodeBalancerNodeArrayOutput) ToNodeBalancerNodeArrayOutput() NodeBalancerNodeArrayOutput {
+	return o
+}
+
+func (o NodeBalancerNodeArrayOutput) ToNodeBalancerNodeArrayOutputWithContext(ctx context.Context) NodeBalancerNodeArrayOutput {
+	return o
+}
+
+func (o NodeBalancerNodeArrayOutput) Index(i pulumi.IntInput) NodeBalancerNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancerNode {
+		return vs[0].([]NodeBalancerNode)[vs[1].(int)]
+	}).(NodeBalancerNodeOutput)
+}
+
+type NodeBalancerNodeMapOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerNodeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodeBalancerNode)(nil))
+}
+
+func (o NodeBalancerNodeMapOutput) ToNodeBalancerNodeMapOutput() NodeBalancerNodeMapOutput {
+	return o
+}
+
+func (o NodeBalancerNodeMapOutput) ToNodeBalancerNodeMapOutputWithContext(ctx context.Context) NodeBalancerNodeMapOutput {
+	return o
+}
+
+func (o NodeBalancerNodeMapOutput) MapIndex(k pulumi.StringInput) NodeBalancerNodeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeBalancerNode {
+		return vs[0].(map[string]NodeBalancerNode)[vs[1].(string)]
+	}).(NodeBalancerNodeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NodeBalancerNodeOutput{})
+	pulumi.RegisterOutputType(NodeBalancerNodePtrOutput{})
+	pulumi.RegisterOutputType(NodeBalancerNodeArrayOutput{})
+	pulumi.RegisterOutputType(NodeBalancerNodeMapOutput{})
 }
