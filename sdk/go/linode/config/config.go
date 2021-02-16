@@ -34,11 +34,7 @@ func GetSkipInstanceReadyPoll(ctx *pulumi.Context) bool {
 
 // The token that allows you access to your Linode account
 func GetToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "linode:token")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "LINODE_TOKEN", "LINODE_API_TOKEN").(string)
+	return config.Get(ctx, "linode:token")
 }
 
 // An HTTP User-Agent Prefix to prepend in API requests.

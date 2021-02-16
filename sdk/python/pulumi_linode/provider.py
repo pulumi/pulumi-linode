@@ -64,8 +64,8 @@ class Provider(pulumi.ProviderResource):
             __props__['max_retry_delay_ms'] = pulumi.Output.from_input(max_retry_delay_ms).apply(pulumi.runtime.to_json) if max_retry_delay_ms is not None else None
             __props__['min_retry_delay_ms'] = pulumi.Output.from_input(min_retry_delay_ms).apply(pulumi.runtime.to_json) if min_retry_delay_ms is not None else None
             __props__['skip_instance_ready_poll'] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None
-            if token is None:
-                token = _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
+            if token is None and not opts.urn:
+                raise TypeError("Missing required property 'token'")
             __props__['token'] = token
             if ua_prefix is None:
                 ua_prefix = _utilities.get_env('LINODE_UA_PREFIX')

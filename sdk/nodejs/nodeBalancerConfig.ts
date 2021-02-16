@@ -175,7 +175,8 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     constructor(name: string, args: NodeBalancerConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerConfigArgs | NodeBalancerConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodeBalancerConfigState | undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["check"] = state ? state.check : undefined;
@@ -198,7 +199,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["stickiness"] = state ? state.stickiness : undefined;
         } else {
             const args = argsOrState as NodeBalancerConfigArgs | undefined;
-            if ((!args || args.nodebalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;
@@ -221,12 +222,8 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             inputs["sslCommonname"] = undefined /*out*/;
             inputs["sslFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeBalancerConfig.__pulumiType, name, inputs, opts);
     }

@@ -40,7 +40,7 @@ skip_instance_ready_poll = __config__.get('skipInstanceReadyPoll')
 Skip waiting for a linode_instance resource to be running.
 """
 
-token = __config__.get('token') or _utilities.get_env('LINODE_TOKEN', 'LINODE_API_TOKEN')
+token = __config__.get('token')
 """
 The token that allows you access to your Linode account
 """

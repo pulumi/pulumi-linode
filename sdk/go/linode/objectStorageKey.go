@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -160,6 +160,85 @@ func (i *ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyOutput)
 }
 
+func (i *ObjectStorageKey) ToObjectStorageKeyPtrOutput() ObjectStorageKeyPtrOutput {
+	return i.ToObjectStorageKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *ObjectStorageKey) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyPtrOutput)
+}
+
+type ObjectStorageKeyPtrInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyPtrOutput() ObjectStorageKeyPtrOutput
+	ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput
+}
+
+type objectStorageKeyPtrType ObjectStorageKeyArgs
+
+func (*objectStorageKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageKey)(nil))
+}
+
+func (i *objectStorageKeyPtrType) ToObjectStorageKeyPtrOutput() ObjectStorageKeyPtrOutput {
+	return i.ToObjectStorageKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *objectStorageKeyPtrType) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyPtrOutput)
+}
+
+// ObjectStorageKeyArrayInput is an input type that accepts ObjectStorageKeyArray and ObjectStorageKeyArrayOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyArrayInput` via:
+//
+//          ObjectStorageKeyArray{ ObjectStorageKeyArgs{...} }
+type ObjectStorageKeyArrayInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyArrayOutput() ObjectStorageKeyArrayOutput
+	ToObjectStorageKeyArrayOutputWithContext(context.Context) ObjectStorageKeyArrayOutput
+}
+
+type ObjectStorageKeyArray []ObjectStorageKeyInput
+
+func (ObjectStorageKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ObjectStorageKey)(nil))
+}
+
+func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutput() ObjectStorageKeyArrayOutput {
+	return i.ToObjectStorageKeyArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutputWithContext(ctx context.Context) ObjectStorageKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyArrayOutput)
+}
+
+// ObjectStorageKeyMapInput is an input type that accepts ObjectStorageKeyMap and ObjectStorageKeyMapOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyMapInput` via:
+//
+//          ObjectStorageKeyMap{ "key": ObjectStorageKeyArgs{...} }
+type ObjectStorageKeyMapInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyMapOutput() ObjectStorageKeyMapOutput
+	ToObjectStorageKeyMapOutputWithContext(context.Context) ObjectStorageKeyMapOutput
+}
+
+type ObjectStorageKeyMap map[string]ObjectStorageKeyInput
+
+func (ObjectStorageKeyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ObjectStorageKey)(nil))
+}
+
+func (i ObjectStorageKeyMap) ToObjectStorageKeyMapOutput() ObjectStorageKeyMapOutput {
+	return i.ToObjectStorageKeyMapOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyMap) ToObjectStorageKeyMapOutputWithContext(ctx context.Context) ObjectStorageKeyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyMapOutput)
+}
+
 type ObjectStorageKeyOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutputWithContext(ctx context.
 	return o
 }
 
+func (o ObjectStorageKeyOutput) ToObjectStorageKeyPtrOutput() ObjectStorageKeyPtrOutput {
+	return o.ToObjectStorageKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectStorageKeyOutput) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
+	return o.ApplyT(func(v ObjectStorageKey) *ObjectStorageKey {
+		return &v
+	}).(ObjectStorageKeyPtrOutput)
+}
+
+type ObjectStorageKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectStorageKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageKey)(nil))
+}
+
+func (o ObjectStorageKeyPtrOutput) ToObjectStorageKeyPtrOutput() ObjectStorageKeyPtrOutput {
+	return o
+}
+
+func (o ObjectStorageKeyPtrOutput) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
+	return o
+}
+
+type ObjectStorageKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageKey)(nil))
+}
+
+func (o ObjectStorageKeyArrayOutput) ToObjectStorageKeyArrayOutput() ObjectStorageKeyArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyArrayOutput) ToObjectStorageKeyArrayOutputWithContext(ctx context.Context) ObjectStorageKeyArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyArrayOutput) Index(i pulumi.IntInput) ObjectStorageKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKey {
+		return vs[0].([]ObjectStorageKey)[vs[1].(int)]
+	}).(ObjectStorageKeyOutput)
+}
+
+type ObjectStorageKeyMapOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ObjectStorageKey)(nil))
+}
+
+func (o ObjectStorageKeyMapOutput) ToObjectStorageKeyMapOutput() ObjectStorageKeyMapOutput {
+	return o
+}
+
+func (o ObjectStorageKeyMapOutput) ToObjectStorageKeyMapOutputWithContext(ctx context.Context) ObjectStorageKeyMapOutput {
+	return o
+}
+
+func (o ObjectStorageKeyMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageKeyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectStorageKey {
+		return vs[0].(map[string]ObjectStorageKey)[vs[1].(string)]
+	}).(ObjectStorageKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ObjectStorageKeyOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyPtrOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyArrayOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyMapOutput{})
 }

@@ -126,7 +126,8 @@ export class NodeBalancer extends pulumi.CustomResource {
     constructor(name: string, args: NodeBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerArgs | NodeBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodeBalancerState | undefined;
             inputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
             inputs["created"] = state ? state.created : undefined;
@@ -140,7 +141,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
@@ -154,12 +155,8 @@ export class NodeBalancer extends pulumi.CustomResource {
             inputs["transfers"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeBalancer.__pulumiType, name, inputs, opts);
     }

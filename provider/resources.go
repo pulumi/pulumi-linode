@@ -90,11 +90,6 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-linode",
 		GitHubOrg:   "linode",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"LINODE_TOKEN", "LINODE_API_TOKEN"},
-				},
-			},
 			"url": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"LINODE_URL"},

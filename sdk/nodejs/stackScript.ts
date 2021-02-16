@@ -174,7 +174,8 @@ export class StackScript extends pulumi.CustomResource {
     constructor(name: string, args: StackScriptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackScriptArgs | StackScriptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StackScriptState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["deploymentsActive"] = state ? state.deploymentsActive : undefined;
@@ -191,16 +192,16 @@ export class StackScript extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as StackScriptArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.images === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.images === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'images'");
             }
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.script === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -217,12 +218,8 @@ export class StackScript extends pulumi.CustomResource {
             inputs["userGravatarId"] = undefined /*out*/;
             inputs["username"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StackScript.__pulumiType, name, inputs, opts);
     }

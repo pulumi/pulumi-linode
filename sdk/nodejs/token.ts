@@ -103,7 +103,8 @@ export class Token extends pulumi.CustomResource {
     constructor(name: string, args: TokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TokenState | undefined;
             inputs["created"] = state ? state.created : undefined;
             inputs["expiry"] = state ? state.expiry : undefined;
@@ -112,7 +113,7 @@ export class Token extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["expiry"] = args ? args.expiry : undefined;
@@ -121,12 +122,8 @@ export class Token extends pulumi.CustomResource {
             inputs["created"] = undefined /*out*/;
             inputs["token"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Token.__pulumiType, name, inputs, opts);
     }

@@ -105,7 +105,8 @@ export class LkeCluster extends pulumi.CustomResource {
     constructor(name: string, args: LkeClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LkeClusterArgs | LkeClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LkeClusterState | undefined;
             inputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
             inputs["k8sVersion"] = state ? state.k8sVersion : undefined;
@@ -117,16 +118,16 @@ export class LkeCluster extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
-            if ((!args || args.k8sVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.k8sVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'k8sVersion'");
             }
-            if ((!args || args.label === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.pools === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pools === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pools'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["k8sVersion"] = args ? args.k8sVersion : undefined;
@@ -138,12 +139,8 @@ export class LkeCluster extends pulumi.CustomResource {
             inputs["kubeconfig"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LkeCluster.__pulumiType, name, inputs, opts);
     }

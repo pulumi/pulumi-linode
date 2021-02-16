@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode/"
+// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -312,6 +312,85 @@ func (i *ObjectStorageObject) ToObjectStorageObjectOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectOutput)
 }
 
+func (i *ObjectStorageObject) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
+	return i.ToObjectStorageObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *ObjectStorageObject) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectPtrOutput)
+}
+
+type ObjectStorageObjectPtrInput interface {
+	pulumi.Input
+
+	ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput
+	ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput
+}
+
+type objectStorageObjectPtrType ObjectStorageObjectArgs
+
+func (*objectStorageObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageObject)(nil))
+}
+
+func (i *objectStorageObjectPtrType) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
+	return i.ToObjectStorageObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *objectStorageObjectPtrType) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectPtrOutput)
+}
+
+// ObjectStorageObjectArrayInput is an input type that accepts ObjectStorageObjectArray and ObjectStorageObjectArrayOutput values.
+// You can construct a concrete instance of `ObjectStorageObjectArrayInput` via:
+//
+//          ObjectStorageObjectArray{ ObjectStorageObjectArgs{...} }
+type ObjectStorageObjectArrayInput interface {
+	pulumi.Input
+
+	ToObjectStorageObjectArrayOutput() ObjectStorageObjectArrayOutput
+	ToObjectStorageObjectArrayOutputWithContext(context.Context) ObjectStorageObjectArrayOutput
+}
+
+type ObjectStorageObjectArray []ObjectStorageObjectInput
+
+func (ObjectStorageObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ObjectStorageObject)(nil))
+}
+
+func (i ObjectStorageObjectArray) ToObjectStorageObjectArrayOutput() ObjectStorageObjectArrayOutput {
+	return i.ToObjectStorageObjectArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageObjectArray) ToObjectStorageObjectArrayOutputWithContext(ctx context.Context) ObjectStorageObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectArrayOutput)
+}
+
+// ObjectStorageObjectMapInput is an input type that accepts ObjectStorageObjectMap and ObjectStorageObjectMapOutput values.
+// You can construct a concrete instance of `ObjectStorageObjectMapInput` via:
+//
+//          ObjectStorageObjectMap{ "key": ObjectStorageObjectArgs{...} }
+type ObjectStorageObjectMapInput interface {
+	pulumi.Input
+
+	ToObjectStorageObjectMapOutput() ObjectStorageObjectMapOutput
+	ToObjectStorageObjectMapOutputWithContext(context.Context) ObjectStorageObjectMapOutput
+}
+
+type ObjectStorageObjectMap map[string]ObjectStorageObjectInput
+
+func (ObjectStorageObjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ObjectStorageObject)(nil))
+}
+
+func (i ObjectStorageObjectMap) ToObjectStorageObjectMapOutput() ObjectStorageObjectMapOutput {
+	return i.ToObjectStorageObjectMapOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageObjectMap) ToObjectStorageObjectMapOutputWithContext(ctx context.Context) ObjectStorageObjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectMapOutput)
+}
+
 type ObjectStorageObjectOutput struct {
 	*pulumi.OutputState
 }
@@ -328,6 +407,75 @@ func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutputWithContext(ctx co
 	return o
 }
 
+func (o ObjectStorageObjectOutput) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
+	return o.ToObjectStorageObjectPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectStorageObjectOutput) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
+	return o.ApplyT(func(v ObjectStorageObject) *ObjectStorageObject {
+		return &v
+	}).(ObjectStorageObjectPtrOutput)
+}
+
+type ObjectStorageObjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectStorageObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectStorageObject)(nil))
+}
+
+func (o ObjectStorageObjectPtrOutput) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
+	return o
+}
+
+func (o ObjectStorageObjectPtrOutput) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
+	return o
+}
+
+type ObjectStorageObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageObject)(nil))
+}
+
+func (o ObjectStorageObjectArrayOutput) ToObjectStorageObjectArrayOutput() ObjectStorageObjectArrayOutput {
+	return o
+}
+
+func (o ObjectStorageObjectArrayOutput) ToObjectStorageObjectArrayOutputWithContext(ctx context.Context) ObjectStorageObjectArrayOutput {
+	return o
+}
+
+func (o ObjectStorageObjectArrayOutput) Index(i pulumi.IntInput) ObjectStorageObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageObject {
+		return vs[0].([]ObjectStorageObject)[vs[1].(int)]
+	}).(ObjectStorageObjectOutput)
+}
+
+type ObjectStorageObjectMapOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageObjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ObjectStorageObject)(nil))
+}
+
+func (o ObjectStorageObjectMapOutput) ToObjectStorageObjectMapOutput() ObjectStorageObjectMapOutput {
+	return o
+}
+
+func (o ObjectStorageObjectMapOutput) ToObjectStorageObjectMapOutputWithContext(ctx context.Context) ObjectStorageObjectMapOutput {
+	return o
+}
+
+func (o ObjectStorageObjectMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageObjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectStorageObject {
+		return vs[0].(map[string]ObjectStorageObject)[vs[1].(string)]
+	}).(ObjectStorageObjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ObjectStorageObjectOutput{})
+	pulumi.RegisterOutputType(ObjectStorageObjectPtrOutput{})
+	pulumi.RegisterOutputType(ObjectStorageObjectArrayOutput{})
+	pulumi.RegisterOutputType(ObjectStorageObjectMapOutput{})
 }
