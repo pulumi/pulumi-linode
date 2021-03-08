@@ -41,6 +41,8 @@ __all__ = [
     'GetInstanceTypeAddonsBackupsResult',
     'GetInstanceTypeAddonsBackupsPriceResult',
     'GetInstanceTypePriceResult',
+    'GetLkeClusterPoolResult',
+    'GetLkeClusterPoolNodeResult',
     'GetProfileReferralsResult',
     'GetStackScriptUserDefinedFieldResult',
 ]
@@ -114,29 +116,26 @@ class FirewallDevice(dict):
 @pulumi.output_type
 class FirewallInbound(dict):
     def __init__(__self__, *,
-                 addresses: Sequence[str],
-                 ports: Sequence[str],
-                 protocol: str):
+                 ports: str,
+                 protocol: str,
+                 ipv4s: Optional[Sequence[str]] = None,
+                 ipv6s: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param Sequence[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param str ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
+        :param Sequence[str] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         """
-        pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "protocol", protocol)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @property
     @pulumi.getter
-    def addresses(self) -> Sequence[str]:
-        """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        """
-        return pulumi.get(self, "addresses")
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Sequence[str]:
+    def ports(self) -> str:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
@@ -149,6 +148,22 @@ class FirewallInbound(dict):
         The network protocol this rule controls.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[Sequence[str]]:
+        """
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[Sequence[str]]:
+        """
+        A list of IPv6 addresses or networks this rule applies to.
+        """
+        return pulumi.get(self, "ipv6s")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -157,29 +172,26 @@ class FirewallInbound(dict):
 @pulumi.output_type
 class FirewallOutbound(dict):
     def __init__(__self__, *,
-                 addresses: Sequence[str],
-                 ports: Sequence[str],
-                 protocol: str):
+                 ports: str,
+                 protocol: str,
+                 ipv4s: Optional[Sequence[str]] = None,
+                 ipv6s: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param Sequence[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param str ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param str protocol: The network protocol this rule controls.
+        :param Sequence[str] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         """
-        pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "protocol", protocol)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @property
     @pulumi.getter
-    def addresses(self) -> Sequence[str]:
-        """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        """
-        return pulumi.get(self, "addresses")
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Sequence[str]:
+    def ports(self) -> str:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
@@ -192,6 +204,22 @@ class FirewallOutbound(dict):
         The network protocol this rule controls.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[Sequence[str]]:
+        """
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[Sequence[str]]:
+        """
+        A list of IPv6 addresses or networks this rule applies to.
+        """
+        return pulumi.get(self, "ipv6s")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1495,6 +1523,97 @@ class GetInstanceTypePriceResult(dict):
     @pulumi.getter
     def monthly(self) -> float:
         return pulumi.get(self, "monthly")
+
+
+@pulumi.output_type
+class GetLkeClusterPoolResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 id: int,
+                 nodes: Sequence['outputs.GetLkeClusterPoolNodeResult'],
+                 type: str):
+        """
+        :param int count: The number of nodes in the Node Pool.
+        :param int id: The LKE Cluster's ID.
+        :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
+        :param str type: The linode type for all of the nodes in the Node Pool.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of nodes in the Node Pool.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The LKE Cluster's ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.GetLkeClusterPoolNodeResult']:
+        """
+        The nodes in the Node Pool.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The linode type for all of the nodes in the Node Pool.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetLkeClusterPoolNodeResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 instance_id: int,
+                 status: str):
+        """
+        :param str id: The LKE Cluster's ID.
+        :param int instance_id: The ID of the underlying Linode instance.
+        :param str status: The status of the node.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The LKE Cluster's ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> int:
+        """
+        The ID of the underlying Linode instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the node.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

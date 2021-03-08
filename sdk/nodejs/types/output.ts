@@ -28,11 +28,15 @@ export interface FirewallInbound {
     /**
      * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
-    addresses: string[];
+    ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks this rule applies to.
+     */
+    ipv6s?: string[];
     /**
      * A list of ports and/or port ranges (i.e. "443" or "80-90").
      */
-    ports: string[];
+    ports: string;
     /**
      * The network protocol this rule controls.
      */
@@ -43,11 +47,15 @@ export interface FirewallOutbound {
     /**
      * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
-    addresses: string[];
+    ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks this rule applies to.
+     */
+    ipv6s?: string[];
     /**
      * A list of ports and/or port ranges (i.e. "443" or "80-90").
      */
-    ports: string[];
+    ports: string;
     /**
      * The network protocol this rule controls.
      */
@@ -70,6 +78,40 @@ export interface GetInstanceTypeAddonsBackupsPrice {
 export interface GetInstanceTypePrice {
     hourly: number;
     monthly: number;
+}
+
+export interface GetLkeClusterPool {
+    /**
+     * The number of nodes in the Node Pool.
+     */
+    count: number;
+    /**
+     * The LKE Cluster's ID.
+     */
+    id: number;
+    /**
+     * The nodes in the Node Pool.
+     */
+    nodes: outputs.GetLkeClusterPoolNode[];
+    /**
+     * The linode type for all of the nodes in the Node Pool.
+     */
+    type: string;
+}
+
+export interface GetLkeClusterPoolNode {
+    /**
+     * The LKE Cluster's ID.
+     */
+    id: string;
+    /**
+     * The ID of the underlying Linode instance.
+     */
+    instanceId: number;
+    /**
+     * The status of the node.
+     */
+    status: string;
 }
 
 export interface GetProfileReferrals {

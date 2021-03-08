@@ -125,7 +125,7 @@
         },
         "linode:index/FirewallInbound:FirewallInbound": {
             "properties": {
-                "addresses": {
+                "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -137,11 +137,20 @@
                         }
                     }
                 },
-                "ports": {
+                "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
+                    "description": "A list of IPv6 addresses or networks this rule applies to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "string",
                     "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
                     "language": {
                         "python": {
@@ -161,14 +170,13 @@
             },
             "type": "object",
             "required": [
-                "addresses",
                 "ports",
                 "protocol"
             ]
         },
         "linode:index/FirewallOutbound:FirewallOutbound": {
             "properties": {
-                "addresses": {
+                "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -180,11 +188,20 @@
                         }
                     }
                 },
-                "ports": {
+                "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
+                    "description": "A list of IPv6 addresses or networks this rule applies to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "string",
                     "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
                     "language": {
                         "python": {
@@ -204,7 +221,6 @@
             },
             "type": "object",
             "required": [
-                "addresses",
                 "ports",
                 "protocol"
             ]
@@ -1482,6 +1498,103 @@
                 }
             }
         },
+        "linode:index/getLkeClusterPool:getLkeClusterPool": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "The number of nodes in the Node Pool.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The LKE Cluster's ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeClusterPoolNode:getLkeClusterPoolNode"
+                    },
+                    "description": "The nodes in the Node Pool.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The linode type for all of the nodes in the Node Pool.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "count",
+                "id",
+                "nodes",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getLkeClusterPoolNode:getLkeClusterPoolNode": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The LKE Cluster's ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "integer",
+                    "description": "The ID of the underlying Linode instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the node.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "instanceId",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getProfileReferrals:getProfileReferrals": {
             "properties": {
                 "code": {
@@ -2044,7 +2157,7 @@
             }
         },
         "linode:index/firewall:Firewall": {
-            "description": "\u003e **NOTICE:** The Firewall feature is currently available through early access. \n\nManages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-east\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        addresses: [\"0.0.0.0/0\"],\n    }],\n    outbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        addresses: [\"0.0.0.0/0\"],\n    }],\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-east\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[linode.FirewallInboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        addresses=[\"0.0.0.0/0\"],\n    )],\n    outbounds=[linode.FirewallOutboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        addresses=[\"0.0.0.0/0\"],\n    )],\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-east\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Addresses = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                },\n            },\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Addresses = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                },\n            },\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyInstance, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:    pulumi.String(\"my_instance\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tRegion:   pulumi.String(\"us-east\"),\n\t\t\tType:     pulumi.String(\"g6-standard-1\"),\n\t\t\tRootPass: pulumi.String(fmt.Sprintf(\"%v%v\", \"bogusPassword\", \"$\")),\n\t\t\tSwapSize: pulumi.Int(256),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewFirewall(ctx, \"myFirewall\", \u0026linode.FirewallArgs{\n\t\t\tLabel: pulumi.String(\"my_firewall\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"test\"),\n\t\t\t},\n\t\t\tInbounds: linode.FirewallInboundArray{\n\t\t\t\t\u0026linode.FirewallInboundArgs{\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"80\"),\n\t\t\t\t\t},\n\t\t\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOutbounds: linode.FirewallOutboundArray{\n\t\t\t\t\u0026linode.FirewallOutboundArgs{\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"80\"),\n\t\t\t\t\t},\n\t\t\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLinodes: pulumi.IntArray{\n\t\t\t\tmyInstance.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
+            "description": "\u003e **NOTICE:** The Firewall feature is currently available through early access.\n\nManages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-east\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    outbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-east\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[linode.FirewallInboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    outbounds=[linode.FirewallOutboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-east\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
             "properties": {
                 "devices": {
                     "type": "array",
@@ -2097,7 +2210,6 @@
             "required": [
                 "devices",
                 "label",
-                "linodes",
                 "status"
             ],
             "inputProperties": {
@@ -2138,9 +2250,6 @@
                     "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
                 }
             },
-            "requiredInputs": [
-                "linodes"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Firewall resources.\n",
                 "properties": {
@@ -3454,7 +3563,7 @@
             }
         },
         "linode:index/objectStorageBucket:ObjectStorageBucket": {
-            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Bucket.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: `%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"%s\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n        var foobar = new Linode.ObjectStorageBucket(\"foobar\", new Linode.ObjectStorageBucketArgs\n        {\n            Cluster = primary.Apply(primary =\u003e primary.Id),\n            Label = \"%s\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(fmt.Sprintf(\"%v%v\", \"%\", \"s\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Bucket.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: `%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"%s\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n        var foobar = new Linode.ObjectStorageBucket(\"foobar\", new Linode.ObjectStorageBucketArgs\n        {\n            Cluster = primary.Apply(primary =\u003e primary.Id),\n            Label = \"%s\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(fmt.Sprintf(\"%v%v\", \"%\", \"s\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n ",
             "properties": {
                 "cert": {
                     "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
@@ -4240,6 +4349,87 @@
                 "type": "object"
             }
         },
+        "linode:index/user:User": {
+            "description": "Manages a Linode User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst john = new linode.User(\"john\", {\n    email: \"john@acme.io\",\n    restricted: true,\n    username: \"john123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\njohn = linode.User(\"john\",\n    email=\"john@acme.io\",\n    restricted=True,\n    username=\"john123\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var john = new Linode.User(\"john\", new Linode.UserArgs\n        {\n            Email = \"john@acme.io\",\n            Restricted = true,\n            Username = \"john123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"john\", \u0026linode.UserArgs{\n\t\t\tEmail:      pulumi.String(\"john@acme.io\"),\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tUsername:   pulumi.String(\"john123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the user.\n"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "If true, this user will only have explicit permissions granted.\n"
+                },
+                "sshKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the User's SSH keys.\n"
+                },
+                "tfaEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the user has two-factor-authentication enabled.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                }
+            },
+            "required": [
+                "email",
+                "sshKeys",
+                "tfaEnabled",
+                "username"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the user.\n"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "If true, this user will only have explicit permissions granted.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address of the user.\n"
+                    },
+                    "restricted": {
+                        "type": "boolean",
+                        "description": "If true, this user will only have explicit permissions granted.\n"
+                    },
+                    "sshKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of the User's SSH keys.\n"
+                    },
+                    "tfaEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the user has two-factor-authentication enabled.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "linode:index/vlan:Vlan": {
             "properties": {
                 "attachedLinodes": {
@@ -4807,6 +4997,83 @@
                 ]
             }
         },
+        "linode:index/getLkeCluster:getLkeCluster": {
+            "description": "Provides details about an LKE Cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = pulumi.output(linode.getLkeCluster({\n    id: 123,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.get_lke_cluster(id=123)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = Output.Create(Linode.GetLkeCluster.InvokeAsync(new Linode.GetLkeClusterArgs\n        {\n            Id = 123,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupLkeCluster(ctx, \u0026linode.LookupLkeClusterArgs{\n\t\t\tId: 123,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLkeCluster.\n",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The LKE Cluster's ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLkeCluster.\n",
+                "properties": {
+                    "apiEndpoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The endpoints for the Kubernetes API server.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the node.\n"
+                    },
+                    "k8sVersion": {
+                        "type": "string",
+                        "description": "The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).\n"
+                    },
+                    "kubeconfig": {
+                        "type": "string",
+                        "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "pools": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeClusterPool:getLkeClusterPool"
+                        },
+                        "description": "Node pools associated with this cluster.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "This Kubernetes cluster's location.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the node.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags applied to the cluster.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "apiEndpoints",
+                    "id",
+                    "k8sVersion",
+                    "kubeconfig",
+                    "label",
+                    "pools",
+                    "region",
+                    "status",
+                    "tags"
+                ]
+            }
+        },
         "linode:index/getNetworkingIp:getNetworkingIp": {
             "description": "Provides information about a Linode Networking IP Address\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Networking IP Address.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst ns1LinodeCom = pulumi.output(linode.getNetworkingIp({\n    address: \"162.159.27.72\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nns1_linode_com = linode.get_networking_ip(address=\"162.159.27.72\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ns1LinodeCom = Output.Create(Linode.GetNetworkingIp.InvokeAsync(new Linode.GetNetworkingIpArgs\n        {\n            Address = \"162.159.27.72\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetNetworkingIp(ctx, \u0026linode.GetNetworkingIpArgs{\n\t\t\tAddress: \"162.159.27.72\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Network IP Address resource exports the following attributes:\n\n* `address` - The IP address.\n\n* `gateway` - The default gateway for this address.\n\n* `subnet_mask` - The mask that separates host bits from network bits for this address.\n\n* `prefix` - The number of bits set in the subnet mask.\n\n* `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).\n\n* `public` - Whether this is a public or private IP address.\n\n* `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.\n\n* `linode_id` - The ID of the Linode this address currently belongs to.\n\n* `region` - The Region this IP address resides in.\n",
             "inputs": {
@@ -5160,7 +5427,7 @@
             }
         },
         "linode:index/getUser:getUser": {
-            "description": "Provides information about a Linode user\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode user.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getUser({\n    username: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_user(username=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs\n        {\n            Username = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetUser(ctx, \u0026linode.GetUserArgs{\n\t\t\tUsername: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode User resource exports the following attributes:\n\n* `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.\n\n* `email` - The email address for this User, for account management communications, and may be used for other communications as configured.\n\n* `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.\n",
+            "description": "Provides information about a Linode user\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode user.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getUser({\n    username: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_user(username=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs\n        {\n            Username = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v2/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupUser(ctx, \u0026linode.LookupUserArgs{\n\t\t\tUsername: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode User resource exports the following attributes:\n\n* `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.\n\n* `email` - The email address for this User, for account management communications, and may be used for other communications as configured.\n\n* `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {

@@ -30,12 +30,14 @@ import * as utilities from "./utilities";
  *     inbounds: [{
  *         protocol: "TCP",
  *         ports: ["80"],
- *         addresses: ["0.0.0.0/0"],
+ *         ipv4s: ["0.0.0.0/0"],
+ *         ipv6s: ["ff00::/8"],
  *     }],
  *     outbounds: [{
  *         protocol: "TCP",
  *         ports: ["80"],
- *         addresses: ["0.0.0.0/0"],
+ *         ipv4s: ["0.0.0.0/0"],
+ *         ipv6s: ["ff00::/8"],
  *     }],
  *     linodes: [myInstance.id],
  * });
@@ -96,7 +98,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
-    public readonly linodes!: pulumi.Output<number[]>;
+    public readonly linodes!: pulumi.Output<number[] | undefined>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
@@ -117,7 +119,7 @@ export class Firewall extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -133,9 +135,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.linodes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'linodes'");
-            }
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["inbounds"] = args ? args.inbounds : undefined;
             inputs["label"] = args ? args.label : undefined;
@@ -209,7 +208,7 @@ export interface FirewallArgs {
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
-    readonly linodes: pulumi.Input<pulumi.Input<number>[]>;
+    readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */

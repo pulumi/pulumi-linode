@@ -28,11 +28,15 @@ export interface FirewallInbound {
     /**
      * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
-    addresses: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks this rule applies to.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of ports and/or port ranges (i.e. "443" or "80-90").
      */
-    ports: pulumi.Input<pulumi.Input<string>[]>;
+    ports: pulumi.Input<string>;
     /**
      * The network protocol this rule controls.
      */
@@ -43,11 +47,15 @@ export interface FirewallOutbound {
     /**
      * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
      */
-    addresses: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks this rule applies to.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of ports and/or port ranges (i.e. "443" or "80-90").
      */
-    ports: pulumi.Input<pulumi.Input<string>[]>;
+    ports: pulumi.Input<string>;
     /**
      * The network protocol this rule controls.
      */

@@ -16,11 +16,15 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         /// </summary>
-        public readonly ImmutableArray<string> Addresses;
+        public readonly ImmutableArray<string> Ipv4s;
+        /// <summary>
+        /// A list of IPv6 addresses or networks this rule applies to.
+        /// </summary>
+        public readonly ImmutableArray<string> Ipv6s;
         /// <summary>
         /// A list of ports and/or port ranges (i.e. "443" or "80-90").
         /// </summary>
-        public readonly ImmutableArray<string> Ports;
+        public readonly string Ports;
         /// <summary>
         /// The network protocol this rule controls.
         /// </summary>
@@ -28,13 +32,16 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private FirewallOutbound(
-            ImmutableArray<string> addresses,
+            ImmutableArray<string> ipv4s,
 
-            ImmutableArray<string> ports,
+            ImmutableArray<string> ipv6s,
+
+            string ports,
 
             string protocol)
         {
-            Addresses = addresses;
+            Ipv4s = ipv4s;
+            Ipv6s = ipv6s;
             Ports = ports;
             Protocol = protocol;
         }

@@ -12,29 +12,35 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class FirewallInboundArgs : Pulumi.ResourceArgs
     {
-        [Input("addresses", required: true)]
-        private InputList<string>? _addresses;
+        [Input("ipv4s")]
+        private InputList<string>? _ipv4s;
 
         /// <summary>
         /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
         /// </summary>
-        public InputList<string> Addresses
+        public InputList<string> Ipv4s
         {
-            get => _addresses ?? (_addresses = new InputList<string>());
-            set => _addresses = value;
+            get => _ipv4s ?? (_ipv4s = new InputList<string>());
+            set => _ipv4s = value;
         }
 
-        [Input("ports", required: true)]
-        private InputList<string>? _ports;
+        [Input("ipv6s")]
+        private InputList<string>? _ipv6s;
+
+        /// <summary>
+        /// A list of IPv6 addresses or networks this rule applies to.
+        /// </summary>
+        public InputList<string> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<string>());
+            set => _ipv6s = value;
+        }
 
         /// <summary>
         /// A list of ports and/or port ranges (i.e. "443" or "80-90").
         /// </summary>
-        public InputList<string> Ports
-        {
-            get => _ports ?? (_ports = new InputList<string>());
-            set => _ports = value;
-        }
+        [Input("ports", required: true)]
+        public Input<string> Ports { get; set; } = null!;
 
         /// <summary>
         /// The network protocol this rule controls.

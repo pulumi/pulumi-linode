@@ -50,12 +50,14 @@ class Firewall(pulumi.CustomResource):
             inbounds=[linode.FirewallInboundArgs(
                 protocol="TCP",
                 ports=["80"],
-                addresses=["0.0.0.0/0"],
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["ff00::/8"],
             )],
             outbounds=[linode.FirewallOutboundArgs(
                 protocol="TCP",
                 ports=["80"],
-                addresses=["0.0.0.0/0"],
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["ff00::/8"],
             )],
             linodes=[my_instance.id])
         ```
@@ -97,8 +99,6 @@ class Firewall(pulumi.CustomResource):
             __props__['disabled'] = disabled
             __props__['inbounds'] = inbounds
             __props__['label'] = label
-            if linodes is None and not opts.urn:
-                raise TypeError("Missing required property 'linodes'")
             __props__['linodes'] = linodes
             __props__['outbounds'] = outbounds
             __props__['tags'] = tags
@@ -186,7 +186,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def linodes(self) -> pulumi.Output[Sequence[int]]:
+    def linodes(self) -> pulumi.Output[Optional[Sequence[int]]]:
         """
         A list of IDs of Linodes this Firewall should govern it's network traffic for.
         """

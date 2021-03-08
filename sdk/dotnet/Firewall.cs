@@ -49,9 +49,13 @@ namespace Pulumi.Linode
     ///                     {
     ///                         "80",
     ///                     },
-    ///                     Addresses = 
+    ///                     Ipv4s = 
     ///                     {
     ///                         "0.0.0.0/0",
+    ///                     },
+    ///                     Ipv6s = 
+    ///                     {
+    ///                         "ff00::/8",
     ///                     },
     ///                 },
     ///             },
@@ -64,9 +68,13 @@ namespace Pulumi.Linode
     ///                     {
     ///                         "80",
     ///                     },
-    ///                     Addresses = 
+    ///                     Ipv4s = 
     ///                     {
     ///                         "0.0.0.0/0",
+    ///                     },
+    ///                     Ipv6s = 
+    ///                     {
+    ///                         "ff00::/8",
     ///                     },
     ///                 },
     ///             },
@@ -147,7 +155,7 @@ namespace Pulumi.Linode
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Firewall(string name, FirewallArgs args, CustomResourceOptions? options = null)
+        public Firewall(string name, FirewallArgs? args = null, CustomResourceOptions? options = null)
             : base("linode:index/firewall:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -209,7 +217,7 @@ namespace Pulumi.Linode
         [Input("label")]
         public Input<string>? Label { get; set; }
 
-        [Input("linodes", required: true)]
+        [Input("linodes")]
         private InputList<int>? _linodes;
 
         /// <summary>

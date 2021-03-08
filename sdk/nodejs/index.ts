@@ -13,6 +13,7 @@ export * from "./getDomain";
 export * from "./getDomainRecord";
 export * from "./getImage";
 export * from "./getInstanceType";
+export * from "./getLkeCluster";
 export * from "./getNetworkingIp";
 export * from "./getObjectStorageCluster";
 export * from "./getProfile";
@@ -36,6 +37,7 @@ export * from "./rdns";
 export * from "./sshKey";
 export * from "./stackScript";
 export * from "./token";
+export * from "./user";
 export * from "./vlan";
 export * from "./volume";
 
@@ -66,6 +68,7 @@ import { Rdns } from "./rdns";
 import { SshKey } from "./sshKey";
 import { StackScript } from "./stackScript";
 import { Token } from "./token";
+import { User } from "./user";
 import { Vlan } from "./vlan";
 import { Volume } from "./volume";
 
@@ -107,6 +110,8 @@ const _module = {
                 return new StackScript(name, <any>undefined, { urn })
             case "linode:index/token:Token":
                 return new Token(name, <any>undefined, { urn })
+            case "linode:index/user:User":
+                return new User(name, <any>undefined, { urn })
             case "linode:index/vlan:Vlan":
                 return new Vlan(name, <any>undefined, { urn })
             case "linode:index/volume:Volume":
@@ -133,6 +138,7 @@ pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
 pulumi.runtime.registerResourceModule("linode", "index/token", _module)
+pulumi.runtime.registerResourceModule("linode", "index/user", _module)
 pulumi.runtime.registerResourceModule("linode", "index/vlan", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
 

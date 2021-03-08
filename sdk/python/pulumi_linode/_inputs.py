@@ -125,40 +125,33 @@ class FirewallDeviceArgs:
 @pulumi.input_type
 class FirewallInboundArgs:
     def __init__(__self__, *,
-                 addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 ports: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 protocol: pulumi.Input[str]):
+                 ports: pulumi.Input[str],
+                 protocol: pulumi.Input[str],
+                 ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         """
-        pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "protocol", protocol)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @property
     @pulumi.getter
-    def addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        """
-        return pulumi.get(self, "addresses")
-
-    @addresses.setter
-    def addresses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "addresses", value)
-
-    @property
-    @pulumi.getter
-    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def ports(self) -> pulumi.Input[str]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def ports(self, value: pulumi.Input[str]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -172,45 +165,62 @@ class FirewallInboundArgs:
     @protocol.setter
     def protocol(self, value: pulumi.Input[str]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 addresses or networks this rule applies to.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6s", value)
 
 
 @pulumi.input_type
 class FirewallOutboundArgs:
     def __init__(__self__, *,
-                 addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 ports: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 protocol: pulumi.Input[str]):
+                 ports: pulumi.Input[str],
+                 protocol: pulumi.Input[str],
+                 ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         """
-        pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "protocol", protocol)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @property
     @pulumi.getter
-    def addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        """
-        return pulumi.get(self, "addresses")
-
-    @addresses.setter
-    def addresses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "addresses", value)
-
-    @property
-    @pulumi.getter
-    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def ports(self) -> pulumi.Input[str]:
         """
         A list of ports and/or port ranges (i.e. "443" or "80-90").
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def ports(self, value: pulumi.Input[str]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -224,6 +234,30 @@ class FirewallOutboundArgs:
     @protocol.setter
     def protocol(self, value: pulumi.Input[str]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 addresses or networks this rule applies to.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6s", value)
 
 
 @pulumi.input_type

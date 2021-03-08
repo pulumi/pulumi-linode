@@ -40,6 +40,14 @@ class ObjectStorageBucket(pulumi.CustomResource):
             label="%s")
         ```
 
+        ## Import
+
+        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
