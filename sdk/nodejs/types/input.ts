@@ -14,7 +14,7 @@ export interface FirewallDevice {
      */
     id?: pulumi.Input<number>;
     /**
-     * This Firewall's unique label.
+     * Used to identify this rule. For display purposes only.
      */
     label?: pulumi.Input<string>;
     /**
@@ -26,17 +26,25 @@ export interface FirewallDevice {
 
 export interface FirewallInbound {
     /**
-     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of IPv6 addresses or networks this rule applies to.
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     * Used to identify this rule. For display purposes only.
      */
-    ports: pulumi.Input<string>;
+    label: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: pulumi.Input<string>;
     /**
      * The network protocol this rule controls.
      */
@@ -45,17 +53,25 @@ export interface FirewallInbound {
 
 export interface FirewallOutbound {
     /**
-     * A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of IPv6 addresses or networks this rule applies to.
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of ports and/or port ranges (i.e. "443" or "80-90").
+     * Used to identify this rule. For display purposes only.
      */
-    ports: pulumi.Input<string>;
+    label: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: pulumi.Input<string>;
     /**
      * The network protocol this rule controls.
      */

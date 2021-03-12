@@ -12,11 +12,17 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class FirewallInboundGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// </summary>
+        [Input("action", required: true)]
+        public Input<string> Action { get; set; } = null!;
+
         [Input("ipv4s")]
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
         public InputList<string> Ipv4s
         {
@@ -28,7 +34,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _ipv6s;
 
         /// <summary>
-        /// A list of IPv6 addresses or networks this rule applies to.
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
         /// </summary>
         public InputList<string> Ipv6s
         {
@@ -37,10 +43,16 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// A list of ports and/or port ranges (i.e. "443" or "80-90").
+        /// Used to identify this rule. For display purposes only.
         /// </summary>
-        [Input("ports", required: true)]
-        public Input<string> Ports { get; set; } = null!;
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        /// <summary>
+        /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// </summary>
+        [Input("ports")]
+        public Input<string>? Ports { get; set; }
 
         /// <summary>
         /// The network protocol this rule controls.

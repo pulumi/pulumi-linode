@@ -85,7 +85,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "This Firewall's unique label.\n",
+                    "description": "Used to identify this rule. For display purposes only.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -125,12 +125,21 @@
         },
         "linode:index/FirewallInbound:FirewallInbound": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.\n",
+                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask format.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -142,7 +151,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv6 addresses or networks this rule applies to.\n",
+                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Used to identify this rule. For display purposes only.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -151,7 +169,7 @@
                 },
                 "ports": {
                     "type": "string",
-                    "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
+                    "description": "A string representation of ports and/or port ranges (i.e. \"443\" or \"80-90, 91\").\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -170,18 +188,28 @@
             },
             "type": "object",
             "required": [
-                "ports",
+                "action",
+                "label",
                 "protocol"
             ]
         },
         "linode:index/FirewallOutbound:FirewallOutbound": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.\n",
+                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask format.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -193,7 +221,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv6 addresses or networks this rule applies to.\n",
+                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Used to identify this rule. For display purposes only.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -202,7 +239,7 @@
                 },
                 "ports": {
                     "type": "string",
-                    "description": "A list of ports and/or port ranges (i.e. \"443\" or \"80-90\").\n",
+                    "description": "A string representation of ports and/or port ranges (i.e. \"443\" or \"80-90, 91\").\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -221,7 +258,8 @@
             },
             "type": "object",
             "required": [
-                "ports",
+                "action",
+                "label",
                 "protocol"
             ]
         },
@@ -2157,7 +2195,7 @@
             }
         },
         "linode:index/firewall:Firewall": {
-            "description": "\u003e **NOTICE:** The Firewall feature is currently available through early access.\n\nManages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-east\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    outbounds: [{\n        protocol: \"TCP\",\n        ports: [\"80\"],\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-east\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[linode.FirewallInboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    outbounds=[linode.FirewallOutboundArgs(\n        protocol=\"TCP\",\n        ports=[\"80\"],\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-east\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Protocol = \"TCP\",\n                    Ports = \n                    {\n                        \"80\",\n                    },\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
+            "description": "\u003e **NOTICE:** The Firewall feature is currently available through early access.\n\nManages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-east\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [{\n        label: \"allow-them\",\n        action: \"ACCEPT\",\n        protocol: \"TCP\",\n        ports: \"80\",\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    inboundPolicy: \"DROP\",\n    outbounds: [{\n        label: \"reject-them\",\n        action: \"DROP\",\n        protocol: \"TCP\",\n        ports: \"80\",\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"ff00::/8\"],\n    }],\n    outboundPolicy: \"ACCEPT\",\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-east\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[linode.FirewallInboundArgs(\n        label=\"allow-them\",\n        action=\"ACCEPT\",\n        protocol=\"TCP\",\n        ports=\"80\",\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    inbound_policy=\"DROP\",\n    outbounds=[linode.FirewallOutboundArgs(\n        label=\"reject-them\",\n        action=\"DROP\",\n        protocol=\"TCP\",\n        ports=\"80\",\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"ff00::/8\"],\n    )],\n    outbound_policy=\"ACCEPT\",\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-east\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"allow-them\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            InboundPolicy = \"DROP\",\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Label = \"reject-them\",\n                    Action = \"DROP\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            OutboundPolicy = \"ACCEPT\",\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
             "properties": {
                 "devices": {
                     "type": "array",
@@ -2170,6 +2208,10 @@
                     "type": "boolean",
                     "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
                 },
+                "inboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
+                },
                 "inbounds": {
                     "type": "array",
                     "items": {
@@ -2179,7 +2221,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "This Firewall's unique label.\n"
+                    "description": "Used to identify this rule. For display purposes only.\n"
                 },
                 "linodes": {
                     "type": "array",
@@ -2187,6 +2229,10 @@
                         "type": "integer"
                     },
                     "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                },
+                "outboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
                 },
                 "outbounds": {
                     "type": "array",
@@ -2209,13 +2255,19 @@
             },
             "required": [
                 "devices",
+                "inboundPolicy",
                 "label",
+                "outboundPolicy",
                 "status"
             ],
             "inputProperties": {
                 "disabled": {
                     "type": "boolean",
                     "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
+                },
+                "inboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
                 },
                 "inbounds": {
                     "type": "array",
@@ -2226,7 +2278,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "This Firewall's unique label.\n"
+                    "description": "Used to identify this rule. For display purposes only.\n"
                 },
                 "linodes": {
                     "type": "array",
@@ -2234,6 +2286,10 @@
                         "type": "integer"
                     },
                     "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                },
+                "outboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
                 },
                 "outbounds": {
                     "type": "array",
@@ -2250,6 +2306,11 @@
                     "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
                 }
             },
+            "requiredInputs": [
+                "inboundPolicy",
+                "label",
+                "outboundPolicy"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Firewall resources.\n",
                 "properties": {
@@ -2264,6 +2325,10 @@
                         "type": "boolean",
                         "description": "If `true`, the Firewall's rules are not enforced (defaults to `false`).\n"
                     },
+                    "inboundPolicy": {
+                        "type": "string",
+                        "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
+                    },
                     "inbounds": {
                         "type": "array",
                         "items": {
@@ -2273,7 +2338,7 @@
                     },
                     "label": {
                         "type": "string",
-                        "description": "This Firewall's unique label.\n"
+                        "description": "Used to identify this rule. For display purposes only.\n"
                     },
                     "linodes": {
                         "type": "array",
@@ -2281,6 +2346,10 @@
                             "type": "integer"
                         },
                         "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                    },
+                    "outboundPolicy": {
+                        "type": "string",
+                        "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
                     },
                     "outbounds": {
                         "type": "array",

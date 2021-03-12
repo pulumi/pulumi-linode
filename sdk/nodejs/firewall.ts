@@ -28,17 +28,23 @@ import * as utilities from "./utilities";
  *     label: "my_firewall",
  *     tags: ["test"],
  *     inbounds: [{
+ *         label: "allow-them",
+ *         action: "ACCEPT",
  *         protocol: "TCP",
- *         ports: ["80"],
+ *         ports: "80",
  *         ipv4s: ["0.0.0.0/0"],
  *         ipv6s: ["ff00::/8"],
  *     }],
+ *     inboundPolicy: "DROP",
  *     outbounds: [{
+ *         label: "reject-them",
+ *         action: "DROP",
  *         protocol: "TCP",
- *         ports: ["80"],
+ *         ports: "80",
  *         ipv4s: ["0.0.0.0/0"],
  *         ipv6s: ["ff00::/8"],
  *     }],
+ *     outboundPolicy: "ACCEPT",
  *     linodes: [myInstance.id],
  * });
  * ```
@@ -88,17 +94,25 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     */
+    public readonly inboundPolicy!: pulumi.Output<string>;
+    /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
     public readonly inbounds!: pulumi.Output<outputs.FirewallInbound[] | undefined>;
     /**
-     * This Firewall's unique label.
+     * Used to identify this rule. For display purposes only.
      */
     public readonly label!: pulumi.Output<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
     public readonly linodes!: pulumi.Output<number[] | undefined>;
+    /**
+     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     */
+    public readonly outboundPolicy!: pulumi.Output<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
@@ -119,7 +133,7 @@ export class Firewall extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FirewallArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -127,18 +141,31 @@ export class Firewall extends pulumi.CustomResource {
             const state = argsOrState as FirewallState | undefined;
             inputs["devices"] = state ? state.devices : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
+            inputs["inboundPolicy"] = state ? state.inboundPolicy : undefined;
             inputs["inbounds"] = state ? state.inbounds : undefined;
             inputs["label"] = state ? state.label : undefined;
             inputs["linodes"] = state ? state.linodes : undefined;
+            inputs["outboundPolicy"] = state ? state.outboundPolicy : undefined;
             inputs["outbounds"] = state ? state.outbounds : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
+            if ((!args || args.inboundPolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'inboundPolicy'");
+            }
+            if ((!args || args.label === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'label'");
+            }
+            if ((!args || args.outboundPolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'outboundPolicy'");
+            }
             inputs["disabled"] = args ? args.disabled : undefined;
+            inputs["inboundPolicy"] = args ? args.inboundPolicy : undefined;
             inputs["inbounds"] = args ? args.inbounds : undefined;
             inputs["label"] = args ? args.label : undefined;
             inputs["linodes"] = args ? args.linodes : undefined;
+            inputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
             inputs["outbounds"] = args ? args.outbounds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["devices"] = undefined /*out*/;
@@ -164,17 +191,25 @@ export interface FirewallState {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     */
+    readonly inboundPolicy?: pulumi.Input<string>;
+    /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
     readonly inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
-     * This Firewall's unique label.
+     * Used to identify this rule. For display purposes only.
      */
     readonly label?: pulumi.Input<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
     readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     */
+    readonly outboundPolicy?: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
@@ -198,17 +233,25 @@ export interface FirewallArgs {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     */
+    readonly inboundPolicy: pulumi.Input<string>;
+    /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
     readonly inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
-     * This Firewall's unique label.
+     * Used to identify this rule. For display purposes only.
      */
-    readonly label?: pulumi.Input<string>;
+    readonly label: pulumi.Input<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
     readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     */
+    readonly outboundPolicy: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */

@@ -15,7 +15,7 @@ type FirewallDevice struct {
 	EntityId *int `pulumi:"entityId"`
 	// The ID of the Firewall Device.
 	Id *int `pulumi:"id"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label *string `pulumi:"label"`
 	// The type of Firewall Device.
 	Type *string `pulumi:"type"`
@@ -38,7 +38,7 @@ type FirewallDeviceArgs struct {
 	EntityId pulumi.IntPtrInput `pulumi:"entityId"`
 	// The ID of the Firewall Device.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The type of Firewall Device.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -106,7 +106,7 @@ func (o FirewallDeviceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallDevice) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// This Firewall's unique label.
+// Used to identify this rule. For display purposes only.
 func (o FirewallDeviceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallDevice) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -141,12 +141,16 @@ func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput
 }
 
 type FirewallInbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks this rule applies to.
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6s []string `pulumi:"ipv6s"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports string `pulumi:"ports"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports *string `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol string `pulumi:"protocol"`
 }
@@ -163,12 +167,16 @@ type FirewallInboundInput interface {
 }
 
 type FirewallInboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks this rule applies to.
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports pulumi.StringInput `pulumi:"ports"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringPtrInput `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
@@ -224,19 +232,29 @@ func (o FirewallInboundOutput) ToFirewallInboundOutputWithContext(ctx context.Co
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o FirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o FirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// A list of IPv6 addresses or networks this rule applies to.
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
 func (o FirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
 }
 
-// A list of ports and/or port ranges (i.e. "443" or "80-90").
-func (o FirewallInboundOutput) Ports() pulumi.StringOutput {
-	return o.ApplyT(func(v FirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
+// Used to identify this rule. For display purposes only.
+func (o FirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o FirewallInboundOutput) Ports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
 // The network protocol this rule controls.
@@ -265,12 +283,16 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks this rule applies to.
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6s []string `pulumi:"ipv6s"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports string `pulumi:"ports"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports *string `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol string `pulumi:"protocol"`
 }
@@ -287,12 +309,16 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks this rule applies to.
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports pulumi.StringInput `pulumi:"ports"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringPtrInput `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
@@ -348,19 +374,29 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o FirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o FirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// A list of IPv6 addresses or networks this rule applies to.
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
 func (o FirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
 }
 
-// A list of ports and/or port ranges (i.e. "443" or "80-90").
-func (o FirewallOutboundOutput) Ports() pulumi.StringOutput {
-	return o.ApplyT(func(v FirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
+// Used to identify this rule. For display purposes only.
+func (o FirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o FirewallOutboundOutput) Ports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallOutbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
 // The network protocol this rule controls.

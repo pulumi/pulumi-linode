@@ -50,7 +50,7 @@ class FirewallDeviceArgs:
         """
         :param pulumi.Input[int] entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param pulumi.Input[int] id: The ID of the Firewall Device.
-        :param pulumi.Input[str] label: This Firewall's unique label.
+        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
         :param pulumi.Input[str] type: The type of Firewall Device.
         """
         if entity_id is not None:
@@ -92,7 +92,7 @@ class FirewallDeviceArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        This Firewall's unique label.
+        Used to identify this rule. For display purposes only.
         """
         return pulumi.get(self, "label")
 
@@ -125,34 +125,53 @@ class FirewallDeviceArgs:
 @pulumi.input_type
 class FirewallInboundArgs:
     def __init__(__self__, *,
-                 ports: pulumi.Input[str],
+                 action: pulumi.Input[str],
+                 label: pulumi.Input[str],
                  protocol: pulumi.Input[str],
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ports: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
-        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
             pulumi.set(__self__, "ipv6s", ipv6s)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Input[str]:
+    def action(self) -> pulumi.Input[str]:
         """
-        A list of ports and/or port ranges (i.e. "443" or "80-90").
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
-        return pulumi.get(self, "ports")
+        return pulumi.get(self, "action")
 
-    @ports.setter
-    def ports(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ports", value)
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -170,7 +189,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv4s")
 
@@ -182,46 +201,77 @@ class FirewallInboundArgs:
     @pulumi.getter
     def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv6 addresses or networks this rule applies to.
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv6s")
 
     @ipv6s.setter
     def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ipv6s", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ports", value)
 
 
 @pulumi.input_type
 class FirewallOutboundArgs:
     def __init__(__self__, *,
-                 ports: pulumi.Input[str],
+                 action: pulumi.Input[str],
+                 label: pulumi.Input[str],
                  protocol: pulumi.Input[str],
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ports: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ports: A list of ports and/or port ranges (i.e. "443" or "80-90").
+        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
-        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
             pulumi.set(__self__, "ipv6s", ipv6s)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Input[str]:
+    def action(self) -> pulumi.Input[str]:
         """
-        A list of ports and/or port ranges (i.e. "443" or "80-90").
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
-        return pulumi.get(self, "ports")
+        return pulumi.get(self, "action")
 
-    @ports.setter
-    def ports(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ports", value)
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -239,7 +289,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv4s")
 
@@ -251,13 +301,25 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv6 addresses or networks this rule applies to.
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv6s")
 
     @ipv6s.setter
     def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ipv6s", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ports", value)
 
 
 @pulumi.input_type

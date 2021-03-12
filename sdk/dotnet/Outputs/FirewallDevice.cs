@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// This Firewall's unique label.
+        /// Used to identify this rule. For display purposes only.
         /// </summary>
         public readonly string? Label;
         /// <summary>
