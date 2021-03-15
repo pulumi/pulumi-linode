@@ -54,6 +54,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewStackScript(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/token:Token":
 		r, err = NewToken(ctx, name, nil, pulumi.URN_(urn))
+	case "linode:index/user:User":
+		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/vlan:Vlan":
 		r, err = NewVlan(ctx, name, nil, pulumi.URN_(urn))
 	case "linode:index/volume:Volume":
@@ -169,6 +171,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/token",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -15,70 +15,6 @@ import (
 //
 // Manages a Linode Firewall.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-// 			Label:    pulumi.String("my_instance"),
-// 			Image:    pulumi.String("linode/ubuntu18.04"),
-// 			Region:   pulumi.String("us-east"),
-// 			Type:     pulumi.String("g6-standard-1"),
-// 			RootPass: pulumi.String(fmt.Sprintf("%v%v", "bogusPassword", "$")),
-// 			SwapSize: pulumi.Int(256),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
-// 			Label: pulumi.String("my_firewall"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("test"),
-// 			},
-// 			Inbounds: linode.FirewallInboundArray{
-// 				&linode.FirewallInboundArgs{
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports: pulumi.StringArray{
-// 						pulumi.String("80"),
-// 					},
-// 					Addresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 				},
-// 			},
-// 			Outbounds: linode.FirewallOutboundArray{
-// 				&linode.FirewallOutboundArgs{
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports: pulumi.StringArray{
-// 						pulumi.String("80"),
-// 					},
-// 					Addresses: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 				},
-// 			},
-// 			Linodes: pulumi.IntArray{
-// 				myInstance.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Firewalls can be imported using the `id`, e.g.
@@ -93,12 +29,16 @@ type Firewall struct {
 	Devices FirewallDeviceArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayOutput `pulumi:"linodes"`
+	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	OutboundPolicy pulumi.StringOutput `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayOutput `pulumi:"outbounds"`
 	// The status of the Firewall.
@@ -114,8 +54,14 @@ func NewFirewall(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Linodes == nil {
-		return nil, errors.New("invalid value for required argument 'Linodes'")
+	if args.InboundPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'InboundPolicy'")
+	}
+	if args.Label == nil {
+		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.OutboundPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'OutboundPolicy'")
 	}
 	var resource Firewall
 	err := ctx.RegisterResource("linode:index/firewall:Firewall", name, args, &resource, opts...)
@@ -143,12 +89,16 @@ type firewallState struct {
 	Devices []FirewallDevice `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled *bool `pulumi:"disabled"`
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label *string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
+	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	OutboundPolicy *string `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
 	// The status of the Firewall.
@@ -162,12 +112,16 @@ type FirewallState struct {
 	Devices FirewallDeviceArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrInput
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label pulumi.StringPtrInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
+	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	OutboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayInput
 	// The status of the Firewall.
@@ -183,12 +137,16 @@ func (FirewallState) ElementType() reflect.Type {
 type firewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled *bool `pulumi:"disabled"`
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
-	// This Firewall's unique label.
-	Label *string `pulumi:"label"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
+	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	OutboundPolicy string `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
 	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
@@ -199,12 +157,16 @@ type firewallArgs struct {
 type FirewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrInput
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
-	// This Firewall's unique label.
-	Label pulumi.StringPtrInput
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
+	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	OutboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayInput
 	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.

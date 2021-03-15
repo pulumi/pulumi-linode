@@ -12,29 +12,47 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class FirewallInboundGetArgs : Pulumi.ResourceArgs
     {
-        [Input("addresses", required: true)]
-        private InputList<string>? _addresses;
+        /// <summary>
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// </summary>
+        [Input("action", required: true)]
+        public Input<string> Action { get; set; } = null!;
+
+        [Input("ipv4s")]
+        private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
-        public InputList<string> Addresses
+        public InputList<string> Ipv4s
         {
-            get => _addresses ?? (_addresses = new InputList<string>());
-            set => _addresses = value;
+            get => _ipv4s ?? (_ipv4s = new InputList<string>());
+            set => _ipv4s = value;
         }
 
-        [Input("ports", required: true)]
-        private InputList<string>? _ports;
+        [Input("ipv6s")]
+        private InputList<string>? _ipv6s;
 
         /// <summary>
-        /// A list of ports and/or port ranges (i.e. "443" or "80-90").
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
         /// </summary>
-        public InputList<string> Ports
+        public InputList<string> Ipv6s
         {
-            get => _ports ?? (_ports = new InputList<string>());
-            set => _ports = value;
+            get => _ipv6s ?? (_ipv6s = new InputList<string>());
+            set => _ipv6s = value;
         }
+
+        /// <summary>
+        /// Used to identify this rule. For display purposes only.
+        /// </summary>
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        /// <summary>
+        /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// </summary>
+        [Input("ports")]
+        public Input<string>? Ports { get; set; }
 
         /// <summary>
         /// The network protocol this rule controls.

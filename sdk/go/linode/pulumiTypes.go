@@ -15,7 +15,7 @@ type FirewallDevice struct {
 	EntityId *int `pulumi:"entityId"`
 	// The ID of the Firewall Device.
 	Id *int `pulumi:"id"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label *string `pulumi:"label"`
 	// The type of Firewall Device.
 	Type *string `pulumi:"type"`
@@ -38,7 +38,7 @@ type FirewallDeviceArgs struct {
 	EntityId pulumi.IntPtrInput `pulumi:"entityId"`
 	// The ID of the Firewall Device.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// This Firewall's unique label.
+	// Used to identify this rule. For display purposes only.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The type of Firewall Device.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -106,7 +106,7 @@ func (o FirewallDeviceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallDevice) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// This Firewall's unique label.
+// Used to identify this rule. For display purposes only.
 func (o FirewallDeviceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallDevice) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -141,10 +141,16 @@ func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput
 }
 
 type FirewallInbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-	Addresses []string `pulumi:"addresses"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports []string `pulumi:"ports"`
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports *string `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol string `pulumi:"protocol"`
 }
@@ -161,10 +167,16 @@ type FirewallInboundInput interface {
 }
 
 type FirewallInboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringPtrInput `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
@@ -220,14 +232,29 @@ func (o FirewallInboundOutput) ToFirewallInboundOutputWithContext(ctx context.Co
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-func (o FirewallInboundOutput) Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FirewallInbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o FirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// A list of ports and/or port ranges (i.e. "443" or "80-90").
-func (o FirewallInboundOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FirewallInbound) []string { return v.Ports }).(pulumi.StringArrayOutput)
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o FirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o FirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o FirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o FirewallInboundOutput) Ports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
 // The network protocol this rule controls.
@@ -256,10 +283,16 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-	Addresses []string `pulumi:"addresses"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports []string `pulumi:"ports"`
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports *string `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol string `pulumi:"protocol"`
 }
@@ -276,10 +309,16 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
-	// A list of ports and/or port ranges (i.e. "443" or "80-90").
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringPtrInput `pulumi:"ports"`
 	// The network protocol this rule controls.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
@@ -335,14 +374,29 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
-func (o FirewallOutboundOutput) Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FirewallOutbound) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o FirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// A list of ports and/or port ranges (i.e. "443" or "80-90").
-func (o FirewallOutboundOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ports }).(pulumi.StringArrayOutput)
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o FirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o FirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o FirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o FirewallOutboundOutput) Ports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallOutbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
 // The network protocol this rule controls.
@@ -4309,6 +4363,245 @@ func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
+type GetLkeClusterPool struct {
+	// The number of nodes in the Node Pool.
+	Count int `pulumi:"count"`
+	// The LKE Cluster's ID.
+	Id int `pulumi:"id"`
+	// The nodes in the Node Pool.
+	Nodes []GetLkeClusterPoolNode `pulumi:"nodes"`
+	// The linode type for all of the nodes in the Node Pool.
+	Type string `pulumi:"type"`
+}
+
+// GetLkeClusterPoolInput is an input type that accepts GetLkeClusterPoolArgs and GetLkeClusterPoolOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolInput` via:
+//
+//          GetLkeClusterPoolArgs{...}
+type GetLkeClusterPoolInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolOutput() GetLkeClusterPoolOutput
+	ToGetLkeClusterPoolOutputWithContext(context.Context) GetLkeClusterPoolOutput
+}
+
+type GetLkeClusterPoolArgs struct {
+	// The number of nodes in the Node Pool.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The LKE Cluster's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The nodes in the Node Pool.
+	Nodes GetLkeClusterPoolNodeArrayInput `pulumi:"nodes"`
+	// The linode type for all of the nodes in the Node Pool.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetLkeClusterPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPool)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolArgs) ToGetLkeClusterPoolOutput() GetLkeClusterPoolOutput {
+	return i.ToGetLkeClusterPoolOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolArgs) ToGetLkeClusterPoolOutputWithContext(ctx context.Context) GetLkeClusterPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolOutput)
+}
+
+// GetLkeClusterPoolArrayInput is an input type that accepts GetLkeClusterPoolArray and GetLkeClusterPoolArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolArrayInput` via:
+//
+//          GetLkeClusterPoolArray{ GetLkeClusterPoolArgs{...} }
+type GetLkeClusterPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolArrayOutput() GetLkeClusterPoolArrayOutput
+	ToGetLkeClusterPoolArrayOutputWithContext(context.Context) GetLkeClusterPoolArrayOutput
+}
+
+type GetLkeClusterPoolArray []GetLkeClusterPoolInput
+
+func (GetLkeClusterPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPool)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolArray) ToGetLkeClusterPoolArrayOutput() GetLkeClusterPoolArrayOutput {
+	return i.ToGetLkeClusterPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolArray) ToGetLkeClusterPoolArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolArrayOutput)
+}
+
+type GetLkeClusterPoolOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPool)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolOutput) ToGetLkeClusterPoolOutput() GetLkeClusterPoolOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolOutput) ToGetLkeClusterPoolOutputWithContext(ctx context.Context) GetLkeClusterPoolOutput {
+	return o
+}
+
+// The number of nodes in the Node Pool.
+func (o GetLkeClusterPoolOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The LKE Cluster's ID.
+func (o GetLkeClusterPoolOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The nodes in the Node Pool.
+func (o GetLkeClusterPoolOutput) Nodes() GetLkeClusterPoolNodeArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolNode { return v.Nodes }).(GetLkeClusterPoolNodeArrayOutput)
+}
+
+// The linode type for all of the nodes in the Node Pool.
+func (o GetLkeClusterPoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetLkeClusterPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPool)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolArrayOutput) ToGetLkeClusterPoolArrayOutput() GetLkeClusterPoolArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolArrayOutput) ToGetLkeClusterPoolArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPool {
+		return vs[0].([]GetLkeClusterPool)[vs[1].(int)]
+	}).(GetLkeClusterPoolOutput)
+}
+
+type GetLkeClusterPoolNode struct {
+	// The LKE Cluster's ID.
+	Id string `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId int `pulumi:"instanceId"`
+	// The status of the node.
+	Status string `pulumi:"status"`
+}
+
+// GetLkeClusterPoolNodeInput is an input type that accepts GetLkeClusterPoolNodeArgs and GetLkeClusterPoolNodeOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolNodeInput` via:
+//
+//          GetLkeClusterPoolNodeArgs{...}
+type GetLkeClusterPoolNodeInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolNodeOutput() GetLkeClusterPoolNodeOutput
+	ToGetLkeClusterPoolNodeOutputWithContext(context.Context) GetLkeClusterPoolNodeOutput
+}
+
+type GetLkeClusterPoolNodeArgs struct {
+	// The LKE Cluster's ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId pulumi.IntInput `pulumi:"instanceId"`
+	// The status of the node.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetLkeClusterPoolNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolNode)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolNodeArgs) ToGetLkeClusterPoolNodeOutput() GetLkeClusterPoolNodeOutput {
+	return i.ToGetLkeClusterPoolNodeOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolNodeArgs) ToGetLkeClusterPoolNodeOutputWithContext(ctx context.Context) GetLkeClusterPoolNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolNodeOutput)
+}
+
+// GetLkeClusterPoolNodeArrayInput is an input type that accepts GetLkeClusterPoolNodeArray and GetLkeClusterPoolNodeArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolNodeArrayInput` via:
+//
+//          GetLkeClusterPoolNodeArray{ GetLkeClusterPoolNodeArgs{...} }
+type GetLkeClusterPoolNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolNodeArrayOutput() GetLkeClusterPoolNodeArrayOutput
+	ToGetLkeClusterPoolNodeArrayOutputWithContext(context.Context) GetLkeClusterPoolNodeArrayOutput
+}
+
+type GetLkeClusterPoolNodeArray []GetLkeClusterPoolNodeInput
+
+func (GetLkeClusterPoolNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolNode)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolNodeArray) ToGetLkeClusterPoolNodeArrayOutput() GetLkeClusterPoolNodeArrayOutput {
+	return i.ToGetLkeClusterPoolNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolNodeArray) ToGetLkeClusterPoolNodeArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolNodeArrayOutput)
+}
+
+type GetLkeClusterPoolNodeOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolNode)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolNodeOutput) ToGetLkeClusterPoolNodeOutput() GetLkeClusterPoolNodeOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolNodeOutput) ToGetLkeClusterPoolNodeOutputWithContext(ctx context.Context) GetLkeClusterPoolNodeOutput {
+	return o
+}
+
+// The LKE Cluster's ID.
+func (o GetLkeClusterPoolNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the underlying Linode instance.
+func (o GetLkeClusterPoolNodeOutput) InstanceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolNode) int { return v.InstanceId }).(pulumi.IntOutput)
+}
+
+// The status of the node.
+func (o GetLkeClusterPoolNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetLkeClusterPoolNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolNode)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolNodeArrayOutput) ToGetLkeClusterPoolNodeArrayOutput() GetLkeClusterPoolNodeArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolNodeArrayOutput) ToGetLkeClusterPoolNodeArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolNodeArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPoolNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolNode {
+		return vs[0].([]GetLkeClusterPoolNode)[vs[1].(int)]
+	}).(GetLkeClusterPoolNodeOutput)
+}
+
 type GetProfileReferrals struct {
 	Code      string  `pulumi:"code"`
 	Completed int     `pulumi:"completed"`
@@ -4571,6 +4864,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolNodeOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})

@@ -23,6 +23,7 @@
         "getDomainRecord.ts",
         "getImage.ts",
         "getInstanceType.ts",
+        "getLkeCluster.ts",
         "getNetworkingIp.ts",
         "getObjectStorageCluster.ts",
         "getProfile.ts",
@@ -50,6 +51,7 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "user.ts",
         "utilities.ts",
         "vlan.ts",
         "volume.ts"

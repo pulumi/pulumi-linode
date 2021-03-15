@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetUser(ctx, &linode.GetUserArgs{
+// 		_, err := linode.LookupUser(ctx, &linode.LookupUserArgs{
 // 			Username: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -42,8 +42,8 @@ import (
 // * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
 //
 // * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
-func GetUser(ctx *pulumi.Context, args *GetUserArgs, opts ...pulumi.InvokeOption) (*GetUserResult, error) {
-	var rv GetUserResult
+func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
+	var rv LookupUserResult
 	err := ctx.Invoke("linode:index/getUser:getUser", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,13 +52,13 @@ func GetUser(ctx *pulumi.Context, args *GetUserArgs, opts ...pulumi.InvokeOption
 }
 
 // A collection of arguments for invoking getUser.
-type GetUserArgs struct {
+type LookupUserArgs struct {
 	// The unique username of this User.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getUser.
-type GetUserResult struct {
+type LookupUserResult struct {
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`

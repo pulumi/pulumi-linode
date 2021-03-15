@@ -11,6 +11,7 @@ from .get_domain import *
 from .get_domain_record import *
 from .get_image import *
 from .get_instance_type import *
+from .get_lke_cluster import *
 from .get_networking_ip import *
 from .get_object_storage_cluster import *
 from .get_profile import *
@@ -34,6 +35,7 @@ from .rdns import *
 from .ssh_key import *
 from .stack_script import *
 from .token import *
+from .user import *
 from .vlan import *
 from .volume import *
 from ._inputs import *
@@ -90,6 +92,8 @@ def _register_module():
                 return StackScript(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/token:Token":
                 return Token(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "linode:index/user:User":
+                return User(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/vlan:Vlan":
                 return Vlan(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/volume:Volume":
@@ -116,6 +120,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("linode", "index/sshKey", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/stackScript", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/token", _module_instance)
+    pulumi.runtime.register_resource_module("linode", "index/user", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/vlan", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/volume", _module_instance)
 

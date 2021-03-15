@@ -192,6 +192,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_object_storage_object": {Tok: makeResource(mainMod, "ObjectStorageObject")},
 			"linode_vlan":                  {Tok: makeResource(mainMod, "Vlan")},
 			"linode_instance_ip":           {Tok: makeResource(mainMod, "InstanceIp")},
+			"linode_user":                  {Tok: makeResource(mainMod, "User")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},
@@ -240,6 +241,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_stackscript":   {Tok: makeDataSource(mainMod, "getStackScript")},
 			"linode_domain_record": {Tok: makeDataSource(mainMod, "getDomainRecord")},
 			"linode_volume":        {Tok: makeDataSource(mainMod, "getVolume")},
+			"linode_lke_cluster":   {Tok: makeDataSource(mainMod, "getLkeCluster")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

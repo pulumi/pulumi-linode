@@ -14,13 +14,25 @@ namespace Pulumi.Linode.Outputs
     public sealed class FirewallOutbound
     {
         /// <summary>
-        /// A list of IP addresses, CIDR blocks, or `0.0.0.0/0` (to allow all) this rule applies to.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
-        public readonly ImmutableArray<string> Addresses;
+        public readonly string Action;
         /// <summary>
-        /// A list of ports and/or port ranges (i.e. "443" or "80-90").
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
-        public readonly ImmutableArray<string> Ports;
+        public readonly ImmutableArray<string> Ipv4s;
+        /// <summary>
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
+        /// </summary>
+        public readonly ImmutableArray<string> Ipv6s;
+        /// <summary>
+        /// Used to identify this rule. For display purposes only.
+        /// </summary>
+        public readonly string Label;
+        /// <summary>
+        /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// </summary>
+        public readonly string? Ports;
         /// <summary>
         /// The network protocol this rule controls.
         /// </summary>
@@ -28,13 +40,22 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private FirewallOutbound(
-            ImmutableArray<string> addresses,
+            string action,
 
-            ImmutableArray<string> ports,
+            ImmutableArray<string> ipv4s,
+
+            ImmutableArray<string> ipv6s,
+
+            string label,
+
+            string? ports,
 
             string protocol)
         {
-            Addresses = addresses;
+            Action = action;
+            Ipv4s = ipv4s;
+            Ipv6s = ipv6s;
+            Label = label;
             Ports = ports;
             Protocol = protocol;
         }
