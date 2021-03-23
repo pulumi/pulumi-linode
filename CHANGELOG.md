@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.22.1  
-  **Please Note:** This includes a bug fix to the refresh operation regarding arrays
+_(none)_
 
 ---
+
+## 2.10.1 (2021-03-23)
+* Upgrade to pulumi-terraform-bridge v2.22.1  
+  **Please Note:** This includes a bug fix to the refresh operation regarding arrays
 
 ## 2.10.0 (2021-03-16)
 * Upgrade to v1.16.0 of the Linode Terraform Provider
