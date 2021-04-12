@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['InstanceIp']
+__all__ = ['InstanceIpArgs', 'InstanceIp']
+
+@pulumi.input_type
+class InstanceIpArgs:
+    def __init__(__self__, *,
+                 linode_id: pulumi.Input[int],
+                 public: Optional[pulumi.Input[bool]] = None,
+                 rdns: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a InstanceIp resource.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
+        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
+        :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+        if rdns is not None:
+            pulumi.set(__self__, "rdns", rdns)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the Linode to allocate an IPv4 address for.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the IPv4 address is public or private. Defaults to true.
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public", value)
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @rdns.setter
+    def rdns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdns", value)
 
 
 class InstanceIp(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +103,54 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceIpArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+
+        Manages a Linode instance IP.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/alpine3.12",
+            label="foobar-test",
+            type="g6-nanode-1",
+            region="us-east")
+        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
+            linode_id=foo_instance.id,
+            public=True)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceIpArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIpArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 rdns: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

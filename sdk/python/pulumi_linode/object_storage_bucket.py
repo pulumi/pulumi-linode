@@ -5,15 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ObjectStorageBucket']
+__all__ = ['ObjectStorageBucketArgs', 'ObjectStorageBucket']
+
+@pulumi.input_type
+class ObjectStorageBucketArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[str],
+                 label: pulumi.Input[str],
+                 cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None):
+        """
+        The set of arguments for constructing a ObjectStorageBucket resource.
+        :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "label", label)
+        if cert is not None:
+            pulumi.set(__self__, "cert", cert)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[str]:
+        """
+        The cluster of the Linode Object Storage Bucket.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        The label of the Linode Object Storage Bucket.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: Optional[pulumi.Input['ObjectStorageBucketCertArgs']]):
+        pulumi.set(self, "cert", value)
 
 
 class ObjectStorageBucket(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +103,58 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ObjectStorageBucketArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to create an Object Storage Bucket.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        primary = linode.get_object_storage_cluster(id="us-east-1")
+        foobar = linode.ObjectStorageBucket("foobar",
+            cluster=primary.id,
+            label="%s")
+        ```
+
+        ## Import
+
+        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ObjectStorageBucketArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ObjectStorageBucketArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

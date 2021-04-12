@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Token']
+__all__ = ['TokenArgs', 'Token']
+
+@pulumi.input_type
+class TokenArgs:
+    def __init__(__self__, *,
+                 scopes: pulumi.Input[str],
+                 expiry: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Token resource.
+        :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+        :param pulumi.Input[str] label: A label for the Token.
+        """
+        pulumi.set(__self__, "scopes", scopes)
+        if expiry is not None:
+            pulumi.set(__self__, "expiry", expiry)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[str]:
+        """
+        The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+        """
+        return pulumi.get(self, "expiry")
+
+    @expiry.setter
+    def expiry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        A label for the Token.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
 
 
 class Token(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +121,72 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] label: A label for the Token.
         :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TokenArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, to interact with Linode services on a user's behalf.
+
+        It is common for the provider itself to be configured with broadly scoped Personal Access Tokens.  Provisioning scripts or tools configured within a Linode Instance should follow the principle of least privilege to afford only the required roles for tools to perform their necessary tasks.  The `Token` resource allows for the management of Personal Access Tokens with scopes mirroring or narrowing the scope of the parent token.
+
+        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
+            label="token",
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
+        ```
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `token` - The token used to access the API.
+
+        * `created` - The date this Token was created.
+
+        ## Import
+
+        Linodes Tokens can be imported using the Linode Token `id`, e.g.
+
+        The secret token will not be imported.
+
+        ```sh
+         $ pulumi import linode:index/token:Token mytoken 1234567
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TokenArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TokenArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 expiry: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,227 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 expire_sec: Optional[pulumi.Input[int]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 refresh_sec: Optional[pulumi.Input[int]] = None,
+                 retry_sec: Optional[pulumi.Input[int]] = None,
+                 soa_email: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl_sec: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
+        :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+        :param pulumi.Input[str] description: A description for this Domain. This is for display purposes only.
+        :param pulumi.Input[int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[str] group: The group this Domain belongs to. This is for display purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_ips: The IP addresses representing the master DNS for this Domain.
+        :param pulumi.Input[int] refresh_sec: The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] retry_sec: The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[str] soa_email: Start of Authority email address. This is required for master Domains.
+        :param pulumi.Input[str] status: Used to control whether this Domain is currently being rendered (defaults to "active").
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "type", type)
+        if axfr_ips is not None:
+            pulumi.set(__self__, "axfr_ips", axfr_ips)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expire_sec is not None:
+            pulumi.set(__self__, "expire_sec", expire_sec)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if master_ips is not None:
+            pulumi.set(__self__, "master_ips", master_ips)
+        if refresh_sec is not None:
+            pulumi.set(__self__, "refresh_sec", refresh_sec)
+        if retry_sec is not None:
+            pulumi.set(__self__, "retry_sec", retry_sec)
+        if soa_email is not None:
+            pulumi.set(__self__, "soa_email", soa_email)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if ttl_sec is not None:
+            pulumi.set(__self__, "ttl_sec", ttl_sec)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="axfrIps")
+    def axfr_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+        """
+        return pulumi.get(self, "axfr_ips")
+
+    @axfr_ips.setter
+    def axfr_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "axfr_ips", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for this Domain. This is for display purposes only.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expireSec")
+    def expire_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        """
+        return pulumi.get(self, "expire_sec")
+
+    @expire_sec.setter
+    def expire_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expire_sec", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group this Domain belongs to. This is for display purposes only.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="masterIps")
+    def master_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IP addresses representing the master DNS for this Domain.
+        """
+        return pulumi.get(self, "master_ips")
+
+    @master_ips.setter
+    def master_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "master_ips", value)
+
+    @property
+    @pulumi.getter(name="refreshSec")
+    def refresh_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        """
+        return pulumi.get(self, "refresh_sec")
+
+    @refresh_sec.setter
+    def refresh_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_sec", value)
+
+    @property
+    @pulumi.getter(name="retrySec")
+    def retry_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        """
+        return pulumi.get(self, "retry_sec")
+
+    @retry_sec.setter
+    def retry_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retry_sec", value)
+
+    @property
+    @pulumi.getter(name="soaEmail")
+    def soa_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start of Authority email address. This is required for master Domains.
+        """
+        return pulumi.get(self, "soa_email")
+
+    @soa_email.setter
+    def soa_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "soa_email", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to control whether this Domain is currently being rendered (defaults to "active").
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="ttlSec")
+    def ttl_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        """
+        return pulumi.get(self, "ttl_sec")
+
+    @ttl_sec.setter
+    def ttl_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl_sec", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +301,83 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
+        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            domain="foobar.example",
+            soa_email="example@foobar.example",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            type="master")
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
+        ## Attributes
+
+        This resource exports no additional attributes, however `status` may reflect degraded states.
+
+        ## Import
+
+        Linodes Domains can be imported using the Linode Domain `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/domain:Domain foobar 1234567
+        ```
+
+         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
+
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 expire_sec: Optional[pulumi.Input[int]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 refresh_sec: Optional[pulumi.Input[int]] = None,
+                 retry_sec: Optional[pulumi.Input[int]] = None,
+                 soa_email: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl_sec: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

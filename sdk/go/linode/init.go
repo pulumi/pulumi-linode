@@ -21,49 +21,50 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "linode:index/domain:Domain":
-		r, err = NewDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &Domain{}
 	case "linode:index/domainRecord:DomainRecord":
-		r, err = NewDomainRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainRecord{}
 	case "linode:index/firewall:Firewall":
-		r, err = NewFirewall(ctx, name, nil, pulumi.URN_(urn))
+		r = &Firewall{}
 	case "linode:index/image:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "linode:index/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "linode:index/instanceIp:InstanceIp":
-		r, err = NewInstanceIp(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIp{}
 	case "linode:index/lkeCluster:LkeCluster":
-		r, err = NewLkeCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &LkeCluster{}
 	case "linode:index/nodeBalancer:NodeBalancer":
-		r, err = NewNodeBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeBalancer{}
 	case "linode:index/nodeBalancerConfig:NodeBalancerConfig":
-		r, err = NewNodeBalancerConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeBalancerConfig{}
 	case "linode:index/nodeBalancerNode:NodeBalancerNode":
-		r, err = NewNodeBalancerNode(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeBalancerNode{}
 	case "linode:index/objectStorageBucket:ObjectStorageBucket":
-		r, err = NewObjectStorageBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectStorageBucket{}
 	case "linode:index/objectStorageKey:ObjectStorageKey":
-		r, err = NewObjectStorageKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectStorageKey{}
 	case "linode:index/objectStorageObject:ObjectStorageObject":
-		r, err = NewObjectStorageObject(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectStorageObject{}
 	case "linode:index/rdns:Rdns":
-		r, err = NewRdns(ctx, name, nil, pulumi.URN_(urn))
+		r = &Rdns{}
 	case "linode:index/sshKey:SshKey":
-		r, err = NewSshKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &SshKey{}
 	case "linode:index/stackScript:StackScript":
-		r, err = NewStackScript(ctx, name, nil, pulumi.URN_(urn))
+		r = &StackScript{}
 	case "linode:index/token:Token":
-		r, err = NewToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &Token{}
 	case "linode:index/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	case "linode:index/vlan:Vlan":
-		r, err = NewVlan(ctx, name, nil, pulumi.URN_(urn))
+		r = &Vlan{}
 	case "linode:index/volume:Volume":
-		r, err = NewVolume(ctx, name, nil, pulumi.URN_(urn))
+		r = &Volume{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -80,7 +81,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {
