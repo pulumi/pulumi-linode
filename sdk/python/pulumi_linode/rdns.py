@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Rdns']
+__all__ = ['RdnsArgs', 'Rdns']
+
+@pulumi.input_type
+class RdnsArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 rdns: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a Rdns resource.
+        :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
+        :param pulumi.Input[str] rdns: The name of the RDNS address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "rdns", rdns)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> pulumi.Input[str]:
+        """
+        The name of the RDNS address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @rdns.setter
+    def rdns(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rdns", value)
 
 
 class Rdns(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +78,47 @@ class Rdns(pulumi.CustomResource):
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RdnsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.
+
+        Linode RDNS names must have a matching address value in an A or AAAA record.  This A or AAAA name must be resolvable at the time the RDNS resource is being associated.
+
+        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
+
+        ## Import
+
+        Linodes RDNS resources can be imported using the address as the `id`.
+
+        ```sh
+         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RdnsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RdnsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 rdns: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

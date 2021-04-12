@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['SshKey']
+__all__ = ['SshKeyArgs', 'SshKey']
+
+@pulumi.input_type
+class SshKeyArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 ssh_key: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a SshKey resource.
+        :param pulumi.Input[str] label: A label for the SSH Key.
+        :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ssh_key", ssh_key)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        A label for the SSH Key.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> pulumi.Input[str]:
+        """
+        The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        return pulumi.get(self, "ssh_key")
+
+    @ssh_key.setter
+    def ssh_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_key", value)
 
 
 class SshKey(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +81,50 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SshKeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
+        For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
+
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `created` - The date this SSH Key was created.
+
+        ## Import
+
+        Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SshKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SshKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 ssh_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

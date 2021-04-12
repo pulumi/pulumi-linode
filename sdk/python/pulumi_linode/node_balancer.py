@@ -5,15 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodeBalancer']
+__all__ = ['NodeBalancerArgs', 'NodeBalancer']
+
+@pulumi.input_type
+class NodeBalancerArgs:
+    def __init__(__self__, *,
+                 region: pulumi.Input[str],
+                 client_conn_throttle: Optional[pulumi.Input[int]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a NodeBalancer resource.
+        :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[str] label: The label of the Linode NodeBalancer
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        pulumi.set(__self__, "region", region)
+        if client_conn_throttle is not None:
+            pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="clientConnThrottle")
+    def client_conn_throttle(self) -> Optional[pulumi.Input[int]]:
+        """
+        Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        """
+        return pulumi.get(self, "client_conn_throttle")
+
+    @client_conn_throttle.setter
+    def client_conn_throttle(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_conn_throttle", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label of the Linode NodeBalancer
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class NodeBalancer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -81,6 +152,84 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodeBalancerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
+        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a NodeBalancer.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            client_conn_throttle=20,
+            label="mynodebalancer",
+            region="us-east",
+            tags=["foobar"])
+        ```
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+
+        * `ipv4` - The Public IPv4 Address of this NodeBalancer
+
+        * `ipv6` - The Public IPv6 Address of this NodeBalancer
+
+        * `transfer` - The network transfer stats for the current month
+
+        ### transfer
+
+        The following attributes are available on transfer:
+
+        * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
+
+        * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
+
+        * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
+
+        ## Import
+
+        Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+        ```
+
+         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
+
+        :param str resource_name: The name of the resource.
+        :param NodeBalancerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodeBalancerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 client_conn_throttle: Optional[pulumi.Input[int]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

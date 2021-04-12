@@ -5,15 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ObjectStorageKey']
+__all__ = ['ObjectStorageKeyArgs', 'ObjectStorageKey']
+
+@pulumi.input_type
+class ObjectStorageKeyArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None):
+        """
+        The set of arguments for constructing a ObjectStorageKey resource.
+        :param pulumi.Input[str] label: The label given to this key. For display purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        """
+        pulumi.set(__self__, "label", label)
+        if bucket_accesses is not None:
+            pulumi.set(__self__, "bucket_accesses", bucket_accesses)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        The label given to this key. For display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="bucketAccesses")
+    def bucket_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]:
+        """
+        Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        """
+        return pulumi.get(self, "bucket_accesses")
+
+    @bucket_accesses.setter
+    def bucket_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]):
+        pulumi.set(self, "bucket_accesses", value)
 
 
 class ObjectStorageKey(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +89,55 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ObjectStorageKeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to create an Object Storage Key.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.ObjectStorageKey("foo", label="image-access")
+        ```
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `access_key` - This keypair's access key. This is not secret.
+
+        * `secret_key` - This keypair's secret key.
+
+        * `limited` - Whether or not this key is a limited access key.
+
+        :param str resource_name: The name of the resource.
+        :param ObjectStorageKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ObjectStorageKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

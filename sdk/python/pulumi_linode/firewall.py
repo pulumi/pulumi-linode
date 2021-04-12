@@ -5,15 +5,148 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Firewall']
+__all__ = ['FirewallArgs', 'Firewall']
+
+@pulumi.input_type
+class FirewallArgs:
+    def __init__(__self__, *,
+                 inbound_policy: pulumi.Input[str],
+                 label: pulumi.Input[str],
+                 outbound_policy: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Firewall resource.
+        :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "outbound_policy", outbound_policy)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if inbounds is not None:
+            pulumi.set(__self__, "inbounds", inbounds)
+        if linodes is not None:
+            pulumi.set(__self__, "linodes", linodes)
+        if outbounds is not None:
+            pulumi.set(__self__, "outbounds", outbounds)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="inboundPolicy")
+    def inbound_policy(self) -> pulumi.Input[str]:
+        """
+        The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        """
+        return pulumi.get(self, "inbound_policy")
+
+    @inbound_policy.setter
+    def inbound_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "inbound_policy", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="outboundPolicy")
+    def outbound_policy(self) -> pulumi.Input[str]:
+        """
+        The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        """
+        return pulumi.get(self, "outbound_policy")
+
+    @outbound_policy.setter
+    def outbound_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "outbound_policy", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the Firewall's rules are not enforced (defaults to `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
+        """
+        A firewall rule that specifies what inbound network traffic is allowed.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @inbounds.setter
+    def inbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
+        pulumi.set(self, "inbounds", value)
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        """
+        return pulumi.get(self, "linodes")
+
+    @linodes.setter
+    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
+        """
+        A firewall rule that specifies what outbound network traffic is allowed.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @outbounds.setter
+    def outbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
+        pulumi.set(self, "outbounds", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Firewall(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +222,88 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FirewallArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        > **NOTICE:** The Firewall feature is currently available through early access.
+
+        Manages a Linode Firewall.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("myInstance",
+            label="my_instance",
+            image="linode/ubuntu18.04",
+            region="us-east",
+            type="g6-standard-1",
+            root_pass="bogusPassword$",
+            swap_size=256)
+        my_firewall = linode.Firewall("myFirewall",
+            label="my_firewall",
+            tags=["test"],
+            inbounds=[linode.FirewallInboundArgs(
+                label="allow-them",
+                action="ACCEPT",
+                protocol="TCP",
+                ports="80",
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["ff00::/8"],
+            )],
+            inbound_policy="DROP",
+            outbounds=[linode.FirewallOutboundArgs(
+                label="reject-them",
+                action="DROP",
+                protocol="TCP",
+                ports="80",
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["ff00::/8"],
+            )],
+            outbound_policy="ACCEPT",
+            linodes=[my_instance.id])
+        ```
+
+        ## Import
+
+        Firewalls can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FirewallArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FirewallArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 inbound_policy: Optional[pulumi.Input[str]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 outbound_policy: Optional[pulumi.Input[str]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

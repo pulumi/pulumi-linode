@@ -5,15 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LkeCluster']
+__all__ = ['LkeClusterArgs', 'LkeCluster']
+
+@pulumi.input_type
+class LkeClusterArgs:
+    def __init__(__self__, *,
+                 k8s_version: pulumi.Input[str],
+                 label: pulumi.Input[str],
+                 pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
+                 region: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a LkeCluster resource.
+        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
+        :param pulumi.Input[str] region: This Kubernetes cluster's location.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        pulumi.set(__self__, "k8s_version", k8s_version)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "pools", pools)
+        pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> pulumi.Input[str]:
+        """
+        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @k8s_version.setter
+    def k8s_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "k8s_version", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        This Kubernetes cluster's unique label.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def pools(self) -> pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]:
+        """
+        Additional nested attributes:
+        """
+        return pulumi.get(self, "pools")
+
+    @pools.setter
+    def pools(self, value: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]):
+        pulumi.set(self, "pools", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        This Kubernetes cluster's location.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class LkeCluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -61,6 +145,63 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LkeClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages an LKE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.17",
+            label="my-cluster",
+            pools=[linode.LkeClusterPoolArgs(
+                count=3,
+                type="g6-standard-2",
+            )],
+            region="us-central",
+            tags=["prod"])
+        ```
+
+        ## Import
+
+        LKE Clusters can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LkeClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LkeClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 k8s_version: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

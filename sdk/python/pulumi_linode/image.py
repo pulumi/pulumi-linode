@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Image']
+__all__ = ['ImageArgs', 'Image']
+
+@pulumi.input_type
+class ImageArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[int],
+                 label: pulumi.Input[str],
+                 linode_id: pulumi.Input[int],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Image resource.
+        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
+        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[str] description: A detailed description of this Image.
+        """
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linode_id", linode_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the Linode Disk that this Image will be created from.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        A short description of the Image. Labels cannot contain special characters.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the Linode that this Image will be created from.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description of this Image.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 class Image(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -85,6 +154,90 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
+
+        For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            region="us-central",
+            type="g6-nanode-1")
+        bar = linode.Image("bar",
+            description="Image taken from foo",
+            disk_id=foo.disks[0].id,
+            label="foo-sda-image",
+            linode_id=foo.id)
+        bar_based = linode.Instance("barBased",
+            image=bar.id,
+            region="eu-west",
+            type=foo.type)
+        ```
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+
+        * `created` - When this Image was created.
+
+        * `created_by` - The name of the User who created this Image.
+
+        * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
+
+        * `is_public` - True if the Image is public.
+
+        * `size` - The minimum size this Image needs to deploy. Size is in MB.
+
+        * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
+
+        * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+
+        * `vendor` - The upstream distribution vendor. Nil for private Images.
+
+        ## Import
+
+        Linodes Images can be imported using the Linode Image `id`, e.g.
+
+        ```sh
+         $ pulumi import linode:index/image:Image myimage 1234567
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

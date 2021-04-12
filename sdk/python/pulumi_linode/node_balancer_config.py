@@ -5,15 +5,280 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodeBalancerConfig']
+__all__ = ['NodeBalancerConfigArgs', 'NodeBalancerConfig']
+
+@pulumi.input_type
+class NodeBalancerConfigArgs:
+    def __init__(__self__, *,
+                 nodebalancer_id: pulumi.Input[int],
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 check: Optional[pulumi.Input[str]] = None,
+                 check_attempts: Optional[pulumi.Input[int]] = None,
+                 check_body: Optional[pulumi.Input[str]] = None,
+                 check_interval: Optional[pulumi.Input[int]] = None,
+                 check_passive: Optional[pulumi.Input[bool]] = None,
+                 check_path: Optional[pulumi.Input[str]] = None,
+                 check_timeout: Optional[pulumi.Input[int]] = None,
+                 cipher_suite: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol: Optional[pulumi.Input[str]] = None,
+                 ssl_cert: Optional[pulumi.Input[str]] = None,
+                 ssl_key: Optional[pulumi.Input[str]] = None,
+                 stickiness: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NodeBalancerConfig resource.
+        :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
+               the response body of a check request, the backend is considered to be down
+        :param pulumi.Input[int] check_interval: How often, in seconds, to check that backends are up and serving requests.
+        :param pulumi.Input[bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+        :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+        :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
+        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        """
+        pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if check is not None:
+            pulumi.set(__self__, "check", check)
+        if check_attempts is not None:
+            pulumi.set(__self__, "check_attempts", check_attempts)
+        if check_body is not None:
+            pulumi.set(__self__, "check_body", check_body)
+        if check_interval is not None:
+            pulumi.set(__self__, "check_interval", check_interval)
+        if check_passive is not None:
+            pulumi.set(__self__, "check_passive", check_passive)
+        if check_path is not None:
+            pulumi.set(__self__, "check_path", check_path)
+        if check_timeout is not None:
+            pulumi.set(__self__, "check_timeout", check_timeout)
+        if cipher_suite is not None:
+            pulumi.set(__self__, "cipher_suite", cipher_suite)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if proxy_protocol is not None:
+            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        if ssl_cert is not None:
+            pulumi.set(__self__, "ssl_cert", ssl_cert)
+        if ssl_key is not None:
+            pulumi.set(__self__, "ssl_key", ssl_key)
+        if stickiness is not None:
+            pulumi.set(__self__, "stickiness", stickiness)
+
+    @property
+    @pulumi.getter(name="nodebalancerId")
+    def nodebalancer_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the NodeBalancer to access.
+        """
+        return pulumi.get(self, "nodebalancer_id")
+
+    @nodebalancer_id.setter
+    def nodebalancer_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "nodebalancer_id", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def check(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        """
+        return pulumi.get(self, "check")
+
+    @check.setter
+    def check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "check", value)
+
+    @property
+    @pulumi.getter(name="checkAttempts")
+    def check_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many times to attempt a check before considering a backend to be down. (1-30)
+        """
+        return pulumi.get(self, "check_attempts")
+
+    @check_attempts.setter
+    def check_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "check_attempts", value)
+
+    @property
+    @pulumi.getter(name="checkBody")
+    def check_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in
+        the response body of a check request, the backend is considered to be down
+        """
+        return pulumi.get(self, "check_body")
+
+    @check_body.setter
+    def check_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "check_body", value)
+
+    @property
+    @pulumi.getter(name="checkInterval")
+    def check_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often, in seconds, to check that backends are up and serving requests.
+        """
+        return pulumi.get(self, "check_interval")
+
+    @check_interval.setter
+    def check_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "check_interval", value)
+
+    @property
+    @pulumi.getter(name="checkPassive")
+    def check_passive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+        """
+        return pulumi.get(self, "check_passive")
+
+    @check_passive.setter
+    def check_passive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_passive", value)
+
+    @property
+    @pulumi.getter(name="checkPath")
+    def check_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+        """
+        return pulumi.get(self, "check_path")
+
+    @check_path.setter
+    def check_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "check_path", value)
+
+    @property
+    @pulumi.getter(name="checkTimeout")
+    def check_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        """
+        return pulumi.get(self, "check_timeout")
+
+    @check_timeout.setter
+    def check_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "check_timeout", value)
+
+    @property
+    @pulumi.getter(name="cipherSuite")
+    def cipher_suite(self) -> Optional[pulumi.Input[str]]:
+        """
+        What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        """
+        return pulumi.get(self, "cipher_suite")
+
+    @cipher_suite.setter
+    def cipher_suite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cipher_suite", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocol")
+    def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        """
+        return pulumi.get(self, "proxy_protocol")
+
+    @proxy_protocol.setter
+    def proxy_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_protocol", value)
+
+    @property
+    @pulumi.getter(name="sslCert")
+    def ssl_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        """
+        return pulumi.get(self, "ssl_cert")
+
+    @ssl_cert.setter
+    def ssl_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_cert", value)
+
+    @property
+    @pulumi.getter(name="sslKey")
+    def ssl_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        """
+        return pulumi.get(self, "ssl_key")
+
+    @ssl_key.setter
+    def ssl_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_key", value)
+
+    @property
+    @pulumi.getter
+    def stickiness(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        """
+        return pulumi.get(self, "stickiness")
+
+    @stickiness.setter
+    def stickiness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stickiness", value)
 
 
 class NodeBalancerConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -111,6 +376,101 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodeBalancerConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
+        For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            client_conn_throttle=20,
+            label="mynodebalancer",
+            region="us-east")
+        foofig = linode.NodeBalancerConfig("foofig",
+            algorithm="source",
+            check="http",
+            check_attempts=3,
+            check_path="/foo",
+            check_timeout=30,
+            nodebalancer_id=foobar.id,
+            port=8088,
+            protocol="http",
+            stickiness="http_cookie")
+        ```
+        ## Attributes
+
+        This resource exports the following attributes:
+
+        * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+
+        * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+
+        * `node_status` - The status of the attached nodes.
+
+        ### node_status
+
+        The following attributes are available on node_status:
+
+        * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
+
+        * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+
+        ## Import
+
+        NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
+
+        ```sh
+         $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
+        ```
+
+         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
+
+        :param str resource_name: The name of the resource.
+        :param NodeBalancerConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodeBalancerConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 check: Optional[pulumi.Input[str]] = None,
+                 check_attempts: Optional[pulumi.Input[int]] = None,
+                 check_body: Optional[pulumi.Input[str]] = None,
+                 check_interval: Optional[pulumi.Input[int]] = None,
+                 check_passive: Optional[pulumi.Input[bool]] = None,
+                 check_path: Optional[pulumi.Input[str]] = None,
+                 check_timeout: Optional[pulumi.Input[int]] = None,
+                 cipher_suite: Optional[pulumi.Input[str]] = None,
+                 nodebalancer_id: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol: Optional[pulumi.Input[str]] = None,
+                 ssl_cert: Optional[pulumi.Input[str]] = None,
+                 ssl_key: Optional[pulumi.Input[str]] = None,
+                 stickiness: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
