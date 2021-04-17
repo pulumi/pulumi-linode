@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VolumeArgs', 'Volume']
 
@@ -82,6 +82,128 @@ class VolumeArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _VolumeState:
+    def __init__(__self__, *,
+                 filesystem_path: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Volume resources.
+        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+               Volume label.
+        :param pulumi.Input[str] label: The label of the Linode Volume
+        :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
+        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        :param pulumi.Input[int] size: Size of the Volume in GB.
+        :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        if filesystem_path is not None:
+            pulumi.set(__self__, "filesystem_path", filesystem_path)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if linode_id is not None:
+            pulumi.set(__self__, "linode_id", linode_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filesystemPath")
+    def filesystem_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+        Volume label.
+        """
+        return pulumi.get(self, "filesystem_path")
+
+    @filesystem_path.setter
+    def filesystem_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filesystem_path", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label of the Linode Volume
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a Linode Instance where the Volume should be attached.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the Volume in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the volume, indicating the current readiness state.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -283,19 +405,19 @@ class Volume(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VolumeArgs.__new__(VolumeArgs)
 
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
-            __props__['label'] = label
-            __props__['linode_id'] = linode_id
+            __props__.__dict__["label"] = label
+            __props__.__dict__["linode_id"] = linode_id
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['size'] = size
-            __props__['tags'] = tags
-            __props__['filesystem_path'] = None
-            __props__['status'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["size"] = size
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["filesystem_path"] = None
+            __props__.__dict__["status"] = None
         super(Volume, __self__).__init__(
             'linode:index/volume:Volume',
             resource_name,
@@ -331,15 +453,15 @@ class Volume(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VolumeState.__new__(_VolumeState)
 
-        __props__["filesystem_path"] = filesystem_path
-        __props__["label"] = label
-        __props__["linode_id"] = linode_id
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["status"] = status
-        __props__["tags"] = tags
+        __props__.__dict__["filesystem_path"] = filesystem_path
+        __props__.__dict__["label"] = label
+        __props__.__dict__["linode_id"] = linode_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Volume(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -398,10 +520,4 @@ class Volume(pulumi.CustomResource):
         A list of tags applied to this object. Tags are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

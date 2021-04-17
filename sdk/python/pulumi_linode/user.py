@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['UserArgs', 'User']
 
@@ -62,6 +62,94 @@ class UserArgs:
     @restricted.setter
     def restricted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "restricted", value)
+
+
+@pulumi.input_type
+class _UserState:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[str]] = None,
+                 restricted: Optional[pulumi.Input[bool]] = None,
+                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tfa_enabled: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[str] email: The email address of the user.
+        :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
+        :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
+        :param pulumi.Input[str] username: The username of the user.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if restricted is not None:
+            pulumi.set(__self__, "restricted", restricted)
+        if ssh_keys is not None:
+            pulumi.set(__self__, "ssh_keys", ssh_keys)
+        if tfa_enabled is not None:
+            pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this user will only have explicit permissions granted.
+        """
+        return pulumi.get(self, "restricted")
+
+    @restricted.setter
+    def restricted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restricted", value)
+
+    @property
+    @pulumi.getter(name="sshKeys")
+    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the User's SSH keys.
+        """
+        return pulumi.get(self, "ssh_keys")
+
+    @ssh_keys.setter
+    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssh_keys", value)
+
+    @property
+    @pulumi.getter(name="tfaEnabled")
+    def tfa_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the user has two-factor-authentication enabled.
+        """
+        return pulumi.get(self, "tfa_enabled")
+
+    @tfa_enabled.setter
+    def tfa_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tfa_enabled", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 class User(pulumi.CustomResource):
@@ -153,17 +241,17 @@ class User(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserArgs.__new__(UserArgs)
 
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
-            __props__['email'] = email
-            __props__['restricted'] = restricted
+            __props__.__dict__["email"] = email
+            __props__.__dict__["restricted"] = restricted
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
-            __props__['username'] = username
-            __props__['ssh_keys'] = None
-            __props__['tfa_enabled'] = None
+            __props__.__dict__["username"] = username
+            __props__.__dict__["ssh_keys"] = None
+            __props__.__dict__["tfa_enabled"] = None
         super(User, __self__).__init__(
             'linode:index/user:User',
             resource_name,
@@ -194,13 +282,13 @@ class User(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _UserState.__new__(_UserState)
 
-        __props__["email"] = email
-        __props__["restricted"] = restricted
-        __props__["ssh_keys"] = ssh_keys
-        __props__["tfa_enabled"] = tfa_enabled
-        __props__["username"] = username
+        __props__.__dict__["email"] = email
+        __props__.__dict__["restricted"] = restricted
+        __props__.__dict__["ssh_keys"] = ssh_keys
+        __props__.__dict__["tfa_enabled"] = tfa_enabled
+        __props__.__dict__["username"] = username
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -242,10 +330,4 @@ class User(pulumi.CustomResource):
         The username of the user.
         """
         return pulumi.get(self, "username")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TokenArgs', 'Token']
 
@@ -63,6 +63,94 @@ class TokenArgs:
     @label.setter
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
+
+
+@pulumi.input_type
+class _TokenState:
+    def __init__(__self__, *,
+                 created: Optional[pulumi.Input[str]] = None,
+                 expiry: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Token resources.
+        :param pulumi.Input[str] created: The date and time this token was created.
+        :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+        :param pulumi.Input[str] label: A label for the Token.
+        :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        :param pulumi.Input[str] token: The token used to access the API.
+        """
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if expiry is not None:
+            pulumi.set(__self__, "expiry", expiry)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time this token was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+        """
+        return pulumi.get(self, "expiry")
+
+    @expiry.setter
+    def expiry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        A label for the Token.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The token used to access the API.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
 
 class Token(pulumi.CustomResource):
@@ -202,15 +290,15 @@ class Token(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TokenArgs.__new__(TokenArgs)
 
-            __props__['expiry'] = expiry
-            __props__['label'] = label
+            __props__.__dict__["expiry"] = expiry
+            __props__.__dict__["label"] = label
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
-            __props__['scopes'] = scopes
-            __props__['created'] = None
-            __props__['token'] = None
+            __props__.__dict__["scopes"] = scopes
+            __props__.__dict__["created"] = None
+            __props__.__dict__["token"] = None
         super(Token, __self__).__init__(
             'linode:index/token:Token',
             resource_name,
@@ -241,13 +329,13 @@ class Token(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TokenState.__new__(_TokenState)
 
-        __props__["created"] = created
-        __props__["expiry"] = expiry
-        __props__["label"] = label
-        __props__["scopes"] = scopes
-        __props__["token"] = token
+        __props__.__dict__["created"] = created
+        __props__.__dict__["expiry"] = expiry
+        __props__.__dict__["label"] = label
+        __props__.__dict__["scopes"] = scopes
+        __props__.__dict__["token"] = token
         return Token(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -289,10 +377,4 @@ class Token(pulumi.CustomResource):
         The token used to access the API.
         """
         return pulumi.get(self, "token")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

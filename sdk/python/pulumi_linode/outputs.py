@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -49,6 +49,23 @@ __all__ = [
 
 @pulumi.output_type
 class FirewallDevice(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallDevice. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallDevice.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallDevice.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  entity_id: Optional[int] = None,
                  id: Optional[int] = None,
@@ -108,9 +125,6 @@ class FirewallDevice(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         return pulumi.get(self, "url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -188,9 +202,6 @@ class FirewallInbound(dict):
         """
         return pulumi.get(self, "ports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallOutbound(dict):
@@ -267,12 +278,30 @@ class FirewallOutbound(dict):
         """
         return pulumi.get(self, "ports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceAlerts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkIn":
+            suggest = "network_in"
+        elif key == "networkOut":
+            suggest = "network_out"
+        elif key == "transferQuota":
+            suggest = "transfer_quota"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAlerts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAlerts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAlerts.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu: Optional[int] = None,
                  io: Optional[int] = None,
@@ -315,9 +344,6 @@ class InstanceAlerts(dict):
     def transfer_quota(self) -> Optional[int]:
         return pulumi.get(self, "transfer_quota")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceBackups(dict):
@@ -338,9 +364,6 @@ class InstanceBackups(dict):
     @pulumi.getter
     def schedule(self) -> Optional['outputs.InstanceBackupsSchedule']:
         return pulumi.get(self, "schedule")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -363,12 +386,32 @@ class InstanceBackupsSchedule(dict):
     def window(self) -> Optional[str]:
         return pulumi.get(self, "window")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryLimit":
+            suggest = "memory_limit"
+        elif key == "rootDevice":
+            suggest = "root_device"
+        elif key == "runLevel":
+            suggest = "run_level"
+        elif key == "virtMode":
+            suggest = "virt_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  comments: Optional[str] = None,
@@ -480,9 +523,6 @@ class InstanceConfig(dict):
         """
         return pulumi.get(self, "virt_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceConfigDevices(dict):
@@ -558,12 +598,30 @@ class InstanceConfigDevices(dict):
     def sdh(self) -> Optional['outputs.InstanceConfigDevicesSdh']:
         return pulumi.get(self, "sdh")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceConfigDevicesSda(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSda. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSda.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSda.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -603,13 +661,31 @@ class InstanceConfigDevicesSda(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -649,13 +725,31 @@ class InstanceConfigDevicesSdb(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdc.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -695,13 +789,31 @@ class InstanceConfigDevicesSdc(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdd.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -741,13 +853,31 @@ class InstanceConfigDevicesSdd(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSde(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSde. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSde.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSde.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -787,13 +917,31 @@ class InstanceConfigDevicesSde(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdf.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -833,13 +981,31 @@ class InstanceConfigDevicesSdf(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -879,13 +1045,31 @@ class InstanceConfigDevicesSdg(dict):
         The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceConfigDevicesSdh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskLabel":
+            suggest = "disk_label"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigDevicesSdh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigDevicesSdh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigDevicesSdh.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_id: Optional[int] = None,
                  disk_label: Optional[str] = None,
@@ -926,12 +1110,30 @@ class InstanceConfigDevicesSdh(dict):
         """
         return pulumi.get(self, "volume_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceConfigHelpers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "devtmpfsAutomount":
+            suggest = "devtmpfs_automount"
+        elif key == "modulesDep":
+            suggest = "modules_dep"
+        elif key == "updatedbDisabled":
+            suggest = "updatedb_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigHelpers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigHelpers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigHelpers.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  devtmpfs_automount: Optional[bool] = None,
                  distro: Optional[bool] = None,
@@ -992,12 +1194,36 @@ class InstanceConfigHelpers(dict):
         """
         return pulumi.get(self, "updatedb_disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedKeys":
+            suggest = "authorized_keys"
+        elif key == "authorizedUsers":
+            suggest = "authorized_users"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "rootPass":
+            suggest = "root_pass"
+        elif key == "stackscriptData":
+            suggest = "stackscript_data"
+        elif key == "stackscriptId":
+            suggest = "stackscript_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  size: int,
@@ -1128,9 +1354,6 @@ class InstanceDisk(dict):
         """
         return pulumi.get(self, "stackscript_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceSpecs(dict):
@@ -1167,9 +1390,6 @@ class InstanceSpecs(dict):
     @pulumi.getter
     def vcpus(self) -> Optional[int]:
         return pulumi.get(self, "vcpus")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1220,12 +1440,26 @@ class LkeClusterPool(dict):
     def nodes(self) -> Optional[Sequence['outputs.LkeClusterPoolNode']]:
         return pulumi.get(self, "nodes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LkeClusterPoolNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LkeClusterPoolNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LkeClusterPoolNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LkeClusterPoolNode.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  instance_id: Optional[int] = None,
@@ -1266,9 +1500,6 @@ class LkeClusterPoolNode(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeBalancerConfigNodeStatus(dict):
@@ -1290,12 +1521,26 @@ class NodeBalancerConfigNodeStatus(dict):
     def up(self) -> Optional[int]:
         return pulumi.get(self, "up")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeBalancerTransfer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeBalancerTransfer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeBalancerTransfer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeBalancerTransfer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  in_: Optional[float] = None,
                  out: Optional[float] = None,
@@ -1322,12 +1567,26 @@ class NodeBalancerTransfer(dict):
     def total(self) -> Optional[float]:
         return pulumi.get(self, "total")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ObjectStorageBucketCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectStorageBucketCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectStorageBucketCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectStorageBucketCert.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate: str,
                  private_key: str):
@@ -1354,12 +1613,26 @@ class ObjectStorageBucketCert(dict):
         """
         return pulumi.get(self, "private_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ObjectStorageKeyBucketAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectStorageKeyBucketAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectStorageKeyBucketAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectStorageKeyBucketAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str,
                  cluster: str,
@@ -1397,12 +1670,28 @@ class ObjectStorageKeyBucketAccess(dict):
         """
         return pulumi.get(self, "permissions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StackScriptUserDefinedField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "manyOf":
+            suggest = "many_of"
+        elif key == "oneOf":
+            suggest = "one_of"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackScriptUserDefinedField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackScriptUserDefinedField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackScriptUserDefinedField.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default: Optional[str] = None,
                  example: Optional[str] = None,
@@ -1459,12 +1748,28 @@ class StackScriptUserDefinedField(dict):
     def one_of(self) -> Optional[str]:
         return pulumi.get(self, "one_of")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VlanAttachedLinode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4Address":
+            suggest = "ipv4_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VlanAttachedLinode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VlanAttachedLinode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VlanAttachedLinode.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: Optional[int] = None,
                  ipv4_address: Optional[str] = None,
@@ -1504,9 +1809,6 @@ class VlanAttachedLinode(dict):
         The mac address of the Linode.
         """
         return pulumi.get(self, "mac_address")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

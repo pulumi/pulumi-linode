@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -281,6 +281,440 @@ class InstanceArgs:
     @stackscript_id.setter
     def stackscript_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stackscript_id", value)
+
+    @property
+    @pulumi.getter(name="swapSize")
+    def swap_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+        """
+        return pulumi.get(self, "swap_size")
+
+    @swap_size.setter
+    def swap_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "swap_size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="watchdogEnabled")
+    def watchdog_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+        """
+        return pulumi.get(self, "watchdog_enabled")
+
+    @watchdog_enabled.setter
+    def watchdog_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "watchdog_enabled", value)
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 alerts: Optional[pulumi.Input['InstanceAlertsArgs']] = None,
+                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_id: Optional[pulumi.Input[int]] = None,
+                 backups: Optional[pulumi.Input['InstanceBackupsArgs']] = None,
+                 backups_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_config_label: Optional[pulumi.Input[str]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv6: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[bool]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 root_pass: Optional[pulumi.Input[str]] = None,
+                 specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_id: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 swap_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 watchdog_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input['InstanceBackupsArgs'] backups: Information about this Linode's backups status.
+        :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
+        :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[str] group: The display group of the Linode instance.
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
+               will be used for this field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+               private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
+        :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
+               Instances in a region.
+        :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] status: The status of the instance, indicating the current readiness state.
+        :param pulumi.Input[int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+        """
+        if alerts is not None:
+            pulumi.set(__self__, "alerts", alerts)
+        if authorized_keys is not None:
+            pulumi.set(__self__, "authorized_keys", authorized_keys)
+        if authorized_users is not None:
+            pulumi.set(__self__, "authorized_users", authorized_users)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if backups_enabled is not None:
+            pulumi.set(__self__, "backups_enabled", backups_enabled)
+        if boot_config_label is not None:
+            pulumi.set(__self__, "boot_config_label", boot_config_label)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if root_pass is not None:
+            pulumi.set(__self__, "root_pass", root_pass)
+        if specs is not None:
+            pulumi.set(__self__, "specs", specs)
+        if stackscript_data is not None:
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
+        if stackscript_id is not None:
+            pulumi.set(__self__, "stackscript_id", stackscript_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if swap_size is not None:
+            pulumi.set(__self__, "swap_size", swap_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if watchdog_enabled is not None:
+            pulumi.set(__self__, "watchdog_enabled", watchdog_enabled)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Optional[pulumi.Input['InstanceAlertsArgs']]:
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: Optional[pulumi.Input['InstanceAlertsArgs']]):
+        pulumi.set(self, "alerts", value)
+
+    @property
+    @pulumi.getter(name="authorizedKeys")
+    def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "authorized_keys")
+
+    @authorized_keys.setter
+    def authorized_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_keys", value)
+
+    @property
+    @pulumi.getter(name="authorizedUsers")
+    def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "authorized_users")
+
+    @authorized_users.setter
+    def authorized_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_users", value)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_id", value)
+
+    @property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input['InstanceBackupsArgs']]:
+        """
+        Information about this Linode's backups status.
+        """
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input['InstanceBackupsArgs']]):
+        pulumi.set(self, "backups", value)
+
+    @property
+    @pulumi.getter(name="backupsEnabled")
+    def backups_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
+        """
+        return pulumi.get(self, "backups_enabled")
+
+    @backups_enabled.setter
+    def backups_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backups_enabled", value)
+
+    @property
+    @pulumi.getter(name="bootConfigLabel")
+    def boot_config_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        """
+        return pulumi.get(self, "boot_config_label")
+
+    @boot_config_label.setter
+    def boot_config_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "boot_config_label", value)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
+        """
+        Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]):
+        pulumi.set(self, "configs", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display group of the Linode instance.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
+        will be used for this field.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
+        private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Config's label for display purposes.  Also used by `boot_config_label`.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @private_ip.setter
+    def private_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
+        Instances in a region.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="rootPass")
+    def root_pass(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        """
+        return pulumi.get(self, "root_pass")
+
+    @root_pass.setter
+    def root_pass(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_pass", value)
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Optional[pulumi.Input['InstanceSpecsArgs']]:
+        return pulumi.get(self, "specs")
+
+    @specs.setter
+    def specs(self, value: Optional[pulumi.Input['InstanceSpecsArgs']]):
+        pulumi.set(self, "specs", value)
+
+    @property
+    @pulumi.getter(name="stackscriptData")
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "stackscript_data")
+
+    @stackscript_data.setter
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "stackscript_data", value)
+
+    @property
+    @pulumi.getter(name="stackscriptId")
+    def stackscript_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        """
+        return pulumi.get(self, "stackscript_id")
+
+    @stackscript_id.setter
+    def stackscript_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stackscript_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the instance, indicating the current readiness state.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="swapSize")
@@ -667,37 +1101,37 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['alerts'] = alerts
-            __props__['authorized_keys'] = authorized_keys
-            __props__['authorized_users'] = authorized_users
-            __props__['backup_id'] = backup_id
-            __props__['backups_enabled'] = backups_enabled
-            __props__['boot_config_label'] = boot_config_label
-            __props__['configs'] = configs
-            __props__['disks'] = disks
-            __props__['group'] = group
-            __props__['image'] = image
-            __props__['label'] = label
-            __props__['private_ip'] = private_ip
+            __props__.__dict__["alerts"] = alerts
+            __props__.__dict__["authorized_keys"] = authorized_keys
+            __props__.__dict__["authorized_users"] = authorized_users
+            __props__.__dict__["backup_id"] = backup_id
+            __props__.__dict__["backups_enabled"] = backups_enabled
+            __props__.__dict__["boot_config_label"] = boot_config_label
+            __props__.__dict__["configs"] = configs
+            __props__.__dict__["disks"] = disks
+            __props__.__dict__["group"] = group
+            __props__.__dict__["image"] = image
+            __props__.__dict__["label"] = label
+            __props__.__dict__["private_ip"] = private_ip
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['root_pass'] = root_pass
-            __props__['stackscript_data'] = stackscript_data
-            __props__['stackscript_id'] = stackscript_id
-            __props__['swap_size'] = swap_size
-            __props__['tags'] = tags
-            __props__['type'] = type
-            __props__['watchdog_enabled'] = watchdog_enabled
-            __props__['backups'] = None
-            __props__['ip_address'] = None
-            __props__['ipv4s'] = None
-            __props__['ipv6'] = None
-            __props__['private_ip_address'] = None
-            __props__['specs'] = None
-            __props__['status'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["root_pass"] = root_pass
+            __props__.__dict__["stackscript_data"] = stackscript_data
+            __props__.__dict__["stackscript_id"] = stackscript_id
+            __props__.__dict__["swap_size"] = swap_size
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["type"] = type
+            __props__.__dict__["watchdog_enabled"] = watchdog_enabled
+            __props__.__dict__["backups"] = None
+            __props__.__dict__["ip_address"] = None
+            __props__.__dict__["ipv4s"] = None
+            __props__.__dict__["ipv6"] = None
+            __props__.__dict__["private_ip_address"] = None
+            __props__.__dict__["specs"] = None
+            __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'linode:index/instance:Instance',
             resource_name,
@@ -772,35 +1206,35 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["alerts"] = alerts
-        __props__["authorized_keys"] = authorized_keys
-        __props__["authorized_users"] = authorized_users
-        __props__["backup_id"] = backup_id
-        __props__["backups"] = backups
-        __props__["backups_enabled"] = backups_enabled
-        __props__["boot_config_label"] = boot_config_label
-        __props__["configs"] = configs
-        __props__["disks"] = disks
-        __props__["group"] = group
-        __props__["image"] = image
-        __props__["ip_address"] = ip_address
-        __props__["ipv4s"] = ipv4s
-        __props__["ipv6"] = ipv6
-        __props__["label"] = label
-        __props__["private_ip"] = private_ip
-        __props__["private_ip_address"] = private_ip_address
-        __props__["region"] = region
-        __props__["root_pass"] = root_pass
-        __props__["specs"] = specs
-        __props__["stackscript_data"] = stackscript_data
-        __props__["stackscript_id"] = stackscript_id
-        __props__["status"] = status
-        __props__["swap_size"] = swap_size
-        __props__["tags"] = tags
-        __props__["type"] = type
-        __props__["watchdog_enabled"] = watchdog_enabled
+        __props__.__dict__["alerts"] = alerts
+        __props__.__dict__["authorized_keys"] = authorized_keys
+        __props__.__dict__["authorized_users"] = authorized_users
+        __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["backups"] = backups
+        __props__.__dict__["backups_enabled"] = backups_enabled
+        __props__.__dict__["boot_config_label"] = boot_config_label
+        __props__.__dict__["configs"] = configs
+        __props__.__dict__["disks"] = disks
+        __props__.__dict__["group"] = group
+        __props__.__dict__["image"] = image
+        __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["ipv4s"] = ipv4s
+        __props__.__dict__["ipv6"] = ipv6
+        __props__.__dict__["label"] = label
+        __props__.__dict__["private_ip"] = private_ip
+        __props__.__dict__["private_ip_address"] = private_ip_address
+        __props__.__dict__["region"] = region
+        __props__.__dict__["root_pass"] = root_pass
+        __props__.__dict__["specs"] = specs
+        __props__.__dict__["stackscript_data"] = stackscript_data
+        __props__.__dict__["stackscript_id"] = stackscript_id
+        __props__.__dict__["status"] = status
+        __props__.__dict__["swap_size"] = swap_size
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
+        __props__.__dict__["watchdog_enabled"] = watchdog_enabled
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1012,10 +1446,4 @@ class Instance(pulumi.CustomResource):
         The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
         return pulumi.get(self, "watchdog_enabled")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
