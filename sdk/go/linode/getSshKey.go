@@ -4,7 +4,7 @@
 package linode
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
@@ -17,8 +17,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -4,7 +4,7 @@
 package linode
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // `getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -17,8 +17,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v2/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

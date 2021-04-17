@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['InstanceIpArgs', 'InstanceIp']
 
@@ -63,6 +63,158 @@ class InstanceIpArgs:
     @rdns.setter
     def rdns(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rdns", value)
+
+
+@pulumi.input_type
+class _InstanceIpState:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 gateway: Optional[pulumi.Input[str]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
+                 prefix: Optional[pulumi.Input[int]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 rdns: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnet_mask: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceIp resources.
+        :param pulumi.Input[str] address: The resulting IPv4 address.
+        :param pulumi.Input[str] gateway: The default gateway for this address
+        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
+        :param pulumi.Input[int] prefix: The number of bits set in the subnet mask.
+        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
+        :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
+        :param pulumi.Input[str] region: The region this IP resides in.
+        :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
+        :param pulumi.Input[str] type: The type of IP address.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if linode_id is not None:
+            pulumi.set(__self__, "linode_id", linode_id)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+        if rdns is not None:
+            pulumi.set(__self__, "rdns", rdns)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if subnet_mask is not None:
+            pulumi.set(__self__, "subnet_mask", subnet_mask)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resulting IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default gateway for this address
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the Linode to allocate an IPv4 address for.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of bits set in the subnet mask.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the IPv4 address is public or private. Defaults to true.
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public", value)
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @rdns.setter
+    def rdns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdns", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region this IP resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mask that separates host bits from network bits for this address.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @subnet_mask.setter
+    def subnet_mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_mask", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of IP address.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class InstanceIp(pulumi.CustomResource):
@@ -166,19 +318,19 @@ class InstanceIp(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceIpArgs.__new__(InstanceIpArgs)
 
             if linode_id is None and not opts.urn:
                 raise TypeError("Missing required property 'linode_id'")
-            __props__['linode_id'] = linode_id
-            __props__['public'] = public
-            __props__['rdns'] = rdns
-            __props__['address'] = None
-            __props__['gateway'] = None
-            __props__['prefix'] = None
-            __props__['region'] = None
-            __props__['subnet_mask'] = None
-            __props__['type'] = None
+            __props__.__dict__["linode_id"] = linode_id
+            __props__.__dict__["public"] = public
+            __props__.__dict__["rdns"] = rdns
+            __props__.__dict__["address"] = None
+            __props__.__dict__["gateway"] = None
+            __props__.__dict__["prefix"] = None
+            __props__.__dict__["region"] = None
+            __props__.__dict__["subnet_mask"] = None
+            __props__.__dict__["type"] = None
         super(InstanceIp, __self__).__init__(
             'linode:index/instanceIp:InstanceIp',
             resource_name,
@@ -217,17 +369,17 @@ class InstanceIp(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceIpState.__new__(_InstanceIpState)
 
-        __props__["address"] = address
-        __props__["gateway"] = gateway
-        __props__["linode_id"] = linode_id
-        __props__["prefix"] = prefix
-        __props__["public"] = public
-        __props__["rdns"] = rdns
-        __props__["region"] = region
-        __props__["subnet_mask"] = subnet_mask
-        __props__["type"] = type
+        __props__.__dict__["address"] = address
+        __props__.__dict__["gateway"] = gateway
+        __props__.__dict__["linode_id"] = linode_id
+        __props__.__dict__["prefix"] = prefix
+        __props__.__dict__["public"] = public
+        __props__.__dict__["rdns"] = rdns
+        __props__.__dict__["region"] = region
+        __props__.__dict__["subnet_mask"] = subnet_mask
+        __props__.__dict__["type"] = type
         return InstanceIp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +453,4 @@ class InstanceIp(pulumi.CustomResource):
         The type of IP address.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

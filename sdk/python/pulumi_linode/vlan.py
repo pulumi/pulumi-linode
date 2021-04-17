@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -83,6 +83,94 @@ class VlanArgs:
         pulumi.set(self, "linodes", value)
 
 
+@pulumi.input_type
+class _VlanState:
+    def __init__(__self__, *,
+                 attached_linodes: Optional[pulumi.Input[Sequence[pulumi.Input['VlanAttachedLinodeArgs']]]] = None,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Vlan resources.
+        :param pulumi.Input[Sequence[pulumi.Input['VlanAttachedLinodeArgs']]] attached_linodes: The Linodes attached to this vlan.
+        :param pulumi.Input[str] cidr_block: The CIDR block for this VLAN.
+        :param pulumi.Input[str] description: Description of the vlan for display purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes to attach to this VLAN.
+        :param pulumi.Input[str] region: The region of where the VLAN is deployed.
+        """
+        if attached_linodes is not None:
+            pulumi.set(__self__, "attached_linodes", attached_linodes)
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if linodes is not None:
+            pulumi.set(__self__, "linodes", linodes)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="attachedLinodes")
+    def attached_linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VlanAttachedLinodeArgs']]]]:
+        """
+        The Linodes attached to this vlan.
+        """
+        return pulumi.get(self, "attached_linodes")
+
+    @attached_linodes.setter
+    def attached_linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VlanAttachedLinodeArgs']]]]):
+        pulumi.set(self, "attached_linodes", value)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block for this VLAN.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the vlan for display purposes only.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of Linodes to attach to this VLAN.
+        """
+        return pulumi.get(self, "linodes")
+
+    @linodes.setter
+    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of where the VLAN is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
 class Vlan(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -149,15 +237,15 @@ class Vlan(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VlanArgs.__new__(VlanArgs)
 
-            __props__['cidr_block'] = cidr_block
-            __props__['description'] = description
-            __props__['linodes'] = linodes
+            __props__.__dict__["cidr_block"] = cidr_block
+            __props__.__dict__["description"] = description
+            __props__.__dict__["linodes"] = linodes
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['attached_linodes'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["attached_linodes"] = None
         super(Vlan, __self__).__init__(
             'linode:index/vlan:Vlan',
             resource_name,
@@ -188,13 +276,13 @@ class Vlan(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VlanState.__new__(_VlanState)
 
-        __props__["attached_linodes"] = attached_linodes
-        __props__["cidr_block"] = cidr_block
-        __props__["description"] = description
-        __props__["linodes"] = linodes
-        __props__["region"] = region
+        __props__.__dict__["attached_linodes"] = attached_linodes
+        __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["description"] = description
+        __props__.__dict__["linodes"] = linodes
+        __props__.__dict__["region"] = region
         return Vlan(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -236,10 +324,4 @@ class Vlan(pulumi.CustomResource):
         The region of where the VLAN is deployed.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -131,6 +131,174 @@ class FirewallArgs:
     @outbounds.setter
     def outbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
         pulumi.set(self, "outbounds", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _FirewallState:
+    def __init__(__self__, *,
+                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 inbound_policy: Optional[pulumi.Input[str]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 outbound_policy: Optional[pulumi.Input[str]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Firewall resources.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]] devices: The devices associated with this firewall.
+        :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
+        :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[str] status: The status of the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        """
+        if devices is not None:
+            pulumi.set(__self__, "devices", devices)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if inbound_policy is not None:
+            pulumi.set(__self__, "inbound_policy", inbound_policy)
+        if inbounds is not None:
+            pulumi.set(__self__, "inbounds", inbounds)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if linodes is not None:
+            pulumi.set(__self__, "linodes", linodes)
+        if outbound_policy is not None:
+            pulumi.set(__self__, "outbound_policy", outbound_policy)
+        if outbounds is not None:
+            pulumi.set(__self__, "outbounds", outbounds)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]]:
+        """
+        The devices associated with this firewall.
+        """
+        return pulumi.get(self, "devices")
+
+    @devices.setter
+    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]]):
+        pulumi.set(self, "devices", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the Firewall's rules are not enforced (defaults to `false`).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="inboundPolicy")
+    def inbound_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        """
+        return pulumi.get(self, "inbound_policy")
+
+    @inbound_policy.setter
+    def inbound_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inbound_policy", value)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
+        """
+        A firewall rule that specifies what inbound network traffic is allowed.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @inbounds.setter
+    def inbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
+        pulumi.set(self, "inbounds", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        """
+        return pulumi.get(self, "linodes")
+
+    @linodes.setter
+    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter(name="outboundPolicy")
+    def outbound_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        """
+        return pulumi.get(self, "outbound_policy")
+
+    @outbound_policy.setter
+    def outbound_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "outbound_policy", value)
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
+        """
+        A firewall rule that specifies what outbound network traffic is allowed.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @outbounds.setter
+    def outbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
+        pulumi.set(self, "outbounds", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the Firewall.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -319,24 +487,24 @@ class Firewall(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FirewallArgs.__new__(FirewallArgs)
 
-            __props__['disabled'] = disabled
+            __props__.__dict__["disabled"] = disabled
             if inbound_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'inbound_policy'")
-            __props__['inbound_policy'] = inbound_policy
-            __props__['inbounds'] = inbounds
+            __props__.__dict__["inbound_policy"] = inbound_policy
+            __props__.__dict__["inbounds"] = inbounds
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
-            __props__['label'] = label
-            __props__['linodes'] = linodes
+            __props__.__dict__["label"] = label
+            __props__.__dict__["linodes"] = linodes
             if outbound_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'outbound_policy'")
-            __props__['outbound_policy'] = outbound_policy
-            __props__['outbounds'] = outbounds
-            __props__['tags'] = tags
-            __props__['devices'] = None
-            __props__['status'] = None
+            __props__.__dict__["outbound_policy"] = outbound_policy
+            __props__.__dict__["outbounds"] = outbounds
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["devices"] = None
+            __props__.__dict__["status"] = None
         super(Firewall, __self__).__init__(
             'linode:index/firewall:Firewall',
             resource_name,
@@ -377,18 +545,18 @@ class Firewall(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FirewallState.__new__(_FirewallState)
 
-        __props__["devices"] = devices
-        __props__["disabled"] = disabled
-        __props__["inbound_policy"] = inbound_policy
-        __props__["inbounds"] = inbounds
-        __props__["label"] = label
-        __props__["linodes"] = linodes
-        __props__["outbound_policy"] = outbound_policy
-        __props__["outbounds"] = outbounds
-        __props__["status"] = status
-        __props__["tags"] = tags
+        __props__.__dict__["devices"] = devices
+        __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["inbound_policy"] = inbound_policy
+        __props__.__dict__["inbounds"] = inbounds
+        __props__.__dict__["label"] = label
+        __props__.__dict__["linodes"] = linodes
+        __props__.__dict__["outbound_policy"] = outbound_policy
+        __props__.__dict__["outbounds"] = outbounds
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -470,10 +638,4 @@ class Firewall(pulumi.CustomResource):
         A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
