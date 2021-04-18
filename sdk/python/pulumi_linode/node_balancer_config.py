@@ -316,8 +316,10 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] ssl_commonname: The common name for the SSL certification this port is serving if this port is not configured to use SSL.
-        :param pulumi.Input[str] ssl_fingerprint: The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
         """
@@ -542,7 +544,8 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="sslCommonname")
     def ssl_commonname(self) -> Optional[pulumi.Input[str]]:
         """
-        The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_commonname")
 
@@ -554,7 +557,8 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
@@ -624,27 +628,27 @@ class NodeBalancerConfig(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
-            region="us-east")
+            region="us-east",
+            client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            algorithm="source",
-            check="http",
-            check_attempts=3,
-            check_path="/foo",
-            check_timeout=30,
             nodebalancer_id=foobar.id,
             port=8088,
             protocol="http",
-            stickiness="http_cookie")
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
         ```
         ## Attributes
 
         This resource exports the following attributes:
 
-        * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 
-        * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 
         * `node_status` - The status of the attached nodes.
 
@@ -705,27 +709,27 @@ class NodeBalancerConfig(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
-            region="us-east")
+            region="us-east",
+            client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            algorithm="source",
-            check="http",
-            check_attempts=3,
-            check_path="/foo",
-            check_timeout=30,
             nodebalancer_id=foobar.id,
             port=8088,
             protocol="http",
-            stickiness="http_cookie")
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
         ```
         ## Attributes
 
         This resource exports the following attributes:
 
-        * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 
-        * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 
         * `node_status` - The status of the attached nodes.
 
@@ -870,8 +874,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] ssl_commonname: The common name for the SSL certification this port is serving if this port is not configured to use SSL.
-        :param pulumi.Input[str] ssl_fingerprint: The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
         """
@@ -1022,7 +1028,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="sslCommonname")
     def ssl_commonname(self) -> pulumi.Output[str]:
         """
-        The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_commonname")
 
@@ -1030,7 +1037,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_fingerprint")
 

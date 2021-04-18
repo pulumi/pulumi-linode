@@ -10,6 +10,9 @@ from .. import _utilities
 
 __all__ = [
     'api_version',
+    'event_poll_ms',
+    'lke_event_poll_ms',
+    'lke_node_ready_poll_ms',
     'max_retry_delay_ms',
     'min_retry_delay_ms',
     'skip_instance_ready_poll',
@@ -23,6 +26,21 @@ __config__ = pulumi.Config('linode')
 api_version = __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 """
 An HTTP User-Agent Prefix to prepend in API requests.
+"""
+
+event_poll_ms = __config__.get('eventPollMs')
+"""
+The rate in milliseconds to poll for events.
+"""
+
+lke_event_poll_ms = __config__.get('lkeEventPollMs')
+"""
+The rate in milliseconds to poll for LKE events.
+"""
+
+lke_node_ready_poll_ms = __config__.get('lkeNodeReadyPollMs')
+"""
+The rate in milliseconds to poll for an LKE node to be ready.
 """
 
 max_retry_delay_ms = __config__.get('maxRetryDelayMs')

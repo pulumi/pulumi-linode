@@ -829,11 +829,26 @@ class Instance(pulumi.CustomResource):
         me = linode.get_profile()
         web_volume = linode.Volume("webVolume",
             label="web_volume",
-            region="us-central",
-            size=20)
+            size=20,
+            region="us-central")
         web = linode.Instance("web",
-            boot_config_label="boot_config",
+            label="complex_instance",
+            group="foo",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True,
+            disks=[linode.InstanceDiskArgs(
+                label="boot",
+                size=3000,
+                image="linode/ubuntu18.04",
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+                authorized_users=[me.username],
+                root_pass="terr4form-test",
+            )],
             configs=[linode.InstanceConfigArgs(
+                label="boot_config",
+                kernel="linode/latest-64bit",
                 devices=linode.InstanceConfigDevicesArgs(
                     sda=linode.InstanceConfigDevicesSdaArgs(
                         disk_label="boot",
@@ -842,24 +857,9 @@ class Instance(pulumi.CustomResource):
                         volume_id=web_volume.id,
                     ),
                 ),
-                kernel="linode/latest-64bit",
-                label="boot_config",
                 root_device="/dev/sda",
             )],
-            disks=[linode.InstanceDiskArgs(
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                authorized_users=[me.username],
-                image="linode/ubuntu18.04",
-                label="boot",
-                root_pass="terr4form-test",
-                size=3000,
-            )],
-            group="foo",
-            label="complex_instance",
-            private_ip=True,
-            region="us-central",
-            tags=["foo"],
-            type="g6-nanode-1")
+            boot_config_label="boot_config")
         ```
         ## Attributes
 
@@ -970,11 +970,26 @@ class Instance(pulumi.CustomResource):
         me = linode.get_profile()
         web_volume = linode.Volume("webVolume",
             label="web_volume",
-            region="us-central",
-            size=20)
+            size=20,
+            region="us-central")
         web = linode.Instance("web",
-            boot_config_label="boot_config",
+            label="complex_instance",
+            group="foo",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True,
+            disks=[linode.InstanceDiskArgs(
+                label="boot",
+                size=3000,
+                image="linode/ubuntu18.04",
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+                authorized_users=[me.username],
+                root_pass="terr4form-test",
+            )],
             configs=[linode.InstanceConfigArgs(
+                label="boot_config",
+                kernel="linode/latest-64bit",
                 devices=linode.InstanceConfigDevicesArgs(
                     sda=linode.InstanceConfigDevicesSdaArgs(
                         disk_label="boot",
@@ -983,24 +998,9 @@ class Instance(pulumi.CustomResource):
                         volume_id=web_volume.id,
                     ),
                 ),
-                kernel="linode/latest-64bit",
-                label="boot_config",
                 root_device="/dev/sda",
             )],
-            disks=[linode.InstanceDiskArgs(
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                authorized_users=[me.username],
-                image="linode/ubuntu18.04",
-                label="boot",
-                root_pass="terr4form-test",
-                size=3000,
-            )],
-            group="foo",
-            label="complex_instance",
-            private_ip=True,
-            region="us-central",
-            tags=["foo"],
-            type="g6-nanode-1")
+            boot_config_label="boot_config")
         ```
         ## Attributes
 

@@ -18,29 +18,29 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.NodeBalancer("foobar", {
- *     clientConnThrottle: 20,
  *     label: "mynodebalancer",
  *     region: "us-east",
+ *     clientConnThrottle: 20,
  * });
  * const foofig = new linode.NodeBalancerConfig("foofig", {
- *     algorithm: "source",
- *     check: "http",
- *     checkAttempts: 3,
- *     checkPath: "/foo",
- *     checkTimeout: 30,
- *     nodebalancerId: foobar.id.apply(id => Number.parseFloat(id)),
+ *     nodebalancerId: foobar.id,
  *     port: 8088,
  *     protocol: "http",
+ *     check: "http",
+ *     checkPath: "/foo",
+ *     checkAttempts: 3,
+ *     checkTimeout: 30,
  *     stickiness: "http_cookie",
+ *     algorithm: "source",
  * });
  * ```
  * ## Attributes
  *
  * This resource exports the following attributes:
  *
- * * `sslCommonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+ * * `sslCommonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
  *
- * * `sslFingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+ * * `sslFingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
  *
  * * `nodeStatus` - The status of the attached nodes.
  *
@@ -149,11 +149,13 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly sslCert!: pulumi.Output<string | undefined>;
     /**
-     * The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     public /*out*/ readonly sslCommonname!: pulumi.Output<string>;
     /**
-     * The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
     /**
@@ -292,11 +294,13 @@ export interface NodeBalancerConfigState {
      */
     readonly sslCert?: pulumi.Input<string>;
     /**
-     * The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     readonly sslCommonname?: pulumi.Input<string>;
     /**
-     * The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     readonly sslFingerprint?: pulumi.Input<string>;
     /**

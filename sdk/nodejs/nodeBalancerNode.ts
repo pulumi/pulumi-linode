@@ -16,41 +16,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const web: linode.Instance[] = [];
- * for (let i = 0; i < 3; i++) {
- *     web.push(new linode.Instance(`web-${i}`, {
- *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ * const web: linode.Instance[];
+ * for (const range = {value: 0}; range.value < "3"; range.value++) {
+ *     web.push(new linode.Instance(`web-${range.value}`, {
+ *         label: `web-${range.value + 1}`,
  *         image: "linode/ubuntu18.04",
- *         label: `web-${(i + 1)}`,
- *         privateIp: true,
  *         region: "us-east",
- *         rootPass: "test",
  *         type: "g6-standard-1",
+ *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *         rootPass: "test",
+ *         privateIp: true,
  *     }));
  * }
  * const foobar = new linode.NodeBalancer("foobar", {
- *     clientConnThrottle: 20,
  *     label: "mynodebalancer",
  *     region: "us-east",
+ *     clientConnThrottle: 20,
  * });
  * const foofig = new linode.NodeBalancerConfig("foofig", {
- *     algorithm: "source",
- *     check: "http",
- *     checkAttempts: 3,
- *     checkPath: "/foo",
- *     checkTimeout: 30,
- *     nodebalancerId: foobar.id.apply(id => Number.parseFloat(id)),
+ *     nodebalancerId: foobar.id,
  *     port: 80,
  *     protocol: "http",
+ *     check: "http",
+ *     checkPath: "/foo",
+ *     checkAttempts: 3,
+ *     checkTimeout: 30,
  *     stickiness: "http_cookie",
+ *     algorithm: "source",
  * });
- * const foonode: linode.NodeBalancerNode[] = [];
- * for (let i = 0; i < 3; i++) {
- *     foonode.push(new linode.NodeBalancerNode(`foonode-${i}`, {
- *         address: pulumi.all(web.map(v => v.privateIpAddress)).apply(privateIpAddress => `${privateIpAddress.map(v => v)[i]}:80`),
- *         configId: foofig.id.apply(id => Number.parseFloat(id)),
+ * const foonode: linode.NodeBalancerNode[];
+ * for (const range = {value: 0}; range.value < "3"; range.value++) {
+ *     foonode.push(new linode.NodeBalancerNode(`foonode-${range.value}`, {
+ *         nodebalancerId: foobar.id,
+ *         configId: foofig.id,
+ *         address: web.map(__item => __item.privateIpAddress)[range.value].apply(privateIpAddresses => `${privateIpAddresses}:80`),
  *         label: "mynodebalancernode",
- *         nodebalancerId: foobar.id.apply(id => Number.parseFloat(id)),
  *         weight: 50,
  *     }));
  * }

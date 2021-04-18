@@ -34,15 +34,57 @@ __all__ = [
     'NodeBalancerConfigNodeStatus',
     'NodeBalancerTransfer',
     'ObjectStorageBucketCert',
+    'ObjectStorageBucketLifecycleRule',
+    'ObjectStorageBucketLifecycleRuleExpiration',
+    'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration',
     'ObjectStorageKeyBucketAccess',
     'StackScriptUserDefinedField',
+    'UserDomainGrant',
+    'UserGlobalGrants',
+    'UserImageGrant',
+    'UserLinodeGrant',
+    'UserLongviewGrant',
+    'UserNodebalancerGrant',
+    'UserStackscriptGrant',
+    'UserVolumeGrant',
     'VlanAttachedLinode',
+    'GetFirewallDeviceResult',
+    'GetFirewallInboundResult',
+    'GetFirewallOutboundResult',
+    'GetImagesFilterResult',
+    'GetImagesImageResult',
+    'GetInstanceBackupsAutomaticResult',
+    'GetInstanceBackupsAutomaticDiskResult',
+    'GetInstanceBackupsCurrentResult',
+    'GetInstanceBackupsCurrentDiskResult',
+    'GetInstanceBackupsInProgressResult',
+    'GetInstanceBackupsInProgressDiskResult',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupsResult',
     'GetInstanceTypeAddonsBackupsPriceResult',
     'GetInstanceTypePriceResult',
+    'GetInstancesFilterResult',
+    'GetInstancesInstanceResult',
+    'GetInstancesInstanceAlertsResult',
+    'GetInstancesInstanceBackupResult',
+    'GetInstancesInstanceBackupScheduleResult',
+    'GetInstancesInstanceConfigResult',
+    'GetInstancesInstanceConfigDeviceResult',
+    'GetInstancesInstanceConfigDeviceSdaResult',
+    'GetInstancesInstanceConfigDeviceSdbResult',
+    'GetInstancesInstanceConfigDeviceSdcResult',
+    'GetInstancesInstanceConfigDeviceSddResult',
+    'GetInstancesInstanceConfigDeviceSdeResult',
+    'GetInstancesInstanceConfigDeviceSdfResult',
+    'GetInstancesInstanceConfigDeviceSdgResult',
+    'GetInstancesInstanceConfigDeviceSdhResult',
+    'GetInstancesInstanceConfigHelperResult',
+    'GetInstancesInstanceDiskResult',
+    'GetInstancesInstanceSpecResult',
     'GetLkeClusterPoolResult',
     'GetLkeClusterPoolNodeResult',
+    'GetNodeBalancerConfigNodeStatusResult',
+    'GetNodeBalancerTransferResult',
     'GetProfileReferralsResult',
     'GetStackScriptUserDefinedFieldResult',
 ]
@@ -1615,6 +1657,173 @@ class ObjectStorageBucketCert(dict):
 
 
 @pulumi.output_type
+class ObjectStorageBucketLifecycleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortIncompleteMultipartUploadDays":
+            suggest = "abort_incomplete_multipart_upload_days"
+        elif key == "noncurrentVersionExpiration":
+            suggest = "noncurrent_version_expiration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectStorageBucketLifecycleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectStorageBucketLifecycleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectStorageBucketLifecycleRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 abort_incomplete_multipart_upload_days: Optional[int] = None,
+                 expiration: Optional['outputs.ObjectStorageBucketLifecycleRuleExpiration'] = None,
+                 id: Optional[str] = None,
+                 noncurrent_version_expiration: Optional['outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration'] = None,
+                 prefix: Optional[str] = None):
+        """
+        :param bool enabled: Specifies whether the lifecycle rule is active.
+        :param int abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        :param str id: The unique identifier for the rule.
+        :param str prefix: The object key prefix identifying one or more objects to which the rule applies.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if abort_incomplete_multipart_upload_days is not None:
+            pulumi.set(__self__, "abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if noncurrent_version_expiration is not None:
+            pulumi.set(__self__, "noncurrent_version_expiration", noncurrent_version_expiration)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Specifies whether the lifecycle rule is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="abortIncompleteMultipartUploadDays")
+    def abort_incomplete_multipart_upload_days(self) -> Optional[int]:
+        """
+        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        """
+        return pulumi.get(self, "abort_incomplete_multipart_upload_days")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional['outputs.ObjectStorageBucketLifecycleRuleExpiration']:
+        return pulumi.get(self, "expiration")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique identifier for the rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="noncurrentVersionExpiration")
+    def noncurrent_version_expiration(self) -> Optional['outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration']:
+        return pulumi.get(self, "noncurrent_version_expiration")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The object key prefix identifying one or more objects to which the rule applies.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class ObjectStorageBucketLifecycleRuleExpiration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiredObjectDeleteMarker":
+            suggest = "expired_object_delete_marker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectStorageBucketLifecycleRuleExpiration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectStorageBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectStorageBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date: Optional[str] = None,
+                 days: Optional[int] = None,
+                 expired_object_delete_marker: Optional[bool] = None):
+        """
+        :param str date: Specifies the date after which you want the corresponding action to take effect.
+        :param int days: Specifies the number of days non-current object versions expire.
+        :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+        """
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if expired_object_delete_marker is not None:
+            pulumi.set(__self__, "expired_object_delete_marker", expired_object_delete_marker)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        """
+        Specifies the date after which you want the corresponding action to take effect.
+        """
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter
+    def days(self) -> Optional[int]:
+        """
+        Specifies the number of days non-current object versions expire.
+        """
+        return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter(name="expiredObjectDeleteMarker")
+    def expired_object_delete_marker(self) -> Optional[bool]:
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+        """
+        return pulumi.get(self, "expired_object_delete_marker")
+
+
+@pulumi.output_type
+class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration(dict):
+    def __init__(__self__, *,
+                 days: int):
+        """
+        :param int days: Specifies the number of days non-current object versions expire.
+        """
+        pulumi.set(__self__, "days", days)
+
+    @property
+    @pulumi.getter
+    def days(self) -> int:
+        """
+        Specifies the number of days non-current object versions expire.
+        """
+        return pulumi.get(self, "days")
+
+
+@pulumi.output_type
 class ObjectStorageKeyBucketAccess(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1750,6 +1959,259 @@ class StackScriptUserDefinedField(dict):
 
 
 @pulumi.output_type
+class UserDomainGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserGlobalGrants(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountAccess":
+            suggest = "account_access"
+        elif key == "addDomains":
+            suggest = "add_domains"
+        elif key == "addImages":
+            suggest = "add_images"
+        elif key == "addLinodes":
+            suggest = "add_linodes"
+        elif key == "addLongview":
+            suggest = "add_longview"
+        elif key == "addNodebalancers":
+            suggest = "add_nodebalancers"
+        elif key == "addStackscripts":
+            suggest = "add_stackscripts"
+        elif key == "addVolumes":
+            suggest = "add_volumes"
+        elif key == "cancelAccount":
+            suggest = "cancel_account"
+        elif key == "longviewSubscription":
+            suggest = "longview_subscription"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserGlobalGrants. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserGlobalGrants.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserGlobalGrants.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_access: Optional[str] = None,
+                 add_domains: Optional[bool] = None,
+                 add_images: Optional[bool] = None,
+                 add_linodes: Optional[bool] = None,
+                 add_longview: Optional[bool] = None,
+                 add_nodebalancers: Optional[bool] = None,
+                 add_stackscripts: Optional[bool] = None,
+                 add_volumes: Optional[bool] = None,
+                 cancel_account: Optional[bool] = None,
+                 longview_subscription: Optional[bool] = None):
+        if account_access is not None:
+            pulumi.set(__self__, "account_access", account_access)
+        if add_domains is not None:
+            pulumi.set(__self__, "add_domains", add_domains)
+        if add_images is not None:
+            pulumi.set(__self__, "add_images", add_images)
+        if add_linodes is not None:
+            pulumi.set(__self__, "add_linodes", add_linodes)
+        if add_longview is not None:
+            pulumi.set(__self__, "add_longview", add_longview)
+        if add_nodebalancers is not None:
+            pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        if add_stackscripts is not None:
+            pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+        if add_volumes is not None:
+            pulumi.set(__self__, "add_volumes", add_volumes)
+        if cancel_account is not None:
+            pulumi.set(__self__, "cancel_account", cancel_account)
+        if longview_subscription is not None:
+            pulumi.set(__self__, "longview_subscription", longview_subscription)
+
+    @property
+    @pulumi.getter(name="accountAccess")
+    def account_access(self) -> Optional[str]:
+        return pulumi.get(self, "account_access")
+
+    @property
+    @pulumi.getter(name="addDomains")
+    def add_domains(self) -> Optional[bool]:
+        return pulumi.get(self, "add_domains")
+
+    @property
+    @pulumi.getter(name="addImages")
+    def add_images(self) -> Optional[bool]:
+        return pulumi.get(self, "add_images")
+
+    @property
+    @pulumi.getter(name="addLinodes")
+    def add_linodes(self) -> Optional[bool]:
+        return pulumi.get(self, "add_linodes")
+
+    @property
+    @pulumi.getter(name="addLongview")
+    def add_longview(self) -> Optional[bool]:
+        return pulumi.get(self, "add_longview")
+
+    @property
+    @pulumi.getter(name="addNodebalancers")
+    def add_nodebalancers(self) -> Optional[bool]:
+        return pulumi.get(self, "add_nodebalancers")
+
+    @property
+    @pulumi.getter(name="addStackscripts")
+    def add_stackscripts(self) -> Optional[bool]:
+        return pulumi.get(self, "add_stackscripts")
+
+    @property
+    @pulumi.getter(name="addVolumes")
+    def add_volumes(self) -> Optional[bool]:
+        return pulumi.get(self, "add_volumes")
+
+    @property
+    @pulumi.getter(name="cancelAccount")
+    def cancel_account(self) -> Optional[bool]:
+        return pulumi.get(self, "cancel_account")
+
+    @property
+    @pulumi.getter(name="longviewSubscription")
+    def longview_subscription(self) -> Optional[bool]:
+        return pulumi.get(self, "longview_subscription")
+
+
+@pulumi.output_type
+class UserImageGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserLinodeGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserLongviewGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserNodebalancerGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserStackscriptGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class UserVolumeGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
 class VlanAttachedLinode(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1812,6 +2274,747 @@ class VlanAttachedLinode(dict):
 
 
 @pulumi.output_type
+class GetFirewallDeviceResult(dict):
+    def __init__(__self__, *,
+                 entity_id: int,
+                 id: int,
+                 label: str,
+                 type: str,
+                 url: str):
+        """
+        :param int entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
+        :param int id: The Firewall's ID.
+        :param str label: The label of the underlying entity this device references.
+        :param str type: The type of Firewall Device.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> int:
+        """
+        The ID of the underlying entity this device references (i.e. the Linode's ID).
+        """
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The Firewall's ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the underlying entity this device references.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of Firewall Device.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetFirewallInboundResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 ipv4s: Sequence[str],
+                 ipv6s: Sequence[str],
+                 label: str,
+                 ports: str,
+                 protocol: str):
+        """
+        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param str label: The label of the underlying entity this device references.
+        :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        :param str protocol: The network protocol this rule controls.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[str]:
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the underlying entity this device references.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> str:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The network protocol this rule controls.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetFirewallOutboundResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 ipv4s: Sequence[str],
+                 ipv6s: Sequence[str],
+                 label: str,
+                 ports: str,
+                 protocol: str):
+        """
+        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param str label: The label of the underlying entity this device references.
+        :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        :param str protocol: The network protocol this rule controls.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[str]:
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the underlying entity this device references.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> str:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The network protocol this rule controls.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetImagesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetImagesImageResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 created_by: str,
+                 deprecated: bool,
+                 description: str,
+                 expiry: str,
+                 id: str,
+                 is_public: bool,
+                 label: str,
+                 size: int,
+                 type: str,
+                 vendor: str):
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expiry", expiry)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> bool:
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> str:
+        return pulumi.get(self, "expiry")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class GetInstanceBackupsAutomaticResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence[str],
+                 created: str,
+                 disks: Sequence['outputs.GetInstanceBackupsAutomaticDiskResult'],
+                 finished: str,
+                 id: int,
+                 label: str,
+                 status: str,
+                 type: str,
+                 updated: str):
+        """
+        :param Sequence[str] configs: A list of the labels of the Configuration profiles that are part of the Backup.
+        :param str created: The date the Backup was taken.
+        :param str finished: The date the Backup completed.
+        :param int id: The unique ID of this Backup.
+        :param str label: The label of this disk.
+        :param str status: The current state of a specific Backup.
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str updated: The date the Backup was most recently updated.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "finished", finished)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence[str]:
+        """
+        A list of the labels of the Configuration profiles that are part of the Backup.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date the Backup was taken.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetInstanceBackupsAutomaticDiskResult']:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def finished(self) -> str:
+        """
+        The date the Backup completed.
+        """
+        return pulumi.get(self, "finished")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this Backup.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current state of a specific Backup.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date the Backup was most recently updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetInstanceBackupsAutomaticDiskResult(dict):
+    def __init__(__self__, *,
+                 filesystem: str,
+                 label: str,
+                 size: int):
+        """
+        :param str filesystem: The filesystem of this disk.
+        :param str label: The label of this disk.
+        :param int size: The size of this disk.
+        """
+        pulumi.set(__self__, "filesystem", filesystem)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def filesystem(self) -> str:
+        """
+        The filesystem of this disk.
+        """
+        return pulumi.get(self, "filesystem")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of this disk.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetInstanceBackupsCurrentResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence[str],
+                 created: str,
+                 disks: Sequence['outputs.GetInstanceBackupsCurrentDiskResult'],
+                 finished: str,
+                 id: int,
+                 label: str,
+                 status: str,
+                 type: str,
+                 updated: str):
+        """
+        :param Sequence[str] configs: A list of the labels of the Configuration profiles that are part of the Backup.
+        :param str created: The date the Backup was taken.
+        :param str finished: The date the Backup completed.
+        :param int id: The unique ID of this Backup.
+        :param str label: The label of this disk.
+        :param str status: The current state of a specific Backup.
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str updated: The date the Backup was most recently updated.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "finished", finished)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence[str]:
+        """
+        A list of the labels of the Configuration profiles that are part of the Backup.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date the Backup was taken.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetInstanceBackupsCurrentDiskResult']:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def finished(self) -> str:
+        """
+        The date the Backup completed.
+        """
+        return pulumi.get(self, "finished")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this Backup.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current state of a specific Backup.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date the Backup was most recently updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetInstanceBackupsCurrentDiskResult(dict):
+    def __init__(__self__, *,
+                 filesystem: str,
+                 label: str,
+                 size: int):
+        """
+        :param str filesystem: The filesystem of this disk.
+        :param str label: The label of this disk.
+        :param int size: The size of this disk.
+        """
+        pulumi.set(__self__, "filesystem", filesystem)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def filesystem(self) -> str:
+        """
+        The filesystem of this disk.
+        """
+        return pulumi.get(self, "filesystem")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of this disk.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetInstanceBackupsInProgressResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence[str],
+                 created: str,
+                 disks: Sequence['outputs.GetInstanceBackupsInProgressDiskResult'],
+                 finished: str,
+                 id: int,
+                 label: str,
+                 status: str,
+                 type: str,
+                 updated: str):
+        """
+        :param Sequence[str] configs: A list of the labels of the Configuration profiles that are part of the Backup.
+        :param str created: The date the Backup was taken.
+        :param str finished: The date the Backup completed.
+        :param int id: The unique ID of this Backup.
+        :param str label: The label of this disk.
+        :param str status: The current state of a specific Backup.
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str updated: The date the Backup was most recently updated.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "finished", finished)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence[str]:
+        """
+        A list of the labels of the Configuration profiles that are part of the Backup.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date the Backup was taken.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetInstanceBackupsInProgressDiskResult']:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def finished(self) -> str:
+        """
+        The date the Backup completed.
+        """
+        return pulumi.get(self, "finished")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this Backup.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current state of a specific Backup.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date the Backup was most recently updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetInstanceBackupsInProgressDiskResult(dict):
+    def __init__(__self__, *,
+                 filesystem: str,
+                 label: str,
+                 size: int):
+        """
+        :param str filesystem: The filesystem of this disk.
+        :param str label: The label of this disk.
+        :param int size: The size of this disk.
+        """
+        pulumi.set(__self__, "filesystem", filesystem)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def filesystem(self) -> str:
+        """
+        The filesystem of this disk.
+        """
+        return pulumi.get(self, "filesystem")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of this disk.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of this disk.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
 class GetInstanceTypeAddonsResult(dict):
     def __init__(__self__, *,
                  backups: 'outputs.GetInstanceTypeAddonsBackupsResult'):
@@ -1871,6 +3074,710 @@ class GetInstanceTypePriceResult(dict):
     @pulumi.getter
     def monthly(self) -> float:
         return pulumi.get(self, "monthly")
+
+
+@pulumi.output_type
+class GetInstancesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 alerts: 'outputs.GetInstancesInstanceAlertsResult',
+                 backups: Sequence['outputs.GetInstancesInstanceBackupResult'],
+                 boot_config_label: str,
+                 configs: Sequence['outputs.GetInstancesInstanceConfigResult'],
+                 disks: Sequence['outputs.GetInstancesInstanceDiskResult'],
+                 group: str,
+                 image: str,
+                 ip_address: str,
+                 ipv4s: Sequence[str],
+                 ipv6: str,
+                 label: str,
+                 private_ip_address: str,
+                 region: str,
+                 specs: Sequence['outputs.GetInstancesInstanceSpecResult'],
+                 status: str,
+                 swap_size: int,
+                 tags: Sequence[str],
+                 type: str,
+                 watchdog_enabled: bool):
+        pulumi.set(__self__, "alerts", alerts)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "boot_config_label", boot_config_label)
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6", ipv6)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "private_ip_address", private_ip_address)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "specs", specs)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "swap_size", swap_size)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "watchdog_enabled", watchdog_enabled)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> 'outputs.GetInstancesInstanceAlertsResult':
+        return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def backups(self) -> Sequence['outputs.GetInstancesInstanceBackupResult']:
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter(name="bootConfigLabel")
+    def boot_config_label(self) -> str:
+        return pulumi.get(self, "boot_config_label")
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence['outputs.GetInstancesInstanceConfigResult']:
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetInstancesInstanceDiskResult']:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> str:
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Sequence['outputs.GetInstancesInstanceSpecResult']:
+        return pulumi.get(self, "specs")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="swapSize")
+    def swap_size(self) -> int:
+        return pulumi.get(self, "swap_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="watchdogEnabled")
+    def watchdog_enabled(self) -> bool:
+        return pulumi.get(self, "watchdog_enabled")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAlertsResult(dict):
+    def __init__(__self__, *,
+                 cpu: int,
+                 io: int,
+                 network_in: int,
+                 network_out: int,
+                 transfer_quota: int):
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "io", io)
+        pulumi.set(__self__, "network_in", network_in)
+        pulumi.set(__self__, "network_out", network_out)
+        pulumi.set(__self__, "transfer_quota", transfer_quota)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> int:
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def io(self) -> int:
+        return pulumi.get(self, "io")
+
+    @property
+    @pulumi.getter(name="networkIn")
+    def network_in(self) -> int:
+        return pulumi.get(self, "network_in")
+
+    @property
+    @pulumi.getter(name="networkOut")
+    def network_out(self) -> int:
+        return pulumi.get(self, "network_out")
+
+    @property
+    @pulumi.getter(name="transferQuota")
+    def transfer_quota(self) -> int:
+        return pulumi.get(self, "transfer_quota")
+
+
+@pulumi.output_type
+class GetInstancesInstanceBackupResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 schedules: Sequence['outputs.GetInstancesInstanceBackupScheduleResult']):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Sequence['outputs.GetInstancesInstanceBackupScheduleResult']:
+        return pulumi.get(self, "schedules")
+
+
+@pulumi.output_type
+class GetInstancesInstanceBackupScheduleResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 window: str):
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "window", window)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def window(self) -> str:
+        return pulumi.get(self, "window")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 comments: str,
+                 devices: Sequence['outputs.GetInstancesInstanceConfigDeviceResult'],
+                 helpers: Sequence['outputs.GetInstancesInstanceConfigHelperResult'],
+                 kernel: str,
+                 label: str,
+                 memory_limit: int,
+                 root_device: str,
+                 run_level: str,
+                 virt_mode: str):
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "devices", devices)
+        pulumi.set(__self__, "helpers", helpers)
+        pulumi.set(__self__, "kernel", kernel)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "memory_limit", memory_limit)
+        pulumi.set(__self__, "root_device", root_device)
+        pulumi.set(__self__, "run_level", run_level)
+        pulumi.set(__self__, "virt_mode", virt_mode)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> str:
+        return pulumi.get(self, "comments")
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceResult']:
+        return pulumi.get(self, "devices")
+
+    @property
+    @pulumi.getter
+    def helpers(self) -> Sequence['outputs.GetInstancesInstanceConfigHelperResult']:
+        return pulumi.get(self, "helpers")
+
+    @property
+    @pulumi.getter
+    def kernel(self) -> str:
+        return pulumi.get(self, "kernel")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> int:
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="rootDevice")
+    def root_device(self) -> str:
+        return pulumi.get(self, "root_device")
+
+    @property
+    @pulumi.getter(name="runLevel")
+    def run_level(self) -> str:
+        return pulumi.get(self, "run_level")
+
+    @property
+    @pulumi.getter(name="virtMode")
+    def virt_mode(self) -> str:
+        return pulumi.get(self, "virt_mode")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceResult(dict):
+    def __init__(__self__, *,
+                 sdas: Sequence['outputs.GetInstancesInstanceConfigDeviceSdaResult'],
+                 sdbs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdbResult'],
+                 sdcs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdcResult'],
+                 sdds: Sequence['outputs.GetInstancesInstanceConfigDeviceSddResult'],
+                 sdes: Sequence['outputs.GetInstancesInstanceConfigDeviceSdeResult'],
+                 sdfs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdfResult'],
+                 sdgs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdgResult'],
+                 sdhs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult']):
+        pulumi.set(__self__, "sdas", sdas)
+        pulumi.set(__self__, "sdbs", sdbs)
+        pulumi.set(__self__, "sdcs", sdcs)
+        pulumi.set(__self__, "sdds", sdds)
+        pulumi.set(__self__, "sdes", sdes)
+        pulumi.set(__self__, "sdfs", sdfs)
+        pulumi.set(__self__, "sdgs", sdgs)
+        pulumi.set(__self__, "sdhs", sdhs)
+
+    @property
+    @pulumi.getter
+    def sdas(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdaResult']:
+        return pulumi.get(self, "sdas")
+
+    @property
+    @pulumi.getter
+    def sdbs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdbResult']:
+        return pulumi.get(self, "sdbs")
+
+    @property
+    @pulumi.getter
+    def sdcs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdcResult']:
+        return pulumi.get(self, "sdcs")
+
+    @property
+    @pulumi.getter
+    def sdds(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSddResult']:
+        return pulumi.get(self, "sdds")
+
+    @property
+    @pulumi.getter
+    def sdes(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdeResult']:
+        return pulumi.get(self, "sdes")
+
+    @property
+    @pulumi.getter
+    def sdfs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdfResult']:
+        return pulumi.get(self, "sdfs")
+
+    @property
+    @pulumi.getter
+    def sdgs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdgResult']:
+        return pulumi.get(self, "sdgs")
+
+    @property
+    @pulumi.getter
+    def sdhs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult']:
+        return pulumi.get(self, "sdhs")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdaResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdbResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdcResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSddResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdeResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdfResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdgResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigDeviceSdhResult(dict):
+    def __init__(__self__, *,
+                 disk_id: int,
+                 disk_label: Optional[str] = None,
+                 volume_id: Optional[int] = None):
+        pulumi.set(__self__, "disk_id", disk_id)
+        if disk_label is not None:
+            pulumi.set(__self__, "disk_label", disk_label)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> int:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskLabel")
+    def disk_label(self) -> Optional[str]:
+        return pulumi.get(self, "disk_label")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[int]:
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigHelperResult(dict):
+    def __init__(__self__, *,
+                 devtmpfs_automount: bool,
+                 distro: bool,
+                 modules_dep: bool,
+                 network: bool,
+                 updatedb_disabled: bool):
+        pulumi.set(__self__, "devtmpfs_automount", devtmpfs_automount)
+        pulumi.set(__self__, "distro", distro)
+        pulumi.set(__self__, "modules_dep", modules_dep)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "updatedb_disabled", updatedb_disabled)
+
+    @property
+    @pulumi.getter(name="devtmpfsAutomount")
+    def devtmpfs_automount(self) -> bool:
+        return pulumi.get(self, "devtmpfs_automount")
+
+    @property
+    @pulumi.getter
+    def distro(self) -> bool:
+        return pulumi.get(self, "distro")
+
+    @property
+    @pulumi.getter(name="modulesDep")
+    def modules_dep(self) -> bool:
+        return pulumi.get(self, "modules_dep")
+
+    @property
+    @pulumi.getter
+    def network(self) -> bool:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="updatedbDisabled")
+    def updatedb_disabled(self) -> bool:
+        return pulumi.get(self, "updatedb_disabled")
+
+
+@pulumi.output_type
+class GetInstancesInstanceDiskResult(dict):
+    def __init__(__self__, *,
+                 filesystem: str,
+                 id: int,
+                 label: str,
+                 size: int):
+        pulumi.set(__self__, "filesystem", filesystem)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def filesystem(self) -> str:
+        return pulumi.get(self, "filesystem")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetInstancesInstanceSpecResult(dict):
+    def __init__(__self__, *,
+                 disk: int,
+                 memory: int,
+                 transfer: int,
+                 vcpus: int):
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "transfer", transfer)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> int:
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def transfer(self) -> int:
+        return pulumi.get(self, "transfer")
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> int:
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -1962,6 +3869,75 @@ class GetLkeClusterPoolNodeResult(dict):
         The status of the node.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetNodeBalancerConfigNodeStatusResult(dict):
+    def __init__(__self__, *,
+                 down: int,
+                 up: int):
+        """
+        :param int down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        :param int up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+        pulumi.set(__self__, "down", down)
+        pulumi.set(__self__, "up", up)
+
+    @property
+    @pulumi.getter
+    def down(self) -> int:
+        """
+        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        """
+        return pulumi.get(self, "down")
+
+    @property
+    @pulumi.getter
+    def up(self) -> int:
+        """
+        The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+        return pulumi.get(self, "up")
+
+
+@pulumi.output_type
+class GetNodeBalancerTransferResult(dict):
+    def __init__(__self__, *,
+                 in_: float,
+                 out: float,
+                 total: float):
+        """
+        :param float in_: The total transfer, in MB, used by this NodeBalancer for the current month
+        :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "out", out)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter(name="in")
+    def in_(self) -> float:
+        """
+        The total transfer, in MB, used by this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "in_")
+
+    @property
+    @pulumi.getter
+    def out(self) -> float:
+        """
+        The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "out")
+
+    @property
+    @pulumi.getter
+    def total(self) -> float:
+        """
+        The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "total")
 
 
 @pulumi.output_type

@@ -14,6 +14,21 @@ namespace Pulumi.Linode
         public static string? ApiVersion { get; set; } = __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION");
 
         /// <summary>
+        /// The rate in milliseconds to poll for events.
+        /// </summary>
+        public static int? EventPollMs { get; set; } = __config.GetInt32("eventPollMs");
+
+        /// <summary>
+        /// The rate in milliseconds to poll for LKE events.
+        /// </summary>
+        public static int? LkeEventPollMs { get; set; } = __config.GetInt32("lkeEventPollMs");
+
+        /// <summary>
+        /// The rate in milliseconds to poll for an LKE node to be ready.
+        /// </summary>
+        public static int? LkeNodeReadyPollMs { get; set; } = __config.GetInt32("lkeNodeReadyPollMs");
+
+        /// <summary>
         /// Maximum delay in milliseconds before retrying a request.
         /// </summary>
         public static int? MaxRetryDelayMs { get; set; } = __config.GetInt32("maxRetryDelayMs");

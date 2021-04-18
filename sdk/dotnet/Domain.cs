@@ -27,6 +27,7 @@ namespace Pulumi.Linode
     ///     {
     ///         var foobarDomain = new Linode.Domain("foobarDomain", new Linode.DomainArgs
     ///         {
+    ///             Type = "master",
     ///             Domain = "foobar.example",
     ///             SoaEmail = "example@foobar.example",
     ///             Tags = 
@@ -34,7 +35,6 @@ namespace Pulumi.Linode
     ///                 "foo",
     ///                 "bar",
     ///             },
-    ///             Type = "master",
     ///         });
     ///         var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new Linode.DomainRecordArgs
     ///         {

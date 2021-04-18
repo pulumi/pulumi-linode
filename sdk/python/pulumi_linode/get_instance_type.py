@@ -157,6 +157,14 @@ def get_instance_type(id: Optional[str] = None,
 
     * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
 
+    * `network_out` - The Mbits outbound bandwidth allocation.
+
+    * `memory` - The amount of RAM included in this Linode Type.
+
+    * `transfer` - The monthly outbound transfer amount, in MB.
+
+    * `vcpus` - The number of VCPU cores this Linode Type offers.
+
 
     :param str id: Label used to identify instance type
     """

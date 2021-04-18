@@ -474,13 +474,13 @@ class Domain(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar_domain = linode.Domain("foobarDomain",
+            type="master",
             domain="foobar.example",
             soa_email="example@foobar.example",
             tags=[
                 "foo",
                 "bar",
-            ],
-            type="master")
+            ])
         foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
             domain_id=foobar_domain.id,
             name="www",
@@ -536,13 +536,13 @@ class Domain(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar_domain = linode.Domain("foobarDomain",
+            type="master",
             domain="foobar.example",
             soa_email="example@foobar.example",
             tags=[
                 "foo",
                 "bar",
-            ],
-            type="master")
+            ])
         foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
             domain_id=foobar_domain.id,
             name="www",

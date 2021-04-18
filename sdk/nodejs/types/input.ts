@@ -78,6 +78,28 @@ export interface FirewallOutbound {
     protocol: pulumi.Input<string>;
 }
 
+export interface GetImagesFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetInstancesFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetStackScriptUserDefinedField {
     default?: string;
     example?: string;
@@ -402,6 +424,49 @@ export interface ObjectStorageBucketCert {
     privateKey: pulumi.Input<string>;
 }
 
+export interface ObjectStorageBucketLifecycleRule {
+    /**
+     * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+     */
+    abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
+    /**
+     * Specifies whether the lifecycle rule is active.
+     */
+    enabled: pulumi.Input<boolean>;
+    expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleExpiration>;
+    /**
+     * The unique identifier for the rule.
+     */
+    id?: pulumi.Input<string>;
+    noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>;
+    /**
+     * The object key prefix identifying one or more objects to which the rule applies.
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface ObjectStorageBucketLifecycleRuleExpiration {
+    /**
+     * Specifies the date after which you want the corresponding action to take effect.
+     */
+    date?: pulumi.Input<string>;
+    /**
+     * Specifies the number of days non-current object versions expire.
+     */
+    days?: pulumi.Input<number>;
+    /**
+     * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+     */
+    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+}
+
+export interface ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
+    /**
+     * Specifies the number of days non-current object versions expire.
+     */
+    days: pulumi.Input<number>;
+}
+
 export interface ObjectStorageKeyBucketAccess {
     /**
      * The unique label of the bucket to which the key will grant limited access.
@@ -427,6 +492,54 @@ export interface StackScriptUserDefinedField {
     manyOf?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     oneOf?: pulumi.Input<string>;
+}
+
+export interface UserDomainGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserGlobalGrants {
+    accountAccess?: pulumi.Input<string>;
+    addDomains?: pulumi.Input<boolean>;
+    addImages?: pulumi.Input<boolean>;
+    addLinodes?: pulumi.Input<boolean>;
+    addLongview?: pulumi.Input<boolean>;
+    addNodebalancers?: pulumi.Input<boolean>;
+    addStackscripts?: pulumi.Input<boolean>;
+    addVolumes?: pulumi.Input<boolean>;
+    cancelAccount?: pulumi.Input<boolean>;
+    longviewSubscription?: pulumi.Input<boolean>;
+}
+
+export interface UserImageGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserLinodeGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserLongviewGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserNodebalancerGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserStackscriptGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserVolumeGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
 }
 
 export interface VlanAttachedLinode {

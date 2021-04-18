@@ -28,7 +28,7 @@ namespace Pulumi.Linode
     ///         {
     ///             Label = "my_instance",
     ///             Image = "linode/ubuntu18.04",
-    ///             Region = "us-east",
+    ///             Region = "us-southeast",
     ///             Type = "g6-standard-1",
     ///             RootPass = "bogusPassword$",
     ///             SwapSize = 256,
@@ -44,10 +44,25 @@ namespace Pulumi.Linode
     ///             {
     ///                 new Linode.Inputs.FirewallInboundArgs
     ///                 {
-    ///                     Label = "allow-them",
+    ///                     Label = "allow-http",
     ///                     Action = "ACCEPT",
     ///                     Protocol = "TCP",
     ///                     Ports = "80",
+    ///                     Ipv4s = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
+    ///                     Ipv6s = 
+    ///                     {
+    ///                         "ff00::/8",
+    ///                     },
+    ///                 },
+    ///                 new Linode.Inputs.FirewallInboundArgs
+    ///                 {
+    ///                     Label = "allow-https",
+    ///                     Action = "ACCEPT",
+    ///                     Protocol = "TCP",
+    ///                     Ports = "443",
     ///                     Ipv4s = 
     ///                     {
     ///                         "0.0.0.0/0",
@@ -63,10 +78,25 @@ namespace Pulumi.Linode
     ///             {
     ///                 new Linode.Inputs.FirewallOutboundArgs
     ///                 {
-    ///                     Label = "reject-them",
+    ///                     Label = "reject-http",
     ///                     Action = "DROP",
     ///                     Protocol = "TCP",
     ///                     Ports = "80",
+    ///                     Ipv4s = 
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
+    ///                     Ipv6s = 
+    ///                     {
+    ///                         "ff00::/8",
+    ///                     },
+    ///                 },
+    ///                 new Linode.Inputs.FirewallOutboundArgs
+    ///                 {
+    ///                     Label = "reject-https",
+    ///                     Action = "DROP",
+    ///                     Protocol = "TCP",
+    ///                     Ports = "443",
     ///                     Ipv4s = 
     ///                     {
     ///                         "0.0.0.0/0",

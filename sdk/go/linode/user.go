@@ -15,6 +15,8 @@ import (
 //
 // ## Example Usage
 //
+// Create an unrestricted user:
+//
 // ```go
 // package main
 //
@@ -26,9 +28,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
-// 			Email:      pulumi.String("john@acme.io"),
-// 			Restricted: pulumi.Bool(true),
-// 			Username:   pulumi.String("john123"),
+// 			Email:    pulumi.String("john@acme.io"),
+// 			Username: pulumi.String("john123"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -37,19 +38,95 @@ import (
 // 	})
 // }
 // ```
+//
+// Create a restricted user with grants:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
+// 			Email: pulumi.String("cool@acme.io"),
+// 			GlobalGrants: &linode.UserGlobalGrantsArgs{
+// 				AddImages:  pulumi.Bool(true),
+// 				AddLinodes: pulumi.Bool(true),
+// 			},
+// 			LinodeGrants: linode.UserLinodeGrantArray{
+// 				&linode.UserLinodeGrantArgs{
+// 					Id:          pulumi.Int(12345),
+// 					Permissions: pulumi.String("read_write"),
+// 				},
+// 			},
+// 			Restricted: pulumi.Bool(true),
+// 			Username:   pulumi.String("cooluser123"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Global Grants
+//
+// * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
+//
+// * `addDomains` - (optional) If true, this User may add Domains.
+//
+// * `addImages` - (optional) If true, this User may add Images.
+//
+// * `addLinodes` - (optional) If true, this User may create Linodes.
+//
+// * `addLongview` - (optional) If true, this User may create Longview clients and view the current plan.
+//
+// * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
+//
+// * `addStackscripts` - (optional) If true, this User may add StackScripts.
+//
+// * `cancelAccount` - (optional) If true, this User may cancel the entire Account.
+//
+// * `longviewSubscription` - (optional) If true, this User may manage the Account’s Longview subscription.
+//
+// ## Entity Grants
+//
+// * `id` - (required) The ID of the entity this grant applies to.
+//
+// * `permissions` - (required) The level of access this User has to this entity. (`readOnly`, `readWrite`)
 type User struct {
 	pulumi.CustomResourceState
 
+	// The domains the user has permissions access to.
+	DomainGrants UserDomainGrantArrayOutput `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants UserGlobalGrantsOutput `pulumi:"globalGrants"`
+	// The images the user has permissions access to.
+	ImageGrants UserImageGrantArrayOutput `pulumi:"imageGrants"`
+	// The Linodes the user has permissions access to.
+	LinodeGrants UserLinodeGrantArrayOutput `pulumi:"linodeGrants"`
+	// The longview the user has permissions access to.
+	LongviewGrants UserLongviewGrantArrayOutput `pulumi:"longviewGrants"`
+	// The NodeBalancers the user has permissions access to.
+	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	Restricted pulumi.BoolPtrOutput `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
+	// The StackScripts the user has permissions access to.
+	StackscriptGrants UserStackscriptGrantArrayOutput `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolOutput `pulumi:"tfaEnabled"`
 	// The username of the user.
 	Username pulumi.StringOutput `pulumi:"username"`
+	// The volumes the user has permissions access to.
+	VolumeGrants UserVolumeGrantArrayOutput `pulumi:"volumeGrants"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -87,29 +164,61 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
+	// The domains the user has permissions access to.
+	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email *string `pulumi:"email"`
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
+	// The images the user has permissions access to.
+	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
+	// The Linodes the user has permissions access to.
+	LinodeGrants []UserLinodeGrant `pulumi:"linodeGrants"`
+	// The longview the user has permissions access to.
+	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
+	// The NodeBalancers the user has permissions access to.
+	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	Restricted *bool `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys []string `pulumi:"sshKeys"`
+	// The StackScripts the user has permissions access to.
+	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled *bool `pulumi:"tfaEnabled"`
 	// The username of the user.
 	Username *string `pulumi:"username"`
+	// The volumes the user has permissions access to.
+	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
 }
 
 type UserState struct {
+	// The domains the user has permissions access to.
+	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringPtrInput
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants UserGlobalGrantsPtrInput
+	// The images the user has permissions access to.
+	ImageGrants UserImageGrantArrayInput
+	// The Linodes the user has permissions access to.
+	LinodeGrants UserLinodeGrantArrayInput
+	// The longview the user has permissions access to.
+	LongviewGrants UserLongviewGrantArrayInput
+	// The NodeBalancers the user has permissions access to.
+	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	Restricted pulumi.BoolPtrInput
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayInput
+	// The StackScripts the user has permissions access to.
+	StackscriptGrants UserStackscriptGrantArrayInput
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolPtrInput
 	// The username of the user.
 	Username pulumi.StringPtrInput
+	// The volumes the user has permissions access to.
+	VolumeGrants UserVolumeGrantArrayInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -117,22 +226,54 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
+	// The domains the user has permissions access to.
+	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email string `pulumi:"email"`
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
+	// The images the user has permissions access to.
+	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
+	// The Linodes the user has permissions access to.
+	LinodeGrants []UserLinodeGrant `pulumi:"linodeGrants"`
+	// The longview the user has permissions access to.
+	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
+	// The NodeBalancers the user has permissions access to.
+	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	Restricted *bool `pulumi:"restricted"`
+	// The StackScripts the user has permissions access to.
+	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// The username of the user.
 	Username string `pulumi:"username"`
+	// The volumes the user has permissions access to.
+	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
+	// The domains the user has permissions access to.
+	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringInput
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants UserGlobalGrantsPtrInput
+	// The images the user has permissions access to.
+	ImageGrants UserImageGrantArrayInput
+	// The Linodes the user has permissions access to.
+	LinodeGrants UserLinodeGrantArrayInput
+	// The longview the user has permissions access to.
+	LongviewGrants UserLongviewGrantArrayInput
+	// The NodeBalancers the user has permissions access to.
+	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	Restricted pulumi.BoolPtrInput
+	// The StackScripts the user has permissions access to.
+	StackscriptGrants UserStackscriptGrantArrayInput
 	// The username of the user.
 	Username pulumi.StringInput
+	// The volumes the user has permissions access to.
+	VolumeGrants UserVolumeGrantArrayInput
 }
 
 func (UserArgs) ElementType() reflect.Type {

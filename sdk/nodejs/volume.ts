@@ -18,15 +18,15 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobaz = new linode.Instance("foobaz", {
- *     region: "us-west",
  *     rootPass: "3X4mp13",
- *     tags: ["foobaz"],
  *     type: "g6-nanode-1",
+ *     region: "us-west",
+ *     tags: ["foobaz"],
  * });
  * const foobar = new linode.Volume("foobar", {
  *     label: "foo-volume",
- *     linodeId: foobaz.id.apply(id => Number.parseFloat(id)),
  *     region: foobaz.region,
+ *     linodeId: foobaz.id,
  * });
  * ```
  *

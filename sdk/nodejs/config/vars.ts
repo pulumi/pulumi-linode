@@ -11,6 +11,18 @@ let __config = new pulumi.Config("linode");
  */
 export let apiVersion: string | undefined = __config.get("apiVersion") || utilities.getEnv("LINODE_API_VERSION");
 /**
+ * The rate in milliseconds to poll for events.
+ */
+export let eventPollMs: number | undefined = __config.getObject<number>("eventPollMs");
+/**
+ * The rate in milliseconds to poll for LKE events.
+ */
+export let lkeEventPollMs: number | undefined = __config.getObject<number>("lkeEventPollMs");
+/**
+ * The rate in milliseconds to poll for an LKE node to be ready.
+ */
+export let lkeNodeReadyPollMs: number | undefined = __config.getObject<number>("lkeNodeReadyPollMs");
+/**
  * Maximum delay in milliseconds before retrying a request.
  */
 export let maxRetryDelayMs: number | undefined = __config.getObject<number>("maxRetryDelayMs");
