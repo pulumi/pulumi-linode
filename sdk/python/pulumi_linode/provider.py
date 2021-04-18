@@ -15,6 +15,9 @@ class ProviderArgs:
     def __init__(__self__, *,
                  token: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
+                 event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -24,6 +27,9 @@ class ProviderArgs:
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] token: The token that allows you access to your Linode account
         :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
+        :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
+        :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
         :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
@@ -35,6 +41,12 @@ class ProviderArgs:
             api_version = _utilities.get_env('LINODE_API_VERSION')
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
+        if event_poll_ms is not None:
+            pulumi.set(__self__, "event_poll_ms", event_poll_ms)
+        if lke_event_poll_ms is not None:
+            pulumi.set(__self__, "lke_event_poll_ms", lke_event_poll_ms)
+        if lke_node_ready_poll_ms is not None:
+            pulumi.set(__self__, "lke_node_ready_poll_ms", lke_node_ready_poll_ms)
         if max_retry_delay_ms is not None:
             pulumi.set(__self__, "max_retry_delay_ms", max_retry_delay_ms)
         if min_retry_delay_ms is not None:
@@ -73,6 +85,42 @@ class ProviderArgs:
     @api_version.setter
     def api_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="eventPollMs")
+    def event_poll_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        The rate in milliseconds to poll for events.
+        """
+        return pulumi.get(self, "event_poll_ms")
+
+    @event_poll_ms.setter
+    def event_poll_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "event_poll_ms", value)
+
+    @property
+    @pulumi.getter(name="lkeEventPollMs")
+    def lke_event_poll_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        The rate in milliseconds to poll for LKE events.
+        """
+        return pulumi.get(self, "lke_event_poll_ms")
+
+    @lke_event_poll_ms.setter
+    def lke_event_poll_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lke_event_poll_ms", value)
+
+    @property
+    @pulumi.getter(name="lkeNodeReadyPollMs")
+    def lke_node_ready_poll_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        The rate in milliseconds to poll for an LKE node to be ready.
+        """
+        return pulumi.get(self, "lke_node_ready_poll_ms")
+
+    @lke_node_ready_poll_ms.setter
+    def lke_node_ready_poll_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lke_node_ready_poll_ms", value)
 
     @property
     @pulumi.getter(name="maxRetryDelayMs")
@@ -141,6 +189,9 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
+                 event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -159,6 +210,9 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
+        :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
+        :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
         :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
@@ -194,6 +248,9 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
+                 event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
+                 lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -223,6 +280,9 @@ class Provider(pulumi.ProviderResource):
             if api_version is None:
                 api_version = _utilities.get_env('LINODE_API_VERSION')
             __props__.__dict__["api_version"] = api_version
+            __props__.__dict__["event_poll_ms"] = pulumi.Output.from_input(event_poll_ms).apply(pulumi.runtime.to_json) if event_poll_ms is not None else None
+            __props__.__dict__["lke_event_poll_ms"] = pulumi.Output.from_input(lke_event_poll_ms).apply(pulumi.runtime.to_json) if lke_event_poll_ms is not None else None
+            __props__.__dict__["lke_node_ready_poll_ms"] = pulumi.Output.from_input(lke_node_ready_poll_ms).apply(pulumi.runtime.to_json) if lke_node_ready_poll_ms is not None else None
             __props__.__dict__["max_retry_delay_ms"] = pulumi.Output.from_input(max_retry_delay_ms).apply(pulumi.runtime.to_json) if max_retry_delay_ms is not None else None
             __props__.__dict__["min_retry_delay_ms"] = pulumi.Output.from_input(min_retry_delay_ms).apply(pulumi.runtime.to_json) if min_retry_delay_ms is not None else None
             __props__.__dict__["skip_instance_ready_poll"] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None

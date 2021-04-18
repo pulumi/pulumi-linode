@@ -27,21 +27,21 @@ namespace Pulumi.Linode
     ///     {
     ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
     ///         {
-    ///             ClientConnThrottle = 20,
     ///             Label = "mynodebalancer",
     ///             Region = "us-east",
+    ///             ClientConnThrottle = 20,
     ///         });
     ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
     ///         {
-    ///             Algorithm = "source",
-    ///             Check = "http",
-    ///             CheckAttempts = 3,
-    ///             CheckPath = "/foo",
-    ///             CheckTimeout = 30,
     ///             NodebalancerId = foobar.Id,
     ///             Port = 8088,
     ///             Protocol = "http",
+    ///             Check = "http",
+    ///             CheckPath = "/foo",
+    ///             CheckAttempts = 3,
+    ///             CheckTimeout = 30,
     ///             Stickiness = "http_cookie",
+    ///             Algorithm = "source",
     ///         });
     ///     }
     /// 
@@ -51,9 +51,9 @@ namespace Pulumi.Linode
     /// 
     /// This resource exports the following attributes:
     /// 
-    /// * `ssl_commonname` - The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+    /// * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
     /// 
-    /// * `ssl_fingerprint` - The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+    /// * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
     /// 
     /// * `node_status` - The status of the attached nodes.
     /// 
@@ -167,13 +167,15 @@ namespace Pulumi.Linode
         public Output<string?> SslCert { get; private set; } = null!;
 
         /// <summary>
-        /// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Output("sslCommonname")]
         public Output<string> SslCommonname { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Output("sslFingerprint")]
         public Output<string> SslFingerprint { get; private set; } = null!;
@@ -434,13 +436,15 @@ namespace Pulumi.Linode
         public Input<string>? SslCert { get; set; }
 
         /// <summary>
-        /// The common name for the SSL certification this port is serving if this port is not configured to use SSL.
+        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Input("sslCommonname")]
         public Input<string>? SslCommonname { get; set; }
 
         /// <summary>
-        /// The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.
+        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
+        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Input("sslFingerprint")]
         public Input<string>? SslFingerprint { get; set; }

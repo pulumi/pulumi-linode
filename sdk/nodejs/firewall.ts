@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu18.04",
- *     region: "us-east",
+ *     region: "us-southeast",
  *     type: "g6-standard-1",
  *     rootPass: `bogusPassword$`,
  *     swapSize: 256,
@@ -27,23 +27,43 @@ import * as utilities from "./utilities";
  * const myFirewall = new linode.Firewall("myFirewall", {
  *     label: "my_firewall",
  *     tags: ["test"],
- *     inbounds: [{
- *         label: "allow-them",
- *         action: "ACCEPT",
- *         protocol: "TCP",
- *         ports: "80",
- *         ipv4s: ["0.0.0.0/0"],
- *         ipv6s: ["ff00::/8"],
- *     }],
+ *     inbounds: [
+ *         {
+ *             label: "allow-http",
+ *             action: "ACCEPT",
+ *             protocol: "TCP",
+ *             ports: "80",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["ff00::/8"],
+ *         },
+ *         {
+ *             label: "allow-https",
+ *             action: "ACCEPT",
+ *             protocol: "TCP",
+ *             ports: "443",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["ff00::/8"],
+ *         },
+ *     ],
  *     inboundPolicy: "DROP",
- *     outbounds: [{
- *         label: "reject-them",
- *         action: "DROP",
- *         protocol: "TCP",
- *         ports: "80",
- *         ipv4s: ["0.0.0.0/0"],
- *         ipv6s: ["ff00::/8"],
- *     }],
+ *     outbounds: [
+ *         {
+ *             label: "reject-http",
+ *             action: "DROP",
+ *             protocol: "TCP",
+ *             ports: "80",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["ff00::/8"],
+ *         },
+ *         {
+ *             label: "reject-https",
+ *             action: "DROP",
+ *             protocol: "TCP",
+ *             ports: "443",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["ff00::/8"],
+ *         },
+ *     ],
  *     outboundPolicy: "ACCEPT",
  *     linodes: [myInstance.id],
  * });

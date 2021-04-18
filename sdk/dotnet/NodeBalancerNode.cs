@@ -28,51 +28,51 @@ namespace Pulumi.Linode
     ///     public MyStack()
     ///     {
     ///         var web = new List&lt;Linode.Instance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///         for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
     ///         {
     ///             var range = new { Value = rangeIndex };
     ///             web.Add(new Linode.Instance($"web-{range.Value}", new Linode.InstanceArgs
     ///             {
+    ///                 Label = $"web-{range.Value + 1}",
+    ///                 Image = "linode/ubuntu18.04",
+    ///                 Region = "us-east",
+    ///                 Type = "g6-standard-1",
     ///                 AuthorizedKeys = 
     ///                 {
     ///                     "ssh-rsa AAAA...Gw== user@example.local",
     ///                 },
-    ///                 Image = "linode/ubuntu18.04",
-    ///                 Label = $"web-{range.Value + 1}",
-    ///                 PrivateIp = true,
-    ///                 Region = "us-east",
     ///                 RootPass = "test",
-    ///                 Type = "g6-standard-1",
+    ///                 PrivateIp = true,
     ///             }));
     ///         }
     ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
     ///         {
-    ///             ClientConnThrottle = 20,
     ///             Label = "mynodebalancer",
     ///             Region = "us-east",
+    ///             ClientConnThrottle = 20,
     ///         });
     ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
     ///         {
-    ///             Algorithm = "source",
-    ///             Check = "http",
-    ///             CheckAttempts = 3,
-    ///             CheckPath = "/foo",
-    ///             CheckTimeout = 30,
     ///             NodebalancerId = foobar.Id,
     ///             Port = 80,
     ///             Protocol = "http",
+    ///             Check = "http",
+    ///             CheckPath = "/foo",
+    ///             CheckAttempts = 3,
+    ///             CheckTimeout = 30,
     ///             Stickiness = "http_cookie",
+    ///             Algorithm = "source",
     ///         });
     ///         var foonode = new List&lt;Linode.NodeBalancerNode&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///         for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
     ///         {
     ///             var range = new { Value = rangeIndex };
     ///             foonode.Add(new Linode.NodeBalancerNode($"foonode-{range.Value}", new Linode.NodeBalancerNodeArgs
     ///             {
-    ///                 Address = web.Select(__item =&gt; __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =&gt; $"{privateIpAddresses}:80"),
-    ///                 ConfigId = foofig.Id,
-    ///                 Label = "mynodebalancernode",
     ///                 NodebalancerId = foobar.Id,
+    ///                 ConfigId = foofig.Id,
+    ///                 Address = web.Select(__item =&gt; __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =&gt; $"{privateIpAddresses}:80"),
+    ///                 Label = "mynodebalancernode",
     ///                 Weight = 50,
     ///             }));
     ///         }

@@ -78,6 +78,258 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface GetFirewallDevice {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
+    entityId: number;
+    /**
+     * The Firewall's ID.
+     */
+    id: number;
+    /**
+     * The label of the underlying entity this device references.
+     */
+    label: string;
+    /**
+     * The type of Firewall Device.
+     */
+    type: string;
+    url: string;
+}
+
+export interface GetFirewallInbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: string;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s: string[];
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s: string[];
+    /**
+     * The label of the underlying entity this device references.
+     */
+    label: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports: string;
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: string;
+}
+
+export interface GetFirewallOutbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: string;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s: string[];
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s: string[];
+    /**
+     * The label of the underlying entity this device references.
+     */
+    label: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports: string;
+    /**
+     * The network protocol this rule controls.
+     */
+    protocol: string;
+}
+
+export interface GetImagesFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetImagesImage {
+    created: string;
+    createdBy: string;
+    deprecated: boolean;
+    description: string;
+    expiry: string;
+    id: string;
+    isPublic: boolean;
+    label: string;
+    size: number;
+    type: string;
+    vendor: string;
+}
+
+export interface GetInstanceBackupsAutomatic {
+    /**
+     * A list of the labels of the Configuration profiles that are part of the Backup.
+     */
+    configs: string[];
+    /**
+     * The date the Backup was taken.
+     */
+    created: string;
+    disks: outputs.GetInstanceBackupsAutomaticDisk[];
+    /**
+     * The date the Backup completed.
+     */
+    finished: string;
+    /**
+     * The unique ID of this Backup.
+     */
+    id: number;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The current state of a specific Backup.
+     */
+    status: string;
+    /**
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     */
+    type: string;
+    /**
+     * The date the Backup was most recently updated.
+     */
+    updated: string;
+}
+
+export interface GetInstanceBackupsAutomaticDisk {
+    /**
+     * The filesystem of this disk.
+     */
+    filesystem: string;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The size of this disk.
+     */
+    size: number;
+}
+
+export interface GetInstanceBackupsCurrent {
+    /**
+     * A list of the labels of the Configuration profiles that are part of the Backup.
+     */
+    configs: string[];
+    /**
+     * The date the Backup was taken.
+     */
+    created: string;
+    disks: outputs.GetInstanceBackupsCurrentDisk[];
+    /**
+     * The date the Backup completed.
+     */
+    finished: string;
+    /**
+     * The unique ID of this Backup.
+     */
+    id: number;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The current state of a specific Backup.
+     */
+    status: string;
+    /**
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     */
+    type: string;
+    /**
+     * The date the Backup was most recently updated.
+     */
+    updated: string;
+}
+
+export interface GetInstanceBackupsCurrentDisk {
+    /**
+     * The filesystem of this disk.
+     */
+    filesystem: string;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The size of this disk.
+     */
+    size: number;
+}
+
+export interface GetInstanceBackupsInProgress {
+    /**
+     * A list of the labels of the Configuration profiles that are part of the Backup.
+     */
+    configs: string[];
+    /**
+     * The date the Backup was taken.
+     */
+    created: string;
+    disks: outputs.GetInstanceBackupsInProgressDisk[];
+    /**
+     * The date the Backup completed.
+     */
+    finished: string;
+    /**
+     * The unique ID of this Backup.
+     */
+    id: number;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The current state of a specific Backup.
+     */
+    status: string;
+    /**
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     */
+    type: string;
+    /**
+     * The date the Backup was most recently updated.
+     */
+    updated: string;
+}
+
+export interface GetInstanceBackupsInProgressDisk {
+    /**
+     * The filesystem of this disk.
+     */
+    filesystem: string;
+    /**
+     * The label of this disk.
+     */
+    label: string;
+    /**
+     * The size of this disk.
+     */
+    size: number;
+}
+
 export interface GetInstanceTypeAddons {
     backups: outputs.GetInstanceTypeAddonsBackups;
 }
@@ -94,6 +346,150 @@ export interface GetInstanceTypeAddonsBackupsPrice {
 export interface GetInstanceTypePrice {
     hourly: number;
     monthly: number;
+}
+
+export interface GetInstancesFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetInstancesInstance {
+    alerts: outputs.GetInstancesInstanceAlerts;
+    backups: outputs.GetInstancesInstanceBackup[];
+    bootConfigLabel: string;
+    configs: outputs.GetInstancesInstanceConfig[];
+    disks: outputs.GetInstancesInstanceDisk[];
+    group: string;
+    image: string;
+    ipAddress: string;
+    ipv4s: string[];
+    ipv6: string;
+    label: string;
+    privateIpAddress: string;
+    region: string;
+    specs: outputs.GetInstancesInstanceSpec[];
+    status: string;
+    swapSize: number;
+    tags: string[];
+    type: string;
+    watchdogEnabled: boolean;
+}
+
+export interface GetInstancesInstanceAlerts {
+    cpu: number;
+    io: number;
+    networkIn: number;
+    networkOut: number;
+    transferQuota: number;
+}
+
+export interface GetInstancesInstanceBackup {
+    enabled: boolean;
+    schedules: outputs.GetInstancesInstanceBackupSchedule[];
+}
+
+export interface GetInstancesInstanceBackupSchedule {
+    day: string;
+    window: string;
+}
+
+export interface GetInstancesInstanceConfig {
+    comments: string;
+    devices: outputs.GetInstancesInstanceConfigDevice[];
+    helpers: outputs.GetInstancesInstanceConfigHelper[];
+    kernel: string;
+    label: string;
+    memoryLimit: number;
+    rootDevice: string;
+    runLevel: string;
+    virtMode: string;
+}
+
+export interface GetInstancesInstanceConfigDevice {
+    sdas: outputs.GetInstancesInstanceConfigDeviceSda[];
+    sdbs: outputs.GetInstancesInstanceConfigDeviceSdb[];
+    sdcs: outputs.GetInstancesInstanceConfigDeviceSdc[];
+    sdds: outputs.GetInstancesInstanceConfigDeviceSdd[];
+    sdes: outputs.GetInstancesInstanceConfigDeviceSde[];
+    sdfs: outputs.GetInstancesInstanceConfigDeviceSdf[];
+    sdgs: outputs.GetInstancesInstanceConfigDeviceSdg[];
+    sdhs: outputs.GetInstancesInstanceConfigDeviceSdh[];
+}
+
+export interface GetInstancesInstanceConfigDeviceSda {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdb {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdc {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdd {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSde {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdf {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdg {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdh {
+    diskId: number;
+    diskLabel?: string;
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigHelper {
+    devtmpfsAutomount: boolean;
+    distro: boolean;
+    modulesDep: boolean;
+    network: boolean;
+    updatedbDisabled: boolean;
+}
+
+export interface GetInstancesInstanceDisk {
+    filesystem: string;
+    id: number;
+    label: string;
+    size: number;
+}
+
+export interface GetInstancesInstanceSpec {
+    disk: number;
+    memory: number;
+    transfer: number;
+    vcpus: number;
 }
 
 export interface GetLkeClusterPool {
@@ -128,6 +524,32 @@ export interface GetLkeClusterPoolNode {
      * The status of the node.
      */
     status: string;
+}
+
+export interface GetNodeBalancerConfigNodeStatus {
+    /**
+     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+     */
+    down: number;
+    /**
+     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
+     */
+    up: number;
+}
+
+export interface GetNodeBalancerTransfer {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
+    in: number;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    out: number;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    total: number;
 }
 
 export interface GetProfileReferrals {
@@ -463,6 +885,49 @@ export interface ObjectStorageBucketCert {
     privateKey: string;
 }
 
+export interface ObjectStorageBucketLifecycleRule {
+    /**
+     * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+     */
+    abortIncompleteMultipartUploadDays?: number;
+    /**
+     * Specifies whether the lifecycle rule is active.
+     */
+    enabled: boolean;
+    expiration?: outputs.ObjectStorageBucketLifecycleRuleExpiration;
+    /**
+     * The unique identifier for the rule.
+     */
+    id: string;
+    noncurrentVersionExpiration?: outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration;
+    /**
+     * The object key prefix identifying one or more objects to which the rule applies.
+     */
+    prefix?: string;
+}
+
+export interface ObjectStorageBucketLifecycleRuleExpiration {
+    /**
+     * Specifies the date after which you want the corresponding action to take effect.
+     */
+    date?: string;
+    /**
+     * Specifies the number of days non-current object versions expire.
+     */
+    days?: number;
+    /**
+     * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+     */
+    expiredObjectDeleteMarker?: boolean;
+}
+
+export interface ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
+    /**
+     * Specifies the number of days non-current object versions expire.
+     */
+    days: number;
+}
+
 export interface ObjectStorageKeyBucketAccess {
     /**
      * The unique label of the bucket to which the key will grant limited access.
@@ -488,6 +953,54 @@ export interface StackScriptUserDefinedField {
     manyOf: string;
     name: string;
     oneOf: string;
+}
+
+export interface UserDomainGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserGlobalGrants {
+    accountAccess?: string;
+    addDomains?: boolean;
+    addImages?: boolean;
+    addLinodes?: boolean;
+    addLongview?: boolean;
+    addNodebalancers?: boolean;
+    addStackscripts?: boolean;
+    addVolumes?: boolean;
+    cancelAccount?: boolean;
+    longviewSubscription?: boolean;
+}
+
+export interface UserImageGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserLinodeGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserLongviewGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserNodebalancerGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserStackscriptGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface UserVolumeGrant {
+    id: number;
+    permissions: string;
 }
 
 export interface VlanAttachedLinode {

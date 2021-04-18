@@ -30,20 +30,20 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foobaz, err := linode.NewInstance(ctx, "foobaz", &linode.InstanceArgs{
-// 			Region:   pulumi.String("us-west"),
 // 			RootPass: pulumi.String("3X4mp13"),
+// 			Type:     pulumi.String("g6-nanode-1"),
+// 			Region:   pulumi.String("us-west"),
 // 			Tags: pulumi.StringArray{
 // 				pulumi.String("foobaz"),
 // 			},
-// 			Type: pulumi.String("g6-nanode-1"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
 // 			Label:    pulumi.String("foo-volume"),
-// 			LinodeId: foobaz.ID(),
 // 			Region:   foobaz.Region,
+// 			LinodeId: foobaz.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

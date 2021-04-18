@@ -28,21 +28,21 @@ namespace Pulumi.Linode
     ///     {
     ///         var foo = new Linode.Instance("foo", new Linode.InstanceArgs
     ///         {
-    ///             Region = "us-central",
     ///             Type = "g6-nanode-1",
+    ///             Region = "us-central",
     ///         });
     ///         var bar = new Linode.Image("bar", new Linode.ImageArgs
     ///         {
+    ///             Label = "foo-sda-image",
     ///             Description = "Image taken from foo",
     ///             DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
-    ///             Label = "foo-sda-image",
     ///             LinodeId = foo.Id,
     ///         });
     ///         var barBased = new Linode.Instance("barBased", new Linode.InstanceArgs
     ///         {
-    ///             Image = bar.Id,
-    ///             Region = "eu-west",
     ///             Type = foo.Type,
+    ///             Region = "eu-west",
+    ///             Image = bar.Id,
     ///         });
     ///     }
     /// 

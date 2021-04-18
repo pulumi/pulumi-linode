@@ -49,6 +49,12 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion *string `pulumi:"apiVersion"`
+	// The rate in milliseconds to poll for events.
+	EventPollMs *int `pulumi:"eventPollMs"`
+	// The rate in milliseconds to poll for LKE events.
+	LkeEventPollMs *int `pulumi:"lkeEventPollMs"`
+	// The rate in milliseconds to poll for an LKE node to be ready.
+	LkeNodeReadyPollMs *int `pulumi:"lkeNodeReadyPollMs"`
 	// Maximum delay in milliseconds before retrying a request.
 	MaxRetryDelayMs *int `pulumi:"maxRetryDelayMs"`
 	// Minimum delay in milliseconds before retrying a request.
@@ -67,6 +73,12 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	ApiVersion pulumi.StringPtrInput
+	// The rate in milliseconds to poll for events.
+	EventPollMs pulumi.IntPtrInput
+	// The rate in milliseconds to poll for LKE events.
+	LkeEventPollMs pulumi.IntPtrInput
+	// The rate in milliseconds to poll for an LKE node to be ready.
+	LkeNodeReadyPollMs pulumi.IntPtrInput
 	// Maximum delay in milliseconds before retrying a request.
 	MaxRetryDelayMs pulumi.IntPtrInput
 	// Minimum delay in milliseconds before retrying a request.

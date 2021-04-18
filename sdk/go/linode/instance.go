@@ -72,16 +72,39 @@ import (
 // 		}
 // 		webVolume, err := linode.NewVolume(ctx, "webVolume", &linode.VolumeArgs{
 // 			Label:  pulumi.String("web_volume"),
-// 			Region: pulumi.String("us-central"),
 // 			Size:   pulumi.Int(20),
+// 			Region: pulumi.String("us-central"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = linode.NewInstance(ctx, "web", &linode.InstanceArgs{
-// 			BootConfigLabel: pulumi.String("boot_config"),
+// 			Label: pulumi.String("complex_instance"),
+// 			Group: pulumi.String("foo"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 			},
+// 			Region:    pulumi.String("us-central"),
+// 			Type:      pulumi.String("g6-nanode-1"),
+// 			PrivateIp: pulumi.Bool(true),
+// 			Disks: linode.InstanceDiskArray{
+// 				&linode.InstanceDiskArgs{
+// 					Label: pulumi.String("boot"),
+// 					Size:  pulumi.Int(3000),
+// 					Image: pulumi.String("linode/ubuntu18.04"),
+// 					AuthorizedKeys: pulumi.StringArray{
+// 						pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+// 					},
+// 					AuthorizedUsers: pulumi.StringArray{
+// 						pulumi.String(me.Username),
+// 					},
+// 					RootPass: pulumi.String("terr4form-test"),
+// 				},
+// 			},
 // 			Configs: linode.InstanceConfigArray{
 // 				&linode.InstanceConfigArgs{
+// 					Label:  pulumi.String("boot_config"),
+// 					Kernel: pulumi.String("linode/latest-64bit"),
 // 					Devices: &linode.InstanceConfigDevicesArgs{
 // 						Sda: &linode.InstanceConfigDevicesSdaArgs{
 // 							DiskLabel: pulumi.String("boot"),
@@ -90,33 +113,10 @@ import (
 // 							VolumeId: webVolume.ID(),
 // 						},
 // 					},
-// 					Kernel:     pulumi.String("linode/latest-64bit"),
-// 					Label:      pulumi.String("boot_config"),
 // 					RootDevice: pulumi.String("/dev/sda"),
 // 				},
 // 			},
-// 			Disks: linode.InstanceDiskArray{
-// 				&linode.InstanceDiskArgs{
-// 					AuthorizedKeys: pulumi.StringArray{
-// 						pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
-// 					},
-// 					AuthorizedUsers: pulumi.StringArray{
-// 						pulumi.String(me.Username),
-// 					},
-// 					Image:    pulumi.String("linode/ubuntu18.04"),
-// 					Label:    pulumi.String("boot"),
-// 					RootPass: pulumi.String("terr4form-test"),
-// 					Size:     pulumi.Int(3000),
-// 				},
-// 			},
-// 			Group:     pulumi.String("foo"),
-// 			Label:     pulumi.String("complex_instance"),
-// 			PrivateIp: pulumi.Bool(true),
-// 			Region:    pulumi.String("us-central"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 			},
-// 			Type: pulumi.String("g6-nanode-1"),
+// 			BootConfigLabel: pulumi.String("boot_config"),
 // 		})
 // 		if err != nil {
 // 			return err

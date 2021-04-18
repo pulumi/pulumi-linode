@@ -14,6 +14,8 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// Create an unrestricted user:
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
@@ -25,22 +27,116 @@ namespace Pulumi.Linode
     ///         var john = new Linode.User("john", new Linode.UserArgs
     ///         {
     ///             Email = "john@acme.io",
-    ///             Restricted = true,
     ///             Username = "john123",
     ///         });
     ///     }
     /// 
     /// }
     /// ```
+    /// 
+    /// Create a restricted user with grants:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooser = new Linode.User("fooser", new Linode.UserArgs
+    ///         {
+    ///             Email = "cool@acme.io",
+    ///             GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
+    ///             {
+    ///                 AddImages = true,
+    ///                 AddLinodes = true,
+    ///             },
+    ///             LinodeGrants = 
+    ///             {
+    ///                 new Linode.Inputs.UserLinodeGrantArgs
+    ///                 {
+    ///                     Id = 12345,
+    ///                     Permissions = "read_write",
+    ///                 },
+    ///             },
+    ///             Restricted = true,
+    ///             Username = "cooluser123",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Global Grants
+    /// 
+    /// * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
+    /// 
+    /// * `add_domains` - (optional) If true, this User may add Domains.
+    /// 
+    /// * `add_images` - (optional) If true, this User may add Images.
+    /// 
+    /// * `add_linodes` - (optional) If true, this User may create Linodes.
+    /// 
+    /// * `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.
+    /// 
+    /// * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
+    /// 
+    /// * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+    /// 
+    /// * `cancel_account` - (optional) If true, this User may cancel the entire Account.
+    /// 
+    /// * `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.
+    /// 
+    /// ## Entity Grants
+    /// 
+    /// * `id` - (required) The ID of the entity this grant applies to.
+    /// 
+    /// * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
     /// </summary>
     [LinodeResourceType("linode:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
+        /// The domains the user has permissions access to.
+        /// </summary>
+        [Output("domainGrants")]
+        public Output<ImmutableArray<Outputs.UserDomainGrant>> DomainGrants { get; private set; } = null!;
+
+        /// <summary>
         /// The email address of the user.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// A structure containing the Account-level grants a User has.
+        /// </summary>
+        [Output("globalGrants")]
+        public Output<Outputs.UserGlobalGrants> GlobalGrants { get; private set; } = null!;
+
+        /// <summary>
+        /// The images the user has permissions access to.
+        /// </summary>
+        [Output("imageGrants")]
+        public Output<ImmutableArray<Outputs.UserImageGrant>> ImageGrants { get; private set; } = null!;
+
+        /// <summary>
+        /// The Linodes the user has permissions access to.
+        /// </summary>
+        [Output("linodeGrants")]
+        public Output<ImmutableArray<Outputs.UserLinodeGrant>> LinodeGrants { get; private set; } = null!;
+
+        /// <summary>
+        /// The longview the user has permissions access to.
+        /// </summary>
+        [Output("longviewGrants")]
+        public Output<ImmutableArray<Outputs.UserLongviewGrant>> LongviewGrants { get; private set; } = null!;
+
+        /// <summary>
+        /// The NodeBalancers the user has permissions access to.
+        /// </summary>
+        [Output("nodebalancerGrants")]
+        public Output<ImmutableArray<Outputs.UserNodebalancerGrant>> NodebalancerGrants { get; private set; } = null!;
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
@@ -55,6 +151,12 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
         /// <summary>
+        /// The StackScripts the user has permissions access to.
+        /// </summary>
+        [Output("stackscriptGrants")]
+        public Output<ImmutableArray<Outputs.UserStackscriptGrant>> StackscriptGrants { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the user has two-factor-authentication enabled.
         /// </summary>
         [Output("tfaEnabled")]
@@ -65,6 +167,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
+
+        /// <summary>
+        /// The volumes the user has permissions access to.
+        /// </summary>
+        [Output("volumeGrants")]
+        public Output<ImmutableArray<Outputs.UserVolumeGrant>> VolumeGrants { get; private set; } = null!;
 
 
         /// <summary>
@@ -112,6 +220,18 @@ namespace Pulumi.Linode
 
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
+        [Input("domainGrants")]
+        private InputList<Inputs.UserDomainGrantArgs>? _domainGrants;
+
+        /// <summary>
+        /// The domains the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserDomainGrantArgs> DomainGrants
+        {
+            get => _domainGrants ?? (_domainGrants = new InputList<Inputs.UserDomainGrantArgs>());
+            set => _domainGrants = value;
+        }
+
         /// <summary>
         /// The email address of the user.
         /// </summary>
@@ -119,16 +239,94 @@ namespace Pulumi.Linode
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
+        /// A structure containing the Account-level grants a User has.
+        /// </summary>
+        [Input("globalGrants")]
+        public Input<Inputs.UserGlobalGrantsArgs>? GlobalGrants { get; set; }
+
+        [Input("imageGrants")]
+        private InputList<Inputs.UserImageGrantArgs>? _imageGrants;
+
+        /// <summary>
+        /// The images the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserImageGrantArgs> ImageGrants
+        {
+            get => _imageGrants ?? (_imageGrants = new InputList<Inputs.UserImageGrantArgs>());
+            set => _imageGrants = value;
+        }
+
+        [Input("linodeGrants")]
+        private InputList<Inputs.UserLinodeGrantArgs>? _linodeGrants;
+
+        /// <summary>
+        /// The Linodes the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserLinodeGrantArgs> LinodeGrants
+        {
+            get => _linodeGrants ?? (_linodeGrants = new InputList<Inputs.UserLinodeGrantArgs>());
+            set => _linodeGrants = value;
+        }
+
+        [Input("longviewGrants")]
+        private InputList<Inputs.UserLongviewGrantArgs>? _longviewGrants;
+
+        /// <summary>
+        /// The longview the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserLongviewGrantArgs> LongviewGrants
+        {
+            get => _longviewGrants ?? (_longviewGrants = new InputList<Inputs.UserLongviewGrantArgs>());
+            set => _longviewGrants = value;
+        }
+
+        [Input("nodebalancerGrants")]
+        private InputList<Inputs.UserNodebalancerGrantArgs>? _nodebalancerGrants;
+
+        /// <summary>
+        /// The NodeBalancers the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserNodebalancerGrantArgs> NodebalancerGrants
+        {
+            get => _nodebalancerGrants ?? (_nodebalancerGrants = new InputList<Inputs.UserNodebalancerGrantArgs>());
+            set => _nodebalancerGrants = value;
+        }
+
+        /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }
+
+        [Input("stackscriptGrants")]
+        private InputList<Inputs.UserStackscriptGrantArgs>? _stackscriptGrants;
+
+        /// <summary>
+        /// The StackScripts the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserStackscriptGrantArgs> StackscriptGrants
+        {
+            get => _stackscriptGrants ?? (_stackscriptGrants = new InputList<Inputs.UserStackscriptGrantArgs>());
+            set => _stackscriptGrants = value;
+        }
 
         /// <summary>
         /// The username of the user.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
+
+        [Input("volumeGrants")]
+        private InputList<Inputs.UserVolumeGrantArgs>? _volumeGrants;
+
+        /// <summary>
+        /// The volumes the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserVolumeGrantArgs> VolumeGrants
+        {
+            get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.UserVolumeGrantArgs>());
+            set => _volumeGrants = value;
+        }
 
         public UserArgs()
         {
@@ -137,11 +335,77 @@ namespace Pulumi.Linode
 
     public sealed class UserState : Pulumi.ResourceArgs
     {
+        [Input("domainGrants")]
+        private InputList<Inputs.UserDomainGrantGetArgs>? _domainGrants;
+
+        /// <summary>
+        /// The domains the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserDomainGrantGetArgs> DomainGrants
+        {
+            get => _domainGrants ?? (_domainGrants = new InputList<Inputs.UserDomainGrantGetArgs>());
+            set => _domainGrants = value;
+        }
+
         /// <summary>
         /// The email address of the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// A structure containing the Account-level grants a User has.
+        /// </summary>
+        [Input("globalGrants")]
+        public Input<Inputs.UserGlobalGrantsGetArgs>? GlobalGrants { get; set; }
+
+        [Input("imageGrants")]
+        private InputList<Inputs.UserImageGrantGetArgs>? _imageGrants;
+
+        /// <summary>
+        /// The images the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserImageGrantGetArgs> ImageGrants
+        {
+            get => _imageGrants ?? (_imageGrants = new InputList<Inputs.UserImageGrantGetArgs>());
+            set => _imageGrants = value;
+        }
+
+        [Input("linodeGrants")]
+        private InputList<Inputs.UserLinodeGrantGetArgs>? _linodeGrants;
+
+        /// <summary>
+        /// The Linodes the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserLinodeGrantGetArgs> LinodeGrants
+        {
+            get => _linodeGrants ?? (_linodeGrants = new InputList<Inputs.UserLinodeGrantGetArgs>());
+            set => _linodeGrants = value;
+        }
+
+        [Input("longviewGrants")]
+        private InputList<Inputs.UserLongviewGrantGetArgs>? _longviewGrants;
+
+        /// <summary>
+        /// The longview the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserLongviewGrantGetArgs> LongviewGrants
+        {
+            get => _longviewGrants ?? (_longviewGrants = new InputList<Inputs.UserLongviewGrantGetArgs>());
+            set => _longviewGrants = value;
+        }
+
+        [Input("nodebalancerGrants")]
+        private InputList<Inputs.UserNodebalancerGrantGetArgs>? _nodebalancerGrants;
+
+        /// <summary>
+        /// The NodeBalancers the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserNodebalancerGrantGetArgs> NodebalancerGrants
+        {
+            get => _nodebalancerGrants ?? (_nodebalancerGrants = new InputList<Inputs.UserNodebalancerGrantGetArgs>());
+            set => _nodebalancerGrants = value;
+        }
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
@@ -161,6 +425,18 @@ namespace Pulumi.Linode
             set => _sshKeys = value;
         }
 
+        [Input("stackscriptGrants")]
+        private InputList<Inputs.UserStackscriptGrantGetArgs>? _stackscriptGrants;
+
+        /// <summary>
+        /// The StackScripts the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserStackscriptGrantGetArgs> StackscriptGrants
+        {
+            get => _stackscriptGrants ?? (_stackscriptGrants = new InputList<Inputs.UserStackscriptGrantGetArgs>());
+            set => _stackscriptGrants = value;
+        }
+
         /// <summary>
         /// Whether the user has two-factor-authentication enabled.
         /// </summary>
@@ -172,6 +448,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        [Input("volumeGrants")]
+        private InputList<Inputs.UserVolumeGrantGetArgs>? _volumeGrants;
+
+        /// <summary>
+        /// The volumes the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserVolumeGrantGetArgs> VolumeGrants
+        {
+            get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.UserVolumeGrantGetArgs>());
+            set => _volumeGrants = value;
+        }
 
         public UserState()
         {

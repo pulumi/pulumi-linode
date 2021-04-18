@@ -238,10 +238,18 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_object_storage_cluster": {
 				Tok: makeDataSource(mainMod, "getObjectStorageCluster"),
 			},
-			"linode_stackscript":   {Tok: makeDataSource(mainMod, "getStackScript")},
-			"linode_domain_record": {Tok: makeDataSource(mainMod, "getDomainRecord")},
-			"linode_volume":        {Tok: makeDataSource(mainMod, "getVolume")},
-			"linode_lke_cluster":   {Tok: makeDataSource(mainMod, "getLkeCluster")},
+			"linode_stackscript":         {Tok: makeDataSource(mainMod, "getStackScript")},
+			"linode_domain_record":       {Tok: makeDataSource(mainMod, "getDomainRecord")},
+			"linode_volume":              {Tok: makeDataSource(mainMod, "getVolume")},
+			"linode_lke_cluster":         {Tok: makeDataSource(mainMod, "getLkeCluster")},
+			"linode_firewall":            {Tok: makeDataSource(mainMod, "getFirewall")},
+			"linode_images":              {Tok: makeDataSource(mainMod, "getImages")},
+			"linode_instance_backups":    {Tok: makeDataSource(mainMod, "getInstanceBackups")},
+			"linode_instances":           {Tok: makeDataSource(mainMod, "getInstances")},
+			"linode_kernel":              {Tok: makeDataSource(mainMod, "getKernel")},
+			"linode_nodebalancer":        {Tok: makeDataSource(mainMod, "getNodeBalancer")},
+			"linode_nodebalancer_config": {Tok: makeDataSource(mainMod, "getNodeBalancerConfig")},
+			"linode_nodebalancer_node":   {Tok: makeDataSource(mainMod, "getNodeBalancerNode")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

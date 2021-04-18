@@ -52,6 +52,24 @@ namespace Pulumi.Linode
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
+        /// The rate in milliseconds to poll for events.
+        /// </summary>
+        [Input("eventPollMs", json: true)]
+        public Input<int>? EventPollMs { get; set; }
+
+        /// <summary>
+        /// The rate in milliseconds to poll for LKE events.
+        /// </summary>
+        [Input("lkeEventPollMs", json: true)]
+        public Input<int>? LkeEventPollMs { get; set; }
+
+        /// <summary>
+        /// The rate in milliseconds to poll for an LKE node to be ready.
+        /// </summary>
+        [Input("lkeNodeReadyPollMs", json: true)]
+        public Input<int>? LkeNodeReadyPollMs { get; set; }
+
+        /// <summary>
         /// Maximum delay in milliseconds before retrying a request.
         /// </summary>
         [Input("maxRetryDelayMs", json: true)]

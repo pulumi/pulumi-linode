@@ -39,43 +39,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const me = pulumi.output(linode.getProfile({ async: true }));
- * const webVolume = new linode.Volume("web_volume", {
+ * const me = linode.getProfile({});
+ * const webVolume = new linode.Volume("webVolume", {
  *     label: "web_volume",
- *     region: "us-central",
  *     size: 20,
+ *     region: "us-central",
  * });
  * const web = new linode.Instance("web", {
- *     bootConfigLabel: "boot_config",
+ *     label: "complex_instance",
+ *     group: "foo",
+ *     tags: ["foo"],
+ *     region: "us-central",
+ *     type: "g6-nanode-1",
+ *     privateIp: true,
+ *     disks: [{
+ *         label: "boot",
+ *         size: 3000,
+ *         image: "linode/ubuntu18.04",
+ *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *         authorizedUsers: [me.then(me => me.username)],
+ *         rootPass: "terr4form-test",
+ *     }],
  *     configs: [{
+ *         label: "boot_config",
+ *         kernel: "linode/latest-64bit",
  *         devices: {
  *             sda: {
  *                 diskLabel: "boot",
  *             },
  *             sdb: {
- *                 volumeId: webVolume.id.apply(id => Number.parseFloat(id)),
+ *                 volumeId: webVolume.id,
  *             },
  *         },
- *         kernel: "linode/latest-64bit",
- *         label: "boot_config",
  *         rootDevice: "/dev/sda",
  *     }],
- *     disks: [{
- *         // Any of authorized_keys, authorized_users, and root_pass
- *         // can be used for provisioning.
- *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
- *         authorizedUsers: [me.username],
- *         image: "linode/ubuntu18.04",
- *         label: "boot",
- *         rootPass: "terr4form-test",
- *         size: 3000,
- *     }],
- *     group: "foo",
- *     label: "complex_instance",
- *     privateIp: true,
- *     region: "us-central",
- *     tags: ["foo"],
- *     type: "g6-nanode-1",
+ *     bootConfigLabel: "boot_config",
  * });
  * ```
  * ## Attributes

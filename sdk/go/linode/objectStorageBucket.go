@@ -57,11 +57,21 @@ import (
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
 
+	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	Acl  pulumi.StringPtrOutput           `pulumi:"acl"`
 	Cert ObjectStorageBucketCertPtrOutput `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	// If true, the bucket will have CORS enabled for all origins.
+	CorsEnabled pulumi.BoolPtrOutput `pulumi:"corsEnabled"`
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringOutput `pulumi:"label"`
+	// Lifecycle rules to be applied to the bucket.
+	LifecycleRules ObjectStorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
+	SecretKey      pulumi.StringPtrOutput                      `pulumi:"secretKey"`
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	Versioning pulumi.BoolOutput `pulumi:"versioning"`
 }
 
 // NewObjectStorageBucket registers a new resource with the given unique name, arguments, and options.
@@ -99,19 +109,39 @@ func GetObjectStorageBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObjectStorageBucket resources.
 type objectStorageBucketState struct {
+	AccessKey *string `pulumi:"accessKey"`
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	Acl  *string                  `pulumi:"acl"`
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster *string `pulumi:"cluster"`
+	// If true, the bucket will have CORS enabled for all origins.
+	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The label of the Linode Object Storage Bucket.
 	Label *string `pulumi:"label"`
+	// Lifecycle rules to be applied to the bucket.
+	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
+	SecretKey      *string                            `pulumi:"secretKey"`
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	Versioning *bool `pulumi:"versioning"`
 }
 
 type ObjectStorageBucketState struct {
+	AccessKey pulumi.StringPtrInput
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	Acl  pulumi.StringPtrInput
 	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringPtrInput
+	// If true, the bucket will have CORS enabled for all origins.
+	CorsEnabled pulumi.BoolPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringPtrInput
+	// Lifecycle rules to be applied to the bucket.
+	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
+	SecretKey      pulumi.StringPtrInput
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	Versioning pulumi.BoolPtrInput
 }
 
 func (ObjectStorageBucketState) ElementType() reflect.Type {
@@ -119,20 +149,40 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 }
 
 type objectStorageBucketArgs struct {
+	AccessKey *string `pulumi:"accessKey"`
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	Acl  *string                  `pulumi:"acl"`
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster string `pulumi:"cluster"`
+	// If true, the bucket will have CORS enabled for all origins.
+	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The label of the Linode Object Storage Bucket.
 	Label string `pulumi:"label"`
+	// Lifecycle rules to be applied to the bucket.
+	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
+	SecretKey      *string                            `pulumi:"secretKey"`
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	Versioning *bool `pulumi:"versioning"`
 }
 
 // The set of arguments for constructing a ObjectStorageBucket resource.
 type ObjectStorageBucketArgs struct {
+	AccessKey pulumi.StringPtrInput
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	Acl  pulumi.StringPtrInput
 	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringInput
+	// If true, the bucket will have CORS enabled for all origins.
+	CorsEnabled pulumi.BoolPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringInput
+	// Lifecycle rules to be applied to the bucket.
+	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
+	SecretKey      pulumi.StringPtrInput
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	Versioning pulumi.BoolPtrInput
 }
 
 func (ObjectStorageBucketArgs) ElementType() reflect.Type {

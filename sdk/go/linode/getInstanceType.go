@@ -52,6 +52,14 @@ import (
 // * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
 //
 // * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
+//
+// * `networkOut` - The Mbits outbound bandwidth allocation.
+//
+// * `memory` - The amount of RAM included in this Linode Type.
+//
+// * `transfer` - The monthly outbound transfer amount, in MB.
+//
+// * `vcpus` - The number of VCPU cores this Linode Type offers.
 func GetInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeResult, error) {
 	var rv GetInstanceTypeResult
 	err := ctx.Invoke("linode:index/getInstanceType:getInstanceType", args, &rv, opts...)

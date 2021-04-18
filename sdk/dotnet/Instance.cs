@@ -65,16 +65,44 @@ namespace Pulumi.Linode
     ///         var webVolume = new Linode.Volume("webVolume", new Linode.VolumeArgs
     ///         {
     ///             Label = "web_volume",
-    ///             Region = "us-central",
     ///             Size = 20,
+    ///             Region = "us-central",
     ///         });
     ///         var web = new Linode.Instance("web", new Linode.InstanceArgs
     ///         {
-    ///             BootConfigLabel = "boot_config",
+    ///             Label = "complex_instance",
+    ///             Group = "foo",
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///             },
+    ///             Region = "us-central",
+    ///             Type = "g6-nanode-1",
+    ///             PrivateIp = true,
+    ///             Disks = 
+    ///             {
+    ///                 new Linode.Inputs.InstanceDiskArgs
+    ///                 {
+    ///                     Label = "boot",
+    ///                     Size = 3000,
+    ///                     Image = "linode/ubuntu18.04",
+    ///                     AuthorizedKeys = 
+    ///                     {
+    ///                         "ssh-rsa AAAA...Gw== user@example.local",
+    ///                     },
+    ///                     AuthorizedUsers = 
+    ///                     {
+    ///                         me.Apply(me =&gt; me.Username),
+    ///                     },
+    ///                     RootPass = "terr4form-test",
+    ///                 },
+    ///             },
     ///             Configs = 
     ///             {
     ///                 new Linode.Inputs.InstanceConfigArgs
     ///                 {
+    ///                     Label = "boot_config",
+    ///                     Kernel = "linode/latest-64bit",
     ///                     Devices = new Linode.Inputs.InstanceConfigDevicesArgs
     ///                     {
     ///                         Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
@@ -86,38 +114,10 @@ namespace Pulumi.Linode
     ///                             VolumeId = webVolume.Id,
     ///                         },
     ///                     },
-    ///                     Kernel = "linode/latest-64bit",
-    ///                     Label = "boot_config",
     ///                     RootDevice = "/dev/sda",
     ///                 },
     ///             },
-    ///             Disks = 
-    ///             {
-    ///                 new Linode.Inputs.InstanceDiskArgs
-    ///                 {
-    ///                     AuthorizedKeys = 
-    ///                     {
-    ///                         "ssh-rsa AAAA...Gw== user@example.local",
-    ///                     },
-    ///                     AuthorizedUsers = 
-    ///                     {
-    ///                         me.Apply(me =&gt; me.Username),
-    ///                     },
-    ///                     Image = "linode/ubuntu18.04",
-    ///                     Label = "boot",
-    ///                     RootPass = "terr4form-test",
-    ///                     Size = 3000,
-    ///                 },
-    ///             },
-    ///             Group = "foo",
-    ///             Label = "complex_instance",
-    ///             PrivateIp = true,
-    ///             Region = "us-central",
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///             },
-    ///             Type = "g6-nanode-1",
+    ///             BootConfigLabel = "boot_config",
     ///         });
     ///     }
     /// 

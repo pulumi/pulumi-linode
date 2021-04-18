@@ -245,14 +245,14 @@ class Volume(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobaz = linode.Instance("foobaz",
-            region="us-west",
             root_pass="3X4mp13",
-            tags=["foobaz"],
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            region="us-west",
+            tags=["foobaz"])
         foobar = linode.Volume("foobar",
             label="foo-volume",
-            linode_id=foobaz.id,
-            region=foobaz.region)
+            region=foobaz.region,
+            linode_id=foobaz.id)
         ```
 
         Volumes can also be attached using the Linode Instance config device map.
@@ -320,14 +320,14 @@ class Volume(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobaz = linode.Instance("foobaz",
-            region="us-west",
             root_pass="3X4mp13",
-            tags=["foobaz"],
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            region="us-west",
+            tags=["foobaz"])
         foobar = linode.Volume("foobar",
             label="foo-volume",
-            linode_id=foobaz.id,
-            region=foobaz.region)
+            region=foobaz.region,
+            linode_id=foobaz.id)
         ```
 
         Volumes can also be attached using the Linode Instance config device map.

@@ -407,9 +407,9 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar_domain = linode.Domain("foobarDomain",
+            type="master",
             domain="foobar.example",
-            soa_email="example@foobar.example",
-            type="master")
+            soa_email="example@foobar.example")
         foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
             domain_id=foobar_domain.id,
             name="www",
@@ -463,9 +463,9 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar_domain = linode.Domain("foobarDomain",
+            type="master",
             domain="foobar.example",
-            soa_email="example@foobar.example",
-            type="master")
+            soa_email="example@foobar.example")
         foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
             domain_id=foobar_domain.id,
             name="www",

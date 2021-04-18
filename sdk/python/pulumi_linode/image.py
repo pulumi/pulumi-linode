@@ -307,17 +307,17 @@ class Image(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.Instance("foo",
-            region="us-central",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            region="us-central")
         bar = linode.Image("bar",
+            label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            label="foo-sda-image",
             linode_id=foo.id)
         bar_based = linode.Instance("barBased",
-            image=bar.id,
+            type=foo.type,
             region="eu-west",
-            type=foo.type)
+            image=bar.id)
         ```
         ## Attributes
 
@@ -376,17 +376,17 @@ class Image(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.Instance("foo",
-            region="us-central",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            region="us-central")
         bar = linode.Image("bar",
+            label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            label="foo-sda-image",
             linode_id=foo.id)
         bar_based = linode.Instance("barBased",
-            image=bar.id,
+            type=foo.type,
             region="eu-west",
-            type=foo.type)
+            image=bar.id)
         ```
         ## Attributes
 

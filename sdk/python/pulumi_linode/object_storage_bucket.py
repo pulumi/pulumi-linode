@@ -17,16 +17,38 @@ class ObjectStorageBucketArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  label: pulumi.Input[str],
-                 cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None):
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
+                 cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ObjectStorageBucket resource.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "label", label)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
+        if cors_enabled is not None:
+            pulumi.set(__self__, "cors_enabled", cors_enabled)
+        if lifecycle_rules is not None:
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if versioning is not None:
+            pulumi.set(__self__, "versioning", versioning)
 
     @property
     @pulumi.getter
@@ -53,6 +75,27 @@ class ObjectStorageBucketArgs:
         pulumi.set(self, "label", value)
 
     @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
         return pulumi.get(self, "cert")
@@ -61,24 +104,112 @@ class ObjectStorageBucketArgs:
     def cert(self, value: Optional[pulumi.Input['ObjectStorageBucketCertArgs']]):
         pulumi.set(self, "cert", value)
 
+    @property
+    @pulumi.getter(name="corsEnabled")
+    def cors_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the bucket will have CORS enabled for all origins.
+        """
+        return pulumi.get(self, "cors_enabled")
+
+    @cors_enabled.setter
+    def cors_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cors_enabled", value)
+
+    @property
+    @pulumi.getter(name="lifecycleRules")
+    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
+        """
+        Lifecycle rules to be applied to the bucket.
+        """
+        return pulumi.get(self, "lifecycle_rules")
+
+    @lifecycle_rules.setter
+    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
+        pulumi.set(self, "lifecycle_rules", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        """
+        return pulumi.get(self, "versioning")
+
+    @versioning.setter
+    def versioning(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "versioning", value)
+
 
 @pulumi.input_type
 class _ObjectStorageBucketState:
     def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 label: Optional[pulumi.Input[str]] = None):
+                 cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageBucket resources.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
         """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if cors_enabled is not None:
+            pulumi.set(__self__, "cors_enabled", cors_enabled)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if lifecycle_rules is not None:
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if versioning is not None:
+            pulumi.set(__self__, "versioning", versioning)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
 
     @property
     @pulumi.getter
@@ -102,6 +233,18 @@ class _ObjectStorageBucketState:
         pulumi.set(self, "cluster", value)
 
     @property
+    @pulumi.getter(name="corsEnabled")
+    def cors_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the bucket will have CORS enabled for all origins.
+        """
+        return pulumi.get(self, "cors_enabled")
+
+    @cors_enabled.setter
+    def cors_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cors_enabled", value)
+
+    @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
@@ -113,15 +256,54 @@ class _ObjectStorageBucketState:
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
 
+    @property
+    @pulumi.getter(name="lifecycleRules")
+    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
+        """
+        Lifecycle rules to be applied to the bucket.
+        """
+        return pulumi.get(self, "lifecycle_rules")
+
+    @lifecycle_rules.setter
+    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
+        pulumi.set(self, "lifecycle_rules", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        """
+        return pulumi.get(self, "versioning")
+
+    @versioning.setter
+    def versioning(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "versioning", value)
+
 
 class ObjectStorageBucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
+                 cors_enabled: Optional[pulumi.Input[bool]] = None,
                  label: Optional[pulumi.Input[str]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -152,8 +334,12 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
         """
         ...
     @overload
@@ -201,9 +387,15 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
+                 cors_enabled: Optional[pulumi.Input[bool]] = None,
                  label: Optional[pulumi.Input[str]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -224,13 +416,19 @@ class ObjectStorageBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ObjectStorageBucketArgs.__new__(ObjectStorageBucketArgs)
 
+            __props__.__dict__["access_key"] = access_key
+            __props__.__dict__["acl"] = acl
             __props__.__dict__["cert"] = cert
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
+            __props__.__dict__["cors_enabled"] = cors_enabled
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
+            __props__.__dict__["lifecycle_rules"] = lifecycle_rules
+            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["versioning"] = versioning
         super(ObjectStorageBucket, __self__).__init__(
             'linode:index/objectStorageBucket:ObjectStorageBucket',
             resource_name,
@@ -241,9 +439,15 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: Optional[pulumi.Input[str]] = None,
+            acl: Optional[pulumi.Input[str]] = None,
             cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            label: Optional[pulumi.Input[str]] = None) -> 'ObjectStorageBucket':
+            cors_enabled: Optional[pulumi.Input[bool]] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]]] = None,
+            secret_key: Optional[pulumi.Input[str]] = None,
+            versioning: Optional[pulumi.Input[bool]] = None) -> 'ObjectStorageBucket':
         """
         Get an existing ObjectStorageBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -251,17 +455,40 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
+        :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ObjectStorageBucketState.__new__(_ObjectStorageBucketState)
 
+        __props__.__dict__["access_key"] = access_key
+        __props__.__dict__["acl"] = acl
         __props__.__dict__["cert"] = cert
         __props__.__dict__["cluster"] = cluster
+        __props__.__dict__["cors_enabled"] = cors_enabled
         __props__.__dict__["label"] = label
+        __props__.__dict__["lifecycle_rules"] = lifecycle_rules
+        __props__.__dict__["secret_key"] = secret_key
+        __props__.__dict__["versioning"] = versioning
         return ObjectStorageBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def acl(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        """
+        return pulumi.get(self, "acl")
 
     @property
     @pulumi.getter
@@ -277,10 +504,39 @@ class ObjectStorageBucket(pulumi.CustomResource):
         return pulumi.get(self, "cluster")
 
     @property
+    @pulumi.getter(name="corsEnabled")
+    def cors_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the bucket will have CORS enabled for all origins.
+        """
+        return pulumi.get(self, "cors_enabled")
+
+    @property
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
         """
         The label of the Linode Object Storage Bucket.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="lifecycleRules")
+    def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.ObjectStorageBucketLifecycleRule']]]:
+        """
+        Lifecycle rules to be applied to the bucket.
+        """
+        return pulumi.get(self, "lifecycle_rules")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        """
+        return pulumi.get(self, "versioning")
 

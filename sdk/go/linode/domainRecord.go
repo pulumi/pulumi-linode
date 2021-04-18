@@ -29,9 +29,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
+// 			Type:     pulumi.String("master"),
 // 			Domain:   pulumi.String("foobar.example"),
 // 			SoaEmail: pulumi.String("example@foobar.example"),
-// 			Type:     pulumi.String("master"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -9,16 +10,63 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * Create an unrestricted user:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const john = new linode.User("john", {
  *     email: "john@acme.io",
- *     restricted: true,
  *     username: "john123",
  * });
  * ```
+ *
+ * Create a restricted user with grants:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooser = new linode.User("fooser", {
+ *     email: "cool@acme.io",
+ *     globalGrants: {
+ *         addImages: true,
+ *         addLinodes: true,
+ *     },
+ *     linodeGrants: [{
+ *         id: 12345,
+ *         permissions: "read_write",
+ *     }],
+ *     restricted: true,
+ *     username: "cooluser123",
+ * });
+ * ```
+ * ## Global Grants
+ *
+ * * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
+ *
+ * * `addDomains` - (optional) If true, this User may add Domains.
+ *
+ * * `addImages` - (optional) If true, this User may add Images.
+ *
+ * * `addLinodes` - (optional) If true, this User may create Linodes.
+ *
+ * * `addLongview` - (optional) If true, this User may create Longview clients and view the current plan.
+ *
+ * * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
+ *
+ * * `addStackscripts` - (optional) If true, this User may add StackScripts.
+ *
+ * * `cancelAccount` - (optional) If true, this User may cancel the entire Account.
+ *
+ * * `longviewSubscription` - (optional) If true, this User may manage the Account’s Longview subscription.
+ *
+ * ## Entity Grants
+ *
+ * * `id` - (required) The ID of the entity this grant applies to.
+ *
+ * * `permissions` - (required) The level of access this User has to this entity. (`readOnly`, `readWrite`)
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -49,9 +97,33 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
+     * The domains the user has permissions access to.
+     */
+    public readonly domainGrants!: pulumi.Output<outputs.UserDomainGrant[]>;
+    /**
      * The email address of the user.
      */
     public readonly email!: pulumi.Output<string>;
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
+    public readonly globalGrants!: pulumi.Output<outputs.UserGlobalGrants>;
+    /**
+     * The images the user has permissions access to.
+     */
+    public readonly imageGrants!: pulumi.Output<outputs.UserImageGrant[]>;
+    /**
+     * The Linodes the user has permissions access to.
+     */
+    public readonly linodeGrants!: pulumi.Output<outputs.UserLinodeGrant[]>;
+    /**
+     * The longview the user has permissions access to.
+     */
+    public readonly longviewGrants!: pulumi.Output<outputs.UserLongviewGrant[]>;
+    /**
+     * The NodeBalancers the user has permissions access to.
+     */
+    public readonly nodebalancerGrants!: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      */
@@ -61,6 +133,10 @@ export class User extends pulumi.CustomResource {
      */
     public /*out*/ readonly sshKeys!: pulumi.Output<string[]>;
     /**
+     * The StackScripts the user has permissions access to.
+     */
+    public readonly stackscriptGrants!: pulumi.Output<outputs.UserStackscriptGrant[]>;
+    /**
      * Whether the user has two-factor-authentication enabled.
      */
     public /*out*/ readonly tfaEnabled!: pulumi.Output<boolean>;
@@ -68,6 +144,10 @@ export class User extends pulumi.CustomResource {
      * The username of the user.
      */
     public readonly username!: pulumi.Output<string>;
+    /**
+     * The volumes the user has permissions access to.
+     */
+    public readonly volumeGrants!: pulumi.Output<outputs.UserVolumeGrant[]>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -82,11 +162,19 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
+            inputs["domainGrants"] = state ? state.domainGrants : undefined;
             inputs["email"] = state ? state.email : undefined;
+            inputs["globalGrants"] = state ? state.globalGrants : undefined;
+            inputs["imageGrants"] = state ? state.imageGrants : undefined;
+            inputs["linodeGrants"] = state ? state.linodeGrants : undefined;
+            inputs["longviewGrants"] = state ? state.longviewGrants : undefined;
+            inputs["nodebalancerGrants"] = state ? state.nodebalancerGrants : undefined;
             inputs["restricted"] = state ? state.restricted : undefined;
             inputs["sshKeys"] = state ? state.sshKeys : undefined;
+            inputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
             inputs["tfaEnabled"] = state ? state.tfaEnabled : undefined;
             inputs["username"] = state ? state.username : undefined;
+            inputs["volumeGrants"] = state ? state.volumeGrants : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -95,9 +183,17 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            inputs["domainGrants"] = args ? args.domainGrants : undefined;
             inputs["email"] = args ? args.email : undefined;
+            inputs["globalGrants"] = args ? args.globalGrants : undefined;
+            inputs["imageGrants"] = args ? args.imageGrants : undefined;
+            inputs["linodeGrants"] = args ? args.linodeGrants : undefined;
+            inputs["longviewGrants"] = args ? args.longviewGrants : undefined;
+            inputs["nodebalancerGrants"] = args ? args.nodebalancerGrants : undefined;
             inputs["restricted"] = args ? args.restricted : undefined;
+            inputs["stackscriptGrants"] = args ? args.stackscriptGrants : undefined;
             inputs["username"] = args ? args.username : undefined;
+            inputs["volumeGrants"] = args ? args.volumeGrants : undefined;
             inputs["sshKeys"] = undefined /*out*/;
             inputs["tfaEnabled"] = undefined /*out*/;
         }
@@ -113,9 +209,33 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
+     * The domains the user has permissions access to.
+     */
+    readonly domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    /**
      * The email address of the user.
      */
     readonly email?: pulumi.Input<string>;
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
+    readonly globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    /**
+     * The images the user has permissions access to.
+     */
+    readonly imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    /**
+     * The Linodes the user has permissions access to.
+     */
+    readonly linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    /**
+     * The longview the user has permissions access to.
+     */
+    readonly longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    /**
+     * The NodeBalancers the user has permissions access to.
+     */
+    readonly nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      */
@@ -125,6 +245,10 @@ export interface UserState {
      */
     readonly sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The StackScripts the user has permissions access to.
+     */
+    readonly stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    /**
      * Whether the user has two-factor-authentication enabled.
      */
     readonly tfaEnabled?: pulumi.Input<boolean>;
@@ -132,6 +256,10 @@ export interface UserState {
      * The username of the user.
      */
     readonly username?: pulumi.Input<string>;
+    /**
+     * The volumes the user has permissions access to.
+     */
+    readonly volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
 }
 
 /**
@@ -139,15 +267,47 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
+     * The domains the user has permissions access to.
+     */
+    readonly domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    /**
      * The email address of the user.
      */
     readonly email: pulumi.Input<string>;
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
+    readonly globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    /**
+     * The images the user has permissions access to.
+     */
+    readonly imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    /**
+     * The Linodes the user has permissions access to.
+     */
+    readonly linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    /**
+     * The longview the user has permissions access to.
+     */
+    readonly longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    /**
+     * The NodeBalancers the user has permissions access to.
+     */
+    readonly nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      */
     readonly restricted?: pulumi.Input<boolean>;
     /**
+     * The StackScripts the user has permissions access to.
+     */
+    readonly stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    /**
      * The username of the user.
      */
     readonly username: pulumi.Input<string>;
+    /**
+     * The volumes the user has permissions access to.
+     */
+    readonly volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
 }

@@ -41,6 +41,9 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'token'");
             }
             inputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
+            inputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
+            inputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
+            inputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
             inputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
             inputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
             inputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
@@ -63,6 +66,18 @@ export interface ProviderArgs {
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
     readonly apiVersion?: pulumi.Input<string>;
+    /**
+     * The rate in milliseconds to poll for events.
+     */
+    readonly eventPollMs?: pulumi.Input<number>;
+    /**
+     * The rate in milliseconds to poll for LKE events.
+     */
+    readonly lkeEventPollMs?: pulumi.Input<number>;
+    /**
+     * The rate in milliseconds to poll for an LKE node to be ready.
+     */
+    readonly lkeNodeReadyPollMs?: pulumi.Input<number>;
     /**
      * Maximum delay in milliseconds before retrying a request.
      */

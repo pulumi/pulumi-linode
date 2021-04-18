@@ -18,19 +18,19 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.Instance("foo", {
- *     region: "us-central",
  *     type: "g6-nanode-1",
+ *     region: "us-central",
  * });
  * const bar = new linode.Image("bar", {
+ *     label: "foo-sda-image",
  *     description: "Image taken from foo",
  *     diskId: foo.disks.apply(disks => disks[0].id),
- *     label: "foo-sda-image",
- *     linodeId: foo.id.apply(id => Number.parseFloat(id)),
+ *     linodeId: foo.id,
  * });
- * const barBased = new linode.Instance("bar_based", {
- *     image: bar.id,
- *     region: "eu-west",
+ * const barBased = new linode.Instance("barBased", {
  *     type: foo.type,
+ *     region: "eu-west",
+ *     image: bar.id,
  * });
  * ```
  * ## Attributes

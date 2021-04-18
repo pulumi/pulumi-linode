@@ -259,34 +259,34 @@ class NodeBalancerNode(pulumi.CustomResource):
         web = []
         for range in [{"value": i} for i in range(0, 3)]:
             web.append(linode.Instance(f"web-{range['value']}",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                image="linode/ubuntu18.04",
                 label=f"web-{range['value'] + 1}",
-                private_ip=True,
+                image="linode/ubuntu18.04",
                 region="us-east",
+                type="g6-standard-1",
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
                 root_pass="test",
-                type="g6-standard-1"))
+                private_ip=True))
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
-            region="us-east")
+            region="us-east",
+            client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            algorithm="source",
-            check="http",
-            check_attempts=3,
-            check_path="/foo",
-            check_timeout=30,
             nodebalancer_id=foobar.id,
             port=80,
             protocol="http",
-            stickiness="http_cookie")
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
         foonode = []
         for range in [{"value": i} for i in range(0, 3)]:
             foonode.append(linode.NodeBalancerNode(f"foonode-{range['value']}",
-                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
-                config_id=foofig.id,
-                label="mynodebalancernode",
                 nodebalancer_id=foobar.id,
+                config_id=foofig.id,
+                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
+                label="mynodebalancernode",
                 weight=50))
         ```
         ## Attributes
@@ -339,34 +339,34 @@ class NodeBalancerNode(pulumi.CustomResource):
         web = []
         for range in [{"value": i} for i in range(0, 3)]:
             web.append(linode.Instance(f"web-{range['value']}",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                image="linode/ubuntu18.04",
                 label=f"web-{range['value'] + 1}",
-                private_ip=True,
+                image="linode/ubuntu18.04",
                 region="us-east",
+                type="g6-standard-1",
+                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
                 root_pass="test",
-                type="g6-standard-1"))
+                private_ip=True))
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
-            region="us-east")
+            region="us-east",
+            client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            algorithm="source",
-            check="http",
-            check_attempts=3,
-            check_path="/foo",
-            check_timeout=30,
             nodebalancer_id=foobar.id,
             port=80,
             protocol="http",
-            stickiness="http_cookie")
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
         foonode = []
         for range in [{"value": i} for i in range(0, 3)]:
             foonode.append(linode.NodeBalancerNode(f"foonode-{range['value']}",
-                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
-                config_id=foofig.id,
-                label="mynodebalancernode",
                 nodebalancer_id=foobar.id,
+                config_id=foofig.id,
+                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
+                label="mynodebalancernode",
                 weight=50))
         ```
         ## Attributes

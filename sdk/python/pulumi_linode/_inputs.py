@@ -33,9 +33,22 @@ __all__ = [
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerTransferArgs',
     'ObjectStorageBucketCertArgs',
+    'ObjectStorageBucketLifecycleRuleArgs',
+    'ObjectStorageBucketLifecycleRuleExpirationArgs',
+    'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs',
     'ObjectStorageKeyBucketAccessArgs',
     'StackScriptUserDefinedFieldArgs',
+    'UserDomainGrantArgs',
+    'UserGlobalGrantsArgs',
+    'UserImageGrantArgs',
+    'UserLinodeGrantArgs',
+    'UserLongviewGrantArgs',
+    'UserNodebalancerGrantArgs',
+    'UserStackscriptGrantArgs',
+    'UserVolumeGrantArgs',
     'VlanAttachedLinodeArgs',
+    'GetImagesFilterArgs',
+    'GetInstancesFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
 ]
 
@@ -1683,6 +1696,177 @@ class ObjectStorageBucketCertArgs:
 
 
 @pulumi.input_type
+class ObjectStorageBucketLifecycleRuleArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 abort_incomplete_multipart_upload_days: Optional[pulumi.Input[int]] = None,
+                 expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs']] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 noncurrent_version_expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']] = None,
+                 prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Specifies whether the lifecycle rule is active.
+        :param pulumi.Input[int] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        :param pulumi.Input[str] id: The unique identifier for the rule.
+        :param pulumi.Input[str] prefix: The object key prefix identifying one or more objects to which the rule applies.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if abort_incomplete_multipart_upload_days is not None:
+            pulumi.set(__self__, "abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if noncurrent_version_expiration is not None:
+            pulumi.set(__self__, "noncurrent_version_expiration", noncurrent_version_expiration)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Specifies whether the lifecycle rule is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="abortIncompleteMultipartUploadDays")
+    def abort_incomplete_multipart_upload_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        """
+        return pulumi.get(self, "abort_incomplete_multipart_upload_days")
+
+    @abort_incomplete_multipart_upload_days.setter
+    def abort_incomplete_multipart_upload_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "abort_incomplete_multipart_upload_days", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs']]:
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs']]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for the rule.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="noncurrentVersionExpiration")
+    def noncurrent_version_expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']]:
+        return pulumi.get(self, "noncurrent_version_expiration")
+
+    @noncurrent_version_expiration.setter
+    def noncurrent_version_expiration(self, value: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']]):
+        pulumi.set(self, "noncurrent_version_expiration", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object key prefix identifying one or more objects to which the rule applies.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class ObjectStorageBucketLifecycleRuleExpirationArgs:
+    def __init__(__self__, *,
+                 date: Optional[pulumi.Input[str]] = None,
+                 days: Optional[pulumi.Input[int]] = None,
+                 expired_object_delete_marker: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] date: Specifies the date after which you want the corresponding action to take effect.
+        :param pulumi.Input[int] days: Specifies the number of days non-current object versions expire.
+        :param pulumi.Input[bool] expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+        """
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if expired_object_delete_marker is not None:
+            pulumi.set(__self__, "expired_object_delete_marker", expired_object_delete_marker)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the date after which you want the corresponding action to take effect.
+        """
+        return pulumi.get(self, "date")
+
+    @date.setter
+    def date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "date", value)
+
+    @property
+    @pulumi.getter
+    def days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of days non-current object versions expire.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "days", value)
+
+    @property
+    @pulumi.getter(name="expiredObjectDeleteMarker")
+    def expired_object_delete_marker(self) -> Optional[pulumi.Input[bool]]:
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+        """
+        return pulumi.get(self, "expired_object_delete_marker")
+
+    @expired_object_delete_marker.setter
+    def expired_object_delete_marker(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "expired_object_delete_marker", value)
+
+
+@pulumi.input_type
+class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
+    def __init__(__self__, *,
+                 days: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] days: Specifies the number of days non-current object versions expire.
+        """
+        pulumi.set(__self__, "days", days)
+
+    @property
+    @pulumi.getter
+    def days(self) -> pulumi.Input[int]:
+        """
+        Specifies the number of days non-current object versions expire.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "days", value)
+
+
+@pulumi.input_type
 class ObjectStorageKeyBucketAccessArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
@@ -1818,6 +2002,320 @@ class StackScriptUserDefinedFieldArgs:
 
 
 @pulumi.input_type
+class UserDomainGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserGlobalGrantsArgs:
+    def __init__(__self__, *,
+                 account_access: Optional[pulumi.Input[str]] = None,
+                 add_domains: Optional[pulumi.Input[bool]] = None,
+                 add_images: Optional[pulumi.Input[bool]] = None,
+                 add_linodes: Optional[pulumi.Input[bool]] = None,
+                 add_longview: Optional[pulumi.Input[bool]] = None,
+                 add_nodebalancers: Optional[pulumi.Input[bool]] = None,
+                 add_stackscripts: Optional[pulumi.Input[bool]] = None,
+                 add_volumes: Optional[pulumi.Input[bool]] = None,
+                 cancel_account: Optional[pulumi.Input[bool]] = None,
+                 longview_subscription: Optional[pulumi.Input[bool]] = None):
+        if account_access is not None:
+            pulumi.set(__self__, "account_access", account_access)
+        if add_domains is not None:
+            pulumi.set(__self__, "add_domains", add_domains)
+        if add_images is not None:
+            pulumi.set(__self__, "add_images", add_images)
+        if add_linodes is not None:
+            pulumi.set(__self__, "add_linodes", add_linodes)
+        if add_longview is not None:
+            pulumi.set(__self__, "add_longview", add_longview)
+        if add_nodebalancers is not None:
+            pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        if add_stackscripts is not None:
+            pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+        if add_volumes is not None:
+            pulumi.set(__self__, "add_volumes", add_volumes)
+        if cancel_account is not None:
+            pulumi.set(__self__, "cancel_account", cancel_account)
+        if longview_subscription is not None:
+            pulumi.set(__self__, "longview_subscription", longview_subscription)
+
+    @property
+    @pulumi.getter(name="accountAccess")
+    def account_access(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_access")
+
+    @account_access.setter
+    def account_access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_access", value)
+
+    @property
+    @pulumi.getter(name="addDomains")
+    def add_domains(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_domains")
+
+    @add_domains.setter
+    def add_domains(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_domains", value)
+
+    @property
+    @pulumi.getter(name="addImages")
+    def add_images(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_images")
+
+    @add_images.setter
+    def add_images(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_images", value)
+
+    @property
+    @pulumi.getter(name="addLinodes")
+    def add_linodes(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_linodes")
+
+    @add_linodes.setter
+    def add_linodes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_linodes", value)
+
+    @property
+    @pulumi.getter(name="addLongview")
+    def add_longview(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_longview")
+
+    @add_longview.setter
+    def add_longview(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_longview", value)
+
+    @property
+    @pulumi.getter(name="addNodebalancers")
+    def add_nodebalancers(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_nodebalancers")
+
+    @add_nodebalancers.setter
+    def add_nodebalancers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_nodebalancers", value)
+
+    @property
+    @pulumi.getter(name="addStackscripts")
+    def add_stackscripts(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_stackscripts")
+
+    @add_stackscripts.setter
+    def add_stackscripts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_stackscripts", value)
+
+    @property
+    @pulumi.getter(name="addVolumes")
+    def add_volumes(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_volumes")
+
+    @add_volumes.setter
+    def add_volumes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_volumes", value)
+
+    @property
+    @pulumi.getter(name="cancelAccount")
+    def cancel_account(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "cancel_account")
+
+    @cancel_account.setter
+    def cancel_account(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cancel_account", value)
+
+    @property
+    @pulumi.getter(name="longviewSubscription")
+    def longview_subscription(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "longview_subscription")
+
+    @longview_subscription.setter
+    def longview_subscription(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "longview_subscription", value)
+
+
+@pulumi.input_type
+class UserImageGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserLinodeGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserLongviewGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserNodebalancerGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserStackscriptGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class UserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
 class VlanAttachedLinodeArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
@@ -1870,6 +2368,80 @@ class VlanAttachedLinodeArgs:
     @mac_address.setter
     def mac_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mac_address", value)
+
+
+@pulumi.input_type
+class GetImagesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetInstancesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
