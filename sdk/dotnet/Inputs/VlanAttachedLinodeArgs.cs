@@ -9,29 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode.Inputs
 {
-
-    public sealed class VlanAttachedLinodeArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the Linode.
-        /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
-
-        /// <summary>
-        /// The IPv4 address of the Linode.
-        /// </summary>
-        [Input("ipv4Address")]
-        public Input<string>? Ipv4Address { get; set; }
-
-        /// <summary>
-        /// The mac address of the Linode.
-        /// </summary>
-        [Input("macAddress")]
-        public Input<string>? MacAddress { get; set; }
-
-        public VlanAttachedLinodeArgs()
-        {
-        }
-    }
 }

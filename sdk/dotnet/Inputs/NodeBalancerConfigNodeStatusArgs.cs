@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode.Inputs
 {
-
-    public sealed class NodeBalancerConfigNodeStatusArgs : Pulumi.ResourceArgs
-    {
-        [Input("down")]
-        public Input<int>? Down { get; set; }
-
-        [Input("up")]
-        public Input<int>? Up { get; set; }
-
-        public NodeBalancerConfigNodeStatusArgs()
-        {
-        }
-    }
 }
