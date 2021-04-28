@@ -311,6 +311,8 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
+               periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
@@ -474,6 +476,10 @@ class _NodeBalancerConfigState:
     @property
     @pulumi.getter(name="nodeStatuses")
     def node_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]:
+        """
+        A structure containing information about the health of the backends for this port. This information is updated
+        periodically as checks are performed against backends.
+        """
         return pulumi.get(self, "node_statuses")
 
     @node_statuses.setter
@@ -859,6 +865,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerConfigNodeStatusArgs']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
+               periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
@@ -972,6 +980,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="nodeStatuses")
     def node_statuses(self) -> pulumi.Output[Sequence['outputs.NodeBalancerConfigNodeStatus']]:
+        """
+        A structure containing information about the health of the backends for this port. This information is updated
+        periodically as checks are performed against backends.
+        """
         return pulumi.get(self, "node_statuses")
 
     @property

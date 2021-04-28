@@ -46,6 +46,7 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
@@ -242,6 +243,9 @@ class ObjectStorageObjectArgs:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific version of this object.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -332,6 +336,7 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
@@ -514,6 +519,9 @@ class _ObjectStorageObjectState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific version of this object.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -663,6 +671,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
@@ -818,6 +827,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
@@ -942,6 +952,9 @@ class ObjectStorageObject(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        The specific version of this object.
+        """
         return pulumi.get(self, "etag")
 
     @property

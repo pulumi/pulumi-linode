@@ -102,7 +102,9 @@ type NodeBalancerConfig struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout pulumi.IntOutput `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite  pulumi.StringOutput                     `pulumi:"cipherSuite"`
+	CipherSuite pulumi.StringOutput `pulumi:"cipherSuite"`
+	// A structure containing information about the health of the backends for this port. This information is updated
+	// periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayOutput `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
@@ -176,7 +178,9 @@ type nodeBalancerConfigState struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout *int `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite  *string                        `pulumi:"cipherSuite"`
+	CipherSuite *string `pulumi:"cipherSuite"`
+	// A structure containing information about the health of the backends for this port. This information is updated
+	// periodically as checks are performed against backends.
 	NodeStatuses []NodeBalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId *int `pulumi:"nodebalancerId"`
@@ -219,7 +223,9 @@ type NodeBalancerConfigState struct {
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout pulumi.IntPtrInput
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-	CipherSuite  pulumi.StringPtrInput
+	CipherSuite pulumi.StringPtrInput
+	// A structure containing information about the health of the backends for this port. This information is updated
+	// periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntPtrInput

@@ -172,6 +172,9 @@ namespace Pulumi.Linode
     [LinodeResourceType("linode:index/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration options for alert triggers on this Linode.
+        /// </summary>
         [Output("alerts")]
         public Output<Outputs.InstanceAlerts> Alerts { get; private set; } = null!;
 
@@ -283,6 +286,9 @@ namespace Pulumi.Linode
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
 
+        /// <summary>
+        /// Information about the resources available to this Linode.
+        /// </summary>
         [Output("specs")]
         public Output<Outputs.InstanceSpecs> Specs { get; private set; } = null!;
 
@@ -374,6 +380,9 @@ namespace Pulumi.Linode
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration options for alert triggers on this Linode.
+        /// </summary>
         [Input("alerts")]
         public Input<Inputs.InstanceAlertsArgs>? Alerts { get; set; }
 
@@ -530,6 +539,9 @@ namespace Pulumi.Linode
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration options for alert triggers on this Linode.
+        /// </summary>
         [Input("alerts")]
         public Input<Inputs.InstanceAlertsGetArgs>? Alerts { get; set; }
 
@@ -670,6 +682,9 @@ namespace Pulumi.Linode
         [Input("rootPass")]
         public Input<string>? RootPass { get; set; }
 
+        /// <summary>
+        /// Information about the resources available to this Linode.
+        /// </summary>
         [Input("specs")]
         public Input<Inputs.InstanceSpecsGetArgs>? Specs { get; set; }
 

@@ -80,6 +80,9 @@ namespace Pulumi.Linode
         [Output("clientConnThrottle")]
         public Output<int?> ClientConnThrottle { get; private set; } = null!;
 
+        /// <summary>
+        /// When this NodeBalancer was created.
+        /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
 
@@ -119,9 +122,15 @@ namespace Pulumi.Linode
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Information about the amount of transfer this NodeBalancer has had so far this month.
+        /// </summary>
         [Output("transfers")]
         public Output<ImmutableArray<Outputs.NodeBalancerTransfer>> Transfers { get; private set; } = null!;
 
+        /// <summary>
+        /// When this NodeBalancer was last updated.
+        /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
 
@@ -214,6 +223,9 @@ namespace Pulumi.Linode
         [Input("clientConnThrottle")]
         public Input<int>? ClientConnThrottle { get; set; }
 
+        /// <summary>
+        /// When this NodeBalancer was created.
+        /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
@@ -261,12 +273,19 @@ namespace Pulumi.Linode
 
         [Input("transfers")]
         private InputList<Inputs.NodeBalancerTransferGetArgs>? _transfers;
+
+        /// <summary>
+        /// Information about the amount of transfer this NodeBalancer has had so far this month.
+        /// </summary>
         public InputList<Inputs.NodeBalancerTransferGetArgs> Transfers
         {
             get => _transfers ?? (_transfers = new InputList<Inputs.NodeBalancerTransferGetArgs>());
             set => _transfers = value;
         }
 
+        /// <summary>
+        /// When this NodeBalancer was last updated.
+        /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
 

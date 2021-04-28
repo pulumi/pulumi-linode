@@ -68,7 +68,8 @@ type ObjectStorageObject struct {
 	ContentLanguage pulumi.StringPtrOutput `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	Etag        pulumi.StringOutput `pulumi:"etag"`
+	// The specific version of this object.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// They name of the object once it is in the bucket.
@@ -151,7 +152,8 @@ type objectStorageObjectState struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
-	Etag        *string `pulumi:"etag"`
+	// The specific version of this object.
+	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// They name of the object once it is in the bucket.
@@ -191,7 +193,8 @@ type ObjectStorageObjectState struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
-	Etag        pulumi.StringPtrInput
+	// The specific version of this object.
+	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolPtrInput
 	// They name of the object once it is in the bucket.
@@ -235,7 +238,8 @@ type objectStorageObjectArgs struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
-	Etag        *string `pulumi:"etag"`
+	// The specific version of this object.
+	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// They name of the object once it is in the bucket.
@@ -274,7 +278,8 @@ type ObjectStorageObjectArgs struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
-	Etag        pulumi.StringPtrInput
+	// The specific version of this object.
+	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolPtrInput
 	// They name of the object once it is in the bucket.

@@ -4807,7 +4807,8 @@
             "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group: \"foo\",\n    image: \"linode/ubuntu18.04\",\n    label: \"simple_instance\",\n    privateIp: true,\n    region: \"us-central\",\n    rootPass: \"terr4form-test\",\n    swapSize: 256,\n    tags: [\"foo\"],\n    type: \"g6-standard-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group=\"foo\",\n    image=\"linode/ubuntu18.04\",\n    label=\"simple_instance\",\n    private_ip=True,\n    region=\"us-central\",\n    root_pass=\"terr4form-test\",\n    swap_size=256,\n    tags=[\"foo\"],\n    type=\"g6-standard-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new Linode.Instance(\"web\", new Linode.InstanceArgs\n        {\n            AuthorizedKeys = \n            {\n                \"ssh-rsa AAAA...Gw== user@example.local\",\n            },\n            Group = \"foo\",\n            Image = \"linode/ubuntu18.04\",\n            Label = \"simple_instance\",\n            PrivateIp = true,\n            Region = \"us-central\",\n            RootPass = \"terr4form-test\",\n            SwapSize = 256,\n            Tags = \n            {\n                \"foo\",\n            },\n            Type = \"g6-standard-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tGroup:     pulumi.String(\"foo\"),\n\t\t\tImage:     pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:     pulumi.String(\"simple_instance\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tRootPass:  pulumi.String(\"terr4form-test\"),\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Linode Instance with explicit Configs and Disks\n\nUsing explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst me = linode.getProfile({});\nconst webVolume = new linode.Volume(\"webVolume\", {\n    label: \"web_volume\",\n    size: 20,\n    region: \"us-central\",\n});\nconst web = new linode.Instance(\"web\", {\n    label: \"complex_instance\",\n    group: \"foo\",\n    tags: [\"foo\"],\n    region: \"us-central\",\n    type: \"g6-nanode-1\",\n    privateIp: true,\n    disks: [{\n        label: \"boot\",\n        size: 3000,\n        image: \"linode/ubuntu18.04\",\n        authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n        authorizedUsers: [me.then(me =\u003e me.username)],\n        rootPass: \"terr4form-test\",\n    }],\n    configs: [{\n        label: \"boot_config\",\n        kernel: \"linode/latest-64bit\",\n        devices: {\n            sda: {\n                diskLabel: \"boot\",\n            },\n            sdb: {\n                volumeId: webVolume.id,\n            },\n        },\n        rootDevice: \"/dev/sda\",\n    }],\n    bootConfigLabel: \"boot_config\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nme = linode.get_profile()\nweb_volume = linode.Volume(\"webVolume\",\n    label=\"web_volume\",\n    size=20,\n    region=\"us-central\")\nweb = linode.Instance(\"web\",\n    label=\"complex_instance\",\n    group=\"foo\",\n    tags=[\"foo\"],\n    region=\"us-central\",\n    type=\"g6-nanode-1\",\n    private_ip=True,\n    disks=[linode.InstanceDiskArgs(\n        label=\"boot\",\n        size=3000,\n        image=\"linode/ubuntu18.04\",\n        authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n        authorized_users=[me.username],\n        root_pass=\"terr4form-test\",\n    )],\n    configs=[linode.InstanceConfigArgs(\n        label=\"boot_config\",\n        kernel=\"linode/latest-64bit\",\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                disk_label=\"boot\",\n            ),\n            sdb=linode.InstanceConfigDevicesSdbArgs(\n                volume_id=web_volume.id,\n            ),\n        ),\n        root_device=\"/dev/sda\",\n    )],\n    boot_config_label=\"boot_config\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var me = Output.Create(Linode.GetProfile.InvokeAsync());\n        var webVolume = new Linode.Volume(\"webVolume\", new Linode.VolumeArgs\n        {\n            Label = \"web_volume\",\n            Size = 20,\n            Region = \"us-central\",\n        });\n        var web = new Linode.Instance(\"web\", new Linode.InstanceArgs\n        {\n            Label = \"complex_instance\",\n            Group = \"foo\",\n            Tags = \n            {\n                \"foo\",\n            },\n            Region = \"us-central\",\n            Type = \"g6-nanode-1\",\n            PrivateIp = true,\n            Disks = \n            {\n                new Linode.Inputs.InstanceDiskArgs\n                {\n                    Label = \"boot\",\n                    Size = 3000,\n                    Image = \"linode/ubuntu18.04\",\n                    AuthorizedKeys = \n                    {\n                        \"ssh-rsa AAAA...Gw== user@example.local\",\n                    },\n                    AuthorizedUsers = \n                    {\n                        me.Apply(me =\u003e me.Username),\n                    },\n                    RootPass = \"terr4form-test\",\n                },\n            },\n            Configs = \n            {\n                new Linode.Inputs.InstanceConfigArgs\n                {\n                    Label = \"boot_config\",\n                    Kernel = \"linode/latest-64bit\",\n                    Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                    {\n                        Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                        {\n                            DiskLabel = \"boot\",\n                        },\n                        Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs\n                        {\n                            VolumeId = webVolume.Id,\n                        },\n                    },\n                    RootDevice = \"/dev/sda\",\n                },\n            },\n            BootConfigLabel = \"boot_config\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tme, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\twebVolume, err := linode.NewVolume(ctx, \"webVolume\", \u0026linode.VolumeArgs{\n\t\t\tLabel:  pulumi.String(\"web_volume\"),\n\t\t\tSize:   pulumi.Int(20),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel: pulumi.String(\"complex_instance\"),\n\t\t\tGroup: pulumi.String(\"foo\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tType:      pulumi.String(\"g6-nanode-1\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tDisks: linode.InstanceDiskArray{\n\t\t\t\t\u0026linode.InstanceDiskArgs{\n\t\t\t\t\tLabel: pulumi.String(\"boot\"),\n\t\t\t\t\tSize:  pulumi.Int(3000),\n\t\t\t\t\tImage: pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t\t\t},\n\t\t\t\t\tAuthorizedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(me.Username),\n\t\t\t\t\t},\n\t\t\t\t\tRootPass: pulumi.String(\"terr4form-test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tLabel:  pulumi.String(\"boot_config\"),\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tDiskLabel: pulumi.String(\"boot\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSdb: \u0026linode.InstanceConfigDevicesSdbArgs{\n\t\t\t\t\t\t\tVolumeId: webVolume.ID(),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tRootDevice: pulumi.String(\"/dev/sda\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBootConfigLabel: pulumi.String(\"boot_config\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis Linode Instance resource exports the following attributes:\n\n* `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)\n\n* `ip_address` - A string containing the Linode's public IP address.\n\n* `private_ip_address` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.\n\n* `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.\n\n* `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n\n* `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.\n\n* `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.\n\n* `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.\n\n* `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.\n\n* `backups` - Information about this Linode's backups status.\n\n  * `enabled` - If this Linode has the Backup service enabled.\n\n  * `schedule`\n\n    * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as \"Scheduling\" until the day is automatically selected.\n\n    * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.\n\n\n## Import\n\nLinodes Instances can be imported using the Linode `id`, e.g.\n\n```sh\n $ pulumi import linode:index/instance:Instance mylinode 1234567\n```\n\n When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.\n\n**Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.\n\nThe instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types. ",
             "properties": {
                 "alerts": {
-                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
+                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
+                    "description": "Configuration options for alert triggers on this Linode.\n"
                 },
                 "authorizedKeys": {
                     "type": "array",
@@ -4896,7 +4897,8 @@
                     "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n"
                 },
                 "specs": {
-                    "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs"
+                    "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
+                    "description": "Information about the resources available to this Linode.\n"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -4950,7 +4952,8 @@
             ],
             "inputProperties": {
                 "alerts": {
-                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
+                    "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
+                    "description": "Configuration options for alert triggers on this Linode.\n"
                 },
                 "authorizedKeys": {
                     "type": "array",
@@ -5053,7 +5056,8 @@
                 "description": "Input properties used for looking up and filtering Instance resources.\n",
                 "properties": {
                     "alerts": {
-                        "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts"
+                        "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
+                        "description": "Configuration options for alert triggers on this Linode.\n"
                     },
                     "authorizedKeys": {
                         "type": "array",
@@ -5142,7 +5146,8 @@
                         "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n"
                     },
                     "specs": {
-                        "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs"
+                        "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
+                        "description": "Information about the resources available to this Linode.\n"
                     },
                     "stackscriptData": {
                         "type": "object",
@@ -5436,7 +5441,8 @@
                     "description": "Throttle connections per second (0-20). Set to 0 (default) to disable throttling.\n"
                 },
                 "created": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "When this NodeBalancer was created.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -5469,10 +5475,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
-                    }
+                    },
+                    "description": "Information about the amount of transfer this NodeBalancer has had so far this month.\n"
                 },
                 "updated": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "When this NodeBalancer was last updated.\n"
                 }
             },
             "required": [
@@ -5516,7 +5524,8 @@
                         "description": "Throttle connections per second (0-20). Set to 0 (default) to disable throttling.\n"
                     },
                     "created": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "When this NodeBalancer was created.\n"
                     },
                     "hostname": {
                         "type": "string",
@@ -5549,10 +5558,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
-                        }
+                        },
+                        "description": "Information about the amount of transfer this NodeBalancer has had so far this month.\n"
                     },
                     "updated": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "When this NodeBalancer was last updated.\n"
                     }
                 },
                 "type": "object"
@@ -5601,7 +5612,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
-                    }
+                    },
+                    "description": "A structure containing information about the health of the backends for this port. This information is updated\nperiodically as checks are performed against backends.\n"
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -5768,7 +5780,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
-                        }
+                        },
+                        "description": "A structure containing information about the health of the backends for this port. This information is updated\nperiodically as checks are performed against backends.\n"
                     },
                     "nodebalancerId": {
                         "type": "integer",
@@ -5922,14 +5935,16 @@
             "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Object Storage Bucket.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: `%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"%s\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n        var foobar = new Linode.ObjectStorageBucket(\"foobar\", new Linode.ObjectStorageBucketArgs\n        {\n            Cluster = primary.Apply(primary =\u003e primary.Id),\n            Label = \"%s\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(fmt.Sprintf(\"%v%v\", \"%\", \"s\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n ",
             "properties": {
                 "accessKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                 },
                 "acl": {
                     "type": "string",
                     "description": "The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.\n"
                 },
                 "cert": {
-                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
+                    "description": "The cert used by this Object Storage Bucket.\n"
                 },
                 "cluster": {
                     "type": "string",
@@ -5951,7 +5966,8 @@
                     "description": "Lifecycle rules to be applied to the bucket.\n"
                 },
                 "secretKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                 },
                 "versioning": {
                     "type": "boolean",
@@ -5965,14 +5981,16 @@
             ],
             "inputProperties": {
                 "accessKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                 },
                 "acl": {
                     "type": "string",
                     "description": "The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.\n"
                 },
                 "cert": {
-                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
+                    "description": "The cert used by this Object Storage Bucket.\n"
                 },
                 "cluster": {
                     "type": "string",
@@ -5994,7 +6012,8 @@
                     "description": "Lifecycle rules to be applied to the bucket.\n"
                 },
                 "secretKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                 },
                 "versioning": {
                     "type": "boolean",
@@ -6009,14 +6028,16 @@
                 "description": "Input properties used for looking up and filtering ObjectStorageBucket resources.\n",
                 "properties": {
                     "accessKey": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                     },
                     "acl": {
                         "type": "string",
                         "description": "The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.\n"
                     },
                     "cert": {
-                        "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert"
+                        "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
+                        "description": "The cert used by this Object Storage Bucket.\n"
                     },
                     "cluster": {
                         "type": "string",
@@ -6038,7 +6059,8 @@
                         "description": "Lifecycle rules to be applied to the bucket.\n"
                     },
                     "secretKey": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
                     },
                     "versioning": {
                         "type": "boolean",
@@ -6175,7 +6197,8 @@
                     "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
                 },
                 "etag": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The specific version of this object.\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -6265,7 +6288,8 @@
                     "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
                 },
                 "etag": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The specific version of this object.\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -6350,7 +6374,8 @@
                         "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
                     },
                     "etag": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The specific version of this object.\n"
                     },
                     "forceDestroy": {
                         "type": "boolean",

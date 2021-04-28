@@ -99,12 +99,15 @@ class _NodeBalancerState:
         """
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[str] created: When this NodeBalancer was created.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -142,6 +145,9 @@ class _NodeBalancerState:
     @property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this NodeBalancer was created.
+        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -223,6 +229,9 @@ class _NodeBalancerState:
     @property
     @pulumi.getter
     def transfers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]]:
+        """
+        Information about the amount of transfer this NodeBalancer has had so far this month.
+        """
         return pulumi.get(self, "transfers")
 
     @transfers.setter
@@ -232,6 +241,9 @@ class _NodeBalancerState:
     @property
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this NodeBalancer was last updated.
+        """
         return pulumi.get(self, "updated")
 
     @updated.setter
@@ -433,12 +445,15 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[str] created: When this NodeBalancer was created.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -467,6 +482,9 @@ class NodeBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
+        """
+        When this NodeBalancer was created.
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -520,10 +538,16 @@ class NodeBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def transfers(self) -> pulumi.Output[Sequence['outputs.NodeBalancerTransfer']]:
+        """
+        Information about the amount of transfer this NodeBalancer has had so far this month.
+        """
         return pulumi.get(self, "transfers")
 
     @property
     @pulumi.getter
     def updated(self) -> pulumi.Output[str]:
+        """
+        When this NodeBalancer was last updated.
+        """
         return pulumi.get(self, "updated")
 

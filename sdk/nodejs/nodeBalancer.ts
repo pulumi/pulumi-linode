@@ -88,6 +88,9 @@ export class NodeBalancer extends pulumi.CustomResource {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     public readonly clientConnThrottle!: pulumi.Output<number | undefined>;
+    /**
+     * When this NodeBalancer was created.
+     */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -113,7 +116,13 @@ export class NodeBalancer extends pulumi.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     */
     public /*out*/ readonly transfers!: pulumi.Output<outputs.NodeBalancerTransfer[]>;
+    /**
+     * When this NodeBalancer was last updated.
+     */
     public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
@@ -170,6 +179,9 @@ export interface NodeBalancerState {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     readonly clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * When this NodeBalancer was created.
+     */
     readonly created?: pulumi.Input<string>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -195,7 +207,13 @@ export interface NodeBalancerState {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     */
     readonly transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
+    /**
+     * When this NodeBalancer was last updated.
+     */
     readonly updated?: pulumi.Input<string>;
 }
 

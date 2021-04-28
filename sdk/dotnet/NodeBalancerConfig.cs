@@ -133,6 +133,10 @@ namespace Pulumi.Linode
         [Output("cipherSuite")]
         public Output<string> CipherSuite { get; private set; } = null!;
 
+        /// <summary>
+        /// A structure containing information about the health of the backends for this port. This information is updated
+        /// periodically as checks are performed against backends.
+        /// </summary>
         [Output("nodeStatuses")]
         public Output<ImmutableArray<Outputs.NodeBalancerConfigNodeStatus>> NodeStatuses { get; private set; } = null!;
 
@@ -399,6 +403,11 @@ namespace Pulumi.Linode
 
         [Input("nodeStatuses")]
         private InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs>? _nodeStatuses;
+
+        /// <summary>
+        /// A structure containing information about the health of the backends for this port. This information is updated
+        /// periodically as checks are performed against backends.
+        /// </summary>
         public InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs> NodeStatuses
         {
             get => _nodeStatuses ?? (_nodeStatuses = new InputList<Inputs.NodeBalancerConfigNodeStatusGetArgs>());

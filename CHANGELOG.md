@@ -3,10 +3,13 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.17.0 of the Linode Terraform Provider
-* Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
-  Node SDK performance, general availability of Automation API, and more.
 
 ---
+
+## 3.0.0 (20201-04-19)
+* Upgrade to v1.17.0 of the Linode Terraform Provider
+* Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
+  Node SDK performance, general availability of Automation API, and more.
 
 ## 2.11.0 (2021-04-12)
 * Upgrade to pulumi-terraform-bridge v2.23.0
