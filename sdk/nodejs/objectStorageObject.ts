@@ -98,6 +98,9 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     public readonly contentType!: pulumi.Output<string>;
+    /**
+     * The specific version of this object.
+     */
     public readonly etag!: pulumi.Output<string>;
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -252,6 +255,9 @@ export interface ObjectStorageObjectState {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     readonly contentType?: pulumi.Input<string>;
+    /**
+     * The specific version of this object.
+     */
     readonly etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -331,6 +337,9 @@ export interface ObjectStorageObjectArgs {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     readonly contentType?: pulumi.Input<string>;
+    /**
+     * The specific version of this object.
+     */
     readonly etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).

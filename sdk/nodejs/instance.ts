@@ -150,6 +150,9 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Configuration options for alert triggers on this Linode.
+     */
     public readonly alerts!: pulumi.Output<outputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
@@ -223,6 +226,9 @@ export class Instance extends pulumi.CustomResource {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
+    /**
+     * Information about the resources available to this Linode.
+     */
     public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -337,6 +343,9 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Configuration options for alert triggers on this Linode.
+     */
     readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
@@ -410,6 +419,9 @@ export interface InstanceState {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     readonly rootPass?: pulumi.Input<string>;
+    /**
+     * Information about the resources available to this Linode.
+     */
     readonly specs?: pulumi.Input<inputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -445,6 +457,9 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Configuration options for alert triggers on this Linode.
+     */
     readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*

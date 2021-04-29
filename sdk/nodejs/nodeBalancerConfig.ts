@@ -127,6 +127,10 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     public readonly cipherSuite!: pulumi.Output<string>;
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated
+     * periodically as checks are performed against backends.
+     */
     public /*out*/ readonly nodeStatuses!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus[]>;
     /**
      * The ID of the NodeBalancer to access.
@@ -272,6 +276,10 @@ export interface NodeBalancerConfigState {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
     readonly cipherSuite?: pulumi.Input<string>;
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated
+     * periodically as checks are performed against backends.
+     */
     readonly nodeStatuses?: pulumi.Input<pulumi.Input<inputs.NodeBalancerConfigNodeStatus>[]>;
     /**
      * The ID of the NodeBalancer to access.

@@ -173,6 +173,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Configuration options for alert triggers on this Linode.
 	Alerts InstanceAlertsOutput `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys pulumi.StringArrayOutput `pulumi:"authorizedKeys"`
@@ -212,7 +213,8 @@ type Instance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
-	Specs    InstanceSpecsOutput    `pulumi:"specs"`
+	// Information about the resources available to this Linode.
+	Specs InstanceSpecsOutput `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -261,6 +263,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Configuration options for alert triggers on this Linode.
 	Alerts *InstanceAlerts `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
@@ -299,8 +302,9 @@ type instanceState struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-	RootPass *string        `pulumi:"rootPass"`
-	Specs    *InstanceSpecs `pulumi:"specs"`
+	RootPass *string `pulumi:"rootPass"`
+	// Information about the resources available to this Linode.
+	Specs *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -318,6 +322,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// Configuration options for alert triggers on this Linode.
 	Alerts InstanceAlertsPtrInput
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys pulumi.StringArrayInput
@@ -357,7 +362,8 @@ type InstanceState struct {
 	Region pulumi.StringPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
-	Specs    InstanceSpecsPtrInput
+	// Information about the resources available to this Linode.
+	Specs InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -379,6 +385,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Configuration options for alert triggers on this Linode.
 	Alerts *InstanceAlerts `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
@@ -421,6 +428,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Configuration options for alert triggers on this Linode.
 	Alerts InstanceAlertsPtrInput
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys pulumi.StringArrayInput
