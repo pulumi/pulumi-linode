@@ -61,7 +61,6 @@
         "types/output.ts",
         "user.ts",
         "utilities.ts",
-        "vlan.ts",
         "volume.ts"
     ]
 }

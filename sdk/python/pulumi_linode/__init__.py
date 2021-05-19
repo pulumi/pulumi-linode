@@ -44,7 +44,6 @@ from .ssh_key import *
 from .stack_script import *
 from .token import *
 from .user import *
-from .vlan import *
 from .volume import *
 from ._inputs import *
 from . import outputs
@@ -102,8 +101,6 @@ def _register_module():
                 return Token(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "linode:index/vlan:Vlan":
-                return Vlan(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "linode:index/volume:Volume":
                 return Volume(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -129,7 +126,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("linode", "index/stackScript", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/token", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/user", _module_instance)
-    pulumi.runtime.register_resource_module("linode", "index/vlan", _module_instance)
     pulumi.runtime.register_resource_module("linode", "index/volume", _module_instance)
 
 

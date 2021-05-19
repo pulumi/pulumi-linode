@@ -898,10 +898,11 @@ type InstanceConfig struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
+	Helpers    *InstanceConfigHelpers    `pulumi:"helpers"`
+	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
 	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel *string `pulumi:"kernel"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label string `pulumi:"label"`
 	// - Defaults to the total RAM of the Linode
 	MemoryLimit *int `pulumi:"memoryLimit"`
@@ -930,10 +931,11 @@ type InstanceConfigArgs struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
+	Helpers    InstanceConfigHelpersPtrInput     `pulumi:"helpers"`
+	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringInput `pulumi:"label"`
 	// - Defaults to the total RAM of the Linode
 	MemoryLimit pulumi.IntPtrInput `pulumi:"memoryLimit"`
@@ -1011,12 +1013,16 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
+func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
+	return o.ApplyT(func(v InstanceConfig) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
+}
+
 // - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
 
-// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+// The name of this interface. If the interface is a VLAN, a label is required.
 func (o InstanceConfigOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfig) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -2851,6 +2857,121 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+type InstanceConfigInterface struct {
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	IpamAddress *string `pulumi:"ipamAddress"`
+	// The name of this interface. If the interface is a VLAN, a label is required.
+	Label *string `pulumi:"label"`
+	// The type of interface. (`public`, `vlan`)
+	Purpose *string `pulumi:"purpose"`
+}
+
+// InstanceConfigInterfaceInput is an input type that accepts InstanceConfigInterfaceArgs and InstanceConfigInterfaceOutput values.
+// You can construct a concrete instance of `InstanceConfigInterfaceInput` via:
+//
+//          InstanceConfigInterfaceArgs{...}
+type InstanceConfigInterfaceInput interface {
+	pulumi.Input
+
+	ToInstanceConfigInterfaceOutput() InstanceConfigInterfaceOutput
+	ToInstanceConfigInterfaceOutputWithContext(context.Context) InstanceConfigInterfaceOutput
+}
+
+type InstanceConfigInterfaceArgs struct {
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
+	// The name of this interface. If the interface is a VLAN, a label is required.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// The type of interface. (`public`, `vlan`)
+	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
+}
+
+func (InstanceConfigInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigInterface)(nil)).Elem()
+}
+
+func (i InstanceConfigInterfaceArgs) ToInstanceConfigInterfaceOutput() InstanceConfigInterfaceOutput {
+	return i.ToInstanceConfigInterfaceOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigInterfaceArgs) ToInstanceConfigInterfaceOutputWithContext(ctx context.Context) InstanceConfigInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigInterfaceOutput)
+}
+
+// InstanceConfigInterfaceArrayInput is an input type that accepts InstanceConfigInterfaceArray and InstanceConfigInterfaceArrayOutput values.
+// You can construct a concrete instance of `InstanceConfigInterfaceArrayInput` via:
+//
+//          InstanceConfigInterfaceArray{ InstanceConfigInterfaceArgs{...} }
+type InstanceConfigInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceConfigInterfaceArrayOutput() InstanceConfigInterfaceArrayOutput
+	ToInstanceConfigInterfaceArrayOutputWithContext(context.Context) InstanceConfigInterfaceArrayOutput
+}
+
+type InstanceConfigInterfaceArray []InstanceConfigInterfaceInput
+
+func (InstanceConfigInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigInterface)(nil)).Elem()
+}
+
+func (i InstanceConfigInterfaceArray) ToInstanceConfigInterfaceArrayOutput() InstanceConfigInterfaceArrayOutput {
+	return i.ToInstanceConfigInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigInterfaceArray) ToInstanceConfigInterfaceArrayOutputWithContext(ctx context.Context) InstanceConfigInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigInterfaceArrayOutput)
+}
+
+type InstanceConfigInterfaceOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigInterface)(nil)).Elem()
+}
+
+func (o InstanceConfigInterfaceOutput) ToInstanceConfigInterfaceOutput() InstanceConfigInterfaceOutput {
+	return o
+}
+
+func (o InstanceConfigInterfaceOutput) ToInstanceConfigInterfaceOutputWithContext(ctx context.Context) InstanceConfigInterfaceOutput {
+	return o
+}
+
+// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+func (o InstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
+}
+
+// The name of this interface. If the interface is a VLAN, a label is required.
+func (o InstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The type of interface. (`public`, `vlan`)
+func (o InstanceConfigInterfaceOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+}
+
+type InstanceConfigInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigInterface)(nil)).Elem()
+}
+
+func (o InstanceConfigInterfaceArrayOutput) ToInstanceConfigInterfaceArrayOutput() InstanceConfigInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceConfigInterfaceArrayOutput) ToInstanceConfigInterfaceArrayOutputWithContext(ctx context.Context) InstanceConfigInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceConfigInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigInterface {
+		return vs[0].([]InstanceConfigInterface)[vs[1].(int)]
+	}).(InstanceConfigInterfaceOutput)
+}
+
 type InstanceDisk struct {
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
@@ -2862,7 +2983,7 @@ type InstanceDisk struct {
 	Id *int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label    string `pulumi:"label"`
 	ReadOnly *bool  `pulumi:"readOnly"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -2897,7 +3018,7 @@ type InstanceDiskArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label    pulumi.StringInput  `pulumi:"label"`
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -2986,7 +3107,7 @@ func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+// The name of this interface. If the interface is a VLAN, a label is required.
 func (o InstanceDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -3033,6 +3154,121 @@ func (o InstanceDiskArrayOutput) Index(i pulumi.IntInput) InstanceDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDisk {
 		return vs[0].([]InstanceDisk)[vs[1].(int)]
 	}).(InstanceDiskOutput)
+}
+
+type InstanceInterface struct {
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	IpamAddress *string `pulumi:"ipamAddress"`
+	// The name of this interface. If the interface is a VLAN, a label is required.
+	Label *string `pulumi:"label"`
+	// The type of interface. (`public`, `vlan`)
+	Purpose *string `pulumi:"purpose"`
+}
+
+// InstanceInterfaceInput is an input type that accepts InstanceInterfaceArgs and InstanceInterfaceOutput values.
+// You can construct a concrete instance of `InstanceInterfaceInput` via:
+//
+//          InstanceInterfaceArgs{...}
+type InstanceInterfaceInput interface {
+	pulumi.Input
+
+	ToInstanceInterfaceOutput() InstanceInterfaceOutput
+	ToInstanceInterfaceOutputWithContext(context.Context) InstanceInterfaceOutput
+}
+
+type InstanceInterfaceArgs struct {
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
+	// The name of this interface. If the interface is a VLAN, a label is required.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// The type of interface. (`public`, `vlan`)
+	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
+}
+
+func (InstanceInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInterface)(nil)).Elem()
+}
+
+func (i InstanceInterfaceArgs) ToInstanceInterfaceOutput() InstanceInterfaceOutput {
+	return i.ToInstanceInterfaceOutputWithContext(context.Background())
+}
+
+func (i InstanceInterfaceArgs) ToInstanceInterfaceOutputWithContext(ctx context.Context) InstanceInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInterfaceOutput)
+}
+
+// InstanceInterfaceArrayInput is an input type that accepts InstanceInterfaceArray and InstanceInterfaceArrayOutput values.
+// You can construct a concrete instance of `InstanceInterfaceArrayInput` via:
+//
+//          InstanceInterfaceArray{ InstanceInterfaceArgs{...} }
+type InstanceInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceInterfaceArrayOutput() InstanceInterfaceArrayOutput
+	ToInstanceInterfaceArrayOutputWithContext(context.Context) InstanceInterfaceArrayOutput
+}
+
+type InstanceInterfaceArray []InstanceInterfaceInput
+
+func (InstanceInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceInterface)(nil)).Elem()
+}
+
+func (i InstanceInterfaceArray) ToInstanceInterfaceArrayOutput() InstanceInterfaceArrayOutput {
+	return i.ToInstanceInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceInterfaceArray) ToInstanceInterfaceArrayOutputWithContext(ctx context.Context) InstanceInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInterfaceArrayOutput)
+}
+
+type InstanceInterfaceOutput struct{ *pulumi.OutputState }
+
+func (InstanceInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInterface)(nil)).Elem()
+}
+
+func (o InstanceInterfaceOutput) ToInstanceInterfaceOutput() InstanceInterfaceOutput {
+	return o
+}
+
+func (o InstanceInterfaceOutput) ToInstanceInterfaceOutputWithContext(ctx context.Context) InstanceInterfaceOutput {
+	return o
+}
+
+// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+func (o InstanceInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
+}
+
+// The name of this interface. If the interface is a VLAN, a label is required.
+func (o InstanceInterfaceOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The type of interface. (`public`, `vlan`)
+func (o InstanceInterfaceOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+}
+
+type InstanceInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceInterface)(nil)).Elem()
+}
+
+func (o InstanceInterfaceArrayOutput) ToInstanceInterfaceArrayOutput() InstanceInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceInterfaceArrayOutput) ToInstanceInterfaceArrayOutputWithContext(ctx context.Context) InstanceInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceInterface {
+		return vs[0].([]InstanceInterface)[vs[1].(int)]
+	}).(InstanceInterfaceOutput)
 }
 
 type InstanceSpecs struct {
@@ -5445,121 +5681,6 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	}).(UserVolumeGrantOutput)
 }
 
-type VlanAttachedLinode struct {
-	// The ID of the Linode.
-	Id *int `pulumi:"id"`
-	// The IPv4 address of the Linode.
-	Ipv4Address *string `pulumi:"ipv4Address"`
-	// The mac address of the Linode.
-	MacAddress *string `pulumi:"macAddress"`
-}
-
-// VlanAttachedLinodeInput is an input type that accepts VlanAttachedLinodeArgs and VlanAttachedLinodeOutput values.
-// You can construct a concrete instance of `VlanAttachedLinodeInput` via:
-//
-//          VlanAttachedLinodeArgs{...}
-type VlanAttachedLinodeInput interface {
-	pulumi.Input
-
-	ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput
-	ToVlanAttachedLinodeOutputWithContext(context.Context) VlanAttachedLinodeOutput
-}
-
-type VlanAttachedLinodeArgs struct {
-	// The ID of the Linode.
-	Id pulumi.IntPtrInput `pulumi:"id"`
-	// The IPv4 address of the Linode.
-	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
-	// The mac address of the Linode.
-	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
-}
-
-func (VlanAttachedLinodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VlanAttachedLinode)(nil)).Elem()
-}
-
-func (i VlanAttachedLinodeArgs) ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput {
-	return i.ToVlanAttachedLinodeOutputWithContext(context.Background())
-}
-
-func (i VlanAttachedLinodeArgs) ToVlanAttachedLinodeOutputWithContext(ctx context.Context) VlanAttachedLinodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VlanAttachedLinodeOutput)
-}
-
-// VlanAttachedLinodeArrayInput is an input type that accepts VlanAttachedLinodeArray and VlanAttachedLinodeArrayOutput values.
-// You can construct a concrete instance of `VlanAttachedLinodeArrayInput` via:
-//
-//          VlanAttachedLinodeArray{ VlanAttachedLinodeArgs{...} }
-type VlanAttachedLinodeArrayInput interface {
-	pulumi.Input
-
-	ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput
-	ToVlanAttachedLinodeArrayOutputWithContext(context.Context) VlanAttachedLinodeArrayOutput
-}
-
-type VlanAttachedLinodeArray []VlanAttachedLinodeInput
-
-func (VlanAttachedLinodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VlanAttachedLinode)(nil)).Elem()
-}
-
-func (i VlanAttachedLinodeArray) ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput {
-	return i.ToVlanAttachedLinodeArrayOutputWithContext(context.Background())
-}
-
-func (i VlanAttachedLinodeArray) ToVlanAttachedLinodeArrayOutputWithContext(ctx context.Context) VlanAttachedLinodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VlanAttachedLinodeArrayOutput)
-}
-
-type VlanAttachedLinodeOutput struct{ *pulumi.OutputState }
-
-func (VlanAttachedLinodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VlanAttachedLinode)(nil)).Elem()
-}
-
-func (o VlanAttachedLinodeOutput) ToVlanAttachedLinodeOutput() VlanAttachedLinodeOutput {
-	return o
-}
-
-func (o VlanAttachedLinodeOutput) ToVlanAttachedLinodeOutputWithContext(ctx context.Context) VlanAttachedLinodeOutput {
-	return o
-}
-
-// The ID of the Linode.
-func (o VlanAttachedLinodeOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VlanAttachedLinode) *int { return v.Id }).(pulumi.IntPtrOutput)
-}
-
-// The IPv4 address of the Linode.
-func (o VlanAttachedLinodeOutput) Ipv4Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VlanAttachedLinode) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
-}
-
-// The mac address of the Linode.
-func (o VlanAttachedLinodeOutput) MacAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VlanAttachedLinode) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
-}
-
-type VlanAttachedLinodeArrayOutput struct{ *pulumi.OutputState }
-
-func (VlanAttachedLinodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VlanAttachedLinode)(nil)).Elem()
-}
-
-func (o VlanAttachedLinodeArrayOutput) ToVlanAttachedLinodeArrayOutput() VlanAttachedLinodeArrayOutput {
-	return o
-}
-
-func (o VlanAttachedLinodeArrayOutput) ToVlanAttachedLinodeArrayOutputWithContext(ctx context.Context) VlanAttachedLinodeArrayOutput {
-	return o
-}
-
-func (o VlanAttachedLinodeArrayOutput) Index(i pulumi.IntInput) VlanAttachedLinodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VlanAttachedLinode {
-		return vs[0].([]VlanAttachedLinode)[vs[1].(int)]
-	}).(VlanAttachedLinodeOutput)
-}
-
 type GetFirewallDevice struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId int `pulumi:"entityId"`
@@ -7867,15 +7988,16 @@ func (o GetInstancesInstanceBackupScheduleArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstancesInstanceConfig struct {
-	Comments    string                             `pulumi:"comments"`
-	Devices     []GetInstancesInstanceConfigDevice `pulumi:"devices"`
-	Helpers     []GetInstancesInstanceConfigHelper `pulumi:"helpers"`
-	Kernel      string                             `pulumi:"kernel"`
-	Label       string                             `pulumi:"label"`
-	MemoryLimit int                                `pulumi:"memoryLimit"`
-	RootDevice  string                             `pulumi:"rootDevice"`
-	RunLevel    string                             `pulumi:"runLevel"`
-	VirtMode    string                             `pulumi:"virtMode"`
+	Comments    string                                `pulumi:"comments"`
+	Devices     []GetInstancesInstanceConfigDevice    `pulumi:"devices"`
+	Helpers     []GetInstancesInstanceConfigHelper    `pulumi:"helpers"`
+	Interfaces  []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
+	Kernel      string                                `pulumi:"kernel"`
+	Label       string                                `pulumi:"label"`
+	MemoryLimit int                                   `pulumi:"memoryLimit"`
+	RootDevice  string                                `pulumi:"rootDevice"`
+	RunLevel    string                                `pulumi:"runLevel"`
+	VirtMode    string                                `pulumi:"virtMode"`
 }
 
 // GetInstancesInstanceConfigInput is an input type that accepts GetInstancesInstanceConfigArgs and GetInstancesInstanceConfigOutput values.
@@ -7890,15 +8012,16 @@ type GetInstancesInstanceConfigInput interface {
 }
 
 type GetInstancesInstanceConfigArgs struct {
-	Comments    pulumi.StringInput                         `pulumi:"comments"`
-	Devices     GetInstancesInstanceConfigDeviceArrayInput `pulumi:"devices"`
-	Helpers     GetInstancesInstanceConfigHelperArrayInput `pulumi:"helpers"`
-	Kernel      pulumi.StringInput                         `pulumi:"kernel"`
-	Label       pulumi.StringInput                         `pulumi:"label"`
-	MemoryLimit pulumi.IntInput                            `pulumi:"memoryLimit"`
-	RootDevice  pulumi.StringInput                         `pulumi:"rootDevice"`
-	RunLevel    pulumi.StringInput                         `pulumi:"runLevel"`
-	VirtMode    pulumi.StringInput                         `pulumi:"virtMode"`
+	Comments    pulumi.StringInput                            `pulumi:"comments"`
+	Devices     GetInstancesInstanceConfigDeviceArrayInput    `pulumi:"devices"`
+	Helpers     GetInstancesInstanceConfigHelperArrayInput    `pulumi:"helpers"`
+	Interfaces  GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
+	Kernel      pulumi.StringInput                            `pulumi:"kernel"`
+	Label       pulumi.StringInput                            `pulumi:"label"`
+	MemoryLimit pulumi.IntInput                               `pulumi:"memoryLimit"`
+	RootDevice  pulumi.StringInput                            `pulumi:"rootDevice"`
+	RunLevel    pulumi.StringInput                            `pulumi:"runLevel"`
+	VirtMode    pulumi.StringInput                            `pulumi:"virtMode"`
 }
 
 func (GetInstancesInstanceConfigArgs) ElementType() reflect.Type {
@@ -7962,6 +8085,10 @@ func (o GetInstancesInstanceConfigOutput) Devices() GetInstancesInstanceConfigDe
 
 func (o GetInstancesInstanceConfigOutput) Helpers() GetInstancesInstanceConfigHelperArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigHelper { return v.Helpers }).(GetInstancesInstanceConfigHelperArrayOutput)
+}
+
+func (o GetInstancesInstanceConfigOutput) Interfaces() GetInstancesInstanceConfigInterfaceArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigInterface { return v.Interfaces }).(GetInstancesInstanceConfigInterfaceArrayOutput)
 }
 
 func (o GetInstancesInstanceConfigOutput) Kernel() pulumi.StringOutput {
@@ -9110,6 +9237,112 @@ func (o GetInstancesInstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetInstancesInstanceConfigHelperOutput)
 }
 
+type GetInstancesInstanceConfigInterface struct {
+	IpamAddress *string `pulumi:"ipamAddress"`
+	Label       *string `pulumi:"label"`
+	Purpose     *string `pulumi:"purpose"`
+}
+
+// GetInstancesInstanceConfigInterfaceInput is an input type that accepts GetInstancesInstanceConfigInterfaceArgs and GetInstancesInstanceConfigInterfaceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceConfigInterfaceInput` via:
+//
+//          GetInstancesInstanceConfigInterfaceArgs{...}
+type GetInstancesInstanceConfigInterfaceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceConfigInterfaceOutput() GetInstancesInstanceConfigInterfaceOutput
+	ToGetInstancesInstanceConfigInterfaceOutputWithContext(context.Context) GetInstancesInstanceConfigInterfaceOutput
+}
+
+type GetInstancesInstanceConfigInterfaceArgs struct {
+	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
+	Label       pulumi.StringPtrInput `pulumi:"label"`
+	Purpose     pulumi.StringPtrInput `pulumi:"purpose"`
+}
+
+func (GetInstancesInstanceConfigInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceConfigInterface)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceConfigInterfaceArgs) ToGetInstancesInstanceConfigInterfaceOutput() GetInstancesInstanceConfigInterfaceOutput {
+	return i.ToGetInstancesInstanceConfigInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceConfigInterfaceArgs) ToGetInstancesInstanceConfigInterfaceOutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceConfigInterfaceOutput)
+}
+
+// GetInstancesInstanceConfigInterfaceArrayInput is an input type that accepts GetInstancesInstanceConfigInterfaceArray and GetInstancesInstanceConfigInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceConfigInterfaceArrayInput` via:
+//
+//          GetInstancesInstanceConfigInterfaceArray{ GetInstancesInstanceConfigInterfaceArgs{...} }
+type GetInstancesInstanceConfigInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceConfigInterfaceArrayOutput() GetInstancesInstanceConfigInterfaceArrayOutput
+	ToGetInstancesInstanceConfigInterfaceArrayOutputWithContext(context.Context) GetInstancesInstanceConfigInterfaceArrayOutput
+}
+
+type GetInstancesInstanceConfigInterfaceArray []GetInstancesInstanceConfigInterfaceInput
+
+func (GetInstancesInstanceConfigInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceConfigInterface)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceConfigInterfaceArray) ToGetInstancesInstanceConfigInterfaceArrayOutput() GetInstancesInstanceConfigInterfaceArrayOutput {
+	return i.ToGetInstancesInstanceConfigInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceConfigInterfaceArray) ToGetInstancesInstanceConfigInterfaceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceConfigInterfaceArrayOutput)
+}
+
+type GetInstancesInstanceConfigInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceConfigInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceConfigInterface)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceConfigInterfaceOutput) ToGetInstancesInstanceConfigInterfaceOutput() GetInstancesInstanceConfigInterfaceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceConfigInterfaceOutput) ToGetInstancesInstanceConfigInterfaceOutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesInstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesInstanceConfigInterfaceOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+}
+
+type GetInstancesInstanceConfigInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceConfigInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceConfigInterface)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceConfigInterfaceArrayOutput) ToGetInstancesInstanceConfigInterfaceArrayOutput() GetInstancesInstanceConfigInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceConfigInterfaceArrayOutput) ToGetInstancesInstanceConfigInterfaceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceConfigInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceConfigInterface {
+		return vs[0].([]GetInstancesInstanceConfigInterface)[vs[1].(int)]
+	}).(GetInstancesInstanceConfigInterfaceOutput)
+}
+
 type GetInstancesInstanceDisk struct {
 	Filesystem string `pulumi:"filesystem"`
 	Id         int    `pulumi:"id"`
@@ -10032,8 +10265,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConfigDevicesSdhPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigHelpersOutput{})
 	pulumi.RegisterOutputType(InstanceConfigHelpersPtrOutput{})
+	pulumi.RegisterOutputType(InstanceConfigInterfaceOutput{})
+	pulumi.RegisterOutputType(InstanceConfigInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceInterfaceOutput{})
+	pulumi.RegisterOutputType(InstanceInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolOutput{})
@@ -10072,8 +10309,6 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
-	pulumi.RegisterOutputType(VlanAttachedLinodeOutput{})
-	pulumi.RegisterOutputType(VlanAttachedLinodeArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallInboundOutput{})
@@ -10131,6 +10366,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigDeviceSdhArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigHelperOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigHelperArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})

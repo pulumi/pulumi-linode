@@ -16,6 +16,7 @@ namespace Pulumi.Linode.Outputs
         public readonly string Comments;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceResult> Devices;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigHelperResult> Helpers;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceResult> Interfaces;
         public readonly string Kernel;
         public readonly string Label;
         public readonly int MemoryLimit;
@@ -30,6 +31,8 @@ namespace Pulumi.Linode.Outputs
             ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceResult> devices,
 
             ImmutableArray<Outputs.GetInstancesInstanceConfigHelperResult> helpers,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceResult> interfaces,
 
             string kernel,
 
@@ -46,6 +49,7 @@ namespace Pulumi.Linode.Outputs
             Comments = comments;
             Devices = devices;
             Helpers = helpers;
+            Interfaces = interfaces;
             Kernel = kernel;
             Label = label;
             MemoryLimit = memoryLimit;

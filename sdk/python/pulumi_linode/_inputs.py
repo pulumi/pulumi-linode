@@ -26,7 +26,9 @@ __all__ = [
     'InstanceConfigDevicesSdgArgs',
     'InstanceConfigDevicesSdhArgs',
     'InstanceConfigHelpersArgs',
+    'InstanceConfigInterfaceArgs',
     'InstanceDiskArgs',
+    'InstanceInterfaceArgs',
     'InstanceSpecsArgs',
     'LkeClusterPoolArgs',
     'LkeClusterPoolNodeArgs',
@@ -46,7 +48,6 @@ __all__ = [
     'UserNodebalancerGrantArgs',
     'UserStackscriptGrantArgs',
     'UserVolumeGrantArgs',
-    'VlanAttachedLinodeArgs',
     'GetImagesFilterArgs',
     'GetInstancesFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
@@ -465,13 +466,14 @@ class InstanceConfigArgs:
                  comments: Optional[pulumi.Input[str]] = None,
                  devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
                  helpers: Optional[pulumi.Input['InstanceConfigHelpersArgs']] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
                  kernel: Optional[pulumi.Input[str]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
                  root_device: Optional[pulumi.Input[str]] = None,
                  run_level: Optional[pulumi.Input[str]] = None,
                  virt_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[str] comments: - Arbitrary user comments about this `config`.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
@@ -488,6 +490,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "devices", devices)
         if helpers is not None:
             pulumi.set(__self__, "helpers", helpers)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if kernel is not None:
             pulumi.set(__self__, "kernel", kernel)
         if memory_limit is not None:
@@ -503,7 +507,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -546,6 +550,15 @@ class InstanceConfigArgs:
     @helpers.setter
     def helpers(self, value: Optional[pulumi.Input['InstanceConfigHelpersArgs']]):
         pulumi.set(self, "helpers", value)
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]):
+        pulumi.set(self, "interfaces", value)
 
     @property
     @pulumi.getter
@@ -1239,6 +1252,61 @@ class InstanceConfigHelpersArgs:
 
 
 @pulumi.input_type
+class InstanceConfigInterfaceArgs:
+    def __init__(__self__, *,
+                 ipam_address: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param pulumi.Input[str] purpose: The type of interface. (`public`, `vlan`)
+        """
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+
+    @property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @ipam_address.setter
+    def ipam_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipam_address", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this interface. If the interface is a VLAN, a label is required.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of interface. (`public`, `vlan`)
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+
+@pulumi.input_type
 class InstanceDiskArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[str],
@@ -1253,7 +1321,7 @@ class InstanceDiskArgs:
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[int] size: The size of the Disk in MB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
@@ -1289,7 +1357,7 @@ class InstanceDiskArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -1413,6 +1481,61 @@ class InstanceDiskArgs:
     @stackscript_id.setter
     def stackscript_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stackscript_id", value)
+
+
+@pulumi.input_type
+class InstanceInterfaceArgs:
+    def __init__(__self__, *,
+                 ipam_address: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param pulumi.Input[str] purpose: The type of interface. (`public`, `vlan`)
+        """
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+
+    @property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @ipam_address.setter
+    def ipam_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipam_address", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this interface. If the interface is a VLAN, a label is required.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of interface. (`public`, `vlan`)
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
 
 
 @pulumi.input_type
@@ -2313,61 +2436,6 @@ class UserVolumeGrantArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
-
-
-@pulumi.input_type
-class VlanAttachedLinodeArgs:
-    def __init__(__self__, *,
-                 id: Optional[pulumi.Input[int]] = None,
-                 ipv4_address: Optional[pulumi.Input[str]] = None,
-                 mac_address: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[int] id: The ID of the Linode.
-        :param pulumi.Input[str] ipv4_address: The IPv4 address of the Linode.
-        :param pulumi.Input[str] mac_address: The mac address of the Linode.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
-        if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the Linode.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IPv4 address of the Linode.
-        """
-        return pulumi.get(self, "ipv4_address")
-
-    @ipv4_address.setter
-    def ipv4_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ipv4_address", value)
-
-    @property
-    @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The mac address of the Linode.
-        """
-        return pulumi.get(self, "mac_address")
-
-    @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mac_address", value)
 
 
 @pulumi.input_type
