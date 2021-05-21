@@ -192,6 +192,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
+     * An array of Network Interfaces for this Linode to be created with.
+     */
+    public readonly interfaces!: pulumi.Output<outputs.InstanceInterface[] | undefined>;
+    /**
      * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
      * will be used for this field.
      */
@@ -206,7 +210,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
-     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
+     * The name of this interface. If the interface is a VLAN, a label is required.
      */
     public readonly label!: pulumi.Output<string>;
     /**
@@ -283,6 +287,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["disks"] = state ? state.disks : undefined;
             inputs["group"] = state ? state.group : undefined;
             inputs["image"] = state ? state.image : undefined;
+            inputs["interfaces"] = state ? state.interfaces : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["ipv4s"] = state ? state.ipv4s : undefined;
             inputs["ipv6"] = state ? state.ipv6 : undefined;
@@ -314,6 +319,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["disks"] = args ? args.disks : undefined;
             inputs["group"] = args ? args.group : undefined;
             inputs["image"] = args ? args.image : undefined;
+            inputs["interfaces"] = args ? args.interfaces : undefined;
             inputs["label"] = args ? args.label : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -385,6 +391,10 @@ export interface InstanceState {
      */
     readonly image?: pulumi.Input<string>;
     /**
+     * An array of Network Interfaces for this Linode to be created with.
+     */
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
+    /**
      * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
      * will be used for this field.
      */
@@ -399,7 +409,7 @@ export interface InstanceState {
      */
     readonly ipv6?: pulumi.Input<string>;
     /**
-     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
+     * The name of this interface. If the interface is a VLAN, a label is required.
      */
     readonly label?: pulumi.Input<string>;
     /**
@@ -495,7 +505,11 @@ export interface InstanceArgs {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
+     * An array of Network Interfaces for this Linode to be created with.
+     */
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
+    /**
+     * The name of this interface. If the interface is a VLAN, a label is required.
      */
     readonly label?: pulumi.Input<string>;
     /**

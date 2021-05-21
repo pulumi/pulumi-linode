@@ -27,7 +27,9 @@ __all__ = [
     'InstanceConfigDevicesSdg',
     'InstanceConfigDevicesSdh',
     'InstanceConfigHelpers',
+    'InstanceConfigInterface',
     'InstanceDisk',
+    'InstanceInterface',
     'InstanceSpecs',
     'LkeClusterPool',
     'LkeClusterPoolNode',
@@ -47,7 +49,6 @@ __all__ = [
     'UserNodebalancerGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
-    'VlanAttachedLinode',
     'GetFirewallDeviceResult',
     'GetFirewallInboundResult',
     'GetFirewallOutboundResult',
@@ -79,6 +80,7 @@ __all__ = [
     'GetInstancesInstanceConfigDeviceSdgResult',
     'GetInstancesInstanceConfigDeviceSdhResult',
     'GetInstancesInstanceConfigHelperResult',
+    'GetInstancesInstanceConfigInterfaceResult',
     'GetInstancesInstanceDiskResult',
     'GetInstancesInstanceSpecResult',
     'GetLkeClusterPoolResult',
@@ -459,13 +461,14 @@ class InstanceConfig(dict):
                  comments: Optional[str] = None,
                  devices: Optional['outputs.InstanceConfigDevices'] = None,
                  helpers: Optional['outputs.InstanceConfigHelpers'] = None,
+                 interfaces: Optional[Sequence['outputs.InstanceConfigInterface']] = None,
                  kernel: Optional[str] = None,
                  memory_limit: Optional[int] = None,
                  root_device: Optional[str] = None,
                  run_level: Optional[str] = None,
                  virt_mode: Optional[str] = None):
         """
-        :param str label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
         :param str comments: - Arbitrary user comments about this `config`.
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
@@ -482,6 +485,8 @@ class InstanceConfig(dict):
             pulumi.set(__self__, "devices", devices)
         if helpers is not None:
             pulumi.set(__self__, "helpers", helpers)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if kernel is not None:
             pulumi.set(__self__, "kernel", kernel)
         if memory_limit is not None:
@@ -497,7 +502,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -524,6 +529,11 @@ class InstanceConfig(dict):
         Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Optional[Sequence['outputs.InstanceConfigInterface']]:
+        return pulumi.get(self, "interfaces")
 
     @property
     @pulumi.getter
@@ -1238,6 +1248,66 @@ class InstanceConfigHelpers(dict):
 
 
 @pulumi.output_type
+class InstanceConfigInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipamAddress":
+            suggest = "ipam_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipam_address: Optional[str] = None,
+                 label: Optional[str] = None,
+                 purpose: Optional[str] = None):
+        """
+        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param str purpose: The type of interface. (`public`, `vlan`)
+        """
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+
+    @property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[str]:
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        The name of this interface. If the interface is a VLAN, a label is required.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[str]:
+        """
+        The type of interface. (`public`, `vlan`)
+        """
+        return pulumi.get(self, "purpose")
+
+
+@pulumi.output_type
 class InstanceDisk(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1279,7 +1349,7 @@ class InstanceDisk(dict):
                  stackscript_data: Optional[Mapping[str, Any]] = None,
                  stackscript_id: Optional[int] = None):
         """
-        :param str label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
         :param int size: The size of the Disk in MB.
         :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
@@ -1315,7 +1385,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -1395,6 +1465,66 @@ class InstanceDisk(dict):
         The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "stackscript_id")
+
+
+@pulumi.output_type
+class InstanceInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipamAddress":
+            suggest = "ipam_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipam_address: Optional[str] = None,
+                 label: Optional[str] = None,
+                 purpose: Optional[str] = None):
+        """
+        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param str purpose: The type of interface. (`public`, `vlan`)
+        """
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+
+    @property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[str]:
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        The name of this interface. If the interface is a VLAN, a label is required.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[str]:
+        """
+        The type of interface. (`public`, `vlan`)
+        """
+        return pulumi.get(self, "purpose")
 
 
 @pulumi.output_type
@@ -2209,68 +2339,6 @@ class UserVolumeGrant(dict):
     @pulumi.getter
     def permissions(self) -> str:
         return pulumi.get(self, "permissions")
-
-
-@pulumi.output_type
-class VlanAttachedLinode(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipv4Address":
-            suggest = "ipv4_address"
-        elif key == "macAddress":
-            suggest = "mac_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VlanAttachedLinode. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VlanAttachedLinode.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VlanAttachedLinode.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[int] = None,
-                 ipv4_address: Optional[str] = None,
-                 mac_address: Optional[str] = None):
-        """
-        :param int id: The ID of the Linode.
-        :param str ipv4_address: The IPv4 address of the Linode.
-        :param str mac_address: The mac address of the Linode.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
-        if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[int]:
-        """
-        The ID of the Linode.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> Optional[str]:
-        """
-        The IPv4 address of the Linode.
-        """
-        return pulumi.get(self, "ipv4_address")
-
-    @property
-    @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[str]:
-        """
-        The mac address of the Linode.
-        """
-        return pulumi.get(self, "mac_address")
 
 
 @pulumi.output_type
@@ -3327,6 +3395,7 @@ class GetInstancesInstanceConfigResult(dict):
                  comments: str,
                  devices: Sequence['outputs.GetInstancesInstanceConfigDeviceResult'],
                  helpers: Sequence['outputs.GetInstancesInstanceConfigHelperResult'],
+                 interfaces: Sequence['outputs.GetInstancesInstanceConfigInterfaceResult'],
                  kernel: str,
                  label: str,
                  memory_limit: int,
@@ -3336,6 +3405,7 @@ class GetInstancesInstanceConfigResult(dict):
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "devices", devices)
         pulumi.set(__self__, "helpers", helpers)
+        pulumi.set(__self__, "interfaces", interfaces)
         pulumi.set(__self__, "kernel", kernel)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "memory_limit", memory_limit)
@@ -3357,6 +3427,11 @@ class GetInstancesInstanceConfigResult(dict):
     @pulumi.getter
     def helpers(self) -> Sequence['outputs.GetInstancesInstanceConfigHelperResult']:
         return pulumi.get(self, "helpers")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceResult']:
+        return pulumi.get(self, "interfaces")
 
     @property
     @pulumi.getter
@@ -3712,6 +3787,35 @@ class GetInstancesInstanceConfigHelperResult(dict):
     @pulumi.getter(name="updatedbDisabled")
     def updatedb_disabled(self) -> bool:
         return pulumi.get(self, "updatedb_disabled")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigInterfaceResult(dict):
+    def __init__(__self__, *,
+                 ipam_address: Optional[str] = None,
+                 label: Optional[str] = None,
+                 purpose: Optional[str] = None):
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+
+    @property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipam_address")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[str]:
+        return pulumi.get(self, "purpose")
 
 
 @pulumi.output_type

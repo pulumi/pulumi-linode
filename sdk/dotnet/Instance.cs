@@ -236,6 +236,12 @@ namespace Pulumi.Linode
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
+        /// An array of Network Interfaces for this Linode to be created with.
+        /// </summary>
+        [Output("interfaces")]
+        public Output<ImmutableArray<Outputs.InstanceInterface>> Interfaces { get; private set; } = null!;
+
+        /// <summary>
         /// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
         /// will be used for this field.
         /// </summary>
@@ -256,7 +262,7 @@ namespace Pulumi.Linode
         public Output<string> Ipv6 { get; private set; } = null!;
 
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
@@ -460,8 +466,20 @@ namespace Pulumi.Linode
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        [Input("interfaces")]
+        private InputList<Inputs.InstanceInterfaceArgs>? _interfaces;
+
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// An array of Network Interfaces for this Linode to be created with.
+        /// </summary>
+        public InputList<Inputs.InstanceInterfaceArgs> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new InputList<Inputs.InstanceInterfaceArgs>());
+            set => _interfaces = value;
+        }
+
+        /// <summary>
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
@@ -625,6 +643,18 @@ namespace Pulumi.Linode
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        [Input("interfaces")]
+        private InputList<Inputs.InstanceInterfaceGetArgs>? _interfaces;
+
+        /// <summary>
+        /// An array of Network Interfaces for this Linode to be created with.
+        /// </summary>
+        public InputList<Inputs.InstanceInterfaceGetArgs> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new InputList<Inputs.InstanceInterfaceGetArgs>());
+            set => _interfaces = value;
+        }
+
         /// <summary>
         /// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
         /// will be used for this field.
@@ -652,7 +682,7 @@ namespace Pulumi.Linode
         public Input<string>? Ipv6 { get; set; }
 
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }

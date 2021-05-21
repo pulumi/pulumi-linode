@@ -418,6 +418,17 @@
                         }
                     }
                 },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kernel": {
                     "type": "string",
                     "description": "- A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).\n",
@@ -429,7 +440,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The Config's label for display purposes.  Also used by `boot_config_label`.\n",
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -933,6 +944,38 @@
             },
             "type": "object"
         },
+        "linode:index/InstanceConfigInterface:InstanceConfigInterface": {
+            "properties": {
+                "ipamAddress": {
+                    "type": "string",
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The type of interface. (`public`, `vlan`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "linode:index/InstanceDisk:InstanceDisk": {
             "properties": {
                 "authorizedKeys": {
@@ -988,7 +1031,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The Config's label for display purposes.  Also used by `boot_config_label`.\n",
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1062,6 +1105,38 @@
                     ]
                 }
             }
+        },
+        "linode:index/InstanceInterface:InstanceInterface": {
+            "properties": {
+                "ipamAddress": {
+                    "type": "string",
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The type of interface. (`public`, `vlan`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "linode:index/InstanceSpecs:InstanceSpecs": {
             "properties": {
@@ -1781,47 +1856,6 @@
                 "id",
                 "permissions"
             ]
-        },
-        "linode:index/VlanAttachedLinode:VlanAttachedLinode": {
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "description": "The ID of the Linode.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "ipv4Address": {
-                    "type": "string",
-                    "description": "The IPv4 address of the Linode.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "macAddress": {
-                    "type": "string",
-                    "description": "The mac address of the Linode.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "ipv4Address",
-                        "macAddress"
-                    ]
-                }
-            }
         },
         "linode:index/getFirewallDevice:getFirewallDevice": {
             "properties": {
@@ -3113,6 +3147,17 @@
                         }
                     }
                 },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kernel": {
                     "type": "string",
                     "language": {
@@ -3167,6 +3212,7 @@
                 "comments",
                 "devices",
                 "helpers",
+                "interfaces",
                 "kernel",
                 "label",
                 "memoryLimit",
@@ -3640,6 +3686,35 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface": {
+            "properties": {
+                "ipamAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "purpose": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "linode:index/getInstancesInstanceDisk:getInstancesInstanceDisk": {
             "properties": {
@@ -4861,6 +4936,13 @@
                     "type": "string",
                     "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
                 },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
+                    },
+                    "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                },
                 "ipAddress": {
                     "type": "string",
                     "description": "This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address\nwill be used for this field.\n"
@@ -4878,7 +4960,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The Config's label for display purposes.  Also used by `boot_config_label`.\n"
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n"
                 },
                 "privateIp": {
                     "type": "boolean",
@@ -5002,9 +5084,16 @@
                     "type": "string",
                     "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
                 },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
+                    },
+                    "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                },
                 "label": {
                     "type": "string",
-                    "description": "The Config's label for display purposes.  Also used by `boot_config_label`.\n"
+                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n"
                 },
                 "privateIp": {
                     "type": "boolean",
@@ -5110,6 +5199,13 @@
                         "type": "string",
                         "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
                     },
+                    "interfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
+                        },
+                        "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                    },
                     "ipAddress": {
                         "type": "string",
                         "description": "This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address\nwill be used for this field.\n"
@@ -5127,7 +5223,7 @@
                     },
                     "label": {
                         "type": "string",
-                        "description": "The Config's label for display purposes.  Also used by `boot_config_label`.\n"
+                        "description": "The name of this interface. If the interface is a VLAN, a label is required.\n"
                     },
                     "privateIp": {
                         "type": "boolean",
@@ -5434,7 +5530,7 @@
             }
         },
         "linode:index/nodeBalancer:NodeBalancer": {
-            "description": "Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    tags: [\"foobar\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    tags=[\"foobar\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            Tags = \n            {\n                \"foobar\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n\n* `ipv4` - The Public IPv4 Address of this NodeBalancer\n\n* `ipv6` - The Public IPv6 Address of this NodeBalancer\n\n* `transfer` - The network transfer stats for the current month\n\n### transfer\n\nThe following attributes are available on transfer:\n\n* `in` - The total transfer, in MB, used by this NodeBalancer for the current month\n\n* `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month\n\n* `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month\n\n\n## Import\n\nLinodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types. ",
+            "description": "Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a NodeBalancer.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    clientConnThrottle: 20,\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    tags: [\"foobar\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    client_conn_throttle=20,\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    tags=[\"foobar\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            ClientConnThrottle = 20,\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            Tags = \n            {\n                \"foobar\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n\n* `ipv4` - The Public IPv4 Address of this NodeBalancer\n\n* `ipv6` - The Public IPv6 Address of this NodeBalancer\n\n* `created` - When this NodeBalancer was created\n\n* `updated` - When this NodeBalancer was last updated.\n\n* `transfer` - The network transfer stats for the current month\n\n### transfer\n\nThe following attributes are available on transfer:\n\n* `in` - The total transfer, in MB, used by this NodeBalancer for the current month\n\n* `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month\n\n* `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month\n\n\n## Import\n\nLinodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types. ",
             "properties": {
                 "clientConnThrottle": {
                     "type": "integer",
@@ -7054,96 +7150,6 @@
                 "type": "object"
             }
         },
-        "linode:index/vlan:Vlan": {
-            "properties": {
-                "attachedLinodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/linode:index/VlanAttachedLinode:VlanAttachedLinode"
-                    },
-                    "description": "The Linodes attached to this vlan.\n"
-                },
-                "cidrBlock": {
-                    "type": "string",
-                    "description": "The CIDR block for this VLAN.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of the vlan for display purposes only.\n"
-                },
-                "linodes": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    },
-                    "description": "A list of IDs of Linodes to attach to this VLAN.\n"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region of where the VLAN is deployed.\n"
-                }
-            },
-            "required": [
-                "attachedLinodes",
-                "region"
-            ],
-            "inputProperties": {
-                "cidrBlock": {
-                    "type": "string",
-                    "description": "The CIDR block for this VLAN.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of the vlan for display purposes only.\n"
-                },
-                "linodes": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    },
-                    "description": "A list of IDs of Linodes to attach to this VLAN.\n"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region of where the VLAN is deployed.\n"
-                }
-            },
-            "requiredInputs": [
-                "region"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Vlan resources.\n",
-                "properties": {
-                    "attachedLinodes": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/linode:index/VlanAttachedLinode:VlanAttachedLinode"
-                        },
-                        "description": "The Linodes attached to this vlan.\n"
-                    },
-                    "cidrBlock": {
-                        "type": "string",
-                        "description": "The CIDR block for this VLAN.\n"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description of the vlan for display purposes only.\n"
-                    },
-                    "linodes": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "A list of IDs of Linodes to attach to this VLAN.\n"
-                    },
-                    "region": {
-                        "type": "string",
-                        "description": "The region of where the VLAN is deployed.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "linode:index/volume:Volume": {
             "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobaz = new Linode.Instance(\"foobaz\", new Linode.InstanceArgs\n        {\n            RootPass = \"3X4mp13\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-west\",\n            Tags = \n            {\n                \"foobaz\",\n            },\n        });\n        var foobar = new Linode.Volume(\"foobar\", new Linode.VolumeArgs\n        {\n            Label = \"foo-volume\",\n            Region = foobaz.Region,\n            LinodeId = foobaz.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.Instance(\"foo\", new Linode.InstanceArgs\n        {\n            Configs = \n            {\n                new Linode.Inputs.InstanceConfigArgs\n                {\n                    Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                    {\n                        Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                        {\n                            VolumeId = 123,\n                        },\n                    },\n                    Kernel = \"linode/latest-64bit\",\n                    Label = \"boot-existing-volume\",\n                },\n            },\n            Region = \"us-east\",\n            Type = \"g6-nanode-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `status` - The label of the Linode Volume.\n\n* `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is \"/dev/disk/by-id/scsi-0Linode_Volume_\" + the Volume label\n\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types. ",
             "properties": {
@@ -8724,7 +8730,7 @@
                 "linode": "Linode"
             },
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -8735,7 +8741,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0"
+                "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -8751,7 +8757,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`linode/terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

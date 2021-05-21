@@ -194,6 +194,8 @@ type Instance struct {
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrOutput `pulumi:"image"`
+	// An array of Network Interfaces for this Linode to be created with.
+	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
 	// will be used for this field.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -202,7 +204,7 @@ type Instance struct {
 	Ipv4s pulumi.StringArrayOutput `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrOutput `pulumi:"privateIp"`
@@ -284,6 +286,8 @@ type instanceState struct {
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
+	// An array of Network Interfaces for this Linode to be created with.
+	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
 	// will be used for this field.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -292,7 +296,7 @@ type instanceState struct {
 	Ipv4s []string `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
 	Ipv6 *string `pulumi:"ipv6"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label *string `pulumi:"label"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
@@ -343,6 +347,8 @@ type InstanceState struct {
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
+	// An array of Network Interfaces for this Linode to be created with.
+	Interfaces InstanceInterfaceArrayInput
 	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
 	// will be used for this field.
 	IpAddress pulumi.StringPtrInput
@@ -351,7 +357,7 @@ type InstanceState struct {
 	Ipv4s pulumi.StringArrayInput
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
 	Ipv6 pulumi.StringPtrInput
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringPtrInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
@@ -404,7 +410,9 @@ type instanceArgs struct {
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// An array of Network Interfaces for this Linode to be created with.
+	Interfaces []InstanceInterface `pulumi:"interfaces"`
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label *string `pulumi:"label"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
@@ -447,7 +455,9 @@ type InstanceArgs struct {
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
-	// The Config's label for display purposes.  Also used by `bootConfigLabel`.
+	// An array of Network Interfaces for this Linode to be created with.
+	Interfaces InstanceInterfaceArrayInput
+	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringPtrInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput

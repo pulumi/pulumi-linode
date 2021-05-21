@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         public readonly string Label;
         public readonly bool? ReadOnly;

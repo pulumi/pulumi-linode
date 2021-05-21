@@ -56,8 +56,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Token{}
 	case "linode:index/user:User":
 		r = &User{}
-	case "linode:index/vlan:Vlan":
-		r = &Vlan{}
 	case "linode:index/volume:Volume":
 		r = &Volume{}
 	default:
@@ -179,11 +177,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/user",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"linode",
-		"index/vlan",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

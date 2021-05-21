@@ -49,6 +49,10 @@ namespace Pulumi.Linode
     /// 
     /// * `ipv6` - The Public IPv6 Address of this NodeBalancer
     /// 
+    /// * `created` - When this NodeBalancer was created
+    /// 
+    /// * `updated` - When this NodeBalancer was last updated.
+    /// 
     /// * `transfer` - The network transfer stats for the current month
     /// 
     /// ### transfer

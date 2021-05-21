@@ -55,7 +55,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

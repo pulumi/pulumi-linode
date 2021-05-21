@@ -403,6 +403,7 @@ export interface GetInstancesInstanceConfig {
     comments: string;
     devices: outputs.GetInstancesInstanceConfigDevice[];
     helpers: outputs.GetInstancesInstanceConfigHelper[];
+    interfaces: outputs.GetInstancesInstanceConfigInterface[];
     kernel: string;
     label: string;
     memoryLimit: number;
@@ -476,6 +477,12 @@ export interface GetInstancesInstanceConfigHelper {
     modulesDep: boolean;
     network: boolean;
     updatedbDisabled: boolean;
+}
+
+export interface GetInstancesInstanceConfigInterface {
+    ipamAddress?: string;
+    label?: string;
+    purpose?: string;
 }
 
 export interface GetInstancesInstanceDisk {
@@ -601,12 +608,13 @@ export interface InstanceConfig {
      * Helpers enabled when booting to this Linode Config.
      */
     helpers: outputs.InstanceConfigHelpers;
+    interfaces?: outputs.InstanceConfigInterface[];
     /**
      * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      */
     kernel?: string;
     /**
-     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
+     * The name of this interface. If the interface is a VLAN, a label is required.
      */
     label: string;
     /**
@@ -781,6 +789,21 @@ export interface InstanceConfigHelpers {
     updatedbDisabled?: boolean;
 }
 
+export interface InstanceConfigInterface {
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     */
+    ipamAddress?: string;
+    /**
+     * The name of this interface. If the interface is a VLAN, a label is required.
+     */
+    label?: string;
+    /**
+     * The type of interface. (`public`, `vlan`)
+     */
+    purpose?: string;
+}
+
 export interface InstanceDisk {
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
@@ -803,7 +826,7 @@ export interface InstanceDisk {
      */
     image: string;
     /**
-     * The Config's label for display purposes.  Also used by `bootConfigLabel`.
+     * The name of this interface. If the interface is a VLAN, a label is required.
      */
     label: string;
     readOnly: boolean;
@@ -823,6 +846,21 @@ export interface InstanceDisk {
      * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
     stackscriptId: number;
+}
+
+export interface InstanceInterface {
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     */
+    ipamAddress?: string;
+    /**
+     * The name of this interface. If the interface is a VLAN, a label is required.
+     */
+    label?: string;
+    /**
+     * The type of interface. (`public`, `vlan`)
+     */
+    purpose?: string;
 }
 
 export interface InstanceSpecs {
@@ -1001,19 +1039,4 @@ export interface UserStackscriptGrant {
 export interface UserVolumeGrant {
     id: number;
     permissions: string;
-}
-
-export interface VlanAttachedLinode {
-    /**
-     * The ID of the Linode.
-     */
-    id: number;
-    /**
-     * The IPv4 address of the Linode.
-     */
-    ipv4Address: string;
-    /**
-     * The mac address of the Linode.
-     */
-    macAddress: string;
 }

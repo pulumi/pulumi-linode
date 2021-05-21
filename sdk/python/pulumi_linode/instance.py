@@ -26,6 +26,7 @@ class InstanceArgs:
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
@@ -47,7 +48,8 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -78,6 +80,8 @@ class InstanceArgs:
             pulumi.set(__self__, "group", group)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if private_ip is not None:
@@ -228,9 +232,21 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
+        """
+        An array of Network Interfaces for this Linode to be created with.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @property
+    @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -349,6 +365,7 @@ class _InstanceState:
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
@@ -377,12 +394,13 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with.
         :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
                will be used for this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
                private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
                Instances in a region.
@@ -419,6 +437,8 @@ class _InstanceState:
             pulumi.set(__self__, "group", group)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if ipv4s is not None:
@@ -582,6 +602,18 @@ class _InstanceState:
         pulumi.set(self, "image", value)
 
     @property
+    @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
+        """
+        An array of Network Interfaces for this Linode to be created with.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -623,7 +655,7 @@ class _InstanceState:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 
@@ -792,6 +824,7 @@ class Instance(pulumi.CustomResource):
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -928,7 +961,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -1084,6 +1118,7 @@ class Instance(pulumi.CustomResource):
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1116,6 +1151,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["disks"] = disks
             __props__.__dict__["group"] = group
             __props__.__dict__["image"] = image
+            __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["label"] = label
             __props__.__dict__["private_ip"] = private_ip
             if region is None and not opts.urn:
@@ -1156,6 +1192,7 @@ class Instance(pulumi.CustomResource):
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
             group: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6: Optional[pulumi.Input[str]] = None,
@@ -1189,12 +1226,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with.
         :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
                will be used for this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
                private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
-        :param pulumi.Input[str] label: The Config's label for display purposes.  Also used by `boot_config_label`.
+        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
                Instances in a region.
@@ -1224,6 +1262,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["disks"] = disks
         __props__.__dict__["group"] = group
         __props__.__dict__["image"] = image
+        __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ipv4s"] = ipv4s
         __props__.__dict__["ipv6"] = ipv6
@@ -1328,6 +1367,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "image")
 
     @property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceInterface']]]:
+        """
+        An array of Network Interfaces for this Linode to be created with.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
@@ -1357,7 +1404,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
         """
-        The Config's label for display purposes.  Also used by `boot_config_label`.
+        The name of this interface. If the interface is a VLAN, a label is required.
         """
         return pulumi.get(self, "label")
 

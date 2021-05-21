@@ -46,7 +46,6 @@ export * from "./sshKey";
 export * from "./stackScript";
 export * from "./token";
 export * from "./user";
-export * from "./vlan";
 export * from "./volume";
 
 // Export sub-modules:
@@ -77,7 +76,6 @@ import { SshKey } from "./sshKey";
 import { StackScript } from "./stackScript";
 import { Token } from "./token";
 import { User } from "./user";
-import { Vlan } from "./vlan";
 import { Volume } from "./volume";
 
 const _module = {
@@ -120,8 +118,6 @@ const _module = {
                 return new Token(name, <any>undefined, { urn })
             case "linode:index/user:User":
                 return new User(name, <any>undefined, { urn })
-            case "linode:index/vlan:Vlan":
-                return new Vlan(name, <any>undefined, { urn })
             case "linode:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             default:
@@ -147,7 +143,6 @@ pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
 pulumi.runtime.registerResourceModule("linode", "index/token", _module)
 pulumi.runtime.registerResourceModule("linode", "index/user", _module)
-pulumi.runtime.registerResourceModule("linode", "index/vlan", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
 
 import { Provider } from "./provider";

@@ -25,12 +25,13 @@ namespace Pulumi.Linode.Outputs
         /// Helpers enabled when booting to this Linode Config.
         /// </summary>
         public readonly Outputs.InstanceConfigHelpers? Helpers;
+        public readonly ImmutableArray<Outputs.InstanceConfigInterface> Interfaces;
         /// <summary>
         /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         /// </summary>
         public readonly string? Kernel;
         /// <summary>
-        /// The Config's label for display purposes.  Also used by `boot_config_label`.
+        /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         public readonly string Label;
         /// <summary>
@@ -58,6 +59,8 @@ namespace Pulumi.Linode.Outputs
 
             Outputs.InstanceConfigHelpers? helpers,
 
+            ImmutableArray<Outputs.InstanceConfigInterface> interfaces,
+
             string? kernel,
 
             string label,
@@ -73,6 +76,7 @@ namespace Pulumi.Linode.Outputs
             Comments = comments;
             Devices = devices;
             Helpers = helpers;
+            Interfaces = interfaces;
             Kernel = kernel;
             Label = label;
             MemoryLimit = memoryLimit;
