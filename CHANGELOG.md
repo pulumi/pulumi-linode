@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.1.0 (2021-05-21)
 * Upgrade to v1.18.0 of the Linode Terraform Provider  
   **PLEASE NOTE:**  
   * This provider no longer supports `linode.index.vlan` as this has been replaced upstream. Previously, an instance_id
     was passed to a VLan. It has now been changed in the Linode API to pass VLan details to the Instance as part of 
     the `interfaces` configuration
-
----
 
 ## 3.0.1 (2021-04-30)
 * Upgrade to v1.17.1 of the Linode Terraform Provider
