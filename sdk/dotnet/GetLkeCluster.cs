@@ -85,7 +85,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The status of the node.
+        /// The status of the node. (`ready`, `not_ready`)
         /// </summary>
         public readonly string Status;
         /// <summary>

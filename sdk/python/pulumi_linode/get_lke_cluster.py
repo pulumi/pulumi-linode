@@ -106,7 +106,7 @@ class GetLkeClusterResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 

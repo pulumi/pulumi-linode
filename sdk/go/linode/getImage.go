@@ -51,7 +51,9 @@ import (
 //
 // * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
 //
-// * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
+// * `status` - The current status of this image. (`creating`, `pendingUpload`, `available`)
+//
+// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 //
 // * `vendor` - The upstream distribution vendor. `None` for private Images.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
@@ -80,6 +82,7 @@ type LookupImageResult struct {
 	IsPublic    bool   `pulumi:"isPublic"`
 	Label       string `pulumi:"label"`
 	Size        int    `pulumi:"size"`
+	Status      string `pulumi:"status"`
 	Type        string `pulumi:"type"`
 	Vendor      string `pulumi:"vendor"`
 }

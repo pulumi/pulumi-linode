@@ -26,7 +26,7 @@ export interface FirewallDevice {
 
 export interface FirewallInbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
     /**
@@ -46,14 +46,14 @@ export interface FirewallInbound {
      */
     ports?: pulumi.Input<string>;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: pulumi.Input<string>;
 }
 
 export interface FirewallOutbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
     /**
@@ -73,7 +73,7 @@ export interface FirewallOutbound {
      */
     ports?: pulumi.Input<string>;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: pulumi.Input<string>;
 }
@@ -107,6 +107,17 @@ export interface GetStackScriptUserDefinedField {
     manyOf?: string;
     name?: string;
     oneOf?: string;
+}
+
+export interface GetVlansFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
 }
 
 export interface InstanceAlerts {
@@ -413,7 +424,7 @@ export interface LkeClusterPool {
     id?: pulumi.Input<number>;
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
     /**
-     * A Linode Type for all of the nodes in the Node Pool.
+     * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: pulumi.Input<string>;
 }
@@ -428,7 +439,7 @@ export interface LkeClusterPoolNode {
      */
     instanceId?: pulumi.Input<number>;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     status?: pulumi.Input<string>;
 }
@@ -508,7 +519,7 @@ export interface ObjectStorageKeyBucketAccess {
      */
     cluster: pulumi.Input<string>;
     /**
-     * This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+     * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class FirewallInboundArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Ports { get; set; }
 
         /// <summary>
-        /// The network protocol this rule controls.
+        /// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int InstanceId;
         /// <summary>
-        /// The status of the node.
+        /// The status of the node. (`ready`, `not_ready`)
         /// </summary>
         public readonly string Status;
 

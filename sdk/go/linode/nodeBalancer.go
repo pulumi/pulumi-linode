@@ -93,7 +93,7 @@ type NodeBalancer struct {
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrOutput `pulumi:"label"`
-	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -147,7 +147,7 @@ type nodeBalancerState struct {
 	Ipv6 *string `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
-	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -170,7 +170,7 @@ type NodeBalancerState struct {
 	Ipv6 pulumi.StringPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
-	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -189,7 +189,7 @@ type nodeBalancerArgs struct {
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
-	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -201,7 +201,7 @@ type NodeBalancerArgs struct {
 	ClientConnThrottle pulumi.IntPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
-	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	Region pulumi.StringInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput

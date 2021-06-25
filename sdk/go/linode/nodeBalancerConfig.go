@@ -84,9 +84,9 @@ import (
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState
 
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check pulumi.StringOutput `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntOutput `pulumi:"checkAttempts"`
@@ -110,9 +110,9 @@ type NodeBalancerConfig struct {
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
 	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrOutput `pulumi:"sslCert"`
@@ -124,7 +124,7 @@ type NodeBalancerConfig struct {
 	SslFingerprint pulumi.StringOutput `pulumi:"sslFingerprint"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey pulumi.StringPtrOutput `pulumi:"sslKey"`
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringOutput `pulumi:"stickiness"`
 }
 
@@ -160,9 +160,9 @@ func GetNodeBalancerConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeBalancerConfig resources.
 type nodeBalancerConfigState struct {
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm *string `pulumi:"algorithm"`
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check *string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts *int `pulumi:"checkAttempts"`
@@ -186,9 +186,9 @@ type nodeBalancerConfigState struct {
 	NodebalancerId *int `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port *int `pulumi:"port"`
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol *string `pulumi:"protocol"`
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert *string `pulumi:"sslCert"`
@@ -200,14 +200,14 @@ type nodeBalancerConfigState struct {
 	SslFingerprint *string `pulumi:"sslFingerprint"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey *string `pulumi:"sslKey"`
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness *string `pulumi:"stickiness"`
 }
 
 type NodeBalancerConfigState struct {
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm pulumi.StringPtrInput
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check pulumi.StringPtrInput
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntPtrInput
@@ -231,9 +231,9 @@ type NodeBalancerConfigState struct {
 	NodebalancerId pulumi.IntPtrInput
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntPtrInput
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol pulumi.StringPtrInput
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
 	ProxyProtocol pulumi.StringPtrInput
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrInput
@@ -245,7 +245,7 @@ type NodeBalancerConfigState struct {
 	SslFingerprint pulumi.StringPtrInput
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey pulumi.StringPtrInput
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringPtrInput
 }
 
@@ -254,9 +254,9 @@ func (NodeBalancerConfigState) ElementType() reflect.Type {
 }
 
 type nodeBalancerConfigArgs struct {
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm *string `pulumi:"algorithm"`
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check *string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts *int `pulumi:"checkAttempts"`
@@ -277,23 +277,23 @@ type nodeBalancerConfigArgs struct {
 	NodebalancerId int `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port *int `pulumi:"port"`
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol *string `pulumi:"protocol"`
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert *string `pulumi:"sslCert"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey *string `pulumi:"sslKey"`
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness *string `pulumi:"stickiness"`
 }
 
 // The set of arguments for constructing a NodeBalancerConfig resource.
 type NodeBalancerConfigArgs struct {
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm pulumi.StringPtrInput
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check pulumi.StringPtrInput
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntPtrInput
@@ -314,15 +314,15 @@ type NodeBalancerConfigArgs struct {
 	NodebalancerId pulumi.IntInput
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntPtrInput
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol pulumi.StringPtrInput
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
 	ProxyProtocol pulumi.StringPtrInput
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrInput
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey pulumi.StringPtrInput
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringPtrInput
 }
 

@@ -72,7 +72,7 @@ export interface GetLkeClusterResult {
      */
     readonly region: string;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     readonly status: string;
     /**

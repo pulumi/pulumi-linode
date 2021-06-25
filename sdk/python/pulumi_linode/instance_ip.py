@@ -87,7 +87,7 @@ class _InstanceIpState:
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
         :param pulumi.Input[str] region: The region this IP resides in.
         :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
-        :param pulumi.Input[str] type: The type of IP address.
+        :param pulumi.Input[str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -208,7 +208,7 @@ class _InstanceIpState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of IP address.
+        The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         return pulumi.get(self, "type")
 
@@ -355,7 +355,7 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
         :param pulumi.Input[str] region: The region this IP resides in.
         :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
-        :param pulumi.Input[str] type: The type of IP address.
+        :param pulumi.Input[str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -440,7 +440,7 @@ class InstanceIp(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of IP address.
+        The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         return pulumi.get(self, "type")
 

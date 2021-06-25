@@ -69,7 +69,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// The default behavior for inbound traffic.
+        /// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
         /// </summary>
         public readonly string InboundPolicy;
         public readonly ImmutableArray<Outputs.GetFirewallInboundResult> Inbounds;
@@ -82,12 +82,12 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<int> Linodes;
         /// <summary>
-        /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule.
+        /// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         /// </summary>
         public readonly string OutboundPolicy;
         public readonly ImmutableArray<Outputs.GetFirewallOutboundResult> Outbounds;
         /// <summary>
-        /// The status of the firewall.
+        /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
         /// </summary>
         public readonly string Status;
         /// <summary>

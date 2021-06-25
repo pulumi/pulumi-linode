@@ -51,6 +51,7 @@ __all__ = [
     'GetImagesFilterArgs',
     'GetInstancesFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
+    'GetVlansFilterArgs',
 ]
 
 @pulumi.input_type
@@ -146,9 +147,9 @@ class FirewallInboundArgs:
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ports: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
-        :param pulumi.Input[str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -167,7 +168,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -191,7 +192,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -246,9 +247,9 @@ class FirewallOutboundArgs:
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ports: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
-        :param pulumi.Input[str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -267,7 +268,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -291,7 +292,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -1600,7 +1601,7 @@ class LkeClusterPoolArgs:
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
         """
         :param pulumi.Input[int] count: The number of nodes in the Node Pool.
-        :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool.
+        :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[int] id: The ID of the node.
         """
         pulumi.set(__self__, "count", count)
@@ -1626,7 +1627,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        A Linode Type for all of the nodes in the Node Pool.
+        A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -1665,7 +1666,7 @@ class LkeClusterPoolNodeArgs:
         """
         :param pulumi.Input[str] id: The ID of the node.
         :param pulumi.Input[int] instance_id: The ID of the underlying Linode instance.
-        :param pulumi.Input[str] status: The status of the node.
+        :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1702,7 +1703,7 @@ class LkeClusterPoolNodeArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 
@@ -1998,7 +1999,7 @@ class ObjectStorageKeyBucketAccessArgs:
         """
         :param pulumi.Input[str] bucket_name: The unique label of the bucket to which the key will grant limited access.
         :param pulumi.Input[str] cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
-        :param pulumi.Input[str] permissions: This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        :param pulumi.Input[str] permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "cluster", cluster)
@@ -2032,7 +2033,7 @@ class ObjectStorageKeyBucketAccessArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[str]:
         """
-        This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         return pulumi.get(self, "permissions")
 
@@ -2581,5 +2582,42 @@ class GetStackScriptUserDefinedFieldArgs:
     @one_of.setter
     def one_of(self, value: str):
         pulumi.set(self, "one_of", value)
+
+
+@pulumi.input_type
+class GetVlansFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
 
 

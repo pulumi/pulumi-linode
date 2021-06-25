@@ -39,6 +39,11 @@ namespace Pulumi.Linode
         public static int? MinRetryDelayMs { get; set; } = __config.GetInt32("minRetryDelayMs");
 
         /// <summary>
+        /// Skip waiting for a linode_instance resource to finish deleting.
+        /// </summary>
+        public static bool? SkipInstanceDeletePoll { get; set; } = __config.GetBoolean("skipInstanceDeletePoll");
+
+        /// <summary>
         /// Skip waiting for a linode_instance resource to be running.
         /// </summary>
         public static bool? SkipInstanceReadyPoll { get; set; } = __config.GetBoolean("skipInstanceReadyPoll");

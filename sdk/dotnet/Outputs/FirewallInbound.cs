@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class FirewallInbound
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Ports;
         /// <summary>
-        /// The network protocol this rule controls.
+        /// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         /// </summary>
         public readonly string Protocol;
 

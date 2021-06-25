@@ -26,7 +26,7 @@ export interface FirewallDevice {
 
 export interface FirewallInbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
     /**
@@ -46,14 +46,14 @@ export interface FirewallInbound {
      */
     ports?: string;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
 }
 
 export interface FirewallOutbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
     /**
@@ -73,7 +73,7 @@ export interface FirewallOutbound {
      */
     ports?: string;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
 }
@@ -120,7 +120,7 @@ export interface GetFirewallInbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
 }
@@ -147,7 +147,7 @@ export interface GetFirewallOutbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
 }
@@ -173,6 +173,7 @@ export interface GetImagesImage {
     isPublic: boolean;
     label: string;
     size: number;
+    status: string;
     type: string;
     vendor: string;
 }
@@ -200,11 +201,11 @@ export interface GetInstanceBackupsAutomatic {
      */
     label: string;
     /**
-     * The current state of a specific Backup.
+     * The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
      */
     status: string;
     /**
-     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
      */
     type: string;
     /**
@@ -251,11 +252,11 @@ export interface GetInstanceBackupsCurrent {
      */
     label: string;
     /**
-     * The current state of a specific Backup.
+     * The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
      */
     status: string;
     /**
-     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
      */
     type: string;
     /**
@@ -302,11 +303,11 @@ export interface GetInstanceBackupsInProgress {
      */
     label: string;
     /**
-     * The current state of a specific Backup.
+     * The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
      */
     status: string;
     /**
-     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+     * This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
      */
     type: string;
     /**
@@ -513,7 +514,7 @@ export interface GetLkeClusterPool {
      */
     nodes: outputs.GetLkeClusterPoolNode[];
     /**
-     * The linode type for all of the nodes in the Node Pool.
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: string;
 }
@@ -528,7 +529,7 @@ export interface GetLkeClusterPoolNode {
      */
     instanceId: number;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     status: string;
 }
@@ -575,6 +576,24 @@ export interface GetStackScriptUserDefinedField {
     manyOf: string;
     name: string;
     oneOf: string;
+}
+
+export interface GetVlansFilter {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVlansVlan {
+    created: string;
+    label: string;
+    linodes: number[];
+    region: string;
 }
 
 export interface InstanceAlerts {
@@ -881,7 +900,7 @@ export interface LkeClusterPool {
     id: number;
     nodes: outputs.LkeClusterPoolNode[];
     /**
-     * A Linode Type for all of the nodes in the Node Pool.
+     * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: string;
 }
@@ -896,7 +915,7 @@ export interface LkeClusterPoolNode {
      */
     instanceId: number;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     status: string;
 }
@@ -976,7 +995,7 @@ export interface ObjectStorageKeyBucketAccess {
      */
     cluster: string;
     /**
-     * This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+     * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: string;
 }

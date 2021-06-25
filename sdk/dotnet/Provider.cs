@@ -82,6 +82,12 @@ namespace Pulumi.Linode
         public Input<int>? MinRetryDelayMs { get; set; }
 
         /// <summary>
+        /// Skip waiting for a linode_instance resource to finish deleting.
+        /// </summary>
+        [Input("skipInstanceDeletePoll", json: true)]
+        public Input<bool>? SkipInstanceDeletePoll { get; set; }
+
+        /// <summary>
         /// Skip waiting for a linode_instance resource to be running.
         /// </summary>
         [Input("skipInstanceReadyPoll", json: true)]

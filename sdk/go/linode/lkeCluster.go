@@ -26,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := linode.NewLkeCluster(ctx, "my_cluster", &linode.LkeClusterArgs{
-// 			K8sVersion: pulumi.String("1.17"),
+// 			K8sVersion: pulumi.String("1.20"),
 // 			Label:      pulumi.String("my-cluster"),
 // 			Pools: linode.LkeClusterPoolArray{
 // 				&linode.LkeClusterPoolArgs{
@@ -69,7 +69,7 @@ type LkeCluster struct {
 	Pools LkeClusterPoolArrayOutput `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringOutput `pulumi:"status"`
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -128,7 +128,7 @@ type lkeClusterState struct {
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region *string `pulumi:"region"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -147,7 +147,7 @@ type LkeClusterState struct {
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
 	Region pulumi.StringPtrInput
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput

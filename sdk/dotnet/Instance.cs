@@ -236,7 +236,8 @@ namespace Pulumi.Linode
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+        /// must be declared in the config block.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.InstanceInterface>> Interfaces { get; private set; } = null!;
@@ -470,7 +471,8 @@ namespace Pulumi.Linode
         private InputList<Inputs.InstanceInterfaceArgs>? _interfaces;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+        /// must be declared in the config block.
         /// </summary>
         public InputList<Inputs.InstanceInterfaceArgs> Interfaces
         {
@@ -647,7 +649,8 @@ namespace Pulumi.Linode
         private InputList<Inputs.InstanceInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+        /// must be declared in the config block.
         /// </summary>
         public InputList<Inputs.InstanceInterfaceGetArgs> Interfaces
         {

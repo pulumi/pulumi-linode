@@ -21,7 +21,7 @@ class VolumeArgs:
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
-        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -51,7 +51,7 @@ class VolumeArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         """
         return pulumi.get(self, "region")
 
@@ -112,7 +112,7 @@ class _VolumeState:
                Volume label.
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
-        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -173,7 +173,7 @@ class _VolumeState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         """
         return pulumi.get(self, "region")
 
@@ -276,7 +276,7 @@ class Volume(pulumi.CustomResource):
 
         This resource exports the following attributes:
 
-        * `status` - The label of the Linode Volume.
+        * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
 
         * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 
@@ -294,7 +294,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
-        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
@@ -351,7 +351,7 @@ class Volume(pulumi.CustomResource):
 
         This resource exports the following attributes:
 
-        * `status` - The label of the Linode Volume.
+        * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
 
         * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 
@@ -436,7 +436,7 @@ class Volume(pulumi.CustomResource):
                Volume label.
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
-        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -483,7 +483,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         """
         return pulumi.get(self, "region")
 

@@ -15,6 +15,7 @@ __all__ = [
     'lke_node_ready_poll_ms',
     'max_retry_delay_ms',
     'min_retry_delay_ms',
+    'skip_instance_delete_poll',
     'skip_instance_ready_poll',
     'token',
     'ua_prefix',
@@ -51,6 +52,11 @@ Maximum delay in milliseconds before retrying a request.
 min_retry_delay_ms = __config__.get('minRetryDelayMs')
 """
 Minimum delay in milliseconds before retrying a request.
+"""
+
+skip_instance_delete_poll = __config__.get('skipInstanceDeletePoll')
+"""
+Skip waiting for a linode_instance resource to finish deleting.
 """
 
 skip_instance_ready_poll = __config__.get('skipInstanceReadyPoll')

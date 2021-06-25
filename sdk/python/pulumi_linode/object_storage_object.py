@@ -38,7 +38,7 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[str] secret_key: The secret key to authenitcate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -148,7 +148,7 @@ class ObjectStorageObjectArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         """
         return pulumi.get(self, "acl")
 
@@ -326,7 +326,7 @@ class _ObjectStorageObjectState:
         """
         Input properties used for looking up and filtering ObjectStorageObject resources.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
@@ -400,7 +400,7 @@ class _ObjectStorageObjectState:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         """
         return pulumi.get(self, "acl")
 
@@ -661,7 +661,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
@@ -817,7 +817,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
@@ -873,7 +873,7 @@ class ObjectStorageObject(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[str]]:
         """
-        The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+        The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         """
         return pulumi.get(self, "acl")
 

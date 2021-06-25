@@ -42,6 +42,11 @@ func GetMinRetryDelayMs(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "linode:minRetryDelayMs")
 }
 
+// Skip waiting for a linode_instance resource to finish deleting.
+func GetSkipInstanceDeletePoll(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:skipInstanceDeletePoll")
+}
+
 // Skip waiting for a linode_instance resource to be running.
 func GetSkipInstanceReadyPoll(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "linode:skipInstanceReadyPoll")

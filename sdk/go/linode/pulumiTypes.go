@@ -141,7 +141,7 @@ func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput
 }
 
 type FirewallInbound struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action string `pulumi:"action"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
@@ -151,7 +151,7 @@ type FirewallInbound struct {
 	Label string `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports *string `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -167,7 +167,7 @@ type FirewallInboundInput interface {
 }
 
 type FirewallInboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action pulumi.StringInput `pulumi:"action"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
@@ -177,7 +177,7 @@ type FirewallInboundArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports pulumi.StringPtrInput `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -232,7 +232,7 @@ func (o FirewallInboundOutput) ToFirewallInboundOutputWithContext(ctx context.Co
 	return o
 }
 
-// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o FirewallInboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -257,7 +257,7 @@ func (o FirewallInboundOutput) Ports() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallInbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
-// The network protocol this rule controls.
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 func (o FirewallInboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -283,7 +283,7 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action string `pulumi:"action"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
@@ -293,7 +293,7 @@ type FirewallOutbound struct {
 	Label string `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports *string `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -309,7 +309,7 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action pulumi.StringInput `pulumi:"action"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
@@ -319,7 +319,7 @@ type FirewallOutboundArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports pulumi.StringPtrInput `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -374,7 +374,7 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o FirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -399,7 +399,7 @@ func (o FirewallOutboundOutput) Ports() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallOutbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
-// The network protocol this rule controls.
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 func (o FirewallOutboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -3448,7 +3448,7 @@ type LkeClusterPool struct {
 	// The ID of the node.
 	Id    *int                 `pulumi:"id"`
 	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
-	// A Linode Type for all of the nodes in the Node Pool.
+	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
 
@@ -3469,7 +3469,7 @@ type LkeClusterPoolArgs struct {
 	// The ID of the node.
 	Id    pulumi.IntPtrInput           `pulumi:"id"`
 	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
-	// A Linode Type for all of the nodes in the Node Pool.
+	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3538,7 +3538,7 @@ func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
 }
 
-// A Linode Type for all of the nodes in the Node Pool.
+// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o LkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3568,7 +3568,7 @@ type LkeClusterPoolNode struct {
 	Id *string `pulumi:"id"`
 	// The ID of the underlying Linode instance.
 	InstanceId *int `pulumi:"instanceId"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
 }
 
@@ -3588,7 +3588,7 @@ type LkeClusterPoolNodeArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The ID of the underlying Linode instance.
 	InstanceId pulumi.IntPtrInput `pulumi:"instanceId"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -3653,7 +3653,7 @@ func (o LkeClusterPoolNodeOutput) InstanceId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPoolNode) *int { return v.InstanceId }).(pulumi.IntPtrOutput)
 }
 
-// The status of the node.
+// The status of the node. (`ready`, `notReady`)
 func (o LkeClusterPoolNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LkeClusterPoolNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -4483,7 +4483,7 @@ type ObjectStorageKeyBucketAccess struct {
 	BucketName string `pulumi:"bucketName"`
 	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
 	Cluster string `pulumi:"cluster"`
-	// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+	// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -4503,7 +4503,7 @@ type ObjectStorageKeyBucketAccessArgs struct {
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+	// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -4568,7 +4568,7 @@ func (o ObjectStorageKeyBucketAccessOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// This Limited Access Key’s permissions for the selected bucket. Can be one of `"readWrite"` or `"readOnly"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 func (o ObjectStorageKeyBucketAccessOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -5822,7 +5822,7 @@ type GetFirewallInbound struct {
 	Label string `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports string `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -5848,7 +5848,7 @@ type GetFirewallInboundArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports pulumi.StringInput `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -5928,7 +5928,7 @@ func (o GetFirewallInboundOutput) Ports() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
 }
 
-// The network protocol this rule controls.
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 func (o GetFirewallInboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -5964,7 +5964,7 @@ type GetFirewallOutbound struct {
 	Label string `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports string `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -5990,7 +5990,7 @@ type GetFirewallOutboundArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports pulumi.StringInput `pulumi:"ports"`
-	// The network protocol this rule controls.
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -6070,7 +6070,7 @@ func (o GetFirewallOutboundOutput) Ports() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
 }
 
-// The network protocol this rule controls.
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
 func (o GetFirewallOutboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -6211,6 +6211,7 @@ type GetImagesImage struct {
 	IsPublic    bool   `pulumi:"isPublic"`
 	Label       string `pulumi:"label"`
 	Size        int    `pulumi:"size"`
+	Status      string `pulumi:"status"`
 	Type        string `pulumi:"type"`
 	Vendor      string `pulumi:"vendor"`
 }
@@ -6236,6 +6237,7 @@ type GetImagesImageArgs struct {
 	IsPublic    pulumi.BoolInput   `pulumi:"isPublic"`
 	Label       pulumi.StringInput `pulumi:"label"`
 	Size        pulumi.IntInput    `pulumi:"size"`
+	Status      pulumi.StringInput `pulumi:"status"`
 	Type        pulumi.StringInput `pulumi:"type"`
 	Vendor      pulumi.StringInput `pulumi:"vendor"`
 }
@@ -6327,6 +6329,10 @@ func (o GetImagesImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
 
+func (o GetImagesImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
 func (o GetImagesImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6367,9 +6373,9 @@ type GetInstanceBackupsAutomatic struct {
 	Id int `pulumi:"id"`
 	// The label of this disk.
 	Label string `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status string `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type string `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated string `pulumi:"updated"`
@@ -6398,9 +6404,9 @@ type GetInstanceBackupsAutomaticArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The label of this disk.
 	Label pulumi.StringInput `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type pulumi.StringInput `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -6486,12 +6492,12 @@ func (o GetInstanceBackupsAutomaticOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsAutomatic) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The current state of a specific Backup.
+// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 func (o GetInstanceBackupsAutomaticOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsAutomatic) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 func (o GetInstanceBackupsAutomaticOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsAutomatic) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6648,9 +6654,9 @@ type GetInstanceBackupsCurrent struct {
 	Id int `pulumi:"id"`
 	// The label of this disk.
 	Label string `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status string `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type string `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated string `pulumi:"updated"`
@@ -6679,9 +6685,9 @@ type GetInstanceBackupsCurrentArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The label of this disk.
 	Label pulumi.StringInput `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type pulumi.StringInput `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -6767,12 +6773,12 @@ func (o GetInstanceBackupsCurrentOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsCurrent) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The current state of a specific Backup.
+// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 func (o GetInstanceBackupsCurrentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsCurrent) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 func (o GetInstanceBackupsCurrentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsCurrent) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6929,9 +6935,9 @@ type GetInstanceBackupsInProgress struct {
 	Id int `pulumi:"id"`
 	// The label of this disk.
 	Label string `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status string `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type string `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated string `pulumi:"updated"`
@@ -6960,9 +6966,9 @@ type GetInstanceBackupsInProgressArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The label of this disk.
 	Label pulumi.StringInput `pulumi:"label"`
-	// The current state of a specific Backup.
+	// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+	// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 	Type pulumi.StringInput `pulumi:"type"`
 	// The date the Backup was most recently updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -7048,12 +7054,12 @@ func (o GetInstanceBackupsInProgressOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsInProgress) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The current state of a specific Backup.
+// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
 func (o GetInstanceBackupsInProgressOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsInProgress) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
 func (o GetInstanceBackupsInProgressOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBackupsInProgress) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9574,7 +9580,7 @@ type GetLkeClusterPool struct {
 	Id int `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes []GetLkeClusterPoolNode `pulumi:"nodes"`
-	// The linode type for all of the nodes in the Node Pool.
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
 
@@ -9596,7 +9602,7 @@ type GetLkeClusterPoolArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes GetLkeClusterPoolNodeArrayInput `pulumi:"nodes"`
-	// The linode type for all of the nodes in the Node Pool.
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -9666,7 +9672,7 @@ func (o GetLkeClusterPoolOutput) Nodes() GetLkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolNode { return v.Nodes }).(GetLkeClusterPoolNodeArrayOutput)
 }
 
-// The linode type for all of the nodes in the Node Pool.
+// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o GetLkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9696,7 +9702,7 @@ type GetLkeClusterPoolNode struct {
 	Id string `pulumi:"id"`
 	// The ID of the underlying Linode instance.
 	InstanceId int `pulumi:"instanceId"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status string `pulumi:"status"`
 }
 
@@ -9716,7 +9722,7 @@ type GetLkeClusterPoolNodeArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the underlying Linode instance.
 	InstanceId pulumi.IntInput `pulumi:"instanceId"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9781,7 +9787,7 @@ func (o GetLkeClusterPoolNodeOutput) InstanceId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolNode) int { return v.InstanceId }).(pulumi.IntOutput)
 }
 
-// The status of the node.
+// The status of the node. (`ready`, `notReady`)
 func (o GetLkeClusterPoolNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolNode) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10230,6 +10236,224 @@ func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetS
 	}).(GetStackScriptUserDefinedFieldOutput)
 }
 
+type GetVlansFilter struct {
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetVlansFilterInput is an input type that accepts GetVlansFilterArgs and GetVlansFilterOutput values.
+// You can construct a concrete instance of `GetVlansFilterInput` via:
+//
+//          GetVlansFilterArgs{...}
+type GetVlansFilterInput interface {
+	pulumi.Input
+
+	ToGetVlansFilterOutput() GetVlansFilterOutput
+	ToGetVlansFilterOutputWithContext(context.Context) GetVlansFilterOutput
+}
+
+type GetVlansFilterArgs struct {
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVlansFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansFilter)(nil)).Elem()
+}
+
+func (i GetVlansFilterArgs) ToGetVlansFilterOutput() GetVlansFilterOutput {
+	return i.ToGetVlansFilterOutputWithContext(context.Background())
+}
+
+func (i GetVlansFilterArgs) ToGetVlansFilterOutputWithContext(ctx context.Context) GetVlansFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVlansFilterOutput)
+}
+
+// GetVlansFilterArrayInput is an input type that accepts GetVlansFilterArray and GetVlansFilterArrayOutput values.
+// You can construct a concrete instance of `GetVlansFilterArrayInput` via:
+//
+//          GetVlansFilterArray{ GetVlansFilterArgs{...} }
+type GetVlansFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVlansFilterArrayOutput() GetVlansFilterArrayOutput
+	ToGetVlansFilterArrayOutputWithContext(context.Context) GetVlansFilterArrayOutput
+}
+
+type GetVlansFilterArray []GetVlansFilterInput
+
+func (GetVlansFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVlansFilter)(nil)).Elem()
+}
+
+func (i GetVlansFilterArray) ToGetVlansFilterArrayOutput() GetVlansFilterArrayOutput {
+	return i.ToGetVlansFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVlansFilterArray) ToGetVlansFilterArrayOutputWithContext(ctx context.Context) GetVlansFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVlansFilterArrayOutput)
+}
+
+type GetVlansFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVlansFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansFilter)(nil)).Elem()
+}
+
+func (o GetVlansFilterOutput) ToGetVlansFilterOutput() GetVlansFilterOutput {
+	return o
+}
+
+func (o GetVlansFilterOutput) ToGetVlansFilterOutputWithContext(ctx context.Context) GetVlansFilterOutput {
+	return o
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetVlansFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVlansFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetVlansFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVlansFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVlansFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVlansFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVlansFilter)(nil)).Elem()
+}
+
+func (o GetVlansFilterArrayOutput) ToGetVlansFilterArrayOutput() GetVlansFilterArrayOutput {
+	return o
+}
+
+func (o GetVlansFilterArrayOutput) ToGetVlansFilterArrayOutputWithContext(ctx context.Context) GetVlansFilterArrayOutput {
+	return o
+}
+
+func (o GetVlansFilterArrayOutput) Index(i pulumi.IntInput) GetVlansFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVlansFilter {
+		return vs[0].([]GetVlansFilter)[vs[1].(int)]
+	}).(GetVlansFilterOutput)
+}
+
+type GetVlansVlan struct {
+	Created string `pulumi:"created"`
+	Label   string `pulumi:"label"`
+	Linodes []int  `pulumi:"linodes"`
+	Region  string `pulumi:"region"`
+}
+
+// GetVlansVlanInput is an input type that accepts GetVlansVlanArgs and GetVlansVlanOutput values.
+// You can construct a concrete instance of `GetVlansVlanInput` via:
+//
+//          GetVlansVlanArgs{...}
+type GetVlansVlanInput interface {
+	pulumi.Input
+
+	ToGetVlansVlanOutput() GetVlansVlanOutput
+	ToGetVlansVlanOutputWithContext(context.Context) GetVlansVlanOutput
+}
+
+type GetVlansVlanArgs struct {
+	Created pulumi.StringInput   `pulumi:"created"`
+	Label   pulumi.StringInput   `pulumi:"label"`
+	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
+	Region  pulumi.StringInput   `pulumi:"region"`
+}
+
+func (GetVlansVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansVlan)(nil)).Elem()
+}
+
+func (i GetVlansVlanArgs) ToGetVlansVlanOutput() GetVlansVlanOutput {
+	return i.ToGetVlansVlanOutputWithContext(context.Background())
+}
+
+func (i GetVlansVlanArgs) ToGetVlansVlanOutputWithContext(ctx context.Context) GetVlansVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVlansVlanOutput)
+}
+
+// GetVlansVlanArrayInput is an input type that accepts GetVlansVlanArray and GetVlansVlanArrayOutput values.
+// You can construct a concrete instance of `GetVlansVlanArrayInput` via:
+//
+//          GetVlansVlanArray{ GetVlansVlanArgs{...} }
+type GetVlansVlanArrayInput interface {
+	pulumi.Input
+
+	ToGetVlansVlanArrayOutput() GetVlansVlanArrayOutput
+	ToGetVlansVlanArrayOutputWithContext(context.Context) GetVlansVlanArrayOutput
+}
+
+type GetVlansVlanArray []GetVlansVlanInput
+
+func (GetVlansVlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVlansVlan)(nil)).Elem()
+}
+
+func (i GetVlansVlanArray) ToGetVlansVlanArrayOutput() GetVlansVlanArrayOutput {
+	return i.ToGetVlansVlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetVlansVlanArray) ToGetVlansVlanArrayOutputWithContext(ctx context.Context) GetVlansVlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVlansVlanArrayOutput)
+}
+
+type GetVlansVlanOutput struct{ *pulumi.OutputState }
+
+func (GetVlansVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansVlan)(nil)).Elem()
+}
+
+func (o GetVlansVlanOutput) ToGetVlansVlanOutput() GetVlansVlanOutput {
+	return o
+}
+
+func (o GetVlansVlanOutput) ToGetVlansVlanOutputWithContext(ctx context.Context) GetVlansVlanOutput {
+	return o
+}
+
+func (o GetVlansVlanOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVlansVlan) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetVlansVlanOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVlansVlan) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetVlansVlanOutput) Linodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetVlansVlan) []int { return v.Linodes }).(pulumi.IntArrayOutput)
+}
+
+func (o GetVlansVlanOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVlansVlan) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetVlansVlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVlansVlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVlansVlan)(nil)).Elem()
+}
+
+func (o GetVlansVlanArrayOutput) ToGetVlansVlanArrayOutput() GetVlansVlanArrayOutput {
+	return o
+}
+
+func (o GetVlansVlanArrayOutput) ToGetVlansVlanArrayOutputWithContext(ctx context.Context) GetVlansVlanArrayOutput {
+	return o
+}
+
+func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVlansVlan {
+		return vs[0].([]GetVlansVlan)[vs[1].(int)]
+	}).(GetVlansVlanOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallDeviceOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceArrayOutput{})
@@ -10383,4 +10607,8 @@ func init() {
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetVlansFilterOutput{})
+	pulumi.RegisterOutputType(GetVlansFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVlansVlanOutput{})
+	pulumi.RegisterOutputType(GetVlansVlanArrayOutput{})
 }

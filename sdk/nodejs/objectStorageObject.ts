@@ -59,7 +59,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     public readonly accessKey!: pulumi.Output<string>;
     /**
-     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+     * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     /**
@@ -216,7 +216,7 @@ export interface ObjectStorageObjectState {
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+     * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
     readonly acl?: pulumi.Input<string>;
     /**
@@ -298,7 +298,7 @@ export interface ObjectStorageObjectArgs {
      */
     readonly accessKey: pulumi.Input<string>;
     /**
-     * The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+     * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
     readonly acl?: pulumi.Input<string>;
     /**

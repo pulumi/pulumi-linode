@@ -39,9 +39,9 @@ import (
 //
 // * `domain` - The base URL for this cluster.
 //
-// * `status` - This cluster's status.
+// * `status` - This cluster's status. (`available`, `unavailable`)
 //
-// * `region` - The region this cluster is located in.
+// * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
 //
 // * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
 func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageClusterResult, error) {

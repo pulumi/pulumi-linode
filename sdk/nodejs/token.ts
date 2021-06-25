@@ -85,7 +85,7 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string | undefined>;
     /**
-     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      */
     public readonly scopes!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export interface TokenState {
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      */
     readonly scopes?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface TokenArgs {
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+     * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      */
     readonly scopes: pulumi.Input<string>;
 }

@@ -48,7 +48,7 @@ type ObjectStorageObject struct {
 
 	// The access key to authenticate with.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The name of the bucket to put the object in.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
@@ -132,7 +132,7 @@ func GetObjectStorageObject(ctx *pulumi.Context,
 type objectStorageObjectState struct {
 	// The access key to authenticate with.
 	AccessKey *string `pulumi:"accessKey"`
-	// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl *string `pulumi:"acl"`
 	// The name of the bucket to put the object in.
 	Bucket *string `pulumi:"bucket"`
@@ -173,7 +173,7 @@ type objectStorageObjectState struct {
 type ObjectStorageObjectState struct {
 	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrInput
-	// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrInput
 	// The name of the bucket to put the object in.
 	Bucket pulumi.StringPtrInput
@@ -218,7 +218,7 @@ func (ObjectStorageObjectState) ElementType() reflect.Type {
 type objectStorageObjectArgs struct {
 	// The access key to authenticate with.
 	AccessKey string `pulumi:"accessKey"`
-	// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl *string `pulumi:"acl"`
 	// The name of the bucket to put the object in.
 	Bucket string `pulumi:"bucket"`
@@ -258,7 +258,7 @@ type objectStorageObjectArgs struct {
 type ObjectStorageObjectArgs struct {
 	// The access key to authenticate with.
 	AccessKey pulumi.StringInput
-	// The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).
+	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrInput
 	// The name of the bucket to put the object in.
 	Bucket pulumi.StringInput

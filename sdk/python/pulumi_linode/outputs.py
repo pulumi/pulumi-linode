@@ -89,6 +89,8 @@ __all__ = [
     'GetNodeBalancerTransferResult',
     'GetProfileReferralsResult',
     'GetStackScriptUserDefinedFieldResult',
+    'GetVlansFilterResult',
+    'GetVlansVlanResult',
 ]
 
 @pulumi.output_type
@@ -181,9 +183,9 @@ class FirewallInbound(dict):
                  ipv6s: Optional[Sequence[str]] = None,
                  ports: Optional[str] = None):
         """
-        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param str action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param str label: Used to identify this rule. For display purposes only.
-        :param str protocol: The network protocol this rule controls.
+        :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -202,7 +204,7 @@ class FirewallInbound(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -218,7 +220,7 @@ class FirewallInbound(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -257,9 +259,9 @@ class FirewallOutbound(dict):
                  ipv6s: Optional[Sequence[str]] = None,
                  ports: Optional[str] = None):
         """
-        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param str action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param str label: Used to identify this rule. For display purposes only.
-        :param str protocol: The network protocol this rule controls.
+        :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -278,7 +280,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -294,7 +296,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -1573,7 +1575,7 @@ class LkeClusterPool(dict):
                  nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None):
         """
         :param int count: The number of nodes in the Node Pool.
-        :param str type: A Linode Type for all of the nodes in the Node Pool.
+        :param str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param int id: The ID of the node.
         """
         pulumi.set(__self__, "count", count)
@@ -1595,7 +1597,7 @@ class LkeClusterPool(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        A Linode Type for all of the nodes in the Node Pool.
+        A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -1639,7 +1641,7 @@ class LkeClusterPoolNode(dict):
         """
         :param str id: The ID of the node.
         :param int instance_id: The ID of the underlying Linode instance.
-        :param str status: The status of the node.
+        :param str status: The status of the node. (`ready`, `not_ready`)
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1668,7 +1670,7 @@ class LkeClusterPoolNode(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 
@@ -1979,7 +1981,7 @@ class ObjectStorageKeyBucketAccess(dict):
         """
         :param str bucket_name: The unique label of the bucket to which the key will grant limited access.
         :param str cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
-        :param str permissions: This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        :param str permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "cluster", cluster)
@@ -2005,7 +2007,7 @@ class ObjectStorageKeyBucketAccess(dict):
     @pulumi.getter
     def permissions(self) -> str:
         """
-        This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         return pulumi.get(self, "permissions")
 
@@ -2414,7 +2416,7 @@ class GetFirewallInboundResult(dict):
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str label: The label of the underlying entity this device references.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        :param str protocol: The network protocol this rule controls.
+        :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "ipv4s", ipv4s)
@@ -2467,7 +2469,7 @@ class GetFirewallInboundResult(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -2487,7 +2489,7 @@ class GetFirewallOutboundResult(dict):
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str label: The label of the underlying entity this device references.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        :param str protocol: The network protocol this rule controls.
+        :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "ipv4s", ipv4s)
@@ -2540,7 +2542,7 @@ class GetFirewallOutboundResult(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         return pulumi.get(self, "protocol")
 
@@ -2586,6 +2588,7 @@ class GetImagesImageResult(dict):
                  is_public: bool,
                  label: str,
                  size: int,
+                 status: str,
                  type: str,
                  vendor: str):
         pulumi.set(__self__, "created", created)
@@ -2597,6 +2600,7 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "is_public", is_public)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vendor", vendor)
 
@@ -2647,6 +2651,11 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
 
@@ -2674,8 +2683,8 @@ class GetInstanceBackupsAutomaticResult(dict):
         :param str finished: The date the Backup completed.
         :param int id: The unique ID of this Backup.
         :param str label: The label of this disk.
-        :param str status: The current state of a specific Backup.
-        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str status: The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
         pulumi.set(__self__, "configs", configs)
@@ -2737,7 +2746,7 @@ class GetInstanceBackupsAutomaticResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The current state of a specific Backup.
+        The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
         """
         return pulumi.get(self, "status")
 
@@ -2745,7 +2754,7 @@ class GetInstanceBackupsAutomaticResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         """
         return pulumi.get(self, "type")
 
@@ -2816,8 +2825,8 @@ class GetInstanceBackupsCurrentResult(dict):
         :param str finished: The date the Backup completed.
         :param int id: The unique ID of this Backup.
         :param str label: The label of this disk.
-        :param str status: The current state of a specific Backup.
-        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str status: The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
         pulumi.set(__self__, "configs", configs)
@@ -2879,7 +2888,7 @@ class GetInstanceBackupsCurrentResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The current state of a specific Backup.
+        The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
         """
         return pulumi.get(self, "status")
 
@@ -2887,7 +2896,7 @@ class GetInstanceBackupsCurrentResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         """
         return pulumi.get(self, "type")
 
@@ -2958,8 +2967,8 @@ class GetInstanceBackupsInProgressResult(dict):
         :param str finished: The date the Backup completed.
         :param int id: The unique ID of this Backup.
         :param str label: The label of this disk.
-        :param str status: The current state of a specific Backup.
-        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        :param str status: The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
+        :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
         pulumi.set(__self__, "configs", configs)
@@ -3021,7 +3030,7 @@ class GetInstanceBackupsInProgressResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The current state of a specific Backup.
+        The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
         """
         return pulumi.get(self, "status")
 
@@ -3029,7 +3038,7 @@ class GetInstanceBackupsInProgressResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         """
         return pulumi.get(self, "type")
 
@@ -3895,7 +3904,7 @@ class GetLkeClusterPoolResult(dict):
         :param int count: The number of nodes in the Node Pool.
         :param int id: The LKE Cluster's ID.
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
-        :param str type: The linode type for all of the nodes in the Node Pool.
+        :param str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "id", id)
@@ -3930,7 +3939,7 @@ class GetLkeClusterPoolResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The linode type for all of the nodes in the Node Pool.
+        The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -3944,7 +3953,7 @@ class GetLkeClusterPoolNodeResult(dict):
         """
         :param str id: The LKE Cluster's ID.
         :param int instance_id: The ID of the underlying Linode instance.
-        :param str status: The status of the node.
+        :param str status: The status of the node. (`ready`, `not_ready`)
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -3970,7 +3979,7 @@ class GetLkeClusterPoolNodeResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 
@@ -4136,5 +4145,67 @@ class GetStackScriptUserDefinedFieldResult(dict):
     @pulumi.getter(name="oneOf")
     def one_of(self) -> str:
         return pulumi.get(self, "one_of")
+
+
+@pulumi.output_type
+class GetVlansFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetVlansVlanResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 label: str,
+                 linodes: Sequence[int],
+                 region: str):
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Sequence[int]:
+        return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
 
 

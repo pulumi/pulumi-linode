@@ -22,6 +22,7 @@ namespace Pulumi.Linode.Outputs
         public readonly bool IsPublic;
         public readonly string Label;
         public readonly int Size;
+        public readonly string Status;
         public readonly string Type;
         public readonly string Vendor;
 
@@ -45,6 +46,8 @@ namespace Pulumi.Linode.Outputs
 
             int size,
 
+            string status,
+
             string type,
 
             string vendor)
@@ -58,6 +61,7 @@ namespace Pulumi.Linode.Outputs
             IsPublic = isPublic;
             Label = label;
             Size = size;
+            Status = status;
             Type = type;
             Vendor = vendor;
         }

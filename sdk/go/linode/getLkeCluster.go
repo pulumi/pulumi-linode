@@ -61,7 +61,7 @@ type LookupLkeClusterResult struct {
 	Pools []GetLkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region string `pulumi:"region"`
-	// The status of the node.
+	// The status of the node. (`ready`, `notReady`)
 	Status string `pulumi:"status"`
 	// The tags applied to the cluster.
 	Tags []string `pulumi:"tags"`

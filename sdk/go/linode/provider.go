@@ -59,6 +59,8 @@ type providerArgs struct {
 	MaxRetryDelayMs *int `pulumi:"maxRetryDelayMs"`
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs *int `pulumi:"minRetryDelayMs"`
+	// Skip waiting for a linode_instance resource to finish deleting.
+	SkipInstanceDeletePoll *bool `pulumi:"skipInstanceDeletePoll"`
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
 	// The token that allows you access to your Linode account
@@ -83,6 +85,8 @@ type ProviderArgs struct {
 	MaxRetryDelayMs pulumi.IntPtrInput
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs pulumi.IntPtrInput
+	// Skip waiting for a linode_instance resource to finish deleting.
+	SkipInstanceDeletePoll pulumi.BoolPtrInput
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account

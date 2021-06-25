@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Cluster;
         /// <summary>
-        /// This Limited Access Key’s permissions for the selected bucket. Can be one of `"read_write"` or `"read_only"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.
+        /// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         /// </summary>
         public readonly string Permissions;
 

@@ -35,11 +35,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// The current state of a specific Backup.
+        /// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.
+        /// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         /// </summary>
         public readonly string Type;
         /// <summary>

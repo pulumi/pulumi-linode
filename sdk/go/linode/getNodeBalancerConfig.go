@@ -51,9 +51,9 @@ type LookupNodeBalancerConfigArgs struct {
 
 // A collection of values returned by getNodeBalancerConfig.
 type LookupNodeBalancerConfigResult struct {
-	// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+	// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
 	Algorithm string `pulumi:"algorithm"`
-	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts int    `pulumi:"checkAttempts"`
@@ -66,21 +66,21 @@ type LookupNodeBalancerConfigResult struct {
 	CheckPath string `pulumi:"checkPath"`
 	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
 	CheckTimeout int `pulumi:"checkTimeout"`
-	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
 	CipherSuite    string                            `pulumi:"cipherSuite"`
 	Id             int                               `pulumi:"id"`
 	NodeStatuses   []GetNodeBalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	NodebalancerId int                               `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for.
 	Port int `pulumi:"port"`
-	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
 	Protocol string `pulumi:"protocol"`
-	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
 	ProxyProtocol string `pulumi:"proxyProtocol"`
 	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslCommonname string `pulumi:"sslCommonname"`
 	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslFingerprint string `pulumi:"sslFingerprint"`
-	// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness string `pulumi:"stickiness"`
 }

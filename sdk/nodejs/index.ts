@@ -29,6 +29,7 @@ export * from "./getRegion";
 export * from "./getSshKey";
 export * from "./getStackScript";
 export * from "./getUser";
+export * from "./getVlans";
 export * from "./getVolume";
 export * from "./image";
 export * from "./instance";

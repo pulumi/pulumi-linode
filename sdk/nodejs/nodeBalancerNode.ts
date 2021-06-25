@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *
  * This resource exports the following attributes:
  *
- * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+ * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
  *
  * * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
  *
@@ -116,7 +116,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface NodeBalancerNodeState {
      */
     readonly label?: pulumi.Input<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
     readonly mode?: pulumi.Input<string>;
     /**
@@ -232,7 +232,7 @@ export interface NodeBalancerNodeArgs {
      */
     readonly label: pulumi.Input<string>;
     /**
-     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+     * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
     readonly mode?: pulumi.Input<string>;
     /**

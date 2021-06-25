@@ -23,7 +23,7 @@ namespace Pulumi.Linode.Outputs
         public readonly int? Id;
         public readonly ImmutableArray<Outputs.LkeClusterPoolNode> Nodes;
         /// <summary>
-        /// A Linode Type for all of the nodes in the Node Pool.
+        /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         public readonly string Type;
 

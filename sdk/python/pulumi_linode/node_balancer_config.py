@@ -34,8 +34,8 @@ class NodeBalancerConfigArgs:
         """
         The set of arguments for constructing a NodeBalancerConfig resource.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
-        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
@@ -45,11 +45,11 @@ class NodeBalancerConfigArgs:
         :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
-        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
         if algorithm is not None:
@@ -99,7 +99,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -111,7 +111,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter
     def check(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
@@ -220,7 +220,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
@@ -232,7 +232,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -268,7 +268,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter
     def stickiness(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 
@@ -301,8 +301,8 @@ class _NodeBalancerConfigState:
                  stickiness: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerConfig resources.
-        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
-        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
@@ -315,15 +315,15 @@ class _NodeBalancerConfigState:
                periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
-        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
                refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
                refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -368,7 +368,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -380,7 +380,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter
     def check(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
@@ -514,7 +514,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
@@ -526,7 +526,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -588,7 +588,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter
     def stickiness(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 
@@ -676,8 +676,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
-        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
@@ -688,11 +688,11 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
-        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         ...
     @overload
@@ -855,8 +855,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
-        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
         :param pulumi.Input[str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
                the response body of a check request, the backend is considered to be down
@@ -869,15 +869,15 @@ class NodeBalancerConfig(pulumi.CustomResource):
                periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
-        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
                refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
                refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -908,7 +908,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[str]:
         """
-        What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -916,7 +916,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter
     def check(self) -> pulumi.Output[str]:
         """
-        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
@@ -1006,7 +1006,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
@@ -1014,7 +1014,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -1056,7 +1056,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter
     def stickiness(self) -> pulumi.Output[str]:
         """
-        Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 
