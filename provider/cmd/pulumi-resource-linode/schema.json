@@ -43,6 +43,10 @@
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
+            "skipInstanceDeletePoll": {
+                "type": "boolean",
+                "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
+            },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
                 "description": "Skip waiting for a linode_instance resource to be running.\n"
@@ -139,7 +143,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
+                    "description": "Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -190,7 +194,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol this rule controls.\n",
+                    "description": "The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -209,7 +213,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
+                    "description": "Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -260,7 +264,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol this rule controls.\n",
+                    "description": "The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1218,7 +1222,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "A Linode Type for all of the nodes in the Node Pool.\n",
+                    "description": "A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1264,7 +1268,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The status of the node.\n",
+                    "description": "The status of the node. (`ready`, `not_ready`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1516,7 +1520,7 @@
                 },
                 "permissions": {
                     "type": "string",
-                    "description": "This Limited Access Key’s permissions for the selected bucket. Can be one of `\"read_write\"` or `\"read_only\"`. *Changing `permissions` forces the creation of a new Object Storage Key.*.\n",
+                    "description": "This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1973,7 +1977,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol this rule controls.\n",
+                    "description": "The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2051,7 +2055,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol this rule controls.\n",
+                    "description": "The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2178,6 +2182,14 @@
                         }
                     }
                 },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "type": {
                     "type": "string",
                     "language": {
@@ -2206,6 +2218,7 @@
                 "isPublic",
                 "label",
                 "size",
+                "status",
                 "type",
                 "vendor"
             ],
@@ -2278,7 +2291,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The current state of a specific Backup.\n",
+                    "description": "The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2287,7 +2300,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.\n",
+                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2427,7 +2440,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The current state of a specific Backup.\n",
+                    "description": "The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2436,7 +2449,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.\n",
+                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2576,7 +2589,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The current state of a specific Backup.\n",
+                    "description": "The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2585,7 +2598,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time.\n",
+                    "description": "This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3846,7 +3859,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The linode type for all of the nodes in the Node Pool.\n",
+                    "description": "The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3889,7 +3902,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The status of the node.\n",
+                    "description": "The status of the node. (`ready`, `not_ready`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4114,6 +4127,87 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "linode:index/getVlansFilter:getVlansFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVlansVlan:getVlansVlan": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "label",
+                "linodes",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -4147,6 +4241,10 @@
             "minRetryDelayMs": {
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
+            },
+            "skipInstanceDeletePoll": {
+                "type": "boolean",
+                "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
@@ -4425,7 +4523,7 @@
                 },
                 "recordType": {
                     "type": "string",
-                    "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
+                    "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
                 },
                 "service": {
                     "type": "string",
@@ -4477,7 +4575,7 @@
                 },
                 "recordType": {
                     "type": "string",
-                    "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
+                    "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
                 },
                 "service": {
                     "type": "string",
@@ -4530,7 +4628,7 @@
                     },
                     "recordType": {
                         "type": "string",
-                        "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
+                        "description": "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.\n"
                     },
                     "service": {
                         "type": "string",
@@ -4557,7 +4655,7 @@
             }
         },
         "linode:index/firewall:Firewall": {
-            "description": "\u003e **NOTICE:** The Firewall feature is currently available through early access.\n\nManages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [\n        {\n            label: \"allow-http\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n        {\n            label: \"allow-https\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n    ],\n    inboundPolicy: \"DROP\",\n    outbounds: [\n        {\n            label: \"reject-http\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n        {\n            label: \"reject-https\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n    ],\n    outboundPolicy: \"ACCEPT\",\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[\n        linode.FirewallInboundArgs(\n            label=\"allow-http\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n        linode.FirewallInboundArgs(\n            label=\"allow-https\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n    ],\n    inbound_policy=\"DROP\",\n    outbounds=[\n        linode.FirewallOutboundArgs(\n            label=\"reject-http\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n        linode.FirewallOutboundArgs(\n            label=\"reject-https\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n    ],\n    outbound_policy=\"ACCEPT\",\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-southeast\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"allow-http\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"allow-https\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"443\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            InboundPolicy = \"DROP\",\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Label = \"reject-http\",\n                    Action = \"DROP\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Label = \"reject-https\",\n                    Action = \"DROP\",\n                    Protocol = \"TCP\",\n                    Ports = \"443\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            OutboundPolicy = \"ACCEPT\",\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
+            "description": "Manages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n    rootPass: `bogusPassword$`,\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    tags: [\"test\"],\n    inbounds: [\n        {\n            label: \"allow-http\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n        {\n            label: \"allow-https\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n    ],\n    inboundPolicy: \"DROP\",\n    outbounds: [\n        {\n            label: \"reject-http\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n        {\n            label: \"reject-https\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"ff00::/8\"],\n        },\n    ],\n    outboundPolicy: \"ACCEPT\",\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    tags=[\"test\"],\n    inbounds=[\n        linode.FirewallInboundArgs(\n            label=\"allow-http\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n        linode.FirewallInboundArgs(\n            label=\"allow-https\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n    ],\n    inbound_policy=\"DROP\",\n    outbounds=[\n        linode.FirewallOutboundArgs(\n            label=\"reject-http\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n        linode.FirewallOutboundArgs(\n            label=\"reject-https\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"ff00::/8\"],\n        ),\n    ],\n    outbound_policy=\"ACCEPT\",\n    linodes=[my_instance.id])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Image = \"linode/ubuntu18.04\",\n            Region = \"us-southeast\",\n            Type = \"g6-standard-1\",\n            RootPass = \"bogusPassword$\",\n            SwapSize = 256,\n        });\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Tags = \n            {\n                \"test\",\n            },\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"allow-http\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"allow-https\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"443\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            InboundPolicy = \"DROP\",\n            Outbounds = \n            {\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Label = \"reject-http\",\n                    Action = \"DROP\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n                new Linode.Inputs.FirewallOutboundArgs\n                {\n                    Label = \"reject-https\",\n                    Action = \"DROP\",\n                    Protocol = \"TCP\",\n                    Ports = \"443\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"ff00::/8\",\n                    },\n                },\n            },\n            OutboundPolicy = \"ACCEPT\",\n            Linodes = \n            {\n                myInstance.Id,\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
             "properties": {
                 "devices": {
                     "type": "array",
@@ -4572,7 +4670,7 @@
                 },
                 "inboundPolicy": {
                     "type": "string",
-                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
+                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)\n"
                 },
                 "inbounds": {
                     "type": "array",
@@ -4594,7 +4692,7 @@
                 },
                 "outboundPolicy": {
                     "type": "string",
-                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
+                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)\n"
                 },
                 "outbounds": {
                     "type": "array",
@@ -4629,7 +4727,7 @@
                 },
                 "inboundPolicy": {
                     "type": "string",
-                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
+                    "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)\n"
                 },
                 "inbounds": {
                     "type": "array",
@@ -4651,7 +4749,7 @@
                 },
                 "outboundPolicy": {
                     "type": "string",
-                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
+                    "description": "The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)\n"
                 },
                 "outbounds": {
                     "type": "array",
@@ -4689,7 +4787,7 @@
                     },
                     "inboundPolicy": {
                         "type": "string",
-                        "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.\n"
+                        "description": "The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)\n"
                     },
                     "inbounds": {
                         "type": "array",
@@ -4711,7 +4809,7 @@
                     },
                     "outboundPolicy": {
                         "type": "string",
-                        "description": "The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.\n"
+                        "description": "The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)\n"
                     },
                     "outbounds": {
                         "type": "array",
@@ -4736,7 +4834,7 @@
             }
         },
         "linode:index/image:Image": {
-            "description": "Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.\n\nFor more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    type: \"g6-nanode-1\",\n    region: \"us-central\",\n});\nconst bar = new linode.Image(\"bar\", {\n    label: \"foo-sda-image\",\n    description: \"Image taken from foo\",\n    diskId: foo.disks.apply(disks =\u003e disks[0].id),\n    linodeId: foo.id,\n});\nconst barBased = new linode.Instance(\"barBased\", {\n    type: foo.type,\n    region: \"eu-west\",\n    image: bar.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    type=\"g6-nanode-1\",\n    region=\"us-central\")\nbar = linode.Image(\"bar\",\n    label=\"foo-sda-image\",\n    description=\"Image taken from foo\",\n    disk_id=foo.disks[0].id,\n    linode_id=foo.id)\nbar_based = linode.Instance(\"barBased\",\n    type=foo.type,\n    region=\"eu-west\",\n    image=bar.id)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.Instance(\"foo\", new Linode.InstanceArgs\n        {\n            Type = \"g6-nanode-1\",\n            Region = \"us-central\",\n        });\n        var bar = new Linode.Image(\"bar\", new Linode.ImageArgs\n        {\n            Label = \"foo-sda-image\",\n            Description = \"Image taken from foo\",\n            DiskId = foo.Disks.Apply(disks =\u003e disks[0].Id),\n            LinodeId = foo.Id,\n        });\n        var barBased = new Linode.Instance(\"barBased\", new Linode.InstanceArgs\n        {\n            Type = foo.Type,\n            Region = \"eu-west\",\n            Image = bar.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbar, err := linode.NewImage(ctx, \"bar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foo-sda-image\"),\n\t\t\tDescription: pulumi.String(\"Image taken from foo\"),\n\t\t\tDiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDisk) (int, error) {\n\t\t\t\treturn disks[0].Id, nil\n\t\t\t}).(pulumi.IntOutput)),\n\t\t\tLinodeId: foo.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"barBased\", \u0026linode.InstanceArgs{\n\t\t\tType:   foo.Type,\n\t\t\tRegion: pulumi.String(\"eu-west\"),\n\t\t\tImage:  bar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB.\n\n* `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.\n\n* `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.\n\n* `vendor` - The upstream distribution vendor. Nil for private Images.\n\n\n## Import\n\nLinodes Images can be imported using the Linode Image `id`, e.g.\n\n```sh\n $ pulumi import linode:index/image:Image myimage 1234567\n```\n\n ",
+            "description": "Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.\n\nFor more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).\n\n## Attributes\n\nThis resource exports the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB.\n\n* `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.\n\n* `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.\n\n* `vendor` - The upstream distribution vendor. Nil for private Images.\n\n\n## Import\n\nLinodes Images can be imported using the Linode Image `id`, e.g.\n\n```sh\n $ pulumi import linode:index/image:Image myimage 1234567\n```\n\n ",
             "properties": {
                 "created": {
                     "type": "string",
@@ -4762,6 +4860,14 @@
                     "type": "string",
                     "description": "Only Images created automatically (from a deleted Linode; type=automatic) will expire.\n"
                 },
+                "fileHash": {
+                    "type": "string",
+                    "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The path of the image file to be uploaded.\n"
+                },
                 "isPublic": {
                     "type": "boolean",
                     "description": "True if the Image is public.\n"
@@ -4774,9 +4880,17 @@
                     "type": "integer",
                     "description": "The ID of the Linode that this Image will be created from.\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                },
                 "size": {
                     "type": "integer",
                     "description": "The minimum size this Image needs to deploy. Size is in MB.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of this Image.\n"
                 },
                 "type": {
                     "type": "string",
@@ -4791,12 +4905,12 @@
                 "created",
                 "createdBy",
                 "deprecated",
-                "diskId",
                 "expiry",
+                "fileHash",
                 "isPublic",
                 "label",
-                "linodeId",
                 "size",
+                "status",
                 "type",
                 "vendor"
             ],
@@ -4809,6 +4923,14 @@
                     "type": "integer",
                     "description": "The ID of the Linode Disk that this Image will be created from.\n"
                 },
+                "fileHash": {
+                    "type": "string",
+                    "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "The path of the image file to be uploaded.\n"
+                },
                 "label": {
                     "type": "string",
                     "description": "A short description of the Image. Labels cannot contain special characters.\n"
@@ -4816,12 +4938,14 @@
                 "linodeId": {
                     "type": "integer",
                     "description": "The ID of the Linode that this Image will be created from.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
                 }
             },
             "requiredInputs": [
-                "diskId",
-                "label",
-                "linodeId"
+                "label"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Image resources.\n",
@@ -4850,6 +4974,14 @@
                         "type": "string",
                         "description": "Only Images created automatically (from a deleted Linode; type=automatic) will expire.\n"
                     },
+                    "fileHash": {
+                        "type": "string",
+                        "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n"
+                    },
+                    "filePath": {
+                        "type": "string",
+                        "description": "The path of the image file to be uploaded.\n"
+                    },
                     "isPublic": {
                         "type": "boolean",
                         "description": "True if the Image is public.\n"
@@ -4862,9 +4994,17 @@
                         "type": "integer",
                         "description": "The ID of the Linode that this Image will be created from.\n"
                     },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                    },
                     "size": {
                         "type": "integer",
                         "description": "The minimum size this Image needs to deploy. Size is in MB.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of this Image.\n"
                     },
                     "type": {
                         "type": "string",
@@ -4941,7 +5081,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                     },
-                    "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
                 },
                 "ipAddress": {
                     "type": "string",
@@ -5089,7 +5229,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                     },
-                    "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
                 },
                 "label": {
                     "type": "string",
@@ -5204,7 +5344,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                         },
-                        "description": "An array of Network Interfaces for this Linode to be created with.\n"
+                        "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
                     },
                     "ipAddress": {
                         "type": "string",
@@ -5320,7 +5460,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of IP address.\n"
+                    "description": "The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)\n"
                 }
             },
             "required": [
@@ -5387,14 +5527,14 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of IP address.\n"
+                        "description": "The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)\n"
                     }
                 },
                 "type": "object"
             }
         },
         "linode:index/lkeCluster:LkeCluster": {
-            "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.17\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.17\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.17\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.17\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: linode.LkeClusterPoolArray{\n\t\t\t\t\u0026linode.LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
+            "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.20\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.20\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.20\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.20\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: linode.LkeClusterPoolArray{\n\t\t\t\t\u0026linode.LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
             "properties": {
                 "apiEndpoints": {
                     "type": "array",
@@ -5428,7 +5568,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The status of the node.\n"
+                    "description": "The status of the node. (`ready`, `not_ready`)\n"
                 },
                 "tags": {
                     "type": "array",
@@ -5516,7 +5656,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The status of the node.\n"
+                        "description": "The status of the node. (`ready`, `not_ready`)\n"
                     },
                     "tags": {
                         "type": "array",
@@ -5558,7 +5698,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
+                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -5599,7 +5739,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
+                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -5641,7 +5781,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
+                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -5670,11 +5810,11 @@
             "properties": {
                 "algorithm": {
                     "type": "string",
-                    "description": "What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source\n"
+                    "description": "What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)\n"
                 },
                 "check": {
                     "type": "string",
-                    "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.\n"
+                    "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)\n"
                 },
                 "checkAttempts": {
                     "type": "integer",
@@ -5721,11 +5861,11 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
+                    "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)\n"
                 },
                 "proxyProtocol": {
                     "type": "string",
-                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)\n"
                 },
                 "sslCert": {
                     "type": "string",
@@ -5745,7 +5885,7 @@
                 },
                 "stickiness": {
                     "type": "string",
-                    "description": "Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'\n"
+                    "description": "Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)\n"
                 }
             },
             "required": [
@@ -5767,11 +5907,11 @@
             "inputProperties": {
                 "algorithm": {
                     "type": "string",
-                    "description": "What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source\n"
+                    "description": "What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)\n"
                 },
                 "check": {
                     "type": "string",
-                    "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.\n"
+                    "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)\n"
                 },
                 "checkAttempts": {
                     "type": "integer",
@@ -5811,11 +5951,11 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
+                    "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)\n"
                 },
                 "proxyProtocol": {
                     "type": "string",
-                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)\n"
                 },
                 "sslCert": {
                     "type": "string",
@@ -5827,7 +5967,7 @@
                 },
                 "stickiness": {
                     "type": "string",
-                    "description": "Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'\n"
+                    "description": "Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)\n"
                 }
             },
             "requiredInputs": [
@@ -5838,11 +5978,11 @@
                 "properties": {
                     "algorithm": {
                         "type": "string",
-                        "description": "What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source\n"
+                        "description": "What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)\n"
                     },
                     "check": {
                         "type": "string",
-                        "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.\n"
+                        "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)\n"
                     },
                     "checkAttempts": {
                         "type": "integer",
@@ -5889,11 +6029,11 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
+                        "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)\n"
                     },
                     "proxyProtocol": {
                         "type": "string",
-                        "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                        "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)\n"
                     },
                     "sslCert": {
                         "type": "string",
@@ -5913,14 +6053,14 @@
                     },
                     "stickiness": {
                         "type": "string",
-                        "description": "Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'\n"
+                        "description": "Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)\n"
                     }
                 },
                 "type": "object"
             }
         },
         "linode:index/nodeBalancerNode:NodeBalancerNode": {
-            "description": "Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web: linode.Instance[];\nfor (const range = {value: 0}; range.value \u003c \"3\"; range.value++) {\n    web.push(new linode.Instance(`web-${range.value}`, {\n        label: `web-${range.value + 1}`,\n        image: \"linode/ubuntu18.04\",\n        region: \"us-east\",\n        type: \"g6-standard-1\",\n        authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n        rootPass: \"test\",\n        privateIp: true,\n    }));\n}\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    clientConnThrottle: 20,\n});\nconst foofig = new linode.NodeBalancerConfig(\"foofig\", {\n    nodebalancerId: foobar.id,\n    port: 80,\n    protocol: \"http\",\n    check: \"http\",\n    checkPath: \"/foo\",\n    checkAttempts: 3,\n    checkTimeout: 30,\n    stickiness: \"http_cookie\",\n    algorithm: \"source\",\n});\nconst foonode: linode.NodeBalancerNode[];\nfor (const range = {value: 0}; range.value \u003c \"3\"; range.value++) {\n    foonode.push(new linode.NodeBalancerNode(`foonode-${range.value}`, {\n        nodebalancerId: foobar.id,\n        configId: foofig.id,\n        address: web.map(__item =\u003e __item.privateIpAddress)[range.value].apply(privateIpAddresses =\u003e `${privateIpAddresses}:80`),\n        label: \"mynodebalancernode\",\n        weight: 50,\n    }));\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = []\nfor range in [{\"value\": i} for i in range(0, 3)]:\n    web.append(linode.Instance(f\"web-{range['value']}\",\n        label=f\"web-{range['value'] + 1}\",\n        image=\"linode/ubuntu18.04\",\n        region=\"us-east\",\n        type=\"g6-standard-1\",\n        authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n        root_pass=\"test\",\n        private_ip=True))\nfoobar = linode.NodeBalancer(\"foobar\",\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    client_conn_throttle=20)\nfoofig = linode.NodeBalancerConfig(\"foofig\",\n    nodebalancer_id=foobar.id,\n    port=80,\n    protocol=\"http\",\n    check=\"http\",\n    check_path=\"/foo\",\n    check_attempts=3,\n    check_timeout=30,\n    stickiness=\"http_cookie\",\n    algorithm=\"source\")\nfoonode = []\nfor range in [{\"value\": i} for i in range(0, 3)]:\n    foonode.append(linode.NodeBalancerNode(f\"foonode-{range['value']}\",\n        nodebalancer_id=foobar.id,\n        config_id=foofig.id,\n        address=[__item.private_ip_address for __item in web][range[\"value\"]].apply(lambda private_ip_addresses: f\"{private_ip_addresses}:80\"),\n        label=\"mynodebalancernode\",\n        weight=50))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new List\u003cLinode.Instance\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c \"3\"; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            web.Add(new Linode.Instance($\"web-{range.Value}\", new Linode.InstanceArgs\n            {\n                Label = $\"web-{range.Value + 1}\",\n                Image = \"linode/ubuntu18.04\",\n                Region = \"us-east\",\n                Type = \"g6-standard-1\",\n                AuthorizedKeys = \n                {\n                    \"ssh-rsa AAAA...Gw== user@example.local\",\n                },\n                RootPass = \"test\",\n                PrivateIp = true,\n            }));\n        }\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            ClientConnThrottle = 20,\n        });\n        var foofig = new Linode.NodeBalancerConfig(\"foofig\", new Linode.NodeBalancerConfigArgs\n        {\n            NodebalancerId = foobar.Id,\n            Port = 80,\n            Protocol = \"http\",\n            Check = \"http\",\n            CheckPath = \"/foo\",\n            CheckAttempts = 3,\n            CheckTimeout = 30,\n            Stickiness = \"http_cookie\",\n            Algorithm = \"source\",\n        });\n        var foonode = new List\u003cLinode.NodeBalancerNode\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c \"3\"; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            foonode.Add(new Linode.NodeBalancerNode($\"foonode-{range.Value}\", new Linode.NodeBalancerNodeArgs\n            {\n                NodebalancerId = foobar.Id,\n                ConfigId = foofig.Id,\n                Address = web.Select(__item =\u003e __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =\u003e $\"{privateIpAddresses}:80\"),\n                Label = \"mynodebalancernode\",\n                Weight = 50,\n            }));\n        }\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).\n\n* `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.\n\n* `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.\n\n\n## Import\n\nNodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types. ",
+            "description": "Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web: linode.Instance[];\nfor (const range = {value: 0}; range.value \u003c \"3\"; range.value++) {\n    web.push(new linode.Instance(`web-${range.value}`, {\n        label: `web-${range.value + 1}`,\n        image: \"linode/ubuntu18.04\",\n        region: \"us-east\",\n        type: \"g6-standard-1\",\n        authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n        rootPass: \"test\",\n        privateIp: true,\n    }));\n}\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    clientConnThrottle: 20,\n});\nconst foofig = new linode.NodeBalancerConfig(\"foofig\", {\n    nodebalancerId: foobar.id,\n    port: 80,\n    protocol: \"http\",\n    check: \"http\",\n    checkPath: \"/foo\",\n    checkAttempts: 3,\n    checkTimeout: 30,\n    stickiness: \"http_cookie\",\n    algorithm: \"source\",\n});\nconst foonode: linode.NodeBalancerNode[];\nfor (const range = {value: 0}; range.value \u003c \"3\"; range.value++) {\n    foonode.push(new linode.NodeBalancerNode(`foonode-${range.value}`, {\n        nodebalancerId: foobar.id,\n        configId: foofig.id,\n        address: web.map(__item =\u003e __item.privateIpAddress)[range.value].apply(privateIpAddresses =\u003e `${privateIpAddresses}:80`),\n        label: \"mynodebalancernode\",\n        weight: 50,\n    }));\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = []\nfor range in [{\"value\": i} for i in range(0, 3)]:\n    web.append(linode.Instance(f\"web-{range['value']}\",\n        label=f\"web-{range['value'] + 1}\",\n        image=\"linode/ubuntu18.04\",\n        region=\"us-east\",\n        type=\"g6-standard-1\",\n        authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n        root_pass=\"test\",\n        private_ip=True))\nfoobar = linode.NodeBalancer(\"foobar\",\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    client_conn_throttle=20)\nfoofig = linode.NodeBalancerConfig(\"foofig\",\n    nodebalancer_id=foobar.id,\n    port=80,\n    protocol=\"http\",\n    check=\"http\",\n    check_path=\"/foo\",\n    check_attempts=3,\n    check_timeout=30,\n    stickiness=\"http_cookie\",\n    algorithm=\"source\")\nfoonode = []\nfor range in [{\"value\": i} for i in range(0, 3)]:\n    foonode.append(linode.NodeBalancerNode(f\"foonode-{range['value']}\",\n        nodebalancer_id=foobar.id,\n        config_id=foofig.id,\n        address=[__item.private_ip_address for __item in web][range[\"value\"]].apply(lambda private_ip_addresses: f\"{private_ip_addresses}:80\"),\n        label=\"mynodebalancernode\",\n        weight=50))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var web = new List\u003cLinode.Instance\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c \"3\"; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            web.Add(new Linode.Instance($\"web-{range.Value}\", new Linode.InstanceArgs\n            {\n                Label = $\"web-{range.Value + 1}\",\n                Image = \"linode/ubuntu18.04\",\n                Region = \"us-east\",\n                Type = \"g6-standard-1\",\n                AuthorizedKeys = \n                {\n                    \"ssh-rsa AAAA...Gw== user@example.local\",\n                },\n                RootPass = \"test\",\n                PrivateIp = true,\n            }));\n        }\n        var foobar = new Linode.NodeBalancer(\"foobar\", new Linode.NodeBalancerArgs\n        {\n            Label = \"mynodebalancer\",\n            Region = \"us-east\",\n            ClientConnThrottle = 20,\n        });\n        var foofig = new Linode.NodeBalancerConfig(\"foofig\", new Linode.NodeBalancerConfigArgs\n        {\n            NodebalancerId = foobar.Id,\n            Port = 80,\n            Protocol = \"http\",\n            Check = \"http\",\n            CheckPath = \"/foo\",\n            CheckAttempts = 3,\n            CheckTimeout = 30,\n            Stickiness = \"http_cookie\",\n            Algorithm = \"source\",\n        });\n        var foonode = new List\u003cLinode.NodeBalancerNode\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c \"3\"; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            foonode.Add(new Linode.NodeBalancerNode($\"foonode-{range.Value}\", new Linode.NodeBalancerNodeArgs\n            {\n                NodebalancerId = foobar.Id,\n                ConfigId = foofig.Id,\n                Address = web.Select(__item =\u003e __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =\u003e $\"{privateIpAddresses}:80\"),\n                Label = \"mynodebalancernode\",\n                Weight = 50,\n            }));\n        }\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).\n\n* `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.\n\n* `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.\n\n\n## Import\n\nNodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.\n\n```sh\n $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types. ",
             "properties": {
                 "address": {
                     "type": "string",
@@ -5936,7 +6076,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it\n"
+                    "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)\n"
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -5975,7 +6115,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it\n"
+                    "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)\n"
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -6009,7 +6149,7 @@
                     },
                     "mode": {
                         "type": "string",
-                        "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it\n"
+                        "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)\n"
                     },
                     "nodebalancerId": {
                         "type": "integer",
@@ -6254,7 +6394,7 @@
                 },
                 "acl": {
                     "type": "string",
-                    "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
+                    "description": "The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).\n"
                 },
                 "bucket": {
                     "type": "string",
@@ -6345,7 +6485,7 @@
                 },
                 "acl": {
                     "type": "string",
-                    "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
+                    "description": "The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).\n"
                 },
                 "bucket": {
                     "type": "string",
@@ -6431,7 +6571,7 @@
                     },
                     "acl": {
                         "type": "string",
-                        "description": "The canned ACL to apply. Can be one of `private`, `public-read`, `authenticated-read`, `public-read-write`, and `custom` (defaults to `private`).\n"
+                        "description": "The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).\n"
                     },
                     "bucket": {
                         "type": "string",
@@ -6836,7 +6976,7 @@
                 },
                 "scopes": {
                     "type": "string",
-                    "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.\n"
+                    "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).\n"
                 },
                 "token": {
                     "type": "string",
@@ -6864,7 +7004,7 @@
                 },
                 "scopes": {
                     "type": "string",
-                    "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.\n"
+                    "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).\n"
                 }
             },
             "requiredInputs": [
@@ -6887,7 +7027,7 @@
                     },
                     "scopes": {
                         "type": "string",
-                        "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.\n"
+                        "description": "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).\n"
                     },
                     "token": {
                         "type": "string",
@@ -7151,7 +7291,7 @@
             }
         },
         "linode:index/volume:Volume": {
-            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobaz = new Linode.Instance(\"foobaz\", new Linode.InstanceArgs\n        {\n            RootPass = \"3X4mp13\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-west\",\n            Tags = \n            {\n                \"foobaz\",\n            },\n        });\n        var foobar = new Linode.Volume(\"foobar\", new Linode.VolumeArgs\n        {\n            Label = \"foo-volume\",\n            Region = foobaz.Region,\n            LinodeId = foobaz.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.Instance(\"foo\", new Linode.InstanceArgs\n        {\n            Configs = \n            {\n                new Linode.Inputs.InstanceConfigArgs\n                {\n                    Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                    {\n                        Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                        {\n                            VolumeId = 123,\n                        },\n                    },\n                    Kernel = \"linode/latest-64bit\",\n                    Label = \"boot-existing-volume\",\n                },\n            },\n            Region = \"us-east\",\n            Type = \"g6-nanode-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `status` - The label of the Linode Volume.\n\n* `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is \"/dev/disk/by-id/scsi-0Linode_Volume_\" + the Volume label\n\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types. ",
+            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobaz = new Linode.Instance(\"foobaz\", new Linode.InstanceArgs\n        {\n            RootPass = \"3X4mp13\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-west\",\n            Tags = \n            {\n                \"foobaz\",\n            },\n        });\n        var foobar = new Linode.Volume(\"foobar\", new Linode.VolumeArgs\n        {\n            Label = \"foo-volume\",\n            Region = foobaz.Region,\n            LinodeId = foobaz.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Linode.Instance(\"foo\", new Linode.InstanceArgs\n        {\n            Configs = \n            {\n                new Linode.Inputs.InstanceConfigArgs\n                {\n                    Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                    {\n                        Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                        {\n                            VolumeId = 123,\n                        },\n                    },\n                    Kernel = \"linode/latest-64bit\",\n                    Label = \"boot-existing-volume\",\n                },\n            },\n            Region = \"us-east\",\n            Type = \"g6-nanode-1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThis resource exports the following attributes:\n\n* `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)\n\n* `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is \"/dev/disk/by-id/scsi-0Linode_Volume_\" + the Volume label\n\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types. ",
             "properties": {
                 "filesystemPath": {
                     "type": "string",
@@ -7167,7 +7307,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.\n"
+                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -7204,7 +7344,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.\n"
+                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -7239,7 +7379,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.\n"
+                        "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.\n"
                     },
                     "size": {
                         "type": "integer",
@@ -7327,7 +7467,7 @@
             }
         },
         "linode:index/getDomain:getDomain": {
-            "description": "Provides information about a Linode domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode domain.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getDomain({\n    id: \"1234567\",\n}, { async: true }));\nconst bar = pulumi.output(linode.getDomain({\n    domain: \"bar.example.com\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_domain(id=\"1234567\")\nbar = linode.get_domain(domain=\"bar.example.com\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs\n        {\n            Id = \"1234567\",\n        }));\n        var bar = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs\n        {\n            Domain = \"bar.example.com\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"1234567\"\n\t\t_, err := linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"bar.example.com\"\n\t\t_, err = linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tDomain: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Domain resource exports the following attributes:\n\n* `id` - The unique ID of this Domain.\n\n* `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain\n\n* `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave)\n\n* `group` - The group this Domain belongs to.\n\n* `status` - Used to control whether this Domain is currently being rendered.\n\n* `description` - A description for this Domain.\n\n* `master_ips` - The IP addresses representing the master DNS for this Domain.\n\n* `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.\n\n* `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.\n\n* `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.\n\n* `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.\n\n* `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.\n\n* `soa_email` - Start of Authority email address.\n\n* `tags` - An array of tags applied to this object.\n",
+            "description": "Provides information about a Linode domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode domain.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getDomain({\n    id: \"1234567\",\n}, { async: true }));\nconst bar = pulumi.output(linode.getDomain({\n    domain: \"bar.example.com\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_domain(id=\"1234567\")\nbar = linode.get_domain(domain=\"bar.example.com\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs\n        {\n            Id = \"1234567\",\n        }));\n        var bar = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs\n        {\n            Domain = \"bar.example.com\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"1234567\"\n\t\t_, err := linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"bar.example.com\"\n\t\t_, err = linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tDomain: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Domain resource exports the following attributes:\n\n* `id` - The unique ID of this Domain.\n\n* `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain\n\n* `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)\n\n* `group` - The group this Domain belongs to.\n\n* `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)\n\n* `description` - A description for this Domain.\n\n* `master_ips` - The IP addresses representing the master DNS for this Domain.\n\n* `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.\n\n* `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.\n\n* `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.\n\n* `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.\n\n* `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.\n\n* `soa_email` - Start of Authority email address.\n\n* `tags` - An array of tags applied to this object.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
@@ -7415,7 +7555,7 @@
             }
         },
         "linode:index/getDomainRecord:getDomainRecord": {
-            "description": "Provides information about a Linode Domain Record.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Domain Record.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myRecord = pulumi.output(linode.getDomainRecord({\n    domainId: 3150401,\n    id: 14950401,\n}, { async: true }));\nconst myWwwRecord = pulumi.output(linode.getDomainRecord({\n    domainId: 3150401,\n    name: \"www\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_record = linode.get_domain_record(domain_id=3150401,\n    id=14950401)\nmy_www_record = linode.get_domain_record(domain_id=3150401,\n    name=\"www\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs\n        {\n            DomainId = 3150401,\n            Id = 14950401,\n        }));\n        var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs\n        {\n            DomainId = 3150401,\n            Name = \"www\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 14950401\n\t\t_, err := linode.LookupDomainRecord(ctx, \u0026linode.LookupDomainRecordArgs{\n\t\t\tDomainId: 3150401,\n\t\t\tId:       \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"www\"\n\t\t_, err = linode.LookupDomainRecord(ctx, \u0026linode.LookupDomainRecordArgs{\n\t\t\tDomainId: 3150401,\n\t\t\tName:     \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Volume resource exports the following attributes:\n\n- `id` - The unique ID of the Domain Record.\n\n- `name` - The name of the Record.\n\n- `domain_id` - The associated domain's unique ID.\n\n- `type` - The type of Record this is in the DNS system.\n\n- `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.\n\n- `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n\n- `priority` - The priority of the target host. Lower values are preferred.\n\n- `weight` - The relative weight of this Record. Higher values are preferred.\n\n- `port` - The port this Record points to.\n\n- `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.\n\n- `service` - The service this Record identified. Only valid for SRV records.\n\n- `tag` - The tag portion of a CAA record.\n",
+            "description": "Provides information about a Linode Domain Record.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Domain Record.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myRecord = pulumi.output(linode.getDomainRecord({\n    domainId: 3150401,\n    id: 14950401,\n}, { async: true }));\nconst myWwwRecord = pulumi.output(linode.getDomainRecord({\n    domainId: 3150401,\n    name: \"www\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_record = linode.get_domain_record(domain_id=3150401,\n    id=14950401)\nmy_www_record = linode.get_domain_record(domain_id=3150401,\n    name=\"www\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs\n        {\n            DomainId = 3150401,\n            Id = 14950401,\n        }));\n        var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs\n        {\n            DomainId = 3150401,\n            Name = \"www\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 14950401\n\t\t_, err := linode.LookupDomainRecord(ctx, \u0026linode.LookupDomainRecordArgs{\n\t\t\tDomainId: 3150401,\n\t\t\tId:       \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"www\"\n\t\t_, err = linode.LookupDomainRecord(ctx, \u0026linode.LookupDomainRecordArgs{\n\t\t\tDomainId: 3150401,\n\t\t\tName:     \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Volume resource exports the following attributes:\n\n- `id` - The unique ID of the Domain Record.\n\n- `name` - The name of the Record.\n\n- `domain_id` - The associated domain's unique ID.\n\n- `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).\n\n- `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.\n\n- `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n\n- `priority` - The priority of the target host. Lower values are preferred.\n\n- `weight` - The relative weight of this Record. Higher values are preferred.\n\n- `port` - The port this Record points to.\n\n- `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.\n\n- `service` - The service this Record identified. Only valid for SRV records.\n\n- `tag` - The tag portion of a CAA record.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomainRecord.\n",
                 "properties": {
@@ -7526,7 +7666,7 @@
                     },
                     "inboundPolicy": {
                         "type": "string",
-                        "description": "The default behavior for inbound traffic.\n"
+                        "description": "The default behavior for inbound traffic. (`ACCEPT`, `DROP`)\n"
                     },
                     "inbounds": {
                         "type": "array",
@@ -7547,7 +7687,7 @@
                     },
                     "outboundPolicy": {
                         "type": "string",
-                        "description": "The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule.\n"
+                        "description": "The default behavior for outbound traffic. (`ACCEPT`, `DROP`)\n"
                     },
                     "outbounds": {
                         "type": "array",
@@ -7557,7 +7697,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The status of the firewall.\n"
+                        "description": "The status of the firewall. (`enabled`, `disabled`, `deleted`)\n"
                     },
                     "tags": {
                         "type": "array",
@@ -7584,7 +7724,7 @@
             }
         },
         "linode:index/getImage:getImage": {
-            "description": "Provides information about a Linode image\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode image.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst k8Master = pulumi.output(linode.getImage({\n    id: \"linode/debian8\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nk8_master = linode.get_image(id=\"linode/debian8\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var k8Master = Output.Create(Linode.GetImage.InvokeAsync(new Linode.GetImageArgs\n        {\n            Id = \"linode/debian8\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupImage(ctx, \u0026linode.LookupImageArgs{\n\t\t\tId: \"linode/debian8\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Image resource exports the following attributes:\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `type` - How the Image was created. Manual Images can be created at any time. image\"Automatic\" Images are created automatically from a deleted Linode.\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n",
+            "description": "Provides information about a Linode image\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode image.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst k8Master = pulumi.output(linode.getImage({\n    id: \"linode/debian8\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nk8_master = linode.get_image(id=\"linode/debian8\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var k8Master = Output.Create(Linode.GetImage.InvokeAsync(new Linode.GetImageArgs\n        {\n            Id = \"linode/debian8\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupImage(ctx, \u0026linode.LookupImageArgs{\n\t\t\tId: \"linode/debian8\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Image resource exports the following attributes:\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `status` - The current status of this image. (`creating`, `pending_upload`, `available`)\n\n* `type` - How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode. (`manual`, `automatic`)\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getImage.\n",
                 "properties": {
@@ -7628,6 +7768,9 @@
                     "size": {
                         "type": "integer"
                     },
+                    "status": {
+                        "type": "string"
+                    },
                     "type": {
                         "type": "string"
                     },
@@ -7646,13 +7789,14 @@
                     "isPublic",
                     "label",
                     "size",
+                    "status",
                     "type",
                     "vendor"
                 ]
             }
         },
         "linode:index/getImages:getImages": {
-            "description": "Provides information about Linode images that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode images with a certain label and visibility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_images = pulumi.output(linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 8\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n}, { async: true }));\n```\n\nGet information about all Linode images associated with the current token:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_images = pulumi.output(linode.getImages({ async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all_images = Output.Create(Linode.GetImages.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode image will be stored in the `images` attribute and will export the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `type` - How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode.\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n\n## Filterable Fields\n\n* `deprecated`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `vendor`\n",
+            "description": "Provides information about Linode images that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode images with a certain label and visibility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_images = pulumi.output(linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 8\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n}, { async: true }));\n```\n\nGet information about all Linode images associated with the current token:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_images = pulumi.output(linode.getImages({ async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all_images = Output.Create(Linode.GetImages.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode image will be stored in the `images` attribute and will export the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `status` - The current status of this image. (`creating`, `pending_upload`, `available`)\n\n* `type` - How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode. (`manual`, `automatic`)\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n\n## Filterable Fields\n\n* `deprecated`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `vendor`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getImages.\n",
                 "properties": {
@@ -7747,7 +7891,7 @@
             }
         },
         "linode:index/getInstanceType:getInstanceType": {
-            "description": "Provides information about a Linode instance type\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Instance type.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst defaultInstanceType = pulumi.output(linode.getInstanceType({\n    id: \"g6-standard-2\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ndefault = linode.get_instance_type(id=\"g6-standard-2\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = Output.Create(Linode.GetInstanceType.InvokeAsync(new Linode.GetInstanceTypeArgs\n        {\n            Id = \"g6-standard-2\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetInstanceType(ctx, \u0026linode.GetInstanceTypeArgs{\n\t\t\tId: \"g6-standard-2\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Instance Type resource exports the following attributes:\n\n* `id` - The ID representing the Linode Type\n\n* `label` - The Linode Type's label is for display purposes only\n\n* `class` - The class of the Linode Type\n\n* `disk` - The Disk size, in MB, of the Linode Type\n\n* `price.0.hourly` -  Cost (in US dollars) per hour.\n\n* `price.0.monthly` - Cost (in US dollars) per month.\n\n* `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.\n\n* `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.\n\n* `network_out` - The Mbits outbound bandwidth allocation.\n\n* `memory` - The amount of RAM included in this Linode Type.\n\n* `transfer` - The monthly outbound transfer amount, in MB.\n\n* `vcpus` - The number of VCPU cores this Linode Type offers.\n",
+            "description": "Provides information about a Linode instance type\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Instance type.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst defaultInstanceType = pulumi.output(linode.getInstanceType({\n    id: \"g6-standard-2\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ndefault = linode.get_instance_type(id=\"g6-standard-2\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = Output.Create(Linode.GetInstanceType.InvokeAsync(new Linode.GetInstanceTypeArgs\n        {\n            Id = \"g6-standard-2\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetInstanceType(ctx, \u0026linode.GetInstanceTypeArgs{\n\t\t\tId: \"g6-standard-2\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Instance Type resource exports the following attributes:\n\n* `id` - The ID representing the Linode Type\n\n* `label` - The Linode Type's label is for display purposes only\n\n* `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).\n\n* `disk` - The Disk size, in MB, of the Linode Type\n\n* `price.0.hourly` -  Cost (in US dollars) per hour.\n\n* `price.0.monthly` - Cost (in US dollars) per month.\n\n* `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.\n\n* `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.\n\n* `network_out` - The Mbits outbound bandwidth allocation.\n\n* `memory` - The amount of RAM included in this Linode Type.\n\n* `transfer` - The monthly outbound transfer amount, in MB.\n\n* `vcpus` - The number of VCPU cores this Linode Type offers.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstanceType.\n",
                 "properties": {
@@ -7962,7 +8106,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The status of the node.\n"
+                        "description": "The status of the node. (`ready`, `not_ready`)\n"
                     },
                     "tags": {
                         "type": "array",
@@ -7987,7 +8131,7 @@
             }
         },
         "linode:index/getNetworkingIp:getNetworkingIp": {
-            "description": "Provides information about a Linode Networking IP Address\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Networking IP Address.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst ns1LinodeCom = pulumi.output(linode.getNetworkingIp({\n    address: \"162.159.27.72\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nns1_linode_com = linode.get_networking_ip(address=\"162.159.27.72\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ns1LinodeCom = Output.Create(Linode.GetNetworkingIp.InvokeAsync(new Linode.GetNetworkingIpArgs\n        {\n            Address = \"162.159.27.72\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetNetworkingIp(ctx, \u0026linode.GetNetworkingIpArgs{\n\t\t\tAddress: \"162.159.27.72\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Network IP Address resource exports the following attributes:\n\n* `address` - The IP address.\n\n* `gateway` - The default gateway for this address.\n\n* `subnet_mask` - The mask that separates host bits from network bits for this address.\n\n* `prefix` - The number of bits set in the subnet mask.\n\n* `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).\n\n* `public` - Whether this is a public or private IP address.\n\n* `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.\n\n* `linode_id` - The ID of the Linode this address currently belongs to.\n\n* `region` - The Region this IP address resides in.\n",
+            "description": "Provides information about a Linode Networking IP Address\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Networking IP Address.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst ns1LinodeCom = pulumi.output(linode.getNetworkingIp({\n    address: \"162.159.27.72\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nns1_linode_com = linode.get_networking_ip(address=\"162.159.27.72\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ns1LinodeCom = Output.Create(Linode.GetNetworkingIp.InvokeAsync(new Linode.GetNetworkingIpArgs\n        {\n            Address = \"162.159.27.72\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetNetworkingIp(ctx, \u0026linode.GetNetworkingIpArgs{\n\t\t\tAddress: \"162.159.27.72\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Network IP Address resource exports the following attributes:\n\n* `address` - The IP address.\n\n* `gateway` - The default gateway for this address.\n\n* `subnet_mask` - The mask that separates host bits from network bits for this address.\n\n* `prefix` - The number of bits set in the subnet mask.\n\n* `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).\n\n* `public` - Whether this is a public or private IP address.\n\n* `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.\n\n* `linode_id` - The ID of the Linode this address currently belongs to.\n\n* `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkingIp.\n",
                 "properties": {
@@ -8156,11 +8300,11 @@
                 "properties": {
                     "algorithm": {
                         "type": "string",
-                        "description": "What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source\n"
+                        "description": "What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)\n"
                     },
                     "check": {
                         "type": "string",
-                        "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.\n"
+                        "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)\n"
                     },
                     "checkAttempts": {
                         "type": "integer",
@@ -8187,7 +8331,7 @@
                     },
                     "cipherSuite": {
                         "type": "string",
-                        "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.\n"
+                        "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)\n"
                     },
                     "id": {
                         "type": "integer"
@@ -8207,11 +8351,11 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to \"http\")\n"
+                        "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)\n"
                     },
                     "proxyProtocol": {
                         "type": "string",
-                        "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)\n"
+                        "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)\n"
                     },
                     "sslCommonname": {
                         "type": "string",
@@ -8223,7 +8367,7 @@
                     },
                     "stickiness": {
                         "type": "string",
-                        "description": "Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'\n"
+                        "description": "Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)\n"
                     }
                 },
                 "type": "object",
@@ -8293,14 +8437,14 @@
                     },
                     "mode": {
                         "type": "string",
-                        "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it\n"
+                        "description": "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)\n"
                     },
                     "nodebalancerId": {
                         "type": "integer"
                     },
                     "status": {
                         "type": "string",
-                        "description": "The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).\n"
+                        "description": "The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).\n"
                     },
                     "weight": {
                         "type": "integer",
@@ -8321,7 +8465,7 @@
             }
         },
         "linode:index/getObjectStorageCluster:getObjectStorageCluster": {
-            "description": "Provides information about a Linode Object Storage Cluster\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Object Storage Cluster.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = pulumi.output(linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Object Storage Cluster resource exports the following attributes:\n\n* `domain` - The base URL for this cluster.\n\n* `status` - This cluster's status.\n\n* `region` - The region this cluster is located in.\n\n* `static_site_domain` - The base URL for this cluster used when hosting static sites.\n",
+            "description": "Provides information about a Linode Object Storage Cluster\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Object Storage Cluster.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = pulumi.output(linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs\n        {\n            Id = \"us-east-1\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Object Storage Cluster resource exports the following attributes:\n\n* `domain` - The base URL for this cluster.\n\n* `status` - This cluster's status. (`available`, `unavailable`)\n\n* `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).\n\n* `static_site_domain` - The base URL for this cluster used when hosting static sites.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getObjectStorageCluster.\n",
                 "properties": {
@@ -8655,8 +8799,49 @@
                 ]
             }
         },
+        "linode:index/getVlans:getVlans": {
+            "description": "Provides details about Linode VLANs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"my_instance\", {\n    image: \"linode/ubuntu18.04\",\n    interfaces: [{\n        label: \"my-vlan\",\n        purpose: \"vlan\",\n    }],\n    label: \"my_instance\",\n    region: \"us-southeast\",\n    rootPass: \"bogusPassword$\",\n    type: \"g6-standard-1\",\n});\nconst my_vlans = pulumi.output(linode.getVlans({\n    filters: [{\n        name: \"label\",\n        values: [\"my-vlan\"],\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    image=\"linode/ubuntu18.04\",\n    interfaces=[linode.InstanceInterfaceArgs(\n        label=\"my-vlan\",\n        purpose=\"vlan\",\n    )],\n    label=\"my_instance\",\n    region=\"us-southeast\",\n    root_pass=\"bogusPassword$\",\n    type=\"g6-standard-1\")\nmy_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(\n    name=\"label\",\n    values=[\"my-vlan\"],\n)])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Image = \"linode/ubuntu18.04\",\n            Interfaces = \n            {\n                new Linode.Inputs.InstanceInterfaceArgs\n                {\n                    Label = \"my-vlan\",\n                    Purpose = \"vlan\",\n                },\n            },\n            Label = \"my_instance\",\n            Region = \"us-southeast\",\n            RootPass = \"bogusPassword$\",\n            Type = \"g6-standard-1\",\n        });\n        var my_vlans = Output.Create(Linode.GetVlans.InvokeAsync(new Linode.GetVlansArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetVlansFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"my-vlan\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tImage: pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tInterfaces: linode.InstanceInterfaceArray{\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tLabel:   pulumi.String(\"my-vlan\"),\n\t\t\t\t\tPurpose: pulumi.String(\"vlan\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLabel:    pulumi.String(\"my_instance\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tRootPass: pulumi.String(fmt.Sprintf(\"%v%v\", \"bogusPassword\", \"$\")),\n\t\t\tType:     pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.GetVlans(ctx, \u0026linode.GetVlansArgs{\n\t\t\tFilters: []linode.GetVlansFilter{\n\t\t\t\tlinode.GetVlansFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-vlan\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:\n\n* `label` - The unique label of the VLAN.\n\n* `linodes` - The running Linodes currently attached to the VLAN.\n\n* `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).\n\n* `created` - When the VLAN was created.\n\n## Filterable Fields\n\n* `label`\n\n* `region`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVlans.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVlansFilter:getVlansFilter"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVlans.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVlansFilter:getVlansFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "vlans": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVlansVlan:getVlansVlan"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vlans",
+                    "id"
+                ]
+            }
+        },
         "linode:index/getVolume:getVolume": {
-            "description": "Provides information about a Linode Volume.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Volume.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getVolume({\n    id: 1234567,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_volume(id=1234567)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetVolume.InvokeAsync(new Linode.GetVolumeArgs\n        {\n            Id = 1234567,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupVolume(ctx, \u0026linode.LookupVolumeArgs{\n\t\t\tId: 1234567,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Volume resource exports the following attributes:\n\n- `id` - The unique ID of this Volume.\n\n- `created` - When this Volume was created.\n\n- `status` - The current status of the Volume. Can be one of \"creating\", \"active\", \"resizing\", or \"contact_support\".\n\n- `label` - This Volume's label is for display purposes only.\n\n- `tags` - An array of tags applied to this object.\n\n- `size` - The Volume's size, in GiB.\n\n- `region` - The datacenter in which this Volume is located.\n\n- `updated` - When this Volume was last updated.\n\n- `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.\n\n- `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.\n",
+            "description": "Provides information about a Linode Volume.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Volume.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getVolume({\n    id: 1234567,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_volume(id=1234567)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetVolume.InvokeAsync(new Linode.GetVolumeArgs\n        {\n            Id = 1234567,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupVolume(ctx, \u0026linode.LookupVolumeArgs{\n\t\t\tId: 1234567,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode Volume resource exports the following attributes:\n\n- `id` - The unique ID of this Volume.\n\n- `created` - When this Volume was created.\n\n- `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)\n\n- `label` - This Volume's label is for display purposes only.\n\n- `tags` - An array of tags applied to this object.\n\n- `size` - The Volume's size, in GiB.\n\n- `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).\n\n- `updated` - When this Volume was last updated.\n\n- `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.\n\n- `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getVolume.\n",
                 "properties": {
@@ -8730,8 +8915,7 @@
                 "linode": "Linode"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.17",
+ *     k8sVersion: "1.20",
  *     label: "my-cluster",
  *     pools: [{
  *         count: 3,
@@ -87,7 +87,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface LkeClusterState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The status of the node.
+     * The status of the node. (`ready`, `notReady`)
      */
     readonly status?: pulumi.Input<string>;
     /**

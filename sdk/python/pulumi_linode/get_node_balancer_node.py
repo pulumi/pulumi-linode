@@ -75,7 +75,7 @@ class GetNodeBalancerNodeResult:
     @pulumi.getter
     def mode(self) -> str:
         """
-        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         """
         return pulumi.get(self, "mode")
 
@@ -88,7 +88,7 @@ class GetNodeBalancerNodeResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+        The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         """
         return pulumi.get(self, "status")
 

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
-    /// &gt; **NOTICE:** The Firewall feature is currently available through early access.
-    /// 
     /// Manages a Linode Firewall.
     /// 
     /// ## Example Usage
@@ -142,7 +140,7 @@ namespace Pulumi.Linode
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Output("inboundPolicy")]
         public Output<string> InboundPolicy { get; private set; } = null!;
@@ -166,7 +164,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<int>> Linodes { get; private set; } = null!;
 
         /// <summary>
-        /// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Output("outboundPolicy")]
         public Output<string> OutboundPolicy { get; private set; } = null!;
@@ -242,7 +240,7 @@ namespace Pulumi.Linode
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Input("inboundPolicy", required: true)]
         public Input<string> InboundPolicy { get; set; } = null!;
@@ -278,7 +276,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Input("outboundPolicy", required: true)]
         public Input<string> OutboundPolicy { get; set; } = null!;
@@ -333,7 +331,7 @@ namespace Pulumi.Linode
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+        /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Input("inboundPolicy")]
         public Input<string>? InboundPolicy { get; set; }
@@ -369,7 +367,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+        /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         /// </summary>
         [Input("outboundPolicy")]
         public Input<string>? OutboundPolicy { get; set; }

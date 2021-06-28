@@ -53,17 +53,17 @@ type LookupFirewallResult struct {
 	Disabled bool `pulumi:"disabled"`
 	// The ID of the Firewall Device.
 	Id int `pulumi:"id"`
-	// The default behavior for inbound traffic.
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
 	InboundPolicy string               `pulumi:"inboundPolicy"`
 	Inbounds      []GetFirewallInbound `pulumi:"inbounds"`
 	// The label of the underlying entity this device references.
 	Label string `pulumi:"label"`
 	// The IDs of Linodes to apply this firewall to.
 	Linodes []int `pulumi:"linodes"`
-	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
 	OutboundPolicy string                `pulumi:"outboundPolicy"`
 	Outbounds      []GetFirewallOutbound `pulumi:"outbounds"`
-	// The status of the firewall.
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status string `pulumi:"status"`
 	// The tags applied to the firewall.
 	Tags []string `pulumi:"tags"`

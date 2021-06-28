@@ -158,7 +158,7 @@ def get_networking_ip(address: Optional[str] = None,
 
     * `linode_id` - The ID of the Linode this address currently belongs to.
 
-    * `region` - The Region this IP address resides in.
+    * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.

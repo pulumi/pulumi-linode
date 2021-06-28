@@ -75,7 +75,7 @@ type DomainRecord struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType pulumi.StringOutput `pulumi:"recordType"`
 	// The service this Record identified. Only valid for SRV records.
 	Service pulumi.StringPtrOutput `pulumi:"service"`
@@ -137,7 +137,7 @@ type domainRecordState struct {
 	Priority *int `pulumi:"priority"`
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol *string `pulumi:"protocol"`
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType *string `pulumi:"recordType"`
 	// The service this Record identified. Only valid for SRV records.
 	Service *string `pulumi:"service"`
@@ -162,7 +162,7 @@ type DomainRecordState struct {
 	Priority pulumi.IntPtrInput
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol pulumi.StringPtrInput
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType pulumi.StringPtrInput
 	// The service this Record identified. Only valid for SRV records.
 	Service pulumi.StringPtrInput
@@ -191,7 +191,7 @@ type domainRecordArgs struct {
 	Priority *int `pulumi:"priority"`
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol *string `pulumi:"protocol"`
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType string `pulumi:"recordType"`
 	// The service this Record identified. Only valid for SRV records.
 	Service *string `pulumi:"service"`
@@ -217,7 +217,7 @@ type DomainRecordArgs struct {
 	Priority pulumi.IntPtrInput
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	Protocol pulumi.StringPtrInput
-	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. *Changing `recordType` forces the creation of a new Linode Domain Record.*.
+	// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
 	RecordType pulumi.StringInput
 	// The service this Record identified. Only valid for SRV records.
 	Service pulumi.StringPtrInput

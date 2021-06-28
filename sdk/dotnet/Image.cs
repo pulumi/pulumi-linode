@@ -14,40 +14,6 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Linode.Instance("foo", new Linode.InstanceArgs
-    ///         {
-    ///             Type = "g6-nanode-1",
-    ///             Region = "us-central",
-    ///         });
-    ///         var bar = new Linode.Image("bar", new Linode.ImageArgs
-    ///         {
-    ///             Label = "foo-sda-image",
-    ///             Description = "Image taken from foo",
-    ///             DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
-    ///             LinodeId = foo.Id,
-    ///         });
-    ///         var barBased = new Linode.Instance("barBased", new Linode.InstanceArgs
-    ///         {
-    ///             Type = foo.Type,
-    ///             Region = "eu-west",
-    ///             Image = bar.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
@@ -109,13 +75,25 @@ namespace Pulumi.Linode
         /// The ID of the Linode Disk that this Image will be created from.
         /// </summary>
         [Output("diskId")]
-        public Output<int> DiskId { get; private set; } = null!;
+        public Output<int?> DiskId { get; private set; } = null!;
 
         /// <summary>
         /// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         /// </summary>
         [Output("expiry")]
         public Output<string> Expiry { get; private set; } = null!;
+
+        /// <summary>
+        /// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        /// </summary>
+        [Output("fileHash")]
+        public Output<string> FileHash { get; private set; } = null!;
+
+        /// <summary>
+        /// The path of the image file to be uploaded.
+        /// </summary>
+        [Output("filePath")]
+        public Output<string?> FilePath { get; private set; } = null!;
 
         /// <summary>
         /// True if the Image is public.
@@ -133,13 +111,25 @@ namespace Pulumi.Linode
         /// The ID of the Linode that this Image will be created from.
         /// </summary>
         [Output("linodeId")]
-        public Output<int> LinodeId { get; private set; } = null!;
+        public Output<int?> LinodeId { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// The current status of this Image.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
@@ -209,8 +199,20 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Linode Disk that this Image will be created from.
         /// </summary>
-        [Input("diskId", required: true)]
-        public Input<int> DiskId { get; set; } = null!;
+        [Input("diskId")]
+        public Input<int>? DiskId { get; set; }
+
+        /// <summary>
+        /// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        /// </summary>
+        [Input("fileHash")]
+        public Input<string>? FileHash { get; set; }
+
+        /// <summary>
+        /// The path of the image file to be uploaded.
+        /// </summary>
+        [Input("filePath")]
+        public Input<string>? FilePath { get; set; }
 
         /// <summary>
         /// A short description of the Image. Labels cannot contain special characters.
@@ -221,8 +223,14 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
         /// </summary>
-        [Input("linodeId", required: true)]
-        public Input<int> LinodeId { get; set; } = null!;
+        [Input("linodeId")]
+        public Input<int>? LinodeId { get; set; }
+
+        /// <summary>
+        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public ImageArgs()
         {
@@ -268,6 +276,18 @@ namespace Pulumi.Linode
         public Input<string>? Expiry { get; set; }
 
         /// <summary>
+        /// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        /// </summary>
+        [Input("fileHash")]
+        public Input<string>? FileHash { get; set; }
+
+        /// <summary>
+        /// The path of the image file to be uploaded.
+        /// </summary>
+        [Input("filePath")]
+        public Input<string>? FilePath { get; set; }
+
+        /// <summary>
         /// True if the Image is public.
         /// </summary>
         [Input("isPublic")]
@@ -286,10 +306,22 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
+        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
+
+        /// <summary>
+        /// The current status of this Image.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from

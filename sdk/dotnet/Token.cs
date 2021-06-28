@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         public Output<string?> Label { get; private set; } = null!;
 
         /// <summary>
-        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
         /// </summary>
         [Output("scopes")]
         public Output<string> Scopes { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
         /// </summary>
         [Input("scopes", required: true)]
         public Input<string> Scopes { get; set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
+        /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
         /// </summary>
         [Input("scopes")]
         public Input<string>? Scopes { get; set; }

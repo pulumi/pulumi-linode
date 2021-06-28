@@ -53,11 +53,11 @@ export interface GetNodeBalancerConfigArgs {
  */
 export interface GetNodeBalancerConfigResult {
     /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+     * What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
      */
     readonly algorithm: string;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      */
     readonly check: string;
     /**
@@ -82,7 +82,7 @@ export interface GetNodeBalancerConfigResult {
      */
     readonly checkTimeout: number;
     /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
      */
     readonly cipherSuite: string;
     readonly id: number;
@@ -93,11 +93,11 @@ export interface GetNodeBalancerConfigResult {
      */
     readonly port: number;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
     readonly protocol: string;
     /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
      */
     readonly proxyProtocol: string;
     /**
@@ -109,7 +109,7 @@ export interface GetNodeBalancerConfigResult {
      */
     readonly sslFingerprint: string;
     /**
-     * Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     readonly stickiness: string;
 }

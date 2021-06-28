@@ -25,7 +25,7 @@ class NodeBalancerNodeArgs:
         :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         pulumi.set(__self__, "address", address)
@@ -89,7 +89,7 @@ class NodeBalancerNodeArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         """
         return pulumi.get(self, "mode")
 
@@ -125,7 +125,7 @@ class _NodeBalancerNodeState:
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
         :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
-        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
@@ -185,7 +185,7 @@ class _NodeBalancerNodeState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         """
         return pulumi.get(self, "mode")
 
@@ -291,7 +291,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
         This resource exports the following attributes:
 
-        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 
         * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
 
@@ -312,7 +312,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
         :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
-        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
@@ -371,7 +371,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
         This resource exports the following attributes:
 
-        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 
         * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
 
@@ -462,7 +462,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] address: The private IP Address where this backend can be reached. This must be a private IP address.
         :param pulumi.Input[int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
-        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
@@ -508,7 +508,7 @@ class NodeBalancerNode(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+        The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         """
         return pulumi.get(self, "mode")
 

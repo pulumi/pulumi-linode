@@ -56,7 +56,9 @@ namespace Pulumi.Linode
         /// 
         /// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
         /// 
-        /// * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
+        /// * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
+        /// 
+        /// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         /// 
         /// * `vendor` - The upstream distribution vendor. `None` for private Images.
         /// </summary>
@@ -91,6 +93,7 @@ namespace Pulumi.Linode
         public readonly bool IsPublic;
         public readonly string Label;
         public readonly int Size;
+        public readonly string Status;
         public readonly string Type;
         public readonly string Vendor;
 
@@ -114,6 +117,8 @@ namespace Pulumi.Linode
 
             int size,
 
+            string status,
+
             string type,
 
             string vendor)
@@ -127,6 +132,7 @@ namespace Pulumi.Linode
             IsPublic = isPublic;
             Label = label;
             Size = size;
+            Status = status;
             Type = type;
             Vendor = vendor;
         }

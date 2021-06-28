@@ -115,7 +115,7 @@ class _LkeClusterState:
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
-        :param pulumi.Input[str] status: The status of the node.
+        :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         if api_endpoints is not None:
@@ -211,7 +211,7 @@ class _LkeClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 
@@ -253,7 +253,7 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.17",
+            k8s_version="1.20",
             label="my-cluster",
             pools=[linode.LkeClusterPoolArgs(
                 count=3,
@@ -295,7 +295,7 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.17",
+            k8s_version="1.20",
             label="my-cluster",
             pools=[linode.LkeClusterPoolArgs(
                 count=3,
@@ -392,7 +392,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
-        :param pulumi.Input[str] status: The status of the node.
+        :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,7 +461,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the node.
+        The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 

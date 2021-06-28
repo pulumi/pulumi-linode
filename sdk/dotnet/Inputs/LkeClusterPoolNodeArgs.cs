@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<int>? InstanceId { get; set; }
 
         /// <summary>
-        /// The status of the node.
+        /// The status of the node. (`ready`, `not_ready`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

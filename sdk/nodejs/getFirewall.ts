@@ -56,7 +56,7 @@ export interface GetFirewallResult {
      */
     readonly id: number;
     /**
-     * The default behavior for inbound traffic.
+     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
      */
     readonly inboundPolicy: string;
     readonly inbounds: outputs.GetFirewallInbound[];
@@ -69,12 +69,12 @@ export interface GetFirewallResult {
      */
     readonly linodes: number[];
     /**
-     * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule.
+     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
      */
     readonly outboundPolicy: string;
     readonly outbounds: outputs.GetFirewallOutbound[];
     /**
-     * The status of the firewall.
+     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
      */
     readonly status: string;
     /**

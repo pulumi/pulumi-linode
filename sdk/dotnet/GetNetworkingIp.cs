@@ -58,7 +58,7 @@ namespace Pulumi.Linode
         /// 
         /// * `linode_id` - The ID of the Linode this address currently belongs to.
         /// 
-        /// * `region` - The Region this IP address resides in.
+        /// * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public static Task<GetNetworkingIpResult> InvokeAsync(GetNetworkingIpArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpArgs(), options.WithVersion());

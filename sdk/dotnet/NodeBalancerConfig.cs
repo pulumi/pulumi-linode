@@ -79,13 +79,13 @@ namespace Pulumi.Linode
     public partial class NodeBalancerConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         /// </summary>
         [Output("algorithm")]
         public Output<string> Algorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         /// </summary>
         [Output("check")]
         public Output<string> Check { get; private set; } = null!;
@@ -153,13 +153,13 @@ namespace Pulumi.Linode
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         /// </summary>
         [Output("proxyProtocol")]
         public Output<string?> ProxyProtocol { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Linode
         public Output<string?> SslKey { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         /// </summary>
         [Output("stickiness")]
         public Output<string> Stickiness { get; private set; } = null!;
@@ -243,13 +243,13 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         /// </summary>
         [Input("check")]
         public Input<string>? Check { get; set; }
@@ -310,13 +310,13 @@ namespace Pulumi.Linode
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.Linode
         public Input<string>? SslKey { get; set; }
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         /// </summary>
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }
@@ -347,13 +347,13 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         /// </summary>
         [Input("check")]
         public Input<string>? Check { get; set; }
@@ -427,13 +427,13 @@ namespace Pulumi.Linode
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
@@ -465,7 +465,7 @@ namespace Pulumi.Linode
         public Input<string>? SslKey { get; set; }
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         /// </summary>
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }

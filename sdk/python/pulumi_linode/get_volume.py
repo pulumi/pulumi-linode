@@ -143,7 +143,7 @@ def get_volume(id: Optional[int] = None,
 
     - `created` - When this Volume was created.
 
-    - `status` - The current status of the Volume. Can be one of "creating", "active", "resizing", or "contact_support".
+    - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
 
     - `label` - This Volume's label is for display purposes only.
 
@@ -151,7 +151,7 @@ def get_volume(id: Optional[int] = None,
 
     - `size` - The Volume's size, in GiB.
 
-    - `region` - The datacenter in which this Volume is located.
+    - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
 
     - `updated` - When this Volume was last updated.
 

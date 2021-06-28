@@ -39,6 +39,7 @@
         "getSshKey.ts",
         "getStackScript.ts",
         "getUser.ts",
+        "getVlans.ts",
         "getVolume.ts",
         "image.ts",
         "index.ts",

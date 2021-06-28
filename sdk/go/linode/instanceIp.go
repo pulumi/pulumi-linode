@@ -66,7 +66,7 @@ type InstanceIp struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask pulumi.StringOutput `pulumi:"subnetMask"`
-	// The type of IP address.
+	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -118,7 +118,7 @@ type instanceIpState struct {
 	Region *string `pulumi:"region"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask *string `pulumi:"subnetMask"`
-	// The type of IP address.
+	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type *string `pulumi:"type"`
 }
 
@@ -139,7 +139,7 @@ type InstanceIpState struct {
 	Region pulumi.StringPtrInput
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask pulumi.StringPtrInput
-	// The type of IP address.
+	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringPtrInput
 }
 

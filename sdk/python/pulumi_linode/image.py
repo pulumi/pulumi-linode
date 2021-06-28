@@ -13,34 +13,36 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 disk_id: pulumi.Input[int],
                  label: pulumi.Input[str],
-                 linode_id: pulumi.Input[int],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[int]] = None,
+                 file_hash: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
+                 linode_id: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Image resource.
-        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
-        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
         :param pulumi.Input[str] description: A detailed description of this Image.
+        :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
+        :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
-        pulumi.set(__self__, "disk_id", disk_id)
         pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "linode_id", linode_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter(name="diskId")
-    def disk_id(self) -> pulumi.Input[int]:
-        """
-        The ID of the Linode Disk that this Image will be created from.
-        """
-        return pulumi.get(self, "disk_id")
-
-    @disk_id.setter
-    def disk_id(self, value: pulumi.Input[int]):
-        pulumi.set(self, "disk_id", value)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if file_hash is not None:
+            pulumi.set(__self__, "file_hash", file_hash)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if linode_id is not None:
+            pulumi.set(__self__, "linode_id", linode_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -55,18 +57,6 @@ class ImageArgs:
         pulumi.set(self, "label", value)
 
     @property
-    @pulumi.getter(name="linodeId")
-    def linode_id(self) -> pulumi.Input[int]:
-        """
-        The ID of the Linode that this Image will be created from.
-        """
-        return pulumi.get(self, "linode_id")
-
-    @linode_id.setter
-    def linode_id(self, value: pulumi.Input[int]):
-        pulumi.set(self, "linode_id", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -78,6 +68,66 @@ class ImageArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the Linode Disk that this Image will be created from.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        """
+        return pulumi.get(self, "file_hash")
+
+    @file_hash.setter
+    def file_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_hash", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the image file to be uploaded.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the Linode that this Image will be created from.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _ImageState:
@@ -88,10 +138,14 @@ class _ImageState:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
                  expiry: Optional[pulumi.Input[str]] = None,
+                 file_hash: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vendor: Optional[pulumi.Input[str]] = None):
         """
@@ -102,10 +156,14 @@ class _ImageState:
         :param pulumi.Input[str] description: A detailed description of this Image.
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
+        :param pulumi.Input[str] status: The current status of this Image.
         :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
                a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
@@ -122,14 +180,22 @@ class _ImageState:
             pulumi.set(__self__, "disk_id", disk_id)
         if expiry is not None:
             pulumi.set(__self__, "expiry", expiry)
+        if file_hash is not None:
+            pulumi.set(__self__, "file_hash", file_hash)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if linode_id is not None:
             pulumi.set(__self__, "linode_id", linode_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vendor is not None:
@@ -208,6 +274,30 @@ class _ImageState:
         pulumi.set(self, "expiry", value)
 
     @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        """
+        return pulumi.get(self, "file_hash")
+
+    @file_hash.setter
+    def file_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_hash", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the image file to be uploaded.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -245,6 +335,18 @@ class _ImageState:
 
     @property
     @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum size this Image needs to deploy. Size is in MB.
@@ -254,6 +356,18 @@ class _ImageState:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current status of this Image.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -288,35 +402,17 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
+                 file_hash: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.Instance("foo",
-            type="g6-nanode-1",
-            region="us-central")
-        bar = linode.Image("bar",
-            label="foo-sda-image",
-            description="Image taken from foo",
-            disk_id=foo.disks[0].id,
-            linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
-            type=foo.type,
-            region="eu-west",
-            image=bar.id)
-        ```
         ## Attributes
 
         This resource exports the following attributes:
@@ -351,8 +447,11 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
+        :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
         ...
     @overload
@@ -365,27 +464,6 @@ class Image(pulumi.CustomResource):
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.Instance("foo",
-            type="g6-nanode-1",
-            region="us-central")
-        bar = linode.Image("bar",
-            label="foo-sda-image",
-            description="Image taken from foo",
-            disk_id=foo.disks[0].id,
-            linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
-            type=foo.type,
-            region="eu-west",
-            image=bar.id)
-        ```
         ## Attributes
 
         This resource exports the following attributes:
@@ -433,8 +511,11 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
+                 file_hash: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -448,21 +529,21 @@ class Image(pulumi.CustomResource):
             __props__ = ImageArgs.__new__(ImageArgs)
 
             __props__.__dict__["description"] = description
-            if disk_id is None and not opts.urn:
-                raise TypeError("Missing required property 'disk_id'")
             __props__.__dict__["disk_id"] = disk_id
+            __props__.__dict__["file_hash"] = file_hash
+            __props__.__dict__["file_path"] = file_path
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
-            if linode_id is None and not opts.urn:
-                raise TypeError("Missing required property 'linode_id'")
             __props__.__dict__["linode_id"] = linode_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["created"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["deprecated"] = None
             __props__.__dict__["expiry"] = None
             __props__.__dict__["is_public"] = None
             __props__.__dict__["size"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["vendor"] = None
         super(Image, __self__).__init__(
@@ -481,10 +562,14 @@ class Image(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[int]] = None,
             expiry: Optional[pulumi.Input[str]] = None,
+            file_hash: Optional[pulumi.Input[str]] = None,
+            file_path: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             label: Optional[pulumi.Input[str]] = None,
             linode_id: Optional[pulumi.Input[int]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vendor: Optional[pulumi.Input[str]] = None) -> 'Image':
         """
@@ -500,10 +585,14 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] description: A detailed description of this Image.
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+        :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
+        :param pulumi.Input[str] status: The current status of this Image.
         :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
                a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
@@ -518,10 +607,14 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["expiry"] = expiry
+        __props__.__dict__["file_hash"] = file_hash
+        __props__.__dict__["file_path"] = file_path
         __props__.__dict__["is_public"] = is_public
         __props__.__dict__["label"] = label
         __props__.__dict__["linode_id"] = linode_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
+        __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         __props__.__dict__["vendor"] = vendor
         return Image(resource_name, opts=opts, __props__=__props__)
@@ -560,7 +653,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> pulumi.Output[int]:
+    def disk_id(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the Linode Disk that this Image will be created from.
         """
@@ -573,6 +666,22 @@ class Image(pulumi.CustomResource):
         Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         """
         return pulumi.get(self, "expiry")
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> pulumi.Output[str]:
+        """
+        The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+        """
+        return pulumi.get(self, "file_hash")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path of the image file to be uploaded.
+        """
+        return pulumi.get(self, "file_path")
 
     @property
     @pulumi.getter(name="isPublic")
@@ -592,11 +701,19 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> pulumi.Output[int]:
+    def linode_id(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the Linode that this Image will be created from.
         """
         return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
@@ -605,6 +722,14 @@ class Image(pulumi.CustomResource):
         The minimum size this Image needs to deploy. Size is in MB.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The current status of this Image.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

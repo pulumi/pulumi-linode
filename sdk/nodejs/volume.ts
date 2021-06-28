@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  *
  * This resource exports the following attributes:
  *
- * * `status` - The label of the Linode Volume.
+ * * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
  *
  * * `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
  *
@@ -110,7 +110,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly linodeId!: pulumi.Output<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface VolumeState {
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -217,7 +217,7 @@ export interface VolumeArgs {
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
      */
     readonly region: pulumi.Input<string>;
     /**

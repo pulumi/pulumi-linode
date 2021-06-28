@@ -80,7 +80,7 @@ class GetFirewallResult:
     @pulumi.getter(name="inboundPolicy")
     def inbound_policy(self) -> str:
         """
-        The default behavior for inbound traffic.
+        The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
         """
         return pulumi.get(self, "inbound_policy")
 
@@ -109,7 +109,7 @@ class GetFirewallResult:
     @pulumi.getter(name="outboundPolicy")
     def outbound_policy(self) -> str:
         """
-        The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule.
+        The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         """
         return pulumi.get(self, "outbound_policy")
 
@@ -122,7 +122,7 @@ class GetFirewallResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the firewall.
+        The status of the firewall. (`enabled`, `disabled`, `deleted`)
         """
         return pulumi.get(self, "status")
 

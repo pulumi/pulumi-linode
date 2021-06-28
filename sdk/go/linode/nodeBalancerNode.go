@@ -18,7 +18,7 @@ import (
 //
 // This resource exports the following attributes:
 //
-// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN).
+// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 //
 // * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
 //
@@ -42,7 +42,7 @@ type NodeBalancerNode struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// The label of the Linode NodeBalancer Node. This is for display purposes only.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
@@ -99,7 +99,7 @@ type nodeBalancerNodeState struct {
 	ConfigId *int `pulumi:"configId"`
 	// The label of the Linode NodeBalancer Node. This is for display purposes only.
 	Label *string `pulumi:"label"`
-	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
 	Mode *string `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId *int `pulumi:"nodebalancerId"`
@@ -116,7 +116,7 @@ type NodeBalancerNodeState struct {
 	ConfigId pulumi.IntPtrInput
 	// The label of the Linode NodeBalancer Node. This is for display purposes only.
 	Label pulumi.StringPtrInput
-	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
 	Mode pulumi.StringPtrInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntPtrInput
@@ -137,7 +137,7 @@ type nodeBalancerNodeArgs struct {
 	ConfigId int `pulumi:"configId"`
 	// The label of the Linode NodeBalancer Node. This is for display purposes only.
 	Label string `pulumi:"label"`
-	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
 	Mode *string `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId int `pulumi:"nodebalancerId"`
@@ -153,7 +153,7 @@ type NodeBalancerNodeArgs struct {
 	ConfigId pulumi.IntInput
 	// The label of the Linode NodeBalancer Node. This is for display purposes only.
 	Label pulumi.StringInput
-	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
 	Mode pulumi.StringPtrInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntInput

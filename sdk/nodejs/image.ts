@@ -9,30 +9,6 @@ import * as utilities from "./utilities";
  *
  * For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
  *
- * ## Example Usage
- *
- * The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foo = new linode.Instance("foo", {
- *     type: "g6-nanode-1",
- *     region: "us-central",
- * });
- * const bar = new linode.Image("bar", {
- *     label: "foo-sda-image",
- *     description: "Image taken from foo",
- *     diskId: foo.disks.apply(disks => disks[0].id),
- *     linodeId: foo.id,
- * });
- * const barBased = new linode.Instance("barBased", {
- *     type: foo.type,
- *     region: "eu-west",
- *     image: bar.id,
- * });
- * ```
  * ## Attributes
  *
  * This resource exports the following attributes:
@@ -110,11 +86,19 @@ export class Image extends pulumi.CustomResource {
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    public readonly diskId!: pulumi.Output<number>;
+    public readonly diskId!: pulumi.Output<number | undefined>;
     /**
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      */
     public /*out*/ readonly expiry!: pulumi.Output<string>;
+    /**
+     * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+     */
+    public readonly fileHash!: pulumi.Output<string>;
+    /**
+     * The path of the image file to be uploaded.
+     */
+    public readonly filePath!: pulumi.Output<string | undefined>;
     /**
      * True if the Image is public.
      */
@@ -126,11 +110,19 @@ export class Image extends pulumi.CustomResource {
     /**
      * The ID of the Linode that this Image will be created from.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    public readonly linodeId!: pulumi.Output<number | undefined>;
+    /**
+     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
+    /**
+     * The current status of this Image.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
      * a deleted Linode.
@@ -160,33 +152,35 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["diskId"] = state ? state.diskId : undefined;
             inputs["expiry"] = state ? state.expiry : undefined;
+            inputs["fileHash"] = state ? state.fileHash : undefined;
+            inputs["filePath"] = state ? state.filePath : undefined;
             inputs["isPublic"] = state ? state.isPublic : undefined;
             inputs["label"] = state ? state.label : undefined;
             inputs["linodeId"] = state ? state.linodeId : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["vendor"] = state ? state.vendor : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'diskId'");
-            }
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'linodeId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["diskId"] = args ? args.diskId : undefined;
+            inputs["fileHash"] = args ? args.fileHash : undefined;
+            inputs["filePath"] = args ? args.filePath : undefined;
             inputs["label"] = args ? args.label : undefined;
             inputs["linodeId"] = args ? args.linodeId : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["created"] = undefined /*out*/;
             inputs["createdBy"] = undefined /*out*/;
             inputs["deprecated"] = undefined /*out*/;
             inputs["expiry"] = undefined /*out*/;
             inputs["isPublic"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
             inputs["vendor"] = undefined /*out*/;
         }
@@ -226,6 +220,14 @@ export interface ImageState {
      */
     readonly expiry?: pulumi.Input<string>;
     /**
+     * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+     */
+    readonly fileHash?: pulumi.Input<string>;
+    /**
+     * The path of the image file to be uploaded.
+     */
+    readonly filePath?: pulumi.Input<string>;
+    /**
      * True if the Image is public.
      */
     readonly isPublic?: pulumi.Input<boolean>;
@@ -238,9 +240,17 @@ export interface ImageState {
      */
     readonly linodeId?: pulumi.Input<number>;
     /**
+     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    readonly region?: pulumi.Input<string>;
+    /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
     readonly size?: pulumi.Input<number>;
+    /**
+     * The current status of this Image.
+     */
+    readonly status?: pulumi.Input<string>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
      * a deleted Linode.
@@ -263,7 +273,15 @@ export interface ImageArgs {
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    readonly diskId: pulumi.Input<number>;
+    readonly diskId?: pulumi.Input<number>;
+    /**
+     * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+     */
+    readonly fileHash?: pulumi.Input<string>;
+    /**
+     * The path of the image file to be uploaded.
+     */
+    readonly filePath?: pulumi.Input<string>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
@@ -271,5 +289,9 @@ export interface ImageArgs {
     /**
      * The ID of the Linode that this Image will be created from.
      */
-    readonly linodeId: pulumi.Input<number>;
+    readonly linodeId?: pulumi.Input<number>;
+    /**
+     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    readonly region?: pulumi.Input<string>;
 }

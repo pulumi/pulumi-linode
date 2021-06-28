@@ -27,6 +27,7 @@ from .get_region import *
 from .get_ssh_key import *
 from .get_stack_script import *
 from .get_user import *
+from .get_vlans import *
 from .get_volume import *
 from .image import *
 from .instance import *

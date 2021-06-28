@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * * `label` - The Linode Type's label is for display purposes only
  *
- * * `class` - The class of the Linode Type
+ * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
  *
  * * `disk` - The Disk size, in MB, of the Linode Type
  *

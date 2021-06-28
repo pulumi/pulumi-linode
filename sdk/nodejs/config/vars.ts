@@ -31,6 +31,10 @@ export let maxRetryDelayMs: number | undefined = __config.getObject<number>("max
  */
 export let minRetryDelayMs: number | undefined = __config.getObject<number>("minRetryDelayMs");
 /**
+ * Skip waiting for a linode_instance resource to finish deleting.
+ */
+export let skipInstanceDeletePoll: boolean | undefined = __config.getObject<boolean>("skipInstanceDeletePoll");
+/**
  * Skip waiting for a linode_instance resource to be running.
  */
 export let skipInstanceReadyPoll: boolean | undefined = __config.getObject<boolean>("skipInstanceReadyPoll");

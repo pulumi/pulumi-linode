@@ -91,11 +91,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     }
 
     /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+     * What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
      */
     public readonly algorithm!: pulumi.Output<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      */
     public readonly check!: pulumi.Output<string>;
     /**
@@ -141,11 +141,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      */
     public readonly proxyProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -167,7 +167,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly sslKey!: pulumi.Output<string | undefined>;
     /**
-     * Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     public readonly stickiness!: pulumi.Output<string>;
 
@@ -240,11 +240,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
  */
 export interface NodeBalancerConfigState {
     /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+     * What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -290,11 +290,11 @@ export interface NodeBalancerConfigState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      */
     readonly proxyProtocol?: pulumi.Input<string>;
     /**
@@ -316,7 +316,7 @@ export interface NodeBalancerConfigState {
      */
     readonly sslKey?: pulumi.Input<string>;
     /**
-     * Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     readonly stickiness?: pulumi.Input<string>;
 }
@@ -326,11 +326,11 @@ export interface NodeBalancerConfigState {
  */
 export interface NodeBalancerConfigArgs {
     /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+     * What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
      */
     readonly algorithm?: pulumi.Input<string>;
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected.
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      */
     readonly check?: pulumi.Input<string>;
     /**
@@ -371,11 +371,11 @@ export interface NodeBalancerConfigArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (Defaults to "http")
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      */
     readonly proxyProtocol?: pulumi.Input<string>;
     /**
@@ -387,7 +387,7 @@ export interface NodeBalancerConfigArgs {
      */
     readonly sslKey?: pulumi.Input<string>;
     /**
-     * Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     readonly stickiness?: pulumi.Input<string>;
 }

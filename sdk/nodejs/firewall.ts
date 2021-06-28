@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * > **NOTICE:** The Firewall feature is currently available through early access.
- *
  * Manages a Linode Firewall.
  *
  * ## Example Usage
@@ -114,7 +112,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      */
     public readonly inboundPolicy!: pulumi.Output<string>;
     /**
@@ -130,7 +128,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly linodes!: pulumi.Output<number[] | undefined>;
     /**
-     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
     public readonly outboundPolicy!: pulumi.Output<string>;
     /**
@@ -211,7 +209,7 @@ export interface FirewallState {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      */
     readonly inboundPolicy?: pulumi.Input<string>;
     /**
@@ -227,7 +225,7 @@ export interface FirewallState {
      */
     readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
     readonly outboundPolicy?: pulumi.Input<string>;
     /**
@@ -253,7 +251,7 @@ export interface FirewallArgs {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+     * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      */
     readonly inboundPolicy: pulumi.Input<string>;
     /**
@@ -269,7 +267,7 @@ export interface FirewallArgs {
      */
     readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+     * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
     readonly outboundPolicy: pulumi.Input<string>;
     /**

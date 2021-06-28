@@ -33,7 +33,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// A Linode Type for all of the nodes in the Node Pool.
+        /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

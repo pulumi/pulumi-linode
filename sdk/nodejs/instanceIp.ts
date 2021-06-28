@@ -88,7 +88,7 @@ export class InstanceIp extends pulumi.CustomResource {
      */
     public /*out*/ readonly subnetMask!: pulumi.Output<string>;
     /**
-     * The type of IP address.
+     * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -173,7 +173,7 @@ export interface InstanceIpState {
      */
     readonly subnetMask?: pulumi.Input<string>;
     /**
-     * The type of IP address.
+     * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
     readonly type?: pulumi.Input<string>;
 }

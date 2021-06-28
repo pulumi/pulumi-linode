@@ -19,7 +19,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, type=None, vendor=None):
+    def __init__(__self__, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, status=None, type=None, vendor=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -47,6 +47,9 @@ class GetImageResult:
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -101,6 +104,11 @@ class GetImageResult:
 
     @property
     @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
 
@@ -125,6 +133,7 @@ class AwaitableGetImageResult(GetImageResult):
             is_public=self.is_public,
             label=self.label,
             size=self.size,
+            status=self.status,
             type=self.type,
             vendor=self.vendor)
 
@@ -162,7 +171,9 @@ def get_image(id: Optional[str] = None,
 
     * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
 
-    * `type` - How the Image was created. Manual Images can be created at any time. image"Automatic" Images are created automatically from a deleted Linode.
+    * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
+
+    * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 
     * `vendor` - The upstream distribution vendor. `None` for private Images.
 
@@ -187,5 +198,6 @@ def get_image(id: Optional[str] = None,
         is_public=__ret__.is_public,
         label=__ret__.label,
         size=__ret__.size,
+        status=__ret__.status,
         type=__ret__.type,
         vendor=__ret__.vendor)

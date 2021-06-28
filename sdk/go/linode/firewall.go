@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTICE:** The Firewall feature is currently available through early access.
-//
 // Manages a Linode Firewall.
 //
 // ## Import
@@ -29,7 +27,7 @@ type Firewall struct {
 	Devices FirewallDeviceArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
@@ -37,7 +35,7 @@ type Firewall struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayOutput `pulumi:"linodes"`
-	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
 	OutboundPolicy pulumi.StringOutput `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayOutput `pulumi:"outbounds"`
@@ -89,7 +87,7 @@ type firewallState struct {
 	Devices []FirewallDevice `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled *bool `pulumi:"disabled"`
-	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -97,7 +95,7 @@ type firewallState struct {
 	Label *string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
-	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
 	OutboundPolicy *string `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
@@ -112,7 +110,7 @@ type FirewallState struct {
 	Devices FirewallDeviceArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrInput
-	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -120,7 +118,7 @@ type FirewallState struct {
 	Label pulumi.StringPtrInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
-	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
 	OutboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayInput
@@ -137,7 +135,7 @@ func (FirewallState) ElementType() reflect.Type {
 type firewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled *bool `pulumi:"disabled"`
-	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -145,7 +143,7 @@ type firewallArgs struct {
 	Label string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
-	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
 	OutboundPolicy string `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
@@ -157,7 +155,7 @@ type firewallArgs struct {
 type FirewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrInput
-	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule.
+	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -165,7 +163,7 @@ type FirewallArgs struct {
 	Label pulumi.StringInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
-	// The default behavior for outbound traffic. This setting can be overridden by updating the action property for an individual Firewall Rule.
+	// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
 	OutboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayInput

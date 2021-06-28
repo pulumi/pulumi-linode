@@ -85,7 +85,7 @@ namespace Pulumi.Linode
     /// 
     /// This resource exports the following attributes:
     /// 
-    /// * `status` - The label of the Linode Volume.
+    /// * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
     /// 
     /// * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
     /// 
@@ -122,7 +122,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

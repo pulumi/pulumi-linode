@@ -80,7 +80,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter
     def algorithm(self) -> str:
         """
-        What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source
+        What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -88,7 +88,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter
     def check(self) -> str:
         """
-        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
@@ -141,7 +141,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter(name="cipherSuite")
     def cipher_suite(self) -> str:
         """
-        What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
         """
         return pulumi.get(self, "cipher_suite")
 
@@ -172,7 +172,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (Defaults to "http")
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
@@ -180,7 +180,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> str:
         """
-        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. Valid values are `none`, `v1`, and `v2`. (Defaults to `none`)
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -204,7 +204,7 @@ class GetNodeBalancerConfigResult:
     @pulumi.getter
     def stickiness(self) -> str:
         """
-        Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 

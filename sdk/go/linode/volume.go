@@ -91,7 +91,7 @@ import (
 //
 // This resource exports the following attributes:
 //
-// * `status` - The label of the Linode Volume.
+// * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 //
 // * `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 //
@@ -114,7 +114,7 @@ type Volume struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -166,7 +166,7 @@ type volumeState struct {
 	Label *string `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
 	Region *string `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size *int `pulumi:"size"`
@@ -184,7 +184,7 @@ type VolumeState struct {
 	Label pulumi.StringPtrInput
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringPtrInput
 	// Size of the Volume in GB.
 	Size pulumi.IntPtrInput
@@ -203,7 +203,7 @@ type volumeArgs struct {
 	Label string `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
 	Region string `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size *int `pulumi:"size"`
@@ -217,7 +217,7 @@ type VolumeArgs struct {
 	Label pulumi.StringInput
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc.  *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringInput
 	// Size of the Volume in GB.
 	Size pulumi.IntPtrInput

@@ -192,7 +192,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
-     * An array of Network Interfaces for this Linode to be created with.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+     * must be declared in the config block.
      */
     public readonly interfaces!: pulumi.Output<outputs.InstanceInterface[] | undefined>;
     /**
@@ -391,7 +392,8 @@ export interface InstanceState {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+     * must be declared in the config block.
      */
     readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
@@ -505,7 +507,8 @@ export interface InstanceArgs {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
+     * must be declared in the config block.
      */
     readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**

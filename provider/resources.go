@@ -195,6 +195,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_user":                  {Tok: makeResource(mainMod, "User")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"linode_vlans":   {Tok: makeDataSource(mainMod, "getVlans")},
 			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},
 			"linode_domain":  {Tok: makeDataSource(mainMod, "getDomain")},
 			"linode_image":   {Tok: makeDataSource(mainMod, "getImage")},
@@ -276,8 +277,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
 				mainPkg: "Linode",

@@ -15,50 +15,6 @@ import (
 //
 // For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 //
-// ## Example Usage
-//
-// The following example shows how one might use this resource to create an Image from a Linode Instance Disk and then deploy a new Linode Instance in another region using that Image.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-// 			Type:   pulumi.String("g6-nanode-1"),
-// 			Region: pulumi.String("us-central"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bar, err := linode.NewImage(ctx, "bar", &linode.ImageArgs{
-// 			Label:       pulumi.String("foo-sda-image"),
-// 			Description: pulumi.String("Image taken from foo"),
-// 			DiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDisk) (int, error) {
-// 				return disks[0].Id, nil
-// 			}).(pulumi.IntOutput)),
-// 			LinodeId: foo.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
-// 			Type:   foo.Type,
-// 			Region: pulumi.String("eu-west"),
-// 			Image:  bar.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ## Attributes
 //
 // This resource exports the following attributes:
@@ -100,17 +56,25 @@ type Image struct {
 	// A detailed description of this Image.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
-	DiskId pulumi.IntOutput `pulumi:"diskId"`
+	DiskId pulumi.IntPtrOutput `pulumi:"diskId"`
 	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
 	Expiry pulumi.StringOutput `pulumi:"expiry"`
+	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+	FileHash pulumi.StringOutput `pulumi:"fileHash"`
+	// The path of the image file to be uploaded.
+	FilePath pulumi.StringPtrOutput `pulumi:"filePath"`
 	// True if the Image is public.
 	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
-	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
+	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
+	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntOutput `pulumi:"size"`
+	// The current status of this Image.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
 	// a deleted Linode.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -125,14 +89,8 @@ func NewImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DiskId == nil {
-		return nil, errors.New("invalid value for required argument 'DiskId'")
-	}
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
-	}
-	if args.LinodeId == nil {
-		return nil, errors.New("invalid value for required argument 'LinodeId'")
 	}
 	var resource Image
 	err := ctx.RegisterResource("linode:index/image:Image", name, args, &resource, opts...)
@@ -168,14 +126,22 @@ type imageState struct {
 	DiskId *int `pulumi:"diskId"`
 	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
 	Expiry *string `pulumi:"expiry"`
+	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+	FileHash *string `pulumi:"fileHash"`
+	// The path of the image file to be uploaded.
+	FilePath *string `pulumi:"filePath"`
 	// True if the Image is public.
 	IsPublic *bool `pulumi:"isPublic"`
 	// A short description of the Image. Labels cannot contain special characters.
 	Label *string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
 	LinodeId *int `pulumi:"linodeId"`
+	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	Region *string `pulumi:"region"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size *int `pulumi:"size"`
+	// The current status of this Image.
+	Status *string `pulumi:"status"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
 	// a deleted Linode.
 	Type *string `pulumi:"type"`
@@ -196,14 +162,22 @@ type ImageState struct {
 	DiskId pulumi.IntPtrInput
 	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
 	Expiry pulumi.StringPtrInput
+	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+	FileHash pulumi.StringPtrInput
+	// The path of the image file to be uploaded.
+	FilePath pulumi.StringPtrInput
 	// True if the Image is public.
 	IsPublic pulumi.BoolPtrInput
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringPtrInput
 	// The ID of the Linode that this Image will be created from.
 	LinodeId pulumi.IntPtrInput
+	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringPtrInput
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntPtrInput
+	// The current status of this Image.
+	Status pulumi.StringPtrInput
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
 	// a deleted Linode.
 	Type pulumi.StringPtrInput
@@ -219,11 +193,17 @@ type imageArgs struct {
 	// A detailed description of this Image.
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
-	DiskId int `pulumi:"diskId"`
+	DiskId *int `pulumi:"diskId"`
+	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+	FileHash *string `pulumi:"fileHash"`
+	// The path of the image file to be uploaded.
+	FilePath *string `pulumi:"filePath"`
 	// A short description of the Image. Labels cannot contain special characters.
 	Label string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
-	LinodeId int `pulumi:"linodeId"`
+	LinodeId *int `pulumi:"linodeId"`
+	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -231,11 +211,17 @@ type ImageArgs struct {
 	// A detailed description of this Image.
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
-	DiskId pulumi.IntInput
+	DiskId pulumi.IntPtrInput
+	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+	FileHash pulumi.StringPtrInput
+	// The path of the image file to be uploaded.
+	FilePath pulumi.StringPtrInput
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringInput
 	// The ID of the Linode that this Image will be created from.
-	LinodeId pulumi.IntInput
+	LinodeId pulumi.IntPtrInput
+	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
