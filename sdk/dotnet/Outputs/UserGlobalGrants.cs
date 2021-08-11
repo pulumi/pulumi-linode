@@ -15,6 +15,7 @@ namespace Pulumi.Linode.Outputs
     {
         public readonly string? AccountAccess;
         public readonly bool? AddDomains;
+        public readonly bool? AddFirewalls;
         public readonly bool? AddImages;
         public readonly bool? AddLinodes;
         public readonly bool? AddLongview;
@@ -29,6 +30,8 @@ namespace Pulumi.Linode.Outputs
             string? accountAccess,
 
             bool? addDomains,
+
+            bool? addFirewalls,
 
             bool? addImages,
 
@@ -48,6 +51,7 @@ namespace Pulumi.Linode.Outputs
         {
             AccountAccess = accountAccess;
             AddDomains = addDomains;
+            AddFirewalls = addFirewalls;
             AddImages = addImages;
             AddLinodes = addLinodes;
             AddLongview = addLongview;

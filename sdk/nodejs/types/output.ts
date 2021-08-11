@@ -1017,9 +1017,15 @@ export interface UserDomainGrant {
     permissions: string;
 }
 
+export interface UserFirewallGrant {
+    id: number;
+    permissions: string;
+}
+
 export interface UserGlobalGrants {
     accountAccess?: string;
     addDomains?: boolean;
+    addFirewalls?: boolean;
     addImages?: boolean;
     addLinodes?: boolean;
     addLongview?: boolean;

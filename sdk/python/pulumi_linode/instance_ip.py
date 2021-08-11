@@ -14,15 +14,19 @@ __all__ = ['InstanceIpArgs', 'InstanceIp']
 class InstanceIpArgs:
     def __init__(__self__, *,
                  linode_id: pulumi.Input[int],
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
                  public: Optional[pulumi.Input[bool]] = None,
                  rdns: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceIp resource.
         :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
+        :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
         """
         pulumi.set(__self__, "linode_id", linode_id)
+        if apply_immediately is not None:
+            pulumi.set(__self__, "apply_immediately", apply_immediately)
         if public is not None:
             pulumi.set(__self__, "public", public)
         if rdns is not None:
@@ -39,6 +43,18 @@ class InstanceIpArgs:
     @linode_id.setter
     def linode_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter(name="applyImmediately")
+    def apply_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the instance will be rebooted to update network interfaces.
+        """
+        return pulumi.get(self, "apply_immediately")
+
+    @apply_immediately.setter
+    def apply_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_immediately", value)
 
     @property
     @pulumi.getter
@@ -69,6 +85,7 @@ class InstanceIpArgs:
 class _InstanceIpState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  prefix: Optional[pulumi.Input[int]] = None,
@@ -80,6 +97,7 @@ class _InstanceIpState:
         """
         Input properties used for looking up and filtering InstanceIp resources.
         :param pulumi.Input[str] address: The resulting IPv4 address.
+        :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[str] gateway: The default gateway for this address
         :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[int] prefix: The number of bits set in the subnet mask.
@@ -91,6 +109,8 @@ class _InstanceIpState:
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
+        if apply_immediately is not None:
+            pulumi.set(__self__, "apply_immediately", apply_immediately)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
         if linode_id is not None:
@@ -119,6 +139,18 @@ class _InstanceIpState:
     @address.setter
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="applyImmediately")
+    def apply_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the instance will be rebooted to update network interfaces.
+        """
+        return pulumi.get(self, "apply_immediately")
+
+    @apply_immediately.setter
+    def apply_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_immediately", value)
 
     @property
     @pulumi.getter
@@ -222,12 +254,14 @@ class InstanceIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  public: Optional[pulumi.Input[bool]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+        **NOTICE:** This resource will reboot the specified instance following IP allocation.
 
         Manages a Linode instance IP.
 
@@ -249,6 +283,7 @@ class InstanceIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
@@ -261,6 +296,7 @@ class InstanceIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+        **NOTICE:** This resource will reboot the specified instance following IP allocation.
 
         Manages a Linode instance IP.
 
@@ -295,6 +331,7 @@ class InstanceIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  public: Optional[pulumi.Input[bool]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
@@ -310,6 +347,7 @@ class InstanceIp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceIpArgs.__new__(InstanceIpArgs)
 
+            __props__.__dict__["apply_immediately"] = apply_immediately
             if linode_id is None and not opts.urn:
                 raise TypeError("Missing required property 'linode_id'")
             __props__.__dict__["linode_id"] = linode_id
@@ -332,6 +370,7 @@ class InstanceIp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
+            apply_immediately: Optional[pulumi.Input[bool]] = None,
             gateway: Optional[pulumi.Input[str]] = None,
             linode_id: Optional[pulumi.Input[int]] = None,
             prefix: Optional[pulumi.Input[int]] = None,
@@ -348,6 +387,7 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The resulting IPv4 address.
+        :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[str] gateway: The default gateway for this address
         :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[int] prefix: The number of bits set in the subnet mask.
@@ -362,6 +402,7 @@ class InstanceIp(pulumi.CustomResource):
         __props__ = _InstanceIpState.__new__(_InstanceIpState)
 
         __props__.__dict__["address"] = address
+        __props__.__dict__["apply_immediately"] = apply_immediately
         __props__.__dict__["gateway"] = gateway
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["prefix"] = prefix
@@ -379,6 +420,14 @@ class InstanceIp(pulumi.CustomResource):
         The resulting IPv4 address.
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="applyImmediately")
+    def apply_immediately(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the instance will be rebooted to update network interfaces.
+        """
+        return pulumi.get(self, "apply_immediately")
 
     @property
     @pulumi.getter

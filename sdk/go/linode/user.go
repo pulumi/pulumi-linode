@@ -79,6 +79,8 @@ import (
 //
 // * `addDomains` - (optional) If true, this User may add Domains.
 //
+// * `addFirewalls` - (optional) If true, this User may add Firewalls.
+//
 // * `addImages` - (optional) If true, this User may add Images.
 //
 // * `addLinodes` - (optional) If true, this User may create Linodes.
@@ -105,6 +107,8 @@ type User struct {
 	DomainGrants UserDomainGrantArrayOutput `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// The firewalls the user has permissions access to.
+	FirewallGrants UserFirewallGrantArrayOutput `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsOutput `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
@@ -168,6 +172,8 @@ type userState struct {
 	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email *string `pulumi:"email"`
+	// The firewalls the user has permissions access to.
+	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
@@ -197,6 +203,8 @@ type UserState struct {
 	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringPtrInput
+	// The firewalls the user has permissions access to.
+	FirewallGrants UserFirewallGrantArrayInput
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsPtrInput
 	// The images the user has permissions access to.
@@ -230,6 +238,8 @@ type userArgs struct {
 	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email string `pulumi:"email"`
+	// The firewalls the user has permissions access to.
+	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
@@ -256,6 +266,8 @@ type UserArgs struct {
 	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringInput
+	// The firewalls the user has permissions access to.
+	FirewallGrants UserFirewallGrantArrayInput
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsPtrInput
 	// The images the user has permissions access to.

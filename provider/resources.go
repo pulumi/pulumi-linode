@@ -190,7 +190,6 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_lke_cluster":           {Tok: makeResource(mainMod, "LkeCluster")},
 			"linode_firewall":              {Tok: makeResource(mainMod, "Firewall")},
 			"linode_object_storage_object": {Tok: makeResource(mainMod, "ObjectStorageObject")},
-			"linode_vlan":                  {Tok: makeResource(mainMod, "Vlan")},
 			"linode_instance_ip":           {Tok: makeResource(mainMod, "InstanceIp")},
 			"linode_user":                  {Tok: makeResource(mainMod, "User")},
 		},

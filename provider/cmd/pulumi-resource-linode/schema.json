@@ -1626,6 +1626,31 @@
                 "permissions"
             ]
         },
+        "linode:index/UserFirewallGrant:UserFirewallGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "permissions"
+            ]
+        },
         "linode:index/UserGlobalGrants:UserGlobalGrants": {
             "properties": {
                 "accountAccess": {
@@ -1637,6 +1662,14 @@
                     }
                 },
                 "addDomains": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "addFirewalls": {
                     "type": "boolean",
                     "language": {
                         "python": {
@@ -5424,11 +5457,15 @@
             }
         },
         "linode:index/instanceIp:InstanceIp": {
-            "description": "\u003e **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.\n\nManages a Linode instance IP.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooInstance = new linode.Instance(\"fooInstance\", {\n    image: \"linode/alpine3.12\",\n    label: \"foobar-test\",\n    type: \"g6-nanode-1\",\n    region: \"us-east\",\n});\nconst fooInstanceIp = new linode.InstanceIp(\"fooInstanceIp\", {\n    linodeId: fooInstance.id,\n    \"public\": true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo_instance = linode.Instance(\"fooInstance\",\n    image=\"linode/alpine3.12\",\n    label=\"foobar-test\",\n    type=\"g6-nanode-1\",\n    region=\"us-east\")\nfoo_instance_ip = linode.InstanceIp(\"fooInstanceIp\",\n    linode_id=foo_instance.id,\n    public=True)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooInstance = new Linode.Instance(\"fooInstance\", new Linode.InstanceArgs\n        {\n            Image = \"linode/alpine3.12\",\n            Label = \"foobar-test\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-east\",\n        });\n        var fooInstanceIp = new Linode.InstanceIp(\"fooInstanceIp\", new Linode.InstanceIpArgs\n        {\n            LinodeId = fooInstance.Id,\n            Public = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooInstance, err := linode.NewInstance(ctx, \"fooInstance\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/alpine3.12\"),\n\t\t\tLabel:  pulumi.String(\"foobar-test\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceIp(ctx, \"fooInstanceIp\", \u0026linode.InstanceIpArgs{\n\t\t\tLinodeId: fooInstance.ID(),\n\t\t\tPublic:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "\u003e **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.\n\u003e **NOTICE:** This resource will reboot the specified instance following IP allocation.\n\nManages a Linode instance IP.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooInstance = new linode.Instance(\"fooInstance\", {\n    image: \"linode/alpine3.12\",\n    label: \"foobar-test\",\n    type: \"g6-nanode-1\",\n    region: \"us-east\",\n});\nconst fooInstanceIp = new linode.InstanceIp(\"fooInstanceIp\", {\n    linodeId: fooInstance.id,\n    \"public\": true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo_instance = linode.Instance(\"fooInstance\",\n    image=\"linode/alpine3.12\",\n    label=\"foobar-test\",\n    type=\"g6-nanode-1\",\n    region=\"us-east\")\nfoo_instance_ip = linode.InstanceIp(\"fooInstanceIp\",\n    linode_id=foo_instance.id,\n    public=True)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooInstance = new Linode.Instance(\"fooInstance\", new Linode.InstanceArgs\n        {\n            Image = \"linode/alpine3.12\",\n            Label = \"foobar-test\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-east\",\n        });\n        var fooInstanceIp = new Linode.InstanceIp(\"fooInstanceIp\", new Linode.InstanceIpArgs\n        {\n            LinodeId = fooInstance.Id,\n            Public = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooInstance, err := linode.NewInstance(ctx, \"fooInstance\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/alpine3.12\"),\n\t\t\tLabel:  pulumi.String(\"foobar-test\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceIp(ctx, \"fooInstanceIp\", \u0026linode.InstanceIpArgs{\n\t\t\tLinodeId: fooInstance.ID(),\n\t\t\tPublic:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "address": {
                     "type": "string",
                     "description": "The resulting IPv4 address.\n"
+                },
+                "applyImmediately": {
+                    "type": "boolean",
+                    "description": "If true, the instance will be rebooted to update network interfaces.\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -5474,6 +5511,10 @@
                 "type"
             ],
             "inputProperties": {
+                "applyImmediately": {
+                    "type": "boolean",
+                    "description": "If true, the instance will be rebooted to update network interfaces.\n"
+                },
                 "linodeId": {
                     "type": "integer",
                     "description": "The ID of the Linode to allocate an IPv4 address for.\n"
@@ -5496,6 +5537,10 @@
                     "address": {
                         "type": "string",
                         "description": "The resulting IPv4 address.\n"
+                    },
+                    "applyImmediately": {
+                        "type": "boolean",
+                        "description": "If true, the instance will be rebooted to update network interfaces.\n"
                     },
                     "gateway": {
                         "type": "string",
@@ -6172,7 +6217,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                    "description": "The access key to authenticate with.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -6203,11 +6248,11 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                    "description": "The secret key to authenticate with.\n"
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.\n"
+                    "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)\n"
                 }
             },
             "required": [
@@ -6218,7 +6263,7 @@
             "inputProperties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                    "description": "The access key to authenticate with.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -6249,11 +6294,11 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                    "description": "The secret key to authenticate with.\n"
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.\n"
+                    "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)\n"
                 }
             },
             "requiredInputs": [
@@ -6265,7 +6310,7 @@
                 "properties": {
                     "accessKey": {
                         "type": "string",
-                        "description": "The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                        "description": "The access key to authenticate with.\n"
                     },
                     "acl": {
                         "type": "string",
@@ -6296,11 +6341,11 @@
                     },
                     "secretKey": {
                         "type": "string",
-                        "description": "The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)\n"
+                        "description": "The secret key to authenticate with.\n"
                     },
                     "versioning": {
                         "type": "boolean",
-                        "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.\n"
+                        "description": "Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)\n"
                     }
                 },
                 "type": "object"
@@ -7043,7 +7088,7 @@
             }
         },
         "linode:index/user:User": {
-            "description": "Manages a Linode User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate an unrestricted user:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst john = new linode.User(\"john\", {\n    email: \"john@acme.io\",\n    username: \"john123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\njohn = linode.User(\"john\",\n    email=\"john@acme.io\",\n    username=\"john123\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var john = new Linode.User(\"john\", new Linode.UserArgs\n        {\n            Email = \"john@acme.io\",\n            Username = \"john123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"john\", \u0026linode.UserArgs{\n\t\t\tEmail:    pulumi.String(\"john@acme.io\"),\n\t\t\tUsername: pulumi.String(\"john123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nCreate a restricted user with grants:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooser = new linode.User(\"fooser\", {\n    email: \"cool@acme.io\",\n    globalGrants: {\n        addImages: true,\n        addLinodes: true,\n    },\n    linodeGrants: [{\n        id: 12345,\n        permissions: \"read_write\",\n    }],\n    restricted: true,\n    username: \"cooluser123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfooser = linode.User(\"fooser\",\n    email=\"cool@acme.io\",\n    global_grants=linode.UserGlobalGrantsArgs(\n        add_images=True,\n        add_linodes=True,\n    ),\n    linode_grants=[linode.UserLinodeGrantArgs(\n        id=12345,\n        permissions=\"read_write\",\n    )],\n    restricted=True,\n    username=\"cooluser123\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooser = new Linode.User(\"fooser\", new Linode.UserArgs\n        {\n            Email = \"cool@acme.io\",\n            GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs\n            {\n                AddImages = true,\n                AddLinodes = true,\n            },\n            LinodeGrants = \n            {\n                new Linode.Inputs.UserLinodeGrantArgs\n                {\n                    Id = 12345,\n                    Permissions = \"read_write\",\n                },\n            },\n            Restricted = true,\n            Username = \"cooluser123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"fooser\", \u0026linode.UserArgs{\n\t\t\tEmail: pulumi.String(\"cool@acme.io\"),\n\t\t\tGlobalGrants: \u0026linode.UserGlobalGrantsArgs{\n\t\t\t\tAddImages:  pulumi.Bool(true),\n\t\t\t\tAddLinodes: pulumi.Bool(true),\n\t\t\t},\n\t\t\tLinodeGrants: linode.UserLinodeGrantArray{\n\t\t\t\t\u0026linode.UserLinodeGrantArgs{\n\t\t\t\t\tId:          pulumi.Int(12345),\n\t\t\t\t\tPermissions: pulumi.String(\"read_write\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tUsername:   pulumi.String(\"cooluser123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Global Grants\n\n* `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)\n\n* `add_domains` - (optional) If true, this User may add Domains.\n\n* `add_images` - (optional) If true, this User may add Images.\n\n* `add_linodes` - (optional) If true, this User may create Linodes.\n\n* `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.\n\n* `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.\n\n* `add_stackscripts` - (optional) If true, this User may add StackScripts.\n\n* `cancel_account` - (optional) If true, this User may cancel the entire Account.\n\n* `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.\n\n## Entity Grants\n\n* `id` - (required) The ID of the entity this grant applies to.\n\n* `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)\n",
+            "description": "Manages a Linode User.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate an unrestricted user:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst john = new linode.User(\"john\", {\n    email: \"john@acme.io\",\n    username: \"john123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\njohn = linode.User(\"john\",\n    email=\"john@acme.io\",\n    username=\"john123\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var john = new Linode.User(\"john\", new Linode.UserArgs\n        {\n            Email = \"john@acme.io\",\n            Username = \"john123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"john\", \u0026linode.UserArgs{\n\t\t\tEmail:    pulumi.String(\"john@acme.io\"),\n\t\t\tUsername: pulumi.String(\"john123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nCreate a restricted user with grants:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooser = new linode.User(\"fooser\", {\n    email: \"cool@acme.io\",\n    globalGrants: {\n        addImages: true,\n        addLinodes: true,\n    },\n    linodeGrants: [{\n        id: 12345,\n        permissions: \"read_write\",\n    }],\n    restricted: true,\n    username: \"cooluser123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfooser = linode.User(\"fooser\",\n    email=\"cool@acme.io\",\n    global_grants=linode.UserGlobalGrantsArgs(\n        add_images=True,\n        add_linodes=True,\n    ),\n    linode_grants=[linode.UserLinodeGrantArgs(\n        id=12345,\n        permissions=\"read_write\",\n    )],\n    restricted=True,\n    username=\"cooluser123\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooser = new Linode.User(\"fooser\", new Linode.UserArgs\n        {\n            Email = \"cool@acme.io\",\n            GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs\n            {\n                AddImages = true,\n                AddLinodes = true,\n            },\n            LinodeGrants = \n            {\n                new Linode.Inputs.UserLinodeGrantArgs\n                {\n                    Id = 12345,\n                    Permissions = \"read_write\",\n                },\n            },\n            Restricted = true,\n            Username = \"cooluser123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"fooser\", \u0026linode.UserArgs{\n\t\t\tEmail: pulumi.String(\"cool@acme.io\"),\n\t\t\tGlobalGrants: \u0026linode.UserGlobalGrantsArgs{\n\t\t\t\tAddImages:  pulumi.Bool(true),\n\t\t\t\tAddLinodes: pulumi.Bool(true),\n\t\t\t},\n\t\t\tLinodeGrants: linode.UserLinodeGrantArray{\n\t\t\t\t\u0026linode.UserLinodeGrantArgs{\n\t\t\t\t\tId:          pulumi.Int(12345),\n\t\t\t\t\tPermissions: pulumi.String(\"read_write\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tUsername:   pulumi.String(\"cooluser123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Global Grants\n\n* `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)\n\n* `add_domains` - (optional) If true, this User may add Domains.\n\n* `add_firewalls` - (optional) If true, this User may add Firewalls.\n\n* `add_images` - (optional) If true, this User may add Images.\n\n* `add_linodes` - (optional) If true, this User may create Linodes.\n\n* `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.\n\n* `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.\n\n* `add_stackscripts` - (optional) If true, this User may add StackScripts.\n\n* `cancel_account` - (optional) If true, this User may cancel the entire Account.\n\n* `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.\n\n## Entity Grants\n\n* `id` - (required) The ID of the entity this grant applies to.\n\n* `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)\n",
             "properties": {
                 "domainGrants": {
                     "type": "array",
@@ -7055,6 +7100,13 @@
                 "email": {
                     "type": "string",
                     "description": "The email address of the user.\n"
+                },
+                "firewallGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserFirewallGrant:UserFirewallGrant"
+                    },
+                    "description": "The firewalls the user has permissions access to.\n"
                 },
                 "globalGrants": {
                     "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",
@@ -7125,6 +7177,7 @@
             "required": [
                 "domainGrants",
                 "email",
+                "firewallGrants",
                 "globalGrants",
                 "imageGrants",
                 "linodeGrants",
@@ -7147,6 +7200,13 @@
                 "email": {
                     "type": "string",
                     "description": "The email address of the user.\n"
+                },
+                "firewallGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserFirewallGrant:UserFirewallGrant"
+                    },
+                    "description": "The firewalls the user has permissions access to.\n"
                 },
                 "globalGrants": {
                     "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",
@@ -7220,6 +7280,13 @@
                     "email": {
                         "type": "string",
                         "description": "The email address of the user.\n"
+                    },
+                    "firewallGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/UserFirewallGrant:UserFirewallGrant"
+                        },
+                        "description": "The firewalls the user has permissions access to.\n"
                     },
                     "globalGrants": {
                         "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",

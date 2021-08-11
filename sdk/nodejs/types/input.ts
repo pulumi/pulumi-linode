@@ -541,9 +541,15 @@ export interface UserDomainGrant {
     permissions: pulumi.Input<string>;
 }
 
+export interface UserFirewallGrant {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
 export interface UserGlobalGrants {
     accountAccess?: pulumi.Input<string>;
     addDomains?: pulumi.Input<boolean>;
+    addFirewalls?: pulumi.Input<boolean>;
     addImages?: pulumi.Input<boolean>;
     addLinodes?: pulumi.Input<boolean>;
     addLongview?: pulumi.Input<boolean>;

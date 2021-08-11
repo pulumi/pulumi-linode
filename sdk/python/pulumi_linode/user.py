@@ -18,6 +18,7 @@ class UserArgs:
                  email: pulumi.Input[str],
                  username: pulumi.Input[str],
                  domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]] = None,
                  global_grants: Optional[pulumi.Input['UserGlobalGrantsArgs']] = None,
                  image_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]]] = None,
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
@@ -31,6 +32,7 @@ class UserArgs:
         :param pulumi.Input[str] email: The email address of the user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
         :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
         :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
@@ -44,6 +46,8 @@ class UserArgs:
         pulumi.set(__self__, "username", username)
         if domain_grants is not None:
             pulumi.set(__self__, "domain_grants", domain_grants)
+        if firewall_grants is not None:
+            pulumi.set(__self__, "firewall_grants", firewall_grants)
         if global_grants is not None:
             pulumi.set(__self__, "global_grants", global_grants)
         if image_grants is not None:
@@ -96,6 +100,18 @@ class UserArgs:
     @domain_grants.setter
     def domain_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]]):
         pulumi.set(self, "domain_grants", value)
+
+    @property
+    @pulumi.getter(name="firewallGrants")
+    def firewall_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]:
+        """
+        The firewalls the user has permissions access to.
+        """
+        return pulumi.get(self, "firewall_grants")
+
+    @firewall_grants.setter
+    def firewall_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]):
+        pulumi.set(self, "firewall_grants", value)
 
     @property
     @pulumi.getter(name="globalGrants")
@@ -199,6 +215,7 @@ class _UserState:
     def __init__(__self__, *,
                  domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]] = None,
                  global_grants: Optional[pulumi.Input['UserGlobalGrantsArgs']] = None,
                  image_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]]] = None,
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
@@ -214,6 +231,7 @@ class _UserState:
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
+        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
         :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
         :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
@@ -230,6 +248,8 @@ class _UserState:
             pulumi.set(__self__, "domain_grants", domain_grants)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if firewall_grants is not None:
+            pulumi.set(__self__, "firewall_grants", firewall_grants)
         if global_grants is not None:
             pulumi.set(__self__, "global_grants", global_grants)
         if image_grants is not None:
@@ -276,6 +296,18 @@ class _UserState:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="firewallGrants")
+    def firewall_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]:
+        """
+        The firewalls the user has permissions access to.
+        """
+        return pulumi.get(self, "firewall_grants")
+
+    @firewall_grants.setter
+    def firewall_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]):
+        pulumi.set(self, "firewall_grants", value)
 
     @property
     @pulumi.getter(name="globalGrants")
@@ -417,6 +449,7 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
                  global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
                  image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
@@ -468,6 +501,8 @@ class User(pulumi.CustomResource):
 
         * `add_domains` - (optional) If true, this User may add Domains.
 
+        * `add_firewalls` - (optional) If true, this User may add Firewalls.
+
         * `add_images` - (optional) If true, this User may add Images.
 
         * `add_linodes` - (optional) If true, this User may create Linodes.
@@ -492,6 +527,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
         :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
@@ -549,6 +585,8 @@ class User(pulumi.CustomResource):
 
         * `add_domains` - (optional) If true, this User may add Domains.
 
+        * `add_firewalls` - (optional) If true, this User may add Firewalls.
+
         * `add_images` - (optional) If true, this User may add Images.
 
         * `add_linodes` - (optional) If true, this User may create Linodes.
@@ -586,6 +624,7 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
                  global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
                  image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
@@ -611,6 +650,7 @@ class User(pulumi.CustomResource):
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
+            __props__.__dict__["firewall_grants"] = firewall_grants
             __props__.__dict__["global_grants"] = global_grants
             __props__.__dict__["image_grants"] = image_grants
             __props__.__dict__["linode_grants"] = linode_grants
@@ -636,6 +676,7 @@ class User(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
             email: Optional[pulumi.Input[str]] = None,
+            firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
             global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
             image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
             linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
@@ -656,6 +697,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
         :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
@@ -674,6 +716,7 @@ class User(pulumi.CustomResource):
 
         __props__.__dict__["domain_grants"] = domain_grants
         __props__.__dict__["email"] = email
+        __props__.__dict__["firewall_grants"] = firewall_grants
         __props__.__dict__["global_grants"] = global_grants
         __props__.__dict__["image_grants"] = image_grants
         __props__.__dict__["linode_grants"] = linode_grants
@@ -702,6 +745,14 @@ class User(pulumi.CustomResource):
         The email address of the user.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firewallGrants")
+    def firewall_grants(self) -> pulumi.Output[Sequence['outputs.UserFirewallGrant']]:
+        """
+        The firewalls the user has permissions access to.
+        """
+        return pulumi.get(self, "firewall_grants")
 
     @property
     @pulumi.getter(name="globalGrants")

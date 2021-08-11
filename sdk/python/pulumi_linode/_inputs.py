@@ -41,6 +41,7 @@ __all__ = [
     'ObjectStorageKeyBucketAccessArgs',
     'StackScriptUserDefinedFieldArgs',
     'UserDomainGrantArgs',
+    'UserFirewallGrantArgs',
     'UserGlobalGrantsArgs',
     'UserImageGrantArgs',
     'UserLinodeGrantArgs',
@@ -2153,10 +2154,38 @@ class UserDomainGrantArgs:
 
 
 @pulumi.input_type
+class UserFirewallGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
 class UserGlobalGrantsArgs:
     def __init__(__self__, *,
                  account_access: Optional[pulumi.Input[str]] = None,
                  add_domains: Optional[pulumi.Input[bool]] = None,
+                 add_firewalls: Optional[pulumi.Input[bool]] = None,
                  add_images: Optional[pulumi.Input[bool]] = None,
                  add_linodes: Optional[pulumi.Input[bool]] = None,
                  add_longview: Optional[pulumi.Input[bool]] = None,
@@ -2169,6 +2198,8 @@ class UserGlobalGrantsArgs:
             pulumi.set(__self__, "account_access", account_access)
         if add_domains is not None:
             pulumi.set(__self__, "add_domains", add_domains)
+        if add_firewalls is not None:
+            pulumi.set(__self__, "add_firewalls", add_firewalls)
         if add_images is not None:
             pulumi.set(__self__, "add_images", add_images)
         if add_linodes is not None:
@@ -2203,6 +2234,15 @@ class UserGlobalGrantsArgs:
     @add_domains.setter
     def add_domains(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "add_domains", value)
+
+    @property
+    @pulumi.getter(name="addFirewalls")
+    def add_firewalls(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_firewalls")
+
+    @add_firewalls.setter
+    def add_firewalls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_firewalls", value)
 
     @property
     @pulumi.getter(name="addImages")

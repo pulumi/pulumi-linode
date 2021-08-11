@@ -50,7 +50,7 @@ namespace Pulumi.Linode
     public partial class ObjectStorageBucket : Pulumi.CustomResource
     {
         /// <summary>
-        /// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The access key to authenticate with.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
@@ -92,13 +92,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The secret key to authenticate with.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         [Output("versioning")]
         public Output<bool> Versioning { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageBucketArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The access key to authenticate with.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -198,13 +198,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The secret key to authenticate with.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageBucketState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The access key to authenticate with.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -265,13 +265,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+        /// The secret key to authenticate with.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

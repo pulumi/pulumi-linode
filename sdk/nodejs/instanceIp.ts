@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+ * **NOTICE:** This resource will reboot the specified instance following IP allocation.
  *
  * Manages a Linode instance IP.
  *
@@ -60,6 +61,10 @@ export class InstanceIp extends pulumi.CustomResource {
      */
     public /*out*/ readonly address!: pulumi.Output<string>;
     /**
+     * If true, the instance will be rebooted to update network interfaces.
+     */
+    public readonly applyImmediately!: pulumi.Output<boolean | undefined>;
+    /**
      * The default gateway for this address
      */
     public /*out*/ readonly gateway!: pulumi.Output<string>;
@@ -106,6 +111,7 @@ export class InstanceIp extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
+            inputs["applyImmediately"] = state ? state.applyImmediately : undefined;
             inputs["gateway"] = state ? state.gateway : undefined;
             inputs["linodeId"] = state ? state.linodeId : undefined;
             inputs["prefix"] = state ? state.prefix : undefined;
@@ -119,6 +125,7 @@ export class InstanceIp extends pulumi.CustomResource {
             if ((!args || args.linodeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
+            inputs["applyImmediately"] = args ? args.applyImmediately : undefined;
             inputs["linodeId"] = args ? args.linodeId : undefined;
             inputs["public"] = args ? args.public : undefined;
             inputs["rdns"] = args ? args.rdns : undefined;
@@ -144,6 +151,10 @@ export interface InstanceIpState {
      * The resulting IPv4 address.
      */
     readonly address?: pulumi.Input<string>;
+    /**
+     * If true, the instance will be rebooted to update network interfaces.
+     */
+    readonly applyImmediately?: pulumi.Input<boolean>;
     /**
      * The default gateway for this address
      */
@@ -182,6 +193,10 @@ export interface InstanceIpState {
  * The set of arguments for constructing a InstanceIp resource.
  */
 export interface InstanceIpArgs {
+    /**
+     * If true, the instance will be rebooted to update network interfaces.
+     */
+    readonly applyImmediately?: pulumi.Input<boolean>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
