@@ -48,6 +48,8 @@ import * as utilities from "./utilities";
  *
  * * `addDomains` - (optional) If true, this User may add Domains.
  *
+ * * `addFirewalls` - (optional) If true, this User may add Firewalls.
+ *
  * * `addImages` - (optional) If true, this User may add Images.
  *
  * * `addLinodes` - (optional) If true, this User may create Linodes.
@@ -104,6 +106,10 @@ export class User extends pulumi.CustomResource {
      * The email address of the user.
      */
     public readonly email!: pulumi.Output<string>;
+    /**
+     * The firewalls the user has permissions access to.
+     */
+    public readonly firewallGrants!: pulumi.Output<outputs.UserFirewallGrant[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */
@@ -164,6 +170,7 @@ export class User extends pulumi.CustomResource {
             const state = argsOrState as UserState | undefined;
             inputs["domainGrants"] = state ? state.domainGrants : undefined;
             inputs["email"] = state ? state.email : undefined;
+            inputs["firewallGrants"] = state ? state.firewallGrants : undefined;
             inputs["globalGrants"] = state ? state.globalGrants : undefined;
             inputs["imageGrants"] = state ? state.imageGrants : undefined;
             inputs["linodeGrants"] = state ? state.linodeGrants : undefined;
@@ -185,6 +192,7 @@ export class User extends pulumi.CustomResource {
             }
             inputs["domainGrants"] = args ? args.domainGrants : undefined;
             inputs["email"] = args ? args.email : undefined;
+            inputs["firewallGrants"] = args ? args.firewallGrants : undefined;
             inputs["globalGrants"] = args ? args.globalGrants : undefined;
             inputs["imageGrants"] = args ? args.imageGrants : undefined;
             inputs["linodeGrants"] = args ? args.linodeGrants : undefined;
@@ -216,6 +224,10 @@ export interface UserState {
      * The email address of the user.
      */
     readonly email?: pulumi.Input<string>;
+    /**
+     * The firewalls the user has permissions access to.
+     */
+    readonly firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */
@@ -274,6 +286,10 @@ export interface UserArgs {
      * The email address of the user.
      */
     readonly email: pulumi.Input<string>;
+    /**
+     * The firewalls the user has permissions access to.
+     */
+    readonly firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */

@@ -4820,9 +4820,110 @@ func (o UserDomainGrantArrayOutput) Index(i pulumi.IntInput) UserDomainGrantOutp
 	}).(UserDomainGrantOutput)
 }
 
+type UserFirewallGrant struct {
+	Id          int    `pulumi:"id"`
+	Permissions string `pulumi:"permissions"`
+}
+
+// UserFirewallGrantInput is an input type that accepts UserFirewallGrantArgs and UserFirewallGrantOutput values.
+// You can construct a concrete instance of `UserFirewallGrantInput` via:
+//
+//          UserFirewallGrantArgs{...}
+type UserFirewallGrantInput interface {
+	pulumi.Input
+
+	ToUserFirewallGrantOutput() UserFirewallGrantOutput
+	ToUserFirewallGrantOutputWithContext(context.Context) UserFirewallGrantOutput
+}
+
+type UserFirewallGrantArgs struct {
+	Id          pulumi.IntInput    `pulumi:"id"`
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (UserFirewallGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserFirewallGrant)(nil)).Elem()
+}
+
+func (i UserFirewallGrantArgs) ToUserFirewallGrantOutput() UserFirewallGrantOutput {
+	return i.ToUserFirewallGrantOutputWithContext(context.Background())
+}
+
+func (i UserFirewallGrantArgs) ToUserFirewallGrantOutputWithContext(ctx context.Context) UserFirewallGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserFirewallGrantOutput)
+}
+
+// UserFirewallGrantArrayInput is an input type that accepts UserFirewallGrantArray and UserFirewallGrantArrayOutput values.
+// You can construct a concrete instance of `UserFirewallGrantArrayInput` via:
+//
+//          UserFirewallGrantArray{ UserFirewallGrantArgs{...} }
+type UserFirewallGrantArrayInput interface {
+	pulumi.Input
+
+	ToUserFirewallGrantArrayOutput() UserFirewallGrantArrayOutput
+	ToUserFirewallGrantArrayOutputWithContext(context.Context) UserFirewallGrantArrayOutput
+}
+
+type UserFirewallGrantArray []UserFirewallGrantInput
+
+func (UserFirewallGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserFirewallGrant)(nil)).Elem()
+}
+
+func (i UserFirewallGrantArray) ToUserFirewallGrantArrayOutput() UserFirewallGrantArrayOutput {
+	return i.ToUserFirewallGrantArrayOutputWithContext(context.Background())
+}
+
+func (i UserFirewallGrantArray) ToUserFirewallGrantArrayOutputWithContext(ctx context.Context) UserFirewallGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserFirewallGrantArrayOutput)
+}
+
+type UserFirewallGrantOutput struct{ *pulumi.OutputState }
+
+func (UserFirewallGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserFirewallGrant)(nil)).Elem()
+}
+
+func (o UserFirewallGrantOutput) ToUserFirewallGrantOutput() UserFirewallGrantOutput {
+	return o
+}
+
+func (o UserFirewallGrantOutput) ToUserFirewallGrantOutputWithContext(ctx context.Context) UserFirewallGrantOutput {
+	return o
+}
+
+func (o UserFirewallGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v UserFirewallGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o UserFirewallGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v UserFirewallGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type UserFirewallGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (UserFirewallGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserFirewallGrant)(nil)).Elem()
+}
+
+func (o UserFirewallGrantArrayOutput) ToUserFirewallGrantArrayOutput() UserFirewallGrantArrayOutput {
+	return o
+}
+
+func (o UserFirewallGrantArrayOutput) ToUserFirewallGrantArrayOutputWithContext(ctx context.Context) UserFirewallGrantArrayOutput {
+	return o
+}
+
+func (o UserFirewallGrantArrayOutput) Index(i pulumi.IntInput) UserFirewallGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserFirewallGrant {
+		return vs[0].([]UserFirewallGrant)[vs[1].(int)]
+	}).(UserFirewallGrantOutput)
+}
+
 type UserGlobalGrants struct {
 	AccountAccess        *string `pulumi:"accountAccess"`
 	AddDomains           *bool   `pulumi:"addDomains"`
+	AddFirewalls         *bool   `pulumi:"addFirewalls"`
 	AddImages            *bool   `pulumi:"addImages"`
 	AddLinodes           *bool   `pulumi:"addLinodes"`
 	AddLongview          *bool   `pulumi:"addLongview"`
@@ -4847,6 +4948,7 @@ type UserGlobalGrantsInput interface {
 type UserGlobalGrantsArgs struct {
 	AccountAccess        pulumi.StringPtrInput `pulumi:"accountAccess"`
 	AddDomains           pulumi.BoolPtrInput   `pulumi:"addDomains"`
+	AddFirewalls         pulumi.BoolPtrInput   `pulumi:"addFirewalls"`
 	AddImages            pulumi.BoolPtrInput   `pulumi:"addImages"`
 	AddLinodes           pulumi.BoolPtrInput   `pulumi:"addLinodes"`
 	AddLongview          pulumi.BoolPtrInput   `pulumi:"addLongview"`
@@ -4941,6 +5043,10 @@ func (o UserGlobalGrantsOutput) AddDomains() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddDomains }).(pulumi.BoolPtrOutput)
 }
 
+func (o UserGlobalGrantsOutput) AddFirewalls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddFirewalls }).(pulumi.BoolPtrOutput)
+}
+
 func (o UserGlobalGrantsOutput) AddImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddImages }).(pulumi.BoolPtrOutput)
 }
@@ -5006,6 +5112,15 @@ func (o UserGlobalGrantsPtrOutput) AddDomains() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.AddDomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o UserGlobalGrantsPtrOutput) AddFirewalls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserGlobalGrants) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AddFirewalls
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10519,6 +10634,8 @@ func init() {
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(UserDomainGrantOutput{})
 	pulumi.RegisterOutputType(UserDomainGrantArrayOutput{})
+	pulumi.RegisterOutputType(UserFirewallGrantOutput{})
+	pulumi.RegisterOutputType(UserFirewallGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserGlobalGrantsOutput{})
 	pulumi.RegisterOutputType(UserGlobalGrantsPtrOutput{})
 	pulumi.RegisterOutputType(UserImageGrantOutput{})

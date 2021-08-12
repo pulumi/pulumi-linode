@@ -18,6 +18,9 @@ namespace Pulumi.Linode.Inputs
         [Input("addDomains")]
         public Input<bool>? AddDomains { get; set; }
 
+        [Input("addFirewalls")]
+        public Input<bool>? AddFirewalls { get; set; }
+
         [Input("addImages")]
         public Input<bool>? AddImages { get; set; }
 

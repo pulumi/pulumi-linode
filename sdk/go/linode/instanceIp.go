@@ -12,6 +12,7 @@ import (
 )
 
 // > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+// **NOTICE:** This resource will reboot the specified instance following IP allocation.
 //
 // Manages a Linode instance IP.
 //
@@ -52,6 +53,8 @@ type InstanceIp struct {
 
 	// The resulting IPv4 address.
 	Address pulumi.StringOutput `pulumi:"address"`
+	// If true, the instance will be rebooted to update network interfaces.
+	ApplyImmediately pulumi.BoolPtrOutput `pulumi:"applyImmediately"`
 	// The default gateway for this address
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
 	// The ID of the Linode to allocate an IPv4 address for.
@@ -104,6 +107,8 @@ func GetInstanceIp(ctx *pulumi.Context,
 type instanceIpState struct {
 	// The resulting IPv4 address.
 	Address *string `pulumi:"address"`
+	// If true, the instance will be rebooted to update network interfaces.
+	ApplyImmediately *bool `pulumi:"applyImmediately"`
 	// The default gateway for this address
 	Gateway *string `pulumi:"gateway"`
 	// The ID of the Linode to allocate an IPv4 address for.
@@ -125,6 +130,8 @@ type instanceIpState struct {
 type InstanceIpState struct {
 	// The resulting IPv4 address.
 	Address pulumi.StringPtrInput
+	// If true, the instance will be rebooted to update network interfaces.
+	ApplyImmediately pulumi.BoolPtrInput
 	// The default gateway for this address
 	Gateway pulumi.StringPtrInput
 	// The ID of the Linode to allocate an IPv4 address for.
@@ -148,6 +155,8 @@ func (InstanceIpState) ElementType() reflect.Type {
 }
 
 type instanceIpArgs struct {
+	// If true, the instance will be rebooted to update network interfaces.
+	ApplyImmediately *bool `pulumi:"applyImmediately"`
 	// The ID of the Linode to allocate an IPv4 address for.
 	LinodeId int `pulumi:"linodeId"`
 	// Whether the IPv4 address is public or private. Defaults to true.
@@ -158,6 +167,8 @@ type instanceIpArgs struct {
 
 // The set of arguments for constructing a InstanceIp resource.
 type InstanceIpArgs struct {
+	// If true, the instance will be rebooted to update network interfaces.
+	ApplyImmediately pulumi.BoolPtrInput
 	// The ID of the Linode to allocate an IPv4 address for.
 	LinodeId pulumi.IntInput
 	// Whether the IPv4 address is public or private. Defaults to true.

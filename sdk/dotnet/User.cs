@@ -73,6 +73,8 @@ namespace Pulumi.Linode
     /// 
     /// * `add_domains` - (optional) If true, this User may add Domains.
     /// 
+    /// * `add_firewalls` - (optional) If true, this User may add Firewalls.
+    /// 
     /// * `add_images` - (optional) If true, this User may add Images.
     /// 
     /// * `add_linodes` - (optional) If true, this User may create Linodes.
@@ -107,6 +109,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// The firewalls the user has permissions access to.
+        /// </summary>
+        [Output("firewallGrants")]
+        public Output<ImmutableArray<Outputs.UserFirewallGrant>> FirewallGrants { get; private set; } = null!;
 
         /// <summary>
         /// A structure containing the Account-level grants a User has.
@@ -238,6 +246,18 @@ namespace Pulumi.Linode
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+        [Input("firewallGrants")]
+        private InputList<Inputs.UserFirewallGrantArgs>? _firewallGrants;
+
+        /// <summary>
+        /// The firewalls the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserFirewallGrantArgs> FirewallGrants
+        {
+            get => _firewallGrants ?? (_firewallGrants = new InputList<Inputs.UserFirewallGrantArgs>());
+            set => _firewallGrants = value;
+        }
+
         /// <summary>
         /// A structure containing the Account-level grants a User has.
         /// </summary>
@@ -352,6 +372,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        [Input("firewallGrants")]
+        private InputList<Inputs.UserFirewallGrantGetArgs>? _firewallGrants;
+
+        /// <summary>
+        /// The firewalls the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserFirewallGrantGetArgs> FirewallGrants
+        {
+            get => _firewallGrants ?? (_firewallGrants = new InputList<Inputs.UserFirewallGrantGetArgs>());
+            set => _firewallGrants = value;
+        }
 
         /// <summary>
         /// A structure containing the Account-level grants a User has.

@@ -57,7 +57,7 @@ import (
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
 
-	// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
@@ -71,9 +71,9 @@ type ObjectStorageBucket struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
-	// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
-	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
 	Versioning pulumi.BoolOutput `pulumi:"versioning"`
 }
 
@@ -112,7 +112,7 @@ func GetObjectStorageBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObjectStorageBucket resources.
 type objectStorageBucketState struct {
-	// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The access key to authenticate with.
 	AccessKey *string `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
 	Acl *string `pulumi:"acl"`
@@ -126,14 +126,14 @@ type objectStorageBucketState struct {
 	Label *string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
-	// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
-	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
 	Versioning *bool `pulumi:"versioning"`
 }
 
 type ObjectStorageBucketState struct {
-	// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrInput
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
 	Acl pulumi.StringPtrInput
@@ -147,9 +147,9 @@ type ObjectStorageBucketState struct {
 	Label pulumi.StringPtrInput
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
-	// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
-	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
 	Versioning pulumi.BoolPtrInput
 }
 
@@ -158,7 +158,7 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 }
 
 type objectStorageBucketArgs struct {
-	// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The access key to authenticate with.
 	AccessKey *string `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
 	Acl *string `pulumi:"acl"`
@@ -172,15 +172,15 @@ type objectStorageBucketArgs struct {
 	Label string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
-	// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
-	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
 	Versioning *bool `pulumi:"versioning"`
 }
 
 // The set of arguments for constructing a ObjectStorageBucket resource.
 type ObjectStorageBucketArgs struct {
-	// The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrInput
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
 	Acl pulumi.StringPtrInput
@@ -194,9 +194,9 @@ type ObjectStorageBucketArgs struct {
 	Label pulumi.StringInput
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
-	// The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
-	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
 	Versioning pulumi.BoolPtrInput
 }
 

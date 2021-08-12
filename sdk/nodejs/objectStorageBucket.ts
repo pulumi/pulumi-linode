@@ -62,7 +62,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     }
 
     /**
-     * The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The access key to authenticate with.
      */
     public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
@@ -90,11 +90,11 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     public readonly lifecycleRules!: pulumi.Output<outputs.ObjectStorageBucketLifecycleRule[] | undefined>;
     /**
-     * The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The secret key to authenticate with.
      */
     public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      */
     public readonly versioning!: pulumi.Output<boolean>;
 
@@ -150,7 +150,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
  */
 export interface ObjectStorageBucketState {
     /**
-     * The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The access key to authenticate with.
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
@@ -178,11 +178,11 @@ export interface ObjectStorageBucketState {
      */
     readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
-     * The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The secret key to authenticate with.
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
-     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      */
     readonly versioning?: pulumi.Input<boolean>;
 }
@@ -192,7 +192,7 @@ export interface ObjectStorageBucketState {
  */
 export interface ObjectStorageBucketArgs {
     /**
-     * The S3 access key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The access key to authenticate with.
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
@@ -220,11 +220,11 @@ export interface ObjectStorageBucketArgs {
      */
     readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
-     * The S3 secret key to use for this resource. (Required for lifecycle_rule and versioning)
+     * The secret key to authenticate with.
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
-     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      */
     readonly versioning?: pulumi.Input<boolean>;
 }

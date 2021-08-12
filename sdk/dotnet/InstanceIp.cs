@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// &gt; **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
+    /// **NOTICE:** This resource will reboot the specified instance following IP allocation.
     /// 
     /// Manages a Linode instance IP.
     /// 
@@ -49,6 +50,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the instance will be rebooted to update network interfaces.
+        /// </summary>
+        [Output("applyImmediately")]
+        public Output<bool?> ApplyImmediately { get; private set; } = null!;
 
         /// <summary>
         /// The default gateway for this address
@@ -145,6 +152,12 @@ namespace Pulumi.Linode
     public sealed class InstanceIpArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, the instance will be rebooted to update network interfaces.
+        /// </summary>
+        [Input("applyImmediately")]
+        public Input<bool>? ApplyImmediately { get; set; }
+
+        /// <summary>
         /// The ID of the Linode to allocate an IPv4 address for.
         /// </summary>
         [Input("linodeId", required: true)]
@@ -174,6 +187,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
+
+        /// <summary>
+        /// If true, the instance will be rebooted to update network interfaces.
+        /// </summary>
+        [Input("applyImmediately")]
+        public Input<bool>? ApplyImmediately { get; set; }
 
         /// <summary>
         /// The default gateway for this address

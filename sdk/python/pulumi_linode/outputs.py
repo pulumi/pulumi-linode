@@ -42,6 +42,7 @@ __all__ = [
     'ObjectStorageKeyBucketAccess',
     'StackScriptUserDefinedField',
     'UserDomainGrant',
+    'UserFirewallGrant',
     'UserGlobalGrants',
     'UserImageGrant',
     'UserLinodeGrant',
@@ -2110,6 +2111,25 @@ class UserDomainGrant(dict):
 
 
 @pulumi.output_type
+class UserFirewallGrant(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
 class UserGlobalGrants(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2118,6 +2138,8 @@ class UserGlobalGrants(dict):
             suggest = "account_access"
         elif key == "addDomains":
             suggest = "add_domains"
+        elif key == "addFirewalls":
+            suggest = "add_firewalls"
         elif key == "addImages":
             suggest = "add_images"
         elif key == "addLinodes":
@@ -2149,6 +2171,7 @@ class UserGlobalGrants(dict):
     def __init__(__self__, *,
                  account_access: Optional[str] = None,
                  add_domains: Optional[bool] = None,
+                 add_firewalls: Optional[bool] = None,
                  add_images: Optional[bool] = None,
                  add_linodes: Optional[bool] = None,
                  add_longview: Optional[bool] = None,
@@ -2161,6 +2184,8 @@ class UserGlobalGrants(dict):
             pulumi.set(__self__, "account_access", account_access)
         if add_domains is not None:
             pulumi.set(__self__, "add_domains", add_domains)
+        if add_firewalls is not None:
+            pulumi.set(__self__, "add_firewalls", add_firewalls)
         if add_images is not None:
             pulumi.set(__self__, "add_images", add_images)
         if add_linodes is not None:
@@ -2187,6 +2212,11 @@ class UserGlobalGrants(dict):
     @pulumi.getter(name="addDomains")
     def add_domains(self) -> Optional[bool]:
         return pulumi.get(self, "add_domains")
+
+    @property
+    @pulumi.getter(name="addFirewalls")
+    def add_firewalls(self) -> Optional[bool]:
+        return pulumi.get(self, "add_firewalls")
 
     @property
     @pulumi.getter(name="addImages")
