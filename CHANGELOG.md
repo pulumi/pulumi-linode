@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.20.0 of the Linode Terraform Provider
+_(none)_
 
 ---
+
+## 3.3.0 (2021-08-12)
+* Upgrade to v1.20.0 of the Linode Terraform Provider
 
 ## 3.2.0 (2021-06-28)
 * Upgrade to v1.19.1 of the Linode Terraform Provider
