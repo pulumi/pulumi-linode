@@ -52,7 +52,7 @@ namespace Pulumi.Linode
     ///                     },
     ///                     Ipv6s = 
     ///                     {
-    ///                         "ff00::/8",
+    ///                         "::/0",
     ///                     },
     ///                 },
     ///                 new Linode.Inputs.FirewallInboundArgs
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
     ///                     },
     ///                     Ipv6s = 
     ///                     {
-    ///                         "ff00::/8",
+    ///                         "::/0",
     ///                     },
     ///                 },
     ///             },
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
     ///                     },
     ///                     Ipv6s = 
     ///                     {
-    ///                         "ff00::/8",
+    ///                         "::/0",
     ///                     },
     ///                 },
     ///                 new Linode.Inputs.FirewallOutboundArgs
@@ -101,7 +101,7 @@ namespace Pulumi.Linode
     ///                     },
     ///                     Ipv6s = 
     ///                     {
-    ///                         "ff00::/8",
+    ///                         "::/0",
     ///                     },
     ///                 },
     ///             },
