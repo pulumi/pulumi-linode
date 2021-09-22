@@ -4,49 +4,127 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("linode");
+declare var exports: any;
+const __config = new pulumi.Config("linode");
 
 /**
  * An HTTP User-Agent Prefix to prepend in API requests.
  */
-export let apiVersion: string | undefined = __config.get("apiVersion") || utilities.getEnv("LINODE_API_VERSION");
+export declare const apiVersion: string | undefined;
+Object.defineProperty(exports, "apiVersion", {
+    get() {
+        return __config.get("apiVersion") ?? utilities.getEnv("LINODE_API_VERSION");
+    },
+    enumerable: true,
+});
+
 /**
  * The rate in milliseconds to poll for events.
  */
-export let eventPollMs: number | undefined = __config.getObject<number>("eventPollMs");
+export declare const eventPollMs: number | undefined;
+Object.defineProperty(exports, "eventPollMs", {
+    get() {
+        return __config.getObject<number>("eventPollMs");
+    },
+    enumerable: true,
+});
+
 /**
  * The rate in milliseconds to poll for LKE events.
  */
-export let lkeEventPollMs: number | undefined = __config.getObject<number>("lkeEventPollMs");
+export declare const lkeEventPollMs: number | undefined;
+Object.defineProperty(exports, "lkeEventPollMs", {
+    get() {
+        return __config.getObject<number>("lkeEventPollMs");
+    },
+    enumerable: true,
+});
+
 /**
  * The rate in milliseconds to poll for an LKE node to be ready.
  */
-export let lkeNodeReadyPollMs: number | undefined = __config.getObject<number>("lkeNodeReadyPollMs");
+export declare const lkeNodeReadyPollMs: number | undefined;
+Object.defineProperty(exports, "lkeNodeReadyPollMs", {
+    get() {
+        return __config.getObject<number>("lkeNodeReadyPollMs");
+    },
+    enumerable: true,
+});
+
 /**
  * Maximum delay in milliseconds before retrying a request.
  */
-export let maxRetryDelayMs: number | undefined = __config.getObject<number>("maxRetryDelayMs");
+export declare const maxRetryDelayMs: number | undefined;
+Object.defineProperty(exports, "maxRetryDelayMs", {
+    get() {
+        return __config.getObject<number>("maxRetryDelayMs");
+    },
+    enumerable: true,
+});
+
 /**
  * Minimum delay in milliseconds before retrying a request.
  */
-export let minRetryDelayMs: number | undefined = __config.getObject<number>("minRetryDelayMs");
+export declare const minRetryDelayMs: number | undefined;
+Object.defineProperty(exports, "minRetryDelayMs", {
+    get() {
+        return __config.getObject<number>("minRetryDelayMs");
+    },
+    enumerable: true,
+});
+
 /**
  * Skip waiting for a linode_instance resource to finish deleting.
  */
-export let skipInstanceDeletePoll: boolean | undefined = __config.getObject<boolean>("skipInstanceDeletePoll");
+export declare const skipInstanceDeletePoll: boolean | undefined;
+Object.defineProperty(exports, "skipInstanceDeletePoll", {
+    get() {
+        return __config.getObject<boolean>("skipInstanceDeletePoll");
+    },
+    enumerable: true,
+});
+
 /**
  * Skip waiting for a linode_instance resource to be running.
  */
-export let skipInstanceReadyPoll: boolean | undefined = __config.getObject<boolean>("skipInstanceReadyPoll");
+export declare const skipInstanceReadyPoll: boolean | undefined;
+Object.defineProperty(exports, "skipInstanceReadyPoll", {
+    get() {
+        return __config.getObject<boolean>("skipInstanceReadyPoll");
+    },
+    enumerable: true,
+});
+
 /**
  * The token that allows you access to your Linode account
  */
-export let token: string | undefined = __config.get("token");
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+
 /**
  * An HTTP User-Agent Prefix to prepend in API requests.
  */
-export let uaPrefix: string | undefined = __config.get("uaPrefix") || utilities.getEnv("LINODE_UA_PREFIX");
+export declare const uaPrefix: string | undefined;
+Object.defineProperty(exports, "uaPrefix", {
+    get() {
+        return __config.get("uaPrefix") ?? utilities.getEnv("LINODE_UA_PREFIX");
+    },
+    enumerable: true,
+});
+
 /**
  * The HTTP(S) API address of the Linode API to use.
  */
-export let url: string | undefined = __config.get("url") || utilities.getEnv("LINODE_URL");
+export declare const url: string | undefined;
+Object.defineProperty(exports, "url", {
+    get() {
+        return __config.get("url") ?? utilities.getEnv("LINODE_URL");
+    },
+    enumerable: true,
+});
+

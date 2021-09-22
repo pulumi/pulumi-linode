@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
+// 		_, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
 // 			Id: "us-east-1",
 // 		}, nil)
 // 		if err != nil {
@@ -70,4 +73,66 @@ type GetObjectStorageClusterResult struct {
 	Region           string `pulumi:"region"`
 	StaticSiteDomain string `pulumi:"staticSiteDomain"`
 	Status           string `pulumi:"status"`
+}
+
+func GetObjectStorageClusterOutput(ctx *pulumi.Context, args GetObjectStorageClusterOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetObjectStorageClusterResult, error) {
+			args := v.(GetObjectStorageClusterArgs)
+			r, err := GetObjectStorageCluster(ctx, &args, opts...)
+			return *r, err
+		}).(GetObjectStorageClusterResultOutput)
+}
+
+// A collection of arguments for invoking getObjectStorageCluster.
+type GetObjectStorageClusterOutputArgs struct {
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The unique ID of this cluster.
+	Id               pulumi.StringInput    `pulumi:"id"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+	StaticSiteDomain pulumi.StringPtrInput `pulumi:"staticSiteDomain"`
+	Status           pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetObjectStorageClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getObjectStorageCluster.
+type GetObjectStorageClusterResultOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageClusterResult)(nil)).Elem()
+}
+
+func (o GetObjectStorageClusterResultOutput) ToGetObjectStorageClusterResultOutput() GetObjectStorageClusterResultOutput {
+	return o
+}
+
+func (o GetObjectStorageClusterResultOutput) ToGetObjectStorageClusterResultOutputWithContext(ctx context.Context) GetObjectStorageClusterResultOutput {
+	return o
+}
+
+func (o GetObjectStorageClusterResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetObjectStorageClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetObjectStorageClusterResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetObjectStorageClusterResultOutput) StaticSiteDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.StaticSiteDomain }).(pulumi.StringOutput)
+}
+
+func (o GetObjectStorageClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetObjectStorageClusterResultOutput{})
 }

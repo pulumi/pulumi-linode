@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const my_backups = pulumi.output(linode.getInstanceBackups({
  *     id: "123",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceBackups(args: GetInstanceBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceBackupsResult> {
@@ -39,7 +39,7 @@ export interface GetInstanceBackupsArgs {
     /**
      * The Linode instance's ID.
      */
-    readonly linodeId: number;
+    linodeId: number;
 }
 
 /**

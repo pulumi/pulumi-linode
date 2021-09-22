@@ -25,6 +25,22 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * An HTTP User-Agent Prefix to prepend in API requests.
+     */
+    public readonly apiVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The token that allows you access to your Linode account
+     */
+    public readonly token!: pulumi.Output<string>;
+    /**
+     * An HTTP User-Agent Prefix to prepend in API requests.
+     */
+    public readonly uaPrefix!: pulumi.Output<string | undefined>;
+    /**
+     * The HTTP(S) API address of the Linode API to use.
+     */
+    public readonly url!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -66,45 +82,45 @@ export interface ProviderArgs {
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
-    readonly apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string>;
     /**
      * The rate in milliseconds to poll for events.
      */
-    readonly eventPollMs?: pulumi.Input<number>;
+    eventPollMs?: pulumi.Input<number>;
     /**
      * The rate in milliseconds to poll for LKE events.
      */
-    readonly lkeEventPollMs?: pulumi.Input<number>;
+    lkeEventPollMs?: pulumi.Input<number>;
     /**
      * The rate in milliseconds to poll for an LKE node to be ready.
      */
-    readonly lkeNodeReadyPollMs?: pulumi.Input<number>;
+    lkeNodeReadyPollMs?: pulumi.Input<number>;
     /**
      * Maximum delay in milliseconds before retrying a request.
      */
-    readonly maxRetryDelayMs?: pulumi.Input<number>;
+    maxRetryDelayMs?: pulumi.Input<number>;
     /**
      * Minimum delay in milliseconds before retrying a request.
      */
-    readonly minRetryDelayMs?: pulumi.Input<number>;
+    minRetryDelayMs?: pulumi.Input<number>;
     /**
      * Skip waiting for a linode_instance resource to finish deleting.
      */
-    readonly skipInstanceDeletePoll?: pulumi.Input<boolean>;
+    skipInstanceDeletePoll?: pulumi.Input<boolean>;
     /**
      * Skip waiting for a linode_instance resource to be running.
      */
-    readonly skipInstanceReadyPoll?: pulumi.Input<boolean>;
+    skipInstanceReadyPoll?: pulumi.Input<boolean>;
     /**
      * The token that allows you access to your Linode account
      */
-    readonly token: pulumi.Input<string>;
+    token: pulumi.Input<string>;
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
-    readonly uaPrefix?: pulumi.Input<string>;
+    uaPrefix?: pulumi.Input<string>;
     /**
      * The HTTP(S) API address of the Linode API to use.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }

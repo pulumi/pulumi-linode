@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const my_cluster = pulumi.output(linode.getLkeCluster({
  *     id: 123,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
@@ -39,7 +39,7 @@ export interface GetLkeClusterArgs {
     /**
      * The LKE Cluster's ID.
      */
-    readonly id: number;
+    id: number;
 }
 
 /**

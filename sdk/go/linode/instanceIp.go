@@ -243,7 +243,7 @@ type InstanceIpArrayInput interface {
 type InstanceIpArray []InstanceIpInput
 
 func (InstanceIpArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceIp)(nil))
+	return reflect.TypeOf((*[]*InstanceIp)(nil)).Elem()
 }
 
 func (i InstanceIpArray) ToInstanceIpArrayOutput() InstanceIpArrayOutput {
@@ -268,7 +268,7 @@ type InstanceIpMapInput interface {
 type InstanceIpMap map[string]InstanceIpInput
 
 func (InstanceIpMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceIp)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIp)(nil)).Elem()
 }
 
 func (i InstanceIpMap) ToInstanceIpMapOutput() InstanceIpMapOutput {
@@ -279,9 +279,7 @@ func (i InstanceIpMap) ToInstanceIpMapOutputWithContext(ctx context.Context) Ins
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpMapOutput)
 }
 
-type InstanceIpOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIpOutput struct{ *pulumi.OutputState }
 
 func (InstanceIpOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIp)(nil))
@@ -300,14 +298,12 @@ func (o InstanceIpOutput) ToInstanceIpPtrOutput() InstanceIpPtrOutput {
 }
 
 func (o InstanceIpOutput) ToInstanceIpPtrOutputWithContext(ctx context.Context) InstanceIpPtrOutput {
-	return o.ApplyT(func(v InstanceIp) *InstanceIp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIp) *InstanceIp {
 		return &v
 	}).(InstanceIpPtrOutput)
 }
 
-type InstanceIpPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIpPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIpPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIp)(nil))
@@ -319,6 +315,16 @@ func (o InstanceIpPtrOutput) ToInstanceIpPtrOutput() InstanceIpPtrOutput {
 
 func (o InstanceIpPtrOutput) ToInstanceIpPtrOutputWithContext(ctx context.Context) InstanceIpPtrOutput {
 	return o
+}
+
+func (o InstanceIpPtrOutput) Elem() InstanceIpOutput {
+	return o.ApplyT(func(v *InstanceIp) InstanceIp {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIp
+		return ret
+	}).(InstanceIpOutput)
 }
 
 type InstanceIpArrayOutput struct{ *pulumi.OutputState }

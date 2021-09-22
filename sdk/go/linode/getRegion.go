@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetRegion(ctx, &linode.GetRegionArgs{
+// 		_, err := linode.GetRegion(ctx, &GetRegionArgs{
 // 			Id: "us-east",
 // 		}, nil)
 // 		if err != nil {
@@ -55,4 +58,53 @@ type GetRegionResult struct {
 	// The country the region resides in.
 	Country string `pulumi:"country"`
 	Id      string `pulumi:"id"`
+}
+
+func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegionResult, error) {
+			args := v.(GetRegionArgs)
+			r, err := GetRegion(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegionResultOutput)
+}
+
+// A collection of arguments for invoking getRegion.
+type GetRegionOutputArgs struct {
+	// The country the region resides in.
+	Country pulumi.StringPtrInput `pulumi:"country"`
+	// The code name of the region to select.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetRegionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegion.
+type GetRegionResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionResult)(nil)).Elem()
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
+	return o
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
+	return o
+}
+
+// The country the region resides in.
+func (o GetRegionResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+func (o GetRegionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionResultOutput{})
 }

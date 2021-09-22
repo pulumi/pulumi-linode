@@ -225,7 +225,7 @@ type TokenArrayInput interface {
 type TokenArray []TokenInput
 
 func (TokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Token)(nil))
+	return reflect.TypeOf((*[]*Token)(nil)).Elem()
 }
 
 func (i TokenArray) ToTokenArrayOutput() TokenArrayOutput {
@@ -250,7 +250,7 @@ type TokenMapInput interface {
 type TokenMap map[string]TokenInput
 
 func (TokenMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Token)(nil))
+	return reflect.TypeOf((*map[string]*Token)(nil)).Elem()
 }
 
 func (i TokenMap) ToTokenMapOutput() TokenMapOutput {
@@ -261,9 +261,7 @@ func (i TokenMap) ToTokenMapOutputWithContext(ctx context.Context) TokenMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TokenMapOutput)
 }
 
-type TokenOutput struct {
-	*pulumi.OutputState
-}
+type TokenOutput struct{ *pulumi.OutputState }
 
 func (TokenOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Token)(nil))
@@ -282,14 +280,12 @@ func (o TokenOutput) ToTokenPtrOutput() TokenPtrOutput {
 }
 
 func (o TokenOutput) ToTokenPtrOutputWithContext(ctx context.Context) TokenPtrOutput {
-	return o.ApplyT(func(v Token) *Token {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Token) *Token {
 		return &v
 	}).(TokenPtrOutput)
 }
 
-type TokenPtrOutput struct {
-	*pulumi.OutputState
-}
+type TokenPtrOutput struct{ *pulumi.OutputState }
 
 func (TokenPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Token)(nil))
@@ -301,6 +297,16 @@ func (o TokenPtrOutput) ToTokenPtrOutput() TokenPtrOutput {
 
 func (o TokenPtrOutput) ToTokenPtrOutputWithContext(ctx context.Context) TokenPtrOutput {
 	return o
+}
+
+func (o TokenPtrOutput) Elem() TokenOutput {
+	return o.ApplyT(func(v *Token) Token {
+		if v != nil {
+			return *v
+		}
+		var ret Token
+		return ret
+	}).(TokenOutput)
 }
 
 type TokenArrayOutput struct{ *pulumi.OutputState }

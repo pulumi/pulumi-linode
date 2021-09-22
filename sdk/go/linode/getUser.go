@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupUser(ctx, &linode.LookupUserArgs{
+// 		_, err := linode.LookupUser(ctx, &GetUserArgs{
 // 			Username: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -65,4 +68,63 @@ type LookupUserResult struct {
 	Restricted bool     `pulumi:"restricted"`
 	SshKeys    []string `pulumi:"sshKeys"`
 	Username   string   `pulumi:"username"`
+}
+
+func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupUserResult, error) {
+			args := v.(LookupUserArgs)
+			r, err := LookupUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupUserResultOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserOutputArgs struct {
+	// The unique username of this User.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (LookupUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUser.
+type LookupUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) Restricted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.Restricted }).(pulumi.BoolOutput)
+}
+
+func (o LookupUserResultOutput) SshKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

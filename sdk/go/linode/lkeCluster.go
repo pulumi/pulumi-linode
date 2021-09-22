@@ -28,8 +28,8 @@ import (
 // 		_, err := linode.NewLkeCluster(ctx, "my_cluster", &linode.LkeClusterArgs{
 // 			K8sVersion: pulumi.String("1.20"),
 // 			Label:      pulumi.String("my-cluster"),
-// 			Pools: linode.LkeClusterPoolArray{
-// 				&linode.LkeClusterPoolArgs{
+// 			Pools: LkeClusterPoolArray{
+// 				&LkeClusterPoolArgs{
 // 					Count: pulumi.Int(3),
 // 					Type:  pulumi.String("g6-standard-2"),
 // 				},
@@ -250,7 +250,7 @@ type LkeClusterArrayInput interface {
 type LkeClusterArray []LkeClusterInput
 
 func (LkeClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LkeCluster)(nil))
+	return reflect.TypeOf((*[]*LkeCluster)(nil)).Elem()
 }
 
 func (i LkeClusterArray) ToLkeClusterArrayOutput() LkeClusterArrayOutput {
@@ -275,7 +275,7 @@ type LkeClusterMapInput interface {
 type LkeClusterMap map[string]LkeClusterInput
 
 func (LkeClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LkeCluster)(nil))
+	return reflect.TypeOf((*map[string]*LkeCluster)(nil)).Elem()
 }
 
 func (i LkeClusterMap) ToLkeClusterMapOutput() LkeClusterMapOutput {
@@ -286,9 +286,7 @@ func (i LkeClusterMap) ToLkeClusterMapOutputWithContext(ctx context.Context) Lke
 	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterMapOutput)
 }
 
-type LkeClusterOutput struct {
-	*pulumi.OutputState
-}
+type LkeClusterOutput struct{ *pulumi.OutputState }
 
 func (LkeClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LkeCluster)(nil))
@@ -307,14 +305,12 @@ func (o LkeClusterOutput) ToLkeClusterPtrOutput() LkeClusterPtrOutput {
 }
 
 func (o LkeClusterOutput) ToLkeClusterPtrOutputWithContext(ctx context.Context) LkeClusterPtrOutput {
-	return o.ApplyT(func(v LkeCluster) *LkeCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeCluster) *LkeCluster {
 		return &v
 	}).(LkeClusterPtrOutput)
 }
 
-type LkeClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type LkeClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (LkeClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LkeCluster)(nil))
@@ -326,6 +322,16 @@ func (o LkeClusterPtrOutput) ToLkeClusterPtrOutput() LkeClusterPtrOutput {
 
 func (o LkeClusterPtrOutput) ToLkeClusterPtrOutputWithContext(ctx context.Context) LkeClusterPtrOutput {
 	return o
+}
+
+func (o LkeClusterPtrOutput) Elem() LkeClusterOutput {
+	return o.ApplyT(func(v *LkeCluster) LkeCluster {
+		if v != nil {
+			return *v
+		}
+		var ret LkeCluster
+		return ret
+	}).(LkeClusterOutput)
 }
 
 type LkeClusterArrayOutput struct{ *pulumi.OutputState }

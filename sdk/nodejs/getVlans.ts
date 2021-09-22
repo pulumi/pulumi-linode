@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         name: "label",
  *         values: ["my-vlan"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -68,7 +68,7 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getVlans.
  */
 export interface GetVlansArgs {
-    readonly filters?: inputs.GetVlansFilter[];
+    filters?: inputs.GetVlansFilter[];
 }
 
 /**

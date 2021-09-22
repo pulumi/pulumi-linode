@@ -13,6 +13,102 @@ import (
 
 // Manages a Linode Firewall.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+// 			Label:    pulumi.String("my_instance"),
+// 			Image:    pulumi.String("linode/ubuntu18.04"),
+// 			Region:   pulumi.String("us-southeast"),
+// 			Type:     pulumi.String("g6-standard-1"),
+// 			RootPass: pulumi.String(fmt.Sprintf("%v%v", "bogusPassword", "$")),
+// 			SwapSize: pulumi.Int(256),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+// 			Label: pulumi.String("my_firewall"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("test"),
+// 			},
+// 			Inbounds: FirewallInboundArray{
+// 				&FirewallInboundArgs{
+// 					Label:    pulumi.String("allow-http"),
+// 					Action:   pulumi.String("ACCEPT"),
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports:    pulumi.String("80"),
+// 					Ipv4s: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 					Ipv6s: pulumi.StringArray{
+// 						pulumi.String("::/0"),
+// 					},
+// 				},
+// 				&FirewallInboundArgs{
+// 					Label:    pulumi.String("allow-https"),
+// 					Action:   pulumi.String("ACCEPT"),
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports:    pulumi.String("443"),
+// 					Ipv4s: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 					Ipv6s: pulumi.StringArray{
+// 						pulumi.String("::/0"),
+// 					},
+// 				},
+// 			},
+// 			InboundPolicy: pulumi.String("DROP"),
+// 			Outbounds: FirewallOutboundArray{
+// 				&FirewallOutboundArgs{
+// 					Label:    pulumi.String("reject-http"),
+// 					Action:   pulumi.String("DROP"),
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports:    pulumi.String("80"),
+// 					Ipv4s: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 					Ipv6s: pulumi.StringArray{
+// 						pulumi.String("::/0"),
+// 					},
+// 				},
+// 				&FirewallOutboundArgs{
+// 					Label:    pulumi.String("reject-https"),
+// 					Action:   pulumi.String("DROP"),
+// 					Protocol: pulumi.String("TCP"),
+// 					Ports:    pulumi.String("443"),
+// 					Ipv4s: pulumi.StringArray{
+// 						pulumi.String("0.0.0.0/0"),
+// 					},
+// 					Ipv6s: pulumi.StringArray{
+// 						pulumi.String("::/0"),
+// 					},
+// 				},
+// 			},
+// 			OutboundPolicy: pulumi.String("ACCEPT"),
+// 			Linodes: pulumi.IntArray{
+// 				myInstance.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Firewalls can be imported using the `id`, e.g.
@@ -237,7 +333,7 @@ type FirewallArrayInput interface {
 type FirewallArray []FirewallInput
 
 func (FirewallArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Firewall)(nil))
+	return reflect.TypeOf((*[]*Firewall)(nil)).Elem()
 }
 
 func (i FirewallArray) ToFirewallArrayOutput() FirewallArrayOutput {
@@ -262,7 +358,7 @@ type FirewallMapInput interface {
 type FirewallMap map[string]FirewallInput
 
 func (FirewallMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Firewall)(nil))
+	return reflect.TypeOf((*map[string]*Firewall)(nil)).Elem()
 }
 
 func (i FirewallMap) ToFirewallMapOutput() FirewallMapOutput {
@@ -273,9 +369,7 @@ func (i FirewallMap) ToFirewallMapOutputWithContext(ctx context.Context) Firewal
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallMapOutput)
 }
 
-type FirewallOutput struct {
-	*pulumi.OutputState
-}
+type FirewallOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Firewall)(nil))
@@ -294,14 +388,12 @@ func (o FirewallOutput) ToFirewallPtrOutput() FirewallPtrOutput {
 }
 
 func (o FirewallOutput) ToFirewallPtrOutputWithContext(ctx context.Context) FirewallPtrOutput {
-	return o.ApplyT(func(v Firewall) *Firewall {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Firewall) *Firewall {
 		return &v
 	}).(FirewallPtrOutput)
 }
 
-type FirewallPtrOutput struct {
-	*pulumi.OutputState
-}
+type FirewallPtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Firewall)(nil))
@@ -313,6 +405,16 @@ func (o FirewallPtrOutput) ToFirewallPtrOutput() FirewallPtrOutput {
 
 func (o FirewallPtrOutput) ToFirewallPtrOutputWithContext(ctx context.Context) FirewallPtrOutput {
 	return o
+}
+
+func (o FirewallPtrOutput) Elem() FirewallOutput {
+	return o.ApplyT(func(v *Firewall) Firewall {
+		if v != nil {
+			return *v
+		}
+		var ret Firewall
+		return ret
+	}).(FirewallOutput)
 }
 
 type FirewallArrayOutput struct{ *pulumi.OutputState }

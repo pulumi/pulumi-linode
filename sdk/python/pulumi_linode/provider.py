@@ -311,3 +311,35 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        An HTTP User-Agent Prefix to prepend in API requests.
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[str]:
+        """
+        The token that allows you access to your Linode account
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="uaPrefix")
+    def ua_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        An HTTP User-Agent Prefix to prepend in API requests.
+        """
+        return pulumi.get(self, "ua_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The HTTP(S) API address of the Linode API to use.
+        """
+        return pulumi.get(self, "url")
+

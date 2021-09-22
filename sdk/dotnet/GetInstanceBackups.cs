@@ -13,6 +13,29 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about the backups of an Instance.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_backups = Output.Create(Linode.GetInstanceBackups.InvokeAsync(new Linode.GetInstanceBackupsArgs
+        ///         {
+        ///             Id = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceBackupsResult> InvokeAsync(GetInstanceBackupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsArgs(), options.WithVersion());

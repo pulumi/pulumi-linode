@@ -203,7 +203,7 @@ type ObjectStorageKeyArrayInput interface {
 type ObjectStorageKeyArray []ObjectStorageKeyInput
 
 func (ObjectStorageKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ObjectStorageKey)(nil))
+	return reflect.TypeOf((*[]*ObjectStorageKey)(nil)).Elem()
 }
 
 func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutput() ObjectStorageKeyArrayOutput {
@@ -228,7 +228,7 @@ type ObjectStorageKeyMapInput interface {
 type ObjectStorageKeyMap map[string]ObjectStorageKeyInput
 
 func (ObjectStorageKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ObjectStorageKey)(nil))
+	return reflect.TypeOf((*map[string]*ObjectStorageKey)(nil)).Elem()
 }
 
 func (i ObjectStorageKeyMap) ToObjectStorageKeyMapOutput() ObjectStorageKeyMapOutput {
@@ -239,9 +239,7 @@ func (i ObjectStorageKeyMap) ToObjectStorageKeyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyMapOutput)
 }
 
-type ObjectStorageKeyOutput struct {
-	*pulumi.OutputState
-}
+type ObjectStorageKeyOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectStorageKey)(nil))
@@ -260,14 +258,12 @@ func (o ObjectStorageKeyOutput) ToObjectStorageKeyPtrOutput() ObjectStorageKeyPt
 }
 
 func (o ObjectStorageKeyOutput) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
-	return o.ApplyT(func(v ObjectStorageKey) *ObjectStorageKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageKey) *ObjectStorageKey {
 		return &v
 	}).(ObjectStorageKeyPtrOutput)
 }
 
-type ObjectStorageKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type ObjectStorageKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ObjectStorageKey)(nil))
@@ -279,6 +275,16 @@ func (o ObjectStorageKeyPtrOutput) ToObjectStorageKeyPtrOutput() ObjectStorageKe
 
 func (o ObjectStorageKeyPtrOutput) ToObjectStorageKeyPtrOutputWithContext(ctx context.Context) ObjectStorageKeyPtrOutput {
 	return o
+}
+
+func (o ObjectStorageKeyPtrOutput) Elem() ObjectStorageKeyOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) ObjectStorageKey {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectStorageKey
+		return ret
+	}).(ObjectStorageKeyOutput)
 }
 
 type ObjectStorageKeyArrayOutput struct{ *pulumi.OutputState }

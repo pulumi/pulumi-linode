@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const myStackscript = pulumi.output(linode.getStackScript({
  *     id: 355872,
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -83,8 +83,8 @@ export interface GetStackScriptArgs {
     /**
      * The unique numeric ID of the StackScript to query.
      */
-    readonly id: number;
-    readonly userDefinedFields?: inputs.GetStackScriptUserDefinedField[];
+    id: number;
+    userDefinedFields?: inputs.GetStackScriptUserDefinedField[];
 }
 
 /**

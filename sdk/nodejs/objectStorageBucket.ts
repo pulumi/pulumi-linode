@@ -152,39 +152,39 @@ export interface ObjectStorageBucketState {
     /**
      * The access key to authenticate with.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The cert used by this Object Storage Bucket.
      */
-    readonly cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
+    cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
     /**
      * The cluster of the Linode Object Storage Bucket.
      */
-    readonly cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     /**
      * If true, the bucket will have CORS enabled for all origins.
      */
-    readonly corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean>;
     /**
      * The label of the Linode Object Storage Bucket.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * Lifecycle rules to be applied to the bucket.
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
      * The secret key to authenticate with.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      */
-    readonly versioning?: pulumi.Input<boolean>;
+    versioning?: pulumi.Input<boolean>;
 }
 
 /**
@@ -194,37 +194,37 @@ export interface ObjectStorageBucketArgs {
     /**
      * The access key to authenticate with.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The cert used by this Object Storage Bucket.
      */
-    readonly cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
+    cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
     /**
      * The cluster of the Linode Object Storage Bucket.
      */
-    readonly cluster: pulumi.Input<string>;
+    cluster: pulumi.Input<string>;
     /**
      * If true, the bucket will have CORS enabled for all origins.
      */
-    readonly corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean>;
     /**
      * The label of the Linode Object Storage Bucket.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * Lifecycle rules to be applied to the bucket.
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
      * The secret key to authenticate with.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      */
-    readonly versioning?: pulumi.Input<boolean>;
+    versioning?: pulumi.Input<boolean>;
 }

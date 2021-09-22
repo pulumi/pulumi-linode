@@ -19,6 +19,31 @@ namespace Pulumi.Linode
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string?> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The token that allows you access to your Linode account
+        /// </summary>
+        [Output("token")]
+        public Output<string> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// </summary>
+        [Output("uaPrefix")]
+        public Output<string?> UaPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The HTTP(S) API address of the Linode API to use.
+        /// </summary>
+        [Output("url")]
+        public Output<string?> Url { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

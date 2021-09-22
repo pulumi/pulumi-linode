@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
+// 		primary, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
 // 			Id: "us-east-1",
 // 		}, nil)
 // 		if err != nil {
@@ -266,7 +266,7 @@ type ObjectStorageBucketArrayInput interface {
 type ObjectStorageBucketArray []ObjectStorageBucketInput
 
 func (ObjectStorageBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ObjectStorageBucket)(nil))
+	return reflect.TypeOf((*[]*ObjectStorageBucket)(nil)).Elem()
 }
 
 func (i ObjectStorageBucketArray) ToObjectStorageBucketArrayOutput() ObjectStorageBucketArrayOutput {
@@ -291,7 +291,7 @@ type ObjectStorageBucketMapInput interface {
 type ObjectStorageBucketMap map[string]ObjectStorageBucketInput
 
 func (ObjectStorageBucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ObjectStorageBucket)(nil))
+	return reflect.TypeOf((*map[string]*ObjectStorageBucket)(nil)).Elem()
 }
 
 func (i ObjectStorageBucketMap) ToObjectStorageBucketMapOutput() ObjectStorageBucketMapOutput {
@@ -302,9 +302,7 @@ func (i ObjectStorageBucketMap) ToObjectStorageBucketMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketMapOutput)
 }
 
-type ObjectStorageBucketOutput struct {
-	*pulumi.OutputState
-}
+type ObjectStorageBucketOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectStorageBucket)(nil))
@@ -323,14 +321,12 @@ func (o ObjectStorageBucketOutput) ToObjectStorageBucketPtrOutput() ObjectStorag
 }
 
 func (o ObjectStorageBucketOutput) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
-	return o.ApplyT(func(v ObjectStorageBucket) *ObjectStorageBucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageBucket) *ObjectStorageBucket {
 		return &v
 	}).(ObjectStorageBucketPtrOutput)
 }
 
-type ObjectStorageBucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type ObjectStorageBucketPtrOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ObjectStorageBucket)(nil))
@@ -342,6 +338,16 @@ func (o ObjectStorageBucketPtrOutput) ToObjectStorageBucketPtrOutput() ObjectSto
 
 func (o ObjectStorageBucketPtrOutput) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
 	return o
+}
+
+func (o ObjectStorageBucketPtrOutput) Elem() ObjectStorageBucketOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucket {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectStorageBucket
+		return ret
+	}).(ObjectStorageBucketOutput)
 }
 
 type ObjectStorageBucketArrayOutput struct{ *pulumi.OutputState }

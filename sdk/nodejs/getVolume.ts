@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(linode.getVolume({
  *     id: 1234567,
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -64,7 +64,7 @@ export interface GetVolumeArgs {
     /**
      * The unique numeric ID of the Volume record to query.
      */
-    readonly id: number;
+    id: number;
 }
 
 /**

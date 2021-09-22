@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetKernel(ctx, &linode.GetKernelArgs{
+// 		_, err := linode.GetKernel(ctx, &GetKernelArgs{
 // 			Id: "linode/latest-64bit",
 // 		}, nil)
 // 		if err != nil {
@@ -75,4 +78,74 @@ type GetKernelResult struct {
 	Pvops        bool   `pulumi:"pvops"`
 	Version      string `pulumi:"version"`
 	Xen          bool   `pulumi:"xen"`
+}
+
+func GetKernelOutput(ctx *pulumi.Context, args GetKernelOutputArgs, opts ...pulumi.InvokeOption) GetKernelResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKernelResult, error) {
+			args := v.(GetKernelArgs)
+			r, err := GetKernel(ctx, &args, opts...)
+			return *r, err
+		}).(GetKernelResultOutput)
+}
+
+// A collection of arguments for invoking getKernel.
+type GetKernelOutputArgs struct {
+	// The unique ID of this Kernel.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetKernelOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKernel.
+type GetKernelResultOutput struct{ *pulumi.OutputState }
+
+func (GetKernelResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelResult)(nil)).Elem()
+}
+
+func (o GetKernelResultOutput) ToGetKernelResultOutput() GetKernelResultOutput {
+	return o
+}
+
+func (o GetKernelResultOutput) ToGetKernelResultOutputWithContext(ctx context.Context) GetKernelResultOutput {
+	return o
+}
+
+func (o GetKernelResultOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelResult) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+func (o GetKernelResultOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+func (o GetKernelResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKernelResultOutput) Kvm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelResult) bool { return v.Kvm }).(pulumi.BoolOutput)
+}
+
+func (o GetKernelResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetKernelResultOutput) Pvops() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelResult) bool { return v.Pvops }).(pulumi.BoolOutput)
+}
+
+func (o GetKernelResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func (o GetKernelResultOutput) Xen() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelResult) bool { return v.Xen }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKernelResultOutput{})
 }

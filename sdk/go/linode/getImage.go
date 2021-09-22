@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupImage(ctx, &linode.LookupImageArgs{
+// 		_, err := linode.LookupImage(ctx, &GetImageArgs{
 // 			Id: "linode/debian8",
 // 		}, nil)
 // 		if err != nil {
@@ -85,4 +88,90 @@ type LookupImageResult struct {
 	Status      string `pulumi:"status"`
 	Type        string `pulumi:"type"`
 	Vendor      string `pulumi:"vendor"`
+}
+
+func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...pulumi.InvokeOption) LookupImageResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupImageResult, error) {
+			args := v.(LookupImageArgs)
+			r, err := LookupImage(ctx, &args, opts...)
+			return *r, err
+		}).(LookupImageResultOutput)
+}
+
+// A collection of arguments for invoking getImage.
+type LookupImageOutputArgs struct {
+	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (LookupImageOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImage.
+type LookupImageResultOutput struct{ *pulumi.OutputState }
+
+func (LookupImageResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageResult)(nil)).Elem()
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOutput {
+	return o
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
+	return o
+}
+
+func (o LookupImageResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+func (o LookupImageResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+func (o LookupImageResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupImageResult) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o LookupImageResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Vendor }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupImageResultOutput{})
 }

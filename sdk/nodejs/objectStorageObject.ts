@@ -214,79 +214,79 @@ export interface ObjectStorageObjectState {
     /**
      * The access key to authenticate with.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The name of the bucket to put the object in.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * The cluster the bucket is in.
      */
-    readonly cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
-    readonly contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string>;
     /**
      * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * The language the content is in e.g. en-US or en-GB.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * The specific version of this object.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * They name of the object once it is in the bucket.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * A map of keys/values to provision metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The secret key to authenitcate with.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * A unique version ID value for the object.
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * Specifies a target URL for website redirect.
      */
-    readonly websiteRedirect?: pulumi.Input<string>;
+    websiteRedirect?: pulumi.Input<string>;
 }
 
 /**
@@ -296,73 +296,73 @@ export interface ObjectStorageObjectArgs {
     /**
      * The access key to authenticate with.
      */
-    readonly accessKey: pulumi.Input<string>;
+    accessKey: pulumi.Input<string>;
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * The name of the bucket to put the object in.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * The cluster the bucket is in.
      */
-    readonly cluster: pulumi.Input<string>;
+    cluster: pulumi.Input<string>;
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
-    readonly content?: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
-    readonly contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string>;
     /**
      * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * The language the content is in e.g. en-US or en-GB.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * The specific version of this object.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * They name of the object once it is in the bucket.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * A map of keys/values to provision metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The secret key to authenitcate with.
      */
-    readonly secretKey: pulumi.Input<string>;
+    secretKey: pulumi.Input<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * Specifies a target URL for website redirect.
      */
-    readonly websiteRedirect?: pulumi.Input<string>;
+    websiteRedirect?: pulumi.Input<string>;
 }

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const ns1LinodeCom = pulumi.output(linode.getNetworkingIp({
  *     address: "162.159.27.72",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -62,7 +62,7 @@ export interface GetNetworkingIpArgs {
     /**
      * The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
      */
-    readonly address: string;
+    address: string;
 }
 
 /**

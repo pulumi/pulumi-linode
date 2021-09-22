@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const region = pulumi.output(linode.getRegion({
  *     id: "us-east",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
@@ -42,11 +42,11 @@ export interface GetRegionArgs {
     /**
      * The country the region resides in.
      */
-    readonly country?: string;
+    country?: string;
     /**
      * The code name of the region to select.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**

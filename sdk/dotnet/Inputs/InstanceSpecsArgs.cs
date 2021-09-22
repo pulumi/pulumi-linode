@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode.Inputs
 {
+
+    public sealed class InstanceSpecsArgs : Pulumi.ResourceArgs
+    {
+        [Input("disk")]
+        public Input<int>? Disk { get; set; }
+
+        [Input("memory")]
+        public Input<int>? Memory { get; set; }
+
+        [Input("transfer")]
+        public Input<int>? Transfer { get; set; }
+
+        [Input("vcpus")]
+        public Input<int>? Vcpus { get; set; }
+
+        public InstanceSpecsArgs()
+        {
+        }
+    }
 }

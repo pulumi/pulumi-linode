@@ -14,6 +14,64 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode images that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode images with a certain label and visibility:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var specific_images = Output.Create(Linode.GetImages.InvokeAsync(new Linode.GetImagesArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new Linode.Inputs.GetImagesFilterArgs
+        ///                 {
+        ///                     Name = "label",
+        ///                     Values = 
+        ///                     {
+        ///                         "Debian 8",
+        ///                     },
+        ///                 },
+        ///                 new Linode.Inputs.GetImagesFilterArgs
+        ///                 {
+        ///                     Name = "is_public",
+        ///                     Values = 
+        ///                     {
+        ///                         "true",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// Get information about all Linode images associated with the current token:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var all_images = Output.Create(Linode.GetImages.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Attributes
         /// 
         /// Each Linode image will be stored in the `images` attribute and will export the following attributes:

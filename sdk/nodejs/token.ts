@@ -136,23 +136,23 @@ export interface TokenState {
     /**
      * The date and time this token was created.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
      */
-    readonly expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string>;
     /**
      * A label for the Token.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      */
-    readonly scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string>;
     /**
      * The token used to access the API.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -162,13 +162,13 @@ export interface TokenArgs {
     /**
      * When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
      */
-    readonly expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string>;
     /**
      * A label for the Token.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      */
-    readonly scopes: pulumi.Input<string>;
+    scopes: pulumi.Input<string>;
 }

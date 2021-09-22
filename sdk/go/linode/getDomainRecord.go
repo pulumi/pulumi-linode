@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := 14950401
-// 		_, err := linode.LookupDomainRecord(ctx, &linode.LookupDomainRecordArgs{
+// 		_, err := linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
 // 			DomainId: 3150401,
 // 			Id:       &opt0,
 // 		}, nil)
@@ -32,7 +35,7 @@ import (
 // 			return err
 // 		}
 // 		opt1 := "www"
-// 		_, err = linode.LookupDomainRecord(ctx, &linode.LookupDomainRecordArgs{
+// 		_, err = linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
 // 			DomainId: 3150401,
 // 			Name:     &opt1,
 // 		}, nil)
@@ -103,4 +106,94 @@ type LookupDomainRecordResult struct {
 	TtlSec   int     `pulumi:"ttlSec"`
 	Type     string  `pulumi:"type"`
 	Weight   int     `pulumi:"weight"`
+}
+
+func LookupDomainRecordOutput(ctx *pulumi.Context, args LookupDomainRecordOutputArgs, opts ...pulumi.InvokeOption) LookupDomainRecordResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDomainRecordResult, error) {
+			args := v.(LookupDomainRecordArgs)
+			r, err := LookupDomainRecord(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDomainRecordResultOutput)
+}
+
+// A collection of arguments for invoking getDomainRecord.
+type LookupDomainRecordOutputArgs struct {
+	// The associated domain's unique ID.
+	DomainId pulumi.IntInput `pulumi:"domainId"`
+	// The unique ID of the Domain Record.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The name of the Record.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupDomainRecordOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainRecordArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomainRecord.
+type LookupDomainRecordResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainRecordResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainRecordResult)(nil)).Elem()
+}
+
+func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutput() LookupDomainRecordResultOutput {
+	return o
+}
+
+func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutputWithContext(ctx context.Context) LookupDomainRecordResultOutput {
+	return o
+}
+
+func (o LookupDomainRecordResultOutput) DomainId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.DomainId }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Service }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainRecordResultOutput) TtlSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.TtlSec }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainRecordResultOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainRecordResultOutput{})
 }

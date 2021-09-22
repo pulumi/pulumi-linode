@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupStackScript(ctx, &linode.LookupStackScriptArgs{
+// 		_, err := linode.LookupStackScript(ctx, &GetStackScriptArgs{
 // 			Id: 355872,
 // 		}, nil)
 // 		if err != nil {
@@ -106,4 +109,99 @@ type LookupStackScriptResult struct {
 	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
 	UserGravatarId    string                           `pulumi:"userGravatarId"`
 	Username          string                           `pulumi:"username"`
+}
+
+func LookupStackScriptOutput(ctx *pulumi.Context, args LookupStackScriptOutputArgs, opts ...pulumi.InvokeOption) LookupStackScriptResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupStackScriptResult, error) {
+			args := v.(LookupStackScriptArgs)
+			r, err := LookupStackScript(ctx, &args, opts...)
+			return *r, err
+		}).(LookupStackScriptResultOutput)
+}
+
+// A collection of arguments for invoking getStackScript.
+type LookupStackScriptOutputArgs struct {
+	// The unique numeric ID of the StackScript to query.
+	Id                pulumi.IntInput                          `pulumi:"id"`
+	UserDefinedFields GetStackScriptUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
+}
+
+func (LookupStackScriptOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackScriptArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getStackScript.
+type LookupStackScriptResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStackScriptResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackScriptResult)(nil)).Elem()
+}
+
+func (o LookupStackScriptResultOutput) ToLookupStackScriptResultOutput() LookupStackScriptResultOutput {
+	return o
+}
+
+func (o LookupStackScriptResultOutput) ToLookupStackScriptResultOutputWithContext(ctx context.Context) LookupStackScriptResultOutput {
+	return o
+}
+
+func (o LookupStackScriptResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) DeploymentsActive() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) int { return v.DeploymentsActive }).(pulumi.IntOutput)
+}
+
+func (o LookupStackScriptResultOutput) DeploymentsTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) int { return v.DeploymentsTotal }).(pulumi.IntOutput)
+}
+
+func (o LookupStackScriptResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o LookupStackScriptResultOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupStackScriptResultOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+func (o LookupStackScriptResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) RevNote() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.RevNote }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Script }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) UserDefinedFields() GetStackScriptUserDefinedFieldArrayOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) []GetStackScriptUserDefinedField { return v.UserDefinedFields }).(GetStackScriptUserDefinedFieldArrayOutput)
+}
+
+func (o LookupStackScriptResultOutput) UserGravatarId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.UserGravatarId }).(pulumi.StringOutput)
+}
+
+func (o LookupStackScriptResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStackScriptResultOutput{})
 }

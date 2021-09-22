@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *             values: ["true"],
  *         },
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  *
  * Get information about all Linode images associated with the current token:
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all_images = pulumi.output(linode.getImages({ async: true }));
+ * const all_images = pulumi.output(linode.getImages());
  * ```
  * ## Attributes
  *
@@ -94,7 +94,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesArgs {
-    readonly filters?: inputs.GetImagesFilter[];
+    filters?: inputs.GetImagesFilter[];
 }
 
 /**

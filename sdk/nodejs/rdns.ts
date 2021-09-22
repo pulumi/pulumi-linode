@@ -96,11 +96,11 @@ export interface RdnsState {
     /**
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The name of the RDNS address.
      */
-    readonly rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string>;
 }
 
 /**
@@ -110,9 +110,9 @@ export interface RdnsArgs {
     /**
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The name of the RDNS address.
      */
-    readonly rdns: pulumi.Input<string>;
+    rdns: pulumi.Input<string>;
 }

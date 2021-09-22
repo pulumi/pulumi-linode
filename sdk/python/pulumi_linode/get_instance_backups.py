@@ -84,6 +84,15 @@ def get_instance_backups(linode_id: Optional[int] = None,
     """
     Provides details about the backups of an Instance.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_backups = linode.get_instance_backups(id=123)
+    ```
+
 
     :param int linode_id: The Linode instance's ID.
     """
