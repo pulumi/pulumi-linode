@@ -182,43 +182,43 @@ export interface NodeBalancerState {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    readonly clientConnThrottle?: pulumi.Input<number>;
+    clientConnThrottle?: pulumi.Input<number>;
     /**
      * When this NodeBalancer was created.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The Public IPv4 Address of this NodeBalancer
      */
-    readonly ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string>;
     /**
      * The Public IPv6 Address of this NodeBalancer
      */
-    readonly ipv6?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string>;
     /**
      * The label of the Linode NodeBalancer
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      */
-    readonly transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
+    transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
     /**
      * When this NodeBalancer was last updated.
      */
-    readonly updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
 }
 
 /**
@@ -228,17 +228,17 @@ export interface NodeBalancerArgs {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    readonly clientConnThrottle?: pulumi.Input<number>;
+    clientConnThrottle?: pulumi.Input<number>;
     /**
      * The label of the Linode NodeBalancer
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

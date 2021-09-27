@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupSshKey(ctx, &linode.LookupSshKeyArgs{
+// 		_, err := linode.LookupSshKey(ctx, &GetSshKeyArgs{
 // 			Label: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -57,4 +60,61 @@ type LookupSshKeyResult struct {
 	Label string `pulumi:"label"`
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
 	SshKey string `pulumi:"sshKey"`
+}
+
+func LookupSshKeyOutput(ctx *pulumi.Context, args LookupSshKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSshKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSshKeyResult, error) {
+			args := v.(LookupSshKeyArgs)
+			r, err := LookupSshKey(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSshKeyResultOutput)
+}
+
+// A collection of arguments for invoking getSshKey.
+type LookupSshKeyOutputArgs struct {
+	// The label of the SSH Key to select.
+	Label pulumi.StringInput `pulumi:"label"`
+}
+
+func (LookupSshKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSshKeyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSshKey.
+type LookupSshKeyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSshKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSshKeyResult)(nil)).Elem()
+}
+
+func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutput() LookupSshKeyResultOutput {
+	return o
+}
+
+func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutputWithContext(ctx context.Context) LookupSshKeyResultOutput {
+	return o
+}
+
+// The date this key was added.
+func (o LookupSshKeyResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSshKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSshKeyResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+func (o LookupSshKeyResultOutput) SshKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) string { return v.SshKey }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSshKeyResultOutput{})
 }

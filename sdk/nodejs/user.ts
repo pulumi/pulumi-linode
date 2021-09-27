@@ -219,59 +219,59 @@ export interface UserState {
     /**
      * The domains the user has permissions access to.
      */
-    readonly domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
     /**
      * The email address of the user.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The firewalls the user has permissions access to.
      */
-    readonly firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */
-    readonly globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
     /**
      * The images the user has permissions access to.
      */
-    readonly imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
     /**
      * The Linodes the user has permissions access to.
      */
-    readonly linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
     /**
      * The longview the user has permissions access to.
      */
-    readonly longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
     /**
      * The NodeBalancers the user has permissions access to.
      */
-    readonly nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      */
-    readonly restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean>;
     /**
      * A list of the User's SSH keys.
      */
-    readonly sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The StackScripts the user has permissions access to.
      */
-    readonly stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
     /**
      * Whether the user has two-factor-authentication enabled.
      */
-    readonly tfaEnabled?: pulumi.Input<boolean>;
+    tfaEnabled?: pulumi.Input<boolean>;
     /**
      * The username of the user.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
      * The volumes the user has permissions access to.
      */
-    readonly volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
 }
 
 /**
@@ -281,49 +281,49 @@ export interface UserArgs {
     /**
      * The domains the user has permissions access to.
      */
-    readonly domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
     /**
      * The email address of the user.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * The firewalls the user has permissions access to.
      */
-    readonly firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */
-    readonly globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
     /**
      * The images the user has permissions access to.
      */
-    readonly imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
     /**
      * The Linodes the user has permissions access to.
      */
-    readonly linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
     /**
      * The longview the user has permissions access to.
      */
-    readonly longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
     /**
      * The NodeBalancers the user has permissions access to.
      */
-    readonly nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      */
-    readonly restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean>;
     /**
      * The StackScripts the user has permissions access to.
      */
-    readonly stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
     /**
      * The username of the user.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
     /**
      * The volumes the user has permissions access to.
      */
-    readonly volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
 }

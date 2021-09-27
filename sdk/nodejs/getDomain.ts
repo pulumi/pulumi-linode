@@ -18,10 +18,10 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(linode.getDomain({
  *     id: "1234567",
- * }, { async: true }));
+ * }));
  * const bar = pulumi.output(linode.getDomain({
  *     domain: "bar.example.com",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -77,11 +77,11 @@ export interface GetDomainArgs {
     /**
      * The unique domain name of the Domain record to query.
      */
-    readonly domain?: string;
+    domain?: string;
     /**
      * The unique numeric ID of the Domain record to query.
      */
-    readonly id?: string;
+    id?: string;
 }
 
 /**

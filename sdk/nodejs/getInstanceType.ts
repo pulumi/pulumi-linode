@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const defaultInstanceType = pulumi.output(linode.getInstanceType({
  *     id: "g6-standard-2",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -69,8 +69,8 @@ export interface GetInstanceTypeArgs {
     /**
      * Label used to identify instance type
      */
-    readonly id: string;
-    readonly label?: string;
+    id: string;
+    label?: string;
 }
 
 /**

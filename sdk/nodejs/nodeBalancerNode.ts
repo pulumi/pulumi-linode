@@ -188,31 +188,31 @@ export interface NodeBalancerNodeState {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The ID of the NodeBalancerConfig to access.
      */
-    readonly configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number>;
     /**
      * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The ID of the NodeBalancer to access.
      */
-    readonly nodebalancerId?: pulumi.Input<number>;
+    nodebalancerId?: pulumi.Input<number>;
     /**
      * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -222,25 +222,25 @@ export interface NodeBalancerNodeArgs {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The ID of the NodeBalancerConfig to access.
      */
-    readonly configId: pulumi.Input<number>;
+    configId: pulumi.Input<number>;
     /**
      * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The ID of the NodeBalancer to access.
      */
-    readonly nodebalancerId: pulumi.Input<number>;
+    nodebalancerId: pulumi.Input<number>;
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }

@@ -122,23 +122,23 @@ export interface ObjectStorageKeyState {
     /**
      * This keypair's access key. This is not secret.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      */
-    readonly bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
+    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * Whether or not this key is a limited access key.
      */
-    readonly limited?: pulumi.Input<boolean>;
+    limited?: pulumi.Input<boolean>;
     /**
      * This keypair's secret key.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
 }
 
 /**
@@ -148,9 +148,9 @@ export interface ObjectStorageKeyArgs {
     /**
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      */
-    readonly bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
+    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
 }

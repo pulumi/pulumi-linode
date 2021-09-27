@@ -150,43 +150,43 @@ export interface InstanceIpState {
     /**
      * The resulting IPv4 address.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * If true, the instance will be rebooted to update network interfaces.
      */
-    readonly applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean>;
     /**
      * The default gateway for this address
      */
-    readonly gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
-    readonly linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number>;
     /**
      * The number of bits set in the subnet mask.
      */
-    readonly prefix?: pulumi.Input<number>;
+    prefix?: pulumi.Input<number>;
     /**
      * Whether the IPv4 address is public or private. Defaults to true.
      */
-    readonly public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean>;
     /**
      * The reverse DNS assigned to this address.
      */
-    readonly rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string>;
     /**
      * The region this IP resides in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    readonly subnetMask?: pulumi.Input<string>;
+    subnetMask?: pulumi.Input<string>;
     /**
      * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -196,17 +196,17 @@ export interface InstanceIpArgs {
     /**
      * If true, the instance will be rebooted to update network interfaces.
      */
-    readonly applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
-    readonly linodeId: pulumi.Input<number>;
+    linodeId: pulumi.Input<number>;
     /**
      * Whether the IPv4 address is public or private. Defaults to true.
      */
-    readonly public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean>;
     /**
      * The reverse DNS assigned to this address.
      */
-    readonly rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string>;
 }

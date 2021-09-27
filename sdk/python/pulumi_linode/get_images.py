@@ -67,6 +67,34 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     """
     Provides information about Linode images that match a set of filters.
 
+    ## Example Usage
+
+    Get information about all Linode images with a certain label and visibility:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_images = linode.get_images(filters=[
+        linode.GetImagesFilterArgs(
+            name="label",
+            values=["Debian 8"],
+        ),
+        linode.GetImagesFilterArgs(
+            name="is_public",
+            values=["true"],
+        ),
+    ])
+    ```
+
+    Get information about all Linode images associated with the current token:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_images = linode.get_images()
+    ```
     ## Attributes
 
     Each Linode image will be stored in the `images` attribute and will export the following attributes:

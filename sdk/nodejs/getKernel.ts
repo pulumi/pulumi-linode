@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const latest = pulumi.output(linode.getKernel({
  *     id: "linode/latest-64bit",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -58,7 +58,7 @@ export interface GetKernelArgs {
     /**
      * The unique ID of this Kernel.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**

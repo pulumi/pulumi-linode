@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(linode.getUser({
  *     username: "foo",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -50,7 +50,7 @@ export interface GetUserArgs {
     /**
      * The unique username of this User.
      */
-    readonly username: string;
+    username: string;
 }
 
 /**

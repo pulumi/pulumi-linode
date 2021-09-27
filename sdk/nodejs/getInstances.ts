@@ -23,7 +23,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
-    readonly filters?: inputs.GetInstancesFilter[];
+    filters?: inputs.GetInstancesFilter[];
 }
 
 /**

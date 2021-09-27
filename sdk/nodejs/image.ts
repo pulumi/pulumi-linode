@@ -198,68 +198,68 @@ export interface ImageState {
     /**
      * When this Image was created.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * The name of the User who created this Image.
      */
-    readonly createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
     /**
      * Whether or not this Image is deprecated. Will only be True for deprecated public Images.
      */
-    readonly deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean>;
     /**
      * A detailed description of this Image.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    readonly diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number>;
     /**
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      */
-    readonly expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string>;
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    readonly fileHash?: pulumi.Input<string>;
+    fileHash?: pulumi.Input<string>;
     /**
      * The path of the image file to be uploaded.
      */
-    readonly filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string>;
     /**
      * True if the Image is public.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The ID of the Linode that this Image will be created from.
      */
-    readonly linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number>;
     /**
      * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The current status of this Image.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
      * a deleted Linode.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The upstream distribution vendor. Nil for private Images.
      */
-    readonly vendor?: pulumi.Input<string>;
+    vendor?: pulumi.Input<string>;
 }
 
 /**
@@ -269,29 +269,29 @@ export interface ImageArgs {
     /**
      * A detailed description of this Image.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    readonly diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number>;
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    readonly fileHash?: pulumi.Input<string>;
+    fileHash?: pulumi.Input<string>;
     /**
      * The path of the image file to be uploaded.
      */
-    readonly filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The ID of the Linode that this Image will be created from.
      */
-    readonly linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number>;
     /**
      * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

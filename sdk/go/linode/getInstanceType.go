@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetInstanceType(ctx, &linode.GetInstanceTypeArgs{
+// 		_, err := linode.GetInstanceType(ctx, &GetInstanceTypeArgs{
 // 			Id: "g6-standard-2",
 // 		}, nil)
 // 		if err != nil {
@@ -88,4 +91,83 @@ type GetInstanceTypeResult struct {
 	Price      GetInstanceTypePrice  `pulumi:"price"`
 	Transfer   int                   `pulumi:"transfer"`
 	Vcpus      int                   `pulumi:"vcpus"`
+}
+
+func GetInstanceTypeOutput(ctx *pulumi.Context, args GetInstanceTypeOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceTypeResult, error) {
+			args := v.(GetInstanceTypeArgs)
+			r, err := GetInstanceType(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceTypeResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceType.
+type GetInstanceTypeOutputArgs struct {
+	// Label used to identify instance type
+	Id    pulumi.StringInput    `pulumi:"id"`
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (GetInstanceTypeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceType.
+type GetInstanceTypeResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeResult)(nil)).Elem()
+}
+
+func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutput() GetInstanceTypeResultOutput {
+	return o
+}
+
+func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutputWithContext(ctx context.Context) GetInstanceTypeResultOutput {
+	return o
+}
+
+func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonsOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypeAddons { return v.Addons }).(GetInstanceTypeAddonsOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Class }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypeResultOutput) NetworkOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.NetworkOut }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Price() GetInstanceTypePriceOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypePrice { return v.Price }).(GetInstanceTypePriceOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypeResultOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceTypeResultOutput{})
 }

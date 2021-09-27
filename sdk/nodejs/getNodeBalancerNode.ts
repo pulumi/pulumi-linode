@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *     configId: 789,
  *     id: 123,
  *     nodebalancerId: 456,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNodeBalancerNode(args: GetNodeBalancerNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerNodeResult> {
@@ -43,15 +43,15 @@ export interface GetNodeBalancerNodeArgs {
     /**
      * The ID of the config that contains the Node.
      */
-    readonly configId: number;
+    configId: number;
     /**
      * The node's ID.
      */
-    readonly id: number;
+    id: number;
     /**
      * The ID of the NodeBalancer that contains the node.
      */
-    readonly nodebalancerId: number;
+    nodebalancerId: number;
 }
 
 /**

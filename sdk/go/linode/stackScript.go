@@ -54,8 +54,8 @@ import (
 // 			},
 // 			RootPass:      pulumi.String("..."),
 // 			StackscriptId: fooStackScript.ID(),
-// 			StackscriptData: pulumi.StringMap{
-// 				"package": pulumi.String("nginx"),
+// 			StackscriptData: pulumi.AnyMap{
+// 				"package": pulumi.Any("nginx"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -341,7 +341,7 @@ type StackScriptArrayInput interface {
 type StackScriptArray []StackScriptInput
 
 func (StackScriptArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StackScript)(nil))
+	return reflect.TypeOf((*[]*StackScript)(nil)).Elem()
 }
 
 func (i StackScriptArray) ToStackScriptArrayOutput() StackScriptArrayOutput {
@@ -366,7 +366,7 @@ type StackScriptMapInput interface {
 type StackScriptMap map[string]StackScriptInput
 
 func (StackScriptMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StackScript)(nil))
+	return reflect.TypeOf((*map[string]*StackScript)(nil)).Elem()
 }
 
 func (i StackScriptMap) ToStackScriptMapOutput() StackScriptMapOutput {
@@ -377,9 +377,7 @@ func (i StackScriptMap) ToStackScriptMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptMapOutput)
 }
 
-type StackScriptOutput struct {
-	*pulumi.OutputState
-}
+type StackScriptOutput struct{ *pulumi.OutputState }
 
 func (StackScriptOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StackScript)(nil))
@@ -398,14 +396,12 @@ func (o StackScriptOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
 }
 
 func (o StackScriptOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
-	return o.ApplyT(func(v StackScript) *StackScript {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackScript) *StackScript {
 		return &v
 	}).(StackScriptPtrOutput)
 }
 
-type StackScriptPtrOutput struct {
-	*pulumi.OutputState
-}
+type StackScriptPtrOutput struct{ *pulumi.OutputState }
 
 func (StackScriptPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StackScript)(nil))
@@ -417,6 +413,16 @@ func (o StackScriptPtrOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
 
 func (o StackScriptPtrOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
 	return o
+}
+
+func (o StackScriptPtrOutput) Elem() StackScriptOutput {
+	return o.ApplyT(func(v *StackScript) StackScript {
+		if v != nil {
+			return *v
+		}
+		var ret StackScript
+		return ret
+	}).(StackScriptOutput)
 }
 
 type StackScriptArrayOutput struct{ *pulumi.OutputState }

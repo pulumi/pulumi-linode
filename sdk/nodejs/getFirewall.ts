@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const my_firewall = pulumi.output(linode.getFirewall({
  *     id: 123,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
@@ -39,7 +39,7 @@ export interface GetFirewallArgs {
     /**
      * The Firewall's ID.
      */
-    readonly id: number;
+    id: number;
 }
 
 /**

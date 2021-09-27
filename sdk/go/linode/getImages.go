@@ -4,11 +4,72 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides information about Linode images that match a set of filters.
 //
+// ## Example Usage
+//
+// Get information about all Linode images with a certain label and visibility:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.GetImages(ctx, &GetImagesArgs{
+// 			Filters: []GetImagesFilter{
+// 				GetImagesFilter{
+// 					Name: "label",
+// 					Values: []string{
+// 						"Debian 8",
+// 					},
+// 				},
+// 				GetImagesFilter{
+// 					Name: "is_public",
+// 					Values: []string{
+// 						"true",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Get information about all Linode images associated with the current token:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.GetImages(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // Each Linode image will be stored in the `images` attribute and will export the following attributes:
@@ -66,4 +127,54 @@ type GetImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id     string           `pulumi:"id"`
 	Images []GetImagesImage `pulumi:"images"`
+}
+
+func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImagesResult, error) {
+			args := v.(GetImagesArgs)
+			r, err := GetImages(ctx, &args, opts...)
+			return *r, err
+		}).(GetImagesResultOutput)
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesOutputArgs struct {
+	Filters GetImagesFilterArrayInput `pulumi:"filters"`
+}
+
+func (GetImagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImages.
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) Filters() GetImagesFilterArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesFilter { return v.Filters }).(GetImagesFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
 }

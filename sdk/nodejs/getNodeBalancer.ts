@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const my_nodebalancer = pulumi.output(linode.getNodeBalancer({
  *     id: 123,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerResult> {
@@ -39,7 +39,7 @@ export interface GetNodeBalancerArgs {
     /**
      * The NodeBalancer's ID.
      */
-    readonly id: number;
+    id: number;
 }
 
 /**

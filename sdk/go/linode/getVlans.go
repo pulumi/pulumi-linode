@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +28,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
 // 			Image: pulumi.String("linode/ubuntu18.04"),
-// 			Interfaces: linode.InstanceInterfaceArray{
-// 				&linode.InstanceInterfaceArgs{
+// 			Interfaces: InstanceInterfaceArray{
+// 				&InstanceInterfaceArgs{
 // 					Label:   pulumi.String("my-vlan"),
 // 					Purpose: pulumi.String("vlan"),
 // 				},
@@ -39,9 +42,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = linode.GetVlans(ctx, &linode.GetVlansArgs{
-// 			Filters: []linode.GetVlansFilter{
-// 				linode.GetVlansFilter{
+// 		_, err = linode.GetVlans(ctx, &GetVlansArgs{
+// 			Filters: []GetVlansFilter{
+// 				GetVlansFilter{
 // 					Name: "label",
 // 					Values: []string{
 // 						"my-vlan",
@@ -93,4 +96,54 @@ type GetVlansResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id    string         `pulumi:"id"`
 	Vlans []GetVlansVlan `pulumi:"vlans"`
+}
+
+func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi.InvokeOption) GetVlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVlansResult, error) {
+			args := v.(GetVlansArgs)
+			r, err := GetVlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetVlansResultOutput)
+}
+
+// A collection of arguments for invoking getVlans.
+type GetVlansOutputArgs struct {
+	Filters GetVlansFilterArrayInput `pulumi:"filters"`
+}
+
+func (GetVlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVlans.
+type GetVlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetVlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVlansResult)(nil)).Elem()
+}
+
+func (o GetVlansResultOutput) ToGetVlansResultOutput() GetVlansResultOutput {
+	return o
+}
+
+func (o GetVlansResultOutput) ToGetVlansResultOutputWithContext(ctx context.Context) GetVlansResultOutput {
+	return o
+}
+
+func (o GetVlansResultOutput) Filters() GetVlansFilterArrayOutput {
+	return o.ApplyT(func(v GetVlansResult) []GetVlansFilter { return v.Filters }).(GetVlansFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVlansResultOutput) Vlans() GetVlansVlanArrayOutput {
+	return o.ApplyT(func(v GetVlansResult) []GetVlansVlan { return v.Vlans }).(GetVlansVlanArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVlansResultOutput{})
 }

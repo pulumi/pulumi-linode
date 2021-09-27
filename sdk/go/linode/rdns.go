@@ -166,7 +166,7 @@ type RdnsArrayInput interface {
 type RdnsArray []RdnsInput
 
 func (RdnsArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Rdns)(nil))
+	return reflect.TypeOf((*[]*Rdns)(nil)).Elem()
 }
 
 func (i RdnsArray) ToRdnsArrayOutput() RdnsArrayOutput {
@@ -191,7 +191,7 @@ type RdnsMapInput interface {
 type RdnsMap map[string]RdnsInput
 
 func (RdnsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Rdns)(nil))
+	return reflect.TypeOf((*map[string]*Rdns)(nil)).Elem()
 }
 
 func (i RdnsMap) ToRdnsMapOutput() RdnsMapOutput {
@@ -202,9 +202,7 @@ func (i RdnsMap) ToRdnsMapOutputWithContext(ctx context.Context) RdnsMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdnsMapOutput)
 }
 
-type RdnsOutput struct {
-	*pulumi.OutputState
-}
+type RdnsOutput struct{ *pulumi.OutputState }
 
 func (RdnsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Rdns)(nil))
@@ -223,14 +221,12 @@ func (o RdnsOutput) ToRdnsPtrOutput() RdnsPtrOutput {
 }
 
 func (o RdnsOutput) ToRdnsPtrOutputWithContext(ctx context.Context) RdnsPtrOutput {
-	return o.ApplyT(func(v Rdns) *Rdns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Rdns) *Rdns {
 		return &v
 	}).(RdnsPtrOutput)
 }
 
-type RdnsPtrOutput struct {
-	*pulumi.OutputState
-}
+type RdnsPtrOutput struct{ *pulumi.OutputState }
 
 func (RdnsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Rdns)(nil))
@@ -242,6 +238,16 @@ func (o RdnsPtrOutput) ToRdnsPtrOutput() RdnsPtrOutput {
 
 func (o RdnsPtrOutput) ToRdnsPtrOutputWithContext(ctx context.Context) RdnsPtrOutput {
 	return o
+}
+
+func (o RdnsPtrOutput) Elem() RdnsOutput {
+	return o.ApplyT(func(v *Rdns) Rdns {
+		if v != nil {
+			return *v
+		}
+		var ret Rdns
+		return ret
+	}).(RdnsOutput)
 }
 
 type RdnsArrayOutput struct{ *pulumi.OutputState }

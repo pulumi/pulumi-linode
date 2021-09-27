@@ -153,35 +153,35 @@ export interface LkeClusterState {
     /**
      * The endpoints for the Kubernetes API server.
      */
-    readonly apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
      */
-    readonly k8sVersion?: pulumi.Input<string>;
+    k8sVersion?: pulumi.Input<string>;
     /**
      * The base64 encoded kubeconfig for the Kubernetes cluster.
      */
-    readonly kubeconfig?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<string>;
     /**
      * This Kubernetes cluster's unique label.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * Additional nested attributes:
      */
-    readonly pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
+    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
     /**
      * This Kubernetes cluster's location.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The status of the node. (`ready`, `notReady`)
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -191,21 +191,21 @@ export interface LkeClusterArgs {
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
      */
-    readonly k8sVersion: pulumi.Input<string>;
+    k8sVersion: pulumi.Input<string>;
     /**
      * This Kubernetes cluster's unique label.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * Additional nested attributes:
      */
-    readonly pools: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
+    pools: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
     /**
      * This Kubernetes cluster's location.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

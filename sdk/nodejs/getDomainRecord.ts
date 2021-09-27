@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * const myRecord = pulumi.output(linode.getDomainRecord({
  *     domainId: 3150401,
  *     id: 14950401,
- * }, { async: true }));
+ * }));
  * const myWwwRecord = pulumi.output(linode.getDomainRecord({
  *     domainId: 3150401,
  *     name: "www",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -75,15 +75,15 @@ export interface GetDomainRecordArgs {
     /**
      * The associated domain's unique ID.
      */
-    readonly domainId: number;
+    domainId: number;
     /**
      * The unique ID of the Domain Record.
      */
-    readonly id?: number;
+    id?: number;
     /**
      * The name of the Record.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

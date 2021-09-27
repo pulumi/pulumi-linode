@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const primary = pulumi.output(linode.getObjectStorageCluster({
  *     id: "us-east-1",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -53,14 +53,14 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
  * A collection of arguments for invoking getObjectStorageCluster.
  */
 export interface GetObjectStorageClusterArgs {
-    readonly domain?: string;
+    domain?: string;
     /**
      * The unique ID of this cluster.
      */
-    readonly id: string;
-    readonly region?: string;
-    readonly staticSiteDomain?: string;
-    readonly status?: string;
+    id: string;
+    region?: string;
+    staticSiteDomain?: string;
+    status?: string;
 }
 
 /**

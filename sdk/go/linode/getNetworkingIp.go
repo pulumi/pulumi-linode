@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetNetworkingIp(ctx, &linode.GetNetworkingIpArgs{
+// 		_, err := linode.GetNetworkingIp(ctx, &GetNetworkingIpArgs{
 // 			Address: "162.159.27.72",
 // 		}, nil)
 // 		if err != nil {
@@ -82,4 +85,83 @@ type GetNetworkingIpResult struct {
 	Region     string `pulumi:"region"`
 	SubnetMask string `pulumi:"subnetMask"`
 	Type       string `pulumi:"type"`
+}
+
+func GetNetworkingIpOutput(ctx *pulumi.Context, args GetNetworkingIpOutputArgs, opts ...pulumi.InvokeOption) GetNetworkingIpResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkingIpResult, error) {
+			args := v.(GetNetworkingIpArgs)
+			r, err := GetNetworkingIp(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkingIpResultOutput)
+}
+
+// A collection of arguments for invoking getNetworkingIp.
+type GetNetworkingIpOutputArgs struct {
+	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+	Address pulumi.StringInput `pulumi:"address"`
+}
+
+func (GetNetworkingIpOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworkingIp.
+type GetNetworkingIpResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpResult)(nil)).Elem()
+}
+
+func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutput() GetNetworkingIpResultOutput {
+	return o
+}
+
+func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutputWithContext(ctx context.Context) GetNetworkingIpResultOutput {
+	return o
+}
+
+func (o GetNetworkingIpResultOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkingIpResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkingIpResultOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Rdns }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkingIpResultOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkingIpResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkingIpResultOutput{})
 }

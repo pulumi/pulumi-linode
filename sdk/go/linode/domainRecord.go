@@ -297,7 +297,7 @@ type DomainRecordArrayInput interface {
 type DomainRecordArray []DomainRecordInput
 
 func (DomainRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainRecord)(nil))
+	return reflect.TypeOf((*[]*DomainRecord)(nil)).Elem()
 }
 
 func (i DomainRecordArray) ToDomainRecordArrayOutput() DomainRecordArrayOutput {
@@ -322,7 +322,7 @@ type DomainRecordMapInput interface {
 type DomainRecordMap map[string]DomainRecordInput
 
 func (DomainRecordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainRecord)(nil))
+	return reflect.TypeOf((*map[string]*DomainRecord)(nil)).Elem()
 }
 
 func (i DomainRecordMap) ToDomainRecordMapOutput() DomainRecordMapOutput {
@@ -333,9 +333,7 @@ func (i DomainRecordMap) ToDomainRecordMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRecordMapOutput)
 }
 
-type DomainRecordOutput struct {
-	*pulumi.OutputState
-}
+type DomainRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainRecord)(nil))
@@ -354,14 +352,12 @@ func (o DomainRecordOutput) ToDomainRecordPtrOutput() DomainRecordPtrOutput {
 }
 
 func (o DomainRecordOutput) ToDomainRecordPtrOutputWithContext(ctx context.Context) DomainRecordPtrOutput {
-	return o.ApplyT(func(v DomainRecord) *DomainRecord {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRecord) *DomainRecord {
 		return &v
 	}).(DomainRecordPtrOutput)
 }
 
-type DomainRecordPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainRecordPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainRecordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainRecord)(nil))
@@ -373,6 +369,16 @@ func (o DomainRecordPtrOutput) ToDomainRecordPtrOutput() DomainRecordPtrOutput {
 
 func (o DomainRecordPtrOutput) ToDomainRecordPtrOutputWithContext(ctx context.Context) DomainRecordPtrOutput {
 	return o
+}
+
+func (o DomainRecordPtrOutput) Elem() DomainRecordOutput {
+	return o.ApplyT(func(v *DomainRecord) DomainRecord {
+		if v != nil {
+			return *v
+		}
+		var ret DomainRecord
+		return ret
+	}).(DomainRecordOutput)
 }
 
 type DomainRecordArrayOutput struct{ *pulumi.OutputState }

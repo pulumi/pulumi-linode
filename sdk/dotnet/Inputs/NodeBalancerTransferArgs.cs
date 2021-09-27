@@ -9,4 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode.Inputs
 {
+
+    public sealed class NodeBalancerTransferArgs : Pulumi.ResourceArgs
+    {
+        [Input("in")]
+        public Input<double>? In { get; set; }
+
+        [Input("out")]
+        public Input<double>? Out { get; set; }
+
+        [Input("total")]
+        public Input<double>? Total { get; set; }
+
+        public NodeBalancerTransferArgs()
+        {
+        }
+    }
 }

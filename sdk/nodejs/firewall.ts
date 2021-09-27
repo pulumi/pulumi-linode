@@ -203,43 +203,43 @@ export interface FirewallState {
     /**
      * The devices associated with this firewall.
      */
-    readonly devices?: pulumi.Input<pulumi.Input<inputs.FirewallDevice>[]>;
+    devices?: pulumi.Input<pulumi.Input<inputs.FirewallDevice>[]>;
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    readonly inboundPolicy?: pulumi.Input<string>;
+    inboundPolicy?: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
-    readonly inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
      * Used to identify this rule. For display purposes only.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
-    readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    linodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    readonly outboundPolicy?: pulumi.Input<string>;
+    outboundPolicy?: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
-    readonly outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
+    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
     /**
      * The status of the Firewall.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -249,33 +249,33 @@ export interface FirewallArgs {
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    readonly inboundPolicy: pulumi.Input<string>;
+    inboundPolicy: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
-    readonly inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
      * Used to identify this rule. For display purposes only.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
-    readonly linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    linodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    readonly outboundPolicy: pulumi.Input<string>;
+    outboundPolicy: pulumi.Input<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
-    readonly outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
+    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
     /**
      * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

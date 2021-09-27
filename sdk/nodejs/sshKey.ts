@@ -105,15 +105,15 @@ export interface SshKeyState {
     /**
      * The date this key was added.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * A label for the SSH Key.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
-    readonly sshKey?: pulumi.Input<string>;
+    sshKey?: pulumi.Input<string>;
 }
 
 /**
@@ -123,9 +123,9 @@ export interface SshKeyArgs {
     /**
      * A label for the SSH Key.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
-    readonly sshKey: pulumi.Input<string>;
+    sshKey: pulumi.Input<string>;
 }

@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode.Inputs
 {
+
+    public sealed class InstanceBackupsArgs : Pulumi.ResourceArgs
+    {
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("schedule")]
+        public Input<Inputs.InstanceBackupsScheduleArgs>? Schedule { get; set; }
+
+        public InstanceBackupsArgs()
+        {
+        }
+    }
 }

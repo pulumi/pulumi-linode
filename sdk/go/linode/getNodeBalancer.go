@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupNodeBalancer(ctx, &linode.LookupNodeBalancerArgs{
+// 		_, err := linode.LookupNodeBalancer(ctx, &GetNodeBalancerArgs{
 // 			Id: 123,
 // 		}, nil)
 // 		if err != nil {
@@ -65,4 +68,92 @@ type LookupNodeBalancerResult struct {
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
 	Updated   string                    `pulumi:"updated"`
+}
+
+func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNodeBalancerResult, error) {
+			args := v.(LookupNodeBalancerArgs)
+			r, err := LookupNodeBalancer(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNodeBalancerResultOutput)
+}
+
+// A collection of arguments for invoking getNodeBalancer.
+type LookupNodeBalancerOutputArgs struct {
+	// The NodeBalancer's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (LookupNodeBalancerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodeBalancerArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNodeBalancer.
+type LookupNodeBalancerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNodeBalancerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodeBalancerResult)(nil)).Elem()
+}
+
+func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutput() LookupNodeBalancerResultOutput {
+	return o
+}
+
+func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutputWithContext(ctx context.Context) LookupNodeBalancerResultOutput {
+	return o
+}
+
+// Throttle connections per second (0-20).
+func (o LookupNodeBalancerResultOutput) ClientConnThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+func (o LookupNodeBalancerResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The Public IPv4 Address of this NodeBalancer
+func (o LookupNodeBalancerResultOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// The Public IPv6 Address of this NodeBalancer
+func (o LookupNodeBalancerResultOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o LookupNodeBalancerResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o LookupNodeBalancerResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Transfers() GetNodeBalancerTransferArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerTransfer { return v.Transfers }).(GetNodeBalancerTransferArrayOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNodeBalancerResultOutput{})
 }

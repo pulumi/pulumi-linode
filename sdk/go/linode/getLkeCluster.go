@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupLkeCluster(ctx, &linode.LookupLkeClusterArgs{
+// 		_, err := linode.LookupLkeCluster(ctx, &GetLkeClusterArgs{
 // 			Id: 123,
 // 		}, nil)
 // 		if err != nil {
@@ -65,4 +68,86 @@ type LookupLkeClusterResult struct {
 	Status string `pulumi:"status"`
 	// The tags applied to the cluster.
 	Tags []string `pulumi:"tags"`
+}
+
+func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupLkeClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupLkeClusterResult, error) {
+			args := v.(LookupLkeClusterArgs)
+			r, err := LookupLkeCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupLkeClusterResultOutput)
+}
+
+// A collection of arguments for invoking getLkeCluster.
+type LookupLkeClusterOutputArgs struct {
+	// The LKE Cluster's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (LookupLkeClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLkeClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLkeCluster.
+type LookupLkeClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLkeClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLkeClusterResult)(nil)).Elem()
+}
+
+func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutput() LookupLkeClusterResultOutput {
+	return o
+}
+
+func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutputWithContext(ctx context.Context) LookupLkeClusterResultOutput {
+	return o
+}
+
+// The endpoints for the Kubernetes API server.
+func (o LookupLkeClusterResultOutput) ApiEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the node.
+func (o LookupLkeClusterResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+func (o LookupLkeClusterResultOutput) K8sVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
+// The base64 encoded kubeconfig for the Kubernetes cluster.
+func (o LookupLkeClusterResultOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
+func (o LookupLkeClusterResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Node pools associated with this cluster.
+func (o LookupLkeClusterResultOutput) Pools() GetLkeClusterPoolArrayOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterPool { return v.Pools }).(GetLkeClusterPoolArrayOutput)
+}
+
+// This Kubernetes cluster's location.
+func (o LookupLkeClusterResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of the node. (`ready`, `notReady`)
+func (o LookupLkeClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags applied to the cluster.
+func (o LookupLkeClusterResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLkeClusterResultOutput{})
 }

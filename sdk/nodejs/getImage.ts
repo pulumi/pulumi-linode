@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const k8Master = pulumi.output(linode.getImage({
  *     id: "linode/debian8",
- * }, { async: true }));
+ * }));
  * ```
  * ## Attributes
  *
@@ -64,7 +64,7 @@ export interface GetImageArgs {
     /**
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**

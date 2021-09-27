@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupVolume(ctx, &linode.LookupVolumeArgs{
+// 		_, err := linode.LookupVolume(ctx, &GetVolumeArgs{
 // 			Id: 1234567,
 // 		}, nil)
 // 		if err != nil {
@@ -83,4 +86,82 @@ type LookupVolumeResult struct {
 	Status         string   `pulumi:"status"`
 	Tags           []string `pulumi:"tags"`
 	Updated        string   `pulumi:"updated"`
+}
+
+func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVolumeResult, error) {
+			args := v.(LookupVolumeArgs)
+			r, err := LookupVolume(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVolumeResultOutput)
+}
+
+// A collection of arguments for invoking getVolume.
+type LookupVolumeOutputArgs struct {
+	// The unique numeric ID of the Volume record to query.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (LookupVolumeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVolume.
+type LookupVolumeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVolumeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVolumeResult)(nil)).Elem()
+}
+
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResultOutput {
+	return o
+}
+
+func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
+	return o
+}
+
+func (o LookupVolumeResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) FilesystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.FilesystemPath }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVolumeResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o LookupVolumeResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVolumeResult) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+func (o LookupVolumeResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVolumeResult) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o LookupVolumeResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVolumeResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupVolumeResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVolumeResultOutput{})
 }

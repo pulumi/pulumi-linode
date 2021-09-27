@@ -177,31 +177,31 @@ export interface VolumeState {
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
      * Volume label.
      */
-    readonly filesystemPath?: pulumi.Input<string>;
+    filesystemPath?: pulumi.Input<string>;
     /**
      * The label of the Linode Volume
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The ID of a Linode Instance where the Volume should be attached.
      */
-    readonly linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Size of the Volume in GB.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The status of the volume, indicating the current readiness state.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -211,21 +211,21 @@ export interface VolumeArgs {
     /**
      * The label of the Linode Volume
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The ID of a Linode Instance where the Volume should be attached.
      */
-    readonly linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * Size of the Volume in GB.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

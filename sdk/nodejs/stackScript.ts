@@ -232,56 +232,56 @@ export interface StackScriptState {
     /**
      * The date this StackScript was created.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * Count of currently active, deployed Linodes created from this StackScript.
      */
-    readonly deploymentsActive?: pulumi.Input<number>;
+    deploymentsActive?: pulumi.Input<number>;
     /**
      * The total number of times this StackScript has been deployed.
      */
-    readonly deploymentsTotal?: pulumi.Input<number>;
+    deploymentsTotal?: pulumi.Input<number>;
     /**
      * A description for the StackScript.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
      */
-    readonly images?: pulumi.Input<pulumi.Input<string>[]>;
+    images?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    readonly revNote?: pulumi.Input<string>;
+    revNote?: pulumi.Input<string>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
-    readonly script?: pulumi.Input<string>;
+    script?: pulumi.Input<string>;
     /**
      * The date this StackScript was updated.
      */
-    readonly updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    readonly userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
-    readonly userGravatarId?: pulumi.Input<string>;
+    userGravatarId?: pulumi.Input<string>;
     /**
      * The User who created the StackScript.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -291,30 +291,30 @@ export interface StackScriptArgs {
     /**
      * A description for the StackScript.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
      */
-    readonly images: pulumi.Input<pulumi.Input<string>[]>;
+    images: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    readonly label: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    readonly revNote?: pulumi.Input<string>;
+    revNote?: pulumi.Input<string>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
-    readonly script: pulumi.Input<string>;
+    script: pulumi.Input<string>;
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
      * parameters during deployment.
      */
-    readonly userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
 }

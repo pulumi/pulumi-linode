@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupNodeBalancerConfig(ctx, &linode.LookupNodeBalancerConfigArgs{
+// 		_, err := linode.LookupNodeBalancerConfig(ctx, &GetNodeBalancerConfigArgs{
 // 			Id:             123,
 // 			NodebalancerId: 456,
 // 		}, nil)
@@ -83,4 +86,130 @@ type LookupNodeBalancerConfigResult struct {
 	SslFingerprint string `pulumi:"sslFingerprint"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness string `pulumi:"stickiness"`
+}
+
+func LookupNodeBalancerConfigOutput(ctx *pulumi.Context, args LookupNodeBalancerConfigOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerConfigResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNodeBalancerConfigResult, error) {
+			args := v.(LookupNodeBalancerConfigArgs)
+			r, err := LookupNodeBalancerConfig(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNodeBalancerConfigResultOutput)
+}
+
+// A collection of arguments for invoking getNodeBalancerConfig.
+type LookupNodeBalancerConfigOutputArgs struct {
+	// The config's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ID of the NodeBalancer that contains the config.
+	NodebalancerId pulumi.IntInput `pulumi:"nodebalancerId"`
+}
+
+func (LookupNodeBalancerConfigOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodeBalancerConfigArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNodeBalancerConfig.
+type LookupNodeBalancerConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNodeBalancerConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodeBalancerConfigResult)(nil)).Elem()
+}
+
+func (o LookupNodeBalancerConfigResultOutput) ToLookupNodeBalancerConfigResultOutput() LookupNodeBalancerConfigResultOutput {
+	return o
+}
+
+func (o LookupNodeBalancerConfigResultOutput) ToLookupNodeBalancerConfigResultOutputWithContext(ctx context.Context) LookupNodeBalancerConfigResultOutput {
+	return o
+}
+
+// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+func (o LookupNodeBalancerConfigResultOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
+func (o LookupNodeBalancerConfigResultOutput) Check() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.Check }).(pulumi.StringOutput)
+}
+
+// How many times to attempt a check before considering a backend to be down. (1-30)
+func (o LookupNodeBalancerConfigResultOutput) CheckAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.CheckAttempts }).(pulumi.IntOutput)
+}
+
+func (o LookupNodeBalancerConfigResultOutput) CheckBody() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.CheckBody }).(pulumi.StringOutput)
+}
+
+// How often, in seconds, to check that backends are up and serving requests.
+func (o LookupNodeBalancerConfigResultOutput) CheckInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.CheckInterval }).(pulumi.IntOutput)
+}
+
+// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+func (o LookupNodeBalancerConfigResultOutput) CheckPassive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) bool { return v.CheckPassive }).(pulumi.BoolOutput)
+}
+
+// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+func (o LookupNodeBalancerConfigResultOutput) CheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.CheckPath }).(pulumi.StringOutput)
+}
+
+// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+func (o LookupNodeBalancerConfigResultOutput) CheckTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.CheckTimeout }).(pulumi.IntOutput)
+}
+
+// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+func (o LookupNodeBalancerConfigResultOutput) CipherSuite() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.CipherSuite }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerConfigResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o LookupNodeBalancerConfigResultOutput) NodeStatuses() GetNodeBalancerConfigNodeStatusArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) []GetNodeBalancerConfigNodeStatus { return v.NodeStatuses }).(GetNodeBalancerConfigNodeStatusArrayOutput)
+}
+
+func (o LookupNodeBalancerConfigResultOutput) NodebalancerId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.NodebalancerId }).(pulumi.IntOutput)
+}
+
+// The TCP port this Config is for.
+func (o LookupNodeBalancerConfigResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+func (o LookupNodeBalancerConfigResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+func (o LookupNodeBalancerConfigResultOutput) ProxyProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.ProxyProtocol }).(pulumi.StringOutput)
+}
+
+// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+func (o LookupNodeBalancerConfigResultOutput) SslCommonname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.SslCommonname }).(pulumi.StringOutput)
+}
+
+// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+func (o LookupNodeBalancerConfigResultOutput) SslFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.SslFingerprint }).(pulumi.StringOutput)
+}
+
+// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
+func (o LookupNodeBalancerConfigResultOutput) Stickiness() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.Stickiness }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNodeBalancerConfigResultOutput{})
 }

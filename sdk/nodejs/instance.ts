@@ -353,116 +353,116 @@ export interface InstanceState {
     /**
      * Configuration options for alert triggers on this Linode.
      */
-    readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
+    alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
-    readonly authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
-    readonly authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
      */
-    readonly backupId?: pulumi.Input<number>;
+    backupId?: pulumi.Input<number>;
     /**
      * Information about this Linode's backups status.
      */
-    readonly backups?: pulumi.Input<inputs.InstanceBackups>;
+    backups?: pulumi.Input<inputs.InstanceBackups>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
-    readonly backupsEnabled?: pulumi.Input<boolean>;
+    backupsEnabled?: pulumi.Input<boolean>;
     /**
      * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
      */
-    readonly bootConfigLabel?: pulumi.Input<string>;
+    bootConfigLabel?: pulumi.Input<string>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
-    readonly configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
      */
-    readonly image?: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
     /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
      * must be declared in the config block.
      */
-    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
      * This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
      * will be used for this field.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
      * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      */
-    readonly ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
      */
-    readonly ipv6?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string>;
     /**
      * The name of this interface. If the interface is a VLAN, a label is required.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
-    readonly privateIp?: pulumi.Input<boolean>;
+    privateIp?: pulumi.Input<boolean>;
     /**
      * This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
      * Instances in a region.
      */
-    readonly privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string>;
     /**
      * This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
-    readonly rootPass?: pulumi.Input<string>;
+    rootPass?: pulumi.Input<string>;
     /**
      * Information about the resources available to this Linode.
      */
-    readonly specs?: pulumi.Input<inputs.InstanceSpecs>;
+    specs?: pulumi.Input<inputs.InstanceSpecs>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
-    readonly stackscriptData?: pulumi.Input<{[key: string]: any}>;
+    stackscriptData?: pulumi.Input<{[key: string]: any}>;
     /**
      * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
-    readonly stackscriptId?: pulumi.Input<number>;
+    stackscriptId?: pulumi.Input<number>;
     /**
      * The status of the instance, indicating the current readiness state.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      */
-    readonly swapSize?: pulumi.Input<number>;
+    swapSize?: pulumi.Input<number>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
      */
-    readonly watchdogEnabled?: pulumi.Input<boolean>;
+    watchdogEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -472,83 +472,83 @@ export interface InstanceArgs {
     /**
      * Configuration options for alert triggers on this Linode.
      */
-    readonly alerts?: pulumi.Input<inputs.InstanceAlerts>;
+    alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
-    readonly authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
      */
-    readonly authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backupId` forces the creation of a new Linode Instance.*
      */
-    readonly backupId?: pulumi.Input<number>;
+    backupId?: pulumi.Input<number>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
-    readonly backupsEnabled?: pulumi.Input<boolean>;
+    backupsEnabled?: pulumi.Input<boolean>;
     /**
      * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
      */
-    readonly bootConfigLabel?: pulumi.Input<string>;
+    bootConfigLabel?: pulumi.Input<string>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
-    readonly configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
      */
-    readonly image?: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
     /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
      * must be declared in the config block.
      */
-    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
      * The name of this interface. If the interface is a VLAN, a label is required.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
-    readonly privateIp?: pulumi.Input<boolean>;
+    privateIp?: pulumi.Input<boolean>;
     /**
      * This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
-    readonly rootPass?: pulumi.Input<string>;
+    rootPass?: pulumi.Input<string>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */
-    readonly stackscriptData?: pulumi.Input<{[key: string]: any}>;
+    stackscriptData?: pulumi.Input<{[key: string]: any}>;
     /**
      * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
      */
-    readonly stackscriptId?: pulumi.Input<number>;
+    stackscriptId?: pulumi.Input<number>;
     /**
      * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      */
-    readonly swapSize?: pulumi.Input<number>;
+    swapSize?: pulumi.Input<number>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
      */
-    readonly watchdogEnabled?: pulumi.Input<boolean>;
+    watchdogEnabled?: pulumi.Input<boolean>;
 }

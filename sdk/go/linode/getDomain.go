@@ -4,6 +4,9 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,14 +27,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "1234567"
-// 		_, err := linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+// 		_, err := linode.LookupDomain(ctx, &GetDomainArgs{
 // 			Id: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "bar.example.com"
-// 		_, err = linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+// 		_, err = linode.LookupDomain(ctx, &GetDomainArgs{
 // 			Domain: &opt1,
 // 		}, nil)
 // 		if err != nil {
@@ -105,4 +108,100 @@ type LookupDomainResult struct {
 	Tags        []string `pulumi:"tags"`
 	TtlSec      int      `pulumi:"ttlSec"`
 	Type        string   `pulumi:"type"`
+}
+
+func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDomainResult, error) {
+			args := v.(LookupDomainArgs)
+			r, err := LookupDomain(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDomainResultOutput)
+}
+
+// A collection of arguments for invoking getDomain.
+type LookupDomainOutputArgs struct {
+	// The unique domain name of the Domain record to query.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The unique numeric ID of the Domain record to query.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (LookupDomainOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomain.
+type LookupDomainResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainResult)(nil)).Elem()
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResultOutput {
+	return o
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
+	return o
+}
+
+func (o LookupDomainResultOutput) AxfrIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []string { return v.AxfrIps }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDomainResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainResultOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDomainResultOutput) ExpireSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainResult) int { return v.ExpireSec }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainResultOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDomainResultOutput) MasterIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []string { return v.MasterIps }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDomainResultOutput) RefreshSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainResult) int { return v.RefreshSec }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainResultOutput) RetrySec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainResult) int { return v.RetrySec }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainResultOutput) SoaEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.SoaEmail }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDomainResultOutput) TtlSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDomainResult) int { return v.TtlSec }).(pulumi.IntOutput)
+}
+
+func (o LookupDomainResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainResultOutput{})
 }

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(linode.getSshKey({
  *     label: "foo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
@@ -41,7 +41,7 @@ export interface GetSshKeyArgs {
     /**
      * The label of the SSH Key to select.
      */
-    readonly label: string;
+    label: string;
 }
 
 /**

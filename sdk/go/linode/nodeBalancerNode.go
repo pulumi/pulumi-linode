@@ -227,7 +227,7 @@ type NodeBalancerNodeArrayInput interface {
 type NodeBalancerNodeArray []NodeBalancerNodeInput
 
 func (NodeBalancerNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NodeBalancerNode)(nil))
+	return reflect.TypeOf((*[]*NodeBalancerNode)(nil)).Elem()
 }
 
 func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutput() NodeBalancerNodeArrayOutput {
@@ -252,7 +252,7 @@ type NodeBalancerNodeMapInput interface {
 type NodeBalancerNodeMap map[string]NodeBalancerNodeInput
 
 func (NodeBalancerNodeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NodeBalancerNode)(nil))
+	return reflect.TypeOf((*map[string]*NodeBalancerNode)(nil)).Elem()
 }
 
 func (i NodeBalancerNodeMap) ToNodeBalancerNodeMapOutput() NodeBalancerNodeMapOutput {
@@ -263,9 +263,7 @@ func (i NodeBalancerNodeMap) ToNodeBalancerNodeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeMapOutput)
 }
 
-type NodeBalancerNodeOutput struct {
-	*pulumi.OutputState
-}
+type NodeBalancerNodeOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeBalancerNode)(nil))
@@ -284,14 +282,12 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodePtrOutput() NodeBalancerNodePt
 }
 
 func (o NodeBalancerNodeOutput) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
-	return o.ApplyT(func(v NodeBalancerNode) *NodeBalancerNode {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeBalancerNode) *NodeBalancerNode {
 		return &v
 	}).(NodeBalancerNodePtrOutput)
 }
 
-type NodeBalancerNodePtrOutput struct {
-	*pulumi.OutputState
-}
+type NodeBalancerNodePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerNodePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeBalancerNode)(nil))
@@ -303,6 +299,16 @@ func (o NodeBalancerNodePtrOutput) ToNodeBalancerNodePtrOutput() NodeBalancerNod
 
 func (o NodeBalancerNodePtrOutput) ToNodeBalancerNodePtrOutputWithContext(ctx context.Context) NodeBalancerNodePtrOutput {
 	return o
+}
+
+func (o NodeBalancerNodePtrOutput) Elem() NodeBalancerNodeOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) NodeBalancerNode {
+		if v != nil {
+			return *v
+		}
+		var ret NodeBalancerNode
+		return ret
+	}).(NodeBalancerNodeOutput)
 }
 
 type NodeBalancerNodeArrayOutput struct{ *pulumi.OutputState }

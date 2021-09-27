@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const my_config = pulumi.output(linode.getNodeBalancerConfig({
  *     id: 123,
  *     nodebalancerId: 456,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNodeBalancerConfig(args: GetNodeBalancerConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerConfigResult> {
@@ -41,11 +41,11 @@ export interface GetNodeBalancerConfigArgs {
     /**
      * The config's ID.
      */
-    readonly id: number;
+    id: number;
     /**
      * The ID of the NodeBalancer that contains the config.
      */
-    readonly nodebalancerId: number;
+    nodebalancerId: number;
 }
 
 /**

@@ -8,74 +8,86 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'api_version',
-    'event_poll_ms',
-    'lke_event_poll_ms',
-    'lke_node_ready_poll_ms',
-    'max_retry_delay_ms',
-    'min_retry_delay_ms',
-    'skip_instance_delete_poll',
-    'skip_instance_ready_poll',
-    'token',
-    'ua_prefix',
-    'url',
-]
+import types
 
 __config__ = pulumi.Config('linode')
 
-api_version = __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
-"""
-An HTTP User-Agent Prefix to prepend in API requests.
-"""
 
-event_poll_ms = __config__.get('eventPollMs')
-"""
-The rate in milliseconds to poll for events.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def api_version(self) -> Optional[str]:
+        """
+        An HTTP User-Agent Prefix to prepend in API requests.
+        """
+        return __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 
-lke_event_poll_ms = __config__.get('lkeEventPollMs')
-"""
-The rate in milliseconds to poll for LKE events.
-"""
+    @property
+    def event_poll_ms(self) -> Optional[int]:
+        """
+        The rate in milliseconds to poll for events.
+        """
+        return __config__.get_int('eventPollMs')
 
-lke_node_ready_poll_ms = __config__.get('lkeNodeReadyPollMs')
-"""
-The rate in milliseconds to poll for an LKE node to be ready.
-"""
+    @property
+    def lke_event_poll_ms(self) -> Optional[int]:
+        """
+        The rate in milliseconds to poll for LKE events.
+        """
+        return __config__.get_int('lkeEventPollMs')
 
-max_retry_delay_ms = __config__.get('maxRetryDelayMs')
-"""
-Maximum delay in milliseconds before retrying a request.
-"""
+    @property
+    def lke_node_ready_poll_ms(self) -> Optional[int]:
+        """
+        The rate in milliseconds to poll for an LKE node to be ready.
+        """
+        return __config__.get_int('lkeNodeReadyPollMs')
 
-min_retry_delay_ms = __config__.get('minRetryDelayMs')
-"""
-Minimum delay in milliseconds before retrying a request.
-"""
+    @property
+    def max_retry_delay_ms(self) -> Optional[int]:
+        """
+        Maximum delay in milliseconds before retrying a request.
+        """
+        return __config__.get_int('maxRetryDelayMs')
 
-skip_instance_delete_poll = __config__.get('skipInstanceDeletePoll')
-"""
-Skip waiting for a linode_instance resource to finish deleting.
-"""
+    @property
+    def min_retry_delay_ms(self) -> Optional[int]:
+        """
+        Minimum delay in milliseconds before retrying a request.
+        """
+        return __config__.get_int('minRetryDelayMs')
 
-skip_instance_ready_poll = __config__.get('skipInstanceReadyPoll')
-"""
-Skip waiting for a linode_instance resource to be running.
-"""
+    @property
+    def skip_instance_delete_poll(self) -> Optional[bool]:
+        """
+        Skip waiting for a linode_instance resource to finish deleting.
+        """
+        return __config__.get_bool('skipInstanceDeletePoll')
 
-token = __config__.get('token')
-"""
-The token that allows you access to your Linode account
-"""
+    @property
+    def skip_instance_ready_poll(self) -> Optional[bool]:
+        """
+        Skip waiting for a linode_instance resource to be running.
+        """
+        return __config__.get_bool('skipInstanceReadyPoll')
 
-ua_prefix = __config__.get('uaPrefix') or _utilities.get_env('LINODE_UA_PREFIX')
-"""
-An HTTP User-Agent Prefix to prepend in API requests.
-"""
+    @property
+    def token(self) -> Optional[str]:
+        """
+        The token that allows you access to your Linode account
+        """
+        return __config__.get('token')
 
-url = __config__.get('url') or _utilities.get_env('LINODE_URL')
-"""
-The HTTP(S) API address of the Linode API to use.
-"""
+    @property
+    def ua_prefix(self) -> Optional[str]:
+        """
+        An HTTP User-Agent Prefix to prepend in API requests.
+        """
+        return __config__.get('uaPrefix') or _utilities.get_env('LINODE_UA_PREFIX')
+
+    @property
+    def url(self) -> Optional[str]:
+        """
+        The HTTP(S) API address of the Linode API to use.
+        """
+        return __config__.get('url') or _utilities.get_env('LINODE_URL')
 

@@ -523,10 +523,11 @@ func (o InstanceAlertsOutput) ToInstanceAlertsPtrOutput() InstanceAlertsPtrOutpu
 }
 
 func (o InstanceAlertsOutput) ToInstanceAlertsPtrOutputWithContext(ctx context.Context) InstanceAlertsPtrOutput {
-	return o.ApplyT(func(v InstanceAlerts) *InstanceAlerts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAlerts) *InstanceAlerts {
 		return &v
 	}).(InstanceAlertsPtrOutput)
 }
+
 func (o InstanceAlertsOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
@@ -562,7 +563,13 @@ func (o InstanceAlertsPtrOutput) ToInstanceAlertsPtrOutputWithContext(ctx contex
 }
 
 func (o InstanceAlertsPtrOutput) Elem() InstanceAlertsOutput {
-	return o.ApplyT(func(v *InstanceAlerts) InstanceAlerts { return *v }).(InstanceAlertsOutput)
+	return o.ApplyT(func(v *InstanceAlerts) InstanceAlerts {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAlerts
+		return ret
+	}).(InstanceAlertsOutput)
 }
 
 func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
@@ -703,10 +710,11 @@ func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOu
 }
 
 func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *InstanceBackups {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceBackups) *InstanceBackups {
 		return &v
 	}).(InstanceBackupsPtrOutput)
 }
+
 func (o InstanceBackupsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -730,7 +738,13 @@ func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutputWithContext(ctx cont
 }
 
 func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
-	return o.ApplyT(func(v *InstanceBackups) InstanceBackups { return *v }).(InstanceBackupsOutput)
+	return o.ApplyT(func(v *InstanceBackups) InstanceBackups {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceBackups
+		return ret
+	}).(InstanceBackupsOutput)
 }
 
 func (o InstanceBackupsPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -844,10 +858,11 @@ func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutput() Inst
 }
 
 func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *InstanceBackupsSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceBackupsSchedule) *InstanceBackupsSchedule {
 		return &v
 	}).(InstanceBackupsSchedulePtrOutput)
 }
+
 func (o InstanceBackupsScheduleOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
@@ -871,7 +886,13 @@ func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutputWith
 }
 
 func (o InstanceBackupsSchedulePtrOutput) Elem() InstanceBackupsScheduleOutput {
-	return o.ApplyT(func(v *InstanceBackupsSchedule) InstanceBackupsSchedule { return *v }).(InstanceBackupsScheduleOutput)
+	return o.ApplyT(func(v *InstanceBackupsSchedule) InstanceBackupsSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceBackupsSchedule
+		return ret
+	}).(InstanceBackupsScheduleOutput)
 }
 
 func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
@@ -1174,7 +1195,7 @@ func (o InstanceConfigDevicesOutput) ToInstanceConfigDevicesPtrOutput() Instance
 }
 
 func (o InstanceConfigDevicesOutput) ToInstanceConfigDevicesPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevices) *InstanceConfigDevices {
 		return &v
 	}).(InstanceConfigDevicesPtrOutput)
 }
@@ -1227,7 +1248,13 @@ func (o InstanceConfigDevicesPtrOutput) ToInstanceConfigDevicesPtrOutputWithCont
 }
 
 func (o InstanceConfigDevicesPtrOutput) Elem() InstanceConfigDevicesOutput {
-	return o.ApplyT(func(v *InstanceConfigDevices) InstanceConfigDevices { return *v }).(InstanceConfigDevicesOutput)
+	return o.ApplyT(func(v *InstanceConfigDevices) InstanceConfigDevices {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevices
+		return ret
+	}).(InstanceConfigDevicesOutput)
 }
 
 // ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
@@ -1404,7 +1431,7 @@ func (o InstanceConfigDevicesSdaOutput) ToInstanceConfigDevicesSdaPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdaOutput) ToInstanceConfigDevicesSdaPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdaPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSda) *InstanceConfigDevicesSda {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSda) *InstanceConfigDevicesSda {
 		return &v
 	}).(InstanceConfigDevicesSdaPtrOutput)
 }
@@ -1439,7 +1466,13 @@ func (o InstanceConfigDevicesSdaPtrOutput) ToInstanceConfigDevicesSdaPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdaPtrOutput) Elem() InstanceConfigDevicesSdaOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSda) InstanceConfigDevicesSda { return *v }).(InstanceConfigDevicesSdaOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSda) InstanceConfigDevicesSda {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSda
+		return ret
+	}).(InstanceConfigDevicesSdaOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -1573,7 +1606,7 @@ func (o InstanceConfigDevicesSdbOutput) ToInstanceConfigDevicesSdbPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdbOutput) ToInstanceConfigDevicesSdbPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdbPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdb) *InstanceConfigDevicesSdb {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdb) *InstanceConfigDevicesSdb {
 		return &v
 	}).(InstanceConfigDevicesSdbPtrOutput)
 }
@@ -1608,7 +1641,13 @@ func (o InstanceConfigDevicesSdbPtrOutput) ToInstanceConfigDevicesSdbPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdbPtrOutput) Elem() InstanceConfigDevicesSdbOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdb) InstanceConfigDevicesSdb { return *v }).(InstanceConfigDevicesSdbOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdb) InstanceConfigDevicesSdb {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdb
+		return ret
+	}).(InstanceConfigDevicesSdbOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -1742,7 +1781,7 @@ func (o InstanceConfigDevicesSdcOutput) ToInstanceConfigDevicesSdcPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdcOutput) ToInstanceConfigDevicesSdcPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdcPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdc) *InstanceConfigDevicesSdc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdc) *InstanceConfigDevicesSdc {
 		return &v
 	}).(InstanceConfigDevicesSdcPtrOutput)
 }
@@ -1777,7 +1816,13 @@ func (o InstanceConfigDevicesSdcPtrOutput) ToInstanceConfigDevicesSdcPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdcPtrOutput) Elem() InstanceConfigDevicesSdcOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdc) InstanceConfigDevicesSdc { return *v }).(InstanceConfigDevicesSdcOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdc) InstanceConfigDevicesSdc {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdc
+		return ret
+	}).(InstanceConfigDevicesSdcOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -1911,7 +1956,7 @@ func (o InstanceConfigDevicesSddOutput) ToInstanceConfigDevicesSddPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSddOutput) ToInstanceConfigDevicesSddPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSddPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdd) *InstanceConfigDevicesSdd {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdd) *InstanceConfigDevicesSdd {
 		return &v
 	}).(InstanceConfigDevicesSddPtrOutput)
 }
@@ -1946,7 +1991,13 @@ func (o InstanceConfigDevicesSddPtrOutput) ToInstanceConfigDevicesSddPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSddPtrOutput) Elem() InstanceConfigDevicesSddOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdd) InstanceConfigDevicesSdd { return *v }).(InstanceConfigDevicesSddOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdd) InstanceConfigDevicesSdd {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdd
+		return ret
+	}).(InstanceConfigDevicesSddOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -2080,7 +2131,7 @@ func (o InstanceConfigDevicesSdeOutput) ToInstanceConfigDevicesSdePtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdeOutput) ToInstanceConfigDevicesSdePtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdePtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSde) *InstanceConfigDevicesSde {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSde) *InstanceConfigDevicesSde {
 		return &v
 	}).(InstanceConfigDevicesSdePtrOutput)
 }
@@ -2115,7 +2166,13 @@ func (o InstanceConfigDevicesSdePtrOutput) ToInstanceConfigDevicesSdePtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdePtrOutput) Elem() InstanceConfigDevicesSdeOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSde) InstanceConfigDevicesSde { return *v }).(InstanceConfigDevicesSdeOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSde) InstanceConfigDevicesSde {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSde
+		return ret
+	}).(InstanceConfigDevicesSdeOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -2249,7 +2306,7 @@ func (o InstanceConfigDevicesSdfOutput) ToInstanceConfigDevicesSdfPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdfOutput) ToInstanceConfigDevicesSdfPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdfPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdf) *InstanceConfigDevicesSdf {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdf) *InstanceConfigDevicesSdf {
 		return &v
 	}).(InstanceConfigDevicesSdfPtrOutput)
 }
@@ -2284,7 +2341,13 @@ func (o InstanceConfigDevicesSdfPtrOutput) ToInstanceConfigDevicesSdfPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdfPtrOutput) Elem() InstanceConfigDevicesSdfOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdf) InstanceConfigDevicesSdf { return *v }).(InstanceConfigDevicesSdfOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdf) InstanceConfigDevicesSdf {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdf
+		return ret
+	}).(InstanceConfigDevicesSdfOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -2418,7 +2481,7 @@ func (o InstanceConfigDevicesSdgOutput) ToInstanceConfigDevicesSdgPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdgOutput) ToInstanceConfigDevicesSdgPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdgPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdg) *InstanceConfigDevicesSdg {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdg) *InstanceConfigDevicesSdg {
 		return &v
 	}).(InstanceConfigDevicesSdgPtrOutput)
 }
@@ -2453,7 +2516,13 @@ func (o InstanceConfigDevicesSdgPtrOutput) ToInstanceConfigDevicesSdgPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdgPtrOutput) Elem() InstanceConfigDevicesSdgOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdg) InstanceConfigDevicesSdg { return *v }).(InstanceConfigDevicesSdgOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdg) InstanceConfigDevicesSdg {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdg
+		return ret
+	}).(InstanceConfigDevicesSdgOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -2587,7 +2656,7 @@ func (o InstanceConfigDevicesSdhOutput) ToInstanceConfigDevicesSdhPtrOutput() In
 }
 
 func (o InstanceConfigDevicesSdhOutput) ToInstanceConfigDevicesSdhPtrOutputWithContext(ctx context.Context) InstanceConfigDevicesSdhPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdh) *InstanceConfigDevicesSdh {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigDevicesSdh) *InstanceConfigDevicesSdh {
 		return &v
 	}).(InstanceConfigDevicesSdhPtrOutput)
 }
@@ -2622,7 +2691,13 @@ func (o InstanceConfigDevicesSdhPtrOutput) ToInstanceConfigDevicesSdhPtrOutputWi
 }
 
 func (o InstanceConfigDevicesSdhPtrOutput) Elem() InstanceConfigDevicesSdhOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdh) InstanceConfigDevicesSdh { return *v }).(InstanceConfigDevicesSdhOutput)
+	return o.ApplyT(func(v *InstanceConfigDevicesSdh) InstanceConfigDevicesSdh {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigDevicesSdh
+		return ret
+	}).(InstanceConfigDevicesSdhOutput)
 }
 
 // The Disk ID of the associated `diskLabel`, if used.
@@ -2762,10 +2837,11 @@ func (o InstanceConfigHelpersOutput) ToInstanceConfigHelpersPtrOutput() Instance
 }
 
 func (o InstanceConfigHelpersOutput) ToInstanceConfigHelpersPtrOutputWithContext(ctx context.Context) InstanceConfigHelpersPtrOutput {
-	return o.ApplyT(func(v InstanceConfigHelpers) *InstanceConfigHelpers {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigHelpers) *InstanceConfigHelpers {
 		return &v
 	}).(InstanceConfigHelpersPtrOutput)
 }
+
 func (o InstanceConfigHelpersOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
 }
@@ -2805,7 +2881,13 @@ func (o InstanceConfigHelpersPtrOutput) ToInstanceConfigHelpersPtrOutputWithCont
 }
 
 func (o InstanceConfigHelpersPtrOutput) Elem() InstanceConfigHelpersOutput {
-	return o.ApplyT(func(v *InstanceConfigHelpers) InstanceConfigHelpers { return *v }).(InstanceConfigHelpersOutput)
+	return o.ApplyT(func(v *InstanceConfigHelpers) InstanceConfigHelpers {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigHelpers
+		return ret
+	}).(InstanceConfigHelpersOutput)
 }
 
 func (o InstanceConfigHelpersPtrOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
@@ -3368,10 +3450,11 @@ func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
 }
 
 func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *InstanceSpecs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSpecs) *InstanceSpecs {
 		return &v
 	}).(InstanceSpecsPtrOutput)
 }
+
 func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
@@ -3403,7 +3486,13 @@ func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.
 }
 
 func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
-	return o.ApplyT(func(v *InstanceSpecs) InstanceSpecs { return *v }).(InstanceSpecsOutput)
+	return o.ApplyT(func(v *InstanceSpecs) InstanceSpecs {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSpecs
+		return ret
+	}).(InstanceSpecsOutput)
 }
 
 func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
@@ -3981,7 +4070,7 @@ func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertPtrOutput() Obje
 }
 
 func (o ObjectStorageBucketCertOutput) ToObjectStorageBucketCertPtrOutputWithContext(ctx context.Context) ObjectStorageBucketCertPtrOutput {
-	return o.ApplyT(func(v ObjectStorageBucketCert) *ObjectStorageBucketCert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageBucketCert) *ObjectStorageBucketCert {
 		return &v
 	}).(ObjectStorageBucketCertPtrOutput)
 }
@@ -4011,7 +4100,13 @@ func (o ObjectStorageBucketCertPtrOutput) ToObjectStorageBucketCertPtrOutputWith
 }
 
 func (o ObjectStorageBucketCertPtrOutput) Elem() ObjectStorageBucketCertOutput {
-	return o.ApplyT(func(v *ObjectStorageBucketCert) ObjectStorageBucketCert { return *v }).(ObjectStorageBucketCertOutput)
+	return o.ApplyT(func(v *ObjectStorageBucketCert) ObjectStorageBucketCert {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectStorageBucketCert
+		return ret
+	}).(ObjectStorageBucketCertOutput)
 }
 
 // The Base64 encoded and PEM formatted SSL certificate.
@@ -4275,7 +4370,7 @@ func (o ObjectStorageBucketLifecycleRuleExpirationOutput) ToObjectStorageBucketL
 }
 
 func (o ObjectStorageBucketLifecycleRuleExpirationOutput) ToObjectStorageBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) ObjectStorageBucketLifecycleRuleExpirationPtrOutput {
-	return o.ApplyT(func(v ObjectStorageBucketLifecycleRuleExpiration) *ObjectStorageBucketLifecycleRuleExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageBucketLifecycleRuleExpiration) *ObjectStorageBucketLifecycleRuleExpiration {
 		return &v
 	}).(ObjectStorageBucketLifecycleRuleExpirationPtrOutput)
 }
@@ -4311,7 +4406,11 @@ func (o ObjectStorageBucketLifecycleRuleExpirationPtrOutput) ToObjectStorageBuck
 
 func (o ObjectStorageBucketLifecycleRuleExpirationPtrOutput) Elem() ObjectStorageBucketLifecycleRuleExpirationOutput {
 	return o.ApplyT(func(v *ObjectStorageBucketLifecycleRuleExpiration) ObjectStorageBucketLifecycleRuleExpiration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ObjectStorageBucketLifecycleRuleExpiration
+		return ret
 	}).(ObjectStorageBucketLifecycleRuleExpirationOutput)
 }
 
@@ -4438,7 +4537,7 @@ func (o ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToObj
 }
 
 func (o ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
-	return o.ApplyT(func(v ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration) *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration) *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 		return &v
 	}).(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
 }
@@ -4464,7 +4563,11 @@ func (o ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) To
 
 func (o ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationOutput {
 	return o.ApplyT(func(v *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration) ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration
+		return ret
 	}).(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationOutput)
 }
 
@@ -5031,10 +5134,11 @@ func (o UserGlobalGrantsOutput) ToUserGlobalGrantsPtrOutput() UserGlobalGrantsPt
 }
 
 func (o UserGlobalGrantsOutput) ToUserGlobalGrantsPtrOutputWithContext(ctx context.Context) UserGlobalGrantsPtrOutput {
-	return o.ApplyT(func(v UserGlobalGrants) *UserGlobalGrants {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserGlobalGrants) *UserGlobalGrants {
 		return &v
 	}).(UserGlobalGrantsPtrOutput)
 }
+
 func (o UserGlobalGrantsOutput) AccountAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *string { return v.AccountAccess }).(pulumi.StringPtrOutput)
 }
@@ -5094,7 +5198,13 @@ func (o UserGlobalGrantsPtrOutput) ToUserGlobalGrantsPtrOutputWithContext(ctx co
 }
 
 func (o UserGlobalGrantsPtrOutput) Elem() UserGlobalGrantsOutput {
-	return o.ApplyT(func(v *UserGlobalGrants) UserGlobalGrants { return *v }).(UserGlobalGrantsOutput)
+	return o.ApplyT(func(v *UserGlobalGrants) UserGlobalGrants {
+		if v != nil {
+			return *v
+		}
+		var ret UserGlobalGrants
+		return ret
+	}).(UserGlobalGrantsOutput)
 }
 
 func (o UserGlobalGrantsPtrOutput) AccountAccess() pulumi.StringPtrOutput {

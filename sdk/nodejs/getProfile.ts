@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const profile = pulumi.output(linode.getProfile({ async: true }));
+ * const profile = pulumi.output(linode.getProfile());
  * ```
  * ## Attributes
  *
