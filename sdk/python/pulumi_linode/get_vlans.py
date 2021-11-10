@@ -14,6 +14,7 @@ __all__ = [
     'GetVlansResult',
     'AwaitableGetVlansResult',
     'get_vlans',
+    'get_vlans_output',
 ]
 
 @pulumi.output_type
@@ -118,3 +119,51 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
         filters=__ret__.filters,
         id=__ret__.id,
         vlans=__ret__.vlans)
+
+
+@_utilities.lift_output_func(get_vlans)
+def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
+    """
+    Provides details about Linode VLANs.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_instance = linode.Instance("myInstance",
+        image="linode/ubuntu18.04",
+        interfaces=[linode.InstanceInterfaceArgs(
+            label="my-vlan",
+            purpose="vlan",
+        )],
+        label="my_instance",
+        region="us-southeast",
+        root_pass="bogusPassword$",
+        type="g6-standard-1")
+    my_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(
+        name="label",
+        values=["my-vlan"],
+    )])
+    ```
+    ## Attributes
+
+    Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
+
+    * `label` - The unique label of the VLAN.
+
+    * `linodes` - The running Linodes currently attached to the VLAN.
+
+    * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+
+    * `created` - When the VLAN was created.
+
+    ## Filterable Fields
+
+    * `label`
+
+    * `region`
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Linode
     {
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -27,6 +31,21 @@ namespace Pulumi.Linode
         }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInstancesFilterInputArgs>? _filters;
+        public InputList<Inputs.GetInstancesFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInstancesFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

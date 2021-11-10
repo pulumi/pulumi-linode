@@ -12,6 +12,7 @@ __all__ = [
     'GetKernelResult',
     'AwaitableGetKernelResult',
     'get_kernel',
+    'get_kernel_output',
 ]
 
 @pulumi.output_type
@@ -155,3 +156,43 @@ def get_kernel(id: Optional[str] = None,
         pvops=__ret__.pvops,
         version=__ret__.version,
         xen=__ret__.xen)
+
+
+@_utilities.lift_output_func(get_kernel)
+def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelResult]:
+    """
+    Provides information about a Linode kernel
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode kernel.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    latest = linode.get_kernel(id="linode/latest-64bit")
+    ```
+    ## Attributes
+
+    The Linode Kernel resource exports the following attributes:
+
+    * `architecture` - The architecture of this Kernel.
+
+    * `deprecated` - Whether or not this Kernel is deprecated.
+
+    * `kvm` - If this Kernel is suitable for KVM Linodes.
+
+    * `label` - The friendly name of this Kernel.
+
+    * `pvops` - If this Kernel is suitable for paravirtualized operations.
+
+    * `version` - Linux Kernel version
+
+    * `xen` - If this Kernel is suitable for Xen Linodes.
+
+
+    :param str id: The unique ID of this Kernel.
+    """
+    ...

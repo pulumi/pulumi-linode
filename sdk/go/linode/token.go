@@ -350,6 +350,10 @@ func (o TokenMapOutput) MapIndex(k pulumi.StringInput) TokenOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TokenInput)(nil)).Elem(), &Token{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TokenPtrInput)(nil)).Elem(), &Token{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TokenArrayInput)(nil)).Elem(), TokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TokenMapInput)(nil)).Elem(), TokenMap{})
 	pulumi.RegisterOutputType(TokenOutput{})
 	pulumi.RegisterOutputType(TokenPtrOutput{})
 	pulumi.RegisterOutputType(TokenArrayOutput{})

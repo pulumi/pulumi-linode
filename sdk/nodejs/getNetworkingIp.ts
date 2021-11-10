@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -82,4 +81,18 @@ export interface GetNetworkingIpResult {
     readonly region: string;
     readonly subnetMask: string;
     readonly type: string;
+}
+
+export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkingIpResult> {
+    return pulumi.output(args).apply(a => getNetworkingIp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkingIp.
+ */
+export interface GetNetworkingIpOutputArgs {
+    /**
+     * The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+     */
+    address: pulumi.Input<string>;
 }

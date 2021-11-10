@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -72,4 +71,22 @@ export interface GetObjectStorageClusterResult {
     readonly region: string;
     readonly staticSiteDomain: string;
     readonly status: string;
+}
+
+export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectStorageClusterResult> {
+    return pulumi.output(args).apply(a => getObjectStorageCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getObjectStorageCluster.
+ */
+export interface GetObjectStorageClusterOutputArgs {
+    domain?: pulumi.Input<string>;
+    /**
+     * The unique ID of this cluster.
+     */
+    id: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    staticSiteDomain?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

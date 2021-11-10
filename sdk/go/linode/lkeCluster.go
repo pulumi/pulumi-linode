@@ -375,6 +375,10 @@ func (o LkeClusterMapOutput) MapIndex(k pulumi.StringInput) LkeClusterOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterInput)(nil)).Elem(), &LkeCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPtrInput)(nil)).Elem(), &LkeCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterArrayInput)(nil)).Elem(), LkeClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterMapInput)(nil)).Elem(), LkeClusterMap{})
 	pulumi.RegisterOutputType(LkeClusterOutput{})
 	pulumi.RegisterOutputType(LkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterArrayOutput{})

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceBackupsResult',
     'AwaitableGetInstanceBackupsResult',
     'get_instance_backups',
+    'get_instance_backups_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,24 @@ def get_instance_backups(linode_id: Optional[int] = None,
         id=__ret__.id,
         in_progresses=__ret__.in_progresses,
         linode_id=__ret__.linode_id)
+
+
+@_utilities.lift_output_func(get_instance_backups)
+def get_instance_backups_output(linode_id: Optional[pulumi.Input[int]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceBackupsResult]:
+    """
+    Provides details about the backups of an Instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_backups = linode.get_instance_backups(id=123)
+    ```
+
+
+    :param int linode_id: The Linode instance's ID.
+    """
+    ...

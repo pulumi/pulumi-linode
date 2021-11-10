@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -73,4 +72,18 @@ export interface GetKernelResult {
     readonly pvops: boolean;
     readonly version: string;
     readonly xen: boolean;
+}
+
+export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelResult> {
+    return pulumi.output(args).apply(a => getKernel(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKernel.
+ */
+export interface GetKernelOutputArgs {
+    /**
+     * The unique ID of this Kernel.
+     */
+    id: pulumi.Input<string>;
 }

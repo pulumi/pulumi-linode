@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -82,6 +83,78 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetVlansResult> InvokeAsync(GetVlansArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about Linode VLANs.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
+        ///         {
+        ///             Image = "linode/ubuntu18.04",
+        ///             Interfaces = 
+        ///             {
+        ///                 new Linode.Inputs.InstanceInterfaceArgs
+        ///                 {
+        ///                     Label = "my-vlan",
+        ///                     Purpose = "vlan",
+        ///                 },
+        ///             },
+        ///             Label = "my_instance",
+        ///             Region = "us-southeast",
+        ///             RootPass = "bogusPassword$",
+        ///             Type = "g6-standard-1",
+        ///         });
+        ///         var my_vlans = Output.Create(Linode.GetVlans.InvokeAsync(new Linode.GetVlansArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new Linode.Inputs.GetVlansFilterArgs
+        ///                 {
+        ///                     Name = "label",
+        ///                     Values = 
+        ///                     {
+        ///                         "my-vlan",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes
+        /// 
+        /// Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
+        /// 
+        /// * `label` - The unique label of the VLAN.
+        /// 
+        /// * `linodes` - The running Linodes currently attached to the VLAN.
+        /// 
+        /// * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+        /// 
+        /// * `created` - When the VLAN was created.
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// </summary>
+        public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +169,21 @@ namespace Pulumi.Linode
         }
 
         public GetVlansArgs()
+        {
+        }
+    }
+
+    public sealed class GetVlansInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVlansFilterInputArgs>? _filters;
+        public InputList<Inputs.GetVlansFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVlansFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        public GetVlansInvokeArgs()
         {
         }
     }

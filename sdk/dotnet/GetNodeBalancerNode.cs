@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetNodeBalancerNodeResult> InvokeAsync(GetNodeBalancerNodeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about a Linode NodeBalancer node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_node = Output.Create(Linode.GetNodeBalancerNode.InvokeAsync(new Linode.GetNodeBalancerNodeArgs
+        ///         {
+        ///             ConfigId = 789,
+        ///             Id = 123,
+        ///             NodebalancerId = 456,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodeBalancerNodeResult> Invoke(GetNodeBalancerNodeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +97,31 @@ namespace Pulumi.Linode
         public int NodebalancerId { get; set; }
 
         public GetNodeBalancerNodeArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeBalancerNodeInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the config that contains the Node.
+        /// </summary>
+        [Input("configId", required: true)]
+        public Input<int> ConfigId { get; set; } = null!;
+
+        /// <summary>
+        /// The node's ID.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<int> Id { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the NodeBalancer that contains the node.
+        /// </summary>
+        [Input("nodebalancerId", required: true)]
+        public Input<int> NodebalancerId { get; set; } = null!;
+
+        public GetNodeBalancerNodeInvokeArgs()
         {
         }
     }

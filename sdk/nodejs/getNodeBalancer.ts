@@ -76,3 +76,17 @@ export interface GetNodeBalancerResult {
     readonly transfers: outputs.GetNodeBalancerTransfer[];
     readonly updated: string;
 }
+
+export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerResult> {
+    return pulumi.output(args).apply(a => getNodeBalancer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeBalancer.
+ */
+export interface GetNodeBalancerOutputArgs {
+    /**
+     * The NodeBalancer's ID.
+     */
+    id: pulumi.Input<number>;
+}

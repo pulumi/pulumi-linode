@@ -12,6 +12,7 @@ __all__ = [
     'GetSshKeyResult',
     'AwaitableGetSshKeyResult',
     'get_ssh_key',
+    'get_ssh_key_output',
 ]
 
 @pulumi.output_type
@@ -107,3 +108,26 @@ def get_ssh_key(label: Optional[str] = None,
         id=__ret__.id,
         label=__ret__.label,
         ssh_key=__ret__.ssh_key)
+
+
+@_utilities.lift_output_func(get_ssh_key)
+def get_ssh_key_output(label: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
+    """
+    `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+
+    ## Example Usage
+
+    The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_ssh_key(label="foo")
+    ```
+
+
+    :param str label: The label of the SSH Key to select.
+    """
+    ...

@@ -12,6 +12,7 @@ __all__ = [
     'GetDomainRecordResult',
     'AwaitableGetDomainRecordResult',
     'get_domain_record',
+    'get_domain_record_output',
 ]
 
 @pulumi.output_type
@@ -214,3 +215,60 @@ def get_domain_record(domain_id: Optional[int] = None,
         ttl_sec=__ret__.ttl_sec,
         type=__ret__.type,
         weight=__ret__.weight)
+
+
+@_utilities.lift_output_func(get_domain_record)
+def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
+                             id: Optional[pulumi.Input[Optional[int]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
+    """
+    Provides information about a Linode Domain Record.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Domain Record.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
+        name="www")
+    ```
+    ## Attributes
+
+    The Linode Volume resource exports the following attributes:
+
+    - `id` - The unique ID of the Domain Record.
+
+    - `name` - The name of the Record.
+
+    - `domain_id` - The associated domain's unique ID.
+
+    - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+
+    - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+
+    - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+
+    - `priority` - The priority of the target host. Lower values are preferred.
+
+    - `weight` - The relative weight of this Record. Higher values are preferred.
+
+    - `port` - The port this Record points to.
+
+    - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
+
+    - `service` - The service this Record identified. Only valid for SRV records.
+
+    - `tag` - The tag portion of a CAA record.
+
+
+    :param int domain_id: The associated domain's unique ID.
+    :param int id: The unique ID of the Domain Record.
+    :param str name: The name of the Record.
+    """
+    ...

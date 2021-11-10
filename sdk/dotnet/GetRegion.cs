@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain additional information about a Linode region.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var region = Output.Create(Linode.GetRegion.InvokeAsync(new Linode.GetRegionArgs
+        ///         {
+        ///             Id = "us-east",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +91,25 @@ namespace Pulumi.Linode
         public string Id { get; set; } = null!;
 
         public GetRegionArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The country the region resides in.
+        /// </summary>
+        [Input("country")]
+        public Input<string>? Country { get; set; }
+
+        /// <summary>
+        /// The code name of the region to select.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        public GetRegionInvokeArgs()
         {
         }
     }

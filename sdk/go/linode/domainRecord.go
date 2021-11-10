@@ -422,6 +422,10 @@ func (o DomainRecordMapOutput) MapIndex(k pulumi.StringInput) DomainRecordOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRecordInput)(nil)).Elem(), &DomainRecord{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRecordPtrInput)(nil)).Elem(), &DomainRecord{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRecordArrayInput)(nil)).Elem(), DomainRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRecordMapInput)(nil)).Elem(), DomainRecordMap{})
 	pulumi.RegisterOutputType(DomainRecordOutput{})
 	pulumi.RegisterOutputType(DomainRecordPtrOutput{})
 	pulumi.RegisterOutputType(DomainRecordArrayOutput{})

@@ -113,3 +113,21 @@ export interface GetNodeBalancerConfigResult {
      */
     readonly stickiness: string;
 }
+
+export function getNodeBalancerConfigOutput(args: GetNodeBalancerConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerConfigResult> {
+    return pulumi.output(args).apply(a => getNodeBalancerConfig(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeBalancerConfig.
+ */
+export interface GetNodeBalancerConfigOutputArgs {
+    /**
+     * The config's ID.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The ID of the NodeBalancer that contains the config.
+     */
+    nodebalancerId: pulumi.Input<number>;
+}

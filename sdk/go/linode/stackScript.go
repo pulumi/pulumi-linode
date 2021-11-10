@@ -466,6 +466,10 @@ func (o StackScriptMapOutput) MapIndex(k pulumi.StringInput) StackScriptOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptInput)(nil)).Elem(), &StackScript{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptPtrInput)(nil)).Elem(), &StackScript{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptArrayInput)(nil)).Elem(), StackScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptMapInput)(nil)).Elem(), StackScriptMap{})
 	pulumi.RegisterOutputType(StackScriptOutput{})
 	pulumi.RegisterOutputType(StackScriptPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -102,4 +101,22 @@ export interface GetDomainResult {
     readonly tags: string[];
     readonly ttlSec: number;
     readonly type: string;
+}
+
+export function getDomainOutput(args?: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
+    return pulumi.output(args).apply(a => getDomain(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomain.
+ */
+export interface GetDomainOutputArgs {
+    /**
+     * The unique domain name of the Domain record to query.
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * The unique numeric ID of the Domain record to query.
+     */
+    id?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetNodeBalancerResult> InvokeAsync(GetNodeBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about a Linode NodeBalancer.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_nodebalancer = Output.Create(Linode.GetNodeBalancer.InvokeAsync(new Linode.GetNodeBalancerArgs
+        ///         {
+        ///             Id = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodeBalancerResult> Invoke(GetNodeBalancerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Linode
         public int Id { get; set; }
 
         public GetNodeBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeBalancerInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The NodeBalancer's ID.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<int> Id { get; set; } = null!;
+
+        public GetNodeBalancerInvokeArgs()
         {
         }
     }

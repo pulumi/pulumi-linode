@@ -82,3 +82,14 @@ export interface GetVlansResult {
     readonly id: string;
     readonly vlans: outputs.GetVlansVlan[];
 }
+
+export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlansResult> {
+    return pulumi.output(args).apply(a => getVlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVlans.
+ */
+export interface GetVlansOutputArgs {
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVlansFilterArgs>[]>;
+}

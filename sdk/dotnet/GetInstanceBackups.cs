@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetInstanceBackupsResult> InvokeAsync(GetInstanceBackupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about the backups of an Instance.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_backups = Output.Create(Linode.GetInstanceBackups.InvokeAsync(new Linode.GetInstanceBackupsArgs
+        ///         {
+        ///             Id = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceBackupsResult> Invoke(GetInstanceBackupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Linode
         public int LinodeId { get; set; }
 
         public GetInstanceBackupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceBackupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Linode instance's ID.
+        /// </summary>
+        [Input("linodeId", required: true)]
+        public Input<int> LinodeId { get; set; } = null!;
+
+        public GetInstanceBackupsInvokeArgs()
         {
         }
     }

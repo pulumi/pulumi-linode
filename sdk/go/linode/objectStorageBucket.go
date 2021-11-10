@@ -391,6 +391,10 @@ func (o ObjectStorageBucketMapOutput) MapIndex(k pulumi.StringInput) ObjectStora
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketInput)(nil)).Elem(), &ObjectStorageBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketPtrInput)(nil)).Elem(), &ObjectStorageBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketArrayInput)(nil)).Elem(), ObjectStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketMapInput)(nil)).Elem(), ObjectStorageBucketMap{})
 	pulumi.RegisterOutputType(ObjectStorageBucketOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketArrayOutput{})

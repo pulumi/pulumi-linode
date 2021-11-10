@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -61,4 +60,18 @@ export interface GetSshKeyResult {
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
     readonly sshKey: string;
+}
+
+export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
+    return pulumi.output(args).apply(a => getSshKey(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSshKey.
+ */
+export interface GetSshKeyOutputArgs {
+    /**
+     * The label of the SSH Key to select.
+     */
+    label: pulumi.Input<string>;
 }

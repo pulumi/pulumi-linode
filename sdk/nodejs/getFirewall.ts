@@ -82,3 +82,17 @@ export interface GetFirewallResult {
      */
     readonly tags: string[];
 }
+
+export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
+    return pulumi.output(args).apply(a => getFirewall(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFirewall.
+ */
+export interface GetFirewallOutputArgs {
+    /**
+     * The Firewall's ID.
+     */
+    id: pulumi.Input<number>;
+}

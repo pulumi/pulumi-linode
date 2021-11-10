@@ -13,6 +13,7 @@ __all__ = [
     'GetLkeClusterResult',
     'AwaitableGetLkeClusterResult',
     'get_lke_cluster',
+    'get_lke_cluster_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,24 @@ def get_lke_cluster(id: Optional[int] = None,
         region=__ret__.region,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_lke_cluster)
+def get_lke_cluster_output(id: Optional[pulumi.Input[int]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClusterResult]:
+    """
+    Provides details about an LKE Cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_cluster = linode.get_lke_cluster(id=123)
+    ```
+
+
+    :param int id: The LKE Cluster's ID.
+    """
+    ...

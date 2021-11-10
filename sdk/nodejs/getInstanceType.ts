@@ -88,3 +88,18 @@ export interface GetInstanceTypeResult {
     readonly transfer: number;
     readonly vcpus: number;
 }
+
+export function getInstanceTypeOutput(args: GetInstanceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeResult> {
+    return pulumi.output(args).apply(a => getInstanceType(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceType.
+ */
+export interface GetInstanceTypeOutputArgs {
+    /**
+     * Label used to identify instance type
+     */
+    id: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
+}

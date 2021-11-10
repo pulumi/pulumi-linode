@@ -352,6 +352,10 @@ func (o NodeBalancerNodeMapOutput) MapIndex(k pulumi.StringInput) NodeBalancerNo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerNodeInput)(nil)).Elem(), &NodeBalancerNode{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerNodePtrInput)(nil)).Elem(), &NodeBalancerNode{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerNodeArrayInput)(nil)).Elem(), NodeBalancerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerNodeMapInput)(nil)).Elem(), NodeBalancerNodeMap{})
 	pulumi.RegisterOutputType(NodeBalancerNodeOutput{})
 	pulumi.RegisterOutputType(NodeBalancerNodePtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerNodeArrayOutput{})

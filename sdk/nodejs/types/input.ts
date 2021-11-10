@@ -89,6 +89,28 @@ export interface GetImagesFilter {
     values: string[];
 }
 
+export interface GetImagesFilterArgs {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetInstancesFilterArgs {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetInstancesFilter {
     /**
      * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
@@ -98,6 +120,15 @@ export interface GetInstancesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetStackScriptUserDefinedFieldArgs {
+    default?: pulumi.Input<string>;
+    example?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
+    manyOf?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    oneOf?: pulumi.Input<string>;
 }
 
 export interface GetStackScriptUserDefinedField {
@@ -118,6 +149,17 @@ export interface GetVlansFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetVlansFilterArgs {
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface InstanceAlerts {

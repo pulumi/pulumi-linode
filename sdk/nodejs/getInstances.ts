@@ -37,3 +37,14 @@ export interface GetInstancesResult {
     readonly id: string;
     readonly instances: outputs.GetInstancesInstance[];
 }
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    filters?: pulumi.Input<pulumi.Input<inputs.GetInstancesFilterArgs>[]>;
+}

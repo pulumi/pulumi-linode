@@ -12,6 +12,7 @@ __all__ = [
     'GetVolumeResult',
     'AwaitableGetVolumeResult',
     'get_volume',
+    'get_volume_output',
 ]
 
 @pulumi.output_type
@@ -181,3 +182,49 @@ def get_volume(id: Optional[int] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         updated=__ret__.updated)
+
+
+@_utilities.lift_output_func(get_volume)
+def get_volume_output(id: Optional[pulumi.Input[int]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
+    """
+    Provides information about a Linode Volume.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Volume.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_volume(id=1234567)
+    ```
+    ## Attributes
+
+    The Linode Volume resource exports the following attributes:
+
+    - `id` - The unique ID of this Volume.
+
+    - `created` - When this Volume was created.
+
+    - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+
+    - `label` - This Volume's label is for display purposes only.
+
+    - `tags` - An array of tags applied to this object.
+
+    - `size` - The Volume's size, in GiB.
+
+    - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+
+    - `updated` - When this Volume was last updated.
+
+    - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+
+    - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+
+
+    :param int id: The unique numeric ID of the Volume record to query.
+    """
+    ...
