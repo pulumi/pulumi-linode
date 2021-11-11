@@ -12,6 +12,7 @@ __all__ = [
     'GetUserResult',
     'AwaitableGetUserResult',
     'get_user',
+    'get_user_output',
 ]
 
 @pulumi.output_type
@@ -120,3 +121,35 @@ def get_user(username: Optional[str] = None,
         restricted=__ret__.restricted,
         ssh_keys=__ret__.ssh_keys,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_output(username: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    """
+    Provides information about a Linode user
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode user.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_user(username="foo")
+    ```
+    ## Attributes
+
+    The Linode User resource exports the following attributes:
+
+    * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+
+    * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
+
+    * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+
+
+    :param str username: The unique username of this User.
+    """
+    ...

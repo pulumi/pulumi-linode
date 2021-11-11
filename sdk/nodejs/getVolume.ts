@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -81,4 +80,18 @@ export interface GetVolumeResult {
     readonly status: string;
     readonly tags: string[];
     readonly updated: string;
+}
+
+export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
+    return pulumi.output(args).apply(a => getVolume(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVolume.
+ */
+export interface GetVolumeOutputArgs {
+    /**
+     * The unique numeric ID of the Volume record to query.
+     */
+    id: pulumi.Input<number>;
 }

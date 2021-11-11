@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeBalancerConfigResult',
     'AwaitableGetNodeBalancerConfigResult',
     'get_node_balancer_config',
+    'get_node_balancer_config_output',
 ]
 
 @pulumi.output_type
@@ -283,3 +284,27 @@ def get_node_balancer_config(id: Optional[int] = None,
         ssl_commonname=__ret__.ssl_commonname,
         ssl_fingerprint=__ret__.ssl_fingerprint,
         stickiness=__ret__.stickiness)
+
+
+@_utilities.lift_output_func(get_node_balancer_config)
+def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
+                                    nodebalancer_id: Optional[pulumi.Input[int]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
+    """
+    Provides details about a Linode NodeBalancer Config.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_config = linode.get_node_balancer_config(id=123,
+        nodebalancer_id=456)
+    ```
+
+
+    :param int id: The config's ID.
+    :param int nodebalancer_id: The ID of the NodeBalancer that contains the config.
+    """
+    ...

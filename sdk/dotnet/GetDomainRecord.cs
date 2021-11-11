@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -74,6 +75,70 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetDomainRecordResult> InvokeAsync(GetDomainRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides information about a Linode Domain Record.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Domain Record.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
+        ///         {
+        ///             DomainId = 3150401,
+        ///             Id = 14950401,
+        ///         }));
+        ///         var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
+        ///         {
+        ///             DomainId = 3150401,
+        ///             Name = "www",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes
+        /// 
+        /// The Linode Volume resource exports the following attributes:
+        /// 
+        /// - `id` - The unique ID of the Domain Record.
+        /// 
+        /// - `name` - The name of the Record.
+        /// 
+        /// - `domain_id` - The associated domain's unique ID.
+        /// 
+        /// - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+        /// 
+        /// - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        /// 
+        /// - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+        /// 
+        /// - `priority` - The priority of the target host. Lower values are preferred.
+        /// 
+        /// - `weight` - The relative weight of this Record. Higher values are preferred.
+        /// 
+        /// - `port` - The port this Record points to.
+        /// 
+        /// - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
+        /// 
+        /// - `service` - The service this Record identified. Only valid for SRV records.
+        /// 
+        /// - `tag` - The tag portion of a CAA record.
+        /// </summary>
+        public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +163,31 @@ namespace Pulumi.Linode
         public string? Name { get; set; }
 
         public GetDomainRecordArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainRecordInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The associated domain's unique ID.
+        /// </summary>
+        [Input("domainId", required: true)]
+        public Input<int> DomainId { get; set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the Domain Record.
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the Record.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetDomainRecordInvokeArgs()
         {
         }
     }

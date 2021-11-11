@@ -291,6 +291,10 @@ func (o RdnsMapOutput) MapIndex(k pulumi.StringInput) RdnsOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsInput)(nil)).Elem(), &Rdns{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsPtrInput)(nil)).Elem(), &Rdns{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsArrayInput)(nil)).Elem(), RdnsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsMapInput)(nil)).Elem(), RdnsMap{})
 	pulumi.RegisterOutputType(RdnsOutput{})
 	pulumi.RegisterOutputType(RdnsPtrOutput{})
 	pulumi.RegisterOutputType(RdnsArrayOutput{})

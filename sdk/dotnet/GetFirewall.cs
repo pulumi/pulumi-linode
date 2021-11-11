@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetFirewallResult> InvokeAsync(GetFirewallArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about a Linode Firewall.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_firewall = Output.Create(Linode.GetFirewall.InvokeAsync(new Linode.GetFirewallArgs
+        ///         {
+        ///             Id = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Linode
         public int Id { get; set; }
 
         public GetFirewallArgs()
+        {
+        }
+    }
+
+    public sealed class GetFirewallInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Firewall's ID.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<int> Id { get; set; } = null!;
+
+        public GetFirewallInvokeArgs()
         {
         }
     }

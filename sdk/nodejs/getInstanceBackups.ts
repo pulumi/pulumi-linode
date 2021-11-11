@@ -55,3 +55,17 @@ export interface GetInstanceBackupsResult {
     readonly inProgresses: outputs.GetInstanceBackupsInProgress[];
     readonly linodeId: number;
 }
+
+export function getInstanceBackupsOutput(args: GetInstanceBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceBackupsResult> {
+    return pulumi.output(args).apply(a => getInstanceBackups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceBackups.
+ */
+export interface GetInstanceBackupsOutputArgs {
+    /**
+     * The Linode instance's ID.
+     */
+    linodeId: pulumi.Input<number>;
+}

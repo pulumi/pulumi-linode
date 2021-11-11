@@ -108,3 +108,14 @@ export interface GetImagesResult {
     readonly id: string;
     readonly images: outputs.GetImagesImage[];
 }
+
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+    return pulumi.output(args).apply(a => getImages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImages.
+ */
+export interface GetImagesOutputArgs {
+    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+}

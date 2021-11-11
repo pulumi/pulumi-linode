@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Linode.GetSshKey.InvokeAsync(new Linode.GetSshKeyArgs
+        ///         {
+        ///             Label = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.Linode
         public string Label { get; set; } = null!;
 
         public GetSshKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSshKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The label of the SSH Key to select.
+        /// </summary>
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        public GetSshKeyInvokeArgs()
         {
         }
     }

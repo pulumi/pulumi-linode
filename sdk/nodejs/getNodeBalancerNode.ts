@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -81,4 +80,26 @@ export interface GetNodeBalancerNodeResult {
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     readonly weight: number;
+}
+
+export function getNodeBalancerNodeOutput(args: GetNodeBalancerNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerNodeResult> {
+    return pulumi.output(args).apply(a => getNodeBalancerNode(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeBalancerNode.
+ */
+export interface GetNodeBalancerNodeOutputArgs {
+    /**
+     * The ID of the config that contains the Node.
+     */
+    configId: pulumi.Input<number>;
+    /**
+     * The node's ID.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The ID of the NodeBalancer that contains the node.
+     */
+    nodebalancerId: pulumi.Input<number>;
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetObjectStorageClusterResult',
     'AwaitableGetObjectStorageClusterResult',
     'get_object_storage_cluster',
+    'get_object_storage_cluster_output',
 ]
 
 @pulumi.output_type
@@ -127,3 +128,41 @@ def get_object_storage_cluster(domain: Optional[str] = None,
         region=__ret__.region,
         static_site_domain=__ret__.static_site_domain,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_object_storage_cluster)
+def get_object_storage_cluster_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
+                                      id: Optional[pulumi.Input[str]] = None,
+                                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                                      static_site_domain: Optional[pulumi.Input[Optional[str]]] = None,
+                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
+    """
+    Provides information about a Linode Object Storage Cluster
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    primary = linode.get_object_storage_cluster(id="us-east-1")
+    ```
+    ## Attributes
+
+    The Linode Object Storage Cluster resource exports the following attributes:
+
+    * `domain` - The base URL for this cluster.
+
+    * `status` - This cluster's status. (`available`, `unavailable`)
+
+    * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+
+    * `static_site_domain` - The base URL for this cluster used when hosting static sites.
+
+
+    :param str id: The unique ID of this cluster.
+    """
+    ...

@@ -14,6 +14,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -79,3 +80,12 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
         filters=__ret__.filters,
         id=__ret__.id,
         instances=__ret__.instances)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstancesFilterArgs']]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

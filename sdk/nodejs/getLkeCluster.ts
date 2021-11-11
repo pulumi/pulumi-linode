@@ -80,3 +80,17 @@ export interface GetLkeClusterResult {
      */
     readonly tags: string[];
 }
+
+export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
+    return pulumi.output(args).apply(a => getLkeCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLkeCluster.
+ */
+export interface GetLkeClusterOutputArgs {
+    /**
+     * The LKE Cluster's ID.
+     */
+    id: pulumi.Input<number>;
+}

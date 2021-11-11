@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -65,4 +64,18 @@ export interface GetUserResult {
     readonly restricted: boolean;
     readonly sshKeys: string[];
     readonly username: string;
+}
+
+export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * The unique username of this User.
+     */
+    username: pulumi.Input<string>;
 }

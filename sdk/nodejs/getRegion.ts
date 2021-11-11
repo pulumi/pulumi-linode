@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -58,4 +57,22 @@ export interface GetRegionResult {
      */
     readonly country: string;
     readonly id: string;
+}
+
+export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
+    return pulumi.output(args).apply(a => getRegion(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegion.
+ */
+export interface GetRegionOutputArgs {
+    /**
+     * The country the region resides in.
+     */
+    country?: pulumi.Input<string>;
+    /**
+     * The code name of the region to select.
+     */
+    id: pulumi.Input<string>;
 }

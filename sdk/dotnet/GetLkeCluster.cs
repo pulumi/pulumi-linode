@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetLkeClusterResult> InvokeAsync(GetLkeClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides details about an LKE Cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_cluster = Output.Create(Linode.GetLkeCluster.InvokeAsync(new Linode.GetLkeClusterArgs
+        ///         {
+        ///             Id = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetLkeClusterResult> Invoke(GetLkeClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Linode
         public int Id { get; set; }
 
         public GetLkeClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetLkeClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The LKE Cluster's ID.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<int> Id { get; set; } = null!;
+
+        public GetLkeClusterInvokeArgs()
         {
         }
     }

@@ -106,3 +106,18 @@ export interface GetStackScriptResult {
     readonly userGravatarId: string;
     readonly username: string;
 }
+
+export function getStackScriptOutput(args: GetStackScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptResult> {
+    return pulumi.output(args).apply(a => getStackScript(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStackScript.
+ */
+export interface GetStackScriptOutputArgs {
+    /**
+     * The unique numeric ID of the StackScript to query.
+     */
+    id: pulumi.Input<number>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.GetStackScriptUserDefinedFieldArgs>[]>;
+}

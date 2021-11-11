@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -68,6 +69,64 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetInstanceTypeResult> InvokeAsync(GetInstanceTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args ?? new GetInstanceTypeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides information about a Linode instance type
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Instance type.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Linode.GetInstanceType.InvokeAsync(new Linode.GetInstanceTypeArgs
+        ///         {
+        ///             Id = "g6-standard-2",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes
+        /// 
+        /// The Linode Instance Type resource exports the following attributes:
+        /// 
+        /// * `id` - The ID representing the Linode Type
+        /// 
+        /// * `label` - The Linode Type's label is for display purposes only
+        /// 
+        /// * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        /// 
+        /// * `disk` - The Disk size, in MB, of the Linode Type
+        /// 
+        /// * `price.0.hourly` -  Cost (in US dollars) per hour.
+        /// 
+        /// * `price.0.monthly` - Cost (in US dollars) per month.
+        /// 
+        /// * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
+        /// 
+        /// * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
+        /// 
+        /// * `network_out` - The Mbits outbound bandwidth allocation.
+        /// 
+        /// * `memory` - The amount of RAM included in this Linode Type.
+        /// 
+        /// * `transfer` - The monthly outbound transfer amount, in MB.
+        /// 
+        /// * `vcpus` - The number of VCPU cores this Linode Type offers.
+        /// </summary>
+        public static Output<GetInstanceTypeResult> Invoke(GetInstanceTypeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args ?? new GetInstanceTypeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +142,22 @@ namespace Pulumi.Linode
         public string? Label { get; set; }
 
         public GetInstanceTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypeInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Label used to identify instance type
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
+        public GetInstanceTypeInvokeArgs()
         {
         }
     }

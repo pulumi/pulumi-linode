@@ -13,6 +13,7 @@ __all__ = [
     'GetFirewallResult',
     'AwaitableGetFirewallResult',
     'get_firewall',
+    'get_firewall_output',
 ]
 
 @pulumi.output_type
@@ -191,3 +192,24 @@ def get_firewall(id: Optional[int] = None,
         outbounds=__ret__.outbounds,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_firewall)
+def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+    """
+    Provides details about a Linode Firewall.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_firewall = linode.get_firewall(id=123)
+    ```
+
+
+    :param int id: The Firewall's ID.
+    """
+    ...

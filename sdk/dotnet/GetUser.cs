@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -50,6 +51,46 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides information about a Linode user
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode user.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs
+        ///         {
+        ///             Username = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes
+        /// 
+        /// The Linode User resource exports the following attributes:
+        /// 
+        /// * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        /// 
+        /// * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
+        /// 
+        /// * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +103,19 @@ namespace Pulumi.Linode
         public string Username { get; set; } = null!;
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The unique username of this User.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public GetUserInvokeArgs()
         {
         }
     }

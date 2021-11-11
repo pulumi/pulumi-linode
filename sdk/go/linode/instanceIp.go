@@ -368,6 +368,10 @@ func (o InstanceIpMapOutput) MapIndex(k pulumi.StringInput) InstanceIpOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpInput)(nil)).Elem(), &InstanceIp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpPtrInput)(nil)).Elem(), &InstanceIp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpArrayInput)(nil)).Elem(), InstanceIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpMapInput)(nil)).Elem(), InstanceIpMap{})
 	pulumi.RegisterOutputType(InstanceIpOutput{})
 	pulumi.RegisterOutputType(InstanceIpPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIpArrayOutput{})
