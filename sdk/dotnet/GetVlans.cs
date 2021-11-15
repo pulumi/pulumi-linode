@@ -168,6 +168,18 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public string? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
         public GetVlansArgs()
         {
         }
@@ -183,6 +195,18 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
         public GetVlansInvokeArgs()
         {
         }
@@ -197,6 +221,8 @@ namespace Pulumi.Linode
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? Order;
+        public readonly string? OrderBy;
         public readonly ImmutableArray<Outputs.GetVlansVlanResult> Vlans;
 
         [OutputConstructor]
@@ -205,10 +231,16 @@ namespace Pulumi.Linode
 
             string id,
 
+            string? order,
+
+            string? orderBy,
+
             ImmutableArray<Outputs.GetVlansVlanResult> vlans)
         {
             Filters = filters;
             Id = id;
+            Order = order;
+            OrderBy = orderBy;
             Vlans = vlans;
         }
     }

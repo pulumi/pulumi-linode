@@ -13,6 +13,12 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetInstancesFilterInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// </summary>
+        [Input("matchBy")]
+        public Input<string>? MatchBy { get; set; }
+
+        /// <summary>
         /// The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
         /// </summary>
         [Input("name", required: true)]

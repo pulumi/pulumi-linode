@@ -83,7 +83,7 @@ type DomainRecord struct {
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 	Target pulumi.StringOutput `pulumi:"target"`
-	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrOutput `pulumi:"ttlSec"`
 	// The relative weight of this Record. Higher values are preferred.
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
@@ -145,7 +145,7 @@ type domainRecordState struct {
 	Tag *string `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 	Target *string `pulumi:"target"`
-	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
 	// The relative weight of this Record. Higher values are preferred.
 	Weight *int `pulumi:"weight"`
@@ -170,7 +170,7 @@ type DomainRecordState struct {
 	Tag pulumi.StringPtrInput
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 	Target pulumi.StringPtrInput
-	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
 	// The relative weight of this Record. Higher values are preferred.
 	Weight pulumi.IntPtrInput
@@ -199,7 +199,7 @@ type domainRecordArgs struct {
 	Tag *string `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 	Target string `pulumi:"target"`
-	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
 	// The relative weight of this Record. Higher values are preferred.
 	Weight *int `pulumi:"weight"`
@@ -225,7 +225,7 @@ type DomainRecordArgs struct {
 	Tag pulumi.StringPtrInput
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 	Target pulumi.StringInput
-	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
 	// The relative weight of this Record. Higher values are preferred.
 	Weight pulumi.IntPtrInput

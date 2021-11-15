@@ -1044,6 +1044,7 @@
                 },
                 "readOnly": {
                     "type": "boolean",
+                    "description": "If true, this Disk is read-only.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1189,8 +1190,36 @@
                 }
             }
         },
+        "linode:index/LkeClusterControlPlane:LkeClusterControlPlane": {
+            "properties": {
+                "highAvailability": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "highAvailability"
+                    ]
+                }
+            }
+        },
         "linode:index/LkeClusterPool:LkeClusterPool": {
             "properties": {
+                "autoscaler": {
+                    "$ref": "#/types/linode:index/LkeClusterPoolAutoscaler:LkeClusterPoolAutoscaler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "count": {
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool.\n",
@@ -1245,6 +1274,33 @@
                     ]
                 }
             }
+        },
+        "linode:index/LkeClusterPoolAutoscaler:LkeClusterPoolAutoscaler": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "The maximum number of nodes to autoscale to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "The minimum number of nodes to autoscale to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "max",
+                "min"
+            ]
         },
         "linode:index/LkeClusterPoolNode:LkeClusterPoolNode": {
             "properties": {
@@ -2113,6 +2169,15 @@
         },
         "linode:index/getImagesFilter:getImagesFilter": {
             "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
@@ -2810,8 +2875,272 @@
                 }
             }
         },
+        "linode:index/getInstanceTypesFilter:getInstanceTypesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getInstanceTypesType:getInstanceTypesType": {
+            "properties": {
+                "addons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypeAddon:getInstanceTypesTypeAddon"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "class": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disk": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memory": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networkOut": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transfer": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcpus": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addons",
+                "class",
+                "disk",
+                "id",
+                "label",
+                "memory",
+                "networkOut",
+                "prices",
+                "transfer",
+                "vcpus"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceTypesTypeAddon:getInstanceTypesTypeAddon": {
+            "properties": {
+                "backups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypeAddonBackup:getInstanceTypesTypeAddonBackup"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "backups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceTypesTypeAddonBackup:getInstanceTypesTypeAddonBackup": {
+            "properties": {
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "prices"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "monthly": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "monthly": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getInstancesFilter:getInstancesFilter": {
             "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.\n",
@@ -2893,6 +3222,14 @@
                 },
                 "group": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3021,6 +3358,7 @@
                 "configs",
                 "disks",
                 "group",
+                "id",
                 "image",
                 "ipAddress",
                 "ipv4s",
@@ -3858,8 +4196,41 @@
                 }
             }
         },
+        "linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane": {
+            "properties": {
+                "highAvailability": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "highAvailability"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getLkeClusterPool:getLkeClusterPool": {
             "properties": {
+                "autoscalers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeClusterPoolAutoscaler:getLkeClusterPoolAutoscaler"
+                    },
+                    "description": "The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "count": {
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool.\n",
@@ -3902,10 +4273,43 @@
             },
             "type": "object",
             "required": [
+                "autoscalers",
                 "count",
                 "id",
                 "nodes",
                 "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getLkeClusterPoolAutoscaler:getLkeClusterPoolAutoscaler": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "description": "The maximum number of nodes to autoscale to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "The minimum number of nodes to autoscale to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "max",
+                "min"
             ],
             "language": {
                 "nodejs": {
@@ -4161,8 +4565,267 @@
                 }
             }
         },
+        "linode:index/getStackScriptsFilter:getStackScriptsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getStackScriptsStackscript:getStackScriptsStackscript": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deploymentsActive": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deploymentsTotal": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "revNote": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "script": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userDefinedFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getStackScriptsStackscriptUserDefinedField:getStackScriptsStackscriptUserDefinedField"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userGravatarId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "deploymentsActive",
+                "deploymentsTotal",
+                "description",
+                "id",
+                "images",
+                "isPublic",
+                "label",
+                "revNote",
+                "script",
+                "updated",
+                "userDefinedFields",
+                "userGravatarId",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getStackScriptsStackscriptUserDefinedField:getStackScriptsStackscriptUserDefinedField": {
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "example": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "manyOf": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "oneOf": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "example",
+                "label",
+                "manyOf",
+                "name",
+                "oneOf"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getVlansFilter:getVlansFilter": {
             "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n",
@@ -4385,7 +5048,7 @@
                 },
                 "expireSec": {
                     "type": "integer",
-                    "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "group": {
                     "type": "string",
@@ -4400,11 +5063,11 @@
                 },
                 "refreshSec": {
                     "type": "integer",
-                    "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "retrySec": {
                     "type": "integer",
-                    "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "soaEmail": {
                     "type": "string",
@@ -4423,7 +5086,7 @@
                 },
                 "ttlSec": {
                     "type": "integer",
-                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "type": {
                     "type": "string",
@@ -4458,7 +5121,7 @@
                 },
                 "expireSec": {
                     "type": "integer",
-                    "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "group": {
                     "type": "string",
@@ -4473,11 +5136,11 @@
                 },
                 "refreshSec": {
                     "type": "integer",
-                    "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "retrySec": {
                     "type": "integer",
-                    "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "soaEmail": {
                     "type": "string",
@@ -4496,7 +5159,7 @@
                 },
                 "ttlSec": {
                     "type": "integer",
-                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "type": {
                     "type": "string",
@@ -4532,7 +5195,7 @@
                     },
                     "expireSec": {
                         "type": "integer",
-                        "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                        "description": "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                     },
                     "group": {
                         "type": "string",
@@ -4547,11 +5210,11 @@
                     },
                     "refreshSec": {
                         "type": "integer",
-                        "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                        "description": "The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                     },
                     "retrySec": {
                         "type": "integer",
-                        "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                        "description": "The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                     },
                     "soaEmail": {
                         "type": "string",
@@ -4570,7 +5233,7 @@
                     },
                     "ttlSec": {
                         "type": "integer",
-                        "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                        "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                     },
                     "type": {
                         "type": "string",
@@ -4621,7 +5284,7 @@
                 },
                 "ttlSec": {
                     "type": "integer",
-                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "weight": {
                     "type": "integer",
@@ -4673,7 +5336,7 @@
                 },
                 "ttlSec": {
                     "type": "integer",
-                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                    "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                 },
                 "weight": {
                     "type": "integer",
@@ -4726,7 +5389,7 @@
                     },
                     "ttlSec": {
                         "type": "integer",
-                        "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
+                        "description": "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.\n"
                     },
                     "weight": {
                         "type": "integer",
@@ -5628,7 +6291,7 @@
             }
         },
         "linode:index/lkeCluster:LkeCluster": {
-            "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.20\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.20\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.20\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.20\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: LkeClusterPoolArray{\n\t\t\t\t\u0026LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
+            "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a basic LKE cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.21\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.21\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.21\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.21\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: LkeClusterPoolArray{\n\t\t\t\t\u0026LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nCreating an LKE cluster with autoscaler:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.21\",\n    label: \"my-cluster\",\n    pools: [{\n        autoscaler: {\n            max: 10,\n            min: 3,\n        },\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.21\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        autoscaler=linode.LkeClusterPoolAutoscalerArgs(\n            max=10,\n            min=3,\n        ),\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.21\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs\n                    {\n                        Max = 10,\n                        Min = 3,\n                    },\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my_cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.21\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: LkeClusterPoolArray{\n\t\t\t\t\u0026LkeClusterPoolArgs{\n\t\t\t\t\tAutoscaler: \u0026LkeClusterPoolAutoscalerArgs{\n\t\t\t\t\t\tMax: pulumi.Int(10),\n\t\t\t\t\t\tMin: pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
             "properties": {
                 "apiEndpoints": {
                     "type": "array",
@@ -5636,6 +6299,10 @@
                         "type": "string"
                     },
                     "description": "The endpoints for the Kubernetes API server.\n"
+                },
+                "controlPlane": {
+                    "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
+                    "description": "Defines settings for the Kubernetes Control Plane.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -5674,6 +6341,7 @@
             },
             "required": [
                 "apiEndpoints",
+                "controlPlane",
                 "k8sVersion",
                 "kubeconfig",
                 "label",
@@ -5682,6 +6350,10 @@
                 "status"
             ],
             "inputProperties": {
+                "controlPlane": {
+                    "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
+                    "description": "Defines settings for the Kubernetes Control Plane.\n"
+                },
                 "k8sVersion": {
                     "type": "string",
                     "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.\n"
@@ -5724,6 +6396,10 @@
                             "type": "string"
                         },
                         "description": "The endpoints for the Kubernetes API server.\n"
+                    },
+                    "controlPlane": {
+                        "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
+                        "description": "Defines settings for the Kubernetes Control Plane.\n"
                     },
                     "k8sVersion": {
                         "type": "string",
@@ -7921,6 +8597,18 @@
                         "items": {
                             "$ref": "#/types/linode:index/getImagesFilter:getImagesFilter"
                         }
+                    },
+                    "latest": {
+                        "type": "boolean",
+                        "description": "If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.\n"
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
                     }
                 },
                 "type": "object"
@@ -7943,6 +8631,15 @@
                         "items": {
                             "$ref": "#/types/linode:index/getImagesImage:getImagesImage"
                         }
+                    },
+                    "latest": {
+                        "type": "boolean"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -8073,6 +8770,61 @@
                 ]
             }
         },
+        "linode:index/getInstanceTypes:getInstanceTypes": {
+            "description": "Provides information about Linode Instance types that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode Instance types with a certain number of VCPUs:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_types = pulumi.output(linode.getInstanceTypes({\n    filters: [{\n        name: \"vcpus\",\n        values: [\"2\"],\n    }],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_types = linode.get_instance_types(filters=[linode.GetInstanceTypesFilterArgs(\n    name=\"vcpus\",\n    values=[\"2\"],\n)])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync(new Linode.GetInstanceTypesArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetInstanceTypesFilterArgs\n                {\n                    Name = \"vcpus\",\n                    Values = \n                    {\n                        \"2\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetInstanceTypes(ctx, \u0026GetInstanceTypesArgs{\n\t\t\tFilters: []GetInstanceTypesFilter{\n\t\t\t\tGetInstanceTypesFilter{\n\t\t\t\t\tName: \"vcpus\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"2\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nGet information about all Linode Instance types:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_types = pulumi.output(linode.getInstanceTypes());\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_types = linode.get_instance_types()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetInstanceTypes(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode Instance type will be stored in the `types` attribute and will export the following attributes:\n\n* `id` - The ID representing the Linode Type.\n\n* `label` - The Linode Type's label is for display purposes only.\n\n* `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).\n\n* `disk` - The Disk size, in MB, of the Linode Type.\n\n* `price.0.hourly` -  Cost (in US dollars) per hour.\n\n* `price.0.monthly` - Cost (in US dollars) per month.\n\n* `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.\n\n* `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.\n\n* `network_out` - The Mbits outbound bandwidth allocation.\n\n* `memory` - The amount of RAM included in this Linode Type.\n\n* `transfer` - The monthly outbound transfer amount, in MB.\n\n* `vcpus` - The number of VCPU cores this Linode Type offers.\n\n## Filterable Fields\n\n* `class`\n\n* `disk`\n\n* `gpus`\n\n* `label`\n\n* `memory`\n\n* `network_out`\n\n* `transfer`\n\n* `vcpus`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstanceTypes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getInstanceTypesFilter:getInstanceTypesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstanceTypes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getInstanceTypesFilter:getInstanceTypesFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getInstanceTypesType:getInstanceTypesType"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "types",
+                    "id"
+                ]
+            }
+        },
         "linode:index/getInstances:getInstances": {
             "inputs": {
                 "description": "A collection of arguments for invoking getInstances.\n",
@@ -8082,6 +8834,14 @@
                         "items": {
                             "$ref": "#/types/linode:index/getInstancesFilter:getInstancesFilter"
                         }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
                     }
                 },
                 "type": "object"
@@ -8104,6 +8864,12 @@
                         "items": {
                             "$ref": "#/types/linode:index/getInstancesInstance:getInstancesInstance"
                         }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -8194,6 +8960,12 @@
                         },
                         "description": "The endpoints for the Kubernetes API server.\n"
                     },
+                    "controlPlanes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane"
+                        }
+                    },
                     "id": {
                         "type": "integer",
                         "description": "The ID of the node.\n"
@@ -8235,6 +9007,7 @@
                 "type": "object",
                 "required": [
                     "apiEndpoints",
+                    "controlPlanes",
                     "id",
                     "k8sVersion",
                     "kubeconfig",
@@ -8867,6 +9640,68 @@
                 ]
             }
         },
+        "linode:index/getStackScripts:getStackScripts": {
+            "description": "Provides information about Linode StackScripts that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode StackScript.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_stackscripts = pulumi.output(linode.getStackScripts({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-cool-stackscript\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"false\"],\n        },\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_stackscripts = linode.get_stack_scripts(filters=[\n    linode.GetStackScriptsFilterArgs(\n        name=\"label\",\n        values=[\"my-cool-stackscript\"],\n    ),\n    linode.GetStackScriptsFilterArgs(\n        name=\"is_public\",\n        values=[\"false\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_stackscripts = Output.Create(Linode.GetStackScripts.InvokeAsync(new Linode.GetStackScriptsArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"my-cool-stackscript\",\n                    },\n                },\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"is_public\",\n                    Values = \n                    {\n                        \"false\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetStackScripts(ctx, \u0026GetStackScriptsArgs{\n\t\t\tFilters: []GetStackScriptsFilter{\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-cool-stackscript\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"false\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:\n\n* `id` - The unique ID of the StackScript.\n\n* `label` - The StackScript's label is for display purposes only.\n\n* `script` - The script to execute when provisioning a new Linode with this StackScript.\n\n* `description` - A description for the StackScript.\n\n* `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.\n\n* `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.\n\n* `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n\n## Filterable Fields\n\n* `deployments_total`\n\n* `description`\n\n* `is_public`\n\n* `label`\n\n* `mine`\n\n* `rev_note`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStackScripts.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getStackScriptsFilter:getStackScriptsFilter"
+                        }
+                    },
+                    "latest": {
+                        "type": "boolean",
+                        "description": "If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.\n"
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStackScripts.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getStackScriptsFilter:getStackScriptsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "latest": {
+                        "type": "boolean"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "stackscripts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getStackScriptsStackscript:getStackScriptsStackscript"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "stackscripts",
+                    "id"
+                ]
+            }
+        },
         "linode:index/getUser:getUser": {
             "description": "Provides information about a Linode user\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode user.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = pulumi.output(linode.getUser({\n    username: \"foo\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_user(username=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs\n        {\n            Username = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupUser(ctx, \u0026GetUserArgs{\n\t\t\tUsername: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nThe Linode User resource exports the following attributes:\n\n* `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.\n\n* `email` - The email address for this User, for account management communications, and may be used for other communications as configured.\n\n* `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.\n",
             "inputs": {
@@ -8925,6 +9760,14 @@
                         "items": {
                             "$ref": "#/types/linode:index/getVlansFilter:getVlansFilter"
                         }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
                     }
                 },
                 "type": "object"
@@ -8941,6 +9784,12 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
                     },
                     "vlans": {
                         "type": "array",

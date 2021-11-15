@@ -37,6 +37,9 @@ namespace Pulumi.Linode.Outputs
         /// The name of this interface. If the interface is a VLAN, a label is required.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// If true, this Disk is read-only.
+        /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*

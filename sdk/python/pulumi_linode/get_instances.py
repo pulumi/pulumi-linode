@@ -22,7 +22,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, filters=None, id=None, instances=None):
+    def __init__(__self__, filters=None, id=None, instances=None, order=None, order_by=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
@@ -32,6 +32,12 @@ class GetInstancesResult:
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
+        if order and not isinstance(order, str):
+            raise TypeError("Expected argument 'order' to be a str")
+        pulumi.set(__self__, "order", order)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
 
     @property
     @pulumi.getter
@@ -51,6 +57,16 @@ class GetInstancesResult:
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         return pulumi.get(self, "instances")
 
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[str]:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[str]:
+        return pulumi.get(self, "order_by")
+
 
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
@@ -60,16 +76,25 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         return GetInstancesResult(
             filters=self.filters,
             id=self.id,
-            instances=self.instances)
+            instances=self.instances,
+            order=self.order,
+            order_by=self.order_by)
 
 
 def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilterArgs']]] = None,
+                  order: Optional[str] = None,
+                  order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -79,13 +104,20 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     return AwaitableGetInstancesResult(
         filters=__ret__.filters,
         id=__ret__.id,
-        instances=__ret__.instances)
+        instances=__ret__.instances,
+        order=__ret__.order,
+        order_by=__ret__.order_by)
 
 
 @_utilities.lift_output_func(get_instances)
 def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstancesFilterArgs']]]]] = None,
+                         order: Optional[pulumi.Input[Optional[str]]] = None,
+                         order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     ...

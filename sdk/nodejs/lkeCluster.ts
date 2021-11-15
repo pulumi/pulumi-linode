@@ -10,14 +10,38 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * Creating a basic LKE cluster:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.20",
+ *     k8sVersion: "1.21",
  *     label: "my-cluster",
  *     pools: [{
+ *         count: 3,
+ *         type: "g6-standard-2",
+ *     }],
+ *     region: "us-central",
+ *     tags: ["prod"],
+ * });
+ * ```
+ *
+ * Creating an LKE cluster with autoscaler:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     k8sVersion: "1.21",
+ *     label: "my-cluster",
+ *     pools: [{
+ *         autoscaler: {
+ *             max: 10,
+ *             min: 3,
+ *         },
  *         count: 3,
  *         type: "g6-standard-2",
  *     }],
@@ -67,6 +91,10 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiEndpoints!: pulumi.Output<string[]>;
     /**
+     * Defines settings for the Kubernetes Control Plane.
+     */
+    public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
+    /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
      */
     public readonly k8sVersion!: pulumi.Output<string>;
@@ -109,6 +137,7 @@ export class LkeCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LkeClusterState | undefined;
             inputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
+            inputs["controlPlane"] = state ? state.controlPlane : undefined;
             inputs["k8sVersion"] = state ? state.k8sVersion : undefined;
             inputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             inputs["label"] = state ? state.label : undefined;
@@ -130,6 +159,7 @@ export class LkeCluster extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            inputs["controlPlane"] = args ? args.controlPlane : undefined;
             inputs["k8sVersion"] = args ? args.k8sVersion : undefined;
             inputs["label"] = args ? args.label : undefined;
             inputs["pools"] = args ? args.pools : undefined;
@@ -154,6 +184,10 @@ export interface LkeClusterState {
      * The endpoints for the Kubernetes API server.
      */
     apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines settings for the Kubernetes Control Plane.
+     */
+    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
      */
@@ -188,6 +222,10 @@ export interface LkeClusterState {
  * The set of arguments for constructing a LkeCluster resource.
  */
 export interface LkeClusterArgs {
+    /**
+     * Defines settings for the Kubernetes Control Plane.
+     */
+    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
      */

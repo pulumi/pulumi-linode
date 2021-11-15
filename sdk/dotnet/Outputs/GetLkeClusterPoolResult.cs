@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterPoolResult
     {
         /// <summary>
+        /// The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetLkeClusterPoolAutoscalerResult> Autoscalers;
+        /// <summary>
         /// The number of nodes in the Node Pool.
         /// </summary>
         public readonly int Count;
@@ -32,6 +36,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetLkeClusterPoolResult(
+            ImmutableArray<Outputs.GetLkeClusterPoolAutoscalerResult> autoscalers,
+
             int count,
 
             int id,
@@ -40,6 +46,7 @@ namespace Pulumi.Linode.Outputs
 
             string type)
         {
+            Autoscalers = autoscalers;
             Count = count;
             Id = id;
             Nodes = nodes;

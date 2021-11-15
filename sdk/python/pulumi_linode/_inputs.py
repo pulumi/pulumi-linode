@@ -30,7 +30,9 @@ __all__ = [
     'InstanceDiskArgs',
     'InstanceInterfaceArgs',
     'InstanceSpecsArgs',
+    'LkeClusterControlPlaneArgs',
     'LkeClusterPoolArgs',
+    'LkeClusterPoolAutoscalerArgs',
     'LkeClusterPoolNodeArgs',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerTransferArgs',
@@ -50,8 +52,10 @@ __all__ = [
     'UserStackscriptGrantArgs',
     'UserVolumeGrantArgs',
     'GetImagesFilterArgs',
+    'GetInstanceTypesFilterArgs',
     'GetInstancesFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
+    'GetStackScriptsFilterArgs',
     'GetVlansFilterArgs',
 ]
 
@@ -1330,6 +1334,7 @@ class InstanceDiskArgs:
         :param pulumi.Input[str] filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param pulumi.Input[int] id: The ID of the disk in the Linode API.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[bool] read_only: If true, this Disk is read-only.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -1442,6 +1447,9 @@ class InstanceDiskArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this Disk is read-only.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -1594,10 +1602,28 @@ class InstanceSpecsArgs:
 
 
 @pulumi.input_type
+class LkeClusterControlPlaneArgs:
+    def __init__(__self__, *,
+                 high_availability: Optional[pulumi.Input[bool]] = None):
+        if high_availability is not None:
+            pulumi.set(__self__, "high_availability", high_availability)
+
+    @property
+    @pulumi.getter(name="highAvailability")
+    def high_availability(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "high_availability")
+
+    @high_availability.setter
+    def high_availability(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "high_availability", value)
+
+
+@pulumi.input_type
 class LkeClusterPoolArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
+                 autoscaler: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
         """
@@ -1607,6 +1633,8 @@ class LkeClusterPoolArgs:
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if autoscaler is not None:
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if nodes is not None:
@@ -1638,6 +1666,15 @@ class LkeClusterPoolArgs:
 
     @property
     @pulumi.getter
+    def autoscaler(self) -> Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']]:
+        return pulumi.get(self, "autoscaler")
+
+    @autoscaler.setter
+    def autoscaler(self, value: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']]):
+        pulumi.set(self, "autoscaler", value)
+
+    @property
+    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the node.
@@ -1656,6 +1693,43 @@ class LkeClusterPoolArgs:
     @nodes.setter
     def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
+
+
+@pulumi.input_type
+class LkeClusterPoolAutoscalerArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[int],
+                 min: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max: The maximum number of nodes to autoscale to.
+        :param pulumi.Input[int] min: The minimum number of nodes to autoscale to.
+        """
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[int]:
+        """
+        The maximum number of nodes to autoscale to.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        """
+        The minimum number of nodes to autoscale to.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
 
 
 @pulumi.input_type
@@ -2483,13 +2557,17 @@ class UserVolumeGrantArgs:
 class GetImagesFilterArgs:
     def __init__(__self__, *,
                  name: str,
-                 values: Sequence[str]):
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
         """
         :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2515,18 +2593,87 @@ class GetImagesFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
 
 @pulumi.input_type
 class GetInstancesFilterArgs:
     def __init__(__self__, *,
                  name: str,
-                 values: Sequence[str]):
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
         """
         :param str name: The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2551,6 +2698,18 @@ class GetInstancesFilterArgs:
     @values.setter
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -2625,16 +2784,20 @@ class GetStackScriptUserDefinedFieldArgs:
 
 
 @pulumi.input_type
-class GetVlansFilterArgs:
+class GetStackScriptsFilterArgs:
     def __init__(__self__, *,
                  name: str,
-                 values: Sequence[str]):
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
         """
         :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2659,5 +2822,70 @@ class GetVlansFilterArgs:
     @values.setter
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetVlansFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 

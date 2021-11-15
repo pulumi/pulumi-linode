@@ -15,6 +15,8 @@ import (
 //
 // ## Example Usage
 //
+// Creating a basic LKE cluster:
+//
 // ```go
 // package main
 //
@@ -26,10 +28,48 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := linode.NewLkeCluster(ctx, "my_cluster", &linode.LkeClusterArgs{
-// 			K8sVersion: pulumi.String("1.20"),
+// 			K8sVersion: pulumi.String("1.21"),
 // 			Label:      pulumi.String("my-cluster"),
 // 			Pools: LkeClusterPoolArray{
 // 				&LkeClusterPoolArgs{
+// 					Count: pulumi.Int(3),
+// 					Type:  pulumi.String("g6-standard-2"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("prod"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Creating an LKE cluster with autoscaler:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewLkeCluster(ctx, "my_cluster", &linode.LkeClusterArgs{
+// 			K8sVersion: pulumi.String("1.21"),
+// 			Label:      pulumi.String("my-cluster"),
+// 			Pools: LkeClusterPoolArray{
+// 				&LkeClusterPoolArgs{
+// 					Autoscaler: &LkeClusterPoolAutoscalerArgs{
+// 						Max: pulumi.Int(10),
+// 						Min: pulumi.Int(3),
+// 					},
 // 					Count: pulumi.Int(3),
 // 					Type:  pulumi.String("g6-standard-2"),
 // 				},
@@ -59,6 +99,8 @@ type LkeCluster struct {
 
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -118,6 +160,8 @@ func GetLkeCluster(ctx *pulumi.Context,
 type lkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -137,6 +181,8 @@ type lkeClusterState struct {
 type LkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayInput
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane LkeClusterControlPlanePtrInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringPtrInput
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -158,6 +204,8 @@ func (LkeClusterState) ElementType() reflect.Type {
 }
 
 type lkeClusterArgs struct {
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
@@ -172,6 +220,8 @@ type lkeClusterArgs struct {
 
 // The set of arguments for constructing a LkeCluster resource.
 type LkeClusterArgs struct {
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane LkeClusterControlPlanePtrInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.

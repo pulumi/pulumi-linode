@@ -19,6 +19,7 @@ namespace Pulumi.Linode.Outputs
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceDiskResult> Disks;
         public readonly string Group;
+        public readonly int Id;
         public readonly string Image;
         public readonly string IpAddress;
         public readonly ImmutableArray<string> Ipv4s;
@@ -46,6 +47,8 @@ namespace Pulumi.Linode.Outputs
             ImmutableArray<Outputs.GetInstancesInstanceDiskResult> disks,
 
             string group,
+
+            int id,
 
             string image,
 
@@ -79,6 +82,7 @@ namespace Pulumi.Linode.Outputs
             Configs = configs;
             Disks = disks;
             Group = group;
+            Id = id;
             Image = image;
             IpAddress = ipAddress;
             Ipv4s = ipv4s;

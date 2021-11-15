@@ -14,6 +14,8 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// Creating a basic LKE cluster:
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
@@ -24,12 +26,50 @@ namespace Pulumi.Linode
     ///     {
     ///         var my_cluster = new Linode.LkeCluster("my-cluster", new Linode.LkeClusterArgs
     ///         {
-    ///             K8sVersion = "1.20",
+    ///             K8sVersion = "1.21",
     ///             Label = "my-cluster",
     ///             Pools = 
     ///             {
     ///                 new Linode.Inputs.LkeClusterPoolArgs
     ///                 {
+    ///                     Count = 3,
+    ///                     Type = "g6-standard-2",
+    ///                 },
+    ///             },
+    ///             Region = "us-central",
+    ///             Tags = 
+    ///             {
+    ///                 "prod",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Creating an LKE cluster with autoscaler:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_cluster = new Linode.LkeCluster("my-cluster", new Linode.LkeClusterArgs
+    ///         {
+    ///             K8sVersion = "1.21",
+    ///             Label = "my-cluster",
+    ///             Pools = 
+    ///             {
+    ///                 new Linode.Inputs.LkeClusterPoolArgs
+    ///                 {
+    ///                     Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
+    ///                     {
+    ///                         Max = 10,
+    ///                         Min = 3,
+    ///                     },
     ///                     Count = 3,
     ///                     Type = "g6-standard-2",
     ///                 },
@@ -61,6 +101,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("apiEndpoints")]
         public Output<ImmutableArray<string>> ApiEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines settings for the Kubernetes Control Plane.
+        /// </summary>
+        [Output("controlPlane")]
+        public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
@@ -151,6 +197,12 @@ namespace Pulumi.Linode
     public sealed class LkeClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Defines settings for the Kubernetes Control Plane.
+        /// </summary>
+        [Input("controlPlane")]
+        public Input<Inputs.LkeClusterControlPlaneArgs>? ControlPlane { get; set; }
+
+        /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         /// </summary>
         [Input("k8sVersion", required: true)]
@@ -210,6 +262,12 @@ namespace Pulumi.Linode
             get => _apiEndpoints ?? (_apiEndpoints = new InputList<string>());
             set => _apiEndpoints = value;
         }
+
+        /// <summary>
+        /// Defines settings for the Kubernetes Control Plane.
+        /// </summary>
+        [Input("controlPlane")]
+        public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
         /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.

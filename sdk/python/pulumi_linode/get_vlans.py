@@ -22,13 +22,19 @@ class GetVlansResult:
     """
     A collection of values returned by getVlans.
     """
-    def __init__(__self__, filters=None, id=None, vlans=None):
+    def __init__(__self__, filters=None, id=None, order=None, order_by=None, vlans=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if order and not isinstance(order, str):
+            raise TypeError("Expected argument 'order' to be a str")
+        pulumi.set(__self__, "order", order)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if vlans and not isinstance(vlans, list):
             raise TypeError("Expected argument 'vlans' to be a list")
         pulumi.set(__self__, "vlans", vlans)
@@ -48,6 +54,16 @@ class GetVlansResult:
 
     @property
     @pulumi.getter
+    def order(self) -> Optional[str]:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[str]:
+        return pulumi.get(self, "order_by")
+
+    @property
+    @pulumi.getter
     def vlans(self) -> Sequence['outputs.GetVlansVlanResult']:
         return pulumi.get(self, "vlans")
 
@@ -60,10 +76,14 @@ class AwaitableGetVlansResult(GetVlansResult):
         return GetVlansResult(
             filters=self.filters,
             id=self.id,
+            order=self.order,
+            order_by=self.order_by,
             vlans=self.vlans)
 
 
 def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]] = None,
+              order: Optional[str] = None,
+              order_by: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlansResult:
     """
     Provides details about Linode VLANs.
@@ -106,9 +126,15 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     * `label`
 
     * `region`
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -118,11 +144,15 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     return AwaitableGetVlansResult(
         filters=__ret__.filters,
         id=__ret__.id,
+        order=__ret__.order,
+        order_by=__ret__.order_by,
         vlans=__ret__.vlans)
 
 
 @_utilities.lift_output_func(get_vlans)
 def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]]]] = None,
+                     order: Optional[pulumi.Input[Optional[str]]] = None,
+                     order_by: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
     """
     Provides details about Linode VLANs.
@@ -165,5 +195,9 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     * `label`
 
     * `region`
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     ...

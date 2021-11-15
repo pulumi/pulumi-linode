@@ -119,14 +119,23 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
+	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+	Latest *bool `pulumi:"latest"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string           `pulumi:"id"`
-	Images []GetImagesImage `pulumi:"images"`
+	Id      string           `pulumi:"id"`
+	Images  []GetImagesImage `pulumi:"images"`
+	Latest  *bool            `pulumi:"latest"`
+	Order   *string          `pulumi:"order"`
+	OrderBy *string          `pulumi:"orderBy"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -141,6 +150,12 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
 	Filters GetImagesFilterArrayInput `pulumi:"filters"`
+	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+	Latest pulumi.BoolPtrInput `pulumi:"latest"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetImagesOutputArgs) ElementType() reflect.Type {
@@ -173,6 +188,18 @@ func (o GetImagesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func (o GetImagesResultOutput) Latest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *bool { return v.Latest }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetImagesResultOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 func init() {

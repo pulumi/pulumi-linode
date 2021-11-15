@@ -80,6 +80,10 @@ export interface FirewallOutbound {
 
 export interface GetImagesFilter {
     /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
@@ -90,6 +94,40 @@ export interface GetImagesFilter {
 }
 
 export interface GetImagesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetInstanceTypesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetInstanceTypesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -102,6 +140,10 @@ export interface GetImagesFilterArgs {
 
 export interface GetInstancesFilterArgs {
     /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
      * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
      */
     name: pulumi.Input<string>;
@@ -113,6 +155,10 @@ export interface GetInstancesFilterArgs {
 
 export interface GetInstancesFilter {
     /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
      * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
      */
     name: string;
@@ -120,15 +166,6 @@ export interface GetInstancesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
-}
-
-export interface GetStackScriptUserDefinedFieldArgs {
-    default?: pulumi.Input<string>;
-    example?: pulumi.Input<string>;
-    label?: pulumi.Input<string>;
-    manyOf?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    oneOf?: pulumi.Input<string>;
 }
 
 export interface GetStackScriptUserDefinedField {
@@ -140,7 +177,50 @@ export interface GetStackScriptUserDefinedField {
     oneOf?: string;
 }
 
+export interface GetStackScriptUserDefinedFieldArgs {
+    default?: pulumi.Input<string>;
+    example?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
+    manyOf?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    oneOf?: pulumi.Input<string>;
+}
+
+export interface GetStackScriptsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetStackScriptsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetVlansFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -152,6 +232,10 @@ export interface GetVlansFilter {
 }
 
 export interface GetVlansFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -414,6 +498,9 @@ export interface InstanceDisk {
      * The name of this interface. If the interface is a VLAN, a label is required.
      */
     label: pulumi.Input<string>;
+    /**
+     * If true, this Disk is read-only.
+     */
     readOnly?: pulumi.Input<boolean>;
     /**
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -455,7 +542,12 @@ export interface InstanceSpecs {
     vcpus?: pulumi.Input<number>;
 }
 
+export interface LkeClusterControlPlane {
+    highAvailability?: pulumi.Input<boolean>;
+}
+
 export interface LkeClusterPool {
+    autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
      * The number of nodes in the Node Pool.
      */
@@ -469,6 +561,17 @@ export interface LkeClusterPool {
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: pulumi.Input<string>;
+}
+
+export interface LkeClusterPoolAutoscaler {
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max: pulumi.Input<number>;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min: pulumi.Input<number>;
 }
 
 export interface LkeClusterPoolNode {
@@ -631,4 +734,3 @@ export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
 }
-

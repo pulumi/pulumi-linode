@@ -22,6 +22,10 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
 	Filters []GetInstancesFilter `pulumi:"filters"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getInstances.
@@ -30,6 +34,8 @@ type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id        string                 `pulumi:"id"`
 	Instances []GetInstancesInstance `pulumi:"instances"`
+	Order     *string                `pulumi:"order"`
+	OrderBy   *string                `pulumi:"orderBy"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -44,6 +50,10 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
 	Filters GetInstancesFilterArrayInput `pulumi:"filters"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -76,6 +86,14 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+func (o GetInstancesResultOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 func init() {

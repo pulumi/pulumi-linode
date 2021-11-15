@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeClusterPoolArgs : Pulumi.ResourceArgs
     {
+        [Input("autoscaler")]
+        public Input<Inputs.LkeClusterPoolAutoscalerArgs>? Autoscaler { get; set; }
+
         /// <summary>
         /// The number of nodes in the Node Pool.
         /// </summary>

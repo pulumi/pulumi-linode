@@ -61,6 +61,8 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
     }
     return pulumi.runtime.invoke("linode:index/getVlans:getVlans", {
         "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
     }, opts);
 }
 
@@ -69,6 +71,14 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetVlansArgs {
     filters?: inputs.GetVlansFilter[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: string;
 }
 
 /**
@@ -80,6 +90,8 @@ export interface GetVlansResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly order?: string;
+    readonly orderBy?: string;
     readonly vlans: outputs.GetVlansVlan[];
 }
 
@@ -92,4 +104,12 @@ export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetVlansOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVlansFilterArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: pulumi.Input<string>;
 }

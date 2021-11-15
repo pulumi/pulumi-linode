@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesFilterResult
     {
         /// <summary>
+        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// </summary>
+        public readonly string? MatchBy;
+        /// <summary>
         /// The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
         /// </summary>
         public readonly string Name;
@@ -24,10 +28,13 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetInstancesFilterResult(
+            string? matchBy,
+
             string name,
 
             ImmutableArray<string> values)
         {
+            MatchBy = matchBy;
             Name = name;
             Values = values;
         }

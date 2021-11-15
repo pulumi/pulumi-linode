@@ -250,6 +250,8 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_nodebalancer":        {Tok: makeDataSource(mainMod, "getNodeBalancer")},
 			"linode_nodebalancer_config": {Tok: makeDataSource(mainMod, "getNodeBalancerConfig")},
 			"linode_nodebalancer_node":   {Tok: makeDataSource(mainMod, "getNodeBalancerNode")},
+			"linode_instance_types":      {Tok: makeDataSource(mainMod, "getInstanceTypes")},
+			"linode_stackscripts":        {Tok: makeDataSource(mainMod, "getStackScripts")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

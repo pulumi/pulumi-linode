@@ -3066,8 +3066,9 @@ type InstanceDisk struct {
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
-	Label    string `pulumi:"label"`
-	ReadOnly *bool  `pulumi:"readOnly"`
+	Label string `pulumi:"label"`
+	// If true, this Disk is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
@@ -3101,7 +3102,8 @@ type InstanceDiskArgs struct {
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
-	Label    pulumi.StringInput  `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// If true, this Disk is read-only.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
@@ -3194,6 +3196,7 @@ func (o InstanceDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// If true, this Disk is read-only.
 func (o InstanceDiskOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -3531,7 +3534,141 @@ func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type LkeClusterControlPlane struct {
+	HighAvailability *bool `pulumi:"highAvailability"`
+}
+
+// LkeClusterControlPlaneInput is an input type that accepts LkeClusterControlPlaneArgs and LkeClusterControlPlaneOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlaneInput` via:
+//
+//          LkeClusterControlPlaneArgs{...}
+type LkeClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlaneOutput() LkeClusterControlPlaneOutput
+	ToLkeClusterControlPlaneOutputWithContext(context.Context) LkeClusterControlPlaneOutput
+}
+
+type LkeClusterControlPlaneArgs struct {
+	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
+}
+
+func (LkeClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i LkeClusterControlPlaneArgs) ToLkeClusterControlPlaneOutput() LkeClusterControlPlaneOutput {
+	return i.ToLkeClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneArgs) ToLkeClusterControlPlaneOutputWithContext(ctx context.Context) LkeClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneOutput)
+}
+
+func (i LkeClusterControlPlaneArgs) ToLkeClusterControlPlanePtrOutput() LkeClusterControlPlanePtrOutput {
+	return i.ToLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneArgs) ToLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) LkeClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneOutput).ToLkeClusterControlPlanePtrOutputWithContext(ctx)
+}
+
+// LkeClusterControlPlanePtrInput is an input type that accepts LkeClusterControlPlaneArgs, LkeClusterControlPlanePtr and LkeClusterControlPlanePtrOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlanePtrInput` via:
+//
+//          LkeClusterControlPlaneArgs{...}
+//
+//  or:
+//
+//          nil
+type LkeClusterControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlanePtrOutput() LkeClusterControlPlanePtrOutput
+	ToLkeClusterControlPlanePtrOutputWithContext(context.Context) LkeClusterControlPlanePtrOutput
+}
+
+type lkeClusterControlPlanePtrType LkeClusterControlPlaneArgs
+
+func LkeClusterControlPlanePtr(v *LkeClusterControlPlaneArgs) LkeClusterControlPlanePtrInput {
+	return (*lkeClusterControlPlanePtrType)(v)
+}
+
+func (*lkeClusterControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i *lkeClusterControlPlanePtrType) ToLkeClusterControlPlanePtrOutput() LkeClusterControlPlanePtrOutput {
+	return i.ToLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *lkeClusterControlPlanePtrType) ToLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) LkeClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlanePtrOutput)
+}
+
+type LkeClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlaneOutput() LkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlaneOutputWithContext(ctx context.Context) LkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlanePtrOutput() LkeClusterControlPlanePtrOutput {
+	return o.ToLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) LkeClusterControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeClusterControlPlane) *LkeClusterControlPlane {
+		return &v
+	}).(LkeClusterControlPlanePtrOutput)
+}
+
+func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
+}
+
+type LkeClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlanePtrOutput) ToLkeClusterControlPlanePtrOutput() LkeClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o LkeClusterControlPlanePtrOutput) ToLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) LkeClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o LkeClusterControlPlanePtrOutput) Elem() LkeClusterControlPlaneOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlane) LkeClusterControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret LkeClusterControlPlane
+		return ret
+	}).(LkeClusterControlPlaneOutput)
+}
+
+func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailability
+	}).(pulumi.BoolPtrOutput)
+}
+
 type LkeClusterPool struct {
+	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
 	Count int `pulumi:"count"`
 	// The ID of the node.
@@ -3553,6 +3690,7 @@ type LkeClusterPoolInput interface {
 }
 
 type LkeClusterPoolArgs struct {
+	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
 	Count pulumi.IntInput `pulumi:"count"`
 	// The ID of the node.
@@ -3613,6 +3751,10 @@ func (o LkeClusterPoolOutput) ToLkeClusterPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *LkeClusterPoolAutoscaler { return v.Autoscaler }).(LkeClusterPoolAutoscalerPtrOutput)
+}
+
 // The number of nodes in the Node Pool.
 func (o LkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
@@ -3650,6 +3792,162 @@ func (o LkeClusterPoolArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPool {
 		return vs[0].([]LkeClusterPool)[vs[1].(int)]
 	}).(LkeClusterPoolOutput)
+}
+
+type LkeClusterPoolAutoscaler struct {
+	// The maximum number of nodes to autoscale to.
+	Max int `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min int `pulumi:"min"`
+}
+
+// LkeClusterPoolAutoscalerInput is an input type that accepts LkeClusterPoolAutoscalerArgs and LkeClusterPoolAutoscalerOutput values.
+// You can construct a concrete instance of `LkeClusterPoolAutoscalerInput` via:
+//
+//          LkeClusterPoolAutoscalerArgs{...}
+type LkeClusterPoolAutoscalerInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolAutoscalerOutput() LkeClusterPoolAutoscalerOutput
+	ToLkeClusterPoolAutoscalerOutputWithContext(context.Context) LkeClusterPoolAutoscalerOutput
+}
+
+type LkeClusterPoolAutoscalerArgs struct {
+	// The maximum number of nodes to autoscale to.
+	Max pulumi.IntInput `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (LkeClusterPoolAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (i LkeClusterPoolAutoscalerArgs) ToLkeClusterPoolAutoscalerOutput() LkeClusterPoolAutoscalerOutput {
+	return i.ToLkeClusterPoolAutoscalerOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolAutoscalerArgs) ToLkeClusterPoolAutoscalerOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolAutoscalerOutput)
+}
+
+func (i LkeClusterPoolAutoscalerArgs) ToLkeClusterPoolAutoscalerPtrOutput() LkeClusterPoolAutoscalerPtrOutput {
+	return i.ToLkeClusterPoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolAutoscalerArgs) ToLkeClusterPoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolAutoscalerOutput).ToLkeClusterPoolAutoscalerPtrOutputWithContext(ctx)
+}
+
+// LkeClusterPoolAutoscalerPtrInput is an input type that accepts LkeClusterPoolAutoscalerArgs, LkeClusterPoolAutoscalerPtr and LkeClusterPoolAutoscalerPtrOutput values.
+// You can construct a concrete instance of `LkeClusterPoolAutoscalerPtrInput` via:
+//
+//          LkeClusterPoolAutoscalerArgs{...}
+//
+//  or:
+//
+//          nil
+type LkeClusterPoolAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolAutoscalerPtrOutput() LkeClusterPoolAutoscalerPtrOutput
+	ToLkeClusterPoolAutoscalerPtrOutputWithContext(context.Context) LkeClusterPoolAutoscalerPtrOutput
+}
+
+type lkeClusterPoolAutoscalerPtrType LkeClusterPoolAutoscalerArgs
+
+func LkeClusterPoolAutoscalerPtr(v *LkeClusterPoolAutoscalerArgs) LkeClusterPoolAutoscalerPtrInput {
+	return (*lkeClusterPoolAutoscalerPtrType)(v)
+}
+
+func (*lkeClusterPoolAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (i *lkeClusterPoolAutoscalerPtrType) ToLkeClusterPoolAutoscalerPtrOutput() LkeClusterPoolAutoscalerPtrOutput {
+	return i.ToLkeClusterPoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *lkeClusterPoolAutoscalerPtrType) ToLkeClusterPoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolAutoscalerPtrOutput)
+}
+
+type LkeClusterPoolAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (o LkeClusterPoolAutoscalerOutput) ToLkeClusterPoolAutoscalerOutput() LkeClusterPoolAutoscalerOutput {
+	return o
+}
+
+func (o LkeClusterPoolAutoscalerOutput) ToLkeClusterPoolAutoscalerOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerOutput {
+	return o
+}
+
+func (o LkeClusterPoolAutoscalerOutput) ToLkeClusterPoolAutoscalerPtrOutput() LkeClusterPoolAutoscalerPtrOutput {
+	return o.ToLkeClusterPoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o LkeClusterPoolAutoscalerOutput) ToLkeClusterPoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeClusterPoolAutoscaler) *LkeClusterPoolAutoscaler {
+		return &v
+	}).(LkeClusterPoolAutoscalerPtrOutput)
+}
+
+// The maximum number of nodes to autoscale to.
+func (o LkeClusterPoolAutoscalerOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeClusterPoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes to autoscale to.
+func (o LkeClusterPoolAutoscalerOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeClusterPoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type LkeClusterPoolAutoscalerPtrOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (o LkeClusterPoolAutoscalerPtrOutput) ToLkeClusterPoolAutoscalerPtrOutput() LkeClusterPoolAutoscalerPtrOutput {
+	return o
+}
+
+func (o LkeClusterPoolAutoscalerPtrOutput) ToLkeClusterPoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeClusterPoolAutoscalerPtrOutput {
+	return o
+}
+
+func (o LkeClusterPoolAutoscalerPtrOutput) Elem() LkeClusterPoolAutoscalerOutput {
+	return o.ApplyT(func(v *LkeClusterPoolAutoscaler) LkeClusterPoolAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret LkeClusterPoolAutoscaler
+		return ret
+	}).(LkeClusterPoolAutoscalerOutput)
+}
+
+// The maximum number of nodes to autoscale to.
+func (o LkeClusterPoolAutoscalerPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterPoolAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes to autoscale to.
+func (o LkeClusterPoolAutoscalerPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterPoolAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type LkeClusterPoolNode struct {
@@ -6321,6 +6619,8 @@ func (o GetFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallOutb
 }
 
 type GetImagesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -6339,6 +6639,8 @@ type GetImagesFilterInput interface {
 }
 
 type GetImagesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -6394,6 +6696,11 @@ func (o GetImagesFilterOutput) ToGetImagesFilterOutput() GetImagesFilterOutput {
 
 func (o GetImagesFilterOutput) ToGetImagesFilterOutputWithContext(ctx context.Context) GetImagesFilterOutput {
 	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetImagesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
@@ -7637,7 +7944,660 @@ func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
+type GetInstanceTypesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetInstanceTypesFilterInput is an input type that accepts GetInstanceTypesFilterArgs and GetInstanceTypesFilterOutput values.
+// You can construct a concrete instance of `GetInstanceTypesFilterInput` via:
+//
+//          GetInstanceTypesFilterArgs{...}
+type GetInstanceTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesFilterOutput() GetInstanceTypesFilterOutput
+	ToGetInstanceTypesFilterOutputWithContext(context.Context) GetInstanceTypesFilterOutput
+}
+
+type GetInstanceTypesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesFilter)(nil)).Elem()
+}
+
+func (i GetInstanceTypesFilterArgs) ToGetInstanceTypesFilterOutput() GetInstanceTypesFilterOutput {
+	return i.ToGetInstanceTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesFilterArgs) ToGetInstanceTypesFilterOutputWithContext(ctx context.Context) GetInstanceTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesFilterOutput)
+}
+
+// GetInstanceTypesFilterArrayInput is an input type that accepts GetInstanceTypesFilterArray and GetInstanceTypesFilterArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesFilterArrayInput` via:
+//
+//          GetInstanceTypesFilterArray{ GetInstanceTypesFilterArgs{...} }
+type GetInstanceTypesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesFilterArrayOutput() GetInstanceTypesFilterArrayOutput
+	ToGetInstanceTypesFilterArrayOutputWithContext(context.Context) GetInstanceTypesFilterArrayOutput
+}
+
+type GetInstanceTypesFilterArray []GetInstanceTypesFilterInput
+
+func (GetInstanceTypesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesFilter)(nil)).Elem()
+}
+
+func (i GetInstanceTypesFilterArray) ToGetInstanceTypesFilterArrayOutput() GetInstanceTypesFilterArrayOutput {
+	return i.ToGetInstanceTypesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesFilterArray) ToGetInstanceTypesFilterArrayOutputWithContext(ctx context.Context) GetInstanceTypesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesFilterArrayOutput)
+}
+
+type GetInstanceTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesFilter)(nil)).Elem()
+}
+
+func (o GetInstanceTypesFilterOutput) ToGetInstanceTypesFilterOutput() GetInstanceTypesFilterOutput {
+	return o
+}
+
+func (o GetInstanceTypesFilterOutput) ToGetInstanceTypesFilterOutputWithContext(ctx context.Context) GetInstanceTypesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetInstanceTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetInstanceTypesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetInstanceTypesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceTypesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesFilter)(nil)).Elem()
+}
+
+func (o GetInstanceTypesFilterArrayOutput) ToGetInstanceTypesFilterArrayOutput() GetInstanceTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesFilterArrayOutput) ToGetInstanceTypesFilterArrayOutputWithContext(ctx context.Context) GetInstanceTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesFilterArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesFilter {
+		return vs[0].([]GetInstanceTypesFilter)[vs[1].(int)]
+	}).(GetInstanceTypesFilterOutput)
+}
+
+type GetInstanceTypesType struct {
+	Addons     []GetInstanceTypesTypeAddon `pulumi:"addons"`
+	Class      string                      `pulumi:"class"`
+	Disk       int                         `pulumi:"disk"`
+	Id         string                      `pulumi:"id"`
+	Label      string                      `pulumi:"label"`
+	Memory     int                         `pulumi:"memory"`
+	NetworkOut int                         `pulumi:"networkOut"`
+	Prices     []GetInstanceTypesTypePrice `pulumi:"prices"`
+	Transfer   int                         `pulumi:"transfer"`
+	Vcpus      int                         `pulumi:"vcpus"`
+}
+
+// GetInstanceTypesTypeInput is an input type that accepts GetInstanceTypesTypeArgs and GetInstanceTypesTypeOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeInput` via:
+//
+//          GetInstanceTypesTypeArgs{...}
+type GetInstanceTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput
+	ToGetInstanceTypesTypeOutputWithContext(context.Context) GetInstanceTypesTypeOutput
+}
+
+type GetInstanceTypesTypeArgs struct {
+	Addons     GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
+	Class      pulumi.StringInput                  `pulumi:"class"`
+	Disk       pulumi.IntInput                     `pulumi:"disk"`
+	Id         pulumi.StringInput                  `pulumi:"id"`
+	Label      pulumi.StringInput                  `pulumi:"label"`
+	Memory     pulumi.IntInput                     `pulumi:"memory"`
+	NetworkOut pulumi.IntInput                     `pulumi:"networkOut"`
+	Prices     GetInstanceTypesTypePriceArrayInput `pulumi:"prices"`
+	Transfer   pulumi.IntInput                     `pulumi:"transfer"`
+	Vcpus      pulumi.IntInput                     `pulumi:"vcpus"`
+}
+
+func (GetInstanceTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput {
+	return i.ToGetInstanceTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeOutput)
+}
+
+// GetInstanceTypesTypeArrayInput is an input type that accepts GetInstanceTypesTypeArray and GetInstanceTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeArrayInput` via:
+//
+//          GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
+type GetInstanceTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput
+	ToGetInstanceTypesTypeArrayOutputWithContext(context.Context) GetInstanceTypesTypeArrayOutput
+}
+
+type GetInstanceTypesTypeArray []GetInstanceTypesTypeInput
+
+func (GetInstanceTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput {
+	return i.ToGetInstanceTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeArrayOutput)
+}
+
+type GetInstanceTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutput() GetInstanceTypesTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeOutput) Addons() GetInstanceTypesTypeAddonArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypeAddon { return v.Addons }).(GetInstanceTypesTypeAddonArrayOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Class }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) NetworkOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.NetworkOut }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Prices() GetInstanceTypesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypePrice { return v.Prices }).(GetInstanceTypesTypePriceArrayOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTypesTypeOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetInstanceTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutput() GetInstanceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesType {
+		return vs[0].([]GetInstanceTypesType)[vs[1].(int)]
+	}).(GetInstanceTypesTypeOutput)
+}
+
+type GetInstanceTypesTypeAddon struct {
+	Backups []GetInstanceTypesTypeAddonBackup `pulumi:"backups"`
+}
+
+// GetInstanceTypesTypeAddonInput is an input type that accepts GetInstanceTypesTypeAddonArgs and GetInstanceTypesTypeAddonOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonInput` via:
+//
+//          GetInstanceTypesTypeAddonArgs{...}
+type GetInstanceTypesTypeAddonInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonOutput() GetInstanceTypesTypeAddonOutput
+	ToGetInstanceTypesTypeAddonOutputWithContext(context.Context) GetInstanceTypesTypeAddonOutput
+}
+
+type GetInstanceTypesTypeAddonArgs struct {
+	Backups GetInstanceTypesTypeAddonBackupArrayInput `pulumi:"backups"`
+}
+
+func (GetInstanceTypesTypeAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddon)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonArgs) ToGetInstanceTypesTypeAddonOutput() GetInstanceTypesTypeAddonOutput {
+	return i.ToGetInstanceTypesTypeAddonOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonArgs) ToGetInstanceTypesTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonOutput)
+}
+
+// GetInstanceTypesTypeAddonArrayInput is an input type that accepts GetInstanceTypesTypeAddonArray and GetInstanceTypesTypeAddonArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonArrayInput` via:
+//
+//          GetInstanceTypesTypeAddonArray{ GetInstanceTypesTypeAddonArgs{...} }
+type GetInstanceTypesTypeAddonArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonArrayOutput() GetInstanceTypesTypeAddonArrayOutput
+	ToGetInstanceTypesTypeAddonArrayOutputWithContext(context.Context) GetInstanceTypesTypeAddonArrayOutput
+}
+
+type GetInstanceTypesTypeAddonArray []GetInstanceTypesTypeAddonInput
+
+func (GetInstanceTypesTypeAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddon)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonArray) ToGetInstanceTypesTypeAddonArrayOutput() GetInstanceTypesTypeAddonArrayOutput {
+	return i.ToGetInstanceTypesTypeAddonArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonArray) ToGetInstanceTypesTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonArrayOutput)
+}
+
+type GetInstanceTypesTypeAddonOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddon)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonOutput) ToGetInstanceTypesTypeAddonOutput() GetInstanceTypesTypeAddonOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonOutput) ToGetInstanceTypesTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonOutput) Backups() GetInstanceTypesTypeAddonBackupArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesTypeAddon) []GetInstanceTypesTypeAddonBackup { return v.Backups }).(GetInstanceTypesTypeAddonBackupArrayOutput)
+}
+
+type GetInstanceTypesTypeAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddon)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonArrayOutput) ToGetInstanceTypesTypeAddonArrayOutput() GetInstanceTypesTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonArrayOutput) ToGetInstanceTypesTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesTypeAddon {
+		return vs[0].([]GetInstanceTypesTypeAddon)[vs[1].(int)]
+	}).(GetInstanceTypesTypeAddonOutput)
+}
+
+type GetInstanceTypesTypeAddonBackup struct {
+	Prices []GetInstanceTypesTypeAddonBackupPrice `pulumi:"prices"`
+}
+
+// GetInstanceTypesTypeAddonBackupInput is an input type that accepts GetInstanceTypesTypeAddonBackupArgs and GetInstanceTypesTypeAddonBackupOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonBackupInput` via:
+//
+//          GetInstanceTypesTypeAddonBackupArgs{...}
+type GetInstanceTypesTypeAddonBackupInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonBackupOutput() GetInstanceTypesTypeAddonBackupOutput
+	ToGetInstanceTypesTypeAddonBackupOutputWithContext(context.Context) GetInstanceTypesTypeAddonBackupOutput
+}
+
+type GetInstanceTypesTypeAddonBackupArgs struct {
+	Prices GetInstanceTypesTypeAddonBackupPriceArrayInput `pulumi:"prices"`
+}
+
+func (GetInstanceTypesTypeAddonBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddonBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonBackupArgs) ToGetInstanceTypesTypeAddonBackupOutput() GetInstanceTypesTypeAddonBackupOutput {
+	return i.ToGetInstanceTypesTypeAddonBackupOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonBackupArgs) ToGetInstanceTypesTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonBackupOutput)
+}
+
+// GetInstanceTypesTypeAddonBackupArrayInput is an input type that accepts GetInstanceTypesTypeAddonBackupArray and GetInstanceTypesTypeAddonBackupArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonBackupArrayInput` via:
+//
+//          GetInstanceTypesTypeAddonBackupArray{ GetInstanceTypesTypeAddonBackupArgs{...} }
+type GetInstanceTypesTypeAddonBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonBackupArrayOutput() GetInstanceTypesTypeAddonBackupArrayOutput
+	ToGetInstanceTypesTypeAddonBackupArrayOutputWithContext(context.Context) GetInstanceTypesTypeAddonBackupArrayOutput
+}
+
+type GetInstanceTypesTypeAddonBackupArray []GetInstanceTypesTypeAddonBackupInput
+
+func (GetInstanceTypesTypeAddonBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddonBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonBackupArray) ToGetInstanceTypesTypeAddonBackupArrayOutput() GetInstanceTypesTypeAddonBackupArrayOutput {
+	return i.ToGetInstanceTypesTypeAddonBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonBackupArray) ToGetInstanceTypesTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonBackupArrayOutput)
+}
+
+type GetInstanceTypesTypeAddonBackupOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddonBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonBackupOutput) ToGetInstanceTypesTypeAddonBackupOutput() GetInstanceTypesTypeAddonBackupOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupOutput) ToGetInstanceTypesTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupOutput) Prices() GetInstanceTypesTypeAddonBackupPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackup) []GetInstanceTypesTypeAddonBackupPrice { return v.Prices }).(GetInstanceTypesTypeAddonBackupPriceArrayOutput)
+}
+
+type GetInstanceTypesTypeAddonBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddonBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonBackupArrayOutput) ToGetInstanceTypesTypeAddonBackupArrayOutput() GetInstanceTypesTypeAddonBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupArrayOutput) ToGetInstanceTypesTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeAddonBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesTypeAddonBackup {
+		return vs[0].([]GetInstanceTypesTypeAddonBackup)[vs[1].(int)]
+	}).(GetInstanceTypesTypeAddonBackupOutput)
+}
+
+type GetInstanceTypesTypeAddonBackupPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetInstanceTypesTypeAddonBackupPriceInput is an input type that accepts GetInstanceTypesTypeAddonBackupPriceArgs and GetInstanceTypesTypeAddonBackupPriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonBackupPriceInput` via:
+//
+//          GetInstanceTypesTypeAddonBackupPriceArgs{...}
+type GetInstanceTypesTypeAddonBackupPriceInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonBackupPriceOutput() GetInstanceTypesTypeAddonBackupPriceOutput
+	ToGetInstanceTypesTypeAddonBackupPriceOutputWithContext(context.Context) GetInstanceTypesTypeAddonBackupPriceOutput
+}
+
+type GetInstanceTypesTypeAddonBackupPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetInstanceTypesTypeAddonBackupPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonBackupPriceArgs) ToGetInstanceTypesTypeAddonBackupPriceOutput() GetInstanceTypesTypeAddonBackupPriceOutput {
+	return i.ToGetInstanceTypesTypeAddonBackupPriceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonBackupPriceArgs) ToGetInstanceTypesTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonBackupPriceOutput)
+}
+
+// GetInstanceTypesTypeAddonBackupPriceArrayInput is an input type that accepts GetInstanceTypesTypeAddonBackupPriceArray and GetInstanceTypesTypeAddonBackupPriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypeAddonBackupPriceArrayInput` via:
+//
+//          GetInstanceTypesTypeAddonBackupPriceArray{ GetInstanceTypesTypeAddonBackupPriceArgs{...} }
+type GetInstanceTypesTypeAddonBackupPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypeAddonBackupPriceArrayOutput() GetInstanceTypesTypeAddonBackupPriceArrayOutput
+	ToGetInstanceTypesTypeAddonBackupPriceArrayOutputWithContext(context.Context) GetInstanceTypesTypeAddonBackupPriceArrayOutput
+}
+
+type GetInstanceTypesTypeAddonBackupPriceArray []GetInstanceTypesTypeAddonBackupPriceInput
+
+func (GetInstanceTypesTypeAddonBackupPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypeAddonBackupPriceArray) ToGetInstanceTypesTypeAddonBackupPriceArrayOutput() GetInstanceTypesTypeAddonBackupPriceArrayOutput {
+	return i.ToGetInstanceTypesTypeAddonBackupPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypeAddonBackupPriceArray) ToGetInstanceTypesTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeAddonBackupPriceArrayOutput)
+}
+
+type GetInstanceTypesTypeAddonBackupPriceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonBackupPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceOutput) ToGetInstanceTypesTypeAddonBackupPriceOutput() GetInstanceTypesTypeAddonBackupPriceOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceOutput) ToGetInstanceTypesTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupPriceOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetInstanceTypesTypeAddonBackupPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypeAddonBackupPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypeAddonBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceArrayOutput) ToGetInstanceTypesTypeAddonBackupPriceArrayOutput() GetInstanceTypesTypeAddonBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceArrayOutput) ToGetInstanceTypesTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeAddonBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypeAddonBackupPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeAddonBackupPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesTypeAddonBackupPrice {
+		return vs[0].([]GetInstanceTypesTypeAddonBackupPrice)[vs[1].(int)]
+	}).(GetInstanceTypesTypeAddonBackupPriceOutput)
+}
+
+type GetInstanceTypesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetInstanceTypesTypePriceInput is an input type that accepts GetInstanceTypesTypePriceArgs and GetInstanceTypesTypePriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypePriceInput` via:
+//
+//          GetInstanceTypesTypePriceArgs{...}
+type GetInstanceTypesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypePriceOutput() GetInstanceTypesTypePriceOutput
+	ToGetInstanceTypesTypePriceOutputWithContext(context.Context) GetInstanceTypesTypePriceOutput
+}
+
+type GetInstanceTypesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetInstanceTypesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypePriceArgs) ToGetInstanceTypesTypePriceOutput() GetInstanceTypesTypePriceOutput {
+	return i.ToGetInstanceTypesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypePriceArgs) ToGetInstanceTypesTypePriceOutputWithContext(ctx context.Context) GetInstanceTypesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypePriceOutput)
+}
+
+// GetInstanceTypesTypePriceArrayInput is an input type that accepts GetInstanceTypesTypePriceArray and GetInstanceTypesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesTypePriceArrayInput` via:
+//
+//          GetInstanceTypesTypePriceArray{ GetInstanceTypesTypePriceArgs{...} }
+type GetInstanceTypesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesTypePriceArrayOutput() GetInstanceTypesTypePriceArrayOutput
+	ToGetInstanceTypesTypePriceArrayOutputWithContext(context.Context) GetInstanceTypesTypePriceArrayOutput
+}
+
+type GetInstanceTypesTypePriceArray []GetInstanceTypesTypePriceInput
+
+func (GetInstanceTypesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypesTypePriceArray) ToGetInstanceTypesTypePriceArrayOutput() GetInstanceTypesTypePriceArrayOutput {
+	return i.ToGetInstanceTypesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesTypePriceArray) ToGetInstanceTypesTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypePriceArrayOutput)
+}
+
+type GetInstanceTypesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypePriceOutput) ToGetInstanceTypesTypePriceOutput() GetInstanceTypesTypePriceOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypePriceOutput) ToGetInstanceTypesTypePriceOutputWithContext(ctx context.Context) GetInstanceTypesTypePriceOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetInstanceTypesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetInstanceTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypesTypePriceArrayOutput) ToGetInstanceTypesTypePriceArrayOutput() GetInstanceTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypePriceArrayOutput) ToGetInstanceTypesTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesTypePrice {
+		return vs[0].([]GetInstanceTypesTypePrice)[vs[1].(int)]
+	}).(GetInstanceTypesTypePriceOutput)
+}
+
 type GetInstancesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
 	Name string `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -7656,6 +8616,8 @@ type GetInstancesFilterInput interface {
 }
 
 type GetInstancesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -7713,6 +8675,11 @@ func (o GetInstancesFilterOutput) ToGetInstancesFilterOutputWithContext(ctx cont
 	return o
 }
 
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetInstancesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
 // The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
 func (o GetInstancesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesFilter) string { return v.Name }).(pulumi.StringOutput)
@@ -7750,6 +8717,7 @@ type GetInstancesInstance struct {
 	Configs          []GetInstancesInstanceConfig `pulumi:"configs"`
 	Disks            []GetInstancesInstanceDisk   `pulumi:"disks"`
 	Group            string                       `pulumi:"group"`
+	Id               int                          `pulumi:"id"`
 	Image            string                       `pulumi:"image"`
 	IpAddress        string                       `pulumi:"ipAddress"`
 	Ipv4s            []string                     `pulumi:"ipv4s"`
@@ -7783,6 +8751,7 @@ type GetInstancesInstanceArgs struct {
 	Configs          GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
 	Disks            GetInstancesInstanceDiskArrayInput   `pulumi:"disks"`
 	Group            pulumi.StringInput                   `pulumi:"group"`
+	Id               pulumi.IntInput                      `pulumi:"id"`
 	Image            pulumi.StringInput                   `pulumi:"image"`
 	IpAddress        pulumi.StringInput                   `pulumi:"ipAddress"`
 	Ipv4s            pulumi.StringArrayInput              `pulumi:"ipv4s"`
@@ -7871,6 +8840,10 @@ func (o GetInstancesInstanceOutput) Disks() GetInstancesInstanceDiskArrayOutput 
 
 func (o GetInstancesInstanceOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
@@ -9798,7 +10771,103 @@ func (o GetInstancesInstanceSpecArrayOutput) Index(i pulumi.IntInput) GetInstanc
 	}).(GetInstancesInstanceSpecOutput)
 }
 
+type GetLkeClusterControlPlane struct {
+	HighAvailability bool `pulumi:"highAvailability"`
+}
+
+// GetLkeClusterControlPlaneInput is an input type that accepts GetLkeClusterControlPlaneArgs and GetLkeClusterControlPlaneOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneInput` via:
+//
+//          GetLkeClusterControlPlaneArgs{...}
+type GetLkeClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneOutput() GetLkeClusterControlPlaneOutput
+	ToGetLkeClusterControlPlaneOutputWithContext(context.Context) GetLkeClusterControlPlaneOutput
+}
+
+type GetLkeClusterControlPlaneArgs struct {
+	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
+}
+
+func (GetLkeClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneArgs) ToGetLkeClusterControlPlaneOutput() GetLkeClusterControlPlaneOutput {
+	return i.ToGetLkeClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneArgs) ToGetLkeClusterControlPlaneOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneOutput)
+}
+
+// GetLkeClusterControlPlaneArrayInput is an input type that accepts GetLkeClusterControlPlaneArray and GetLkeClusterControlPlaneArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneArrayInput` via:
+//
+//          GetLkeClusterControlPlaneArray{ GetLkeClusterControlPlaneArgs{...} }
+type GetLkeClusterControlPlaneArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneArrayOutput() GetLkeClusterControlPlaneArrayOutput
+	ToGetLkeClusterControlPlaneArrayOutputWithContext(context.Context) GetLkeClusterControlPlaneArrayOutput
+}
+
+type GetLkeClusterControlPlaneArray []GetLkeClusterControlPlaneInput
+
+func (GetLkeClusterControlPlaneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneArray) ToGetLkeClusterControlPlaneArrayOutput() GetLkeClusterControlPlaneArrayOutput {
+	return i.ToGetLkeClusterControlPlaneArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneArray) ToGetLkeClusterControlPlaneArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneArrayOutput)
+}
+
+type GetLkeClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutput() GetLkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
+}
+
+type GetLkeClusterControlPlaneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneArrayOutput) ToGetLkeClusterControlPlaneArrayOutput() GetLkeClusterControlPlaneArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneArrayOutput) ToGetLkeClusterControlPlaneArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneArrayOutput) Index(i pulumi.IntInput) GetLkeClusterControlPlaneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterControlPlane {
+		return vs[0].([]GetLkeClusterControlPlane)[vs[1].(int)]
+	}).(GetLkeClusterControlPlaneOutput)
+}
+
 type GetLkeClusterPool struct {
+	// The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+	Autoscalers []GetLkeClusterPoolAutoscaler `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count int `pulumi:"count"`
 	// The LKE Cluster's ID.
@@ -9821,6 +10890,8 @@ type GetLkeClusterPoolInput interface {
 }
 
 type GetLkeClusterPoolArgs struct {
+	// The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+	Autoscalers GetLkeClusterPoolAutoscalerArrayInput `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count pulumi.IntInput `pulumi:"count"`
 	// The LKE Cluster's ID.
@@ -9882,6 +10953,11 @@ func (o GetLkeClusterPoolOutput) ToGetLkeClusterPoolOutputWithContext(ctx contex
 	return o
 }
 
+// The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+func (o GetLkeClusterPoolOutput) Autoscalers() GetLkeClusterPoolAutoscalerArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolAutoscaler { return v.Autoscalers }).(GetLkeClusterPoolAutoscalerArrayOutput)
+}
+
 // The number of nodes in the Node Pool.
 func (o GetLkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
@@ -9920,6 +10996,112 @@ func (o GetLkeClusterPoolArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPool
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPool {
 		return vs[0].([]GetLkeClusterPool)[vs[1].(int)]
 	}).(GetLkeClusterPoolOutput)
+}
+
+type GetLkeClusterPoolAutoscaler struct {
+	// The maximum number of nodes to autoscale to.
+	Max int `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min int `pulumi:"min"`
+}
+
+// GetLkeClusterPoolAutoscalerInput is an input type that accepts GetLkeClusterPoolAutoscalerArgs and GetLkeClusterPoolAutoscalerOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolAutoscalerInput` via:
+//
+//          GetLkeClusterPoolAutoscalerArgs{...}
+type GetLkeClusterPoolAutoscalerInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolAutoscalerOutput() GetLkeClusterPoolAutoscalerOutput
+	ToGetLkeClusterPoolAutoscalerOutputWithContext(context.Context) GetLkeClusterPoolAutoscalerOutput
+}
+
+type GetLkeClusterPoolAutoscalerArgs struct {
+	// The maximum number of nodes to autoscale to.
+	Max pulumi.IntInput `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetLkeClusterPoolAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolAutoscalerArgs) ToGetLkeClusterPoolAutoscalerOutput() GetLkeClusterPoolAutoscalerOutput {
+	return i.ToGetLkeClusterPoolAutoscalerOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolAutoscalerArgs) ToGetLkeClusterPoolAutoscalerOutputWithContext(ctx context.Context) GetLkeClusterPoolAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolAutoscalerOutput)
+}
+
+// GetLkeClusterPoolAutoscalerArrayInput is an input type that accepts GetLkeClusterPoolAutoscalerArray and GetLkeClusterPoolAutoscalerArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolAutoscalerArrayInput` via:
+//
+//          GetLkeClusterPoolAutoscalerArray{ GetLkeClusterPoolAutoscalerArgs{...} }
+type GetLkeClusterPoolAutoscalerArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolAutoscalerArrayOutput() GetLkeClusterPoolAutoscalerArrayOutput
+	ToGetLkeClusterPoolAutoscalerArrayOutputWithContext(context.Context) GetLkeClusterPoolAutoscalerArrayOutput
+}
+
+type GetLkeClusterPoolAutoscalerArray []GetLkeClusterPoolAutoscalerInput
+
+func (GetLkeClusterPoolAutoscalerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolAutoscalerArray) ToGetLkeClusterPoolAutoscalerArrayOutput() GetLkeClusterPoolAutoscalerArrayOutput {
+	return i.ToGetLkeClusterPoolAutoscalerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolAutoscalerArray) ToGetLkeClusterPoolAutoscalerArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolAutoscalerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolAutoscalerArrayOutput)
+}
+
+type GetLkeClusterPoolAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolAutoscalerOutput) ToGetLkeClusterPoolAutoscalerOutput() GetLkeClusterPoolAutoscalerOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolAutoscalerOutput) ToGetLkeClusterPoolAutoscalerOutputWithContext(ctx context.Context) GetLkeClusterPoolAutoscalerOutput {
+	return o
+}
+
+// The maximum number of nodes to autoscale to.
+func (o GetLkeClusterPoolAutoscalerOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes to autoscale to.
+func (o GetLkeClusterPoolAutoscalerOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetLkeClusterPoolAutoscalerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolAutoscalerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolAutoscaler)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolAutoscalerArrayOutput) ToGetLkeClusterPoolAutoscalerArrayOutput() GetLkeClusterPoolAutoscalerArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolAutoscalerArrayOutput) ToGetLkeClusterPoolAutoscalerArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolAutoscalerArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolAutoscalerArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPoolAutoscalerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolAutoscaler {
+		return vs[0].([]GetLkeClusterPoolAutoscaler)[vs[1].(int)]
+	}).(GetLkeClusterPoolAutoscalerOutput)
 }
 
 type GetLkeClusterPoolNode struct {
@@ -10461,7 +11643,425 @@ func (o GetStackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetS
 	}).(GetStackScriptUserDefinedFieldOutput)
 }
 
+type GetStackScriptsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetStackScriptsFilterInput is an input type that accepts GetStackScriptsFilterArgs and GetStackScriptsFilterOutput values.
+// You can construct a concrete instance of `GetStackScriptsFilterInput` via:
+//
+//          GetStackScriptsFilterArgs{...}
+type GetStackScriptsFilterInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsFilterOutput() GetStackScriptsFilterOutput
+	ToGetStackScriptsFilterOutputWithContext(context.Context) GetStackScriptsFilterOutput
+}
+
+type GetStackScriptsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetStackScriptsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsFilter)(nil)).Elem()
+}
+
+func (i GetStackScriptsFilterArgs) ToGetStackScriptsFilterOutput() GetStackScriptsFilterOutput {
+	return i.ToGetStackScriptsFilterOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsFilterArgs) ToGetStackScriptsFilterOutputWithContext(ctx context.Context) GetStackScriptsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsFilterOutput)
+}
+
+// GetStackScriptsFilterArrayInput is an input type that accepts GetStackScriptsFilterArray and GetStackScriptsFilterArrayOutput values.
+// You can construct a concrete instance of `GetStackScriptsFilterArrayInput` via:
+//
+//          GetStackScriptsFilterArray{ GetStackScriptsFilterArgs{...} }
+type GetStackScriptsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsFilterArrayOutput() GetStackScriptsFilterArrayOutput
+	ToGetStackScriptsFilterArrayOutputWithContext(context.Context) GetStackScriptsFilterArrayOutput
+}
+
+type GetStackScriptsFilterArray []GetStackScriptsFilterInput
+
+func (GetStackScriptsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsFilter)(nil)).Elem()
+}
+
+func (i GetStackScriptsFilterArray) ToGetStackScriptsFilterArrayOutput() GetStackScriptsFilterArrayOutput {
+	return i.ToGetStackScriptsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsFilterArray) ToGetStackScriptsFilterArrayOutputWithContext(ctx context.Context) GetStackScriptsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsFilterArrayOutput)
+}
+
+type GetStackScriptsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsFilter)(nil)).Elem()
+}
+
+func (o GetStackScriptsFilterOutput) ToGetStackScriptsFilterOutput() GetStackScriptsFilterOutput {
+	return o
+}
+
+func (o GetStackScriptsFilterOutput) ToGetStackScriptsFilterOutputWithContext(ctx context.Context) GetStackScriptsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetStackScriptsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStackScriptsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetStackScriptsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetStackScriptsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStackScriptsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetStackScriptsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsFilter)(nil)).Elem()
+}
+
+func (o GetStackScriptsFilterArrayOutput) ToGetStackScriptsFilterArrayOutput() GetStackScriptsFilterArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsFilterArrayOutput) ToGetStackScriptsFilterArrayOutputWithContext(ctx context.Context) GetStackScriptsFilterArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsFilterArrayOutput) Index(i pulumi.IntInput) GetStackScriptsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackScriptsFilter {
+		return vs[0].([]GetStackScriptsFilter)[vs[1].(int)]
+	}).(GetStackScriptsFilterOutput)
+}
+
+type GetStackScriptsStackscript struct {
+	Created           string                                       `pulumi:"created"`
+	DeploymentsActive int                                          `pulumi:"deploymentsActive"`
+	DeploymentsTotal  int                                          `pulumi:"deploymentsTotal"`
+	Description       string                                       `pulumi:"description"`
+	Id                int                                          `pulumi:"id"`
+	Images            []string                                     `pulumi:"images"`
+	IsPublic          bool                                         `pulumi:"isPublic"`
+	Label             string                                       `pulumi:"label"`
+	RevNote           string                                       `pulumi:"revNote"`
+	Script            string                                       `pulumi:"script"`
+	Updated           string                                       `pulumi:"updated"`
+	UserDefinedFields []GetStackScriptsStackscriptUserDefinedField `pulumi:"userDefinedFields"`
+	UserGravatarId    string                                       `pulumi:"userGravatarId"`
+	Username          string                                       `pulumi:"username"`
+}
+
+// GetStackScriptsStackscriptInput is an input type that accepts GetStackScriptsStackscriptArgs and GetStackScriptsStackscriptOutput values.
+// You can construct a concrete instance of `GetStackScriptsStackscriptInput` via:
+//
+//          GetStackScriptsStackscriptArgs{...}
+type GetStackScriptsStackscriptInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsStackscriptOutput() GetStackScriptsStackscriptOutput
+	ToGetStackScriptsStackscriptOutputWithContext(context.Context) GetStackScriptsStackscriptOutput
+}
+
+type GetStackScriptsStackscriptArgs struct {
+	Created           pulumi.StringInput                                   `pulumi:"created"`
+	DeploymentsActive pulumi.IntInput                                      `pulumi:"deploymentsActive"`
+	DeploymentsTotal  pulumi.IntInput                                      `pulumi:"deploymentsTotal"`
+	Description       pulumi.StringInput                                   `pulumi:"description"`
+	Id                pulumi.IntInput                                      `pulumi:"id"`
+	Images            pulumi.StringArrayInput                              `pulumi:"images"`
+	IsPublic          pulumi.BoolInput                                     `pulumi:"isPublic"`
+	Label             pulumi.StringInput                                   `pulumi:"label"`
+	RevNote           pulumi.StringInput                                   `pulumi:"revNote"`
+	Script            pulumi.StringInput                                   `pulumi:"script"`
+	Updated           pulumi.StringInput                                   `pulumi:"updated"`
+	UserDefinedFields GetStackScriptsStackscriptUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
+	UserGravatarId    pulumi.StringInput                                   `pulumi:"userGravatarId"`
+	Username          pulumi.StringInput                                   `pulumi:"username"`
+}
+
+func (GetStackScriptsStackscriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsStackscript)(nil)).Elem()
+}
+
+func (i GetStackScriptsStackscriptArgs) ToGetStackScriptsStackscriptOutput() GetStackScriptsStackscriptOutput {
+	return i.ToGetStackScriptsStackscriptOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsStackscriptArgs) ToGetStackScriptsStackscriptOutputWithContext(ctx context.Context) GetStackScriptsStackscriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsStackscriptOutput)
+}
+
+// GetStackScriptsStackscriptArrayInput is an input type that accepts GetStackScriptsStackscriptArray and GetStackScriptsStackscriptArrayOutput values.
+// You can construct a concrete instance of `GetStackScriptsStackscriptArrayInput` via:
+//
+//          GetStackScriptsStackscriptArray{ GetStackScriptsStackscriptArgs{...} }
+type GetStackScriptsStackscriptArrayInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsStackscriptArrayOutput() GetStackScriptsStackscriptArrayOutput
+	ToGetStackScriptsStackscriptArrayOutputWithContext(context.Context) GetStackScriptsStackscriptArrayOutput
+}
+
+type GetStackScriptsStackscriptArray []GetStackScriptsStackscriptInput
+
+func (GetStackScriptsStackscriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsStackscript)(nil)).Elem()
+}
+
+func (i GetStackScriptsStackscriptArray) ToGetStackScriptsStackscriptArrayOutput() GetStackScriptsStackscriptArrayOutput {
+	return i.ToGetStackScriptsStackscriptArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsStackscriptArray) ToGetStackScriptsStackscriptArrayOutputWithContext(ctx context.Context) GetStackScriptsStackscriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsStackscriptArrayOutput)
+}
+
+type GetStackScriptsStackscriptOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsStackscriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsStackscript)(nil)).Elem()
+}
+
+func (o GetStackScriptsStackscriptOutput) ToGetStackScriptsStackscriptOutput() GetStackScriptsStackscriptOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptOutput) ToGetStackScriptsStackscriptOutputWithContext(ctx context.Context) GetStackScriptsStackscriptOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) DeploymentsActive() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.DeploymentsActive }).(pulumi.IntOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) DeploymentsTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.DeploymentsTotal }).(pulumi.IntOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) RevNote() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.RevNote }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Script }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) UserDefinedFields() GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) []GetStackScriptsStackscriptUserDefinedField {
+		return v.UserDefinedFields
+	}).(GetStackScriptsStackscriptUserDefinedFieldArrayOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) UserGravatarId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.UserGravatarId }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetStackScriptsStackscriptArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsStackscriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsStackscript)(nil)).Elem()
+}
+
+func (o GetStackScriptsStackscriptArrayOutput) ToGetStackScriptsStackscriptArrayOutput() GetStackScriptsStackscriptArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptArrayOutput) ToGetStackScriptsStackscriptArrayOutputWithContext(ctx context.Context) GetStackScriptsStackscriptArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptArrayOutput) Index(i pulumi.IntInput) GetStackScriptsStackscriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackScriptsStackscript {
+		return vs[0].([]GetStackScriptsStackscript)[vs[1].(int)]
+	}).(GetStackScriptsStackscriptOutput)
+}
+
+type GetStackScriptsStackscriptUserDefinedField struct {
+	Default string `pulumi:"default"`
+	Example string `pulumi:"example"`
+	Label   string `pulumi:"label"`
+	ManyOf  string `pulumi:"manyOf"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name  string `pulumi:"name"`
+	OneOf string `pulumi:"oneOf"`
+}
+
+// GetStackScriptsStackscriptUserDefinedFieldInput is an input type that accepts GetStackScriptsStackscriptUserDefinedFieldArgs and GetStackScriptsStackscriptUserDefinedFieldOutput values.
+// You can construct a concrete instance of `GetStackScriptsStackscriptUserDefinedFieldInput` via:
+//
+//          GetStackScriptsStackscriptUserDefinedFieldArgs{...}
+type GetStackScriptsStackscriptUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsStackscriptUserDefinedFieldOutput() GetStackScriptsStackscriptUserDefinedFieldOutput
+	ToGetStackScriptsStackscriptUserDefinedFieldOutputWithContext(context.Context) GetStackScriptsStackscriptUserDefinedFieldOutput
+}
+
+type GetStackScriptsStackscriptUserDefinedFieldArgs struct {
+	Default pulumi.StringInput `pulumi:"default"`
+	Example pulumi.StringInput `pulumi:"example"`
+	Label   pulumi.StringInput `pulumi:"label"`
+	ManyOf  pulumi.StringInput `pulumi:"manyOf"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name  pulumi.StringInput `pulumi:"name"`
+	OneOf pulumi.StringInput `pulumi:"oneOf"`
+}
+
+func (GetStackScriptsStackscriptUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedField)(nil)).Elem()
+}
+
+func (i GetStackScriptsStackscriptUserDefinedFieldArgs) ToGetStackScriptsStackscriptUserDefinedFieldOutput() GetStackScriptsStackscriptUserDefinedFieldOutput {
+	return i.ToGetStackScriptsStackscriptUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsStackscriptUserDefinedFieldArgs) ToGetStackScriptsStackscriptUserDefinedFieldOutputWithContext(ctx context.Context) GetStackScriptsStackscriptUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsStackscriptUserDefinedFieldOutput)
+}
+
+// GetStackScriptsStackscriptUserDefinedFieldArrayInput is an input type that accepts GetStackScriptsStackscriptUserDefinedFieldArray and GetStackScriptsStackscriptUserDefinedFieldArrayOutput values.
+// You can construct a concrete instance of `GetStackScriptsStackscriptUserDefinedFieldArrayInput` via:
+//
+//          GetStackScriptsStackscriptUserDefinedFieldArray{ GetStackScriptsStackscriptUserDefinedFieldArgs{...} }
+type GetStackScriptsStackscriptUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetStackScriptsStackscriptUserDefinedFieldArrayOutput() GetStackScriptsStackscriptUserDefinedFieldArrayOutput
+	ToGetStackScriptsStackscriptUserDefinedFieldArrayOutputWithContext(context.Context) GetStackScriptsStackscriptUserDefinedFieldArrayOutput
+}
+
+type GetStackScriptsStackscriptUserDefinedFieldArray []GetStackScriptsStackscriptUserDefinedFieldInput
+
+func (GetStackScriptsStackscriptUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsStackscriptUserDefinedField)(nil)).Elem()
+}
+
+func (i GetStackScriptsStackscriptUserDefinedFieldArray) ToGetStackScriptsStackscriptUserDefinedFieldArrayOutput() GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
+	return i.ToGetStackScriptsStackscriptUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackScriptsStackscriptUserDefinedFieldArray) ToGetStackScriptsStackscriptUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackScriptsStackscriptUserDefinedFieldArrayOutput)
+}
+
+type GetStackScriptsStackscriptUserDefinedFieldOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsStackscriptUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedField)(nil)).Elem()
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ToGetStackScriptsStackscriptUserDefinedFieldOutput() GetStackScriptsStackscriptUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ToGetStackScriptsStackscriptUserDefinedFieldOutputWithContext(ctx context.Context) GetStackScriptsStackscriptUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
+}
+
+type GetStackScriptsStackscriptUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStackScriptsStackscriptUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackScriptsStackscriptUserDefinedField)(nil)).Elem()
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldArrayOutput) ToGetStackScriptsStackscriptUserDefinedFieldArrayOutput() GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldArrayOutput) ToGetStackScriptsStackscriptUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetStackScriptsStackscriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetStackScriptsStackscriptUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackScriptsStackscriptUserDefinedField {
+		return vs[0].([]GetStackScriptsStackscriptUserDefinedField)[vs[1].(int)]
+	}).(GetStackScriptsStackscriptUserDefinedFieldOutput)
+}
+
 type GetVlansFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -10480,6 +12080,8 @@ type GetVlansFilterInput interface {
 }
 
 type GetVlansFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of values for the filter to allow. These values should all be in string form.
@@ -10535,6 +12137,11 @@ func (o GetVlansFilterOutput) ToGetVlansFilterOutput() GetVlansFilterOutput {
 
 func (o GetVlansFilterOutput) ToGetVlansFilterOutputWithContext(ctx context.Context) GetVlansFilterOutput {
 	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetVlansFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVlansFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
 // The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
@@ -10722,8 +12329,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceArrayInput)(nil)).Elem(), InstanceInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsInput)(nil)).Elem(), InstanceSpecsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsPtrInput)(nil)).Elem(), InstanceSpecsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlanePtrInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolInput)(nil)).Elem(), LkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolArrayInput)(nil)).Elem(), LkeClusterPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerPtrInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeInput)(nil)).Elem(), LkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeArrayInput)(nil)).Elem(), LkeClusterPoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
@@ -10786,6 +12397,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsPriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypePriceInput)(nil)).Elem(), GetInstanceTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesFilterInput)(nil)).Elem(), GetInstanceTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesFilterArrayInput)(nil)).Elem(), GetInstanceTypesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeInput)(nil)).Elem(), GetInstanceTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeArrayInput)(nil)).Elem(), GetInstanceTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonInput)(nil)).Elem(), GetInstanceTypesTypeAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonArrayInput)(nil)).Elem(), GetInstanceTypesTypeAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonBackupInput)(nil)).Elem(), GetInstanceTypesTypeAddonBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonBackupArrayInput)(nil)).Elem(), GetInstanceTypesTypeAddonBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonBackupPriceInput)(nil)).Elem(), GetInstanceTypesTypeAddonBackupPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeAddonBackupPriceArrayInput)(nil)).Elem(), GetInstanceTypesTypeAddonBackupPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypePriceInput)(nil)).Elem(), GetInstanceTypesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypePriceArrayInput)(nil)).Elem(), GetInstanceTypesTypePriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesFilterInput)(nil)).Elem(), GetInstancesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesFilterArrayInput)(nil)).Elem(), GetInstancesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
@@ -10823,8 +12446,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskArrayInput)(nil)).Elem(), GetInstancesInstanceDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecArrayInput)(nil)).Elem(), GetInstancesInstanceSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolInput)(nil)).Elem(), GetLkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolArrayInput)(nil)).Elem(), GetLkeClusterPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerArrayInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeInput)(nil)).Elem(), GetLkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeArrayInput)(nil)).Elem(), GetLkeClusterPoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
@@ -10834,6 +12461,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldArrayInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsFilterInput)(nil)).Elem(), GetStackScriptsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsFilterArrayInput)(nil)).Elem(), GetStackScriptsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptInput)(nil)).Elem(), GetStackScriptsStackscriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptArrayInput)(nil)).Elem(), GetStackScriptsStackscriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedFieldInput)(nil)).Elem(), GetStackScriptsStackscriptUserDefinedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedFieldArrayInput)(nil)).Elem(), GetStackScriptsStackscriptUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterInput)(nil)).Elem(), GetVlansFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
@@ -10880,8 +12513,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolArrayOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
@@ -10944,6 +12581,18 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonBackupOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonBackupPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypeAddonBackupPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesTypePriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesFilterOutput{})
 	pulumi.RegisterOutputType(GetInstancesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
@@ -10981,8 +12630,12 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
@@ -10992,6 +12645,12 @@ func init() {
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsFilterOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsStackscriptOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsStackscriptArrayOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsStackscriptUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(GetStackScriptsStackscriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetVlansFilterOutput{})
 	pulumi.RegisterOutputType(GetVlansFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVlansVlanOutput{})

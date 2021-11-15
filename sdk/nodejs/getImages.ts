@@ -87,6 +87,9 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
     }
     return pulumi.runtime.invoke("linode:index/getImages:getImages", {
         "filters": args.filters,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
     }, opts);
 }
 
@@ -95,6 +98,18 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     filters?: inputs.GetImagesFilter[];
+    /**
+     * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+     */
+    latest?: boolean;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: string;
 }
 
 /**
@@ -107,6 +122,9 @@ export interface GetImagesResult {
      */
     readonly id: string;
     readonly images: outputs.GetImagesImage[];
+    readonly latest?: boolean;
+    readonly order?: string;
+    readonly orderBy?: string;
 }
 
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
@@ -118,4 +136,16 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+    /**
+     * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+     */
+    latest?: pulumi.Input<boolean>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: pulumi.Input<string>;
 }
