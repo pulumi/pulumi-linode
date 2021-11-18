@@ -35,7 +35,7 @@ class DomainRecordArgs:
         :param pulumi.Input[str] protocol: The protocol this Record's service communicates with. Only valid for SRV records.
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[int] weight: The relative weight of this Record. Higher values are preferred.
         """
         pulumi.set(__self__, "domain_id", domain_id)
@@ -170,7 +170,7 @@ class DomainRecordArgs:
     @pulumi.getter(name="ttlSec")
     def ttl_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
         return pulumi.get(self, "ttl_sec")
 
@@ -216,7 +216,7 @@ class _DomainRecordState:
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[int] weight: The relative weight of this Record. Higher values are preferred.
         """
         if domain_id is not None:
@@ -354,7 +354,7 @@ class _DomainRecordState:
     @pulumi.getter(name="ttlSec")
     def ttl_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
         return pulumi.get(self, "ttl_sec")
 
@@ -439,7 +439,7 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[int] weight: The relative weight of this Record. Higher values are preferred.
         """
         ...
@@ -576,7 +576,7 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[int] weight: The relative weight of this Record. Higher values are preferred.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -672,7 +672,7 @@ class DomainRecord(pulumi.CustomResource):
     @pulumi.getter(name="ttlSec")
     def ttl_sec(self) -> pulumi.Output[Optional[int]]:
         """
-        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+        'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
         return pulumi.get(self, "ttl_sec")
 

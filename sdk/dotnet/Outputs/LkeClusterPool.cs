@@ -13,6 +13,7 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class LkeClusterPool
     {
+        public readonly Outputs.LkeClusterPoolAutoscaler? Autoscaler;
         /// <summary>
         /// The number of nodes in the Node Pool.
         /// </summary>
@@ -29,6 +30,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private LkeClusterPool(
+            Outputs.LkeClusterPoolAutoscaler? autoscaler,
+
             int count,
 
             int? id,
@@ -37,6 +40,7 @@ namespace Pulumi.Linode.Outputs
 
             string type)
         {
+            Autoscaler = autoscaler;
             Count = count;
             Id = id;
             Nodes = nodes;

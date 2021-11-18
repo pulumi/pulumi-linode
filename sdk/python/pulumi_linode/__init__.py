@@ -16,6 +16,7 @@ from .get_image import *
 from .get_images import *
 from .get_instance_backups import *
 from .get_instance_type import *
+from .get_instance_types import *
 from .get_instances import *
 from .get_kernel import *
 from .get_lke_cluster import *
@@ -28,6 +29,7 @@ from .get_profile import *
 from .get_region import *
 from .get_ssh_key import *
 from .get_stack_script import *
+from .get_stack_scripts import *
 from .get_user import *
 from .get_vlans import *
 from .get_volume import *

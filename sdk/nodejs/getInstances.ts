@@ -16,6 +16,8 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     }
     return pulumi.runtime.invoke("linode:index/getInstances:getInstances", {
         "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
     }, opts);
 }
 
@@ -24,6 +26,14 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetInstancesArgs {
     filters?: inputs.GetInstancesFilter[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: string;
 }
 
 /**
@@ -36,6 +46,8 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly instances: outputs.GetInstancesInstance[];
+    readonly order?: string;
+    readonly orderBy?: string;
 }
 
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
@@ -47,4 +59,12 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  */
 export interface GetInstancesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetInstancesFilterArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
+    orderBy?: pulumi.Input<string>;
 }

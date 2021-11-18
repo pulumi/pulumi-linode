@@ -13,6 +13,12 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetImagesFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// </summary>
+        [Input("matchBy")]
+        public string? MatchBy { get; set; }
+
+        /// <summary>
         /// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         /// </summary>
         [Input("name", required: true)]

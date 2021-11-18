@@ -30,6 +30,18 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public string? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
         public GetInstancesArgs()
         {
         }
@@ -44,6 +56,18 @@ namespace Pulumi.Linode
             get => _filters ?? (_filters = new InputList<Inputs.GetInstancesFilterInputArgs>());
             set => _filters = value;
         }
+
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         public GetInstancesInvokeArgs()
         {
@@ -60,6 +84,8 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
+        public readonly string? Order;
+        public readonly string? OrderBy;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -67,11 +93,17 @@ namespace Pulumi.Linode
 
             string id,
 
-            ImmutableArray<Outputs.GetInstancesInstanceResult> instances)
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
+            string? order,
+
+            string? orderBy)
         {
             Filters = filters;
             Id = id;
             Instances = instances;
+            Order = order;
+            OrderBy = orderBy;
         }
     }
 }

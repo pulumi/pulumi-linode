@@ -106,6 +106,7 @@ namespace Pulumi.Linode
         /// The endpoints for the Kubernetes API server.
         /// </summary>
         public readonly ImmutableArray<string> ApiEndpoints;
+        public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
         /// <summary>
         /// The ID of the node.
         /// </summary>
@@ -140,6 +141,8 @@ namespace Pulumi.Linode
         private GetLkeClusterResult(
             ImmutableArray<string> apiEndpoints,
 
+            ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> controlPlanes,
+
             int id,
 
             string k8sVersion,
@@ -157,6 +160,7 @@ namespace Pulumi.Linode
             ImmutableArray<string> tags)
         {
             ApiEndpoints = apiEndpoints;
+            ControlPlanes = controlPlanes;
             Id = id;
             K8sVersion = k8sVersion;
             Kubeconfig = kubeconfig;

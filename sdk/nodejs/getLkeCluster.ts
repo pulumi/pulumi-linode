@@ -50,6 +50,7 @@ export interface GetLkeClusterResult {
      * The endpoints for the Kubernetes API server.
      */
     readonly apiEndpoints: string[];
+    readonly controlPlanes: outputs.GetLkeClusterControlPlane[];
     /**
      * The ID of the node.
      */

@@ -88,14 +88,20 @@ func GetVlans(ctx *pulumi.Context, args *GetVlansArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getVlans.
 type GetVlansArgs struct {
 	Filters []GetVlansFilter `pulumi:"filters"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getVlans.
 type GetVlansResult struct {
 	Filters []GetVlansFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
-	Vlans []GetVlansVlan `pulumi:"vlans"`
+	Id      string         `pulumi:"id"`
+	Order   *string        `pulumi:"order"`
+	OrderBy *string        `pulumi:"orderBy"`
+	Vlans   []GetVlansVlan `pulumi:"vlans"`
 }
 
 func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi.InvokeOption) GetVlansResultOutput {
@@ -110,6 +116,10 @@ func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getVlans.
 type GetVlansOutputArgs struct {
 	Filters GetVlansFilterArrayInput `pulumi:"filters"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetVlansOutputArgs) ElementType() reflect.Type {
@@ -138,6 +148,14 @@ func (o GetVlansResultOutput) Filters() GetVlansFilterArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetVlansResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVlansResultOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVlansResult) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVlansResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVlansResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 func (o GetVlansResultOutput) Vlans() GetVlansVlanArrayOutput {

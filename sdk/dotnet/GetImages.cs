@@ -228,6 +228,24 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// </summary>
+        [Input("latest")]
+        public bool? Latest { get; set; }
+
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public string? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
         public GetImagesArgs()
         {
         }
@@ -242,6 +260,24 @@ namespace Pulumi.Linode
             get => _filters ?? (_filters = new InputList<Inputs.GetImagesFilterInputArgs>());
             set => _filters = value;
         }
+
+        /// <summary>
+        /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// </summary>
+        [Input("latest")]
+        public Input<bool>? Latest { get; set; }
+
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         public GetImagesInvokeArgs()
         {
@@ -258,6 +294,9 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
+        public readonly bool? Latest;
+        public readonly string? Order;
+        public readonly string? OrderBy;
 
         [OutputConstructor]
         private GetImagesResult(
@@ -265,11 +304,20 @@ namespace Pulumi.Linode
 
             string id,
 
-            ImmutableArray<Outputs.GetImagesImageResult> images)
+            ImmutableArray<Outputs.GetImagesImageResult> images,
+
+            bool? latest,
+
+            string? order,
+
+            string? orderBy)
         {
             Filters = filters;
             Id = id;
             Images = images;
+            Latest = latest;
+            Order = order;
+            OrderBy = orderBy;
         }
     }
 }

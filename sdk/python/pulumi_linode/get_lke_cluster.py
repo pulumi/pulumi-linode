@@ -21,10 +21,13 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None):
+    def __init__(__self__, api_endpoints=None, control_planes=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
+        if control_planes and not isinstance(control_planes, list):
+            raise TypeError("Expected argument 'control_planes' to be a list")
+        pulumi.set(__self__, "control_planes", control_planes)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -57,6 +60,11 @@ class GetLkeClusterResult:
         The endpoints for the Kubernetes API server.
         """
         return pulumi.get(self, "api_endpoints")
+
+    @property
+    @pulumi.getter(name="controlPlanes")
+    def control_planes(self) -> Sequence['outputs.GetLkeClusterControlPlaneResult']:
+        return pulumi.get(self, "control_planes")
 
     @property
     @pulumi.getter
@@ -127,6 +135,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             yield self
         return GetLkeClusterResult(
             api_endpoints=self.api_endpoints,
+            control_planes=self.control_planes,
             id=self.id,
             k8s_version=self.k8s_version,
             kubeconfig=self.kubeconfig,
@@ -164,6 +173,7 @@ def get_lke_cluster(id: Optional[int] = None,
 
     return AwaitableGetLkeClusterResult(
         api_endpoints=__ret__.api_endpoints,
+        control_planes=__ret__.control_planes,
         id=__ret__.id,
         k8s_version=__ret__.k8s_version,
         kubeconfig=__ret__.kubeconfig,

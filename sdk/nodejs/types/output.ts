@@ -154,6 +154,10 @@ export interface GetFirewallOutbound {
 
 export interface GetImagesFilter {
     /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
@@ -349,7 +353,57 @@ export interface GetInstanceTypePrice {
     monthly: number;
 }
 
+export interface GetInstanceTypesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetInstanceTypesType {
+    addons: outputs.GetInstanceTypesTypeAddon[];
+    class: string;
+    disk: number;
+    id: string;
+    label: string;
+    memory: number;
+    networkOut: number;
+    prices: outputs.GetInstanceTypesTypePrice[];
+    transfer: number;
+    vcpus: number;
+}
+
+export interface GetInstanceTypesTypeAddon {
+    backups: outputs.GetInstanceTypesTypeAddonBackup[];
+}
+
+export interface GetInstanceTypesTypeAddonBackup {
+    prices: outputs.GetInstanceTypesTypeAddonBackupPrice[];
+}
+
+export interface GetInstanceTypesTypeAddonBackupPrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetInstanceTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
 export interface GetInstancesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
      */
@@ -367,6 +421,7 @@ export interface GetInstancesInstance {
     configs: outputs.GetInstancesInstanceConfig[];
     disks: outputs.GetInstancesInstanceDisk[];
     group: string;
+    id: number;
     image: string;
     ipAddress: string;
     ipv4s: string[];
@@ -500,7 +555,15 @@ export interface GetInstancesInstanceSpec {
     vcpus: number;
 }
 
+export interface GetLkeClusterControlPlane {
+    highAvailability: boolean;
+}
+
 export interface GetLkeClusterPool {
+    /**
+     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     */
+    autoscalers: outputs.GetLkeClusterPoolAutoscaler[];
     /**
      * The number of nodes in the Node Pool.
      */
@@ -517,6 +580,17 @@ export interface GetLkeClusterPool {
      * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: string;
+}
+
+export interface GetLkeClusterPoolAutoscaler {
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max: number;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min: number;
 }
 
 export interface GetLkeClusterPoolNode {
@@ -578,7 +652,55 @@ export interface GetStackScriptUserDefinedField {
     oneOf: string;
 }
 
+export interface GetStackScriptsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetStackScriptsStackscript {
+    created: string;
+    deploymentsActive: number;
+    deploymentsTotal: number;
+    description: string;
+    id: number;
+    images: string[];
+    isPublic: boolean;
+    label: string;
+    revNote: string;
+    script: string;
+    updated: string;
+    userDefinedFields: outputs.GetStackScriptsStackscriptUserDefinedField[];
+    userGravatarId: string;
+    username: string;
+}
+
+export interface GetStackScriptsStackscriptUserDefinedField {
+    default: string;
+    example: string;
+    label: string;
+    manyOf: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    oneOf: string;
+}
+
 export interface GetVlansFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -848,6 +970,9 @@ export interface InstanceDisk {
      * The name of this interface. If the interface is a VLAN, a label is required.
      */
     label: string;
+    /**
+     * If true, this Disk is read-only.
+     */
     readOnly: boolean;
     /**
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -889,7 +1014,12 @@ export interface InstanceSpecs {
     vcpus: number;
 }
 
+export interface LkeClusterControlPlane {
+    highAvailability: boolean;
+}
+
 export interface LkeClusterPool {
+    autoscaler?: outputs.LkeClusterPoolAutoscaler;
     /**
      * The number of nodes in the Node Pool.
      */
@@ -903,6 +1033,17 @@ export interface LkeClusterPool {
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: string;
+}
+
+export interface LkeClusterPoolAutoscaler {
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max: number;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min: number;
 }
 
 export interface LkeClusterPoolNode {
@@ -1065,4 +1206,3 @@ export interface UserVolumeGrant {
     id: number;
     permissions: string;
 }
-

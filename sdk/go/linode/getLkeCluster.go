@@ -52,7 +52,8 @@ type LookupLkeClusterArgs struct {
 // A collection of values returned by getLkeCluster.
 type LookupLkeClusterResult struct {
 	// The endpoints for the Kubernetes API server.
-	ApiEndpoints []string `pulumi:"apiEndpoints"`
+	ApiEndpoints  []string                    `pulumi:"apiEndpoints"`
+	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// The ID of the node.
 	Id int `pulumi:"id"`
 	// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
@@ -107,6 +108,10 @@ func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutputWithContext(
 // The endpoints for the Kubernetes API server.
 func (o LookupLkeClusterResultOutput) ApiEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupLkeClusterResultOutput) ControlPlanes() GetLkeClusterControlPlaneArrayOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterControlPlane { return v.ControlPlanes }).(GetLkeClusterControlPlaneArrayOutput)
 }
 
 // The ID of the node.

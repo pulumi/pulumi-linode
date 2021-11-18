@@ -19,6 +19,7 @@ class LkeClusterArgs:
                  label: pulumi.Input[str],
                  pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
                  region: pulumi.Input[str],
+                 control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
@@ -26,12 +27,15 @@ class LkeClusterArgs:
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
+        :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "pools", pools)
         pulumi.set(__self__, "region", region)
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -84,6 +88,18 @@ class LkeClusterArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input['LkeClusterControlPlaneArgs']]:
+        """
+        Defines settings for the Kubernetes Control Plane.
+        """
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input['LkeClusterControlPlaneArgs']]):
+        pulumi.set(self, "control_plane", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -100,6 +116,7 @@ class LkeClusterArgs:
 class _LkeClusterState:
     def __init__(__self__, *,
                  api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  kubeconfig: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -110,6 +127,7 @@ class _LkeClusterState:
         """
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
+        :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -120,6 +138,8 @@ class _LkeClusterState:
         """
         if api_endpoints is not None:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
         if kubeconfig is not None:
@@ -146,6 +166,18 @@ class _LkeClusterState:
     @api_endpoints.setter
     def api_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "api_endpoints", value)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input['LkeClusterControlPlaneArgs']]:
+        """
+        Defines settings for the Kubernetes Control Plane.
+        """
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input['LkeClusterControlPlaneArgs']]):
+        pulumi.set(self, "control_plane", value)
 
     @property
     @pulumi.getter(name="k8sVersion")
@@ -237,6 +269,7 @@ class LkeCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
@@ -248,14 +281,37 @@ class LkeCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        Creating a basic LKE cluster:
+
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.20",
+            k8s_version="1.21",
             label="my-cluster",
             pools=[linode.LkeClusterPoolArgs(
+                count=3,
+                type="g6-standard-2",
+            )],
+            region="us-central",
+            tags=["prod"])
+        ```
+
+        Creating an LKE cluster with autoscaler:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.21",
+            label="my-cluster",
+            pools=[linode.LkeClusterPoolArgs(
+                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
+                    max=10,
+                    min=3,
+                ),
                 count=3,
                 type="g6-standard-2",
             )],
@@ -273,6 +329,7 @@ class LkeCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
@@ -290,14 +347,37 @@ class LkeCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        Creating a basic LKE cluster:
+
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.20",
+            k8s_version="1.21",
             label="my-cluster",
             pools=[linode.LkeClusterPoolArgs(
+                count=3,
+                type="g6-standard-2",
+            )],
+            region="us-central",
+            tags=["prod"])
+        ```
+
+        Creating an LKE cluster with autoscaler:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.21",
+            label="my-cluster",
+            pools=[linode.LkeClusterPoolArgs(
+                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
+                    max=10,
+                    min=3,
+                ),
                 count=3,
                 type="g6-standard-2",
             )],
@@ -328,6 +408,7 @@ class LkeCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
@@ -345,6 +426,7 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LkeClusterArgs.__new__(LkeClusterArgs)
 
+            __props__.__dict__["control_plane"] = control_plane
             if k8s_version is None and not opts.urn:
                 raise TypeError("Missing required property 'k8s_version'")
             __props__.__dict__["k8s_version"] = k8s_version
@@ -372,6 +454,7 @@ class LkeCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
             k8s_version: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
@@ -387,6 +470,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
+        :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -400,6 +484,7 @@ class LkeCluster(pulumi.CustomResource):
         __props__ = _LkeClusterState.__new__(_LkeClusterState)
 
         __props__.__dict__["api_endpoints"] = api_endpoints
+        __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["label"] = label
@@ -416,6 +501,14 @@ class LkeCluster(pulumi.CustomResource):
         The endpoints for the Kubernetes API server.
         """
         return pulumi.get(self, "api_endpoints")
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> pulumi.Output['outputs.LkeClusterControlPlane']:
+        """
+        Defines settings for the Kubernetes Control Plane.
+        """
+        return pulumi.get(self, "control_plane")
 
     @property
     @pulumi.getter(name="k8sVersion")

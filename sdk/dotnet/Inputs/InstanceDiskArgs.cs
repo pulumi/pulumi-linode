@@ -60,6 +60,9 @@ namespace Pulumi.Linode.Inputs
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        /// <summary>
+        /// If true, this Disk is read-only.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
