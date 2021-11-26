@@ -8,6 +8,7 @@ import typing
 from .domain import *
 from .domain_record import *
 from .firewall import *
+from .firewall_device import *
 from .get_account import *
 from .get_domain import *
 from .get_domain_record import *
@@ -85,6 +86,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/firewallDevice",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/firewallDevice:FirewallDevice": "FirewallDevice"
   }
  },
  {

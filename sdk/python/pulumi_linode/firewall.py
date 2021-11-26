@@ -627,7 +627,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def linodes(self) -> pulumi.Output[Optional[Sequence[int]]]:
+    def linodes(self) -> pulumi.Output[Sequence[int]]:
         """
         A list of IDs of Linodes this Firewall should govern it's network traffic for.
         """

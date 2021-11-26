@@ -51,7 +51,7 @@ type LookupFirewallArgs struct {
 
 // A collection of values returned by getFirewall.
 type LookupFirewallResult struct {
-	Devices []GetFirewallDevice `pulumi:"devices"`
+	Devices []GetFirewallDeviceType `pulumi:"devices"`
 	// If true, the firewall is inactive.
 	Disabled bool `pulumi:"disabled"`
 	// The ID of the Firewall Device.
@@ -106,8 +106,8 @@ func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx 
 	return o
 }
 
-func (o LookupFirewallResultOutput) Devices() GetFirewallDeviceArrayOutput {
-	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallDevice { return v.Devices }).(GetFirewallDeviceArrayOutput)
+func (o LookupFirewallResultOutput) Devices() GetFirewallDeviceTypeArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallDeviceType { return v.Devices }).(GetFirewallDeviceTypeArrayOutput)
 }
 
 // If true, the firewall is inactive.

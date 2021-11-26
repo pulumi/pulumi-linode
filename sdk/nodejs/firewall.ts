@@ -126,7 +126,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * A list of IDs of Linodes this Firewall should govern it's network traffic for.
      */
-    public readonly linodes!: pulumi.Output<number[] | undefined>;
+    public readonly linodes!: pulumi.Output<number[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
