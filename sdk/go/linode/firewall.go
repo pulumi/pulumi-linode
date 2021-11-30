@@ -120,7 +120,7 @@ type Firewall struct {
 	pulumi.CustomResourceState
 
 	// The devices associated with this firewall.
-	Devices FirewallDeviceArrayOutput `pulumi:"devices"`
+	Devices FirewallDeviceTypeArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
@@ -180,7 +180,7 @@ func GetFirewall(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
 	// The devices associated with this firewall.
-	Devices []FirewallDevice `pulumi:"devices"`
+	Devices []FirewallDeviceType `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
@@ -203,7 +203,7 @@ type firewallState struct {
 
 type FirewallState struct {
 	// The devices associated with this firewall.
-	Devices FirewallDeviceArrayInput
+	Devices FirewallDeviceTypeArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	Disabled pulumi.BoolPtrInput
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)

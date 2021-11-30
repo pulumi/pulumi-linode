@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./domain";
 export * from "./domainRecord";
 export * from "./firewall";
+export * from "./firewallDevice";
 export * from "./getAccount";
 export * from "./getDomain";
 export * from "./getDomainRecord";
@@ -64,6 +65,7 @@ export {
 import { Domain } from "./domain";
 import { DomainRecord } from "./domainRecord";
 import { Firewall } from "./firewall";
+import { FirewallDevice } from "./firewallDevice";
 import { Image } from "./image";
 import { Instance } from "./instance";
 import { InstanceIp } from "./instanceIp";
@@ -91,6 +93,8 @@ const _module = {
                 return new DomainRecord(name, <any>undefined, { urn })
             case "linode:index/firewall:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
+            case "linode:index/firewallDevice:FirewallDevice":
+                return new FirewallDevice(name, <any>undefined, { urn })
             case "linode:index/image:Image":
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
@@ -131,6 +135,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
+pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)

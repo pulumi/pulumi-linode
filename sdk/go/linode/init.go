@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainRecord{}
 	case "linode:index/firewall:Firewall":
 		r = &Firewall{}
+	case "linode:index/firewallDevice:FirewallDevice":
+		r = &FirewallDevice{}
 	case "linode:index/image:Image":
 		r = &Image{}
 	case "linode:index/instance:Instance":
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/firewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/firewallDevice",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

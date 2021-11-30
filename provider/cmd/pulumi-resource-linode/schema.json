@@ -5462,6 +5462,7 @@
                 "devices",
                 "inboundPolicy",
                 "label",
+                "linodes",
                 "outboundPolicy",
                 "status"
             ],
@@ -5573,6 +5574,81 @@
                             "type": "string"
                         },
                         "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/firewallDevice:FirewallDevice": {
+            "description": "Manages a Linode Firewall Device.\n\n**NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `linodes` may cause device conflicts.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    inbounds: [{\n        label: \"http\",\n        action: \"ACCEPT\",\n        protocol: \"TCP\",\n        ports: \"80\",\n        ipv4s: [\"0.0.0.0/0\"],\n        ipv6s: [\"::/0\"],\n    }],\n    inboundPolicy: \"DROP\",\n    outboundPolicy: \"ACCEPT\",\n});\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n});\nconst myDevice = new linode.FirewallDevice(\"myDevice\", {\n    firewallId: myFirewall.id,\n    entityId: myInstance.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    inbounds=[linode.FirewallInboundArgs(\n        label=\"http\",\n        action=\"ACCEPT\",\n        protocol=\"TCP\",\n        ports=\"80\",\n        ipv4s=[\"0.0.0.0/0\"],\n        ipv6s=[\"::/0\"],\n    )],\n    inbound_policy=\"DROP\",\n    outbound_policy=\"ACCEPT\")\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\")\nmy_device = linode.FirewallDevice(\"myDevice\",\n    firewall_id=my_firewall.id,\n    entity_id=my_instance.id)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myFirewall = new Linode.Firewall(\"myFirewall\", new Linode.FirewallArgs\n        {\n            Label = \"my_firewall\",\n            Inbounds = \n            {\n                new Linode.Inputs.FirewallInboundArgs\n                {\n                    Label = \"http\",\n                    Action = \"ACCEPT\",\n                    Protocol = \"TCP\",\n                    Ports = \"80\",\n                    Ipv4s = \n                    {\n                        \"0.0.0.0/0\",\n                    },\n                    Ipv6s = \n                    {\n                        \"::/0\",\n                    },\n                },\n            },\n            InboundPolicy = \"DROP\",\n            OutboundPolicy = \"ACCEPT\",\n        });\n        var myInstance = new Linode.Instance(\"myInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my_instance\",\n            Region = \"us-southeast\",\n            Type = \"g6-standard-1\",\n        });\n        var myDevice = new Linode.FirewallDevice(\"myDevice\", new Linode.FirewallDeviceArgs\n        {\n            FirewallId = myFirewall.Id,\n            EntityId = myInstance.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyFirewall, err := linode.NewFirewall(ctx, \"myFirewall\", \u0026linode.FirewallArgs{\n\t\t\tLabel: pulumi.String(\"my_firewall\"),\n\t\t\tInbounds: FirewallInboundArray{\n\t\t\t\t\u0026FirewallInboundArgs{\n\t\t\t\t\tLabel:    pulumi.String(\"http\"),\n\t\t\t\t\tAction:   pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts:    pulumi.String(\"80\"),\n\t\t\t\t\tIpv4s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"::/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tInboundPolicy:  pulumi.String(\"DROP\"),\n\t\t\tOutboundPolicy: pulumi.String(\"ACCEPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyInstance, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my_instance\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewFirewallDevice(ctx, \"myDevice\", \u0026linode.FirewallDeviceArgs{\n\t\t\tFirewallId: myFirewall.ID(),\n\t\t\tEntityId:   myInstance.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "When the Firewall Device was last created.\n"
+                },
+                "entityId": {
+                    "type": "integer",
+                    "description": "The unique ID of the entity to attach.\n"
+                },
+                "entityType": {
+                    "type": "string",
+                    "description": "The type of the entity to attach. (default: `linode`)\n"
+                },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The unique ID of the target Firewall.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When the Firewall Device was last updated.\n"
+                }
+            },
+            "required": [
+                "created",
+                "entityId",
+                "firewallId",
+                "updated"
+            ],
+            "inputProperties": {
+                "entityId": {
+                    "type": "integer",
+                    "description": "The unique ID of the entity to attach.\n"
+                },
+                "entityType": {
+                    "type": "string",
+                    "description": "The type of the entity to attach. (default: `linode`)\n"
+                },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The unique ID of the target Firewall.\n"
+                }
+            },
+            "requiredInputs": [
+                "entityId",
+                "firewallId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FirewallDevice resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "When the Firewall Device was last created.\n"
+                    },
+                    "entityId": {
+                        "type": "integer",
+                        "description": "The unique ID of the entity to attach.\n"
+                    },
+                    "entityType": {
+                        "type": "string",
+                        "description": "The type of the entity to attach. (default: `linode`)\n"
+                    },
+                    "firewallId": {
+                        "type": "integer",
+                        "description": "The unique ID of the target Firewall.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "When the Firewall Device was last updated.\n"
                     }
                 },
                 "type": "object"

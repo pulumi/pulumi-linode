@@ -18,6 +18,7 @@
         "domain.ts",
         "domainRecord.ts",
         "firewall.ts",
+        "firewallDevice.ts",
         "getAccount.ts",
         "getDomain.ts",
         "getDomainRecord.ts",

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type FirewallDevice struct {
+type FirewallDeviceType struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId *int `pulumi:"entityId"`
 	// The ID of the Firewall Device.
@@ -22,18 +22,18 @@ type FirewallDevice struct {
 	Url  *string `pulumi:"url"`
 }
 
-// FirewallDeviceInput is an input type that accepts FirewallDeviceArgs and FirewallDeviceOutput values.
-// You can construct a concrete instance of `FirewallDeviceInput` via:
+// FirewallDeviceTypeInput is an input type that accepts FirewallDeviceTypeArgs and FirewallDeviceTypeOutput values.
+// You can construct a concrete instance of `FirewallDeviceTypeInput` via:
 //
-//          FirewallDeviceArgs{...}
-type FirewallDeviceInput interface {
+//          FirewallDeviceTypeArgs{...}
+type FirewallDeviceTypeInput interface {
 	pulumi.Input
 
-	ToFirewallDeviceOutput() FirewallDeviceOutput
-	ToFirewallDeviceOutputWithContext(context.Context) FirewallDeviceOutput
+	ToFirewallDeviceTypeOutput() FirewallDeviceTypeOutput
+	ToFirewallDeviceTypeOutputWithContext(context.Context) FirewallDeviceTypeOutput
 }
 
-type FirewallDeviceArgs struct {
+type FirewallDeviceTypeArgs struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId pulumi.IntPtrInput `pulumi:"entityId"`
 	// The ID of the Firewall Device.
@@ -45,99 +45,99 @@ type FirewallDeviceArgs struct {
 	Url  pulumi.StringPtrInput `pulumi:"url"`
 }
 
-func (FirewallDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallDevice)(nil)).Elem()
+func (FirewallDeviceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallDeviceType)(nil)).Elem()
 }
 
-func (i FirewallDeviceArgs) ToFirewallDeviceOutput() FirewallDeviceOutput {
-	return i.ToFirewallDeviceOutputWithContext(context.Background())
+func (i FirewallDeviceTypeArgs) ToFirewallDeviceTypeOutput() FirewallDeviceTypeOutput {
+	return i.ToFirewallDeviceTypeOutputWithContext(context.Background())
 }
 
-func (i FirewallDeviceArgs) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceOutput)
+func (i FirewallDeviceTypeArgs) ToFirewallDeviceTypeOutputWithContext(ctx context.Context) FirewallDeviceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceTypeOutput)
 }
 
-// FirewallDeviceArrayInput is an input type that accepts FirewallDeviceArray and FirewallDeviceArrayOutput values.
-// You can construct a concrete instance of `FirewallDeviceArrayInput` via:
+// FirewallDeviceTypeArrayInput is an input type that accepts FirewallDeviceTypeArray and FirewallDeviceTypeArrayOutput values.
+// You can construct a concrete instance of `FirewallDeviceTypeArrayInput` via:
 //
-//          FirewallDeviceArray{ FirewallDeviceArgs{...} }
-type FirewallDeviceArrayInput interface {
+//          FirewallDeviceTypeArray{ FirewallDeviceTypeArgs{...} }
+type FirewallDeviceTypeArrayInput interface {
 	pulumi.Input
 
-	ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput
-	ToFirewallDeviceArrayOutputWithContext(context.Context) FirewallDeviceArrayOutput
+	ToFirewallDeviceTypeArrayOutput() FirewallDeviceTypeArrayOutput
+	ToFirewallDeviceTypeArrayOutputWithContext(context.Context) FirewallDeviceTypeArrayOutput
 }
 
-type FirewallDeviceArray []FirewallDeviceInput
+type FirewallDeviceTypeArray []FirewallDeviceTypeInput
 
-func (FirewallDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FirewallDevice)(nil)).Elem()
+func (FirewallDeviceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallDeviceType)(nil)).Elem()
 }
 
-func (i FirewallDeviceArray) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput {
-	return i.ToFirewallDeviceArrayOutputWithContext(context.Background())
+func (i FirewallDeviceTypeArray) ToFirewallDeviceTypeArrayOutput() FirewallDeviceTypeArrayOutput {
+	return i.ToFirewallDeviceTypeArrayOutputWithContext(context.Background())
 }
 
-func (i FirewallDeviceArray) ToFirewallDeviceArrayOutputWithContext(ctx context.Context) FirewallDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceArrayOutput)
+func (i FirewallDeviceTypeArray) ToFirewallDeviceTypeArrayOutputWithContext(ctx context.Context) FirewallDeviceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceTypeArrayOutput)
 }
 
-type FirewallDeviceOutput struct{ *pulumi.OutputState }
+type FirewallDeviceTypeOutput struct{ *pulumi.OutputState }
 
-func (FirewallDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallDevice)(nil)).Elem()
+func (FirewallDeviceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallDeviceType)(nil)).Elem()
 }
 
-func (o FirewallDeviceOutput) ToFirewallDeviceOutput() FirewallDeviceOutput {
+func (o FirewallDeviceTypeOutput) ToFirewallDeviceTypeOutput() FirewallDeviceTypeOutput {
 	return o
 }
 
-func (o FirewallDeviceOutput) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
+func (o FirewallDeviceTypeOutput) ToFirewallDeviceTypeOutputWithContext(ctx context.Context) FirewallDeviceTypeOutput {
 	return o
 }
 
 // The ID of the underlying entity this device references (i.e. the Linode's ID).
-func (o FirewallDeviceOutput) EntityId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FirewallDevice) *int { return v.EntityId }).(pulumi.IntPtrOutput)
+func (o FirewallDeviceTypeOutput) EntityId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallDeviceType) *int { return v.EntityId }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the Firewall Device.
-func (o FirewallDeviceOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FirewallDevice) *int { return v.Id }).(pulumi.IntPtrOutput)
+func (o FirewallDeviceTypeOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallDeviceType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // Used to identify this rule. For display purposes only.
-func (o FirewallDeviceOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDevice) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // The type of Firewall Device.
-func (o FirewallDeviceOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o FirewallDeviceOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDevice) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type FirewallDeviceArrayOutput struct{ *pulumi.OutputState }
+type FirewallDeviceTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (FirewallDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FirewallDevice)(nil)).Elem()
+func (FirewallDeviceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallDeviceType)(nil)).Elem()
 }
 
-func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput {
+func (o FirewallDeviceTypeArrayOutput) ToFirewallDeviceTypeArrayOutput() FirewallDeviceTypeArrayOutput {
 	return o
 }
 
-func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutputWithContext(ctx context.Context) FirewallDeviceArrayOutput {
+func (o FirewallDeviceTypeArrayOutput) ToFirewallDeviceTypeArrayOutputWithContext(ctx context.Context) FirewallDeviceTypeArrayOutput {
 	return o
 }
 
-func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallDevice {
-		return vs[0].([]FirewallDevice)[vs[1].(int)]
-	}).(FirewallDeviceOutput)
+func (o FirewallDeviceTypeArrayOutput) Index(i pulumi.IntInput) FirewallDeviceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallDeviceType {
+		return vs[0].([]FirewallDeviceType)[vs[1].(int)]
+	}).(FirewallDeviceTypeOutput)
 }
 
 type FirewallInbound struct {
@@ -6204,7 +6204,7 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	}).(UserVolumeGrantOutput)
 }
 
-type GetFirewallDevice struct {
+type GetFirewallDeviceType struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId int `pulumi:"entityId"`
 	// The Firewall's ID.
@@ -6216,18 +6216,18 @@ type GetFirewallDevice struct {
 	Url  string `pulumi:"url"`
 }
 
-// GetFirewallDeviceInput is an input type that accepts GetFirewallDeviceArgs and GetFirewallDeviceOutput values.
-// You can construct a concrete instance of `GetFirewallDeviceInput` via:
+// GetFirewallDeviceTypeInput is an input type that accepts GetFirewallDeviceTypeArgs and GetFirewallDeviceTypeOutput values.
+// You can construct a concrete instance of `GetFirewallDeviceTypeInput` via:
 //
-//          GetFirewallDeviceArgs{...}
-type GetFirewallDeviceInput interface {
+//          GetFirewallDeviceTypeArgs{...}
+type GetFirewallDeviceTypeInput interface {
 	pulumi.Input
 
-	ToGetFirewallDeviceOutput() GetFirewallDeviceOutput
-	ToGetFirewallDeviceOutputWithContext(context.Context) GetFirewallDeviceOutput
+	ToGetFirewallDeviceTypeOutput() GetFirewallDeviceTypeOutput
+	ToGetFirewallDeviceTypeOutputWithContext(context.Context) GetFirewallDeviceTypeOutput
 }
 
-type GetFirewallDeviceArgs struct {
+type GetFirewallDeviceTypeArgs struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId pulumi.IntInput `pulumi:"entityId"`
 	// The Firewall's ID.
@@ -6239,99 +6239,99 @@ type GetFirewallDeviceArgs struct {
 	Url  pulumi.StringInput `pulumi:"url"`
 }
 
-func (GetFirewallDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFirewallDevice)(nil)).Elem()
+func (GetFirewallDeviceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallDeviceType)(nil)).Elem()
 }
 
-func (i GetFirewallDeviceArgs) ToGetFirewallDeviceOutput() GetFirewallDeviceOutput {
-	return i.ToGetFirewallDeviceOutputWithContext(context.Background())
+func (i GetFirewallDeviceTypeArgs) ToGetFirewallDeviceTypeOutput() GetFirewallDeviceTypeOutput {
+	return i.ToGetFirewallDeviceTypeOutputWithContext(context.Background())
 }
 
-func (i GetFirewallDeviceArgs) ToGetFirewallDeviceOutputWithContext(ctx context.Context) GetFirewallDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeviceOutput)
+func (i GetFirewallDeviceTypeArgs) ToGetFirewallDeviceTypeOutputWithContext(ctx context.Context) GetFirewallDeviceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeviceTypeOutput)
 }
 
-// GetFirewallDeviceArrayInput is an input type that accepts GetFirewallDeviceArray and GetFirewallDeviceArrayOutput values.
-// You can construct a concrete instance of `GetFirewallDeviceArrayInput` via:
+// GetFirewallDeviceTypeArrayInput is an input type that accepts GetFirewallDeviceTypeArray and GetFirewallDeviceTypeArrayOutput values.
+// You can construct a concrete instance of `GetFirewallDeviceTypeArrayInput` via:
 //
-//          GetFirewallDeviceArray{ GetFirewallDeviceArgs{...} }
-type GetFirewallDeviceArrayInput interface {
+//          GetFirewallDeviceTypeArray{ GetFirewallDeviceTypeArgs{...} }
+type GetFirewallDeviceTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetFirewallDeviceArrayOutput() GetFirewallDeviceArrayOutput
-	ToGetFirewallDeviceArrayOutputWithContext(context.Context) GetFirewallDeviceArrayOutput
+	ToGetFirewallDeviceTypeArrayOutput() GetFirewallDeviceTypeArrayOutput
+	ToGetFirewallDeviceTypeArrayOutputWithContext(context.Context) GetFirewallDeviceTypeArrayOutput
 }
 
-type GetFirewallDeviceArray []GetFirewallDeviceInput
+type GetFirewallDeviceTypeArray []GetFirewallDeviceTypeInput
 
-func (GetFirewallDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFirewallDevice)(nil)).Elem()
+func (GetFirewallDeviceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallDeviceType)(nil)).Elem()
 }
 
-func (i GetFirewallDeviceArray) ToGetFirewallDeviceArrayOutput() GetFirewallDeviceArrayOutput {
-	return i.ToGetFirewallDeviceArrayOutputWithContext(context.Background())
+func (i GetFirewallDeviceTypeArray) ToGetFirewallDeviceTypeArrayOutput() GetFirewallDeviceTypeArrayOutput {
+	return i.ToGetFirewallDeviceTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetFirewallDeviceArray) ToGetFirewallDeviceArrayOutputWithContext(ctx context.Context) GetFirewallDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeviceArrayOutput)
+func (i GetFirewallDeviceTypeArray) ToGetFirewallDeviceTypeArrayOutputWithContext(ctx context.Context) GetFirewallDeviceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeviceTypeArrayOutput)
 }
 
-type GetFirewallDeviceOutput struct{ *pulumi.OutputState }
+type GetFirewallDeviceTypeOutput struct{ *pulumi.OutputState }
 
-func (GetFirewallDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFirewallDevice)(nil)).Elem()
+func (GetFirewallDeviceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallDeviceType)(nil)).Elem()
 }
 
-func (o GetFirewallDeviceOutput) ToGetFirewallDeviceOutput() GetFirewallDeviceOutput {
+func (o GetFirewallDeviceTypeOutput) ToGetFirewallDeviceTypeOutput() GetFirewallDeviceTypeOutput {
 	return o
 }
 
-func (o GetFirewallDeviceOutput) ToGetFirewallDeviceOutputWithContext(ctx context.Context) GetFirewallDeviceOutput {
+func (o GetFirewallDeviceTypeOutput) ToGetFirewallDeviceTypeOutputWithContext(ctx context.Context) GetFirewallDeviceTypeOutput {
 	return o
 }
 
 // The ID of the underlying entity this device references (i.e. the Linode's ID).
-func (o GetFirewallDeviceOutput) EntityId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFirewallDevice) int { return v.EntityId }).(pulumi.IntOutput)
+func (o GetFirewallDeviceTypeOutput) EntityId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallDeviceType) int { return v.EntityId }).(pulumi.IntOutput)
 }
 
 // The Firewall's ID.
-func (o GetFirewallDeviceOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFirewallDevice) int { return v.Id }).(pulumi.IntOutput)
+func (o GetFirewallDeviceTypeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallDeviceType) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The label of the underlying entity this device references.
-func (o GetFirewallDeviceOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFirewallDevice) string { return v.Label }).(pulumi.StringOutput)
+func (o GetFirewallDeviceTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallDeviceType) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // The type of Firewall Device.
-func (o GetFirewallDeviceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFirewallDevice) string { return v.Type }).(pulumi.StringOutput)
+func (o GetFirewallDeviceTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallDeviceType) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o GetFirewallDeviceOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFirewallDevice) string { return v.Url }).(pulumi.StringOutput)
+func (o GetFirewallDeviceTypeOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallDeviceType) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type GetFirewallDeviceArrayOutput struct{ *pulumi.OutputState }
+type GetFirewallDeviceTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetFirewallDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFirewallDevice)(nil)).Elem()
+func (GetFirewallDeviceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallDeviceType)(nil)).Elem()
 }
 
-func (o GetFirewallDeviceArrayOutput) ToGetFirewallDeviceArrayOutput() GetFirewallDeviceArrayOutput {
+func (o GetFirewallDeviceTypeArrayOutput) ToGetFirewallDeviceTypeArrayOutput() GetFirewallDeviceTypeArrayOutput {
 	return o
 }
 
-func (o GetFirewallDeviceArrayOutput) ToGetFirewallDeviceArrayOutputWithContext(ctx context.Context) GetFirewallDeviceArrayOutput {
+func (o GetFirewallDeviceTypeArrayOutput) ToGetFirewallDeviceTypeArrayOutputWithContext(ctx context.Context) GetFirewallDeviceTypeArrayOutput {
 	return o
 }
 
-func (o GetFirewallDeviceArrayOutput) Index(i pulumi.IntInput) GetFirewallDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallDevice {
-		return vs[0].([]GetFirewallDevice)[vs[1].(int)]
-	}).(GetFirewallDeviceOutput)
+func (o GetFirewallDeviceTypeArrayOutput) Index(i pulumi.IntInput) GetFirewallDeviceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallDeviceType {
+		return vs[0].([]GetFirewallDeviceType)[vs[1].(int)]
+	}).(GetFirewallDeviceTypeOutput)
 }
 
 type GetFirewallInbound struct {
@@ -12287,8 +12287,8 @@ func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceInput)(nil)).Elem(), FirewallDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceArrayInput)(nil)).Elem(), FirewallDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeInput)(nil)).Elem(), FirewallDeviceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeArrayInput)(nil)).Elem(), FirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundInput)(nil)).Elem(), FirewallInboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundArrayInput)(nil)).Elem(), FirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundInput)(nil)).Elem(), FirewallOutboundArgs{})
@@ -12371,8 +12371,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceInput)(nil)).Elem(), GetFirewallDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceArrayInput)(nil)).Elem(), GetFirewallDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeInput)(nil)).Elem(), GetFirewallDeviceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeArrayInput)(nil)).Elem(), GetFirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundInput)(nil)).Elem(), GetFirewallInboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundArrayInput)(nil)).Elem(), GetFirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundInput)(nil)).Elem(), GetFirewallOutboundArgs{})
@@ -12471,8 +12471,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanArrayInput)(nil)).Elem(), GetVlansVlanArray{})
-	pulumi.RegisterOutputType(FirewallDeviceOutput{})
-	pulumi.RegisterOutputType(FirewallDeviceArrayOutput{})
+	pulumi.RegisterOutputType(FirewallDeviceTypeOutput{})
+	pulumi.RegisterOutputType(FirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(FirewallInboundOutput{})
 	pulumi.RegisterOutputType(FirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundOutput{})
@@ -12555,8 +12555,8 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
-	pulumi.RegisterOutputType(GetFirewallDeviceOutput{})
-	pulumi.RegisterOutputType(GetFirewallDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallDeviceTypeOutput{})
+	pulumi.RegisterOutputType(GetFirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallInboundOutput{})
 	pulumi.RegisterOutputType(GetFirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallOutboundOutput{})
