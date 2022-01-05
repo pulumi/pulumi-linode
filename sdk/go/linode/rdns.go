@@ -31,6 +31,8 @@ type Rdns struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The name of the RDNS address.
 	Rdns pulumi.StringOutput `pulumi:"rdns"`
+	// If true, the RDNS assignment will be retried within the operation timeout period.
+	WaitForAvailable pulumi.BoolPtrOutput `pulumi:"waitForAvailable"`
 }
 
 // NewRdns registers a new resource with the given unique name, arguments, and options.
@@ -72,6 +74,8 @@ type rdnsState struct {
 	Address *string `pulumi:"address"`
 	// The name of the RDNS address.
 	Rdns *string `pulumi:"rdns"`
+	// If true, the RDNS assignment will be retried within the operation timeout period.
+	WaitForAvailable *bool `pulumi:"waitForAvailable"`
 }
 
 type RdnsState struct {
@@ -79,6 +83,8 @@ type RdnsState struct {
 	Address pulumi.StringPtrInput
 	// The name of the RDNS address.
 	Rdns pulumi.StringPtrInput
+	// If true, the RDNS assignment will be retried within the operation timeout period.
+	WaitForAvailable pulumi.BoolPtrInput
 }
 
 func (RdnsState) ElementType() reflect.Type {
@@ -90,6 +96,8 @@ type rdnsArgs struct {
 	Address string `pulumi:"address"`
 	// The name of the RDNS address.
 	Rdns string `pulumi:"rdns"`
+	// If true, the RDNS assignment will be retried within the operation timeout period.
+	WaitForAvailable *bool `pulumi:"waitForAvailable"`
 }
 
 // The set of arguments for constructing a Rdns resource.
@@ -98,6 +106,8 @@ type RdnsArgs struct {
 	Address pulumi.StringInput
 	// The name of the RDNS address.
 	Rdns pulumi.StringInput
+	// If true, the RDNS assignment will be retried within the operation timeout period.
+	WaitForAvailable pulumi.BoolPtrInput
 }
 
 func (RdnsArgs) ElementType() reflect.Type {

@@ -55,6 +55,10 @@ export class Rdns extends pulumi.CustomResource {
      * The name of the RDNS address.
      */
     public readonly rdns!: pulumi.Output<string>;
+    /**
+     * If true, the RDNS assignment will be retried within the operation timeout period.
+     */
+    public readonly waitForAvailable!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Rdns resource with the given unique name, arguments, and options.
@@ -71,6 +75,7 @@ export class Rdns extends pulumi.CustomResource {
             const state = argsOrState as RdnsState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["rdns"] = state ? state.rdns : undefined;
+            inputs["waitForAvailable"] = state ? state.waitForAvailable : undefined;
         } else {
             const args = argsOrState as RdnsArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -81,6 +86,7 @@ export class Rdns extends pulumi.CustomResource {
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["rdns"] = args ? args.rdns : undefined;
+            inputs["waitForAvailable"] = args ? args.waitForAvailable : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -101,6 +107,10 @@ export interface RdnsState {
      * The name of the RDNS address.
      */
     rdns?: pulumi.Input<string>;
+    /**
+     * If true, the RDNS assignment will be retried within the operation timeout period.
+     */
+    waitForAvailable?: pulumi.Input<boolean>;
 }
 
 /**
@@ -115,4 +125,8 @@ export interface RdnsArgs {
      * The name of the RDNS address.
      */
     rdns: pulumi.Input<string>;
+    /**
+     * If true, the RDNS assignment will be retried within the operation timeout period.
+     */
+    waitForAvailable?: pulumi.Input<boolean>;
 }

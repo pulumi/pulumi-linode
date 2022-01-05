@@ -14,14 +14,18 @@ __all__ = ['RdnsArgs', 'Rdns']
 class RdnsArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
-                 rdns: pulumi.Input[str]):
+                 rdns: pulumi.Input[str],
+                 wait_for_available: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Rdns resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
+        :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "rdns", rdns)
+        if wait_for_available is not None:
+            pulumi.set(__self__, "wait_for_available", wait_for_available)
 
     @property
     @pulumi.getter
@@ -47,21 +51,37 @@ class RdnsArgs:
     def rdns(self, value: pulumi.Input[str]):
         pulumi.set(self, "rdns", value)
 
+    @property
+    @pulumi.getter(name="waitForAvailable")
+    def wait_for_available(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the RDNS assignment will be retried within the operation timeout period.
+        """
+        return pulumi.get(self, "wait_for_available")
+
+    @wait_for_available.setter
+    def wait_for_available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_available", value)
+
 
 @pulumi.input_type
 class _RdnsState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
-                 rdns: Optional[pulumi.Input[str]] = None):
+                 rdns: Optional[pulumi.Input[str]] = None,
+                 wait_for_available: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Rdns resources.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
+        :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
         if rdns is not None:
             pulumi.set(__self__, "rdns", rdns)
+        if wait_for_available is not None:
+            pulumi.set(__self__, "wait_for_available", wait_for_available)
 
     @property
     @pulumi.getter
@@ -87,6 +107,18 @@ class _RdnsState:
     def rdns(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rdns", value)
 
+    @property
+    @pulumi.getter(name="waitForAvailable")
+    def wait_for_available(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the RDNS assignment will be retried within the operation timeout period.
+        """
+        return pulumi.get(self, "wait_for_available")
+
+    @wait_for_available.setter
+    def wait_for_available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_available", value)
+
 
 class Rdns(pulumi.CustomResource):
     @overload
@@ -95,6 +127,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
+                 wait_for_available: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.
@@ -115,6 +148,7 @@ class Rdns(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
+        :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
         ...
     @overload
@@ -154,6 +188,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
+                 wait_for_available: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -172,6 +207,7 @@ class Rdns(pulumi.CustomResource):
             if rdns is None and not opts.urn:
                 raise TypeError("Missing required property 'rdns'")
             __props__.__dict__["rdns"] = rdns
+            __props__.__dict__["wait_for_available"] = wait_for_available
         super(Rdns, __self__).__init__(
             'linode:index/rdns:Rdns',
             resource_name,
@@ -183,7 +219,8 @@ class Rdns(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
-            rdns: Optional[pulumi.Input[str]] = None) -> 'Rdns':
+            rdns: Optional[pulumi.Input[str]] = None,
+            wait_for_available: Optional[pulumi.Input[bool]] = None) -> 'Rdns':
         """
         Get an existing Rdns resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,6 +230,7 @@ class Rdns(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[str] rdns: The name of the RDNS address.
+        :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -200,6 +238,7 @@ class Rdns(pulumi.CustomResource):
 
         __props__.__dict__["address"] = address
         __props__.__dict__["rdns"] = rdns
+        __props__.__dict__["wait_for_available"] = wait_for_available
         return Rdns(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -217,4 +256,12 @@ class Rdns(pulumi.CustomResource):
         The name of the RDNS address.
         """
         return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter(name="waitForAvailable")
+    def wait_for_available(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the RDNS assignment will be retried within the operation timeout period.
+        """
+        return pulumi.get(self, "wait_for_available")
 
