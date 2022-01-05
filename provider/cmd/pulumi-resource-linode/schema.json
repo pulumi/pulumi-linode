@@ -7509,6 +7509,10 @@
                             "name": "RdnsName"
                         }
                     }
+                },
+                "waitForAvailable": {
+                    "type": "boolean",
+                    "description": "If true, the RDNS assignment will be retried within the operation timeout period.\n"
                 }
             },
             "required": [
@@ -7528,6 +7532,10 @@
                             "name": "RdnsName"
                         }
                     }
+                },
+                "waitForAvailable": {
+                    "type": "boolean",
+                    "description": "If true, the RDNS assignment will be retried within the operation timeout period.\n"
                 }
             },
             "requiredInputs": [
@@ -7549,6 +7557,10 @@
                                 "name": "RdnsName"
                             }
                         }
+                    },
+                    "waitForAvailable": {
+                        "type": "boolean",
+                        "description": "If true, the RDNS assignment will be retried within the operation timeout period.\n"
                     }
                 },
                 "type": "object"

@@ -39,6 +39,12 @@ namespace Pulumi.Linode
         [Output("rdns")]
         public Output<string> RdnsName { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, the RDNS assignment will be retried within the operation timeout period.
+        /// </summary>
+        [Output("waitForAvailable")]
+        public Output<bool?> WaitForAvailable { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Rdns resource with the given unique name, arguments, and options.
@@ -97,6 +103,12 @@ namespace Pulumi.Linode
         [Input("rdns", required: true)]
         public Input<string> RdnsName { get; set; } = null!;
 
+        /// <summary>
+        /// If true, the RDNS assignment will be retried within the operation timeout period.
+        /// </summary>
+        [Input("waitForAvailable")]
+        public Input<bool>? WaitForAvailable { get; set; }
+
         public RdnsArgs()
         {
         }
@@ -115,6 +127,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("rdns")]
         public Input<string>? RdnsName { get; set; }
+
+        /// <summary>
+        /// If true, the RDNS assignment will be retried within the operation timeout period.
+        /// </summary>
+        [Input("waitForAvailable")]
+        public Input<bool>? WaitForAvailable { get; set; }
 
         public RdnsState()
         {
