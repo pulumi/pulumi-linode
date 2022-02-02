@@ -97,15 +97,15 @@ export class FirewallDevice extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallDeviceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallDeviceArgs | FirewallDeviceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallDeviceState | undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["entityId"] = state ? state.entityId : undefined;
-            inputs["entityType"] = state ? state.entityType : undefined;
-            inputs["firewallId"] = state ? state.firewallId : undefined;
-            inputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["entityId"] = state ? state.entityId : undefined;
+            resourceInputs["entityType"] = state ? state.entityType : undefined;
+            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as FirewallDeviceArgs | undefined;
             if ((!args || args.entityId === undefined) && !opts.urn) {
@@ -114,16 +114,14 @@ export class FirewallDevice extends pulumi.CustomResource {
             if ((!args || args.firewallId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'firewallId'");
             }
-            inputs["entityId"] = args ? args.entityId : undefined;
-            inputs["entityType"] = args ? args.entityType : undefined;
-            inputs["firewallId"] = args ? args.firewallId : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["entityId"] = args ? args.entityId : undefined;
+            resourceInputs["entityType"] = args ? args.entityType : undefined;
+            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FirewallDevice.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FirewallDevice.__pulumiType, name, resourceInputs, opts);
     }
 }
 

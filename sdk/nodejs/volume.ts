@@ -135,17 +135,17 @@ export class Volume extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeArgs | VolumeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            inputs["filesystemPath"] = state ? state.filesystemPath : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["linodeId"] = state ? state.linodeId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["filesystemPath"] = state ? state.filesystemPath : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
@@ -154,18 +154,16 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["label"] = args ? args.label : undefined;
-            inputs["linodeId"] = args ? args.linodeId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["filesystemPath"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["filesystemPath"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Volume.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Volume.__pulumiType, name, resourceInputs, opts);
     }
 }
 

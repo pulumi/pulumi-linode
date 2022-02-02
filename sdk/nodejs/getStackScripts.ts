@@ -93,9 +93,7 @@ export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getStackScripts:getStackScripts", {
         "filters": args.filters,
         "latest": args.latest,

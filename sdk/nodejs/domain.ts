@@ -136,23 +136,23 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["axfrIps"] = state ? state.axfrIps : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["expireSec"] = state ? state.expireSec : undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["masterIps"] = state ? state.masterIps : undefined;
-            inputs["refreshSec"] = state ? state.refreshSec : undefined;
-            inputs["retrySec"] = state ? state.retrySec : undefined;
-            inputs["soaEmail"] = state ? state.soaEmail : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["ttlSec"] = state ? state.ttlSec : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["axfrIps"] = state ? state.axfrIps : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["expireSec"] = state ? state.expireSec : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["masterIps"] = state ? state.masterIps : undefined;
+            resourceInputs["refreshSec"] = state ? state.refreshSec : undefined;
+            resourceInputs["retrySec"] = state ? state.retrySec : undefined;
+            resourceInputs["soaEmail"] = state ? state.soaEmail : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["ttlSec"] = state ? state.ttlSec : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -161,24 +161,22 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["axfrIps"] = args ? args.axfrIps : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["expireSec"] = args ? args.expireSec : undefined;
-            inputs["group"] = args ? args.group : undefined;
-            inputs["masterIps"] = args ? args.masterIps : undefined;
-            inputs["refreshSec"] = args ? args.refreshSec : undefined;
-            inputs["retrySec"] = args ? args.retrySec : undefined;
-            inputs["soaEmail"] = args ? args.soaEmail : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["ttlSec"] = args ? args.ttlSec : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["axfrIps"] = args ? args.axfrIps : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["expireSec"] = args ? args.expireSec : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["masterIps"] = args ? args.masterIps : undefined;
+            resourceInputs["refreshSec"] = args ? args.refreshSec : undefined;
+            resourceInputs["retrySec"] = args ? args.retrySec : undefined;
+            resourceInputs["soaEmail"] = args ? args.soaEmail : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ttlSec"] = args ? args.ttlSec : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

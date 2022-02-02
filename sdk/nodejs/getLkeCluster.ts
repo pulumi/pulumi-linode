@@ -24,9 +24,7 @@ export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getLkeCluster:getLkeCluster", {
         "id": args.id,
     }, opts);

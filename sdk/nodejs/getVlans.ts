@@ -56,9 +56,7 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getVlans:getVlans", {
         "filters": args.filters,
         "order": args.order,

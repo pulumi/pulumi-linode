@@ -138,40 +138,38 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerArgs | NodeBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerState | undefined;
-            inputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["ipv4"] = state ? state.ipv4 : undefined;
-            inputs["ipv6"] = state ? state.ipv6 : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["transfers"] = state ? state.transfers : undefined;
-            inputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["transfers"] = state ? state.transfers : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["hostname"] = undefined /*out*/;
-            inputs["ipv4"] = undefined /*out*/;
-            inputs["ipv6"] = undefined /*out*/;
-            inputs["transfers"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["ipv4"] = undefined /*out*/;
+            resourceInputs["ipv6"] = undefined /*out*/;
+            resourceInputs["transfers"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

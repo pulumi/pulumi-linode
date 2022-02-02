@@ -46,9 +46,7 @@ export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {
         "address": args.address,
     }, opts);

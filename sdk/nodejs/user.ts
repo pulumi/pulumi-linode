@@ -164,24 +164,24 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["domainGrants"] = state ? state.domainGrants : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["firewallGrants"] = state ? state.firewallGrants : undefined;
-            inputs["globalGrants"] = state ? state.globalGrants : undefined;
-            inputs["imageGrants"] = state ? state.imageGrants : undefined;
-            inputs["linodeGrants"] = state ? state.linodeGrants : undefined;
-            inputs["longviewGrants"] = state ? state.longviewGrants : undefined;
-            inputs["nodebalancerGrants"] = state ? state.nodebalancerGrants : undefined;
-            inputs["restricted"] = state ? state.restricted : undefined;
-            inputs["sshKeys"] = state ? state.sshKeys : undefined;
-            inputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
-            inputs["tfaEnabled"] = state ? state.tfaEnabled : undefined;
-            inputs["username"] = state ? state.username : undefined;
-            inputs["volumeGrants"] = state ? state.volumeGrants : undefined;
+            resourceInputs["domainGrants"] = state ? state.domainGrants : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["firewallGrants"] = state ? state.firewallGrants : undefined;
+            resourceInputs["globalGrants"] = state ? state.globalGrants : undefined;
+            resourceInputs["imageGrants"] = state ? state.imageGrants : undefined;
+            resourceInputs["linodeGrants"] = state ? state.linodeGrants : undefined;
+            resourceInputs["longviewGrants"] = state ? state.longviewGrants : undefined;
+            resourceInputs["nodebalancerGrants"] = state ? state.nodebalancerGrants : undefined;
+            resourceInputs["restricted"] = state ? state.restricted : undefined;
+            resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
+            resourceInputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
+            resourceInputs["tfaEnabled"] = state ? state.tfaEnabled : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["volumeGrants"] = state ? state.volumeGrants : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -190,25 +190,23 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["domainGrants"] = args ? args.domainGrants : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["firewallGrants"] = args ? args.firewallGrants : undefined;
-            inputs["globalGrants"] = args ? args.globalGrants : undefined;
-            inputs["imageGrants"] = args ? args.imageGrants : undefined;
-            inputs["linodeGrants"] = args ? args.linodeGrants : undefined;
-            inputs["longviewGrants"] = args ? args.longviewGrants : undefined;
-            inputs["nodebalancerGrants"] = args ? args.nodebalancerGrants : undefined;
-            inputs["restricted"] = args ? args.restricted : undefined;
-            inputs["stackscriptGrants"] = args ? args.stackscriptGrants : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["volumeGrants"] = args ? args.volumeGrants : undefined;
-            inputs["sshKeys"] = undefined /*out*/;
-            inputs["tfaEnabled"] = undefined /*out*/;
+            resourceInputs["domainGrants"] = args ? args.domainGrants : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["firewallGrants"] = args ? args.firewallGrants : undefined;
+            resourceInputs["globalGrants"] = args ? args.globalGrants : undefined;
+            resourceInputs["imageGrants"] = args ? args.imageGrants : undefined;
+            resourceInputs["linodeGrants"] = args ? args.linodeGrants : undefined;
+            resourceInputs["longviewGrants"] = args ? args.longviewGrants : undefined;
+            resourceInputs["nodebalancerGrants"] = args ? args.nodebalancerGrants : undefined;
+            resourceInputs["restricted"] = args ? args.restricted : undefined;
+            resourceInputs["stackscriptGrants"] = args ? args.stackscriptGrants : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["volumeGrants"] = args ? args.volumeGrants : undefined;
+            resourceInputs["sshKeys"] = undefined /*out*/;
+            resourceInputs["tfaEnabled"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

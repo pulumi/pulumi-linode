@@ -178,7 +178,7 @@ type FirewallDeviceInput interface {
 }
 
 func (*FirewallDevice) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallDevice)(nil))
+	return reflect.TypeOf((**FirewallDevice)(nil)).Elem()
 }
 
 func (i *FirewallDevice) ToFirewallDeviceOutput() FirewallDeviceOutput {
@@ -187,35 +187,6 @@ func (i *FirewallDevice) ToFirewallDeviceOutput() FirewallDeviceOutput {
 
 func (i *FirewallDevice) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceOutput)
-}
-
-func (i *FirewallDevice) ToFirewallDevicePtrOutput() FirewallDevicePtrOutput {
-	return i.ToFirewallDevicePtrOutputWithContext(context.Background())
-}
-
-func (i *FirewallDevice) ToFirewallDevicePtrOutputWithContext(ctx context.Context) FirewallDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallDevicePtrOutput)
-}
-
-type FirewallDevicePtrInput interface {
-	pulumi.Input
-
-	ToFirewallDevicePtrOutput() FirewallDevicePtrOutput
-	ToFirewallDevicePtrOutputWithContext(ctx context.Context) FirewallDevicePtrOutput
-}
-
-type firewallDevicePtrType FirewallDeviceArgs
-
-func (*firewallDevicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FirewallDevice)(nil))
-}
-
-func (i *firewallDevicePtrType) ToFirewallDevicePtrOutput() FirewallDevicePtrOutput {
-	return i.ToFirewallDevicePtrOutputWithContext(context.Background())
-}
-
-func (i *firewallDevicePtrType) ToFirewallDevicePtrOutputWithContext(ctx context.Context) FirewallDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallDevicePtrOutput)
 }
 
 // FirewallDeviceArrayInput is an input type that accepts FirewallDeviceArray and FirewallDeviceArrayOutput values.
@@ -271,7 +242,7 @@ func (i FirewallDeviceMap) ToFirewallDeviceMapOutputWithContext(ctx context.Cont
 type FirewallDeviceOutput struct{ *pulumi.OutputState }
 
 func (FirewallDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallDevice)(nil))
+	return reflect.TypeOf((**FirewallDevice)(nil)).Elem()
 }
 
 func (o FirewallDeviceOutput) ToFirewallDeviceOutput() FirewallDeviceOutput {
@@ -282,44 +253,10 @@ func (o FirewallDeviceOutput) ToFirewallDeviceOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o FirewallDeviceOutput) ToFirewallDevicePtrOutput() FirewallDevicePtrOutput {
-	return o.ToFirewallDevicePtrOutputWithContext(context.Background())
-}
-
-func (o FirewallDeviceOutput) ToFirewallDevicePtrOutputWithContext(ctx context.Context) FirewallDevicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallDevice) *FirewallDevice {
-		return &v
-	}).(FirewallDevicePtrOutput)
-}
-
-type FirewallDevicePtrOutput struct{ *pulumi.OutputState }
-
-func (FirewallDevicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FirewallDevice)(nil))
-}
-
-func (o FirewallDevicePtrOutput) ToFirewallDevicePtrOutput() FirewallDevicePtrOutput {
-	return o
-}
-
-func (o FirewallDevicePtrOutput) ToFirewallDevicePtrOutputWithContext(ctx context.Context) FirewallDevicePtrOutput {
-	return o
-}
-
-func (o FirewallDevicePtrOutput) Elem() FirewallDeviceOutput {
-	return o.ApplyT(func(v *FirewallDevice) FirewallDevice {
-		if v != nil {
-			return *v
-		}
-		var ret FirewallDevice
-		return ret
-	}).(FirewallDeviceOutput)
-}
-
 type FirewallDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FirewallDevice)(nil))
+	return reflect.TypeOf((*[]*FirewallDevice)(nil)).Elem()
 }
 
 func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOutput {
@@ -331,15 +268,15 @@ func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutputWithContext(ctx co
 }
 
 func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallDevice {
-		return vs[0].([]FirewallDevice)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallDevice {
+		return vs[0].([]*FirewallDevice)[vs[1].(int)]
 	}).(FirewallDeviceOutput)
 }
 
 type FirewallDeviceMapOutput struct{ *pulumi.OutputState }
 
 func (FirewallDeviceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FirewallDevice)(nil))
+	return reflect.TypeOf((*map[string]*FirewallDevice)(nil)).Elem()
 }
 
 func (o FirewallDeviceMapOutput) ToFirewallDeviceMapOutput() FirewallDeviceMapOutput {
@@ -351,18 +288,16 @@ func (o FirewallDeviceMapOutput) ToFirewallDeviceMapOutputWithContext(ctx contex
 }
 
 func (o FirewallDeviceMapOutput) MapIndex(k pulumi.StringInput) FirewallDeviceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FirewallDevice {
-		return vs[0].(map[string]FirewallDevice)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FirewallDevice {
+		return vs[0].(map[string]*FirewallDevice)[vs[1].(string)]
 	}).(FirewallDeviceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceInput)(nil)).Elem(), &FirewallDevice{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDevicePtrInput)(nil)).Elem(), &FirewallDevice{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceArrayInput)(nil)).Elem(), FirewallDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceMapInput)(nil)).Elem(), FirewallDeviceMap{})
 	pulumi.RegisterOutputType(FirewallDeviceOutput{})
-	pulumi.RegisterOutputType(FirewallDevicePtrOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceArrayOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceMapOutput{})
 }

@@ -173,23 +173,23 @@ export class StackScript extends pulumi.CustomResource {
      */
     constructor(name: string, args: StackScriptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackScriptArgs | StackScriptState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackScriptState | undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["deploymentsActive"] = state ? state.deploymentsActive : undefined;
-            inputs["deploymentsTotal"] = state ? state.deploymentsTotal : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["images"] = state ? state.images : undefined;
-            inputs["isPublic"] = state ? state.isPublic : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["revNote"] = state ? state.revNote : undefined;
-            inputs["script"] = state ? state.script : undefined;
-            inputs["updated"] = state ? state.updated : undefined;
-            inputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
-            inputs["userGravatarId"] = state ? state.userGravatarId : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["deploymentsActive"] = state ? state.deploymentsActive : undefined;
+            resourceInputs["deploymentsTotal"] = state ? state.deploymentsTotal : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["revNote"] = state ? state.revNote : undefined;
+            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
+            resourceInputs["userGravatarId"] = state ? state.userGravatarId : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as StackScriptArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -204,24 +204,22 @@ export class StackScript extends pulumi.CustomResource {
             if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["isPublic"] = args ? args.isPublic : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["revNote"] = args ? args.revNote : undefined;
-            inputs["script"] = args ? args.script : undefined;
-            inputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["deploymentsActive"] = undefined /*out*/;
-            inputs["deploymentsTotal"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
-            inputs["userGravatarId"] = undefined /*out*/;
-            inputs["username"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["revNote"] = args ? args.revNote : undefined;
+            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["deploymentsActive"] = undefined /*out*/;
+            resourceInputs["deploymentsTotal"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["userGravatarId"] = undefined /*out*/;
+            resourceInputs["username"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StackScript.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StackScript.__pulumiType, name, resourceInputs, opts);
     }
 }
 

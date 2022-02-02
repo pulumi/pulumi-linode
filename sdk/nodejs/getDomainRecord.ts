@@ -57,9 +57,7 @@ export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getDomainRecord:getDomainRecord", {
         "domainId": args.domainId,
         "id": args.id,

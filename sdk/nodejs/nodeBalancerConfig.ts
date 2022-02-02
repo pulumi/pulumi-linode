@@ -180,58 +180,56 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeBalancerConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerConfigArgs | NodeBalancerConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerConfigState | undefined;
-            inputs["algorithm"] = state ? state.algorithm : undefined;
-            inputs["check"] = state ? state.check : undefined;
-            inputs["checkAttempts"] = state ? state.checkAttempts : undefined;
-            inputs["checkBody"] = state ? state.checkBody : undefined;
-            inputs["checkInterval"] = state ? state.checkInterval : undefined;
-            inputs["checkPassive"] = state ? state.checkPassive : undefined;
-            inputs["checkPath"] = state ? state.checkPath : undefined;
-            inputs["checkTimeout"] = state ? state.checkTimeout : undefined;
-            inputs["cipherSuite"] = state ? state.cipherSuite : undefined;
-            inputs["nodeStatuses"] = state ? state.nodeStatuses : undefined;
-            inputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            inputs["sslCert"] = state ? state.sslCert : undefined;
-            inputs["sslCommonname"] = state ? state.sslCommonname : undefined;
-            inputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
-            inputs["sslKey"] = state ? state.sslKey : undefined;
-            inputs["stickiness"] = state ? state.stickiness : undefined;
+            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
+            resourceInputs["check"] = state ? state.check : undefined;
+            resourceInputs["checkAttempts"] = state ? state.checkAttempts : undefined;
+            resourceInputs["checkBody"] = state ? state.checkBody : undefined;
+            resourceInputs["checkInterval"] = state ? state.checkInterval : undefined;
+            resourceInputs["checkPassive"] = state ? state.checkPassive : undefined;
+            resourceInputs["checkPath"] = state ? state.checkPath : undefined;
+            resourceInputs["checkTimeout"] = state ? state.checkTimeout : undefined;
+            resourceInputs["cipherSuite"] = state ? state.cipherSuite : undefined;
+            resourceInputs["nodeStatuses"] = state ? state.nodeStatuses : undefined;
+            resourceInputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["sslCert"] = state ? state.sslCert : undefined;
+            resourceInputs["sslCommonname"] = state ? state.sslCommonname : undefined;
+            resourceInputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
+            resourceInputs["sslKey"] = state ? state.sslKey : undefined;
+            resourceInputs["stickiness"] = state ? state.stickiness : undefined;
         } else {
             const args = argsOrState as NodeBalancerConfigArgs | undefined;
             if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
-            inputs["algorithm"] = args ? args.algorithm : undefined;
-            inputs["check"] = args ? args.check : undefined;
-            inputs["checkAttempts"] = args ? args.checkAttempts : undefined;
-            inputs["checkBody"] = args ? args.checkBody : undefined;
-            inputs["checkInterval"] = args ? args.checkInterval : undefined;
-            inputs["checkPassive"] = args ? args.checkPassive : undefined;
-            inputs["checkPath"] = args ? args.checkPath : undefined;
-            inputs["checkTimeout"] = args ? args.checkTimeout : undefined;
-            inputs["cipherSuite"] = args ? args.cipherSuite : undefined;
-            inputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            inputs["sslCert"] = args ? args.sslCert : undefined;
-            inputs["sslKey"] = args ? args.sslKey : undefined;
-            inputs["stickiness"] = args ? args.stickiness : undefined;
-            inputs["nodeStatuses"] = undefined /*out*/;
-            inputs["sslCommonname"] = undefined /*out*/;
-            inputs["sslFingerprint"] = undefined /*out*/;
+            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
+            resourceInputs["check"] = args ? args.check : undefined;
+            resourceInputs["checkAttempts"] = args ? args.checkAttempts : undefined;
+            resourceInputs["checkBody"] = args ? args.checkBody : undefined;
+            resourceInputs["checkInterval"] = args ? args.checkInterval : undefined;
+            resourceInputs["checkPassive"] = args ? args.checkPassive : undefined;
+            resourceInputs["checkPath"] = args ? args.checkPath : undefined;
+            resourceInputs["checkTimeout"] = args ? args.checkTimeout : undefined;
+            resourceInputs["cipherSuite"] = args ? args.cipherSuite : undefined;
+            resourceInputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["sslCert"] = args ? args.sslCert : undefined;
+            resourceInputs["sslKey"] = args ? args.sslKey : undefined;
+            resourceInputs["stickiness"] = args ? args.stickiness : undefined;
+            resourceInputs["nodeStatuses"] = undefined /*out*/;
+            resourceInputs["sslCommonname"] = undefined /*out*/;
+            resourceInputs["sslFingerprint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeBalancerConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeBalancerConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

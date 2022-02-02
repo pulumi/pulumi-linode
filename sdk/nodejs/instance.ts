@@ -273,76 +273,74 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["alerts"] = state ? state.alerts : undefined;
-            inputs["authorizedKeys"] = state ? state.authorizedKeys : undefined;
-            inputs["authorizedUsers"] = state ? state.authorizedUsers : undefined;
-            inputs["backupId"] = state ? state.backupId : undefined;
-            inputs["backups"] = state ? state.backups : undefined;
-            inputs["backupsEnabled"] = state ? state.backupsEnabled : undefined;
-            inputs["bootConfigLabel"] = state ? state.bootConfigLabel : undefined;
-            inputs["configs"] = state ? state.configs : undefined;
-            inputs["disks"] = state ? state.disks : undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["image"] = state ? state.image : undefined;
-            inputs["interfaces"] = state ? state.interfaces : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["ipv4s"] = state ? state.ipv4s : undefined;
-            inputs["ipv6"] = state ? state.ipv6 : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["privateIp"] = state ? state.privateIp : undefined;
-            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["rootPass"] = state ? state.rootPass : undefined;
-            inputs["specs"] = state ? state.specs : undefined;
-            inputs["stackscriptData"] = state ? state.stackscriptData : undefined;
-            inputs["stackscriptId"] = state ? state.stackscriptId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["swapSize"] = state ? state.swapSize : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["watchdogEnabled"] = state ? state.watchdogEnabled : undefined;
+            resourceInputs["alerts"] = state ? state.alerts : undefined;
+            resourceInputs["authorizedKeys"] = state ? state.authorizedKeys : undefined;
+            resourceInputs["authorizedUsers"] = state ? state.authorizedUsers : undefined;
+            resourceInputs["backupId"] = state ? state.backupId : undefined;
+            resourceInputs["backups"] = state ? state.backups : undefined;
+            resourceInputs["backupsEnabled"] = state ? state.backupsEnabled : undefined;
+            resourceInputs["bootConfigLabel"] = state ? state.bootConfigLabel : undefined;
+            resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["image"] = state ? state.image : undefined;
+            resourceInputs["interfaces"] = state ? state.interfaces : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipv4s"] = state ? state.ipv4s : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rootPass"] = state ? state.rootPass : undefined;
+            resourceInputs["specs"] = state ? state.specs : undefined;
+            resourceInputs["stackscriptData"] = state ? state.stackscriptData : undefined;
+            resourceInputs["stackscriptId"] = state ? state.stackscriptId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["swapSize"] = state ? state.swapSize : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["watchdogEnabled"] = state ? state.watchdogEnabled : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["alerts"] = args ? args.alerts : undefined;
-            inputs["authorizedKeys"] = args ? args.authorizedKeys : undefined;
-            inputs["authorizedUsers"] = args ? args.authorizedUsers : undefined;
-            inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["backupsEnabled"] = args ? args.backupsEnabled : undefined;
-            inputs["bootConfigLabel"] = args ? args.bootConfigLabel : undefined;
-            inputs["configs"] = args ? args.configs : undefined;
-            inputs["disks"] = args ? args.disks : undefined;
-            inputs["group"] = args ? args.group : undefined;
-            inputs["image"] = args ? args.image : undefined;
-            inputs["interfaces"] = args ? args.interfaces : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["privateIp"] = args ? args.privateIp : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["rootPass"] = args ? args.rootPass : undefined;
-            inputs["stackscriptData"] = args ? args.stackscriptData : undefined;
-            inputs["stackscriptId"] = args ? args.stackscriptId : undefined;
-            inputs["swapSize"] = args ? args.swapSize : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
-            inputs["backups"] = undefined /*out*/;
-            inputs["ipAddress"] = undefined /*out*/;
-            inputs["ipv4s"] = undefined /*out*/;
-            inputs["ipv6"] = undefined /*out*/;
-            inputs["privateIpAddress"] = undefined /*out*/;
-            inputs["specs"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["alerts"] = args ? args.alerts : undefined;
+            resourceInputs["authorizedKeys"] = args ? args.authorizedKeys : undefined;
+            resourceInputs["authorizedUsers"] = args ? args.authorizedUsers : undefined;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["backupsEnabled"] = args ? args.backupsEnabled : undefined;
+            resourceInputs["bootConfigLabel"] = args ? args.bootConfigLabel : undefined;
+            resourceInputs["configs"] = args ? args.configs : undefined;
+            resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
+            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rootPass"] = args ? args.rootPass : undefined;
+            resourceInputs["stackscriptData"] = args ? args.stackscriptData : undefined;
+            resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
+            resourceInputs["swapSize"] = args ? args.swapSize : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
+            resourceInputs["backups"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
+            resourceInputs["ipv4s"] = undefined /*out*/;
+            resourceInputs["ipv6"] = undefined /*out*/;
+            resourceInputs["privateIpAddress"] = undefined /*out*/;
+            resourceInputs["specs"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

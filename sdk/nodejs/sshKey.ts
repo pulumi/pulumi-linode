@@ -72,13 +72,13 @@ export class SshKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: SshKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SshKeyArgs | SshKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshKeyState | undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["sshKey"] = state ? state.sshKey : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["sshKey"] = state ? state.sshKey : undefined;
         } else {
             const args = argsOrState as SshKeyArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
@@ -87,14 +87,12 @@ export class SshKey extends pulumi.CustomResource {
             if ((!args || args.sshKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sshKey'");
             }
-            inputs["label"] = args ? args.label : undefined;
-            inputs["sshKey"] = args ? args.sshKey : undefined;
-            inputs["created"] = undefined /*out*/;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["sshKey"] = args ? args.sshKey : undefined;
+            resourceInputs["created"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SshKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SshKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

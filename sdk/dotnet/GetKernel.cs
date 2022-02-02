@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -58,7 +57,7 @@ namespace Pulumi.Linode
         /// * `xen` - If this Kernel is suitable for Xen Linodes.
         /// </summary>
         public static Task<GetKernelResult> InvokeAsync(GetKernelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode kernel
@@ -106,7 +105,7 @@ namespace Pulumi.Linode
         /// * `xen` - If this Kernel is suitable for Xen Linodes.
         /// </summary>
         public static Output<GetKernelResult> Invoke(GetKernelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithDefaults());
     }
 
 

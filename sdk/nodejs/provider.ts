@@ -50,28 +50,26 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.token === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            inputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
-            inputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
-            inputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
-            inputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
-            inputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
-            inputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
-            inputs["skipInstanceDeletePoll"] = pulumi.output(args ? args.skipInstanceDeletePoll : undefined).apply(JSON.stringify);
-            inputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
-            inputs["token"] = args ? args.token : undefined;
-            inputs["uaPrefix"] = (args ? args.uaPrefix : undefined) ?? utilities.getEnv("LINODE_UA_PREFIX");
-            inputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("LINODE_URL");
+            resourceInputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
+            resourceInputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
+            resourceInputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
+            resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
+            resourceInputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
+            resourceInputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
+            resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args ? args.skipInstanceDeletePoll : undefined).apply(JSON.stringify);
+            resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["uaPrefix"] = (args ? args.uaPrefix : undefined) ?? utilities.getEnv("LINODE_UA_PREFIX");
+            resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("LINODE_URL");
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -219,7 +219,7 @@ type NodeBalancerInput interface {
 }
 
 func (*NodeBalancer) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancer)(nil))
+	return reflect.TypeOf((**NodeBalancer)(nil)).Elem()
 }
 
 func (i *NodeBalancer) ToNodeBalancerOutput() NodeBalancerOutput {
@@ -228,35 +228,6 @@ func (i *NodeBalancer) ToNodeBalancerOutput() NodeBalancerOutput {
 
 func (i *NodeBalancer) ToNodeBalancerOutputWithContext(ctx context.Context) NodeBalancerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerOutput)
-}
-
-func (i *NodeBalancer) ToNodeBalancerPtrOutput() NodeBalancerPtrOutput {
-	return i.ToNodeBalancerPtrOutputWithContext(context.Background())
-}
-
-func (i *NodeBalancer) ToNodeBalancerPtrOutputWithContext(ctx context.Context) NodeBalancerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerPtrOutput)
-}
-
-type NodeBalancerPtrInput interface {
-	pulumi.Input
-
-	ToNodeBalancerPtrOutput() NodeBalancerPtrOutput
-	ToNodeBalancerPtrOutputWithContext(ctx context.Context) NodeBalancerPtrOutput
-}
-
-type nodeBalancerPtrType NodeBalancerArgs
-
-func (*nodeBalancerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeBalancer)(nil))
-}
-
-func (i *nodeBalancerPtrType) ToNodeBalancerPtrOutput() NodeBalancerPtrOutput {
-	return i.ToNodeBalancerPtrOutputWithContext(context.Background())
-}
-
-func (i *nodeBalancerPtrType) ToNodeBalancerPtrOutputWithContext(ctx context.Context) NodeBalancerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerPtrOutput)
 }
 
 // NodeBalancerArrayInput is an input type that accepts NodeBalancerArray and NodeBalancerArrayOutput values.
@@ -312,7 +283,7 @@ func (i NodeBalancerMap) ToNodeBalancerMapOutputWithContext(ctx context.Context)
 type NodeBalancerOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeBalancer)(nil))
+	return reflect.TypeOf((**NodeBalancer)(nil)).Elem()
 }
 
 func (o NodeBalancerOutput) ToNodeBalancerOutput() NodeBalancerOutput {
@@ -323,44 +294,10 @@ func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o NodeBalancerOutput) ToNodeBalancerPtrOutput() NodeBalancerPtrOutput {
-	return o.ToNodeBalancerPtrOutputWithContext(context.Background())
-}
-
-func (o NodeBalancerOutput) ToNodeBalancerPtrOutputWithContext(ctx context.Context) NodeBalancerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeBalancer) *NodeBalancer {
-		return &v
-	}).(NodeBalancerPtrOutput)
-}
-
-type NodeBalancerPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeBalancerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeBalancer)(nil))
-}
-
-func (o NodeBalancerPtrOutput) ToNodeBalancerPtrOutput() NodeBalancerPtrOutput {
-	return o
-}
-
-func (o NodeBalancerPtrOutput) ToNodeBalancerPtrOutputWithContext(ctx context.Context) NodeBalancerPtrOutput {
-	return o
-}
-
-func (o NodeBalancerPtrOutput) Elem() NodeBalancerOutput {
-	return o.ApplyT(func(v *NodeBalancer) NodeBalancer {
-		if v != nil {
-			return *v
-		}
-		var ret NodeBalancer
-		return ret
-	}).(NodeBalancerOutput)
-}
-
 type NodeBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeBalancer)(nil))
+	return reflect.TypeOf((*[]*NodeBalancer)(nil)).Elem()
 }
 
 func (o NodeBalancerArrayOutput) ToNodeBalancerArrayOutput() NodeBalancerArrayOutput {
@@ -372,15 +309,15 @@ func (o NodeBalancerArrayOutput) ToNodeBalancerArrayOutputWithContext(ctx contex
 }
 
 func (o NodeBalancerArrayOutput) Index(i pulumi.IntInput) NodeBalancerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancer {
-		return vs[0].([]NodeBalancer)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeBalancer {
+		return vs[0].([]*NodeBalancer)[vs[1].(int)]
 	}).(NodeBalancerOutput)
 }
 
 type NodeBalancerMapOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NodeBalancer)(nil))
+	return reflect.TypeOf((*map[string]*NodeBalancer)(nil)).Elem()
 }
 
 func (o NodeBalancerMapOutput) ToNodeBalancerMapOutput() NodeBalancerMapOutput {
@@ -392,18 +329,16 @@ func (o NodeBalancerMapOutput) ToNodeBalancerMapOutputWithContext(ctx context.Co
 }
 
 func (o NodeBalancerMapOutput) MapIndex(k pulumi.StringInput) NodeBalancerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeBalancer {
-		return vs[0].(map[string]NodeBalancer)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NodeBalancer {
+		return vs[0].(map[string]*NodeBalancer)[vs[1].(string)]
 	}).(NodeBalancerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerInput)(nil)).Elem(), &NodeBalancer{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerPtrInput)(nil)).Elem(), &NodeBalancer{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerArrayInput)(nil)).Elem(), NodeBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerMapInput)(nil)).Elem(), NodeBalancerMap{})
 	pulumi.RegisterOutputType(NodeBalancerOutput{})
-	pulumi.RegisterOutputType(NodeBalancerPtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerMapOutput{})
 }

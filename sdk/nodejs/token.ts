@@ -102,30 +102,28 @@ export class Token extends pulumi.CustomResource {
      */
     constructor(name: string, args: TokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["expiry"] = state ? state.expiry : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["scopes"] = state ? state.scopes : undefined;
-            inputs["token"] = state ? state.token : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["expiry"] = state ? state.expiry : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
             if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            inputs["expiry"] = args ? args.expiry : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["token"] = undefined /*out*/;
+            resourceInputs["expiry"] = args ? args.expiry : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["token"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Token.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }
 

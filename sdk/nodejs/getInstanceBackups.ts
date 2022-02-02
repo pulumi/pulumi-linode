@@ -24,9 +24,7 @@ export function getInstanceBackups(args: GetInstanceBackupsArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getInstanceBackups:getInstanceBackups", {
         "linodeId": args.linodeId,
     }, opts);
