@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -82,7 +81,7 @@ namespace Pulumi.Linode
         /// * `region`
         /// </summary>
         public static Task<GetVlansResult> InvokeAsync(GetVlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about Linode VLANs.
@@ -154,7 +153,7 @@ namespace Pulumi.Linode
         /// * `region`
         /// </summary>
         public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -124,21 +124,21 @@ export class DomainRecord extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainRecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainRecordArgs | DomainRecordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainRecordState | undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["recordType"] = state ? state.recordType : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["tag"] = state ? state.tag : undefined;
-            inputs["target"] = state ? state.target : undefined;
-            inputs["ttlSec"] = state ? state.ttlSec : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["recordType"] = state ? state.recordType : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["tag"] = state ? state.tag : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["ttlSec"] = state ? state.ttlSec : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as DomainRecordArgs | undefined;
             if ((!args || args.domainId === undefined) && !opts.urn) {
@@ -150,22 +150,20 @@ export class DomainRecord extends pulumi.CustomResource {
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["recordType"] = args ? args.recordType : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["tag"] = args ? args.tag : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["ttlSec"] = args ? args.ttlSec : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["recordType"] = args ? args.recordType : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["tag"] = args ? args.tag : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["ttlSec"] = args ? args.ttlSec : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainRecord.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainRecord.__pulumiType, name, resourceInputs, opts);
     }
 }
 

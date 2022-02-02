@@ -69,13 +69,13 @@ export class Rdns extends pulumi.CustomResource {
      */
     constructor(name: string, args: RdnsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RdnsArgs | RdnsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdnsState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["rdns"] = state ? state.rdns : undefined;
-            inputs["waitForAvailable"] = state ? state.waitForAvailable : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["rdns"] = state ? state.rdns : undefined;
+            resourceInputs["waitForAvailable"] = state ? state.waitForAvailable : undefined;
         } else {
             const args = argsOrState as RdnsArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -84,14 +84,12 @@ export class Rdns extends pulumi.CustomResource {
             if ((!args || args.rdns === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rdns'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["rdns"] = args ? args.rdns : undefined;
-            inputs["waitForAvailable"] = args ? args.waitForAvailable : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["rdns"] = args ? args.rdns : undefined;
+            resourceInputs["waitForAvailable"] = args ? args.waitForAvailable : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rdns.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rdns.__pulumiType, name, resourceInputs, opts);
     }
 }
 

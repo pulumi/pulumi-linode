@@ -306,7 +306,7 @@ type ObjectStorageObjectInput interface {
 }
 
 func (*ObjectStorageObject) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageObject)(nil))
+	return reflect.TypeOf((**ObjectStorageObject)(nil)).Elem()
 }
 
 func (i *ObjectStorageObject) ToObjectStorageObjectOutput() ObjectStorageObjectOutput {
@@ -315,35 +315,6 @@ func (i *ObjectStorageObject) ToObjectStorageObjectOutput() ObjectStorageObjectO
 
 func (i *ObjectStorageObject) ToObjectStorageObjectOutputWithContext(ctx context.Context) ObjectStorageObjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectOutput)
-}
-
-func (i *ObjectStorageObject) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
-	return i.ToObjectStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *ObjectStorageObject) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectPtrOutput)
-}
-
-type ObjectStorageObjectPtrInput interface {
-	pulumi.Input
-
-	ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput
-	ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput
-}
-
-type objectStorageObjectPtrType ObjectStorageObjectArgs
-
-func (*objectStorageObjectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectStorageObject)(nil))
-}
-
-func (i *objectStorageObjectPtrType) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
-	return i.ToObjectStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *objectStorageObjectPtrType) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageObjectPtrOutput)
 }
 
 // ObjectStorageObjectArrayInput is an input type that accepts ObjectStorageObjectArray and ObjectStorageObjectArrayOutput values.
@@ -399,7 +370,7 @@ func (i ObjectStorageObjectMap) ToObjectStorageObjectMapOutputWithContext(ctx co
 type ObjectStorageObjectOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageObject)(nil))
+	return reflect.TypeOf((**ObjectStorageObject)(nil)).Elem()
 }
 
 func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutput() ObjectStorageObjectOutput {
@@ -410,44 +381,10 @@ func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutputWithContext(ctx co
 	return o
 }
 
-func (o ObjectStorageObjectOutput) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
-	return o.ToObjectStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectStorageObjectOutput) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageObject) *ObjectStorageObject {
-		return &v
-	}).(ObjectStorageObjectPtrOutput)
-}
-
-type ObjectStorageObjectPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectStorageObjectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectStorageObject)(nil))
-}
-
-func (o ObjectStorageObjectPtrOutput) ToObjectStorageObjectPtrOutput() ObjectStorageObjectPtrOutput {
-	return o
-}
-
-func (o ObjectStorageObjectPtrOutput) ToObjectStorageObjectPtrOutputWithContext(ctx context.Context) ObjectStorageObjectPtrOutput {
-	return o
-}
-
-func (o ObjectStorageObjectPtrOutput) Elem() ObjectStorageObjectOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) ObjectStorageObject {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectStorageObject
-		return ret
-	}).(ObjectStorageObjectOutput)
-}
-
 type ObjectStorageObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageObjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectStorageObject)(nil))
+	return reflect.TypeOf((*[]*ObjectStorageObject)(nil)).Elem()
 }
 
 func (o ObjectStorageObjectArrayOutput) ToObjectStorageObjectArrayOutput() ObjectStorageObjectArrayOutput {
@@ -459,15 +396,15 @@ func (o ObjectStorageObjectArrayOutput) ToObjectStorageObjectArrayOutputWithCont
 }
 
 func (o ObjectStorageObjectArrayOutput) Index(i pulumi.IntInput) ObjectStorageObjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageObject {
-		return vs[0].([]ObjectStorageObject)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectStorageObject {
+		return vs[0].([]*ObjectStorageObject)[vs[1].(int)]
 	}).(ObjectStorageObjectOutput)
 }
 
 type ObjectStorageObjectMapOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageObjectMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ObjectStorageObject)(nil))
+	return reflect.TypeOf((*map[string]*ObjectStorageObject)(nil)).Elem()
 }
 
 func (o ObjectStorageObjectMapOutput) ToObjectStorageObjectMapOutput() ObjectStorageObjectMapOutput {
@@ -479,18 +416,16 @@ func (o ObjectStorageObjectMapOutput) ToObjectStorageObjectMapOutputWithContext(
 }
 
 func (o ObjectStorageObjectMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageObjectOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectStorageObject {
-		return vs[0].(map[string]ObjectStorageObject)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ObjectStorageObject {
+		return vs[0].(map[string]*ObjectStorageObject)[vs[1].(string)]
 	}).(ObjectStorageObjectOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageObjectInput)(nil)).Elem(), &ObjectStorageObject{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageObjectPtrInput)(nil)).Elem(), &ObjectStorageObject{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageObjectArrayInput)(nil)).Elem(), ObjectStorageObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageObjectMapInput)(nil)).Elem(), ObjectStorageObjectMap{})
 	pulumi.RegisterOutputType(ObjectStorageObjectOutput{})
-	pulumi.RegisterOutputType(ObjectStorageObjectPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageObjectArrayOutput{})
 	pulumi.RegisterOutputType(ObjectStorageObjectMapOutput{})
 }

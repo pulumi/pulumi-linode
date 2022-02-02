@@ -141,17 +141,17 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeBalancerNodeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerNodeArgs | NodeBalancerNodeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerNodeState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["configId"] = state ? state.configId : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["configId"] = state ? state.configId : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as NodeBalancerNodeArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -166,18 +166,16 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["configId"] = args ? args.configId : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["configId"] = args ? args.configId : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeBalancerNode.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeBalancerNode.__pulumiType, name, resourceInputs, opts);
     }
 }
 

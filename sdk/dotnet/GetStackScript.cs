@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Linode
 {
@@ -82,7 +81,7 @@ namespace Pulumi.Linode
         ///   * `default` - The default value. If not specified, this value will be used.
         /// </summary>
         public static Task<GetStackScriptResult> InvokeAsync(GetStackScriptArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a specific Linode StackScript.
@@ -154,7 +153,7 @@ namespace Pulumi.Linode
         ///   * `default` - The default value. If not specified, this value will be used.
         /// </summary>
         public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
     }
 
 

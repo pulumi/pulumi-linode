@@ -88,30 +88,28 @@ export class ObjectStorageKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: ObjectStorageKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectStorageKeyArgs | ObjectStorageKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectStorageKeyState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["bucketAccesses"] = state ? state.bucketAccesses : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["limited"] = state ? state.limited : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["bucketAccesses"] = state ? state.bucketAccesses : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["limited"] = state ? state.limited : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
         } else {
             const args = argsOrState as ObjectStorageKeyArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            inputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["accessKey"] = undefined /*out*/;
-            inputs["limited"] = undefined /*out*/;
-            inputs["secretKey"] = undefined /*out*/;
+            resourceInputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["limited"] = undefined /*out*/;
+            resourceInputs["secretKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ObjectStorageKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ObjectStorageKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

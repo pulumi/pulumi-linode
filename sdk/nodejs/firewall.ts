@@ -153,20 +153,20 @@ export class Firewall extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            inputs["devices"] = state ? state.devices : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["inboundPolicy"] = state ? state.inboundPolicy : undefined;
-            inputs["inbounds"] = state ? state.inbounds : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["linodes"] = state ? state.linodes : undefined;
-            inputs["outboundPolicy"] = state ? state.outboundPolicy : undefined;
-            inputs["outbounds"] = state ? state.outbounds : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["devices"] = state ? state.devices : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["inboundPolicy"] = state ? state.inboundPolicy : undefined;
+            resourceInputs["inbounds"] = state ? state.inbounds : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["linodes"] = state ? state.linodes : undefined;
+            resourceInputs["outboundPolicy"] = state ? state.outboundPolicy : undefined;
+            resourceInputs["outbounds"] = state ? state.outbounds : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
             if ((!args || args.inboundPolicy === undefined) && !opts.urn) {
@@ -178,21 +178,19 @@ export class Firewall extends pulumi.CustomResource {
             if ((!args || args.outboundPolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'outboundPolicy'");
             }
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["inboundPolicy"] = args ? args.inboundPolicy : undefined;
-            inputs["inbounds"] = args ? args.inbounds : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["linodes"] = args ? args.linodes : undefined;
-            inputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
-            inputs["outbounds"] = args ? args.outbounds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["devices"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["inboundPolicy"] = args ? args.inboundPolicy : undefined;
+            resourceInputs["inbounds"] = args ? args.inbounds : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["linodes"] = args ? args.linodes : undefined;
+            resourceInputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
+            resourceInputs["outbounds"] = args ? args.outbounds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["devices"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Firewall.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -132,19 +132,19 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: LkeClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LkeClusterArgs | LkeClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LkeClusterState | undefined;
-            inputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
-            inputs["controlPlane"] = state ? state.controlPlane : undefined;
-            inputs["k8sVersion"] = state ? state.k8sVersion : undefined;
-            inputs["kubeconfig"] = state ? state.kubeconfig : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["pools"] = state ? state.pools : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
+            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
+            resourceInputs["k8sVersion"] = state ? state.k8sVersion : undefined;
+            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["pools"] = state ? state.pools : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
             if ((!args || args.k8sVersion === undefined) && !opts.urn) {
@@ -159,20 +159,18 @@ export class LkeCluster extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["controlPlane"] = args ? args.controlPlane : undefined;
-            inputs["k8sVersion"] = args ? args.k8sVersion : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["pools"] = args ? args.pools : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["apiEndpoints"] = undefined /*out*/;
-            inputs["kubeconfig"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
+            resourceInputs["k8sVersion"] = args ? args.k8sVersion : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["pools"] = args ? args.pools : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["apiEndpoints"] = undefined /*out*/;
+            resourceInputs["kubeconfig"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LkeCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LkeCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

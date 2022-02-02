@@ -72,7 +72,7 @@ namespace Pulumi.Linode
         /// * `referrals.0.url` - The referral URL.
         /// </summary>
         public static Task<GetProfileResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

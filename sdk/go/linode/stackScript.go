@@ -287,7 +287,7 @@ type StackScriptInput interface {
 }
 
 func (*StackScript) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackScript)(nil))
+	return reflect.TypeOf((**StackScript)(nil)).Elem()
 }
 
 func (i *StackScript) ToStackScriptOutput() StackScriptOutput {
@@ -296,35 +296,6 @@ func (i *StackScript) ToStackScriptOutput() StackScriptOutput {
 
 func (i *StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptOutput)
-}
-
-func (i *StackScript) ToStackScriptPtrOutput() StackScriptPtrOutput {
-	return i.ToStackScriptPtrOutputWithContext(context.Background())
-}
-
-func (i *StackScript) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackScriptPtrOutput)
-}
-
-type StackScriptPtrInput interface {
-	pulumi.Input
-
-	ToStackScriptPtrOutput() StackScriptPtrOutput
-	ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput
-}
-
-type stackScriptPtrType StackScriptArgs
-
-func (*stackScriptPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackScript)(nil))
-}
-
-func (i *stackScriptPtrType) ToStackScriptPtrOutput() StackScriptPtrOutput {
-	return i.ToStackScriptPtrOutputWithContext(context.Background())
-}
-
-func (i *stackScriptPtrType) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackScriptPtrOutput)
 }
 
 // StackScriptArrayInput is an input type that accepts StackScriptArray and StackScriptArrayOutput values.
@@ -380,7 +351,7 @@ func (i StackScriptMap) ToStackScriptMapOutputWithContext(ctx context.Context) S
 type StackScriptOutput struct{ *pulumi.OutputState }
 
 func (StackScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackScript)(nil))
+	return reflect.TypeOf((**StackScript)(nil)).Elem()
 }
 
 func (o StackScriptOutput) ToStackScriptOutput() StackScriptOutput {
@@ -391,44 +362,10 @@ func (o StackScriptOutput) ToStackScriptOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o StackScriptOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
-	return o.ToStackScriptPtrOutputWithContext(context.Background())
-}
-
-func (o StackScriptOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackScript) *StackScript {
-		return &v
-	}).(StackScriptPtrOutput)
-}
-
-type StackScriptPtrOutput struct{ *pulumi.OutputState }
-
-func (StackScriptPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackScript)(nil))
-}
-
-func (o StackScriptPtrOutput) ToStackScriptPtrOutput() StackScriptPtrOutput {
-	return o
-}
-
-func (o StackScriptPtrOutput) ToStackScriptPtrOutputWithContext(ctx context.Context) StackScriptPtrOutput {
-	return o
-}
-
-func (o StackScriptPtrOutput) Elem() StackScriptOutput {
-	return o.ApplyT(func(v *StackScript) StackScript {
-		if v != nil {
-			return *v
-		}
-		var ret StackScript
-		return ret
-	}).(StackScriptOutput)
-}
-
 type StackScriptArrayOutput struct{ *pulumi.OutputState }
 
 func (StackScriptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackScript)(nil))
+	return reflect.TypeOf((*[]*StackScript)(nil)).Elem()
 }
 
 func (o StackScriptArrayOutput) ToStackScriptArrayOutput() StackScriptArrayOutput {
@@ -440,15 +377,15 @@ func (o StackScriptArrayOutput) ToStackScriptArrayOutputWithContext(ctx context.
 }
 
 func (o StackScriptArrayOutput) Index(i pulumi.IntInput) StackScriptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackScript {
-		return vs[0].([]StackScript)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackScript {
+		return vs[0].([]*StackScript)[vs[1].(int)]
 	}).(StackScriptOutput)
 }
 
 type StackScriptMapOutput struct{ *pulumi.OutputState }
 
 func (StackScriptMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StackScript)(nil))
+	return reflect.TypeOf((*map[string]*StackScript)(nil)).Elem()
 }
 
 func (o StackScriptMapOutput) ToStackScriptMapOutput() StackScriptMapOutput {
@@ -460,18 +397,16 @@ func (o StackScriptMapOutput) ToStackScriptMapOutputWithContext(ctx context.Cont
 }
 
 func (o StackScriptMapOutput) MapIndex(k pulumi.StringInput) StackScriptOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackScript {
-		return vs[0].(map[string]StackScript)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StackScript {
+		return vs[0].(map[string]*StackScript)[vs[1].(string)]
 	}).(StackScriptOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptInput)(nil)).Elem(), &StackScript{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptPtrInput)(nil)).Elem(), &StackScript{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptArrayInput)(nil)).Elem(), StackScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptMapInput)(nil)).Elem(), StackScriptMap{})
 	pulumi.RegisterOutputType(StackScriptOutput{})
-	pulumi.RegisterOutputType(StackScriptPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptArrayOutput{})
 	pulumi.RegisterOutputType(StackScriptMapOutput{})
 }

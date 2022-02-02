@@ -42,9 +42,7 @@ export function getKernel(args: GetKernelArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getKernel:getKernel", {
         "id": args.id,
     }, opts);

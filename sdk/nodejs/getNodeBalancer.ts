@@ -24,9 +24,7 @@ export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("linode:index/getNodeBalancer:getNodeBalancer", {
         "id": args.id,
     }, opts);

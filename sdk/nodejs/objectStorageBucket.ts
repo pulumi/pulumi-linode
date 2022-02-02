@@ -107,19 +107,19 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     constructor(name: string, args: ObjectStorageBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectStorageBucketArgs | ObjectStorageBucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectStorageBucketState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["cert"] = state ? state.cert : undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["corsEnabled"] = state ? state.corsEnabled : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["cert"] = state ? state.cert : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as ObjectStorageBucketArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
@@ -128,20 +128,18 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["cert"] = args ? args.cert : undefined;
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["corsEnabled"] = args ? args.corsEnabled : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["cert"] = args ? args.cert : undefined;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["corsEnabled"] = args ? args.corsEnabled : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ObjectStorageBucket.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ObjectStorageBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

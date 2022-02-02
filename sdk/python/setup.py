@@ -55,6 +55,7 @@ setup(name='pulumi_linode',
       package_data={
           'pulumi_linode': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

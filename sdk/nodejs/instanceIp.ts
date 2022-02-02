@@ -106,40 +106,38 @@ export class InstanceIp extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceIpArgs | InstanceIpState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIpState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["applyImmediately"] = state ? state.applyImmediately : undefined;
-            inputs["gateway"] = state ? state.gateway : undefined;
-            inputs["linodeId"] = state ? state.linodeId : undefined;
-            inputs["prefix"] = state ? state.prefix : undefined;
-            inputs["public"] = state ? state.public : undefined;
-            inputs["rdns"] = state ? state.rdns : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetMask"] = state ? state.subnetMask : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["applyImmediately"] = state ? state.applyImmediately : undefined;
+            resourceInputs["gateway"] = state ? state.gateway : undefined;
+            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
+            resourceInputs["prefix"] = state ? state.prefix : undefined;
+            resourceInputs["public"] = state ? state.public : undefined;
+            resourceInputs["rdns"] = state ? state.rdns : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetMask"] = state ? state.subnetMask : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as InstanceIpArgs | undefined;
             if ((!args || args.linodeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            inputs["applyImmediately"] = args ? args.applyImmediately : undefined;
-            inputs["linodeId"] = args ? args.linodeId : undefined;
-            inputs["public"] = args ? args.public : undefined;
-            inputs["rdns"] = args ? args.rdns : undefined;
-            inputs["address"] = undefined /*out*/;
-            inputs["gateway"] = undefined /*out*/;
-            inputs["prefix"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["subnetMask"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["applyImmediately"] = args ? args.applyImmediately : undefined;
+            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
+            resourceInputs["public"] = args ? args.public : undefined;
+            resourceInputs["rdns"] = args ? args.rdns : undefined;
+            resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["gateway"] = undefined /*out*/;
+            resourceInputs["prefix"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["subnetMask"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceIp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceIp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -142,52 +142,50 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["createdBy"] = state ? state.createdBy : undefined;
-            inputs["deprecated"] = state ? state.deprecated : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskId"] = state ? state.diskId : undefined;
-            inputs["expiry"] = state ? state.expiry : undefined;
-            inputs["fileHash"] = state ? state.fileHash : undefined;
-            inputs["filePath"] = state ? state.filePath : undefined;
-            inputs["isPublic"] = state ? state.isPublic : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["linodeId"] = state ? state.linodeId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["vendor"] = state ? state.vendor : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["deprecated"] = state ? state.deprecated : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["expiry"] = state ? state.expiry : undefined;
+            resourceInputs["fileHash"] = state ? state.fileHash : undefined;
+            resourceInputs["filePath"] = state ? state.filePath : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vendor"] = state ? state.vendor : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskId"] = args ? args.diskId : undefined;
-            inputs["fileHash"] = args ? args.fileHash : undefined;
-            inputs["filePath"] = args ? args.filePath : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["linodeId"] = args ? args.linodeId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["createdBy"] = undefined /*out*/;
-            inputs["deprecated"] = undefined /*out*/;
-            inputs["expiry"] = undefined /*out*/;
-            inputs["isPublic"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["vendor"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["fileHash"] = args ? args.fileHash : undefined;
+            resourceInputs["filePath"] = args ? args.filePath : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["deprecated"] = undefined /*out*/;
+            resourceInputs["expiry"] = undefined /*out*/;
+            resourceInputs["isPublic"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["vendor"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Image.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
 

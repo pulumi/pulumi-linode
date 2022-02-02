@@ -212,7 +212,7 @@ type ObjectStorageBucketInput interface {
 }
 
 func (*ObjectStorageBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageBucket)(nil))
+	return reflect.TypeOf((**ObjectStorageBucket)(nil)).Elem()
 }
 
 func (i *ObjectStorageBucket) ToObjectStorageBucketOutput() ObjectStorageBucketOutput {
@@ -221,35 +221,6 @@ func (i *ObjectStorageBucket) ToObjectStorageBucketOutput() ObjectStorageBucketO
 
 func (i *ObjectStorageBucket) ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketOutput)
-}
-
-func (i *ObjectStorageBucket) ToObjectStorageBucketPtrOutput() ObjectStorageBucketPtrOutput {
-	return i.ToObjectStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *ObjectStorageBucket) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketPtrOutput)
-}
-
-type ObjectStorageBucketPtrInput interface {
-	pulumi.Input
-
-	ToObjectStorageBucketPtrOutput() ObjectStorageBucketPtrOutput
-	ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput
-}
-
-type objectStorageBucketPtrType ObjectStorageBucketArgs
-
-func (*objectStorageBucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectStorageBucket)(nil))
-}
-
-func (i *objectStorageBucketPtrType) ToObjectStorageBucketPtrOutput() ObjectStorageBucketPtrOutput {
-	return i.ToObjectStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *objectStorageBucketPtrType) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketPtrOutput)
 }
 
 // ObjectStorageBucketArrayInput is an input type that accepts ObjectStorageBucketArray and ObjectStorageBucketArrayOutput values.
@@ -305,7 +276,7 @@ func (i ObjectStorageBucketMap) ToObjectStorageBucketMapOutputWithContext(ctx co
 type ObjectStorageBucketOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectStorageBucket)(nil))
+	return reflect.TypeOf((**ObjectStorageBucket)(nil)).Elem()
 }
 
 func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutput() ObjectStorageBucketOutput {
@@ -316,44 +287,10 @@ func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutputWithContext(ctx co
 	return o
 }
 
-func (o ObjectStorageBucketOutput) ToObjectStorageBucketPtrOutput() ObjectStorageBucketPtrOutput {
-	return o.ToObjectStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectStorageBucketOutput) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectStorageBucket) *ObjectStorageBucket {
-		return &v
-	}).(ObjectStorageBucketPtrOutput)
-}
-
-type ObjectStorageBucketPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectStorageBucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectStorageBucket)(nil))
-}
-
-func (o ObjectStorageBucketPtrOutput) ToObjectStorageBucketPtrOutput() ObjectStorageBucketPtrOutput {
-	return o
-}
-
-func (o ObjectStorageBucketPtrOutput) ToObjectStorageBucketPtrOutputWithContext(ctx context.Context) ObjectStorageBucketPtrOutput {
-	return o
-}
-
-func (o ObjectStorageBucketPtrOutput) Elem() ObjectStorageBucketOutput {
-	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucket {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectStorageBucket
-		return ret
-	}).(ObjectStorageBucketOutput)
-}
-
 type ObjectStorageBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectStorageBucket)(nil))
+	return reflect.TypeOf((*[]*ObjectStorageBucket)(nil)).Elem()
 }
 
 func (o ObjectStorageBucketArrayOutput) ToObjectStorageBucketArrayOutput() ObjectStorageBucketArrayOutput {
@@ -365,15 +302,15 @@ func (o ObjectStorageBucketArrayOutput) ToObjectStorageBucketArrayOutputWithCont
 }
 
 func (o ObjectStorageBucketArrayOutput) Index(i pulumi.IntInput) ObjectStorageBucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageBucket {
-		return vs[0].([]ObjectStorageBucket)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectStorageBucket {
+		return vs[0].([]*ObjectStorageBucket)[vs[1].(int)]
 	}).(ObjectStorageBucketOutput)
 }
 
 type ObjectStorageBucketMapOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ObjectStorageBucket)(nil))
+	return reflect.TypeOf((*map[string]*ObjectStorageBucket)(nil)).Elem()
 }
 
 func (o ObjectStorageBucketMapOutput) ToObjectStorageBucketMapOutput() ObjectStorageBucketMapOutput {
@@ -385,18 +322,16 @@ func (o ObjectStorageBucketMapOutput) ToObjectStorageBucketMapOutputWithContext(
 }
 
 func (o ObjectStorageBucketMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageBucketOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectStorageBucket {
-		return vs[0].(map[string]ObjectStorageBucket)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ObjectStorageBucket {
+		return vs[0].(map[string]*ObjectStorageBucket)[vs[1].(string)]
 	}).(ObjectStorageBucketOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketInput)(nil)).Elem(), &ObjectStorageBucket{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketPtrInput)(nil)).Elem(), &ObjectStorageBucket{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketArrayInput)(nil)).Elem(), ObjectStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketMapInput)(nil)).Elem(), ObjectStorageBucketMap{})
 	pulumi.RegisterOutputType(ObjectStorageBucketOutput{})
-	pulumi.RegisterOutputType(ObjectStorageBucketPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketMapOutput{})
 }
