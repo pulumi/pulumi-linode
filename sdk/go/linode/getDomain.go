@@ -26,16 +26,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "1234567"
 // 		_, err := linode.LookupDomain(ctx, &GetDomainArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.StringRef("1234567"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "bar.example.com"
 // 		_, err = linode.LookupDomain(ctx, &GetDomainArgs{
-// 			Domain: &opt1,
+// 			Domain: pulumi.StringRef("bar.example.com"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
