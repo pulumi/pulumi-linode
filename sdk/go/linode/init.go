@@ -34,6 +34,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "linode:index/instanceIp:InstanceIp":
 		r = &InstanceIp{}
+	case "linode:index/ipv6Range:Ipv6Range":
+		r = &Ipv6Range{}
 	case "linode:index/lkeCluster:LkeCluster":
 		r = &LkeCluster{}
 	case "linode:index/nodeBalancer:NodeBalancer":
@@ -121,6 +123,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/instanceIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/ipv6Range",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

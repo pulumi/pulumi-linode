@@ -154,13 +154,21 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
     ## Filterable Fields
 
+    * `created_by`
+
     * `deprecated`
+
+    * `description`
+
+    * `id`
 
     * `is_public`
 
     * `label`
 
     * `size`
+
+    * `status`
 
     * `vendor`
 
@@ -254,13 +262,21 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
 
     ## Filterable Fields
 
+    * `created_by`
+
     * `deprecated`
+
+    * `description`
+
+    * `id`
 
     * `is_public`
 
     * `label`
 
     * `size`
+
+    * `status`
 
     * `vendor`
 

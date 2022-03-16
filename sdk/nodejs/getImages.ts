@@ -66,13 +66,21 @@ import * as utilities from "./utilities";
  *
  * ## Filterable Fields
  *
+ * * `createdBy`
+ *
  * * `deprecated`
+ *
+ * * `description`
+ *
+ * * `id`
  *
  * * `isPublic`
  *
  * * `label`
  *
  * * `size`
+ *
+ * * `status`
  *
  * * `vendor`
  */

@@ -1026,7 +1026,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n",
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5876,6 +5876,10 @@
                     "type": "string",
                     "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
                 },
+                "booted": {
+                    "type": "boolean",
+                    "description": "Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.\n"
+                },
                 "configs": {
                     "type": "array",
                     "items": {
@@ -5895,7 +5899,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -5934,6 +5938,10 @@
                 "region": {
                     "type": "string",
                     "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n"
+                },
+                "resizeDisk": {
+                    "type": "boolean",
+                    "description": "If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*\n"
                 },
                 "rootPass": {
                     "type": "string",
@@ -5983,6 +5991,7 @@
                 "backups",
                 "backupsEnabled",
                 "bootConfigLabel",
+                "booted",
                 "ipAddress",
                 "ipv4s",
                 "ipv6",
@@ -6024,6 +6033,10 @@
                     "type": "string",
                     "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
                 },
+                "booted": {
+                    "type": "boolean",
+                    "description": "Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.\n"
+                },
                 "configs": {
                     "type": "array",
                     "items": {
@@ -6043,7 +6056,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -6063,6 +6076,10 @@
                 "region": {
                     "type": "string",
                     "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n"
+                },
+                "resizeDisk": {
+                    "type": "boolean",
+                    "description": "If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*\n"
                 },
                 "rootPass": {
                     "type": "string",
@@ -6139,6 +6156,10 @@
                         "type": "string",
                         "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
                     },
+                    "booted": {
+                        "type": "boolean",
+                        "description": "Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.\n"
+                    },
                     "configs": {
                         "type": "array",
                         "items": {
@@ -6158,7 +6179,7 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*\n"
+                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n"
                     },
                     "interfaces": {
                         "type": "array",
@@ -6197,6 +6218,10 @@
                     "region": {
                         "type": "string",
                         "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n"
+                    },
+                    "resizeDisk": {
+                        "type": "boolean",
+                        "description": "If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*\n"
                     },
                     "rootPass": {
                         "type": "string",
@@ -6366,6 +6391,103 @@
                 "type": "object"
             }
         },
+        "linode:index/ipv6Range:Ipv6Range": {
+            "description": "Manages a Linode IPv6 range.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobarInstance = new linode.Instance(\"foobarInstance\", {\n    label: \"my-linode\",\n    image: \"linode/alpine3.14\",\n    type: \"g6-nanode-1\",\n    region: \"us-southeast\",\n});\nconst foobarIpv6Range = new linode.Ipv6Range(\"foobarIpv6Range\", {\n    linodeId: foobarInstance.id,\n    prefixLength: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar_instance = linode.Instance(\"foobarInstance\",\n    label=\"my-linode\",\n    image=\"linode/alpine3.14\",\n    type=\"g6-nanode-1\",\n    region=\"us-southeast\")\nfoobar_ipv6_range = linode.Ipv6Range(\"foobarIpv6Range\",\n    linode_id=foobar_instance.id,\n    prefix_length=64)\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobarInstance = new Linode.Instance(\"foobarInstance\", new Linode.InstanceArgs\n        {\n            Label = \"my-linode\",\n            Image = \"linode/alpine3.14\",\n            Type = \"g6-nanode-1\",\n            Region = \"us-southeast\",\n        });\n        var foobarIpv6Range = new Linode.Ipv6Range(\"foobarIpv6Range\", new Linode.Ipv6RangeArgs\n        {\n            LinodeId = foobarInstance.Id,\n            PrefixLength = 64,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobarInstance, err := linode.NewInstance(ctx, \"foobarInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-linode\"),\n\t\t\tImage:  pulumi.String(\"linode/alpine3.14\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewIpv6Range(ctx, \"foobarIpv6Range\", \u0026linode.Ipv6RangeArgs{\n\t\t\tLinodeId:     foobarInstance.ID(),\n\t\t\tPrefixLength: pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "isBgp": {
+                    "type": "boolean",
+                    "description": "Whether this IPv6 range is shared.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to assign this range to.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.\n"
+                },
+                "prefixLength": {
+                    "type": "integer",
+                    "description": "The prefix length of the IPv6 range.\n"
+                },
+                "range": {
+                    "type": "string",
+                    "description": "The IPv6 range of addresses in this pool.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for this range of IPv6 addresses.\n"
+                },
+                "routeTarget": {
+                    "type": "string",
+                    "description": "The IPv6 SLAAC address to assign this range to.\n"
+                }
+            },
+            "required": [
+                "isBgp",
+                "linodes",
+                "prefixLength",
+                "range",
+                "region"
+            ],
+            "inputProperties": {
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to assign this range to.\n"
+                },
+                "prefixLength": {
+                    "type": "integer",
+                    "description": "The prefix length of the IPv6 range.\n"
+                },
+                "routeTarget": {
+                    "type": "string",
+                    "description": "The IPv6 SLAAC address to assign this range to.\n"
+                }
+            },
+            "requiredInputs": [
+                "prefixLength"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ipv6Range resources.\n",
+                "properties": {
+                    "isBgp": {
+                        "type": "boolean",
+                        "description": "Whether this IPv6 range is shared.\n"
+                    },
+                    "linodeId": {
+                        "type": "integer",
+                        "description": "The ID of the Linode to assign this range to.\n"
+                    },
+                    "linodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.\n"
+                    },
+                    "prefixLength": {
+                        "type": "integer",
+                        "description": "The prefix length of the IPv6 range.\n"
+                    },
+                    "range": {
+                        "type": "string",
+                        "description": "The IPv6 range of addresses in this pool.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region for this range of IPv6 addresses.\n"
+                    },
+                    "routeTarget": {
+                        "type": "string",
+                        "description": "The IPv6 SLAAC address to assign this range to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "linode:index/lkeCluster:LkeCluster": {
             "description": "Manages an LKE cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a basic LKE cluster:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.21\",\n    label: \"my-cluster\",\n    pools: [{\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.21\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.21\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my-cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.21\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: LkeClusterPoolArray{\n\t\t\t\t\u0026LkeClusterPoolArgs{\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nCreating an LKE cluster with autoscaler:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    k8sVersion: \"1.21\",\n    label: \"my-cluster\",\n    pools: [{\n        autoscaler: {\n            max: 10,\n            min: 3,\n        },\n        count: 3,\n        type: \"g6-standard-2\",\n    }],\n    region: \"us-central\",\n    tags: [\"prod\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    k8s_version=\"1.21\",\n    label=\"my-cluster\",\n    pools=[linode.LkeClusterPoolArgs(\n        autoscaler=linode.LkeClusterPoolAutoscalerArgs(\n            max=10,\n            min=3,\n        ),\n        count=3,\n        type=\"g6-standard-2\",\n    )],\n    region=\"us-central\",\n    tags=[\"prod\"])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cluster = new Linode.LkeCluster(\"my-cluster\", new Linode.LkeClusterArgs\n        {\n            K8sVersion = \"1.21\",\n            Label = \"my-cluster\",\n            Pools = \n            {\n                new Linode.Inputs.LkeClusterPoolArgs\n                {\n                    Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs\n                    {\n                        Max = 10,\n                        Min = 3,\n                    },\n                    Count = 3,\n                    Type = \"g6-standard-2\",\n                },\n            },\n            Region = \"us-central\",\n            Tags = \n            {\n                \"prod\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeCluster(ctx, \"my-cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tK8sVersion: pulumi.String(\"1.21\"),\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tPools: LkeClusterPoolArray{\n\t\t\t\t\u0026LkeClusterPoolArgs{\n\t\t\t\t\tAutoscaler: \u0026LkeClusterPoolAutoscalerArgs{\n\t\t\t\t\t\tMax: pulumi.Int(10),\n\t\t\t\t\t\tMin: pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t\tCount: pulumi.Int(3),\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLKE Clusters can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345\n```\n\n ",
             "properties": {
@@ -6382,7 +6504,7 @@
                 },
                 "k8sVersion": {
                     "type": "string",
-                    "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.\n"
+                    "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
                 },
                 "kubeconfig": {
                     "type": "string",
@@ -6432,7 +6554,7 @@
                 },
                 "k8sVersion": {
                     "type": "string",
-                    "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.\n"
+                    "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
                 },
                 "label": {
                     "type": "string",
@@ -6479,7 +6601,7 @@
                     },
                     "k8sVersion": {
                         "type": "string",
-                        "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.\n"
+                        "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
                     },
                     "kubeconfig": {
                         "type": "string",
@@ -8676,7 +8798,7 @@
             }
         },
         "linode:index/getImages:getImages": {
-            "description": "Provides information about Linode images that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode images with a certain label and visibility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_images = pulumi.output(linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 8\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_images = linode.get_images(filters=[\n    linode.GetImagesFilterArgs(\n        name=\"label\",\n        values=[\"Debian 8\"],\n    ),\n    linode.GetImagesFilterArgs(\n        name=\"is_public\",\n        values=[\"true\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_images = Output.Create(Linode.GetImages.InvokeAsync(new Linode.GetImagesArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetImagesFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"Debian 8\",\n                    },\n                },\n                new Linode.Inputs.GetImagesFilterArgs\n                {\n                    Name = \"is_public\",\n                    Values = \n                    {\n                        \"true\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, \u0026GetImagesArgs{\n\t\t\tFilters: []GetImagesFilter{\n\t\t\t\tGetImagesFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Debian 8\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tGetImagesFilter{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nGet information about all Linode images associated with the current token:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_images = pulumi.output(linode.getImages());\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all_images = Output.Create(Linode.GetImages.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode image will be stored in the `images` attribute and will export the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `status` - The current status of this image. (`creating`, `pending_upload`, `available`)\n\n* `type` - How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode. (`manual`, `automatic`)\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n\n## Filterable Fields\n\n* `deprecated`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `vendor`\n",
+            "description": "Provides information about Linode images that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode images with a certain label and visibility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_images = pulumi.output(linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 8\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_images = linode.get_images(filters=[\n    linode.GetImagesFilterArgs(\n        name=\"label\",\n        values=[\"Debian 8\"],\n    ),\n    linode.GetImagesFilterArgs(\n        name=\"is_public\",\n        values=[\"true\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_images = Output.Create(Linode.GetImages.InvokeAsync(new Linode.GetImagesArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetImagesFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"Debian 8\",\n                    },\n                },\n                new Linode.Inputs.GetImagesFilterArgs\n                {\n                    Name = \"is_public\",\n                    Values = \n                    {\n                        \"true\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, \u0026GetImagesArgs{\n\t\t\tFilters: []GetImagesFilter{\n\t\t\t\tGetImagesFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Debian 8\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tGetImagesFilter{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nGet information about all Linode images associated with the current token:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_images = pulumi.output(linode.getImages());\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all_images = Output.Create(Linode.GetImages.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetImages(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode image will be stored in the `images` attribute and will export the following attributes:\n\n* `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n\n* `label` - A short description of the Image.\n\n* `created` - When this Image was created.\n\n* `created_by` - The name of the User who created this Image, or \"linode\" for official Images.\n\n* `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.\n\n* `description` - A detailed description of this Image.\n\n* `is_public` - True if the Image is public.\n\n* `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500\n\n* `status` - The current status of this image. (`creating`, `pending_upload`, `available`)\n\n* `type` - How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode. (`manual`, `automatic`)\n\n* `vendor` - The upstream distribution vendor. `None` for private Images.\n\n## Filterable Fields\n\n* `created_by`\n\n* `deprecated`\n\n* `description`\n\n* `id`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `status`\n\n* `vendor`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getImages.\n",
                 "properties": {
@@ -9729,7 +9851,7 @@
             }
         },
         "linode:index/getStackScripts:getStackScripts": {
-            "description": "Provides information about Linode StackScripts that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode StackScript.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_stackscripts = pulumi.output(linode.getStackScripts({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-cool-stackscript\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"false\"],\n        },\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_stackscripts = linode.get_stack_scripts(filters=[\n    linode.GetStackScriptsFilterArgs(\n        name=\"label\",\n        values=[\"my-cool-stackscript\"],\n    ),\n    linode.GetStackScriptsFilterArgs(\n        name=\"is_public\",\n        values=[\"false\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_stackscripts = Output.Create(Linode.GetStackScripts.InvokeAsync(new Linode.GetStackScriptsArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"my-cool-stackscript\",\n                    },\n                },\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"is_public\",\n                    Values = \n                    {\n                        \"false\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetStackScripts(ctx, \u0026GetStackScriptsArgs{\n\t\t\tFilters: []GetStackScriptsFilter{\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-cool-stackscript\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"false\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:\n\n* `id` - The unique ID of the StackScript.\n\n* `label` - The StackScript's label is for display purposes only.\n\n* `script` - The script to execute when provisioning a new Linode with this StackScript.\n\n* `description` - A description for the StackScript.\n\n* `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.\n\n* `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.\n\n* `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n\n## Filterable Fields\n\n* `deployments_total`\n\n* `description`\n\n* `is_public`\n\n* `label`\n\n* `mine`\n\n* `rev_note`\n",
+            "description": "Provides information about Linode StackScripts that match a set of filters.\n\n**NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode StackScript.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific_stackscripts = pulumi.output(linode.getStackScripts({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-cool-stackscript\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"false\"],\n        },\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_stackscripts = linode.get_stack_scripts(filters=[\n    linode.GetStackScriptsFilterArgs(\n        name=\"label\",\n        values=[\"my-cool-stackscript\"],\n    ),\n    linode.GetStackScriptsFilterArgs(\n        name=\"is_public\",\n        values=[\"false\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var specific_stackscripts = Output.Create(Linode.GetStackScripts.InvokeAsync(new Linode.GetStackScriptsArgs\n        {\n            Filters = \n            {\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"label\",\n                    Values = \n                    {\n                        \"my-cool-stackscript\",\n                    },\n                },\n                new Linode.Inputs.GetStackScriptsFilterArgs\n                {\n                    Name = \"is_public\",\n                    Values = \n                    {\n                        \"false\",\n                    },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetStackScripts(ctx, \u0026GetStackScriptsArgs{\n\t\t\tFilters: []GetStackScriptsFilter{\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-cool-stackscript\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tGetStackScriptsFilter{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"false\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes\n\nEach Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:\n\n* `id` - The unique ID of the StackScript.\n\n* `label` - The StackScript's label is for display purposes only.\n\n* `script` - The script to execute when provisioning a new Linode with this StackScript.\n\n* `description` - A description for the StackScript.\n\n* `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.\n\n* `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.\n\n* `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.\n\n* `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.\n\n* `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.\n\n* `deployments_total` - The total number of times this StackScript has been deployed.\n\n* `username` - The User who created the StackScript.\n\n* `created` - The date this StackScript was created.\n\n* `updated` - The date this StackScript was updated.\n\n* `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.\n\n  * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.\n\n  * `name` - The name of the field.\n\n  * `example` - An example value for the field.\n\n  * `one_of` - A list of acceptable single values for the field.\n\n  * `many_of` - A list of acceptable values for the field in any quantity, combination or order.\n\n  * `default` - The default value. If not specified, this value will be used.\n\n## Filterable Fields\n\n* `deployments_active`\n\n* `deployments_total`\n\n* `description`\n\n* `images`\n\n* `is_public`\n\n* `label`\n\n* `mine`\n\n* `rev_note`\n\n* `username`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getStackScripts.\n",
                 "properties": {

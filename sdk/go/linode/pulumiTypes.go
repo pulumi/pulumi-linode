@@ -3063,7 +3063,7 @@ type InstanceDisk struct {
 	Filesystem *string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label string `pulumi:"label"`
@@ -3099,7 +3099,7 @@ type InstanceDiskArgs struct {
 	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -3186,7 +3186,7 @@ func (o InstanceDiskOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDisk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }

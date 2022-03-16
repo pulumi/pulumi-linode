@@ -12,6 +12,8 @@ import (
 
 // Provides information about Linode StackScripts that match a set of filters.
 //
+// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
+//
 // ## Example Usage
 //
 // The following example shows how one might use this data source to access information about a Linode StackScript.
@@ -95,9 +97,13 @@ import (
 //
 // ## Filterable Fields
 //
+// * `deploymentsActive`
+//
 // * `deploymentsTotal`
 //
 // * `description`
+//
+// * `images`
 //
 // * `isPublic`
 //
@@ -106,6 +112,8 @@ import (
 // * `mine`
 //
 // * `revNote`
+//
+// * `username`
 func GetStackScripts(ctx *pulumi.Context, args *GetStackScriptsArgs, opts ...pulumi.InvokeOption) (*GetStackScriptsResult, error) {
 	var rv GetStackScriptsResult
 	err := ctx.Invoke("linode:index/getStackScripts:getStackScripts", args, &rv, opts...)

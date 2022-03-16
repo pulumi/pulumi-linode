@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode StackScripts that match a set of filters.
  *
+ * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
+ *
  * ## Example Usage
  *
  * The following example shows how one might use this data source to access information about a Linode StackScript.
@@ -75,9 +77,13 @@ import * as utilities from "./utilities";
  *
  * ## Filterable Fields
  *
+ * * `deploymentsActive`
+ *
  * * `deploymentsTotal`
  *
  * * `description`
+ *
+ * * `images`
  *
  * * `isPublic`
  *
@@ -86,6 +92,8 @@ import * as utilities from "./utilities";
  * * `mine`
  *
  * * `revNote`
+ *
+ * * `username`
  */
 export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptsResult> {
     args = args || {};

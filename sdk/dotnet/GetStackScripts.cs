@@ -14,6 +14,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode StackScripts that match a set of filters.
         /// 
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -102,9 +104,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `deployments_active`
+        /// 
         /// * `deployments_total`
         /// 
         /// * `description`
+        /// 
+        /// * `images`
         /// 
         /// * `is_public`
         /// 
@@ -113,6 +119,8 @@ namespace Pulumi.Linode
         /// * `mine`
         /// 
         /// * `rev_note`
+        /// 
+        /// * `username`
         /// </summary>
         public static Task<GetStackScriptsResult> InvokeAsync(GetStackScriptsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsArgs(), options.WithDefaults());
@@ -120,6 +128,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode StackScripts that match a set of filters.
         /// 
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -208,9 +218,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `deployments_active`
+        /// 
         /// * `deployments_total`
         /// 
         /// * `description`
+        /// 
+        /// * `images`
         /// 
         /// * `is_public`
         /// 
@@ -219,6 +233,8 @@ namespace Pulumi.Linode
         /// * `mine`
         /// 
         /// * `rev_note`
+        /// 
+        /// * `username`
         /// </summary>
         public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());

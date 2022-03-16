@@ -23,7 +23,7 @@ class LkeClusterArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
-        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
@@ -43,7 +43,7 @@ class LkeClusterArgs:
     @pulumi.getter(name="k8sVersion")
     def k8s_version(self) -> pulumi.Input[str]:
         """
-        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         """
         return pulumi.get(self, "k8s_version")
 
@@ -128,7 +128,7 @@ class _LkeClusterState:
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
@@ -183,7 +183,7 @@ class _LkeClusterState:
     @pulumi.getter(name="k8sVersion")
     def k8s_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         """
         return pulumi.get(self, "k8s_version")
 
@@ -330,7 +330,7 @@ class LkeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
@@ -471,7 +471,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
@@ -514,7 +514,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter(name="k8sVersion")
     def k8s_version(self) -> pulumi.Output[str]:
         """
-        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         """
         return pulumi.get(self, "k8s_version")
 

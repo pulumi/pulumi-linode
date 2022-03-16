@@ -193,6 +193,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_instance_ip":           {Tok: makeResource(mainMod, "InstanceIp")},
 			"linode_user":                  {Tok: makeResource(mainMod, "User")},
 			"linode_firewall_device":       {Tok: makeResource(mainMod, "FirewallDevice")},
+			"linode_ipv6_range":            {Tok: makeResource(mainMod, "Ipv6Range")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_vlans":   {Tok: makeDataSource(mainMod, "getVlans")},

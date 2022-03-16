@@ -101,7 +101,7 @@ type LkeCluster struct {
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
@@ -162,7 +162,7 @@ type lkeClusterState struct {
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig *string `pulumi:"kubeconfig"`
@@ -183,7 +183,7 @@ type LkeClusterState struct {
 	ApiEndpoints pulumi.StringArrayInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringPtrInput
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig pulumi.StringPtrInput
@@ -206,7 +206,7 @@ func (LkeClusterState) ElementType() reflect.Type {
 type lkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
 	Label string `pulumi:"label"`
@@ -222,7 +222,7 @@ type lkeClusterArgs struct {
 type LkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringInput

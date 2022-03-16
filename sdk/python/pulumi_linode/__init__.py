@@ -37,6 +37,7 @@ from .get_volume import *
 from .image import *
 from .instance import *
 from .instance_ip import *
+from .ipv6_range import *
 from .lke_cluster import *
 from .node_balancer import *
 from .node_balancer_config import *
@@ -118,6 +119,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/instanceIp:InstanceIp": "InstanceIp"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/ipv6Range",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/ipv6Range:Ipv6Range": "Ipv6Range"
   }
  },
  {

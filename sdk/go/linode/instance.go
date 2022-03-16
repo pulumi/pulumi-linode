@@ -187,12 +187,14 @@ type Instance struct {
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringOutput `pulumi:"bootConfigLabel"`
+	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
 	Disks   InstanceDiskArrayOutput   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrOutput `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -214,6 +216,8 @@ type Instance struct {
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// Information about the resources available to this Linode.
@@ -280,12 +284,14 @@ type instanceState struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
+	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
 	Disks   []InstanceDisk   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -307,6 +313,8 @@ type instanceState struct {
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
+	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// Information about the resources available to this Linode.
@@ -342,12 +350,14 @@ type InstanceState struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
+	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
 	Disks   InstanceDiskArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -369,6 +379,8 @@ type InstanceState struct {
 	PrivateIpAddress pulumi.StringPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringPtrInput
+	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
 	// Information about the resources available to this Linode.
@@ -406,12 +418,14 @@ type instanceArgs struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
+	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
 	Disks   []InstanceDisk   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -422,6 +436,8 @@ type instanceArgs struct {
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region string `pulumi:"region"`
+	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -452,12 +468,14 @@ type InstanceArgs struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
+	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
 	Disks   InstanceDiskArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -468,6 +486,8 @@ type InstanceArgs struct {
 	PrivateIp pulumi.BoolPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringInput
+	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*

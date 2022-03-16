@@ -95,7 +95,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     public readonly k8sVersion!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface LkeClusterState {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     k8sVersion?: pulumi.Input<string>;
     /**
@@ -225,7 +225,7 @@ export interface LkeClusterArgs {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     k8sVersion: pulumi.Input<string>;
     /**

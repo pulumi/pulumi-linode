@@ -37,6 +37,7 @@ export * from "./getVolume";
 export * from "./image";
 export * from "./instance";
 export * from "./instanceIp";
+export * from "./ipv6Range";
 export * from "./lkeCluster";
 export * from "./nodeBalancer";
 export * from "./nodeBalancerConfig";
@@ -69,6 +70,7 @@ import { FirewallDevice } from "./firewallDevice";
 import { Image } from "./image";
 import { Instance } from "./instance";
 import { InstanceIp } from "./instanceIp";
+import { Ipv6Range } from "./ipv6Range";
 import { LkeCluster } from "./lkeCluster";
 import { NodeBalancer } from "./nodeBalancer";
 import { NodeBalancerConfig } from "./nodeBalancerConfig";
@@ -101,6 +103,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
                 return new InstanceIp(name, <any>undefined, { urn })
+            case "linode:index/ipv6Range:Ipv6Range":
+                return new Ipv6Range(name, <any>undefined, { urn })
             case "linode:index/lkeCluster:LkeCluster":
                 return new LkeCluster(name, <any>undefined, { urn })
             case "linode:index/nodeBalancer:NodeBalancer":
@@ -139,6 +143,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
+pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerConfig", _module)
