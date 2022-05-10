@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "linode:index/databaseMysql:DatabaseMysql":
+		r = &DatabaseMysql{}
 	case "linode:index/domain:Domain":
 		r = &Domain{}
 	case "linode:index/domainRecord:DomainRecord":
@@ -90,6 +92,11 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 
 func init() {
 	version, _ := PkgVersion()
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/databaseMysql",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/domain",

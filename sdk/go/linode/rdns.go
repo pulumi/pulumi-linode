@@ -197,6 +197,21 @@ func (o RdnsOutput) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
 	return o
 }
 
+// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
+func (o RdnsOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rdns) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the RDNS address.
+func (o RdnsOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rdns) pulumi.StringOutput { return v.Rdns }).(pulumi.StringOutput)
+}
+
+// If true, the RDNS assignment will be retried within the operation timeout period.
+func (o RdnsOutput) WaitForAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rdns) pulumi.BoolPtrOutput { return v.WaitForAvailable }).(pulumi.BoolPtrOutput)
+}
+
 type RdnsArrayOutput struct{ *pulumi.OutputState }
 
 func (RdnsArrayOutput) ElementType() reflect.Type {

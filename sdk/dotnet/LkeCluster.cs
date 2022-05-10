@@ -109,6 +109,12 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
+        /// The Kubernetes Dashboard access URL for this cluster.
+        /// </summary>
+        [Output("dashboardUrl")]
+        public Output<string> DashboardUrl { get; private set; } = null!;
+
+        /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
         [Output("k8sVersion")]
@@ -268,6 +274,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
+
+        /// <summary>
+        /// The Kubernetes Dashboard access URL for this cluster.
+        /// </summary>
+        [Input("dashboardUrl")]
+        public Input<string>? DashboardUrl { get; set; }
 
         /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.

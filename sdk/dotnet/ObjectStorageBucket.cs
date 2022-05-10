@@ -14,7 +14,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// The following example shows how one might use this resource to create an Object Storage Bucket.
+    /// The following example shows how one might use this resource to create an Object Storage Bucket:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,7 +31,46 @@ namespace Pulumi.Linode
     ///         var foobar = new Linode.ObjectStorageBucket("foobar", new Linode.ObjectStorageBucketArgs
     ///         {
     ///             Cluster = primary.Apply(primary =&gt; primary.Id),
-    ///             Label = "%s",
+    ///             Label = "mybucket",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Creating an Object Storage Bucket with Lifecycle rules:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mykey = new Linode.ObjectStorageKey("mykey", new Linode.ObjectStorageKeyArgs
+    ///         {
+    ///             Label = "image-access",
+    ///         });
+    ///         var mybucket = new Linode.ObjectStorageBucket("mybucket", new Linode.ObjectStorageBucketArgs
+    ///         {
+    ///             AccessKey = mykey.AccessKey,
+    ///             SecretKey = mykey.SecretKey,
+    ///             Cluster = "us-east-1",
+    ///             Label = "mybucket",
+    ///             LifecycleRules = 
+    ///             {
+    ///                 new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs
+    ///                 {
+    ///                     Id = "my-rule",
+    ///                     Enabled = true,
+    ///                     AbortIncompleteMultipartUploadDays = 5,
+    ///                     Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs
+    ///                     {
+    ///                         Date = "2021-06-21",
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 

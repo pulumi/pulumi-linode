@@ -354,6 +354,56 @@ func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) Firewal
 	return o
 }
 
+// The devices associated with this firewall.
+func (o FirewallOutput) Devices() FirewallDeviceTypeArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallDeviceTypeArrayOutput { return v.Devices }).(FirewallDeviceTypeArrayOutput)
+}
+
+// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+func (o FirewallOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+func (o FirewallOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+// A firewall rule that specifies what inbound network traffic is allowed.
+func (o FirewallOutput) Inbounds() FirewallInboundArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallInboundArrayOutput { return v.Inbounds }).(FirewallInboundArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o FirewallOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// A list of IDs of Linodes this Firewall should govern it's network traffic for.
+func (o FirewallOutput) Linodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.IntArrayOutput { return v.Linodes }).(pulumi.IntArrayOutput)
+}
+
+// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
+func (o FirewallOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+// A firewall rule that specifies what outbound network traffic is allowed.
+func (o FirewallOutput) Outbounds() FirewallOutboundArrayOutput {
+	return o.ApplyT(func(v *Firewall) FirewallOutboundArrayOutput { return v.Outbounds }).(FirewallOutboundArrayOutput)
+}
+
+// The status of the Firewall.
+func (o FirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type FirewallArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallArrayOutput) ElementType() reflect.Type {

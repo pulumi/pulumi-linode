@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./databaseMysql";
 export * from "./domain";
 export * from "./domainRecord";
 export * from "./firewall";
 export * from "./firewallDevice";
 export * from "./getAccount";
+export * from "./getDatabaseEngines";
+export * from "./getDatabaseMysqlBackups";
+export * from "./getDatabases";
 export * from "./getDomain";
 export * from "./getDomainRecord";
 export * from "./getFirewall";
@@ -63,6 +67,7 @@ export {
 };
 
 // Import resources to register:
+import { DatabaseMysql } from "./databaseMysql";
 import { Domain } from "./domain";
 import { DomainRecord } from "./domainRecord";
 import { Firewall } from "./firewall";
@@ -89,6 +94,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "linode:index/databaseMysql:DatabaseMysql":
+                return new DatabaseMysql(name, <any>undefined, { urn })
             case "linode:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "linode:index/domainRecord:DomainRecord":
@@ -136,6 +143,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)

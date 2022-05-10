@@ -381,6 +381,101 @@ func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutputWithContext(ctx co
 	return o
 }
 
+// The access key to authenticate with.
+func (o ObjectStorageObjectOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
+func (o ObjectStorageObjectOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the bucket to put the object in.
+func (o ObjectStorageObjectOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+func (o ObjectStorageObjectOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+// The cluster the bucket is in.
+func (o ObjectStorageObjectOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
+func (o ObjectStorageObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+func (o ObjectStorageObjectOutput) ContentBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
+}
+
+// Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+func (o ObjectStorageObjectOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
+func (o ObjectStorageObjectOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// The language the content is in e.g. en-US or en-GB.
+func (o ObjectStorageObjectOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.ContentLanguage }).(pulumi.StringPtrOutput)
+}
+
+// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+func (o ObjectStorageObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The specific version of this object.
+func (o ObjectStorageObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
+func (o ObjectStorageObjectOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// They name of the object once it is in the bucket.
+func (o ObjectStorageObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// A map of keys/values to provision metadata.
+func (o ObjectStorageObjectOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The secret key to authenitcate with.
+func (o ObjectStorageObjectOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
+func (o ObjectStorageObjectOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// A unique version ID value for the object.
+func (o ObjectStorageObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// Specifies a target URL for website redirect.
+func (o ObjectStorageObjectOutput) WebsiteRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.WebsiteRedirect }).(pulumi.StringPtrOutput)
+}
+
 type ObjectStorageObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageObjectArrayOutput) ElementType() reflect.Type {

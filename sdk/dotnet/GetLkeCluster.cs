@@ -107,6 +107,10 @@ namespace Pulumi.Linode
         public readonly ImmutableArray<string> ApiEndpoints;
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
         /// <summary>
+        /// The Kubernetes Dashboard access URL for this cluster.
+        /// </summary>
+        public readonly string DashboardUrl;
+        /// <summary>
         /// The ID of the node.
         /// </summary>
         public readonly int Id;
@@ -142,6 +146,8 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> controlPlanes,
 
+            string dashboardUrl,
+
             int id,
 
             string k8sVersion,
@@ -160,6 +166,7 @@ namespace Pulumi.Linode
         {
             ApiEndpoints = apiEndpoints;
             ControlPlanes = controlPlanes;
+            DashboardUrl = dashboardUrl;
             Id = id;
             K8sVersion = k8sVersion;
             Kubeconfig = kubeconfig;

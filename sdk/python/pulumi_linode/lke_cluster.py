@@ -117,6 +117,7 @@ class _LkeClusterState:
     def __init__(__self__, *,
                  api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
+                 dashboard_url: Optional[pulumi.Input[str]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  kubeconfig: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -128,6 +129,7 @@ class _LkeClusterState:
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -140,6 +142,8 @@ class _LkeClusterState:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
+        if dashboard_url is not None:
+            pulumi.set(__self__, "dashboard_url", dashboard_url)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
         if kubeconfig is not None:
@@ -178,6 +182,18 @@ class _LkeClusterState:
     @control_plane.setter
     def control_plane(self, value: Optional[pulumi.Input['LkeClusterControlPlaneArgs']]):
         pulumi.set(self, "control_plane", value)
+
+    @property
+    @pulumi.getter(name="dashboardUrl")
+    def dashboard_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kubernetes Dashboard access URL for this cluster.
+        """
+        return pulumi.get(self, "dashboard_url")
+
+    @dashboard_url.setter
+    def dashboard_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard_url", value)
 
     @property
     @pulumi.getter(name="k8sVersion")
@@ -441,6 +457,7 @@ class LkeCluster(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
             __props__.__dict__["api_endpoints"] = None
+            __props__.__dict__["dashboard_url"] = None
             __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["status"] = None
         super(LkeCluster, __self__).__init__(
@@ -455,6 +472,7 @@ class LkeCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
+            dashboard_url: Optional[pulumi.Input[str]] = None,
             k8s_version: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
@@ -471,6 +489,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -485,6 +504,7 @@ class LkeCluster(pulumi.CustomResource):
 
         __props__.__dict__["api_endpoints"] = api_endpoints
         __props__.__dict__["control_plane"] = control_plane
+        __props__.__dict__["dashboard_url"] = dashboard_url
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["label"] = label
@@ -509,6 +529,14 @@ class LkeCluster(pulumi.CustomResource):
         Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "control_plane")
+
+    @property
+    @pulumi.getter(name="dashboardUrl")
+    def dashboard_url(self) -> pulumi.Output[str]:
+        """
+        The Kubernetes Dashboard access URL for this cluster.
+        """
+        return pulumi.get(self, "dashboard_url")
 
     @property
     @pulumi.getter(name="k8sVersion")

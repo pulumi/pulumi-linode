@@ -339,6 +339,71 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
+func (o DomainOutput) AxfrIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.AxfrIps }).(pulumi.StringArrayOutput)
+}
+
+// A description for this Domain. This is for display purposes only.
+func (o DomainOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
+func (o DomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+func (o DomainOutput) ExpireSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.ExpireSec }).(pulumi.IntPtrOutput)
+}
+
+// The group this Domain belongs to. This is for display purposes only.
+func (o DomainOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses representing the master DNS for this Domain.
+func (o DomainOutput) MasterIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.MasterIps }).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+func (o DomainOutput) RefreshSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.RefreshSec }).(pulumi.IntPtrOutput)
+}
+
+// The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+func (o DomainOutput) RetrySec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.RetrySec }).(pulumi.IntPtrOutput)
+}
+
+// Start of Authority email address. This is required for master Domains.
+func (o DomainOutput) SoaEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SoaEmail }).(pulumi.StringPtrOutput)
+}
+
+// Used to control whether this Domain is currently being rendered (defaults to "active").
+func (o DomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o DomainOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
+func (o DomainOutput) TtlSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.TtlSec }).(pulumi.IntPtrOutput)
+}
+
+// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
+func (o DomainOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

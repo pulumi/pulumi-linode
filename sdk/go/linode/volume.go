@@ -312,6 +312,42 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+// Volume label.
+func (o VolumeOutput) FilesystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemPath }).(pulumi.StringOutput)
+}
+
+// The label of the Linode Volume
+func (o VolumeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// The ID of a Linode Instance where the Volume should be attached.
+func (o VolumeOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+func (o VolumeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Size of the Volume in GB.
+func (o VolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The status of the volume, indicating the current readiness state.
+func (o VolumeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o VolumeOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type VolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeArrayOutput) ElementType() reflect.Type {

@@ -224,6 +224,31 @@ func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutputWithContext(ctx context.
 	return o
 }
 
+// This keypair's access key. This is not secret.
+func (o ObjectStorageKeyOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+func (o ObjectStorageKeyOutput) BucketAccesses() ObjectStorageKeyBucketAccessArrayOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) ObjectStorageKeyBucketAccessArrayOutput { return v.BucketAccesses }).(ObjectStorageKeyBucketAccessArrayOutput)
+}
+
+// The label given to this key. For display purposes only.
+func (o ObjectStorageKeyOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// Whether or not this key is a limited access key.
+func (o ObjectStorageKeyOutput) Limited() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) pulumi.BoolOutput { return v.Limited }).(pulumi.BoolOutput)
+}
+
+// This keypair's secret key.
+func (o ObjectStorageKeyOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+}
+
 type ObjectStorageKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageKeyArrayOutput) ElementType() reflect.Type {

@@ -6204,6 +6204,759 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	}).(UserVolumeGrantOutput)
 }
 
+type GetDatabaseEnginesEngine struct {
+	Engine  string `pulumi:"engine"`
+	Id      string `pulumi:"id"`
+	Version string `pulumi:"version"`
+}
+
+// GetDatabaseEnginesEngineInput is an input type that accepts GetDatabaseEnginesEngineArgs and GetDatabaseEnginesEngineOutput values.
+// You can construct a concrete instance of `GetDatabaseEnginesEngineInput` via:
+//
+//          GetDatabaseEnginesEngineArgs{...}
+type GetDatabaseEnginesEngineInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEnginesEngineOutput() GetDatabaseEnginesEngineOutput
+	ToGetDatabaseEnginesEngineOutputWithContext(context.Context) GetDatabaseEnginesEngineOutput
+}
+
+type GetDatabaseEnginesEngineArgs struct {
+	Engine  pulumi.StringInput `pulumi:"engine"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetDatabaseEnginesEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEnginesEngine)(nil)).Elem()
+}
+
+func (i GetDatabaseEnginesEngineArgs) ToGetDatabaseEnginesEngineOutput() GetDatabaseEnginesEngineOutput {
+	return i.ToGetDatabaseEnginesEngineOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEnginesEngineArgs) ToGetDatabaseEnginesEngineOutputWithContext(ctx context.Context) GetDatabaseEnginesEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEnginesEngineOutput)
+}
+
+// GetDatabaseEnginesEngineArrayInput is an input type that accepts GetDatabaseEnginesEngineArray and GetDatabaseEnginesEngineArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseEnginesEngineArrayInput` via:
+//
+//          GetDatabaseEnginesEngineArray{ GetDatabaseEnginesEngineArgs{...} }
+type GetDatabaseEnginesEngineArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEnginesEngineArrayOutput() GetDatabaseEnginesEngineArrayOutput
+	ToGetDatabaseEnginesEngineArrayOutputWithContext(context.Context) GetDatabaseEnginesEngineArrayOutput
+}
+
+type GetDatabaseEnginesEngineArray []GetDatabaseEnginesEngineInput
+
+func (GetDatabaseEnginesEngineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEnginesEngine)(nil)).Elem()
+}
+
+func (i GetDatabaseEnginesEngineArray) ToGetDatabaseEnginesEngineArrayOutput() GetDatabaseEnginesEngineArrayOutput {
+	return i.ToGetDatabaseEnginesEngineArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEnginesEngineArray) ToGetDatabaseEnginesEngineArrayOutputWithContext(ctx context.Context) GetDatabaseEnginesEngineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEnginesEngineArrayOutput)
+}
+
+type GetDatabaseEnginesEngineOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEnginesEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEnginesEngine)(nil)).Elem()
+}
+
+func (o GetDatabaseEnginesEngineOutput) ToGetDatabaseEnginesEngineOutput() GetDatabaseEnginesEngineOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesEngineOutput) ToGetDatabaseEnginesEngineOutputWithContext(ctx context.Context) GetDatabaseEnginesEngineOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesEngineOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseEnginesEngineOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseEnginesEngineOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetDatabaseEnginesEngineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEnginesEngineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEnginesEngine)(nil)).Elem()
+}
+
+func (o GetDatabaseEnginesEngineArrayOutput) ToGetDatabaseEnginesEngineArrayOutput() GetDatabaseEnginesEngineArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesEngineArrayOutput) ToGetDatabaseEnginesEngineArrayOutputWithContext(ctx context.Context) GetDatabaseEnginesEngineArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesEngineArrayOutput) Index(i pulumi.IntInput) GetDatabaseEnginesEngineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEnginesEngine {
+		return vs[0].([]GetDatabaseEnginesEngine)[vs[1].(int)]
+	}).(GetDatabaseEnginesEngineOutput)
+}
+
+type GetDatabaseEnginesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetDatabaseEnginesFilterInput is an input type that accepts GetDatabaseEnginesFilterArgs and GetDatabaseEnginesFilterOutput values.
+// You can construct a concrete instance of `GetDatabaseEnginesFilterInput` via:
+//
+//          GetDatabaseEnginesFilterArgs{...}
+type GetDatabaseEnginesFilterInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEnginesFilterOutput() GetDatabaseEnginesFilterOutput
+	ToGetDatabaseEnginesFilterOutputWithContext(context.Context) GetDatabaseEnginesFilterOutput
+}
+
+type GetDatabaseEnginesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDatabaseEnginesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEnginesFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseEnginesFilterArgs) ToGetDatabaseEnginesFilterOutput() GetDatabaseEnginesFilterOutput {
+	return i.ToGetDatabaseEnginesFilterOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEnginesFilterArgs) ToGetDatabaseEnginesFilterOutputWithContext(ctx context.Context) GetDatabaseEnginesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEnginesFilterOutput)
+}
+
+// GetDatabaseEnginesFilterArrayInput is an input type that accepts GetDatabaseEnginesFilterArray and GetDatabaseEnginesFilterArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseEnginesFilterArrayInput` via:
+//
+//          GetDatabaseEnginesFilterArray{ GetDatabaseEnginesFilterArgs{...} }
+type GetDatabaseEnginesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEnginesFilterArrayOutput() GetDatabaseEnginesFilterArrayOutput
+	ToGetDatabaseEnginesFilterArrayOutputWithContext(context.Context) GetDatabaseEnginesFilterArrayOutput
+}
+
+type GetDatabaseEnginesFilterArray []GetDatabaseEnginesFilterInput
+
+func (GetDatabaseEnginesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEnginesFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseEnginesFilterArray) ToGetDatabaseEnginesFilterArrayOutput() GetDatabaseEnginesFilterArrayOutput {
+	return i.ToGetDatabaseEnginesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEnginesFilterArray) ToGetDatabaseEnginesFilterArrayOutputWithContext(ctx context.Context) GetDatabaseEnginesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEnginesFilterArrayOutput)
+}
+
+type GetDatabaseEnginesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEnginesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEnginesFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseEnginesFilterOutput) ToGetDatabaseEnginesFilterOutput() GetDatabaseEnginesFilterOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesFilterOutput) ToGetDatabaseEnginesFilterOutputWithContext(ctx context.Context) GetDatabaseEnginesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetDatabaseEnginesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by.
+func (o GetDatabaseEnginesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetDatabaseEnginesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseEnginesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabaseEnginesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEnginesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEnginesFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseEnginesFilterArrayOutput) ToGetDatabaseEnginesFilterArrayOutput() GetDatabaseEnginesFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesFilterArrayOutput) ToGetDatabaseEnginesFilterArrayOutputWithContext(ctx context.Context) GetDatabaseEnginesFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEnginesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabaseEnginesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEnginesFilter {
+		return vs[0].([]GetDatabaseEnginesFilter)[vs[1].(int)]
+	}).(GetDatabaseEnginesFilterOutput)
+}
+
+type GetDatabaseMysqlBackupsBackup struct {
+	Created string `pulumi:"created"`
+	Id      int    `pulumi:"id"`
+	Label   string `pulumi:"label"`
+	Type    string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlBackupsBackupInput is an input type that accepts GetDatabaseMysqlBackupsBackupArgs and GetDatabaseMysqlBackupsBackupOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlBackupsBackupInput` via:
+//
+//          GetDatabaseMysqlBackupsBackupArgs{...}
+type GetDatabaseMysqlBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput
+	ToGetDatabaseMysqlBackupsBackupOutputWithContext(context.Context) GetDatabaseMysqlBackupsBackupOutput
+}
+
+type GetDatabaseMysqlBackupsBackupArgs struct {
+	Created pulumi.StringInput `pulumi:"created"`
+	Id      pulumi.IntInput    `pulumi:"id"`
+	Label   pulumi.StringInput `pulumi:"label"`
+	Type    pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlBackupsBackupArgs) ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput {
+	return i.ToGetDatabaseMysqlBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlBackupsBackupArgs) ToGetDatabaseMysqlBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsBackupOutput)
+}
+
+// GetDatabaseMysqlBackupsBackupArrayInput is an input type that accepts GetDatabaseMysqlBackupsBackupArray and GetDatabaseMysqlBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlBackupsBackupArrayInput` via:
+//
+//          GetDatabaseMysqlBackupsBackupArray{ GetDatabaseMysqlBackupsBackupArgs{...} }
+type GetDatabaseMysqlBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput
+	ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(context.Context) GetDatabaseMysqlBackupsBackupArrayOutput
+}
+
+type GetDatabaseMysqlBackupsBackupArray []GetDatabaseMysqlBackupsBackupInput
+
+func (GetDatabaseMysqlBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlBackupsBackupArray) ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput {
+	return i.ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlBackupsBackupArray) ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsBackupArrayOutput)
+}
+
+type GetDatabaseMysqlBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) ToGetDatabaseMysqlBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlBackupsBackupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlBackupsBackupArrayOutput) ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsBackupArrayOutput) ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlBackupsBackup {
+		return vs[0].([]GetDatabaseMysqlBackupsBackup)[vs[1].(int)]
+	}).(GetDatabaseMysqlBackupsBackupOutput)
+}
+
+type GetDatabaseMysqlBackupsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetDatabaseMysqlBackupsFilterInput is an input type that accepts GetDatabaseMysqlBackupsFilterArgs and GetDatabaseMysqlBackupsFilterOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlBackupsFilterInput` via:
+//
+//          GetDatabaseMysqlBackupsFilterArgs{...}
+type GetDatabaseMysqlBackupsFilterInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput
+	ToGetDatabaseMysqlBackupsFilterOutputWithContext(context.Context) GetDatabaseMysqlBackupsFilterOutput
+}
+
+type GetDatabaseMysqlBackupsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDatabaseMysqlBackupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlBackupsFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlBackupsFilterArgs) ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput {
+	return i.ToGetDatabaseMysqlBackupsFilterOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlBackupsFilterArgs) ToGetDatabaseMysqlBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsFilterOutput)
+}
+
+// GetDatabaseMysqlBackupsFilterArrayInput is an input type that accepts GetDatabaseMysqlBackupsFilterArray and GetDatabaseMysqlBackupsFilterArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlBackupsFilterArrayInput` via:
+//
+//          GetDatabaseMysqlBackupsFilterArray{ GetDatabaseMysqlBackupsFilterArgs{...} }
+type GetDatabaseMysqlBackupsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput
+	ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(context.Context) GetDatabaseMysqlBackupsFilterArrayOutput
+}
+
+type GetDatabaseMysqlBackupsFilterArray []GetDatabaseMysqlBackupsFilterInput
+
+func (GetDatabaseMysqlBackupsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlBackupsFilterArray) ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput {
+	return i.ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlBackupsFilterArray) ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsFilterArrayOutput)
+}
+
+type GetDatabaseMysqlBackupsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlBackupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlBackupsFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlBackupsFilterOutput) ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsFilterOutput) ToGetDatabaseMysqlBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetDatabaseMysqlBackupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by.
+func (o GetDatabaseMysqlBackupsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetDatabaseMysqlBackupsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabaseMysqlBackupsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlBackupsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlBackupsFilterArrayOutput) ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsFilterArrayOutput) ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlBackupsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlBackupsFilter {
+		return vs[0].([]GetDatabaseMysqlBackupsFilter)[vs[1].(int)]
+	}).(GetDatabaseMysqlBackupsFilterOutput)
+}
+
+type GetDatabasesDatabase struct {
+	AllowLists      []string `pulumi:"allowLists"`
+	ClusterSize     int      `pulumi:"clusterSize"`
+	Created         string   `pulumi:"created"`
+	Encrypted       bool     `pulumi:"encrypted"`
+	Engine          string   `pulumi:"engine"`
+	HostPrimary     string   `pulumi:"hostPrimary"`
+	HostSecondary   string   `pulumi:"hostSecondary"`
+	Id              int      `pulumi:"id"`
+	InstanceUri     string   `pulumi:"instanceUri"`
+	Label           string   `pulumi:"label"`
+	Region          string   `pulumi:"region"`
+	ReplicationType string   `pulumi:"replicationType"`
+	SslConnection   bool     `pulumi:"sslConnection"`
+	Status          string   `pulumi:"status"`
+	Type            string   `pulumi:"type"`
+	Updated         string   `pulumi:"updated"`
+	Version         string   `pulumi:"version"`
+}
+
+// GetDatabasesDatabaseInput is an input type that accepts GetDatabasesDatabaseArgs and GetDatabasesDatabaseOutput values.
+// You can construct a concrete instance of `GetDatabasesDatabaseInput` via:
+//
+//          GetDatabasesDatabaseArgs{...}
+type GetDatabasesDatabaseInput interface {
+	pulumi.Input
+
+	ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput
+	ToGetDatabasesDatabaseOutputWithContext(context.Context) GetDatabasesDatabaseOutput
+}
+
+type GetDatabasesDatabaseArgs struct {
+	AllowLists      pulumi.StringArrayInput `pulumi:"allowLists"`
+	ClusterSize     pulumi.IntInput         `pulumi:"clusterSize"`
+	Created         pulumi.StringInput      `pulumi:"created"`
+	Encrypted       pulumi.BoolInput        `pulumi:"encrypted"`
+	Engine          pulumi.StringInput      `pulumi:"engine"`
+	HostPrimary     pulumi.StringInput      `pulumi:"hostPrimary"`
+	HostSecondary   pulumi.StringInput      `pulumi:"hostSecondary"`
+	Id              pulumi.IntInput         `pulumi:"id"`
+	InstanceUri     pulumi.StringInput      `pulumi:"instanceUri"`
+	Label           pulumi.StringInput      `pulumi:"label"`
+	Region          pulumi.StringInput      `pulumi:"region"`
+	ReplicationType pulumi.StringInput      `pulumi:"replicationType"`
+	SslConnection   pulumi.BoolInput        `pulumi:"sslConnection"`
+	Status          pulumi.StringInput      `pulumi:"status"`
+	Type            pulumi.StringInput      `pulumi:"type"`
+	Updated         pulumi.StringInput      `pulumi:"updated"`
+	Version         pulumi.StringInput      `pulumi:"version"`
+}
+
+func (GetDatabasesDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput {
+	return i.ToGetDatabasesDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutputWithContext(ctx context.Context) GetDatabasesDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseOutput)
+}
+
+// GetDatabasesDatabaseArrayInput is an input type that accepts GetDatabasesDatabaseArray and GetDatabasesDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetDatabasesDatabaseArrayInput` via:
+//
+//          GetDatabasesDatabaseArray{ GetDatabasesDatabaseArgs{...} }
+type GetDatabasesDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput
+	ToGetDatabasesDatabaseArrayOutputWithContext(context.Context) GetDatabasesDatabaseArrayOutput
+}
+
+type GetDatabasesDatabaseArray []GetDatabasesDatabaseInput
+
+func (GetDatabasesDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput {
+	return i.ToGetDatabasesDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetDatabasesDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseArrayOutput)
+}
+
+type GetDatabasesDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutputWithContext(ctx context.Context) GetDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseOutput) AllowLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) []string { return v.AllowLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) ClusterSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.ClusterSize }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) HostPrimary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostPrimary }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) HostSecondary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostSecondary }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) InstanceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.InstanceUri }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) ReplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.ReplicationType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) SslConnection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) bool { return v.SslConnection }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetDatabasesDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesDatabase {
+		return vs[0].([]GetDatabasesDatabase)[vs[1].(int)]
+	}).(GetDatabasesDatabaseOutput)
+}
+
+type GetDatabasesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetDatabasesFilterInput is an input type that accepts GetDatabasesFilterArgs and GetDatabasesFilterOutput values.
+// You can construct a concrete instance of `GetDatabasesFilterInput` via:
+//
+//          GetDatabasesFilterArgs{...}
+type GetDatabasesFilterInput interface {
+	pulumi.Input
+
+	ToGetDatabasesFilterOutput() GetDatabasesFilterOutput
+	ToGetDatabasesFilterOutputWithContext(context.Context) GetDatabasesFilterOutput
+}
+
+type GetDatabasesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDatabasesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesFilter)(nil)).Elem()
+}
+
+func (i GetDatabasesFilterArgs) ToGetDatabasesFilterOutput() GetDatabasesFilterOutput {
+	return i.ToGetDatabasesFilterOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesFilterArgs) ToGetDatabasesFilterOutputWithContext(ctx context.Context) GetDatabasesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesFilterOutput)
+}
+
+// GetDatabasesFilterArrayInput is an input type that accepts GetDatabasesFilterArray and GetDatabasesFilterArrayOutput values.
+// You can construct a concrete instance of `GetDatabasesFilterArrayInput` via:
+//
+//          GetDatabasesFilterArray{ GetDatabasesFilterArgs{...} }
+type GetDatabasesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasesFilterArrayOutput() GetDatabasesFilterArrayOutput
+	ToGetDatabasesFilterArrayOutputWithContext(context.Context) GetDatabasesFilterArrayOutput
+}
+
+type GetDatabasesFilterArray []GetDatabasesFilterInput
+
+func (GetDatabasesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesFilter)(nil)).Elem()
+}
+
+func (i GetDatabasesFilterArray) ToGetDatabasesFilterArrayOutput() GetDatabasesFilterArrayOutput {
+	return i.ToGetDatabasesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesFilterArray) ToGetDatabasesFilterArrayOutputWithContext(ctx context.Context) GetDatabasesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesFilterArrayOutput)
+}
+
+type GetDatabasesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesFilter)(nil)).Elem()
+}
+
+func (o GetDatabasesFilterOutput) ToGetDatabasesFilterOutput() GetDatabasesFilterOutput {
+	return o
+}
+
+func (o GetDatabasesFilterOutput) ToGetDatabasesFilterOutputWithContext(ctx context.Context) GetDatabasesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetDatabasesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabasesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by.
+func (o GetDatabasesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetDatabasesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabasesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabasesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesFilter)(nil)).Elem()
+}
+
+func (o GetDatabasesFilterArrayOutput) ToGetDatabasesFilterArrayOutput() GetDatabasesFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabasesFilterArrayOutput) ToGetDatabasesFilterArrayOutputWithContext(ctx context.Context) GetDatabasesFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabasesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabasesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesFilter {
+		return vs[0].([]GetDatabasesFilter)[vs[1].(int)]
+	}).(GetDatabasesFilterOutput)
+}
+
 type GetFirewallDeviceType struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId int `pulumi:"entityId"`
@@ -12371,6 +13124,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineInput)(nil)).Elem(), GetDatabaseEnginesEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineArrayInput)(nil)).Elem(), GetDatabaseEnginesEngineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterInput)(nil)).Elem(), GetDatabaseEnginesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterArrayInput)(nil)).Elem(), GetDatabaseEnginesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterInput)(nil)).Elem(), GetDatabasesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterArrayInput)(nil)).Elem(), GetDatabasesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeInput)(nil)).Elem(), GetFirewallDeviceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeArrayInput)(nil)).Elem(), GetFirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundInput)(nil)).Elem(), GetFirewallInboundArgs{})
@@ -12555,6 +13320,18 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEnginesEngineOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEnginesEngineArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEnginesFilterOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEnginesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
+	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasesFilterOutput{})
+	pulumi.RegisterOutputType(GetDatabasesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceTypeOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallInboundOutput{})

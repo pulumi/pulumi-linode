@@ -15,14 +15,12 @@ import (
 //
 // ## Example Usage
 //
-// The following example shows how one might use this resource to create an Object Storage Bucket.
+// The following example shows how one might use this resource to create an Object Storage Bucket:
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
-//
 // 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -37,7 +35,49 @@ import (
 // 		}
 // 		_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
 // 			Cluster: pulumi.String(primary.Id),
-// 			Label:   pulumi.String(fmt.Sprintf("%v%v", "%", "s")),
+// 			Label:   pulumi.String("mybucket"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Creating an Object Storage Bucket with Lifecycle rules:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		mykey, err := linode.NewObjectStorageKey(ctx, "mykey", &linode.ObjectStorageKeyArgs{
+// 			Label: pulumi.String("image-access"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = linode.NewObjectStorageBucket(ctx, "mybucket", &linode.ObjectStorageBucketArgs{
+// 			AccessKey: mykey.AccessKey,
+// 			SecretKey: mykey.SecretKey,
+// 			Cluster:   pulumi.String("us-east-1"),
+// 			Label:     pulumi.String("mybucket"),
+// 			LifecycleRules: ObjectStorageBucketLifecycleRuleArray{
+// 				&ObjectStorageBucketLifecycleRuleArgs{
+// 					Id:                                 pulumi.String("my-rule"),
+// 					Enabled:                            pulumi.Bool(true),
+// 					AbortIncompleteMultipartUploadDays: pulumi.Int(5),
+// 					Expiration: &ObjectStorageBucketLifecycleRuleExpirationArgs{
+// 						Date: pulumi.String("2021-06-21"),
+// 					},
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -285,6 +325,51 @@ func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutput() ObjectStorageBu
 
 func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput {
 	return o
+}
+
+// The access key to authenticate with.
+func (o ObjectStorageBucketOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+func (o ObjectStorageBucketOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+// The cert used by this Object Storage Bucket.
+func (o ObjectStorageBucketOutput) Cert() ObjectStorageBucketCertPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketCertPtrOutput { return v.Cert }).(ObjectStorageBucketCertPtrOutput)
+}
+
+// The cluster of the Linode Object Storage Bucket.
+func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// If true, the bucket will have CORS enabled for all origins.
+func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolPtrOutput { return v.CorsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The label of the Linode Object Storage Bucket.
+func (o ObjectStorageBucketOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// Lifecycle rules to be applied to the bucket.
+func (o ObjectStorageBucketOutput) LifecycleRules() ObjectStorageBucketLifecycleRuleArrayOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(ObjectStorageBucketLifecycleRuleArrayOutput)
+}
+
+// The secret key to authenticate with.
+func (o ObjectStorageBucketOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+func (o ObjectStorageBucketOutput) Versioning() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolOutput { return v.Versioning }).(pulumi.BoolOutput)
 }
 
 type ObjectStorageBucketArrayOutput struct{ *pulumi.OutputState }

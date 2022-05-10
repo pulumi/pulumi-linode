@@ -78,6 +78,84 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface GetDatabaseEnginesEngine {
+    engine: string;
+    id: string;
+    version: string;
+}
+
+export interface GetDatabaseEnginesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabaseMysqlBackupsBackup {
+    created: string;
+    id: number;
+    label: string;
+    type: string;
+}
+
+export interface GetDatabaseMysqlBackupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabasesDatabase {
+    allowLists: string[];
+    clusterSize: number;
+    created: string;
+    encrypted: boolean;
+    engine: string;
+    hostPrimary: string;
+    hostSecondary: string;
+    id: number;
+    instanceUri: string;
+    label: string;
+    region: string;
+    replicationType: string;
+    sslConnection: boolean;
+    status: string;
+    type: string;
+    updated: string;
+    version: string;
+}
+
+export interface GetDatabasesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetFirewallDevice {
     /**
      * The ID of the underlying entity this device references (i.e. the Linode's ID).
