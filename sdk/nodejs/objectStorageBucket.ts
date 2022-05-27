@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * The following example shows how one might use this resource to create an Object Storage Bucket.
+ * The following example shows how one might use this resource to create an Object Storage Bucket:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,30 @@ import * as utilities from "./utilities";
  * });
  * const foobar = new linode.ObjectStorageBucket("foobar", {
  *     cluster: primary.then(primary => primary.id),
- *     label: `%s`,
+ *     label: "mybucket",
+ * });
+ * ```
+ *
+ * Creating an Object Storage Bucket with Lifecycle rules:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const mykey = new linode.ObjectStorageKey("mykey", {label: "image-access"});
+ * const mybucket = new linode.ObjectStorageBucket("mybucket", {
+ *     accessKey: mykey.accessKey,
+ *     secretKey: mykey.secretKey,
+ *     cluster: "us-east-1",
+ *     label: "mybucket",
+ *     lifecycleRules: [{
+ *         id: "my-rule",
+ *         enabled: true,
+ *         abortIncompleteMultipartUploadDays: 5,
+ *         expiration: {
+ *             date: "2021-06-21",
+ *         },
+ *     }],
  * });
  * ```
  *

@@ -375,6 +375,76 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// The domains the user has permissions access to.
+func (o UserOutput) DomainGrants() UserDomainGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserDomainGrantArrayOutput { return v.DomainGrants }).(UserDomainGrantArrayOutput)
+}
+
+// The email address of the user.
+func (o UserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The firewalls the user has permissions access to.
+func (o UserOutput) FirewallGrants() UserFirewallGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserFirewallGrantArrayOutput { return v.FirewallGrants }).(UserFirewallGrantArrayOutput)
+}
+
+// A structure containing the Account-level grants a User has.
+func (o UserOutput) GlobalGrants() UserGlobalGrantsOutput {
+	return o.ApplyT(func(v *User) UserGlobalGrantsOutput { return v.GlobalGrants }).(UserGlobalGrantsOutput)
+}
+
+// The images the user has permissions access to.
+func (o UserOutput) ImageGrants() UserImageGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserImageGrantArrayOutput { return v.ImageGrants }).(UserImageGrantArrayOutput)
+}
+
+// The Linodes the user has permissions access to.
+func (o UserOutput) LinodeGrants() UserLinodeGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserLinodeGrantArrayOutput { return v.LinodeGrants }).(UserLinodeGrantArrayOutput)
+}
+
+// The longview the user has permissions access to.
+func (o UserOutput) LongviewGrants() UserLongviewGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserLongviewGrantArrayOutput { return v.LongviewGrants }).(UserLongviewGrantArrayOutput)
+}
+
+// The NodeBalancers the user has permissions access to.
+func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserNodebalancerGrantArrayOutput { return v.NodebalancerGrants }).(UserNodebalancerGrantArrayOutput)
+}
+
+// If true, this user will only have explicit permissions granted.
+func (o UserOutput) Restricted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Restricted }).(pulumi.BoolPtrOutput)
+}
+
+// A list of the User's SSH keys.
+func (o UserOutput) SshKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.SshKeys }).(pulumi.StringArrayOutput)
+}
+
+// The StackScripts the user has permissions access to.
+func (o UserOutput) StackscriptGrants() UserStackscriptGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserStackscriptGrantArrayOutput { return v.StackscriptGrants }).(UserStackscriptGrantArrayOutput)
+}
+
+// Whether the user has two-factor-authentication enabled.
+func (o UserOutput) TfaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.TfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The username of the user.
+func (o UserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
+// The volumes the user has permissions access to.
+func (o UserOutput) VolumeGrants() UserVolumeGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserVolumeGrantArrayOutput { return v.VolumeGrants }).(UserVolumeGrantArrayOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

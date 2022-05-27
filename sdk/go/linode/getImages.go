@@ -98,13 +98,21 @@ import (
 //
 // ## Filterable Fields
 //
+// * `createdBy`
+//
 // * `deprecated`
+//
+// * `description`
+//
+// * `id`
 //
 // * `isPublic`
 //
 // * `label`
 //
 // * `size`
+//
+// * `status`
 //
 // * `vendor`
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {

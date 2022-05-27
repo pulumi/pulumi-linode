@@ -50,6 +50,10 @@ export interface GetLkeClusterResult {
     readonly apiEndpoints: string[];
     readonly controlPlanes: outputs.GetLkeClusterControlPlane[];
     /**
+     * The Kubernetes Dashboard access URL for this cluster.
+     */
+    readonly dashboardUrl: string;
+    /**
      * The ID of the node.
      */
     readonly id: number;

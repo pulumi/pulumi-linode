@@ -143,6 +143,26 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// An HTTP User-Agent Prefix to prepend in API requests.
+func (o ProviderOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// The token that allows you access to your Linode account
+func (o ProviderOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// An HTTP User-Agent Prefix to prepend in API requests.
+func (o ProviderOutput) UaPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UaPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP(S) API address of the Linode API to use.
+func (o ProviderOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

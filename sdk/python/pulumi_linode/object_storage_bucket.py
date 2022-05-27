@@ -334,7 +334,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Example Usage
 
-        The following example shows how one might use this resource to create an Object Storage Bucket.
+        The following example shows how one might use this resource to create an Object Storage Bucket:
 
         ```python
         import pulumi
@@ -343,7 +343,29 @@ class ObjectStorageBucket(pulumi.CustomResource):
         primary = linode.get_object_storage_cluster(id="us-east-1")
         foobar = linode.ObjectStorageBucket("foobar",
             cluster=primary.id,
-            label="%s")
+            label="mybucket")
+        ```
+
+        Creating an Object Storage Bucket with Lifecycle rules:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        mykey = linode.ObjectStorageKey("mykey", label="image-access")
+        mybucket = linode.ObjectStorageBucket("mybucket",
+            access_key=mykey.access_key,
+            secret_key=mykey.secret_key,
+            cluster="us-east-1",
+            label="mybucket",
+            lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(
+                id="my-rule",
+                enabled=True,
+                abort_incomplete_multipart_upload_days=5,
+                expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(
+                    date="2021-06-21",
+                ),
+            )])
         ```
 
         ## Import
@@ -377,7 +399,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Example Usage
 
-        The following example shows how one might use this resource to create an Object Storage Bucket.
+        The following example shows how one might use this resource to create an Object Storage Bucket:
 
         ```python
         import pulumi
@@ -386,7 +408,29 @@ class ObjectStorageBucket(pulumi.CustomResource):
         primary = linode.get_object_storage_cluster(id="us-east-1")
         foobar = linode.ObjectStorageBucket("foobar",
             cluster=primary.id,
-            label="%s")
+            label="mybucket")
+        ```
+
+        Creating an Object Storage Bucket with Lifecycle rules:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        mykey = linode.ObjectStorageKey("mykey", label="image-access")
+        mybucket = linode.ObjectStorageBucket("mybucket",
+            access_key=mykey.access_key,
+            secret_key=mykey.secret_key,
+            cluster="us-east-1",
+            label="mybucket",
+            lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(
+                id="my-rule",
+                enabled=True,
+                abort_incomplete_multipart_upload_days=5,
+                expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(
+                    date="2021-06-21",
+                ),
+            )])
         ```
 
         ## Import

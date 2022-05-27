@@ -311,6 +311,87 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
+// When this Image was created.
+func (o ImageOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// The name of the User who created this Image.
+func (o ImageOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
+func (o ImageOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// A detailed description of this Image.
+func (o ImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Linode Disk that this Image will be created from.
+func (o ImageOutput) DiskId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.DiskId }).(pulumi.IntPtrOutput)
+}
+
+// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+func (o ImageOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
+func (o ImageOutput) FileHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.FileHash }).(pulumi.StringOutput)
+}
+
+// The path of the image file to be uploaded.
+func (o ImageOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.FilePath }).(pulumi.StringPtrOutput)
+}
+
+// True if the Image is public.
+func (o ImageOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// A short description of the Image. Labels cannot contain special characters.
+func (o ImageOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// The ID of the Linode that this Image will be created from.
+func (o ImageOutput) LinodeId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.LinodeId }).(pulumi.IntPtrOutput)
+}
+
+// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+func (o ImageOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The minimum size this Image needs to deploy. Size is in MB.
+func (o ImageOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The current status of this Image.
+func (o ImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
+// a deleted Linode.
+func (o ImageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The upstream distribution vendor. Nil for private Images.
+func (o ImageOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Vendor }).(pulumi.StringOutput)
+}
+
 type ImageArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageArrayOutput) ElementType() reflect.Type {

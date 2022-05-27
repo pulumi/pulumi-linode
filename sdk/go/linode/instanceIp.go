@@ -264,6 +264,56 @@ func (o InstanceIpOutput) ToInstanceIpOutputWithContext(ctx context.Context) Ins
 	return o
 }
 
+// The resulting IPv4 address.
+func (o InstanceIpOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// If true, the instance will be rebooted to update network interfaces.
+func (o InstanceIpOutput) ApplyImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.BoolPtrOutput { return v.ApplyImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// The default gateway for this address
+func (o InstanceIpOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The ID of the Linode to allocate an IPv4 address for.
+func (o InstanceIpOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The number of bits set in the subnet mask.
+func (o InstanceIpOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.IntOutput { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether the IPv4 address is public or private. Defaults to true.
+func (o InstanceIpOutput) Public() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
+}
+
+// The reverse DNS assigned to this address.
+func (o InstanceIpOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Rdns }).(pulumi.StringOutput)
+}
+
+// The region this IP resides in.
+func (o InstanceIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The mask that separates host bits from network bits for this address.
+func (o InstanceIpOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
+func (o InstanceIpOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type InstanceIpArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceIpArrayOutput) ElementType() reflect.Type {

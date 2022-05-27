@@ -362,6 +362,72 @@ func (o StackScriptOutput) ToStackScriptOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The date this StackScript was created.
+func (o StackScriptOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// Count of currently active, deployed Linodes created from this StackScript.
+func (o StackScriptOutput) DeploymentsActive() pulumi.IntOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.IntOutput { return v.DeploymentsActive }).(pulumi.IntOutput)
+}
+
+// The total number of times this StackScript has been deployed.
+func (o StackScriptOutput) DeploymentsTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.IntOutput { return v.DeploymentsTotal }).(pulumi.IntOutput)
+}
+
+// A description for the StackScript.
+func (o StackScriptOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+func (o StackScriptOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
+func (o StackScriptOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// The StackScript's label is for display purposes only.
+func (o StackScriptOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// This field allows you to add notes for the set of revisions made to this StackScript.
+func (o StackScriptOutput) RevNote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringPtrOutput { return v.RevNote }).(pulumi.StringPtrOutput)
+}
+
+// The script to execute when provisioning a new Linode with this StackScript.
+func (o StackScriptOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+}
+
+// The date this StackScript was updated.
+func (o StackScriptOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
+// parameters during deployment.
+func (o StackScriptOutput) UserDefinedFields() StackScriptUserDefinedFieldArrayOutput {
+	return o.ApplyT(func(v *StackScript) StackScriptUserDefinedFieldArrayOutput { return v.UserDefinedFields }).(StackScriptUserDefinedFieldArrayOutput)
+}
+
+// The Gravatar ID for the User who created the StackScript.
+func (o StackScriptOutput) UserGravatarId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.UserGravatarId }).(pulumi.StringOutput)
+}
+
+// The User who created the StackScript.
+func (o StackScriptOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type StackScriptArrayOutput struct{ *pulumi.OutputState }
 
 func (StackScriptArrayOutput) ElementType() reflect.Type {

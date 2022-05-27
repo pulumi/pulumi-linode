@@ -196,6 +196,21 @@ func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutpu
 	return o
 }
 
+// The date this key was added.
+func (o SshKeyOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// A label for the SSH Key.
+func (o SshKeyOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+func (o SshKeyOutput) SshKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.SshKey }).(pulumi.StringOutput)
+}
+
 type SshKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (SshKeyArrayOutput) ElementType() reflect.Type {

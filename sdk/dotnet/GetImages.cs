@@ -100,13 +100,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `created_by`
+        /// 
         /// * `deprecated`
+        /// 
+        /// * `description`
+        /// 
+        /// * `id`
         /// 
         /// * `is_public`
         /// 
         /// * `label`
         /// 
         /// * `size`
+        /// 
+        /// * `status`
         /// 
         /// * `vendor`
         /// </summary>
@@ -202,13 +210,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `created_by`
+        /// 
         /// * `deprecated`
+        /// 
+        /// * `description`
+        /// 
+        /// * `id`
         /// 
         /// * `is_public`
         /// 
         /// * `label`
         /// 
         /// * `size`
+        /// 
+        /// * `status`
         /// 
         /// * `vendor`
         /// </summary>

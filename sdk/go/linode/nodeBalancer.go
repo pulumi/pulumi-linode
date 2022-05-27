@@ -294,6 +294,56 @@ func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.IntPtrOutput { return v.ClientConnThrottle }).(pulumi.IntPtrOutput)
+}
+
+// When this NodeBalancer was created.
+func (o NodeBalancerOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+func (o NodeBalancerOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The Public IPv4 Address of this NodeBalancer
+func (o NodeBalancerOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// The Public IPv6 Address of this NodeBalancer
+func (o NodeBalancerOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o NodeBalancerOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+func (o NodeBalancerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o NodeBalancerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Information about the amount of transfer this NodeBalancer has had so far this month.
+func (o NodeBalancerOutput) Transfers() NodeBalancerTransferArrayOutput {
+	return o.ApplyT(func(v *NodeBalancer) NodeBalancerTransferArrayOutput { return v.Transfers }).(NodeBalancerTransferArrayOutput)
+}
+
+// When this NodeBalancer was last updated.
+func (o NodeBalancerOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 type NodeBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerArrayOutput) ElementType() reflect.Type {

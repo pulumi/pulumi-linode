@@ -248,6 +248,41 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutputWithContext(ctx context.
 	return o
 }
 
+// The private IP Address where this backend can be reached. This must be a private IP address.
+func (o NodeBalancerNodeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The ID of the NodeBalancerConfig to access.
+func (o NodeBalancerNodeOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
+}
+
+// The label of the Linode NodeBalancer Node. This is for display purposes only.
+func (o NodeBalancerNodeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+func (o NodeBalancerNodeOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The ID of the NodeBalancer to access.
+func (o NodeBalancerNodeOutput) NodebalancerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntOutput { return v.NodebalancerId }).(pulumi.IntOutput)
+}
+
+// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+func (o NodeBalancerNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
+func (o NodeBalancerNodeOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type NodeBalancerNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerNodeArrayOutput) ElementType() reflect.Type {

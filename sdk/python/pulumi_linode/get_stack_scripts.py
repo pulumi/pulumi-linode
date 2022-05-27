@@ -98,6 +98,8 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     """
     Provides information about Linode StackScripts that match a set of filters.
 
+    **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+
     ## Example Usage
 
     The following example shows how one might use this data source to access information about a Linode StackScript.
@@ -163,9 +165,13 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
 
     ## Filterable Fields
 
+    * `deployments_active`
+
     * `deployments_total`
 
     * `description`
+
+    * `images`
 
     * `is_public`
 
@@ -174,6 +180,8 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     * `mine`
 
     * `rev_note`
+
+    * `username`
 
 
     :param bool latest: If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
@@ -209,6 +217,8 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     """
     Provides information about Linode StackScripts that match a set of filters.
 
+    **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+
     ## Example Usage
 
     The following example shows how one might use this data source to access information about a Linode StackScript.
@@ -274,9 +284,13 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
 
     ## Filterable Fields
 
+    * `deployments_active`
+
     * `deployments_total`
 
     * `description`
+
+    * `images`
 
     * `is_public`
 
@@ -285,6 +299,8 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     * `mine`
 
     * `rev_note`
+
+    * `username`
 
 
     :param bool latest: If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.

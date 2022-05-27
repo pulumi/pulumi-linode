@@ -5,11 +5,15 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .database_mysql import *
 from .domain import *
 from .domain_record import *
 from .firewall import *
 from .firewall_device import *
 from .get_account import *
+from .get_database_engines import *
+from .get_database_mysql_backups import *
+from .get_databases import *
 from .get_domain import *
 from .get_domain_record import *
 from .get_firewall import *
@@ -37,6 +41,7 @@ from .get_volume import *
 from .image import *
 from .instance import *
 from .instance_ip import *
+from .ipv6_range import *
 from .lke_cluster import *
 from .node_balancer import *
 from .node_balancer_config import *
@@ -64,6 +69,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "linode",
+  "mod": "index/databaseMysql",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databaseMysql:DatabaseMysql": "DatabaseMysql"
+  }
+ },
  {
   "pkg": "linode",
   "mod": "index/domain",
@@ -118,6 +131,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/instanceIp:InstanceIp": "InstanceIp"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/ipv6Range",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/ipv6Range:Ipv6Range": "Ipv6Range"
   }
  },
  {

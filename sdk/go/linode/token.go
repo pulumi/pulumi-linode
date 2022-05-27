@@ -246,6 +246,31 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
+// The date and time this token was created.
+func (o TokenOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
+func (o TokenOutput) Expiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Expiry }).(pulumi.StringPtrOutput)
+}
+
+// A label for the Token.
+func (o TokenOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+func (o TokenOutput) Scopes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Scopes }).(pulumi.StringOutput)
+}
+
+// The token used to access the API.
+func (o TokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
 type TokenArrayOutput struct{ *pulumi.OutputState }
 
 func (TokenArrayOutput) ElementType() reflect.Type {

@@ -95,7 +95,11 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The Kubernetes Dashboard access URL for this cluster.
+     */
+    public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
+    /**
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     public readonly k8sVersion!: pulumi.Output<string>;
     /**
@@ -138,6 +142,7 @@ export class LkeCluster extends pulumi.CustomResource {
             const state = argsOrState as LkeClusterState | undefined;
             resourceInputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
             resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
+            resourceInputs["dashboardUrl"] = state ? state.dashboardUrl : undefined;
             resourceInputs["k8sVersion"] = state ? state.k8sVersion : undefined;
             resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
@@ -166,6 +171,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["apiEndpoints"] = undefined /*out*/;
+            resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -187,7 +193,11 @@ export interface LkeClusterState {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The Kubernetes Dashboard access URL for this cluster.
+     */
+    dashboardUrl?: pulumi.Input<string>;
+    /**
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     k8sVersion?: pulumi.Input<string>;
     /**
@@ -225,7 +235,7 @@ export interface LkeClusterArgs {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+     * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     k8sVersion: pulumi.Input<string>;
     /**

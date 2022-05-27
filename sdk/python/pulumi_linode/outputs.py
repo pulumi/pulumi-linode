@@ -52,6 +52,12 @@ __all__ = [
     'UserNodebalancerGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
+    'GetDatabaseEnginesEngineResult',
+    'GetDatabaseEnginesFilterResult',
+    'GetDatabaseMysqlBackupsBackupResult',
+    'GetDatabaseMysqlBackupsFilterResult',
+    'GetDatabasesDatabaseResult',
+    'GetDatabasesFilterResult',
     'GetFirewallDeviceResult',
     'GetFirewallInboundResult',
     'GetFirewallOutboundResult',
@@ -1371,7 +1377,7 @@ class InstanceDisk(dict):
         :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param int id: The ID of the disk in the Linode API.
-        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param bool read_only: If true, this Disk is read-only.
         :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -1450,7 +1456,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -2455,6 +2461,312 @@ class UserVolumeGrant(dict):
     @pulumi.getter
     def permissions(self) -> str:
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetDatabaseEnginesEngineResult(dict):
+    def __init__(__self__, *,
+                 engine: str,
+                 id: str,
+                 version: str):
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDatabaseEnginesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 id: int,
+                 label: str,
+                 type: str):
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlBackupsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDatabasesDatabaseResult(dict):
+    def __init__(__self__, *,
+                 allow_lists: Sequence[str],
+                 cluster_size: int,
+                 created: str,
+                 encrypted: bool,
+                 engine: str,
+                 host_primary: str,
+                 host_secondary: str,
+                 id: int,
+                 instance_uri: str,
+                 label: str,
+                 region: str,
+                 replication_type: str,
+                 ssl_connection: bool,
+                 status: str,
+                 type: str,
+                 updated: str,
+                 version: str):
+        pulumi.set(__self__, "allow_lists", allow_lists)
+        pulumi.set(__self__, "cluster_size", cluster_size)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "host_primary", host_primary)
+        pulumi.set(__self__, "host_secondary", host_secondary)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_uri", instance_uri)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "replication_type", replication_type)
+        pulumi.set(__self__, "ssl_connection", ssl_connection)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="allowLists")
+    def allow_lists(self) -> Sequence[str]:
+        return pulumi.get(self, "allow_lists")
+
+    @property
+    @pulumi.getter(name="clusterSize")
+    def cluster_size(self) -> int:
+        return pulumi.get(self, "cluster_size")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> bool:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="hostPrimary")
+    def host_primary(self) -> str:
+        return pulumi.get(self, "host_primary")
+
+    @property
+    @pulumi.getter(name="hostSecondary")
+    def host_secondary(self) -> str:
+        return pulumi.get(self, "host_secondary")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> str:
+        return pulumi.get(self, "instance_uri")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicationType")
+    def replication_type(self) -> str:
+        return pulumi.get(self, "replication_type")
+
+    @property
+    @pulumi.getter(name="sslConnection")
+    def ssl_connection(self) -> bool:
+        return pulumi.get(self, "ssl_connection")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDatabasesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
 
 
 @pulumi.output_type

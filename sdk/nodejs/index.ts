@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./databaseMysql";
 export * from "./domain";
 export * from "./domainRecord";
 export * from "./firewall";
 export * from "./firewallDevice";
 export * from "./getAccount";
+export * from "./getDatabaseEngines";
+export * from "./getDatabaseMysqlBackups";
+export * from "./getDatabases";
 export * from "./getDomain";
 export * from "./getDomainRecord";
 export * from "./getFirewall";
@@ -37,6 +41,7 @@ export * from "./getVolume";
 export * from "./image";
 export * from "./instance";
 export * from "./instanceIp";
+export * from "./ipv6Range";
 export * from "./lkeCluster";
 export * from "./nodeBalancer";
 export * from "./nodeBalancerConfig";
@@ -62,6 +67,7 @@ export {
 };
 
 // Import resources to register:
+import { DatabaseMysql } from "./databaseMysql";
 import { Domain } from "./domain";
 import { DomainRecord } from "./domainRecord";
 import { Firewall } from "./firewall";
@@ -69,6 +75,7 @@ import { FirewallDevice } from "./firewallDevice";
 import { Image } from "./image";
 import { Instance } from "./instance";
 import { InstanceIp } from "./instanceIp";
+import { Ipv6Range } from "./ipv6Range";
 import { LkeCluster } from "./lkeCluster";
 import { NodeBalancer } from "./nodeBalancer";
 import { NodeBalancerConfig } from "./nodeBalancerConfig";
@@ -87,6 +94,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "linode:index/databaseMysql:DatabaseMysql":
+                return new DatabaseMysql(name, <any>undefined, { urn })
             case "linode:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "linode:index/domainRecord:DomainRecord":
@@ -101,6 +110,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
                 return new InstanceIp(name, <any>undefined, { urn })
+            case "linode:index/ipv6Range:Ipv6Range":
+                return new Ipv6Range(name, <any>undefined, { urn })
             case "linode:index/lkeCluster:LkeCluster":
                 return new LkeCluster(name, <any>undefined, { urn })
             case "linode:index/nodeBalancer:NodeBalancer":
@@ -132,6 +143,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
@@ -139,6 +151,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
+pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerConfig", _module)

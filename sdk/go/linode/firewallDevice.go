@@ -253,6 +253,31 @@ func (o FirewallDeviceOutput) ToFirewallDeviceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// When the Firewall Device was last created.
+func (o FirewallDeviceOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// The unique ID of the entity to attach.
+func (o FirewallDeviceOutput) EntityId() pulumi.IntOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.IntOutput { return v.EntityId }).(pulumi.IntOutput)
+}
+
+// The type of the entity to attach. (default: `linode`)
+func (o FirewallDeviceOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.StringPtrOutput { return v.EntityType }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of the target Firewall.
+func (o FirewallDeviceOutput) FirewallId() pulumi.IntOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.IntOutput { return v.FirewallId }).(pulumi.IntOutput)
+}
+
+// When the Firewall Device was last updated.
+func (o FirewallDeviceOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 type FirewallDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallDeviceArrayOutput) ElementType() reflect.Type {

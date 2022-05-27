@@ -101,7 +101,9 @@ type LkeCluster struct {
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The Kubernetes Dashboard access URL for this cluster.
+	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
@@ -162,7 +164,9 @@ type lkeClusterState struct {
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The Kubernetes Dashboard access URL for this cluster.
+	DashboardUrl *string `pulumi:"dashboardUrl"`
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig *string `pulumi:"kubeconfig"`
@@ -183,7 +187,9 @@ type LkeClusterState struct {
 	ApiEndpoints pulumi.StringArrayInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The Kubernetes Dashboard access URL for this cluster.
+	DashboardUrl pulumi.StringPtrInput
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringPtrInput
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig pulumi.StringPtrInput
@@ -206,7 +212,7 @@ func (LkeClusterState) ElementType() reflect.Type {
 type lkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
 	Label string `pulumi:"label"`
@@ -222,7 +228,7 @@ type lkeClusterArgs struct {
 type LkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringInput
@@ -319,6 +325,56 @@ func (o LkeClusterOutput) ToLkeClusterOutput() LkeClusterOutput {
 
 func (o LkeClusterOutput) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
 	return o
+}
+
+// The endpoints for the Kubernetes API server.
+func (o LkeClusterOutput) ApiEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Defines settings for the Kubernetes Control Plane.
+func (o LkeClusterOutput) ControlPlane() LkeClusterControlPlaneOutput {
+	return o.ApplyT(func(v *LkeCluster) LkeClusterControlPlaneOutput { return v.ControlPlane }).(LkeClusterControlPlaneOutput)
+}
+
+// The Kubernetes Dashboard access URL for this cluster.
+func (o LkeClusterOutput) DashboardUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
+}
+
+// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
+func (o LkeClusterOutput) K8sVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
+// The base64 encoded kubeconfig for the Kubernetes cluster.
+func (o LkeClusterOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
+// This Kubernetes cluster's unique label.
+func (o LkeClusterOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// Additional nested attributes:
+func (o LkeClusterOutput) Pools() LkeClusterPoolArrayOutput {
+	return o.ApplyT(func(v *LkeCluster) LkeClusterPoolArrayOutput { return v.Pools }).(LkeClusterPoolArrayOutput)
+}
+
+// This Kubernetes cluster's location.
+func (o LkeClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of the node. (`ready`, `notReady`)
+func (o LkeClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+func (o LkeClusterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type LkeClusterArrayOutput struct{ *pulumi.OutputState }

@@ -109,7 +109,13 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        /// The Kubernetes Dashboard access URL for this cluster.
+        /// </summary>
+        [Output("dashboardUrl")]
+        public Output<string> DashboardUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
         [Output("k8sVersion")]
         public Output<string> K8sVersion { get; private set; } = null!;
@@ -203,7 +209,7 @@ namespace Pulumi.Linode
         public Input<Inputs.LkeClusterControlPlaneArgs>? ControlPlane { get; set; }
 
         /// <summary>
-        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
         [Input("k8sVersion", required: true)]
         public Input<string> K8sVersion { get; set; } = null!;
@@ -270,7 +276,13 @@ namespace Pulumi.Linode
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
         /// <summary>
-        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`), and the latest supported patch version will be deployed.
+        /// The Kubernetes Dashboard access URL for this cluster.
+        /// </summary>
+        [Input("dashboardUrl")]
+        public Input<string>? DashboardUrl { get; set; }
+
+        /// <summary>
+        /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
         [Input("k8sVersion")]
         public Input<string>? K8sVersion { get; set; }

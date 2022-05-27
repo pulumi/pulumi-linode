@@ -22,6 +22,7 @@ class InstanceArgs:
                  backup_id: Optional[pulumi.Input[int]] = None,
                  backups_enabled: Optional[pulumi.Input[bool]] = None,
                  boot_config_label: Optional[pulumi.Input[str]] = None,
+                 booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class InstanceArgs:
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
@@ -45,13 +47,15 @@ class InstanceArgs:
         :param pulumi.Input[int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
+        :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -73,6 +77,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backups_enabled", backups_enabled)
         if boot_config_label is not None:
             pulumi.set(__self__, "boot_config_label", boot_config_label)
+        if booted is not None:
+            pulumi.set(__self__, "booted", booted)
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disks is not None:
@@ -87,6 +93,8 @@ class InstanceArgs:
             pulumi.set(__self__, "label", label)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
+        if resize_disk is not None:
+            pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
             pulumi.set(__self__, "root_pass", root_pass)
         if stackscript_data is not None:
@@ -188,6 +196,18 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def booted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        """
+        return pulumi.get(self, "booted")
+
+    @booted.setter
+    def booted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "booted", value)
+
+    @property
+    @pulumi.getter
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -223,7 +243,7 @@ class InstanceArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -267,6 +287,18 @@ class InstanceArgs:
     @private_ip.setter
     def private_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter(name="resizeDisk")
+    def resize_disk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        """
+        return pulumi.get(self, "resize_disk")
+
+    @resize_disk.setter
+    def resize_disk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resize_disk", value)
 
     @property
     @pulumi.getter(name="rootPass")
@@ -363,6 +395,7 @@ class _InstanceState:
                  backups: Optional[pulumi.Input['InstanceBackupsArgs']] = None,
                  backups_enabled: Optional[pulumi.Input[bool]] = None,
                  boot_config_label: Optional[pulumi.Input[str]] = None,
+                 booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -375,6 +408,7 @@ class _InstanceState:
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -393,9 +427,10 @@ class _InstanceState:
         :param pulumi.Input['InstanceBackupsArgs'] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
@@ -408,6 +443,7 @@ class _InstanceState:
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
                Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -432,6 +468,8 @@ class _InstanceState:
             pulumi.set(__self__, "backups_enabled", backups_enabled)
         if boot_config_label is not None:
             pulumi.set(__self__, "boot_config_label", boot_config_label)
+        if booted is not None:
+            pulumi.set(__self__, "booted", booted)
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disks is not None:
@@ -456,6 +494,8 @@ class _InstanceState:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resize_disk is not None:
+            pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
             pulumi.set(__self__, "root_pass", root_pass)
         if specs is not None:
@@ -561,6 +601,18 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def booted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        """
+        return pulumi.get(self, "booted")
+
+    @booted.setter
+    def booted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "booted", value)
+
+    @property
+    @pulumi.getter
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -596,7 +648,7 @@ class _InstanceState:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -703,6 +755,18 @@ class _InstanceState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resizeDisk")
+    def resize_disk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        """
+        return pulumi.get(self, "resize_disk")
+
+    @resize_disk.setter
+    def resize_disk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resize_disk", value)
 
     @property
     @pulumi.getter(name="rootPass")
@@ -824,6 +888,7 @@ class Instance(pulumi.CustomResource):
                  backup_id: Optional[pulumi.Input[int]] = None,
                  backups_enabled: Optional[pulumi.Input[bool]] = None,
                  boot_config_label: Optional[pulumi.Input[str]] = None,
+                 booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -832,6 +897,7 @@ class Instance(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
@@ -962,14 +1028,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -1119,6 +1187,7 @@ class Instance(pulumi.CustomResource):
                  backup_id: Optional[pulumi.Input[int]] = None,
                  backups_enabled: Optional[pulumi.Input[bool]] = None,
                  boot_config_label: Optional[pulumi.Input[str]] = None,
+                 booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -1127,6 +1196,7 @@ class Instance(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
@@ -1152,6 +1222,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["backup_id"] = backup_id
             __props__.__dict__["backups_enabled"] = backups_enabled
             __props__.__dict__["boot_config_label"] = boot_config_label
+            __props__.__dict__["booted"] = booted
             __props__.__dict__["configs"] = configs
             __props__.__dict__["disks"] = disks
             __props__.__dict__["group"] = group
@@ -1162,6 +1233,7 @@ class Instance(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["resize_disk"] = resize_disk
             __props__.__dict__["root_pass"] = root_pass
             __props__.__dict__["stackscript_data"] = stackscript_data
             __props__.__dict__["stackscript_id"] = stackscript_id
@@ -1193,6 +1265,7 @@ class Instance(pulumi.CustomResource):
             backups: Optional[pulumi.Input[pulumi.InputType['InstanceBackupsArgs']]] = None,
             backups_enabled: Optional[pulumi.Input[bool]] = None,
             boot_config_label: Optional[pulumi.Input[str]] = None,
+            booted: Optional[pulumi.Input[bool]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
             group: Optional[pulumi.Input[str]] = None,
@@ -1205,6 +1278,7 @@ class Instance(pulumi.CustomResource):
             private_ip: Optional[pulumi.Input[bool]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resize_disk: Optional[pulumi.Input[bool]] = None,
             root_pass: Optional[pulumi.Input[str]] = None,
             specs: Optional[pulumi.Input[pulumi.InputType['InstanceSpecsArgs']]] = None,
             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1228,9 +1302,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceBackupsArgs']] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
@@ -1243,6 +1318,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
                Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param pulumi.Input[pulumi.InputType['InstanceSpecsArgs']] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
@@ -1264,6 +1340,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backups"] = backups
         __props__.__dict__["backups_enabled"] = backups_enabled
         __props__.__dict__["boot_config_label"] = boot_config_label
+        __props__.__dict__["booted"] = booted
         __props__.__dict__["configs"] = configs
         __props__.__dict__["disks"] = disks
         __props__.__dict__["group"] = group
@@ -1276,6 +1353,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["region"] = region
+        __props__.__dict__["resize_disk"] = resize_disk
         __props__.__dict__["root_pass"] = root_pass
         __props__.__dict__["specs"] = specs
         __props__.__dict__["stackscript_data"] = stackscript_data
@@ -1345,6 +1423,14 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def booted(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        """
+        return pulumi.get(self, "booted")
+
+    @property
+    @pulumi.getter
     def configs(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceConfig']]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -1368,7 +1454,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def image(self) -> pulumi.Output[Optional[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -1439,6 +1525,14 @@ class Instance(pulumi.CustomResource):
         This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resizeDisk")
+    def resize_disk(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        """
+        return pulumi.get(self, "resize_disk")
 
     @property
     @pulumi.getter(name="rootPass")

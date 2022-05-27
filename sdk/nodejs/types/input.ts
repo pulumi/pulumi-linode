@@ -78,6 +78,96 @@ export interface FirewallOutbound {
     protocol: pulumi.Input<string>;
 }
 
+export interface GetDatabaseEnginesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDatabaseEnginesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabaseMysqlBackupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabaseMysqlBackupsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDatabasesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDatabasesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -108,21 +198,6 @@ export interface GetImagesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetInstanceTypesFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
 export interface GetInstanceTypesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -138,19 +213,19 @@ export interface GetInstanceTypesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetInstancesFilterArgs {
+export interface GetInstanceTypesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: string;
     /**
-     * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
-    name: pulumi.Input<string>;
+    name: string;
     /**
      * A list of values for the filter to allow. These values should all be in string form.
      */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    values: string[];
 }
 
 export interface GetInstancesFilter {
@@ -168,13 +243,19 @@ export interface GetInstancesFilter {
     values: string[];
 }
 
-export interface GetStackScriptUserDefinedField {
-    default?: string;
-    example?: string;
-    label?: string;
-    manyOf?: string;
-    name?: string;
-    oneOf?: string;
+export interface GetInstancesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetStackScriptUserDefinedFieldArgs {
@@ -184,6 +265,15 @@ export interface GetStackScriptUserDefinedFieldArgs {
     manyOf?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     oneOf?: pulumi.Input<string>;
+}
+
+export interface GetStackScriptUserDefinedField {
+    default?: string;
+    example?: string;
+    label?: string;
+    manyOf?: string;
+    name?: string;
+    oneOf?: string;
 }
 
 export interface GetStackScriptsFilter {
@@ -491,7 +581,7 @@ export interface InstanceDisk {
      */
     id?: pulumi.Input<number>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -734,3 +824,4 @@ export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
 }
+

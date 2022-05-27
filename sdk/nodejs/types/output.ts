@@ -78,6 +78,84 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface GetDatabaseEnginesEngine {
+    engine: string;
+    id: string;
+    version: string;
+}
+
+export interface GetDatabaseEnginesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabaseMysqlBackupsBackup {
+    created: string;
+    id: number;
+    label: string;
+    type: string;
+}
+
+export interface GetDatabaseMysqlBackupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDatabasesDatabase {
+    allowLists: string[];
+    clusterSize: number;
+    created: string;
+    encrypted: boolean;
+    engine: string;
+    hostPrimary: string;
+    hostSecondary: string;
+    id: number;
+    instanceUri: string;
+    label: string;
+    region: string;
+    replicationType: string;
+    sslConnection: boolean;
+    status: string;
+    type: string;
+    updated: string;
+    version: string;
+}
+
+export interface GetDatabasesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetFirewallDevice {
     /**
      * The ID of the underlying entity this device references (i.e. the Linode's ID).
@@ -963,7 +1041,7 @@ export interface InstanceDisk {
      */
     id: number;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image: string;
     /**

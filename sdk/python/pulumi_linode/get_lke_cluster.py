@@ -21,13 +21,16 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, control_planes=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None):
+    def __init__(__self__, api_endpoints=None, control_planes=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
         if control_planes and not isinstance(control_planes, list):
             raise TypeError("Expected argument 'control_planes' to be a list")
         pulumi.set(__self__, "control_planes", control_planes)
+        if dashboard_url and not isinstance(dashboard_url, str):
+            raise TypeError("Expected argument 'dashboard_url' to be a str")
+        pulumi.set(__self__, "dashboard_url", dashboard_url)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -65,6 +68,14 @@ class GetLkeClusterResult:
     @pulumi.getter(name="controlPlanes")
     def control_planes(self) -> Sequence['outputs.GetLkeClusterControlPlaneResult']:
         return pulumi.get(self, "control_planes")
+
+    @property
+    @pulumi.getter(name="dashboardUrl")
+    def dashboard_url(self) -> str:
+        """
+        The Kubernetes Dashboard access URL for this cluster.
+        """
+        return pulumi.get(self, "dashboard_url")
 
     @property
     @pulumi.getter
@@ -136,6 +147,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
         return GetLkeClusterResult(
             api_endpoints=self.api_endpoints,
             control_planes=self.control_planes,
+            dashboard_url=self.dashboard_url,
             id=self.id,
             k8s_version=self.k8s_version,
             kubeconfig=self.kubeconfig,
@@ -174,6 +186,7 @@ def get_lke_cluster(id: Optional[int] = None,
     return AwaitableGetLkeClusterResult(
         api_endpoints=__ret__.api_endpoints,
         control_planes=__ret__.control_planes,
+        dashboard_url=__ret__.dashboard_url,
         id=__ret__.id,
         k8s_version=__ret__.k8s_version,
         kubeconfig=__ret__.kubeconfig,

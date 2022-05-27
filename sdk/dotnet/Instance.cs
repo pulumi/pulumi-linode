@@ -215,6 +215,12 @@ namespace Pulumi.Linode
         public Output<string> BootConfigLabel { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// </summary>
+        [Output("booted")]
+        public Output<bool> Booted { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
         [Output("configs")]
@@ -230,7 +236,7 @@ namespace Pulumi.Linode
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("image")]
         public Output<string?> Image { get; private set; } = null!;
@@ -286,6 +292,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        /// </summary>
+        [Output("resizeDisk")]
+        public Output<bool?> ResizeDisk { get; private set; } = null!;
 
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -435,6 +447,12 @@ namespace Pulumi.Linode
         [Input("bootConfigLabel")]
         public Input<string>? BootConfigLabel { get; set; }
 
+        /// <summary>
+        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// </summary>
+        [Input("booted")]
+        public Input<bool>? Booted { get; set; }
+
         [Input("configs")]
         private InputList<Inputs.InstanceConfigArgs>? _configs;
 
@@ -462,7 +480,7 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -497,6 +515,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        /// </summary>
+        [Input("resizeDisk")]
+        public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
@@ -613,6 +637,12 @@ namespace Pulumi.Linode
         [Input("bootConfigLabel")]
         public Input<string>? BootConfigLabel { get; set; }
 
+        /// <summary>
+        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// </summary>
+        [Input("booted")]
+        public Input<bool>? Booted { get; set; }
+
         [Input("configs")]
         private InputList<Inputs.InstanceConfigGetArgs>? _configs;
 
@@ -640,7 +670,7 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/kernels). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -708,6 +738,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
+        /// </summary>
+        [Input("resizeDisk")]
+        public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
