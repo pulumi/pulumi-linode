@@ -187,7 +187,7 @@ type Instance struct {
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringOutput `pulumi:"bootConfigLabel"`
-	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
@@ -220,6 +220,8 @@ type Instance struct {
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
+	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsOutput `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -284,7 +286,7 @@ type instanceState struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
-	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
@@ -317,6 +319,8 @@ type instanceState struct {
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
+	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -350,7 +354,7 @@ type InstanceState struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
-	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
@@ -383,6 +387,8 @@ type InstanceState struct {
 	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
+	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	SharedIpv4s pulumi.StringArrayInput
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
@@ -418,7 +424,7 @@ type instanceArgs struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
-	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []InstanceConfig `pulumi:"configs"`
@@ -440,6 +446,8 @@ type instanceArgs struct {
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
+	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -468,7 +476,7 @@ type InstanceArgs struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
-	// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
@@ -490,6 +498,8 @@ type InstanceArgs struct {
 	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput
+	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	SharedIpv4s pulumi.StringArrayInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
@@ -626,7 +636,7 @@ func (o InstanceOutput) BootConfigLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BootConfigLabel }).(pulumi.StringOutput)
 }
 
-// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 func (o InstanceOutput) Booted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Booted }).(pulumi.BoolOutput)
 }
@@ -702,6 +712,11 @@ func (o InstanceOutput) ResizeDisk() pulumi.BoolPtrOutput {
 // The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 func (o InstanceOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RootPass }).(pulumi.StringPtrOutput)
+}
+
+// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+func (o InstanceOutput) SharedIpv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SharedIpv4s }).(pulumi.StringArrayOutput)
 }
 
 // Information about the resources available to this Linode.

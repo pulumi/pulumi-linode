@@ -15,6 +15,8 @@ import (
 //
 // ## Example Usage
 //
+// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+//
 // ```go
 // package main
 //
@@ -40,9 +42,6 @@ import (
 // 		}
 // 		_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
 // 			Label: pulumi.String("my_firewall"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("test"),
-// 			},
 // 			Inbounds: FirewallInboundArray{
 // 				&FirewallInboundArgs{
 // 					Label:    pulumi.String("allow-http"),

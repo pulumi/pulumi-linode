@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./databaseAccessControls";
+export * from "./databaseMongodb";
 export * from "./databaseMysql";
+export * from "./databasePostgresql";
 export * from "./domain";
 export * from "./domainRecord";
 export * from "./firewall";
 export * from "./firewallDevice";
 export * from "./getAccount";
+export * from "./getDatabaseBackups";
 export * from "./getDatabaseEngines";
+export * from "./getDatabaseMongodb";
+export * from "./getDatabaseMysql";
 export * from "./getDatabaseMysqlBackups";
+export * from "./getDatabasePostgresql";
 export * from "./getDatabases";
 export * from "./getDomain";
 export * from "./getDomainRecord";
@@ -23,6 +30,7 @@ export * from "./getInstanceBackups";
 export * from "./getInstanceType";
 export * from "./getInstanceTypes";
 export * from "./getInstances";
+export * from "./getIpv6Range";
 export * from "./getKernel";
 export * from "./getLkeCluster";
 export * from "./getNetworkingIp";
@@ -41,6 +49,7 @@ export * from "./getVolume";
 export * from "./image";
 export * from "./instance";
 export * from "./instanceIp";
+export * from "./instanceSharedIps";
 export * from "./ipv6Range";
 export * from "./lkeCluster";
 export * from "./nodeBalancer";
@@ -67,7 +76,10 @@ export {
 };
 
 // Import resources to register:
+import { DatabaseAccessControls } from "./databaseAccessControls";
+import { DatabaseMongodb } from "./databaseMongodb";
 import { DatabaseMysql } from "./databaseMysql";
+import { DatabasePostgresql } from "./databasePostgresql";
 import { Domain } from "./domain";
 import { DomainRecord } from "./domainRecord";
 import { Firewall } from "./firewall";
@@ -75,6 +87,7 @@ import { FirewallDevice } from "./firewallDevice";
 import { Image } from "./image";
 import { Instance } from "./instance";
 import { InstanceIp } from "./instanceIp";
+import { InstanceSharedIps } from "./instanceSharedIps";
 import { Ipv6Range } from "./ipv6Range";
 import { LkeCluster } from "./lkeCluster";
 import { NodeBalancer } from "./nodeBalancer";
@@ -94,8 +107,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "linode:index/databaseAccessControls:DatabaseAccessControls":
+                return new DatabaseAccessControls(name, <any>undefined, { urn })
+            case "linode:index/databaseMongodb:DatabaseMongodb":
+                return new DatabaseMongodb(name, <any>undefined, { urn })
             case "linode:index/databaseMysql:DatabaseMysql":
                 return new DatabaseMysql(name, <any>undefined, { urn })
+            case "linode:index/databasePostgresql:DatabasePostgresql":
+                return new DatabasePostgresql(name, <any>undefined, { urn })
             case "linode:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "linode:index/domainRecord:DomainRecord":
@@ -110,6 +129,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
                 return new InstanceIp(name, <any>undefined, { urn })
+            case "linode:index/instanceSharedIps:InstanceSharedIps":
+                return new InstanceSharedIps(name, <any>undefined, { urn })
             case "linode:index/ipv6Range:Ipv6Range":
                 return new Ipv6Range(name, <any>undefined, { urn })
             case "linode:index/lkeCluster:LkeCluster":
@@ -143,7 +164,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
+pulumi.runtime.registerResourceModule("linode", "index/databaseMongodb", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
+pulumi.runtime.registerResourceModule("linode", "index/databasePostgresql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
@@ -151,6 +175,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
+pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)

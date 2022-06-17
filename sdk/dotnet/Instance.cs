@@ -215,7 +215,7 @@ namespace Pulumi.Linode
         public Output<string> BootConfigLabel { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         /// </summary>
         [Output("booted")]
         public Output<bool> Booted { get; private set; } = null!;
@@ -304,6 +304,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// </summary>
+        [Output("sharedIpv4s")]
+        public Output<ImmutableArray<string>> SharedIpv4s { get; private set; } = null!;
 
         /// <summary>
         /// Information about the resources available to this Linode.
@@ -448,7 +454,7 @@ namespace Pulumi.Linode
         public Input<string>? BootConfigLabel { get; set; }
 
         /// <summary>
-        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         /// </summary>
         [Input("booted")]
         public Input<bool>? Booted { get; set; }
@@ -527,6 +533,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("rootPass")]
         public Input<string>? RootPass { get; set; }
+
+        [Input("sharedIpv4s")]
+        private InputList<string>? _sharedIpv4s;
+
+        /// <summary>
+        /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// </summary>
+        public InputList<string> SharedIpv4s
+        {
+            get => _sharedIpv4s ?? (_sharedIpv4s = new InputList<string>());
+            set => _sharedIpv4s = value;
+        }
 
         [Input("stackscriptData")]
         private InputMap<object>? _stackscriptData;
@@ -638,7 +656,7 @@ namespace Pulumi.Linode
         public Input<string>? BootConfigLabel { get; set; }
 
         /// <summary>
-        /// Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         /// </summary>
         [Input("booted")]
         public Input<bool>? Booted { get; set; }
@@ -750,6 +768,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("rootPass")]
         public Input<string>? RootPass { get; set; }
+
+        [Input("sharedIpv4s")]
+        private InputList<string>? _sharedIpv4s;
+
+        /// <summary>
+        /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// </summary>
+        public InputList<string> SharedIpv4s
+        {
+            get => _sharedIpv4s ?? (_sharedIpv4s = new InputList<string>());
+            set => _sharedIpv4s = value;
+        }
 
         /// <summary>
         /// Information about the resources available to this Linode.

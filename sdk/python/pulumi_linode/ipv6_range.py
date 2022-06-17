@@ -19,7 +19,7 @@ class Ipv6RangeArgs:
         """
         The set of arguments for constructing a Ipv6Range resource.
         :param pulumi.Input[int] prefix_length: The prefix length of the IPv6 range.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         :param pulumi.Input[str] route_target: The IPv6 SLAAC address to assign this range to.
         """
         pulumi.set(__self__, "prefix_length", prefix_length)
@@ -44,7 +44,7 @@ class Ipv6RangeArgs:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the Linode to assign this range to.
+        The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         """
         return pulumi.get(self, "linode_id")
 
@@ -78,7 +78,7 @@ class _Ipv6RangeState:
         """
         Input properties used for looking up and filtering Ipv6Range resources.
         :param pulumi.Input[bool] is_bgp: Whether this IPv6 range is shared.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
         :param pulumi.Input[int] prefix_length: The prefix length of the IPv6 range.
         :param pulumi.Input[str] range: The IPv6 range of addresses in this pool.
@@ -116,7 +116,7 @@ class _Ipv6RangeState:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the Linode to assign this range to.
+        The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         """
         return pulumi.get(self, "linode_id")
 
@@ -215,7 +215,7 @@ class Ipv6Range(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         :param pulumi.Input[int] prefix_length: The prefix length of the IPv6 range.
         :param pulumi.Input[str] route_target: The IPv6 SLAAC address to assign this range to.
         """
@@ -308,7 +308,7 @@ class Ipv6Range(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_bgp: Whether this IPv6 range is shared.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
         :param pulumi.Input[int] prefix_length: The prefix length of the IPv6 range.
         :param pulumi.Input[str] range: The IPv6 range of addresses in this pool.
@@ -340,7 +340,7 @@ class Ipv6Range(pulumi.CustomResource):
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the Linode to assign this range to.
+        The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         """
         return pulumi.get(self, "linode_id")
 

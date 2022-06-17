@@ -5,14 +5,21 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .database_access_controls import *
+from .database_mongodb import *
 from .database_mysql import *
+from .database_postgresql import *
 from .domain import *
 from .domain_record import *
 from .firewall import *
 from .firewall_device import *
 from .get_account import *
+from .get_database_backups import *
 from .get_database_engines import *
+from .get_database_mongodb import *
+from .get_database_mysql import *
 from .get_database_mysql_backups import *
+from .get_database_postgresql import *
 from .get_databases import *
 from .get_domain import *
 from .get_domain_record import *
@@ -23,6 +30,7 @@ from .get_instance_backups import *
 from .get_instance_type import *
 from .get_instance_types import *
 from .get_instances import *
+from .get_ipv6_range import *
 from .get_kernel import *
 from .get_lke_cluster import *
 from .get_networking_ip import *
@@ -41,6 +49,7 @@ from .get_volume import *
 from .image import *
 from .instance import *
 from .instance_ip import *
+from .instance_shared_ips import *
 from .ipv6_range import *
 from .lke_cluster import *
 from .node_balancer import *
@@ -71,10 +80,34 @@ _utilities.register(
 [
  {
   "pkg": "linode",
+  "mod": "index/databaseAccessControls",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databaseAccessControls:DatabaseAccessControls": "DatabaseAccessControls"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/databaseMongodb",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databaseMongodb:DatabaseMongodb": "DatabaseMongodb"
+  }
+ },
+ {
+  "pkg": "linode",
   "mod": "index/databaseMysql",
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/databaseMysql:DatabaseMysql": "DatabaseMysql"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/databasePostgresql",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databasePostgresql:DatabasePostgresql": "DatabasePostgresql"
   }
  },
  {
@@ -131,6 +164,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/instanceIp:InstanceIp": "InstanceIp"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/instanceSharedIps",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/instanceSharedIps:InstanceSharedIps": "InstanceSharedIps"
   }
  },
  {

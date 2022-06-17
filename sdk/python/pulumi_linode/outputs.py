@@ -10,6 +10,9 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'DatabaseMongodbUpdates',
+    'DatabaseMysqlUpdates',
+    'DatabasePostgresqlUpdates',
     'FirewallDevice',
     'FirewallInbound',
     'FirewallOutbound',
@@ -52,10 +55,15 @@ __all__ = [
     'UserNodebalancerGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
+    'GetDatabaseBackupsBackupResult',
+    'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
     'GetDatabaseEnginesFilterResult',
+    'GetDatabaseMongodbUpdateResult',
     'GetDatabaseMysqlBackupsBackupResult',
     'GetDatabaseMysqlBackupsFilterResult',
+    'GetDatabaseMysqlUpdateResult',
+    'GetDatabasePostgresqlUpdateResult',
     'GetDatabasesDatabaseResult',
     'GetDatabasesFilterResult',
     'GetFirewallDeviceResult',
@@ -112,6 +120,192 @@ __all__ = [
     'GetVlansFilterResult',
     'GetVlansVlanResult',
 ]
+
+@pulumi.output_type
+class DatabaseMongodbUpdates(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+        elif key == "weekOfMonth":
+            suggest = "week_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseMongodbUpdates. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseMongodbUpdates.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseMongodbUpdates.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: Optional[int] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[int]:
+        return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class DatabaseMysqlUpdates(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+        elif key == "weekOfMonth":
+            suggest = "week_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseMysqlUpdates. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseMysqlUpdates.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseMysqlUpdates.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: Optional[int] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[int]:
+        return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class DatabasePostgresqlUpdates(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+        elif key == "weekOfMonth":
+            suggest = "week_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlUpdates. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlUpdates.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlUpdates.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: Optional[int] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[int]:
+        return pulumi.get(self, "week_of_month")
+
 
 @pulumi.output_type
 class FirewallDevice(dict):
@@ -1611,12 +1805,18 @@ class LkeClusterControlPlane(dict):
 
     def __init__(__self__, *,
                  high_availability: Optional[bool] = None):
+        """
+        :param bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        """
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
 
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[bool]:
+        """
+        Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        """
         return pulumi.get(self, "high_availability")
 
 
@@ -2464,6 +2664,80 @@ class UserVolumeGrant(dict):
 
 
 @pulumi.output_type
+class GetDatabaseBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 id: int,
+                 label: str,
+                 type: str):
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseBackupsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
 class GetDatabaseEnginesEngineResult(dict):
     def __init__(__self__, *,
                  engine: str,
@@ -2528,6 +2802,46 @@ class GetDatabaseEnginesFilterResult(dict):
         The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDatabaseMongodbUpdateResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> int:
+        return pulumi.get(self, "week_of_month")
 
 
 @pulumi.output_type
@@ -2602,6 +2916,86 @@ class GetDatabaseMysqlBackupsFilterResult(dict):
         The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlUpdateResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> int:
+        return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlUpdateResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int,
+                 week_of_month: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> int:
+        return pulumi.get(self, "week_of_month")
 
 
 @pulumi.output_type

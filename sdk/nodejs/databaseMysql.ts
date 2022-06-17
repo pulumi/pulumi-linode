@@ -2,11 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * **NOTICE:** Managed Databases are currently in beta. Ensure `apiVersion` is set to `v4beta` in order to use this resource.
- *
  * Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
  * For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
  *
@@ -44,8 +43,29 @@ import * as utilities from "./utilities";
  *     replicationType: "asynch",
  *     sslConnection: true,
  *     type: "g6-nanode-1",
+ *     updates: {
+ *         dayOfWeek: "saturday",
+ *         duration: 1,
+ *         frequency: "monthly",
+ *         hourOfDay: 22,
+ *         weekOfMonth: 2,
+ *     },
  * });
  * ```
+ * ## updates
+ *
+ * The following arguments are supported in the `updates` specification block:
+ *
+ * * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+ *
+ * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+ *
+ * * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+ *
+ * * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
+ * * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+ *
  * ## Attributes
  *
  * In addition to all arguments above, the following attributes are exported:
@@ -109,9 +129,9 @@ export class DatabaseMysql extends pulumi.CustomResource {
     }
 
     /**
-     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    public readonly allowLists!: pulumi.Output<string[] | undefined>;
+    public readonly allowLists!: pulumi.Output<string[]>;
     /**
      * The base64-encoded SSL CA certificate for the Managed Database instance.
      */
@@ -181,6 +201,10 @@ export class DatabaseMysql extends pulumi.CustomResource {
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
+     * Configuration settings for automated patch update maintenance for the Managed Database.
+     */
+    public readonly updates!: pulumi.Output<outputs.DatabaseMysqlUpdates>;
+    /**
      * The Managed Database engine version.
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
@@ -216,6 +240,7 @@ export class DatabaseMysql extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["updates"] = state ? state.updates : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as DatabaseMysqlArgs | undefined;
@@ -240,6 +265,7 @@ export class DatabaseMysql extends pulumi.CustomResource {
             resourceInputs["replicationType"] = args ? args.replicationType : undefined;
             resourceInputs["sslConnection"] = args ? args.sslConnection : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["updates"] = args ? args.updates : undefined;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["engine"] = undefined /*out*/;
@@ -261,7 +287,7 @@ export class DatabaseMysql extends pulumi.CustomResource {
  */
 export interface DatabaseMysqlState {
     /**
-     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
     allowLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -333,6 +359,10 @@ export interface DatabaseMysqlState {
      */
     updated?: pulumi.Input<string>;
     /**
+     * Configuration settings for automated patch update maintenance for the Managed Database.
+     */
+    updates?: pulumi.Input<inputs.DatabaseMysqlUpdates>;
+    /**
      * The Managed Database engine version.
      */
     version?: pulumi.Input<string>;
@@ -343,7 +373,7 @@ export interface DatabaseMysqlState {
  */
 export interface DatabaseMysqlArgs {
     /**
-     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
     allowLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -378,4 +408,8 @@ export interface DatabaseMysqlArgs {
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      */
     type: pulumi.Input<string>;
+    /**
+     * Configuration settings for automated patch update maintenance for the Managed Database.
+     */
+    updates?: pulumi.Input<inputs.DatabaseMysqlUpdates>;
 }

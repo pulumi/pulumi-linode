@@ -14,6 +14,8 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
@@ -34,10 +36,6 @@ namespace Pulumi.Linode
     ///         var myFirewall = new Linode.Firewall("myFirewall", new Linode.FirewallArgs
     ///         {
     ///             Label = "my_firewall",
-    ///             Tags = 
-    ///             {
-    ///                 "test",
-    ///             },
     ///             Inbounds = 
     ///             {
     ///                 new Linode.Inputs.FirewallInboundArgs

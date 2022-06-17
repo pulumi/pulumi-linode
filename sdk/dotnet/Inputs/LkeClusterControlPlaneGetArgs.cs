@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeClusterControlPlaneGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        /// </summary>
         [Input("highAvailability")]
         public Input<bool>? HighAvailability { get; set; }
 

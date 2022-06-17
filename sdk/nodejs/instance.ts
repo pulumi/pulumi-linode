@@ -179,7 +179,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly bootConfigLabel!: pulumi.Output<string>;
     /**
-     * Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+     * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
     public readonly booted!: pulumi.Output<boolean>;
     /**
@@ -239,6 +239,10 @@ export class Instance extends pulumi.CustomResource {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
+    /**
+     * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     */
+    public readonly sharedIpv4s!: pulumi.Output<string[]>;
     /**
      * Information about the resources available to this Linode.
      */
@@ -307,6 +311,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resizeDisk"] = state ? state.resizeDisk : undefined;
             resourceInputs["rootPass"] = state ? state.rootPass : undefined;
+            resourceInputs["sharedIpv4s"] = state ? state.sharedIpv4s : undefined;
             resourceInputs["specs"] = state ? state.specs : undefined;
             resourceInputs["stackscriptData"] = state ? state.stackscriptData : undefined;
             resourceInputs["stackscriptId"] = state ? state.stackscriptId : undefined;
@@ -337,6 +342,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
             resourceInputs["rootPass"] = args ? args.rootPass : undefined;
+            resourceInputs["sharedIpv4s"] = args ? args.sharedIpv4s : undefined;
             resourceInputs["stackscriptData"] = args ? args.stackscriptData : undefined;
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
             resourceInputs["swapSize"] = args ? args.swapSize : undefined;
@@ -389,7 +395,7 @@ export interface InstanceState {
      */
     bootConfigLabel?: pulumi.Input<string>;
     /**
-     * Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+     * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
     booted?: pulumi.Input<boolean>;
     /**
@@ -449,6 +455,10 @@ export interface InstanceState {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     rootPass?: pulumi.Input<string>;
+    /**
+     * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     */
+    sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Information about the resources available to this Linode.
      */
@@ -512,7 +522,7 @@ export interface InstanceArgs {
      */
     bootConfigLabel?: pulumi.Input<string>;
     /**
-     * Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+     * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
     booted?: pulumi.Input<boolean>;
     /**
@@ -553,6 +563,10 @@ export interface InstanceArgs {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     rootPass?: pulumi.Input<string>;
+    /**
+     * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     */
+    sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
      */

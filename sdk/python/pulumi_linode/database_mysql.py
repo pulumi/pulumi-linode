@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseMysqlArgs', 'DatabaseMysql']
 
@@ -21,18 +23,20 @@ class DatabaseMysqlArgs:
                  cluster_size: Optional[pulumi.Input[int]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  replication_type: Optional[pulumi.Input[str]] = None,
-                 ssl_connection: Optional[pulumi.Input[bool]] = None):
+                 ssl_connection: Optional[pulumi.Input[bool]] = None,
+                 updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None):
         """
         The set of arguments for constructing a DatabaseMysql resource.
         :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         pulumi.set(__self__, "engine_id", engine_id)
         pulumi.set(__self__, "label", label)
@@ -48,6 +52,8 @@ class DatabaseMysqlArgs:
             pulumi.set(__self__, "replication_type", replication_type)
         if ssl_connection is not None:
             pulumi.set(__self__, "ssl_connection", ssl_connection)
+        if updates is not None:
+            pulumi.set(__self__, "updates", updates)
 
     @property
     @pulumi.getter(name="engineId")
@@ -101,7 +107,7 @@ class DatabaseMysqlArgs:
     @pulumi.getter(name="allowLists")
     def allow_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         """
         return pulumi.get(self, "allow_lists")
 
@@ -157,6 +163,18 @@ class DatabaseMysqlArgs:
     def ssl_connection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ssl_connection", value)
 
+    @property
+    @pulumi.getter
+    def updates(self) -> Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]:
+        """
+        Configuration settings for automated patch update maintenance for the Managed Database.
+        """
+        return pulumi.get(self, "updates")
+
+    @updates.setter
+    def updates(self, value: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]):
+        pulumi.set(self, "updates", value)
+
 
 @pulumi.input_type
 class _DatabaseMysqlState:
@@ -179,10 +197,11 @@ class _DatabaseMysqlState:
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DatabaseMysql resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[str] ca_cert: The base64-encoded SSL CA certificate for the Managed Database instance.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[str] created: When this Managed Database was created.
@@ -200,6 +219,7 @@ class _DatabaseMysqlState:
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
+        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version.
         """
         if allow_lists is not None:
@@ -238,6 +258,8 @@ class _DatabaseMysqlState:
             pulumi.set(__self__, "type", type)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
+        if updates is not None:
+            pulumi.set(__self__, "updates", updates)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -245,7 +267,7 @@ class _DatabaseMysqlState:
     @pulumi.getter(name="allowLists")
     def allow_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         """
         return pulumi.get(self, "allow_lists")
 
@@ -459,6 +481,18 @@ class _DatabaseMysqlState:
 
     @property
     @pulumi.getter
+    def updates(self) -> Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]:
+        """
+        Configuration settings for automated patch update maintenance for the Managed Database.
+        """
+        return pulumi.get(self, "updates")
+
+    @updates.setter
+    def updates(self, value: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]):
+        pulumi.set(self, "updates", value)
+
+    @property
+    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         The Managed Database engine version.
@@ -484,10 +518,9 @@ class DatabaseMysql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
                  __props__=None):
         """
-        **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this resource.
-
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
         For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
 
@@ -523,8 +556,29 @@ class DatabaseMysql(pulumi.CustomResource):
             region="us-southeast",
             replication_type="asynch",
             ssl_connection=True,
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            updates=linode.DatabaseMysqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
         ```
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+
+        * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+
         ## Attributes
 
         In addition to all arguments above, the following attributes are exported:
@@ -561,7 +615,7 @@ class DatabaseMysql(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
         :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
@@ -570,6 +624,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
     @overload
@@ -578,8 +633,6 @@ class DatabaseMysql(pulumi.CustomResource):
                  args: DatabaseMysqlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this resource.
-
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
         For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
 
@@ -615,8 +668,29 @@ class DatabaseMysql(pulumi.CustomResource):
             region="us-southeast",
             replication_type="asynch",
             ssl_connection=True,
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            updates=linode.DatabaseMysqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
         ```
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+
+        * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+
         ## Attributes
 
         In addition to all arguments above, the following attributes are exported:
@@ -675,6 +749,7 @@ class DatabaseMysql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -704,6 +779,7 @@ class DatabaseMysql(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["updates"] = updates
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["engine"] = None
@@ -742,6 +818,7 @@ class DatabaseMysql(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
+            updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'DatabaseMysql':
         """
         Get an existing DatabaseMysql resource's state with the given name, id, and optional extra
@@ -750,7 +827,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[str] ca_cert: The base64-encoded SSL CA certificate for the Managed Database instance.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[str] created: When this Managed Database was created.
@@ -768,6 +845,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -792,14 +870,15 @@ class DatabaseMysql(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         __props__.__dict__["updated"] = updated
+        __props__.__dict__["updates"] = updates
         __props__.__dict__["version"] = version
         return DatabaseMysql(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="allowLists")
-    def allow_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def allow_lists(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         """
         return pulumi.get(self, "allow_lists")
 
@@ -938,6 +1017,14 @@ class DatabaseMysql(pulumi.CustomResource):
         When this Managed Database was last updated.
         """
         return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter
+    def updates(self) -> pulumi.Output['outputs.DatabaseMysqlUpdates']:
+        """
+        Configuration settings for automated patch update maintenance for the Managed Database.
+        """
+        return pulumi.get(self, "updates")
 
     @property
     @pulumi.getter

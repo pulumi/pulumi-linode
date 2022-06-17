@@ -9,6 +9,9 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'DatabaseMongodbUpdatesArgs',
+    'DatabaseMysqlUpdatesArgs',
+    'DatabasePostgresqlUpdatesArgs',
     'FirewallDeviceArgs',
     'FirewallInboundArgs',
     'FirewallOutboundArgs',
@@ -51,6 +54,7 @@ __all__ = [
     'UserNodebalancerGrantArgs',
     'UserStackscriptGrantArgs',
     'UserVolumeGrantArgs',
+    'GetDatabaseBackupsFilterArgs',
     'GetDatabaseEnginesFilterArgs',
     'GetDatabaseMysqlBackupsFilterArgs',
     'GetDatabasesFilterArgs',
@@ -61,6 +65,189 @@ __all__ = [
     'GetStackScriptsFilterArgs',
     'GetVlansFilterArgs',
 ]
+
+@pulumi.input_type
+class DatabaseMongodbUpdatesArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[str],
+                 duration: pulumi.Input[int],
+                 frequency: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int],
+                 week_of_month: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "week_of_month")
+
+    @week_of_month.setter
+    def week_of_month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "week_of_month", value)
+
+
+@pulumi.input_type
+class DatabaseMysqlUpdatesArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[str],
+                 duration: pulumi.Input[int],
+                 frequency: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int],
+                 week_of_month: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "week_of_month")
+
+    @week_of_month.setter
+    def week_of_month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "week_of_month", value)
+
+
+@pulumi.input_type
+class DatabasePostgresqlUpdatesArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[str],
+                 duration: pulumi.Input[int],
+                 frequency: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int],
+                 week_of_month: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        if week_of_month is not None:
+            pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "week_of_month")
+
+    @week_of_month.setter
+    def week_of_month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "week_of_month", value)
+
 
 @pulumi.input_type
 class FirewallDeviceArgs:
@@ -1608,12 +1795,18 @@ class InstanceSpecsArgs:
 class LkeClusterControlPlaneArgs:
     def __init__(__self__, *,
                  high_availability: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        """
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
 
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        """
         return pulumi.get(self, "high_availability")
 
     @high_availability.setter
@@ -2554,6 +2747,59 @@ class UserVolumeGrantArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetDatabaseBackupsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type

@@ -59,25 +59,25 @@ namespace Pulumi.Linode
     ///     {
     ///         var my_cluster = new Linode.LkeCluster("my-cluster", new Linode.LkeClusterArgs
     ///         {
-    ///             K8sVersion = "1.21",
     ///             Label = "my-cluster",
-    ///             Pools = 
-    ///             {
-    ///                 new Linode.Inputs.LkeClusterPoolArgs
-    ///                 {
-    ///                     Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
-    ///                     {
-    ///                         Max = 10,
-    ///                         Min = 3,
-    ///                     },
-    ///                     Count = 3,
-    ///                     Type = "g6-standard-2",
-    ///                 },
-    ///             },
+    ///             K8sVersion = "1.21",
     ///             Region = "us-central",
     ///             Tags = 
     ///             {
     ///                 "prod",
+    ///             },
+    ///             Pools = 
+    ///             {
+    ///                 new Linode.Inputs.LkeClusterPoolArgs
+    ///                 {
+    ///                     Type = "g6-standard-2",
+    ///                     Count = 3,
+    ///                     Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
+    ///                     {
+    ///                         Min = 3,
+    ///                         Max = 10,
+    ///                     },
+    ///                 },
     ///             },
     ///         });
     ///     }

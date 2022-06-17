@@ -12,7 +12,8 @@ import (
 )
 
 // > **NOTICE:** You may need to contact support to increase your instance IP limit before you can allocate additional IPs.
-// **NOTICE:** This resource will reboot the specified instance following IP allocation.
+//
+// > **NOTICE:** This resource will reboot the specified instance following IP allocation.
 //
 // Manages a Linode instance IP.
 //

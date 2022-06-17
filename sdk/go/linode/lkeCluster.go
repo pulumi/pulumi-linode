@@ -62,21 +62,21 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-// 			K8sVersion: pulumi.String("1.21"),
 // 			Label:      pulumi.String("my-cluster"),
-// 			Pools: LkeClusterPoolArray{
-// 				&LkeClusterPoolArgs{
-// 					Autoscaler: &LkeClusterPoolAutoscalerArgs{
-// 						Max: pulumi.Int(10),
-// 						Min: pulumi.Int(3),
-// 					},
-// 					Count: pulumi.Int(3),
-// 					Type:  pulumi.String("g6-standard-2"),
-// 				},
-// 			},
-// 			Region: pulumi.String("us-central"),
+// 			K8sVersion: pulumi.String("1.21"),
+// 			Region:     pulumi.String("us-central"),
 // 			Tags: pulumi.StringArray{
 // 				pulumi.String("prod"),
+// 			},
+// 			Pools: LkeClusterPoolArray{
+// 				&LkeClusterPoolArgs{
+// 					Type:  pulumi.String("g6-standard-2"),
+// 					Count: pulumi.Int(3),
+// 					Autoscaler: &LkeClusterPoolAutoscalerArgs{
+// 						Min: pulumi.Int(3),
+// 						Max: pulumi.Int(10),
+// 					},
+// 				},
 // 			},
 // 		})
 // 		if err != nil {

@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -24,7 +26,6 @@ import * as utilities from "./utilities";
  * });
  * const myFirewall = new linode.Firewall("myFirewall", {
  *     label: "my_firewall",
- *     tags: ["test"],
  *     inbounds: [
  *         {
  *             label: "allow-http",

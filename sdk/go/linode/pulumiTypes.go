@@ -10,6 +10,585 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DatabaseMongodbUpdates struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+}
+
+// DatabaseMongodbUpdatesInput is an input type that accepts DatabaseMongodbUpdatesArgs and DatabaseMongodbUpdatesOutput values.
+// You can construct a concrete instance of `DatabaseMongodbUpdatesInput` via:
+//
+//          DatabaseMongodbUpdatesArgs{...}
+type DatabaseMongodbUpdatesInput interface {
+	pulumi.Input
+
+	ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput
+	ToDatabaseMongodbUpdatesOutputWithContext(context.Context) DatabaseMongodbUpdatesOutput
+}
+
+type DatabaseMongodbUpdatesArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
+}
+
+func (DatabaseMongodbUpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMongodbUpdates)(nil)).Elem()
+}
+
+func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput {
+	return i.ToDatabaseMongodbUpdatesOutputWithContext(context.Background())
+}
+
+func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesOutput)
+}
+
+func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
+	return i.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesOutput).ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx)
+}
+
+// DatabaseMongodbUpdatesPtrInput is an input type that accepts DatabaseMongodbUpdatesArgs, DatabaseMongodbUpdatesPtr and DatabaseMongodbUpdatesPtrOutput values.
+// You can construct a concrete instance of `DatabaseMongodbUpdatesPtrInput` via:
+//
+//          DatabaseMongodbUpdatesArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseMongodbUpdatesPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput
+	ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Context) DatabaseMongodbUpdatesPtrOutput
+}
+
+type databaseMongodbUpdatesPtrType DatabaseMongodbUpdatesArgs
+
+func DatabaseMongodbUpdatesPtr(v *DatabaseMongodbUpdatesArgs) DatabaseMongodbUpdatesPtrInput {
+	return (*databaseMongodbUpdatesPtrType)(v)
+}
+
+func (*databaseMongodbUpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMongodbUpdates)(nil)).Elem()
+}
+
+func (i *databaseMongodbUpdatesPtrType) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
+	return i.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMongodbUpdatesPtrType) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesPtrOutput)
+}
+
+type DatabaseMongodbUpdatesOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMongodbUpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMongodbUpdates)(nil)).Elem()
+}
+
+func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput {
+	return o
+}
+
+func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesOutput {
+	return o
+}
+
+func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
+	return o.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMongodbUpdates) *DatabaseMongodbUpdates {
+		return &v
+	}).(DatabaseMongodbUpdatesPtrOutput)
+}
+
+func (o DatabaseMongodbUpdatesOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMongodbUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMongodbUpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMongodbUpdates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMongodbUpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMongodbUpdates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMongodbUpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMongodbUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMongodbUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMongodbUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseMongodbUpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMongodbUpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMongodbUpdates)(nil)).Elem()
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) Elem() DatabaseMongodbUpdatesOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) DatabaseMongodbUpdates {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMongodbUpdates
+		return ret
+	}).(DatabaseMongodbUpdatesOutput)
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMongodbUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WeekOfMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+type DatabaseMysqlUpdates struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+}
+
+// DatabaseMysqlUpdatesInput is an input type that accepts DatabaseMysqlUpdatesArgs and DatabaseMysqlUpdatesOutput values.
+// You can construct a concrete instance of `DatabaseMysqlUpdatesInput` via:
+//
+//          DatabaseMysqlUpdatesArgs{...}
+type DatabaseMysqlUpdatesInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput
+	ToDatabaseMysqlUpdatesOutputWithContext(context.Context) DatabaseMysqlUpdatesOutput
+}
+
+type DatabaseMysqlUpdatesArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
+}
+
+func (DatabaseMysqlUpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlUpdates)(nil)).Elem()
+}
+
+func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput {
+	return i.ToDatabaseMysqlUpdatesOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesOutput)
+}
+
+func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
+	return i.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesOutput).ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx)
+}
+
+// DatabaseMysqlUpdatesPtrInput is an input type that accepts DatabaseMysqlUpdatesArgs, DatabaseMysqlUpdatesPtr and DatabaseMysqlUpdatesPtrOutput values.
+// You can construct a concrete instance of `DatabaseMysqlUpdatesPtrInput` via:
+//
+//          DatabaseMysqlUpdatesArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseMysqlUpdatesPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput
+	ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Context) DatabaseMysqlUpdatesPtrOutput
+}
+
+type databaseMysqlUpdatesPtrType DatabaseMysqlUpdatesArgs
+
+func DatabaseMysqlUpdatesPtr(v *DatabaseMysqlUpdatesArgs) DatabaseMysqlUpdatesPtrInput {
+	return (*databaseMysqlUpdatesPtrType)(v)
+}
+
+func (*databaseMysqlUpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlUpdates)(nil)).Elem()
+}
+
+func (i *databaseMysqlUpdatesPtrType) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
+	return i.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMysqlUpdatesPtrType) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesPtrOutput)
+}
+
+type DatabaseMysqlUpdatesOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlUpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlUpdates)(nil)).Elem()
+}
+
+func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput {
+	return o
+}
+
+func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesOutput {
+	return o
+}
+
+func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
+	return o.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMysqlUpdates) *DatabaseMysqlUpdates {
+		return &v
+	}).(DatabaseMysqlUpdatesPtrOutput)
+}
+
+func (o DatabaseMysqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMysqlUpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMysqlUpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMysqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMysqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseMysqlUpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlUpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlUpdates)(nil)).Elem()
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) Elem() DatabaseMysqlUpdatesOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) DatabaseMysqlUpdates {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMysqlUpdates
+		return ret
+	}).(DatabaseMysqlUpdatesOutput)
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WeekOfMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+type DatabasePostgresqlUpdates struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+}
+
+// DatabasePostgresqlUpdatesInput is an input type that accepts DatabasePostgresqlUpdatesArgs and DatabasePostgresqlUpdatesOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlUpdatesInput` via:
+//
+//          DatabasePostgresqlUpdatesArgs{...}
+type DatabasePostgresqlUpdatesInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput
+	ToDatabasePostgresqlUpdatesOutputWithContext(context.Context) DatabasePostgresqlUpdatesOutput
+}
+
+type DatabasePostgresqlUpdatesArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
+}
+
+func (DatabasePostgresqlUpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlUpdates)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput {
+	return i.ToDatabasePostgresqlUpdatesOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesOutput)
+}
+
+func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
+	return i.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesOutput).ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx)
+}
+
+// DatabasePostgresqlUpdatesPtrInput is an input type that accepts DatabasePostgresqlUpdatesArgs, DatabasePostgresqlUpdatesPtr and DatabasePostgresqlUpdatesPtrOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlUpdatesPtrInput` via:
+//
+//          DatabasePostgresqlUpdatesArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabasePostgresqlUpdatesPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput
+	ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Context) DatabasePostgresqlUpdatesPtrOutput
+}
+
+type databasePostgresqlUpdatesPtrType DatabasePostgresqlUpdatesArgs
+
+func DatabasePostgresqlUpdatesPtr(v *DatabasePostgresqlUpdatesArgs) DatabasePostgresqlUpdatesPtrInput {
+	return (*databasePostgresqlUpdatesPtrType)(v)
+}
+
+func (*databasePostgresqlUpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlUpdates)(nil)).Elem()
+}
+
+func (i *databasePostgresqlUpdatesPtrType) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
+	return i.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *databasePostgresqlUpdatesPtrType) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesPtrOutput)
+}
+
+type DatabasePostgresqlUpdatesOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlUpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlUpdates)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput {
+	return o
+}
+
+func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesOutput {
+	return o
+}
+
+func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
+	return o.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePostgresqlUpdates) *DatabasePostgresqlUpdates {
+		return &v
+	}).(DatabasePostgresqlUpdatesPtrOutput)
+}
+
+func (o DatabasePostgresqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o DatabasePostgresqlUpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o DatabasePostgresqlUpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o DatabasePostgresqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o DatabasePostgresqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
+}
+
+type DatabasePostgresqlUpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlUpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlUpdates)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) Elem() DatabasePostgresqlUpdatesOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) DatabasePostgresqlUpdates {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePostgresqlUpdates
+		return ret
+	}).(DatabasePostgresqlUpdatesOutput)
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WeekOfMonth
+	}).(pulumi.IntPtrOutput)
+}
+
 type FirewallDeviceType struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId *int `pulumi:"entityId"`
@@ -3535,6 +4114,7 @@ func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
 }
 
 type LkeClusterControlPlane struct {
+	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	HighAvailability *bool `pulumi:"highAvailability"`
 }
 
@@ -3550,6 +4130,7 @@ type LkeClusterControlPlaneInput interface {
 }
 
 type LkeClusterControlPlaneArgs struct {
+	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 }
 
@@ -3630,6 +4211,7 @@ func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlanePtrOutputWithConte
 	}).(LkeClusterControlPlanePtrOutput)
 }
 
+// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
 }
@@ -3658,6 +4240,7 @@ func (o LkeClusterControlPlanePtrOutput) Elem() LkeClusterControlPlaneOutput {
 	}).(LkeClusterControlPlaneOutput)
 }
 
+// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
 		if v == nil {
@@ -6204,6 +6787,233 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	}).(UserVolumeGrantOutput)
 }
 
+type GetDatabaseBackupsBackup struct {
+	Created string `pulumi:"created"`
+	Id      int    `pulumi:"id"`
+	Label   string `pulumi:"label"`
+	Type    string `pulumi:"type"`
+}
+
+// GetDatabaseBackupsBackupInput is an input type that accepts GetDatabaseBackupsBackupArgs and GetDatabaseBackupsBackupOutput values.
+// You can construct a concrete instance of `GetDatabaseBackupsBackupInput` via:
+//
+//          GetDatabaseBackupsBackupArgs{...}
+type GetDatabaseBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput
+	ToGetDatabaseBackupsBackupOutputWithContext(context.Context) GetDatabaseBackupsBackupOutput
+}
+
+type GetDatabaseBackupsBackupArgs struct {
+	Created pulumi.StringInput `pulumi:"created"`
+	Id      pulumi.IntInput    `pulumi:"id"`
+	Label   pulumi.StringInput `pulumi:"label"`
+	Type    pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDatabaseBackupsBackupArgs) ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput {
+	return i.ToGetDatabaseBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseBackupsBackupArgs) ToGetDatabaseBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsBackupOutput)
+}
+
+// GetDatabaseBackupsBackupArrayInput is an input type that accepts GetDatabaseBackupsBackupArray and GetDatabaseBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseBackupsBackupArrayInput` via:
+//
+//          GetDatabaseBackupsBackupArray{ GetDatabaseBackupsBackupArgs{...} }
+type GetDatabaseBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput
+	ToGetDatabaseBackupsBackupArrayOutputWithContext(context.Context) GetDatabaseBackupsBackupArrayOutput
+}
+
+type GetDatabaseBackupsBackupArray []GetDatabaseBackupsBackupInput
+
+func (GetDatabaseBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDatabaseBackupsBackupArray) ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput {
+	return i.ToGetDatabaseBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseBackupsBackupArray) ToGetDatabaseBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsBackupArrayOutput)
+}
+
+type GetDatabaseBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDatabaseBackupsBackupOutput) ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsBackupOutput) ToGetDatabaseBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsBackupOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseBackupsBackupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseBackupsBackupOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseBackupsBackupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDatabaseBackupsBackupArrayOutput) ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsBackupArrayOutput) ToGetDatabaseBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDatabaseBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseBackupsBackup {
+		return vs[0].([]GetDatabaseBackupsBackup)[vs[1].(int)]
+	}).(GetDatabaseBackupsBackupOutput)
+}
+
+type GetDatabaseBackupsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetDatabaseBackupsFilterInput is an input type that accepts GetDatabaseBackupsFilterArgs and GetDatabaseBackupsFilterOutput values.
+// You can construct a concrete instance of `GetDatabaseBackupsFilterInput` via:
+//
+//          GetDatabaseBackupsFilterArgs{...}
+type GetDatabaseBackupsFilterInput interface {
+	pulumi.Input
+
+	ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput
+	ToGetDatabaseBackupsFilterOutputWithContext(context.Context) GetDatabaseBackupsFilterOutput
+}
+
+type GetDatabaseBackupsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDatabaseBackupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseBackupsFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseBackupsFilterArgs) ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput {
+	return i.ToGetDatabaseBackupsFilterOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseBackupsFilterArgs) ToGetDatabaseBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsFilterOutput)
+}
+
+// GetDatabaseBackupsFilterArrayInput is an input type that accepts GetDatabaseBackupsFilterArray and GetDatabaseBackupsFilterArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseBackupsFilterArrayInput` via:
+//
+//          GetDatabaseBackupsFilterArray{ GetDatabaseBackupsFilterArgs{...} }
+type GetDatabaseBackupsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput
+	ToGetDatabaseBackupsFilterArrayOutputWithContext(context.Context) GetDatabaseBackupsFilterArrayOutput
+}
+
+type GetDatabaseBackupsFilterArray []GetDatabaseBackupsFilterInput
+
+func (GetDatabaseBackupsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseBackupsFilter)(nil)).Elem()
+}
+
+func (i GetDatabaseBackupsFilterArray) ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput {
+	return i.ToGetDatabaseBackupsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseBackupsFilterArray) ToGetDatabaseBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsFilterArrayOutput)
+}
+
+type GetDatabaseBackupsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseBackupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseBackupsFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseBackupsFilterOutput) ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsFilterOutput) ToGetDatabaseBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetDatabaseBackupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by.
+func (o GetDatabaseBackupsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetDatabaseBackupsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabaseBackupsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseBackupsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseBackupsFilter)(nil)).Elem()
+}
+
+func (o GetDatabaseBackupsFilterArrayOutput) ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsFilterArrayOutput) ToGetDatabaseBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDatabaseBackupsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseBackupsFilter {
+		return vs[0].([]GetDatabaseBackupsFilter)[vs[1].(int)]
+	}).(GetDatabaseBackupsFilterOutput)
+}
+
 type GetDatabaseEnginesEngine struct {
 	Engine  string `pulumi:"engine"`
 	Id      string `pulumi:"id"`
@@ -6423,6 +7233,124 @@ func (o GetDatabaseEnginesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabas
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEnginesFilter {
 		return vs[0].([]GetDatabaseEnginesFilter)[vs[1].(int)]
 	}).(GetDatabaseEnginesFilterOutput)
+}
+
+type GetDatabaseMongodbUpdate struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth int    `pulumi:"weekOfMonth"`
+}
+
+// GetDatabaseMongodbUpdateInput is an input type that accepts GetDatabaseMongodbUpdateArgs and GetDatabaseMongodbUpdateOutput values.
+// You can construct a concrete instance of `GetDatabaseMongodbUpdateInput` via:
+//
+//          GetDatabaseMongodbUpdateArgs{...}
+type GetDatabaseMongodbUpdateInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput
+	ToGetDatabaseMongodbUpdateOutputWithContext(context.Context) GetDatabaseMongodbUpdateOutput
+}
+
+type GetDatabaseMongodbUpdateArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
+}
+
+func (GetDatabaseMongodbUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMongodbUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMongodbUpdateArgs) ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput {
+	return i.ToGetDatabaseMongodbUpdateOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMongodbUpdateArgs) ToGetDatabaseMongodbUpdateOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMongodbUpdateOutput)
+}
+
+// GetDatabaseMongodbUpdateArrayInput is an input type that accepts GetDatabaseMongodbUpdateArray and GetDatabaseMongodbUpdateArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMongodbUpdateArrayInput` via:
+//
+//          GetDatabaseMongodbUpdateArray{ GetDatabaseMongodbUpdateArgs{...} }
+type GetDatabaseMongodbUpdateArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput
+	ToGetDatabaseMongodbUpdateArrayOutputWithContext(context.Context) GetDatabaseMongodbUpdateArrayOutput
+}
+
+type GetDatabaseMongodbUpdateArray []GetDatabaseMongodbUpdateInput
+
+func (GetDatabaseMongodbUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMongodbUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMongodbUpdateArray) ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput {
+	return i.ToGetDatabaseMongodbUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMongodbUpdateArray) ToGetDatabaseMongodbUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMongodbUpdateArrayOutput)
+}
+
+type GetDatabaseMongodbUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMongodbUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMongodbUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMongodbUpdateOutput) ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMongodbUpdateOutput) ToGetDatabaseMongodbUpdateOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMongodbUpdateOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMongodbUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMongodbUpdateOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMongodbUpdateOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMongodbUpdate) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMongodbUpdateOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMongodbUpdateOutput) WeekOfMonth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
+}
+
+type GetDatabaseMongodbUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMongodbUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMongodbUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMongodbUpdateArrayOutput) ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMongodbUpdateArrayOutput) ToGetDatabaseMongodbUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMongodbUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseMongodbUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMongodbUpdate {
+		return vs[0].([]GetDatabaseMongodbUpdate)[vs[1].(int)]
+	}).(GetDatabaseMongodbUpdateOutput)
 }
 
 type GetDatabaseMysqlBackupsBackup struct {
@@ -6650,6 +7578,242 @@ func (o GetDatabaseMysqlBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlBackupsFilter {
 		return vs[0].([]GetDatabaseMysqlBackupsFilter)[vs[1].(int)]
 	}).(GetDatabaseMysqlBackupsFilterOutput)
+}
+
+type GetDatabaseMysqlUpdate struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth int    `pulumi:"weekOfMonth"`
+}
+
+// GetDatabaseMysqlUpdateInput is an input type that accepts GetDatabaseMysqlUpdateArgs and GetDatabaseMysqlUpdateOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlUpdateInput` via:
+//
+//          GetDatabaseMysqlUpdateArgs{...}
+type GetDatabaseMysqlUpdateInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput
+	ToGetDatabaseMysqlUpdateOutputWithContext(context.Context) GetDatabaseMysqlUpdateOutput
+}
+
+type GetDatabaseMysqlUpdateArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
+}
+
+func (GetDatabaseMysqlUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlUpdateArgs) ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput {
+	return i.ToGetDatabaseMysqlUpdateOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlUpdateArgs) ToGetDatabaseMysqlUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlUpdateOutput)
+}
+
+// GetDatabaseMysqlUpdateArrayInput is an input type that accepts GetDatabaseMysqlUpdateArray and GetDatabaseMysqlUpdateArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlUpdateArrayInput` via:
+//
+//          GetDatabaseMysqlUpdateArray{ GetDatabaseMysqlUpdateArgs{...} }
+type GetDatabaseMysqlUpdateArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput
+	ToGetDatabaseMysqlUpdateArrayOutputWithContext(context.Context) GetDatabaseMysqlUpdateArrayOutput
+}
+
+type GetDatabaseMysqlUpdateArray []GetDatabaseMysqlUpdateInput
+
+func (GetDatabaseMysqlUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlUpdateArray) ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput {
+	return i.ToGetDatabaseMysqlUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlUpdateArray) ToGetDatabaseMysqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlUpdateArrayOutput)
+}
+
+type GetDatabaseMysqlUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlUpdateOutput) ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlUpdateOutput) ToGetDatabaseMysqlUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlUpdateOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlUpdateOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlUpdateOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlUpdate) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlUpdateOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlUpdateOutput) WeekOfMonth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
+}
+
+type GetDatabaseMysqlUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlUpdateArrayOutput) ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlUpdateArrayOutput) ToGetDatabaseMysqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlUpdate {
+		return vs[0].([]GetDatabaseMysqlUpdate)[vs[1].(int)]
+	}).(GetDatabaseMysqlUpdateOutput)
+}
+
+type GetDatabasePostgresqlUpdate struct {
+	DayOfWeek   string `pulumi:"dayOfWeek"`
+	Duration    int    `pulumi:"duration"`
+	Frequency   string `pulumi:"frequency"`
+	HourOfDay   int    `pulumi:"hourOfDay"`
+	WeekOfMonth int    `pulumi:"weekOfMonth"`
+}
+
+// GetDatabasePostgresqlUpdateInput is an input type that accepts GetDatabasePostgresqlUpdateArgs and GetDatabasePostgresqlUpdateOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlUpdateInput` via:
+//
+//          GetDatabasePostgresqlUpdateArgs{...}
+type GetDatabasePostgresqlUpdateInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput
+	ToGetDatabasePostgresqlUpdateOutputWithContext(context.Context) GetDatabasePostgresqlUpdateOutput
+}
+
+type GetDatabasePostgresqlUpdateArgs struct {
+	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	Frequency   pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
+}
+
+func (GetDatabasePostgresqlUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlUpdate)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlUpdateArgs) ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput {
+	return i.ToGetDatabasePostgresqlUpdateOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlUpdateArgs) ToGetDatabasePostgresqlUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlUpdateOutput)
+}
+
+// GetDatabasePostgresqlUpdateArrayInput is an input type that accepts GetDatabasePostgresqlUpdateArray and GetDatabasePostgresqlUpdateArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlUpdateArrayInput` via:
+//
+//          GetDatabasePostgresqlUpdateArray{ GetDatabasePostgresqlUpdateArgs{...} }
+type GetDatabasePostgresqlUpdateArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput
+	ToGetDatabasePostgresqlUpdateArrayOutputWithContext(context.Context) GetDatabasePostgresqlUpdateArrayOutput
+}
+
+type GetDatabasePostgresqlUpdateArray []GetDatabasePostgresqlUpdateInput
+
+func (GetDatabasePostgresqlUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlUpdate)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlUpdateArray) ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput {
+	return i.ToGetDatabasePostgresqlUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlUpdateArray) ToGetDatabasePostgresqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlUpdateArrayOutput)
+}
+
+type GetDatabasePostgresqlUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlUpdate)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) ToGetDatabasePostgresqlUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlUpdateOutput) WeekOfMonth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
+}
+
+type GetDatabasePostgresqlUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlUpdate)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlUpdateArrayOutput) ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlUpdateArrayOutput) ToGetDatabasePostgresqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlUpdate {
+		return vs[0].([]GetDatabasePostgresqlUpdate)[vs[1].(int)]
+	}).(GetDatabasePostgresqlUpdateOutput)
 }
 
 type GetDatabasesDatabase struct {
@@ -13040,6 +14204,12 @@ func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMongodbUpdatesInput)(nil)).Elem(), DatabaseMongodbUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMongodbUpdatesPtrInput)(nil)).Elem(), DatabaseMongodbUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesPtrInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesPtrInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeInput)(nil)).Elem(), FirewallDeviceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeArrayInput)(nil)).Elem(), FirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundInput)(nil)).Elem(), FirewallInboundArgs{})
@@ -13124,14 +14294,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupInput)(nil)).Elem(), GetDatabaseBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseBackupsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterInput)(nil)).Elem(), GetDatabaseBackupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseBackupsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineInput)(nil)).Elem(), GetDatabaseEnginesEngineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineArrayInput)(nil)).Elem(), GetDatabaseEnginesEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterInput)(nil)).Elem(), GetDatabaseEnginesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterArrayInput)(nil)).Elem(), GetDatabaseEnginesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMongodbUpdateInput)(nil)).Elem(), GetDatabaseMongodbUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMongodbUpdateArrayInput)(nil)).Elem(), GetDatabaseMongodbUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateInput)(nil)).Elem(), GetDatabaseMysqlUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterInput)(nil)).Elem(), GetDatabasesFilterArgs{})
@@ -13236,6 +14416,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanArrayInput)(nil)).Elem(), GetVlansVlanArray{})
+	pulumi.RegisterOutputType(DatabaseMongodbUpdatesOutput{})
+	pulumi.RegisterOutputType(DatabaseMongodbUpdatesPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlUpdatesOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlUpdatesPtrOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceTypeOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(FirewallInboundOutput{})
@@ -13320,14 +14506,24 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetDatabaseBackupsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseBackupsFilterOutput{})
+	pulumi.RegisterOutputType(GetDatabaseBackupsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesEngineOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMongodbUpdateOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMongodbUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesFilterOutput{})

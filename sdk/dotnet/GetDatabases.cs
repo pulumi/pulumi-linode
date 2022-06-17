@@ -12,8 +12,6 @@ namespace Pulumi.Linode
     public static class GetDatabases
     {
         /// <summary>
-        /// **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
-        /// 
         /// Provides information about Linode Managed Databases that match a set of filters.
         /// 
         /// {{% examples %}}
@@ -106,8 +104,6 @@ namespace Pulumi.Linode
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
-        /// 
         /// Provides information about Linode Managed Databases that match a set of filters.
         /// 
         /// {{% examples %}}

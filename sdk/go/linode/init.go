@@ -20,8 +20,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "linode:index/databaseAccessControls:DatabaseAccessControls":
+		r = &DatabaseAccessControls{}
+	case "linode:index/databaseMongodb:DatabaseMongodb":
+		r = &DatabaseMongodb{}
 	case "linode:index/databaseMysql:DatabaseMysql":
 		r = &DatabaseMysql{}
+	case "linode:index/databasePostgresql:DatabasePostgresql":
+		r = &DatabasePostgresql{}
 	case "linode:index/domain:Domain":
 		r = &Domain{}
 	case "linode:index/domainRecord:DomainRecord":
@@ -36,6 +42,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "linode:index/instanceIp:InstanceIp":
 		r = &InstanceIp{}
+	case "linode:index/instanceSharedIps:InstanceSharedIps":
+		r = &InstanceSharedIps{}
 	case "linode:index/ipv6Range:Ipv6Range":
 		r = &Ipv6Range{}
 	case "linode:index/lkeCluster:LkeCluster":
@@ -94,7 +102,22 @@ func init() {
 	version, _ := PkgVersion()
 	pulumi.RegisterResourceModule(
 		"linode",
+		"index/databaseAccessControls",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/databaseMongodb",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
 		"index/databaseMysql",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/databasePostgresql",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -130,6 +153,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/instanceIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/instanceSharedIps",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
