@@ -96,8 +96,6 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
                          order_by: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseEnginesResult:
     """
-    **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
-
     Provides information about Linode Managed Database engines that match a set of filters.
 
     ## Example Usage
@@ -182,8 +180,6 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
     """
-    **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
-
     Provides information about Linode Managed Database engines that match a set of filters.
 
     ## Example Usage

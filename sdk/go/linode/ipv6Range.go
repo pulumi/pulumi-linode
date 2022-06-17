@@ -50,7 +50,7 @@ type Ipv6Range struct {
 
 	// Whether this IPv6 range is shared.
 	IsBgp pulumi.BoolOutput `pulumi:"isBgp"`
-	// The ID of the Linode to assign this range to.
+	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
 	// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
 	Linodes pulumi.IntArrayOutput `pulumi:"linodes"`
@@ -98,7 +98,7 @@ func GetIpv6Range(ctx *pulumi.Context,
 type ipv6RangeState struct {
 	// Whether this IPv6 range is shared.
 	IsBgp *bool `pulumi:"isBgp"`
-	// The ID of the Linode to assign this range to.
+	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId *int `pulumi:"linodeId"`
 	// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
 	Linodes []int `pulumi:"linodes"`
@@ -115,7 +115,7 @@ type ipv6RangeState struct {
 type Ipv6RangeState struct {
 	// Whether this IPv6 range is shared.
 	IsBgp pulumi.BoolPtrInput
-	// The ID of the Linode to assign this range to.
+	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId pulumi.IntPtrInput
 	// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
 	Linodes pulumi.IntArrayInput
@@ -134,7 +134,7 @@ func (Ipv6RangeState) ElementType() reflect.Type {
 }
 
 type ipv6RangeArgs struct {
-	// The ID of the Linode to assign this range to.
+	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId *int `pulumi:"linodeId"`
 	// The prefix length of the IPv6 range.
 	PrefixLength int `pulumi:"prefixLength"`
@@ -144,7 +144,7 @@ type ipv6RangeArgs struct {
 
 // The set of arguments for constructing a Ipv6Range resource.
 type Ipv6RangeArgs struct {
-	// The ID of the Linode to assign this range to.
+	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId pulumi.IntPtrInput
 	// The prefix length of the IPv6 range.
 	PrefixLength pulumi.IntInput
@@ -244,7 +244,7 @@ func (o Ipv6RangeOutput) IsBgp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ipv6Range) pulumi.BoolOutput { return v.IsBgp }).(pulumi.BoolOutput)
 }
 
-// The ID of the Linode to assign this range to.
+// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 func (o Ipv6RangeOutput) LinodeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ipv6Range) pulumi.IntPtrOutput { return v.LinodeId }).(pulumi.IntPtrOutput)
 }

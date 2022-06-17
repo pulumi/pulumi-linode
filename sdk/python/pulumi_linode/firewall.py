@@ -332,6 +332,8 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -345,7 +347,6 @@ class Firewall(pulumi.CustomResource):
             swap_size=256)
         my_firewall = linode.Firewall("myFirewall",
             label="my_firewall",
-            tags=["test"],
             inbounds=[
                 linode.FirewallInboundArgs(
                     label="allow-http",
@@ -417,6 +418,8 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -430,7 +433,6 @@ class Firewall(pulumi.CustomResource):
             swap_size=256)
         my_firewall = linode.Firewall("myFirewall",
             label="my_firewall",
-            tags=["test"],
             inbounds=[
                 linode.FirewallInboundArgs(
                     label="allow-http",

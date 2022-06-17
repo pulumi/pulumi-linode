@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface DatabaseMongodbUpdates {
+    dayOfWeek: pulumi.Input<string>;
+    duration: pulumi.Input<number>;
+    frequency: pulumi.Input<string>;
+    hourOfDay: pulumi.Input<number>;
+    weekOfMonth?: pulumi.Input<number>;
+}
+
+export interface DatabaseMysqlUpdates {
+    dayOfWeek: pulumi.Input<string>;
+    duration: pulumi.Input<number>;
+    frequency: pulumi.Input<string>;
+    hourOfDay: pulumi.Input<number>;
+    weekOfMonth?: pulumi.Input<number>;
+}
+
+export interface DatabasePostgresqlUpdates {
+    dayOfWeek: pulumi.Input<string>;
+    duration: pulumi.Input<number>;
+    frequency: pulumi.Input<string>;
+    hourOfDay: pulumi.Input<number>;
+    weekOfMonth?: pulumi.Input<number>;
+}
+
 export interface FirewallDevice {
     /**
      * The ID of the underlying entity this device references (i.e. the Linode's ID).
@@ -78,7 +102,7 @@ export interface FirewallOutbound {
     protocol: pulumi.Input<string>;
 }
 
-export interface GetDatabaseEnginesFilterArgs {
+export interface GetDatabaseBackupsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
@@ -91,6 +115,21 @@ export interface GetDatabaseEnginesFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDatabaseBackupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
 }
 
 export interface GetDatabaseEnginesFilter {
@@ -106,6 +145,21 @@ export interface GetDatabaseEnginesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetDatabaseEnginesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetDatabaseMysqlBackupsFilter {
@@ -198,21 +252,6 @@ export interface GetImagesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetInstanceTypesFilterArgs {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetInstanceTypesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -226,6 +265,21 @@ export interface GetInstanceTypesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetInstanceTypesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetInstancesFilter {
@@ -258,15 +312,6 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetStackScriptUserDefinedFieldArgs {
-    default?: pulumi.Input<string>;
-    example?: pulumi.Input<string>;
-    label?: pulumi.Input<string>;
-    manyOf?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    oneOf?: pulumi.Input<string>;
-}
-
 export interface GetStackScriptUserDefinedField {
     default?: string;
     example?: string;
@@ -274,6 +319,15 @@ export interface GetStackScriptUserDefinedField {
     manyOf?: string;
     name?: string;
     oneOf?: string;
+}
+
+export interface GetStackScriptUserDefinedFieldArgs {
+    default?: pulumi.Input<string>;
+    example?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
+    manyOf?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    oneOf?: pulumi.Input<string>;
 }
 
 export interface GetStackScriptsFilter {
@@ -633,6 +687,9 @@ export interface InstanceSpecs {
 }
 
 export interface LkeClusterControlPlane {
+    /**
+     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     */
     highAvailability?: pulumi.Input<boolean>;
 }
 
@@ -824,4 +881,3 @@ export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
 }
-

@@ -58,7 +58,7 @@ export class Ipv6Range extends pulumi.CustomResource {
      */
     public /*out*/ readonly isBgp!: pulumi.Output<boolean>;
     /**
-     * The ID of the Linode to assign this range to.
+     * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
     public readonly linodeId!: pulumi.Output<number | undefined>;
     /**
@@ -129,7 +129,7 @@ export interface Ipv6RangeState {
      */
     isBgp?: pulumi.Input<boolean>;
     /**
-     * The ID of the Linode to assign this range to.
+     * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
     linodeId?: pulumi.Input<number>;
     /**
@@ -159,7 +159,7 @@ export interface Ipv6RangeState {
  */
 export interface Ipv6RangeArgs {
     /**
-     * The ID of the Linode to assign this range to.
+     * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
     linodeId?: pulumi.Input<number>;
     /**

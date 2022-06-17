@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface DatabaseMongodbUpdates {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth?: number;
+}
+
+export interface DatabaseMysqlUpdates {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth?: number;
+}
+
+export interface DatabasePostgresqlUpdates {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth?: number;
+}
+
 export interface FirewallDevice {
     /**
      * The ID of the underlying entity this device references (i.e. the Linode's ID).
@@ -78,6 +102,28 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface GetDatabaseBackupsBackup {
+    created: string;
+    id: number;
+    label: string;
+    type: string;
+}
+
+export interface GetDatabaseBackupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetDatabaseEnginesEngine {
     engine: string;
     id: string;
@@ -97,6 +143,14 @@ export interface GetDatabaseEnginesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetDatabaseMongodbUpdate {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth: number;
 }
 
 export interface GetDatabaseMysqlBackupsBackup {
@@ -119,6 +173,22 @@ export interface GetDatabaseMysqlBackupsFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetDatabaseMysqlUpdate {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth: number;
+}
+
+export interface GetDatabasePostgresqlUpdate {
+    dayOfWeek: string;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+    weekOfMonth: number;
 }
 
 export interface GetDatabasesDatabase {
@@ -1093,6 +1163,9 @@ export interface InstanceSpecs {
 }
 
 export interface LkeClusterControlPlane {
+    /**
+     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     */
     highAvailability: boolean;
 }
 
@@ -1284,3 +1357,4 @@ export interface UserVolumeGrant {
     id: number;
     permissions: string;
 }
+

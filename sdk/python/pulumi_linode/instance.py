@@ -32,6 +32,7 @@ class InstanceArgs:
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
+                 shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
@@ -47,7 +48,7 @@ class InstanceArgs:
         :param pulumi.Input[int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -57,6 +58,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
@@ -97,6 +99,8 @@ class InstanceArgs:
             pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
             pulumi.set(__self__, "root_pass", root_pass)
+        if shared_ipv4s is not None:
+            pulumi.set(__self__, "shared_ipv4s", shared_ipv4s)
         if stackscript_data is not None:
             pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
@@ -198,7 +202,7 @@ class InstanceArgs:
     @pulumi.getter
     def booted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         """
         return pulumi.get(self, "booted")
 
@@ -313,6 +317,18 @@ class InstanceArgs:
         pulumi.set(self, "root_pass", value)
 
     @property
+    @pulumi.getter(name="sharedIpv4s")
+    def shared_ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        """
+        return pulumi.get(self, "shared_ipv4s")
+
+    @shared_ipv4s.setter
+    def shared_ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shared_ipv4s", value)
+
+    @property
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -410,6 +426,7 @@ class _InstanceState:
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
+                 shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
@@ -427,7 +444,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceBackupsArgs'] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -445,6 +462,7 @@ class _InstanceState:
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -498,6 +516,8 @@ class _InstanceState:
             pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
             pulumi.set(__self__, "root_pass", root_pass)
+        if shared_ipv4s is not None:
+            pulumi.set(__self__, "shared_ipv4s", shared_ipv4s)
         if specs is not None:
             pulumi.set(__self__, "specs", specs)
         if stackscript_data is not None:
@@ -603,7 +623,7 @@ class _InstanceState:
     @pulumi.getter
     def booted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         """
         return pulumi.get(self, "booted")
 
@@ -781,6 +801,18 @@ class _InstanceState:
         pulumi.set(self, "root_pass", value)
 
     @property
+    @pulumi.getter(name="sharedIpv4s")
+    def shared_ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        """
+        return pulumi.get(self, "shared_ipv4s")
+
+    @shared_ipv4s.setter
+    def shared_ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shared_ipv4s", value)
+
+    @property
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input['InstanceSpecsArgs']]:
         """
@@ -899,6 +931,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
+                 shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
@@ -1028,7 +1061,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -1039,6 +1072,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
@@ -1198,6 +1232,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
+                 shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
@@ -1235,6 +1270,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk
             __props__.__dict__["root_pass"] = root_pass
+            __props__.__dict__["shared_ipv4s"] = shared_ipv4s
             __props__.__dict__["stackscript_data"] = stackscript_data
             __props__.__dict__["stackscript_id"] = stackscript_id
             __props__.__dict__["swap_size"] = swap_size
@@ -1280,6 +1316,7 @@ class Instance(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             resize_disk: Optional[pulumi.Input[bool]] = None,
             root_pass: Optional[pulumi.Input[str]] = None,
+            shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             specs: Optional[pulumi.Input[pulumi.InputType['InstanceSpecsArgs']]] = None,
             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             stackscript_id: Optional[pulumi.Input[int]] = None,
@@ -1302,7 +1339,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceBackupsArgs']] backups: Information about this Linode's backups status.
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
-        :param pulumi.Input[bool] booted: Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -1320,6 +1357,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input[pulumi.InputType['InstanceSpecsArgs']] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -1355,6 +1393,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["resize_disk"] = resize_disk
         __props__.__dict__["root_pass"] = root_pass
+        __props__.__dict__["shared_ipv4s"] = shared_ipv4s
         __props__.__dict__["specs"] = specs
         __props__.__dict__["stackscript_data"] = stackscript_data
         __props__.__dict__["stackscript_id"] = stackscript_id
@@ -1425,7 +1464,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def booted(self) -> pulumi.Output[bool]:
         """
-        Specifies whether the Linode should be `running` or `offline`. If unspecified, the Linode's power status will not be managed by the Provider.
+        If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         """
         return pulumi.get(self, "booted")
 
@@ -1541,6 +1580,14 @@ class Instance(pulumi.CustomResource):
         The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         """
         return pulumi.get(self, "root_pass")
+
+    @property
+    @pulumi.getter(name="sharedIpv4s")
+    def shared_ipv4s(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        """
+        return pulumi.get(self, "shared_ipv4s")
 
     @property
     @pulumi.getter

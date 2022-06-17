@@ -35,18 +35,18 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.21",
  *     label: "my-cluster",
- *     pools: [{
- *         autoscaler: {
- *             max: 10,
- *             min: 3,
- *         },
- *         count: 3,
- *         type: "g6-standard-2",
- *     }],
+ *     k8sVersion: "1.21",
  *     region: "us-central",
  *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 3,
+ *         autoscaler: {
+ *             min: 3,
+ *             max: 10,
+ *         },
+ *     }],
  * });
  * ```
  *

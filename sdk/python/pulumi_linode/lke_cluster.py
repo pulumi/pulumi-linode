@@ -321,18 +321,18 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
             label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    max=10,
-                    min=3,
-                ),
-                count=3,
-                type="g6-standard-2",
-            )],
+            k8s_version="1.21",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[linode.LkeClusterPoolArgs(
+                type="g6-standard-2",
+                count=3,
+                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
+                    min=3,
+                    max=10,
+                ),
+            )])
         ```
 
         ## Import
@@ -387,18 +387,18 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
             label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    max=10,
-                    min=3,
-                ),
-                count=3,
-                type="g6-standard-2",
-            )],
+            k8s_version="1.21",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[linode.LkeClusterPoolArgs(
+                type="g6-standard-2",
+                count=3,
+                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
+                    min=3,
+                    max=10,
+                ),
+            )])
         ```
 
         ## Import

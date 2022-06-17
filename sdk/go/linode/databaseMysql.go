@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **NOTICE:** Managed Databases are currently in beta. Ensure `apiVersion` is set to `v4beta` in order to use this resource.
-//
 // Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
 // For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
 //
@@ -70,6 +68,13 @@ import (
 // 			ReplicationType: pulumi.String("asynch"),
 // 			SslConnection:   pulumi.Bool(true),
 // 			Type:            pulumi.String("g6-nanode-1"),
+// 			Updates: &DatabaseMysqlUpdatesArgs{
+// 				DayOfWeek:   pulumi.String("saturday"),
+// 				Duration:    pulumi.Int(1),
+// 				Frequency:   pulumi.String("monthly"),
+// 				HourOfDay:   pulumi.Int(22),
+// 				WeekOfMonth: pulumi.Int(2),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -78,6 +83,20 @@ import (
 // 	})
 // }
 // ```
+// ## updates
+//
+// The following arguments are supported in the `updates` specification block:
+//
+// * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+//
+// * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+//
+// * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+//
+// * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+//
+// * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+//
 // ## Attributes
 //
 // In addition to all arguments above, the following attributes are exported:
@@ -114,7 +133,7 @@ import (
 type DatabaseMysql struct {
 	pulumi.CustomResourceState
 
-	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists pulumi.StringArrayOutput `pulumi:"allowLists"`
 	// The base64-encoded SSL CA certificate for the Managed Database instance.
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
@@ -150,6 +169,8 @@ type DatabaseMysql struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// Configuration settings for automated patch update maintenance for the Managed Database.
+	Updates DatabaseMysqlUpdatesOutput `pulumi:"updates"`
 	// The Managed Database engine version.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -195,7 +216,7 @@ func GetDatabaseMysql(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseMysql resources.
 type databaseMysqlState struct {
-	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists []string `pulumi:"allowLists"`
 	// The base64-encoded SSL CA certificate for the Managed Database instance.
 	CaCert *string `pulumi:"caCert"`
@@ -231,12 +252,14 @@ type databaseMysqlState struct {
 	Type *string `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated *string `pulumi:"updated"`
+	// Configuration settings for automated patch update maintenance for the Managed Database.
+	Updates *DatabaseMysqlUpdates `pulumi:"updates"`
 	// The Managed Database engine version.
 	Version *string `pulumi:"version"`
 }
 
 type DatabaseMysqlState struct {
-	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists pulumi.StringArrayInput
 	// The base64-encoded SSL CA certificate for the Managed Database instance.
 	CaCert pulumi.StringPtrInput
@@ -272,6 +295,8 @@ type DatabaseMysqlState struct {
 	Type pulumi.StringPtrInput
 	// When this Managed Database was last updated.
 	Updated pulumi.StringPtrInput
+	// Configuration settings for automated patch update maintenance for the Managed Database.
+	Updates DatabaseMysqlUpdatesPtrInput
 	// The Managed Database engine version.
 	Version pulumi.StringPtrInput
 }
@@ -281,7 +306,7 @@ func (DatabaseMysqlState) ElementType() reflect.Type {
 }
 
 type databaseMysqlArgs struct {
-	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists []string `pulumi:"allowLists"`
 	// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
 	ClusterSize *int `pulumi:"clusterSize"`
@@ -299,11 +324,13 @@ type databaseMysqlArgs struct {
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
 	Type string `pulumi:"type"`
+	// Configuration settings for automated patch update maintenance for the Managed Database.
+	Updates *DatabaseMysqlUpdates `pulumi:"updates"`
 }
 
 // The set of arguments for constructing a DatabaseMysql resource.
 type DatabaseMysqlArgs struct {
-	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists pulumi.StringArrayInput
 	// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
 	ClusterSize pulumi.IntPtrInput
@@ -321,6 +348,8 @@ type DatabaseMysqlArgs struct {
 	SslConnection pulumi.BoolPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
 	Type pulumi.StringInput
+	// Configuration settings for automated patch update maintenance for the Managed Database.
+	Updates DatabaseMysqlUpdatesPtrInput
 }
 
 func (DatabaseMysqlArgs) ElementType() reflect.Type {
@@ -410,7 +439,7 @@ func (o DatabaseMysqlOutput) ToDatabaseMysqlOutputWithContext(ctx context.Contex
 	return o
 }
 
-// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 func (o DatabaseMysqlOutput) AllowLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseMysql) pulumi.StringArrayOutput { return v.AllowLists }).(pulumi.StringArrayOutput)
 }
@@ -498,6 +527,11 @@ func (o DatabaseMysqlOutput) Type() pulumi.StringOutput {
 // When this Managed Database was last updated.
 func (o DatabaseMysqlOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysql) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// Configuration settings for automated patch update maintenance for the Managed Database.
+func (o DatabaseMysqlOutput) Updates() DatabaseMysqlUpdatesOutput {
+	return o.ApplyT(func(v *DatabaseMysql) DatabaseMysqlUpdatesOutput { return v.Updates }).(DatabaseMysqlUpdatesOutput)
 }
 
 // The Managed Database engine version.

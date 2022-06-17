@@ -49,7 +49,7 @@ namespace Pulumi.Linode
         public Output<bool> IsBgp { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode to assign this range to.
+        /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         /// </summary>
         [Output("linodeId")]
         public Output<int?> LinodeId { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Linode
     public sealed class Ipv6RangeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Linode to assign this range to.
+        /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.Linode
         public Input<bool>? IsBgp { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to assign this range to.
+        /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }

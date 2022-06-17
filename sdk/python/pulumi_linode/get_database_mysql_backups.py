@@ -106,7 +106,7 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
                                order_by: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseMysqlBackupsResult:
     """
-    **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
+    > **NOTICE:** This data source has been deprecated in favor of `get_database_backups`.
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
 
@@ -181,7 +181,7 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
                                       order_by: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlBackupsResult]:
     """
-    **NOTICE:** Managed Databases are currently in beta. Ensure `api_version` is set to `v4beta` in order to use this data source.
+    > **NOTICE:** This data source has been deprecated in favor of `get_database_backups`.
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
 

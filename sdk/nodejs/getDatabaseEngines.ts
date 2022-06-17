@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * **NOTICE:** Managed Databases are currently in beta. Ensure `apiVersion` is set to `v4beta` in order to use this data source.
- *
  * Provides information about Linode Managed Database engines that match a set of filters.
  *
  * ## Example Usage

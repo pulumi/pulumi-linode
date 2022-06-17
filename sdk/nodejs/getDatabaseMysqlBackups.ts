@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * **NOTICE:** Managed Databases are currently in beta. Ensure `apiVersion` is set to `v4beta` in order to use this data source.
+ * > **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
  *
  * Provides information about Linode MySQL Database Backups that match a set of filters.
  *
