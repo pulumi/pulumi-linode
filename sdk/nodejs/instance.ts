@@ -31,51 +31,6 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
- * ### Linode Instance with explicit Configs and Disks
- *
- * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const me = linode.getProfile({});
- * const webVolume = new linode.Volume("webVolume", {
- *     label: "web_volume",
- *     size: 20,
- *     region: "us-central",
- * });
- * const web = new linode.Instance("web", {
- *     label: "complex_instance",
- *     group: "foo",
- *     tags: ["foo"],
- *     region: "us-central",
- *     type: "g6-nanode-1",
- *     privateIp: true,
- *     disks: [{
- *         label: "boot",
- *         size: 3000,
- *         image: "linode/ubuntu18.04",
- *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
- *         authorizedUsers: [me.then(me => me.username)],
- *         rootPass: "terr4form-test",
- *     }],
- *     configs: [{
- *         label: "boot_config",
- *         kernel: "linode/latest-64bit",
- *         devices: {
- *             sda: {
- *                 diskLabel: "boot",
- *             },
- *             sdb: {
- *                 volumeId: webVolume.id,
- *             },
- *         },
- *         rootDevice: "/dev/sda",
- *     }],
- *     bootConfigLabel: "boot_config",
- * });
- * ```
  * ## Attributes
  *
  * This Linode Instance resource exports the following attributes:

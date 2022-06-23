@@ -9,31 +9,6 @@ import * as utilities from "./utilities";
  * Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
  * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
  *
- * ## Example Usage
- *
- * The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foobar = new linode.NodeBalancer("foobar", {
- *     label: "mynodebalancer",
- *     region: "us-east",
- *     clientConnThrottle: 20,
- * });
- * const foofig = new linode.NodeBalancerConfig("foofig", {
- *     nodebalancerId: foobar.id,
- *     port: 8088,
- *     protocol: "http",
- *     check: "http",
- *     checkPath: "/foo",
- *     checkAttempts: 3,
- *     checkTimeout: 30,
- *     stickiness: "http_cookie",
- *     algorithm: "source",
- * });
- * ```
  * ## Attributes
  *
  * This resource exports the following attributes:

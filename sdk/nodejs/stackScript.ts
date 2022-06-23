@@ -10,40 +10,6 @@ import * as utilities from "./utilities";
  *
  * For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
  *
- * ## Example Usage
- *
- * The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscriptData` field.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const fooStackScript = new linode.StackScript("fooStackScript", {
- *     label: "foo",
- *     description: "Installs a Package",
- *     script: `#!/bin/bash
- * # <UDF name="package" label="System Package to Install" example="nginx" default="">
- * apt-get -q update && apt-get -q -y install $PACKAGE
- * `,
- *     images: [
- *         "linode/ubuntu18.04",
- *         "linode/ubuntu16.04lts",
- *     ],
- *     revNote: "initial version",
- * });
- * const fooInstance = new linode.Instance("fooInstance", {
- *     image: "linode/ubuntu18.04",
- *     label: "foo",
- *     region: "us-east",
- *     type: "g6-nanode-1",
- *     authorizedKeys: ["..."],
- *     rootPass: "...",
- *     stackscriptId: fooStackScript.id,
- *     stackscriptData: {
- *         "package": "nginx",
- *     },
- * });
- * ```
  * ## Attributes
  *
  * This resource exports the following attributes:

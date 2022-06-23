@@ -8,51 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode Managed Database engines that match a set of filters.
  *
- * ## Example Usage
- *
- * Get information about all Linode Managed Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all = pulumi.output(linode.getDatabaseEngines());
- * ```
- *
- * Get information about all Linode MySQL Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = pulumi.output(linode.getDatabaseEngines({
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * }));
- * ```
- *
- * Create a Linode MySQL Database using the latest support MySQL version:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = linode.getDatabaseEngines({
- *     latest: true,
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * });
- * const myDb = new linode.DatabaseMysql("myDb", {
- *     label: "mydb",
- *     engineId: mysql.then(mysql => mysql.engines?[0]?.id),
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- * });
- * ```
  * ## Attributes
  *
  * Each engine will be stored in the `engines` attribute and will export the following attributes:
