@@ -107,6 +107,9 @@ type ObjectStorageBucket struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrOutput `pulumi:"corsEnabled"`
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+	// public.
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
@@ -162,6 +165,9 @@ type objectStorageBucketState struct {
 	Cluster *string `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+	// public.
+	Hostname *string `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label *string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
@@ -183,6 +189,9 @@ type ObjectStorageBucketState struct {
 	Cluster pulumi.StringPtrInput
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+	// public.
+	Hostname pulumi.StringPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringPtrInput
 	// Lifecycle rules to be applied to the bucket.
@@ -350,6 +359,12 @@ func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
 // If true, the bucket will have CORS enabled for all origins.
 func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolPtrOutput { return v.CorsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+// public.
+func (o ObjectStorageBucketOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // The label of the Linode Object Storage Bucket.

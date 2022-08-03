@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,9 +18,11 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// An HTTP User-Agent Prefix to prepend in API requests.
-	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
+	ApiVersion    pulumi.StringPtrOutput `pulumi:"apiVersion"`
+	ConfigPath    pulumi.StringPtrOutput `pulumi:"configPath"`
+	ConfigProfile pulumi.StringPtrOutput `pulumi:"configProfile"`
 	// The token that allows you access to your Linode account
-	Token pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	UaPrefix pulumi.StringPtrOutput `pulumi:"uaPrefix"`
 	// The HTTP(S) API address of the Linode API to use.
@@ -32,12 +33,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Token == nil {
-		return nil, errors.New("invalid value for required argument 'Token'")
-	}
 	if isZero(args.ApiVersion) {
 		args.ApiVersion = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_API_VERSION").(string))
 	}
@@ -57,7 +55,9 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
-	ApiVersion *string `pulumi:"apiVersion"`
+	ApiVersion    *string `pulumi:"apiVersion"`
+	ConfigPath    *string `pulumi:"configPath"`
+	ConfigProfile *string `pulumi:"configProfile"`
 	// The rate in milliseconds to poll for events.
 	EventPollMs *int `pulumi:"eventPollMs"`
 	// The rate in milliseconds to poll for LKE events.
@@ -73,7 +73,7 @@ type providerArgs struct {
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
 	// The token that allows you access to your Linode account
-	Token string `pulumi:"token"`
+	Token *string `pulumi:"token"`
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	UaPrefix *string `pulumi:"uaPrefix"`
 	// The HTTP(S) API address of the Linode API to use.
@@ -83,7 +83,9 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// An HTTP User-Agent Prefix to prepend in API requests.
-	ApiVersion pulumi.StringPtrInput
+	ApiVersion    pulumi.StringPtrInput
+	ConfigPath    pulumi.StringPtrInput
+	ConfigProfile pulumi.StringPtrInput
 	// The rate in milliseconds to poll for events.
 	EventPollMs pulumi.IntPtrInput
 	// The rate in milliseconds to poll for LKE events.
@@ -99,7 +101,7 @@ type ProviderArgs struct {
 	// Skip waiting for a linode_instance resource to be running.
 	SkipInstanceReadyPoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account
-	Token pulumi.StringInput
+	Token pulumi.StringPtrInput
 	// An HTTP User-Agent Prefix to prepend in API requests.
 	UaPrefix pulumi.StringPtrInput
 	// The HTTP(S) API address of the Linode API to use.
@@ -148,9 +150,17 @@ func (o ProviderOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ConfigPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ConfigProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigProfile }).(pulumi.StringPtrOutput)
+}
+
 // The token that allows you access to your Linode account
-func (o ProviderOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 // An HTTP User-Agent Prefix to prepend in API requests.

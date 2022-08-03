@@ -42,6 +42,20 @@ namespace Pulumi.Linode
             set => _apiVersion.Set(value);
         }
 
+        private static readonly __Value<string?> _configPath = new __Value<string?>(() => __config.Get("configPath"));
+        public static string? ConfigPath
+        {
+            get => _configPath.Get();
+            set => _configPath.Set(value);
+        }
+
+        private static readonly __Value<string?> _configProfile = new __Value<string?>(() => __config.Get("configProfile"));
+        public static string? ConfigProfile
+        {
+            get => _configProfile.Get();
+            set => _configProfile.Set(value);
+        }
+
         private static readonly __Value<int?> _eventPollMs = new __Value<int?>(() => __config.GetInt32("eventPollMs"));
         /// <summary>
         /// The rate in milliseconds to poll for events.

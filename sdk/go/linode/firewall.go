@@ -34,7 +34,7 @@ import (
 // 			Image:    pulumi.String("linode/ubuntu18.04"),
 // 			Region:   pulumi.String("us-southeast"),
 // 			Type:     pulumi.String("g6-standard-1"),
-// 			RootPass: pulumi.String(fmt.Sprintf("%v%v", "bogusPassword", "$")),
+// 			RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
 // 			SwapSize: pulumi.Int(256),
 // 		})
 // 		if err != nil {

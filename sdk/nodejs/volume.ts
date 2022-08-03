@@ -50,6 +50,18 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
+ *
+ * Volumes may also be cloned from existing volumes.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.Volume("foobar", {
+ *     label: "my-cloned-volume",
+ *     sourceVolumeId: 12345,
+ * });
+ * ```
  * ## Attributes
  *
  * This resource exports the following attributes:
@@ -110,13 +122,17 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly linodeId!: pulumi.Output<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
      */
     public readonly region!: pulumi.Output<string>;
     /**
      * Size of the Volume in GB.
      */
     public readonly size!: pulumi.Output<number>;
+    /**
+     * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+     */
+    public readonly sourceVolumeId!: pulumi.Output<number | undefined>;
     /**
      * The status of the volume, indicating the current readiness state.
      */
@@ -144,6 +160,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["linodeId"] = state ? state.linodeId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["sourceVolumeId"] = state ? state.sourceVolumeId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -151,13 +168,11 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["sourceVolumeId"] = args ? args.sourceVolumeId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["filesystemPath"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -185,13 +200,17 @@ export interface VolumeState {
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
      */
     region?: pulumi.Input<string>;
     /**
      * Size of the Volume in GB.
      */
     size?: pulumi.Input<number>;
+    /**
+     * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+     */
+    sourceVolumeId?: pulumi.Input<number>;
     /**
      * The status of the volume, indicating the current readiness state.
      */
@@ -215,13 +234,17 @@ export interface VolumeArgs {
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+     * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Size of the Volume in GB.
      */
     size?: pulumi.Input<number>;
+    /**
+     * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+     */
+    sourceVolumeId?: pulumi.Input<number>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */

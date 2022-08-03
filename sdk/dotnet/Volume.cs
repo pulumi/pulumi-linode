@@ -81,6 +81,26 @@ namespace Pulumi.Linode
     /// 
     /// }
     /// ```
+    /// 
+    /// Volumes may also be cloned from existing volumes.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new Linode.Volume("foobar", new Linode.VolumeArgs
+    ///         {
+    ///             Label = "my-cloned-volume",
+    ///             SourceVolumeId = 12345,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Attributes
     /// 
     /// This resource exports the following attributes:
@@ -122,7 +142,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -132,6 +152,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+        /// </summary>
+        [Output("sourceVolumeId")]
+        public Output<int?> SourceVolumeId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the volume, indicating the current readiness state.
@@ -204,16 +230,22 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Size of the Volume in GB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
+
+        /// <summary>
+        /// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+        /// </summary>
+        [Input("sourceVolumeId")]
+        public Input<int>? SourceVolumeId { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -254,7 +286,7 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -264,6 +296,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
+
+        /// <summary>
+        /// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+        /// </summary>
+        [Input("sourceVolumeId")]
+        public Input<int>? SourceVolumeId { get; set; }
 
         /// <summary>
         /// The status of the volume, indicating the current readiness state.
