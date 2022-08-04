@@ -119,6 +119,13 @@ namespace Pulumi.Linode
         public Output<bool?> CorsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+        /// public.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
+
+        /// <summary>
         /// The label of the Linode Object Storage Bucket.
         /// </summary>
         [Output("label")]
@@ -284,6 +291,13 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("corsEnabled")]
         public Input<bool>? CorsEnabled { get; set; }
+
+        /// <summary>
+        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+        /// public.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// The label of the Linode Object Storage Bucket.

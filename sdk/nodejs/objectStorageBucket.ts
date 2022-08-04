@@ -105,6 +105,11 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     public readonly corsEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+     * public.
+     */
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    /**
      * The label of the Linode Object Storage Bucket.
      */
     public readonly label!: pulumi.Output<string>;
@@ -139,6 +144,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["cert"] = state ? state.cert : undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["secretKey"] = state ? state.secretKey : undefined;
@@ -160,6 +166,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["secretKey"] = args ? args.secretKey : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObjectStorageBucket.__pulumiType, name, resourceInputs, opts);
@@ -190,6 +197,11 @@ export interface ObjectStorageBucketState {
      * If true, the bucket will have CORS enabled for all origins.
      */
     corsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
+     * public.
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * The label of the Linode Object Storage Bucket.
      */

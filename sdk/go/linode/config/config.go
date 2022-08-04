@@ -16,6 +16,12 @@ func GetApiVersion(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "LINODE_API_VERSION").(string)
 }
+func GetConfigPath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:configPath")
+}
+func GetConfigProfile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:configProfile")
+}
 
 // The rate in milliseconds to poll for events.
 func GetEventPollMs(ctx *pulumi.Context) int {

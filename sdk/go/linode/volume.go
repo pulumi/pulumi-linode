@@ -87,6 +87,30 @@ import (
 // 	})
 // }
 // ```
+//
+// Volumes may also be cloned from existing volumes.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
+// 			Label:          pulumi.String("my-cloned-volume"),
+// 			SourceVolumeId: pulumi.Int(12345),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Attributes
 //
 // This resource exports the following attributes:
@@ -114,10 +138,12 @@ type Volume struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size pulumi.IntOutput `pulumi:"size"`
+	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+	SourceVolumeId pulumi.IntPtrOutput `pulumi:"sourceVolumeId"`
 	// The status of the volume, indicating the current readiness state.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
@@ -133,9 +159,6 @@ func NewVolume(ctx *pulumi.Context,
 
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Volume
 	err := ctx.RegisterResource("linode:index/volume:Volume", name, args, &resource, opts...)
@@ -166,10 +189,12 @@ type volumeState struct {
 	Label *string `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
 	Region *string `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size *int `pulumi:"size"`
+	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+	SourceVolumeId *int `pulumi:"sourceVolumeId"`
 	// The status of the volume, indicating the current readiness state.
 	Status *string `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
@@ -184,10 +209,12 @@ type VolumeState struct {
 	Label pulumi.StringPtrInput
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
 	Region pulumi.StringPtrInput
 	// Size of the Volume in GB.
 	Size pulumi.IntPtrInput
+	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+	SourceVolumeId pulumi.IntPtrInput
 	// The status of the volume, indicating the current readiness state.
 	Status pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
@@ -203,10 +230,12 @@ type volumeArgs struct {
 	Label string `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId *int `pulumi:"linodeId"`
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
-	Region string `pulumi:"region"`
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+	Region *string `pulumi:"region"`
 	// Size of the Volume in GB.
 	Size *int `pulumi:"size"`
+	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+	SourceVolumeId *int `pulumi:"sourceVolumeId"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
@@ -217,10 +246,12 @@ type VolumeArgs struct {
 	Label pulumi.StringInput
 	// The ID of a Linode Instance where the Volume should be attached.
 	LinodeId pulumi.IntPtrInput
-	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
-	Region pulumi.StringInput
+	// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+	Region pulumi.StringPtrInput
 	// Size of the Volume in GB.
 	Size pulumi.IntPtrInput
+	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+	SourceVolumeId pulumi.IntPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
@@ -328,7 +359,7 @@ func (o VolumeOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
 
-// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Volume.*.
+// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
 func (o VolumeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -336,6 +367,11 @@ func (o VolumeOutput) Region() pulumi.StringOutput {
 // Size of the Volume in GB.
 func (o VolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
+func (o VolumeOutput) SourceVolumeId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntPtrOutput { return v.SourceVolumeId }).(pulumi.IntPtrOutput)
 }
 
 // The status of the volume, indicating the current readiness state.

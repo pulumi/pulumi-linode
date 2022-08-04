@@ -34,7 +34,7 @@ import (
 // 		fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
 // 			Label:       pulumi.String("foo"),
 // 			Description: pulumi.String("Installs a Package"),
-// 			Script:      pulumi.String(fmt.Sprintf("%v%v%v%v%v", "#!/bin/bash\n", "# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\n", "apt-get -q update && apt-get -q -y install ", "$", "PACKAGE\n")),
+// 			Script:      pulumi.String(fmt.Sprintf("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n")),
 // 			Images: pulumi.StringArray{
 // 				pulumi.String("linode/ubuntu18.04"),
 // 				pulumi.String("linode/ubuntu16.04lts"),

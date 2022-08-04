@@ -24,11 +24,17 @@ namespace Pulumi.Linode
         [Output("apiVersion")]
         public Output<string?> ApiVersion { get; private set; } = null!;
 
+        [Output("configPath")]
+        public Output<string?> ConfigPath { get; private set; } = null!;
+
+        [Output("configProfile")]
+        public Output<string?> ConfigProfile { get; private set; } = null!;
+
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
         [Output("token")]
-        public Output<string> Token { get; private set; } = null!;
+        public Output<string?> Token { get; private set; } = null!;
 
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
@@ -50,7 +56,7 @@ namespace Pulumi.Linode
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("linode", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -75,6 +81,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
+
+        [Input("configPath")]
+        public Input<string>? ConfigPath { get; set; }
+
+        [Input("configProfile")]
+        public Input<string>? ConfigProfile { get; set; }
 
         /// <summary>
         /// The rate in milliseconds to poll for events.
@@ -121,8 +133,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        [Input("token")]
+        public Input<string>? Token { get; set; }
 
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.

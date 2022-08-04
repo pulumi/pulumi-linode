@@ -29,10 +29,12 @@ export class Provider extends pulumi.ProviderResource {
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
     public readonly apiVersion!: pulumi.Output<string | undefined>;
+    public readonly configPath!: pulumi.Output<string | undefined>;
+    public readonly configProfile!: pulumi.Output<string | undefined>;
     /**
      * The token that allows you access to your Linode account
      */
-    public readonly token!: pulumi.Output<string>;
+    public readonly token!: pulumi.Output<string | undefined>;
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
@@ -49,14 +51,13 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.token === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'token'");
-            }
             resourceInputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
+            resourceInputs["configPath"] = args ? args.configPath : undefined;
+            resourceInputs["configProfile"] = args ? args.configProfile : undefined;
             resourceInputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
             resourceInputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
             resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
@@ -81,6 +82,8 @@ export interface ProviderArgs {
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
     apiVersion?: pulumi.Input<string>;
+    configPath?: pulumi.Input<string>;
+    configProfile?: pulumi.Input<string>;
     /**
      * The rate in milliseconds to poll for events.
      */
@@ -112,7 +115,7 @@ export interface ProviderArgs {
     /**
      * The token that allows you access to your Linode account
      */
-    token: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */

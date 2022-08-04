@@ -36,7 +36,7 @@ import (
 // 			},
 // 			Label:    pulumi.String("my_instance"),
 // 			Region:   pulumi.String("us-southeast"),
-// 			RootPass: pulumi.String(fmt.Sprintf("%v%v", "bogusPassword", "$")),
+// 			RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
 // 			Type:     pulumi.String("g6-standard-1"),
 // 		})
 // 		if err != nil {

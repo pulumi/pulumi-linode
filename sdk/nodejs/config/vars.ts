@@ -18,6 +18,22 @@ Object.defineProperty(exports, "apiVersion", {
     enumerable: true,
 });
 
+export declare const configPath: string | undefined;
+Object.defineProperty(exports, "configPath", {
+    get() {
+        return __config.get("configPath");
+    },
+    enumerable: true,
+});
+
+export declare const configProfile: string | undefined;
+Object.defineProperty(exports, "configProfile", {
+    get() {
+        return __config.get("configProfile");
+    },
+    enumerable: true,
+});
+
 /**
  * The rate in milliseconds to poll for events.
  */
