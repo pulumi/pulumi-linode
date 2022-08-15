@@ -16,7 +16,7 @@ namespace Pulumi.Linode
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [LinodeResourceType("pulumi:providers:linode")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
@@ -74,7 +74,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.
@@ -154,5 +154,6 @@ namespace Pulumi.Linode
             UaPrefix = Utilities.GetEnv("LINODE_UA_PREFIX");
             Url = Utilities.GetEnv("LINODE_URL");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

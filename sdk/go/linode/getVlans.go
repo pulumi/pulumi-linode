@@ -18,46 +18,49 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-// 			Image: pulumi.String("linode/ubuntu18.04"),
-// 			Interfaces: InstanceInterfaceArray{
-// 				&InstanceInterfaceArgs{
-// 					Label:   pulumi.String("my-vlan"),
-// 					Purpose: pulumi.String("vlan"),
-// 				},
-// 			},
-// 			Label:    pulumi.String("my_instance"),
-// 			Region:   pulumi.String("us-southeast"),
-// 			RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
-// 			Type:     pulumi.String("g6-standard-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.GetVlans(ctx, &GetVlansArgs{
-// 			Filters: []GetVlansFilter{
-// 				GetVlansFilter{
-// 					Name: "label",
-// 					Values: []string{
-// 						"my-vlan",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//				Image: pulumi.String("linode/ubuntu18.04"),
+//				Interfaces: InstanceInterfaceArray{
+//					&InstanceInterfaceArgs{
+//						Label:   pulumi.String("my-vlan"),
+//						Purpose: pulumi.String("vlan"),
+//					},
+//				},
+//				Label:    pulumi.String("my_instance"),
+//				Region:   pulumi.String("us-southeast"),
+//				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
+//				Type:     pulumi.String("g6-standard-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.GetVlans(ctx, &GetVlansArgs{
+//				Filters: []GetVlansFilter{
+//					GetVlansFilter{
+//						Name: "label",
+//						Values: []string{
+//							"my-vlan",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //

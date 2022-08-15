@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class ObjectStorageKeyBucketAccessArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageKeyBucketAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique label of the bucket to which the key will grant limited access.
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public ObjectStorageKeyBucketAccessArgs()
         {
         }
+        public static new ObjectStorageKeyBucketAccessArgs Empty => new ObjectStorageKeyBucketAccessArgs();
     }
 }

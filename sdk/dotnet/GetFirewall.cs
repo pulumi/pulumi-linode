@@ -19,20 +19,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
         ///     {
-        ///         var my_firewall = Output.Create(Linode.GetFirewall.InvokeAsync(new Linode.GetFirewallArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
         ///     {
-        ///         var my_firewall = Output.Create(Linode.GetFirewall.InvokeAsync(new Linode.GetFirewallArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetFirewallArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Firewall's ID.
@@ -82,9 +78,10 @@ namespace Pulumi.Linode
         public GetFirewallArgs()
         {
         }
+        public static new GetFirewallArgs Empty => new GetFirewallArgs();
     }
 
-    public sealed class GetFirewallInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Firewall's ID.
@@ -95,6 +92,7 @@ namespace Pulumi.Linode
         public GetFirewallInvokeArgs()
         {
         }
+        public static new GetFirewallInvokeArgs Empty => new GetFirewallInvokeArgs();
     }
 
 

@@ -18,34 +18,33 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
     ///     {
-    ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
-    ///         {
-    ///             Label = "mynodebalancer",
-    ///             Region = "us-east",
-    ///             ClientConnThrottle = 20,
-    ///         });
-    ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
-    ///         {
-    ///             NodebalancerId = foobar.Id,
-    ///             Port = 8088,
-    ///             Protocol = "http",
-    ///             Check = "http",
-    ///             CheckPath = "/foo",
-    ///             CheckAttempts = 3,
-    ///             CheckTimeout = 30,
-    ///             Stickiness = "http_cookie",
-    ///             Algorithm = "source",
-    ///         });
-    ///     }
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
+    ///         ClientConnThrottle = 20,
+    ///     });
     /// 
-    /// }
+    ///     var foofig = new Linode.NodeBalancerConfig("foofig", new()
+    ///     {
+    ///         NodebalancerId = foobar.Id,
+    ///         Port = 8088,
+    ///         Protocol = "http",
+    ///         Check = "http",
+    ///         CheckPath = "/foo",
+    ///         CheckAttempts = 3,
+    ///         CheckTimeout = 30,
+    ///         Stickiness = "http_cookie",
+    ///         Algorithm = "source",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -76,7 +75,7 @@ namespace Pulumi.Linode
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/nodeBalancerConfig:NodeBalancerConfig")]
-    public partial class NodeBalancerConfig : Pulumi.CustomResource
+    public partial class NodeBalancerConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
@@ -240,7 +239,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class NodeBalancerConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeBalancerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
@@ -342,9 +341,10 @@ namespace Pulumi.Linode
         public NodeBalancerConfigArgs()
         {
         }
+        public static new NodeBalancerConfigArgs Empty => new NodeBalancerConfigArgs();
     }
 
-    public sealed class NodeBalancerConfigState : Pulumi.ResourceArgs
+    public sealed class NodeBalancerConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
@@ -473,5 +473,6 @@ namespace Pulumi.Linode
         public NodeBalancerConfigState()
         {
         }
+        public static new NodeBalancerConfigState Empty => new NodeBalancerConfigState();
     }
 }

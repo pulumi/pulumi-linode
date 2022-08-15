@@ -23,38 +23,36 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
         ///     {
-        ///         var specific_stackscripts = Output.Create(Linode.GetStackScripts.InvokeAsync(new Linode.GetStackScriptsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetStackScriptsFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-cool-stackscript",
-        ///                     },
-        ///                 },
-        ///                 new Linode.Inputs.GetStackScriptsFilterArgs
-        ///                 {
-        ///                     Name = "is_public",
-        ///                     Values = 
-        ///                     {
-        ///                         "false",
-        ///                     },
+        ///                     "my-cool-stackscript",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -137,38 +135,36 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
         ///     {
-        ///         var specific_stackscripts = Output.Create(Linode.GetStackScripts.InvokeAsync(new Linode.GetStackScriptsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetStackScriptsFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-cool-stackscript",
-        ///                     },
-        ///                 },
-        ///                 new Linode.Inputs.GetStackScriptsFilterArgs
-        ///                 {
-        ///                     Name = "is_public",
-        ///                     Values = 
-        ///                     {
-        ///                         "false",
-        ///                     },
+        ///                     "my-cool-stackscript",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -241,7 +237,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetStackScriptsArgs : Pulumi.InvokeArgs
+    public sealed class GetStackScriptsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetStackScriptsFilterArgs>? _filters;
@@ -272,9 +268,10 @@ namespace Pulumi.Linode
         public GetStackScriptsArgs()
         {
         }
+        public static new GetStackScriptsArgs Empty => new GetStackScriptsArgs();
     }
 
-    public sealed class GetStackScriptsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStackScriptsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetStackScriptsFilterInputArgs>? _filters;
@@ -305,6 +302,7 @@ namespace Pulumi.Linode
         public GetStackScriptsInvokeArgs()
         {
         }
+        public static new GetStackScriptsInvokeArgs Empty => new GetStackScriptsInvokeArgs();
     }
 
 

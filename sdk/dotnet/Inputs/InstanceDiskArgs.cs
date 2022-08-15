@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizedKeys")]
         private InputList<string>? _authorizedKeys;
@@ -99,5 +99,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceDiskArgs()
         {
         }
+        public static new InstanceDiskArgs Empty => new InstanceDiskArgs();
     }
 }

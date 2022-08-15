@@ -25,7 +25,9 @@ import (
 // Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+//
+//	$ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+//
 // ```
 type SshKey struct {
 	pulumi.CustomResourceState
@@ -135,7 +137,7 @@ func (i *SshKey) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutput {
 // SshKeyArrayInput is an input type that accepts SshKeyArray and SshKeyArrayOutput values.
 // You can construct a concrete instance of `SshKeyArrayInput` via:
 //
-//          SshKeyArray{ SshKeyArgs{...} }
+//	SshKeyArray{ SshKeyArgs{...} }
 type SshKeyArrayInput interface {
 	pulumi.Input
 
@@ -160,7 +162,7 @@ func (i SshKeyArray) ToSshKeyArrayOutputWithContext(ctx context.Context) SshKeyA
 // SshKeyMapInput is an input type that accepts SshKeyMap and SshKeyMapOutput values.
 // You can construct a concrete instance of `SshKeyMapInput` via:
 //
-//          SshKeyMap{ "key": SshKeyArgs{...} }
+//	SshKeyMap{ "key": SshKeyArgs{...} }
 type SshKeyMapInput interface {
 	pulumi.Input
 

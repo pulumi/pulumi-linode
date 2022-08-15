@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class UserGlobalGrantsArgs : Pulumi.ResourceArgs
+    public sealed class UserGlobalGrantsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountAccess")]
         public Input<string>? AccountAccess { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.Linode.Inputs
         public UserGlobalGrantsArgs()
         {
         }
+        public static new UserGlobalGrantsArgs Empty => new UserGlobalGrantsArgs();
     }
 }

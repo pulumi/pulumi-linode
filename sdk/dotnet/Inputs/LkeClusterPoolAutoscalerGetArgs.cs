@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class LkeClusterPoolAutoscalerGetArgs : Pulumi.ResourceArgs
+    public sealed class LkeClusterPoolAutoscalerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of nodes to autoscale to.
@@ -27,5 +27,6 @@ namespace Pulumi.Linode.Inputs
         public LkeClusterPoolAutoscalerGetArgs()
         {
         }
+        public static new LkeClusterPoolAutoscalerGetArgs Empty => new LkeClusterPoolAutoscalerGetArgs();
     }
 }

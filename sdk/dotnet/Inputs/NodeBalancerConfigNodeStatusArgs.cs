@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class NodeBalancerConfigNodeStatusArgs : Pulumi.ResourceArgs
+    public sealed class NodeBalancerConfigNodeStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("down")]
         public Input<int>? Down { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public NodeBalancerConfigNodeStatusArgs()
         {
         }
+        public static new NodeBalancerConfigNodeStatusArgs Empty => new NodeBalancerConfigNodeStatusArgs();
     }
 }

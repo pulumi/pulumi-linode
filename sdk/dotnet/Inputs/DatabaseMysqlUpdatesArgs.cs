@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class DatabaseMysqlUpdatesArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseMysqlUpdatesArgs : global::Pulumi.ResourceArgs
     {
         [Input("dayOfWeek", required: true)]
         public Input<string> DayOfWeek { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Linode.Inputs
         public DatabaseMysqlUpdatesArgs()
         {
         }
+        public static new DatabaseMysqlUpdatesArgs Empty => new DatabaseMysqlUpdatesArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class GetDatabasesFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasesFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -39,5 +39,6 @@ namespace Pulumi.Linode.Inputs
         public GetDatabasesFilterArgs()
         {
         }
+        public static new GetDatabasesFilterArgs Empty => new GetDatabasesFilterArgs();
     }
 }

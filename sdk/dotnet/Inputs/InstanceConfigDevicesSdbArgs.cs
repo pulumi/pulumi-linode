@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceConfigDevicesSdbArgs : Pulumi.ResourceArgs
+    public sealed class InstanceConfigDevicesSdbArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Disk ID of the associated `disk_label`, if used.
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceConfigDevicesSdbArgs()
         {
         }
+        public static new InstanceConfigDevicesSdbArgs Empty => new InstanceConfigDevicesSdbArgs();
     }
 }

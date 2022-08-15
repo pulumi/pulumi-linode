@@ -21,46 +21,42 @@ namespace Pulumi.Linode
         /// Get information about all Linode Managed Databases:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Linode.GetDatabases.InvokeAsync());
-        ///     }
+        ///     var all = Linode.GetDatabases.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode MySQL Databases:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabases.InvokeAsync(new Linode.GetDatabasesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabasesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabasesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -113,46 +109,42 @@ namespace Pulumi.Linode
         /// Get information about all Linode Managed Databases:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Linode.GetDatabases.InvokeAsync());
-        ///     }
+        ///     var all = Linode.GetDatabases.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode MySQL Databases:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabases.InvokeAsync(new Linode.GetDatabasesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabasesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabasesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -197,7 +189,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabasesArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetDatabasesFilterArgs>? _filters;
@@ -228,9 +220,10 @@ namespace Pulumi.Linode
         public GetDatabasesArgs()
         {
         }
+        public static new GetDatabasesArgs Empty => new GetDatabasesArgs();
     }
 
-    public sealed class GetDatabasesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetDatabasesFilterInputArgs>? _filters;
@@ -261,6 +254,7 @@ namespace Pulumi.Linode
         public GetDatabasesInvokeArgs()
         {
         }
+        public static new GetDatabasesInvokeArgs Empty => new GetDatabasesInvokeArgs();
     }
 
 

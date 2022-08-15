@@ -19,48 +19,47 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooStackScript = new Linode.StackScript("fooStackScript", new()
     ///     {
-    ///         var fooStackScript = new Linode.StackScript("fooStackScript", new Linode.StackScriptArgs
-    ///         {
-    ///             Label = "foo",
-    ///             Description = "Installs a Package",
-    ///             Script = @"#!/bin/bash
+    ///         Label = "foo",
+    ///         Description = "Installs a Package",
+    ///         Script = @"#!/bin/bash
     /// # &lt;UDF name=""package"" label=""System Package to Install"" example=""nginx"" default=""""&gt;
     /// apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
     /// ",
-    ///             Images = 
-    ///             {
-    ///                 "linode/ubuntu18.04",
-    ///                 "linode/ubuntu16.04lts",
-    ///             },
-    ///             RevNote = "initial version",
-    ///         });
-    ///         var fooInstance = new Linode.Instance("fooInstance", new Linode.InstanceArgs
+    ///         Images = new[]
     ///         {
-    ///             Image = "linode/ubuntu18.04",
-    ///             Label = "foo",
-    ///             Region = "us-east",
-    ///             Type = "g6-nanode-1",
-    ///             AuthorizedKeys = 
-    ///             {
-    ///                 "...",
-    ///             },
-    ///             RootPass = "...",
-    ///             StackscriptId = fooStackScript.Id,
-    ///             StackscriptData = 
-    ///             {
-    ///                 { "package", "nginx" },
-    ///             },
-    ///         });
-    ///     }
+    ///             "linode/ubuntu18.04",
+    ///             "linode/ubuntu16.04lts",
+    ///         },
+    ///         RevNote = "initial version",
+    ///     });
     /// 
-    /// }
+    ///     var fooInstance = new Linode.Instance("fooInstance", new()
+    ///     {
+    ///         Image = "linode/ubuntu18.04",
+    ///         Label = "foo",
+    ///         Region = "us-east",
+    ///         Type = "g6-nanode-1",
+    ///         AuthorizedKeys = new[]
+    ///         {
+    ///             "...",
+    ///         },
+    ///         RootPass = "...",
+    ///         StackscriptId = fooStackScript.Id,
+    ///         StackscriptData = 
+    ///         {
+    ///             { "package", "nginx" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -101,7 +100,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/stackScript:StackScript")]
-    public partial class StackScript : Pulumi.CustomResource
+    public partial class StackScript : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date this StackScript was created.
@@ -226,7 +225,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class StackScriptArgs : Pulumi.ResourceArgs
+    public sealed class StackScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description for the StackScript.
@@ -286,9 +285,10 @@ namespace Pulumi.Linode
         public StackScriptArgs()
         {
         }
+        public static new StackScriptArgs Empty => new StackScriptArgs();
     }
 
-    public sealed class StackScriptState : Pulumi.ResourceArgs
+    public sealed class StackScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date this StackScript was created.
@@ -384,5 +384,6 @@ namespace Pulumi.Linode
         public StackScriptState()
         {
         }
+        public static new StackScriptState Empty => new StackScriptState();
     }
 }

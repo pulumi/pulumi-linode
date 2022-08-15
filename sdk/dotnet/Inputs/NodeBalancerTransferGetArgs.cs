@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class NodeBalancerTransferGetArgs : Pulumi.ResourceArgs
+    public sealed class NodeBalancerTransferGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("in")]
         public Input<double>? In { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Linode.Inputs
         public NodeBalancerTransferGetArgs()
         {
         }
+        public static new NodeBalancerTransferGetArgs Empty => new NodeBalancerTransferGetArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetInstanceBackupsArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceBackupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Linode instance's ID.
@@ -36,9 +36,10 @@ namespace Pulumi.Linode
         public GetInstanceBackupsArgs()
         {
         }
+        public static new GetInstanceBackupsArgs Empty => new GetInstanceBackupsArgs();
     }
 
-    public sealed class GetInstanceBackupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Linode instance's ID.
@@ -49,6 +50,7 @@ namespace Pulumi.Linode
         public GetInstanceBackupsInvokeArgs()
         {
         }
+        public static new GetInstanceBackupsInvokeArgs Empty => new GetInstanceBackupsInvokeArgs();
     }
 
 

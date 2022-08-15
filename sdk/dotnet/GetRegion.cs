@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how the resource might be used to obtain additional information about a Linode region.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var region = Linode.GetRegion.Invoke(new()
         ///     {
-        ///         var region = Output.Create(Linode.GetRegion.InvokeAsync(new Linode.GetRegionArgs
-        ///         {
-        ///             Id = "us-east",
-        ///         }));
-        ///     }
+        ///         Id = "us-east",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Linode
         /// The following example shows how the resource might be used to obtain additional information about a Linode region.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var region = Linode.GetRegion.Invoke(new()
         ///     {
-        ///         var region = Output.Create(Linode.GetRegion.InvokeAsync(new Linode.GetRegionArgs
-        ///         {
-        ///             Id = "us-east",
-        ///         }));
-        ///     }
+        ///         Id = "us-east",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetRegionArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The country the region resides in.
@@ -92,9 +88,10 @@ namespace Pulumi.Linode
         public GetRegionArgs()
         {
         }
+        public static new GetRegionArgs Empty => new GetRegionArgs();
     }
 
-    public sealed class GetRegionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The country the region resides in.
@@ -111,6 +108,7 @@ namespace Pulumi.Linode
         public GetRegionInvokeArgs()
         {
         }
+        public static new GetRegionInvokeArgs Empty => new GetRegionInvokeArgs();
     }
 
 

@@ -25,27 +25,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewToken(ctx, "fooToken", &linode.TokenArgs{
-// 			Expiry: pulumi.String("2100-01-02T03:04:05Z"),
-// 			Label:  pulumi.String("token"),
-// 			Scopes: pulumi.String("linodes:read_only"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewInstance(ctx, "fooInstance", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewToken(ctx, "fooToken", &linode.TokenArgs{
+//				Expiry: pulumi.String("2100-01-02T03:04:05Z"),
+//				Label:  pulumi.String("token"),
+//				Scopes: pulumi.String("linodes:read_only"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstance(ctx, "fooInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -62,7 +65,9 @@ import (
 // The secret token will not be imported.
 //
 // ```sh
-//  $ pulumi import linode:index/token:Token mytoken 1234567
+//
+//	$ pulumi import linode:index/token:Token mytoken 1234567
+//
 // ```
 type Token struct {
 	pulumi.CustomResourceState
@@ -185,7 +190,7 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 // TokenArrayInput is an input type that accepts TokenArray and TokenArrayOutput values.
 // You can construct a concrete instance of `TokenArrayInput` via:
 //
-//          TokenArray{ TokenArgs{...} }
+//	TokenArray{ TokenArgs{...} }
 type TokenArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +215,7 @@ func (i TokenArray) ToTokenArrayOutputWithContext(ctx context.Context) TokenArra
 // TokenMapInput is an input type that accepts TokenMap and TokenMapOutput values.
 // You can construct a concrete instance of `TokenMapInput` via:
 //
-//          TokenMap{ "key": TokenArgs{...} }
+//	TokenMap{ "key": TokenArgs{...} }
 type TokenMapInput interface {
 	pulumi.Input
 

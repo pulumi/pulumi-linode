@@ -22,36 +22,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
-// 			Type:     pulumi.String("master"),
-// 			Domain:   pulumi.String("foobar.example"),
-// 			SoaEmail: pulumi.String("example@foobar.example"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewDomainRecord(ctx, "foobarDomainRecord", &linode.DomainRecordArgs{
-// 			DomainId:   foobarDomain.ID(),
-// 			Name:       pulumi.String("www"),
-// 			RecordType: pulumi.String("CNAME"),
-// 			Target:     pulumi.String("foobar.example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
+//				Type:     pulumi.String("master"),
+//				Domain:   pulumi.String("foobar.example"),
+//				SoaEmail: pulumi.String("example@foobar.example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewDomainRecord(ctx, "foobarDomainRecord", &linode.DomainRecordArgs{
+//				DomainId:   foobarDomain.ID(),
+//				Name:       pulumi.String("www"),
+//				RecordType: pulumi.String("CNAME"),
+//				Target:     pulumi.String("foobar.example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -62,10 +65,12 @@ import (
 // Linodes Domains can be imported using the Linode Domain `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/domain:Domain foobar 1234567
+//
+//	$ pulumi import linode:index/domain:Domain foobar 1234567
+//
 // ```
 //
-//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
+//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -278,7 +283,7 @@ func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
 // You can construct a concrete instance of `DomainArrayInput` via:
 //
-//          DomainArray{ DomainArgs{...} }
+//	DomainArray{ DomainArgs{...} }
 type DomainArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +308,7 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
-//          DomainMap{ "key": DomainArgs{...} }
+//	DomainMap{ "key": DomainArgs{...} }
 type DomainMapInput interface {
 	pulumi.Input
 

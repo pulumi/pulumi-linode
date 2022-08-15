@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// Get information about a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabaseMysql.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabaseMysql.InvokeAsync(new Linode.GetDatabaseMysqlArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -109,20 +107,18 @@ namespace Pulumi.Linode
         /// Get information about a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabaseMysql.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabaseMysql.InvokeAsync(new Linode.GetDatabaseMysqlArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -189,7 +185,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabaseMysqlArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMysqlArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the MySQL database.
@@ -200,9 +196,10 @@ namespace Pulumi.Linode
         public GetDatabaseMysqlArgs()
         {
         }
+        public static new GetDatabaseMysqlArgs Empty => new GetDatabaseMysqlArgs();
     }
 
-    public sealed class GetDatabaseMysqlInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMysqlInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the MySQL database.
@@ -213,6 +210,7 @@ namespace Pulumi.Linode
         public GetDatabaseMysqlInvokeArgs()
         {
         }
+        public static new GetDatabaseMysqlInvokeArgs Empty => new GetDatabaseMysqlInvokeArgs();
     }
 
 

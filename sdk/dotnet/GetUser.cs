@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode user.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetUser.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs
-        ///         {
-        ///             Username = "foo",
-        ///         }));
-        ///     }
+        ///         Username = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -61,20 +59,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode user.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetUser.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetUser.InvokeAsync(new Linode.GetUserArgs
-        ///         {
-        ///             Username = "foo",
-        ///         }));
-        ///     }
+        ///         Username = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -93,7 +89,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique username of this User.
@@ -104,9 +100,10 @@ namespace Pulumi.Linode
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique username of this User.
@@ -117,6 +114,7 @@ namespace Pulumi.Linode
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

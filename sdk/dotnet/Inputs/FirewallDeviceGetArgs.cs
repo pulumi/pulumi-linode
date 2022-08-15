@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class FirewallDeviceGetArgs : Pulumi.ResourceArgs
+    public sealed class FirewallDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the underlying entity this device references (i.e. the Linode's ID).
@@ -42,5 +42,6 @@ namespace Pulumi.Linode.Inputs
         public FirewallDeviceGetArgs()
         {
         }
+        public static new FirewallDeviceGetArgs Empty => new FirewallDeviceGetArgs();
     }
 }

@@ -17,64 +17,62 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to create an Object Storage Bucket:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
     ///     {
-    ///         var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs
-    ///         {
-    ///             Id = "us-east-1",
-    ///         }));
-    ///         var foobar = new Linode.ObjectStorageBucket("foobar", new Linode.ObjectStorageBucketArgs
-    ///         {
-    ///             Cluster = primary.Apply(primary =&gt; primary.Id),
-    ///             Label = "mybucket",
-    ///         });
-    ///     }
+    ///         Id = "us-east-1",
+    ///     });
     /// 
-    /// }
+    ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
+    ///     {
+    ///         Cluster = primary.Apply(getObjectStorageClusterResult =&gt; getObjectStorageClusterResult.Id),
+    ///         Label = "mybucket",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Creating an Object Storage Bucket with Lifecycle rules:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mykey = new Linode.ObjectStorageKey("mykey", new()
     ///     {
-    ///         var mykey = new Linode.ObjectStorageKey("mykey", new Linode.ObjectStorageKeyArgs
+    ///         Label = "image-access",
+    ///     });
+    /// 
+    ///     var mybucket = new Linode.ObjectStorageBucket("mybucket", new()
+    ///     {
+    ///         AccessKey = mykey.AccessKey,
+    ///         SecretKey = mykey.SecretKey,
+    ///         Cluster = "us-east-1",
+    ///         Label = "mybucket",
+    ///         LifecycleRules = new[]
     ///         {
-    ///             Label = "image-access",
-    ///         });
-    ///         var mybucket = new Linode.ObjectStorageBucket("mybucket", new Linode.ObjectStorageBucketArgs
-    ///         {
-    ///             AccessKey = mykey.AccessKey,
-    ///             SecretKey = mykey.SecretKey,
-    ///             Cluster = "us-east-1",
-    ///             Label = "mybucket",
-    ///             LifecycleRules = 
+    ///             new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs
     ///             {
-    ///                 new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs
+    ///                 Id = "my-rule",
+    ///                 Enabled = true,
+    ///                 AbortIncompleteMultipartUploadDays = 5,
+    ///                 Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs
     ///                 {
-    ///                     Id = "my-rule",
-    ///                     Enabled = true,
-    ///                     AbortIncompleteMultipartUploadDays = 5,
-    ///                     Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs
-    ///                     {
-    ///                         Date = "2021-06-21",
-    ///                     },
+    ///                     Date = "2021-06-21",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +84,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageBucket:ObjectStorageBucket")]
-    public partial class ObjectStorageBucket : Pulumi.CustomResource
+    public partial class ObjectStorageBucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -193,7 +191,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class ObjectStorageBucketArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -258,9 +256,10 @@ namespace Pulumi.Linode
         public ObjectStorageBucketArgs()
         {
         }
+        public static new ObjectStorageBucketArgs Empty => new ObjectStorageBucketArgs();
     }
 
-    public sealed class ObjectStorageBucketState : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -332,5 +331,6 @@ namespace Pulumi.Linode
         public ObjectStorageBucketState()
         {
         }
+        public static new ObjectStorageBucketState Empty => new ObjectStorageBucketState();
     }
 }

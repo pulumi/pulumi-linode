@@ -21,91 +21,94 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-// 			Label:    pulumi.String("my_instance"),
-// 			Image:    pulumi.String("linode/ubuntu18.04"),
-// 			Region:   pulumi.String("us-southeast"),
-// 			Type:     pulumi.String("g6-standard-1"),
-// 			RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
-// 			SwapSize: pulumi.Int(256),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
-// 			Label: pulumi.String("my_firewall"),
-// 			Inbounds: FirewallInboundArray{
-// 				&FirewallInboundArgs{
-// 					Label:    pulumi.String("allow-http"),
-// 					Action:   pulumi.String("ACCEPT"),
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports:    pulumi.String("80"),
-// 					Ipv4s: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 					Ipv6s: pulumi.StringArray{
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallInboundArgs{
-// 					Label:    pulumi.String("allow-https"),
-// 					Action:   pulumi.String("ACCEPT"),
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports:    pulumi.String("443"),
-// 					Ipv4s: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 					Ipv6s: pulumi.StringArray{
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 			},
-// 			InboundPolicy: pulumi.String("DROP"),
-// 			Outbounds: FirewallOutboundArray{
-// 				&FirewallOutboundArgs{
-// 					Label:    pulumi.String("reject-http"),
-// 					Action:   pulumi.String("DROP"),
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports:    pulumi.String("80"),
-// 					Ipv4s: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 					Ipv6s: pulumi.StringArray{
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 				&FirewallOutboundArgs{
-// 					Label:    pulumi.String("reject-https"),
-// 					Action:   pulumi.String("DROP"),
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports:    pulumi.String("443"),
-// 					Ipv4s: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 					Ipv6s: pulumi.StringArray{
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 			},
-// 			OutboundPolicy: pulumi.String("ACCEPT"),
-// 			Linodes: pulumi.IntArray{
-// 				myInstance.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//				Label:    pulumi.String("my_instance"),
+//				Image:    pulumi.String("linode/ubuntu18.04"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-standard-1"),
+//				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
+//				SwapSize: pulumi.Int(256),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+//				Label: pulumi.String("my_firewall"),
+//				Inbounds: FirewallInboundArray{
+//					&FirewallInboundArgs{
+//						Label:    pulumi.String("allow-http"),
+//						Action:   pulumi.String("ACCEPT"),
+//						Protocol: pulumi.String("TCP"),
+//						Ports:    pulumi.String("80"),
+//						Ipv4s: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//						},
+//						Ipv6s: pulumi.StringArray{
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallInboundArgs{
+//						Label:    pulumi.String("allow-https"),
+//						Action:   pulumi.String("ACCEPT"),
+//						Protocol: pulumi.String("TCP"),
+//						Ports:    pulumi.String("443"),
+//						Ipv4s: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//						},
+//						Ipv6s: pulumi.StringArray{
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//				InboundPolicy: pulumi.String("DROP"),
+//				Outbounds: FirewallOutboundArray{
+//					&FirewallOutboundArgs{
+//						Label:    pulumi.String("reject-http"),
+//						Action:   pulumi.String("DROP"),
+//						Protocol: pulumi.String("TCP"),
+//						Ports:    pulumi.String("80"),
+//						Ipv4s: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//						},
+//						Ipv6s: pulumi.StringArray{
+//							pulumi.String("::/0"),
+//						},
+//					},
+//					&FirewallOutboundArgs{
+//						Label:    pulumi.String("reject-https"),
+//						Action:   pulumi.String("DROP"),
+//						Protocol: pulumi.String("TCP"),
+//						Ports:    pulumi.String("443"),
+//						Ipv4s: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//						},
+//						Ipv6s: pulumi.StringArray{
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//				OutboundPolicy: pulumi.String("ACCEPT"),
+//				Linodes: pulumi.IntArray{
+//					myInstance.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -113,7 +116,9 @@ import (
 // Firewalls can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+//
+//	$ pulumi import linode:index/firewall:Firewall my_firewall 12345
+//
 // ```
 type Firewall struct {
 	pulumi.CustomResourceState
@@ -292,7 +297,7 @@ func (i *Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutp
 // FirewallArrayInput is an input type that accepts FirewallArray and FirewallArrayOutput values.
 // You can construct a concrete instance of `FirewallArrayInput` via:
 //
-//          FirewallArray{ FirewallArgs{...} }
+//	FirewallArray{ FirewallArgs{...} }
 type FirewallArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +322,7 @@ func (i FirewallArray) ToFirewallArrayOutputWithContext(ctx context.Context) Fir
 // FirewallMapInput is an input type that accepts FirewallMap and FirewallMapOutput values.
 // You can construct a concrete instance of `FirewallMapInput` via:
 //
-//          FirewallMap{ "key": FirewallArgs{...} }
+//	FirewallMap{ "key": FirewallArgs{...} }
 type FirewallMapInput interface {
 	pulumi.Input
 

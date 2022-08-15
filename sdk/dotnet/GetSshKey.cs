@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetSshKey.InvokeAsync(new Linode.GetSshKeyArgs
-        ///         {
-        ///             Label = "foo",
-        ///         }));
-        ///     }
+        ///         Label = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Linode
         /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetSshKey.InvokeAsync(new Linode.GetSshKeyArgs
-        ///         {
-        ///             Label = "foo",
-        ///         }));
-        ///     }
+        ///         Label = "foo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The label of the SSH Key to select.
@@ -86,9 +82,10 @@ namespace Pulumi.Linode
         public GetSshKeyArgs()
         {
         }
+        public static new GetSshKeyArgs Empty => new GetSshKeyArgs();
     }
 
-    public sealed class GetSshKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The label of the SSH Key to select.
@@ -99,6 +96,7 @@ namespace Pulumi.Linode
         public GetSshKeyInvokeArgs()
         {
         }
+        public static new GetSshKeyInvokeArgs Empty => new GetSshKeyInvokeArgs();
     }
 
 

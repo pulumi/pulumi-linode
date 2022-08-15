@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class ObjectStorageBucketLifecycleRuleArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketLifecycleRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
@@ -45,5 +45,6 @@ namespace Pulumi.Linode.Inputs
         public ObjectStorageBucketLifecycleRuleArgs()
         {
         }
+        public static new ObjectStorageBucketLifecycleRuleArgs Empty => new ObjectStorageBucketLifecycleRuleArgs();
     }
 }

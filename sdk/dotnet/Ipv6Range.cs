@@ -15,32 +15,31 @@ namespace Pulumi.Linode
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarInstance = new Linode.Instance("foobarInstance", new()
     ///     {
-    ///         var foobarInstance = new Linode.Instance("foobarInstance", new Linode.InstanceArgs
-    ///         {
-    ///             Label = "my-linode",
-    ///             Image = "linode/alpine3.14",
-    ///             Type = "g6-nanode-1",
-    ///             Region = "us-southeast",
-    ///         });
-    ///         var foobarIpv6Range = new Linode.Ipv6Range("foobarIpv6Range", new Linode.Ipv6RangeArgs
-    ///         {
-    ///             LinodeId = foobarInstance.Id,
-    ///             PrefixLength = 64,
-    ///         });
-    ///     }
+    ///         Label = "my-linode",
+    ///         Image = "linode/alpine3.14",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-southeast",
+    ///     });
     /// 
-    /// }
+    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobarIpv6Range", new()
+    ///     {
+    ///         LinodeId = foobarInstance.Id,
+    ///         PrefixLength = 64,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/ipv6Range:Ipv6Range")]
-    public partial class Ipv6Range : Pulumi.CustomResource
+    public partial class Ipv6Range : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether this IPv6 range is shared.
@@ -128,7 +127,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class Ipv6RangeArgs : Pulumi.ResourceArgs
+    public sealed class Ipv6RangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
@@ -151,9 +150,10 @@ namespace Pulumi.Linode
         public Ipv6RangeArgs()
         {
         }
+        public static new Ipv6RangeArgs Empty => new Ipv6RangeArgs();
     }
 
-    public sealed class Ipv6RangeState : Pulumi.ResourceArgs
+    public sealed class Ipv6RangeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this IPv6 range is shared.
@@ -206,5 +206,6 @@ namespace Pulumi.Linode
         public Ipv6RangeState()
         {
         }
+        public static new Ipv6RangeState Empty => new Ipv6RangeState();
     }
 }

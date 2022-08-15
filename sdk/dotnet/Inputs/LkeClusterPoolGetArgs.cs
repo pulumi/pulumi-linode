@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class LkeClusterPoolGetArgs : Pulumi.ResourceArgs
+    public sealed class LkeClusterPoolGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscaler")]
         public Input<Inputs.LkeClusterPoolAutoscalerGetArgs>? Autoscaler { get; set; }
@@ -44,5 +44,6 @@ namespace Pulumi.Linode.Inputs
         public LkeClusterPoolGetArgs()
         {
         }
+        public static new LkeClusterPoolGetArgs Empty => new LkeClusterPoolGetArgs();
     }
 }

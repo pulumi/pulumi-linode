@@ -21,83 +21,78 @@ namespace Pulumi.Linode
         /// Get information about all Linode Managed Database engines:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Linode.GetDatabaseEngines.InvokeAsync());
-        ///     }
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode MySQL Database engines:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabaseEngines.InvokeAsync(new Linode.GetDatabaseEnginesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseEnginesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Create a Linode MySQL Database using the latest support MySQL version:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabaseEngines.InvokeAsync(new Linode.GetDatabaseEnginesArgs
+        ///         Latest = true,
+        ///         Filters = new[]
         ///         {
-        ///             Latest = true,
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseEnginesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///         var myDb = new Linode.DatabaseMysql("myDb", new Linode.DatabaseMysqlArgs
-        ///         {
-        ///             Label = "mydb",
-        ///             EngineId = mysql.Apply(mysql =&gt; mysql.Engines?[0]?.Id),
-        ///             Region = "us-southeast",
-        ///             Type = "g6-nanode-1",
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        ///     var myDb = new Linode.DatabaseMysql("myDb", new()
+        ///     {
+        ///         Label = "mydb",
+        ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
+        ///         Region = "us-southeast",
+        ///         Type = "g6-nanode-1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -124,83 +119,78 @@ namespace Pulumi.Linode
         /// Get information about all Linode Managed Database engines:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Linode.GetDatabaseEngines.InvokeAsync());
-        ///     }
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode MySQL Database engines:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabaseEngines.InvokeAsync(new Linode.GetDatabaseEnginesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseEnginesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Create a Linode MySQL Database using the latest support MySQL version:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
-        ///         var mysql = Output.Create(Linode.GetDatabaseEngines.InvokeAsync(new Linode.GetDatabaseEnginesArgs
+        ///         Latest = true,
+        ///         Filters = new[]
         ///         {
-        ///             Latest = true,
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseEnginesFilterArgs
+        ///                 Name = "engine",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "engine",
-        ///                     Values = 
-        ///                     {
-        ///                         "mysql",
-        ///                     },
+        ///                     "mysql",
         ///                 },
         ///             },
-        ///         }));
-        ///         var myDb = new Linode.DatabaseMysql("myDb", new Linode.DatabaseMysqlArgs
-        ///         {
-        ///             Label = "mydb",
-        ///             EngineId = mysql.Apply(mysql =&gt; mysql.Engines?[0]?.Id),
-        ///             Region = "us-southeast",
-        ///             Type = "g6-nanode-1",
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        ///     var myDb = new Linode.DatabaseMysql("myDb", new()
+        ///     {
+        ///         Label = "mydb",
+        ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
+        ///         Region = "us-southeast",
+        ///         Type = "g6-nanode-1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -219,7 +209,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabaseEnginesArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseEnginesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetDatabaseEnginesFilterArgs>? _filters;
@@ -250,9 +240,10 @@ namespace Pulumi.Linode
         public GetDatabaseEnginesArgs()
         {
         }
+        public static new GetDatabaseEnginesArgs Empty => new GetDatabaseEnginesArgs();
     }
 
-    public sealed class GetDatabaseEnginesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseEnginesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetDatabaseEnginesFilterInputArgs>? _filters;
@@ -283,6 +274,7 @@ namespace Pulumi.Linode
         public GetDatabaseEnginesInvokeArgs()
         {
         }
+        public static new GetDatabaseEnginesInvokeArgs Empty => new GetDatabaseEnginesInvokeArgs();
     }
 
 

@@ -22,37 +22,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-// 			Label:              pulumi.String("mynodebalancer"),
-// 			Region:             pulumi.String("us-east"),
-// 			ClientConnThrottle: pulumi.Int(20),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewNodeBalancerConfig(ctx, "foofig", &linode.NodeBalancerConfigArgs{
-// 			NodebalancerId: foobar.ID(),
-// 			Port:           pulumi.Int(8088),
-// 			Protocol:       pulumi.String("http"),
-// 			Check:          pulumi.String("http"),
-// 			CheckPath:      pulumi.String("/foo"),
-// 			CheckAttempts:  pulumi.Int(3),
-// 			CheckTimeout:   pulumi.Int(30),
-// 			Stickiness:     pulumi.String("http_cookie"),
-// 			Algorithm:      pulumi.String("source"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobar, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
+//				Label:              pulumi.String("mynodebalancer"),
+//				Region:             pulumi.String("us-east"),
+//				ClientConnThrottle: pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewNodeBalancerConfig(ctx, "foofig", &linode.NodeBalancerConfigArgs{
+//				NodebalancerId: foobar.ID(),
+//				Port:           pulumi.Int(8088),
+//				Protocol:       pulumi.String("http"),
+//				Check:          pulumi.String("http"),
+//				CheckPath:      pulumi.String("/foo"),
+//				CheckAttempts:  pulumi.Int(3),
+//				CheckTimeout:   pulumi.Int(30),
+//				Stickiness:     pulumi.String("http_cookie"),
+//				Algorithm:      pulumi.String("source"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -77,10 +80,12 @@ import (
 // NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
+//
+//	$ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
+//
 // ```
 //
-//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
+//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState
 
@@ -352,7 +357,7 @@ func (i *NodeBalancerConfig) ToNodeBalancerConfigOutputWithContext(ctx context.C
 // NodeBalancerConfigArrayInput is an input type that accepts NodeBalancerConfigArray and NodeBalancerConfigArrayOutput values.
 // You can construct a concrete instance of `NodeBalancerConfigArrayInput` via:
 //
-//          NodeBalancerConfigArray{ NodeBalancerConfigArgs{...} }
+//	NodeBalancerConfigArray{ NodeBalancerConfigArgs{...} }
 type NodeBalancerConfigArrayInput interface {
 	pulumi.Input
 
@@ -377,7 +382,7 @@ func (i NodeBalancerConfigArray) ToNodeBalancerConfigArrayOutputWithContext(ctx 
 // NodeBalancerConfigMapInput is an input type that accepts NodeBalancerConfigMap and NodeBalancerConfigMapOutput values.
 // You can construct a concrete instance of `NodeBalancerConfigMapInput` via:
 //
-//          NodeBalancerConfigMap{ "key": NodeBalancerConfigArgs{...} }
+//	NodeBalancerConfigMap{ "key": NodeBalancerConfigArgs{...} }
 type NodeBalancerConfigMapInput interface {
 	pulumi.Input
 

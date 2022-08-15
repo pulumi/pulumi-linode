@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode kernel.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var latest = Linode.GetKernel.Invoke(new()
         ///     {
-        ///         var latest = Output.Create(Linode.GetKernel.InvokeAsync(new Linode.GetKernelArgs
-        ///         {
-        ///             Id = "linode/latest-64bit",
-        ///         }));
-        ///     }
+        ///         Id = "linode/latest-64bit",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -69,20 +67,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode kernel.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var latest = Linode.GetKernel.Invoke(new()
         ///     {
-        ///         var latest = Output.Create(Linode.GetKernel.InvokeAsync(new Linode.GetKernelArgs
-        ///         {
-        ///             Id = "linode/latest-64bit",
-        ///         }));
-        ///     }
+        ///         Id = "linode/latest-64bit",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -109,7 +105,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetKernelArgs : Pulumi.InvokeArgs
+    public sealed class GetKernelArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique ID of this Kernel.
@@ -120,9 +116,10 @@ namespace Pulumi.Linode
         public GetKernelArgs()
         {
         }
+        public static new GetKernelArgs Empty => new GetKernelArgs();
     }
 
-    public sealed class GetKernelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKernelInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique ID of this Kernel.
@@ -133,6 +130,7 @@ namespace Pulumi.Linode
         public GetKernelInvokeArgs()
         {
         }
+        public static new GetKernelInvokeArgs Empty => new GetKernelInvokeArgs();
     }
 
 

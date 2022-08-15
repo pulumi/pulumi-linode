@@ -23,62 +23,60 @@ namespace Pulumi.Linode
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var web = new List&lt;Linode.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
     ///     {
-    ///         var web = new List&lt;Linode.Instance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
+    ///         var range = new { Value = rangeIndex };
+    ///         web.Add(new Linode.Instance($"web-{range.Value}", new()
     ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             web.Add(new Linode.Instance($"web-{range.Value}", new Linode.InstanceArgs
-    ///             {
-    ///                 Label = $"web-{range.Value + 1}",
-    ///                 Image = "linode/ubuntu18.04",
-    ///                 Region = "us-east",
-    ///                 Type = "g6-standard-1",
-    ///                 AuthorizedKeys = 
-    ///                 {
-    ///                     "ssh-rsa AAAA...Gw== user@example.local",
-    ///                 },
-    ///                 RootPass = "test",
-    ///                 PrivateIp = true,
-    ///             }));
-    ///         }
-    ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
-    ///         {
-    ///             Label = "mynodebalancer",
+    ///             Label = $"web-{range.Value + 1}",
+    ///             Image = "linode/ubuntu18.04",
     ///             Region = "us-east",
-    ///             ClientConnThrottle = 20,
-    ///         });
-    ///         var foofig = new Linode.NodeBalancerConfig("foofig", new Linode.NodeBalancerConfigArgs
+    ///             Type = "g6-standard-1",
+    ///             AuthorizedKeys = new[]
+    ///             {
+    ///                 "ssh-rsa AAAA...Gw== user@example.local",
+    ///             },
+    ///             RootPass = "test",
+    ///             PrivateIp = true,
+    ///         }));
+    ///     }
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     {
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
+    ///         ClientConnThrottle = 20,
+    ///     });
+    /// 
+    ///     var foofig = new Linode.NodeBalancerConfig("foofig", new()
+    ///     {
+    ///         NodebalancerId = foobar.Id,
+    ///         Port = 80,
+    ///         Protocol = "http",
+    ///         Check = "http",
+    ///         CheckPath = "/foo",
+    ///         CheckAttempts = 3,
+    ///         CheckTimeout = 30,
+    ///         Stickiness = "http_cookie",
+    ///         Algorithm = "source",
+    ///     });
+    /// 
+    ///     var foonode = new List&lt;Linode.NodeBalancerNode&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         foonode.Add(new Linode.NodeBalancerNode($"foonode-{range.Value}", new()
     ///         {
     ///             NodebalancerId = foobar.Id,
-    ///             Port = 80,
-    ///             Protocol = "http",
-    ///             Check = "http",
-    ///             CheckPath = "/foo",
-    ///             CheckAttempts = 3,
-    ///             CheckTimeout = 30,
-    ///             Stickiness = "http_cookie",
-    ///             Algorithm = "source",
-    ///         });
-    ///         var foonode = new List&lt;Linode.NodeBalancerNode&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; "3"; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             foonode.Add(new Linode.NodeBalancerNode($"foonode-{range.Value}", new Linode.NodeBalancerNodeArgs
-    ///             {
-    ///                 NodebalancerId = foobar.Id,
-    ///                 ConfigId = foofig.Id,
-    ///                 Address = web.Select(__item =&gt; __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =&gt; $"{privateIpAddresses}:80"),
-    ///                 Label = "mynodebalancernode",
-    ///                 Weight = 50,
-    ///             }));
-    ///         }
+    ///             ConfigId = foofig.Id,
+    ///             Address = web.Select(__item =&gt; __item.PrivateIpAddress).ToList()[range.Value].Apply(privateIpAddresses =&gt; $"{privateIpAddresses}:80"),
+    ///             Label = "mynodebalancernode",
+    ///             Weight = 50,
+    ///         }));
     ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -101,7 +99,7 @@ namespace Pulumi.Linode
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/nodeBalancerNode:NodeBalancerNode")]
-    public partial class NodeBalancerNode : Pulumi.CustomResource
+    public partial class NodeBalancerNode : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
@@ -189,7 +187,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class NodeBalancerNodeArgs : Pulumi.ResourceArgs
+    public sealed class NodeBalancerNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
@@ -230,9 +228,10 @@ namespace Pulumi.Linode
         public NodeBalancerNodeArgs()
         {
         }
+        public static new NodeBalancerNodeArgs Empty => new NodeBalancerNodeArgs();
     }
 
-    public sealed class NodeBalancerNodeState : Pulumi.ResourceArgs
+    public sealed class NodeBalancerNodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
@@ -279,5 +278,6 @@ namespace Pulumi.Linode
         public NodeBalancerNodeState()
         {
         }
+        public static new NodeBalancerNodeState Empty => new NodeBalancerNodeState();
     }
 }

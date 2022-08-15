@@ -21,24 +21,23 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode domain.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetDomain.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
-        ///         {
-        ///             Id = "1234567",
-        ///         }));
-        ///         var bar = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
-        ///         {
-        ///             Domain = "bar.example.com",
-        ///         }));
-        ///     }
+        ///         Id = "1234567",
+        ///     });
         /// 
-        /// }
+        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     {
+        ///         Domain = "bar.example.com",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,24 +86,23 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode domain.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetDomain.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
-        ///         {
-        ///             Id = "1234567",
-        ///         }));
-        ///         var bar = Output.Create(Linode.GetDomain.InvokeAsync(new Linode.GetDomainArgs
-        ///         {
-        ///             Domain = "bar.example.com",
-        ///         }));
-        ///     }
+        ///         Id = "1234567",
+        ///     });
         /// 
-        /// }
+        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     {
+        ///         Domain = "bar.example.com",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -145,7 +143,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique domain name of the Domain record to query.
@@ -162,9 +160,10 @@ namespace Pulumi.Linode
         public GetDomainArgs()
         {
         }
+        public static new GetDomainArgs Empty => new GetDomainArgs();
     }
 
-    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique domain name of the Domain record to query.
@@ -181,6 +180,7 @@ namespace Pulumi.Linode
         public GetDomainInvokeArgs()
         {
         }
+        public static new GetDomainInvokeArgs Empty => new GetDomainInvokeArgs();
     }
 
 

@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Networking IP Address.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
         ///     {
-        ///         var ns1LinodeCom = Output.Create(Linode.GetNetworkingIp.InvokeAsync(new Linode.GetNetworkingIpArgs
-        ///         {
-        ///             Address = "162.159.27.72",
-        ///         }));
-        ///     }
+        ///         Address = "162.159.27.72",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,20 +71,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Networking IP Address.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
         ///     {
-        ///         var ns1LinodeCom = Output.Create(Linode.GetNetworkingIp.InvokeAsync(new Linode.GetNetworkingIpArgs
-        ///         {
-        ///             Address = "162.159.27.72",
-        ///         }));
-        ///     }
+        ///         Address = "162.159.27.72",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -117,7 +113,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetNetworkingIpArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkingIpArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
@@ -128,9 +124,10 @@ namespace Pulumi.Linode
         public GetNetworkingIpArgs()
         {
         }
+        public static new GetNetworkingIpArgs Empty => new GetNetworkingIpArgs();
     }
 
-    public sealed class GetNetworkingIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkingIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
@@ -141,6 +138,7 @@ namespace Pulumi.Linode
         public GetNetworkingIpInvokeArgs()
         {
         }
+        public static new GetNetworkingIpInvokeArgs Empty => new GetNetworkingIpInvokeArgs();
     }
 
 

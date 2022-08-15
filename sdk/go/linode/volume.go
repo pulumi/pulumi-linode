@@ -23,34 +23,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobaz, err := linode.NewInstance(ctx, "foobaz", &linode.InstanceArgs{
-// 			RootPass: pulumi.String("3X4mp13"),
-// 			Type:     pulumi.String("g6-nanode-1"),
-// 			Region:   pulumi.String("us-west"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foobaz"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
-// 			Label:    pulumi.String("foo-volume"),
-// 			Region:   foobaz.Region,
-// 			LinodeId: foobaz.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobaz, err := linode.NewInstance(ctx, "foobaz", &linode.InstanceArgs{
+//				RootPass: pulumi.String("3X4mp13"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				Region:   pulumi.String("us-west"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foobaz"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
+//				Label:    pulumi.String("foo-volume"),
+//				Region:   foobaz.Region,
+//				LinodeId: foobaz.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Volumes can also be attached using the Linode Instance config device map.
@@ -59,33 +62,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-// 			Configs: InstanceConfigArray{
-// 				&InstanceConfigArgs{
-// 					Devices: &InstanceConfigDevicesArgs{
-// 						Sda: &InstanceConfigDevicesSdaArgs{
-// 							VolumeId: pulumi.Int(123),
-// 						},
-// 					},
-// 					Kernel: pulumi.String("linode/latest-64bit"),
-// 					Label:  pulumi.String("boot-existing-volume"),
-// 				},
-// 			},
-// 			Region: pulumi.String("us-east"),
-// 			Type:   pulumi.String("g6-nanode-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+//				Configs: InstanceConfigArray{
+//					&InstanceConfigArgs{
+//						Devices: &InstanceConfigDevicesArgs{
+//							Sda: &InstanceConfigDevicesSdaArgs{
+//								VolumeId: pulumi.Int(123),
+//							},
+//						},
+//						Kernel: pulumi.String("linode/latest-64bit"),
+//						Label:  pulumi.String("boot-existing-volume"),
+//					},
+//				},
+//				Region: pulumi.String("us-east"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Volumes may also be cloned from existing volumes.
@@ -94,22 +100,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
-// 			Label:          pulumi.String("my-cloned-volume"),
-// 			SourceVolumeId: pulumi.Int(12345),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
+//				Label:          pulumi.String("my-cloned-volume"),
+//				SourceVolumeId: pulumi.Int(12345),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -124,10 +133,12 @@ import (
 // Linodes Volumes can be imported using the Linode Volume `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/volume:Volume myvolume 1234567
+//
+//	$ pulumi import linode:index/volume:Volume myvolume 1234567
+//
 // ```
 //
-//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
+//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -282,7 +293,7 @@ func (i *Volume) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 // VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
 // You can construct a concrete instance of `VolumeArrayInput` via:
 //
-//          VolumeArray{ VolumeArgs{...} }
+//	VolumeArray{ VolumeArgs{...} }
 type VolumeArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +318,7 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 // VolumeMapInput is an input type that accepts VolumeMap and VolumeMapOutput values.
 // You can construct a concrete instance of `VolumeMapInput` via:
 //
-//          VolumeMap{ "key": VolumeArgs{...} }
+//	VolumeMap{ "key": VolumeArgs{...} }
 type VolumeMapInput interface {
 	pulumi.Input
 

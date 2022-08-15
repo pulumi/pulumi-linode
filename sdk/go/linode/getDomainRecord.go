@@ -20,29 +20,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
-// 			DomainId: 3150401,
-// 			Id:       pulumi.IntRef(14950401),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
-// 			DomainId: 3150401,
-// 			Name:     pulumi.StringRef("www"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
+//				DomainId: 3150401,
+//				Id:       pulumi.IntRef(14950401),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.LookupDomainRecord(ctx, &GetDomainRecordArgs{
+//				DomainId: 3150401,
+//				Name:     pulumi.StringRef("www"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //

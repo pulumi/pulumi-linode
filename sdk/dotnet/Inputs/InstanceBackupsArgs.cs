@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceBackupsArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBackupsArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceBackupsArgs()
         {
         }
+        public static new InstanceBackupsArgs Empty => new InstanceBackupsArgs();
     }
 }

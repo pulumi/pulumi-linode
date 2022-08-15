@@ -23,47 +23,50 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
-// 			Label:       pulumi.String("foo"),
-// 			Description: pulumi.String("Installs a Package"),
-// 			Script:      pulumi.String(fmt.Sprintf("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n")),
-// 			Images: pulumi.StringArray{
-// 				pulumi.String("linode/ubuntu18.04"),
-// 				pulumi.String("linode/ubuntu16.04lts"),
-// 			},
-// 			RevNote: pulumi.String("initial version"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
-// 			Image:  pulumi.String("linode/ubuntu18.04"),
-// 			Label:  pulumi.String("foo"),
-// 			Region: pulumi.String("us-east"),
-// 			Type:   pulumi.String("g6-nanode-1"),
-// 			AuthorizedKeys: pulumi.StringArray{
-// 				pulumi.String("..."),
-// 			},
-// 			RootPass:      pulumi.String("..."),
-// 			StackscriptId: fooStackScript.ID(),
-// 			StackscriptData: pulumi.AnyMap{
-// 				"package": pulumi.Any("nginx"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+//				Label:       pulumi.String("foo"),
+//				Description: pulumi.String("Installs a Package"),
+//				Script:      pulumi.String(fmt.Sprintf("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n")),
+//				Images: pulumi.StringArray{
+//					pulumi.String("linode/ubuntu18.04"),
+//					pulumi.String("linode/ubuntu16.04lts"),
+//				},
+//				RevNote: pulumi.String("initial version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/ubuntu18.04"),
+//				Label:  pulumi.String("foo"),
+//				Region: pulumi.String("us-east"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				AuthorizedKeys: pulumi.StringArray{
+//					pulumi.String("..."),
+//				},
+//				RootPass:      pulumi.String("..."),
+//				StackscriptId: fooStackScript.ID(),
+//				StackscriptData: pulumi.AnyMap{
+//					"package": pulumi.Any("nginx"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -83,24 +86,26 @@ import (
 //
 // * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 //
-//   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+//   - `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 //
-//   * `name` - The name of the field.
+//   - `name` - The name of the field.
 //
-//   * `example` - An example value for the field.
+//   - `example` - An example value for the field.
 //
-//   * `oneOf` - A list of acceptable single values for the field.
+//   - `oneOf` - A list of acceptable single values for the field.
 //
-//   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
+//   - `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
 //
-//   * `default` - The default value. If not specified, this value will be used.
+//   - `default` - The default value. If not specified, this value will be used.
 //
 // ## Import
 //
 // Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+//
+//	$ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+//
 // ```
 type StackScript struct {
 	pulumi.CustomResourceState
@@ -301,7 +306,7 @@ func (i *StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackS
 // StackScriptArrayInput is an input type that accepts StackScriptArray and StackScriptArrayOutput values.
 // You can construct a concrete instance of `StackScriptArrayInput` via:
 //
-//          StackScriptArray{ StackScriptArgs{...} }
+//	StackScriptArray{ StackScriptArgs{...} }
 type StackScriptArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +331,7 @@ func (i StackScriptArray) ToStackScriptArrayOutputWithContext(ctx context.Contex
 // StackScriptMapInput is an input type that accepts StackScriptMap and StackScriptMapOutput values.
 // You can construct a concrete instance of `StackScriptMapInput` via:
 //
-//          StackScriptMap{ "key": StackScriptArgs{...} }
+//	StackScriptMap{ "key": StackScriptArgs{...} }
 type StackScriptMapInput interface {
 	pulumi.Input
 

@@ -23,17 +23,15 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access account details.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var account = Output.Create(Linode.GetAccount.InvokeAsync());
-        ///     }
+        ///     var account = Linode.GetAccount.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

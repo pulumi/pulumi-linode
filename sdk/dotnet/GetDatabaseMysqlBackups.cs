@@ -23,50 +23,46 @@ namespace Pulumi.Linode
         /// Get information about all backups for a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
         ///     {
-        ///         var all_backups = Output.Create(Linode.GetDatabaseMysqlBackups.InvokeAsync(new Linode.GetDatabaseMysqlBackupsArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all automatic MySQL Database Backups:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var auto_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
         ///     {
-        ///         var auto_backups = Output.Create(Linode.GetDatabaseMysqlBackups.InvokeAsync(new Linode.GetDatabaseMysqlBackupsArgs
+        ///         DatabaseId = 12345,
+        ///         Filters = new[]
         ///         {
-        ///             DatabaseId = 12345,
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseMysqlBackupsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseMysqlBackupsFilterArgs
+        ///                 Name = "type",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "type",
-        ///                     Values = 
-        ///                     {
-        ///                         "auto",
-        ///                     },
+        ///                     "auto",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,50 +93,46 @@ namespace Pulumi.Linode
         /// Get information about all backups for a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
         ///     {
-        ///         var all_backups = Output.Create(Linode.GetDatabaseMysqlBackups.InvokeAsync(new Linode.GetDatabaseMysqlBackupsArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all automatic MySQL Database Backups:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var auto_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
         ///     {
-        ///         var auto_backups = Output.Create(Linode.GetDatabaseMysqlBackups.InvokeAsync(new Linode.GetDatabaseMysqlBackupsArgs
+        ///         DatabaseId = 12345,
+        ///         Filters = new[]
         ///         {
-        ///             DatabaseId = 12345,
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseMysqlBackupsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseMysqlBackupsFilterArgs
+        ///                 Name = "type",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "type",
-        ///                     Values = 
-        ///                     {
-        ///                         "auto",
-        ///                     },
+        ///                     "auto",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -161,7 +153,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabaseMysqlBackupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMysqlBackupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the database to retrieve backups for.
@@ -198,9 +190,10 @@ namespace Pulumi.Linode
         public GetDatabaseMysqlBackupsArgs()
         {
         }
+        public static new GetDatabaseMysqlBackupsArgs Empty => new GetDatabaseMysqlBackupsArgs();
     }
 
-    public sealed class GetDatabaseMysqlBackupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMysqlBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the database to retrieve backups for.
@@ -237,6 +230,7 @@ namespace Pulumi.Linode
         public GetDatabaseMysqlBackupsInvokeArgs()
         {
         }
+        public static new GetDatabaseMysqlBackupsInvokeArgs Empty => new GetDatabaseMysqlBackupsInvokeArgs();
     }
 
 

@@ -19,31 +19,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
-// 			Label:  pulumi.String("my-linode"),
-// 			Image:  pulumi.String("linode/alpine3.14"),
-// 			Type:   pulumi.String("g6-nanode-1"),
-// 			Region: pulumi.String("us-southeast"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewIpv6Range(ctx, "foobarIpv6Range", &linode.Ipv6RangeArgs{
-// 			LinodeId:     foobarInstance.ID(),
-// 			PrefixLength: pulumi.Int(64),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
+//				Label:  pulumi.String("my-linode"),
+//				Image:  pulumi.String("linode/alpine3.14"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("us-southeast"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewIpv6Range(ctx, "foobarIpv6Range", &linode.Ipv6RangeArgs{
+//				LinodeId:     foobarInstance.ID(),
+//				PrefixLength: pulumi.Int(64),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Ipv6Range struct {
 	pulumi.CustomResourceState
@@ -178,7 +181,7 @@ func (i *Ipv6Range) ToIpv6RangeOutputWithContext(ctx context.Context) Ipv6RangeO
 // Ipv6RangeArrayInput is an input type that accepts Ipv6RangeArray and Ipv6RangeArrayOutput values.
 // You can construct a concrete instance of `Ipv6RangeArrayInput` via:
 //
-//          Ipv6RangeArray{ Ipv6RangeArgs{...} }
+//	Ipv6RangeArray{ Ipv6RangeArgs{...} }
 type Ipv6RangeArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +206,7 @@ func (i Ipv6RangeArray) ToIpv6RangeArrayOutputWithContext(ctx context.Context) I
 // Ipv6RangeMapInput is an input type that accepts Ipv6RangeMap and Ipv6RangeMapOutput values.
 // You can construct a concrete instance of `Ipv6RangeMapInput` via:
 //
-//          Ipv6RangeMap{ "key": Ipv6RangeArgs{...} }
+//	Ipv6RangeMap{ "key": Ipv6RangeArgs{...} }
 type Ipv6RangeMapInput interface {
 	pulumi.Input
 

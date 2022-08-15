@@ -23,107 +23,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
-// 			AuthorizedKeys: pulumi.StringArray{
-// 				pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
-// 			},
-// 			Group:     pulumi.String("foo"),
-// 			Image:     pulumi.String("linode/ubuntu18.04"),
-// 			Label:     pulumi.String("simple_instance"),
-// 			PrivateIp: pulumi.Bool(true),
-// 			Region:    pulumi.String("us-central"),
-// 			RootPass:  pulumi.String("terr4form-test"),
-// 			SwapSize:  pulumi.Int(256),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 			},
-// 			Type: pulumi.String("g6-standard-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Linode Instance with explicit Configs and Disks
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				AuthorizedKeys: pulumi.StringArray{
+//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+//				},
+//				Group:     pulumi.String("foo"),
+//				Image:     pulumi.String("linode/ubuntu18.04"),
+//				Label:     pulumi.String("simple_instance"),
+//				PrivateIp: pulumi.Bool(true),
+//				Region:    pulumi.String("us-central"),
+//				RootPass:  pulumi.String("terr4form-test"),
+//				SwapSize:  pulumi.Int(256),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//				},
+//				Type: pulumi.String("g6-standard-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		me, err := linode.GetProfile(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		webVolume, err := linode.NewVolume(ctx, "webVolume", &linode.VolumeArgs{
-// 			Label:  pulumi.String("web_volume"),
-// 			Size:   pulumi.Int(20),
-// 			Region: pulumi.String("us-central"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewInstance(ctx, "web", &linode.InstanceArgs{
-// 			Label: pulumi.String("complex_instance"),
-// 			Group: pulumi.String("foo"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 			},
-// 			Region:    pulumi.String("us-central"),
-// 			Type:      pulumi.String("g6-nanode-1"),
-// 			PrivateIp: pulumi.Bool(true),
-// 			Disks: InstanceDiskArray{
-// 				&InstanceDiskArgs{
-// 					Label: pulumi.String("boot"),
-// 					Size:  pulumi.Int(3000),
-// 					Image: pulumi.String("linode/ubuntu18.04"),
-// 					AuthorizedKeys: pulumi.StringArray{
-// 						pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
-// 					},
-// 					AuthorizedUsers: pulumi.StringArray{
-// 						pulumi.String(me.Username),
-// 					},
-// 					RootPass: pulumi.String("terr4form-test"),
-// 				},
-// 			},
-// 			Configs: InstanceConfigArray{
-// 				&InstanceConfigArgs{
-// 					Label:  pulumi.String("boot_config"),
-// 					Kernel: pulumi.String("linode/latest-64bit"),
-// 					Devices: &InstanceConfigDevicesArgs{
-// 						Sda: &InstanceConfigDevicesSdaArgs{
-// 							DiskLabel: pulumi.String("boot"),
-// 						},
-// 						Sdb: &InstanceConfigDevicesSdbArgs{
-// 							VolumeId: webVolume.ID(),
-// 						},
-// 					},
-// 					RootDevice: pulumi.String("/dev/sda"),
-// 				},
-// 			},
-// 			BootConfigLabel: pulumi.String("boot_config"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
 // ```
 // ## Attributes
 //
@@ -149,23 +79,25 @@ import (
 //
 // * `backups` - Information about this Linode's backups status.
 //
-//   * `enabled` - If this Linode has the Backup service enabled.
+//   - `enabled` - If this Linode has the Backup service enabled.
 //
-//   * `schedule`
+//   - `schedule`
 //
-//     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+//   - `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 //
-//     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+//   - `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 //
 // ## Import
 //
 // Linodes Instances can be imported using the Linode `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/instance:Instance mylinode 1234567
+//
+//	$ pulumi import linode:index/instance:Instance mylinode 1234567
+//
 // ```
 //
-//  When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.
+//	When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.
 //
 // **Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
 //
@@ -190,8 +122,8 @@ type Instance struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs InstanceConfigArrayOutput `pulumi:"configs"`
-	Disks   InstanceDiskArrayOutput   `pulumi:"disks"`
+	Configs InstanceConfigArrayOutput   `pulumi:"configs"`
+	Disks   InstanceDiskTypeArrayOutput `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -289,8 +221,8 @@ type instanceState struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig `pulumi:"configs"`
-	Disks   []InstanceDisk   `pulumi:"disks"`
+	Configs []InstanceConfig   `pulumi:"configs"`
+	Disks   []InstanceDiskType `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -358,7 +290,7 @@ type InstanceState struct {
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
-	Disks   InstanceDiskArrayInput
+	Disks   InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -427,8 +359,8 @@ type instanceArgs struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig `pulumi:"configs"`
-	Disks   []InstanceDisk   `pulumi:"disks"`
+	Configs []InstanceConfig   `pulumi:"configs"`
+	Disks   []InstanceDiskType `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -480,7 +412,7 @@ type InstanceArgs struct {
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs InstanceConfigArrayInput
-	Disks   InstanceDiskArrayInput
+	Disks   InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -540,7 +472,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -565,7 +497,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -646,8 +578,8 @@ func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
 }
 
-func (o InstanceOutput) Disks() InstanceDiskArrayOutput {
-	return o.ApplyT(func(v *Instance) InstanceDiskArrayOutput { return v.Disks }).(InstanceDiskArrayOutput)
+func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
 }
 
 // The display group of the Linode instance.

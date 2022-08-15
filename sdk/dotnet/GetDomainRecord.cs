@@ -21,26 +21,25 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Domain Record.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
-        ///         {
-        ///             DomainId = 3150401,
-        ///             Id = 14950401,
-        ///         }));
-        ///         var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
-        ///         {
-        ///             DomainId = 3150401,
-        ///             Name = "www",
-        ///         }));
-        ///     }
+        ///         DomainId = 3150401,
+        ///         Id = 14950401,
+        ///     });
         /// 
-        /// }
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         DomainId = 3150401,
+        ///         Name = "www",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,26 +84,25 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Domain Record.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         var myRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
-        ///         {
-        ///             DomainId = 3150401,
-        ///             Id = 14950401,
-        ///         }));
-        ///         var myWwwRecord = Output.Create(Linode.GetDomainRecord.InvokeAsync(new Linode.GetDomainRecordArgs
-        ///         {
-        ///             DomainId = 3150401,
-        ///             Name = "www",
-        ///         }));
-        ///     }
+        ///         DomainId = 3150401,
+        ///         Id = 14950401,
+        ///     });
         /// 
-        /// }
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         DomainId = 3150401,
+        ///         Name = "www",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -141,7 +139,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDomainRecordArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainRecordArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The associated domain's unique ID.
@@ -164,9 +162,10 @@ namespace Pulumi.Linode
         public GetDomainRecordArgs()
         {
         }
+        public static new GetDomainRecordArgs Empty => new GetDomainRecordArgs();
     }
 
-    public sealed class GetDomainRecordInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainRecordInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The associated domain's unique ID.
@@ -189,6 +188,7 @@ namespace Pulumi.Linode
         public GetDomainRecordInvokeArgs()
         {
         }
+        public static new GetDomainRecordInvokeArgs Empty => new GetDomainRecordInvokeArgs();
     }
 
 

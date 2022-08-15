@@ -19,109 +19,33 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a Linode instance.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var web = new Linode.Instance("web", new()
     ///     {
-    ///         var web = new Linode.Instance("web", new Linode.InstanceArgs
+    ///         AuthorizedKeys = new[]
     ///         {
-    ///             AuthorizedKeys = 
-    ///             {
-    ///                 "ssh-rsa AAAA...Gw== user@example.local",
-    ///             },
-    ///             Group = "foo",
-    ///             Image = "linode/ubuntu18.04",
-    ///             Label = "simple_instance",
-    ///             PrivateIp = true,
-    ///             Region = "us-central",
-    ///             RootPass = "terr4form-test",
-    ///             SwapSize = 256,
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///             },
-    ///             Type = "g6-standard-1",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Linode Instance with explicit Configs and Disks
-    /// 
-    /// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var me = Output.Create(Linode.GetProfile.InvokeAsync());
-    ///         var webVolume = new Linode.Volume("webVolume", new Linode.VolumeArgs
+    ///             "ssh-rsa AAAA...Gw== user@example.local",
+    ///         },
+    ///         Group = "foo",
+    ///         Image = "linode/ubuntu18.04",
+    ///         Label = "simple_instance",
+    ///         PrivateIp = true,
+    ///         Region = "us-central",
+    ///         RootPass = "terr4form-test",
+    ///         SwapSize = 256,
+    ///         Tags = new[]
     ///         {
-    ///             Label = "web_volume",
-    ///             Size = 20,
-    ///             Region = "us-central",
-    ///         });
-    ///         var web = new Linode.Instance("web", new Linode.InstanceArgs
-    ///         {
-    ///             Label = "complex_instance",
-    ///             Group = "foo",
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///             },
-    ///             Region = "us-central",
-    ///             Type = "g6-nanode-1",
-    ///             PrivateIp = true,
-    ///             Disks = 
-    ///             {
-    ///                 new Linode.Inputs.InstanceDiskArgs
-    ///                 {
-    ///                     Label = "boot",
-    ///                     Size = 3000,
-    ///                     Image = "linode/ubuntu18.04",
-    ///                     AuthorizedKeys = 
-    ///                     {
-    ///                         "ssh-rsa AAAA...Gw== user@example.local",
-    ///                     },
-    ///                     AuthorizedUsers = 
-    ///                     {
-    ///                         me.Apply(me =&gt; me.Username),
-    ///                     },
-    ///                     RootPass = "terr4form-test",
-    ///                 },
-    ///             },
-    ///             Configs = 
-    ///             {
-    ///                 new Linode.Inputs.InstanceConfigArgs
-    ///                 {
-    ///                     Label = "boot_config",
-    ///                     Kernel = "linode/latest-64bit",
-    ///                     Devices = new Linode.Inputs.InstanceConfigDevicesArgs
-    ///                     {
-    ///                         Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
-    ///                         {
-    ///                             DiskLabel = "boot",
-    ///                         },
-    ///                         Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs
-    ///                         {
-    ///                             VolumeId = webVolume.Id,
-    ///                         },
-    ///                     },
-    ///                     RootDevice = "/dev/sda",
-    ///                 },
-    ///             },
-    ///             BootConfigLabel = "boot_config",
-    ///         });
-    ///     }
+    ///             "foo",
+    ///         },
+    ///         Type = "g6-standard-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -170,7 +94,7 @@ namespace Pulumi.Linode
     /// The instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration options for alert triggers on this Linode.
@@ -403,7 +327,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration options for alert triggers on this Linode.
@@ -597,9 +521,10 @@ namespace Pulumi.Linode
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration options for alert triggers on this Linode.
@@ -844,5 +769,6 @@ namespace Pulumi.Linode
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

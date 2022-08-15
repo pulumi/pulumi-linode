@@ -17,72 +17,68 @@ namespace Pulumi.Linode
     /// Creating a basic LKE cluster:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         var my_cluster = new Linode.LkeCluster("my-cluster", new Linode.LkeClusterArgs
+    ///         K8sVersion = "1.21",
+    ///         Label = "my-cluster",
+    ///         Pools = new[]
     ///         {
-    ///             K8sVersion = "1.21",
-    ///             Label = "my-cluster",
-    ///             Pools = 
+    ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 new Linode.Inputs.LkeClusterPoolArgs
-    ///                 {
-    ///                     Count = 3,
-    ///                     Type = "g6-standard-2",
-    ///                 },
+    ///                 Count = 3,
+    ///                 Type = "g6-standard-2",
     ///             },
-    ///             Region = "us-central",
-    ///             Tags = 
-    ///             {
-    ///                 "prod",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating an LKE cluster with autoscaler:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         var my_cluster = new Linode.LkeCluster("my-cluster", new Linode.LkeClusterArgs
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.21",
+    ///         Region = "us-central",
+    ///         Tags = new[]
     ///         {
-    ///             Label = "my-cluster",
-    ///             K8sVersion = "1.21",
-    ///             Region = "us-central",
-    ///             Tags = 
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 "prod",
-    ///             },
-    ///             Pools = 
-    ///             {
-    ///                 new Linode.Inputs.LkeClusterPoolArgs
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
     ///                 {
-    ///                     Type = "g6-standard-2",
-    ///                     Count = 3,
-    ///                     Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
-    ///                     {
-    ///                         Min = 3,
-    ///                         Max = 10,
-    ///                     },
+    ///                     Min = 3,
+    ///                     Max = 10,
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,7 +90,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/lkeCluster:LkeCluster")]
-    public partial class LkeCluster : Pulumi.CustomResource
+    public partial class LkeCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The endpoints for the Kubernetes API server.
@@ -200,7 +196,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class LkeClusterArgs : Pulumi.ResourceArgs
+    public sealed class LkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
@@ -253,9 +249,10 @@ namespace Pulumi.Linode
         public LkeClusterArgs()
         {
         }
+        public static new LkeClusterArgs Empty => new LkeClusterArgs();
     }
 
-    public sealed class LkeClusterState : Pulumi.ResourceArgs
+    public sealed class LkeClusterState : global::Pulumi.ResourceArgs
     {
         [Input("apiEndpoints")]
         private InputList<string>? _apiEndpoints;
@@ -338,5 +335,6 @@ namespace Pulumi.Linode
         public LkeClusterState()
         {
         }
+        public static new LkeClusterState Empty => new LkeClusterState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class UserImageGrantGetArgs : Pulumi.ResourceArgs
+    public sealed class UserImageGrantGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public UserImageGrantGetArgs()
         {
         }
+        public static new UserImageGrantGetArgs Empty => new UserImageGrantGetArgs();
     }
 }

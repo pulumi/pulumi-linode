@@ -21,52 +21,55 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
-// 			Label: pulumi.String("my_firewall"),
-// 			Inbounds: FirewallInboundArray{
-// 				&FirewallInboundArgs{
-// 					Label:    pulumi.String("http"),
-// 					Action:   pulumi.String("ACCEPT"),
-// 					Protocol: pulumi.String("TCP"),
-// 					Ports:    pulumi.String("80"),
-// 					Ipv4s: pulumi.StringArray{
-// 						pulumi.String("0.0.0.0/0"),
-// 					},
-// 					Ipv6s: pulumi.StringArray{
-// 						pulumi.String("::/0"),
-// 					},
-// 				},
-// 			},
-// 			InboundPolicy:  pulumi.String("DROP"),
-// 			OutboundPolicy: pulumi.String("ACCEPT"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-// 			Label:  pulumi.String("my_instance"),
-// 			Region: pulumi.String("us-southeast"),
-// 			Type:   pulumi.String("g6-standard-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewFirewallDevice(ctx, "myDevice", &linode.FirewallDeviceArgs{
-// 			FirewallId: myFirewall.ID(),
-// 			EntityId:   myInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+//				Label: pulumi.String("my_firewall"),
+//				Inbounds: FirewallInboundArray{
+//					&FirewallInboundArgs{
+//						Label:    pulumi.String("http"),
+//						Action:   pulumi.String("ACCEPT"),
+//						Protocol: pulumi.String("TCP"),
+//						Ports:    pulumi.String("80"),
+//						Ipv4s: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//						},
+//						Ipv6s: pulumi.StringArray{
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//				InboundPolicy:  pulumi.String("DROP"),
+//				OutboundPolicy: pulumi.String("ACCEPT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//				Label:  pulumi.String("my_instance"),
+//				Region: pulumi.String("us-southeast"),
+//				Type:   pulumi.String("g6-standard-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewFirewallDevice(ctx, "myDevice", &linode.FirewallDeviceArgs{
+//				FirewallId: myFirewall.ID(),
+//				EntityId:   myInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type FirewallDevice struct {
 	pulumi.CustomResourceState
@@ -192,7 +195,7 @@ func (i *FirewallDevice) ToFirewallDeviceOutputWithContext(ctx context.Context) 
 // FirewallDeviceArrayInput is an input type that accepts FirewallDeviceArray and FirewallDeviceArrayOutput values.
 // You can construct a concrete instance of `FirewallDeviceArrayInput` via:
 //
-//          FirewallDeviceArray{ FirewallDeviceArgs{...} }
+//	FirewallDeviceArray{ FirewallDeviceArgs{...} }
 type FirewallDeviceArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +220,7 @@ func (i FirewallDeviceArray) ToFirewallDeviceArrayOutputWithContext(ctx context.
 // FirewallDeviceMapInput is an input type that accepts FirewallDeviceMap and FirewallDeviceMapOutput values.
 // You can construct a concrete instance of `FirewallDeviceMapInput` via:
 //
-//          FirewallDeviceMap{ "key": FirewallDeviceArgs{...} }
+//	FirewallDeviceMap{ "key": FirewallDeviceArgs{...} }
 type FirewallDeviceMapInput interface {
 	pulumi.Input
 

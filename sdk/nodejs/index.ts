@@ -23,6 +23,7 @@ export * from "./getDatabasePostgresql";
 export * from "./getDatabases";
 export * from "./getDomain";
 export * from "./getDomainRecord";
+export * from "./getDomainZonefile";
 export * from "./getFirewall";
 export * from "./getImage";
 export * from "./getImages";
@@ -48,6 +49,7 @@ export * from "./getVlans";
 export * from "./getVolume";
 export * from "./image";
 export * from "./instance";
+export * from "./instanceDisk";
 export * from "./instanceIp";
 export * from "./instanceSharedIps";
 export * from "./ipv6Range";
@@ -86,6 +88,7 @@ import { Firewall } from "./firewall";
 import { FirewallDevice } from "./firewallDevice";
 import { Image } from "./image";
 import { Instance } from "./instance";
+import { InstanceDisk } from "./instanceDisk";
 import { InstanceIp } from "./instanceIp";
 import { InstanceSharedIps } from "./instanceSharedIps";
 import { Ipv6Range } from "./ipv6Range";
@@ -127,6 +130,8 @@ const _module = {
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "linode:index/instanceDisk:InstanceDisk":
+                return new InstanceDisk(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
                 return new InstanceIp(name, <any>undefined, { urn })
             case "linode:index/instanceSharedIps:InstanceSharedIps":
@@ -174,6 +179,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
+pulumi.runtime.registerResourceModule("linode", "index/instanceDisk", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)

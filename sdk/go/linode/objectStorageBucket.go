@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
-// 			Id: "us-east-1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
-// 			Cluster: pulumi.String(primary.Id),
-// 			Label:   pulumi.String("mybucket"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
+//				Id: "us-east-1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
+//				Cluster: pulumi.String(primary.Id),
+//				Label:   pulumi.String("mybucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Creating an Object Storage Bucket with Lifecycle rules:
@@ -51,40 +54,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mykey, err := linode.NewObjectStorageKey(ctx, "mykey", &linode.ObjectStorageKeyArgs{
-// 			Label: pulumi.String("image-access"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewObjectStorageBucket(ctx, "mybucket", &linode.ObjectStorageBucketArgs{
-// 			AccessKey: mykey.AccessKey,
-// 			SecretKey: mykey.SecretKey,
-// 			Cluster:   pulumi.String("us-east-1"),
-// 			Label:     pulumi.String("mybucket"),
-// 			LifecycleRules: ObjectStorageBucketLifecycleRuleArray{
-// 				&ObjectStorageBucketLifecycleRuleArgs{
-// 					Id:                                 pulumi.String("my-rule"),
-// 					Enabled:                            pulumi.Bool(true),
-// 					AbortIncompleteMultipartUploadDays: pulumi.Int(5),
-// 					Expiration: &ObjectStorageBucketLifecycleRuleExpirationArgs{
-// 						Date: pulumi.String("2021-06-21"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mykey, err := linode.NewObjectStorageKey(ctx, "mykey", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("image-access"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageBucket(ctx, "mybucket", &linode.ObjectStorageBucketArgs{
+//				AccessKey: mykey.AccessKey,
+//				SecretKey: mykey.SecretKey,
+//				Cluster:   pulumi.String("us-east-1"),
+//				Label:     pulumi.String("mybucket"),
+//				LifecycleRules: ObjectStorageBucketLifecycleRuleArray{
+//					&ObjectStorageBucketLifecycleRuleArgs{
+//						Id:                                 pulumi.String("my-rule"),
+//						Enabled:                            pulumi.Bool(true),
+//						AbortIncompleteMultipartUploadDays: pulumi.Int(5),
+//						Expiration: &ObjectStorageBucketLifecycleRuleExpirationArgs{
+//							Date: pulumi.String("2021-06-21"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +98,9 @@ import (
 // Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
+//
+//	$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
+//
 // ```
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
@@ -275,7 +283,7 @@ func (i *ObjectStorageBucket) ToObjectStorageBucketOutputWithContext(ctx context
 // ObjectStorageBucketArrayInput is an input type that accepts ObjectStorageBucketArray and ObjectStorageBucketArrayOutput values.
 // You can construct a concrete instance of `ObjectStorageBucketArrayInput` via:
 //
-//          ObjectStorageBucketArray{ ObjectStorageBucketArgs{...} }
+//	ObjectStorageBucketArray{ ObjectStorageBucketArgs{...} }
 type ObjectStorageBucketArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +308,7 @@ func (i ObjectStorageBucketArray) ToObjectStorageBucketArrayOutputWithContext(ct
 // ObjectStorageBucketMapInput is an input type that accepts ObjectStorageBucketMap and ObjectStorageBucketMapOutput values.
 // You can construct a concrete instance of `ObjectStorageBucketMapInput` via:
 //
-//          ObjectStorageBucketMap{ "key": ObjectStorageBucketArgs{...} }
+//	ObjectStorageBucketMap{ "key": ObjectStorageBucketArgs{...} }
 type ObjectStorageBucketMapInput interface {
 	pulumi.Input
 

@@ -24,24 +24,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
-// 			EngineId: pulumi.String("mysql/8.0.26"),
-// 			Label:    pulumi.String("mydatabase"),
-// 			Region:   pulumi.String("us-southeast"),
-// 			Type:     pulumi.String("g6-nanode-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
+//				EngineId: pulumi.String("mysql/8.0.26"),
+//				Label:    pulumi.String("mydatabase"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Creating a complex MySQL database instance:
@@ -50,38 +53,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
-// 			AllowLists: pulumi.StringArray{
-// 				pulumi.String("0.0.0.0/0"),
-// 			},
-// 			ClusterSize:     pulumi.Int(3),
-// 			Encrypted:       pulumi.Bool(true),
-// 			EngineId:        pulumi.String("mysql/8.0.26"),
-// 			Label:           pulumi.String("mydatabase"),
-// 			Region:          pulumi.String("us-southeast"),
-// 			ReplicationType: pulumi.String("asynch"),
-// 			SslConnection:   pulumi.Bool(true),
-// 			Type:            pulumi.String("g6-nanode-1"),
-// 			Updates: &DatabaseMysqlUpdatesArgs{
-// 				DayOfWeek:   pulumi.String("saturday"),
-// 				Duration:    pulumi.Int(1),
-// 				Frequency:   pulumi.String("monthly"),
-// 				HourOfDay:   pulumi.Int(22),
-// 				WeekOfMonth: pulumi.Int(2),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//				ClusterSize:     pulumi.Int(3),
+//				Encrypted:       pulumi.Bool(true),
+//				EngineId:        pulumi.String("mysql/8.0.26"),
+//				Label:           pulumi.String("mydatabase"),
+//				Region:          pulumi.String("us-southeast"),
+//				ReplicationType: pulumi.String("asynch"),
+//				SslConnection:   pulumi.Bool(true),
+//				Type:            pulumi.String("g6-nanode-1"),
+//				Updates: &DatabaseMysqlUpdatesArgs{
+//					DayOfWeek:   pulumi.String("saturday"),
+//					Duration:    pulumi.Int(1),
+//					Frequency:   pulumi.String("monthly"),
+//					HourOfDay:   pulumi.Int(22),
+//					WeekOfMonth: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## updates
 //
@@ -128,7 +134,9 @@ import (
 // Linode MySQL Databases can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
+//
+//	$ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
+//
 // ```
 type DatabaseMysql struct {
 	pulumi.CustomResourceState
@@ -378,7 +386,7 @@ func (i *DatabaseMysql) ToDatabaseMysqlOutputWithContext(ctx context.Context) Da
 // DatabaseMysqlArrayInput is an input type that accepts DatabaseMysqlArray and DatabaseMysqlArrayOutput values.
 // You can construct a concrete instance of `DatabaseMysqlArrayInput` via:
 //
-//          DatabaseMysqlArray{ DatabaseMysqlArgs{...} }
+//	DatabaseMysqlArray{ DatabaseMysqlArgs{...} }
 type DatabaseMysqlArrayInput interface {
 	pulumi.Input
 
@@ -403,7 +411,7 @@ func (i DatabaseMysqlArray) ToDatabaseMysqlArrayOutputWithContext(ctx context.Co
 // DatabaseMysqlMapInput is an input type that accepts DatabaseMysqlMap and DatabaseMysqlMapOutput values.
 // You can construct a concrete instance of `DatabaseMysqlMapInput` via:
 //
-//          DatabaseMysqlMap{ "key": DatabaseMysqlArgs{...} }
+//	DatabaseMysqlMap{ "key": DatabaseMysqlArgs{...} }
 type DatabaseMysqlMapInput interface {
 	pulumi.Input
 

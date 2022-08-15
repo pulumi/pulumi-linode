@@ -22,21 +22,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
-// 			DatabaseId: 12345,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
+//				DatabaseId: 12345,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Get information about all automatic MySQL Database Backups:
@@ -45,29 +48,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
-// 			DatabaseId: 12345,
-// 			Filters: []GetDatabaseMysqlBackupsFilter{
-// 				GetDatabaseMysqlBackupsFilter{
-// 					Name: "type",
-// 					Values: []string{
-// 						"auto",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
+//				DatabaseId: 12345,
+//				Filters: []GetDatabaseMysqlBackupsFilter{
+//					GetDatabaseMysqlBackupsFilter{
+//						Name: "type",
+//						Values: []string{
+//							"auto",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //

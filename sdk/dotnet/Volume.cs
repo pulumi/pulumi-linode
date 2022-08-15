@@ -19,87 +19,82 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobaz = new Linode.Instance("foobaz", new()
     ///     {
-    ///         var foobaz = new Linode.Instance("foobaz", new Linode.InstanceArgs
+    ///         RootPass = "3X4mp13",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-west",
+    ///         Tags = new[]
     ///         {
-    ///             RootPass = "3X4mp13",
-    ///             Type = "g6-nanode-1",
-    ///             Region = "us-west",
-    ///             Tags = 
-    ///             {
-    ///                 "foobaz",
-    ///             },
-    ///         });
-    ///         var foobar = new Linode.Volume("foobar", new Linode.VolumeArgs
-    ///         {
-    ///             Label = "foo-volume",
-    ///             Region = foobaz.Region,
-    ///             LinodeId = foobaz.Id,
-    ///         });
-    ///     }
+    ///             "foobaz",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var foobar = new Linode.Volume("foobar", new()
+    ///     {
+    ///         Label = "foo-volume",
+    ///         Region = foobaz.Region,
+    ///         LinodeId = foobaz.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Volumes can also be attached using the Linode Instance config device map.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Linode.Instance("foo", new()
     ///     {
-    ///         var foo = new Linode.Instance("foo", new Linode.InstanceArgs
+    ///         Configs = new[]
     ///         {
-    ///             Configs = 
+    ///             new Linode.Inputs.InstanceConfigArgs
     ///             {
-    ///                 new Linode.Inputs.InstanceConfigArgs
+    ///                 Devices = new Linode.Inputs.InstanceConfigDevicesArgs
     ///                 {
-    ///                     Devices = new Linode.Inputs.InstanceConfigDevicesArgs
+    ///                     Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
     ///                     {
-    ///                         Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
-    ///                         {
-    ///                             VolumeId = 123,
-    ///                         },
+    ///                         VolumeId = 123,
     ///                     },
-    ///                     Kernel = "linode/latest-64bit",
-    ///                     Label = "boot-existing-volume",
     ///                 },
+    ///                 Kernel = "linode/latest-64bit",
+    ///                 Label = "boot-existing-volume",
     ///             },
-    ///             Region = "us-east",
-    ///             Type = "g6-nanode-1",
-    ///         });
-    ///     }
+    ///         },
+    ///         Region = "us-east",
+    ///         Type = "g6-nanode-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Volumes may also be cloned from existing volumes.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.Volume("foobar", new()
     ///     {
-    ///         var foobar = new Linode.Volume("foobar", new Linode.VolumeArgs
-    ///         {
-    ///             Label = "my-cloned-volume",
-    ///             SourceVolumeId = 12345,
-    ///         });
-    ///     }
+    ///         Label = "my-cloned-volume",
+    ///         SourceVolumeId = 12345,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -120,7 +115,7 @@ namespace Pulumi.Linode
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/volume:Volume")]
-    public partial class Volume : Pulumi.CustomResource
+    public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
@@ -215,7 +210,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class VolumeArgs : Pulumi.ResourceArgs
+    public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label of the Linode Volume
@@ -262,9 +257,10 @@ namespace Pulumi.Linode
         public VolumeArgs()
         {
         }
+        public static new VolumeArgs Empty => new VolumeArgs();
     }
 
-    public sealed class VolumeState : Pulumi.ResourceArgs
+    public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
@@ -324,5 +320,6 @@ namespace Pulumi.Linode
         public VolumeState()
         {
         }
+        public static new VolumeState Empty => new VolumeState();
     }
 }

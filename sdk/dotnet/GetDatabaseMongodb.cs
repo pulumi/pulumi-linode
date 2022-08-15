@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// Get information about a MongoDB database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabaseMongodb.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabaseMongodb.InvokeAsync(new Linode.GetDatabaseMongodbArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -117,20 +115,18 @@ namespace Pulumi.Linode
         /// Get information about a MongoDB database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabaseMongodb.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabaseMongodb.InvokeAsync(new Linode.GetDatabaseMongodbArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -205,7 +201,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabaseMongodbArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMongodbArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the MongoDB database.
@@ -216,9 +212,10 @@ namespace Pulumi.Linode
         public GetDatabaseMongodbArgs()
         {
         }
+        public static new GetDatabaseMongodbArgs Empty => new GetDatabaseMongodbArgs();
     }
 
-    public sealed class GetDatabaseMongodbInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseMongodbInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the MongoDB database.
@@ -229,6 +226,7 @@ namespace Pulumi.Linode
         public GetDatabaseMongodbInvokeArgs()
         {
         }
+        public static new GetDatabaseMongodbInvokeArgs Empty => new GetDatabaseMongodbInvokeArgs();
     }
 
 

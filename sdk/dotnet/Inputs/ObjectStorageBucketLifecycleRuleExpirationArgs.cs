@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class ObjectStorageBucketLifecycleRuleExpirationArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketLifecycleRuleExpirationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the date after which you want the corresponding action to take effect.
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public ObjectStorageBucketLifecycleRuleExpirationArgs()
         {
         }
+        public static new ObjectStorageBucketLifecycleRuleExpirationArgs Empty => new ObjectStorageBucketLifecycleRuleExpirationArgs();
     }
 }

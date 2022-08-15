@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - Arbitrary user comments about this `config`.
@@ -77,5 +77,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceConfigGetArgs()
         {
         }
+        public static new InstanceConfigGetArgs Empty => new InstanceConfigGetArgs();
     }
 }

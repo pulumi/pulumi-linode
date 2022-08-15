@@ -24,24 +24,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabaseMongodb(ctx, "foobar", &linode.DatabaseMongodbArgs{
-// 			EngineId: pulumi.String("mongodb/4.4.10"),
-// 			Label:    pulumi.String("mydatabase"),
-// 			Region:   pulumi.String("us-southeast"),
-// 			Type:     pulumi.String("g6-nanode-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMongodb(ctx, "foobar", &linode.DatabaseMongodbArgs{
+//				EngineId: pulumi.String("mongodb/4.4.10"),
+//				Label:    pulumi.String("mydatabase"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Creating a complex MongoDB database instance:
@@ -50,39 +53,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabaseMongodb(ctx, "foobar", &linode.DatabaseMongodbArgs{
-// 			AllowLists: pulumi.StringArray{
-// 				pulumi.String("0.0.0.0/0"),
-// 			},
-// 			ClusterSize:     pulumi.Int(3),
-// 			CompressionType: pulumi.String("zlib"),
-// 			Encrypted:       pulumi.Bool(true),
-// 			EngineId:        pulumi.String("mongodb/4.4.10"),
-// 			Label:           pulumi.String("mydatabase"),
-// 			Region:          pulumi.String("us-southeast"),
-// 			SslConnection:   pulumi.Bool(true),
-// 			StorageEngine:   pulumi.String("wiredtiger"),
-// 			Type:            pulumi.String("g6-nanode-1"),
-// 			Updates: &DatabaseMongodbUpdatesArgs{
-// 				DayOfWeek:   pulumi.String("saturday"),
-// 				Duration:    pulumi.Int(1),
-// 				Frequency:   pulumi.String("monthly"),
-// 				HourOfDay:   pulumi.Int(22),
-// 				WeekOfMonth: pulumi.Int(2),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMongodb(ctx, "foobar", &linode.DatabaseMongodbArgs{
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//				ClusterSize:     pulumi.Int(3),
+//				CompressionType: pulumi.String("zlib"),
+//				Encrypted:       pulumi.Bool(true),
+//				EngineId:        pulumi.String("mongodb/4.4.10"),
+//				Label:           pulumi.String("mydatabase"),
+//				Region:          pulumi.String("us-southeast"),
+//				SslConnection:   pulumi.Bool(true),
+//				StorageEngine:   pulumi.String("wiredtiger"),
+//				Type:            pulumi.String("g6-nanode-1"),
+//				Updates: &DatabaseMongodbUpdatesArgs{
+//					DayOfWeek:   pulumi.String("saturday"),
+//					Duration:    pulumi.Int(1),
+//					Frequency:   pulumi.String("monthly"),
+//					HourOfDay:   pulumi.Int(22),
+//					WeekOfMonth: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## updates
 //
@@ -135,7 +141,9 @@ import (
 // Linode MongoDB Databases can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/databaseMongodb:DatabaseMongodb foobar 1234567
+//
+//	$ pulumi import linode:index/databaseMongodb:DatabaseMongodb foobar 1234567
+//
 // ```
 type DatabaseMongodb struct {
 	pulumi.CustomResourceState
@@ -416,7 +424,7 @@ func (i *DatabaseMongodb) ToDatabaseMongodbOutputWithContext(ctx context.Context
 // DatabaseMongodbArrayInput is an input type that accepts DatabaseMongodbArray and DatabaseMongodbArrayOutput values.
 // You can construct a concrete instance of `DatabaseMongodbArrayInput` via:
 //
-//          DatabaseMongodbArray{ DatabaseMongodbArgs{...} }
+//	DatabaseMongodbArray{ DatabaseMongodbArgs{...} }
 type DatabaseMongodbArrayInput interface {
 	pulumi.Input
 
@@ -441,7 +449,7 @@ func (i DatabaseMongodbArray) ToDatabaseMongodbArrayOutputWithContext(ctx contex
 // DatabaseMongodbMapInput is an input type that accepts DatabaseMongodbMap and DatabaseMongodbMapOutput values.
 // You can construct a concrete instance of `DatabaseMongodbMapInput` via:
 //
-//          DatabaseMongodbMap{ "key": DatabaseMongodbArgs{...} }
+//	DatabaseMongodbMap{ "key": DatabaseMongodbArgs{...} }
 type DatabaseMongodbMapInput interface {
 	pulumi.Input
 

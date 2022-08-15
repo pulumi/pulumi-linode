@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceSpecsArgs : Pulumi.ResourceArgs
+    public sealed class InstanceSpecsArgs : global::Pulumi.ResourceArgs
     {
         [Input("disk")]
         public Input<int>? Disk { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceSpecsArgs()
         {
         }
+        public static new InstanceSpecsArgs Empty => new InstanceSpecsArgs();
     }
 }

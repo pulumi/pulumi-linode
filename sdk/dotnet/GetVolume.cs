@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Volume.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetVolume.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetVolume.InvokeAsync(new Linode.GetVolumeArgs
-        ///         {
-        ///             Id = 1234567,
-        ///         }));
-        ///     }
+        ///         Id = 1234567,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,20 +73,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Volume.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Linode.GetVolume.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Linode.GetVolume.InvokeAsync(new Linode.GetVolumeArgs
-        ///         {
-        ///             Id = 1234567,
-        ///         }));
-        ///     }
+        ///         Id = 1234567,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -121,7 +117,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetVolumeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique numeric ID of the Volume record to query.
@@ -132,9 +128,10 @@ namespace Pulumi.Linode
         public GetVolumeArgs()
         {
         }
+        public static new GetVolumeArgs Empty => new GetVolumeArgs();
     }
 
-    public sealed class GetVolumeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique numeric ID of the Volume record to query.
@@ -145,6 +142,7 @@ namespace Pulumi.Linode
         public GetVolumeInvokeArgs()
         {
         }
+        public static new GetVolumeInvokeArgs Empty => new GetVolumeInvokeArgs();
     }
 
 

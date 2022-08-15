@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class DatabasePostgresqlUpdatesGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabasePostgresqlUpdatesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dayOfWeek", required: true)]
         public Input<string> DayOfWeek { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Linode.Inputs
         public DatabasePostgresqlUpdatesGetArgs()
         {
         }
+        public static new DatabasePostgresqlUpdatesGetArgs Empty => new DatabasePostgresqlUpdatesGetArgs();
     }
 }

@@ -21,52 +21,48 @@ namespace Pulumi.Linode
         /// Get information about all backups for a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
-        ///         var all_backups = Output.Create(Linode.GetDatabaseBackups.InvokeAsync(new Linode.GetDatabaseBackupsArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///             DatabaseType = "mysql",
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "mysql",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all automatic MongoDB Database Backups:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var auto_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
-        ///         var auto_backups = Output.Create(Linode.GetDatabaseBackups.InvokeAsync(new Linode.GetDatabaseBackupsArgs
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "mongodb",
+        ///         Filters = new[]
         ///         {
-        ///             DatabaseId = 12345,
-        ///             DatabaseType = "mongodb",
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseBackupsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseBackupsFilterArgs
+        ///                 Name = "type",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "type",
-        ///                     Values = 
-        ///                     {
-        ///                         "auto",
-        ///                     },
+        ///                     "auto",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,52 +91,48 @@ namespace Pulumi.Linode
         /// Get information about all backups for a MySQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
-        ///         var all_backups = Output.Create(Linode.GetDatabaseBackups.InvokeAsync(new Linode.GetDatabaseBackupsArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///             DatabaseType = "mysql",
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "mysql",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all automatic MongoDB Database Backups:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var auto_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
-        ///         var auto_backups = Output.Create(Linode.GetDatabaseBackups.InvokeAsync(new Linode.GetDatabaseBackupsArgs
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "mongodb",
+        ///         Filters = new[]
         ///         {
-        ///             DatabaseId = 12345,
-        ///             DatabaseType = "mongodb",
-        ///             Filters = 
+        ///             new Linode.Inputs.GetDatabaseBackupsFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetDatabaseBackupsFilterArgs
+        ///                 Name = "type",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "type",
-        ///                     Values = 
-        ///                     {
-        ///                         "auto",
-        ///                     },
+        ///                     "auto",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -161,7 +153,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabaseBackupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseBackupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the database to retrieve backups for.
@@ -204,9 +196,10 @@ namespace Pulumi.Linode
         public GetDatabaseBackupsArgs()
         {
         }
+        public static new GetDatabaseBackupsArgs Empty => new GetDatabaseBackupsArgs();
     }
 
-    public sealed class GetDatabaseBackupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the database to retrieve backups for.
@@ -249,6 +242,7 @@ namespace Pulumi.Linode
         public GetDatabaseBackupsInvokeArgs()
         {
         }
+        public static new GetDatabaseBackupsInvokeArgs Empty => new GetDatabaseBackupsInvokeArgs();
     }
 
 

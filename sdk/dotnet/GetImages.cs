@@ -21,54 +21,50 @@ namespace Pulumi.Linode
         /// Get information about all Linode images with a certain label and visibility:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_images = Linode.GetImages.Invoke(new()
         ///     {
-        ///         var specific_images = Output.Create(Linode.GetImages.InvokeAsync(new Linode.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetImagesFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "Debian 8",
-        ///                     },
-        ///                 },
-        ///                 new Linode.Inputs.GetImagesFilterArgs
-        ///                 {
-        ///                     Name = "is_public",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "Debian 8",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode images associated with the current token:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all_images = Output.Create(Linode.GetImages.InvokeAsync());
-        ///     }
+        ///     var all_images = Linode.GetImages.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -131,54 +127,50 @@ namespace Pulumi.Linode
         /// Get information about all Linode images with a certain label and visibility:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_images = Linode.GetImages.Invoke(new()
         ///     {
-        ///         var specific_images = Output.Create(Linode.GetImages.InvokeAsync(new Linode.GetImagesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetImagesFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "Debian 8",
-        ///                     },
-        ///                 },
-        ///                 new Linode.Inputs.GetImagesFilterArgs
-        ///                 {
-        ///                     Name = "is_public",
-        ///                     Values = 
-        ///                     {
-        ///                         "true",
-        ///                     },
+        ///                     "Debian 8",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode images associated with the current token:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all_images = Output.Create(Linode.GetImages.InvokeAsync());
-        ///     }
+        ///     var all_images = Linode.GetImages.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -233,7 +225,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetImagesFilterArgs>? _filters;
@@ -264,9 +256,10 @@ namespace Pulumi.Linode
         public GetImagesArgs()
         {
         }
+        public static new GetImagesArgs Empty => new GetImagesArgs();
     }
 
-    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetImagesFilterInputArgs>? _filters;
@@ -297,6 +290,7 @@ namespace Pulumi.Linode
         public GetImagesInvokeArgs()
         {
         }
+        public static new GetImagesInvokeArgs Empty => new GetImagesInvokeArgs();
     }
 
 

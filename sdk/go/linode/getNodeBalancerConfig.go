@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupNodeBalancerConfig(ctx, &GetNodeBalancerConfigArgs{
-// 			Id:             123,
-// 			NodebalancerId: 456,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupNodeBalancerConfig(ctx, &GetNodeBalancerConfigArgs{
+//				Id:             123,
+//				NodebalancerId: 456,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupNodeBalancerConfig(ctx *pulumi.Context, args *LookupNodeBalancerConfigArgs, opts ...pulumi.InvokeOption) (*LookupNodeBalancerConfigResult, error) {
 	var rv LookupNodeBalancerConfigResult

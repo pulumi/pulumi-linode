@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/rdns:Rdns")]
-    public partial class Rdns : Pulumi.CustomResource
+    public partial class Rdns : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
@@ -89,7 +89,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class RdnsArgs : Pulumi.ResourceArgs
+    public sealed class RdnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
@@ -112,9 +112,10 @@ namespace Pulumi.Linode
         public RdnsArgs()
         {
         }
+        public static new RdnsArgs Empty => new RdnsArgs();
     }
 
-    public sealed class RdnsState : Pulumi.ResourceArgs
+    public sealed class RdnsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
@@ -137,5 +138,6 @@ namespace Pulumi.Linode
         public RdnsState()
         {
         }
+        public static new RdnsState Empty => new RdnsState();
     }
 }

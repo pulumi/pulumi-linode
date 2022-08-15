@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceConfigHelpersGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceConfigHelpersGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("devtmpfsAutomount")]
         public Input<bool>? DevtmpfsAutomount { get; set; }
@@ -42,5 +42,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceConfigHelpersGetArgs()
         {
         }
+        public static new InstanceConfigHelpersGetArgs Empty => new InstanceConfigHelpersGetArgs();
     }
 }

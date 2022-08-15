@@ -21,32 +21,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-// 			K8sVersion: pulumi.String("1.21"),
-// 			Label:      pulumi.String("my-cluster"),
-// 			Pools: LkeClusterPoolArray{
-// 				&LkeClusterPoolArgs{
-// 					Count: pulumi.Int(3),
-// 					Type:  pulumi.String("g6-standard-2"),
-// 				},
-// 			},
-// 			Region: pulumi.String("us-central"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("prod"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				K8sVersion: pulumi.String("1.21"),
+//				Label:      pulumi.String("my-cluster"),
+//				Pools: LkeClusterPoolArray{
+//					&LkeClusterPoolArgs{
+//						Count: pulumi.Int(3),
+//						Type:  pulumi.String("g6-standard-2"),
+//					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Creating an LKE cluster with autoscaler:
@@ -55,36 +58,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-// 			Label:      pulumi.String("my-cluster"),
-// 			K8sVersion: pulumi.String("1.21"),
-// 			Region:     pulumi.String("us-central"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("prod"),
-// 			},
-// 			Pools: LkeClusterPoolArray{
-// 				&LkeClusterPoolArgs{
-// 					Type:  pulumi.String("g6-standard-2"),
-// 					Count: pulumi.Int(3),
-// 					Autoscaler: &LkeClusterPoolAutoscalerArgs{
-// 						Min: pulumi.Int(3),
-// 						Max: pulumi.Int(10),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.21"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: LkeClusterPoolArray{
+//					&LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//						Autoscaler: &LkeClusterPoolAutoscalerArgs{
+//							Min: pulumi.Int(3),
+//							Max: pulumi.Int(10),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +98,9 @@ import (
 // LKE Clusters can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+//
+//	$ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+//
 // ```
 type LkeCluster struct {
 	pulumi.CustomResourceState
@@ -266,7 +274,7 @@ func (i *LkeCluster) ToLkeClusterOutputWithContext(ctx context.Context) LkeClust
 // LkeClusterArrayInput is an input type that accepts LkeClusterArray and LkeClusterArrayOutput values.
 // You can construct a concrete instance of `LkeClusterArrayInput` via:
 //
-//          LkeClusterArray{ LkeClusterArgs{...} }
+//	LkeClusterArray{ LkeClusterArgs{...} }
 type LkeClusterArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +299,7 @@ func (i LkeClusterArray) ToLkeClusterArrayOutputWithContext(ctx context.Context)
 // LkeClusterMapInput is an input type that accepts LkeClusterMap and LkeClusterMapOutput values.
 // You can construct a concrete instance of `LkeClusterMapInput` via:
 //
-//          LkeClusterMap{ "key": LkeClusterArgs{...} }
+//	LkeClusterMap{ "key": LkeClusterArgs{...} }
 type LkeClusterMapInput interface {
 	pulumi.Input
 
