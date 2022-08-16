@@ -113,7 +113,7 @@ func (i *InstanceSharedIps) ToInstanceSharedIpsOutputWithContext(ctx context.Con
 // InstanceSharedIpsArrayInput is an input type that accepts InstanceSharedIpsArray and InstanceSharedIpsArrayOutput values.
 // You can construct a concrete instance of `InstanceSharedIpsArrayInput` via:
 //
-//          InstanceSharedIpsArray{ InstanceSharedIpsArgs{...} }
+//	InstanceSharedIpsArray{ InstanceSharedIpsArgs{...} }
 type InstanceSharedIpsArrayInput interface {
 	pulumi.Input
 
@@ -138,7 +138,7 @@ func (i InstanceSharedIpsArray) ToInstanceSharedIpsArrayOutputWithContext(ctx co
 // InstanceSharedIpsMapInput is an input type that accepts InstanceSharedIpsMap and InstanceSharedIpsMapOutput values.
 // You can construct a concrete instance of `InstanceSharedIpsMapInput` via:
 //
-//          InstanceSharedIpsMap{ "key": InstanceSharedIpsArgs{...} }
+//	InstanceSharedIpsMap{ "key": InstanceSharedIpsArgs{...} }
 type InstanceSharedIpsMapInput interface {
 	pulumi.Input
 

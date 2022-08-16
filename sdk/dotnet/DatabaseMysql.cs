@@ -20,61 +20,57 @@ namespace Pulumi.Linode
     /// Creating a simple MySQL database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabaseMysql("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabaseMysql("foobar", new Linode.DatabaseMysqlArgs
-    ///         {
-    ///             EngineId = "mysql/8.0.26",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-nanode-1",
-    ///         });
-    ///     }
+    ///         EngineId = "mysql/8.0.26",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating a complex MySQL database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabaseMysql("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabaseMysql("foobar", new Linode.DatabaseMysqlArgs
+    ///         AllowLists = new[]
     ///         {
-    ///             AllowLists = 
-    ///             {
-    ///                 "0.0.0.0/0",
-    ///             },
-    ///             ClusterSize = 3,
-    ///             Encrypted = true,
-    ///             EngineId = "mysql/8.0.26",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             ReplicationType = "asynch",
-    ///             SslConnection = true,
-    ///             Type = "g6-nanode-1",
-    ///             Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs
-    ///             {
-    ///                 DayOfWeek = "saturday",
-    ///                 Duration = 1,
-    ///                 Frequency = "monthly",
-    ///                 HourOfDay = 22,
-    ///                 WeekOfMonth = 2,
-    ///             },
-    ///         });
-    ///     }
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Encrypted = true,
+    ///         EngineId = "mysql/8.0.26",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         ReplicationType = "asynch",
+    ///         SslConnection = true,
+    ///         Type = "g6-nanode-1",
+    ///         Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs
+    ///         {
+    ///             DayOfWeek = "saturday",
+    ///             Duration = 1,
+    ///             Frequency = "monthly",
+    ///             HourOfDay = 22,
+    ///             WeekOfMonth = 2,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## updates
     /// 
@@ -125,7 +121,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databaseMysql:DatabaseMysql")]
-    public partial class DatabaseMysql : Pulumi.CustomResource
+    public partial class DatabaseMysql : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
@@ -291,7 +287,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class DatabaseMysqlArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseMysqlArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -362,9 +358,10 @@ namespace Pulumi.Linode
         public DatabaseMysqlArgs()
         {
         }
+        public static new DatabaseMysqlArgs Empty => new DatabaseMysqlArgs();
     }
 
-    public sealed class DatabaseMysqlState : Pulumi.ResourceArgs
+    public sealed class DatabaseMysqlState : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -495,5 +492,6 @@ namespace Pulumi.Linode
         public DatabaseMysqlState()
         {
         }
+        public static new DatabaseMysqlState Empty => new DatabaseMysqlState();
     }
 }

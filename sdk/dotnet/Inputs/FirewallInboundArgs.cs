@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class FirewallInboundArgs : Pulumi.ResourceArgs
+    public sealed class FirewallInboundArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
@@ -63,5 +63,6 @@ namespace Pulumi.Linode.Inputs
         public FirewallInboundArgs()
         {
         }
+        public static new FirewallInboundArgs Empty => new FirewallInboundArgs();
     }
 }

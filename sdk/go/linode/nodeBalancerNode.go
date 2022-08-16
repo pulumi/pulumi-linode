@@ -29,10 +29,12 @@ import (
 // NodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999
+//
+//	$ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999
+//
 // ```
 //
-//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types.
+//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Nodes and other Linode resource types.
 type NodeBalancerNode struct {
 	pulumi.CustomResourceState
 
@@ -187,7 +189,7 @@ func (i *NodeBalancerNode) ToNodeBalancerNodeOutputWithContext(ctx context.Conte
 // NodeBalancerNodeArrayInput is an input type that accepts NodeBalancerNodeArray and NodeBalancerNodeArrayOutput values.
 // You can construct a concrete instance of `NodeBalancerNodeArrayInput` via:
 //
-//          NodeBalancerNodeArray{ NodeBalancerNodeArgs{...} }
+//	NodeBalancerNodeArray{ NodeBalancerNodeArgs{...} }
 type NodeBalancerNodeArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +214,7 @@ func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutputWithContext(ctx cont
 // NodeBalancerNodeMapInput is an input type that accepts NodeBalancerNodeMap and NodeBalancerNodeMapOutput values.
 // You can construct a concrete instance of `NodeBalancerNodeMapInput` via:
 //
-//          NodeBalancerNodeMap{ "key": NodeBalancerNodeArgs{...} }
+//	NodeBalancerNodeMap{ "key": NodeBalancerNodeArgs{...} }
 type NodeBalancerNodeMapInput interface {
 	pulumi.Input
 

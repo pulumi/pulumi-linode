@@ -21,22 +21,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
-// 			Email:    pulumi.String("john@acme.io"),
-// 			Username: pulumi.String("john123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
+//				Email:    pulumi.String("john@acme.io"),
+//				Username: pulumi.String("john123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a restricted user with grants:
@@ -45,33 +48,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
-// 			Email: pulumi.String("cool@acme.io"),
-// 			GlobalGrants: &UserGlobalGrantsArgs{
-// 				AddImages:  pulumi.Bool(true),
-// 				AddLinodes: pulumi.Bool(true),
-// 			},
-// 			LinodeGrants: UserLinodeGrantArray{
-// 				&UserLinodeGrantArgs{
-// 					Id:          pulumi.Int(12345),
-// 					Permissions: pulumi.String("read_write"),
-// 				},
-// 			},
-// 			Restricted: pulumi.Bool(true),
-// 			Username:   pulumi.String("cooluser123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
+//				Email: pulumi.String("cool@acme.io"),
+//				GlobalGrants: &UserGlobalGrantsArgs{
+//					AddImages:  pulumi.Bool(true),
+//					AddLinodes: pulumi.Bool(true),
+//				},
+//				LinodeGrants: UserLinodeGrantArray{
+//					&UserLinodeGrantArgs{
+//						Id:          pulumi.Int(12345),
+//						Permissions: pulumi.String("read_write"),
+//					},
+//				},
+//				Restricted: pulumi.Bool(true),
+//				Username:   pulumi.String("cooluser123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Global Grants
 //
@@ -314,7 +320,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -339,7 +345,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

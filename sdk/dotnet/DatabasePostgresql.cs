@@ -20,62 +20,58 @@ namespace Pulumi.Linode
     /// Creating a simple PostgreSQL database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabasePostgresql("foobar", new Linode.DatabasePostgresqlArgs
-    ///         {
-    ///             EngineId = "postgresql/13.2",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-nanode-1",
-    ///         });
-    ///     }
+    ///         EngineId = "postgresql/13.2",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating a complex PostgreSQL database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabasePostgresql("foobar", new Linode.DatabasePostgresqlArgs
+    ///         AllowLists = new[]
     ///         {
-    ///             AllowLists = 
-    ///             {
-    ///                 "0.0.0.0/0",
-    ///             },
-    ///             ClusterSize = 3,
-    ///             Encrypted = true,
-    ///             EngineId = "postgresql/13.2",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             ReplicationCommitType = "remote_write",
-    ///             ReplicationType = "semi_synch",
-    ///             SslConnection = true,
-    ///             Type = "g6-nanode-1",
-    ///             Updates = new Linode.Inputs.DatabasePostgresqlUpdatesArgs
-    ///             {
-    ///                 DayOfWeek = "saturday",
-    ///                 Duration = 1,
-    ///                 Frequency = "monthly",
-    ///                 HourOfDay = 22,
-    ///                 WeekOfMonth = 2,
-    ///             },
-    ///         });
-    ///     }
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Encrypted = true,
+    ///         EngineId = "postgresql/13.2",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         ReplicationCommitType = "remote_write",
+    ///         ReplicationType = "semi_synch",
+    ///         SslConnection = true,
+    ///         Type = "g6-nanode-1",
+    ///         Updates = new Linode.Inputs.DatabasePostgresqlUpdatesArgs
+    ///         {
+    ///             DayOfWeek = "saturday",
+    ///             Duration = 1,
+    ///             Frequency = "monthly",
+    ///             HourOfDay = 22,
+    ///             WeekOfMonth = 2,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## updates
     /// 
@@ -126,7 +122,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databasePostgresql:DatabasePostgresql")]
-    public partial class DatabasePostgresql : Pulumi.CustomResource
+    public partial class DatabasePostgresql : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
@@ -304,7 +300,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class DatabasePostgresqlArgs : Pulumi.ResourceArgs
+    public sealed class DatabasePostgresqlArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -381,9 +377,10 @@ namespace Pulumi.Linode
         public DatabasePostgresqlArgs()
         {
         }
+        public static new DatabasePostgresqlArgs Empty => new DatabasePostgresqlArgs();
     }
 
-    public sealed class DatabasePostgresqlState : Pulumi.ResourceArgs
+    public sealed class DatabasePostgresqlState : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -526,5 +523,6 @@ namespace Pulumi.Linode
         public DatabasePostgresqlState()
         {
         }
+        public static new DatabasePostgresqlState Empty => new DatabasePostgresqlState();
     }
 }

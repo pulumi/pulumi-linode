@@ -42,7 +42,9 @@ import (
 // Linodes Images can be imported using the Linode Image `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/image:Image myimage 1234567
+//
+//	$ pulumi import linode:index/image:Image myimage 1234567
+//
 // ```
 type Image struct {
 	pulumi.CustomResourceState
@@ -250,7 +252,7 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//          ImageArray{ ImageArgs{...} }
+//	ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +277,7 @@ func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArra
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
 // You can construct a concrete instance of `ImageMapInput` via:
 //
-//          ImageMap{ "key": ImageArgs{...} }
+//	ImageMap{ "key": ImageArgs{...} }
 type ImageMapInput interface {
 	pulumi.Input
 

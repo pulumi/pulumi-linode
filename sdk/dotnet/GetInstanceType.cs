@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Instance type.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Linode.GetInstanceType.InvokeAsync(new Linode.GetInstanceTypeArgs
-        ///         {
-        ///             Id = "g6-standard-2",
-        ///         }));
-        ///     }
+        ///         Id = "g6-standard-2",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,20 +77,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Instance type.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Linode.GetInstanceType.InvokeAsync(new Linode.GetInstanceTypeArgs
-        ///         {
-        ///             Id = "g6-standard-2",
-        ///         }));
-        ///     }
+        ///         Id = "g6-standard-2",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -129,7 +125,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetInstanceTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Label used to identify instance type
@@ -143,9 +139,10 @@ namespace Pulumi.Linode
         public GetInstanceTypeArgs()
         {
         }
+        public static new GetInstanceTypeArgs Empty => new GetInstanceTypeArgs();
     }
 
-    public sealed class GetInstanceTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Label used to identify instance type
@@ -159,6 +156,7 @@ namespace Pulumi.Linode
         public GetInstanceTypeInvokeArgs()
         {
         }
+        public static new GetInstanceTypeInvokeArgs Empty => new GetInstanceTypeInvokeArgs();
     }
 
 

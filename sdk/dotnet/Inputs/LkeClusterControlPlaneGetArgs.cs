@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class LkeClusterControlPlaneGetArgs : Pulumi.ResourceArgs
+    public sealed class LkeClusterControlPlaneGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public LkeClusterControlPlaneGetArgs()
         {
         }
+        public static new LkeClusterControlPlaneGetArgs Empty => new LkeClusterControlPlaneGetArgs();
     }
 }

@@ -17,101 +17,100 @@ namespace Pulumi.Linode
     /// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Linode.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
-    ///         {
-    ///             Label = "my_instance",
-    ///             Image = "linode/ubuntu18.04",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-standard-1",
-    ///             RootPass = "bogusPassword$",
-    ///             SwapSize = 256,
-    ///         });
-    ///         var myFirewall = new Linode.Firewall("myFirewall", new Linode.FirewallArgs
-    ///         {
-    ///             Label = "my_firewall",
-    ///             Inbounds = 
-    ///             {
-    ///                 new Linode.Inputs.FirewallInboundArgs
-    ///                 {
-    ///                     Label = "allow-http",
-    ///                     Action = "ACCEPT",
-    ///                     Protocol = "TCP",
-    ///                     Ports = "80",
-    ///                     Ipv4s = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     Ipv6s = 
-    ///                     {
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new Linode.Inputs.FirewallInboundArgs
-    ///                 {
-    ///                     Label = "allow-https",
-    ///                     Action = "ACCEPT",
-    ///                     Protocol = "TCP",
-    ///                     Ports = "443",
-    ///                     Ipv4s = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     Ipv6s = 
-    ///                     {
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             InboundPolicy = "DROP",
-    ///             Outbounds = 
-    ///             {
-    ///                 new Linode.Inputs.FirewallOutboundArgs
-    ///                 {
-    ///                     Label = "reject-http",
-    ///                     Action = "DROP",
-    ///                     Protocol = "TCP",
-    ///                     Ports = "80",
-    ///                     Ipv4s = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     Ipv6s = 
-    ///                     {
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///                 new Linode.Inputs.FirewallOutboundArgs
-    ///                 {
-    ///                     Label = "reject-https",
-    ///                     Action = "DROP",
-    ///                     Protocol = "TCP",
-    ///                     Ports = "443",
-    ///                     Ipv4s = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     Ipv6s = 
-    ///                     {
-    ///                         "::/0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             OutboundPolicy = "ACCEPT",
-    ///             Linodes = 
-    ///             {
-    ///                 myInstance.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         Label = "my_instance",
+    ///         Image = "linode/ubuntu18.04",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-standard-1",
+    ///         RootPass = "bogusPassword$",
+    ///         SwapSize = 256,
+    ///     });
     /// 
-    /// }
+    ///     var myFirewall = new Linode.Firewall("myFirewall", new()
+    ///     {
+    ///         Label = "my_firewall",
+    ///         Inbounds = new[]
+    ///         {
+    ///             new Linode.Inputs.FirewallInboundArgs
+    ///             {
+    ///                 Label = "allow-http",
+    ///                 Action = "ACCEPT",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "80",
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new Linode.Inputs.FirewallInboundArgs
+    ///             {
+    ///                 Label = "allow-https",
+    ///                 Action = "ACCEPT",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "443",
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///         InboundPolicy = "DROP",
+    ///         Outbounds = new[]
+    ///         {
+    ///             new Linode.Inputs.FirewallOutboundArgs
+    ///             {
+    ///                 Label = "reject-http",
+    ///                 Action = "DROP",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "80",
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new Linode.Inputs.FirewallOutboundArgs
+    ///             {
+    ///                 Label = "reject-https",
+    ///                 Action = "DROP",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "443",
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///         OutboundPolicy = "ACCEPT",
+    ///         Linodes = new[]
+    ///         {
+    ///             myInstance.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -123,7 +122,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/firewall:Firewall")]
-    public partial class Firewall : Pulumi.CustomResource
+    public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The devices associated with this firewall.
@@ -229,7 +228,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class FirewallArgs : Pulumi.ResourceArgs
+    public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -306,9 +305,10 @@ namespace Pulumi.Linode
         public FirewallArgs()
         {
         }
+        public static new FirewallArgs Empty => new FirewallArgs();
     }
 
-    public sealed class FirewallState : Pulumi.ResourceArgs
+    public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
         [Input("devices")]
         private InputList<Inputs.FirewallDeviceGetArgs>? _devices;
@@ -403,5 +403,6 @@ namespace Pulumi.Linode
         public FirewallState()
         {
         }
+        public static new FirewallState Empty => new FirewallState();
     }
 }

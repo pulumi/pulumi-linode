@@ -24,24 +24,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
-// 			EngineId: pulumi.String("postgresql/13.2"),
-// 			Label:    pulumi.String("mydatabase"),
-// 			Region:   pulumi.String("us-southeast"),
-// 			Type:     pulumi.String("g6-nanode-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
+//				EngineId: pulumi.String("postgresql/13.2"),
+//				Label:    pulumi.String("mydatabase"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Creating a complex PostgreSQL database instance:
@@ -50,39 +53,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
-// 			AllowLists: pulumi.StringArray{
-// 				pulumi.String("0.0.0.0/0"),
-// 			},
-// 			ClusterSize:           pulumi.Int(3),
-// 			Encrypted:             pulumi.Bool(true),
-// 			EngineId:              pulumi.String("postgresql/13.2"),
-// 			Label:                 pulumi.String("mydatabase"),
-// 			Region:                pulumi.String("us-southeast"),
-// 			ReplicationCommitType: pulumi.String("remote_write"),
-// 			ReplicationType:       pulumi.String("semi_synch"),
-// 			SslConnection:         pulumi.Bool(true),
-// 			Type:                  pulumi.String("g6-nanode-1"),
-// 			Updates: &DatabasePostgresqlUpdatesArgs{
-// 				DayOfWeek:   pulumi.String("saturday"),
-// 				Duration:    pulumi.Int(1),
-// 				Frequency:   pulumi.String("monthly"),
-// 				HourOfDay:   pulumi.Int(22),
-// 				WeekOfMonth: pulumi.Int(2),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//				ClusterSize:           pulumi.Int(3),
+//				Encrypted:             pulumi.Bool(true),
+//				EngineId:              pulumi.String("postgresql/13.2"),
+//				Label:                 pulumi.String("mydatabase"),
+//				Region:                pulumi.String("us-southeast"),
+//				ReplicationCommitType: pulumi.String("remote_write"),
+//				ReplicationType:       pulumi.String("semi_synch"),
+//				SslConnection:         pulumi.Bool(true),
+//				Type:                  pulumi.String("g6-nanode-1"),
+//				Updates: &DatabasePostgresqlUpdatesArgs{
+//					DayOfWeek:   pulumi.String("saturday"),
+//					Duration:    pulumi.Int(1),
+//					Frequency:   pulumi.String("monthly"),
+//					HourOfDay:   pulumi.Int(22),
+//					WeekOfMonth: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## updates
 //
@@ -129,7 +135,9 @@ import (
 // Linode PostgreSQL Databases can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
+//
+//	$ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
+//
 // ```
 type DatabasePostgresql struct {
 	pulumi.CustomResourceState
@@ -395,7 +403,7 @@ func (i *DatabasePostgresql) ToDatabasePostgresqlOutputWithContext(ctx context.C
 // DatabasePostgresqlArrayInput is an input type that accepts DatabasePostgresqlArray and DatabasePostgresqlArrayOutput values.
 // You can construct a concrete instance of `DatabasePostgresqlArrayInput` via:
 //
-//          DatabasePostgresqlArray{ DatabasePostgresqlArgs{...} }
+//	DatabasePostgresqlArray{ DatabasePostgresqlArgs{...} }
 type DatabasePostgresqlArrayInput interface {
 	pulumi.Input
 
@@ -420,7 +428,7 @@ func (i DatabasePostgresqlArray) ToDatabasePostgresqlArrayOutputWithContext(ctx 
 // DatabasePostgresqlMapInput is an input type that accepts DatabasePostgresqlMap and DatabasePostgresqlMapOutput values.
 // You can construct a concrete instance of `DatabasePostgresqlMapInput` via:
 //
-//          DatabasePostgresqlMap{ "key": DatabasePostgresqlArgs{...} }
+//	DatabasePostgresqlMap{ "key": DatabasePostgresqlArgs{...} }
 type DatabasePostgresqlMapInput interface {
 	pulumi.Input
 

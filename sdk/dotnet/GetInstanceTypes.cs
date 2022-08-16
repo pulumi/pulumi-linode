@@ -21,46 +21,42 @@ namespace Pulumi.Linode
         /// Get information about all Linode Instance types with a certain number of VCPUs:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var specific_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync(new Linode.GetInstanceTypesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetInstanceTypesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetInstanceTypesFilterArgs
+        ///                 Name = "vcpus",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "vcpus",
-        ///                     Values = 
-        ///                     {
-        ///                         "2",
-        ///                     },
+        ///                     "2",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode Instance types:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync());
-        ///     }
+        ///     var all_types = Linode.GetInstanceTypes.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -123,46 +119,42 @@ namespace Pulumi.Linode
         /// Get information about all Linode Instance types with a certain number of VCPUs:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var specific_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync(new Linode.GetInstanceTypesArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Linode.Inputs.GetInstanceTypesFilterInputArgs
         ///             {
-        ///                 new Linode.Inputs.GetInstanceTypesFilterArgs
+        ///                 Name = "vcpus",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "vcpus",
-        ///                     Values = 
-        ///                     {
-        ///                         "2",
-        ///                     },
+        ///                     "2",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get information about all Linode Instance types:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all_types = Output.Create(Linode.GetInstanceTypes.InvokeAsync());
-        ///     }
+        ///     var all_types = Linode.GetInstanceTypes.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -217,7 +209,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetInstanceTypesFilterArgs>? _filters;
@@ -242,9 +234,10 @@ namespace Pulumi.Linode
         public GetInstanceTypesArgs()
         {
         }
+        public static new GetInstanceTypesArgs Empty => new GetInstanceTypesArgs();
     }
 
-    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetInstanceTypesFilterInputArgs>? _filters;
@@ -269,6 +262,7 @@ namespace Pulumi.Linode
         public GetInstanceTypesInvokeArgs()
         {
         }
+        public static new GetInstanceTypesInvokeArgs Empty => new GetInstanceTypesInvokeArgs();
     }
 
 

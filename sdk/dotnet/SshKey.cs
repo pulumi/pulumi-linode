@@ -28,7 +28,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/sshKey:SshKey")]
-    public partial class SshKey : Pulumi.CustomResource
+    public partial class SshKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date this key was added.
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class SshKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A label for the SSH Key.
@@ -109,9 +109,10 @@ namespace Pulumi.Linode
         public SshKeyArgs()
         {
         }
+        public static new SshKeyArgs Empty => new SshKeyArgs();
     }
 
-    public sealed class SshKeyState : Pulumi.ResourceArgs
+    public sealed class SshKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date this key was added.
@@ -134,5 +135,6 @@ namespace Pulumi.Linode
         public SshKeyState()
         {
         }
+        public static new SshKeyState Empty => new SshKeyState();
     }
 }

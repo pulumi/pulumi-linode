@@ -20,62 +20,58 @@ namespace Pulumi.Linode
     /// Creating a simple MongoDB database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabaseMongodb("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabaseMongodb("foobar", new Linode.DatabaseMongodbArgs
-    ///         {
-    ///             EngineId = "mongodb/4.4.10",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-nanode-1",
-    ///         });
-    ///     }
+    ///         EngineId = "mongodb/4.4.10",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Creating a complex MongoDB database instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.DatabaseMongodb("foobar", new()
     ///     {
-    ///         var foobar = new Linode.DatabaseMongodb("foobar", new Linode.DatabaseMongodbArgs
+    ///         AllowLists = new[]
     ///         {
-    ///             AllowLists = 
-    ///             {
-    ///                 "0.0.0.0/0",
-    ///             },
-    ///             ClusterSize = 3,
-    ///             CompressionType = "zlib",
-    ///             Encrypted = true,
-    ///             EngineId = "mongodb/4.4.10",
-    ///             Label = "mydatabase",
-    ///             Region = "us-southeast",
-    ///             SslConnection = true,
-    ///             StorageEngine = "wiredtiger",
-    ///             Type = "g6-nanode-1",
-    ///             Updates = new Linode.Inputs.DatabaseMongodbUpdatesArgs
-    ///             {
-    ///                 DayOfWeek = "saturday",
-    ///                 Duration = 1,
-    ///                 Frequency = "monthly",
-    ///                 HourOfDay = 22,
-    ///                 WeekOfMonth = 2,
-    ///             },
-    ///         });
-    ///     }
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         CompressionType = "zlib",
+    ///         Encrypted = true,
+    ///         EngineId = "mongodb/4.4.10",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         SslConnection = true,
+    ///         StorageEngine = "wiredtiger",
+    ///         Type = "g6-nanode-1",
+    ///         Updates = new Linode.Inputs.DatabaseMongodbUpdatesArgs
+    ///         {
+    ///             DayOfWeek = "saturday",
+    ///             Duration = 1,
+    ///             Frequency = "monthly",
+    ///             HourOfDay = 22,
+    ///             WeekOfMonth = 2,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## updates
     /// 
@@ -132,7 +128,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databaseMongodb:DatabaseMongodb")]
-    public partial class DatabaseMongodb : Pulumi.CustomResource
+    public partial class DatabaseMongodb : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
@@ -323,7 +319,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class DatabaseMongodbArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseMongodbArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -400,9 +396,10 @@ namespace Pulumi.Linode
         public DatabaseMongodbArgs()
         {
         }
+        public static new DatabaseMongodbArgs Empty => new DatabaseMongodbArgs();
     }
 
-    public sealed class DatabaseMongodbState : Pulumi.ResourceArgs
+    public sealed class DatabaseMongodbState : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -564,5 +561,6 @@ namespace Pulumi.Linode
         public DatabaseMongodbState()
         {
         }
+        public static new DatabaseMongodbState Empty => new DatabaseMongodbState();
     }
 }

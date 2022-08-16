@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
-// 			DatabaseId:   12345,
-// 			DatabaseType: "mysql",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
+//				DatabaseId:   12345,
+//				DatabaseType: "mysql",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Get information about all automatic MongoDB Database Backups:
@@ -44,30 +47,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
-// 			DatabaseId:   12345,
-// 			DatabaseType: "mongodb",
-// 			Filters: []GetDatabaseBackupsFilter{
-// 				GetDatabaseBackupsFilter{
-// 					Name: "type",
-// 					Values: []string{
-// 						"auto",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
+//				DatabaseId:   12345,
+//				DatabaseType: "mongodb",
+//				Filters: []GetDatabaseBackupsFilter{
+//					GetDatabaseBackupsFilter{
+//						Name: "type",
+//						Values: []string{
+//							"auto",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //

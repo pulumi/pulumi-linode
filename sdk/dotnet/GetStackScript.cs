@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
         ///     {
-        ///         var myStackscript = Output.Create(Linode.GetStackScript.InvokeAsync(new Linode.GetStackScriptArgs
-        ///         {
-        ///             Id = 355872,
-        ///         }));
-        ///     }
+        ///         Id = 355872,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -93,20 +91,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
         ///     {
-        ///         var myStackscript = Output.Create(Linode.GetStackScript.InvokeAsync(new Linode.GetStackScriptArgs
-        ///         {
-        ///             Id = 355872,
-        ///         }));
-        ///     }
+        ///         Id = 355872,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -157,7 +153,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetStackScriptArgs : Pulumi.InvokeArgs
+    public sealed class GetStackScriptArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique numeric ID of the StackScript to query.
@@ -176,9 +172,10 @@ namespace Pulumi.Linode
         public GetStackScriptArgs()
         {
         }
+        public static new GetStackScriptArgs Empty => new GetStackScriptArgs();
     }
 
-    public sealed class GetStackScriptInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStackScriptInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique numeric ID of the StackScript to query.
@@ -197,6 +194,7 @@ namespace Pulumi.Linode
         public GetStackScriptInvokeArgs()
         {
         }
+        public static new GetStackScriptInvokeArgs Empty => new GetStackScriptInvokeArgs();
     }
 
 

@@ -23,31 +23,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
-// 			Image:  pulumi.String("linode/alpine3.12"),
-// 			Label:  pulumi.String("foobar-test"),
-// 			Type:   pulumi.String("g6-nanode-1"),
-// 			Region: pulumi.String("us-east"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.NewInstanceIp(ctx, "fooInstanceIp", &linode.InstanceIpArgs{
-// 			LinodeId: fooInstance.ID(),
-// 			Public:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/alpine3.12"),
+//				Label:  pulumi.String("foobar-test"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("us-east"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceIp(ctx, "fooInstanceIp", &linode.InstanceIpArgs{
+//				LinodeId: fooInstance.ID(),
+//				Public:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type InstanceIp struct {
 	pulumi.CustomResourceState
@@ -204,7 +207,7 @@ func (i *InstanceIp) ToInstanceIpOutputWithContext(ctx context.Context) Instance
 // InstanceIpArrayInput is an input type that accepts InstanceIpArray and InstanceIpArrayOutput values.
 // You can construct a concrete instance of `InstanceIpArrayInput` via:
 //
-//          InstanceIpArray{ InstanceIpArgs{...} }
+//	InstanceIpArray{ InstanceIpArgs{...} }
 type InstanceIpArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +232,7 @@ func (i InstanceIpArray) ToInstanceIpArrayOutputWithContext(ctx context.Context)
 // InstanceIpMapInput is an input type that accepts InstanceIpMap and InstanceIpMapOutput values.
 // You can construct a concrete instance of `InstanceIpMapInput` via:
 //
-//          InstanceIpMap{ "key": InstanceIpArgs{...} }
+//	InstanceIpMap{ "key": InstanceIpArgs{...} }
 type InstanceIpMapInput interface {
 	pulumi.Input
 

@@ -26,6 +26,8 @@ import com.pulumi.linode.inputs.GetDomainArgs;
 import com.pulumi.linode.inputs.GetDomainPlainArgs;
 import com.pulumi.linode.inputs.GetDomainRecordArgs;
 import com.pulumi.linode.inputs.GetDomainRecordPlainArgs;
+import com.pulumi.linode.inputs.GetDomainZonefileArgs;
+import com.pulumi.linode.inputs.GetDomainZonefilePlainArgs;
 import com.pulumi.linode.inputs.GetFirewallArgs;
 import com.pulumi.linode.inputs.GetFirewallPlainArgs;
 import com.pulumi.linode.inputs.GetImageArgs;
@@ -80,6 +82,7 @@ import com.pulumi.linode.outputs.GetDatabasePostgresqlResult;
 import com.pulumi.linode.outputs.GetDatabasesResult;
 import com.pulumi.linode.outputs.GetDomainRecordResult;
 import com.pulumi.linode.outputs.GetDomainResult;
+import com.pulumi.linode.outputs.GetDomainZonefileResult;
 import com.pulumi.linode.outputs.GetFirewallResult;
 import com.pulumi.linode.outputs.GetImageResult;
 import com.pulumi.linode.outputs.GetImagesResult;
@@ -4308,6 +4311,190 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDomainRecordResult> getDomainRecordPlain(GetDomainRecordPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDomainRecord:getDomainRecord", TypeShape.of(GetDomainRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Domain Zonefile.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myZonefile = LinodeFunctions.getDomainZonefile(GetDomainZonefileArgs.builder()
+     *             .domainId(3150401)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes
+     * 
+     * The Linode Volume resource exports the following attributes:
+     * 
+     * - `domain_id` - The associated domain&#39;s unique ID.
+     * 
+     * - `zone_file` - Array of strings representing the Domain Zonefile.
+     * 
+     */
+    public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args) {
+        return getDomainZonefile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Domain Zonefile.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myZonefile = LinodeFunctions.getDomainZonefile(GetDomainZonefileArgs.builder()
+     *             .domainId(3150401)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes
+     * 
+     * The Linode Volume resource exports the following attributes:
+     * 
+     * - `domain_id` - The associated domain&#39;s unique ID.
+     * 
+     * - `zone_file` - Array of strings representing the Domain Zonefile.
+     * 
+     */
+    public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args) {
+        return getDomainZonefilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Domain Zonefile.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myZonefile = LinodeFunctions.getDomainZonefile(GetDomainZonefileArgs.builder()
+     *             .domainId(3150401)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes
+     * 
+     * The Linode Volume resource exports the following attributes:
+     * 
+     * - `domain_id` - The associated domain&#39;s unique ID.
+     * 
+     * - `zone_file` - Array of strings representing the Domain Zonefile.
+     * 
+     */
+    public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDomainZonefile:getDomainZonefile", TypeShape.of(GetDomainZonefileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Domain Zonefile.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myZonefile = LinodeFunctions.getDomainZonefile(GetDomainZonefileArgs.builder()
+     *             .domainId(3150401)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes
+     * 
+     * The Linode Volume resource exports the following attributes:
+     * 
+     * - `domain_id` - The associated domain&#39;s unique ID.
+     * 
+     * - `zone_file` - Array of strings representing the Domain Zonefile.
+     * 
+     */
+    public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDomainZonefile:getDomainZonefile", TypeShape.of(GetDomainZonefileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about a Linode Firewall.

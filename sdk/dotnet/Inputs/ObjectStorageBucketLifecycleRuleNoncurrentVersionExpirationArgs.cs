@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of days non-current object versions expire.
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs()
         {
         }
+        public static new ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs Empty => new ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs();
     }
 }

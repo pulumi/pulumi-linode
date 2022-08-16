@@ -965,49 +965,6 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
-        ### Linode Instance with explicit Configs and Disks
-
-        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        me = linode.get_profile()
-        web_volume = linode.Volume("webVolume",
-            label="web_volume",
-            size=20,
-            region="us-central")
-        web = linode.Instance("web",
-            label="complex_instance",
-            group="foo",
-            tags=["foo"],
-            region="us-central",
-            type="g6-nanode-1",
-            private_ip=True,
-            disks=[linode.InstanceDiskArgs(
-                label="boot",
-                size=3000,
-                image="linode/ubuntu18.04",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                authorized_users=[me.username],
-                root_pass="terr4form-test",
-            )],
-            configs=[linode.InstanceConfigArgs(
-                label="boot_config",
-                kernel="linode/latest-64bit",
-                devices=linode.InstanceConfigDevicesArgs(
-                    sda=linode.InstanceConfigDevicesSdaArgs(
-                        disk_label="boot",
-                    ),
-                    sdb=linode.InstanceConfigDevicesSdbArgs(
-                        volume_id=web_volume.id,
-                    ),
-                ),
-                root_device="/dev/sda",
-            )],
-            boot_config_label="boot_config")
-        ```
         ## Attributes
 
         This Linode Instance resource exports the following attributes:
@@ -1111,49 +1068,6 @@ class Instance(pulumi.CustomResource):
             swap_size=256,
             tags=["foo"],
             type="g6-standard-1")
-        ```
-        ### Linode Instance with explicit Configs and Disks
-
-        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance.  This can be used to provision multiple disks and volumes during Instance creation.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        me = linode.get_profile()
-        web_volume = linode.Volume("webVolume",
-            label="web_volume",
-            size=20,
-            region="us-central")
-        web = linode.Instance("web",
-            label="complex_instance",
-            group="foo",
-            tags=["foo"],
-            region="us-central",
-            type="g6-nanode-1",
-            private_ip=True,
-            disks=[linode.InstanceDiskArgs(
-                label="boot",
-                size=3000,
-                image="linode/ubuntu18.04",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                authorized_users=[me.username],
-                root_pass="terr4form-test",
-            )],
-            configs=[linode.InstanceConfigArgs(
-                label="boot_config",
-                kernel="linode/latest-64bit",
-                devices=linode.InstanceConfigDevicesArgs(
-                    sda=linode.InstanceConfigDevicesSdaArgs(
-                        disk_label="boot",
-                    ),
-                    sdb=linode.InstanceConfigDevicesSdbArgs(
-                        volume_id=web_volume.id,
-                    ),
-                ),
-                root_device="/dev/sda",
-            )],
-            boot_config_label="boot_config")
         ```
         ## Attributes
 
@@ -1468,7 +1382,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceConfig']]]:
+    def configs(self) -> pulumi.Output[Sequence['outputs.InstanceConfig']]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
@@ -1476,7 +1390,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDisk']]]:
+    def disks(self) -> pulumi.Output[Sequence['outputs.InstanceDisk']]:
         return pulumi.get(self, "disks")
 
     @property

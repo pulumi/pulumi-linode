@@ -18,26 +18,24 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a NodeBalancer.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
     ///     {
-    ///         var foobar = new Linode.NodeBalancer("foobar", new Linode.NodeBalancerArgs
+    ///         ClientConnThrottle = 20,
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
+    ///         Tags = new[]
     ///         {
-    ///             ClientConnThrottle = 20,
-    ///             Label = "mynodebalancer",
-    ///             Region = "us-east",
-    ///             Tags = 
-    ///             {
-    ///                 "foobar",
-    ///             },
-    ///         });
-    ///     }
+    ///             "foobar",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -76,7 +74,7 @@ namespace Pulumi.Linode
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/nodeBalancer:NodeBalancer")]
-    public partial class NodeBalancer : Pulumi.CustomResource
+    public partial class NodeBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -182,7 +180,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class NodeBalancerArgs : Pulumi.ResourceArgs
+    public sealed class NodeBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -217,9 +215,10 @@ namespace Pulumi.Linode
         public NodeBalancerArgs()
         {
         }
+        public static new NodeBalancerArgs Empty => new NodeBalancerArgs();
     }
 
-    public sealed class NodeBalancerState : Pulumi.ResourceArgs
+    public sealed class NodeBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -296,5 +295,6 @@ namespace Pulumi.Linode
         public NodeBalancerState()
         {
         }
+        public static new NodeBalancerState Empty => new NodeBalancerState();
     }
 }

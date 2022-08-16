@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode image.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8Master = Linode.GetImage.Invoke(new()
         ///     {
-        ///         var k8Master = Output.Create(Linode.GetImage.InvokeAsync(new Linode.GetImageArgs
-        ///         {
-        ///             Id = "linode/debian8",
-        ///         }));
-        ///     }
+        ///         Id = "linode/debian8",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,20 +73,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode image.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8Master = Linode.GetImage.Invoke(new()
         ///     {
-        ///         var k8Master = Output.Create(Linode.GetImage.InvokeAsync(new Linode.GetImageArgs
-        ///         {
-        ///             Id = "linode/debian8",
-        ///         }));
-        ///     }
+        ///         Id = "linode/debian8",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -121,7 +117,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -132,9 +128,10 @@ namespace Pulumi.Linode
         public GetImageArgs()
         {
         }
+        public static new GetImageArgs Empty => new GetImageArgs();
     }
 
-    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -145,6 +142,7 @@ namespace Pulumi.Linode
         public GetImageInvokeArgs()
         {
         }
+        public static new GetImageInvokeArgs Empty => new GetImageInvokeArgs();
     }
 
 

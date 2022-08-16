@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class GetStackScriptUserDefinedFieldInputArgs : Pulumi.ResourceArgs
+    public sealed class GetStackScriptUserDefinedFieldInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("default", required: true)]
         public Input<string> Default { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public GetStackScriptUserDefinedFieldInputArgs()
         {
         }
+        public static new GetStackScriptUserDefinedFieldInputArgs Empty => new GetStackScriptUserDefinedFieldInputArgs();
     }
 }

@@ -22,26 +22,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-// 			ClientConnThrottle: pulumi.Int(20),
-// 			Label:              pulumi.String("mynodebalancer"),
-// 			Region:             pulumi.String("us-east"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foobar"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
+//				ClientConnThrottle: pulumi.Int(20),
+//				Label:              pulumi.String("mynodebalancer"),
+//				Region:             pulumi.String("us-east"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foobar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -74,10 +77,12 @@ import (
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
 //
 // ```sh
-//  $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+//
+//	$ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+//
 // ```
 //
-//  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
+//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
 type NodeBalancer struct {
 	pulumi.CustomResourceState
 
@@ -233,7 +238,7 @@ func (i *NodeBalancer) ToNodeBalancerOutputWithContext(ctx context.Context) Node
 // NodeBalancerArrayInput is an input type that accepts NodeBalancerArray and NodeBalancerArrayOutput values.
 // You can construct a concrete instance of `NodeBalancerArrayInput` via:
 //
-//          NodeBalancerArray{ NodeBalancerArgs{...} }
+//	NodeBalancerArray{ NodeBalancerArgs{...} }
 type NodeBalancerArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +263,7 @@ func (i NodeBalancerArray) ToNodeBalancerArrayOutputWithContext(ctx context.Cont
 // NodeBalancerMapInput is an input type that accepts NodeBalancerMap and NodeBalancerMapOutput values.
 // You can construct a concrete instance of `NodeBalancerMapInput` via:
 //
-//          NodeBalancerMap{ "key": NodeBalancerArgs{...} }
+//	NodeBalancerMap{ "key": NodeBalancerArgs{...} }
 type NodeBalancerMapInput interface {
 	pulumi.Input
 

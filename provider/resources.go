@@ -107,6 +107,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,
+		IgnoreMappings: []string{
+			"linode_instance_config", // Mapping causes a panic due to duplicate types
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. An example
 			// is below.
@@ -199,6 +202,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_database_postgresql":      {Tok: makeResource(mainMod, "DatabasePostgresql")},
 			"linode_database_access_controls": {Tok: makeResource(mainMod, "DatabaseAccessControls")},
 			"linode_instance_shared_ips":      {Tok: makeResource(mainMod, "InstanceSharedIps")},
+			"linode_instance_disk":            {Tok: makeResource(mainMod, "InstanceDisk")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_vlans":   {Tok: makeDataSource(mainMod, "getVlans")},
@@ -267,6 +271,7 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_database_mysql":         {Tok: makeDataSource(mainMod, "getDatabaseMysql")},
 			"linode_database_postgresql":    {Tok: makeDataSource(mainMod, "getDatabasePostgresql")},
 			"linode_ipv6_range":             {Tok: makeDataSource(mainMod, "getIpv6Range")},
+			"linode_domain_zonefile":        {Tok: makeDataSource(mainMod, "getDomainZonefile")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

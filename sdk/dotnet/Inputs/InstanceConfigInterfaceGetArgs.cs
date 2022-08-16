@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceConfigInterfaceGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceConfigInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceConfigInterfaceGetArgs()
         {
         }
+        public static new InstanceConfigInterfaceGetArgs Empty => new InstanceConfigInterfaceGetArgs();
     }
 }

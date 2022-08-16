@@ -19,46 +19,45 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
-        ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
+        ///         Image = "linode/ubuntu18.04",
+        ///         Interfaces = new[]
         ///         {
-        ///             Image = "linode/ubuntu18.04",
-        ///             Interfaces = 
+        ///             new Linode.Inputs.InstanceInterfaceArgs
         ///             {
-        ///                 new Linode.Inputs.InstanceInterfaceArgs
-        ///                 {
-        ///                     Label = "my-vlan",
-        ///                     Purpose = "vlan",
-        ///                 },
+        ///                 Label = "my-vlan",
+        ///                 Purpose = "vlan",
         ///             },
-        ///             Label = "my_instance",
-        ///             Region = "us-southeast",
-        ///             RootPass = "bogusPassword$",
-        ///             Type = "g6-standard-1",
-        ///         });
-        ///         var my_vlans = Output.Create(Linode.GetVlans.InvokeAsync(new Linode.GetVlansArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Linode.Inputs.GetVlansFilterArgs
-        ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-vlan",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Label = "my_instance",
+        ///         Region = "us-southeast",
+        ///         RootPass = "bogusPassword$",
+        ///         Type = "g6-standard-1",
+        ///     });
         /// 
-        /// }
+        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVlansFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-vlan",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -91,46 +90,45 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
-        ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
+        ///         Image = "linode/ubuntu18.04",
+        ///         Interfaces = new[]
         ///         {
-        ///             Image = "linode/ubuntu18.04",
-        ///             Interfaces = 
+        ///             new Linode.Inputs.InstanceInterfaceArgs
         ///             {
-        ///                 new Linode.Inputs.InstanceInterfaceArgs
-        ///                 {
-        ///                     Label = "my-vlan",
-        ///                     Purpose = "vlan",
-        ///                 },
+        ///                 Label = "my-vlan",
+        ///                 Purpose = "vlan",
         ///             },
-        ///             Label = "my_instance",
-        ///             Region = "us-southeast",
-        ///             RootPass = "bogusPassword$",
-        ///             Type = "g6-standard-1",
-        ///         });
-        ///         var my_vlans = Output.Create(Linode.GetVlans.InvokeAsync(new Linode.GetVlansArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Linode.Inputs.GetVlansFilterArgs
-        ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-vlan",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///         Label = "my_instance",
+        ///         Region = "us-southeast",
+        ///         RootPass = "bogusPassword$",
+        ///         Type = "g6-standard-1",
+        ///     });
         /// 
-        /// }
+        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVlansFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-vlan",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -157,7 +155,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetVlansArgs : Pulumi.InvokeArgs
+    public sealed class GetVlansArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetVlansFilterArgs>? _filters;
@@ -182,9 +180,10 @@ namespace Pulumi.Linode
         public GetVlansArgs()
         {
         }
+        public static new GetVlansArgs Empty => new GetVlansArgs();
     }
 
-    public sealed class GetVlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetVlansFilterInputArgs>? _filters;
@@ -209,6 +208,7 @@ namespace Pulumi.Linode
         public GetVlansInvokeArgs()
         {
         }
+        public static new GetVlansInvokeArgs Empty => new GetVlansInvokeArgs();
     }
 
 

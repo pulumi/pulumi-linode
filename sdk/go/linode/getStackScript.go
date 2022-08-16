@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupStackScript(ctx, &GetStackScriptArgs{
-// 			Id: 355872,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupStackScript(ctx, &GetStackScriptArgs{
+//				Id: 355872,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -66,17 +69,17 @@ import (
 //
 // * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 //
-//   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+//   - `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 //
-//   * `name` - The name of the field.
+//   - `name` - The name of the field.
 //
-//   * `example` - An example value for the field.
+//   - `example` - An example value for the field.
 //
-//   * `oneOf` - A list of acceptable single values for the field.
+//   - `oneOf` - A list of acceptable single values for the field.
 //
-//   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
+//   - `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
 //
-//   * `default` - The default value. If not specified, this value will be used.
+//   - `default` - The default value. If not specified, this value will be used.
 func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ...pulumi.InvokeOption) (*LookupStackScriptResult, error) {
 	var rv LookupStackScriptResult
 	err := ctx.Invoke("linode:index/getStackScript:getStackScript", args, &rv, opts...)

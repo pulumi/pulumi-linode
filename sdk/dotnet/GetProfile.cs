@@ -21,17 +21,15 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access profile details.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var profile = Output.Create(Linode.GetProfile.InvokeAsync());
-        ///     }
+        ///     var profile = Linode.GetProfile.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

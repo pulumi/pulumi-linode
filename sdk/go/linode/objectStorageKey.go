@@ -21,21 +21,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewObjectStorageKey(ctx, "foo", &linode.ObjectStorageKeyArgs{
-// 			Label: pulumi.String("image-access"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewObjectStorageKey(ctx, "foo", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("image-access"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //
@@ -163,7 +166,7 @@ func (i *ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Conte
 // ObjectStorageKeyArrayInput is an input type that accepts ObjectStorageKeyArray and ObjectStorageKeyArrayOutput values.
 // You can construct a concrete instance of `ObjectStorageKeyArrayInput` via:
 //
-//          ObjectStorageKeyArray{ ObjectStorageKeyArgs{...} }
+//	ObjectStorageKeyArray{ ObjectStorageKeyArgs{...} }
 type ObjectStorageKeyArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +191,7 @@ func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutputWithContext(ctx cont
 // ObjectStorageKeyMapInput is an input type that accepts ObjectStorageKeyMap and ObjectStorageKeyMapOutput values.
 // You can construct a concrete instance of `ObjectStorageKeyMapInput` via:
 //
-//          ObjectStorageKeyMap{ "key": ObjectStorageKeyArgs{...} }
+//	ObjectStorageKeyMap{ "key": ObjectStorageKeyArgs{...} }
 type ObjectStorageKeyMapInput interface {
 	pulumi.Input
 

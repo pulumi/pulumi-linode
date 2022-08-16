@@ -19,20 +19,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_cluster = Linode.GetLkeCluster.Invoke(new()
         ///     {
-        ///         var my_cluster = Output.Create(Linode.GetLkeCluster.InvokeAsync(new Linode.GetLkeClusterArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_cluster = Linode.GetLkeCluster.Invoke(new()
         ///     {
-        ///         var my_cluster = Output.Create(Linode.GetLkeCluster.InvokeAsync(new Linode.GetLkeClusterArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetLkeClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetLkeClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The LKE Cluster's ID.
@@ -82,9 +78,10 @@ namespace Pulumi.Linode
         public GetLkeClusterArgs()
         {
         }
+        public static new GetLkeClusterArgs Empty => new GetLkeClusterArgs();
     }
 
-    public sealed class GetLkeClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLkeClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The LKE Cluster's ID.
@@ -95,6 +92,7 @@ namespace Pulumi.Linode
         public GetLkeClusterInvokeArgs()
         {
         }
+        public static new GetLkeClusterInvokeArgs Empty => new GetLkeClusterInvokeArgs();
     }
 
 

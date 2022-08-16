@@ -16,31 +16,29 @@ namespace Pulumi.Linode
     /// ### Uploading plaintext to a bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
     ///     {
-    ///         var @object = new Linode.ObjectStorageObject("object", new Linode.ObjectStorageObjectArgs
-    ///         {
-    ///             Bucket = "my-bucket",
-    ///             Cluster = "us-east-1",
-    ///             Key = "my-object",
-    ///             SecretKey = linode_object_storage_key.My_key.Secret_key,
-    ///             AccessKey = linode_object_storage_key.My_key.Access_key,
-    ///             Content = "This is the content of the Object...",
-    ///             ContentType = "text/plain",
-    ///             ContentLanguage = "en",
-    ///         });
-    ///     }
+    ///         Bucket = "my-bucket",
+    ///         Cluster = "us-east-1",
+    ///         Key = "my-object",
+    ///         SecretKey = linode_object_storage_key.My_key.Secret_key,
+    ///         AccessKey = linode_object_storage_key.My_key.Access_key,
+    ///         Content = "This is the content of the Object...",
+    ///         ContentType = "text/plain",
+    ///         ContentLanguage = "en",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageObject:ObjectStorageObject")]
-    public partial class ObjectStorageObject : Pulumi.CustomResource
+    public partial class ObjectStorageObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -200,7 +198,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class ObjectStorageObjectArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -319,9 +317,10 @@ namespace Pulumi.Linode
         public ObjectStorageObjectArgs()
         {
         }
+        public static new ObjectStorageObjectArgs Empty => new ObjectStorageObjectArgs();
     }
 
-    public sealed class ObjectStorageObjectState : Pulumi.ResourceArgs
+    public sealed class ObjectStorageObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key to authenticate with.
@@ -446,5 +445,6 @@ namespace Pulumi.Linode
         public ObjectStorageObjectState()
         {
         }
+        public static new ObjectStorageObjectState Empty => new ObjectStorageObjectState();
     }
 }

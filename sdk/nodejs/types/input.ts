@@ -192,21 +192,6 @@ export interface GetDatabaseMysqlBackupsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetDatabasesFilterArgs {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * The name of the field to filter by.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetDatabasesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -220,6 +205,21 @@ export interface GetDatabasesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetDatabasesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetImagesFilter {
@@ -360,21 +360,6 @@ export interface GetStackScriptsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetVlansFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
 export interface GetVlansFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -388,6 +373,21 @@ export interface GetVlansFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVlansFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
 }
 
 export interface InstanceAlerts {
@@ -881,3 +881,4 @@ export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
 }
+

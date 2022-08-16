@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/image:Image")]
-    public partial class Image : Pulumi.CustomResource
+    public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When this Image was created.
@@ -188,7 +188,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A detailed description of this Image.
@@ -235,9 +235,10 @@ namespace Pulumi.Linode
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 
-    public sealed class ImageState : Pulumi.ResourceArgs
+    public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When this Image was created.
@@ -339,5 +340,6 @@ namespace Pulumi.Linode
         public ImageState()
         {
         }
+        public static new ImageState Empty => new ImageState();
     }
 }

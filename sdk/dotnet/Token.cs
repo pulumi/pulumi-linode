@@ -21,25 +21,22 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooToken = new Linode.Token("fooToken", new()
     ///     {
-    ///         var fooToken = new Linode.Token("fooToken", new Linode.TokenArgs
-    ///         {
-    ///             Expiry = "2100-01-02T03:04:05Z",
-    ///             Label = "token",
-    ///             Scopes = "linodes:read_only",
-    ///         });
-    ///         var fooInstance = new Linode.Instance("fooInstance", new Linode.InstanceArgs
-    ///         {
-    ///         });
-    ///     }
+    ///         Expiry = "2100-01-02T03:04:05Z",
+    ///         Label = "token",
+    ///         Scopes = "linodes:read_only",
+    ///     });
     /// 
-    /// }
+    ///     var fooInstance = new Linode.Instance("fooInstance");
+    /// 
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -60,7 +57,7 @@ namespace Pulumi.Linode
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/token:Token")]
-    public partial class Token : Pulumi.CustomResource
+    public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time this token was created.
@@ -136,7 +133,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class TokenArgs : Pulumi.ResourceArgs
+    public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
@@ -159,9 +156,10 @@ namespace Pulumi.Linode
         public TokenArgs()
         {
         }
+        public static new TokenArgs Empty => new TokenArgs();
     }
 
-    public sealed class TokenState : Pulumi.ResourceArgs
+    public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time this token was created.
@@ -196,5 +194,6 @@ namespace Pulumi.Linode
         public TokenState()
         {
         }
+        public static new TokenState Empty => new TokenState();
     }
 }

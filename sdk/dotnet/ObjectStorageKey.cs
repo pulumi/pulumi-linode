@@ -17,20 +17,18 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to create an Object Storage Key.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Linode.ObjectStorageKey("foo", new()
     ///     {
-    ///         var foo = new Linode.ObjectStorageKey("foo", new Linode.ObjectStorageKeyArgs
-    ///         {
-    ///             Label = "image-access",
-    ///         });
-    ///     }
+    ///         Label = "image-access",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -43,7 +41,7 @@ namespace Pulumi.Linode
     /// * `limited` - Whether or not this key is a limited access key.
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageKey:ObjectStorageKey")]
-    public partial class ObjectStorageKey : Pulumi.CustomResource
+    public partial class ObjectStorageKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This keypair's access key. This is not secret.
@@ -119,7 +117,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class ObjectStorageKeyArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketAccesses")]
         private InputList<Inputs.ObjectStorageKeyBucketAccessArgs>? _bucketAccesses;
@@ -142,9 +140,10 @@ namespace Pulumi.Linode
         public ObjectStorageKeyArgs()
         {
         }
+        public static new ObjectStorageKeyArgs Empty => new ObjectStorageKeyArgs();
     }
 
-    public sealed class ObjectStorageKeyState : Pulumi.ResourceArgs
+    public sealed class ObjectStorageKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This keypair's access key. This is not secret.
@@ -185,5 +184,6 @@ namespace Pulumi.Linode
         public ObjectStorageKeyState()
         {
         }
+        public static new ObjectStorageKeyState Empty => new ObjectStorageKeyState();
     }
 }

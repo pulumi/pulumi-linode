@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// Get information about a PostgreSQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabasePostgresql.InvokeAsync(new Linode.GetDatabasePostgresqlArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -111,20 +109,18 @@ namespace Pulumi.Linode
         /// Get information about a PostgreSQL database:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
         ///     {
-        ///         var my_db = Output.Create(Linode.GetDatabasePostgresql.InvokeAsync(new Linode.GetDatabasePostgresqlArgs
-        ///         {
-        ///             DatabaseId = 12345,
-        ///         }));
-        ///     }
+        ///         DatabaseId = 12345,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -193,7 +189,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetDatabasePostgresqlArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasePostgresqlArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the PostgreSQL database.
@@ -204,9 +200,10 @@ namespace Pulumi.Linode
         public GetDatabasePostgresqlArgs()
         {
         }
+        public static new GetDatabasePostgresqlArgs Empty => new GetDatabasePostgresqlArgs();
     }
 
-    public sealed class GetDatabasePostgresqlInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasePostgresqlInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the PostgreSQL database.
@@ -217,6 +214,7 @@ namespace Pulumi.Linode
         public GetDatabasePostgresqlInvokeArgs()
         {
         }
+        public static new GetDatabasePostgresqlInvokeArgs Empty => new GetDatabasePostgresqlInvokeArgs();
     }
 
 

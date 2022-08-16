@@ -23,6 +23,7 @@ from .get_database_postgresql import *
 from .get_databases import *
 from .get_domain import *
 from .get_domain_record import *
+from .get_domain_zonefile import *
 from .get_firewall import *
 from .get_image import *
 from .get_images import *
@@ -48,6 +49,7 @@ from .get_vlans import *
 from .get_volume import *
 from .image import *
 from .instance import *
+from .instance_disk import *
 from .instance_ip import *
 from .instance_shared_ips import *
 from .ipv6_range import *
@@ -156,6 +158,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/instanceDisk",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/instanceDisk:InstanceDisk": "InstanceDisk"
   }
  },
  {

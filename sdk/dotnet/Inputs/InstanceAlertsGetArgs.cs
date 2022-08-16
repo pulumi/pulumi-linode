@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceAlertsGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAlertsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpu")]
         public Input<int>? Cpu { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceAlertsGetArgs()
         {
         }
+        public static new InstanceAlertsGetArgs Empty => new InstanceAlertsGetArgs();
     }
 }

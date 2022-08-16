@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class ObjectStorageBucketCertArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageBucketCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Base64 encoded and PEM formatted SSL certificate.
@@ -27,5 +27,6 @@ namespace Pulumi.Linode.Inputs
         public ObjectStorageBucketCertArgs()
         {
         }
+        public static new ObjectStorageBucketCertArgs Empty => new ObjectStorageBucketCertArgs();
     }
 }

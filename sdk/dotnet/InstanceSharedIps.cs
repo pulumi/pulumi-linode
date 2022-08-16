@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     [LinodeResourceType("linode:index/instanceSharedIps:InstanceSharedIps")]
-    public partial class InstanceSharedIps : Pulumi.CustomResource
+    public partial class InstanceSharedIps : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The set of IPs to share with the Linode.
@@ -68,7 +68,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class InstanceSharedIpsArgs : Pulumi.ResourceArgs
+    public sealed class InstanceSharedIpsArgs : global::Pulumi.ResourceArgs
     {
         [Input("addresses", required: true)]
         private InputList<string>? _addresses;
@@ -91,9 +91,10 @@ namespace Pulumi.Linode
         public InstanceSharedIpsArgs()
         {
         }
+        public static new InstanceSharedIpsArgs Empty => new InstanceSharedIpsArgs();
     }
 
-    public sealed class InstanceSharedIpsState : Pulumi.ResourceArgs
+    public sealed class InstanceSharedIpsState : global::Pulumi.ResourceArgs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
@@ -116,5 +117,6 @@ namespace Pulumi.Linode
         public InstanceSharedIpsState()
         {
         }
+        public static new InstanceSharedIpsState Empty => new InstanceSharedIpsState();
     }
 }

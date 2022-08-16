@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
         ///     {
-        ///         var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs
-        ///         {
-        ///             Id = "us-east-1",
-        ///         }));
-        ///     }
+        ///         Id = "us-east-1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -63,20 +61,18 @@ namespace Pulumi.Linode
         /// The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
         ///     {
-        ///         var primary = Output.Create(Linode.GetObjectStorageCluster.InvokeAsync(new Linode.GetObjectStorageClusterArgs
-        ///         {
-        ///             Id = "us-east-1",
-        ///         }));
-        ///     }
+        ///         Id = "us-east-1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,7 +93,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetObjectStorageClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectStorageClusterArgs : global::Pulumi.InvokeArgs
     {
         [Input("domain")]
         public string? Domain { get; set; }
@@ -120,9 +116,10 @@ namespace Pulumi.Linode
         public GetObjectStorageClusterArgs()
         {
         }
+        public static new GetObjectStorageClusterArgs Empty => new GetObjectStorageClusterArgs();
     }
 
-    public sealed class GetObjectStorageClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectStorageClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -145,6 +142,7 @@ namespace Pulumi.Linode
         public GetObjectStorageClusterInvokeArgs()
         {
         }
+        public static new GetObjectStorageClusterInvokeArgs Empty => new GetObjectStorageClusterInvokeArgs();
     }
 
 

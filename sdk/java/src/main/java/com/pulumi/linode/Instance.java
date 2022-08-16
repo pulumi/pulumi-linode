@@ -236,20 +236,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="configs", type=List.class, parameters={InstanceConfig.class})
-    private Output</* @Nullable */ List<InstanceConfig>> configs;
+    private Output<List<InstanceConfig>> configs;
 
     /**
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      */
-    public Output<Optional<List<InstanceConfig>>> configs() {
-        return Codegen.optional(this.configs);
+    public Output<List<InstanceConfig>> configs() {
+        return this.configs;
     }
     @Export(name="disks", type=List.class, parameters={InstanceDisk.class})
-    private Output</* @Nullable */ List<InstanceDisk>> disks;
+    private Output<List<InstanceDisk>> disks;
 
-    public Output<Optional<List<InstanceDisk>>> disks() {
-        return Codegen.optional(this.disks);
+    public Output<List<InstanceDisk>> disks() {
+        return this.disks;
     }
     /**
      * The display group of the Linode instance.

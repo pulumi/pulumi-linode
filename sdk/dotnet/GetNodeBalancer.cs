@@ -19,20 +19,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_nodebalancer = Linode.GetNodeBalancer.Invoke(new()
         ///     {
-        ///         var my_nodebalancer = Output.Create(Linode.GetNodeBalancer.InvokeAsync(new Linode.GetNodeBalancerArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Linode
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_nodebalancer = Linode.GetNodeBalancer.Invoke(new()
         ///     {
-        ///         var my_nodebalancer = Output.Create(Linode.GetNodeBalancer.InvokeAsync(new Linode.GetNodeBalancerArgs
-        ///         {
-        ///             Id = 123,
-        ///         }));
-        ///     }
+        ///         Id = 123,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetNodeBalancerArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeBalancerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The NodeBalancer's ID.
@@ -82,9 +78,10 @@ namespace Pulumi.Linode
         public GetNodeBalancerArgs()
         {
         }
+        public static new GetNodeBalancerArgs Empty => new GetNodeBalancerArgs();
     }
 
-    public sealed class GetNodeBalancerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The NodeBalancer's ID.
@@ -95,6 +92,7 @@ namespace Pulumi.Linode
         public GetNodeBalancerInvokeArgs()
         {
         }
+        public static new GetNodeBalancerInvokeArgs Empty => new GetNodeBalancerInvokeArgs();
     }
 
 

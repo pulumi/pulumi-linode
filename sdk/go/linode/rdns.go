@@ -22,7 +22,9 @@ import (
 // Linodes RDNS resources can be imported using the address as the `id`.
 //
 // ```sh
-//  $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+//
+//	$ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+//
 // ```
 type Rdns struct {
 	pulumi.CustomResourceState
@@ -136,7 +138,7 @@ func (i *Rdns) ToRdnsOutputWithContext(ctx context.Context) RdnsOutput {
 // RdnsArrayInput is an input type that accepts RdnsArray and RdnsArrayOutput values.
 // You can construct a concrete instance of `RdnsArrayInput` via:
 //
-//          RdnsArray{ RdnsArgs{...} }
+//	RdnsArray{ RdnsArgs{...} }
 type RdnsArrayInput interface {
 	pulumi.Input
 
@@ -161,7 +163,7 @@ func (i RdnsArray) ToRdnsArrayOutputWithContext(ctx context.Context) RdnsArrayOu
 // RdnsMapInput is an input type that accepts RdnsMap and RdnsMapOutput values.
 // You can construct a concrete instance of `RdnsMapInput` via:
 //
-//          RdnsMap{ "key": RdnsArgs{...} }
+//	RdnsMap{ "key": RdnsArgs{...} }
 type RdnsMapInput interface {
 	pulumi.Input
 

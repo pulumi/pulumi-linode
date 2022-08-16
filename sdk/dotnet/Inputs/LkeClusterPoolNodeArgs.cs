@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class LkeClusterPoolNodeArgs : Pulumi.ResourceArgs
+    public sealed class LkeClusterPoolNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the node.
@@ -33,5 +33,6 @@ namespace Pulumi.Linode.Inputs
         public LkeClusterPoolNodeArgs()
         {
         }
+        public static new LkeClusterPoolNodeArgs Empty => new LkeClusterPoolNodeArgs();
     }
 }

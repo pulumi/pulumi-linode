@@ -17,43 +17,43 @@ namespace Pulumi.Linode
     /// Grant a Linode access to a database:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_instance = new Linode.Instance("my-instance", new()
     ///     {
-    ///         var my_instance = new Linode.Instance("my-instance", new Linode.InstanceArgs
-    ///         {
-    ///             Label = "myinstance",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-nanode-1",
-    ///             Image = "linode/alpine3.14",
-    ///         });
-    ///         var my_db = new Linode.DatabaseMysql("my-db", new Linode.DatabaseMysqlArgs
-    ///         {
-    ///             Label = "mydatabase",
-    ///             EngineId = "mysql/8.0.26",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-nanode-1",
-    ///         });
-    ///         var my_access = new Linode.DatabaseAccessControls("my-access", new Linode.DatabaseAccessControlsArgs
-    ///         {
-    ///             DatabaseId = my_db.Id,
-    ///             DatabaseType = "mysql",
-    ///             AllowLists = 
-    ///             {
-    ///                 my_instance.IpAddress,
-    ///             },
-    ///         });
-    ///     }
+    ///         Label = "myinstance",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///         Image = "linode/alpine3.14",
+    ///     });
     /// 
-    /// }
+    ///     var my_db = new Linode.DatabaseMysql("my-db", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8.0.26",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
+    /// 
+    ///     var my_access = new Linode.DatabaseAccessControls("my-access", new()
+    ///     {
+    ///         DatabaseId = my_db.Id,
+    ///         DatabaseType = "mysql",
+    ///         AllowLists = new[]
+    ///         {
+    ///             my_instance.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databaseAccessControls:DatabaseAccessControls")]
-    public partial class DatabaseAccessControls : Pulumi.CustomResource
+    public partial class DatabaseAccessControls : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
@@ -117,7 +117,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class DatabaseAccessControlsArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseAccessControlsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowLists", required: true)]
         private InputList<string>? _allowLists;
@@ -146,9 +146,10 @@ namespace Pulumi.Linode
         public DatabaseAccessControlsArgs()
         {
         }
+        public static new DatabaseAccessControlsArgs Empty => new DatabaseAccessControlsArgs();
     }
 
-    public sealed class DatabaseAccessControlsState : Pulumi.ResourceArgs
+    public sealed class DatabaseAccessControlsState : global::Pulumi.ResourceArgs
     {
         [Input("allowLists")]
         private InputList<string>? _allowLists;
@@ -177,5 +178,6 @@ namespace Pulumi.Linode
         public DatabaseAccessControlsState()
         {
         }
+        public static new DatabaseAccessControlsState Empty => new DatabaseAccessControlsState();
     }
 }

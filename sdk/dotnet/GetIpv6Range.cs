@@ -21,20 +21,18 @@ namespace Pulumi.Linode
         /// Get information about an IPv6 range assigned to a Linode:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
         ///     {
-        ///         var range_info = Output.Create(Linode.GetIpv6Range.InvokeAsync(new Linode.GetIpv6RangeArgs
-        ///         {
-        ///             Range = "2001:0db8::",
-        ///         }));
-        ///     }
+        ///         Range = "2001:0db8::",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -63,20 +61,18 @@ namespace Pulumi.Linode
         /// Get information about an IPv6 range assigned to a Linode:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
         ///     {
-        ///         var range_info = Output.Create(Linode.GetIpv6Range.InvokeAsync(new Linode.GetIpv6RangeArgs
-        ///         {
-        ///             Range = "2001:0db8::",
-        ///         }));
-        ///     }
+        ///         Range = "2001:0db8::",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,7 +93,7 @@ namespace Pulumi.Linode
     }
 
 
-    public sealed class GetIpv6RangeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6RangeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IPv6 range to retrieve information about.
@@ -108,9 +104,10 @@ namespace Pulumi.Linode
         public GetIpv6RangeArgs()
         {
         }
+        public static new GetIpv6RangeArgs Empty => new GetIpv6RangeArgs();
     }
 
-    public sealed class GetIpv6RangeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6RangeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IPv6 range to retrieve information about.
@@ -121,6 +118,7 @@ namespace Pulumi.Linode
         public GetIpv6RangeInvokeArgs()
         {
         }
+        public static new GetIpv6RangeInvokeArgs Empty => new GetIpv6RangeInvokeArgs();
     }
 
 

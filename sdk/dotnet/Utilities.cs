@@ -74,7 +74,7 @@ namespace Pulumi.Linode
         }
     }
 
-    internal sealed class LinodeResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class LinodeResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public LinodeResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

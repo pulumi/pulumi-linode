@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.LookupDomain(ctx, &GetDomainArgs{
-// 			Id: pulumi.StringRef("1234567"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = linode.LookupDomain(ctx, &GetDomainArgs{
-// 			Domain: pulumi.StringRef("bar.example.com"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupDomain(ctx, &GetDomainArgs{
+//				Id: pulumi.StringRef("1234567"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.LookupDomain(ctx, &GetDomainArgs{
+//				Domain: pulumi.StringRef("bar.example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes
 //

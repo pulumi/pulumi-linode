@@ -19,32 +19,31 @@ namespace Pulumi.Linode
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooInstance = new Linode.Instance("fooInstance", new()
     ///     {
-    ///         var fooInstance = new Linode.Instance("fooInstance", new Linode.InstanceArgs
-    ///         {
-    ///             Image = "linode/alpine3.12",
-    ///             Label = "foobar-test",
-    ///             Type = "g6-nanode-1",
-    ///             Region = "us-east",
-    ///         });
-    ///         var fooInstanceIp = new Linode.InstanceIp("fooInstanceIp", new Linode.InstanceIpArgs
-    ///         {
-    ///             LinodeId = fooInstance.Id,
-    ///             Public = true,
-    ///         });
-    ///     }
+    ///         Image = "linode/alpine3.12",
+    ///         Label = "foobar-test",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-east",
+    ///     });
     /// 
-    /// }
+    ///     var fooInstanceIp = new Linode.InstanceIp("fooInstanceIp", new()
+    ///     {
+    ///         LinodeId = fooInstance.Id,
+    ///         Public = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/instanceIp:InstanceIp")]
-    public partial class InstanceIp : Pulumi.CustomResource
+    public partial class InstanceIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resulting IPv4 address.
@@ -150,7 +149,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class InstanceIpArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, the instance will be rebooted to update network interfaces.
@@ -179,9 +178,10 @@ namespace Pulumi.Linode
         public InstanceIpArgs()
         {
         }
+        public static new InstanceIpArgs Empty => new InstanceIpArgs();
     }
 
-    public sealed class InstanceIpState : Pulumi.ResourceArgs
+    public sealed class InstanceIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resulting IPv4 address.
@@ -246,5 +246,6 @@ namespace Pulumi.Linode
         public InstanceIpState()
         {
         }
+        public static new InstanceIpState Empty => new InstanceIpState();
     }
 }

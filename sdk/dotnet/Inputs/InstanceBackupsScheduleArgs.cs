@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode.Inputs
 {
 
-    public sealed class InstanceBackupsScheduleArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBackupsScheduleArgs : global::Pulumi.ResourceArgs
     {
         [Input("day")]
         public Input<string>? Day { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Linode.Inputs
         public InstanceBackupsScheduleArgs()
         {
         }
+        public static new InstanceBackupsScheduleArgs Empty => new InstanceBackupsScheduleArgs();
     }
 }

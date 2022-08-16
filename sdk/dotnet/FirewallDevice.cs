@@ -17,55 +17,55 @@ namespace Pulumi.Linode
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myFirewall = new Linode.Firewall("myFirewall", new()
     ///     {
-    ///         var myFirewall = new Linode.Firewall("myFirewall", new Linode.FirewallArgs
+    ///         Label = "my_firewall",
+    ///         Inbounds = new[]
     ///         {
-    ///             Label = "my_firewall",
-    ///             Inbounds = 
+    ///             new Linode.Inputs.FirewallInboundArgs
     ///             {
-    ///                 new Linode.Inputs.FirewallInboundArgs
+    ///                 Label = "http",
+    ///                 Action = "ACCEPT",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "80",
+    ///                 Ipv4s = new[]
     ///                 {
-    ///                     Label = "http",
-    ///                     Action = "ACCEPT",
-    ///                     Protocol = "TCP",
-    ///                     Ports = "80",
-    ///                     Ipv4s = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                     Ipv6s = 
-    ///                     {
-    ///                         "::/0",
-    ///                     },
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
     ///                 },
     ///             },
-    ///             InboundPolicy = "DROP",
-    ///             OutboundPolicy = "ACCEPT",
-    ///         });
-    ///         var myInstance = new Linode.Instance("myInstance", new Linode.InstanceArgs
-    ///         {
-    ///             Label = "my_instance",
-    ///             Region = "us-southeast",
-    ///             Type = "g6-standard-1",
-    ///         });
-    ///         var myDevice = new Linode.FirewallDevice("myDevice", new Linode.FirewallDeviceArgs
-    ///         {
-    ///             FirewallId = myFirewall.Id,
-    ///             EntityId = myInstance.Id,
-    ///         });
-    ///     }
+    ///         },
+    ///         InboundPolicy = "DROP",
+    ///         OutboundPolicy = "ACCEPT",
+    ///     });
     /// 
-    /// }
+    ///     var myInstance = new Linode.Instance("myInstance", new()
+    ///     {
+    ///         Label = "my_instance",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-standard-1",
+    ///     });
+    /// 
+    ///     var myDevice = new Linode.FirewallDevice("myDevice", new()
+    ///     {
+    ///         FirewallId = myFirewall.Id,
+    ///         EntityId = myInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/firewallDevice:FirewallDevice")]
-    public partial class FirewallDevice : Pulumi.CustomResource
+    public partial class FirewallDevice : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the Firewall Device was last created.
@@ -141,7 +141,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class FirewallDeviceArgs : Pulumi.ResourceArgs
+    public sealed class FirewallDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique ID of the entity to attach.
@@ -164,9 +164,10 @@ namespace Pulumi.Linode
         public FirewallDeviceArgs()
         {
         }
+        public static new FirewallDeviceArgs Empty => new FirewallDeviceArgs();
     }
 
-    public sealed class FirewallDeviceState : Pulumi.ResourceArgs
+    public sealed class FirewallDeviceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When the Firewall Device was last created.
@@ -201,5 +202,6 @@ namespace Pulumi.Linode
         public FirewallDeviceState()
         {
         }
+        public static new FirewallDeviceState Empty => new FirewallDeviceState();
     }
 }

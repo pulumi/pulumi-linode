@@ -18,34 +18,33 @@ namespace Pulumi.Linode
     /// The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarDomain = new Linode.Domain("foobarDomain", new()
     ///     {
-    ///         var foobarDomain = new Linode.Domain("foobarDomain", new Linode.DomainArgs
+    ///         Type = "master",
+    ///         DomainName = "foobar.example",
+    ///         SoaEmail = "example@foobar.example",
+    ///         Tags = new[]
     ///         {
-    ///             Type = "master",
-    ///             DomainName = "foobar.example",
-    ///             SoaEmail = "example@foobar.example",
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///                 "bar",
-    ///             },
-    ///         });
-    ///         var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new Linode.DomainRecordArgs
-    ///         {
-    ///             DomainId = foobarDomain.Id,
-    ///             Name = "www",
-    ///             RecordType = "CNAME",
-    ///             Target = "foobar.example",
-    ///         });
-    ///     }
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new()
+    ///     {
+    ///         DomainId = foobarDomain.Id,
+    ///         Name = "www",
+    ///         RecordType = "CNAME",
+    ///         Target = "foobar.example",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Attributes
     /// 
@@ -62,7 +61,7 @@ namespace Pulumi.Linode
     ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
@@ -186,7 +185,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         [Input("axfrIps")]
         private InputList<string>? _axfrIps;
@@ -287,9 +286,10 @@ namespace Pulumi.Linode
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         [Input("axfrIps")]
         private InputList<string>? _axfrIps;
@@ -390,5 +390,6 @@ namespace Pulumi.Linode
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

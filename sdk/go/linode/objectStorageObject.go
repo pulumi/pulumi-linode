@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
-// 			Bucket:          pulumi.String("my-bucket"),
-// 			Cluster:         pulumi.String("us-east-1"),
-// 			Key:             pulumi.String("my-object"),
-// 			SecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),
-// 			AccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),
-// 			Content:         pulumi.String("This is the content of the Object..."),
-// 			ContentType:     pulumi.String("text/plain"),
-// 			ContentLanguage: pulumi.String("en"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
+//				Bucket:          pulumi.String("my-bucket"),
+//				Cluster:         pulumi.String("us-east-1"),
+//				Key:             pulumi.String("my-object"),
+//				SecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),
+//				AccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),
+//				Content:         pulumi.String("This is the content of the Object..."),
+//				ContentType:     pulumi.String("text/plain"),
+//				ContentLanguage: pulumi.String("en"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
@@ -320,7 +323,7 @@ func (i *ObjectStorageObject) ToObjectStorageObjectOutputWithContext(ctx context
 // ObjectStorageObjectArrayInput is an input type that accepts ObjectStorageObjectArray and ObjectStorageObjectArrayOutput values.
 // You can construct a concrete instance of `ObjectStorageObjectArrayInput` via:
 //
-//          ObjectStorageObjectArray{ ObjectStorageObjectArgs{...} }
+//	ObjectStorageObjectArray{ ObjectStorageObjectArgs{...} }
 type ObjectStorageObjectArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +348,7 @@ func (i ObjectStorageObjectArray) ToObjectStorageObjectArrayOutputWithContext(ct
 // ObjectStorageObjectMapInput is an input type that accepts ObjectStorageObjectMap and ObjectStorageObjectMapOutput values.
 // You can construct a concrete instance of `ObjectStorageObjectMapInput` via:
 //
-//          ObjectStorageObjectMap{ "key": ObjectStorageObjectArgs{...} }
+//	ObjectStorageObjectMap{ "key": ObjectStorageObjectArgs{...} }
 type ObjectStorageObjectMapInput interface {
 	pulumi.Input
 

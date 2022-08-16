@@ -17,55 +17,51 @@ namespace Pulumi.Linode
     /// Create an unrestricted user:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var john = new Linode.User("john", new()
     ///     {
-    ///         var john = new Linode.User("john", new Linode.UserArgs
-    ///         {
-    ///             Email = "john@acme.io",
-    ///             Username = "john123",
-    ///         });
-    ///     }
+    ///         Email = "john@acme.io",
+    ///         Username = "john123",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a restricted user with grants:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Linode = Pulumi.Linode;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooser = new Linode.User("fooser", new()
     ///     {
-    ///         var fooser = new Linode.User("fooser", new Linode.UserArgs
+    ///         Email = "cool@acme.io",
+    ///         GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
     ///         {
-    ///             Email = "cool@acme.io",
-    ///             GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
+    ///             AddImages = true,
+    ///             AddLinodes = true,
+    ///         },
+    ///         LinodeGrants = new[]
+    ///         {
+    ///             new Linode.Inputs.UserLinodeGrantArgs
     ///             {
-    ///                 AddImages = true,
-    ///                 AddLinodes = true,
+    ///                 Id = 12345,
+    ///                 Permissions = "read_write",
     ///             },
-    ///             LinodeGrants = 
-    ///             {
-    ///                 new Linode.Inputs.UserLinodeGrantArgs
-    ///                 {
-    ///                     Id = 12345,
-    ///                     Permissions = "read_write",
-    ///                 },
-    ///             },
-    ///             Restricted = true,
-    ///             Username = "cooluser123",
-    ///         });
-    ///     }
+    ///         },
+    ///         Restricted = true,
+    ///         Username = "cooluser123",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Global Grants
     /// 
@@ -96,7 +92,7 @@ namespace Pulumi.Linode
     /// * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
     /// </summary>
     [LinodeResourceType("linode:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domains the user has permissions access to.
@@ -226,7 +222,7 @@ namespace Pulumi.Linode
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         [Input("domainGrants")]
         private InputList<Inputs.UserDomainGrantArgs>? _domainGrants;
@@ -351,9 +347,10 @@ namespace Pulumi.Linode
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("domainGrants")]
         private InputList<Inputs.UserDomainGrantGetArgs>? _domainGrants;
@@ -496,5 +493,6 @@ namespace Pulumi.Linode
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }
