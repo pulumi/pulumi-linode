@@ -36,17 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The `linode.Ipv6Range` data source exports the following attributes:
-        /// 
-        /// * `ip_bgp` - Whether this IPv6 range is shared.
-        /// 
-        /// * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-        /// 
-        /// * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-        /// 
-        /// * `region` - The region for this range of IPv6 addresses.
         /// </summary>
         public static Task<GetIpv6RangeResult> InvokeAsync(GetIpv6RangeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeArgs(), options.WithDefaults());
@@ -76,17 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The `linode.Ipv6Range` data source exports the following attributes:
-        /// 
-        /// * `ip_bgp` - Whether this IPv6 range is shared.
-        /// 
-        /// * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-        /// 
-        /// * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-        /// 
-        /// * `region` - The region for this range of IPv6 addresses.
         /// </summary>
         public static Output<GetIpv6RangeResult> Invoke(GetIpv6RangeInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeInvokeArgs(), options.WithDefaults());
@@ -130,9 +108,18 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Id;
         public readonly bool IsBgp;
+        /// <summary>
+        /// A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+        /// </summary>
         public readonly ImmutableArray<int> Linodes;
+        /// <summary>
+        /// The prefix length of the address, denoting how many addresses can be assigned from this range.
+        /// </summary>
         public readonly int Prefix;
         public readonly string Range;
+        /// <summary>
+        /// The region for this range of IPv6 addresses.
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]

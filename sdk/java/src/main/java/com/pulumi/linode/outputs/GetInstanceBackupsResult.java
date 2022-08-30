@@ -14,30 +14,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceBackupsResult {
-    private final List<GetInstanceBackupsAutomatic> automatics;
-    private final List<GetInstanceBackupsCurrent> currents;
+    private List<GetInstanceBackupsAutomatic> automatics;
+    private List<GetInstanceBackupsCurrent> currents;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetInstanceBackupsInProgress> inProgresses;
-    private final Integer linodeId;
+    private String id;
+    private List<GetInstanceBackupsInProgress> inProgresses;
+    private Integer linodeId;
 
-    @CustomType.Constructor
-    private GetInstanceBackupsResult(
-        @CustomType.Parameter("automatics") List<GetInstanceBackupsAutomatic> automatics,
-        @CustomType.Parameter("currents") List<GetInstanceBackupsCurrent> currents,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inProgresses") List<GetInstanceBackupsInProgress> inProgresses,
-        @CustomType.Parameter("linodeId") Integer linodeId) {
-        this.automatics = automatics;
-        this.currents = currents;
-        this.id = id;
-        this.inProgresses = inProgresses;
-        this.linodeId = linodeId;
-    }
-
+    private GetInstanceBackupsResult() {}
     public List<GetInstanceBackupsAutomatic> automatics() {
         return this.automatics;
     }
@@ -65,18 +52,14 @@ public final class GetInstanceBackupsResult {
     public static Builder builder(GetInstanceBackupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceBackupsAutomatic> automatics;
         private List<GetInstanceBackupsCurrent> currents;
         private String id;
         private List<GetInstanceBackupsInProgress> inProgresses;
         private Integer linodeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceBackupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automatics = defaults.automatics;
@@ -86,6 +69,7 @@ public final class GetInstanceBackupsResult {
     	      this.linodeId = defaults.linodeId;
         }
 
+        @CustomType.Setter
         public Builder automatics(List<GetInstanceBackupsAutomatic> automatics) {
             this.automatics = Objects.requireNonNull(automatics);
             return this;
@@ -93,6 +77,7 @@ public final class GetInstanceBackupsResult {
         public Builder automatics(GetInstanceBackupsAutomatic... automatics) {
             return automatics(List.of(automatics));
         }
+        @CustomType.Setter
         public Builder currents(List<GetInstanceBackupsCurrent> currents) {
             this.currents = Objects.requireNonNull(currents);
             return this;
@@ -100,10 +85,12 @@ public final class GetInstanceBackupsResult {
         public Builder currents(GetInstanceBackupsCurrent... currents) {
             return currents(List.of(currents));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inProgresses(List<GetInstanceBackupsInProgress> inProgresses) {
             this.inProgresses = Objects.requireNonNull(inProgresses);
             return this;
@@ -111,11 +98,19 @@ public final class GetInstanceBackupsResult {
         public Builder inProgresses(GetInstanceBackupsInProgress... inProgresses) {
             return inProgresses(List.of(inProgresses));
         }
+        @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
             this.linodeId = Objects.requireNonNull(linodeId);
             return this;
-        }        public GetInstanceBackupsResult build() {
-            return new GetInstanceBackupsResult(automatics, currents, id, inProgresses, linodeId);
+        }
+        public GetInstanceBackupsResult build() {
+            final var o = new GetInstanceBackupsResult();
+            o.automatics = automatics;
+            o.currents = currents;
+            o.id = id;
+            o.inProgresses = inProgresses;
+            o.linodeId = linodeId;
+            return o;
         }
     }
 }

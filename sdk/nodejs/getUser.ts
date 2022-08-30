@@ -19,15 +19,6 @@ import * as utilities from "./utilities";
  *     username: "foo",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode User resource exports the following attributes:
- *
- * * `sshKeys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
- *
- * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
- *
- * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     if (!opts) {
@@ -54,12 +45,21 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
+    /**
+     * The email address for this User, for account management communications, and may be used for other communications as configured.
+     */
     readonly email: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * If true, this User must be granted access to perform actions or access entities on this Account.
+     */
     readonly restricted: boolean;
+    /**
+     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
+     */
     readonly sshKeys: string[];
     readonly username: string;
 }

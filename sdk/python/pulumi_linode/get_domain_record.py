@@ -62,61 +62,97 @@ class GetDomainRecordResult:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> int:
+        """
+        The associated domain's unique ID.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[int]:
+        """
+        The unique ID of the Domain Record.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the Record.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port this Record points to.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        The priority of the target host. Lower values are preferred.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        The protocol this Record's service communicates with. Only valid for SRV records.
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def service(self) -> str:
+        """
+        The service this Record identified. Only valid for SRV records.
+        """
         return pulumi.get(self, "service")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        The tag portion of a CAA record.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def target(self) -> str:
+        """
+        The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter(name="ttlSec")
     def ttl_sec(self) -> int:
+        """
+        The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        """
         return pulumi.get(self, "ttl_sec")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The relative weight of this Record. Higher values are preferred.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -160,33 +196,6 @@ def get_domain_record(domain_id: Optional[int] = None,
     my_www_record = linode.get_domain_record(domain_id=3150401,
         name="www")
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `id` - The unique ID of the Domain Record.
-
-    - `name` - The name of the Record.
-
-    - `domain_id` - The associated domain's unique ID.
-
-    - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-
-    - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-
-    - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-
-    - `priority` - The priority of the target host. Lower values are preferred.
-
-    - `weight` - The relative weight of this Record. Higher values are preferred.
-
-    - `port` - The port this Record points to.
-
-    - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-
-    - `service` - The service this Record identified. Only valid for SRV records.
-
-    - `tag` - The tag portion of a CAA record.
 
 
     :param int domain_id: The associated domain's unique ID.
@@ -236,33 +245,6 @@ def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
     my_www_record = linode.get_domain_record(domain_id=3150401,
         name="www")
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `id` - The unique ID of the Domain Record.
-
-    - `name` - The name of the Record.
-
-    - `domain_id` - The associated domain's unique ID.
-
-    - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-
-    - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-
-    - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-
-    - `priority` - The priority of the target host. Lower values are preferred.
-
-    - `weight` - The relative weight of this Record. Higher values are preferred.
-
-    - `port` - The port this Record points to.
-
-    - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-
-    - `service` - The service this Record identified. Only valid for SRV records.
-
-    - `tag` - The tag portion of a CAA record.
 
 
     :param int domain_id: The associated domain's unique ID.

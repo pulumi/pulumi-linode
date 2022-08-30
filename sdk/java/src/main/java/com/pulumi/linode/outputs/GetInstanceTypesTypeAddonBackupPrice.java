@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesTypeAddonBackupPrice {
-    private final Double hourly;
-    private final Double monthly;
+    private Double hourly;
+    private Double monthly;
 
-    @CustomType.Constructor
-    private GetInstanceTypesTypeAddonBackupPrice(
-        @CustomType.Parameter("hourly") Double hourly,
-        @CustomType.Parameter("monthly") Double monthly) {
-        this.hourly = hourly;
-        this.monthly = monthly;
-    }
-
+    private GetInstanceTypesTypeAddonBackupPrice() {}
     public Double hourly() {
         return this.hourly;
     }
@@ -34,30 +27,32 @@ public final class GetInstanceTypesTypeAddonBackupPrice {
     public static Builder builder(GetInstanceTypesTypeAddonBackupPrice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double hourly;
         private Double monthly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesTypeAddonBackupPrice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hourly = defaults.hourly;
     	      this.monthly = defaults.monthly;
         }
 
+        @CustomType.Setter
         public Builder hourly(Double hourly) {
             this.hourly = Objects.requireNonNull(hourly);
             return this;
         }
+        @CustomType.Setter
         public Builder monthly(Double monthly) {
             this.monthly = Objects.requireNonNull(monthly);
             return this;
-        }        public GetInstanceTypesTypeAddonBackupPrice build() {
-            return new GetInstanceTypesTypeAddonBackupPrice(hourly, monthly);
+        }
+        public GetInstanceTypesTypeAddonBackupPrice build() {
+            final var o = new GetInstanceTypesTypeAddonBackupPrice();
+            o.hourly = hourly;
+            o.monthly = monthly;
+            return o;
         }
     }
 }

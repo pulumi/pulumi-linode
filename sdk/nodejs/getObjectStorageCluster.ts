@@ -19,17 +19,6 @@ import * as utilities from "./utilities";
  *     id: "us-east-1",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Object Storage Cluster resource exports the following attributes:
- *
- * * `domain` - The base URL for this cluster.
- *
- * * `status` - This cluster's status. (`available`, `unavailable`)
- *
- * * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
- *
- * * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
  */
 export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> {
     if (!opts) {
@@ -50,13 +39,25 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
  * A collection of arguments for invoking getObjectStorageCluster.
  */
 export interface GetObjectStorageClusterArgs {
+    /**
+     * The base URL for this cluster.
+     */
     domain?: string;
     /**
      * The unique ID of this cluster.
      */
     id: string;
+    /**
+     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
     region?: string;
+    /**
+     * The base URL for this cluster used when hosting static sites.
+     */
     staticSiteDomain?: string;
+    /**
+     * This cluster's status. (`available`, `unavailable`)
+     */
     status?: string;
 }
 
@@ -64,10 +65,22 @@ export interface GetObjectStorageClusterArgs {
  * A collection of values returned by getObjectStorageCluster.
  */
 export interface GetObjectStorageClusterResult {
+    /**
+     * The base URL for this cluster.
+     */
     readonly domain: string;
     readonly id: string;
+    /**
+     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
     readonly region: string;
+    /**
+     * The base URL for this cluster used when hosting static sites.
+     */
     readonly staticSiteDomain: string;
+    /**
+     * This cluster's status. (`available`, `unavailable`)
+     */
     readonly status: string;
 }
 
@@ -79,12 +92,24 @@ export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutpu
  * A collection of arguments for invoking getObjectStorageCluster.
  */
 export interface GetObjectStorageClusterOutputArgs {
+    /**
+     * The base URL for this cluster.
+     */
     domain?: pulumi.Input<string>;
     /**
      * The unique ID of this cluster.
      */
     id: pulumi.Input<string>;
+    /**
+     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
     region?: pulumi.Input<string>;
+    /**
+     * The base URL for this cluster used when hosting static sites.
+     */
     staticSiteDomain?: pulumi.Input<string>;
+    /**
+     * This cluster's status. (`available`, `unavailable`)
+     */
     status?: pulumi.Input<string>;
 }

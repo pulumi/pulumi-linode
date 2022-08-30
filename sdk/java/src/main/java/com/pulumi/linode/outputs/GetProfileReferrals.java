@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProfileReferrals {
-    private final String code;
-    private final Integer completed;
-    private final Double credit;
-    private final Integer pending;
-    private final Integer total;
-    private final String url;
+    private String code;
+    private Integer completed;
+    private Double credit;
+    private Integer pending;
+    private Integer total;
+    private String url;
 
-    @CustomType.Constructor
-    private GetProfileReferrals(
-        @CustomType.Parameter("code") String code,
-        @CustomType.Parameter("completed") Integer completed,
-        @CustomType.Parameter("credit") Double credit,
-        @CustomType.Parameter("pending") Integer pending,
-        @CustomType.Parameter("total") Integer total,
-        @CustomType.Parameter("url") String url) {
-        this.code = code;
-        this.completed = completed;
-        this.credit = credit;
-        this.pending = pending;
-        this.total = total;
-        this.url = url;
-    }
-
+    private GetProfileReferrals() {}
     public String code() {
         return this.code;
     }
@@ -60,7 +45,7 @@ public final class GetProfileReferrals {
     public static Builder builder(GetProfileReferrals defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String code;
         private Integer completed;
@@ -68,11 +53,7 @@ public final class GetProfileReferrals {
         private Integer pending;
         private Integer total;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProfileReferrals defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -83,31 +64,45 @@ public final class GetProfileReferrals {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
+        @CustomType.Setter
         public Builder completed(Integer completed) {
             this.completed = Objects.requireNonNull(completed);
             return this;
         }
+        @CustomType.Setter
         public Builder credit(Double credit) {
             this.credit = Objects.requireNonNull(credit);
             return this;
         }
+        @CustomType.Setter
         public Builder pending(Integer pending) {
             this.pending = Objects.requireNonNull(pending);
             return this;
         }
+        @CustomType.Setter
         public Builder total(Integer total) {
             this.total = Objects.requireNonNull(total);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetProfileReferrals build() {
-            return new GetProfileReferrals(code, completed, credit, pending, total, url);
+        }
+        public GetProfileReferrals build() {
+            final var o = new GetProfileReferrals();
+            o.code = code;
+            o.completed = completed;
+            o.credit = credit;
+            o.pending = pending;
+            o.total = total;
+            o.url = url;
+            return o;
         }
     }
 }

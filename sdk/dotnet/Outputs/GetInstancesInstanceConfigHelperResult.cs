@@ -14,9 +14,21 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigHelperResult
     {
         public readonly bool DevtmpfsAutomount;
+        /// <summary>
+        /// Controls the behavior of the Linode Config's Distribution Helper setting.
+        /// </summary>
         public readonly bool Distro;
+        /// <summary>
+        /// Creates a modules dependency file for the Kernel you run.
+        /// </summary>
         public readonly bool ModulesDep;
+        /// <summary>
+        /// Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+        /// </summary>
         public readonly bool Network;
+        /// <summary>
+        /// Disables updatedb cron job to avoid disk thrashing.
+        /// </summary>
         public readonly bool UpdatedbDisabled;
 
         [OutputConstructor]

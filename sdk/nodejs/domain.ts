@@ -32,9 +32,6 @@ import * as utilities from "./utilities";
  *     target: "foobar.example",
  * });
  * ```
- * ## Attributes
- *
- * This resource exports no additional attributes, however `status` may reflect degraded states.
  *
  * ## Import
  *

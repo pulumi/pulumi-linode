@@ -313,20 +313,56 @@ export interface GetInstancesFilterArgs {
 }
 
 export interface GetStackScriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default?: string;
+    /**
+     * An example value for the field.
+     */
     example?: string;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     label?: string;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf?: string;
+    /**
+     * The name of the field.
+     */
     name?: string;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf?: string;
 }
 
 export interface GetStackScriptUserDefinedFieldArgs {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default?: pulumi.Input<string>;
+    /**
+     * An example value for the field.
+     */
     example?: pulumi.Input<string>;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     label?: pulumi.Input<string>;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf?: pulumi.Input<string>;
+    /**
+     * The name of the field.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf?: pulumi.Input<string>;
 }
 
@@ -399,12 +435,21 @@ export interface InstanceAlerts {
 }
 
 export interface InstanceBackups {
+    /**
+     * If this Linode has the Backup service enabled.
+     */
     enabled?: pulumi.Input<boolean>;
     schedule?: pulumi.Input<inputs.InstanceBackupsSchedule>;
 }
 
 export interface InstanceBackupsSchedule {
+    /**
+     * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+     */
     day?: pulumi.Input<string>;
+    /**
+     * The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+     */
     window?: pulumi.Input<string>;
 }
 
@@ -737,13 +782,28 @@ export interface LkeClusterPoolNode {
 }
 
 export interface NodeBalancerConfigNodeStatus {
+    /**
+     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+     */
     down?: pulumi.Input<number>;
+    /**
+     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
+     */
     up?: pulumi.Input<number>;
 }
 
 export interface NodeBalancerTransfer {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
     in?: pulumi.Input<number>;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
     out?: pulumi.Input<number>;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
     total?: pulumi.Input<number>;
 }
 
@@ -817,14 +877,29 @@ export interface ObjectStorageKeyBucketAccess {
 }
 
 export interface StackScriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default?: pulumi.Input<string>;
+    /**
+     * An example value for the field.
+     */
     example?: pulumi.Input<string>;
     /**
      * The StackScript's label is for display purposes only.
      */
     label?: pulumi.Input<string>;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf?: pulumi.Input<string>;
+    /**
+     * The name of the field.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf?: pulumi.Input<string>;
 }
 

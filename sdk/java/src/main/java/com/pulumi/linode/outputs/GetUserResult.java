@@ -11,30 +11,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserResult {
-    private final String email;
+    /**
+     * @return The email address for this User, for account management communications, and may be used for other communications as configured.
+     * 
+     */
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Boolean restricted;
-    private final List<String> sshKeys;
-    private final String username;
+    private String id;
+    /**
+     * @return If true, this User must be granted access to perform actions or access entities on this Account.
+     * 
+     */
+    private Boolean restricted;
+    /**
+     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * 
+     */
+    private List<String> sshKeys;
+    private String username;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("restricted") Boolean restricted,
-        @CustomType.Parameter("sshKeys") List<String> sshKeys,
-        @CustomType.Parameter("username") String username) {
-        this.email = email;
-        this.id = id;
-        this.restricted = restricted;
-        this.sshKeys = sshKeys;
-        this.username = username;
-    }
-
+    private GetUserResult() {}
+    /**
+     * @return The email address for this User, for account management communications, and may be used for other communications as configured.
+     * 
+     */
     public String email() {
         return this.email;
     }
@@ -45,9 +48,17 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return If true, this User must be granted access to perform actions or access entities on this Account.
+     * 
+     */
     public Boolean restricted() {
         return this.restricted;
     }
+    /**
+     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * 
+     */
     public List<String> sshKeys() {
         return this.sshKeys;
     }
@@ -62,18 +73,14 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private String id;
         private Boolean restricted;
         private List<String> sshKeys;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -83,18 +90,22 @@ public final class GetUserResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder restricted(Boolean restricted) {
             this.restricted = Objects.requireNonNull(restricted);
             return this;
         }
+        @CustomType.Setter
         public Builder sshKeys(List<String> sshKeys) {
             this.sshKeys = Objects.requireNonNull(sshKeys);
             return this;
@@ -102,11 +113,19 @@ public final class GetUserResult {
         public Builder sshKeys(String... sshKeys) {
             return sshKeys(List.of(sshKeys));
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetUserResult build() {
-            return new GetUserResult(email, id, restricted, sshKeys, username);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.email = email;
+            o.id = id;
+            o.restricted = restricted;
+            o.sshKeys = sshKeys;
+            o.username = username;
+            return o;
         }
     }
 }

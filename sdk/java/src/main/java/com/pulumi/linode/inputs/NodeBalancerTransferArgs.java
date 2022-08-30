@@ -15,23 +15,47 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
 
     public static final NodeBalancerTransferArgs Empty = new NodeBalancerTransferArgs();
 
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     * 
+     */
     @Import(name="in")
     private @Nullable Output<Double> in;
 
+    /**
+     * @return The total transfer, in MB, used by this NodeBalancer for the current month
+     * 
+     */
     public Optional<Output<Double>> in() {
         return Optional.ofNullable(this.in);
     }
 
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     @Import(name="out")
     private @Nullable Output<Double> out;
 
+    /**
+     * @return The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     public Optional<Output<Double>> out() {
         return Optional.ofNullable(this.out);
     }
 
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     @Import(name="total")
     private @Nullable Output<Double> total;
 
+    /**
+     * @return The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     public Optional<Output<Double>> total() {
         return Optional.ofNullable(this.total);
     }
@@ -62,29 +86,65 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
             $ = new NodeBalancerTransferArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param in The total transfer, in MB, used by this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder in(@Nullable Output<Double> in) {
             $.in = in;
             return this;
         }
 
+        /**
+         * @param in The total transfer, in MB, used by this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder in(Double in) {
             return in(Output.of(in));
         }
 
+        /**
+         * @param out The total inbound transfer, in MB, used for this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder out(@Nullable Output<Double> out) {
             $.out = out;
             return this;
         }
 
+        /**
+         * @param out The total inbound transfer, in MB, used for this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder out(Double out) {
             return out(Output.of(out));
         }
 
+        /**
+         * @param total The total outbound transfer, in MB, used for this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder total(@Nullable Output<Double> total) {
             $.total = total;
             return this;
         }
 
+        /**
+         * @param total The total outbound transfer, in MB, used for this NodeBalancer for the current month
+         * 
+         * @return builder
+         * 
+         */
         public Builder total(Double total) {
             return total(Output.of(total));
         }

@@ -14,28 +14,19 @@ public final class GetInstanceBackupsCurrentDisk {
      * @return The filesystem of this disk.
      * 
      */
-    private final String filesystem;
+    private String filesystem;
     /**
      * @return The label of this disk.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The size of this disk.
      * 
      */
-    private final Integer size;
+    private Integer size;
 
-    @CustomType.Constructor
-    private GetInstanceBackupsCurrentDisk(
-        @CustomType.Parameter("filesystem") String filesystem,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("size") Integer size) {
-        this.filesystem = filesystem;
-        this.label = label;
-        this.size = size;
-    }
-
+    private GetInstanceBackupsCurrentDisk() {}
     /**
      * @return The filesystem of this disk.
      * 
@@ -65,16 +56,12 @@ public final class GetInstanceBackupsCurrentDisk {
     public static Builder builder(GetInstanceBackupsCurrentDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filesystem;
         private String label;
         private Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceBackupsCurrentDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filesystem = defaults.filesystem;
@@ -82,19 +69,27 @@ public final class GetInstanceBackupsCurrentDisk {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder filesystem(String filesystem) {
             this.filesystem = Objects.requireNonNull(filesystem);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public GetInstanceBackupsCurrentDisk build() {
-            return new GetInstanceBackupsCurrentDisk(filesystem, label, size);
+        }
+        public GetInstanceBackupsCurrentDisk build() {
+            final var o = new GetInstanceBackupsCurrentDisk();
+            o.filesystem = filesystem;
+            o.label = label;
+            o.size = size;
+            return o;
         }
     }
 }

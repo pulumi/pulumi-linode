@@ -13,12 +13,6 @@ namespace Pulumi.Linode
     /// Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
     /// For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
     /// 
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `created` - The date this SSH Key was created.
-    /// 
     /// ## Import
     /// 
     /// Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -31,7 +25,7 @@ namespace Pulumi.Linode
     public partial class SshKey : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The date this key was added.
+        /// The date this SSH Key was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -115,7 +109,7 @@ namespace Pulumi.Linode
     public sealed class SshKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date this key was added.
+        /// The date this SSH Key was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }

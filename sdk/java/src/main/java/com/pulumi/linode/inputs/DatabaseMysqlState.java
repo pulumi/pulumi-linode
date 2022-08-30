@@ -95,14 +95,14 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `mysql`)
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The Managed Database engine.
+     * @return The Managed Database engine. (e.g. `mysql`)
      * 
      */
     public Optional<Output<String>> engine() {
@@ -140,14 +140,14 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      * 
      */
     @Import(name="hostSecondary")
     private @Nullable Output<String> hostSecondary;
 
     /**
-     * @return The secondary host for the Managed Database.
+     * @return The secondary/private network host for the Managed Database.
      * 
      */
     public Optional<Output<String>> hostSecondary() {
@@ -305,14 +305,14 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The Managed Database engine version.
+     * @return The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     public Optional<Output<String>> version() {
@@ -478,7 +478,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `mysql`)
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `mysql`)
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `v8.0.26`)
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `v8.0.26`)
          * 
          * @return builder
          * 

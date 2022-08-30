@@ -12,26 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigDeviceSdd {
-    private final Integer diskId;
-    private final @Nullable String diskLabel;
-    private final @Nullable Integer volumeId;
+    /**
+     * @return The Disk ID of the associated `disk_label`, if used
+     * 
+     */
+    private Integer diskId;
+    /**
+     * @return The `label` of the `disk` to map to this `device` slot.
+     * 
+     */
+    private @Nullable String diskLabel;
+    /**
+     * @return The Volume ID to map to this `device` slot.
+     * 
+     */
+    private @Nullable Integer volumeId;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceConfigDeviceSdd(
-        @CustomType.Parameter("diskId") Integer diskId,
-        @CustomType.Parameter("diskLabel") @Nullable String diskLabel,
-        @CustomType.Parameter("volumeId") @Nullable Integer volumeId) {
-        this.diskId = diskId;
-        this.diskLabel = diskLabel;
-        this.volumeId = volumeId;
-    }
-
+    private GetInstancesInstanceConfigDeviceSdd() {}
+    /**
+     * @return The Disk ID of the associated `disk_label`, if used
+     * 
+     */
     public Integer diskId() {
         return this.diskId;
     }
+    /**
+     * @return The `label` of the `disk` to map to this `device` slot.
+     * 
+     */
     public Optional<String> diskLabel() {
         return Optional.ofNullable(this.diskLabel);
     }
+    /**
+     * @return The Volume ID to map to this `device` slot.
+     * 
+     */
     public Optional<Integer> volumeId() {
         return Optional.ofNullable(this.volumeId);
     }
@@ -43,16 +58,12 @@ public final class GetInstancesInstanceConfigDeviceSdd {
     public static Builder builder(GetInstancesInstanceConfigDeviceSdd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer diskId;
         private @Nullable String diskLabel;
         private @Nullable Integer volumeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceConfigDeviceSdd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskId = defaults.diskId;
@@ -60,19 +71,27 @@ public final class GetInstancesInstanceConfigDeviceSdd {
     	      this.volumeId = defaults.volumeId;
         }
 
+        @CustomType.Setter
         public Builder diskId(Integer diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskLabel(@Nullable String diskLabel) {
             this.diskLabel = diskLabel;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(@Nullable Integer volumeId) {
             this.volumeId = volumeId;
             return this;
-        }        public GetInstancesInstanceConfigDeviceSdd build() {
-            return new GetInstancesInstanceConfigDeviceSdd(diskId, diskLabel, volumeId);
+        }
+        public GetInstancesInstanceConfigDeviceSdd build() {
+            final var o = new GetInstancesInstanceConfigDeviceSdd();
+            o.diskId = diskId;
+            o.diskLabel = diskLabel;
+            o.volumeId = volumeId;
+            return o;
         }
     }
 }

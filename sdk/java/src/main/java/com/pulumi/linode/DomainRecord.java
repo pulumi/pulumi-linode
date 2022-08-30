@@ -61,9 +61,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports no additional attributes.
  * 
  * ## Import
  * 

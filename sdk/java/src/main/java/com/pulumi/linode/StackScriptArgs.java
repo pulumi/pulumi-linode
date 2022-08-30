@@ -109,16 +109,14 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-     * parameters during deployment.
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      * 
      */
     @Import(name="userDefinedFields")
     private @Nullable Output<List<StackScriptUserDefinedFieldArgs>> userDefinedFields;
 
     /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-     * parameters during deployment.
+     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      * 
      */
     public Optional<Output<List<StackScriptUserDefinedFieldArgs>>> userDefinedFields() {
@@ -292,8 +290,7 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-         * parameters during deployment.
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
          * 
          * @return builder
          * 
@@ -304,8 +301,7 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-         * parameters during deployment.
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
          * 
          * @return builder
          * 
@@ -315,8 +311,7 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-         * parameters during deployment.
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
          * 
          * @return builder
          * 

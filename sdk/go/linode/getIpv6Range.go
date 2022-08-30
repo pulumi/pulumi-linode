@@ -39,17 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The `Ipv6Range` data source exports the following attributes:
-//
-// * `ipBgp` - Whether this IPv6 range is shared.
-//
-// * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-//
-// * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-//
-// * `region` - The region for this range of IPv6 addresses.
 func LookupIpv6Range(ctx *pulumi.Context, args *LookupIpv6RangeArgs, opts ...pulumi.InvokeOption) (*LookupIpv6RangeResult, error) {
 	var rv LookupIpv6RangeResult
 	err := ctx.Invoke("linode:index/getIpv6Range:getIpv6Range", args, &rv, opts...)
@@ -68,12 +57,15 @@ type LookupIpv6RangeArgs struct {
 // A collection of values returned by getIpv6Range.
 type LookupIpv6RangeResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
-	IsBgp   bool   `pulumi:"isBgp"`
-	Linodes []int  `pulumi:"linodes"`
-	Prefix  int    `pulumi:"prefix"`
-	Range   string `pulumi:"range"`
-	Region  string `pulumi:"region"`
+	Id    string `pulumi:"id"`
+	IsBgp bool   `pulumi:"isBgp"`
+	// A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+	Linodes []int `pulumi:"linodes"`
+	// The prefix length of the address, denoting how many addresses can be assigned from this range.
+	Prefix int    `pulumi:"prefix"`
+	Range  string `pulumi:"range"`
+	// The region for this range of IPv6 addresses.
+	Region string `pulumi:"region"`
 }
 
 func LookupIpv6RangeOutput(ctx *pulumi.Context, args LookupIpv6RangeOutputArgs, opts ...pulumi.InvokeOption) LookupIpv6RangeResultOutput {
@@ -123,10 +115,12 @@ func (o LookupIpv6RangeResultOutput) IsBgp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) bool { return v.IsBgp }).(pulumi.BoolOutput)
 }
 
+// A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
 func (o LookupIpv6RangeResultOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) []int { return v.Linodes }).(pulumi.IntArrayOutput)
 }
 
+// The prefix length of the address, denoting how many addresses can be assigned from this range.
 func (o LookupIpv6RangeResultOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) int { return v.Prefix }).(pulumi.IntOutput)
 }
@@ -135,6 +129,7 @@ func (o LookupIpv6RangeResultOutput) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) string { return v.Range }).(pulumi.StringOutput)
 }
 
+// The region for this range of IPv6 addresses.
 func (o LookupIpv6RangeResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) string { return v.Region }).(pulumi.StringOutput)
 }

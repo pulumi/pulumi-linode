@@ -50,13 +50,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `token` - The token used to access the API.
-//
-// * `created` - The date this Token was created.
 //
 // ## Import
 //
@@ -72,7 +65,7 @@ import (
 type Token struct {
 	pulumi.CustomResourceState
 
-	// The date and time this token was created.
+	// The date this Token was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
 	Expiry pulumi.StringPtrOutput `pulumi:"expiry"`
@@ -116,7 +109,7 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	// The date and time this token was created.
+	// The date this Token was created.
 	Created *string `pulumi:"created"`
 	// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
 	Expiry *string `pulumi:"expiry"`
@@ -129,7 +122,7 @@ type tokenState struct {
 }
 
 type TokenState struct {
-	// The date and time this token was created.
+	// The date this Token was created.
 	Created pulumi.StringPtrInput
 	// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
 	Expiry pulumi.StringPtrInput
@@ -251,7 +244,7 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
-// The date and time this token was created.
+// The date this Token was created.
 func (o TokenOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }

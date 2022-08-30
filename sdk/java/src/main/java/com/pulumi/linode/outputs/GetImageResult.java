@@ -11,56 +11,85 @@ import java.util.Objects;
 
 @CustomType
 public final class GetImageResult {
-    private final String created;
-    private final String createdBy;
-    private final Boolean deprecated;
-    private final String description;
-    private final String expiry;
-    private final String id;
-    private final Boolean isPublic;
-    private final String label;
-    private final Integer size;
-    private final String status;
-    private final String type;
-    private final String vendor;
+    /**
+     * @return When this Image was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return The name of the User who created this Image, or &#34;linode&#34; for official Images.
+     * 
+     */
+    private String createdBy;
+    /**
+     * @return Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     * 
+     */
+    private Boolean deprecated;
+    /**
+     * @return A detailed description of this Image.
+     * 
+     */
+    private String description;
+    private String expiry;
+    private String id;
+    /**
+     * @return True if the Image is public.
+     * 
+     */
+    private Boolean isPublic;
+    /**
+     * @return A short description of the Image.
+     * 
+     */
+    private String label;
+    /**
+     * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     * 
+     */
+    private Integer size;
+    /**
+     * @return The current status of this image. (`creating`, `pending_upload`, `available`)
+     * 
+     */
+    private String status;
+    /**
+     * @return How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     * 
+     */
+    private String type;
+    /**
+     * @return The upstream distribution vendor. `None` for private Images.
+     * 
+     */
+    private String vendor;
 
-    @CustomType.Constructor
-    private GetImageResult(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("createdBy") String createdBy,
-        @CustomType.Parameter("deprecated") Boolean deprecated,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiry") String expiry,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isPublic") Boolean isPublic,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vendor") String vendor) {
-        this.created = created;
-        this.createdBy = createdBy;
-        this.deprecated = deprecated;
-        this.description = description;
-        this.expiry = expiry;
-        this.id = id;
-        this.isPublic = isPublic;
-        this.label = label;
-        this.size = size;
-        this.status = status;
-        this.type = type;
-        this.vendor = vendor;
-    }
-
+    private GetImageResult() {}
+    /**
+     * @return When this Image was created.
+     * 
+     */
     public String created() {
         return this.created;
     }
+    /**
+     * @return The name of the User who created this Image, or &#34;linode&#34; for official Images.
+     * 
+     */
     public String createdBy() {
         return this.createdBy;
     }
+    /**
+     * @return Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     * 
+     */
     public Boolean deprecated() {
         return this.deprecated;
     }
+    /**
+     * @return A detailed description of this Image.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -70,21 +99,45 @@ public final class GetImageResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return True if the Image is public.
+     * 
+     */
     public Boolean isPublic() {
         return this.isPublic;
     }
+    /**
+     * @return A short description of the Image.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     * 
+     */
     public Integer size() {
         return this.size;
     }
+    /**
+     * @return The current status of this image. (`creating`, `pending_upload`, `available`)
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The upstream distribution vendor. `None` for private Images.
+     * 
+     */
     public String vendor() {
         return this.vendor;
     }
@@ -96,7 +149,7 @@ public final class GetImageResult {
     public static Builder builder(GetImageResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private String createdBy;
@@ -110,11 +163,7 @@ public final class GetImageResult {
         private String status;
         private String type;
         private String vendor;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -131,55 +180,81 @@ public final class GetImageResult {
     	      this.vendor = defaults.vendor;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
+        @CustomType.Setter
         public Builder deprecated(Boolean deprecated) {
             this.deprecated = Objects.requireNonNull(deprecated);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiry(String expiry) {
             this.expiry = Objects.requireNonNull(expiry);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
             this.isPublic = Objects.requireNonNull(isPublic);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vendor(String vendor) {
             this.vendor = Objects.requireNonNull(vendor);
             return this;
-        }        public GetImageResult build() {
-            return new GetImageResult(created, createdBy, deprecated, description, expiry, id, isPublic, label, size, status, type, vendor);
+        }
+        public GetImageResult build() {
+            final var o = new GetImageResult();
+            o.created = created;
+            o.createdBy = createdBy;
+            o.deprecated = deprecated;
+            o.description = description;
+            o.expiry = expiry;
+            o.id = id;
+            o.isPublic = isPublic;
+            o.label = label;
+            o.size = size;
+            o.status = status;
+            o.type = type;
+            o.vendor = vendor;
+            return o;
         }
     }
 }

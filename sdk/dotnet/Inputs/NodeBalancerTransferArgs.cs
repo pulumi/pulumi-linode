@@ -12,12 +12,21 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class NodeBalancerTransferArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The total transfer, in MB, used by this NodeBalancer for the current month
+        /// </summary>
         [Input("in")]
         public Input<double>? In { get; set; }
 
+        /// <summary>
+        /// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        /// </summary>
         [Input("out")]
         public Input<double>? Out { get; set; }
 
+        /// <summary>
+        /// The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        /// </summary>
         [Input("total")]
         public Input<double>? Total { get; set; }
 

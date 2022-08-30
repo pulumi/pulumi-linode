@@ -319,10 +319,8 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
@@ -551,8 +549,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="sslCommonname")
     def ssl_commonname(self) -> Optional[pulumi.Input[str]]:
         """
-        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_commonname")
 
@@ -564,8 +561,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
@@ -647,23 +643,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
             stickiness="http_cookie",
             algorithm="source")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-
-        * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-
-        * `node_status` - The status of the attached nodes.
-
-        ### node_status
-
-        The following attributes are available on node_status:
-
-        * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
-
-        * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 
         ## Import
 
@@ -728,23 +707,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
             stickiness="http_cookie",
             algorithm="source")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-
-        * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-
-        * `node_status` - The status of the attached nodes.
-
-        ### node_status
-
-        The following attributes are available on node_status:
-
-        * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
-
-        * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 
         ## Import
 
@@ -870,10 +832,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         :param pulumi.Input[str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
-        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-               refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param pulumi.Input[str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
@@ -1028,8 +988,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="sslCommonname")
     def ssl_commonname(self) -> pulumi.Output[str]:
         """
-        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_commonname")
 
@@ -1037,8 +996,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="sslFingerprint")
     def ssl_fingerprint(self) -> pulumi.Output[str]:
         """
-        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_fingerprint")
 

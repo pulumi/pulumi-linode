@@ -36,15 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode User resource exports the following attributes:
-        /// 
-        /// * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-        /// 
-        /// * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-        /// 
-        /// * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
@@ -74,15 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode User resource exports the following attributes:
-        /// 
-        /// * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-        /// 
-        /// * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-        /// 
-        /// * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -121,12 +103,21 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetUserResult
     {
+        /// <summary>
+        /// The email address for this User, for account management communications, and may be used for other communications as configured.
+        /// </summary>
         public readonly string Email;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// If true, this User must be granted access to perform actions or access entities on this Account.
+        /// </summary>
         public readonly bool Restricted;
+        /// <summary>
+        /// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        /// </summary>
         public readonly ImmutableArray<string> SshKeys;
         public readonly string Username;
 

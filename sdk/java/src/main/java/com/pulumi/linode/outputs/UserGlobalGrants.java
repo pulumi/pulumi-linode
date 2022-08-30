@@ -12,44 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserGlobalGrants {
-    private final @Nullable String accountAccess;
-    private final @Nullable Boolean addDomains;
-    private final @Nullable Boolean addFirewalls;
-    private final @Nullable Boolean addImages;
-    private final @Nullable Boolean addLinodes;
-    private final @Nullable Boolean addLongview;
-    private final @Nullable Boolean addNodebalancers;
-    private final @Nullable Boolean addStackscripts;
-    private final @Nullable Boolean addVolumes;
-    private final @Nullable Boolean cancelAccount;
-    private final @Nullable Boolean longviewSubscription;
+    private @Nullable String accountAccess;
+    private @Nullable Boolean addDomains;
+    private @Nullable Boolean addFirewalls;
+    private @Nullable Boolean addImages;
+    private @Nullable Boolean addLinodes;
+    private @Nullable Boolean addLongview;
+    private @Nullable Boolean addNodebalancers;
+    private @Nullable Boolean addStackscripts;
+    private @Nullable Boolean addVolumes;
+    private @Nullable Boolean cancelAccount;
+    private @Nullable Boolean longviewSubscription;
 
-    @CustomType.Constructor
-    private UserGlobalGrants(
-        @CustomType.Parameter("accountAccess") @Nullable String accountAccess,
-        @CustomType.Parameter("addDomains") @Nullable Boolean addDomains,
-        @CustomType.Parameter("addFirewalls") @Nullable Boolean addFirewalls,
-        @CustomType.Parameter("addImages") @Nullable Boolean addImages,
-        @CustomType.Parameter("addLinodes") @Nullable Boolean addLinodes,
-        @CustomType.Parameter("addLongview") @Nullable Boolean addLongview,
-        @CustomType.Parameter("addNodebalancers") @Nullable Boolean addNodebalancers,
-        @CustomType.Parameter("addStackscripts") @Nullable Boolean addStackscripts,
-        @CustomType.Parameter("addVolumes") @Nullable Boolean addVolumes,
-        @CustomType.Parameter("cancelAccount") @Nullable Boolean cancelAccount,
-        @CustomType.Parameter("longviewSubscription") @Nullable Boolean longviewSubscription) {
-        this.accountAccess = accountAccess;
-        this.addDomains = addDomains;
-        this.addFirewalls = addFirewalls;
-        this.addImages = addImages;
-        this.addLinodes = addLinodes;
-        this.addLongview = addLongview;
-        this.addNodebalancers = addNodebalancers;
-        this.addStackscripts = addStackscripts;
-        this.addVolumes = addVolumes;
-        this.cancelAccount = cancelAccount;
-        this.longviewSubscription = longviewSubscription;
-    }
-
+    private UserGlobalGrants() {}
     public Optional<String> accountAccess() {
         return Optional.ofNullable(this.accountAccess);
     }
@@ -91,7 +66,7 @@ public final class UserGlobalGrants {
     public static Builder builder(UserGlobalGrants defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountAccess;
         private @Nullable Boolean addDomains;
@@ -104,11 +79,7 @@ public final class UserGlobalGrants {
         private @Nullable Boolean addVolumes;
         private @Nullable Boolean cancelAccount;
         private @Nullable Boolean longviewSubscription;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserGlobalGrants defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountAccess = defaults.accountAccess;
@@ -124,51 +95,75 @@ public final class UserGlobalGrants {
     	      this.longviewSubscription = defaults.longviewSubscription;
         }
 
+        @CustomType.Setter
         public Builder accountAccess(@Nullable String accountAccess) {
             this.accountAccess = accountAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder addDomains(@Nullable Boolean addDomains) {
             this.addDomains = addDomains;
             return this;
         }
+        @CustomType.Setter
         public Builder addFirewalls(@Nullable Boolean addFirewalls) {
             this.addFirewalls = addFirewalls;
             return this;
         }
+        @CustomType.Setter
         public Builder addImages(@Nullable Boolean addImages) {
             this.addImages = addImages;
             return this;
         }
+        @CustomType.Setter
         public Builder addLinodes(@Nullable Boolean addLinodes) {
             this.addLinodes = addLinodes;
             return this;
         }
+        @CustomType.Setter
         public Builder addLongview(@Nullable Boolean addLongview) {
             this.addLongview = addLongview;
             return this;
         }
+        @CustomType.Setter
         public Builder addNodebalancers(@Nullable Boolean addNodebalancers) {
             this.addNodebalancers = addNodebalancers;
             return this;
         }
+        @CustomType.Setter
         public Builder addStackscripts(@Nullable Boolean addStackscripts) {
             this.addStackscripts = addStackscripts;
             return this;
         }
+        @CustomType.Setter
         public Builder addVolumes(@Nullable Boolean addVolumes) {
             this.addVolumes = addVolumes;
             return this;
         }
+        @CustomType.Setter
         public Builder cancelAccount(@Nullable Boolean cancelAccount) {
             this.cancelAccount = cancelAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder longviewSubscription(@Nullable Boolean longviewSubscription) {
             this.longviewSubscription = longviewSubscription;
             return this;
-        }        public UserGlobalGrants build() {
-            return new UserGlobalGrants(accountAccess, addDomains, addFirewalls, addImages, addLinodes, addLongview, addNodebalancers, addStackscripts, addVolumes, cancelAccount, longviewSubscription);
+        }
+        public UserGlobalGrants build() {
+            final var o = new UserGlobalGrants();
+            o.accountAccess = accountAccess;
+            o.addDomains = addDomains;
+            o.addFirewalls = addFirewalls;
+            o.addImages = addImages;
+            o.addLinodes = addLinodes;
+            o.addLongview = addLongview;
+            o.addNodebalancers = addNodebalancers;
+            o.addStackscripts = addStackscripts;
+            o.addVolumes = addVolumes;
+            o.cancelAccount = cancelAccount;
+            o.longviewSubscription = longviewSubscription;
+            return o;
         }
     }
 }

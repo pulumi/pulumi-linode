@@ -17,35 +17,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceConfigDevice {
-    private final List<GetInstancesInstanceConfigDeviceSda> sdas;
-    private final List<GetInstancesInstanceConfigDeviceSdb> sdbs;
-    private final List<GetInstancesInstanceConfigDeviceSdc> sdcs;
-    private final List<GetInstancesInstanceConfigDeviceSdd> sdds;
-    private final List<GetInstancesInstanceConfigDeviceSde> sdes;
-    private final List<GetInstancesInstanceConfigDeviceSdf> sdfs;
-    private final List<GetInstancesInstanceConfigDeviceSdg> sdgs;
-    private final List<GetInstancesInstanceConfigDeviceSdh> sdhs;
+    private List<GetInstancesInstanceConfigDeviceSda> sdas;
+    private List<GetInstancesInstanceConfigDeviceSdb> sdbs;
+    private List<GetInstancesInstanceConfigDeviceSdc> sdcs;
+    private List<GetInstancesInstanceConfigDeviceSdd> sdds;
+    private List<GetInstancesInstanceConfigDeviceSde> sdes;
+    private List<GetInstancesInstanceConfigDeviceSdf> sdfs;
+    private List<GetInstancesInstanceConfigDeviceSdg> sdgs;
+    private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceConfigDevice(
-        @CustomType.Parameter("sdas") List<GetInstancesInstanceConfigDeviceSda> sdas,
-        @CustomType.Parameter("sdbs") List<GetInstancesInstanceConfigDeviceSdb> sdbs,
-        @CustomType.Parameter("sdcs") List<GetInstancesInstanceConfigDeviceSdc> sdcs,
-        @CustomType.Parameter("sdds") List<GetInstancesInstanceConfigDeviceSdd> sdds,
-        @CustomType.Parameter("sdes") List<GetInstancesInstanceConfigDeviceSde> sdes,
-        @CustomType.Parameter("sdfs") List<GetInstancesInstanceConfigDeviceSdf> sdfs,
-        @CustomType.Parameter("sdgs") List<GetInstancesInstanceConfigDeviceSdg> sdgs,
-        @CustomType.Parameter("sdhs") List<GetInstancesInstanceConfigDeviceSdh> sdhs) {
-        this.sdas = sdas;
-        this.sdbs = sdbs;
-        this.sdcs = sdcs;
-        this.sdds = sdds;
-        this.sdes = sdes;
-        this.sdfs = sdfs;
-        this.sdgs = sdgs;
-        this.sdhs = sdhs;
-    }
-
+    private GetInstancesInstanceConfigDevice() {}
     public List<GetInstancesInstanceConfigDeviceSda> sdas() {
         return this.sdas;
     }
@@ -78,7 +59,7 @@ public final class GetInstancesInstanceConfigDevice {
     public static Builder builder(GetInstancesInstanceConfigDevice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstancesInstanceConfigDeviceSda> sdas;
         private List<GetInstancesInstanceConfigDeviceSdb> sdbs;
@@ -88,11 +69,7 @@ public final class GetInstancesInstanceConfigDevice {
         private List<GetInstancesInstanceConfigDeviceSdf> sdfs;
         private List<GetInstancesInstanceConfigDeviceSdg> sdgs;
         private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceConfigDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sdas = defaults.sdas;
@@ -105,6 +82,7 @@ public final class GetInstancesInstanceConfigDevice {
     	      this.sdhs = defaults.sdhs;
         }
 
+        @CustomType.Setter
         public Builder sdas(List<GetInstancesInstanceConfigDeviceSda> sdas) {
             this.sdas = Objects.requireNonNull(sdas);
             return this;
@@ -112,6 +90,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdas(GetInstancesInstanceConfigDeviceSda... sdas) {
             return sdas(List.of(sdas));
         }
+        @CustomType.Setter
         public Builder sdbs(List<GetInstancesInstanceConfigDeviceSdb> sdbs) {
             this.sdbs = Objects.requireNonNull(sdbs);
             return this;
@@ -119,6 +98,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdbs(GetInstancesInstanceConfigDeviceSdb... sdbs) {
             return sdbs(List.of(sdbs));
         }
+        @CustomType.Setter
         public Builder sdcs(List<GetInstancesInstanceConfigDeviceSdc> sdcs) {
             this.sdcs = Objects.requireNonNull(sdcs);
             return this;
@@ -126,6 +106,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdcs(GetInstancesInstanceConfigDeviceSdc... sdcs) {
             return sdcs(List.of(sdcs));
         }
+        @CustomType.Setter
         public Builder sdds(List<GetInstancesInstanceConfigDeviceSdd> sdds) {
             this.sdds = Objects.requireNonNull(sdds);
             return this;
@@ -133,6 +114,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdds(GetInstancesInstanceConfigDeviceSdd... sdds) {
             return sdds(List.of(sdds));
         }
+        @CustomType.Setter
         public Builder sdes(List<GetInstancesInstanceConfigDeviceSde> sdes) {
             this.sdes = Objects.requireNonNull(sdes);
             return this;
@@ -140,6 +122,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdes(GetInstancesInstanceConfigDeviceSde... sdes) {
             return sdes(List.of(sdes));
         }
+        @CustomType.Setter
         public Builder sdfs(List<GetInstancesInstanceConfigDeviceSdf> sdfs) {
             this.sdfs = Objects.requireNonNull(sdfs);
             return this;
@@ -147,6 +130,7 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdfs(GetInstancesInstanceConfigDeviceSdf... sdfs) {
             return sdfs(List.of(sdfs));
         }
+        @CustomType.Setter
         public Builder sdgs(List<GetInstancesInstanceConfigDeviceSdg> sdgs) {
             this.sdgs = Objects.requireNonNull(sdgs);
             return this;
@@ -154,14 +138,25 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdgs(GetInstancesInstanceConfigDeviceSdg... sdgs) {
             return sdgs(List.of(sdgs));
         }
+        @CustomType.Setter
         public Builder sdhs(List<GetInstancesInstanceConfigDeviceSdh> sdhs) {
             this.sdhs = Objects.requireNonNull(sdhs);
             return this;
         }
         public Builder sdhs(GetInstancesInstanceConfigDeviceSdh... sdhs) {
             return sdhs(List.of(sdhs));
-        }        public GetInstancesInstanceConfigDevice build() {
-            return new GetInstancesInstanceConfigDevice(sdas, sdbs, sdcs, sdds, sdes, sdfs, sdgs, sdhs);
+        }
+        public GetInstancesInstanceConfigDevice build() {
+            final var o = new GetInstancesInstanceConfigDevice();
+            o.sdas = sdas;
+            o.sdbs = sdbs;
+            o.sdcs = sdcs;
+            o.sdds = sdds;
+            o.sdes = sdes;
+            o.sdfs = sdfs;
+            o.sdgs = sdgs;
+            o.sdhs = sdhs;
+            return o;
         }
     }
 }

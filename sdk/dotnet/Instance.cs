@@ -47,37 +47,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This Linode Instance resource exports the following attributes:
-    /// 
-    /// * `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
-    /// 
-    /// * `ip_address` - A string containing the Linode's public IP address.
-    /// 
-    /// * `private_ip_address` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
-    /// 
-    /// * `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
-    /// 
-    /// * `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-    /// 
-    /// * `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-    /// 
-    /// * `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-    /// 
-    /// * `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-    /// 
-    /// * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
-    /// 
-    /// * `backups` - Information about this Linode's backups status.
-    ///   
-    ///   * `enabled` - If this Linode has the Backup service enabled.
-    ///   
-    ///   * `schedule`
-    ///     
-    ///     * `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-    ///     
-    ///     * `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
     /// 
     /// ## Import
     /// 
@@ -173,21 +142,19 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceInterface>> Interfaces { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-        /// will be used for this field.
+        /// A string containing the Linode's public IP address.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-        /// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         /// </summary>
         [Output("ipv4s")]
         public Output<ImmutableArray<string>> Ipv4s { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         /// </summary>
         [Output("ipv6")]
         public Output<string> Ipv6 { get; private set; } = null!;
@@ -205,8 +172,7 @@ namespace Pulumi.Linode
         public Output<bool?> PrivateIp { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-        /// Instances in a region.
+        /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string> PrivateIpAddress { get; private set; } = null!;
@@ -254,7 +220,7 @@ namespace Pulumi.Linode
         public Output<int?> StackscriptId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the instance, indicating the current readiness state.
+        /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -632,8 +598,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-        /// will be used for this field.
+        /// A string containing the Linode's public IP address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -642,8 +607,7 @@ namespace Pulumi.Linode
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-        /// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         /// </summary>
         public InputList<string> Ipv4s
         {
@@ -652,7 +616,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         /// </summary>
         [Input("ipv6")]
         public Input<string>? Ipv6 { get; set; }
@@ -670,8 +634,7 @@ namespace Pulumi.Linode
         public Input<bool>? PrivateIp { get; set; }
 
         /// <summary>
-        /// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-        /// Instances in a region.
+        /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -731,7 +694,7 @@ namespace Pulumi.Linode
         public Input<int>? StackscriptId { get; set; }
 
         /// <summary>
-        /// The status of the instance, indicating the current readiness state.
+        /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

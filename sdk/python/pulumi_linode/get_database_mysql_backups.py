@@ -134,17 +134,6 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
             values=["auto"],
         )])
     ```
-    ## Attributes
-
-    Each backup will be stored in the `backups` attribute and will export the following attributes:
-
-    * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-
-    * `id` - The ID of the database backup object.
-
-    * `label` - The database backup’s label, for display purposes only.
-
-    * `type` - The type of database backup, determined by how the backup was created.
 
 
     :param int database_id: The ID of the database to retrieve backups for.
@@ -206,17 +195,6 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
             values=["auto"],
         )])
     ```
-    ## Attributes
-
-    Each backup will be stored in the `backups` attribute and will export the following attributes:
-
-    * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-
-    * `id` - The ID of the database backup object.
-
-    * `label` - The database backup’s label, for display purposes only.
-
-    * `type` - The type of database backup, determined by how the backup was created.
 
 
     :param int database_id: The ID of the database to retrieve backups for.

@@ -45,37 +45,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Domain resource exports the following attributes:
-//
-// * `id` - The unique ID of this Domain.
-//
-// * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-//
-// * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-//
-// * `group` - The group this Domain belongs to.
-//
-// * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-//
-// * `description` - A description for this Domain.
-//
-// * `masterIps` - The IP addresses representing the master DNS for this Domain.
-//
-// * `axfrIps` - The list of IPs that may perform a zone transfer for this Domain.
-//
-// * `ttlSec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-//
-// * `retrySec` - The interval, in seconds, at which a failed refresh should be retried.
-//
-// * `expireSec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-//
-// * `refreshSec` - The amount of time in seconds before this Domain should be refreshed.
-//
-// * `soaEmail` - Start of Authority email address.
-//
-// * `tags` - An array of tags applied to this object.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("linode:index/getDomain:getDomain", args, &rv, opts...)
@@ -95,20 +64,34 @@ type LookupDomainArgs struct {
 
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
-	AxfrIps     []string `pulumi:"axfrIps"`
-	Description string   `pulumi:"description"`
-	Domain      *string  `pulumi:"domain"`
-	ExpireSec   int      `pulumi:"expireSec"`
-	Group       string   `pulumi:"group"`
-	Id          *string  `pulumi:"id"`
-	MasterIps   []string `pulumi:"masterIps"`
-	RefreshSec  int      `pulumi:"refreshSec"`
-	RetrySec    int      `pulumi:"retrySec"`
-	SoaEmail    string   `pulumi:"soaEmail"`
-	Status      string   `pulumi:"status"`
-	Tags        []string `pulumi:"tags"`
-	TtlSec      int      `pulumi:"ttlSec"`
-	Type        string   `pulumi:"type"`
+	// The list of IPs that may perform a zone transfer for this Domain.
+	AxfrIps []string `pulumi:"axfrIps"`
+	// A description for this Domain.
+	Description string `pulumi:"description"`
+	// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+	Domain *string `pulumi:"domain"`
+	// The amount of time in seconds that may pass before this Domain is no longer authoritative.
+	ExpireSec int `pulumi:"expireSec"`
+	// The group this Domain belongs to.
+	Group string `pulumi:"group"`
+	// The unique ID of this Domain.
+	Id *string `pulumi:"id"`
+	// The IP addresses representing the master DNS for this Domain.
+	MasterIps []string `pulumi:"masterIps"`
+	// The amount of time in seconds before this Domain should be refreshed.
+	RefreshSec int `pulumi:"refreshSec"`
+	// The interval, in seconds, at which a failed refresh should be retried.
+	RetrySec int `pulumi:"retrySec"`
+	// Start of Authority email address.
+	SoaEmail string `pulumi:"soaEmail"`
+	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+	Status string `pulumi:"status"`
+	// An array of tags applied to this object.
+	Tags []string `pulumi:"tags"`
+	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+	TtlSec int `pulumi:"ttlSec"`
+	// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+	Type string `pulumi:"type"`
 }
 
 func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
@@ -151,58 +134,72 @@ func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx cont
 	return o
 }
 
+// The list of IPs that may perform a zone transfer for this Domain.
 func (o LookupDomainResultOutput) AxfrIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []string { return v.AxfrIps }).(pulumi.StringArrayOutput)
 }
 
+// A description for this Domain.
 func (o LookupDomainResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
 func (o LookupDomainResultOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// The amount of time in seconds that may pass before this Domain is no longer authoritative.
 func (o LookupDomainResultOutput) ExpireSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.ExpireSec }).(pulumi.IntOutput)
 }
 
+// The group this Domain belongs to.
 func (o LookupDomainResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The unique ID of this Domain.
 func (o LookupDomainResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The IP addresses representing the master DNS for this Domain.
 func (o LookupDomainResultOutput) MasterIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []string { return v.MasterIps }).(pulumi.StringArrayOutput)
 }
 
+// The amount of time in seconds before this Domain should be refreshed.
 func (o LookupDomainResultOutput) RefreshSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.RefreshSec }).(pulumi.IntOutput)
 }
 
+// The interval, in seconds, at which a failed refresh should be retried.
 func (o LookupDomainResultOutput) RetrySec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.RetrySec }).(pulumi.IntOutput)
 }
 
+// Start of Authority email address.
 func (o LookupDomainResultOutput) SoaEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.SoaEmail }).(pulumi.StringOutput)
 }
 
+// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
 func (o LookupDomainResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// An array of tags applied to this object.
 func (o LookupDomainResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 func (o LookupDomainResultOutput) TtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.TtlSec }).(pulumi.IntOutput)
 }
 
+// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
 func (o LookupDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

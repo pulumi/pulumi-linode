@@ -36,33 +36,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Account resource exports the following attributes:
-//
-// * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
-//
-// * `firstName` - The first name of the person associated with this Account.
-//
-// * `lastName` - The last name of the person associated with this Account.
-//
-// * `company` - The company name associated with this Account.
-//
-// * `address1` - First line of this Account's billing address.
-//
-// * `address2` - Second line of this Account's billing address.
-//
-// * `phone` - The phone number associated with this Account.
-//
-// * `city` - The city for this Account's billing address.
-//
-// * `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-//
-// * `country` - The two-letter country code of this Account's billing address.
-//
-// * `zip` - The zip code of this Account's billing address.
-//
-// * `balance` - This Account's balance, in US dollars.
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	var rv GetAccountResult
 	err := ctx.Invoke("linode:index/getAccount:getAccount", nil, &rv, opts...)
@@ -74,18 +47,30 @@ func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountRe
 
 // A collection of values returned by getAccount.
 type GetAccountResult struct {
-	Address1  string `pulumi:"address1"`
-	Address2  string `pulumi:"address2"`
-	Balance   int    `pulumi:"balance"`
-	City      string `pulumi:"city"`
-	Company   string `pulumi:"company"`
-	Country   string `pulumi:"country"`
-	Email     string `pulumi:"email"`
+	// First line of this Account's billing address.
+	Address1 string `pulumi:"address1"`
+	// Second line of this Account's billing address.
+	Address2 string `pulumi:"address2"`
+	// This Account's balance, in US dollars.
+	Balance int `pulumi:"balance"`
+	// The city for this Account's billing address.
+	City string `pulumi:"city"`
+	// The company name associated with this Account.
+	Company string `pulumi:"company"`
+	// The two-letter country code of this Account's billing address.
+	Country string `pulumi:"country"`
+	// The email address for this Account, for account management communications, and may be used for other communications as configured.
+	Email string `pulumi:"email"`
+	// The first name of the person associated with this Account.
 	FirstName string `pulumi:"firstName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The last name of the person associated with this Account.
 	LastName string `pulumi:"lastName"`
-	Phone    string `pulumi:"phone"`
-	State    string `pulumi:"state"`
-	Zip      string `pulumi:"zip"`
+	// The phone number associated with this Account.
+	Phone string `pulumi:"phone"`
+	// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+	State string `pulumi:"state"`
+	// The zip code of this Account's billing address.
+	Zip string `pulumi:"zip"`
 }

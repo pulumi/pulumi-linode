@@ -16,38 +16,25 @@ public final class FirewallDevice {
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    private final @Nullable Integer entityId;
+    private @Nullable Integer entityId;
     /**
      * @return The ID of the Firewall Device.
      * 
      */
-    private final @Nullable Integer id;
+    private @Nullable Integer id;
     /**
      * @return Used to identify this rule. For display purposes only.
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return The type of Firewall Device.
      * 
      */
-    private final @Nullable String type;
-    private final @Nullable String url;
+    private @Nullable String type;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private FirewallDevice(
-        @CustomType.Parameter("entityId") @Nullable Integer entityId,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.entityId = entityId;
-        this.id = id;
-        this.label = label;
-        this.type = type;
-        this.url = url;
-    }
-
+    private FirewallDevice() {}
     /**
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
@@ -87,18 +74,14 @@ public final class FirewallDevice {
     public static Builder builder(FirewallDevice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer entityId;
         private @Nullable Integer id;
         private @Nullable String label;
         private @Nullable String type;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityId = defaults.entityId;
@@ -108,27 +91,39 @@ public final class FirewallDevice {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder entityId(@Nullable Integer entityId) {
             this.entityId = entityId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public FirewallDevice build() {
-            return new FirewallDevice(entityId, id, label, type, url);
+        }
+        public FirewallDevice build() {
+            final var o = new FirewallDevice();
+            o.entityId = entityId;
+            o.id = id;
+            o.label = label;
+            o.type = type;
+            o.url = url;
+            return o;
         }
     }
 }

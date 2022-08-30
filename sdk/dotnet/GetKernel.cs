@@ -36,23 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Kernel resource exports the following attributes:
-        /// 
-        /// * `architecture` - The architecture of this Kernel.
-        /// 
-        /// * `deprecated` - Whether or not this Kernel is deprecated.
-        /// 
-        /// * `kvm` - If this Kernel is suitable for KVM Linodes.
-        /// 
-        /// * `label` - The friendly name of this Kernel.
-        /// 
-        /// * `pvops` - If this Kernel is suitable for paravirtualized operations.
-        /// 
-        /// * `version` - Linux Kernel version
-        /// 
-        /// * `xen` - If this Kernel is suitable for Xen Linodes.
         /// </summary>
         public static Task<GetKernelResult> InvokeAsync(GetKernelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelArgs(), options.WithDefaults());
@@ -82,23 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Kernel resource exports the following attributes:
-        /// 
-        /// * `architecture` - The architecture of this Kernel.
-        /// 
-        /// * `deprecated` - Whether or not this Kernel is deprecated.
-        /// 
-        /// * `kvm` - If this Kernel is suitable for KVM Linodes.
-        /// 
-        /// * `label` - The friendly name of this Kernel.
-        /// 
-        /// * `pvops` - If this Kernel is suitable for paravirtualized operations.
-        /// 
-        /// * `version` - Linux Kernel version
-        /// 
-        /// * `xen` - If this Kernel is suitable for Xen Linodes.
         /// </summary>
         public static Output<GetKernelResult> Invoke(GetKernelInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithDefaults());
@@ -137,13 +103,34 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetKernelResult
     {
+        /// <summary>
+        /// The architecture of this Kernel.
+        /// </summary>
         public readonly string Architecture;
+        /// <summary>
+        /// Whether or not this Kernel is deprecated.
+        /// </summary>
         public readonly bool Deprecated;
         public readonly string Id;
+        /// <summary>
+        /// If this Kernel is suitable for KVM Linodes.
+        /// </summary>
         public readonly bool Kvm;
+        /// <summary>
+        /// The friendly name of this Kernel.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// If this Kernel is suitable for paravirtualized operations.
+        /// </summary>
         public readonly bool Pvops;
+        /// <summary>
+        /// Linux Kernel version
+        /// </summary>
         public readonly string Version;
+        /// <summary>
+        /// If this Kernel is suitable for Xen Linodes.
+        /// </summary>
         public readonly bool Xen;
 
         [OutputConstructor]

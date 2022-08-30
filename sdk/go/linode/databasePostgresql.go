@@ -104,32 +104,6 @@ import (
 //
 // * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 //
-// ## Attributes
-//
-// In addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the Managed Database.
-//
-// * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-//
-// * `created` - When this Managed Database was created.
-//
-// * `engine` - The Managed Database engine. (e.g. `postgresql`)
-//
-// * `hostPrimary` - The primary host for the Managed Database.
-//
-// * `hostSecondary` - The secondary/private network host for the Managed Database.
-//
-// * `rootPassword` - The randomly-generated root password for the Managed Database instance.
-//
-// * `rootUsername` - The root username for the Managed Database instance.
-//
-// * `status` - The operating status of the Managed Database.
-//
-// * `updated` - When this Managed Database was last updated.
-//
-// * `version` - The Managed Database engine version. (e.g. `13.2`)
-//
 // ## Import
 //
 // Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -152,13 +126,13 @@ type DatabasePostgresql struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Whether the Managed Databases is encrypted. (default `false`)
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
-	// The Managed Database engine.
+	// The Managed Database engine. (e.g. `postgresql`)
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringOutput `pulumi:"hostPrimary"`
-	// The secondary host for the Managed Database.
+	// The secondary/private network host for the Managed Database.
 	HostSecondary pulumi.StringOutput `pulumi:"hostSecondary"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -184,7 +158,7 @@ type DatabasePostgresql struct {
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesOutput `pulumi:"updates"`
-	// The Managed Database engine version.
+	// The Managed Database engine version. (e.g. `13.2`)
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -239,13 +213,13 @@ type databasePostgresqlState struct {
 	Created *string `pulumi:"created"`
 	// Whether the Managed Databases is encrypted. (default `false`)
 	Encrypted *bool `pulumi:"encrypted"`
-	// The Managed Database engine.
+	// The Managed Database engine. (e.g. `postgresql`)
 	Engine *string `pulumi:"engine"`
 	// The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
 	EngineId *string `pulumi:"engineId"`
 	// The primary host for the Managed Database.
 	HostPrimary *string `pulumi:"hostPrimary"`
-	// The secondary host for the Managed Database.
+	// The secondary/private network host for the Managed Database.
 	HostSecondary *string `pulumi:"hostSecondary"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label *string `pulumi:"label"`
@@ -271,7 +245,7 @@ type databasePostgresqlState struct {
 	Updated *string `pulumi:"updated"`
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates *DatabasePostgresqlUpdates `pulumi:"updates"`
-	// The Managed Database engine version.
+	// The Managed Database engine version. (e.g. `13.2`)
 	Version *string `pulumi:"version"`
 }
 
@@ -286,13 +260,13 @@ type DatabasePostgresqlState struct {
 	Created pulumi.StringPtrInput
 	// Whether the Managed Databases is encrypted. (default `false`)
 	Encrypted pulumi.BoolPtrInput
-	// The Managed Database engine.
+	// The Managed Database engine. (e.g. `postgresql`)
 	Engine pulumi.StringPtrInput
 	// The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
 	EngineId pulumi.StringPtrInput
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringPtrInput
-	// The secondary host for the Managed Database.
+	// The secondary/private network host for the Managed Database.
 	HostSecondary pulumi.StringPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringPtrInput
@@ -318,7 +292,7 @@ type DatabasePostgresqlState struct {
 	Updated pulumi.StringPtrInput
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesPtrInput
-	// The Managed Database engine version.
+	// The Managed Database engine version. (e.g. `13.2`)
 	Version pulumi.StringPtrInput
 }
 
@@ -489,7 +463,7 @@ func (o DatabasePostgresqlOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
-// The Managed Database engine.
+// The Managed Database engine. (e.g. `postgresql`)
 func (o DatabasePostgresqlOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -504,7 +478,7 @@ func (o DatabasePostgresqlOutput) HostPrimary() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.HostPrimary }).(pulumi.StringOutput)
 }
 
-// The secondary host for the Managed Database.
+// The secondary/private network host for the Managed Database.
 func (o DatabasePostgresqlOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.HostSecondary }).(pulumi.StringOutput)
 }
@@ -569,7 +543,7 @@ func (o DatabasePostgresqlOutput) Updates() DatabasePostgresqlUpdatesOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) DatabasePostgresqlUpdatesOutput { return v.Updates }).(DatabasePostgresqlUpdatesOutput)
 }
 
-// The Managed Database engine version.
+// The Managed Database engine version. (e.g. `13.2`)
 func (o DatabasePostgresqlOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

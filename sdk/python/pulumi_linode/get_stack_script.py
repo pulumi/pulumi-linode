@@ -70,21 +70,33 @@ class GetStackScriptResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        The date this StackScript was created.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="deploymentsActive")
     def deployments_active(self) -> int:
+        """
+        Count of currently active, deployed Linodes created from this StackScript.
+        """
         return pulumi.get(self, "deployments_active")
 
     @property
     @pulumi.getter(name="deploymentsTotal")
     def deployments_total(self) -> int:
+        """
+        The total number of times this StackScript has been deployed.
+        """
         return pulumi.get(self, "deployments_total")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A description for the StackScript.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -95,46 +107,73 @@ class GetStackScriptResult:
     @property
     @pulumi.getter
     def images(self) -> Sequence[str]:
+        """
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        """
         return pulumi.get(self, "images")
 
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> bool:
+        """
+        This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter(name="revNote")
     def rev_note(self) -> str:
+        """
+        This field allows you to add notes for the set of revisions made to this StackScript.
+        """
         return pulumi.get(self, "rev_note")
 
     @property
     @pulumi.getter
     def script(self) -> str:
+        """
+        The script to execute when provisioning a new Linode with this StackScript.
+        """
         return pulumi.get(self, "script")
 
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        The date this StackScript was updated.
+        """
         return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> Sequence['outputs.GetStackScriptUserDefinedFieldResult']:
+        """
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        """
         return pulumi.get(self, "user_defined_fields")
 
     @property
     @pulumi.getter(name="userGravatarId")
     def user_gravatar_id(self) -> str:
+        """
+        The Gravatar ID for the User who created the StackScript.
+        """
         return pulumi.get(self, "user_gravatar_id")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The User who created the StackScript.
+        """
         return pulumi.get(self, "username")
 
 
@@ -176,50 +215,10 @@ def get_stack_script(id: Optional[int] = None,
 
     my_stackscript = linode.get_stack_script(id=355872)
     ```
-    ## Attributes
-
-    This resource exports the following attributes:
-
-    * `label` - The StackScript's label is for display purposes only.
-
-    * `script` - The script to execute when provisioning a new Linode with this StackScript.
-
-    * `description` - A description for the StackScript.
-
-    * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-
-    * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-
-    * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-
-    * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-
-    * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-
-    * `deployments_total` - The total number of times this StackScript has been deployed.
-
-    * `username` - The User who created the StackScript.
-
-    * `created` - The date this StackScript was created.
-
-    * `updated` - The date this StackScript was updated.
-
-    * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-      
-      * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-      
-      * `name` - The name of the field.
-      
-      * `example` - An example value for the field.
-      
-      * `one_of` - A list of acceptable single values for the field.
-      
-      * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-      
-      * `default` - The default value. If not specified, this value will be used.
 
 
     :param int id: The unique numeric ID of the StackScript to query.
+    :param Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -261,49 +260,9 @@ def get_stack_script_output(id: Optional[pulumi.Input[int]] = None,
 
     my_stackscript = linode.get_stack_script(id=355872)
     ```
-    ## Attributes
-
-    This resource exports the following attributes:
-
-    * `label` - The StackScript's label is for display purposes only.
-
-    * `script` - The script to execute when provisioning a new Linode with this StackScript.
-
-    * `description` - A description for the StackScript.
-
-    * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-
-    * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-
-    * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-
-    * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-
-    * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-
-    * `deployments_total` - The total number of times this StackScript has been deployed.
-
-    * `username` - The User who created the StackScript.
-
-    * `created` - The date this StackScript was created.
-
-    * `updated` - The date this StackScript was updated.
-
-    * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-      
-      * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-      
-      * `name` - The name of the field.
-      
-      * `example` - An example value for the field.
-      
-      * `one_of` - A list of acceptable single values for the field.
-      
-      * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-      
-      * `default` - The default value. If not specified, this value will be used.
 
 
     :param int id: The unique numeric ID of the StackScript to query.
+    :param Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
     """
     ...

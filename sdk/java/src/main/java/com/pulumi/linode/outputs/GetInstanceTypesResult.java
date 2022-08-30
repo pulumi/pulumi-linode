@@ -14,30 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypesResult {
-    private final @Nullable List<GetInstanceTypesFilter> filters;
+    private @Nullable List<GetInstanceTypesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
-    private final List<GetInstanceTypesType> types;
+    private String id;
+    private @Nullable String order;
+    private @Nullable String orderBy;
+    private List<GetInstanceTypesType> types;
 
-    @CustomType.Constructor
-    private GetInstanceTypesResult(
-        @CustomType.Parameter("filters") @Nullable List<GetInstanceTypesFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy,
-        @CustomType.Parameter("types") List<GetInstanceTypesType> types) {
-        this.filters = filters;
-        this.id = id;
-        this.order = order;
-        this.orderBy = orderBy;
-        this.types = types;
-    }
-
+    private GetInstanceTypesResult() {}
     public List<GetInstanceTypesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -65,18 +52,14 @@ public final class GetInstanceTypesResult {
     public static Builder builder(GetInstanceTypesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetInstanceTypesFilter> filters;
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
         private List<GetInstanceTypesType> types;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -86,6 +69,7 @@ public final class GetInstanceTypesResult {
     	      this.types = defaults.types;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetInstanceTypesFilter> filters) {
             this.filters = filters;
             return this;
@@ -93,26 +77,37 @@ public final class GetInstanceTypesResult {
         public Builder filters(GetInstanceTypesFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
         }
+        @CustomType.Setter
         public Builder types(List<GetInstanceTypesType> types) {
             this.types = Objects.requireNonNull(types);
             return this;
         }
         public Builder types(GetInstanceTypesType... types) {
             return types(List.of(types));
-        }        public GetInstanceTypesResult build() {
-            return new GetInstanceTypesResult(filters, id, order, orderBy, types);
+        }
+        public GetInstanceTypesResult build() {
+            final var o = new GetInstanceTypesResult();
+            o.filters = filters;
+            o.id = id;
+            o.order = order;
+            o.orderBy = orderBy;
+            o.types = types;
+            return o;
         }
     }
 }

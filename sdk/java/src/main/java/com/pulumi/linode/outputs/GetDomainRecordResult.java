@@ -12,80 +12,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainRecordResult {
-    private final Integer domainId;
-    private final @Nullable Integer id;
-    private final @Nullable String name;
-    private final Integer port;
-    private final Integer priority;
-    private final String protocol;
-    private final String service;
-    private final String tag;
-    private final String target;
-    private final Integer ttlSec;
-    private final String type;
-    private final Integer weight;
+    /**
+     * @return The associated domain&#39;s unique ID.
+     * 
+     */
+    private Integer domainId;
+    /**
+     * @return The unique ID of the Domain Record.
+     * 
+     */
+    private @Nullable Integer id;
+    /**
+     * @return The name of the Record.
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return The port this Record points to.
+     * 
+     */
+    private Integer port;
+    /**
+     * @return The priority of the target host. Lower values are preferred.
+     * 
+     */
+    private Integer priority;
+    /**
+     * @return The protocol this Record&#39;s service communicates with. Only valid for SRV records.
+     * 
+     */
+    private String protocol;
+    /**
+     * @return The service this Record identified. Only valid for SRV records.
+     * 
+     */
+    private String service;
+    /**
+     * @return The tag portion of a CAA record.
+     * 
+     */
+    private String tag;
+    /**
+     * @return The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+     * 
+     */
+    private String target;
+    /**
+     * @return The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
+     * 
+     */
+    private Integer ttlSec;
+    /**
+     * @return The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     * 
+     */
+    private String type;
+    /**
+     * @return The relative weight of this Record. Higher values are preferred.
+     * 
+     */
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetDomainRecordResult(
-        @CustomType.Parameter("domainId") Integer domainId,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("service") String service,
-        @CustomType.Parameter("tag") String tag,
-        @CustomType.Parameter("target") String target,
-        @CustomType.Parameter("ttlSec") Integer ttlSec,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.domainId = domainId;
-        this.id = id;
-        this.name = name;
-        this.port = port;
-        this.priority = priority;
-        this.protocol = protocol;
-        this.service = service;
-        this.tag = tag;
-        this.target = target;
-        this.ttlSec = ttlSec;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private GetDomainRecordResult() {}
+    /**
+     * @return The associated domain&#39;s unique ID.
+     * 
+     */
     public Integer domainId() {
         return this.domainId;
     }
+    /**
+     * @return The unique ID of the Domain Record.
+     * 
+     */
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The name of the Record.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The port this Record points to.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return The priority of the target host. Lower values are preferred.
+     * 
+     */
     public Integer priority() {
         return this.priority;
     }
+    /**
+     * @return The protocol this Record&#39;s service communicates with. Only valid for SRV records.
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return The service this Record identified. Only valid for SRV records.
+     * 
+     */
     public String service() {
         return this.service;
     }
+    /**
+     * @return The tag portion of a CAA record.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+     * 
+     */
     public String target() {
         return this.target;
     }
+    /**
+     * @return The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
+     * 
+     */
     public Integer ttlSec() {
         return this.ttlSec;
     }
+    /**
+     * @return The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The relative weight of this Record. Higher values are preferred.
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }
@@ -97,7 +166,7 @@ public final class GetDomainRecordResult {
     public static Builder builder(GetDomainRecordResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer domainId;
         private @Nullable Integer id;
@@ -111,11 +180,7 @@ public final class GetDomainRecordResult {
         private Integer ttlSec;
         private String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainRecordResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainId = defaults.domainId;
@@ -132,55 +197,81 @@ public final class GetDomainRecordResult {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder domainId(Integer domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
         }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
         public Builder ttlSec(Integer ttlSec) {
             this.ttlSec = Objects.requireNonNull(ttlSec);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetDomainRecordResult build() {
-            return new GetDomainRecordResult(domainId, id, name, port, priority, protocol, service, tag, target, ttlSec, type, weight);
+        }
+        public GetDomainRecordResult build() {
+            final var o = new GetDomainRecordResult();
+            o.domainId = domainId;
+            o.id = id;
+            o.name = name;
+            o.port = port;
+            o.priority = priority;
+            o.protocol = protocol;
+            o.service = service;
+            o.tag = tag;
+            o.target = target;
+            o.ttlSec = ttlSec;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

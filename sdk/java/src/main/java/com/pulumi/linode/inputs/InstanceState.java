@@ -216,16 +216,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-     * will be used for this field.
+     * A string containing the Linode&#39;s public IP address.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-     * will be used for this field.
+     * @return A string containing the Linode&#39;s public IP address.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -233,16 +231,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      * 
      */
     @Import(name="ipv4s")
     private @Nullable Output<List<String>> ipv4s;
 
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      * 
      */
     public Optional<Output<List<String>>> ipv4s() {
@@ -250,14 +246,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<String> ipv6;
 
     /**
-     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      * 
      */
     public Optional<Output<String>> ipv6() {
@@ -295,16 +291,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-     * Instances in a region.
+     * This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
      */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
-     * @return This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-     * Instances in a region.
+     * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
      */
     public Optional<Output<String>> privateIpAddress() {
@@ -417,14 +411,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the instance, indicating the current readiness state.
+     * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the instance, indicating the current readiness state.
+     * @return The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      * 
      */
     public Optional<Output<String>> status() {
@@ -854,8 +848,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-         * will be used for this field.
+         * @param ipAddress A string containing the Linode&#39;s public IP address.
          * 
          * @return builder
          * 
@@ -866,8 +859,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-         * will be used for this field.
+         * @param ipAddress A string containing the Linode&#39;s public IP address.
          * 
          * @return builder
          * 
@@ -877,8 +869,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-         * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
          * 
          * @return builder
          * 
@@ -889,8 +880,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-         * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
          * 
          * @return builder
          * 
@@ -900,8 +890,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-         * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
          * 
          * @return builder
          * 
@@ -911,7 +900,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
          * 
          * @return builder
          * 
@@ -922,7 +911,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
          * 
          * @return builder
          * 
@@ -974,8 +963,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpAddress This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-         * Instances in a region.
+         * @param privateIpAddress This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
          * 
          * @return builder
          * 
@@ -986,8 +974,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpAddress This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-         * Instances in a region.
+         * @param privateIpAddress This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
          * 
          * @return builder
          * 
@@ -1154,7 +1141,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the instance, indicating the current readiness state.
+         * @param status The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
          * 
          * @return builder
          * 
@@ -1165,7 +1152,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the instance, indicating the current readiness state.
+         * @param status The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
          * 
          * @return builder
          * 

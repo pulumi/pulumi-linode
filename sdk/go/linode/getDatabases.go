@@ -70,41 +70,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// Each engine will be stored in the `databases` attribute and will export the following attributes:
-//
-// * `allowList` - A list of IP addresses that can access the Managed Database.
-//
-// * `clusterSize` - The number of Linode Instance nodes deployed to the Managed Database.
-//
-// * `created` - When this Managed Database was created.
-//
-// * `encrypted` - Whether the Managed Databases is encrypted.
-//
-// * `engine` - The Managed Database engine.
-//
-// * `hostPrimary` - The primary host for the Managed Database.
-//
-// * `hostSecondary` - The secondary/private network host for the Managed Database.
-//
-// * `id` - The ID of the Managed Database.
-//
-// * `label` - A unique, user-defined string referring to the Managed Database.
-//
-// * `region` - The region to use for the Managed Database.
-//
-// * `replicationType` - The replication method used for the Managed Database.
-//
-// * `sslConnection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-//
-// * `status` - The operating status of the Managed Database.
-//
-// * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// * `updated` - When this Managed Database was last updated.
-//
-// * `version` - The Managed Database engine version.
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	var rv GetDatabasesResult
 	err := ctx.Invoke("linode:index/getDatabases:getDatabases", args, &rv, opts...)

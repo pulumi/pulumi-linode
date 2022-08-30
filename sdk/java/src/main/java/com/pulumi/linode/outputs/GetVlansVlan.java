@@ -11,32 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVlansVlan {
-    private final String created;
-    private final String label;
-    private final List<Integer> linodes;
-    private final String region;
+    /**
+     * @return When the VLAN was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return The unique label of the VLAN.
+     * 
+     */
+    private String label;
+    /**
+     * @return The running Linodes currently attached to the VLAN.
+     * 
+     */
+    private List<Integer> linodes;
+    /**
+     * @return The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
+    private String region;
 
-    @CustomType.Constructor
-    private GetVlansVlan(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("linodes") List<Integer> linodes,
-        @CustomType.Parameter("region") String region) {
-        this.created = created;
-        this.label = label;
-        this.linodes = linodes;
-        this.region = region;
-    }
-
+    private GetVlansVlan() {}
+    /**
+     * @return When the VLAN was created.
+     * 
+     */
     public String created() {
         return this.created;
     }
+    /**
+     * @return The unique label of the VLAN.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The running Linodes currently attached to the VLAN.
+     * 
+     */
     public List<Integer> linodes() {
         return this.linodes;
     }
+    /**
+     * @return The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     public String region() {
         return this.region;
     }
@@ -48,17 +69,13 @@ public final class GetVlansVlan {
     public static Builder builder(GetVlansVlan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private String label;
         private List<Integer> linodes;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVlansVlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -67,14 +84,17 @@ public final class GetVlansVlan {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder linodes(List<Integer> linodes) {
             this.linodes = Objects.requireNonNull(linodes);
             return this;
@@ -82,11 +102,18 @@ public final class GetVlansVlan {
         public Builder linodes(Integer... linodes) {
             return linodes(List.of(linodes));
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetVlansVlan build() {
-            return new GetVlansVlan(created, label, linodes, region);
+        }
+        public GetVlansVlan build() {
+            final var o = new GetVlansVlan();
+            o.created = created;
+            o.label = label;
+            o.linodes = linodes;
+            o.region = region;
+            return o;
         }
     }
 }

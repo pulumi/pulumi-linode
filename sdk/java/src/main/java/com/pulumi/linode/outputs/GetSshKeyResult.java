@@ -13,31 +13,20 @@ public final class GetSshKeyResult {
      * @return The date this key was added.
      * 
      */
-    private final String created;
+    private String created;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String label;
+    private String id;
+    private String label;
     /**
      * @return The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      * 
      */
-    private final String sshKey;
+    private String sshKey;
 
-    @CustomType.Constructor
-    private GetSshKeyResult(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("sshKey") String sshKey) {
-        this.created = created;
-        this.id = id;
-        this.label = label;
-        this.sshKey = sshKey;
-    }
-
+    private GetSshKeyResult() {}
     /**
      * @return The date this key was added.
      * 
@@ -70,17 +59,13 @@ public final class GetSshKeyResult {
     public static Builder builder(GetSshKeyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private String id;
         private String label;
         private String sshKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSshKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -89,23 +74,33 @@ public final class GetSshKeyResult {
     	      this.sshKey = defaults.sshKey;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder sshKey(String sshKey) {
             this.sshKey = Objects.requireNonNull(sshKey);
             return this;
-        }        public GetSshKeyResult build() {
-            return new GetSshKeyResult(created, id, label, sshKey);
+        }
+        public GetSshKeyResult build() {
+            final var o = new GetSshKeyResult();
+            o.created = created;
+            o.id = id;
+            o.label = label;
+            o.sshKey = sshKey;
+            return o;
         }
     }
 }

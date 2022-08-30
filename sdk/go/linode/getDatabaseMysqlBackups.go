@@ -75,17 +75,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// Each backup will be stored in the `backups` attribute and will export the following attributes:
-//
-// * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-//
-// * `id` - The ID of the database backup object.
-//
-// * `label` - The database backup’s label, for display purposes only.
-//
-// * `type` - The type of database backup, determined by how the backup was created.
 func GetDatabaseMysqlBackups(ctx *pulumi.Context, args *GetDatabaseMysqlBackupsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseMysqlBackupsResult, error) {
 	var rv GetDatabaseMysqlBackupsResult
 	err := ctx.Invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args, &rv, opts...)

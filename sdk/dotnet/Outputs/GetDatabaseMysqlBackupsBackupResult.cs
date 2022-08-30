@@ -13,9 +13,21 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetDatabaseMysqlBackupsBackupResult
     {
+        /// <summary>
+        /// A time value given in a combined date and time format that represents when the database backup was created.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The ID of the database backup object.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The database backup’s label, for display purposes only.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The type of database backup, determined by how the backup was created.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -56,11 +56,17 @@ class GetNetworkingIpResult:
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The IP address.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
         return pulumi.get(self, "gateway")
 
     @property
@@ -74,36 +80,57 @@ class GetNetworkingIpResult:
     @property
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> int:
+        """
+        The ID of the Linode this address currently belongs to.
+        """
         return pulumi.get(self, "linode_id")
 
     @property
     @pulumi.getter
     def prefix(self) -> int:
+        """
+        The number of bits set in the subnet mask.
+        """
         return pulumi.get(self, "prefix")
 
     @property
     @pulumi.getter
     def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
     def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        """
         return pulumi.get(self, "rdns")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="subnetMask")
     def subnet_mask(self) -> str:
+        """
+        The mask that separates host bits from network bits for this address.
+        """
         return pulumi.get(self, "subnet_mask")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
         return pulumi.get(self, "type")
 
 
@@ -140,27 +167,6 @@ def get_networking_ip(address: Optional[str] = None,
 
     ns1_linode_com = linode.get_networking_ip(address="162.159.27.72")
     ```
-    ## Attributes
-
-    The Linode Network IP Address resource exports the following attributes:
-
-    * `address` - The IP address.
-
-    * `gateway` - The default gateway for this address.
-
-    * `subnet_mask` - The mask that separates host bits from network bits for this address.
-
-    * `prefix` - The number of bits set in the subnet mask.
-
-    * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-
-    * `public` - Whether this is a public or private IP address.
-
-    * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-
-    * `linode_id` - The ID of the Linode this address currently belongs to.
-
-    * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
@@ -199,27 +205,6 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
 
     ns1_linode_com = linode.get_networking_ip(address="162.159.27.72")
     ```
-    ## Attributes
-
-    The Linode Network IP Address resource exports the following attributes:
-
-    * `address` - The IP address.
-
-    * `gateway` - The default gateway for this address.
-
-    * `subnet_mask` - The mask that separates host bits from network bits for this address.
-
-    * `prefix` - The number of bits set in the subnet mask.
-
-    * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-
-    * `public` - Whether this is a public or private IP address.
-
-    * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-
-    * `linode_id` - The ID of the Linode this address currently belongs to.
-
-    * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.

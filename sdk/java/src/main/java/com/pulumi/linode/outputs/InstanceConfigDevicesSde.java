@@ -16,28 +16,19 @@ public final class InstanceConfigDevicesSde {
      * @return The Disk ID of the associated `disk_label`, if used.
      * 
      */
-    private final @Nullable Integer diskId;
+    private @Nullable Integer diskId;
     /**
      * @return The `label` of the `disk` to map to this `device` slot.
      * 
      */
-    private final @Nullable String diskLabel;
+    private @Nullable String diskLabel;
     /**
      * @return The Volume ID to map to this `device` slot.
      * 
      */
-    private final @Nullable Integer volumeId;
+    private @Nullable Integer volumeId;
 
-    @CustomType.Constructor
-    private InstanceConfigDevicesSde(
-        @CustomType.Parameter("diskId") @Nullable Integer diskId,
-        @CustomType.Parameter("diskLabel") @Nullable String diskLabel,
-        @CustomType.Parameter("volumeId") @Nullable Integer volumeId) {
-        this.diskId = diskId;
-        this.diskLabel = diskLabel;
-        this.volumeId = volumeId;
-    }
-
+    private InstanceConfigDevicesSde() {}
     /**
      * @return The Disk ID of the associated `disk_label`, if used.
      * 
@@ -67,16 +58,12 @@ public final class InstanceConfigDevicesSde {
     public static Builder builder(InstanceConfigDevicesSde defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskId;
         private @Nullable String diskLabel;
         private @Nullable Integer volumeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceConfigDevicesSde defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskId = defaults.diskId;
@@ -84,19 +71,27 @@ public final class InstanceConfigDevicesSde {
     	      this.volumeId = defaults.volumeId;
         }
 
+        @CustomType.Setter
         public Builder diskId(@Nullable Integer diskId) {
             this.diskId = diskId;
             return this;
         }
+        @CustomType.Setter
         public Builder diskLabel(@Nullable String diskLabel) {
             this.diskLabel = diskLabel;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(@Nullable Integer volumeId) {
             this.volumeId = volumeId;
             return this;
-        }        public InstanceConfigDevicesSde build() {
-            return new InstanceConfigDevicesSde(diskId, diskLabel, volumeId);
+        }
+        public InstanceConfigDevicesSde build() {
+            final var o = new InstanceConfigDevicesSde();
+            o.diskId = diskId;
+            o.diskLabel = diskLabel;
+            o.volumeId = volumeId;
+            return o;
         }
     }
 }

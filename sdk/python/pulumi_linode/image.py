@@ -165,8 +165,7 @@ class _ImageState:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The current status of this Image.
-        :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-               a deleted Linode.
+        :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
         """
         if created is not None:
@@ -374,8 +373,7 @@ class _ImageState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-        a deleted Linode.
+        How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         """
         return pulumi.get(self, "type")
 
@@ -414,28 +412,6 @@ class Image(pulumi.CustomResource):
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-
-        * `created` - When this Image was created.
-
-        * `created_by` - The name of the User who created this Image.
-
-        * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
-
-        * `is_public` - True if the Image is public.
-
-        * `size` - The minimum size this Image needs to deploy. Size is in MB.
-
-        * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
-
-        * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-
-        * `vendor` - The upstream distribution vendor. Nil for private Images.
-
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -464,28 +440,6 @@ class Image(pulumi.CustomResource):
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
-
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-
-        * `created` - When this Image was created.
-
-        * `created_by` - The name of the User who created this Image.
-
-        * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
-
-        * `is_public` - True if the Image is public.
-
-        * `size` - The minimum size this Image needs to deploy. Size is in MB.
-
-        * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
-
-        * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-
-        * `vendor` - The upstream distribution vendor. Nil for private Images.
 
         ## Import
 
@@ -591,8 +545,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The current status of this Image.
-        :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-               a deleted Linode.
+        :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -733,8 +686,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-        a deleted Linode.
+        How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         """
         return pulumi.get(self, "type")
 

@@ -76,32 +76,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// Each Linode image will be stored in the `images` attribute and will export the following attributes:
-//
-// * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-//
-// * `label` - A short description of the Image.
-//
-// * `created` - When this Image was created.
-//
-// * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
-//
-// * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-//
-// * `description` - A detailed description of this Image.
-//
-// * `isPublic` - True if the Image is public.
-//
-// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-//
-// * `status` - The current status of this image. (`creating`, `pendingUpload`, `available`)
-//
-// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-//
-// * `vendor` - The upstream distribution vendor. `None` for private Images.
-//
 // ## Filterable Fields
 //
 // * `createdBy`

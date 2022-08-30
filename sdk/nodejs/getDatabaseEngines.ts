@@ -53,15 +53,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- * ## Attributes
- *
- * Each engine will be stored in the `engines` attribute and will export the following attributes:
- *
- * * `engine` - The Managed Database engine type.
- *
- * * `id` - The Managed Database engine ID in engine/version format.
- *
- * * `version` - The Managed Database engine version.
  */
 export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseEnginesResult> {
     args = args || {};

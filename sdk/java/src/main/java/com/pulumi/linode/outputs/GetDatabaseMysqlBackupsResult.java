@@ -16,36 +16,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseMysqlBackupsResult {
-    private final List<GetDatabaseMysqlBackupsBackup> backups;
-    private final Integer databaseId;
-    private final @Nullable List<GetDatabaseMysqlBackupsFilter> filters;
+    private List<GetDatabaseMysqlBackupsBackup> backups;
+    private Integer databaseId;
+    private @Nullable List<GetDatabaseMysqlBackupsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean latest;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
+    private String id;
+    private @Nullable Boolean latest;
+    private @Nullable String order;
+    private @Nullable String orderBy;
 
-    @CustomType.Constructor
-    private GetDatabaseMysqlBackupsResult(
-        @CustomType.Parameter("backups") List<GetDatabaseMysqlBackupsBackup> backups,
-        @CustomType.Parameter("databaseId") Integer databaseId,
-        @CustomType.Parameter("filters") @Nullable List<GetDatabaseMysqlBackupsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy) {
-        this.backups = backups;
-        this.databaseId = databaseId;
-        this.filters = filters;
-        this.id = id;
-        this.latest = latest;
-        this.order = order;
-        this.orderBy = orderBy;
-    }
-
+    private GetDatabaseMysqlBackupsResult() {}
     public List<GetDatabaseMysqlBackupsBackup> backups() {
         return this.backups;
     }
@@ -79,7 +62,7 @@ public final class GetDatabaseMysqlBackupsResult {
     public static Builder builder(GetDatabaseMysqlBackupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDatabaseMysqlBackupsBackup> backups;
         private Integer databaseId;
@@ -88,11 +71,7 @@ public final class GetDatabaseMysqlBackupsResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseMysqlBackupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backups = defaults.backups;
@@ -104,6 +83,7 @@ public final class GetDatabaseMysqlBackupsResult {
     	      this.orderBy = defaults.orderBy;
         }
 
+        @CustomType.Setter
         public Builder backups(List<GetDatabaseMysqlBackupsBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
@@ -111,10 +91,12 @@ public final class GetDatabaseMysqlBackupsResult {
         public Builder backups(GetDatabaseMysqlBackupsBackup... backups) {
             return backups(List.of(backups));
         }
+        @CustomType.Setter
         public Builder databaseId(Integer databaseId) {
             this.databaseId = Objects.requireNonNull(databaseId);
             return this;
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetDatabaseMysqlBackupsFilter> filters) {
             this.filters = filters;
             return this;
@@ -122,23 +104,36 @@ public final class GetDatabaseMysqlBackupsResult {
         public Builder filters(GetDatabaseMysqlBackupsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
-        }        public GetDatabaseMysqlBackupsResult build() {
-            return new GetDatabaseMysqlBackupsResult(backups, databaseId, filters, id, latest, order, orderBy);
+        }
+        public GetDatabaseMysqlBackupsResult build() {
+            final var o = new GetDatabaseMysqlBackupsResult();
+            o.backups = backups;
+            o.databaseId = databaseId;
+            o.filters = filters;
+            o.id = id;
+            o.latest = latest;
+            o.order = order;
+            o.orderBy = orderBy;
+            return o;
         }
     }
 }

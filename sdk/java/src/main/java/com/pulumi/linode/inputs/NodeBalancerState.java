@@ -34,14 +34,14 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When this NodeBalancer was created.
+     * When this NodeBalancer was created
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return When this NodeBalancer was created.
+     * @return When this NodeBalancer was created
      * 
      */
     public Optional<Output<String>> created() {
@@ -223,7 +223,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created When this NodeBalancer was created.
+         * @param created When this NodeBalancer was created
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created When this NodeBalancer was created.
+         * @param created When this NodeBalancer was created
          * 
          * @return builder
          * 

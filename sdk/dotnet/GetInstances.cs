@@ -11,9 +11,165 @@ namespace Pulumi.Linode
 {
     public static class GetInstances
     {
+        /// <summary>
+        /// Provides information about Linode instances that match a set of filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode instances with a certain label and tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_instances = Linode.GetInstances.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetInstancesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-label",
+        ///                     "my-other-label",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetInstancesFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode instances associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_instances = Linode.GetInstances.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Filterable Fields
+        /// 
+        /// * `group`
+        /// 
+        /// * `id`
+        /// 
+        /// * `image`
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// 
+        /// * `status`
+        /// 
+        /// * `tags`
+        /// 
+        /// * `type`
+        /// 
+        /// * `watchdog_enabled`
+        /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about Linode instances that match a set of filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode instances with a certain label and tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_instances = Linode.GetInstances.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetInstancesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-label",
+        ///                     "my-other-label",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetInstancesFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode instances associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_instances = Linode.GetInstances.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Filterable Fields
+        /// 
+        /// * `group`
+        /// 
+        /// * `id`
+        /// 
+        /// * `image`
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// 
+        /// * `status`
+        /// 
+        /// * `tags`
+        /// 
+        /// * `type`
+        /// 
+        /// * `watchdog_enabled`
+        /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }

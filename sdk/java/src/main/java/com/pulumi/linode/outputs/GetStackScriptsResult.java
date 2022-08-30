@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStackScriptsResult {
-    private final @Nullable List<GetStackScriptsFilter> filters;
+    private @Nullable List<GetStackScriptsFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean latest;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
-    private final List<GetStackScriptsStackscript> stackscripts;
+    private String id;
+    private @Nullable Boolean latest;
+    private @Nullable String order;
+    private @Nullable String orderBy;
+    private List<GetStackScriptsStackscript> stackscripts;
 
-    @CustomType.Constructor
-    private GetStackScriptsResult(
-        @CustomType.Parameter("filters") @Nullable List<GetStackScriptsFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy,
-        @CustomType.Parameter("stackscripts") List<GetStackScriptsStackscript> stackscripts) {
-        this.filters = filters;
-        this.id = id;
-        this.latest = latest;
-        this.order = order;
-        this.orderBy = orderBy;
-        this.stackscripts = stackscripts;
-    }
-
+    private GetStackScriptsResult() {}
     public List<GetStackScriptsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -72,7 +57,7 @@ public final class GetStackScriptsResult {
     public static Builder builder(GetStackScriptsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetStackScriptsFilter> filters;
         private String id;
@@ -80,11 +65,7 @@ public final class GetStackScriptsResult {
         private @Nullable String order;
         private @Nullable String orderBy;
         private List<GetStackScriptsStackscript> stackscripts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStackScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -95,6 +76,7 @@ public final class GetStackScriptsResult {
     	      this.stackscripts = defaults.stackscripts;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetStackScriptsFilter> filters) {
             this.filters = filters;
             return this;
@@ -102,30 +84,43 @@ public final class GetStackScriptsResult {
         public Builder filters(GetStackScriptsFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
         }
+        @CustomType.Setter
         public Builder stackscripts(List<GetStackScriptsStackscript> stackscripts) {
             this.stackscripts = Objects.requireNonNull(stackscripts);
             return this;
         }
         public Builder stackscripts(GetStackScriptsStackscript... stackscripts) {
             return stackscripts(List.of(stackscripts));
-        }        public GetStackScriptsResult build() {
-            return new GetStackScriptsResult(filters, id, latest, order, orderBy, stackscripts);
+        }
+        public GetStackScriptsResult build() {
+            final var o = new GetStackScriptsResult();
+            o.filters = filters;
+            o.id = id;
+            o.latest = latest;
+            o.order = order;
+            o.orderBy = orderBy;
+            o.stackscripts = stackscripts;
+            return o;
         }
     }
 }

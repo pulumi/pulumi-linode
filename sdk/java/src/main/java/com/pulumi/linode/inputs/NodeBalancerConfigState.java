@@ -249,16 +249,14 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     @Import(name="sslCommonname")
     private @Nullable Output<String> sslCommonname;
 
     /**
-     * @return The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * @return The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     public Optional<Output<String>> sslCommonname() {
@@ -266,16 +264,14 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     @Import(name="sslFingerprint")
     private @Nullable Output<String> sslFingerprint;
 
     /**
-     * @return The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * @return The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     public Optional<Output<String>> sslFingerprint() {
@@ -685,8 +681,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sslCommonname The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-         * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+         * @param sslCommonname The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
          * 
          * @return builder
          * 
@@ -697,8 +692,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sslCommonname The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-         * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+         * @param sslCommonname The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
          * 
          * @return builder
          * 
@@ -708,8 +702,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sslFingerprint The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-         * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+         * @param sslFingerprint The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
          * 
          * @return builder
          * 
@@ -720,8 +713,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sslFingerprint The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-         * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+         * @param sslFingerprint The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
          * 
          * @return builder
          * 

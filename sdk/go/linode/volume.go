@@ -120,13 +120,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
-//
-// * `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 //
 // ## Import
 //
@@ -142,8 +135,7 @@ import (
 type Volume struct {
 	pulumi.CustomResourceState
 
-	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-	// Volume label.
+	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringOutput `pulumi:"filesystemPath"`
 	// The label of the Linode Volume
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -155,7 +147,7 @@ type Volume struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId pulumi.IntPtrOutput `pulumi:"sourceVolumeId"`
-	// The status of the volume, indicating the current readiness state.
+	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -193,8 +185,7 @@ func GetVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Volume resources.
 type volumeState struct {
-	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-	// Volume label.
+	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath *string `pulumi:"filesystemPath"`
 	// The label of the Linode Volume
 	Label *string `pulumi:"label"`
@@ -206,15 +197,14 @@ type volumeState struct {
 	Size *int `pulumi:"size"`
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId *int `pulumi:"sourceVolumeId"`
-	// The status of the volume, indicating the current readiness state.
+	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status *string `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
 
 type VolumeState struct {
-	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-	// Volume label.
+	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringPtrInput
 	// The label of the Linode Volume
 	Label pulumi.StringPtrInput
@@ -226,7 +216,7 @@ type VolumeState struct {
 	Size pulumi.IntPtrInput
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId pulumi.IntPtrInput
-	// The status of the volume, indicating the current readiness state.
+	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -354,8 +344,7 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
-// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-// Volume label.
+// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 func (o VolumeOutput) FilesystemPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemPath }).(pulumi.StringOutput)
 }
@@ -385,7 +374,7 @@ func (o VolumeOutput) SourceVolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.IntPtrOutput { return v.SourceVolumeId }).(pulumi.IntPtrOutput)
 }
 
-// The status of the volume, indicating the current readiness state.
+// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 func (o VolumeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -41,6 +41,9 @@ class GetUserResult:
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The email address for this User, for account management communications, and may be used for other communications as configured.
+        """
         return pulumi.get(self, "email")
 
     @property
@@ -54,11 +57,17 @@ class GetUserResult:
     @property
     @pulumi.getter
     def restricted(self) -> bool:
+        """
+        If true, this User must be granted access to perform actions or access entities on this Account.
+        """
         return pulumi.get(self, "restricted")
 
     @property
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Sequence[str]:
+        """
+        A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        """
         return pulumi.get(self, "ssh_keys")
 
     @property
@@ -95,15 +104,6 @@ def get_user(username: Optional[str] = None,
 
     foo = linode.get_user(username="foo")
     ```
-    ## Attributes
-
-    The Linode User resource exports the following attributes:
-
-    * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-
-    * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-
-    * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
 
 
     :param str username: The unique username of this User.
@@ -137,15 +137,6 @@ def get_user_output(username: Optional[pulumi.Input[str]] = None,
 
     foo = linode.get_user(username="foo")
     ```
-    ## Attributes
-
-    The Linode User resource exports the following attributes:
-
-    * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-
-    * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-
-    * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
 
 
     :param str username: The unique username of this User.

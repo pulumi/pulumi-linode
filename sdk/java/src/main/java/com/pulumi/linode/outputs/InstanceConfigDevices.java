@@ -22,35 +22,16 @@ public final class InstanceConfigDevices {
      * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
      * 
      */
-    private final @Nullable InstanceConfigDevicesSda sda;
-    private final @Nullable InstanceConfigDevicesSdb sdb;
-    private final @Nullable InstanceConfigDevicesSdc sdc;
-    private final @Nullable InstanceConfigDevicesSdd sdd;
-    private final @Nullable InstanceConfigDevicesSde sde;
-    private final @Nullable InstanceConfigDevicesSdf sdf;
-    private final @Nullable InstanceConfigDevicesSdg sdg;
-    private final @Nullable InstanceConfigDevicesSdh sdh;
+    private @Nullable InstanceConfigDevicesSda sda;
+    private @Nullable InstanceConfigDevicesSdb sdb;
+    private @Nullable InstanceConfigDevicesSdc sdc;
+    private @Nullable InstanceConfigDevicesSdd sdd;
+    private @Nullable InstanceConfigDevicesSde sde;
+    private @Nullable InstanceConfigDevicesSdf sdf;
+    private @Nullable InstanceConfigDevicesSdg sdg;
+    private @Nullable InstanceConfigDevicesSdh sdh;
 
-    @CustomType.Constructor
-    private InstanceConfigDevices(
-        @CustomType.Parameter("sda") @Nullable InstanceConfigDevicesSda sda,
-        @CustomType.Parameter("sdb") @Nullable InstanceConfigDevicesSdb sdb,
-        @CustomType.Parameter("sdc") @Nullable InstanceConfigDevicesSdc sdc,
-        @CustomType.Parameter("sdd") @Nullable InstanceConfigDevicesSdd sdd,
-        @CustomType.Parameter("sde") @Nullable InstanceConfigDevicesSde sde,
-        @CustomType.Parameter("sdf") @Nullable InstanceConfigDevicesSdf sdf,
-        @CustomType.Parameter("sdg") @Nullable InstanceConfigDevicesSdg sdg,
-        @CustomType.Parameter("sdh") @Nullable InstanceConfigDevicesSdh sdh) {
-        this.sda = sda;
-        this.sdb = sdb;
-        this.sdc = sdc;
-        this.sdd = sdd;
-        this.sde = sde;
-        this.sdf = sdf;
-        this.sdg = sdg;
-        this.sdh = sdh;
-    }
-
+    private InstanceConfigDevices() {}
     /**
      * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
      * 
@@ -87,7 +68,7 @@ public final class InstanceConfigDevices {
     public static Builder builder(InstanceConfigDevices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceConfigDevicesSda sda;
         private @Nullable InstanceConfigDevicesSdb sdb;
@@ -97,11 +78,7 @@ public final class InstanceConfigDevices {
         private @Nullable InstanceConfigDevicesSdf sdf;
         private @Nullable InstanceConfigDevicesSdg sdg;
         private @Nullable InstanceConfigDevicesSdh sdh;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceConfigDevices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sda = defaults.sda;
@@ -114,39 +91,57 @@ public final class InstanceConfigDevices {
     	      this.sdh = defaults.sdh;
         }
 
+        @CustomType.Setter
         public Builder sda(@Nullable InstanceConfigDevicesSda sda) {
             this.sda = sda;
             return this;
         }
+        @CustomType.Setter
         public Builder sdb(@Nullable InstanceConfigDevicesSdb sdb) {
             this.sdb = sdb;
             return this;
         }
+        @CustomType.Setter
         public Builder sdc(@Nullable InstanceConfigDevicesSdc sdc) {
             this.sdc = sdc;
             return this;
         }
+        @CustomType.Setter
         public Builder sdd(@Nullable InstanceConfigDevicesSdd sdd) {
             this.sdd = sdd;
             return this;
         }
+        @CustomType.Setter
         public Builder sde(@Nullable InstanceConfigDevicesSde sde) {
             this.sde = sde;
             return this;
         }
+        @CustomType.Setter
         public Builder sdf(@Nullable InstanceConfigDevicesSdf sdf) {
             this.sdf = sdf;
             return this;
         }
+        @CustomType.Setter
         public Builder sdg(@Nullable InstanceConfigDevicesSdg sdg) {
             this.sdg = sdg;
             return this;
         }
+        @CustomType.Setter
         public Builder sdh(@Nullable InstanceConfigDevicesSdh sdh) {
             this.sdh = sdh;
             return this;
-        }        public InstanceConfigDevices build() {
-            return new InstanceConfigDevices(sda, sdb, sdc, sdd, sde, sdf, sdg, sdh);
+        }
+        public InstanceConfigDevices build() {
+            final var o = new InstanceConfigDevices();
+            o.sda = sda;
+            o.sdb = sdb;
+            o.sdc = sdc;
+            o.sdd = sdd;
+            o.sde = sde;
+            o.sdf = sdf;
+            o.sdg = sdg;
+            o.sdh = sdh;
+            return o;
         }
     }
 }

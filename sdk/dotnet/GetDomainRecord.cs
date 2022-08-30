@@ -43,33 +43,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Volume resource exports the following attributes:
-        /// 
-        /// - `id` - The unique ID of the Domain Record.
-        /// 
-        /// - `name` - The name of the Record.
-        /// 
-        /// - `domain_id` - The associated domain's unique ID.
-        /// 
-        /// - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-        /// 
-        /// - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-        /// 
-        /// - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        /// 
-        /// - `priority` - The priority of the target host. Lower values are preferred.
-        /// 
-        /// - `weight` - The relative weight of this Record. Higher values are preferred.
-        /// 
-        /// - `port` - The port this Record points to.
-        /// 
-        /// - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-        /// 
-        /// - `service` - The service this Record identified. Only valid for SRV records.
-        /// 
-        /// - `tag` - The tag portion of a CAA record.
         /// </summary>
         public static Task<GetDomainRecordResult> InvokeAsync(GetDomainRecordArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithDefaults());
@@ -106,33 +79,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Volume resource exports the following attributes:
-        /// 
-        /// - `id` - The unique ID of the Domain Record.
-        /// 
-        /// - `name` - The name of the Record.
-        /// 
-        /// - `domain_id` - The associated domain's unique ID.
-        /// 
-        /// - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-        /// 
-        /// - `ttl_sec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-        /// 
-        /// - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        /// 
-        /// - `priority` - The priority of the target host. Lower values are preferred.
-        /// 
-        /// - `weight` - The relative weight of this Record. Higher values are preferred.
-        /// 
-        /// - `port` - The port this Record points to.
-        /// 
-        /// - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-        /// 
-        /// - `service` - The service this Record identified. Only valid for SRV records.
-        /// 
-        /// - `tag` - The tag portion of a CAA record.
         /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
@@ -195,17 +141,53 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetDomainRecordResult
     {
+        /// <summary>
+        /// The associated domain's unique ID.
+        /// </summary>
         public readonly int DomainId;
+        /// <summary>
+        /// The unique ID of the Domain Record.
+        /// </summary>
         public readonly int? Id;
+        /// <summary>
+        /// The name of the Record.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The port this Record points to.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The priority of the target host. Lower values are preferred.
+        /// </summary>
         public readonly int Priority;
+        /// <summary>
+        /// The protocol this Record's service communicates with. Only valid for SRV records.
+        /// </summary>
         public readonly string Protocol;
+        /// <summary>
+        /// The service this Record identified. Only valid for SRV records.
+        /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// The tag portion of a CAA record.
+        /// </summary>
         public readonly string Tag;
+        /// <summary>
+        /// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+        /// </summary>
         public readonly string Target;
+        /// <summary>
+        /// The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        /// </summary>
         public readonly int TtlSec;
+        /// <summary>
+        /// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The relative weight of this Record. Higher values are preferred.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

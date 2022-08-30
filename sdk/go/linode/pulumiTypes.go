@@ -1197,6 +1197,7 @@ func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 }
 
 type InstanceBackups struct {
+	// If this Linode has the Backup service enabled.
 	Enabled  *bool                    `pulumi:"enabled"`
 	Schedule *InstanceBackupsSchedule `pulumi:"schedule"`
 }
@@ -1213,6 +1214,7 @@ type InstanceBackupsInput interface {
 }
 
 type InstanceBackupsArgs struct {
+	// If this Linode has the Backup service enabled.
 	Enabled  pulumi.BoolPtrInput             `pulumi:"enabled"`
 	Schedule InstanceBackupsSchedulePtrInput `pulumi:"schedule"`
 }
@@ -1294,6 +1296,7 @@ func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context
 	}).(InstanceBackupsPtrOutput)
 }
 
+// If this Linode has the Backup service enabled.
 func (o InstanceBackupsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1326,6 +1329,7 @@ func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
 	}).(InstanceBackupsOutput)
 }
 
+// If this Linode has the Backup service enabled.
 func (o InstanceBackupsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceBackups) *bool {
 		if v == nil {
@@ -1345,7 +1349,9 @@ func (o InstanceBackupsPtrOutput) Schedule() InstanceBackupsSchedulePtrOutput {
 }
 
 type InstanceBackupsSchedule struct {
-	Day    *string `pulumi:"day"`
+	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+	Day *string `pulumi:"day"`
+	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window *string `pulumi:"window"`
 }
 
@@ -1361,7 +1367,9 @@ type InstanceBackupsScheduleInput interface {
 }
 
 type InstanceBackupsScheduleArgs struct {
-	Day    pulumi.StringPtrInput `pulumi:"day"`
+	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window pulumi.StringPtrInput `pulumi:"window"`
 }
 
@@ -1442,10 +1450,12 @@ func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutputWithCon
 	}).(InstanceBackupsSchedulePtrOutput)
 }
 
+// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 func (o InstanceBackupsScheduleOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
+// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 func (o InstanceBackupsScheduleOutput) Window() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
 }
@@ -1474,6 +1484,7 @@ func (o InstanceBackupsSchedulePtrOutput) Elem() InstanceBackupsScheduleOutput {
 	}).(InstanceBackupsScheduleOutput)
 }
 
+// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupsSchedule) *string {
 		if v == nil {
@@ -1483,6 +1494,7 @@ func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupsSchedule) *string {
 		if v == nil {
@@ -4649,8 +4661,10 @@ func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNo
 }
 
 type NodeBalancerConfigNodeStatus struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 	Down *int `pulumi:"down"`
-	Up   *int `pulumi:"up"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up *int `pulumi:"up"`
 }
 
 // NodeBalancerConfigNodeStatusInput is an input type that accepts NodeBalancerConfigNodeStatusArgs and NodeBalancerConfigNodeStatusOutput values.
@@ -4665,8 +4679,10 @@ type NodeBalancerConfigNodeStatusInput interface {
 }
 
 type NodeBalancerConfigNodeStatusArgs struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 	Down pulumi.IntPtrInput `pulumi:"down"`
-	Up   pulumi.IntPtrInput `pulumi:"up"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up pulumi.IntPtrInput `pulumi:"up"`
 }
 
 func (NodeBalancerConfigNodeStatusArgs) ElementType() reflect.Type {
@@ -4720,10 +4736,12 @@ func (o NodeBalancerConfigNodeStatusOutput) ToNodeBalancerConfigNodeStatusOutput
 	return o
 }
 
+// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 func (o NodeBalancerConfigNodeStatusOutput) Down() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.Down }).(pulumi.IntPtrOutput)
 }
 
+// The number of backends considered to be 'UP' and healthy, and that are serving requests.
 func (o NodeBalancerConfigNodeStatusOutput) Up() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.Up }).(pulumi.IntPtrOutput)
 }
@@ -4749,8 +4767,11 @@ func (o NodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) NodeBa
 }
 
 type NodeBalancerTransfer struct {
-	In    *float64 `pulumi:"in"`
-	Out   *float64 `pulumi:"out"`
+	// The total transfer, in MB, used by this NodeBalancer for the current month
+	In *float64 `pulumi:"in"`
+	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+	Out *float64 `pulumi:"out"`
+	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
 	Total *float64 `pulumi:"total"`
 }
 
@@ -4766,8 +4787,11 @@ type NodeBalancerTransferInput interface {
 }
 
 type NodeBalancerTransferArgs struct {
-	In    pulumi.Float64PtrInput `pulumi:"in"`
-	Out   pulumi.Float64PtrInput `pulumi:"out"`
+	// The total transfer, in MB, used by this NodeBalancer for the current month
+	In pulumi.Float64PtrInput `pulumi:"in"`
+	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+	Out pulumi.Float64PtrInput `pulumi:"out"`
+	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
 	Total pulumi.Float64PtrInput `pulumi:"total"`
 }
 
@@ -4822,14 +4846,17 @@ func (o NodeBalancerTransferOutput) ToNodeBalancerTransferOutputWithContext(ctx 
 	return o
 }
 
+// The total transfer, in MB, used by this NodeBalancer for the current month
 func (o NodeBalancerTransferOutput) In() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
 }
 
+// The total inbound transfer, in MB, used for this NodeBalancer for the current month
 func (o NodeBalancerTransferOutput) Out() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
 }
 
+// The total outbound transfer, in MB, used for this NodeBalancer for the current month
 func (o NodeBalancerTransferOutput) Total() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
 }
@@ -5578,13 +5605,18 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 }
 
 type StackScriptUserDefinedField struct {
+	// The default value. If not specified, this value will be used.
 	Default *string `pulumi:"default"`
+	// An example value for the field.
 	Example *string `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label  *string `pulumi:"label"`
+	Label *string `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
 	ManyOf *string `pulumi:"manyOf"`
-	Name   *string `pulumi:"name"`
-	OneOf  *string `pulumi:"oneOf"`
+	// The name of the field.
+	Name *string `pulumi:"name"`
+	// A list of acceptable single values for the field.
+	OneOf *string `pulumi:"oneOf"`
 }
 
 // StackScriptUserDefinedFieldInput is an input type that accepts StackScriptUserDefinedFieldArgs and StackScriptUserDefinedFieldOutput values.
@@ -5599,13 +5631,18 @@ type StackScriptUserDefinedFieldInput interface {
 }
 
 type StackScriptUserDefinedFieldArgs struct {
+	// The default value. If not specified, this value will be used.
 	Default pulumi.StringPtrInput `pulumi:"default"`
+	// An example value for the field.
 	Example pulumi.StringPtrInput `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label  pulumi.StringPtrInput `pulumi:"label"`
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
 	ManyOf pulumi.StringPtrInput `pulumi:"manyOf"`
-	Name   pulumi.StringPtrInput `pulumi:"name"`
-	OneOf  pulumi.StringPtrInput `pulumi:"oneOf"`
+	// The name of the field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A list of acceptable single values for the field.
+	OneOf pulumi.StringPtrInput `pulumi:"oneOf"`
 }
 
 func (StackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
@@ -5659,10 +5696,12 @@ func (o StackScriptUserDefinedFieldOutput) ToStackScriptUserDefinedFieldOutputWi
 	return o
 }
 
+// The default value. If not specified, this value will be used.
 func (o StackScriptUserDefinedFieldOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// An example value for the field.
 func (o StackScriptUserDefinedFieldOutput) Example() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Example }).(pulumi.StringPtrOutput)
 }
@@ -5672,14 +5711,17 @@ func (o StackScriptUserDefinedFieldOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// A list of acceptable values for the field in any quantity, combination or order.
 func (o StackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.ManyOf }).(pulumi.StringPtrOutput)
 }
 
+// The name of the field.
 func (o StackScriptUserDefinedFieldOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A list of acceptable single values for the field.
 func (o StackScriptUserDefinedFieldOutput) OneOf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.OneOf }).(pulumi.StringPtrOutput)
 }
@@ -6788,10 +6830,14 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 }
 
 type GetDatabaseBackupsBackup struct {
+	// A time value given in a combined date and time format that represents when the database backup was created.
 	Created string `pulumi:"created"`
-	Id      int    `pulumi:"id"`
-	Label   string `pulumi:"label"`
-	Type    string `pulumi:"type"`
+	// The ID of the database backup object.
+	Id int `pulumi:"id"`
+	// The database backup’s label, for display purposes only.
+	Label string `pulumi:"label"`
+	// The type of database backup, determined by how the backup was created.
+	Type string `pulumi:"type"`
 }
 
 // GetDatabaseBackupsBackupInput is an input type that accepts GetDatabaseBackupsBackupArgs and GetDatabaseBackupsBackupOutput values.
@@ -6806,10 +6852,14 @@ type GetDatabaseBackupsBackupInput interface {
 }
 
 type GetDatabaseBackupsBackupArgs struct {
+	// A time value given in a combined date and time format that represents when the database backup was created.
 	Created pulumi.StringInput `pulumi:"created"`
-	Id      pulumi.IntInput    `pulumi:"id"`
-	Label   pulumi.StringInput `pulumi:"label"`
-	Type    pulumi.StringInput `pulumi:"type"`
+	// The ID of the database backup object.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The database backup’s label, for display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The type of database backup, determined by how the backup was created.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetDatabaseBackupsBackupArgs) ElementType() reflect.Type {
@@ -6863,18 +6913,22 @@ func (o GetDatabaseBackupsBackupOutput) ToGetDatabaseBackupsBackupOutputWithCont
 	return o
 }
 
+// A time value given in a combined date and time format that represents when the database backup was created.
 func (o GetDatabaseBackupsBackupOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The ID of the database backup object.
 func (o GetDatabaseBackupsBackupOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The database backup’s label, for display purposes only.
 func (o GetDatabaseBackupsBackupOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The type of database backup, determined by how the backup was created.
 func (o GetDatabaseBackupsBackupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7015,8 +7069,11 @@ func (o GetDatabaseBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDatabas
 }
 
 type GetDatabaseEnginesEngine struct {
-	Engine  string `pulumi:"engine"`
-	Id      string `pulumi:"id"`
+	// The Managed Database engine type.
+	Engine string `pulumi:"engine"`
+	// The Managed Database engine ID in engine/version format.
+	Id string `pulumi:"id"`
+	// The Managed Database engine version.
 	Version string `pulumi:"version"`
 }
 
@@ -7032,8 +7089,11 @@ type GetDatabaseEnginesEngineInput interface {
 }
 
 type GetDatabaseEnginesEngineArgs struct {
-	Engine  pulumi.StringInput `pulumi:"engine"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	// The Managed Database engine type.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The Managed Database engine ID in engine/version format.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Managed Database engine version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -7088,14 +7148,17 @@ func (o GetDatabaseEnginesEngineOutput) ToGetDatabaseEnginesEngineOutputWithCont
 	return o
 }
 
+// The Managed Database engine type.
 func (o GetDatabaseEnginesEngineOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The Managed Database engine ID in engine/version format.
 func (o GetDatabaseEnginesEngineOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Managed Database engine version.
 func (o GetDatabaseEnginesEngineOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEnginesEngine) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -7354,10 +7417,14 @@ func (o GetDatabaseMongodbUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabas
 }
 
 type GetDatabaseMysqlBackupsBackup struct {
+	// A time value given in a combined date and time format that represents when the database backup was created.
 	Created string `pulumi:"created"`
-	Id      int    `pulumi:"id"`
-	Label   string `pulumi:"label"`
-	Type    string `pulumi:"type"`
+	// The ID of the database backup object.
+	Id int `pulumi:"id"`
+	// The database backup’s label, for display purposes only.
+	Label string `pulumi:"label"`
+	// The type of database backup, determined by how the backup was created.
+	Type string `pulumi:"type"`
 }
 
 // GetDatabaseMysqlBackupsBackupInput is an input type that accepts GetDatabaseMysqlBackupsBackupArgs and GetDatabaseMysqlBackupsBackupOutput values.
@@ -7372,10 +7439,14 @@ type GetDatabaseMysqlBackupsBackupInput interface {
 }
 
 type GetDatabaseMysqlBackupsBackupArgs struct {
+	// A time value given in a combined date and time format that represents when the database backup was created.
 	Created pulumi.StringInput `pulumi:"created"`
-	Id      pulumi.IntInput    `pulumi:"id"`
-	Label   pulumi.StringInput `pulumi:"label"`
-	Type    pulumi.StringInput `pulumi:"type"`
+	// The ID of the database backup object.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The database backup’s label, for display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The type of database backup, determined by how the backup was created.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetDatabaseMysqlBackupsBackupArgs) ElementType() reflect.Type {
@@ -7429,18 +7500,22 @@ func (o GetDatabaseMysqlBackupsBackupOutput) ToGetDatabaseMysqlBackupsBackupOutp
 	return o
 }
 
+// A time value given in a combined date and time format that represents when the database backup was created.
 func (o GetDatabaseMysqlBackupsBackupOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The ID of the database backup object.
 func (o GetDatabaseMysqlBackupsBackupOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The database backup’s label, for display purposes only.
 func (o GetDatabaseMysqlBackupsBackupOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The type of database backup, determined by how the backup was created.
 func (o GetDatabaseMysqlBackupsBackupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7817,23 +7892,39 @@ func (o GetDatabasePostgresqlUpdateArrayOutput) Index(i pulumi.IntInput) GetData
 }
 
 type GetDatabasesDatabase struct {
-	AllowLists      []string `pulumi:"allowLists"`
-	ClusterSize     int      `pulumi:"clusterSize"`
-	Created         string   `pulumi:"created"`
-	Encrypted       bool     `pulumi:"encrypted"`
-	Engine          string   `pulumi:"engine"`
-	HostPrimary     string   `pulumi:"hostPrimary"`
-	HostSecondary   string   `pulumi:"hostSecondary"`
-	Id              int      `pulumi:"id"`
-	InstanceUri     string   `pulumi:"instanceUri"`
-	Label           string   `pulumi:"label"`
-	Region          string   `pulumi:"region"`
-	ReplicationType string   `pulumi:"replicationType"`
-	SslConnection   bool     `pulumi:"sslConnection"`
-	Status          string   `pulumi:"status"`
-	Type            string   `pulumi:"type"`
-	Updated         string   `pulumi:"updated"`
-	Version         string   `pulumi:"version"`
+	// A list of IP addresses that can access the Managed Database.
+	AllowLists []string `pulumi:"allowLists"`
+	// The number of Linode Instance nodes deployed to the Managed Database.
+	ClusterSize int `pulumi:"clusterSize"`
+	// When this Managed Database was created.
+	Created string `pulumi:"created"`
+	// Whether the Managed Databases is encrypted.
+	Encrypted bool `pulumi:"encrypted"`
+	// The Managed Database engine.
+	Engine string `pulumi:"engine"`
+	// The primary host for the Managed Database.
+	HostPrimary string `pulumi:"hostPrimary"`
+	// The secondary/private network host for the Managed Database.
+	HostSecondary string `pulumi:"hostSecondary"`
+	// The ID of the Managed Database.
+	Id          int    `pulumi:"id"`
+	InstanceUri string `pulumi:"instanceUri"`
+	// A unique, user-defined string referring to the Managed Database.
+	Label string `pulumi:"label"`
+	// The region to use for the Managed Database.
+	Region string `pulumi:"region"`
+	// The replication method used for the Managed Database.
+	ReplicationType string `pulumi:"replicationType"`
+	// Whether to require SSL credentials to establish a connection to the Managed Database.
+	SslConnection bool `pulumi:"sslConnection"`
+	// The operating status of the Managed Database.
+	Status string `pulumi:"status"`
+	// The Linode Instance type used for the nodes of the  Managed Database instance.
+	Type string `pulumi:"type"`
+	// When this Managed Database was last updated.
+	Updated string `pulumi:"updated"`
+	// The Managed Database engine version.
+	Version string `pulumi:"version"`
 }
 
 // GetDatabasesDatabaseInput is an input type that accepts GetDatabasesDatabaseArgs and GetDatabasesDatabaseOutput values.
@@ -7848,23 +7939,39 @@ type GetDatabasesDatabaseInput interface {
 }
 
 type GetDatabasesDatabaseArgs struct {
-	AllowLists      pulumi.StringArrayInput `pulumi:"allowLists"`
-	ClusterSize     pulumi.IntInput         `pulumi:"clusterSize"`
-	Created         pulumi.StringInput      `pulumi:"created"`
-	Encrypted       pulumi.BoolInput        `pulumi:"encrypted"`
-	Engine          pulumi.StringInput      `pulumi:"engine"`
-	HostPrimary     pulumi.StringInput      `pulumi:"hostPrimary"`
-	HostSecondary   pulumi.StringInput      `pulumi:"hostSecondary"`
-	Id              pulumi.IntInput         `pulumi:"id"`
-	InstanceUri     pulumi.StringInput      `pulumi:"instanceUri"`
-	Label           pulumi.StringInput      `pulumi:"label"`
-	Region          pulumi.StringInput      `pulumi:"region"`
-	ReplicationType pulumi.StringInput      `pulumi:"replicationType"`
-	SslConnection   pulumi.BoolInput        `pulumi:"sslConnection"`
-	Status          pulumi.StringInput      `pulumi:"status"`
-	Type            pulumi.StringInput      `pulumi:"type"`
-	Updated         pulumi.StringInput      `pulumi:"updated"`
-	Version         pulumi.StringInput      `pulumi:"version"`
+	// A list of IP addresses that can access the Managed Database.
+	AllowLists pulumi.StringArrayInput `pulumi:"allowLists"`
+	// The number of Linode Instance nodes deployed to the Managed Database.
+	ClusterSize pulumi.IntInput `pulumi:"clusterSize"`
+	// When this Managed Database was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// Whether the Managed Databases is encrypted.
+	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
+	// The Managed Database engine.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The primary host for the Managed Database.
+	HostPrimary pulumi.StringInput `pulumi:"hostPrimary"`
+	// The secondary/private network host for the Managed Database.
+	HostSecondary pulumi.StringInput `pulumi:"hostSecondary"`
+	// The ID of the Managed Database.
+	Id          pulumi.IntInput    `pulumi:"id"`
+	InstanceUri pulumi.StringInput `pulumi:"instanceUri"`
+	// A unique, user-defined string referring to the Managed Database.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The region to use for the Managed Database.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The replication method used for the Managed Database.
+	ReplicationType pulumi.StringInput `pulumi:"replicationType"`
+	// Whether to require SSL credentials to establish a connection to the Managed Database.
+	SslConnection pulumi.BoolInput `pulumi:"sslConnection"`
+	// The operating status of the Managed Database.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The Linode Instance type used for the nodes of the  Managed Database instance.
+	Type pulumi.StringInput `pulumi:"type"`
+	// When this Managed Database was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The Managed Database engine version.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetDatabasesDatabaseArgs) ElementType() reflect.Type {
@@ -7918,34 +8025,42 @@ func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutputWithContext(ctx 
 	return o
 }
 
+// A list of IP addresses that can access the Managed Database.
 func (o GetDatabasesDatabaseOutput) AllowLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) []string { return v.AllowLists }).(pulumi.StringArrayOutput)
 }
 
+// The number of Linode Instance nodes deployed to the Managed Database.
 func (o GetDatabasesDatabaseOutput) ClusterSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.ClusterSize }).(pulumi.IntOutput)
 }
 
+// When this Managed Database was created.
 func (o GetDatabasesDatabaseOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Whether the Managed Databases is encrypted.
 func (o GetDatabasesDatabaseOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// The Managed Database engine.
 func (o GetDatabasesDatabaseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The primary host for the Managed Database.
 func (o GetDatabasesDatabaseOutput) HostPrimary() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostPrimary }).(pulumi.StringOutput)
 }
 
+// The secondary/private network host for the Managed Database.
 func (o GetDatabasesDatabaseOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostSecondary }).(pulumi.StringOutput)
 }
 
+// The ID of the Managed Database.
 func (o GetDatabasesDatabaseOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -7954,34 +8069,42 @@ func (o GetDatabasesDatabaseOutput) InstanceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.InstanceUri }).(pulumi.StringOutput)
 }
 
+// A unique, user-defined string referring to the Managed Database.
 func (o GetDatabasesDatabaseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The region to use for the Managed Database.
 func (o GetDatabasesDatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The replication method used for the Managed Database.
 func (o GetDatabasesDatabaseOutput) ReplicationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.ReplicationType }).(pulumi.StringOutput)
 }
 
+// Whether to require SSL credentials to establish a connection to the Managed Database.
 func (o GetDatabasesDatabaseOutput) SslConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) bool { return v.SslConnection }).(pulumi.BoolOutput)
 }
 
+// The operating status of the Managed Database.
 func (o GetDatabasesDatabaseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The Linode Instance type used for the nodes of the  Managed Database instance.
 func (o GetDatabasesDatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// When this Managed Database was last updated.
 func (o GetDatabasesDatabaseOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Updated }).(pulumi.StringOutput)
 }
 
+// The Managed Database engine version.
 func (o GetDatabasesDatabaseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -8651,18 +8774,29 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 }
 
 type GetImagesImage struct {
-	Created     string `pulumi:"created"`
-	CreatedBy   string `pulumi:"createdBy"`
-	Deprecated  bool   `pulumi:"deprecated"`
+	// When this Image was created.
+	Created string `pulumi:"created"`
+	// The name of the User who created this Image, or "linode" for official Images.
+	CreatedBy string `pulumi:"createdBy"`
+	// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+	Deprecated bool `pulumi:"deprecated"`
+	// A detailed description of this Image.
 	Description string `pulumi:"description"`
 	Expiry      string `pulumi:"expiry"`
-	Id          string `pulumi:"id"`
-	IsPublic    bool   `pulumi:"isPublic"`
-	Label       string `pulumi:"label"`
-	Size        int    `pulumi:"size"`
-	Status      string `pulumi:"status"`
-	Type        string `pulumi:"type"`
-	Vendor      string `pulumi:"vendor"`
+	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+	Id string `pulumi:"id"`
+	// True if the Image is public.
+	IsPublic bool `pulumi:"isPublic"`
+	// A short description of the Image.
+	Label string `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size int `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status string `pulumi:"status"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type string `pulumi:"type"`
+	// The upstream distribution vendor. `None` for private Images.
+	Vendor string `pulumi:"vendor"`
 }
 
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
@@ -8677,18 +8811,29 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
-	Created     pulumi.StringInput `pulumi:"created"`
-	CreatedBy   pulumi.StringInput `pulumi:"createdBy"`
-	Deprecated  pulumi.BoolInput   `pulumi:"deprecated"`
+	// When this Image was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The name of the User who created this Image, or "linode" for official Images.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// A detailed description of this Image.
 	Description pulumi.StringInput `pulumi:"description"`
 	Expiry      pulumi.StringInput `pulumi:"expiry"`
-	Id          pulumi.StringInput `pulumi:"id"`
-	IsPublic    pulumi.BoolInput   `pulumi:"isPublic"`
-	Label       pulumi.StringInput `pulumi:"label"`
-	Size        pulumi.IntInput    `pulumi:"size"`
-	Status      pulumi.StringInput `pulumi:"status"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	Vendor      pulumi.StringInput `pulumi:"vendor"`
+	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// True if the Image is public.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// A short description of the Image.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size pulumi.IntInput `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type pulumi.StringInput `pulumi:"type"`
+	// The upstream distribution vendor. `None` for private Images.
+	Vendor pulumi.StringInput `pulumi:"vendor"`
 }
 
 func (GetImagesImageArgs) ElementType() reflect.Type {
@@ -8742,18 +8887,22 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 	return o
 }
 
+// When this Image was created.
 func (o GetImagesImageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The name of the User who created this Image, or "linode" for official Images.
 func (o GetImagesImageOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
 func (o GetImagesImageOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
+// A detailed description of this Image.
 func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -8762,30 +8911,37 @@ func (o GetImagesImageOutput) Expiry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Expiry }).(pulumi.StringOutput)
 }
 
+// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 func (o GetImagesImageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// True if the Image is public.
 func (o GetImagesImageOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
+// A short description of the Image.
 func (o GetImagesImageOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 func (o GetImagesImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The current status of this image. (`creating`, `pendingUpload`, `available`)
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 func (o GetImagesImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The upstream distribution vendor. `None` for private Images.
 func (o GetImagesImageOutput) Vendor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Vendor }).(pulumi.StringOutput)
 }
@@ -9977,16 +10133,24 @@ func (o GetInstanceTypesFilterArrayOutput) Index(i pulumi.IntInput) GetInstanceT
 }
 
 type GetInstanceTypesType struct {
-	Addons     []GetInstanceTypesTypeAddon `pulumi:"addons"`
-	Class      string                      `pulumi:"class"`
-	Disk       int                         `pulumi:"disk"`
-	Id         string                      `pulumi:"id"`
-	Label      string                      `pulumi:"label"`
-	Memory     int                         `pulumi:"memory"`
+	Addons []GetInstanceTypesTypeAddon `pulumi:"addons"`
+	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+	Class string `pulumi:"class"`
+	// The Disk size, in MB, of the Linode Type.
+	Disk int `pulumi:"disk"`
+	// The ID representing the Linode Type.
+	Id string `pulumi:"id"`
+	// The Linode Type's label is for display purposes only.
+	Label string `pulumi:"label"`
+	// The amount of RAM included in this Linode Type.
+	Memory int `pulumi:"memory"`
+	// The Mbits outbound bandwidth allocation.
 	NetworkOut int                         `pulumi:"networkOut"`
 	Prices     []GetInstanceTypesTypePrice `pulumi:"prices"`
-	Transfer   int                         `pulumi:"transfer"`
-	Vcpus      int                         `pulumi:"vcpus"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+	// The number of VCPU cores this Linode Type offers.
+	Vcpus int `pulumi:"vcpus"`
 }
 
 // GetInstanceTypesTypeInput is an input type that accepts GetInstanceTypesTypeArgs and GetInstanceTypesTypeOutput values.
@@ -10001,16 +10165,24 @@ type GetInstanceTypesTypeInput interface {
 }
 
 type GetInstanceTypesTypeArgs struct {
-	Addons     GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
-	Class      pulumi.StringInput                  `pulumi:"class"`
-	Disk       pulumi.IntInput                     `pulumi:"disk"`
-	Id         pulumi.StringInput                  `pulumi:"id"`
-	Label      pulumi.StringInput                  `pulumi:"label"`
-	Memory     pulumi.IntInput                     `pulumi:"memory"`
+	Addons GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
+	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+	Class pulumi.StringInput `pulumi:"class"`
+	// The Disk size, in MB, of the Linode Type.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// The ID representing the Linode Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Linode Type's label is for display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The amount of RAM included in this Linode Type.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The Mbits outbound bandwidth allocation.
 	NetworkOut pulumi.IntInput                     `pulumi:"networkOut"`
 	Prices     GetInstanceTypesTypePriceArrayInput `pulumi:"prices"`
-	Transfer   pulumi.IntInput                     `pulumi:"transfer"`
-	Vcpus      pulumi.IntInput                     `pulumi:"vcpus"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+	// The number of VCPU cores this Linode Type offers.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
 }
 
 func (GetInstanceTypesTypeArgs) ElementType() reflect.Type {
@@ -10068,26 +10240,32 @@ func (o GetInstanceTypesTypeOutput) Addons() GetInstanceTypesTypeAddonArrayOutpu
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypeAddon { return v.Addons }).(GetInstanceTypesTypeAddonArrayOutput)
 }
 
+// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
 func (o GetInstanceTypesTypeOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Class }).(pulumi.StringOutput)
 }
 
+// The Disk size, in MB, of the Linode Type.
 func (o GetInstanceTypesTypeOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// The ID representing the Linode Type.
 func (o GetInstanceTypesTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Linode Type's label is for display purposes only.
 func (o GetInstanceTypesTypeOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The amount of RAM included in this Linode Type.
 func (o GetInstanceTypesTypeOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Memory }).(pulumi.IntOutput)
 }
 
+// The Mbits outbound bandwidth allocation.
 func (o GetInstanceTypesTypeOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
@@ -10096,10 +10274,12 @@ func (o GetInstanceTypesTypeOutput) Prices() GetInstanceTypesTypePriceArrayOutpu
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypePrice { return v.Prices }).(GetInstanceTypesTypePriceArrayOutput)
 }
 
+// The monthly outbound transfer amount, in MB.
 func (o GetInstanceTypesTypeOutput) Transfer() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Transfer }).(pulumi.IntOutput)
 }
 
+// The number of VCPU cores this Linode Type offers.
 func (o GetInstanceTypesTypeOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.Vcpus }).(pulumi.IntOutput)
 }
@@ -10628,26 +10808,40 @@ func (o GetInstancesFilterArrayOutput) Index(i pulumi.IntInput) GetInstancesFilt
 }
 
 type GetInstancesInstance struct {
-	Alerts           GetInstancesInstanceAlerts   `pulumi:"alerts"`
-	Backups          []GetInstancesInstanceBackup `pulumi:"backups"`
-	BootConfigLabel  string                       `pulumi:"bootConfigLabel"`
-	Configs          []GetInstancesInstanceConfig `pulumi:"configs"`
-	Disks            []GetInstancesInstanceDisk   `pulumi:"disks"`
-	Group            string                       `pulumi:"group"`
-	Id               int                          `pulumi:"id"`
-	Image            string                       `pulumi:"image"`
-	IpAddress        string                       `pulumi:"ipAddress"`
-	Ipv4s            []string                     `pulumi:"ipv4s"`
-	Ipv6             string                       `pulumi:"ipv6"`
-	Label            string                       `pulumi:"label"`
-	PrivateIpAddress string                       `pulumi:"privateIpAddress"`
-	Region           string                       `pulumi:"region"`
-	Specs            []GetInstancesInstanceSpec   `pulumi:"specs"`
-	Status           string                       `pulumi:"status"`
-	SwapSize         int                          `pulumi:"swapSize"`
-	Tags             []string                     `pulumi:"tags"`
-	Type             string                       `pulumi:"type"`
-	WatchdogEnabled  bool                         `pulumi:"watchdogEnabled"`
+	Alerts          GetInstancesInstanceAlerts   `pulumi:"alerts"`
+	Backups         []GetInstancesInstanceBackup `pulumi:"backups"`
+	BootConfigLabel string                       `pulumi:"bootConfigLabel"`
+	Configs         []GetInstancesInstanceConfig `pulumi:"configs"`
+	Disks           []GetInstancesInstanceDisk   `pulumi:"disks"`
+	// The display group of the Linode instance.
+	Group string `pulumi:"group"`
+	// The ID of the disk in the Linode API.
+	Id int `pulumi:"id"`
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	Image string `pulumi:"image"`
+	// A string containing the Linode's public IP address.
+	IpAddress string `pulumi:"ipAddress"`
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	Ipv6 string `pulumi:"ipv6"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label string `pulumi:"label"`
+	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+	PrivateIpAddress string `pulumi:"privateIpAddress"`
+	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
+	Region string                     `pulumi:"region"`
+	Specs  []GetInstancesInstanceSpec `pulumi:"specs"`
+	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+	Status string `pulumi:"status"`
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+	SwapSize int `pulumi:"swapSize"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+	Type string `pulumi:"type"`
+	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+	WatchdogEnabled bool `pulumi:"watchdogEnabled"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -10662,26 +10856,40 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	Alerts           GetInstancesInstanceAlertsInput      `pulumi:"alerts"`
-	Backups          GetInstancesInstanceBackupArrayInput `pulumi:"backups"`
-	BootConfigLabel  pulumi.StringInput                   `pulumi:"bootConfigLabel"`
-	Configs          GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
-	Disks            GetInstancesInstanceDiskArrayInput   `pulumi:"disks"`
-	Group            pulumi.StringInput                   `pulumi:"group"`
-	Id               pulumi.IntInput                      `pulumi:"id"`
-	Image            pulumi.StringInput                   `pulumi:"image"`
-	IpAddress        pulumi.StringInput                   `pulumi:"ipAddress"`
-	Ipv4s            pulumi.StringArrayInput              `pulumi:"ipv4s"`
-	Ipv6             pulumi.StringInput                   `pulumi:"ipv6"`
-	Label            pulumi.StringInput                   `pulumi:"label"`
-	PrivateIpAddress pulumi.StringInput                   `pulumi:"privateIpAddress"`
-	Region           pulumi.StringInput                   `pulumi:"region"`
-	Specs            GetInstancesInstanceSpecArrayInput   `pulumi:"specs"`
-	Status           pulumi.StringInput                   `pulumi:"status"`
-	SwapSize         pulumi.IntInput                      `pulumi:"swapSize"`
-	Tags             pulumi.StringArrayInput              `pulumi:"tags"`
-	Type             pulumi.StringInput                   `pulumi:"type"`
-	WatchdogEnabled  pulumi.BoolInput                     `pulumi:"watchdogEnabled"`
+	Alerts          GetInstancesInstanceAlertsInput      `pulumi:"alerts"`
+	Backups         GetInstancesInstanceBackupArrayInput `pulumi:"backups"`
+	BootConfigLabel pulumi.StringInput                   `pulumi:"bootConfigLabel"`
+	Configs         GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
+	Disks           GetInstancesInstanceDiskArrayInput   `pulumi:"disks"`
+	// The display group of the Linode instance.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The ID of the disk in the Linode API.
+	Id pulumi.IntInput `pulumi:"id"`
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	Image pulumi.StringInput `pulumi:"image"`
+	// A string containing the Linode's public IP address.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label pulumi.StringInput `pulumi:"label"`
+	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
+	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringInput                 `pulumi:"region"`
+	Specs  GetInstancesInstanceSpecArrayInput `pulumi:"specs"`
+	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+	Status pulumi.StringInput `pulumi:"status"`
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+	SwapSize pulumi.IntInput `pulumi:"swapSize"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+	WatchdogEnabled pulumi.BoolInput `pulumi:"watchdogEnabled"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -10755,38 +10963,47 @@ func (o GetInstancesInstanceOutput) Disks() GetInstancesInstanceDiskArrayOutput 
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceDisk { return v.Disks }).(GetInstancesInstanceDiskArrayOutput)
 }
 
+// The display group of the Linode instance.
 func (o GetInstancesInstanceOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of the disk in the Linode API.
 func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// A string containing the Linode's public IP address.
 func (o GetInstancesInstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 func (o GetInstancesInstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 func (o GetInstancesInstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
+// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
 func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 func (o GetInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
 
+// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
 func (o GetInstancesInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -10795,22 +11012,27 @@ func (o GetInstancesInstanceOutput) Specs() GetInstancesInstanceSpecArrayOutput 
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceSpec { return v.Specs }).(GetInstancesInstanceSpecArrayOutput)
 }
 
+// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 func (o GetInstancesInstanceOutput) SwapSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.SwapSize }).(pulumi.IntOutput)
 }
 
+// A list of tags applied to this object. Tags are for organizational purposes only.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
 func (o GetInstancesInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 func (o GetInstancesInstanceOutput) WatchdogEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.WatchdogEnabled }).(pulumi.BoolOutput)
 }
@@ -10909,6 +11131,7 @@ func (o GetInstancesInstanceAlertsOutput) TransferQuota() pulumi.IntOutput {
 }
 
 type GetInstancesInstanceBackup struct {
+	// If this Linode has the Backup service enabled.
 	Enabled   bool                                 `pulumi:"enabled"`
 	Schedules []GetInstancesInstanceBackupSchedule `pulumi:"schedules"`
 }
@@ -10925,6 +11148,7 @@ type GetInstancesInstanceBackupInput interface {
 }
 
 type GetInstancesInstanceBackupArgs struct {
+	// If this Linode has the Backup service enabled.
 	Enabled   pulumi.BoolInput                             `pulumi:"enabled"`
 	Schedules GetInstancesInstanceBackupScheduleArrayInput `pulumi:"schedules"`
 }
@@ -10980,6 +11204,7 @@ func (o GetInstancesInstanceBackupOutput) ToGetInstancesInstanceBackupOutputWith
 	return o
 }
 
+// If this Linode has the Backup service enabled.
 func (o GetInstancesInstanceBackupOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackup) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11009,7 +11234,9 @@ func (o GetInstancesInstanceBackupArrayOutput) Index(i pulumi.IntInput) GetInsta
 }
 
 type GetInstancesInstanceBackupSchedule struct {
-	Day    string `pulumi:"day"`
+	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+	Day string `pulumi:"day"`
+	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window string `pulumi:"window"`
 }
 
@@ -11025,7 +11252,9 @@ type GetInstancesInstanceBackupScheduleInput interface {
 }
 
 type GetInstancesInstanceBackupScheduleArgs struct {
-	Day    pulumi.StringInput `pulumi:"day"`
+	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+	Day pulumi.StringInput `pulumi:"day"`
+	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window pulumi.StringInput `pulumi:"window"`
 }
 
@@ -11080,10 +11309,12 @@ func (o GetInstancesInstanceBackupScheduleOutput) ToGetInstancesInstanceBackupSc
 	return o
 }
 
+// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 func (o GetInstancesInstanceBackupScheduleOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackupSchedule) string { return v.Day }).(pulumi.StringOutput)
 }
 
+// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 func (o GetInstancesInstanceBackupScheduleOutput) Window() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackupSchedule) string { return v.Window }).(pulumi.StringOutput)
 }
@@ -11109,16 +11340,25 @@ func (o GetInstancesInstanceBackupScheduleArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstancesInstanceConfig struct {
-	Comments    string                                `pulumi:"comments"`
-	Devices     []GetInstancesInstanceConfigDevice    `pulumi:"devices"`
-	Helpers     []GetInstancesInstanceConfigHelper    `pulumi:"helpers"`
-	Interfaces  []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
-	Kernel      string                                `pulumi:"kernel"`
-	Label       string                                `pulumi:"label"`
-	MemoryLimit int                                   `pulumi:"memoryLimit"`
-	RootDevice  string                                `pulumi:"rootDevice"`
-	RunLevel    string                                `pulumi:"runLevel"`
-	VirtMode    string                                `pulumi:"virtMode"`
+	// Arbitrary user comments about this `config`.
+	Comments string `pulumi:"comments"`
+	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+	Devices []GetInstancesInstanceConfigDevice `pulumi:"devices"`
+	// Helpers enabled when booting to this Linode Config.
+	Helpers    []GetInstancesInstanceConfigHelper    `pulumi:"helpers"`
+	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
+	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	Kernel string `pulumi:"kernel"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label string `pulumi:"label"`
+	// Defaults to the total RAM of the Linode
+	MemoryLimit int `pulumi:"memoryLimit"`
+	// The root device to boot.
+	RootDevice string `pulumi:"rootDevice"`
+	// Defines the state of your Linode after booting.
+	RunLevel string `pulumi:"runLevel"`
+	// Controls the virtualization mode.
+	VirtMode string `pulumi:"virtMode"`
 }
 
 // GetInstancesInstanceConfigInput is an input type that accepts GetInstancesInstanceConfigArgs and GetInstancesInstanceConfigOutput values.
@@ -11133,16 +11373,25 @@ type GetInstancesInstanceConfigInput interface {
 }
 
 type GetInstancesInstanceConfigArgs struct {
-	Comments    pulumi.StringInput                            `pulumi:"comments"`
-	Devices     GetInstancesInstanceConfigDeviceArrayInput    `pulumi:"devices"`
-	Helpers     GetInstancesInstanceConfigHelperArrayInput    `pulumi:"helpers"`
-	Interfaces  GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
-	Kernel      pulumi.StringInput                            `pulumi:"kernel"`
-	Label       pulumi.StringInput                            `pulumi:"label"`
-	MemoryLimit pulumi.IntInput                               `pulumi:"memoryLimit"`
-	RootDevice  pulumi.StringInput                            `pulumi:"rootDevice"`
-	RunLevel    pulumi.StringInput                            `pulumi:"runLevel"`
-	VirtMode    pulumi.StringInput                            `pulumi:"virtMode"`
+	// Arbitrary user comments about this `config`.
+	Comments pulumi.StringInput `pulumi:"comments"`
+	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+	Devices GetInstancesInstanceConfigDeviceArrayInput `pulumi:"devices"`
+	// Helpers enabled when booting to this Linode Config.
+	Helpers    GetInstancesInstanceConfigHelperArrayInput    `pulumi:"helpers"`
+	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
+	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	Kernel pulumi.StringInput `pulumi:"kernel"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Defaults to the total RAM of the Linode
+	MemoryLimit pulumi.IntInput `pulumi:"memoryLimit"`
+	// The root device to boot.
+	RootDevice pulumi.StringInput `pulumi:"rootDevice"`
+	// Defines the state of your Linode after booting.
+	RunLevel pulumi.StringInput `pulumi:"runLevel"`
+	// Controls the virtualization mode.
+	VirtMode pulumi.StringInput `pulumi:"virtMode"`
 }
 
 func (GetInstancesInstanceConfigArgs) ElementType() reflect.Type {
@@ -11196,14 +11445,17 @@ func (o GetInstancesInstanceConfigOutput) ToGetInstancesInstanceConfigOutputWith
 	return o
 }
 
+// Arbitrary user comments about this `config`.
 func (o GetInstancesInstanceConfigOutput) Comments() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Comments }).(pulumi.StringOutput)
 }
 
+// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 func (o GetInstancesInstanceConfigOutput) Devices() GetInstancesInstanceConfigDeviceArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigDevice { return v.Devices }).(GetInstancesInstanceConfigDeviceArrayOutput)
 }
 
+// Helpers enabled when booting to this Linode Config.
 func (o GetInstancesInstanceConfigOutput) Helpers() GetInstancesInstanceConfigHelperArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigHelper { return v.Helpers }).(GetInstancesInstanceConfigHelperArrayOutput)
 }
@@ -11212,26 +11464,32 @@ func (o GetInstancesInstanceConfigOutput) Interfaces() GetInstancesInstanceConfi
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigInterface { return v.Interfaces }).(GetInstancesInstanceConfigInterfaceArrayOutput)
 }
 
+// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 func (o GetInstancesInstanceConfigOutput) Kernel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Kernel }).(pulumi.StringOutput)
 }
 
+// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
 func (o GetInstancesInstanceConfigOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// Defaults to the total RAM of the Linode
 func (o GetInstancesInstanceConfigOutput) MemoryLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) int { return v.MemoryLimit }).(pulumi.IntOutput)
 }
 
+// The root device to boot.
 func (o GetInstancesInstanceConfigOutput) RootDevice() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.RootDevice }).(pulumi.StringOutput)
 }
 
+// Defines the state of your Linode after booting.
 func (o GetInstancesInstanceConfigOutput) RunLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.RunLevel }).(pulumi.StringOutput)
 }
 
+// Controls the virtualization mode.
 func (o GetInstancesInstanceConfigOutput) VirtMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.VirtMode }).(pulumi.StringOutput)
 }
@@ -11393,9 +11651,12 @@ func (o GetInstancesInstanceConfigDeviceArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstancesInstanceConfigDeviceSda struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdaInput is an input type that accepts GetInstancesInstanceConfigDeviceSdaArgs and GetInstancesInstanceConfigDeviceSdaOutput values.
@@ -11410,9 +11671,12 @@ type GetInstancesInstanceConfigDeviceSdaInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdaArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdaArgs) ElementType() reflect.Type {
@@ -11466,14 +11730,17 @@ func (o GetInstancesInstanceConfigDeviceSdaOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdaOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSda) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdaOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdaOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -11499,9 +11766,12 @@ func (o GetInstancesInstanceConfigDeviceSdaArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdb struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdbInput is an input type that accepts GetInstancesInstanceConfigDeviceSdbArgs and GetInstancesInstanceConfigDeviceSdbOutput values.
@@ -11516,9 +11786,12 @@ type GetInstancesInstanceConfigDeviceSdbInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdbArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdbArgs) ElementType() reflect.Type {
@@ -11572,14 +11845,17 @@ func (o GetInstancesInstanceConfigDeviceSdbOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdbOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdb) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdbOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdbOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -11605,9 +11881,12 @@ func (o GetInstancesInstanceConfigDeviceSdbArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdc struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdcInput is an input type that accepts GetInstancesInstanceConfigDeviceSdcArgs and GetInstancesInstanceConfigDeviceSdcOutput values.
@@ -11622,9 +11901,12 @@ type GetInstancesInstanceConfigDeviceSdcInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdcArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdcArgs) ElementType() reflect.Type {
@@ -11678,14 +11960,17 @@ func (o GetInstancesInstanceConfigDeviceSdcOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdcOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdc) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdcOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdcOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -11711,9 +11996,12 @@ func (o GetInstancesInstanceConfigDeviceSdcArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdd struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSddInput is an input type that accepts GetInstancesInstanceConfigDeviceSddArgs and GetInstancesInstanceConfigDeviceSddOutput values.
@@ -11728,9 +12016,12 @@ type GetInstancesInstanceConfigDeviceSddInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSddArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSddArgs) ElementType() reflect.Type {
@@ -11784,14 +12075,17 @@ func (o GetInstancesInstanceConfigDeviceSddOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSddOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdd) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSddOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSddOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -11817,9 +12111,12 @@ func (o GetInstancesInstanceConfigDeviceSddArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSde struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdeInput is an input type that accepts GetInstancesInstanceConfigDeviceSdeArgs and GetInstancesInstanceConfigDeviceSdeOutput values.
@@ -11834,9 +12131,12 @@ type GetInstancesInstanceConfigDeviceSdeInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdeArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdeArgs) ElementType() reflect.Type {
@@ -11890,14 +12190,17 @@ func (o GetInstancesInstanceConfigDeviceSdeOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdeOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSde) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdeOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdeOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -11923,9 +12226,12 @@ func (o GetInstancesInstanceConfigDeviceSdeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdf struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdfInput is an input type that accepts GetInstancesInstanceConfigDeviceSdfArgs and GetInstancesInstanceConfigDeviceSdfOutput values.
@@ -11940,9 +12246,12 @@ type GetInstancesInstanceConfigDeviceSdfInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdfArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdfArgs) ElementType() reflect.Type {
@@ -11996,14 +12305,17 @@ func (o GetInstancesInstanceConfigDeviceSdfOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdfOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdf) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdfOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdfOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -12029,9 +12341,12 @@ func (o GetInstancesInstanceConfigDeviceSdfArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdg struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdgInput is an input type that accepts GetInstancesInstanceConfigDeviceSdgArgs and GetInstancesInstanceConfigDeviceSdgOutput values.
@@ -12046,9 +12361,12 @@ type GetInstancesInstanceConfigDeviceSdgInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdgArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdgArgs) ElementType() reflect.Type {
@@ -12102,14 +12420,17 @@ func (o GetInstancesInstanceConfigDeviceSdgOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdgOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdg) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdgOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdgOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -12135,9 +12456,12 @@ func (o GetInstancesInstanceConfigDeviceSdgArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigDeviceSdh struct {
-	DiskId    int     `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId int `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	VolumeId  *int    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId *int `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceConfigDeviceSdhInput is an input type that accepts GetInstancesInstanceConfigDeviceSdhArgs and GetInstancesInstanceConfigDeviceSdhOutput values.
@@ -12152,9 +12476,12 @@ type GetInstancesInstanceConfigDeviceSdhInput interface {
 }
 
 type GetInstancesInstanceConfigDeviceSdhArgs struct {
-	DiskId    pulumi.IntInput       `pulumi:"diskId"`
+	// The Disk ID of the associated `diskLabel`, if used
+	DiskId pulumi.IntInput `pulumi:"diskId"`
+	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	VolumeId  pulumi.IntPtrInput    `pulumi:"volumeId"`
+	// The Volume ID to map to this `device` slot.
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceConfigDeviceSdhArgs) ElementType() reflect.Type {
@@ -12208,14 +12535,17 @@ func (o GetInstancesInstanceConfigDeviceSdhOutput) ToGetInstancesInstanceConfigD
 	return o
 }
 
+// The Disk ID of the associated `diskLabel`, if used
 func (o GetInstancesInstanceConfigDeviceSdhOutput) DiskId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdh) int { return v.DiskId }).(pulumi.IntOutput)
 }
 
+// The `label` of the `disk` to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdhOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
+// The Volume ID to map to this `device` slot.
 func (o GetInstancesInstanceConfigDeviceSdhOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDeviceSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -12242,10 +12572,14 @@ func (o GetInstancesInstanceConfigDeviceSdhArrayOutput) Index(i pulumi.IntInput)
 
 type GetInstancesInstanceConfigHelper struct {
 	DevtmpfsAutomount bool `pulumi:"devtmpfsAutomount"`
-	Distro            bool `pulumi:"distro"`
-	ModulesDep        bool `pulumi:"modulesDep"`
-	Network           bool `pulumi:"network"`
-	UpdatedbDisabled  bool `pulumi:"updatedbDisabled"`
+	// Controls the behavior of the Linode Config's Distribution Helper setting.
+	Distro bool `pulumi:"distro"`
+	// Creates a modules dependency file for the Kernel you run.
+	ModulesDep bool `pulumi:"modulesDep"`
+	// Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+	Network bool `pulumi:"network"`
+	// Disables updatedb cron job to avoid disk thrashing.
+	UpdatedbDisabled bool `pulumi:"updatedbDisabled"`
 }
 
 // GetInstancesInstanceConfigHelperInput is an input type that accepts GetInstancesInstanceConfigHelperArgs and GetInstancesInstanceConfigHelperOutput values.
@@ -12261,10 +12595,14 @@ type GetInstancesInstanceConfigHelperInput interface {
 
 type GetInstancesInstanceConfigHelperArgs struct {
 	DevtmpfsAutomount pulumi.BoolInput `pulumi:"devtmpfsAutomount"`
-	Distro            pulumi.BoolInput `pulumi:"distro"`
-	ModulesDep        pulumi.BoolInput `pulumi:"modulesDep"`
-	Network           pulumi.BoolInput `pulumi:"network"`
-	UpdatedbDisabled  pulumi.BoolInput `pulumi:"updatedbDisabled"`
+	// Controls the behavior of the Linode Config's Distribution Helper setting.
+	Distro pulumi.BoolInput `pulumi:"distro"`
+	// Creates a modules dependency file for the Kernel you run.
+	ModulesDep pulumi.BoolInput `pulumi:"modulesDep"`
+	// Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+	Network pulumi.BoolInput `pulumi:"network"`
+	// Disables updatedb cron job to avoid disk thrashing.
+	UpdatedbDisabled pulumi.BoolInput `pulumi:"updatedbDisabled"`
 }
 
 func (GetInstancesInstanceConfigHelperArgs) ElementType() reflect.Type {
@@ -12322,18 +12660,22 @@ func (o GetInstancesInstanceConfigHelperOutput) DevtmpfsAutomount() pulumi.BoolO
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.DevtmpfsAutomount }).(pulumi.BoolOutput)
 }
 
+// Controls the behavior of the Linode Config's Distribution Helper setting.
 func (o GetInstancesInstanceConfigHelperOutput) Distro() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.Distro }).(pulumi.BoolOutput)
 }
 
+// Creates a modules dependency file for the Kernel you run.
 func (o GetInstancesInstanceConfigHelperOutput) ModulesDep() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.ModulesDep }).(pulumi.BoolOutput)
 }
 
+// Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
 func (o GetInstancesInstanceConfigHelperOutput) Network() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.Network }).(pulumi.BoolOutput)
 }
 
+// Disables updatedb cron job to avoid disk thrashing.
 func (o GetInstancesInstanceConfigHelperOutput) UpdatedbDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.UpdatedbDisabled }).(pulumi.BoolOutput)
 }
@@ -12359,9 +12701,12 @@ func (o GetInstancesInstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstancesInstanceConfigInterface struct {
+	// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	Label       *string `pulumi:"label"`
-	Purpose     *string `pulumi:"purpose"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label *string `pulumi:"label"`
+	// (Required) The type of interface. (`public`, `vlan`)
+	Purpose *string `pulumi:"purpose"`
 }
 
 // GetInstancesInstanceConfigInterfaceInput is an input type that accepts GetInstancesInstanceConfigInterfaceArgs and GetInstancesInstanceConfigInterfaceOutput values.
@@ -12376,9 +12721,12 @@ type GetInstancesInstanceConfigInterfaceInput interface {
 }
 
 type GetInstancesInstanceConfigInterfaceArgs struct {
+	// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	Label       pulumi.StringPtrInput `pulumi:"label"`
-	Purpose     pulumi.StringPtrInput `pulumi:"purpose"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// (Required) The type of interface. (`public`, `vlan`)
+	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
 }
 
 func (GetInstancesInstanceConfigInterfaceArgs) ElementType() reflect.Type {
@@ -12432,14 +12780,17 @@ func (o GetInstancesInstanceConfigInterfaceOutput) ToGetInstancesInstanceConfigI
 	return o
 }
 
+// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
 func (o GetInstancesInstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
 func (o GetInstancesInstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// (Required) The type of interface. (`public`, `vlan`)
 func (o GetInstancesInstanceConfigInterfaceOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
 }
@@ -12466,9 +12817,12 @@ func (o GetInstancesInstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput)
 
 type GetInstancesInstanceDisk struct {
 	Filesystem string `pulumi:"filesystem"`
-	Id         int    `pulumi:"id"`
-	Label      string `pulumi:"label"`
-	Size       int    `pulumi:"size"`
+	// The ID of the disk in the Linode API.
+	Id int `pulumi:"id"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label string `pulumi:"label"`
+	// The size of the Disk in MB.
+	Size int `pulumi:"size"`
 }
 
 // GetInstancesInstanceDiskInput is an input type that accepts GetInstancesInstanceDiskArgs and GetInstancesInstanceDiskOutput values.
@@ -12484,9 +12838,12 @@ type GetInstancesInstanceDiskInput interface {
 
 type GetInstancesInstanceDiskArgs struct {
 	Filesystem pulumi.StringInput `pulumi:"filesystem"`
-	Id         pulumi.IntInput    `pulumi:"id"`
-	Label      pulumi.StringInput `pulumi:"label"`
-	Size       pulumi.IntInput    `pulumi:"size"`
+	// The ID of the disk in the Linode API.
+	Id pulumi.IntInput `pulumi:"id"`
+	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The size of the Disk in MB.
+	Size pulumi.IntInput `pulumi:"size"`
 }
 
 func (GetInstancesInstanceDiskArgs) ElementType() reflect.Type {
@@ -12544,14 +12901,17 @@ func (o GetInstancesInstanceDiskOutput) Filesystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Filesystem }).(pulumi.StringOutput)
 }
 
+// The ID of the disk in the Linode API.
 func (o GetInstancesInstanceDiskOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
 func (o GetInstancesInstanceDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The size of the Disk in MB.
 func (o GetInstancesInstanceDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -13437,12 +13797,18 @@ func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
 }
 
 type GetStackScriptUserDefinedField struct {
+	// The default value. If not specified, this value will be used.
 	Default string `pulumi:"default"`
+	// An example value for the field.
 	Example string `pulumi:"example"`
-	Label   string `pulumi:"label"`
-	ManyOf  string `pulumi:"manyOf"`
-	Name    string `pulumi:"name"`
-	OneOf   string `pulumi:"oneOf"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label string `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
+	ManyOf string `pulumi:"manyOf"`
+	// The name of the field.
+	Name string `pulumi:"name"`
+	// A list of acceptable single values for the field.
+	OneOf string `pulumi:"oneOf"`
 }
 
 // GetStackScriptUserDefinedFieldInput is an input type that accepts GetStackScriptUserDefinedFieldArgs and GetStackScriptUserDefinedFieldOutput values.
@@ -13457,12 +13823,18 @@ type GetStackScriptUserDefinedFieldInput interface {
 }
 
 type GetStackScriptUserDefinedFieldArgs struct {
+	// The default value. If not specified, this value will be used.
 	Default pulumi.StringInput `pulumi:"default"`
+	// An example value for the field.
 	Example pulumi.StringInput `pulumi:"example"`
-	Label   pulumi.StringInput `pulumi:"label"`
-	ManyOf  pulumi.StringInput `pulumi:"manyOf"`
-	Name    pulumi.StringInput `pulumi:"name"`
-	OneOf   pulumi.StringInput `pulumi:"oneOf"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
+	ManyOf pulumi.StringInput `pulumi:"manyOf"`
+	// The name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of acceptable single values for the field.
+	OneOf pulumi.StringInput `pulumi:"oneOf"`
 }
 
 func (GetStackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
@@ -13516,26 +13888,32 @@ func (o GetStackScriptUserDefinedFieldOutput) ToGetStackScriptUserDefinedFieldOu
 	return o
 }
 
+// The default value. If not specified, this value will be used.
 func (o GetStackScriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
 }
 
+// An example value for the field.
 func (o GetStackScriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
 }
 
+// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 func (o GetStackScriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A list of acceptable values for the field in any quantity, combination or order.
 func (o GetStackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
 }
 
+// The name of the field.
 func (o GetStackScriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of acceptable single values for the field.
 func (o GetStackScriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
 }
@@ -13676,20 +14054,34 @@ func (o GetStackScriptsFilterArrayOutput) Index(i pulumi.IntInput) GetStackScrip
 }
 
 type GetStackScriptsStackscript struct {
-	Created           string                                       `pulumi:"created"`
-	DeploymentsActive int                                          `pulumi:"deploymentsActive"`
-	DeploymentsTotal  int                                          `pulumi:"deploymentsTotal"`
-	Description       string                                       `pulumi:"description"`
-	Id                int                                          `pulumi:"id"`
-	Images            []string                                     `pulumi:"images"`
-	IsPublic          bool                                         `pulumi:"isPublic"`
-	Label             string                                       `pulumi:"label"`
-	RevNote           string                                       `pulumi:"revNote"`
-	Script            string                                       `pulumi:"script"`
-	Updated           string                                       `pulumi:"updated"`
+	// The date this StackScript was created.
+	Created string `pulumi:"created"`
+	// Count of currently active, deployed Linodes created from this StackScript.
+	DeploymentsActive int `pulumi:"deploymentsActive"`
+	// The total number of times this StackScript has been deployed.
+	DeploymentsTotal int `pulumi:"deploymentsTotal"`
+	// A description for the StackScript.
+	Description string `pulumi:"description"`
+	// The unique ID of the StackScript.
+	Id int `pulumi:"id"`
+	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+	Images []string `pulumi:"images"`
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+	IsPublic bool `pulumi:"isPublic"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label string `pulumi:"label"`
+	// This field allows you to add notes for the set of revisions made to this StackScript.
+	RevNote string `pulumi:"revNote"`
+	// The script to execute when provisioning a new Linode with this StackScript.
+	Script string `pulumi:"script"`
+	// The date this StackScript was updated.
+	Updated string `pulumi:"updated"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields []GetStackScriptsStackscriptUserDefinedField `pulumi:"userDefinedFields"`
-	UserGravatarId    string                                       `pulumi:"userGravatarId"`
-	Username          string                                       `pulumi:"username"`
+	// The Gravatar ID for the User who created the StackScript.
+	UserGravatarId string `pulumi:"userGravatarId"`
+	// The User who created the StackScript.
+	Username string `pulumi:"username"`
 }
 
 // GetStackScriptsStackscriptInput is an input type that accepts GetStackScriptsStackscriptArgs and GetStackScriptsStackscriptOutput values.
@@ -13704,20 +14096,34 @@ type GetStackScriptsStackscriptInput interface {
 }
 
 type GetStackScriptsStackscriptArgs struct {
-	Created           pulumi.StringInput                                   `pulumi:"created"`
-	DeploymentsActive pulumi.IntInput                                      `pulumi:"deploymentsActive"`
-	DeploymentsTotal  pulumi.IntInput                                      `pulumi:"deploymentsTotal"`
-	Description       pulumi.StringInput                                   `pulumi:"description"`
-	Id                pulumi.IntInput                                      `pulumi:"id"`
-	Images            pulumi.StringArrayInput                              `pulumi:"images"`
-	IsPublic          pulumi.BoolInput                                     `pulumi:"isPublic"`
-	Label             pulumi.StringInput                                   `pulumi:"label"`
-	RevNote           pulumi.StringInput                                   `pulumi:"revNote"`
-	Script            pulumi.StringInput                                   `pulumi:"script"`
-	Updated           pulumi.StringInput                                   `pulumi:"updated"`
+	// The date this StackScript was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// Count of currently active, deployed Linodes created from this StackScript.
+	DeploymentsActive pulumi.IntInput `pulumi:"deploymentsActive"`
+	// The total number of times this StackScript has been deployed.
+	DeploymentsTotal pulumi.IntInput `pulumi:"deploymentsTotal"`
+	// A description for the StackScript.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique ID of the StackScript.
+	Id pulumi.IntInput `pulumi:"id"`
+	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label pulumi.StringInput `pulumi:"label"`
+	// This field allows you to add notes for the set of revisions made to this StackScript.
+	RevNote pulumi.StringInput `pulumi:"revNote"`
+	// The script to execute when provisioning a new Linode with this StackScript.
+	Script pulumi.StringInput `pulumi:"script"`
+	// The date this StackScript was updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields GetStackScriptsStackscriptUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
-	UserGravatarId    pulumi.StringInput                                   `pulumi:"userGravatarId"`
-	Username          pulumi.StringInput                                   `pulumi:"username"`
+	// The Gravatar ID for the User who created the StackScript.
+	UserGravatarId pulumi.StringInput `pulumi:"userGravatarId"`
+	// The User who created the StackScript.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetStackScriptsStackscriptArgs) ElementType() reflect.Type {
@@ -13771,60 +14177,74 @@ func (o GetStackScriptsStackscriptOutput) ToGetStackScriptsStackscriptOutputWith
 	return o
 }
 
+// The date this StackScript was created.
 func (o GetStackScriptsStackscriptOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Count of currently active, deployed Linodes created from this StackScript.
 func (o GetStackScriptsStackscriptOutput) DeploymentsActive() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.DeploymentsActive }).(pulumi.IntOutput)
 }
 
+// The total number of times this StackScript has been deployed.
 func (o GetStackScriptsStackscriptOutput) DeploymentsTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.DeploymentsTotal }).(pulumi.IntOutput)
 }
 
+// A description for the StackScript.
 func (o GetStackScriptsStackscriptOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The unique ID of the StackScript.
 func (o GetStackScriptsStackscriptOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 func (o GetStackScriptsStackscriptOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
 func (o GetStackScriptsStackscriptOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
+// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 func (o GetStackScriptsStackscriptOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// This field allows you to add notes for the set of revisions made to this StackScript.
 func (o GetStackScriptsStackscriptOutput) RevNote() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.RevNote }).(pulumi.StringOutput)
 }
 
+// The script to execute when provisioning a new Linode with this StackScript.
 func (o GetStackScriptsStackscriptOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Script }).(pulumi.StringOutput)
 }
 
+// The date this StackScript was updated.
 func (o GetStackScriptsStackscriptOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Updated }).(pulumi.StringOutput)
 }
 
+// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 func (o GetStackScriptsStackscriptOutput) UserDefinedFields() GetStackScriptsStackscriptUserDefinedFieldArrayOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) []GetStackScriptsStackscriptUserDefinedField {
 		return v.UserDefinedFields
 	}).(GetStackScriptsStackscriptUserDefinedFieldArrayOutput)
 }
 
+// The Gravatar ID for the User who created the StackScript.
 func (o GetStackScriptsStackscriptOutput) UserGravatarId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.UserGravatarId }).(pulumi.StringOutput)
 }
 
+// The User who created the StackScript.
 func (o GetStackScriptsStackscriptOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -13850,12 +14270,17 @@ func (o GetStackScriptsStackscriptArrayOutput) Index(i pulumi.IntInput) GetStack
 }
 
 type GetStackScriptsStackscriptUserDefinedField struct {
+	// The default value. If not specified, this value will be used.
 	Default string `pulumi:"default"`
+	// An example value for the field.
 	Example string `pulumi:"example"`
-	Label   string `pulumi:"label"`
-	ManyOf  string `pulumi:"manyOf"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label string `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
+	ManyOf string `pulumi:"manyOf"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name  string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// A list of acceptable single values for the field.
 	OneOf string `pulumi:"oneOf"`
 }
 
@@ -13871,12 +14296,17 @@ type GetStackScriptsStackscriptUserDefinedFieldInput interface {
 }
 
 type GetStackScriptsStackscriptUserDefinedFieldArgs struct {
+	// The default value. If not specified, this value will be used.
 	Default pulumi.StringInput `pulumi:"default"`
+	// An example value for the field.
 	Example pulumi.StringInput `pulumi:"example"`
-	Label   pulumi.StringInput `pulumi:"label"`
-	ManyOf  pulumi.StringInput `pulumi:"manyOf"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A list of acceptable values for the field in any quantity, combination or order.
+	ManyOf pulumi.StringInput `pulumi:"manyOf"`
 	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name  pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of acceptable single values for the field.
 	OneOf pulumi.StringInput `pulumi:"oneOf"`
 }
 
@@ -13931,18 +14361,22 @@ func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ToGetStackScriptsStack
 	return o
 }
 
+// The default value. If not specified, this value will be used.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
 }
 
+// An example value for the field.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
 }
 
+// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A list of acceptable values for the field in any quantity, combination or order.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
 }
@@ -13952,6 +14386,7 @@ func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of acceptable single values for the field.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
 }
@@ -14092,10 +14527,14 @@ func (o GetVlansFilterArrayOutput) Index(i pulumi.IntInput) GetVlansFilterOutput
 }
 
 type GetVlansVlan struct {
+	// When the VLAN was created.
 	Created string `pulumi:"created"`
-	Label   string `pulumi:"label"`
-	Linodes []int  `pulumi:"linodes"`
-	Region  string `pulumi:"region"`
+	// The unique label of the VLAN.
+	Label string `pulumi:"label"`
+	// The running Linodes currently attached to the VLAN.
+	Linodes []int `pulumi:"linodes"`
+	// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+	Region string `pulumi:"region"`
 }
 
 // GetVlansVlanInput is an input type that accepts GetVlansVlanArgs and GetVlansVlanOutput values.
@@ -14110,10 +14549,14 @@ type GetVlansVlanInput interface {
 }
 
 type GetVlansVlanArgs struct {
-	Created pulumi.StringInput   `pulumi:"created"`
-	Label   pulumi.StringInput   `pulumi:"label"`
+	// When the VLAN was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The unique label of the VLAN.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The running Linodes currently attached to the VLAN.
 	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
-	Region  pulumi.StringInput   `pulumi:"region"`
+	// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (GetVlansVlanArgs) ElementType() reflect.Type {
@@ -14167,18 +14610,22 @@ func (o GetVlansVlanOutput) ToGetVlansVlanOutputWithContext(ctx context.Context)
 	return o
 }
 
+// When the VLAN was created.
 func (o GetVlansVlanOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVlansVlan) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The unique label of the VLAN.
 func (o GetVlansVlanOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVlansVlan) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The running Linodes currently attached to the VLAN.
 func (o GetVlansVlanOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetVlansVlan) []int { return v.Linodes }).(pulumi.IntArrayOutput)
 }
 
+// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
 func (o GetVlansVlanOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVlansVlan) string { return v.Region }).(pulumi.StringOutput)
 }

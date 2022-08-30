@@ -207,10 +207,10 @@ class _DatabaseMysqlState:
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[str] created: When this Managed Database was created.
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
-        :param pulumi.Input[str] engine: The Managed Database engine.
+        :param pulumi.Input[str] engine: The Managed Database engine. (e.g. `mysql`)
         :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
         :param pulumi.Input[str] host_primary: The primary host for the Managed Database.
-        :param pulumi.Input[str] host_secondary: The secondary host for the Managed Database.
+        :param pulumi.Input[str] host_secondary: The secondary/private network host for the Managed Database.
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
@@ -221,7 +221,7 @@ class _DatabaseMysqlState:
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
         :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
-        :param pulumi.Input[str] version: The Managed Database engine version.
+        :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
         if allow_lists is not None:
             pulumi.set(__self__, "allow_lists", allow_lists)
@@ -328,7 +328,7 @@ class _DatabaseMysqlState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The Managed Database engine.
+        The Managed Database engine. (e.g. `mysql`)
         """
         return pulumi.get(self, "engine")
 
@@ -364,7 +364,7 @@ class _DatabaseMysqlState:
     @pulumi.getter(name="hostSecondary")
     def host_secondary(self) -> Optional[pulumi.Input[str]]:
         """
-        The secondary host for the Managed Database.
+        The secondary/private network host for the Managed Database.
         """
         return pulumi.get(self, "host_secondary")
 
@@ -496,7 +496,7 @@ class _DatabaseMysqlState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The Managed Database engine version.
+        The Managed Database engine version. (e.g. `v8.0.26`)
         """
         return pulumi.get(self, "version")
 
@@ -579,32 +579,6 @@ class DatabaseMysql(pulumi.CustomResource):
         * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
 
         * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-
-        ## Attributes
-
-        In addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the Managed Database.
-
-        * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-
-        * `created` - When this Managed Database was created.
-
-        * `engine` - The Managed Database engine. (e.g. `mysql`)
-
-        * `host_primary` - The primary host for the Managed Database.
-
-        * `host_secondary` - The secondary/private network host for the Managed Database.
-
-        * `root_password` - The randomly-generated root password for the Managed Database instance.
-
-        * `root_username` - The root username for the Managed Database instance.
-
-        * `status` - The operating status of the Managed Database.
-
-        * `updated` - When this Managed Database was last updated.
-
-        * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
 
         ## Import
 
@@ -691,32 +665,6 @@ class DatabaseMysql(pulumi.CustomResource):
         * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
 
         * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-
-        ## Attributes
-
-        In addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the Managed Database.
-
-        * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-
-        * `created` - When this Managed Database was created.
-
-        * `engine` - The Managed Database engine. (e.g. `mysql`)
-
-        * `host_primary` - The primary host for the Managed Database.
-
-        * `host_secondary` - The secondary/private network host for the Managed Database.
-
-        * `root_password` - The randomly-generated root password for the Managed Database instance.
-
-        * `root_username` - The root username for the Managed Database instance.
-
-        * `status` - The operating status of the Managed Database.
-
-        * `updated` - When this Managed Database was last updated.
-
-        * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
 
         ## Import
 
@@ -830,10 +778,10 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[str] created: When this Managed Database was created.
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
-        :param pulumi.Input[str] engine: The Managed Database engine.
+        :param pulumi.Input[str] engine: The Managed Database engine. (e.g. `mysql`)
         :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
         :param pulumi.Input[str] host_primary: The primary host for the Managed Database.
-        :param pulumi.Input[str] host_secondary: The secondary host for the Managed Database.
+        :param pulumi.Input[str] host_secondary: The secondary/private network host for the Managed Database.
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
@@ -844,7 +792,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
         :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
-        :param pulumi.Input[str] version: The Managed Database engine version.
+        :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -916,7 +864,7 @@ class DatabaseMysql(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The Managed Database engine.
+        The Managed Database engine. (e.g. `mysql`)
         """
         return pulumi.get(self, "engine")
 
@@ -940,7 +888,7 @@ class DatabaseMysql(pulumi.CustomResource):
     @pulumi.getter(name="hostSecondary")
     def host_secondary(self) -> pulumi.Output[str]:
         """
-        The secondary host for the Managed Database.
+        The secondary/private network host for the Managed Database.
         """
         return pulumi.get(self, "host_secondary")
 
@@ -1028,7 +976,7 @@ class DatabaseMysql(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        The Managed Database engine version.
+        The Managed Database engine version. (e.g. `v8.0.26`)
         """
         return pulumi.get(self, "version")
 

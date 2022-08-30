@@ -110,14 +110,14 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `mongodb`)
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The Managed Database engine.
+     * @return The Managed Database engine. (e.g. `mongodb`)
      * 
      */
     public Optional<Output<String>> engine() {
@@ -155,14 +155,14 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      * 
      */
     @Import(name="hostSecondary")
     private @Nullable Output<String> hostSecondary;
 
     /**
-     * @return The secondary host for the Managed Database.
+     * @return The secondary/private network host for the Managed Database.
      * 
      */
     public Optional<Output<String>> hostSecondary() {
@@ -230,16 +230,14 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same
-     * replica set.
+     * Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
      * 
      */
     @Import(name="replicaSet")
     private @Nullable Output<String> replicaSet;
 
     /**
-     * @return Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same
-     * replica set.
+     * @return Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
      * 
      */
     public Optional<Output<String>> replicaSet() {
@@ -367,14 +365,14 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The Managed Database engine version.
+     * @return The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     public Optional<Output<String>> version() {
@@ -565,7 +563,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `mongodb`)
          * 
          * @return builder
          * 
@@ -576,7 +574,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `mongodb`)
          * 
          * @return builder
          * 
@@ -628,7 +626,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -639,7 +637,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -743,8 +741,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replicaSet Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same
-         * replica set.
+         * @param replicaSet Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
          * 
          * @return builder
          * 
@@ -755,8 +752,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replicaSet Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same
-         * replica set.
+         * @param replicaSet Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
          * 
          * @return builder
          * 
@@ -934,7 +930,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `v8.0.26`)
          * 
          * @return builder
          * 
@@ -945,7 +941,7 @@ public final class DatabaseMongodbState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `v8.0.26`)
          * 
          * @return builder
          * 

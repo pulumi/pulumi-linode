@@ -39,58 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The `DatabaseMongodb` data source exports the following attributes:
-//
-// * `allowList` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-//
-// * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-//
-// * `clusterSize` - The number of Linode Instance nodes deployed to the Managed Database.
-//
-// * `compressionType` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
-//
-// * `created` - When this Managed Database was created.
-//
-// * `encrypted` - Whether the Managed Databases is encrypted.
-//
-// * `engine` - The Managed Database engine. (e.g. `mongodb`)
-//
-// * `engineId` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
-//
-// * `hostPrimary` - The primary host for the Managed Database.
-//
-// * `hostSecondary` - The secondary/private network host for the Managed Database.
-//
-// * `label` - A unique, user-defined string referring to the Managed Database.
-//
-// * `peers` - A set of peer addresses for this Database.
-//
-// * `port` - The access port for this Managed Database.
-//
-// * `replicaSet` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
-//
-// * `region` - The region that hosts this Linode Managed Database.
-//
-// * `rootPassword` - The randomly-generated root password for the Managed Database instance.
-//
-// * `rootUsername` - The root username for the Managed Database instance.
-//
-// * `sslConnection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-//
-// * `storageEngine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
-//
-// * `status` - The operating status of the Managed Database.
-//
-// * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// * `updated` - When this Managed Database was last updated.
-//
-// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-//
-// * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-//
 // ## updates
 //
 // The following arguments are exported by the `updates` specification block:
@@ -121,33 +69,56 @@ type LookupDatabaseMongodbArgs struct {
 
 // A collection of values returned by getDatabaseMongodb.
 type LookupDatabaseMongodbResult struct {
-	AllowLists      []string `pulumi:"allowLists"`
-	CaCert          string   `pulumi:"caCert"`
-	ClusterSize     int      `pulumi:"clusterSize"`
-	CompressionType string   `pulumi:"compressionType"`
-	Created         string   `pulumi:"created"`
-	DatabaseId      int      `pulumi:"databaseId"`
-	Encrypted       bool     `pulumi:"encrypted"`
-	Engine          string   `pulumi:"engine"`
-	EngineId        string   `pulumi:"engineId"`
-	HostPrimary     string   `pulumi:"hostPrimary"`
-	HostSecondary   string   `pulumi:"hostSecondary"`
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	AllowLists []string `pulumi:"allowLists"`
+	// The base64-encoded SSL CA certificate for the Managed Database instance.
+	CaCert string `pulumi:"caCert"`
+	// The number of Linode Instance nodes deployed to the Managed Database.
+	ClusterSize int `pulumi:"clusterSize"`
+	// The type of data compression for this Database. (`none`, `snappy`, `zlib`)
+	CompressionType string `pulumi:"compressionType"`
+	// When this Managed Database was created.
+	Created    string `pulumi:"created"`
+	DatabaseId int    `pulumi:"databaseId"`
+	// Whether the Managed Databases is encrypted.
+	Encrypted bool `pulumi:"encrypted"`
+	// The Managed Database engine. (e.g. `mongodb`)
+	Engine string `pulumi:"engine"`
+	// The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
+	EngineId string `pulumi:"engineId"`
+	// The primary host for the Managed Database.
+	HostPrimary string `pulumi:"hostPrimary"`
+	// The secondary/private network host for the Managed Database.
+	HostSecondary string `pulumi:"hostSecondary"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                     `pulumi:"id"`
-	Label         string                     `pulumi:"label"`
-	Peers         []string                   `pulumi:"peers"`
-	Port          int                        `pulumi:"port"`
-	Region        string                     `pulumi:"region"`
-	ReplicaSet    string                     `pulumi:"replicaSet"`
-	RootPassword  string                     `pulumi:"rootPassword"`
-	RootUsername  string                     `pulumi:"rootUsername"`
-	SslConnection bool                       `pulumi:"sslConnection"`
-	Status        string                     `pulumi:"status"`
-	StorageEngine string                     `pulumi:"storageEngine"`
-	Type          string                     `pulumi:"type"`
-	Updated       string                     `pulumi:"updated"`
-	Updates       []GetDatabaseMongodbUpdate `pulumi:"updates"`
-	Version       string                     `pulumi:"version"`
+	Id string `pulumi:"id"`
+	// A unique, user-defined string referring to the Managed Database.
+	Label string `pulumi:"label"`
+	// A set of peer addresses for this Database.
+	Peers []string `pulumi:"peers"`
+	// The access port for this Managed Database.
+	Port int `pulumi:"port"`
+	// The region that hosts this Linode Managed Database.
+	Region string `pulumi:"region"`
+	// Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
+	ReplicaSet string `pulumi:"replicaSet"`
+	// The randomly-generated root password for the Managed Database instance.
+	RootPassword string `pulumi:"rootPassword"`
+	// The root username for the Managed Database instance.
+	RootUsername string `pulumi:"rootUsername"`
+	// Whether to require SSL credentials to establish a connection to the Managed Database.
+	SslConnection bool `pulumi:"sslConnection"`
+	// The operating status of the Managed Database.
+	Status string `pulumi:"status"`
+	// The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
+	StorageEngine string `pulumi:"storageEngine"`
+	// The Linode Instance type used for the nodes of the  Managed Database instance.
+	Type string `pulumi:"type"`
+	// When this Managed Database was last updated.
+	Updated string                     `pulumi:"updated"`
+	Updates []GetDatabaseMongodbUpdate `pulumi:"updates"`
+	// The Managed Database engine version. (e.g. `v8.0.26`)
+	Version string `pulumi:"version"`
 }
 
 func LookupDatabaseMongodbOutput(ctx *pulumi.Context, args LookupDatabaseMongodbOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMongodbResultOutput {
@@ -188,22 +159,27 @@ func (o LookupDatabaseMongodbResultOutput) ToLookupDatabaseMongodbResultOutputWi
 	return o
 }
 
+// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
 func (o LookupDatabaseMongodbResultOutput) AllowLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) []string { return v.AllowLists }).(pulumi.StringArrayOutput)
 }
 
+// The base64-encoded SSL CA certificate for the Managed Database instance.
 func (o LookupDatabaseMongodbResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
+// The number of Linode Instance nodes deployed to the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) ClusterSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) int { return v.ClusterSize }).(pulumi.IntOutput)
 }
 
+// The type of data compression for this Database. (`none`, `snappy`, `zlib`)
 func (o LookupDatabaseMongodbResultOutput) CompressionType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.CompressionType }).(pulumi.StringOutput)
 }
 
+// When this Managed Database was created.
 func (o LookupDatabaseMongodbResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -212,22 +188,27 @@ func (o LookupDatabaseMongodbResultOutput) DatabaseId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) int { return v.DatabaseId }).(pulumi.IntOutput)
 }
 
+// Whether the Managed Databases is encrypted.
 func (o LookupDatabaseMongodbResultOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// The Managed Database engine. (e.g. `mongodb`)
 func (o LookupDatabaseMongodbResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
 func (o LookupDatabaseMongodbResultOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.EngineId }).(pulumi.StringOutput)
 }
 
+// The primary host for the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) HostPrimary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.HostPrimary }).(pulumi.StringOutput)
 }
 
+// The secondary/private network host for the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.HostSecondary }).(pulumi.StringOutput)
 }
@@ -237,50 +218,62 @@ func (o LookupDatabaseMongodbResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A unique, user-defined string referring to the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A set of peer addresses for this Database.
 func (o LookupDatabaseMongodbResultOutput) Peers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) []string { return v.Peers }).(pulumi.StringArrayOutput)
 }
 
+// The access port for this Managed Database.
 func (o LookupDatabaseMongodbResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The region that hosts this Linode Managed Database.
 func (o LookupDatabaseMongodbResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
 func (o LookupDatabaseMongodbResultOutput) ReplicaSet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.ReplicaSet }).(pulumi.StringOutput)
 }
 
+// The randomly-generated root password for the Managed Database instance.
 func (o LookupDatabaseMongodbResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.RootPassword }).(pulumi.StringOutput)
 }
 
+// The root username for the Managed Database instance.
 func (o LookupDatabaseMongodbResultOutput) RootUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.RootUsername }).(pulumi.StringOutput)
 }
 
+// Whether to require SSL credentials to establish a connection to the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) SslConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) bool { return v.SslConnection }).(pulumi.BoolOutput)
 }
 
+// The operating status of the Managed Database.
 func (o LookupDatabaseMongodbResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
 func (o LookupDatabaseMongodbResultOutput) StorageEngine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.StorageEngine }).(pulumi.StringOutput)
 }
 
+// The Linode Instance type used for the nodes of the  Managed Database instance.
 func (o LookupDatabaseMongodbResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// When this Managed Database was last updated.
 func (o LookupDatabaseMongodbResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Updated }).(pulumi.StringOutput)
 }
@@ -289,6 +282,7 @@ func (o LookupDatabaseMongodbResultOutput) Updates() GetDatabaseMongodbUpdateArr
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) []GetDatabaseMongodbUpdate { return v.Updates }).(GetDatabaseMongodbUpdateArrayOutput)
 }
 
+// The Managed Database engine version. (e.g. `v8.0.26`)
 func (o LookupDatabaseMongodbResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMongodbResult) string { return v.Version }).(pulumi.StringOutput)
 }

@@ -19,41 +19,26 @@ public final class ObjectStorageBucketLifecycleRule {
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
      */
-    private final @Nullable Integer abortIncompleteMultipartUploadDays;
+    private @Nullable Integer abortIncompleteMultipartUploadDays;
     /**
      * @return Specifies whether the lifecycle rule is active.
      * 
      */
-    private final Boolean enabled;
-    private final @Nullable ObjectStorageBucketLifecycleRuleExpiration expiration;
+    private Boolean enabled;
+    private @Nullable ObjectStorageBucketLifecycleRuleExpiration expiration;
     /**
      * @return The unique identifier for the rule.
      * 
      */
-    private final @Nullable String id;
-    private final @Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
+    private @Nullable String id;
+    private @Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
     /**
      * @return The object key prefix identifying one or more objects to which the rule applies.
      * 
      */
-    private final @Nullable String prefix;
+    private @Nullable String prefix;
 
-    @CustomType.Constructor
-    private ObjectStorageBucketLifecycleRule(
-        @CustomType.Parameter("abortIncompleteMultipartUploadDays") @Nullable Integer abortIncompleteMultipartUploadDays,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("expiration") @Nullable ObjectStorageBucketLifecycleRuleExpiration expiration,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("noncurrentVersionExpiration") @Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration,
-        @CustomType.Parameter("prefix") @Nullable String prefix) {
-        this.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
-        this.enabled = enabled;
-        this.expiration = expiration;
-        this.id = id;
-        this.noncurrentVersionExpiration = noncurrentVersionExpiration;
-        this.prefix = prefix;
-    }
-
+    private ObjectStorageBucketLifecycleRule() {}
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
@@ -96,7 +81,7 @@ public final class ObjectStorageBucketLifecycleRule {
     public static Builder builder(ObjectStorageBucketLifecycleRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer abortIncompleteMultipartUploadDays;
         private Boolean enabled;
@@ -104,11 +89,7 @@ public final class ObjectStorageBucketLifecycleRule {
         private @Nullable String id;
         private @Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
         private @Nullable String prefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ObjectStorageBucketLifecycleRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abortIncompleteMultipartUploadDays = defaults.abortIncompleteMultipartUploadDays;
@@ -119,31 +100,45 @@ public final class ObjectStorageBucketLifecycleRule {
     	      this.prefix = defaults.prefix;
         }
 
+        @CustomType.Setter
         public Builder abortIncompleteMultipartUploadDays(@Nullable Integer abortIncompleteMultipartUploadDays) {
             this.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder expiration(@Nullable ObjectStorageBucketLifecycleRuleExpiration expiration) {
             this.expiration = expiration;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder noncurrentVersionExpiration(@Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration) {
             this.noncurrentVersionExpiration = noncurrentVersionExpiration;
             return this;
         }
+        @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
             this.prefix = prefix;
             return this;
-        }        public ObjectStorageBucketLifecycleRule build() {
-            return new ObjectStorageBucketLifecycleRule(abortIncompleteMultipartUploadDays, enabled, expiration, id, noncurrentVersionExpiration, prefix);
+        }
+        public ObjectStorageBucketLifecycleRule build() {
+            final var o = new ObjectStorageBucketLifecycleRule();
+            o.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
+            o.enabled = enabled;
+            o.expiration = expiration;
+            o.id = id;
+            o.noncurrentVersionExpiration = noncurrentVersionExpiration;
+            o.prefix = prefix;
+            return o;
         }
     }
 }

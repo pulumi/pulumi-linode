@@ -11,20 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeBalancerConfigNodeStatus {
-    private final @Nullable Integer down;
-    private final @Nullable Integer up;
+    /**
+     * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
+     * 
+     */
+    private @Nullable Integer down;
+    /**
+     * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
+     * 
+     */
+    private @Nullable Integer up;
 
-    @CustomType.Constructor
-    private NodeBalancerConfigNodeStatus(
-        @CustomType.Parameter("down") @Nullable Integer down,
-        @CustomType.Parameter("up") @Nullable Integer up) {
-        this.down = down;
-        this.up = up;
-    }
-
+    private NodeBalancerConfigNodeStatus() {}
+    /**
+     * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
+     * 
+     */
     public Optional<Integer> down() {
         return Optional.ofNullable(this.down);
     }
+    /**
+     * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
+     * 
+     */
     public Optional<Integer> up() {
         return Optional.ofNullable(this.up);
     }
@@ -36,30 +45,32 @@ public final class NodeBalancerConfigNodeStatus {
     public static Builder builder(NodeBalancerConfigNodeStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer down;
         private @Nullable Integer up;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeBalancerConfigNodeStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.down = defaults.down;
     	      this.up = defaults.up;
         }
 
+        @CustomType.Setter
         public Builder down(@Nullable Integer down) {
             this.down = down;
             return this;
         }
+        @CustomType.Setter
         public Builder up(@Nullable Integer up) {
             this.up = up;
             return this;
-        }        public NodeBalancerConfigNodeStatus build() {
-            return new NodeBalancerConfigNodeStatus(down, up);
+        }
+        public NodeBalancerConfigNodeStatus build() {
+            final var o = new NodeBalancerConfigNodeStatus();
+            o.down = down;
+            o.up = up;
+            return o;
         }
     }
 }

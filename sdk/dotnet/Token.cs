@@ -38,13 +38,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `token` - The token used to access the API.
-    /// 
-    /// * `created` - The date this Token was created.
     /// 
     /// ## Import
     /// 
@@ -60,7 +53,7 @@ namespace Pulumi.Linode
     public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The date and time this token was created.
+        /// The date this Token was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -162,7 +155,7 @@ namespace Pulumi.Linode
     public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date and time this token was created.
+        /// The date this Token was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }

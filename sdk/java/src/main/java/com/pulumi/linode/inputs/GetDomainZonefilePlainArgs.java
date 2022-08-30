@@ -31,9 +31,17 @@ public final class GetDomainZonefilePlainArgs extends com.pulumi.resources.Invok
         return this.domainId;
     }
 
+    /**
+     * Array of strings representing the Domain Zonefile.
+     * 
+     */
     @Import(name="zoneFiles")
     private @Nullable List<String> zoneFiles;
 
+    /**
+     * @return Array of strings representing the Domain Zonefile.
+     * 
+     */
     public Optional<List<String>> zoneFiles() {
         return Optional.ofNullable(this.zoneFiles);
     }
@@ -74,11 +82,23 @@ public final class GetDomainZonefilePlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param zoneFiles Array of strings representing the Domain Zonefile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneFiles(@Nullable List<String> zoneFiles) {
             $.zoneFiles = zoneFiles;
             return this;
         }
 
+        /**
+         * @param zoneFiles Array of strings representing the Domain Zonefile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneFiles(String... zoneFiles) {
             return zoneFiles(List.of(zoneFiles));
         }

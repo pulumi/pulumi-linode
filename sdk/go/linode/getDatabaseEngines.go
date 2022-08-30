@@ -113,15 +113,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// Each engine will be stored in the `engines` attribute and will export the following attributes:
-//
-// * `engine` - The Managed Database engine type.
-//
-// * `id` - The Managed Database engine ID in engine/version format.
-//
-// * `version` - The Managed Database engine version.
 func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseEnginesResult, error) {
 	var rv GetDatabaseEnginesResult
 	err := ctx.Invoke("linode:index/getDatabaseEngines:getDatabaseEngines", args, &rv, opts...)

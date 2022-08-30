@@ -46,9 +46,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports no additional attributes, however `status` may reflect degraded states.
     /// 
     /// ## Import
     /// 

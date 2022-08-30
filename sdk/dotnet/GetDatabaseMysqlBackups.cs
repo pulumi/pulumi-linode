@@ -66,17 +66,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each backup will be stored in the `backups` attribute and will export the following attributes:
-        /// 
-        /// * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-        /// 
-        /// * `id` - The ID of the database backup object.
-        /// 
-        /// * `label` - The database backup’s label, for display purposes only.
-        /// 
-        /// * `type` - The type of database backup, determined by how the backup was created.
         /// </summary>
         public static Task<GetDatabaseMysqlBackupsResult> InvokeAsync(GetDatabaseMysqlBackupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsArgs(), options.WithDefaults());
@@ -136,17 +125,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each backup will be stored in the `backups` attribute and will export the following attributes:
-        /// 
-        /// * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-        /// 
-        /// * `id` - The ID of the database backup object.
-        /// 
-        /// * `label` - The database backup’s label, for display purposes only.
-        /// 
-        /// * `type` - The type of database backup, determined by how the backup was created.
         /// </summary>
         public static Output<GetDatabaseMysqlBackupsResult> Invoke(GetDatabaseMysqlBackupsInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());

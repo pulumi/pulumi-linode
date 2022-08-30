@@ -60,34 +60,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-        /// 
-        /// * `id` - The ID representing the Linode Type.
-        /// 
-        /// * `label` - The Linode Type's label is for display purposes only.
-        /// 
-        /// * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-        /// 
-        /// * `disk` - The Disk size, in MB, of the Linode Type.
-        /// 
-        /// * `price.0.hourly` -  Cost (in US dollars) per hour.
-        /// 
-        /// * `price.0.monthly` - Cost (in US dollars) per month.
-        /// 
-        /// * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-        /// 
-        /// * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-        /// 
-        /// * `network_out` - The Mbits outbound bandwidth allocation.
-        /// 
-        /// * `memory` - The amount of RAM included in this Linode Type.
-        /// 
-        /// * `transfer` - The monthly outbound transfer amount, in MB.
-        /// 
-        /// * `vcpus` - The number of VCPU cores this Linode Type offers.
-        /// 
         /// ## Filterable Fields
         /// 
         /// * `class`
@@ -158,34 +130,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-        /// 
-        /// * `id` - The ID representing the Linode Type.
-        /// 
-        /// * `label` - The Linode Type's label is for display purposes only.
-        /// 
-        /// * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-        /// 
-        /// * `disk` - The Disk size, in MB, of the Linode Type.
-        /// 
-        /// * `price.0.hourly` -  Cost (in US dollars) per hour.
-        /// 
-        /// * `price.0.monthly` - Cost (in US dollars) per month.
-        /// 
-        /// * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-        /// 
-        /// * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-        /// 
-        /// * `network_out` - The Mbits outbound bandwidth allocation.
-        /// 
-        /// * `memory` - The amount of RAM included in this Linode Type.
-        /// 
-        /// * `transfer` - The monthly outbound transfer amount, in MB.
-        /// 
-        /// * `vcpus` - The number of VCPU cores this Linode Type offers.
-        /// 
         /// ## Filterable Fields
         /// 
         /// * `class`

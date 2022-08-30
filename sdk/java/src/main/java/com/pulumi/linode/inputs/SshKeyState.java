@@ -16,14 +16,14 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
     public static final SshKeyState Empty = new SshKeyState();
 
     /**
-     * The date this key was added.
+     * The date this SSH Key was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return The date this key was added.
+     * @return The date this SSH Key was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -87,7 +87,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created The date this key was added.
+         * @param created The date this SSH Key was created.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class SshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created The date this key was added.
+         * @param created The date this SSH Key was created.
          * 
          * @return builder
          * 

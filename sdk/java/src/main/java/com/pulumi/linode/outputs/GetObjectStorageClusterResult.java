@@ -9,38 +9,57 @@ import java.util.Objects;
 
 @CustomType
 public final class GetObjectStorageClusterResult {
-    private final String domain;
-    private final String id;
-    private final String region;
-    private final String staticSiteDomain;
-    private final String status;
+    /**
+     * @return The base URL for this cluster.
+     * 
+     */
+    private String domain;
+    private String id;
+    /**
+     * @return The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
+    private String region;
+    /**
+     * @return The base URL for this cluster used when hosting static sites.
+     * 
+     */
+    private String staticSiteDomain;
+    /**
+     * @return This cluster&#39;s status. (`available`, `unavailable`)
+     * 
+     */
+    private String status;
 
-    @CustomType.Constructor
-    private GetObjectStorageClusterResult(
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("staticSiteDomain") String staticSiteDomain,
-        @CustomType.Parameter("status") String status) {
-        this.domain = domain;
-        this.id = id;
-        this.region = region;
-        this.staticSiteDomain = staticSiteDomain;
-        this.status = status;
-    }
-
+    private GetObjectStorageClusterResult() {}
+    /**
+     * @return The base URL for this cluster.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
     public String id() {
         return this.id;
     }
+    /**
+     * @return The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The base URL for this cluster used when hosting static sites.
+     * 
+     */
     public String staticSiteDomain() {
         return this.staticSiteDomain;
     }
+    /**
+     * @return This cluster&#39;s status. (`available`, `unavailable`)
+     * 
+     */
     public String status() {
         return this.status;
     }
@@ -52,18 +71,14 @@ public final class GetObjectStorageClusterResult {
     public static Builder builder(GetObjectStorageClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domain;
         private String id;
         private String region;
         private String staticSiteDomain;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetObjectStorageClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -73,27 +88,39 @@ public final class GetObjectStorageClusterResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder staticSiteDomain(String staticSiteDomain) {
             this.staticSiteDomain = Objects.requireNonNull(staticSiteDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetObjectStorageClusterResult build() {
-            return new GetObjectStorageClusterResult(domain, id, region, staticSiteDomain, status);
+        }
+        public GetObjectStorageClusterResult build() {
+            final var o = new GetObjectStorageClusterResult();
+            o.domain = domain;
+            o.id = id;
+            o.region = region;
+            o.staticSiteDomain = staticSiteDomain;
+            o.status = status;
+            return o;
         }
     }
 }

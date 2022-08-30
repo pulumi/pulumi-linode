@@ -20,58 +20,6 @@ import * as utilities from "./utilities";
  *     databaseId: 12345,
  * }));
  * ```
- * ## Attributes
- *
- * The `linode.DatabaseMongodb` data source exports the following attributes:
- *
- * * `allowList` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
- *
- * * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
- *
- * * `clusterSize` - The number of Linode Instance nodes deployed to the Managed Database.
- *
- * * `compressionType` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
- *
- * * `created` - When this Managed Database was created.
- *
- * * `encrypted` - Whether the Managed Databases is encrypted.
- *
- * * `engine` - The Managed Database engine. (e.g. `mongodb`)
- *
- * * `engineId` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
- *
- * * `hostPrimary` - The primary host for the Managed Database.
- *
- * * `hostSecondary` - The secondary/private network host for the Managed Database.
- *
- * * `label` - A unique, user-defined string referring to the Managed Database.
- *
- * * `peers` - A set of peer addresses for this Database.
- *
- * * `port` - The access port for this Managed Database.
- *
- * * `replicaSet` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
- *
- * * `region` - The region that hosts this Linode Managed Database.
- *
- * * `rootPassword` - The randomly-generated root password for the Managed Database instance.
- *
- * * `rootUsername` - The root username for the Managed Database instance.
- *
- * * `sslConnection` - Whether to require SSL credentials to establish a connection to the Managed Database.
- *
- * * `storageEngine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
- *
- * * `status` - The operating status of the Managed Database.
- *
- * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
- *
- * * `updated` - When this Managed Database was last updated.
- *
- * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
- *
- * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
- *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:
@@ -111,34 +59,103 @@ export interface GetDatabaseMongodbArgs {
  * A collection of values returned by getDatabaseMongodb.
  */
 export interface GetDatabaseMongodbResult {
+    /**
+     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+     */
     readonly allowLists: string[];
+    /**
+     * The base64-encoded SSL CA certificate for the Managed Database instance.
+     */
     readonly caCert: string;
+    /**
+     * The number of Linode Instance nodes deployed to the Managed Database.
+     */
     readonly clusterSize: number;
+    /**
+     * The type of data compression for this Database. (`none`, `snappy`, `zlib`)
+     */
     readonly compressionType: string;
+    /**
+     * When this Managed Database was created.
+     */
     readonly created: string;
     readonly databaseId: number;
+    /**
+     * Whether the Managed Databases is encrypted.
+     */
     readonly encrypted: boolean;
+    /**
+     * The Managed Database engine. (e.g. `mongodb`)
+     */
     readonly engine: string;
+    /**
+     * The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
+     */
     readonly engineId: string;
+    /**
+     * The primary host for the Managed Database.
+     */
     readonly hostPrimary: string;
+    /**
+     * The secondary/private network host for the Managed Database.
+     */
     readonly hostSecondary: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A unique, user-defined string referring to the Managed Database.
+     */
     readonly label: string;
+    /**
+     * A set of peer addresses for this Database.
+     */
     readonly peers: string[];
+    /**
+     * The access port for this Managed Database.
+     */
     readonly port: number;
+    /**
+     * The region that hosts this Linode Managed Database.
+     */
     readonly region: string;
+    /**
+     * Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
+     */
     readonly replicaSet: string;
+    /**
+     * The randomly-generated root password for the Managed Database instance.
+     */
     readonly rootPassword: string;
+    /**
+     * The root username for the Managed Database instance.
+     */
     readonly rootUsername: string;
+    /**
+     * Whether to require SSL credentials to establish a connection to the Managed Database.
+     */
     readonly sslConnection: boolean;
+    /**
+     * The operating status of the Managed Database.
+     */
     readonly status: string;
+    /**
+     * The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
+     */
     readonly storageEngine: string;
+    /**
+     * The Linode Instance type used for the nodes of the  Managed Database instance.
+     */
     readonly type: string;
+    /**
+     * When this Managed Database was last updated.
+     */
     readonly updated: string;
     readonly updates: outputs.GetDatabaseMongodbUpdate[];
+    /**
+     * The Managed Database engine version. (e.g. `v8.0.26`)
+     */
     readonly version: string;
 }
 

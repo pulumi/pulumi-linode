@@ -16,28 +16,19 @@ public final class LkeClusterPoolNode {
      * @return The ID of the node.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The ID of the underlying Linode instance.
      * 
      */
-    private final @Nullable Integer instanceId;
+    private @Nullable Integer instanceId;
     /**
      * @return The status of the node. (`ready`, `not_ready`)
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private LkeClusterPoolNode(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("instanceId") @Nullable Integer instanceId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.instanceId = instanceId;
-        this.status = status;
-    }
-
+    private LkeClusterPoolNode() {}
     /**
      * @return The ID of the node.
      * 
@@ -67,16 +58,12 @@ public final class LkeClusterPoolNode {
     public static Builder builder(LkeClusterPoolNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable Integer instanceId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LkeClusterPoolNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -84,19 +71,27 @@ public final class LkeClusterPoolNode {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable Integer instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public LkeClusterPoolNode build() {
-            return new LkeClusterPoolNode(id, instanceId, status);
+        }
+        public LkeClusterPoolNode build() {
+            final var o = new LkeClusterPoolNode();
+            o.id = id;
+            o.instanceId = instanceId;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -36,29 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Image resource exports the following attributes:
-        /// 
-        /// * `label` - A short description of the Image.
-        /// 
-        /// * `created` - When this Image was created.
-        /// 
-        /// * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-        /// 
-        /// * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-        /// 
-        /// * `description` - A detailed description of this Image.
-        /// 
-        /// * `is_public` - True if the Image is public.
-        /// 
-        /// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        /// 
-        /// * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-        /// 
-        /// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-        /// 
-        /// * `vendor` - The upstream distribution vendor. `None` for private Images.
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
@@ -88,29 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Image resource exports the following attributes:
-        /// 
-        /// * `label` - A short description of the Image.
-        /// 
-        /// * `created` - When this Image was created.
-        /// 
-        /// * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-        /// 
-        /// * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-        /// 
-        /// * `description` - A detailed description of this Image.
-        /// 
-        /// * `is_public` - True if the Image is public.
-        /// 
-        /// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        /// 
-        /// * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-        /// 
-        /// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-        /// 
-        /// * `vendor` - The upstream distribution vendor. `None` for private Images.
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
@@ -149,17 +103,47 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetImageResult
     {
+        /// <summary>
+        /// When this Image was created.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The name of the User who created this Image, or "linode" for official Images.
+        /// </summary>
         public readonly string CreatedBy;
+        /// <summary>
+        /// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+        /// </summary>
         public readonly bool Deprecated;
+        /// <summary>
+        /// A detailed description of this Image.
+        /// </summary>
         public readonly string Description;
         public readonly string Expiry;
         public readonly string Id;
+        /// <summary>
+        /// True if the Image is public.
+        /// </summary>
         public readonly bool IsPublic;
+        /// <summary>
+        /// A short description of the Image.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// The current status of this image. (`creating`, `pending_upload`, `available`)
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The upstream distribution vendor. `None` for private Images.
+        /// </summary>
         public readonly string Vendor;
 
         [OutputConstructor]

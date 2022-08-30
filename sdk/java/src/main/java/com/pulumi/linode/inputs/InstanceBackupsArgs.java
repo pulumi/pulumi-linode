@@ -16,9 +16,17 @@ public final class InstanceBackupsArgs extends com.pulumi.resources.ResourceArgs
 
     public static final InstanceBackupsArgs Empty = new InstanceBackupsArgs();
 
+    /**
+     * If this Linode has the Backup service enabled.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return If this Linode has the Backup service enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,11 +63,23 @@ public final class InstanceBackupsArgs extends com.pulumi.resources.ResourceArgs
             $ = new InstanceBackupsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled If this Linode has the Backup service enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled If this Linode has the Backup service enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

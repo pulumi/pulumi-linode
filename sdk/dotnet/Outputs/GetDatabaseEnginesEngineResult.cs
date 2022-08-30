@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetDatabaseEnginesEngineResult
     {
+        /// <summary>
+        /// The Managed Database engine type.
+        /// </summary>
         public readonly string Engine;
+        /// <summary>
+        /// The Managed Database engine ID in engine/version format.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The Managed Database engine version.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

@@ -55,31 +55,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `hostname` - This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
- * 
- * * `ipv4` - The Public IPv4 Address of this NodeBalancer
- * 
- * * `ipv6` - The Public IPv6 Address of this NodeBalancer
- * 
- * * `created` - When this NodeBalancer was created
- * 
- * * `updated` - When this NodeBalancer was last updated.
- * 
- * * `transfer` - The network transfer stats for the current month
- * 
- * ### transfer
- * 
- * The following attributes are available on transfer:
- * 
- * * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
- * 
- * * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
- * 
- * * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
  * 
  * ## Import
  * 
@@ -109,14 +84,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientConnThrottle);
     }
     /**
-     * When this NodeBalancer was created.
+     * When this NodeBalancer was created
      * 
      */
     @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
-     * @return When this NodeBalancer was created.
+     * @return When this NodeBalancer was created
      * 
      */
     public Output<String> created() {

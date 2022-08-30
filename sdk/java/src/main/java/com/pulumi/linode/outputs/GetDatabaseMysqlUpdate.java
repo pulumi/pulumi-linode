@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseMysqlUpdate {
-    private final String dayOfWeek;
-    private final Integer duration;
-    private final String frequency;
-    private final Integer hourOfDay;
-    private final Integer weekOfMonth;
+    private String dayOfWeek;
+    private Integer duration;
+    private String frequency;
+    private Integer hourOfDay;
+    private Integer weekOfMonth;
 
-    @CustomType.Constructor
-    private GetDatabaseMysqlUpdate(
-        @CustomType.Parameter("dayOfWeek") String dayOfWeek,
-        @CustomType.Parameter("duration") Integer duration,
-        @CustomType.Parameter("frequency") String frequency,
-        @CustomType.Parameter("hourOfDay") Integer hourOfDay,
-        @CustomType.Parameter("weekOfMonth") Integer weekOfMonth) {
-        this.dayOfWeek = dayOfWeek;
-        this.duration = duration;
-        this.frequency = frequency;
-        this.hourOfDay = hourOfDay;
-        this.weekOfMonth = weekOfMonth;
-    }
-
+    private GetDatabaseMysqlUpdate() {}
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
@@ -53,18 +40,14 @@ public final class GetDatabaseMysqlUpdate {
     public static Builder builder(GetDatabaseMysqlUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
         private Integer duration;
         private String frequency;
         private Integer hourOfDay;
         private Integer weekOfMonth;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseMysqlUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
@@ -74,27 +57,39 @@ public final class GetDatabaseMysqlUpdate {
     	      this.weekOfMonth = defaults.weekOfMonth;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
             return this;
         }
+        @CustomType.Setter
         public Builder duration(Integer duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder frequency(String frequency) {
             this.frequency = Objects.requireNonNull(frequency);
             return this;
         }
+        @CustomType.Setter
         public Builder hourOfDay(Integer hourOfDay) {
             this.hourOfDay = Objects.requireNonNull(hourOfDay);
             return this;
         }
+        @CustomType.Setter
         public Builder weekOfMonth(Integer weekOfMonth) {
             this.weekOfMonth = Objects.requireNonNull(weekOfMonth);
             return this;
-        }        public GetDatabaseMysqlUpdate build() {
-            return new GetDatabaseMysqlUpdate(dayOfWeek, duration, frequency, hourOfDay, weekOfMonth);
+        }
+        public GetDatabaseMysqlUpdate build() {
+            final var o = new GetDatabaseMysqlUpdate();
+            o.dayOfWeek = dayOfWeek;
+            o.duration = duration;
+            o.frequency = frequency;
+            o.hourOfDay = hourOfDay;
+            o.weekOfMonth = weekOfMonth;
+            return o;
         }
     }
 }

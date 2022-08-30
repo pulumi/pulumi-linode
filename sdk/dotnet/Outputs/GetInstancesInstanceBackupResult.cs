@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstancesInstanceBackupResult
     {
+        /// <summary>
+        /// If this Linode has the Backup service enabled.
+        /// </summary>
         public readonly bool Enabled;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceBackupScheduleResult> Schedules;
 

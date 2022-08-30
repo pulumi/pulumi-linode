@@ -76,7 +76,7 @@ class _TokenState:
                  token: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
-        :param pulumi.Input[str] created: The date and time this token was created.
+        :param pulumi.Input[str] created: The date this Token was created.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         :param pulumi.Input[str] label: A label for the Token.
         :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
@@ -97,7 +97,7 @@ class _TokenState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
-        The date and time this token was created.
+        The date this Token was created.
         """
         return pulumi.get(self, "created")
 
@@ -184,13 +184,6 @@ class Token(pulumi.CustomResource):
             scopes="linodes:read_only")
         foo_instance = linode.Instance("fooInstance")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `token` - The token used to access the API.
-
-        * `created` - The date this Token was created.
 
         ## Import
 
@@ -235,13 +228,6 @@ class Token(pulumi.CustomResource):
             scopes="linodes:read_only")
         foo_instance = linode.Instance("fooInstance")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `token` - The token used to access the API.
-
-        * `created` - The date this Token was created.
 
         ## Import
 
@@ -309,7 +295,7 @@ class Token(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created: The date and time this token was created.
+        :param pulumi.Input[str] created: The date this Token was created.
         :param pulumi.Input[str] expiry: When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         :param pulumi.Input[str] label: A label for the Token.
         :param pulumi.Input[str] scopes: The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
@@ -330,7 +316,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """
-        The date and time this token was created.
+        The date this Token was created.
         """
         return pulumi.get(self, "created")
 

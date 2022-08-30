@@ -34,23 +34,6 @@ import * as utilities from "./utilities";
  *     algorithm: "source",
  * });
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `sslCommonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
- *
- * * `sslFingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
- *
- * * `nodeStatus` - The status of the attached nodes.
- *
- * ### nodeStatus
- *
- * The following attributes are available on node_status:
- *
- * * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
- *
- * * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
  *
  * ## Import
  *
@@ -153,13 +136,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      */
     public readonly sslCert!: pulumi.Output<string | undefined>;
     /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     public /*out*/ readonly sslCommonname!: pulumi.Output<string>;
     /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
     /**
@@ -300,13 +281,11 @@ export interface NodeBalancerConfigState {
      */
     sslCert?: pulumi.Input<string>;
     /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     sslCommonname?: pulumi.Input<string>;
     /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
     sslFingerprint?: pulumi.Input<string>;
     /**

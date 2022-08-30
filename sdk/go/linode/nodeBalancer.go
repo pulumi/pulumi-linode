@@ -46,31 +46,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-//
-// * `ipv4` - The Public IPv4 Address of this NodeBalancer
-//
-// * `ipv6` - The Public IPv6 Address of this NodeBalancer
-//
-// * `created` - When this NodeBalancer was created
-//
-// * `updated` - When this NodeBalancer was last updated.
-//
-// * `transfer` - The network transfer stats for the current month
-//
-// ### transfer
-//
-// The following attributes are available on transfer:
-//
-// * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
-//
-// * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
-//
-// * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
 //
 // ## Import
 //
@@ -88,7 +63,7 @@ type NodeBalancer struct {
 
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrOutput `pulumi:"clientConnThrottle"`
-	// When this NodeBalancer was created.
+	// When this NodeBalancer was created
 	Created pulumi.StringOutput `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -142,7 +117,7 @@ func GetNodeBalancer(ctx *pulumi.Context,
 type nodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
-	// When this NodeBalancer was created.
+	// When this NodeBalancer was created
 	Created *string `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname *string `pulumi:"hostname"`
@@ -165,7 +140,7 @@ type nodeBalancerState struct {
 type NodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
-	// When this NodeBalancer was created.
+	// When this NodeBalancer was created
 	Created pulumi.StringPtrInput
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringPtrInput
@@ -304,7 +279,7 @@ func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.IntPtrOutput { return v.ClientConnThrottle }).(pulumi.IntPtrOutput)
 }
 
-// When this NodeBalancer was created.
+// When this NodeBalancer was created
 func (o NodeBalancerOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }

@@ -39,33 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Instance Type resource exports the following attributes:
-//
-// * `id` - The ID representing the Linode Type
-//
-// * `label` - The Linode Type's label is for display purposes only
-//
-// * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-//
-// * `disk` - The Disk size, in MB, of the Linode Type
-//
-// * `price.0.hourly` -  Cost (in US dollars) per hour.
-//
-// * `price.0.monthly` - Cost (in US dollars) per month.
-//
-// * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-//
-// * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-//
-// * `networkOut` - The Mbits outbound bandwidth allocation.
-//
-// * `memory` - The amount of RAM included in this Linode Type.
-//
-// * `transfer` - The monthly outbound transfer amount, in MB.
-//
-// * `vcpus` - The number of VCPU cores this Linode Type offers.
 func GetInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeResult, error) {
 	var rv GetInstanceTypeResult
 	err := ctx.Invoke("linode:index/getInstanceType:getInstanceType", args, &rv, opts...)
@@ -78,22 +51,31 @@ func GetInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs, opts ...pul
 // A collection of arguments for invoking getInstanceType.
 type GetInstanceTypeArgs struct {
 	// Label used to identify instance type
-	Id    string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The Linode Type's label is for display purposes only
 	Label *string `pulumi:"label"`
 }
 
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
-	Addons     GetInstanceTypeAddons `pulumi:"addons"`
-	Class      string                `pulumi:"class"`
-	Disk       int                   `pulumi:"disk"`
-	Id         string                `pulumi:"id"`
-	Label      string                `pulumi:"label"`
-	Memory     int                   `pulumi:"memory"`
-	NetworkOut int                   `pulumi:"networkOut"`
-	Price      GetInstanceTypePrice  `pulumi:"price"`
-	Transfer   int                   `pulumi:"transfer"`
-	Vcpus      int                   `pulumi:"vcpus"`
+	Addons GetInstanceTypeAddons `pulumi:"addons"`
+	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+	Class string `pulumi:"class"`
+	// The Disk size, in MB, of the Linode Type
+	Disk int `pulumi:"disk"`
+	// The ID representing the Linode Type
+	Id string `pulumi:"id"`
+	// The Linode Type's label is for display purposes only
+	Label string `pulumi:"label"`
+	// The amount of RAM included in this Linode Type.
+	Memory int `pulumi:"memory"`
+	// The Mbits outbound bandwidth allocation.
+	NetworkOut int                  `pulumi:"networkOut"`
+	Price      GetInstanceTypePrice `pulumi:"price"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+	// The number of VCPU cores this Linode Type offers.
+	Vcpus int `pulumi:"vcpus"`
 }
 
 func GetInstanceTypeOutput(ctx *pulumi.Context, args GetInstanceTypeOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeResultOutput {
@@ -112,7 +94,8 @@ func GetInstanceTypeOutput(ctx *pulumi.Context, args GetInstanceTypeOutputArgs, 
 // A collection of arguments for invoking getInstanceType.
 type GetInstanceTypeOutputArgs struct {
 	// Label used to identify instance type
-	Id    pulumi.StringInput    `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Linode Type's label is for display purposes only
 	Label pulumi.StringPtrInput `pulumi:"label"`
 }
 
@@ -139,26 +122,32 @@ func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonsOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypeAddons { return v.Addons }).(GetInstanceTypeAddonsOutput)
 }
 
+// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
 func (o GetInstanceTypeResultOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Class }).(pulumi.StringOutput)
 }
 
+// The Disk size, in MB, of the Linode Type
 func (o GetInstanceTypeResultOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// The ID representing the Linode Type
 func (o GetInstanceTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Linode Type's label is for display purposes only
 func (o GetInstanceTypeResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The amount of RAM included in this Linode Type.
 func (o GetInstanceTypeResultOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Memory }).(pulumi.IntOutput)
 }
 
+// The Mbits outbound bandwidth allocation.
 func (o GetInstanceTypeResultOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
@@ -167,10 +156,12 @@ func (o GetInstanceTypeResultOutput) Price() GetInstanceTypePriceOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypePrice { return v.Price }).(GetInstanceTypePriceOutput)
 }
 
+// The monthly outbound transfer amount, in MB.
 func (o GetInstanceTypeResultOutput) Transfer() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Transfer }).(pulumi.IntOutput)
 }
 
+// The number of VCPU cores this Linode Type offers.
 func (o GetInstanceTypeResultOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.Vcpus }).(pulumi.IntOutput)
 }

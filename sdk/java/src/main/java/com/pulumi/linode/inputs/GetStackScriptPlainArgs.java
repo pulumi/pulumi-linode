@@ -31,9 +31,17 @@ public final class GetStackScriptPlainArgs extends com.pulumi.resources.InvokeAr
         return this.id;
     }
 
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
     @Import(name="userDefinedFields")
     private @Nullable List<GetStackScriptUserDefinedField> userDefinedFields;
 
+    /**
+     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
     public Optional<List<GetStackScriptUserDefinedField>> userDefinedFields() {
         return Optional.ofNullable(this.userDefinedFields);
     }
@@ -74,11 +82,23 @@ public final class GetStackScriptPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        /**
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDefinedFields(@Nullable List<GetStackScriptUserDefinedField> userDefinedFields) {
             $.userDefinedFields = userDefinedFields;
             return this;
         }
 
+        /**
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDefinedFields(GetStackScriptUserDefinedField... userDefinedFields) {
             return userDefinedFields(List.of(userDefinedFields));
         }

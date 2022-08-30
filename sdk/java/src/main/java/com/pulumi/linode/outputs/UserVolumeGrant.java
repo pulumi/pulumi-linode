@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class UserVolumeGrant {
-    private final Integer id;
-    private final String permissions;
+    private Integer id;
+    private String permissions;
 
-    @CustomType.Constructor
-    private UserVolumeGrant(
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("permissions") String permissions) {
-        this.id = id;
-        this.permissions = permissions;
-    }
-
+    private UserVolumeGrant() {}
     public Integer id() {
         return this.id;
     }
@@ -35,30 +28,32 @@ public final class UserVolumeGrant {
     public static Builder builder(UserVolumeGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer id;
         private String permissions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserVolumeGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.permissions = defaults.permissions;
         }
 
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(String permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
-        }        public UserVolumeGrant build() {
-            return new UserVolumeGrant(id, permissions);
+        }
+        public UserVolumeGrant build() {
+            final var o = new UserVolumeGrant();
+            o.id = id;
+            o.permissions = permissions;
+            return o;
         }
     }
 }

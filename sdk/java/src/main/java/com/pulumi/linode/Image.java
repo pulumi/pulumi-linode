@@ -21,28 +21,6 @@ import javax.annotation.Nullable;
  * 
  * For more information, see [Linode&#39;s documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
  * 
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
- * 
- * * `created` - When this Image was created.
- * 
- * * `created_by` - The name of the User who created this Image.
- * 
- * * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
- * 
- * * `is_public` - True if the Image is public.
- * 
- * * `size` - The minimum size this Image needs to deploy. Size is in MB.
- * 
- * * `type` - How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
- * 
- * * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
- * 
- * * `vendor` - The upstream distribution vendor. Nil for private Images.
- * 
  * ## Import
  * 
  * Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -251,16 +229,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from
-     * a deleted Linode.
+     * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from
-     * a deleted Linode.
+     * @return How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
      * 
      */
     public Output<String> type() {

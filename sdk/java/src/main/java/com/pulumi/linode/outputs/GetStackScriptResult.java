@@ -13,92 +13,165 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStackScriptResult {
-    private final String created;
-    private final Integer deploymentsActive;
-    private final Integer deploymentsTotal;
-    private final String description;
-    private final Integer id;
-    private final List<String> images;
-    private final Boolean isPublic;
-    private final String label;
-    private final String revNote;
-    private final String script;
-    private final String updated;
-    private final List<GetStackScriptUserDefinedField> userDefinedFields;
-    private final String userGravatarId;
-    private final String username;
+    /**
+     * @return The date this StackScript was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return Count of currently active, deployed Linodes created from this StackScript.
+     * 
+     */
+    private Integer deploymentsActive;
+    /**
+     * @return The total number of times this StackScript has been deployed.
+     * 
+     */
+    private Integer deploymentsTotal;
+    /**
+     * @return A description for the StackScript.
+     * 
+     */
+    private String description;
+    private Integer id;
+    /**
+     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * 
+     */
+    private List<String> images;
+    /**
+     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     * 
+     */
+    private Boolean isPublic;
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
+    private String label;
+    /**
+     * @return This field allows you to add notes for the set of revisions made to this StackScript.
+     * 
+     */
+    private String revNote;
+    /**
+     * @return The script to execute when provisioning a new Linode with this StackScript.
+     * 
+     */
+    private String script;
+    /**
+     * @return The date this StackScript was updated.
+     * 
+     */
+    private String updated;
+    /**
+     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
+    private List<GetStackScriptUserDefinedField> userDefinedFields;
+    /**
+     * @return The Gravatar ID for the User who created the StackScript.
+     * 
+     */
+    private String userGravatarId;
+    /**
+     * @return The User who created the StackScript.
+     * 
+     */
+    private String username;
 
-    @CustomType.Constructor
-    private GetStackScriptResult(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("deploymentsActive") Integer deploymentsActive,
-        @CustomType.Parameter("deploymentsTotal") Integer deploymentsTotal,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("images") List<String> images,
-        @CustomType.Parameter("isPublic") Boolean isPublic,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("revNote") String revNote,
-        @CustomType.Parameter("script") String script,
-        @CustomType.Parameter("updated") String updated,
-        @CustomType.Parameter("userDefinedFields") List<GetStackScriptUserDefinedField> userDefinedFields,
-        @CustomType.Parameter("userGravatarId") String userGravatarId,
-        @CustomType.Parameter("username") String username) {
-        this.created = created;
-        this.deploymentsActive = deploymentsActive;
-        this.deploymentsTotal = deploymentsTotal;
-        this.description = description;
-        this.id = id;
-        this.images = images;
-        this.isPublic = isPublic;
-        this.label = label;
-        this.revNote = revNote;
-        this.script = script;
-        this.updated = updated;
-        this.userDefinedFields = userDefinedFields;
-        this.userGravatarId = userGravatarId;
-        this.username = username;
-    }
-
+    private GetStackScriptResult() {}
+    /**
+     * @return The date this StackScript was created.
+     * 
+     */
     public String created() {
         return this.created;
     }
+    /**
+     * @return Count of currently active, deployed Linodes created from this StackScript.
+     * 
+     */
     public Integer deploymentsActive() {
         return this.deploymentsActive;
     }
+    /**
+     * @return The total number of times this StackScript has been deployed.
+     * 
+     */
     public Integer deploymentsTotal() {
         return this.deploymentsTotal;
     }
+    /**
+     * @return A description for the StackScript.
+     * 
+     */
     public String description() {
         return this.description;
     }
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * 
+     */
     public List<String> images() {
         return this.images;
     }
+    /**
+     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     * 
+     */
     public Boolean isPublic() {
         return this.isPublic;
     }
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return This field allows you to add notes for the set of revisions made to this StackScript.
+     * 
+     */
     public String revNote() {
         return this.revNote;
     }
+    /**
+     * @return The script to execute when provisioning a new Linode with this StackScript.
+     * 
+     */
     public String script() {
         return this.script;
     }
+    /**
+     * @return The date this StackScript was updated.
+     * 
+     */
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
     public List<GetStackScriptUserDefinedField> userDefinedFields() {
         return this.userDefinedFields;
     }
+    /**
+     * @return The Gravatar ID for the User who created the StackScript.
+     * 
+     */
     public String userGravatarId() {
         return this.userGravatarId;
     }
+    /**
+     * @return The User who created the StackScript.
+     * 
+     */
     public String username() {
         return this.username;
     }
@@ -110,7 +183,7 @@ public final class GetStackScriptResult {
     public static Builder builder(GetStackScriptResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private Integer deploymentsActive;
@@ -126,11 +199,7 @@ public final class GetStackScriptResult {
         private List<GetStackScriptUserDefinedField> userDefinedFields;
         private String userGravatarId;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStackScriptResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -149,26 +218,32 @@ public final class GetStackScriptResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder deploymentsActive(Integer deploymentsActive) {
             this.deploymentsActive = Objects.requireNonNull(deploymentsActive);
             return this;
         }
+        @CustomType.Setter
         public Builder deploymentsTotal(Integer deploymentsTotal) {
             this.deploymentsTotal = Objects.requireNonNull(deploymentsTotal);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<String> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -176,26 +251,32 @@ public final class GetStackScriptResult {
         public Builder images(String... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
             this.isPublic = Objects.requireNonNull(isPublic);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder revNote(String revNote) {
             this.revNote = Objects.requireNonNull(revNote);
             return this;
         }
+        @CustomType.Setter
         public Builder script(String script) {
             this.script = Objects.requireNonNull(script);
             return this;
         }
+        @CustomType.Setter
         public Builder updated(String updated) {
             this.updated = Objects.requireNonNull(updated);
             return this;
         }
+        @CustomType.Setter
         public Builder userDefinedFields(List<GetStackScriptUserDefinedField> userDefinedFields) {
             this.userDefinedFields = Objects.requireNonNull(userDefinedFields);
             return this;
@@ -203,15 +284,33 @@ public final class GetStackScriptResult {
         public Builder userDefinedFields(GetStackScriptUserDefinedField... userDefinedFields) {
             return userDefinedFields(List.of(userDefinedFields));
         }
+        @CustomType.Setter
         public Builder userGravatarId(String userGravatarId) {
             this.userGravatarId = Objects.requireNonNull(userGravatarId);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetStackScriptResult build() {
-            return new GetStackScriptResult(created, deploymentsActive, deploymentsTotal, description, id, images, isPublic, label, revNote, script, updated, userDefinedFields, userGravatarId, username);
+        }
+        public GetStackScriptResult build() {
+            final var o = new GetStackScriptResult();
+            o.created = created;
+            o.deploymentsActive = deploymentsActive;
+            o.deploymentsTotal = deploymentsTotal;
+            o.description = description;
+            o.id = id;
+            o.images = images;
+            o.isPublic = isPublic;
+            o.label = label;
+            o.revNote = revNote;
+            o.script = script;
+            o.updated = updated;
+            o.userDefinedFields = userDefinedFields;
+            o.userGravatarId = userGravatarId;
+            o.username = username;
+            return o;
         }
     }
 }

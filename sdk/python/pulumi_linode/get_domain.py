@@ -68,71 +68,113 @@ class GetDomainResult:
     @property
     @pulumi.getter(name="axfrIps")
     def axfr_ips(self) -> Sequence[str]:
+        """
+        The list of IPs that may perform a zone transfer for this Domain.
+        """
         return pulumi.get(self, "axfr_ips")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A description for this Domain.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
+        """
+        The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="expireSec")
     def expire_sec(self) -> int:
+        """
+        The amount of time in seconds that may pass before this Domain is no longer authoritative.
+        """
         return pulumi.get(self, "expire_sec")
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        The group this Domain belongs to.
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The unique ID of this Domain.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="masterIps")
     def master_ips(self) -> Sequence[str]:
+        """
+        The IP addresses representing the master DNS for this Domain.
+        """
         return pulumi.get(self, "master_ips")
 
     @property
     @pulumi.getter(name="refreshSec")
     def refresh_sec(self) -> int:
+        """
+        The amount of time in seconds before this Domain should be refreshed.
+        """
         return pulumi.get(self, "refresh_sec")
 
     @property
     @pulumi.getter(name="retrySec")
     def retry_sec(self) -> int:
+        """
+        The interval, in seconds, at which a failed refresh should be retried.
+        """
         return pulumi.get(self, "retry_sec")
 
     @property
     @pulumi.getter(name="soaEmail")
     def soa_email(self) -> str:
+        """
+        Start of Authority email address.
+        """
         return pulumi.get(self, "soa_email")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        An array of tags applied to this object.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="ttlSec")
     def ttl_sec(self) -> int:
+        """
+        'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        """
         return pulumi.get(self, "ttl_sec")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+        """
         return pulumi.get(self, "type")
 
 
@@ -175,37 +217,6 @@ def get_domain(domain: Optional[str] = None,
     foo = linode.get_domain(id="1234567")
     bar = linode.get_domain(domain="bar.example.com")
     ```
-    ## Attributes
-
-    The Linode Domain resource exports the following attributes:
-
-    * `id` - The unique ID of this Domain.
-
-    * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-
-    * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-
-    * `group` - The group this Domain belongs to.
-
-    * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-
-    * `description` - A description for this Domain.
-
-    * `master_ips` - The IP addresses representing the master DNS for this Domain.
-
-    * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-
-    * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-
-    * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-
-    * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-
-    * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-
-    * `soa_email` - Start of Authority email address.
-
-    * `tags` - An array of tags applied to this object.
 
 
     :param str domain: The unique domain name of the Domain record to query.
@@ -252,37 +263,6 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
     foo = linode.get_domain(id="1234567")
     bar = linode.get_domain(domain="bar.example.com")
     ```
-    ## Attributes
-
-    The Linode Domain resource exports the following attributes:
-
-    * `id` - The unique ID of this Domain.
-
-    * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-
-    * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-
-    * `group` - The group this Domain belongs to.
-
-    * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-
-    * `description` - A description for this Domain.
-
-    * `master_ips` - The IP addresses representing the master DNS for this Domain.
-
-    * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-
-    * `ttl_sec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-
-    * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-
-    * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-
-    * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-
-    * `soa_email` - Start of Authority email address.
-
-    * `tags` - An array of tags applied to this object.
 
 
     :param str domain: The unique domain name of the Domain record to query.

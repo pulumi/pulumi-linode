@@ -12,17 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceBackups {
-    private final @Nullable Boolean enabled;
-    private final @Nullable InstanceBackupsSchedule schedule;
+    /**
+     * @return If this Linode has the Backup service enabled.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    private @Nullable InstanceBackupsSchedule schedule;
 
-    @CustomType.Constructor
-    private InstanceBackups(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("schedule") @Nullable InstanceBackupsSchedule schedule) {
-        this.enabled = enabled;
-        this.schedule = schedule;
-    }
-
+    private InstanceBackups() {}
+    /**
+     * @return If this Linode has the Backup service enabled.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -37,30 +38,32 @@ public final class InstanceBackups {
     public static Builder builder(InstanceBackups defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable InstanceBackupsSchedule schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBackups defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(@Nullable InstanceBackupsSchedule schedule) {
             this.schedule = schedule;
             return this;
-        }        public InstanceBackups build() {
-            return new InstanceBackups(enabled, schedule);
+        }
+        public InstanceBackups build() {
+            final var o = new InstanceBackups();
+            o.enabled = enabled;
+            o.schedule = schedule;
+            return o;
         }
     }
 }

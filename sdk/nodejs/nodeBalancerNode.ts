@@ -55,15 +55,6 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
- *
- * * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
- *
- * * `nodebalancerId` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
  *
  * ## Import
  *
@@ -124,7 +115,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     public readonly nodebalancerId!: pulumi.Output<number>;
     /**
-     * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -204,7 +195,7 @@ export interface NodeBalancerNodeState {
      */
     nodebalancerId?: pulumi.Input<number>;
     /**
-     * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      */
     status?: pulumi.Input<string>;
     /**

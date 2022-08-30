@@ -67,32 +67,6 @@ import * as utilities from "./utilities";
  *
  * * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  *
- * ## Attributes
- *
- * In addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the Managed Database.
- *
- * * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
- *
- * * `created` - When this Managed Database was created.
- *
- * * `engine` - The Managed Database engine. (e.g. `postgresql`)
- *
- * * `hostPrimary` - The primary host for the Managed Database.
- *
- * * `hostSecondary` - The secondary/private network host for the Managed Database.
- *
- * * `rootPassword` - The randomly-generated root password for the Managed Database instance.
- *
- * * `rootUsername` - The root username for the Managed Database instance.
- *
- * * `status` - The operating status of the Managed Database.
- *
- * * `updated` - When this Managed Database was last updated.
- *
- * * `version` - The Managed Database engine version. (e.g. `13.2`)
- *
  * ## Import
  *
  * Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -150,7 +124,7 @@ export class DatabasePostgresql extends pulumi.CustomResource {
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `postgresql`)
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
     /**
@@ -162,7 +136,7 @@ export class DatabasePostgresql extends pulumi.CustomResource {
      */
     public /*out*/ readonly hostPrimary!: pulumi.Output<string>;
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      */
     public /*out*/ readonly hostSecondary!: pulumi.Output<string>;
     /**
@@ -214,7 +188,7 @@ export class DatabasePostgresql extends pulumi.CustomResource {
      */
     public readonly updates!: pulumi.Output<outputs.DatabasePostgresqlUpdates>;
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `13.2`)
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
@@ -320,7 +294,7 @@ export interface DatabasePostgresqlState {
      */
     encrypted?: pulumi.Input<boolean>;
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `postgresql`)
      */
     engine?: pulumi.Input<string>;
     /**
@@ -332,7 +306,7 @@ export interface DatabasePostgresqlState {
      */
     hostPrimary?: pulumi.Input<string>;
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      */
     hostSecondary?: pulumi.Input<string>;
     /**
@@ -384,7 +358,7 @@ export interface DatabasePostgresqlState {
      */
     updates?: pulumi.Input<inputs.DatabasePostgresqlUpdates>;
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `13.2`)
      */
     version?: pulumi.Input<string>;
 }

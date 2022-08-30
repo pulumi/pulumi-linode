@@ -10,32 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceDisk {
-    private final String filesystem;
-    private final Integer id;
-    private final String label;
-    private final Integer size;
+    private String filesystem;
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    private Integer id;
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
+    private String label;
+    /**
+     * @return The size of the Disk in MB.
+     * 
+     */
+    private Integer size;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceDisk(
-        @CustomType.Parameter("filesystem") String filesystem,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("size") Integer size) {
-        this.filesystem = filesystem;
-        this.id = id;
-        this.label = label;
-        this.size = size;
-    }
-
+    private GetInstancesInstanceDisk() {}
     public String filesystem() {
         return this.filesystem;
     }
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The size of the Disk in MB.
+     * 
+     */
     public Integer size() {
         return this.size;
     }
@@ -47,17 +60,13 @@ public final class GetInstancesInstanceDisk {
     public static Builder builder(GetInstancesInstanceDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filesystem;
         private Integer id;
         private String label;
         private Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filesystem = defaults.filesystem;
@@ -66,23 +75,33 @@ public final class GetInstancesInstanceDisk {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder filesystem(String filesystem) {
             this.filesystem = Objects.requireNonNull(filesystem);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public GetInstancesInstanceDisk build() {
-            return new GetInstancesInstanceDisk(filesystem, id, label, size);
+        }
+        public GetInstancesInstanceDisk build() {
+            final var o = new GetInstancesInstanceDisk();
+            o.filesystem = filesystem;
+            o.id = id;
+            o.label = label;
+            o.size = size;
+            return o;
         }
     }
 }

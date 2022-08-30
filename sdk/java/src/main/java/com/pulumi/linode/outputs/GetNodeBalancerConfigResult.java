@@ -17,117 +17,78 @@ public final class GetNodeBalancerConfigResult {
      * @return What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
      * 
      */
-    private final String algorithm;
+    private String algorithm;
     /**
      * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
      * 
      */
-    private final String check;
+    private String check;
     /**
      * @return How many times to attempt a check before considering a backend to be down. (1-30)
      * 
      */
-    private final Integer checkAttempts;
-    private final String checkBody;
+    private Integer checkAttempts;
+    private String checkBody;
     /**
      * @return How often, in seconds, to check that backends are up and serving requests.
      * 
      */
-    private final Integer checkInterval;
+    private Integer checkInterval;
     /**
      * @return If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      * 
      */
-    private final Boolean checkPassive;
+    private Boolean checkPassive;
     /**
      * @return The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
      * 
      */
-    private final String checkPath;
+    private String checkPath;
     /**
      * @return How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
      * 
      */
-    private final Integer checkTimeout;
+    private Integer checkTimeout;
     /**
      * @return What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
      * 
      */
-    private final String cipherSuite;
-    private final Integer id;
-    private final List<GetNodeBalancerConfigNodeStatus> nodeStatuses;
-    private final Integer nodebalancerId;
+    private String cipherSuite;
+    private Integer id;
+    private List<GetNodeBalancerConfigNodeStatus> nodeStatuses;
+    private Integer nodebalancerId;
     /**
      * @return The TCP port this Config is for.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
      * 
      */
-    private final String proxyProtocol;
+    private String proxyProtocol;
     /**
      * @return The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
-    private final String sslCommonname;
+    private String sslCommonname;
     /**
      * @return The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
-    private final String sslFingerprint;
+    private String sslFingerprint;
     /**
      * @return Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
      * 
      */
-    private final String stickiness;
+    private String stickiness;
 
-    @CustomType.Constructor
-    private GetNodeBalancerConfigResult(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("check") String check,
-        @CustomType.Parameter("checkAttempts") Integer checkAttempts,
-        @CustomType.Parameter("checkBody") String checkBody,
-        @CustomType.Parameter("checkInterval") Integer checkInterval,
-        @CustomType.Parameter("checkPassive") Boolean checkPassive,
-        @CustomType.Parameter("checkPath") String checkPath,
-        @CustomType.Parameter("checkTimeout") Integer checkTimeout,
-        @CustomType.Parameter("cipherSuite") String cipherSuite,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("nodeStatuses") List<GetNodeBalancerConfigNodeStatus> nodeStatuses,
-        @CustomType.Parameter("nodebalancerId") Integer nodebalancerId,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("proxyProtocol") String proxyProtocol,
-        @CustomType.Parameter("sslCommonname") String sslCommonname,
-        @CustomType.Parameter("sslFingerprint") String sslFingerprint,
-        @CustomType.Parameter("stickiness") String stickiness) {
-        this.algorithm = algorithm;
-        this.check = check;
-        this.checkAttempts = checkAttempts;
-        this.checkBody = checkBody;
-        this.checkInterval = checkInterval;
-        this.checkPassive = checkPassive;
-        this.checkPath = checkPath;
-        this.checkTimeout = checkTimeout;
-        this.cipherSuite = cipherSuite;
-        this.id = id;
-        this.nodeStatuses = nodeStatuses;
-        this.nodebalancerId = nodebalancerId;
-        this.port = port;
-        this.protocol = protocol;
-        this.proxyProtocol = proxyProtocol;
-        this.sslCommonname = sslCommonname;
-        this.sslFingerprint = sslFingerprint;
-        this.stickiness = stickiness;
-    }
-
+    private GetNodeBalancerConfigResult() {}
     /**
      * @return What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
      * 
@@ -246,7 +207,7 @@ public final class GetNodeBalancerConfigResult {
     public static Builder builder(GetNodeBalancerConfigResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String check;
@@ -266,11 +227,7 @@ public final class GetNodeBalancerConfigResult {
         private String sslCommonname;
         private String sslFingerprint;
         private String stickiness;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeBalancerConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -293,46 +250,57 @@ public final class GetNodeBalancerConfigResult {
     	      this.stickiness = defaults.stickiness;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder check(String check) {
             this.check = Objects.requireNonNull(check);
             return this;
         }
+        @CustomType.Setter
         public Builder checkAttempts(Integer checkAttempts) {
             this.checkAttempts = Objects.requireNonNull(checkAttempts);
             return this;
         }
+        @CustomType.Setter
         public Builder checkBody(String checkBody) {
             this.checkBody = Objects.requireNonNull(checkBody);
             return this;
         }
+        @CustomType.Setter
         public Builder checkInterval(Integer checkInterval) {
             this.checkInterval = Objects.requireNonNull(checkInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder checkPassive(Boolean checkPassive) {
             this.checkPassive = Objects.requireNonNull(checkPassive);
             return this;
         }
+        @CustomType.Setter
         public Builder checkPath(String checkPath) {
             this.checkPath = Objects.requireNonNull(checkPath);
             return this;
         }
+        @CustomType.Setter
         public Builder checkTimeout(Integer checkTimeout) {
             this.checkTimeout = Objects.requireNonNull(checkTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder cipherSuite(String cipherSuite) {
             this.cipherSuite = Objects.requireNonNull(cipherSuite);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeStatuses(List<GetNodeBalancerConfigNodeStatus> nodeStatuses) {
             this.nodeStatuses = Objects.requireNonNull(nodeStatuses);
             return this;
@@ -340,35 +308,62 @@ public final class GetNodeBalancerConfigResult {
         public Builder nodeStatuses(GetNodeBalancerConfigNodeStatus... nodeStatuses) {
             return nodeStatuses(List.of(nodeStatuses));
         }
+        @CustomType.Setter
         public Builder nodebalancerId(Integer nodebalancerId) {
             this.nodebalancerId = Objects.requireNonNull(nodebalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyProtocol(String proxyProtocol) {
             this.proxyProtocol = Objects.requireNonNull(proxyProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder sslCommonname(String sslCommonname) {
             this.sslCommonname = Objects.requireNonNull(sslCommonname);
             return this;
         }
+        @CustomType.Setter
         public Builder sslFingerprint(String sslFingerprint) {
             this.sslFingerprint = Objects.requireNonNull(sslFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder stickiness(String stickiness) {
             this.stickiness = Objects.requireNonNull(stickiness);
             return this;
-        }        public GetNodeBalancerConfigResult build() {
-            return new GetNodeBalancerConfigResult(algorithm, check, checkAttempts, checkBody, checkInterval, checkPassive, checkPath, checkTimeout, cipherSuite, id, nodeStatuses, nodebalancerId, port, protocol, proxyProtocol, sslCommonname, sslFingerprint, stickiness);
+        }
+        public GetNodeBalancerConfigResult build() {
+            final var o = new GetNodeBalancerConfigResult();
+            o.algorithm = algorithm;
+            o.check = check;
+            o.checkAttempts = checkAttempts;
+            o.checkBody = checkBody;
+            o.checkInterval = checkInterval;
+            o.checkPassive = checkPassive;
+            o.checkPath = checkPath;
+            o.checkTimeout = checkTimeout;
+            o.cipherSuite = cipherSuite;
+            o.id = id;
+            o.nodeStatuses = nodeStatuses;
+            o.nodebalancerId = nodebalancerId;
+            o.port = port;
+            o.protocol = protocol;
+            o.proxyProtocol = proxyProtocol;
+            o.sslCommonname = sslCommonname;
+            o.sslFingerprint = sslFingerprint;
+            o.stickiness = stickiness;
+            return o;
         }
     }
 }

@@ -39,15 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode User resource exports the following attributes:
-//
-// * `sshKeys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-//
-// * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-//
-// * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("linode:index/getUser:getUser", args, &rv, opts...)
@@ -65,12 +56,15 @@ type LookupUserArgs struct {
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// The email address for this User, for account management communications, and may be used for other communications as configured.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Restricted bool     `pulumi:"restricted"`
-	SshKeys    []string `pulumi:"sshKeys"`
-	Username   string   `pulumi:"username"`
+	Id string `pulumi:"id"`
+	// If true, this User must be granted access to perform actions or access entities on this Account.
+	Restricted bool `pulumi:"restricted"`
+	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
+	SshKeys  []string `pulumi:"sshKeys"`
+	Username string   `pulumi:"username"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -111,6 +105,7 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// The email address for this User, for account management communications, and may be used for other communications as configured.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -120,10 +115,12 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If true, this User must be granted access to perform actions or access entities on this Account.
 func (o LookupUserResultOutput) Restricted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.Restricted }).(pulumi.BoolOutput)
 }
 
+// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
 func (o LookupUserResultOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
 }

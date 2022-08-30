@@ -57,11 +57,17 @@ class GetIpv6RangeResult:
     @property
     @pulumi.getter
     def linodes(self) -> Sequence[int]:
+        """
+        A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+        """
         return pulumi.get(self, "linodes")
 
     @property
     @pulumi.getter
     def prefix(self) -> int:
+        """
+        The prefix length of the address, denoting how many addresses can be assigned from this range.
+        """
         return pulumi.get(self, "prefix")
 
     @property
@@ -72,6 +78,9 @@ class GetIpv6RangeResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region for this range of IPv6 addresses.
+        """
         return pulumi.get(self, "region")
 
 
@@ -104,17 +113,6 @@ def get_ipv6_range(range: Optional[str] = None,
 
     range_info = linode.get_ipv6_range(range="2001:0db8::")
     ```
-    ## Attributes
-
-    The `Ipv6Range` data source exports the following attributes:
-
-    * `ip_bgp` - Whether this IPv6 range is shared.
-
-    * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-
-    * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-
-    * `region` - The region for this range of IPv6 addresses.
 
 
     :param str range: The IPv6 range to retrieve information about.
@@ -149,17 +147,6 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
 
     range_info = linode.get_ipv6_range(range="2001:0db8::")
     ```
-    ## Attributes
-
-    The `Ipv6Range` data source exports the following attributes:
-
-    * `ip_bgp` - Whether this IPv6 range is shared.
-
-    * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-
-    * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-
-    * `region` - The region for this range of IPv6 addresses.
 
 
     :param str range: The IPv6 range to retrieve information about.

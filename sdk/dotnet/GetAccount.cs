@@ -35,33 +35,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Account resource exports the following attributes:
-        /// 
-        /// * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
-        /// 
-        /// * `first_name` - The first name of the person associated with this Account.
-        /// 
-        /// * `last_name` - The last name of the person associated with this Account.
-        /// 
-        /// * `company` - The company name associated with this Account.
-        /// 
-        /// * `address_1` - First line of this Account's billing address.
-        /// 
-        /// * `address_2` - Second line of this Account's billing address.
-        /// 
-        /// * `phone` - The phone number associated with this Account.
-        /// 
-        /// * `city` - The city for this Account's billing address.
-        /// 
-        /// * `state` - If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-        /// 
-        /// * `country` - The two-letter country code of this Account's billing address.
-        /// 
-        /// * `zip` - The zip code of this Account's billing address.
-        /// 
-        /// * `balance` - This Account's balance, in US dollars.
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
@@ -71,21 +44,57 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetAccountResult
     {
+        /// <summary>
+        /// First line of this Account's billing address.
+        /// </summary>
         public readonly string Address1;
+        /// <summary>
+        /// Second line of this Account's billing address.
+        /// </summary>
         public readonly string Address2;
+        /// <summary>
+        /// This Account's balance, in US dollars.
+        /// </summary>
         public readonly int Balance;
+        /// <summary>
+        /// The city for this Account's billing address.
+        /// </summary>
         public readonly string City;
+        /// <summary>
+        /// The company name associated with this Account.
+        /// </summary>
         public readonly string Company;
+        /// <summary>
+        /// The two-letter country code of this Account's billing address.
+        /// </summary>
         public readonly string Country;
+        /// <summary>
+        /// The email address for this Account, for account management communications, and may be used for other communications as configured.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// The first name of the person associated with this Account.
+        /// </summary>
         public readonly string FirstName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The last name of the person associated with this Account.
+        /// </summary>
         public readonly string LastName;
+        /// <summary>
+        /// The phone number associated with this Account.
+        /// </summary>
         public readonly string Phone;
+        /// <summary>
+        /// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The zip code of this Account's billing address.
+        /// </summary>
         public readonly string Zip;
 
         [OutputConstructor]

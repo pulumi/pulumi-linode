@@ -10,6 +10,92 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about Linode instances that match a set of filters.
+//
+// ## Example Usage
+//
+// Get information about all Linode instances with a certain label and tag:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetInstances(ctx, &GetInstancesArgs{
+//				Filters: []GetInstancesFilter{
+//					GetInstancesFilter{
+//						Name: "label",
+//						Values: []string{
+//							"my-label",
+//							"my-other-label",
+//						},
+//					},
+//					GetInstancesFilter{
+//						Name: "tags",
+//						Values: []string{
+//							"my-tag",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode instances associated with the current token:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Filterable Fields
+//
+// * `group`
+//
+// * `id`
+//
+// * `image`
+//
+// * `label`
+//
+// * `region`
+//
+// * `status`
+//
+// * `tags`
+//
+// * `type`
+//
+// * `watchdogEnabled`
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("linode:index/getInstances:getInstances", args, &rv, opts...)

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesTypeAddon {
-    private final List<GetInstanceTypesTypeAddonBackup> backups;
+    private List<GetInstanceTypesTypeAddonBackup> backups;
 
-    @CustomType.Constructor
-    private GetInstanceTypesTypeAddon(@CustomType.Parameter("backups") List<GetInstanceTypesTypeAddonBackup> backups) {
-        this.backups = backups;
-    }
-
+    private GetInstanceTypesTypeAddon() {}
     public List<GetInstanceTypesTypeAddonBackup> backups() {
         return this.backups;
     }
@@ -28,27 +24,27 @@ public final class GetInstanceTypesTypeAddon {
     public static Builder builder(GetInstanceTypesTypeAddon defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypesTypeAddonBackup> backups;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesTypeAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backups = defaults.backups;
         }
 
+        @CustomType.Setter
         public Builder backups(List<GetInstanceTypesTypeAddonBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
         }
         public Builder backups(GetInstanceTypesTypeAddonBackup... backups) {
             return backups(List.of(backups));
-        }        public GetInstanceTypesTypeAddon build() {
-            return new GetInstanceTypesTypeAddon(backups);
+        }
+        public GetInstanceTypesTypeAddon build() {
+            final var o = new GetInstanceTypesTypeAddon();
+            o.backups = backups;
+            return o;
         }
     }
 }

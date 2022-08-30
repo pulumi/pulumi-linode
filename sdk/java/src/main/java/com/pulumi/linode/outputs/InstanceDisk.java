@@ -20,84 +20,59 @@ public final class InstanceDisk {
      * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
      * 
      */
-    private final @Nullable List<String> authorizedKeys;
+    private @Nullable List<String> authorizedKeys;
     /**
      * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
      * 
      */
-    private final @Nullable List<String> authorizedUsers;
+    private @Nullable List<String> authorizedUsers;
     /**
      * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
      * 
      */
-    private final @Nullable String filesystem;
+    private @Nullable String filesystem;
     /**
      * @return The ID of the disk in the Linode API.
      * 
      */
-    private final @Nullable Integer id;
+    private @Nullable Integer id;
     /**
      * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return The name of this interface. If the interface is a VLAN, a label is required.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return If true, this Disk is read-only.
      * 
      */
-    private final @Nullable Boolean readOnly;
+    private @Nullable Boolean readOnly;
     /**
      * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      * 
      */
-    private final @Nullable String rootPass;
+    private @Nullable String rootPass;
     /**
      * @return The size of the Disk in MB.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
      * 
      */
-    private final @Nullable Map<String,Object> stackscriptData;
+    private @Nullable Map<String,Object> stackscriptData;
     /**
      * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
      * 
      */
-    private final @Nullable Integer stackscriptId;
+    private @Nullable Integer stackscriptId;
 
-    @CustomType.Constructor
-    private InstanceDisk(
-        @CustomType.Parameter("authorizedKeys") @Nullable List<String> authorizedKeys,
-        @CustomType.Parameter("authorizedUsers") @Nullable List<String> authorizedUsers,
-        @CustomType.Parameter("filesystem") @Nullable String filesystem,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly,
-        @CustomType.Parameter("rootPass") @Nullable String rootPass,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("stackscriptData") @Nullable Map<String,Object> stackscriptData,
-        @CustomType.Parameter("stackscriptId") @Nullable Integer stackscriptId) {
-        this.authorizedKeys = authorizedKeys;
-        this.authorizedUsers = authorizedUsers;
-        this.filesystem = filesystem;
-        this.id = id;
-        this.image = image;
-        this.label = label;
-        this.readOnly = readOnly;
-        this.rootPass = rootPass;
-        this.size = size;
-        this.stackscriptData = stackscriptData;
-        this.stackscriptId = stackscriptId;
-    }
-
+    private InstanceDisk() {}
     /**
      * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
      * 
@@ -183,7 +158,7 @@ public final class InstanceDisk {
     public static Builder builder(InstanceDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> authorizedKeys;
         private @Nullable List<String> authorizedUsers;
@@ -196,11 +171,7 @@ public final class InstanceDisk {
         private Integer size;
         private @Nullable Map<String,Object> stackscriptData;
         private @Nullable Integer stackscriptId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedKeys = defaults.authorizedKeys;
@@ -216,6 +187,7 @@ public final class InstanceDisk {
     	      this.stackscriptId = defaults.stackscriptId;
         }
 
+        @CustomType.Setter
         public Builder authorizedKeys(@Nullable List<String> authorizedKeys) {
             this.authorizedKeys = authorizedKeys;
             return this;
@@ -223,6 +195,7 @@ public final class InstanceDisk {
         public Builder authorizedKeys(String... authorizedKeys) {
             return authorizedKeys(List.of(authorizedKeys));
         }
+        @CustomType.Setter
         public Builder authorizedUsers(@Nullable List<String> authorizedUsers) {
             this.authorizedUsers = authorizedUsers;
             return this;
@@ -230,43 +203,65 @@ public final class InstanceDisk {
         public Builder authorizedUsers(String... authorizedUsers) {
             return authorizedUsers(List.of(authorizedUsers));
         }
+        @CustomType.Setter
         public Builder filesystem(@Nullable String filesystem) {
             this.filesystem = filesystem;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder rootPass(@Nullable String rootPass) {
             this.rootPass = rootPass;
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder stackscriptData(@Nullable Map<String,Object> stackscriptData) {
             this.stackscriptData = stackscriptData;
             return this;
         }
+        @CustomType.Setter
         public Builder stackscriptId(@Nullable Integer stackscriptId) {
             this.stackscriptId = stackscriptId;
             return this;
-        }        public InstanceDisk build() {
-            return new InstanceDisk(authorizedKeys, authorizedUsers, filesystem, id, image, label, readOnly, rootPass, size, stackscriptData, stackscriptId);
+        }
+        public InstanceDisk build() {
+            final var o = new InstanceDisk();
+            o.authorizedKeys = authorizedKeys;
+            o.authorizedUsers = authorizedUsers;
+            o.filesystem = filesystem;
+            o.id = id;
+            o.image = image;
+            o.label = label;
+            o.readOnly = readOnly;
+            o.rootPass = rootPass;
+            o.size = size;
+            o.stackscriptData = stackscriptData;
+            o.stackscriptId = stackscriptId;
+            return o;
         }
     }
 }

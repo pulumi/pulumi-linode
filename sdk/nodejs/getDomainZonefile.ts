@@ -19,13 +19,6 @@ import * as utilities from "./utilities";
  *     domainId: 3150401,
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Volume resource exports the following attributes:
- *
- * - `domainId` - The associated domain's unique ID.
- *
- * - `zoneFile` - Array of strings representing the Domain Zonefile.
  */
 export function getDomainZonefile(args: GetDomainZonefileArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainZonefileResult> {
     if (!opts) {
@@ -47,6 +40,9 @@ export interface GetDomainZonefileArgs {
      * The associated domain's unique ID.
      */
     domainId: number;
+    /**
+     * Array of strings representing the Domain Zonefile.
+     */
     zoneFiles?: string[];
 }
 
@@ -54,11 +50,17 @@ export interface GetDomainZonefileArgs {
  * A collection of values returned by getDomainZonefile.
  */
 export interface GetDomainZonefileResult {
+    /**
+     * The associated domain's unique ID.
+     */
     readonly domainId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Array of strings representing the Domain Zonefile.
+     */
     readonly zoneFiles?: string[];
 }
 
@@ -74,5 +76,8 @@ export interface GetDomainZonefileOutputArgs {
      * The associated domain's unique ID.
      */
     domainId: pulumi.Input<number>;
+    /**
+     * Array of strings representing the Domain Zonefile.
+     */
     zoneFiles?: pulumi.Input<pulumi.Input<string>[]>;
 }

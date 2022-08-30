@@ -57,13 +57,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `token` - The token used to access the API.
- * 
- * * `created` - The date this Token was created.
  * 
  * ## Import
  * 
@@ -79,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/token:Token")
 public class Token extends com.pulumi.resources.CustomResource {
     /**
-     * The date and time this token was created.
+     * The date this Token was created.
      * 
      */
     @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
-     * @return The date and time this token was created.
+     * @return The date this Token was created.
      * 
      */
     public Output<String> created() {

@@ -13,21 +13,14 @@ public final class ObjectStorageBucketCert {
      * @return The Base64 encoded and PEM formatted SSL certificate.
      * 
      */
-    private final String certificate;
+    private String certificate;
     /**
      * @return The private key associated with the TLS/SSL certificate.
      * 
      */
-    private final String privateKey;
+    private String privateKey;
 
-    @CustomType.Constructor
-    private ObjectStorageBucketCert(
-        @CustomType.Parameter("certificate") String certificate,
-        @CustomType.Parameter("privateKey") String privateKey) {
-        this.certificate = certificate;
-        this.privateKey = privateKey;
-    }
-
+    private ObjectStorageBucketCert() {}
     /**
      * @return The Base64 encoded and PEM formatted SSL certificate.
      * 
@@ -50,30 +43,32 @@ public final class ObjectStorageBucketCert {
     public static Builder builder(ObjectStorageBucketCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificate;
         private String privateKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ObjectStorageBucketCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
     	      this.privateKey = defaults.privateKey;
         }
 
+        @CustomType.Setter
         public Builder certificate(String certificate) {
             this.certificate = Objects.requireNonNull(certificate);
             return this;
         }
+        @CustomType.Setter
         public Builder privateKey(String privateKey) {
             this.privateKey = Objects.requireNonNull(privateKey);
             return this;
-        }        public ObjectStorageBucketCert build() {
-            return new ObjectStorageBucketCert(certificate, privateKey);
+        }
+        public ObjectStorageBucketCert build() {
+            final var o = new ObjectStorageBucketCert();
+            o.certificate = certificate;
+            o.privateKey = privateKey;
+            return o;
         }
     }
 }

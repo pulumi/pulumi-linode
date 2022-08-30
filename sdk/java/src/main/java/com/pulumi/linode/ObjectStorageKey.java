@@ -51,15 +51,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `access_key` - This keypair&#39;s access key. This is not secret.
- * 
- * * `secret_key` - This keypair&#39;s secret key.
- * 
- * * `limited` - Whether or not this key is a limited access key.
  * 
  */
 @ResourceType(type="linode:index/objectStorageKey:ObjectStorageKey")

@@ -70,37 +70,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This Linode Instance resource exports the following attributes:
- * 
- * * `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
- * 
- * * `ip_address` - A string containing the Linode&#39;s public IP address.
- * 
- * * `private_ip_address` - This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
- * 
- * * `ipv6` - This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
- * 
- * * `ipv4` - This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
- * 
- * * `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
- * 
- * * `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
- * 
- * * `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
- * 
- * * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
- * 
- * * `backups` - Information about this Linode&#39;s backups status.
- *   
- *   * `enabled` - If this Linode has the Backup service enabled.
- *   
- *   * `schedule`
- *     
- *     * `day` -  The day of the week that your Linode&#39;s weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as &#34;Scheduling&#34; until the day is automatically selected.
- *     
- *     * `window` - The window (&#39;W0&#39;-&#39;W22&#39;) in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, &#39;W10&#39; indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
  * 
  * ## Import
  * 
@@ -296,46 +265,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.interfaces);
     }
     /**
-     * This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-     * will be used for this field.
+     * A string containing the Linode&#39;s public IP address.
      * 
      */
     @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
-     * @return This Linode&#39;s Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-     * will be used for this field.
+     * @return A string containing the Linode&#39;s public IP address.
      * 
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
     /**
-     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      * 
      */
     @Export(name="ipv4s", type=List.class, parameters={String.class})
     private Output<List<String>> ipv4s;
 
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-     * private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      * 
      */
     public Output<List<String>> ipv4s() {
         return this.ipv4s;
     }
     /**
-     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      * 
      */
     @Export(name="ipv6", type=String.class, parameters={})
     private Output<String> ipv6;
 
     /**
-     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      * 
      */
     public Output<String> ipv6() {
@@ -370,16 +335,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateIp);
     }
     /**
-     * This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-     * Instances in a region.
+     * This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
      */
     @Export(name="privateIpAddress", type=String.class, parameters={})
     private Output<String> privateIpAddress;
 
     /**
-     * @return This Linode&#39;s Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-     * Instances in a region.
+     * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
      */
     public Output<String> privateIpAddress() {
@@ -484,14 +447,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stackscriptId);
     }
     /**
-     * The status of the instance, indicating the current readiness state.
+     * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the instance, indicating the current readiness state.
+     * @return The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      * 
      */
     public Output<String> status() {

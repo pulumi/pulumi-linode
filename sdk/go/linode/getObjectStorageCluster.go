@@ -39,17 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Object Storage Cluster resource exports the following attributes:
-//
-// * `domain` - The base URL for this cluster.
-//
-// * `status` - This cluster's status. (`available`, `unavailable`)
-//
-// * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-//
-// * `staticSiteDomain` - The base URL for this cluster used when hosting static sites.
 func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageClusterResult, error) {
 	var rv GetObjectStorageClusterResult
 	err := ctx.Invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", args, &rv, opts...)
@@ -61,21 +50,29 @@ func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterA
 
 // A collection of arguments for invoking getObjectStorageCluster.
 type GetObjectStorageClusterArgs struct {
+	// The base URL for this cluster.
 	Domain *string `pulumi:"domain"`
 	// The unique ID of this cluster.
-	Id               string  `pulumi:"id"`
-	Region           *string `pulumi:"region"`
+	Id string `pulumi:"id"`
+	// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+	Region *string `pulumi:"region"`
+	// The base URL for this cluster used when hosting static sites.
 	StaticSiteDomain *string `pulumi:"staticSiteDomain"`
-	Status           *string `pulumi:"status"`
+	// This cluster's status. (`available`, `unavailable`)
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getObjectStorageCluster.
 type GetObjectStorageClusterResult struct {
-	Domain           string `pulumi:"domain"`
-	Id               string `pulumi:"id"`
-	Region           string `pulumi:"region"`
+	// The base URL for this cluster.
+	Domain string `pulumi:"domain"`
+	Id     string `pulumi:"id"`
+	// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+	Region string `pulumi:"region"`
+	// The base URL for this cluster used when hosting static sites.
 	StaticSiteDomain string `pulumi:"staticSiteDomain"`
-	Status           string `pulumi:"status"`
+	// This cluster's status. (`available`, `unavailable`)
+	Status string `pulumi:"status"`
 }
 
 func GetObjectStorageClusterOutput(ctx *pulumi.Context, args GetObjectStorageClusterOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageClusterResultOutput {
@@ -93,12 +90,16 @@ func GetObjectStorageClusterOutput(ctx *pulumi.Context, args GetObjectStorageClu
 
 // A collection of arguments for invoking getObjectStorageCluster.
 type GetObjectStorageClusterOutputArgs struct {
+	// The base URL for this cluster.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The unique ID of this cluster.
-	Id               pulumi.StringInput    `pulumi:"id"`
-	Region           pulumi.StringPtrInput `pulumi:"region"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The base URL for this cluster used when hosting static sites.
 	StaticSiteDomain pulumi.StringPtrInput `pulumi:"staticSiteDomain"`
-	Status           pulumi.StringPtrInput `pulumi:"status"`
+	// This cluster's status. (`available`, `unavailable`)
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetObjectStorageClusterOutputArgs) ElementType() reflect.Type {
@@ -120,6 +121,7 @@ func (o GetObjectStorageClusterResultOutput) ToGetObjectStorageClusterResultOutp
 	return o
 }
 
+// The base URL for this cluster.
 func (o GetObjectStorageClusterResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -128,14 +130,17 @@ func (o GetObjectStorageClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
 func (o GetObjectStorageClusterResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The base URL for this cluster used when hosting static sites.
 func (o GetObjectStorageClusterResultOutput) StaticSiteDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.StaticSiteDomain }).(pulumi.StringOutput)
 }
 
+// This cluster's status. (`available`, `unavailable`)
 func (o GetObjectStorageClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageClusterResult) string { return v.Status }).(pulumi.StringOutput)
 }

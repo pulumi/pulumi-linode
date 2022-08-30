@@ -18,20 +18,62 @@ namespace Pulumi.Linode.Outputs
         public readonly string BootConfigLabel;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceDiskResult> Disks;
+        /// <summary>
+        /// The display group of the Linode instance.
+        /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of the disk in the Linode API.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+        /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// A string containing the Linode's public IP address.
+        /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
+        /// <summary>
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        /// </summary>
         public readonly string Ipv6;
+        /// <summary>
+        /// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+        /// </summary>
         public readonly string PrivateIpAddress;
+        /// <summary>
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceSpecResult> Specs;
+        /// <summary>
+        /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+        /// </summary>
         public readonly int SwapSize;
+        /// <summary>
+        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+        /// </summary>
         public readonly bool WatchdogEnabled;
 
         [OutputConstructor]

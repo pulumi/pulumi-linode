@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseMongodbUpdates {
-    private final String dayOfWeek;
-    private final Integer duration;
-    private final String frequency;
-    private final Integer hourOfDay;
-    private final @Nullable Integer weekOfMonth;
+    private String dayOfWeek;
+    private Integer duration;
+    private String frequency;
+    private Integer hourOfDay;
+    private @Nullable Integer weekOfMonth;
 
-    @CustomType.Constructor
-    private DatabaseMongodbUpdates(
-        @CustomType.Parameter("dayOfWeek") String dayOfWeek,
-        @CustomType.Parameter("duration") Integer duration,
-        @CustomType.Parameter("frequency") String frequency,
-        @CustomType.Parameter("hourOfDay") Integer hourOfDay,
-        @CustomType.Parameter("weekOfMonth") @Nullable Integer weekOfMonth) {
-        this.dayOfWeek = dayOfWeek;
-        this.duration = duration;
-        this.frequency = frequency;
-        this.hourOfDay = hourOfDay;
-        this.weekOfMonth = weekOfMonth;
-    }
-
+    private DatabaseMongodbUpdates() {}
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
@@ -55,18 +42,14 @@ public final class DatabaseMongodbUpdates {
     public static Builder builder(DatabaseMongodbUpdates defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
         private Integer duration;
         private String frequency;
         private Integer hourOfDay;
         private @Nullable Integer weekOfMonth;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseMongodbUpdates defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
@@ -76,27 +59,39 @@ public final class DatabaseMongodbUpdates {
     	      this.weekOfMonth = defaults.weekOfMonth;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
             return this;
         }
+        @CustomType.Setter
         public Builder duration(Integer duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder frequency(String frequency) {
             this.frequency = Objects.requireNonNull(frequency);
             return this;
         }
+        @CustomType.Setter
         public Builder hourOfDay(Integer hourOfDay) {
             this.hourOfDay = Objects.requireNonNull(hourOfDay);
             return this;
         }
+        @CustomType.Setter
         public Builder weekOfMonth(@Nullable Integer weekOfMonth) {
             this.weekOfMonth = weekOfMonth;
             return this;
-        }        public DatabaseMongodbUpdates build() {
-            return new DatabaseMongodbUpdates(dayOfWeek, duration, frequency, hourOfDay, weekOfMonth);
+        }
+        public DatabaseMongodbUpdates build() {
+            final var o = new DatabaseMongodbUpdates();
+            o.dayOfWeek = dayOfWeek;
+            o.duration = duration;
+            o.frequency = frequency;
+            o.hourOfDay = hourOfDay;
+            o.weekOfMonth = weekOfMonth;
+            return o;
         }
     }
 }

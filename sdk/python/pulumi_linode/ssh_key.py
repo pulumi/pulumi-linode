@@ -57,7 +57,7 @@ class _SshKeyState:
                  ssh_key: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SshKey resources.
-        :param pulumi.Input[str] created: The date this key was added.
+        :param pulumi.Input[str] created: The date this SSH Key was created.
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """
@@ -72,7 +72,7 @@ class _SshKeyState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
-        The date this key was added.
+        The date this SSH Key was created.
         """
         return pulumi.get(self, "created")
 
@@ -117,12 +117,6 @@ class SshKey(pulumi.CustomResource):
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
 
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `created` - The date this SSH Key was created.
-
         ## Import
 
         Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -145,12 +139,6 @@ class SshKey(pulumi.CustomResource):
         """
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
-
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `created` - The date this SSH Key was created.
 
         ## Import
 
@@ -213,7 +201,7 @@ class SshKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created: The date this key was added.
+        :param pulumi.Input[str] created: The date this SSH Key was created.
         :param pulumi.Input[str] label: A label for the SSH Key.
         :param pulumi.Input[str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """
@@ -230,7 +218,7 @@ class SshKey(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """
-        The date this key was added.
+        The date this SSH Key was created.
         """
         return pulumi.get(self, "created")
 

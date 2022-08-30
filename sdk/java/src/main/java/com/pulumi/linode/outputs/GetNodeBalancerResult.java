@@ -16,64 +16,39 @@ public final class GetNodeBalancerResult {
      * @return Throttle connections per second (0-20).
      * 
      */
-    private final Integer clientConnThrottle;
-    private final String created;
+    private Integer clientConnThrottle;
+    private String created;
     /**
      * @return This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
      * 
      */
-    private final String hostname;
-    private final Integer id;
+    private String hostname;
+    private Integer id;
     /**
      * @return The Public IPv4 Address of this NodeBalancer
      * 
      */
-    private final String ipv4;
+    private String ipv4;
     /**
      * @return The Public IPv6 Address of this NodeBalancer
      * 
      */
-    private final String ipv6;
+    private String ipv6;
     /**
      * @return The label of the Linode NodeBalancer
      * 
      */
-    private final String label;
-    private final String region;
+    private String label;
+    private String region;
     /**
      * @return A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    private final List<String> tags;
-    private final List<GetNodeBalancerTransfer> transfers;
-    private final String updated;
+    private List<String> tags;
+    private List<GetNodeBalancerTransfer> transfers;
+    private String updated;
 
-    @CustomType.Constructor
-    private GetNodeBalancerResult(
-        @CustomType.Parameter("clientConnThrottle") Integer clientConnThrottle,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("ipv4") String ipv4,
-        @CustomType.Parameter("ipv6") String ipv6,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("transfers") List<GetNodeBalancerTransfer> transfers,
-        @CustomType.Parameter("updated") String updated) {
-        this.clientConnThrottle = clientConnThrottle;
-        this.created = created;
-        this.hostname = hostname;
-        this.id = id;
-        this.ipv4 = ipv4;
-        this.ipv6 = ipv6;
-        this.label = label;
-        this.region = region;
-        this.tags = tags;
-        this.transfers = transfers;
-        this.updated = updated;
-    }
-
+    private GetNodeBalancerResult() {}
     /**
      * @return Throttle connections per second (0-20).
      * 
@@ -139,7 +114,7 @@ public final class GetNodeBalancerResult {
     public static Builder builder(GetNodeBalancerResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer clientConnThrottle;
         private String created;
@@ -152,11 +127,7 @@ public final class GetNodeBalancerResult {
         private List<String> tags;
         private List<GetNodeBalancerTransfer> transfers;
         private String updated;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientConnThrottle = defaults.clientConnThrottle;
@@ -172,38 +143,47 @@ public final class GetNodeBalancerResult {
     	      this.updated = defaults.updated;
         }
 
+        @CustomType.Setter
         public Builder clientConnThrottle(Integer clientConnThrottle) {
             this.clientConnThrottle = Objects.requireNonNull(clientConnThrottle);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4(String ipv4) {
             this.ipv4 = Objects.requireNonNull(ipv4);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6(String ipv6) {
             this.ipv6 = Objects.requireNonNull(ipv6);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -211,6 +191,7 @@ public final class GetNodeBalancerResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder transfers(List<GetNodeBalancerTransfer> transfers) {
             this.transfers = Objects.requireNonNull(transfers);
             return this;
@@ -218,11 +199,25 @@ public final class GetNodeBalancerResult {
         public Builder transfers(GetNodeBalancerTransfer... transfers) {
             return transfers(List.of(transfers));
         }
+        @CustomType.Setter
         public Builder updated(String updated) {
             this.updated = Objects.requireNonNull(updated);
             return this;
-        }        public GetNodeBalancerResult build() {
-            return new GetNodeBalancerResult(clientConnThrottle, created, hostname, id, ipv4, ipv6, label, region, tags, transfers, updated);
+        }
+        public GetNodeBalancerResult build() {
+            final var o = new GetNodeBalancerResult();
+            o.clientConnThrottle = clientConnThrottle;
+            o.created = created;
+            o.hostname = hostname;
+            o.id = id;
+            o.ipv4 = ipv4;
+            o.ipv6 = ipv6;
+            o.label = label;
+            o.region = region;
+            o.tags = tags;
+            o.transfers = transfers;
+            o.updated = updated;
+            return o;
         }
     }
 }

@@ -50,11 +50,17 @@ class GetKernelResult:
     @property
     @pulumi.getter
     def architecture(self) -> str:
+        """
+        The architecture of this Kernel.
+        """
         return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter
     def deprecated(self) -> bool:
+        """
+        Whether or not this Kernel is deprecated.
+        """
         return pulumi.get(self, "deprecated")
 
     @property
@@ -65,26 +71,41 @@ class GetKernelResult:
     @property
     @pulumi.getter
     def kvm(self) -> bool:
+        """
+        If this Kernel is suitable for KVM Linodes.
+        """
         return pulumi.get(self, "kvm")
 
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The friendly name of this Kernel.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def pvops(self) -> bool:
+        """
+        If this Kernel is suitable for paravirtualized operations.
+        """
         return pulumi.get(self, "pvops")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Linux Kernel version
+        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter
     def xen(self) -> bool:
+        """
+        If this Kernel is suitable for Xen Linodes.
+        """
         return pulumi.get(self, "xen")
 
 
@@ -119,23 +140,6 @@ def get_kernel(id: Optional[str] = None,
 
     latest = linode.get_kernel(id="linode/latest-64bit")
     ```
-    ## Attributes
-
-    The Linode Kernel resource exports the following attributes:
-
-    * `architecture` - The architecture of this Kernel.
-
-    * `deprecated` - Whether or not this Kernel is deprecated.
-
-    * `kvm` - If this Kernel is suitable for KVM Linodes.
-
-    * `label` - The friendly name of this Kernel.
-
-    * `pvops` - If this Kernel is suitable for paravirtualized operations.
-
-    * `version` - Linux Kernel version
-
-    * `xen` - If this Kernel is suitable for Xen Linodes.
 
 
     :param str id: The unique ID of this Kernel.
@@ -172,23 +176,6 @@ def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
 
     latest = linode.get_kernel(id="linode/latest-64bit")
     ```
-    ## Attributes
-
-    The Linode Kernel resource exports the following attributes:
-
-    * `architecture` - The architecture of this Kernel.
-
-    * `deprecated` - Whether or not this Kernel is deprecated.
-
-    * `kvm` - If this Kernel is suitable for KVM Linodes.
-
-    * `label` - The friendly name of this Kernel.
-
-    * `pvops` - If this Kernel is suitable for paravirtualized operations.
-
-    * `version` - Linux Kernel version
-
-    * `xen` - If this Kernel is suitable for Xen Linodes.
 
 
     :param str id: The unique ID of this Kernel.

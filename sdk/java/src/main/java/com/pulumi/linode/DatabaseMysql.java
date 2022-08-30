@@ -118,32 +118,6 @@ import javax.annotation.Nullable;
  * 
  * * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  * 
- * ## Attributes
- * 
- * In addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the Managed Database.
- * 
- * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
- * 
- * * `created` - When this Managed Database was created.
- * 
- * * `engine` - The Managed Database engine. (e.g. `mysql`)
- * 
- * * `host_primary` - The primary host for the Managed Database.
- * 
- * * `host_secondary` - The secondary/private network host for the Managed Database.
- * 
- * * `root_password` - The randomly-generated root password for the Managed Database instance.
- * 
- * * `root_username` - The root username for the Managed Database instance.
- * 
- * * `status` - The operating status of the Managed Database.
- * 
- * * `updated` - When this Managed Database was last updated.
- * 
- * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
- * 
  * ## Import
  * 
  * Linode MySQL Databases can be imported using the `id`, e.g.
@@ -226,14 +200,14 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encrypted);
     }
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `mysql`)
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return The Managed Database engine.
+     * @return The Managed Database engine. (e.g. `mysql`)
      * 
      */
     public Output<String> engine() {
@@ -268,14 +242,14 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
         return this.hostPrimary;
     }
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      * 
      */
     @Export(name="hostSecondary", type=String.class, parameters={})
     private Output<String> hostSecondary;
 
     /**
-     * @return The secondary host for the Managed Database.
+     * @return The secondary/private network host for the Managed Database.
      * 
      */
     public Output<String> hostSecondary() {
@@ -422,14 +396,14 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
         return this.updates;
     }
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
-     * @return The Managed Database engine version.
+     * @return The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
     public Output<String> version() {

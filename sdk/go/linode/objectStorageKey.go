@@ -40,15 +40,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `accessKey` - This keypair's access key. This is not secret.
-//
-// * `secretKey` - This keypair's secret key.
-//
-// * `limited` - Whether or not this key is a limited access key.
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 

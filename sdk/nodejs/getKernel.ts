@@ -19,23 +19,6 @@ import * as utilities from "./utilities";
  *     id: "linode/latest-64bit",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Kernel resource exports the following attributes:
- *
- * * `architecture` - The architecture of this Kernel.
- *
- * * `deprecated` - Whether or not this Kernel is deprecated.
- *
- * * `kvm` - If this Kernel is suitable for KVM Linodes.
- *
- * * `label` - The friendly name of this Kernel.
- *
- * * `pvops` - If this Kernel is suitable for paravirtualized operations.
- *
- * * `version` - Linux Kernel version
- *
- * * `xen` - If this Kernel is suitable for Xen Linodes.
  */
 export function getKernel(args: GetKernelArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelResult> {
     if (!opts) {
@@ -62,13 +45,34 @@ export interface GetKernelArgs {
  * A collection of values returned by getKernel.
  */
 export interface GetKernelResult {
+    /**
+     * The architecture of this Kernel.
+     */
     readonly architecture: string;
+    /**
+     * Whether or not this Kernel is deprecated.
+     */
     readonly deprecated: boolean;
     readonly id: string;
+    /**
+     * If this Kernel is suitable for KVM Linodes.
+     */
     readonly kvm: boolean;
+    /**
+     * The friendly name of this Kernel.
+     */
     readonly label: string;
+    /**
+     * If this Kernel is suitable for paravirtualized operations.
+     */
     readonly pvops: boolean;
+    /**
+     * Linux Kernel version
+     */
     readonly version: string;
+    /**
+     * If this Kernel is suitable for Xen Linodes.
+     */
     readonly xen: boolean;
 }
 

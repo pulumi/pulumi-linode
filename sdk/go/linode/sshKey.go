@@ -14,12 +14,6 @@ import (
 // Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
 // For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
 //
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `created` - The date this SSH Key was created.
-//
 // ## Import
 //
 // Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -32,7 +26,7 @@ import (
 type SshKey struct {
 	pulumi.CustomResourceState
 
-	// The date this key was added.
+	// The date this SSH Key was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// A label for the SSH Key.
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -75,7 +69,7 @@ func GetSshKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SshKey resources.
 type sshKeyState struct {
-	// The date this key was added.
+	// The date this SSH Key was created.
 	Created *string `pulumi:"created"`
 	// A label for the SSH Key.
 	Label *string `pulumi:"label"`
@@ -84,7 +78,7 @@ type sshKeyState struct {
 }
 
 type SshKeyState struct {
-	// The date this key was added.
+	// The date this SSH Key was created.
 	Created pulumi.StringPtrInput
 	// A label for the SSH Key.
 	Label pulumi.StringPtrInput
@@ -198,7 +192,7 @@ func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutpu
 	return o
 }
 
-// The date this key was added.
+// The date this SSH Key was created.
 func (o SshKeyOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }

@@ -15,13 +15,9 @@ public final class LkeClusterControlPlane {
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
      */
-    private final @Nullable Boolean highAvailability;
+    private @Nullable Boolean highAvailability;
 
-    @CustomType.Constructor
-    private LkeClusterControlPlane(@CustomType.Parameter("highAvailability") @Nullable Boolean highAvailability) {
-        this.highAvailability = highAvailability;
-    }
-
+    private LkeClusterControlPlane() {}
     /**
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
@@ -37,24 +33,24 @@ public final class LkeClusterControlPlane {
     public static Builder builder(LkeClusterControlPlane defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean highAvailability;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.highAvailability = defaults.highAvailability;
         }
 
+        @CustomType.Setter
         public Builder highAvailability(@Nullable Boolean highAvailability) {
             this.highAvailability = highAvailability;
             return this;
-        }        public LkeClusterControlPlane build() {
-            return new LkeClusterControlPlane(highAvailability);
+        }
+        public LkeClusterControlPlane build() {
+            final var o = new LkeClusterControlPlane();
+            o.highAvailability = highAvailability;
+            return o;
         }
     }
 }

@@ -486,9 +486,6 @@ class Domain(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        ## Attributes
-
-        This resource exports no additional attributes, however `status` may reflect degraded states.
 
         ## Import
 
@@ -548,9 +545,6 @@ class Domain(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        ## Attributes
-
-        This resource exports no additional attributes, however `status` may reflect degraded states.
 
         ## Import
 

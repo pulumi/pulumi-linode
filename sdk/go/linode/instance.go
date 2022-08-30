@@ -55,37 +55,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This Linode Instance resource exports the following attributes:
-//
-// * `status` - The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
-//
-// * `ipAddress` - A string containing the Linode's public IP address.
-//
-// * `privateIpAddress` - This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
-//
-// * `ipv6` - This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
-//
-// * `ipv4` - This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-//
-// * `specs.0.disk` -  The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-//
-// * `specs.0.memory` - The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-//
-// * `specs.0.vcpus` - The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-//
-// * `specs.0.transfer` - The amount of network transfer this Linode is allotted each month.
-//
-// * `backups` - Information about this Linode's backups status.
-//
-//   - `enabled` - If this Linode has the Backup service enabled.
-//
-//   - `schedule`
-//
-//   - `day` -  The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-//
-//   - `window` - The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 //
 // ## Import
 //
@@ -131,20 +100,17 @@ type Instance struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
-	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-	// will be used for this field.
+	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-	// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4s pulumi.StringArrayOutput `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrOutput `pulumi:"privateIp"`
-	// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-	// Instances in a region.
+	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -160,7 +126,7 @@ type Instance struct {
 	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
 	StackscriptId pulumi.IntPtrOutput `pulumi:"stackscriptId"`
-	// The status of the instance, indicating the current readiness state.
+	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status pulumi.StringOutput `pulumi:"status"`
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntOutput `pulumi:"swapSize"`
@@ -230,20 +196,17 @@ type instanceState struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
-	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-	// will be used for this field.
+	// A string containing the Linode's public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-	// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4s []string `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 *string `pulumi:"ipv6"`
 	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label *string `pulumi:"label"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
-	// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-	// Instances in a region.
+	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
@@ -259,7 +222,7 @@ type instanceState struct {
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
 	StackscriptId *int `pulumi:"stackscriptId"`
-	// The status of the instance, indicating the current readiness state.
+	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status *string `pulumi:"status"`
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize *int `pulumi:"swapSize"`
@@ -298,20 +261,17 @@ type InstanceState struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
-	// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-	// will be used for this field.
+	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringPtrInput
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-	// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4s pulumi.StringArrayInput
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringPtrInput
 	// The name of this interface. If the interface is a VLAN, a label is required.
 	Label pulumi.StringPtrInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
-	// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-	// Instances in a region.
+	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringPtrInput
@@ -327,7 +287,7 @@ type InstanceState struct {
 	StackscriptData pulumi.MapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
 	StackscriptId pulumi.IntPtrInput
-	// The status of the instance, indicating the current readiness state.
+	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status pulumi.StringPtrInput
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntPtrInput
@@ -598,19 +558,17 @@ func (o InstanceOutput) Interfaces() InstanceInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceInterfaceArrayOutput { return v.Interfaces }).(InstanceInterfaceArrayOutput)
 }
 
-// This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address
-// will be used for this field.
+// A string containing the Linode's public IP address.
 func (o InstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single
-// private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 func (o InstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 func (o InstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
 }
@@ -625,8 +583,7 @@ func (o InstanceOutput) PrivateIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.PrivateIp }).(pulumi.BoolPtrOutput)
 }
 
-// This Linode's Private IPv4 Address. The regional private IP address range is 192.168.128/17 address shared by all Linode
-// Instances in a region.
+// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 func (o InstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -666,7 +623,7 @@ func (o InstanceOutput) StackscriptId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.StackscriptId }).(pulumi.IntPtrOutput)
 }
 
-// The status of the instance, indicating the current readiness state.
+// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -9,42 +9,63 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStackScriptsStackscriptUserDefinedField {
-    private final String default_;
-    private final String example;
-    private final String label;
-    private final String manyOf;
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
+    private String default_;
+    /**
+     * @return An example value for the field.
+     * 
+     */
+    private String example;
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
+    private String label;
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
+    private String manyOf;
     /**
      * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      * 
      */
-    private final String name;
-    private final String oneOf;
+    private String name;
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
+    private String oneOf;
 
-    @CustomType.Constructor
-    private GetStackScriptsStackscriptUserDefinedField(
-        @CustomType.Parameter("default") String default_,
-        @CustomType.Parameter("example") String example,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("manyOf") String manyOf,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("oneOf") String oneOf) {
-        this.default_ = default_;
-        this.example = example;
-        this.label = label;
-        this.manyOf = manyOf;
-        this.name = name;
-        this.oneOf = oneOf;
-    }
-
+    private GetStackScriptsStackscriptUserDefinedField() {}
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
     public String default_() {
         return this.default_;
     }
+    /**
+     * @return An example value for the field.
+     * 
+     */
     public String example() {
         return this.example;
     }
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     public String manyOf() {
         return this.manyOf;
     }
@@ -55,6 +76,10 @@ public final class GetStackScriptsStackscriptUserDefinedField {
     public String name() {
         return this.name;
     }
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
     public String oneOf() {
         return this.oneOf;
     }
@@ -66,7 +91,7 @@ public final class GetStackScriptsStackscriptUserDefinedField {
     public static Builder builder(GetStackScriptsStackscriptUserDefinedField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String default_;
         private String example;
@@ -74,11 +99,7 @@ public final class GetStackScriptsStackscriptUserDefinedField {
         private String manyOf;
         private String name;
         private String oneOf;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStackScriptsStackscriptUserDefinedField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -89,31 +110,45 @@ public final class GetStackScriptsStackscriptUserDefinedField {
     	      this.oneOf = defaults.oneOf;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(String default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
         }
+        @CustomType.Setter
         public Builder example(String example) {
             this.example = Objects.requireNonNull(example);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder manyOf(String manyOf) {
             this.manyOf = Objects.requireNonNull(manyOf);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder oneOf(String oneOf) {
             this.oneOf = Objects.requireNonNull(oneOf);
             return this;
-        }        public GetStackScriptsStackscriptUserDefinedField build() {
-            return new GetStackScriptsStackscriptUserDefinedField(default_, example, label, manyOf, name, oneOf);
+        }
+        public GetStackScriptsStackscriptUserDefinedField build() {
+            final var o = new GetStackScriptsStackscriptUserDefinedField();
+            o.default_ = default_;
+            o.example = example;
+            o.label = label;
+            o.manyOf = manyOf;
+            o.name = name;
+            o.oneOf = oneOf;
+            return o;
         }
     }
 }
