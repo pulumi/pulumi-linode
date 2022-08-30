@@ -35,6 +35,9 @@ class GetDomainZonefileResult:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> int:
+        """
+        The associated domain's unique ID.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
@@ -48,6 +51,9 @@ class GetDomainZonefileResult:
     @property
     @pulumi.getter(name="zoneFiles")
     def zone_files(self) -> Optional[Sequence[str]]:
+        """
+        Array of strings representing the Domain Zonefile.
+        """
         return pulumi.get(self, "zone_files")
 
 
@@ -78,16 +84,10 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
 
     my_zonefile = linode.get_domain_zonefile(domain_id=3150401)
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `domain_id` - The associated domain's unique ID.
-
-    - `zone_file` - Array of strings representing the Domain Zonefile.
 
 
     :param int domain_id: The associated domain's unique ID.
+    :param Sequence[str] zone_files: Array of strings representing the Domain Zonefile.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -118,15 +118,9 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
 
     my_zonefile = linode.get_domain_zonefile(domain_id=3150401)
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `domain_id` - The associated domain's unique ID.
-
-    - `zone_file` - Array of strings representing the Domain Zonefile.
 
 
     :param int domain_id: The associated domain's unique ID.
+    :param Sequence[str] zone_files: Array of strings representing the Domain Zonefile.
     """
     ...

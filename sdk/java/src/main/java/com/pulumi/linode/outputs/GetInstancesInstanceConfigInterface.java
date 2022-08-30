@@ -11,26 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigInterface {
-    private final @Nullable String ipamAddress;
-    private final @Nullable String label;
-    private final @Nullable String purpose;
+    /**
+     * @return (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * 
+     */
+    private @Nullable String ipamAddress;
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
+    private @Nullable String label;
+    /**
+     * @return (Required) The type of interface. (`public`, `vlan`)
+     * 
+     */
+    private @Nullable String purpose;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceConfigInterface(
-        @CustomType.Parameter("ipamAddress") @Nullable String ipamAddress,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("purpose") @Nullable String purpose) {
-        this.ipamAddress = ipamAddress;
-        this.label = label;
-        this.purpose = purpose;
-    }
-
+    private GetInstancesInstanceConfigInterface() {}
+    /**
+     * @return (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * 
+     */
     public Optional<String> ipamAddress() {
         return Optional.ofNullable(this.ipamAddress);
     }
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return (Required) The type of interface. (`public`, `vlan`)
+     * 
+     */
     public Optional<String> purpose() {
         return Optional.ofNullable(this.purpose);
     }
@@ -42,16 +57,12 @@ public final class GetInstancesInstanceConfigInterface {
     public static Builder builder(GetInstancesInstanceConfigInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipamAddress;
         private @Nullable String label;
         private @Nullable String purpose;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceConfigInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipamAddress = defaults.ipamAddress;
@@ -59,19 +70,27 @@ public final class GetInstancesInstanceConfigInterface {
     	      this.purpose = defaults.purpose;
         }
 
+        @CustomType.Setter
         public Builder ipamAddress(@Nullable String ipamAddress) {
             this.ipamAddress = ipamAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder purpose(@Nullable String purpose) {
             this.purpose = purpose;
             return this;
-        }        public GetInstancesInstanceConfigInterface build() {
-            return new GetInstancesInstanceConfigInterface(ipamAddress, label, purpose);
+        }
+        public GetInstancesInstanceConfigInterface build() {
+            final var o = new GetInstancesInstanceConfigInterface();
+            o.ipamAddress = ipamAddress;
+            o.label = label;
+            o.purpose = purpose;
+            return o;
         }
     }
 }

@@ -96,13 +96,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
-    /// 
-    /// * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
     /// 
     /// ## Import
     /// 
@@ -118,8 +111,7 @@ namespace Pulumi.Linode
     public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-        /// Volume label.
+        /// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         /// </summary>
         [Output("filesystemPath")]
         public Output<string> FilesystemPath { get; private set; } = null!;
@@ -155,7 +147,7 @@ namespace Pulumi.Linode
         public Output<int?> SourceVolumeId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the volume, indicating the current readiness state.
+        /// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -263,8 +255,7 @@ namespace Pulumi.Linode
     public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-        /// Volume label.
+        /// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         /// </summary>
         [Input("filesystemPath")]
         public Input<string>? FilesystemPath { get; set; }
@@ -300,7 +291,7 @@ namespace Pulumi.Linode
         public Input<int>? SourceVolumeId { get; set; }
 
         /// <summary>
-        /// The status of the volume, indicating the current readiness state.
+        /// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

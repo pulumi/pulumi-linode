@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImagesResult {
-    private final @Nullable List<GetImagesFilter> filters;
+    private @Nullable List<GetImagesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetImagesImage> images;
-    private final @Nullable Boolean latest;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
+    private String id;
+    private List<GetImagesImage> images;
+    private @Nullable Boolean latest;
+    private @Nullable String order;
+    private @Nullable String orderBy;
 
-    @CustomType.Constructor
-    private GetImagesResult(
-        @CustomType.Parameter("filters") @Nullable List<GetImagesFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("images") List<GetImagesImage> images,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy) {
-        this.filters = filters;
-        this.id = id;
-        this.images = images;
-        this.latest = latest;
-        this.order = order;
-        this.orderBy = orderBy;
-    }
-
+    private GetImagesResult() {}
     public List<GetImagesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -72,7 +57,7 @@ public final class GetImagesResult {
     public static Builder builder(GetImagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetImagesFilter> filters;
         private String id;
@@ -80,11 +65,7 @@ public final class GetImagesResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -95,6 +76,7 @@ public final class GetImagesResult {
     	      this.orderBy = defaults.orderBy;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetImagesFilter> filters) {
             this.filters = filters;
             return this;
@@ -102,10 +84,12 @@ public final class GetImagesResult {
         public Builder filters(GetImagesFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -113,19 +97,30 @@ public final class GetImagesResult {
         public Builder images(GetImagesImage... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
-        }        public GetImagesResult build() {
-            return new GetImagesResult(filters, id, images, latest, order, orderBy);
+        }
+        public GetImagesResult build() {
+            final var o = new GetImagesResult();
+            o.filters = filters;
+            o.id = id;
+            o.images = images;
+            o.latest = latest;
+            o.order = order;
+            o.orderBy = orderBy;
+            return o;
         }
     }
 }

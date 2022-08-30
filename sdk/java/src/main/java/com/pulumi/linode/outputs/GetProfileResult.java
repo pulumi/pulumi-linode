@@ -12,54 +12,81 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProfileResult {
-    private final List<String> authorizedKeys;
-    private final String email;
-    private final Boolean emailNotifications;
+    /**
+     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
+     * 
+     */
+    private List<String> authorizedKeys;
+    /**
+     * @return The profile email address. This address will be used for communication with Linode as necessary.
+     * 
+     */
+    private String email;
+    /**
+     * @return If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     * 
+     */
+    private Boolean emailNotifications;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Boolean ipWhitelistEnabled;
-    private final String lishAuthMethod;
-    private final GetProfileReferrals referrals;
-    private final Boolean restricted;
-    private final String timezone;
-    private final Boolean twoFactorAuth;
-    private final String username;
+    private String id;
+    /**
+     * @return If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
+     * 
+     */
+    private Boolean ipWhitelistEnabled;
+    /**
+     * @return The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
+     * 
+     */
+    private String lishAuthMethod;
+    /**
+     * @return Credit Card information associated with this Account.
+     * 
+     */
+    private GetProfileReferrals referrals;
+    /**
+     * @return If true, the user has restrictions on what can be accessed on the Account.
+     * 
+     */
+    private Boolean restricted;
+    /**
+     * @return The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * 
+     */
+    private String timezone;
+    /**
+     * @return If true, logins from untrusted computers will require Two Factor Authentication.
+     * 
+     */
+    private Boolean twoFactorAuth;
+    /**
+     * @return The username for logging in to Linode services.
+     * 
+     */
+    private String username;
 
-    @CustomType.Constructor
-    private GetProfileResult(
-        @CustomType.Parameter("authorizedKeys") List<String> authorizedKeys,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("emailNotifications") Boolean emailNotifications,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipWhitelistEnabled") Boolean ipWhitelistEnabled,
-        @CustomType.Parameter("lishAuthMethod") String lishAuthMethod,
-        @CustomType.Parameter("referrals") GetProfileReferrals referrals,
-        @CustomType.Parameter("restricted") Boolean restricted,
-        @CustomType.Parameter("timezone") String timezone,
-        @CustomType.Parameter("twoFactorAuth") Boolean twoFactorAuth,
-        @CustomType.Parameter("username") String username) {
-        this.authorizedKeys = authorizedKeys;
-        this.email = email;
-        this.emailNotifications = emailNotifications;
-        this.id = id;
-        this.ipWhitelistEnabled = ipWhitelistEnabled;
-        this.lishAuthMethod = lishAuthMethod;
-        this.referrals = referrals;
-        this.restricted = restricted;
-        this.timezone = timezone;
-        this.twoFactorAuth = twoFactorAuth;
-        this.username = username;
-    }
-
+    private GetProfileResult() {}
+    /**
+     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
+     * 
+     */
     public List<String> authorizedKeys() {
         return this.authorizedKeys;
     }
+    /**
+     * @return The profile email address. This address will be used for communication with Linode as necessary.
+     * 
+     */
     public String email() {
         return this.email;
     }
+    /**
+     * @return If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     * 
+     */
     public Boolean emailNotifications() {
         return this.emailNotifications;
     }
@@ -70,24 +97,52 @@ public final class GetProfileResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
+     * 
+     */
     public Boolean ipWhitelistEnabled() {
         return this.ipWhitelistEnabled;
     }
+    /**
+     * @return The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
+     * 
+     */
     public String lishAuthMethod() {
         return this.lishAuthMethod;
     }
+    /**
+     * @return Credit Card information associated with this Account.
+     * 
+     */
     public GetProfileReferrals referrals() {
         return this.referrals;
     }
+    /**
+     * @return If true, the user has restrictions on what can be accessed on the Account.
+     * 
+     */
     public Boolean restricted() {
         return this.restricted;
     }
+    /**
+     * @return The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * 
+     */
     public String timezone() {
         return this.timezone;
     }
+    /**
+     * @return If true, logins from untrusted computers will require Two Factor Authentication.
+     * 
+     */
     public Boolean twoFactorAuth() {
         return this.twoFactorAuth;
     }
+    /**
+     * @return The username for logging in to Linode services.
+     * 
+     */
     public String username() {
         return this.username;
     }
@@ -99,7 +154,7 @@ public final class GetProfileResult {
     public static Builder builder(GetProfileResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> authorizedKeys;
         private String email;
@@ -112,11 +167,7 @@ public final class GetProfileResult {
         private String timezone;
         private Boolean twoFactorAuth;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedKeys = defaults.authorizedKeys;
@@ -132,6 +183,7 @@ public final class GetProfileResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder authorizedKeys(List<String> authorizedKeys) {
             this.authorizedKeys = Objects.requireNonNull(authorizedKeys);
             return this;
@@ -139,47 +191,70 @@ public final class GetProfileResult {
         public Builder authorizedKeys(String... authorizedKeys) {
             return authorizedKeys(List.of(authorizedKeys));
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder emailNotifications(Boolean emailNotifications) {
             this.emailNotifications = Objects.requireNonNull(emailNotifications);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipWhitelistEnabled(Boolean ipWhitelistEnabled) {
             this.ipWhitelistEnabled = Objects.requireNonNull(ipWhitelistEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder lishAuthMethod(String lishAuthMethod) {
             this.lishAuthMethod = Objects.requireNonNull(lishAuthMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder referrals(GetProfileReferrals referrals) {
             this.referrals = Objects.requireNonNull(referrals);
             return this;
         }
+        @CustomType.Setter
         public Builder restricted(Boolean restricted) {
             this.restricted = Objects.requireNonNull(restricted);
             return this;
         }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
         }
+        @CustomType.Setter
         public Builder twoFactorAuth(Boolean twoFactorAuth) {
             this.twoFactorAuth = Objects.requireNonNull(twoFactorAuth);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetProfileResult build() {
-            return new GetProfileResult(authorizedKeys, email, emailNotifications, id, ipWhitelistEnabled, lishAuthMethod, referrals, restricted, timezone, twoFactorAuth, username);
+        }
+        public GetProfileResult build() {
+            final var o = new GetProfileResult();
+            o.authorizedKeys = authorizedKeys;
+            o.email = email;
+            o.emailNotifications = emailNotifications;
+            o.id = id;
+            o.ipWhitelistEnabled = ipWhitelistEnabled;
+            o.lishAuthMethod = lishAuthMethod;
+            o.referrals = referrals;
+            o.restricted = restricted;
+            o.timezone = timezone;
+            o.twoFactorAuth = twoFactorAuth;
+            o.username = username;
+            return o;
         }
     }
 }

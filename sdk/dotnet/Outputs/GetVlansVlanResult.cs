@@ -13,9 +13,21 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetVlansVlanResult
     {
+        /// <summary>
+        /// When the VLAN was created.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The unique label of the VLAN.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The running Linodes currently attached to the VLAN.
+        /// </summary>
         public readonly ImmutableArray<int> Linodes;
+        /// <summary>
+        /// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]

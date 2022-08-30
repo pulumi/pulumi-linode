@@ -24,33 +24,6 @@ import * as utilities from "./utilities";
  *     name: "www",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Volume resource exports the following attributes:
- *
- * - `id` - The unique ID of the Domain Record.
- *
- * - `name` - The name of the Record.
- *
- * - `domainId` - The associated domain's unique ID.
- *
- * - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
- *
- * - `ttlSec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
- *
- * - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
- *
- * - `priority` - The priority of the target host. Lower values are preferred.
- *
- * - `weight` - The relative weight of this Record. Higher values are preferred.
- *
- * - `port` - The port this Record points to.
- *
- * - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
- *
- * - `service` - The service this Record identified. Only valid for SRV records.
- *
- * - `tag` - The tag portion of a CAA record.
  */
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
     if (!opts) {
@@ -87,17 +60,53 @@ export interface GetDomainRecordArgs {
  * A collection of values returned by getDomainRecord.
  */
 export interface GetDomainRecordResult {
+    /**
+     * The associated domain's unique ID.
+     */
     readonly domainId: number;
+    /**
+     * The unique ID of the Domain Record.
+     */
     readonly id?: number;
+    /**
+     * The name of the Record.
+     */
     readonly name?: string;
+    /**
+     * The port this Record points to.
+     */
     readonly port: number;
+    /**
+     * The priority of the target host. Lower values are preferred.
+     */
     readonly priority: number;
+    /**
+     * The protocol this Record's service communicates with. Only valid for SRV records.
+     */
     readonly protocol: string;
+    /**
+     * The service this Record identified. Only valid for SRV records.
+     */
     readonly service: string;
+    /**
+     * The tag portion of a CAA record.
+     */
     readonly tag: string;
+    /**
+     * The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+     */
     readonly target: string;
+    /**
+     * The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+     */
     readonly ttlSec: number;
+    /**
+     * The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     */
     readonly type: string;
+    /**
+     * The relative weight of this Record. Higher values are preferred.
+     */
     readonly weight: number;
 }
 

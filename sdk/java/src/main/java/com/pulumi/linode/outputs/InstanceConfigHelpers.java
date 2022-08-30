@@ -11,42 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceConfigHelpers {
-    private final @Nullable Boolean devtmpfsAutomount;
+    private @Nullable Boolean devtmpfsAutomount;
     /**
      * @return Controls the behavior of the Linode Config&#39;s Distribution Helper setting.
      * 
      */
-    private final @Nullable Boolean distro;
+    private @Nullable Boolean distro;
     /**
      * @return Creates a modules dependency file for the Kernel you run.
      * 
      */
-    private final @Nullable Boolean modulesDep;
+    private @Nullable Boolean modulesDep;
     /**
      * @return Controls the behavior of the Linode Config&#39;s Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
      * 
      */
-    private final @Nullable Boolean network;
+    private @Nullable Boolean network;
     /**
      * @return Disables updatedb cron job to avoid disk thrashing.
      * 
      */
-    private final @Nullable Boolean updatedbDisabled;
+    private @Nullable Boolean updatedbDisabled;
 
-    @CustomType.Constructor
-    private InstanceConfigHelpers(
-        @CustomType.Parameter("devtmpfsAutomount") @Nullable Boolean devtmpfsAutomount,
-        @CustomType.Parameter("distro") @Nullable Boolean distro,
-        @CustomType.Parameter("modulesDep") @Nullable Boolean modulesDep,
-        @CustomType.Parameter("network") @Nullable Boolean network,
-        @CustomType.Parameter("updatedbDisabled") @Nullable Boolean updatedbDisabled) {
-        this.devtmpfsAutomount = devtmpfsAutomount;
-        this.distro = distro;
-        this.modulesDep = modulesDep;
-        this.network = network;
-        this.updatedbDisabled = updatedbDisabled;
-    }
-
+    private InstanceConfigHelpers() {}
     public Optional<Boolean> devtmpfsAutomount() {
         return Optional.ofNullable(this.devtmpfsAutomount);
     }
@@ -86,18 +73,14 @@ public final class InstanceConfigHelpers {
     public static Builder builder(InstanceConfigHelpers defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean devtmpfsAutomount;
         private @Nullable Boolean distro;
         private @Nullable Boolean modulesDep;
         private @Nullable Boolean network;
         private @Nullable Boolean updatedbDisabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceConfigHelpers defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.devtmpfsAutomount = defaults.devtmpfsAutomount;
@@ -107,27 +90,39 @@ public final class InstanceConfigHelpers {
     	      this.updatedbDisabled = defaults.updatedbDisabled;
         }
 
+        @CustomType.Setter
         public Builder devtmpfsAutomount(@Nullable Boolean devtmpfsAutomount) {
             this.devtmpfsAutomount = devtmpfsAutomount;
             return this;
         }
+        @CustomType.Setter
         public Builder distro(@Nullable Boolean distro) {
             this.distro = distro;
             return this;
         }
+        @CustomType.Setter
         public Builder modulesDep(@Nullable Boolean modulesDep) {
             this.modulesDep = modulesDep;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable Boolean network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder updatedbDisabled(@Nullable Boolean updatedbDisabled) {
             this.updatedbDisabled = updatedbDisabled;
             return this;
-        }        public InstanceConfigHelpers build() {
-            return new InstanceConfigHelpers(devtmpfsAutomount, distro, modulesDep, network, updatedbDisabled);
+        }
+        public InstanceConfigHelpers build() {
+            final var o = new InstanceConfigHelpers();
+            o.devtmpfsAutomount = devtmpfsAutomount;
+            o.distro = distro;
+            o.modulesDep = modulesDep;
+            o.network = network;
+            o.updatedbDisabled = updatedbDisabled;
+            return o;
         }
     }
 }

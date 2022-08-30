@@ -46,23 +46,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-    /// 
-    /// * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-    /// 
-    /// * `node_status` - The status of the attached nodes.
-    /// 
-    /// ### node_status
-    /// 
-    /// The following attributes are available on node_status:
-    /// 
-    /// * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
-    /// 
-    /// * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
     /// 
     /// ## Import
     /// 
@@ -170,15 +153,13 @@ namespace Pulumi.Linode
         public Output<string?> SslCert { get; private set; } = null!;
 
         /// <summary>
-        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Output("sslCommonname")]
         public Output<string> SslCommonname { get; private set; } = null!;
 
         /// <summary>
-        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Output("sslFingerprint")]
         public Output<string> SslFingerprint { get; private set; } = null!;
@@ -445,15 +426,13 @@ namespace Pulumi.Linode
         public Input<string>? SslCert { get; set; }
 
         /// <summary>
-        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Input("sslCommonname")]
         public Input<string>? SslCommonname { get; set; }
 
         /// <summary>
-        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-        /// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         /// </summary>
         [Input("sslFingerprint")]
         public Input<string>? SslFingerprint { get; set; }

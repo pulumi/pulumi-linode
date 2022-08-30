@@ -11,26 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeBalancerTransfer {
-    private final @Nullable Double in;
-    private final @Nullable Double out;
-    private final @Nullable Double total;
+    /**
+     * @return The total transfer, in MB, used by this NodeBalancer for the current month
+     * 
+     */
+    private @Nullable Double in;
+    /**
+     * @return The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
+    private @Nullable Double out;
+    /**
+     * @return The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
+    private @Nullable Double total;
 
-    @CustomType.Constructor
-    private NodeBalancerTransfer(
-        @CustomType.Parameter("in") @Nullable Double in,
-        @CustomType.Parameter("out") @Nullable Double out,
-        @CustomType.Parameter("total") @Nullable Double total) {
-        this.in = in;
-        this.out = out;
-        this.total = total;
-    }
-
+    private NodeBalancerTransfer() {}
+    /**
+     * @return The total transfer, in MB, used by this NodeBalancer for the current month
+     * 
+     */
     public Optional<Double> in() {
         return Optional.ofNullable(this.in);
     }
+    /**
+     * @return The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     public Optional<Double> out() {
         return Optional.ofNullable(this.out);
     }
+    /**
+     * @return The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     * 
+     */
     public Optional<Double> total() {
         return Optional.ofNullable(this.total);
     }
@@ -42,16 +57,12 @@ public final class NodeBalancerTransfer {
     public static Builder builder(NodeBalancerTransfer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double in;
         private @Nullable Double out;
         private @Nullable Double total;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeBalancerTransfer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.in = defaults.in;
@@ -59,19 +70,27 @@ public final class NodeBalancerTransfer {
     	      this.total = defaults.total;
         }
 
+        @CustomType.Setter
         public Builder in(@Nullable Double in) {
             this.in = in;
             return this;
         }
+        @CustomType.Setter
         public Builder out(@Nullable Double out) {
             this.out = out;
             return this;
         }
+        @CustomType.Setter
         public Builder total(@Nullable Double total) {
             this.total = total;
             return this;
-        }        public NodeBalancerTransfer build() {
-            return new NodeBalancerTransfer(in, out, total);
+        }
+        public NodeBalancerTransfer build() {
+            final var o = new NodeBalancerTransfer();
+            o.in = in;
+            o.out = out;
+            o.total = total;
+            return o;
         }
     }
 }

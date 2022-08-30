@@ -603,6 +603,9 @@ class InstanceBackupsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input['InstanceBackupsScheduleArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: If this Linode has the Backup service enabled.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if schedule is not None:
@@ -611,6 +614,9 @@ class InstanceBackupsArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this Linode has the Backup service enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -632,6 +638,10 @@ class InstanceBackupsScheduleArgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[str]] = None,
                  window: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] day: The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+        :param pulumi.Input[str] window: The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+        """
         if day is not None:
             pulumi.set(__self__, "day", day)
         if window is not None:
@@ -640,6 +650,9 @@ class InstanceBackupsScheduleArgs:
     @property
     @pulumi.getter
     def day(self) -> Optional[pulumi.Input[str]]:
+        """
+        The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+        """
         return pulumi.get(self, "day")
 
     @day.setter
@@ -649,6 +662,9 @@ class InstanceBackupsScheduleArgs:
     @property
     @pulumi.getter
     def window(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+        """
         return pulumi.get(self, "window")
 
     @window.setter
@@ -1989,6 +2005,10 @@ class NodeBalancerConfigNodeStatusArgs:
     def __init__(__self__, *,
                  down: Optional[pulumi.Input[int]] = None,
                  up: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        :param pulumi.Input[int] up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
         if down is not None:
             pulumi.set(__self__, "down", down)
         if up is not None:
@@ -1997,6 +2017,9 @@ class NodeBalancerConfigNodeStatusArgs:
     @property
     @pulumi.getter
     def down(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        """
         return pulumi.get(self, "down")
 
     @down.setter
@@ -2006,6 +2029,9 @@ class NodeBalancerConfigNodeStatusArgs:
     @property
     @pulumi.getter
     def up(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
         return pulumi.get(self, "up")
 
     @up.setter
@@ -2019,6 +2045,11 @@ class NodeBalancerTransferArgs:
                  in_: Optional[pulumi.Input[float]] = None,
                  out: Optional[pulumi.Input[float]] = None,
                  total: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] in_: The total transfer, in MB, used by this NodeBalancer for the current month
+        :param pulumi.Input[float] out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        :param pulumi.Input[float] total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
         if in_ is not None:
             pulumi.set(__self__, "in_", in_)
         if out is not None:
@@ -2029,6 +2060,9 @@ class NodeBalancerTransferArgs:
     @property
     @pulumi.getter(name="in")
     def in_(self) -> Optional[pulumi.Input[float]]:
+        """
+        The total transfer, in MB, used by this NodeBalancer for the current month
+        """
         return pulumi.get(self, "in_")
 
     @in_.setter
@@ -2038,6 +2072,9 @@ class NodeBalancerTransferArgs:
     @property
     @pulumi.getter
     def out(self) -> Optional[pulumi.Input[float]]:
+        """
+        The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        """
         return pulumi.get(self, "out")
 
     @out.setter
@@ -2047,6 +2084,9 @@ class NodeBalancerTransferArgs:
     @property
     @pulumi.getter
     def total(self) -> Optional[pulumi.Input[float]]:
+        """
+        The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
         return pulumi.get(self, "total")
 
     @total.setter
@@ -2324,7 +2364,12 @@ class StackScriptUserDefinedFieldArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  one_of: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] default: The default value. If not specified, this value will be used.
+        :param pulumi.Input[str] example: An example value for the field.
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
+        :param pulumi.Input[str] many_of: A list of acceptable values for the field in any quantity, combination or order.
+        :param pulumi.Input[str] name: The name of the field.
+        :param pulumi.Input[str] one_of: A list of acceptable single values for the field.
         """
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -2342,6 +2387,9 @@ class StackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default value. If not specified, this value will be used.
+        """
         return pulumi.get(self, "default")
 
     @default.setter
@@ -2351,6 +2399,9 @@ class StackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def example(self) -> Optional[pulumi.Input[str]]:
+        """
+        An example value for the field.
+        """
         return pulumi.get(self, "example")
 
     @example.setter
@@ -2372,6 +2423,9 @@ class StackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter(name="manyOf")
     def many_of(self) -> Optional[pulumi.Input[str]]:
+        """
+        A list of acceptable values for the field in any quantity, combination or order.
+        """
         return pulumi.get(self, "many_of")
 
     @many_of.setter
@@ -2381,6 +2435,9 @@ class StackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the field.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2390,6 +2447,9 @@ class StackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter(name="oneOf")
     def one_of(self) -> Optional[pulumi.Input[str]]:
+        """
+        A list of acceptable single values for the field.
+        """
         return pulumi.get(self, "one_of")
 
     @one_of.setter
@@ -3130,6 +3190,14 @@ class GetStackScriptUserDefinedFieldArgs:
                  many_of: str,
                  name: str,
                  one_of: str):
+        """
+        :param str default: The default value. If not specified, this value will be used.
+        :param str example: An example value for the field.
+        :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        :param str many_of: A list of acceptable values for the field in any quantity, combination or order.
+        :param str name: The name of the field.
+        :param str one_of: A list of acceptable single values for the field.
+        """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "example", example)
         pulumi.set(__self__, "label", label)
@@ -3140,6 +3208,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def default(self) -> str:
+        """
+        The default value. If not specified, this value will be used.
+        """
         return pulumi.get(self, "default")
 
     @default.setter
@@ -3149,6 +3220,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def example(self) -> str:
+        """
+        An example value for the field.
+        """
         return pulumi.get(self, "example")
 
     @example.setter
@@ -3158,6 +3232,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -3167,6 +3244,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter(name="manyOf")
     def many_of(self) -> str:
+        """
+        A list of acceptable values for the field in any quantity, combination or order.
+        """
         return pulumi.get(self, "many_of")
 
     @many_of.setter
@@ -3176,6 +3256,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the field.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3185,6 +3268,9 @@ class GetStackScriptUserDefinedFieldArgs:
     @property
     @pulumi.getter(name="oneOf")
     def one_of(self) -> str:
+        """
+        A list of acceptable single values for the field.
+        """
         return pulumi.get(self, "one_of")
 
     @one_of.setter

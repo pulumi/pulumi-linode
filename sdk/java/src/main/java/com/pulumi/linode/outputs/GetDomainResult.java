@@ -13,92 +13,173 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainResult {
-    private final List<String> axfrIps;
-    private final String description;
-    private final @Nullable String domain;
-    private final Integer expireSec;
-    private final String group;
-    private final @Nullable String id;
-    private final List<String> masterIps;
-    private final Integer refreshSec;
-    private final Integer retrySec;
-    private final String soaEmail;
-    private final String status;
-    private final List<String> tags;
-    private final Integer ttlSec;
-    private final String type;
+    /**
+     * @return The list of IPs that may perform a zone transfer for this Domain.
+     * 
+     */
+    private List<String> axfrIps;
+    /**
+     * @return A description for this Domain.
+     * 
+     */
+    private String description;
+    /**
+     * @return The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+     * 
+     */
+    private @Nullable String domain;
+    /**
+     * @return The amount of time in seconds that may pass before this Domain is no longer authoritative.
+     * 
+     */
+    private Integer expireSec;
+    /**
+     * @return The group this Domain belongs to.
+     * 
+     */
+    private String group;
+    /**
+     * @return The unique ID of this Domain.
+     * 
+     */
+    private @Nullable String id;
+    /**
+     * @return The IP addresses representing the master DNS for this Domain.
+     * 
+     */
+    private List<String> masterIps;
+    /**
+     * @return The amount of time in seconds before this Domain should be refreshed.
+     * 
+     */
+    private Integer refreshSec;
+    /**
+     * @return The interval, in seconds, at which a failed refresh should be retried.
+     * 
+     */
+    private Integer retrySec;
+    /**
+     * @return Start of Authority email address.
+     * 
+     */
+    private String soaEmail;
+    /**
+     * @return Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+     * 
+     */
+    private String status;
+    /**
+     * @return An array of tags applied to this object.
+     * 
+     */
+    private List<String> tags;
+    /**
+     * @return &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
+     * 
+     */
+    private Integer ttlSec;
+    /**
+     * @return If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+     * 
+     */
+    private String type;
 
-    @CustomType.Constructor
-    private GetDomainResult(
-        @CustomType.Parameter("axfrIps") List<String> axfrIps,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("expireSec") Integer expireSec,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("masterIps") List<String> masterIps,
-        @CustomType.Parameter("refreshSec") Integer refreshSec,
-        @CustomType.Parameter("retrySec") Integer retrySec,
-        @CustomType.Parameter("soaEmail") String soaEmail,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("ttlSec") Integer ttlSec,
-        @CustomType.Parameter("type") String type) {
-        this.axfrIps = axfrIps;
-        this.description = description;
-        this.domain = domain;
-        this.expireSec = expireSec;
-        this.group = group;
-        this.id = id;
-        this.masterIps = masterIps;
-        this.refreshSec = refreshSec;
-        this.retrySec = retrySec;
-        this.soaEmail = soaEmail;
-        this.status = status;
-        this.tags = tags;
-        this.ttlSec = ttlSec;
-        this.type = type;
-    }
-
+    private GetDomainResult() {}
+    /**
+     * @return The list of IPs that may perform a zone transfer for this Domain.
+     * 
+     */
     public List<String> axfrIps() {
         return this.axfrIps;
     }
+    /**
+     * @return A description for this Domain.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
+    /**
+     * @return The amount of time in seconds that may pass before this Domain is no longer authoritative.
+     * 
+     */
     public Integer expireSec() {
         return this.expireSec;
     }
+    /**
+     * @return The group this Domain belongs to.
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return The unique ID of this Domain.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The IP addresses representing the master DNS for this Domain.
+     * 
+     */
     public List<String> masterIps() {
         return this.masterIps;
     }
+    /**
+     * @return The amount of time in seconds before this Domain should be refreshed.
+     * 
+     */
     public Integer refreshSec() {
         return this.refreshSec;
     }
+    /**
+     * @return The interval, in seconds, at which a failed refresh should be retried.
+     * 
+     */
     public Integer retrySec() {
         return this.retrySec;
     }
+    /**
+     * @return Start of Authority email address.
+     * 
+     */
     public String soaEmail() {
         return this.soaEmail;
     }
+    /**
+     * @return Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return An array of tags applied to this object.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
+     * 
+     */
     public Integer ttlSec() {
         return this.ttlSec;
     }
+    /**
+     * @return If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -110,7 +191,7 @@ public final class GetDomainResult {
     public static Builder builder(GetDomainResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> axfrIps;
         private String description;
@@ -126,11 +207,7 @@ public final class GetDomainResult {
         private List<String> tags;
         private Integer ttlSec;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.axfrIps = defaults.axfrIps;
@@ -149,6 +226,7 @@ public final class GetDomainResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder axfrIps(List<String> axfrIps) {
             this.axfrIps = Objects.requireNonNull(axfrIps);
             return this;
@@ -156,26 +234,32 @@ public final class GetDomainResult {
         public Builder axfrIps(String... axfrIps) {
             return axfrIps(List.of(axfrIps));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder expireSec(Integer expireSec) {
             this.expireSec = Objects.requireNonNull(expireSec);
             return this;
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder masterIps(List<String> masterIps) {
             this.masterIps = Objects.requireNonNull(masterIps);
             return this;
@@ -183,22 +267,27 @@ public final class GetDomainResult {
         public Builder masterIps(String... masterIps) {
             return masterIps(List.of(masterIps));
         }
+        @CustomType.Setter
         public Builder refreshSec(Integer refreshSec) {
             this.refreshSec = Objects.requireNonNull(refreshSec);
             return this;
         }
+        @CustomType.Setter
         public Builder retrySec(Integer retrySec) {
             this.retrySec = Objects.requireNonNull(retrySec);
             return this;
         }
+        @CustomType.Setter
         public Builder soaEmail(String soaEmail) {
             this.soaEmail = Objects.requireNonNull(soaEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -206,15 +295,33 @@ public final class GetDomainResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder ttlSec(Integer ttlSec) {
             this.ttlSec = Objects.requireNonNull(ttlSec);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetDomainResult build() {
-            return new GetDomainResult(axfrIps, description, domain, expireSec, group, id, masterIps, refreshSec, retrySec, soaEmail, status, tags, ttlSec, type);
+        }
+        public GetDomainResult build() {
+            final var o = new GetDomainResult();
+            o.axfrIps = axfrIps;
+            o.description = description;
+            o.domain = domain;
+            o.expireSec = expireSec;
+            o.group = group;
+            o.id = id;
+            o.masterIps = masterIps;
+            o.refreshSec = refreshSec;
+            o.retrySec = retrySec;
+            o.soaEmail = soaEmail;
+            o.status = status;
+            o.tags = tags;
+            o.ttlSec = ttlSec;
+            o.type = type;
+            return o;
         }
     }
 }

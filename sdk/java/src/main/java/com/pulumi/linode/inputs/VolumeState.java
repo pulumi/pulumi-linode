@@ -18,16 +18,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     public static final VolumeState Empty = new VolumeState();
 
     /**
-     * The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
     @Import(name="filesystemPath")
     private @Nullable Output<String> filesystemPath;
 
     /**
-     * @return The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * @return The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
     public Optional<Output<String>> filesystemPath() {
@@ -110,14 +108,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the volume, indicating the current readiness state.
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the volume, indicating the current readiness state.
+     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
      * 
      */
     public Optional<Output<String>> status() {
@@ -171,8 +169,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystemPath The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-         * Volume label.
+         * @param filesystemPath The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
          * 
          * @return builder
          * 
@@ -183,8 +180,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystemPath The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-         * Volume label.
+         * @param filesystemPath The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
          * 
          * @return builder
          * 
@@ -299,7 +295,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the volume, indicating the current readiness state.
+         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
          * 
          * @return builder
          * 
@@ -310,7 +306,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the volume, indicating the current readiness state.
+         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
          * 
          * @return builder
          * 

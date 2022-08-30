@@ -20,73 +20,50 @@ public final class InstanceConfig {
      * @return - Arbitrary user comments about this `config`.
      * 
      */
-    private final @Nullable String comments;
+    private @Nullable String comments;
     /**
      * @return A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
      * 
      */
-    private final @Nullable InstanceConfigDevices devices;
+    private @Nullable InstanceConfigDevices devices;
     /**
      * @return Helpers enabled when booting to this Linode Config.
      * 
      */
-    private final @Nullable InstanceConfigHelpers helpers;
-    private final @Nullable List<InstanceConfigInterface> interfaces;
+    private @Nullable InstanceConfigHelpers helpers;
+    private @Nullable List<InstanceConfigInterface> interfaces;
     /**
      * @return - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      * 
      */
-    private final @Nullable String kernel;
+    private @Nullable String kernel;
     /**
      * @return The name of this interface. If the interface is a VLAN, a label is required.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return - Defaults to the total RAM of the Linode
      * 
      */
-    private final @Nullable Integer memoryLimit;
+    private @Nullable Integer memoryLimit;
     /**
      * @return - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
      * 
      */
-    private final @Nullable String rootDevice;
+    private @Nullable String rootDevice;
     /**
      * @return - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
      * 
      */
-    private final @Nullable String runLevel;
+    private @Nullable String runLevel;
     /**
      * @return - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
      * 
      */
-    private final @Nullable String virtMode;
+    private @Nullable String virtMode;
 
-    @CustomType.Constructor
-    private InstanceConfig(
-        @CustomType.Parameter("comments") @Nullable String comments,
-        @CustomType.Parameter("devices") @Nullable InstanceConfigDevices devices,
-        @CustomType.Parameter("helpers") @Nullable InstanceConfigHelpers helpers,
-        @CustomType.Parameter("interfaces") @Nullable List<InstanceConfigInterface> interfaces,
-        @CustomType.Parameter("kernel") @Nullable String kernel,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("memoryLimit") @Nullable Integer memoryLimit,
-        @CustomType.Parameter("rootDevice") @Nullable String rootDevice,
-        @CustomType.Parameter("runLevel") @Nullable String runLevel,
-        @CustomType.Parameter("virtMode") @Nullable String virtMode) {
-        this.comments = comments;
-        this.devices = devices;
-        this.helpers = helpers;
-        this.interfaces = interfaces;
-        this.kernel = kernel;
-        this.label = label;
-        this.memoryLimit = memoryLimit;
-        this.rootDevice = rootDevice;
-        this.runLevel = runLevel;
-        this.virtMode = virtMode;
-    }
-
+    private InstanceConfig() {}
     /**
      * @return - Arbitrary user comments about this `config`.
      * 
@@ -161,7 +138,7 @@ public final class InstanceConfig {
     public static Builder builder(InstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comments;
         private @Nullable InstanceConfigDevices devices;
@@ -173,11 +150,7 @@ public final class InstanceConfig {
         private @Nullable String rootDevice;
         private @Nullable String runLevel;
         private @Nullable String virtMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comments = defaults.comments;
@@ -192,18 +165,22 @@ public final class InstanceConfig {
     	      this.virtMode = defaults.virtMode;
         }
 
+        @CustomType.Setter
         public Builder comments(@Nullable String comments) {
             this.comments = comments;
             return this;
         }
+        @CustomType.Setter
         public Builder devices(@Nullable InstanceConfigDevices devices) {
             this.devices = devices;
             return this;
         }
+        @CustomType.Setter
         public Builder helpers(@Nullable InstanceConfigHelpers helpers) {
             this.helpers = helpers;
             return this;
         }
+        @CustomType.Setter
         public Builder interfaces(@Nullable List<InstanceConfigInterface> interfaces) {
             this.interfaces = interfaces;
             return this;
@@ -211,31 +188,49 @@ public final class InstanceConfig {
         public Builder interfaces(InstanceConfigInterface... interfaces) {
             return interfaces(List.of(interfaces));
         }
+        @CustomType.Setter
         public Builder kernel(@Nullable String kernel) {
             this.kernel = kernel;
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder memoryLimit(@Nullable Integer memoryLimit) {
             this.memoryLimit = memoryLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder rootDevice(@Nullable String rootDevice) {
             this.rootDevice = rootDevice;
             return this;
         }
+        @CustomType.Setter
         public Builder runLevel(@Nullable String runLevel) {
             this.runLevel = runLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder virtMode(@Nullable String virtMode) {
             this.virtMode = virtMode;
             return this;
-        }        public InstanceConfig build() {
-            return new InstanceConfig(comments, devices, helpers, interfaces, kernel, label, memoryLimit, rootDevice, runLevel, virtMode);
+        }
+        public InstanceConfig build() {
+            final var o = new InstanceConfig();
+            o.comments = comments;
+            o.devices = devices;
+            o.helpers = helpers;
+            o.interfaces = interfaces;
+            o.kernel = kernel;
+            o.label = label;
+            o.memoryLimit = memoryLimit;
+            o.rootDevice = rootDevice;
+            o.runLevel = runLevel;
+            o.virtMode = virtMode;
+            return o;
         }
     }
 }

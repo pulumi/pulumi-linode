@@ -19,17 +19,6 @@ import * as utilities from "./utilities";
  *     range: "2001:0db8::",
  * }));
  * ```
- * ## Attributes
- *
- * The `linode.Ipv6Range` data source exports the following attributes:
- *
- * * `ipBgp` - Whether this IPv6 range is shared.
- *
- * * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
- *
- * * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
- *
- * * `region` - The region for this range of IPv6 addresses.
  */
 export function getIpv6Range(args: GetIpv6RangeArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6RangeResult> {
     if (!opts) {
@@ -61,9 +50,18 @@ export interface GetIpv6RangeResult {
      */
     readonly id: string;
     readonly isBgp: boolean;
+    /**
+     * A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+     */
     readonly linodes: number[];
+    /**
+     * The prefix length of the address, denoting how many addresses can be assigned from this range.
+     */
     readonly prefix: number;
     readonly range: string;
+    /**
+     * The region for this range of IPv6 addresses.
+     */
     readonly region: string;
 }
 

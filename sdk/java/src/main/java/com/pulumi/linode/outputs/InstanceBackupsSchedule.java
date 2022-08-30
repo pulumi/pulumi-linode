@@ -11,20 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceBackupsSchedule {
-    private final @Nullable String day;
-    private final @Nullable String window;
+    /**
+     * @return The day of the week that your Linode&#39;s weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as &#34;Scheduling&#34; until the day is automatically selected.
+     * 
+     */
+    private @Nullable String day;
+    /**
+     * @return The window (&#39;W0&#39;-&#39;W22&#39;) in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, &#39;W10&#39; indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+     * 
+     */
+    private @Nullable String window;
 
-    @CustomType.Constructor
-    private InstanceBackupsSchedule(
-        @CustomType.Parameter("day") @Nullable String day,
-        @CustomType.Parameter("window") @Nullable String window) {
-        this.day = day;
-        this.window = window;
-    }
-
+    private InstanceBackupsSchedule() {}
+    /**
+     * @return The day of the week that your Linode&#39;s weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as &#34;Scheduling&#34; until the day is automatically selected.
+     * 
+     */
     public Optional<String> day() {
         return Optional.ofNullable(this.day);
     }
+    /**
+     * @return The window (&#39;W0&#39;-&#39;W22&#39;) in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, &#39;W10&#39; indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+     * 
+     */
     public Optional<String> window() {
         return Optional.ofNullable(this.window);
     }
@@ -36,30 +45,32 @@ public final class InstanceBackupsSchedule {
     public static Builder builder(InstanceBackupsSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String day;
         private @Nullable String window;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBackupsSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
         public Builder day(@Nullable String day) {
             this.day = day;
             return this;
         }
+        @CustomType.Setter
         public Builder window(@Nullable String window) {
             this.window = window;
             return this;
-        }        public InstanceBackupsSchedule build() {
-            return new InstanceBackupsSchedule(day, window);
+        }
+        public InstanceBackupsSchedule build() {
+            final var o = new InstanceBackupsSchedule();
+            o.day = day;
+            o.window = window;
+            return o;
         }
     }
 }

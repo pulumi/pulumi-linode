@@ -16,14 +16,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     public static final TokenState Empty = new TokenState();
 
     /**
-     * The date and time this token was created.
+     * The date this Token was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return The date and time this token was created.
+     * @return The date this Token was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -119,7 +119,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created The date and time this token was created.
+         * @param created The date this Token was created.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created The date and time this token was created.
+         * @param created The date this Token was created.
          * 
          * @return builder
          * 

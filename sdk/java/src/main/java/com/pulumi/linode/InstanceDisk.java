@@ -110,15 +110,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `created` - When this disk was created.
- * 
- * * `status` - A brief description of this Disk&#39;s current state.
- * 
- * * `updated` - When this disk was last updated.
  * 
  * ## Import
  * 

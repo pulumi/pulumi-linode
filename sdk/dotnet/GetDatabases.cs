@@ -60,41 +60,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each engine will be stored in the `databases` attribute and will export the following attributes:
-        /// 
-        /// * `allow_list` - A list of IP addresses that can access the Managed Database.
-        /// 
-        /// * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-        /// 
-        /// * `created` - When this Managed Database was created.
-        /// 
-        /// * `encrypted` - Whether the Managed Databases is encrypted.
-        /// 
-        /// * `engine` - The Managed Database engine.
-        /// 
-        /// * `host_primary` - The primary host for the Managed Database.
-        /// 
-        /// * `host_secondary` - The secondary/private network host for the Managed Database.
-        /// 
-        /// * `id` - The ID of the Managed Database.
-        /// 
-        /// * `label` - A unique, user-defined string referring to the Managed Database.
-        /// 
-        /// * `region` - The region to use for the Managed Database.
-        /// 
-        /// * `replication_type` - The replication method used for the Managed Database.
-        /// 
-        /// * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-        /// 
-        /// * `status` - The operating status of the Managed Database.
-        /// 
-        /// * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-        /// 
-        /// * `updated` - When this Managed Database was last updated.
-        /// 
-        /// * `version` - The Managed Database engine version.
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -148,41 +113,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each engine will be stored in the `databases` attribute and will export the following attributes:
-        /// 
-        /// * `allow_list` - A list of IP addresses that can access the Managed Database.
-        /// 
-        /// * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-        /// 
-        /// * `created` - When this Managed Database was created.
-        /// 
-        /// * `encrypted` - Whether the Managed Databases is encrypted.
-        /// 
-        /// * `engine` - The Managed Database engine.
-        /// 
-        /// * `host_primary` - The primary host for the Managed Database.
-        /// 
-        /// * `host_secondary` - The secondary/private network host for the Managed Database.
-        /// 
-        /// * `id` - The ID of the Managed Database.
-        /// 
-        /// * `label` - A unique, user-defined string referring to the Managed Database.
-        /// 
-        /// * `region` - The region to use for the Managed Database.
-        /// 
-        /// * `replication_type` - The replication method used for the Managed Database.
-        /// 
-        /// * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-        /// 
-        /// * `status` - The operating status of the Managed Database.
-        /// 
-        /// * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-        /// 
-        /// * `updated` - When this Managed Database was last updated.
-        /// 
-        /// * `version` - The Managed Database engine version.
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

@@ -32,9 +32,17 @@ public final class GetStackScriptArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
     @Import(name="userDefinedFields")
     private @Nullable Output<List<GetStackScriptUserDefinedFieldArgs>> userDefinedFields;
 
+    /**
+     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * 
+     */
     public Optional<Output<List<GetStackScriptUserDefinedFieldArgs>>> userDefinedFields() {
         return Optional.ofNullable(this.userDefinedFields);
     }
@@ -85,15 +93,33 @@ public final class GetStackScriptArgs extends com.pulumi.resources.InvokeArgs {
             return id(Output.of(id));
         }
 
+        /**
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDefinedFields(@Nullable Output<List<GetStackScriptUserDefinedFieldArgs>> userDefinedFields) {
             $.userDefinedFields = userDefinedFields;
             return this;
         }
 
+        /**
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDefinedFields(List<GetStackScriptUserDefinedFieldArgs> userDefinedFields) {
             return userDefinedFields(Output.of(userDefinedFields));
         }
 
+        /**
+         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDefinedFields(GetStackScriptUserDefinedFieldArgs... userDefinedFields) {
             return userDefinedFields(List.of(userDefinedFields));
         }

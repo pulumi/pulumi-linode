@@ -116,33 +116,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount() {
@@ -154,33 +154,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -192,33 +192,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
@@ -230,33 +230,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -268,33 +268,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
@@ -306,33 +306,33 @@ public final class LinodeFunctions {
      * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Account resource exports the following attributes:
+     * The following example shows how one might use this data source to access account details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The email address for this Account, for account management communications, and may be used for other communications as configured.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `first_name` - The first name of the person associated with this Account.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `last_name` - The last name of the person associated with this Account.
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getAccount();
      * 
-     * * `company` - The company name associated with this Account.
-     * 
-     * * `address_1` - First line of this Account&#39;s billing address.
-     * 
-     * * `address_2` - Second line of this Account&#39;s billing address.
-     * 
-     * * `phone` - The phone number associated with this Account.
-     * 
-     * * `city` - The city for this Account&#39;s billing address.
-     * 
-     * * `state` - If billing address is in the United States, this is the State portion of the Account&#39;s billing address. If the address is outside the US, this is the Province associated with the Account&#39;s billing address.
-     * 
-     * * `country` - The two-letter country code of this Account&#39;s billing address.
-     * 
-     * * `zip` - The zip code of this Account&#39;s billing address.
-     * 
-     * * `balance` - This Account&#39;s balance, in US dollars.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
@@ -408,17 +408,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args) {
@@ -494,17 +483,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args) {
@@ -580,17 +558,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args, InvokeOptions options) {
@@ -666,17 +633,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args, InvokeOptions options) {
@@ -790,15 +746,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines() {
@@ -912,15 +859,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain() {
@@ -1034,15 +972,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines(GetDatabaseEnginesArgs args) {
@@ -1156,15 +1085,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args) {
@@ -1278,15 +1198,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines(GetDatabaseEnginesArgs args, InvokeOptions options) {
@@ -1400,15 +1311,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `engines` attribute and will export the following attributes:
-     * 
-     * * `engine` - The Managed Database engine type.
-     * 
-     * * `id` - The Managed Database engine ID in engine/version format.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args, InvokeOptions options) {
@@ -1448,58 +1350,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMongodb` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `compression_type` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mongodb`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `peers` - A set of peer addresses for this Database.
-     * 
-     * * `port` - The access port for this Managed Database.
-     * 
-     * * `replica_set` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `storage_engine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -1552,58 +1402,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMongodb` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `compression_type` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mongodb`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `peers` - A set of peer addresses for this Database.
-     * 
-     * * `port` - The access port for this Managed Database.
-     * 
-     * * `replica_set` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `storage_engine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -1656,58 +1454,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMongodb` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `compression_type` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mongodb`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `peers` - A set of peer addresses for this Database.
-     * 
-     * * `port` - The access port for this Managed Database.
-     * 
-     * * `replica_set` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `storage_engine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -1760,58 +1506,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMongodb` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `compression_type` - The type of data compression for this Database. (`none`, `snappy`, `zlib`)
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mongodb`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mongodb/4.4.10`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `peers` - A set of peer addresses for this Database.
-     * 
-     * * `port` - The access port for this Managed Database.
-     * 
-     * * `replica_set` - Label for configuring a MongoDB replica set. Choose the same label on multiple Databases to include them in the same replica set.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `storage_engine` - The type of storage engine for this Database. (`mmapv1`, `wiredtiger`)
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -1864,50 +1558,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMysql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mysql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -1960,50 +1610,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMysql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mysql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2056,50 +1662,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMysql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mysql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2152,50 +1714,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabaseMysql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `mysql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2284,17 +1802,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args) {
@@ -2370,17 +1877,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args) {
@@ -2456,17 +1952,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args, InvokeOptions options) {
@@ -2542,17 +2027,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each backup will be stored in the `backups` attribute and will export the following attributes:
-     * 
-     * * `created` - A time value given in a combined date and time format that represents when the database backup was created.
-     * 
-     * * `id` - The ID of the database backup object.
-     * 
-     * * `label` - The database backup’s label, for display purposes only.
-     * 
-     * * `type` - The type of database backup, determined by how the backup was created.
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args, InvokeOptions options) {
@@ -2592,52 +2066,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabasePostgresql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `postgresql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `replication_commit_type` - (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2690,52 +2118,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabasePostgresql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `postgresql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `replication_commit_type` - (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2788,52 +2170,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabasePostgresql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `postgresql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `replication_commit_type` - (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2886,52 +2222,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.DatabasePostgresql` data source exports the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-     * 
-     * * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine. (e.g. `postgresql`)
-     * 
-     * * `engine_id` - The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region that hosts this Linode Managed Database.
-     * 
-     * * `root_password` - The randomly-generated root password for the Managed Database instance.
-     * 
-     * * `root_username` - The root username for the Managed Database instance.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-     * 
-     * * `replication_commit_type` - (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
-     * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3015,41 +2305,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabasesResult> getDatabases() {
@@ -3120,41 +2375,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain() {
@@ -3225,41 +2445,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -3330,41 +2515,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -3435,41 +2585,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -3540,41 +2655,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each engine will be stored in the `databases` attribute and will export the following attributes:
-     * 
-     * * `allow_list` - A list of IP addresses that can access the Managed Database.
-     * 
-     * * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-     * 
-     * * `created` - When this Managed Database was created.
-     * 
-     * * `encrypted` - Whether the Managed Databases is encrypted.
-     * 
-     * * `engine` - The Managed Database engine.
-     * 
-     * * `host_primary` - The primary host for the Managed Database.
-     * 
-     * * `host_secondary` - The secondary/private network host for the Managed Database.
-     * 
-     * * `id` - The ID of the Managed Database.
-     * 
-     * * `label` - A unique, user-defined string referring to the Managed Database.
-     * 
-     * * `region` - The region to use for the Managed Database.
-     * 
-     * * `replication_type` - The replication method used for the Managed Database.
-     * 
-     * * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     * * `status` - The operating status of the Managed Database.
-     * 
-     * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * * `updated` - When this Managed Database was last updated.
-     * 
-     * * `version` - The Managed Database engine version.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -3618,37 +2698,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static Output<GetDomainResult> getDomain() {
@@ -3692,37 +2741,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain() {
@@ -3766,37 +2784,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args) {
@@ -3840,37 +2827,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args) {
@@ -3914,37 +2870,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOptions options) {
@@ -3988,37 +2913,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Domain resource exports the following attributes:
-     * 
-     * * `id` - The unique ID of this Domain.
-     * 
-     * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     * 
-     * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     * 
-     * * `group` - The group this Domain belongs to.
-     * 
-     * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     * 
-     * * `description` - A description for this Domain.
-     * 
-     * * `master_ips` - The IP addresses representing the master DNS for this Domain.
-     * 
-     * * `axfr_ips` - The list of IPs that may perform a zone transfer for this Domain.
-     * 
-     * * `ttl_sec` - &#39;Time to Live&#39;-the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * * `retry_sec` - The interval, in seconds, at which a failed refresh should be retried.
-     * 
-     * * `expire_sec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     * 
-     * * `refresh_sec` - The amount of time in seconds before this Domain should be refreshed.
-     * 
-     * * `soa_email` - Start of Authority email address.
-     * 
-     * * `tags` - An array of tags applied to this object.
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args, InvokeOptions options) {
@@ -4064,33 +2958,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of the Domain Record.
-     * 
-     * - `name` - The name of the Record.
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-     * 
-     * - `ttl_sec` - The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * - `target` - The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * - `priority` - The priority of the target host. Lower values are preferred.
-     * 
-     * - `weight` - The relative weight of this Record. Higher values are preferred.
-     * 
-     * - `port` - The port this Record points to.
-     * 
-     * - `protocol` - The protocol this Record&#39;s service communicates with. Only valid for SRV records.
-     * 
-     * - `service` - The service this Record identified. Only valid for SRV records.
-     * 
-     * - `tag` - The tag portion of a CAA record.
      * 
      */
     public static Output<GetDomainRecordResult> getDomainRecord(GetDomainRecordArgs args) {
@@ -4136,33 +3003,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of the Domain Record.
-     * 
-     * - `name` - The name of the Record.
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-     * 
-     * - `ttl_sec` - The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * - `target` - The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * - `priority` - The priority of the target host. Lower values are preferred.
-     * 
-     * - `weight` - The relative weight of this Record. Higher values are preferred.
-     * 
-     * - `port` - The port this Record points to.
-     * 
-     * - `protocol` - The protocol this Record&#39;s service communicates with. Only valid for SRV records.
-     * 
-     * - `service` - The service this Record identified. Only valid for SRV records.
-     * 
-     * - `tag` - The tag portion of a CAA record.
      * 
      */
     public static CompletableFuture<GetDomainRecordResult> getDomainRecordPlain(GetDomainRecordPlainArgs args) {
@@ -4208,33 +3048,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of the Domain Record.
-     * 
-     * - `name` - The name of the Record.
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-     * 
-     * - `ttl_sec` - The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * - `target` - The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * - `priority` - The priority of the target host. Lower values are preferred.
-     * 
-     * - `weight` - The relative weight of this Record. Higher values are preferred.
-     * 
-     * - `port` - The port this Record points to.
-     * 
-     * - `protocol` - The protocol this Record&#39;s service communicates with. Only valid for SRV records.
-     * 
-     * - `service` - The service this Record identified. Only valid for SRV records.
-     * 
-     * - `tag` - The tag portion of a CAA record.
      * 
      */
     public static Output<GetDomainRecordResult> getDomainRecord(GetDomainRecordArgs args, InvokeOptions options) {
@@ -4280,33 +3093,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of the Domain Record.
-     * 
-     * - `name` - The name of the Record.
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-     * 
-     * - `ttl_sec` - The amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers.
-     * 
-     * - `target` - The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * - `priority` - The priority of the target host. Lower values are preferred.
-     * 
-     * - `weight` - The relative weight of this Record. Higher values are preferred.
-     * 
-     * - `port` - The port this Record points to.
-     * 
-     * - `protocol` - The protocol this Record&#39;s service communicates with. Only valid for SRV records.
-     * 
-     * - `service` - The service this Record identified. Only valid for SRV records.
-     * 
-     * - `tag` - The tag portion of a CAA record.
      * 
      */
     public static CompletableFuture<GetDomainRecordResult> getDomainRecordPlain(GetDomainRecordPlainArgs args, InvokeOptions options) {
@@ -4346,13 +3132,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `zone_file` - Array of strings representing the Domain Zonefile.
      * 
      */
     public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args) {
@@ -4392,13 +3171,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `zone_file` - Array of strings representing the Domain Zonefile.
      * 
      */
     public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args) {
@@ -4438,13 +3210,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `zone_file` - Array of strings representing the Domain Zonefile.
      * 
      */
     public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args, InvokeOptions options) {
@@ -4484,13 +3249,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `domain_id` - The associated domain&#39;s unique ID.
-     * 
-     * - `zone_file` - Array of strings representing the Domain Zonefile.
      * 
      */
     public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args, InvokeOptions options) {
@@ -4678,29 +3436,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Image resource exports the following attributes:
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args) {
@@ -4740,29 +3475,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Image resource exports the following attributes:
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args) {
@@ -4802,29 +3514,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Image resource exports the following attributes:
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOptions options) {
@@ -4864,29 +3553,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Image resource exports the following attributes:
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
@@ -4962,32 +3628,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5082,32 +3722,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5202,32 +3816,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5322,32 +3910,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5442,32 +4004,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5562,32 +4098,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode image will be stored in the `images` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     * 
-     * * `label` - A short description of the Image.
-     * 
-     * * `created` - When this Image was created.
-     * 
-     * * `created_by` - The name of the User who created this Image, or &#34;linode&#34; for official Images.
-     * 
-     * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     * 
-     * * `description` - A detailed description of this Image.
-     * 
-     * * `is_public` - True if the Image is public.
-     * 
-     * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     * 
-     * * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-     * 
-     * * `type` - How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     * 
-     * * `vendor` - The upstream distribution vendor. `None` for private Images.
-     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5794,33 +4304,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Instance Type resource exports the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
      * 
      */
     public static Output<GetInstanceTypeResult> getInstanceType(GetInstanceTypeArgs args) {
@@ -5860,33 +4343,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Instance Type resource exports the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
      * 
      */
     public static CompletableFuture<GetInstanceTypeResult> getInstanceTypePlain(GetInstanceTypePlainArgs args) {
@@ -5926,33 +4382,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Instance Type resource exports the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
      * 
      */
     public static Output<GetInstanceTypeResult> getInstanceType(GetInstanceTypeArgs args, InvokeOptions options) {
@@ -5992,33 +4421,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Instance Type resource exports the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
      * 
      */
     public static CompletableFuture<GetInstanceTypeResult> getInstanceTypePlain(GetInstanceTypePlainArgs args, InvokeOptions options) {
@@ -6089,34 +4491,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6204,34 +4578,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6319,34 +4665,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6434,34 +4752,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6549,34 +4839,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6664,34 +4926,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode Instance type will be stored in the `types` attribute and will export the following attributes:
-     * 
-     * * `id` - The ID representing the Linode Type.
-     * 
-     * * `label` - The Linode Type&#39;s label is for display purposes only.
-     * 
-     * * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-     * 
-     * * `disk` - The Disk size, in MB, of the Linode Type.
-     * 
-     * * `price.0.hourly` -  Cost (in US dollars) per hour.
-     * 
-     * * `price.0.monthly` - Cost (in US dollars) per month.
-     * 
-     * * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-     * 
-     * * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-     * 
-     * * `network_out` - The Mbits outbound bandwidth allocation.
-     * 
-     * * `memory` - The amount of RAM included in this Linode Type.
-     * 
-     * * `transfer` - The monthly outbound transfer amount, in MB.
-     * 
-     * * `vcpus` - The number of VCPU cores this Linode Type offers.
-     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -6714,21 +4948,579 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode instances that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode instances with a certain label and tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .filters(            
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(                    
+     *                         &#34;my-label&#34;,
+     *                         &#34;my-other-label&#34;)
+     *                     .build(),
+     *                 GetInstancesFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode instances associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-instances = LinodeFunctions.getInstances();
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `id`
+     * 
+     * * `image`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     * * `type`
+     * 
+     * * `watchdog_enabled`
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -6766,17 +5558,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.Ipv6Range` data source exports the following attributes:
-     * 
-     * * `ip_bgp` - Whether this IPv6 range is shared.
-     * 
-     * * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-     * 
-     * * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-     * 
-     * * `region` - The region for this range of IPv6 addresses.
      * 
      */
     public static Output<GetIpv6RangeResult> getIpv6Range(GetIpv6RangeArgs args) {
@@ -6816,17 +5597,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.Ipv6Range` data source exports the following attributes:
-     * 
-     * * `ip_bgp` - Whether this IPv6 range is shared.
-     * 
-     * * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-     * 
-     * * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-     * 
-     * * `region` - The region for this range of IPv6 addresses.
      * 
      */
     public static CompletableFuture<GetIpv6RangeResult> getIpv6RangePlain(GetIpv6RangePlainArgs args) {
@@ -6866,17 +5636,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.Ipv6Range` data source exports the following attributes:
-     * 
-     * * `ip_bgp` - Whether this IPv6 range is shared.
-     * 
-     * * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-     * 
-     * * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-     * 
-     * * `region` - The region for this range of IPv6 addresses.
      * 
      */
     public static Output<GetIpv6RangeResult> getIpv6Range(GetIpv6RangeArgs args, InvokeOptions options) {
@@ -6916,17 +5675,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The `linode.Ipv6Range` data source exports the following attributes:
-     * 
-     * * `ip_bgp` - Whether this IPv6 range is shared.
-     * 
-     * * `linodes` - A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
-     * 
-     * * `prefix` - The prefix length of the address, denoting how many addresses can be assigned from this range.
-     * 
-     * * `region` - The region for this range of IPv6 addresses.
      * 
      */
     public static CompletableFuture<GetIpv6RangeResult> getIpv6RangePlain(GetIpv6RangePlainArgs args, InvokeOptions options) {
@@ -6966,23 +5714,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Kernel resource exports the following attributes:
-     * 
-     * * `architecture` - The architecture of this Kernel.
-     * 
-     * * `deprecated` - Whether or not this Kernel is deprecated.
-     * 
-     * * `kvm` - If this Kernel is suitable for KVM Linodes.
-     * 
-     * * `label` - The friendly name of this Kernel.
-     * 
-     * * `pvops` - If this Kernel is suitable for paravirtualized operations.
-     * 
-     * * `version` - Linux Kernel version
-     * 
-     * * `xen` - If this Kernel is suitable for Xen Linodes.
      * 
      */
     public static Output<GetKernelResult> getKernel(GetKernelArgs args) {
@@ -7022,23 +5753,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Kernel resource exports the following attributes:
-     * 
-     * * `architecture` - The architecture of this Kernel.
-     * 
-     * * `deprecated` - Whether or not this Kernel is deprecated.
-     * 
-     * * `kvm` - If this Kernel is suitable for KVM Linodes.
-     * 
-     * * `label` - The friendly name of this Kernel.
-     * 
-     * * `pvops` - If this Kernel is suitable for paravirtualized operations.
-     * 
-     * * `version` - Linux Kernel version
-     * 
-     * * `xen` - If this Kernel is suitable for Xen Linodes.
      * 
      */
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args) {
@@ -7078,23 +5792,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Kernel resource exports the following attributes:
-     * 
-     * * `architecture` - The architecture of this Kernel.
-     * 
-     * * `deprecated` - Whether or not this Kernel is deprecated.
-     * 
-     * * `kvm` - If this Kernel is suitable for KVM Linodes.
-     * 
-     * * `label` - The friendly name of this Kernel.
-     * 
-     * * `pvops` - If this Kernel is suitable for paravirtualized operations.
-     * 
-     * * `version` - Linux Kernel version
-     * 
-     * * `xen` - If this Kernel is suitable for Xen Linodes.
      * 
      */
     public static Output<GetKernelResult> getKernel(GetKernelArgs args, InvokeOptions options) {
@@ -7134,23 +5831,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Kernel resource exports the following attributes:
-     * 
-     * * `architecture` - The architecture of this Kernel.
-     * 
-     * * `deprecated` - Whether or not this Kernel is deprecated.
-     * 
-     * * `kvm` - If this Kernel is suitable for KVM Linodes.
-     * 
-     * * `label` - The friendly name of this Kernel.
-     * 
-     * * `pvops` - If this Kernel is suitable for paravirtualized operations.
-     * 
-     * * `version` - Linux Kernel version
-     * 
-     * * `xen` - If this Kernel is suitable for Xen Linodes.
      * 
      */
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args, InvokeOptions options) {
@@ -7338,27 +6018,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Network IP Address resource exports the following attributes:
-     * 
-     * * `address` - The IP address.
-     * 
-     * * `gateway` - The default gateway for this address.
-     * 
-     * * `subnet_mask` - The mask that separates host bits from network bits for this address.
-     * 
-     * * `prefix` - The number of bits set in the subnet mask.
-     * 
-     * * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     * 
-     * * `public` - Whether this is a public or private IP address.
-     * 
-     * * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     * 
-     * * `linode_id` - The ID of the Linode this address currently belongs to.
-     * 
-     * * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public static Output<GetNetworkingIpResult> getNetworkingIp(GetNetworkingIpArgs args) {
@@ -7398,27 +6057,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Network IP Address resource exports the following attributes:
-     * 
-     * * `address` - The IP address.
-     * 
-     * * `gateway` - The default gateway for this address.
-     * 
-     * * `subnet_mask` - The mask that separates host bits from network bits for this address.
-     * 
-     * * `prefix` - The number of bits set in the subnet mask.
-     * 
-     * * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     * 
-     * * `public` - Whether this is a public or private IP address.
-     * 
-     * * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     * 
-     * * `linode_id` - The ID of the Linode this address currently belongs to.
-     * 
-     * * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args) {
@@ -7458,27 +6096,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Network IP Address resource exports the following attributes:
-     * 
-     * * `address` - The IP address.
-     * 
-     * * `gateway` - The default gateway for this address.
-     * 
-     * * `subnet_mask` - The mask that separates host bits from network bits for this address.
-     * 
-     * * `prefix` - The number of bits set in the subnet mask.
-     * 
-     * * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     * 
-     * * `public` - Whether this is a public or private IP address.
-     * 
-     * * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     * 
-     * * `linode_id` - The ID of the Linode this address currently belongs to.
-     * 
-     * * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public static Output<GetNetworkingIpResult> getNetworkingIp(GetNetworkingIpArgs args, InvokeOptions options) {
@@ -7518,27 +6135,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Network IP Address resource exports the following attributes:
-     * 
-     * * `address` - The IP address.
-     * 
-     * * `gateway` - The default gateway for this address.
-     * 
-     * * `subnet_mask` - The mask that separates host bits from network bits for this address.
-     * 
-     * * `prefix` - The number of bits set in the subnet mask.
-     * 
-     * * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     * 
-     * * `public` - Whether this is a public or private IP address.
-     * 
-     * * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     * 
-     * * `linode_id` - The ID of the Linode this address currently belongs to.
-     * 
-     * * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args, InvokeOptions options) {
@@ -8034,17 +6630,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Object Storage Cluster resource exports the following attributes:
-     * 
-     * * `domain` - The base URL for this cluster.
-     * 
-     * * `status` - This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     * * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `static_site_domain` - The base URL for this cluster used when hosting static sites.
      * 
      */
     public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args) {
@@ -8084,17 +6669,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Object Storage Cluster resource exports the following attributes:
-     * 
-     * * `domain` - The base URL for this cluster.
-     * 
-     * * `status` - This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     * * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `static_site_domain` - The base URL for this cluster used when hosting static sites.
      * 
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args) {
@@ -8134,17 +6708,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Object Storage Cluster resource exports the following attributes:
-     * 
-     * * `domain` - The base URL for this cluster.
-     * 
-     * * `status` - This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     * * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `static_site_domain` - The base URL for this cluster used when hosting static sites.
      * 
      */
     public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args, InvokeOptions options) {
@@ -8184,17 +6747,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Object Storage Cluster resource exports the following attributes:
-     * 
-     * * `domain` - The base URL for this cluster.
-     * 
-     * * `status` - This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     * * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `static_site_domain` - The base URL for this cluster used when hosting static sites.
      * 
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args, InvokeOptions options) {
@@ -8204,41 +6756,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProfileResult> getProfile() {
@@ -8248,41 +6792,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain() {
@@ -8292,41 +6828,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProfileResult> getProfile(InvokeArgs args) {
@@ -8336,41 +6864,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain(InvokeArgs args) {
@@ -8380,41 +6900,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProfileResult> getProfile(InvokeArgs args, InvokeOptions options) {
@@ -8424,41 +6936,33 @@ public final class LinodeFunctions {
      * Provides information about a Linode profile.
      * 
      * ## Example Usage
-     * ## Attributes
      * 
-     * The Linode Profile resource exports the following attributes:
+     * The following example shows how one might use this data source to access profile details.
+     * ```java
+     * package generated_program;
      * 
-     * * `email` - The profile email address. This address will be used for communication with Linode as necessary.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * * `timezone` - The profile&#39;s preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * * `email_notifications` - If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
+     *     public static void stack(Context ctx) {
+     *         final var profile = LinodeFunctions.getProfile();
      * 
-     * * `username` - The username for logging in to Linode services.
-     * 
-     * * `ip_whitelist_enabled` - If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
-     * 
-     * * `lish_auth_method` - The methods of authentication allowed when connecting via Lish. &#39;keys_only&#39; is the most secure with the intent to use Lish, and &#39;disabled&#39; is recommended for users that will not use Lish at all.
-     * 
-     * * `authorized_keys` - The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
-     * 
-     * * `two_factor_auth` - If true, logins from untrusted computers will require Two Factor Authentication.
-     * 
-     * * `restricted` - If true, the user has restrictions on what can be accessed on the Account.
-     * 
-     * * `referrals` - Credit Card information associated with this Account.
-     * 
-     * * `referrals.0.total` - The number of users who have signed up with the referral code.
-     * 
-     * * `referrals.0.credit` - The amount of account credit in US Dollars issued to the account through the referral program.
-     * 
-     * * `referrals.0.completed` - The number of completed signups with the referral code.
-     * 
-     * * `referrals.0.pending` - The number of pending signups for the referral code. To receive credit the signups must be completed.
-     * 
-     * * `referrals.0.code` - The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-     * 
-     * * `referrals.0.url` - The referral URL.
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain(InvokeArgs args, InvokeOptions options) {
@@ -8810,47 +7314,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * This resource exports the following attributes:
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
      * 
      */
     public static Output<GetStackScriptResult> getStackScript(GetStackScriptArgs args) {
@@ -8890,47 +7353,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * This resource exports the following attributes:
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
      * 
      */
     public static CompletableFuture<GetStackScriptResult> getStackScriptPlain(GetStackScriptPlainArgs args) {
@@ -8970,47 +7392,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * This resource exports the following attributes:
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
      * 
      */
     public static Output<GetStackScriptResult> getStackScript(GetStackScriptArgs args, InvokeOptions options) {
@@ -9050,47 +7431,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * This resource exports the following attributes:
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
      * 
      */
     public static CompletableFuture<GetStackScriptResult> getStackScriptPlain(GetStackScriptPlainArgs args, InvokeOptions options) {
@@ -9140,50 +7480,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9252,50 +7548,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9364,50 +7616,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9476,50 +7684,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9588,50 +7752,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9700,50 +7820,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode StackScript will be stored in the `stackscripts` attribute and will export the following attributes:
-     * 
-     * * `id` - The unique ID of the StackScript.
-     * 
-     * * `label` - The StackScript&#39;s label is for display purposes only.
-     * 
-     * * `script` - The script to execute when provisioning a new Linode with this StackScript.
-     * 
-     * * `description` - A description for the StackScript.
-     * 
-     * * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-     * 
-     * * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     * 
-     * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     * 
-     * * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-     * 
-     * * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-     * 
-     * * `deployments_total` - The total number of times this StackScript has been deployed.
-     * 
-     * * `username` - The User who created the StackScript.
-     * 
-     * * `created` - The date this StackScript was created.
-     * 
-     * * `updated` - The date this StackScript was updated.
-     * 
-     * * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     *   
-     *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     *   
-     *   * `name` - The name of the field.
-     *   
-     *   * `example` - An example value for the field.
-     *   
-     *   * `one_of` - A list of acceptable single values for the field.
-     *   
-     *   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-     *   
-     *   * `default` - The default value. If not specified, this value will be used.
-     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -9802,15 +7878,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode User resource exports the following attributes:
-     * 
-     * * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-     * 
-     * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-     * 
-     * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -9850,15 +7917,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode User resource exports the following attributes:
-     * 
-     * * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-     * 
-     * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-     * 
-     * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -9898,15 +7956,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode User resource exports the following attributes:
-     * 
-     * * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-     * 
-     * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-     * 
-     * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -9946,15 +7995,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode User resource exports the following attributes:
-     * 
-     * * `ssh_keys` - A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
-     * 
-     * * `email` - The email address for this User, for account management communications, and may be used for other communications as configured.
-     * 
-     * * `restricted` - If true, this User must be granted access to perform actions or access entities on this Account.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -10010,18 +8050,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10082,18 +8110,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10154,18 +8170,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10226,18 +8230,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10298,18 +8290,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10370,18 +8350,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-     * 
-     * * `label` - The unique label of the VLAN.
-     * 
-     * * `linodes` - The running Linodes currently attached to the VLAN.
-     * 
-     * * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * * `created` - When the VLAN was created.
-     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10426,29 +8394,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of this Volume.
-     * 
-     * - `created` - When this Volume was created.
-     * 
-     * - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-     * 
-     * - `label` - This Volume&#39;s label is for display purposes only.
-     * 
-     * - `tags` - An array of tags applied to this object.
-     * 
-     * - `size` - The Volume&#39;s size, in GiB.
-     * 
-     * - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * - `updated` - When this Volume was last updated.
-     * 
-     * - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     * 
-     * - `filesystem_path` - The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
@@ -10488,29 +8433,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of this Volume.
-     * 
-     * - `created` - When this Volume was created.
-     * 
-     * - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-     * 
-     * - `label` - This Volume&#39;s label is for display purposes only.
-     * 
-     * - `tags` - An array of tags applied to this object.
-     * 
-     * - `size` - The Volume&#39;s size, in GiB.
-     * 
-     * - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * - `updated` - When this Volume was last updated.
-     * 
-     * - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     * 
-     * - `filesystem_path` - The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
@@ -10550,29 +8472,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of this Volume.
-     * 
-     * - `created` - When this Volume was created.
-     * 
-     * - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-     * 
-     * - `label` - This Volume&#39;s label is for display purposes only.
-     * 
-     * - `tags` - An array of tags applied to this object.
-     * 
-     * - `size` - The Volume&#39;s size, in GiB.
-     * 
-     * - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * - `updated` - When this Volume was last updated.
-     * 
-     * - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     * 
-     * - `filesystem_path` - The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
@@ -10612,29 +8511,6 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
-     * ## Attributes
-     * 
-     * The Linode Volume resource exports the following attributes:
-     * 
-     * - `id` - The unique ID of this Volume.
-     * 
-     * - `created` - When this Volume was created.
-     * 
-     * - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-     * 
-     * - `label` - This Volume&#39;s label is for display purposes only.
-     * 
-     * - `tags` - An array of tags applied to this object.
-     * 
-     * - `size` - The Volume&#39;s size, in GiB.
-     * 
-     * - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     * - `updated` - When this Volume was last updated.
-     * 
-     * - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     * 
-     * - `filesystem_path` - The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {

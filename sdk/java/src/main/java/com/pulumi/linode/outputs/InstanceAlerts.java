@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceAlerts {
-    private final @Nullable Integer cpu;
-    private final @Nullable Integer io;
-    private final @Nullable Integer networkIn;
-    private final @Nullable Integer networkOut;
-    private final @Nullable Integer transferQuota;
+    private @Nullable Integer cpu;
+    private @Nullable Integer io;
+    private @Nullable Integer networkIn;
+    private @Nullable Integer networkOut;
+    private @Nullable Integer transferQuota;
 
-    @CustomType.Constructor
-    private InstanceAlerts(
-        @CustomType.Parameter("cpu") @Nullable Integer cpu,
-        @CustomType.Parameter("io") @Nullable Integer io,
-        @CustomType.Parameter("networkIn") @Nullable Integer networkIn,
-        @CustomType.Parameter("networkOut") @Nullable Integer networkOut,
-        @CustomType.Parameter("transferQuota") @Nullable Integer transferQuota) {
-        this.cpu = cpu;
-        this.io = io;
-        this.networkIn = networkIn;
-        this.networkOut = networkOut;
-        this.transferQuota = transferQuota;
-    }
-
+    private InstanceAlerts() {}
     public Optional<Integer> cpu() {
         return Optional.ofNullable(this.cpu);
     }
@@ -54,18 +41,14 @@ public final class InstanceAlerts {
     public static Builder builder(InstanceAlerts defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cpu;
         private @Nullable Integer io;
         private @Nullable Integer networkIn;
         private @Nullable Integer networkOut;
         private @Nullable Integer transferQuota;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceAlerts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -75,27 +58,39 @@ public final class InstanceAlerts {
     	      this.transferQuota = defaults.transferQuota;
         }
 
+        @CustomType.Setter
         public Builder cpu(@Nullable Integer cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder io(@Nullable Integer io) {
             this.io = io;
             return this;
         }
+        @CustomType.Setter
         public Builder networkIn(@Nullable Integer networkIn) {
             this.networkIn = networkIn;
             return this;
         }
+        @CustomType.Setter
         public Builder networkOut(@Nullable Integer networkOut) {
             this.networkOut = networkOut;
             return this;
         }
+        @CustomType.Setter
         public Builder transferQuota(@Nullable Integer transferQuota) {
             this.transferQuota = transferQuota;
             return this;
-        }        public InstanceAlerts build() {
-            return new InstanceAlerts(cpu, io, networkIn, networkOut, transferQuota);
+        }
+        public InstanceAlerts build() {
+            final var o = new InstanceAlerts();
+            o.cpu = cpu;
+            o.io = io;
+            o.networkIn = networkIn;
+            o.networkOut = networkOut;
+            o.transferQuota = transferQuota;
+            return o;
         }
     }
 }

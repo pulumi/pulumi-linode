@@ -39,50 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The `DatabaseMysql` data source exports the following attributes:
-//
-// * `allowList` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-//
-// * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-//
-// * `clusterSize` - The number of Linode Instance nodes deployed to the Managed Database.
-//
-// * `created` - When this Managed Database was created.
-//
-// * `encrypted` - Whether the Managed Databases is encrypted.
-//
-// * `engine` - The Managed Database engine. (e.g. `mysql`)
-//
-// * `engineId` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-//
-// * `hostPrimary` - The primary host for the Managed Database.
-//
-// * `hostSecondary` - The secondary/private network host for the Managed Database.
-//
-// * `label` - A unique, user-defined string referring to the Managed Database.
-//
-// * `region` - The region that hosts this Linode Managed Database.
-//
-// * `rootPassword` - The randomly-generated root password for the Managed Database instance.
-//
-// * `rootUsername` - The root username for the Managed Database instance.
-//
-// * `replicationType` - The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
-//
-// * `sslConnection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-//
-// * `status` - The operating status of the Managed Database.
-//
-// * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// * `updated` - When this Managed Database was last updated.
-//
-// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-//
-// * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-//
 // ## updates
 //
 // The following arguments are exported by the `updates` specification block:
@@ -113,29 +69,48 @@ type LookupDatabaseMysqlArgs struct {
 
 // A collection of values returned by getDatabaseMysql.
 type LookupDatabaseMysqlResult struct {
-	AllowLists    []string `pulumi:"allowLists"`
-	CaCert        string   `pulumi:"caCert"`
-	ClusterSize   int      `pulumi:"clusterSize"`
-	Created       string   `pulumi:"created"`
-	DatabaseId    int      `pulumi:"databaseId"`
-	Encrypted     bool     `pulumi:"encrypted"`
-	Engine        string   `pulumi:"engine"`
-	EngineId      string   `pulumi:"engineId"`
-	HostPrimary   string   `pulumi:"hostPrimary"`
-	HostSecondary string   `pulumi:"hostSecondary"`
+	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+	AllowLists []string `pulumi:"allowLists"`
+	// The base64-encoded SSL CA certificate for the Managed Database instance.
+	CaCert string `pulumi:"caCert"`
+	// The number of Linode Instance nodes deployed to the Managed Database.
+	ClusterSize int `pulumi:"clusterSize"`
+	// When this Managed Database was created.
+	Created    string `pulumi:"created"`
+	DatabaseId int    `pulumi:"databaseId"`
+	// Whether the Managed Databases is encrypted.
+	Encrypted bool `pulumi:"encrypted"`
+	// The Managed Database engine. (e.g. `mysql`)
+	Engine string `pulumi:"engine"`
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	EngineId string `pulumi:"engineId"`
+	// The primary host for the Managed Database.
+	HostPrimary string `pulumi:"hostPrimary"`
+	// The secondary/private network host for the Managed Database.
+	HostSecondary string `pulumi:"hostSecondary"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                   `pulumi:"id"`
-	Label           string                   `pulumi:"label"`
-	Region          string                   `pulumi:"region"`
-	ReplicationType string                   `pulumi:"replicationType"`
-	RootPassword    string                   `pulumi:"rootPassword"`
-	RootUsername    string                   `pulumi:"rootUsername"`
-	SslConnection   bool                     `pulumi:"sslConnection"`
-	Status          string                   `pulumi:"status"`
-	Type            string                   `pulumi:"type"`
-	Updated         string                   `pulumi:"updated"`
-	Updates         []GetDatabaseMysqlUpdate `pulumi:"updates"`
-	Version         string                   `pulumi:"version"`
+	Id string `pulumi:"id"`
+	// A unique, user-defined string referring to the Managed Database.
+	Label string `pulumi:"label"`
+	// The region that hosts this Linode Managed Database.
+	Region string `pulumi:"region"`
+	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
+	ReplicationType string `pulumi:"replicationType"`
+	// The randomly-generated root password for the Managed Database instance.
+	RootPassword string `pulumi:"rootPassword"`
+	// The root username for the Managed Database instance.
+	RootUsername string `pulumi:"rootUsername"`
+	// Whether to require SSL credentials to establish a connection to the Managed Database.
+	SslConnection bool `pulumi:"sslConnection"`
+	// The operating status of the Managed Database.
+	Status string `pulumi:"status"`
+	// The Linode Instance type used for the nodes of the  Managed Database instance.
+	Type string `pulumi:"type"`
+	// When this Managed Database was last updated.
+	Updated string                   `pulumi:"updated"`
+	Updates []GetDatabaseMysqlUpdate `pulumi:"updates"`
+	// The Managed Database engine version. (e.g. `v8.0.26`)
+	Version string `pulumi:"version"`
 }
 
 func LookupDatabaseMysqlOutput(ctx *pulumi.Context, args LookupDatabaseMysqlOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMysqlResultOutput {
@@ -176,18 +151,22 @@ func (o LookupDatabaseMysqlResultOutput) ToLookupDatabaseMysqlResultOutputWithCo
 	return o
 }
 
+// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
 func (o LookupDatabaseMysqlResultOutput) AllowLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) []string { return v.AllowLists }).(pulumi.StringArrayOutput)
 }
 
+// The base64-encoded SSL CA certificate for the Managed Database instance.
 func (o LookupDatabaseMysqlResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
+// The number of Linode Instance nodes deployed to the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) ClusterSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) int { return v.ClusterSize }).(pulumi.IntOutput)
 }
 
+// When this Managed Database was created.
 func (o LookupDatabaseMysqlResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -196,22 +175,27 @@ func (o LookupDatabaseMysqlResultOutput) DatabaseId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) int { return v.DatabaseId }).(pulumi.IntOutput)
 }
 
+// Whether the Managed Databases is encrypted.
 func (o LookupDatabaseMysqlResultOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// The Managed Database engine. (e.g. `mysql`)
 func (o LookupDatabaseMysqlResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
 func (o LookupDatabaseMysqlResultOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.EngineId }).(pulumi.StringOutput)
 }
 
+// The primary host for the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) HostPrimary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.HostPrimary }).(pulumi.StringOutput)
 }
 
+// The secondary/private network host for the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.HostSecondary }).(pulumi.StringOutput)
 }
@@ -221,38 +205,47 @@ func (o LookupDatabaseMysqlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A unique, user-defined string referring to the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The region that hosts this Linode Managed Database.
 func (o LookupDatabaseMysqlResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
 func (o LookupDatabaseMysqlResultOutput) ReplicationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.ReplicationType }).(pulumi.StringOutput)
 }
 
+// The randomly-generated root password for the Managed Database instance.
 func (o LookupDatabaseMysqlResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.RootPassword }).(pulumi.StringOutput)
 }
 
+// The root username for the Managed Database instance.
 func (o LookupDatabaseMysqlResultOutput) RootUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.RootUsername }).(pulumi.StringOutput)
 }
 
+// Whether to require SSL credentials to establish a connection to the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) SslConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) bool { return v.SslConnection }).(pulumi.BoolOutput)
 }
 
+// The operating status of the Managed Database.
 func (o LookupDatabaseMysqlResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The Linode Instance type used for the nodes of the  Managed Database instance.
 func (o LookupDatabaseMysqlResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// When this Managed Database was last updated.
 func (o LookupDatabaseMysqlResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Updated }).(pulumi.StringOutput)
 }
@@ -261,6 +254,7 @@ func (o LookupDatabaseMysqlResultOutput) Updates() GetDatabaseMysqlUpdateArrayOu
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) []GetDatabaseMysqlUpdate { return v.Updates }).(GetDatabaseMysqlUpdateArrayOutput)
 }
 
+// The Managed Database engine version. (e.g. `v8.0.26`)
 func (o LookupDatabaseMysqlResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Version }).(pulumi.StringOutput)
 }

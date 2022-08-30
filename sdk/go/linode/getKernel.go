@@ -39,23 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Kernel resource exports the following attributes:
-//
-// * `architecture` - The architecture of this Kernel.
-//
-// * `deprecated` - Whether or not this Kernel is deprecated.
-//
-// * `kvm` - If this Kernel is suitable for KVM Linodes.
-//
-// * `label` - The friendly name of this Kernel.
-//
-// * `pvops` - If this Kernel is suitable for paravirtualized operations.
-//
-// * `version` - Linux Kernel version
-//
-// * `xen` - If this Kernel is suitable for Xen Linodes.
 func GetKernel(ctx *pulumi.Context, args *GetKernelArgs, opts ...pulumi.InvokeOption) (*GetKernelResult, error) {
 	var rv GetKernelResult
 	err := ctx.Invoke("linode:index/getKernel:getKernel", args, &rv, opts...)
@@ -73,14 +56,21 @@ type GetKernelArgs struct {
 
 // A collection of values returned by getKernel.
 type GetKernelResult struct {
+	// The architecture of this Kernel.
 	Architecture string `pulumi:"architecture"`
-	Deprecated   bool   `pulumi:"deprecated"`
-	Id           string `pulumi:"id"`
-	Kvm          bool   `pulumi:"kvm"`
-	Label        string `pulumi:"label"`
-	Pvops        bool   `pulumi:"pvops"`
-	Version      string `pulumi:"version"`
-	Xen          bool   `pulumi:"xen"`
+	// Whether or not this Kernel is deprecated.
+	Deprecated bool   `pulumi:"deprecated"`
+	Id         string `pulumi:"id"`
+	// If this Kernel is suitable for KVM Linodes.
+	Kvm bool `pulumi:"kvm"`
+	// The friendly name of this Kernel.
+	Label string `pulumi:"label"`
+	// If this Kernel is suitable for paravirtualized operations.
+	Pvops bool `pulumi:"pvops"`
+	// Linux Kernel version
+	Version string `pulumi:"version"`
+	// If this Kernel is suitable for Xen Linodes.
+	Xen bool `pulumi:"xen"`
 }
 
 func GetKernelOutput(ctx *pulumi.Context, args GetKernelOutputArgs, opts ...pulumi.InvokeOption) GetKernelResultOutput {
@@ -121,10 +111,12 @@ func (o GetKernelResultOutput) ToGetKernelResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// The architecture of this Kernel.
 func (o GetKernelResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
+// Whether or not this Kernel is deprecated.
 func (o GetKernelResultOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKernelResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
@@ -133,22 +125,27 @@ func (o GetKernelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If this Kernel is suitable for KVM Linodes.
 func (o GetKernelResultOutput) Kvm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKernelResult) bool { return v.Kvm }).(pulumi.BoolOutput)
 }
 
+// The friendly name of this Kernel.
 func (o GetKernelResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// If this Kernel is suitable for paravirtualized operations.
 func (o GetKernelResultOutput) Pvops() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKernelResult) bool { return v.Pvops }).(pulumi.BoolOutput)
 }
 
+// Linux Kernel version
 func (o GetKernelResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// If this Kernel is suitable for Xen Linodes.
 func (o GetKernelResultOutput) Xen() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKernelResult) bool { return v.Xen }).(pulumi.BoolOutput)
 }

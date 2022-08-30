@@ -17,71 +17,84 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstance {
-    private final GetInstancesInstanceAlerts alerts;
-    private final List<GetInstancesInstanceBackup> backups;
-    private final String bootConfigLabel;
-    private final List<GetInstancesInstanceConfig> configs;
-    private final List<GetInstancesInstanceDisk> disks;
-    private final String group;
-    private final Integer id;
-    private final String image;
-    private final String ipAddress;
-    private final List<String> ipv4s;
-    private final String ipv6;
-    private final String label;
-    private final String privateIpAddress;
-    private final String region;
-    private final List<GetInstancesInstanceSpec> specs;
-    private final String status;
-    private final Integer swapSize;
-    private final List<String> tags;
-    private final String type;
-    private final Boolean watchdogEnabled;
+    private GetInstancesInstanceAlerts alerts;
+    private List<GetInstancesInstanceBackup> backups;
+    private String bootConfigLabel;
+    private List<GetInstancesInstanceConfig> configs;
+    private List<GetInstancesInstanceDisk> disks;
+    /**
+     * @return The display group of the Linode instance.
+     * 
+     */
+    private String group;
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    private Integer id;
+    /**
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * 
+     */
+    private String image;
+    /**
+     * @return A string containing the Linode&#39;s public IP address.
+     * 
+     */
+    private String ipAddress;
+    /**
+     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * 
+     */
+    private List<String> ipv4s;
+    /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * 
+     */
+    private String ipv6;
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
+    private String label;
+    /**
+     * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+     * 
+     */
+    private String privateIpAddress;
+    /**
+     * @return This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
+    private String region;
+    private List<GetInstancesInstanceSpec> specs;
+    /**
+     * @return The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+     * 
+     */
+    private String status;
+    /**
+     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+     * 
+     */
+    private Integer swapSize;
+    /**
+     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * 
+     */
+    private List<String> tags;
+    /**
+     * @return The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+     * 
+     */
+    private String type;
+    /**
+     * @return The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+     * 
+     */
+    private Boolean watchdogEnabled;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("alerts") GetInstancesInstanceAlerts alerts,
-        @CustomType.Parameter("backups") List<GetInstancesInstanceBackup> backups,
-        @CustomType.Parameter("bootConfigLabel") String bootConfigLabel,
-        @CustomType.Parameter("configs") List<GetInstancesInstanceConfig> configs,
-        @CustomType.Parameter("disks") List<GetInstancesInstanceDisk> disks,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("ipv4s") List<String> ipv4s,
-        @CustomType.Parameter("ipv6") String ipv6,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("privateIpAddress") String privateIpAddress,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("specs") List<GetInstancesInstanceSpec> specs,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("swapSize") Integer swapSize,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("watchdogEnabled") Boolean watchdogEnabled) {
-        this.alerts = alerts;
-        this.backups = backups;
-        this.bootConfigLabel = bootConfigLabel;
-        this.configs = configs;
-        this.disks = disks;
-        this.group = group;
-        this.id = id;
-        this.image = image;
-        this.ipAddress = ipAddress;
-        this.ipv4s = ipv4s;
-        this.ipv6 = ipv6;
-        this.label = label;
-        this.privateIpAddress = privateIpAddress;
-        this.region = region;
-        this.specs = specs;
-        this.status = status;
-        this.swapSize = swapSize;
-        this.tags = tags;
-        this.type = type;
-        this.watchdogEnabled = watchdogEnabled;
-    }
-
+    private GetInstancesInstance() {}
     public GetInstancesInstanceAlerts alerts() {
         return this.alerts;
     }
@@ -97,48 +110,104 @@ public final class GetInstancesInstance {
     public List<GetInstancesInstanceDisk> disks() {
         return this.disks;
     }
+    /**
+     * @return The display group of the Linode instance.
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * 
+     */
     public String image() {
         return this.image;
     }
+    /**
+     * @return A string containing the Linode&#39;s public IP address.
+     * 
+     */
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * 
+     */
     public List<String> ipv4s() {
         return this.ipv4s;
     }
+    /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * 
+     */
     public String ipv6() {
         return this.ipv6;
     }
+    /**
+     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+     * 
+     */
     public String privateIpAddress() {
         return this.privateIpAddress;
     }
+    /**
+     * @return This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     public String region() {
         return this.region;
     }
     public List<GetInstancesInstanceSpec> specs() {
         return this.specs;
     }
+    /**
+     * @return The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+     * 
+     */
     public Integer swapSize() {
         return this.swapSize;
     }
+    /**
+     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+     * 
+     */
     public Boolean watchdogEnabled() {
         return this.watchdogEnabled;
     }
@@ -150,7 +219,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetInstancesInstanceAlerts alerts;
         private List<GetInstancesInstanceBackup> backups;
@@ -172,11 +241,7 @@ public final class GetInstancesInstance {
         private List<String> tags;
         private String type;
         private Boolean watchdogEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
@@ -201,10 +266,12 @@ public final class GetInstancesInstance {
     	      this.watchdogEnabled = defaults.watchdogEnabled;
         }
 
+        @CustomType.Setter
         public Builder alerts(GetInstancesInstanceAlerts alerts) {
             this.alerts = Objects.requireNonNull(alerts);
             return this;
         }
+        @CustomType.Setter
         public Builder backups(List<GetInstancesInstanceBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
@@ -212,10 +279,12 @@ public final class GetInstancesInstance {
         public Builder backups(GetInstancesInstanceBackup... backups) {
             return backups(List.of(backups));
         }
+        @CustomType.Setter
         public Builder bootConfigLabel(String bootConfigLabel) {
             this.bootConfigLabel = Objects.requireNonNull(bootConfigLabel);
             return this;
         }
+        @CustomType.Setter
         public Builder configs(List<GetInstancesInstanceConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -223,6 +292,7 @@ public final class GetInstancesInstance {
         public Builder configs(GetInstancesInstanceConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder disks(List<GetInstancesInstanceDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -230,22 +300,27 @@ public final class GetInstancesInstance {
         public Builder disks(GetInstancesInstanceDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4s(List<String> ipv4s) {
             this.ipv4s = Objects.requireNonNull(ipv4s);
             return this;
@@ -253,22 +328,27 @@ public final class GetInstancesInstance {
         public Builder ipv4s(String... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
+        @CustomType.Setter
         public Builder ipv6(String ipv6) {
             this.ipv6 = Objects.requireNonNull(ipv6);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             this.privateIpAddress = Objects.requireNonNull(privateIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder specs(List<GetInstancesInstanceSpec> specs) {
             this.specs = Objects.requireNonNull(specs);
             return this;
@@ -276,14 +356,17 @@ public final class GetInstancesInstance {
         public Builder specs(GetInstancesInstanceSpec... specs) {
             return specs(List.of(specs));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder swapSize(Integer swapSize) {
             this.swapSize = Objects.requireNonNull(swapSize);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -291,15 +374,39 @@ public final class GetInstancesInstance {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder watchdogEnabled(Boolean watchdogEnabled) {
             this.watchdogEnabled = Objects.requireNonNull(watchdogEnabled);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(alerts, backups, bootConfigLabel, configs, disks, group, id, image, ipAddress, ipv4s, ipv6, label, privateIpAddress, region, specs, status, swapSize, tags, type, watchdogEnabled);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.alerts = alerts;
+            o.backups = backups;
+            o.bootConfigLabel = bootConfigLabel;
+            o.configs = configs;
+            o.disks = disks;
+            o.group = group;
+            o.id = id;
+            o.image = image;
+            o.ipAddress = ipAddress;
+            o.ipv4s = ipv4s;
+            o.ipv6 = ipv6;
+            o.label = label;
+            o.privateIpAddress = privateIpAddress;
+            o.region = region;
+            o.specs = specs;
+            o.status = status;
+            o.swapSize = swapSize;
+            o.tags = tags;
+            o.type = type;
+            o.watchdogEnabled = watchdogEnabled;
+            return o;
         }
     }
 }

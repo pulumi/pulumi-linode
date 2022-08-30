@@ -14,8 +14,17 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceDiskResult
     {
         public readonly string Filesystem;
+        /// <summary>
+        /// The ID of the disk in the Linode API.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The size of the Disk in MB.
+        /// </summary>
         public readonly int Size;
 
         [OutputConstructor]

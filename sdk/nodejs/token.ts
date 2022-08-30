@@ -26,13 +26,6 @@ import * as utilities from "./utilities";
  * });
  * const fooInstance = new linode.Instance("foo", {});
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `token` - The token used to access the API.
- *
- * * `created` - The date this Token was created.
  *
  * ## Import
  *
@@ -73,7 +66,7 @@ export class Token extends pulumi.CustomResource {
     }
 
     /**
-     * The date and time this token was created.
+     * The date this Token was created.
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
@@ -132,7 +125,7 @@ export class Token extends pulumi.CustomResource {
  */
 export interface TokenState {
     /**
-     * The date and time this token was created.
+     * The date this Token was created.
      */
     created?: pulumi.Input<string>;
     /**

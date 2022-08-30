@@ -17,12 +17,6 @@ import javax.annotation.Nullable;
  * Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account&#39;s `~/.ssh/authorized_keys` file.
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
  * 
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `created` - The date this SSH Key was created.
- * 
  * ## Import
  * 
  * Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -35,14 +29,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/sshKey:SshKey")
 public class SshKey extends com.pulumi.resources.CustomResource {
     /**
-     * The date this key was added.
+     * The date this SSH Key was created.
      * 
      */
     @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
-     * @return The date this key was added.
+     * @return The date this SSH Key was created.
      * 
      */
     public Output<String> created() {

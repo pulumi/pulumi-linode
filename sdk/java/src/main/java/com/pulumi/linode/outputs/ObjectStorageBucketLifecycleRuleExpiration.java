@@ -17,28 +17,19 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
      * @return Specifies the date after which you want the corresponding action to take effect.
      * 
      */
-    private final @Nullable String date;
+    private @Nullable String date;
     /**
      * @return Specifies the number of days non-current object versions expire.
      * 
      */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
      * 
      */
-    private final @Nullable Boolean expiredObjectDeleteMarker;
+    private @Nullable Boolean expiredObjectDeleteMarker;
 
-    @CustomType.Constructor
-    private ObjectStorageBucketLifecycleRuleExpiration(
-        @CustomType.Parameter("date") @Nullable String date,
-        @CustomType.Parameter("days") @Nullable Integer days,
-        @CustomType.Parameter("expiredObjectDeleteMarker") @Nullable Boolean expiredObjectDeleteMarker) {
-        this.date = date;
-        this.days = days;
-        this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
-    }
-
+    private ObjectStorageBucketLifecycleRuleExpiration() {}
     /**
      * @return Specifies the date after which you want the corresponding action to take effect.
      * 
@@ -68,16 +59,12 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
     public static Builder builder(ObjectStorageBucketLifecycleRuleExpiration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String date;
         private @Nullable Integer days;
         private @Nullable Boolean expiredObjectDeleteMarker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ObjectStorageBucketLifecycleRuleExpiration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.date = defaults.date;
@@ -85,19 +72,27 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
     	      this.expiredObjectDeleteMarker = defaults.expiredObjectDeleteMarker;
         }
 
+        @CustomType.Setter
         public Builder date(@Nullable String date) {
             this.date = date;
             return this;
         }
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
         }
+        @CustomType.Setter
         public Builder expiredObjectDeleteMarker(@Nullable Boolean expiredObjectDeleteMarker) {
             this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
             return this;
-        }        public ObjectStorageBucketLifecycleRuleExpiration build() {
-            return new ObjectStorageBucketLifecycleRuleExpiration(date, days, expiredObjectDeleteMarker);
+        }
+        public ObjectStorageBucketLifecycleRuleExpiration build() {
+            final var o = new ObjectStorageBucketLifecycleRuleExpiration();
+            o.date = date;
+            o.days = days;
+            o.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
+            return o;
         }
     }
 }

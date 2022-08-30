@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceSpecs {
-    private final @Nullable Integer disk;
-    private final @Nullable Integer memory;
-    private final @Nullable Integer transfer;
-    private final @Nullable Integer vcpus;
+    private @Nullable Integer disk;
+    private @Nullable Integer memory;
+    private @Nullable Integer transfer;
+    private @Nullable Integer vcpus;
 
-    @CustomType.Constructor
-    private InstanceSpecs(
-        @CustomType.Parameter("disk") @Nullable Integer disk,
-        @CustomType.Parameter("memory") @Nullable Integer memory,
-        @CustomType.Parameter("transfer") @Nullable Integer transfer,
-        @CustomType.Parameter("vcpus") @Nullable Integer vcpus) {
-        this.disk = disk;
-        this.memory = memory;
-        this.transfer = transfer;
-        this.vcpus = vcpus;
-    }
-
+    private InstanceSpecs() {}
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
@@ -48,17 +37,13 @@ public final class InstanceSpecs {
     public static Builder builder(InstanceSpecs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer disk;
         private @Nullable Integer memory;
         private @Nullable Integer transfer;
         private @Nullable Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceSpecs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disk = defaults.disk;
@@ -67,23 +52,33 @@ public final class InstanceSpecs {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
         public Builder disk(@Nullable Integer disk) {
             this.disk = disk;
             return this;
         }
+        @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
             this.memory = memory;
             return this;
         }
+        @CustomType.Setter
         public Builder transfer(@Nullable Integer transfer) {
             this.transfer = transfer;
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(@Nullable Integer vcpus) {
             this.vcpus = vcpus;
             return this;
-        }        public InstanceSpecs build() {
-            return new InstanceSpecs(disk, memory, transfer, vcpus);
+        }
+        public InstanceSpecs build() {
+            final var o = new InstanceSpecs();
+            o.disk = disk;
+            o.memory = memory;
+            o.transfer = transfer;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

@@ -11,17 +11,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceBackup {
-    private final Boolean enabled;
-    private final List<GetInstancesInstanceBackupSchedule> schedules;
+    /**
+     * @return If this Linode has the Backup service enabled.
+     * 
+     */
+    private Boolean enabled;
+    private List<GetInstancesInstanceBackupSchedule> schedules;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceBackup(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("schedules") List<GetInstancesInstanceBackupSchedule> schedules) {
-        this.enabled = enabled;
-        this.schedules = schedules;
-    }
-
+    private GetInstancesInstanceBackup() {}
+    /**
+     * @return If this Linode has the Backup service enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
@@ -36,33 +37,35 @@ public final class GetInstancesInstanceBackup {
     public static Builder builder(GetInstancesInstanceBackup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private List<GetInstancesInstanceBackupSchedule> schedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.schedules = defaults.schedules;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder schedules(List<GetInstancesInstanceBackupSchedule> schedules) {
             this.schedules = Objects.requireNonNull(schedules);
             return this;
         }
         public Builder schedules(GetInstancesInstanceBackupSchedule... schedules) {
             return schedules(List.of(schedules));
-        }        public GetInstancesInstanceBackup build() {
-            return new GetInstancesInstanceBackup(enabled, schedules);
+        }
+        public GetInstancesInstanceBackup build() {
+            final var o = new GetInstancesInstanceBackup();
+            o.enabled = enabled;
+            o.schedules = schedules;
+            return o;
         }
     }
 }

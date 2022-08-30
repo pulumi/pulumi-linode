@@ -47,33 +47,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Volume resource exports the following attributes:
-//
-// - `id` - The unique ID of the Domain Record.
-//
-// - `name` - The name of the Record.
-//
-// - `domainId` - The associated domain's unique ID.
-//
-// - `type` - The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
-//
-// - `ttlSec` - The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-//
-// - `target` - The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-//
-// - `priority` - The priority of the target host. Lower values are preferred.
-//
-// - `weight` - The relative weight of this Record. Higher values are preferred.
-//
-// - `port` - The port this Record points to.
-//
-// - `protocol` - The protocol this Record's service communicates with. Only valid for SRV records.
-//
-// - `service` - The service this Record identified. Only valid for SRV records.
-//
-// - `tag` - The tag portion of a CAA record.
 func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts ...pulumi.InvokeOption) (*LookupDomainRecordResult, error) {
 	var rv LookupDomainRecordResult
 	err := ctx.Invoke("linode:index/getDomainRecord:getDomainRecord", args, &rv, opts...)
@@ -95,18 +68,30 @@ type LookupDomainRecordArgs struct {
 
 // A collection of values returned by getDomainRecord.
 type LookupDomainRecordResult struct {
-	DomainId int     `pulumi:"domainId"`
-	Id       *int    `pulumi:"id"`
-	Name     *string `pulumi:"name"`
-	Port     int     `pulumi:"port"`
-	Priority int     `pulumi:"priority"`
-	Protocol string  `pulumi:"protocol"`
-	Service  string  `pulumi:"service"`
-	Tag      string  `pulumi:"tag"`
-	Target   string  `pulumi:"target"`
-	TtlSec   int     `pulumi:"ttlSec"`
-	Type     string  `pulumi:"type"`
-	Weight   int     `pulumi:"weight"`
+	// The associated domain's unique ID.
+	DomainId int `pulumi:"domainId"`
+	// The unique ID of the Domain Record.
+	Id *int `pulumi:"id"`
+	// The name of the Record.
+	Name *string `pulumi:"name"`
+	// The port this Record points to.
+	Port int `pulumi:"port"`
+	// The priority of the target host. Lower values are preferred.
+	Priority int `pulumi:"priority"`
+	// The protocol this Record's service communicates with. Only valid for SRV records.
+	Protocol string `pulumi:"protocol"`
+	// The service this Record identified. Only valid for SRV records.
+	Service string `pulumi:"service"`
+	// The tag portion of a CAA record.
+	Tag string `pulumi:"tag"`
+	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
+	Target string `pulumi:"target"`
+	// The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+	TtlSec int `pulumi:"ttlSec"`
+	// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+	Type string `pulumi:"type"`
+	// The relative weight of this Record. Higher values are preferred.
+	Weight int `pulumi:"weight"`
 }
 
 func LookupDomainRecordOutput(ctx *pulumi.Context, args LookupDomainRecordOutputArgs, opts ...pulumi.InvokeOption) LookupDomainRecordResultOutput {
@@ -151,50 +136,62 @@ func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutputWithCont
 	return o
 }
 
+// The associated domain's unique ID.
 func (o LookupDomainRecordResultOutput) DomainId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.DomainId }).(pulumi.IntOutput)
 }
 
+// The unique ID of the Domain Record.
 func (o LookupDomainRecordResultOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// The name of the Record.
 func (o LookupDomainRecordResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The port this Record points to.
 func (o LookupDomainRecordResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The priority of the target host. Lower values are preferred.
 func (o LookupDomainRecordResultOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// The protocol this Record's service communicates with. Only valid for SRV records.
 func (o LookupDomainRecordResultOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// The service this Record identified. Only valid for SRV records.
 func (o LookupDomainRecordResultOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// The tag portion of a CAA record.
 func (o LookupDomainRecordResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
 func (o LookupDomainRecordResultOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Target }).(pulumi.StringOutput)
 }
 
+// The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 func (o LookupDomainRecordResultOutput) TtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.TtlSec }).(pulumi.IntOutput)
 }
 
+// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
 func (o LookupDomainRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The relative weight of this Record. Higher values are preferred.
 func (o LookupDomainRecordResultOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.Weight }).(pulumi.IntOutput)
 }

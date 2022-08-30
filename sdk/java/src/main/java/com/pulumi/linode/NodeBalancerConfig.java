@@ -69,23 +69,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `ssl_commonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
- * 
- * * `ssl_fingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
- * 
- * * `node_status` - The status of the attached nodes.
- * 
- * ### node_status
- * 
- * The following attributes are available on node_status:
- * 
- * * `up` - The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
- * 
- * * `down` - The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
  * 
  * ## Import
  * 
@@ -315,32 +298,28 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sslCert);
     }
     /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     @Export(name="sslCommonname", type=String.class, parameters={})
     private Output<String> sslCommonname;
 
     /**
-     * @return The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * @return The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     public Output<String> sslCommonname() {
         return this.sslCommonname;
     }
     /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     @Export(name="sslFingerprint", type=String.class, parameters={})
     private Output<String> sslFingerprint;
 
     /**
-     * @return The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-     * refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     * @return The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
     public Output<String> sslFingerprint() {

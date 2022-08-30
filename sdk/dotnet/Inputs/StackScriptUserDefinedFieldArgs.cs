@@ -12,9 +12,15 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class StackScriptUserDefinedFieldArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default value. If not specified, this value will be used.
+        /// </summary>
         [Input("default")]
         public Input<string>? Default { get; set; }
 
+        /// <summary>
+        /// An example value for the field.
+        /// </summary>
         [Input("example")]
         public Input<string>? Example { get; set; }
 
@@ -24,12 +30,21 @@ namespace Pulumi.Linode.Inputs
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// A list of acceptable values for the field in any quantity, combination or order.
+        /// </summary>
         [Input("manyOf")]
         public Input<string>? ManyOf { get; set; }
 
+        /// <summary>
+        /// The name of the field.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A list of acceptable single values for the field.
+        /// </summary>
         [Input("oneOf")]
         public Input<string>? OneOf { get; set; }
 

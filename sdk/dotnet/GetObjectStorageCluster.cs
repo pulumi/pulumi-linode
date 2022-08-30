@@ -36,17 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Object Storage Cluster resource exports the following attributes:
-        /// 
-        /// * `domain` - The base URL for this cluster.
-        /// 
-        /// * `status` - This cluster's status. (`available`, `unavailable`)
-        /// 
-        /// * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// 
-        /// * `static_site_domain` - The base URL for this cluster used when hosting static sites.
         /// </summary>
         public static Task<GetObjectStorageClusterResult> InvokeAsync(GetObjectStorageClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageClusterResult>("linode:index/getObjectStorageCluster:getObjectStorageCluster", args ?? new GetObjectStorageClusterArgs(), options.WithDefaults());
@@ -76,17 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Object Storage Cluster resource exports the following attributes:
-        /// 
-        /// * `domain` - The base URL for this cluster.
-        /// 
-        /// * `status` - This cluster's status. (`available`, `unavailable`)
-        /// 
-        /// * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// 
-        /// * `static_site_domain` - The base URL for this cluster used when hosting static sites.
         /// </summary>
         public static Output<GetObjectStorageClusterResult> Invoke(GetObjectStorageClusterInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetObjectStorageClusterResult>("linode:index/getObjectStorageCluster:getObjectStorageCluster", args ?? new GetObjectStorageClusterInvokeArgs(), options.WithDefaults());
@@ -95,6 +73,9 @@ namespace Pulumi.Linode
 
     public sealed class GetObjectStorageClusterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The base URL for this cluster.
+        /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
 
@@ -104,12 +85,21 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The base URL for this cluster used when hosting static sites.
+        /// </summary>
         [Input("staticSiteDomain")]
         public string? StaticSiteDomain { get; set; }
 
+        /// <summary>
+        /// This cluster's status. (`available`, `unavailable`)
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -121,6 +111,9 @@ namespace Pulumi.Linode
 
     public sealed class GetObjectStorageClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The base URL for this cluster.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
@@ -130,12 +123,21 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The base URL for this cluster used when hosting static sites.
+        /// </summary>
         [Input("staticSiteDomain")]
         public Input<string>? StaticSiteDomain { get; set; }
 
+        /// <summary>
+        /// This cluster's status. (`available`, `unavailable`)
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -149,10 +151,22 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetObjectStorageClusterResult
     {
+        /// <summary>
+        /// The base URL for this cluster.
+        /// </summary>
         public readonly string Domain;
         public readonly string Id;
+        /// <summary>
+        /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The base URL for this cluster used when hosting static sites.
+        /// </summary>
         public readonly string StaticSiteDomain;
+        /// <summary>
+        /// This cluster's status. (`available`, `unavailable`)
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class NodeBalancerTransfer
     {
+        /// <summary>
+        /// The total transfer, in MB, used by this NodeBalancer for the current month
+        /// </summary>
         public readonly double? In;
+        /// <summary>
+        /// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        /// </summary>
         public readonly double? Out;
+        /// <summary>
+        /// The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        /// </summary>
         public readonly double? Total;
 
         [OutputConstructor]

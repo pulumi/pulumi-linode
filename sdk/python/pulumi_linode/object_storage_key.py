@@ -161,15 +161,6 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         foo = linode.ObjectStorageKey("foo", label="image-access")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `access_key` - This keypair's access key. This is not secret.
-
-        * `secret_key` - This keypair's secret key.
-
-        * `limited` - Whether or not this key is a limited access key.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -195,15 +186,6 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         foo = linode.ObjectStorageKey("foo", label="image-access")
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `access_key` - This keypair's access key. This is not secret.
-
-        * `secret_key` - This keypair's secret key.
-
-        * `limited` - Whether or not this key is a limited access key.
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageKeyArgs args: The arguments to use to populate this resource's properties.

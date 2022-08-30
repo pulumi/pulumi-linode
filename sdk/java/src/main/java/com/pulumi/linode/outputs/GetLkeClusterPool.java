@@ -17,42 +17,29 @@ public final class GetLkeClusterPool {
      * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
      */
-    private final List<GetLkeClusterPoolAutoscaler> autoscalers;
+    private List<GetLkeClusterPoolAutoscaler> autoscalers;
     /**
      * @return The number of nodes in the Node Pool.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return The LKE Cluster&#39;s ID.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The nodes in the Node Pool.
      * 
      */
-    private final List<GetLkeClusterPoolNode> nodes;
+    private List<GetLkeClusterPoolNode> nodes;
     /**
      * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetLkeClusterPool(
-        @CustomType.Parameter("autoscalers") List<GetLkeClusterPoolAutoscaler> autoscalers,
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("nodes") List<GetLkeClusterPoolNode> nodes,
-        @CustomType.Parameter("type") String type) {
-        this.autoscalers = autoscalers;
-        this.count = count;
-        this.id = id;
-        this.nodes = nodes;
-        this.type = type;
-    }
-
+    private GetLkeClusterPool() {}
     /**
      * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
@@ -96,18 +83,14 @@ public final class GetLkeClusterPool {
     public static Builder builder(GetLkeClusterPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetLkeClusterPoolAutoscaler> autoscalers;
         private Integer count;
         private Integer id;
         private List<GetLkeClusterPoolNode> nodes;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLkeClusterPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalers = defaults.autoscalers;
@@ -117,6 +100,7 @@ public final class GetLkeClusterPool {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder autoscalers(List<GetLkeClusterPoolAutoscaler> autoscalers) {
             this.autoscalers = Objects.requireNonNull(autoscalers);
             return this;
@@ -124,14 +108,17 @@ public final class GetLkeClusterPool {
         public Builder autoscalers(GetLkeClusterPoolAutoscaler... autoscalers) {
             return autoscalers(List.of(autoscalers));
         }
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(List<GetLkeClusterPoolNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -139,11 +126,19 @@ public final class GetLkeClusterPool {
         public Builder nodes(GetLkeClusterPoolNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetLkeClusterPool build() {
-            return new GetLkeClusterPool(autoscalers, count, id, nodes, type);
+        }
+        public GetLkeClusterPool build() {
+            final var o = new GetLkeClusterPool();
+            o.autoscalers = autoscalers;
+            o.count = count;
+            o.id = id;
+            o.nodes = nodes;
+            o.type = type;
+            return o;
         }
     }
 }

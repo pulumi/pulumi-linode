@@ -12,110 +12,201 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabasesDatabase {
-    private final List<String> allowLists;
-    private final Integer clusterSize;
-    private final String created;
-    private final Boolean encrypted;
-    private final String engine;
-    private final String hostPrimary;
-    private final String hostSecondary;
-    private final Integer id;
-    private final String instanceUri;
-    private final String label;
-    private final String region;
-    private final String replicationType;
-    private final Boolean sslConnection;
-    private final String status;
-    private final String type;
-    private final String updated;
-    private final String version;
+    /**
+     * @return A list of IP addresses that can access the Managed Database.
+     * 
+     */
+    private List<String> allowLists;
+    /**
+     * @return The number of Linode Instance nodes deployed to the Managed Database.
+     * 
+     */
+    private Integer clusterSize;
+    /**
+     * @return When this Managed Database was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return Whether the Managed Databases is encrypted.
+     * 
+     */
+    private Boolean encrypted;
+    /**
+     * @return The Managed Database engine.
+     * 
+     */
+    private String engine;
+    /**
+     * @return The primary host for the Managed Database.
+     * 
+     */
+    private String hostPrimary;
+    /**
+     * @return The secondary/private network host for the Managed Database.
+     * 
+     */
+    private String hostSecondary;
+    /**
+     * @return The ID of the Managed Database.
+     * 
+     */
+    private Integer id;
+    private String instanceUri;
+    /**
+     * @return A unique, user-defined string referring to the Managed Database.
+     * 
+     */
+    private String label;
+    /**
+     * @return The region to use for the Managed Database.
+     * 
+     */
+    private String region;
+    /**
+     * @return The replication method used for the Managed Database.
+     * 
+     */
+    private String replicationType;
+    /**
+     * @return Whether to require SSL credentials to establish a connection to the Managed Database.
+     * 
+     */
+    private Boolean sslConnection;
+    /**
+     * @return The operating status of the Managed Database.
+     * 
+     */
+    private String status;
+    /**
+     * @return The Linode Instance type used for the nodes of the  Managed Database instance.
+     * 
+     */
+    private String type;
+    /**
+     * @return When this Managed Database was last updated.
+     * 
+     */
+    private String updated;
+    /**
+     * @return The Managed Database engine version.
+     * 
+     */
+    private String version;
 
-    @CustomType.Constructor
-    private GetDatabasesDatabase(
-        @CustomType.Parameter("allowLists") List<String> allowLists,
-        @CustomType.Parameter("clusterSize") Integer clusterSize,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("encrypted") Boolean encrypted,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("hostPrimary") String hostPrimary,
-        @CustomType.Parameter("hostSecondary") String hostSecondary,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("instanceUri") String instanceUri,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("replicationType") String replicationType,
-        @CustomType.Parameter("sslConnection") Boolean sslConnection,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updated") String updated,
-        @CustomType.Parameter("version") String version) {
-        this.allowLists = allowLists;
-        this.clusterSize = clusterSize;
-        this.created = created;
-        this.encrypted = encrypted;
-        this.engine = engine;
-        this.hostPrimary = hostPrimary;
-        this.hostSecondary = hostSecondary;
-        this.id = id;
-        this.instanceUri = instanceUri;
-        this.label = label;
-        this.region = region;
-        this.replicationType = replicationType;
-        this.sslConnection = sslConnection;
-        this.status = status;
-        this.type = type;
-        this.updated = updated;
-        this.version = version;
-    }
-
+    private GetDatabasesDatabase() {}
+    /**
+     * @return A list of IP addresses that can access the Managed Database.
+     * 
+     */
     public List<String> allowLists() {
         return this.allowLists;
     }
+    /**
+     * @return The number of Linode Instance nodes deployed to the Managed Database.
+     * 
+     */
     public Integer clusterSize() {
         return this.clusterSize;
     }
+    /**
+     * @return When this Managed Database was created.
+     * 
+     */
     public String created() {
         return this.created;
     }
+    /**
+     * @return Whether the Managed Databases is encrypted.
+     * 
+     */
     public Boolean encrypted() {
         return this.encrypted;
     }
+    /**
+     * @return The Managed Database engine.
+     * 
+     */
     public String engine() {
         return this.engine;
     }
+    /**
+     * @return The primary host for the Managed Database.
+     * 
+     */
     public String hostPrimary() {
         return this.hostPrimary;
     }
+    /**
+     * @return The secondary/private network host for the Managed Database.
+     * 
+     */
     public String hostSecondary() {
         return this.hostSecondary;
     }
+    /**
+     * @return The ID of the Managed Database.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
     public String instanceUri() {
         return this.instanceUri;
     }
+    /**
+     * @return A unique, user-defined string referring to the Managed Database.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The region to use for the Managed Database.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The replication method used for the Managed Database.
+     * 
+     */
     public String replicationType() {
         return this.replicationType;
     }
+    /**
+     * @return Whether to require SSL credentials to establish a connection to the Managed Database.
+     * 
+     */
     public Boolean sslConnection() {
         return this.sslConnection;
     }
+    /**
+     * @return The operating status of the Managed Database.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The Linode Instance type used for the nodes of the  Managed Database instance.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return When this Managed Database was last updated.
+     * 
+     */
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return The Managed Database engine version.
+     * 
+     */
     public String version() {
         return this.version;
     }
@@ -127,7 +218,7 @@ public final class GetDatabasesDatabase {
     public static Builder builder(GetDatabasesDatabase defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowLists;
         private Integer clusterSize;
@@ -146,11 +237,7 @@ public final class GetDatabasesDatabase {
         private String type;
         private String updated;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabasesDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowLists = defaults.allowLists;
@@ -172,6 +259,7 @@ public final class GetDatabasesDatabase {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder allowLists(List<String> allowLists) {
             this.allowLists = Objects.requireNonNull(allowLists);
             return this;
@@ -179,71 +267,106 @@ public final class GetDatabasesDatabase {
         public Builder allowLists(String... allowLists) {
             return allowLists(List.of(allowLists));
         }
+        @CustomType.Setter
         public Builder clusterSize(Integer clusterSize) {
             this.clusterSize = Objects.requireNonNull(clusterSize);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
             this.encrypted = Objects.requireNonNull(encrypted);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder hostPrimary(String hostPrimary) {
             this.hostPrimary = Objects.requireNonNull(hostPrimary);
             return this;
         }
+        @CustomType.Setter
         public Builder hostSecondary(String hostSecondary) {
             this.hostSecondary = Objects.requireNonNull(hostSecondary);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceUri(String instanceUri) {
             this.instanceUri = Objects.requireNonNull(instanceUri);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder replicationType(String replicationType) {
             this.replicationType = Objects.requireNonNull(replicationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sslConnection(Boolean sslConnection) {
             this.sslConnection = Objects.requireNonNull(sslConnection);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updated(String updated) {
             this.updated = Objects.requireNonNull(updated);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetDatabasesDatabase build() {
-            return new GetDatabasesDatabase(allowLists, clusterSize, created, encrypted, engine, hostPrimary, hostSecondary, id, instanceUri, label, region, replicationType, sslConnection, status, type, updated, version);
+        }
+        public GetDatabasesDatabase build() {
+            final var o = new GetDatabasesDatabase();
+            o.allowLists = allowLists;
+            o.clusterSize = clusterSize;
+            o.created = created;
+            o.encrypted = encrypted;
+            o.engine = engine;
+            o.hostPrimary = hostPrimary;
+            o.hostSecondary = hostSecondary;
+            o.id = id;
+            o.instanceUri = instanceUri;
+            o.label = label;
+            o.region = region;
+            o.replicationType = replicationType;
+            o.sslConnection = sslConnection;
+            o.status = status;
+            o.type = type;
+            o.updated = updated;
+            o.version = version;
+            return o;
         }
     }
 }

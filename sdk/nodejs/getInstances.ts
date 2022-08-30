@@ -5,6 +5,62 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Linode instances that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode instances with a certain label and tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instances = pulumi.output(linode.getInstances({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: [
+ *                 "my-label",
+ *                 "my-other-label",
+ *             ],
+ *         },
+ *         {
+ *             name: "tags",
+ *             values: ["my-tag"],
+ *         },
+ *     ],
+ * }));
+ * ```
+ *
+ * Get information about all Linode instances associated with the current token:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all_instances = pulumi.output(linode.getInstances());
+ * ```
+ * ## Filterable Fields
+ *
+ * * `group`
+ *
+ * * `id`
+ *
+ * * `image`
+ *
+ * * `label`
+ *
+ * * `region`
+ *
+ * * `status`
+ *
+ * * `tags`
+ *
+ * * `type`
+ *
+ * * `watchdogEnabled`
+ */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     if (!opts) {

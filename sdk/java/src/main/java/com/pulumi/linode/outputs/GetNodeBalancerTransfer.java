@@ -13,28 +13,19 @@ public final class GetNodeBalancerTransfer {
      * @return The total transfer, in MB, used by this NodeBalancer for the current month
      * 
      */
-    private final Double in;
+    private Double in;
     /**
      * @return The total inbound transfer, in MB, used for this NodeBalancer for the current month
      * 
      */
-    private final Double out;
+    private Double out;
     /**
      * @return The total outbound transfer, in MB, used for this NodeBalancer for the current month
      * 
      */
-    private final Double total;
+    private Double total;
 
-    @CustomType.Constructor
-    private GetNodeBalancerTransfer(
-        @CustomType.Parameter("in") Double in,
-        @CustomType.Parameter("out") Double out,
-        @CustomType.Parameter("total") Double total) {
-        this.in = in;
-        this.out = out;
-        this.total = total;
-    }
-
+    private GetNodeBalancerTransfer() {}
     /**
      * @return The total transfer, in MB, used by this NodeBalancer for the current month
      * 
@@ -64,16 +55,12 @@ public final class GetNodeBalancerTransfer {
     public static Builder builder(GetNodeBalancerTransfer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double in;
         private Double out;
         private Double total;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeBalancerTransfer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.in = defaults.in;
@@ -81,19 +68,27 @@ public final class GetNodeBalancerTransfer {
     	      this.total = defaults.total;
         }
 
+        @CustomType.Setter
         public Builder in(Double in) {
             this.in = Objects.requireNonNull(in);
             return this;
         }
+        @CustomType.Setter
         public Builder out(Double out) {
             this.out = Objects.requireNonNull(out);
             return this;
         }
+        @CustomType.Setter
         public Builder total(Double total) {
             this.total = Objects.requireNonNull(total);
             return this;
-        }        public GetNodeBalancerTransfer build() {
-            return new GetNodeBalancerTransfer(in, out, total);
+        }
+        public GetNodeBalancerTransfer build() {
+            final var o = new GetNodeBalancerTransfer();
+            o.in = in;
+            o.out = out;
+            o.total = total;
+            return o;
         }
     }
 }

@@ -14,16 +14,6 @@ import (
 // Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
 // For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
 //
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
-//
-// * `configId` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-//
-// * `nodebalancerId` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
-//
 // ## Import
 //
 // NodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.
@@ -48,7 +38,7 @@ type NodeBalancerNode struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
-	// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight pulumi.IntOutput `pulumi:"weight"`
@@ -105,7 +95,7 @@ type nodeBalancerNodeState struct {
 	Mode *string `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId *int `pulumi:"nodebalancerId"`
-	// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status *string `pulumi:"status"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight *int `pulumi:"weight"`
@@ -122,7 +112,7 @@ type NodeBalancerNodeState struct {
 	Mode pulumi.StringPtrInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntPtrInput
-	// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status pulumi.StringPtrInput
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight pulumi.IntPtrInput
@@ -275,7 +265,7 @@ func (o NodeBalancerNodeOutput) NodebalancerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntOutput { return v.NodebalancerId }).(pulumi.IntOutput)
 }
 
-// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 func (o NodeBalancerNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

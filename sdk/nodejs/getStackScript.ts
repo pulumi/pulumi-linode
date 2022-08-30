@@ -20,47 +20,6 @@ import * as utilities from "./utilities";
  *     id: 355872,
  * }));
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `label` - The StackScript's label is for display purposes only.
- *
- * * `script` - The script to execute when provisioning a new Linode with this StackScript.
- *
- * * `description` - A description for the StackScript.
- *
- * * `revNote` - This field allows you to add notes for the set of revisions made to this StackScript.
- *
- * * `isPublic` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
- *
- * * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
- *
- * * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
- *
- * * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
- *
- * * `deploymentsTotal` - The total number of times this StackScript has been deployed.
- *
- * * `username` - The User who created the StackScript.
- *
- * * `created` - The date this StackScript was created.
- *
- * * `updated` - The date this StackScript was updated.
- *
- * * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
- *   
- *   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
- *   
- *   * `name` - The name of the field.
- *   
- *   * `example` - An example value for the field.
- *   
- *   * `oneOf` - A list of acceptable single values for the field.
- *   
- *   * `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
- *   
- *   * `default` - The default value. If not specified, this value will be used.
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
     if (!opts) {
@@ -82,6 +41,9 @@ export interface GetStackScriptArgs {
      * The unique numeric ID of the StackScript to query.
      */
     id: number;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
     userDefinedFields?: inputs.GetStackScriptUserDefinedField[];
 }
 
@@ -89,19 +51,58 @@ export interface GetStackScriptArgs {
  * A collection of values returned by getStackScript.
  */
 export interface GetStackScriptResult {
+    /**
+     * The date this StackScript was created.
+     */
     readonly created: string;
+    /**
+     * Count of currently active, deployed Linodes created from this StackScript.
+     */
     readonly deploymentsActive: number;
+    /**
+     * The total number of times this StackScript has been deployed.
+     */
     readonly deploymentsTotal: number;
+    /**
+     * A description for the StackScript.
+     */
     readonly description: string;
     readonly id: number;
+    /**
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     */
     readonly images: string[];
+    /**
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     */
     readonly isPublic: boolean;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     readonly label: string;
+    /**
+     * This field allows you to add notes for the set of revisions made to this StackScript.
+     */
     readonly revNote: string;
+    /**
+     * The script to execute when provisioning a new Linode with this StackScript.
+     */
     readonly script: string;
+    /**
+     * The date this StackScript was updated.
+     */
     readonly updated: string;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
     readonly userDefinedFields: outputs.GetStackScriptUserDefinedField[];
+    /**
+     * The Gravatar ID for the User who created the StackScript.
+     */
     readonly userGravatarId: string;
+    /**
+     * The User who created the StackScript.
+     */
     readonly username: string;
 }
 
@@ -117,5 +118,8 @@ export interface GetStackScriptOutputArgs {
      * The unique numeric ID of the StackScript to query.
      */
     id: pulumi.Input<number>;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
     userDefinedFields?: pulumi.Input<pulumi.Input<inputs.GetStackScriptUserDefinedFieldArgs>[]>;
 }

@@ -139,15 +139,6 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
         region="us-southeast",
         type="g6-nanode-1")
     ```
-    ## Attributes
-
-    Each engine will be stored in the `engines` attribute and will export the following attributes:
-
-    * `engine` - The Managed Database engine type.
-
-    * `id` - The Managed Database engine ID in engine/version format.
-
-    * `version` - The Managed Database engine version.
 
 
     :param bool latest: If true, only the latest engine version will be returned.
@@ -220,15 +211,6 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
         region="us-southeast",
         type="g6-nanode-1")
     ```
-    ## Attributes
-
-    Each engine will be stored in the `engines` attribute and will export the following attributes:
-
-    * `engine` - The Managed Database engine type.
-
-    * `id` - The Managed Database engine ID in engine/version format.
-
-    * `version` - The Managed Database engine version.
 
 
     :param bool latest: If true, only the latest engine version will be returned.

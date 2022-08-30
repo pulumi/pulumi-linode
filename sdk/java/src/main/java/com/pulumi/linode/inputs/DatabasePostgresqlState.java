@@ -95,14 +95,14 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Managed Database engine.
+     * The Managed Database engine. (e.g. `postgresql`)
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The Managed Database engine.
+     * @return The Managed Database engine. (e.g. `postgresql`)
      * 
      */
     public Optional<Output<String>> engine() {
@@ -140,14 +140,14 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The secondary host for the Managed Database.
+     * The secondary/private network host for the Managed Database.
      * 
      */
     @Import(name="hostSecondary")
     private @Nullable Output<String> hostSecondary;
 
     /**
-     * @return The secondary host for the Managed Database.
+     * @return The secondary/private network host for the Managed Database.
      * 
      */
     public Optional<Output<String>> hostSecondary() {
@@ -335,14 +335,14 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Managed Database engine version.
+     * The Managed Database engine version. (e.g. `13.2`)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The Managed Database engine version.
+     * @return The Managed Database engine version. (e.g. `13.2`)
      * 
      */
     public Optional<Output<String>> version() {
@@ -510,7 +510,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `postgresql`)
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param engine The Managed Database engine.
+         * @param engine The Managed Database engine. (e.g. `postgresql`)
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostSecondary The secondary host for the Managed Database.
+         * @param hostSecondary The secondary/private network host for the Managed Database.
          * 
          * @return builder
          * 
@@ -846,7 +846,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `13.2`)
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param version The Managed Database engine version.
+         * @param version The Managed Database engine version. (e.g. `13.2`)
          * 
          * @return builder
          * 

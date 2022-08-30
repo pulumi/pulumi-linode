@@ -62,31 +62,49 @@ class GetInstanceTypeResult:
     @property
     @pulumi.getter(name="class")
     def class_(self) -> str:
+        """
+        The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        """
         return pulumi.get(self, "class_")
 
     @property
     @pulumi.getter
     def disk(self) -> int:
+        """
+        The Disk size, in MB, of the Linode Type
+        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Linode Type
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The Linode Type's label is for display purposes only
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def memory(self) -> int:
+        """
+        The amount of RAM included in this Linode Type.
+        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter(name="networkOut")
     def network_out(self) -> int:
+        """
+        The Mbits outbound bandwidth allocation.
+        """
         return pulumi.get(self, "network_out")
 
     @property
@@ -97,11 +115,17 @@ class GetInstanceTypeResult:
     @property
     @pulumi.getter
     def transfer(self) -> int:
+        """
+        The monthly outbound transfer amount, in MB.
+        """
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
     def vcpus(self) -> int:
+        """
+        The number of VCPU cores this Linode Type offers.
+        """
         return pulumi.get(self, "vcpus")
 
 
@@ -139,36 +163,10 @@ def get_instance_type(id: Optional[str] = None,
 
     default = linode.get_instance_type(id="g6-standard-2")
     ```
-    ## Attributes
-
-    The Linode Instance Type resource exports the following attributes:
-
-    * `id` - The ID representing the Linode Type
-
-    * `label` - The Linode Type's label is for display purposes only
-
-    * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-
-    * `disk` - The Disk size, in MB, of the Linode Type
-
-    * `price.0.hourly` -  Cost (in US dollars) per hour.
-
-    * `price.0.monthly` - Cost (in US dollars) per month.
-
-    * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-
-    * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-
-    * `network_out` - The Mbits outbound bandwidth allocation.
-
-    * `memory` - The amount of RAM included in this Linode Type.
-
-    * `transfer` - The monthly outbound transfer amount, in MB.
-
-    * `vcpus` - The number of VCPU cores this Linode Type offers.
 
 
     :param str id: Label used to identify instance type
+    :param str label: The Linode Type's label is for display purposes only
     """
     __args__ = dict()
     __args__['id'] = id
@@ -206,35 +204,9 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
 
     default = linode.get_instance_type(id="g6-standard-2")
     ```
-    ## Attributes
-
-    The Linode Instance Type resource exports the following attributes:
-
-    * `id` - The ID representing the Linode Type
-
-    * `label` - The Linode Type's label is for display purposes only
-
-    * `class` - The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
-
-    * `disk` - The Disk size, in MB, of the Linode Type
-
-    * `price.0.hourly` -  Cost (in US dollars) per hour.
-
-    * `price.0.monthly` - Cost (in US dollars) per month.
-
-    * `addons.0.backups.0.price.0.hourly` - The cost (in US dollars) per hour to add Backups service.
-
-    * `addons.0.backups.0.price.0.monthly` - The cost (in US dollars) per month to add Backups service.
-
-    * `network_out` - The Mbits outbound bandwidth allocation.
-
-    * `memory` - The amount of RAM included in this Linode Type.
-
-    * `transfer` - The monthly outbound transfer amount, in MB.
-
-    * `vcpus` - The number of VCPU cores this Linode Type offers.
 
 
     :param str id: Label used to identify instance type
+    :param str label: The Linode Type's label is for display purposes only
     """
     ...

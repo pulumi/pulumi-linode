@@ -13,17 +13,10 @@ public final class GetRegionResult {
      * @return The country the region resides in.
      * 
      */
-    private final String country;
-    private final String id;
+    private String country;
+    private String id;
 
-    @CustomType.Constructor
-    private GetRegionResult(
-        @CustomType.Parameter("country") String country,
-        @CustomType.Parameter("id") String id) {
-        this.country = country;
-        this.id = id;
-    }
-
+    private GetRegionResult() {}
     /**
      * @return The country the region resides in.
      * 
@@ -42,30 +35,32 @@ public final class GetRegionResult {
     public static Builder builder(GetRegionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String country;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.country = defaults.country;
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder country(String country) {
             this.country = Objects.requireNonNull(country);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetRegionResult build() {
-            return new GetRegionResult(country, id);
+        }
+        public GetRegionResult build() {
+            final var o = new GetRegionResult();
+            o.country = country;
+            o.id = id;
+            return o;
         }
     }
 }

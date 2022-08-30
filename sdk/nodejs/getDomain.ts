@@ -22,37 +22,6 @@ import * as utilities from "./utilities";
  *     domain: "bar.example.com",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Domain resource exports the following attributes:
- *
- * * `id` - The unique ID of this Domain.
- *
- * * `domain` - The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
- *
- * * `type` - If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
- *
- * * `group` - The group this Domain belongs to.
- *
- * * `status` - Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
- *
- * * `description` - A description for this Domain.
- *
- * * `masterIps` - The IP addresses representing the master DNS for this Domain.
- *
- * * `axfrIps` - The list of IPs that may perform a zone transfer for this Domain.
- *
- * * `ttlSec` - 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
- *
- * * `retrySec` - The interval, in seconds, at which a failed refresh should be retried.
- *
- * * `expireSec` - The amount of time in seconds that may pass before this Domain is no longer authoritative.
- *
- * * `refreshSec` - The amount of time in seconds before this Domain should be refreshed.
- *
- * * `soaEmail` - Start of Authority email address.
- *
- * * `tags` - An array of tags applied to this object.
  */
 export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     args = args || {};
@@ -85,19 +54,61 @@ export interface GetDomainArgs {
  * A collection of values returned by getDomain.
  */
 export interface GetDomainResult {
+    /**
+     * The list of IPs that may perform a zone transfer for this Domain.
+     */
     readonly axfrIps: string[];
+    /**
+     * A description for this Domain.
+     */
     readonly description: string;
+    /**
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+     */
     readonly domain?: string;
+    /**
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative.
+     */
     readonly expireSec: number;
+    /**
+     * The group this Domain belongs to.
+     */
     readonly group: string;
+    /**
+     * The unique ID of this Domain.
+     */
     readonly id?: string;
+    /**
+     * The IP addresses representing the master DNS for this Domain.
+     */
     readonly masterIps: string[];
+    /**
+     * The amount of time in seconds before this Domain should be refreshed.
+     */
     readonly refreshSec: number;
+    /**
+     * The interval, in seconds, at which a failed refresh should be retried.
+     */
     readonly retrySec: number;
+    /**
+     * Start of Authority email address.
+     */
     readonly soaEmail: string;
+    /**
+     * Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+     */
     readonly status: string;
+    /**
+     * An array of tags applied to this object.
+     */
     readonly tags: string[];
+    /**
+     * 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+     */
     readonly ttlSec: number;
+    /**
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+     */
     readonly type: string;
 }
 

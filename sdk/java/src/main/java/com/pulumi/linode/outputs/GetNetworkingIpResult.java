@@ -11,48 +11,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkingIpResult {
-    private final String address;
-    private final String gateway;
+    /**
+     * @return The IP address.
+     * 
+     */
+    private String address;
+    /**
+     * @return The default gateway for this address.
+     * 
+     */
+    private String gateway;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Integer linodeId;
-    private final Integer prefix;
-    private final Boolean public_;
-    private final String rdns;
-    private final String region;
-    private final String subnetMask;
-    private final String type;
+    private String id;
+    /**
+     * @return The ID of the Linode this address currently belongs to.
+     * 
+     */
+    private Integer linodeId;
+    /**
+     * @return The number of bits set in the subnet mask.
+     * 
+     */
+    private Integer prefix;
+    /**
+     * @return Whether this is a public or private IP address.
+     * 
+     */
+    private Boolean public_;
+    /**
+     * @return The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
+    private String rdns;
+    /**
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
+    private String region;
+    /**
+     * @return The mask that separates host bits from network bits for this address.
+     * 
+     */
+    private String subnetMask;
+    /**
+     * @return The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * 
+     */
+    private String type;
 
-    @CustomType.Constructor
-    private GetNetworkingIpResult(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("gateway") String gateway,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("linodeId") Integer linodeId,
-        @CustomType.Parameter("prefix") Integer prefix,
-        @CustomType.Parameter("public") Boolean public_,
-        @CustomType.Parameter("rdns") String rdns,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("subnetMask") String subnetMask,
-        @CustomType.Parameter("type") String type) {
-        this.address = address;
-        this.gateway = gateway;
-        this.id = id;
-        this.linodeId = linodeId;
-        this.prefix = prefix;
-        this.public_ = public_;
-        this.rdns = rdns;
-        this.region = region;
-        this.subnetMask = subnetMask;
-        this.type = type;
-    }
-
+    private GetNetworkingIpResult() {}
+    /**
+     * @return The IP address.
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The default gateway for this address.
+     * 
+     */
     public String gateway() {
         return this.gateway;
     }
@@ -63,24 +84,52 @@ public final class GetNetworkingIpResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the Linode this address currently belongs to.
+     * 
+     */
     public Integer linodeId() {
         return this.linodeId;
     }
+    /**
+     * @return The number of bits set in the subnet mask.
+     * 
+     */
     public Integer prefix() {
         return this.prefix;
     }
+    /**
+     * @return Whether this is a public or private IP address.
+     * 
+     */
     public Boolean public_() {
         return this.public_;
     }
+    /**
+     * @return The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
     public String rdns() {
         return this.rdns;
     }
+    /**
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The mask that separates host bits from network bits for this address.
+     * 
+     */
     public String subnetMask() {
         return this.subnetMask;
     }
+    /**
+     * @return The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -92,7 +141,7 @@ public final class GetNetworkingIpResult {
     public static Builder builder(GetNetworkingIpResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String gateway;
@@ -104,11 +153,7 @@ public final class GetNetworkingIpResult {
         private String region;
         private String subnetMask;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkingIpResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -123,47 +168,69 @@ public final class GetNetworkingIpResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder gateway(String gateway) {
             this.gateway = Objects.requireNonNull(gateway);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
             this.linodeId = Objects.requireNonNull(linodeId);
             return this;
         }
+        @CustomType.Setter
         public Builder prefix(Integer prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
         }
+        @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
             this.public_ = Objects.requireNonNull(public_);
             return this;
         }
+        @CustomType.Setter
         public Builder rdns(String rdns) {
             this.rdns = Objects.requireNonNull(rdns);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetMask(String subnetMask) {
             this.subnetMask = Objects.requireNonNull(subnetMask);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetNetworkingIpResult build() {
-            return new GetNetworkingIpResult(address, gateway, id, linodeId, prefix, public_, rdns, region, subnetMask, type);
+        }
+        public GetNetworkingIpResult build() {
+            final var o = new GetNetworkingIpResult();
+            o.address = address;
+            o.gateway = gateway;
+            o.id = id;
+            o.linodeId = linodeId;
+            o.prefix = prefix;
+            o.public_ = public_;
+            o.rdns = rdns;
+            o.region = region;
+            o.subnetMask = subnetMask;
+            o.type = type;
+            return o;
         }
     }
 }

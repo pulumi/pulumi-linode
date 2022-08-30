@@ -62,21 +62,33 @@ class GetImageResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When this Image was created.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        The name of the User who created this Image, or "linode" for official Images.
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter
     def deprecated(self) -> bool:
+        """
+        Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+        """
         return pulumi.get(self, "deprecated")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A detailed description of this Image.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -92,31 +104,49 @@ class GetImageResult:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> bool:
+        """
+        True if the Image is public.
+        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        A short description of the Image.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The current status of this image. (`creating`, `pending_upload`, `available`)
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def vendor(self) -> str:
+        """
+        The upstream distribution vendor. `None` for private Images.
+        """
         return pulumi.get(self, "vendor")
 
 
@@ -155,29 +185,6 @@ def get_image(id: Optional[str] = None,
 
     k8_master = linode.get_image(id="linode/debian8")
     ```
-    ## Attributes
-
-    The Linode Image resource exports the following attributes:
-
-    * `label` - A short description of the Image.
-
-    * `created` - When this Image was created.
-
-    * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-
-    * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-
-    * `description` - A detailed description of this Image.
-
-    * `is_public` - True if the Image is public.
-
-    * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-
-    * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-
-    * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-
-    * `vendor` - The upstream distribution vendor. `None` for private Images.
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -218,29 +225,6 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
 
     k8_master = linode.get_image(id="linode/debian8")
     ```
-    ## Attributes
-
-    The Linode Image resource exports the following attributes:
-
-    * `label` - A short description of the Image.
-
-    * `created` - When this Image was created.
-
-    * `created_by` - The name of the User who created this Image, or "linode" for official Images.
-
-    * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-
-    * `description` - A detailed description of this Image.
-
-    * `is_public` - True if the Image is public.
-
-    * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-
-    * `status` - The current status of this image. (`creating`, `pending_upload`, `available`)
-
-    * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-
-    * `vendor` - The upstream distribution vendor. `None` for private Images.
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.

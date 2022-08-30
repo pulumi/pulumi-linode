@@ -92,14 +92,14 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * @return The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
     public Optional<Output<String>> status() {
@@ -257,7 +257,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+         * @param status The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+         * @param status The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
          * 
          * @return builder
          * 

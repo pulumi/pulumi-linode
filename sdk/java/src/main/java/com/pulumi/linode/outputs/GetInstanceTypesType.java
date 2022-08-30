@@ -13,68 +13,109 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesType {
-    private final List<GetInstanceTypesTypeAddon> addons;
-    private final String class_;
-    private final Integer disk;
-    private final String id;
-    private final String label;
-    private final Integer memory;
-    private final Integer networkOut;
-    private final List<GetInstanceTypesTypePrice> prices;
-    private final Integer transfer;
-    private final Integer vcpus;
+    private List<GetInstanceTypesTypeAddon> addons;
+    /**
+     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * 
+     */
+    private String class_;
+    /**
+     * @return The Disk size, in MB, of the Linode Type.
+     * 
+     */
+    private Integer disk;
+    /**
+     * @return The ID representing the Linode Type.
+     * 
+     */
+    private String id;
+    /**
+     * @return The Linode Type&#39;s label is for display purposes only.
+     * 
+     */
+    private String label;
+    /**
+     * @return The amount of RAM included in this Linode Type.
+     * 
+     */
+    private Integer memory;
+    /**
+     * @return The Mbits outbound bandwidth allocation.
+     * 
+     */
+    private Integer networkOut;
+    private List<GetInstanceTypesTypePrice> prices;
+    /**
+     * @return The monthly outbound transfer amount, in MB.
+     * 
+     */
+    private Integer transfer;
+    /**
+     * @return The number of VCPU cores this Linode Type offers.
+     * 
+     */
+    private Integer vcpus;
 
-    @CustomType.Constructor
-    private GetInstanceTypesType(
-        @CustomType.Parameter("addons") List<GetInstanceTypesTypeAddon> addons,
-        @CustomType.Parameter("class") String class_,
-        @CustomType.Parameter("disk") Integer disk,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("memory") Integer memory,
-        @CustomType.Parameter("networkOut") Integer networkOut,
-        @CustomType.Parameter("prices") List<GetInstanceTypesTypePrice> prices,
-        @CustomType.Parameter("transfer") Integer transfer,
-        @CustomType.Parameter("vcpus") Integer vcpus) {
-        this.addons = addons;
-        this.class_ = class_;
-        this.disk = disk;
-        this.id = id;
-        this.label = label;
-        this.memory = memory;
-        this.networkOut = networkOut;
-        this.prices = prices;
-        this.transfer = transfer;
-        this.vcpus = vcpus;
-    }
-
+    private GetInstanceTypesType() {}
     public List<GetInstanceTypesTypeAddon> addons() {
         return this.addons;
     }
+    /**
+     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * 
+     */
     public String class_() {
         return this.class_;
     }
+    /**
+     * @return The Disk size, in MB, of the Linode Type.
+     * 
+     */
     public Integer disk() {
         return this.disk;
     }
+    /**
+     * @return The ID representing the Linode Type.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Linode Type&#39;s label is for display purposes only.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The amount of RAM included in this Linode Type.
+     * 
+     */
     public Integer memory() {
         return this.memory;
     }
+    /**
+     * @return The Mbits outbound bandwidth allocation.
+     * 
+     */
     public Integer networkOut() {
         return this.networkOut;
     }
     public List<GetInstanceTypesTypePrice> prices() {
         return this.prices;
     }
+    /**
+     * @return The monthly outbound transfer amount, in MB.
+     * 
+     */
     public Integer transfer() {
         return this.transfer;
     }
+    /**
+     * @return The number of VCPU cores this Linode Type offers.
+     * 
+     */
     public Integer vcpus() {
         return this.vcpus;
     }
@@ -86,7 +127,7 @@ public final class GetInstanceTypesType {
     public static Builder builder(GetInstanceTypesType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypesTypeAddon> addons;
         private String class_;
@@ -98,11 +139,7 @@ public final class GetInstanceTypesType {
         private List<GetInstanceTypesTypePrice> prices;
         private Integer transfer;
         private Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addons = defaults.addons;
@@ -117,6 +154,7 @@ public final class GetInstanceTypesType {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
         public Builder addons(List<GetInstanceTypesTypeAddon> addons) {
             this.addons = Objects.requireNonNull(addons);
             return this;
@@ -124,30 +162,37 @@ public final class GetInstanceTypesType {
         public Builder addons(GetInstanceTypesTypeAddon... addons) {
             return addons(List.of(addons));
         }
+        @CustomType.Setter("class")
         public Builder class_(String class_) {
             this.class_ = Objects.requireNonNull(class_);
             return this;
         }
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             this.disk = Objects.requireNonNull(disk);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder networkOut(Integer networkOut) {
             this.networkOut = Objects.requireNonNull(networkOut);
             return this;
         }
+        @CustomType.Setter
         public Builder prices(List<GetInstanceTypesTypePrice> prices) {
             this.prices = Objects.requireNonNull(prices);
             return this;
@@ -155,15 +200,29 @@ public final class GetInstanceTypesType {
         public Builder prices(GetInstanceTypesTypePrice... prices) {
             return prices(List.of(prices));
         }
+        @CustomType.Setter
         public Builder transfer(Integer transfer) {
             this.transfer = Objects.requireNonNull(transfer);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
             this.vcpus = Objects.requireNonNull(vcpus);
             return this;
-        }        public GetInstanceTypesType build() {
-            return new GetInstanceTypesType(addons, class_, disk, id, label, memory, networkOut, prices, transfer, vcpus);
+        }
+        public GetInstanceTypesType build() {
+            final var o = new GetInstanceTypesType();
+            o.addons = addons;
+            o.class_ = class_;
+            o.disk = disk;
+            o.id = id;
+            o.label = label;
+            o.memory = memory;
+            o.networkOut = networkOut;
+            o.prices = prices;
+            o.transfer = transfer;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

@@ -28,9 +28,6 @@ import * as utilities from "./utilities";
  *     target: "foobar.example",
  * });
  * ```
- * ## Attributes
- *
- * This resource exports no additional attributes.
  *
  * ## Import
  *

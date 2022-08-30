@@ -36,13 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Volume resource exports the following attributes:
-        /// 
-        /// - `domain_id` - The associated domain's unique ID.
-        /// 
-        /// - `zone_file` - Array of strings representing the Domain Zonefile.
         /// </summary>
         public static Task<GetDomainZonefileResult> InvokeAsync(GetDomainZonefileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileArgs(), options.WithDefaults());
@@ -72,13 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Volume resource exports the following attributes:
-        /// 
-        /// - `domain_id` - The associated domain's unique ID.
-        /// 
-        /// - `zone_file` - Array of strings representing the Domain Zonefile.
         /// </summary>
         public static Output<GetDomainZonefileResult> Invoke(GetDomainZonefileInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
@@ -95,6 +81,10 @@ namespace Pulumi.Linode
 
         [Input("zoneFiles")]
         private List<string>? _zoneFiles;
+
+        /// <summary>
+        /// Array of strings representing the Domain Zonefile.
+        /// </summary>
         public List<string> ZoneFiles
         {
             get => _zoneFiles ?? (_zoneFiles = new List<string>());
@@ -117,6 +107,10 @@ namespace Pulumi.Linode
 
         [Input("zoneFiles")]
         private InputList<string>? _zoneFiles;
+
+        /// <summary>
+        /// Array of strings representing the Domain Zonefile.
+        /// </summary>
         public InputList<string> ZoneFiles
         {
             get => _zoneFiles ?? (_zoneFiles = new InputList<string>());
@@ -133,11 +127,17 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetDomainZonefileResult
     {
+        /// <summary>
+        /// The associated domain's unique ID.
+        /// </summary>
         public readonly int DomainId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Array of strings representing the Domain Zonefile.
+        /// </summary>
         public readonly ImmutableArray<string> ZoneFiles;
 
         [OutputConstructor]

@@ -15,38 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LkeClusterPool {
-    private final @Nullable LkeClusterPoolAutoscaler autoscaler;
+    private @Nullable LkeClusterPoolAutoscaler autoscaler;
     /**
      * @return The number of nodes in the Node Pool.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return The ID of the node.
      * 
      */
-    private final @Nullable Integer id;
-    private final @Nullable List<LkeClusterPoolNode> nodes;
+    private @Nullable Integer id;
+    private @Nullable List<LkeClusterPoolNode> nodes;
     /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private LkeClusterPool(
-        @CustomType.Parameter("autoscaler") @Nullable LkeClusterPoolAutoscaler autoscaler,
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("nodes") @Nullable List<LkeClusterPoolNode> nodes,
-        @CustomType.Parameter("type") String type) {
-        this.autoscaler = autoscaler;
-        this.count = count;
-        this.id = id;
-        this.nodes = nodes;
-        this.type = type;
-    }
-
+    private LkeClusterPool() {}
     public Optional<LkeClusterPoolAutoscaler> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -82,18 +69,14 @@ public final class LkeClusterPool {
     public static Builder builder(LkeClusterPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable LkeClusterPoolAutoscaler autoscaler;
         private Integer count;
         private @Nullable Integer id;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LkeClusterPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaler = defaults.autoscaler;
@@ -103,18 +86,22 @@ public final class LkeClusterPool {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder autoscaler(@Nullable LkeClusterPoolAutoscaler autoscaler) {
             this.autoscaler = autoscaler;
             return this;
         }
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(@Nullable List<LkeClusterPoolNode> nodes) {
             this.nodes = nodes;
             return this;
@@ -122,11 +109,19 @@ public final class LkeClusterPool {
         public Builder nodes(LkeClusterPoolNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public LkeClusterPool build() {
-            return new LkeClusterPool(autoscaler, count, id, nodes, type);
+        }
+        public LkeClusterPool build() {
+            final var o = new LkeClusterPool();
+            o.autoscaler = autoscaler;
+            o.count = count;
+            o.id = id;
+            o.nodes = nodes;
+            o.type = type;
+            return o;
         }
     }
 }

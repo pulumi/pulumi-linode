@@ -87,7 +87,59 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
                   order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode instances that match a set of filters.
+
+    ## Example Usage
+
+    Get information about all Linode instances with a certain label and tag:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_instances = linode.get_instances(filters=[
+        linode.GetInstancesFilterArgs(
+            name="label",
+            values=[
+                "my-label",
+                "my-other-label",
+            ],
+        ),
+        linode.GetInstancesFilterArgs(
+            name="tags",
+            values=["my-tag"],
+        ),
+    ])
+    ```
+
+    Get information about all Linode instances associated with the current token:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_instances = linode.get_instances()
+    ```
+    ## Filterable Fields
+
+    * `group`
+
+    * `id`
+
+    * `image`
+
+    * `label`
+
+    * `region`
+
+    * `status`
+
+    * `tags`
+
+    * `type`
+
+    * `watchdog_enabled`
+
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
@@ -113,7 +165,59 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode instances that match a set of filters.
+
+    ## Example Usage
+
+    Get information about all Linode instances with a certain label and tag:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_instances = linode.get_instances(filters=[
+        linode.GetInstancesFilterArgs(
+            name="label",
+            values=[
+                "my-label",
+                "my-other-label",
+            ],
+        ),
+        linode.GetInstancesFilterArgs(
+            name="tags",
+            values=["my-tag"],
+        ),
+    ])
+    ```
+
+    Get information about all Linode instances associated with the current token:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_instances = linode.get_instances()
+    ```
+    ## Filterable Fields
+
+    * `group`
+
+    * `id`
+
+    * `image`
+
+    * `label`
+
+    * `region`
+
+    * `status`
+
+    * `tags`
+
+    * `type`
+
+    * `watchdog_enabled`
+
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.

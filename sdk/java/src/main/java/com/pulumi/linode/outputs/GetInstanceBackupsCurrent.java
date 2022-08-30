@@ -16,66 +16,45 @@ public final class GetInstanceBackupsCurrent {
      * @return A list of the labels of the Configuration profiles that are part of the Backup.
      * 
      */
-    private final List<String> configs;
+    private List<String> configs;
     /**
      * @return The date the Backup was taken.
      * 
      */
-    private final String created;
-    private final List<GetInstanceBackupsCurrentDisk> disks;
+    private String created;
+    private List<GetInstanceBackupsCurrentDisk> disks;
     /**
      * @return The date the Backup completed.
      * 
      */
-    private final String finished;
+    private String finished;
     /**
      * @return The unique ID of this Backup.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The label of this disk.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The date the Backup was most recently updated.
      * 
      */
-    private final String updated;
+    private String updated;
 
-    @CustomType.Constructor
-    private GetInstanceBackupsCurrent(
-        @CustomType.Parameter("configs") List<String> configs,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("disks") List<GetInstanceBackupsCurrentDisk> disks,
-        @CustomType.Parameter("finished") String finished,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updated") String updated) {
-        this.configs = configs;
-        this.created = created;
-        this.disks = disks;
-        this.finished = finished;
-        this.id = id;
-        this.label = label;
-        this.status = status;
-        this.type = type;
-        this.updated = updated;
-    }
-
+    private GetInstanceBackupsCurrent() {}
     /**
      * @return A list of the labels of the Configuration profiles that are part of the Backup.
      * 
@@ -143,7 +122,7 @@ public final class GetInstanceBackupsCurrent {
     public static Builder builder(GetInstanceBackupsCurrent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> configs;
         private String created;
@@ -154,11 +133,7 @@ public final class GetInstanceBackupsCurrent {
         private String status;
         private String type;
         private String updated;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceBackupsCurrent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -172,6 +147,7 @@ public final class GetInstanceBackupsCurrent {
     	      this.updated = defaults.updated;
         }
 
+        @CustomType.Setter
         public Builder configs(List<String> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -179,10 +155,12 @@ public final class GetInstanceBackupsCurrent {
         public Builder configs(String... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder disks(List<GetInstanceBackupsCurrentDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -190,31 +168,48 @@ public final class GetInstanceBackupsCurrent {
         public Builder disks(GetInstanceBackupsCurrentDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder finished(String finished) {
             this.finished = Objects.requireNonNull(finished);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updated(String updated) {
             this.updated = Objects.requireNonNull(updated);
             return this;
-        }        public GetInstanceBackupsCurrent build() {
-            return new GetInstanceBackupsCurrent(configs, created, disks, finished, id, label, status, type, updated);
+        }
+        public GetInstanceBackupsCurrent build() {
+            final var o = new GetInstanceBackupsCurrent();
+            o.configs = configs;
+            o.created = created;
+            o.disks = disks;
+            o.finished = finished;
+            o.id = id;
+            o.label = label;
+            o.status = status;
+            o.type = type;
+            o.updated = updated;
+            return o;
         }
     }
 }

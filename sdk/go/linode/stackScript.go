@@ -68,35 +68,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
-//
-// * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
-//
-// * `deploymentsTotal` - The total number of times this StackScript has been deployed.
-//
-// * `username` - The User who created the StackScript.
-//
-// * `created` - The date this StackScript was created.
-//
-// * `updated` - The date this StackScript was updated.
-//
-// * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-//
-//   - `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-//
-//   - `name` - The name of the field.
-//
-//   - `example` - An example value for the field.
-//
-//   - `oneOf` - A list of acceptable single values for the field.
-//
-//   - `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
-//
-//   - `default` - The default value. If not specified, this value will be used.
 //
 // ## Import
 //
@@ -130,8 +101,7 @@ type StackScript struct {
 	Script pulumi.StringOutput `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-	// parameters during deployment.
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields StackScriptUserDefinedFieldArrayOutput `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringOutput `pulumi:"userGravatarId"`
@@ -200,8 +170,7 @@ type stackScriptState struct {
 	Script *string `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated *string `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-	// parameters during deployment.
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields []StackScriptUserDefinedField `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId *string `pulumi:"userGravatarId"`
@@ -230,8 +199,7 @@ type StackScriptState struct {
 	Script pulumi.StringPtrInput
 	// The date this StackScript was updated.
 	Updated pulumi.StringPtrInput
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-	// parameters during deployment.
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields StackScriptUserDefinedFieldArrayInput
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringPtrInput
@@ -256,8 +224,7 @@ type stackScriptArgs struct {
 	RevNote *string `pulumi:"revNote"`
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script string `pulumi:"script"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-	// parameters during deployment.
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields []StackScriptUserDefinedField `pulumi:"userDefinedFields"`
 }
 
@@ -275,8 +242,7 @@ type StackScriptArgs struct {
 	RevNote pulumi.StringPtrInput
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script pulumi.StringInput
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-	// parameters during deployment.
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields StackScriptUserDefinedFieldArrayInput
 }
 
@@ -417,8 +383,7 @@ func (o StackScriptOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-// parameters during deployment.
+// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 func (o StackScriptOutput) UserDefinedFields() StackScriptUserDefinedFieldArrayOutput {
 	return o.ApplyT(func(v *StackScript) StackScriptUserDefinedFieldArrayOutput { return v.UserDefinedFields }).(StackScriptUserDefinedFieldArrayOutput)
 }

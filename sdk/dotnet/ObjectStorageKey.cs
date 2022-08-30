@@ -30,15 +30,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `access_key` - This keypair's access key. This is not secret.
-    /// 
-    /// * `secret_key` - This keypair's secret key.
-    /// 
-    /// * `limited` - Whether or not this key is a limited access key.
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageKey:ObjectStorageKey")]
     public partial class ObjectStorageKey : global::Pulumi.CustomResource

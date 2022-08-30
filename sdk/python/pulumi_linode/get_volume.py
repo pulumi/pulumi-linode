@@ -56,51 +56,81 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When this Volume was created.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="filesystemPath")
     def filesystem_path(self) -> str:
+        """
+        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+        """
         return pulumi.get(self, "filesystem_path")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The unique ID of this Volume.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        This Volume's label is for display purposes only.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> int:
+        """
+        If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+        """
         return pulumi.get(self, "linode_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The Volume's size, in GiB.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        An array of tags applied to this object.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        When this Volume was last updated.
+        """
         return pulumi.get(self, "updated")
 
 
@@ -137,29 +167,6 @@ def get_volume(id: Optional[int] = None,
 
     foo = linode.get_volume(id=1234567)
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `id` - The unique ID of this Volume.
-
-    - `created` - When this Volume was created.
-
-    - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-
-    - `label` - This Volume's label is for display purposes only.
-
-    - `tags` - An array of tags applied to this object.
-
-    - `size` - The Volume's size, in GiB.
-
-    - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-
-    - `updated` - When this Volume was last updated.
-
-    - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-
-    - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 
 
     :param int id: The unique numeric ID of the Volume record to query.
@@ -198,29 +205,6 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
 
     foo = linode.get_volume(id=1234567)
     ```
-    ## Attributes
-
-    The Linode Volume resource exports the following attributes:
-
-    - `id` - The unique ID of this Volume.
-
-    - `created` - When this Volume was created.
-
-    - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-
-    - `label` - This Volume's label is for display purposes only.
-
-    - `tags` - An array of tags applied to this object.
-
-    - `size` - The Volume's size, in GiB.
-
-    - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-
-    - `updated` - When this Volume was last updated.
-
-    - `linode_id` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-
-    - `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 
 
     :param int id: The unique numeric ID of the Volume record to query.

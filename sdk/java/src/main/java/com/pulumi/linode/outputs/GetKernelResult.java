@@ -10,56 +10,93 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKernelResult {
-    private final String architecture;
-    private final Boolean deprecated;
-    private final String id;
-    private final Boolean kvm;
-    private final String label;
-    private final Boolean pvops;
-    private final String version;
-    private final Boolean xen;
+    /**
+     * @return The architecture of this Kernel.
+     * 
+     */
+    private String architecture;
+    /**
+     * @return Whether or not this Kernel is deprecated.
+     * 
+     */
+    private Boolean deprecated;
+    private String id;
+    /**
+     * @return If this Kernel is suitable for KVM Linodes.
+     * 
+     */
+    private Boolean kvm;
+    /**
+     * @return The friendly name of this Kernel.
+     * 
+     */
+    private String label;
+    /**
+     * @return If this Kernel is suitable for paravirtualized operations.
+     * 
+     */
+    private Boolean pvops;
+    /**
+     * @return Linux Kernel version
+     * 
+     */
+    private String version;
+    /**
+     * @return If this Kernel is suitable for Xen Linodes.
+     * 
+     */
+    private Boolean xen;
 
-    @CustomType.Constructor
-    private GetKernelResult(
-        @CustomType.Parameter("architecture") String architecture,
-        @CustomType.Parameter("deprecated") Boolean deprecated,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kvm") Boolean kvm,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("pvops") Boolean pvops,
-        @CustomType.Parameter("version") String version,
-        @CustomType.Parameter("xen") Boolean xen) {
-        this.architecture = architecture;
-        this.deprecated = deprecated;
-        this.id = id;
-        this.kvm = kvm;
-        this.label = label;
-        this.pvops = pvops;
-        this.version = version;
-        this.xen = xen;
-    }
-
+    private GetKernelResult() {}
+    /**
+     * @return The architecture of this Kernel.
+     * 
+     */
     public String architecture() {
         return this.architecture;
     }
+    /**
+     * @return Whether or not this Kernel is deprecated.
+     * 
+     */
     public Boolean deprecated() {
         return this.deprecated;
     }
     public String id() {
         return this.id;
     }
+    /**
+     * @return If this Kernel is suitable for KVM Linodes.
+     * 
+     */
     public Boolean kvm() {
         return this.kvm;
     }
+    /**
+     * @return The friendly name of this Kernel.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return If this Kernel is suitable for paravirtualized operations.
+     * 
+     */
     public Boolean pvops() {
         return this.pvops;
     }
+    /**
+     * @return Linux Kernel version
+     * 
+     */
     public String version() {
         return this.version;
     }
+    /**
+     * @return If this Kernel is suitable for Xen Linodes.
+     * 
+     */
     public Boolean xen() {
         return this.xen;
     }
@@ -71,7 +108,7 @@ public final class GetKernelResult {
     public static Builder builder(GetKernelResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String architecture;
         private Boolean deprecated;
@@ -81,11 +118,7 @@ public final class GetKernelResult {
         private Boolean pvops;
         private String version;
         private Boolean xen;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKernelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architecture = defaults.architecture;
@@ -98,39 +131,57 @@ public final class GetKernelResult {
     	      this.xen = defaults.xen;
         }
 
+        @CustomType.Setter
         public Builder architecture(String architecture) {
             this.architecture = Objects.requireNonNull(architecture);
             return this;
         }
+        @CustomType.Setter
         public Builder deprecated(Boolean deprecated) {
             this.deprecated = Objects.requireNonNull(deprecated);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kvm(Boolean kvm) {
             this.kvm = Objects.requireNonNull(kvm);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder pvops(Boolean pvops) {
             this.pvops = Objects.requireNonNull(pvops);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder xen(Boolean xen) {
             this.xen = Objects.requireNonNull(xen);
             return this;
-        }        public GetKernelResult build() {
-            return new GetKernelResult(architecture, deprecated, id, kvm, label, pvops, version, xen);
+        }
+        public GetKernelResult build() {
+            final var o = new GetKernelResult();
+            o.architecture = architecture;
+            o.deprecated = deprecated;
+            o.id = id;
+            o.kvm = kvm;
+            o.label = label;
+            o.pvops = pvops;
+            o.version = version;
+            o.xen = xen;
+            return o;
         }
     }
 }

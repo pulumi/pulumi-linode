@@ -9,26 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceAlerts {
-    private final Integer cpu;
-    private final Integer io;
-    private final Integer networkIn;
-    private final Integer networkOut;
-    private final Integer transferQuota;
+    private Integer cpu;
+    private Integer io;
+    private Integer networkIn;
+    private Integer networkOut;
+    private Integer transferQuota;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceAlerts(
-        @CustomType.Parameter("cpu") Integer cpu,
-        @CustomType.Parameter("io") Integer io,
-        @CustomType.Parameter("networkIn") Integer networkIn,
-        @CustomType.Parameter("networkOut") Integer networkOut,
-        @CustomType.Parameter("transferQuota") Integer transferQuota) {
-        this.cpu = cpu;
-        this.io = io;
-        this.networkIn = networkIn;
-        this.networkOut = networkOut;
-        this.transferQuota = transferQuota;
-    }
-
+    private GetInstancesInstanceAlerts() {}
     public Integer cpu() {
         return this.cpu;
     }
@@ -52,18 +39,14 @@ public final class GetInstancesInstanceAlerts {
     public static Builder builder(GetInstancesInstanceAlerts defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cpu;
         private Integer io;
         private Integer networkIn;
         private Integer networkOut;
         private Integer transferQuota;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceAlerts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -73,27 +56,39 @@ public final class GetInstancesInstanceAlerts {
     	      this.transferQuota = defaults.transferQuota;
         }
 
+        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
+        @CustomType.Setter
         public Builder io(Integer io) {
             this.io = Objects.requireNonNull(io);
             return this;
         }
+        @CustomType.Setter
         public Builder networkIn(Integer networkIn) {
             this.networkIn = Objects.requireNonNull(networkIn);
             return this;
         }
+        @CustomType.Setter
         public Builder networkOut(Integer networkOut) {
             this.networkOut = Objects.requireNonNull(networkOut);
             return this;
         }
+        @CustomType.Setter
         public Builder transferQuota(Integer transferQuota) {
             this.transferQuota = Objects.requireNonNull(transferQuota);
             return this;
-        }        public GetInstancesInstanceAlerts build() {
-            return new GetInstancesInstanceAlerts(cpu, io, networkIn, networkOut, transferQuota);
+        }
+        public GetInstancesInstanceAlerts build() {
+            final var o = new GetInstancesInstanceAlerts();
+            o.cpu = cpu;
+            o.io = io;
+            o.networkIn = networkIn;
+            o.networkOut = networkOut;
+            o.transferQuota = transferQuota;
+            return o;
         }
     }
 }

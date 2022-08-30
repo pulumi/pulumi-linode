@@ -19,29 +19,6 @@ import * as utilities from "./utilities";
  *     id: "linode/debian8",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Image resource exports the following attributes:
- *
- * * `label` - A short description of the Image.
- *
- * * `created` - When this Image was created.
- *
- * * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
- *
- * * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
- *
- * * `description` - A detailed description of this Image.
- *
- * * `isPublic` - True if the Image is public.
- *
- * * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
- *
- * * `status` - The current status of this image. (`creating`, `pendingUpload`, `available`)
- *
- * * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
- *
- * * `vendor` - The upstream distribution vendor. `None` for private Images.
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     if (!opts) {
@@ -68,17 +45,47 @@ export interface GetImageArgs {
  * A collection of values returned by getImage.
  */
 export interface GetImageResult {
+    /**
+     * When this Image was created.
+     */
     readonly created: string;
+    /**
+     * The name of the User who created this Image, or "linode" for official Images.
+     */
     readonly createdBy: string;
+    /**
+     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     */
     readonly deprecated: boolean;
+    /**
+     * A detailed description of this Image.
+     */
     readonly description: string;
     readonly expiry: string;
     readonly id: string;
+    /**
+     * True if the Image is public.
+     */
     readonly isPublic: boolean;
+    /**
+     * A short description of the Image.
+     */
     readonly label: string;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
     readonly size: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
     readonly status: string;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
     readonly type: string;
+    /**
+     * The upstream distribution vendor. `None` for private Images.
+     */
     readonly vendor: string;
 }
 

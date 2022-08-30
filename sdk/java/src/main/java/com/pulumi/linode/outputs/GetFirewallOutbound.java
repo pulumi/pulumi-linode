@@ -14,49 +14,34 @@ public final class GetFirewallOutbound {
      * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
-    private final String action;
+    private String action;
     /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
-    private final List<String> ipv4s;
+    private List<String> ipv4s;
     /**
      * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
-    private final List<String> ipv6s;
+    private List<String> ipv6s;
     /**
      * @return The label of the underlying entity this device references.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
      */
-    private final String ports;
+    private String ports;
     /**
      * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private GetFirewallOutbound(
-        @CustomType.Parameter("action") String action,
-        @CustomType.Parameter("ipv4s") List<String> ipv4s,
-        @CustomType.Parameter("ipv6s") List<String> ipv6s,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("ports") String ports,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.action = action;
-        this.ipv4s = ipv4s;
-        this.ipv6s = ipv6s;
-        this.label = label;
-        this.ports = ports;
-        this.protocol = protocol;
-    }
-
+    private GetFirewallOutbound() {}
     /**
      * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
@@ -107,7 +92,7 @@ public final class GetFirewallOutbound {
     public static Builder builder(GetFirewallOutbound defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String action;
         private List<String> ipv4s;
@@ -115,11 +100,7 @@ public final class GetFirewallOutbound {
         private String label;
         private String ports;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallOutbound defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -130,10 +111,12 @@ public final class GetFirewallOutbound {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder action(String action) {
             this.action = Objects.requireNonNull(action);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4s(List<String> ipv4s) {
             this.ipv4s = Objects.requireNonNull(ipv4s);
             return this;
@@ -141,6 +124,7 @@ public final class GetFirewallOutbound {
         public Builder ipv4s(String... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
+        @CustomType.Setter
         public Builder ipv6s(List<String> ipv6s) {
             this.ipv6s = Objects.requireNonNull(ipv6s);
             return this;
@@ -148,19 +132,30 @@ public final class GetFirewallOutbound {
         public Builder ipv6s(String... ipv6s) {
             return ipv6s(List.of(ipv6s));
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder ports(String ports) {
             this.ports = Objects.requireNonNull(ports);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public GetFirewallOutbound build() {
-            return new GetFirewallOutbound(action, ipv4s, ipv6s, label, ports, protocol);
+        }
+        public GetFirewallOutbound build() {
+            final var o = new GetFirewallOutbound();
+            o.action = action;
+            o.ipv4s = ipv4s;
+            o.ipv6s = ipv6s;
+            o.label = label;
+            o.ports = ports;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

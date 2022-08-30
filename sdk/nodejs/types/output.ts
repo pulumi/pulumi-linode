@@ -103,9 +103,21 @@ export interface FirewallOutbound {
 }
 
 export interface GetDatabaseBackupsBackup {
+    /**
+     * A time value given in a combined date and time format that represents when the database backup was created.
+     */
     created: string;
+    /**
+     * The ID of the database backup object.
+     */
     id: number;
+    /**
+     * The database backup’s label, for display purposes only.
+     */
     label: string;
+    /**
+     * The type of database backup, determined by how the backup was created.
+     */
     type: string;
 }
 
@@ -125,8 +137,17 @@ export interface GetDatabaseBackupsFilter {
 }
 
 export interface GetDatabaseEnginesEngine {
+    /**
+     * The Managed Database engine type.
+     */
     engine: string;
+    /**
+     * The Managed Database engine ID in engine/version format.
+     */
     id: string;
+    /**
+     * The Managed Database engine version.
+     */
     version: string;
 }
 
@@ -154,9 +175,21 @@ export interface GetDatabaseMongodbUpdate {
 }
 
 export interface GetDatabaseMysqlBackupsBackup {
+    /**
+     * A time value given in a combined date and time format that represents when the database backup was created.
+     */
     created: string;
+    /**
+     * The ID of the database backup object.
+     */
     id: number;
+    /**
+     * The database backup’s label, for display purposes only.
+     */
     label: string;
+    /**
+     * The type of database backup, determined by how the backup was created.
+     */
     type: string;
 }
 
@@ -192,22 +225,70 @@ export interface GetDatabasePostgresqlUpdate {
 }
 
 export interface GetDatabasesDatabase {
+    /**
+     * A list of IP addresses that can access the Managed Database.
+     */
     allowLists: string[];
+    /**
+     * The number of Linode Instance nodes deployed to the Managed Database.
+     */
     clusterSize: number;
+    /**
+     * When this Managed Database was created.
+     */
     created: string;
+    /**
+     * Whether the Managed Databases is encrypted.
+     */
     encrypted: boolean;
+    /**
+     * The Managed Database engine.
+     */
     engine: string;
+    /**
+     * The primary host for the Managed Database.
+     */
     hostPrimary: string;
+    /**
+     * The secondary/private network host for the Managed Database.
+     */
     hostSecondary: string;
+    /**
+     * The ID of the Managed Database.
+     */
     id: number;
     instanceUri: string;
+    /**
+     * A unique, user-defined string referring to the Managed Database.
+     */
     label: string;
+    /**
+     * The region to use for the Managed Database.
+     */
     region: string;
+    /**
+     * The replication method used for the Managed Database.
+     */
     replicationType: string;
+    /**
+     * Whether to require SSL credentials to establish a connection to the Managed Database.
+     */
     sslConnection: boolean;
+    /**
+     * The operating status of the Managed Database.
+     */
     status: string;
+    /**
+     * The Linode Instance type used for the nodes of the  Managed Database instance.
+     */
     type: string;
+    /**
+     * When this Managed Database was last updated.
+     */
     updated: string;
+    /**
+     * The Managed Database engine version.
+     */
     version: string;
 }
 
@@ -316,17 +397,50 @@ export interface GetImagesFilter {
 }
 
 export interface GetImagesImage {
+    /**
+     * When this Image was created.
+     */
     created: string;
+    /**
+     * The name of the User who created this Image, or "linode" for official Images.
+     */
     createdBy: string;
+    /**
+     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     */
     deprecated: boolean;
+    /**
+     * A detailed description of this Image.
+     */
     description: string;
     expiry: string;
+    /**
+     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+     */
     id: string;
+    /**
+     * True if the Image is public.
+     */
     isPublic: boolean;
+    /**
+     * A short description of the Image.
+     */
     label: string;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
     size: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
     status: string;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
     type: string;
+    /**
+     * The upstream distribution vendor. `None` for private Images.
+     */
     vendor: string;
 }
 
@@ -518,14 +632,38 @@ export interface GetInstanceTypesFilter {
 
 export interface GetInstanceTypesType {
     addons: outputs.GetInstanceTypesTypeAddon[];
+    /**
+     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     */
     class: string;
+    /**
+     * The Disk size, in MB, of the Linode Type.
+     */
     disk: number;
+    /**
+     * The ID representing the Linode Type.
+     */
     id: string;
+    /**
+     * The Linode Type's label is for display purposes only.
+     */
     label: string;
+    /**
+     * The amount of RAM included in this Linode Type.
+     */
     memory: number;
+    /**
+     * The Mbits outbound bandwidth allocation.
+     */
     networkOut: number;
     prices: outputs.GetInstanceTypesTypePrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
     transfer: number;
+    /**
+     * The number of VCPU cores this Linode Type offers.
+     */
     vcpus: number;
 }
 
@@ -568,20 +706,62 @@ export interface GetInstancesInstance {
     bootConfigLabel: string;
     configs: outputs.GetInstancesInstanceConfig[];
     disks: outputs.GetInstancesInstanceDisk[];
+    /**
+     * The display group of the Linode instance.
+     */
     group: string;
+    /**
+     * The ID of the disk in the Linode API.
+     */
     id: number;
+    /**
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     */
     image: string;
+    /**
+     * A string containing the Linode's public IP address.
+     */
     ipAddress: string;
+    /**
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
     ipv4s: string[];
+    /**
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     */
     ipv6: string;
+    /**
+     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     */
     label: string;
+    /**
+     * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
+     */
     privateIpAddress: string;
+    /**
+     * This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
+     */
     region: string;
     specs: outputs.GetInstancesInstanceSpec[];
+    /**
+     * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+     */
     status: string;
+    /**
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+     */
     swapSize: number;
+    /**
+     * A list of tags applied to this object. Tags are for organizational purposes only.
+     */
     tags: string[];
+    /**
+     * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
+     */
     type: string;
+    /**
+     * The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
+     */
     watchdogEnabled: boolean;
 }
 
@@ -594,25 +774,61 @@ export interface GetInstancesInstanceAlerts {
 }
 
 export interface GetInstancesInstanceBackup {
+    /**
+     * If this Linode has the Backup service enabled.
+     */
     enabled: boolean;
     schedules: outputs.GetInstancesInstanceBackupSchedule[];
 }
 
 export interface GetInstancesInstanceBackupSchedule {
+    /**
+     * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+     */
     day: string;
+    /**
+     * The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+     */
     window: string;
 }
 
 export interface GetInstancesInstanceConfig {
+    /**
+     * Arbitrary user comments about this `config`.
+     */
     comments: string;
+    /**
+     * A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+     */
     devices: outputs.GetInstancesInstanceConfigDevice[];
+    /**
+     * Helpers enabled when booting to this Linode Config.
+     */
     helpers: outputs.GetInstancesInstanceConfigHelper[];
     interfaces: outputs.GetInstancesInstanceConfigInterface[];
+    /**
+     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     */
     kernel: string;
+    /**
+     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     */
     label: string;
+    /**
+     * Defaults to the total RAM of the Linode
+     */
     memoryLimit: number;
+    /**
+     * The root device to boot.
+     */
     rootDevice: string;
+    /**
+     * Defines the state of your Linode after booting.
+     */
     runLevel: string;
+    /**
+     * Controls the virtualization mode.
+     */
     virtMode: string;
 }
 
@@ -628,71 +844,173 @@ export interface GetInstancesInstanceConfigDevice {
 }
 
 export interface GetInstancesInstanceConfigDeviceSda {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdb {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdc {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdd {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSde {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdf {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdg {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdh {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
     diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
     diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
     volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigHelper {
     devtmpfsAutomount: boolean;
+    /**
+     * Controls the behavior of the Linode Config's Distribution Helper setting.
+     */
     distro: boolean;
+    /**
+     * Creates a modules dependency file for the Kernel you run.
+     */
     modulesDep: boolean;
+    /**
+     * Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+     */
     network: boolean;
+    /**
+     * Disables updatedb cron job to avoid disk thrashing.
+     */
     updatedbDisabled: boolean;
 }
 
 export interface GetInstancesInstanceConfigInterface {
+    /**
+     * (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     */
     ipamAddress?: string;
+    /**
+     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     */
     label?: string;
+    /**
+     * (Required) The type of interface. (`public`, `vlan`)
+     */
     purpose?: string;
 }
 
 export interface GetInstancesInstanceDisk {
     filesystem: string;
+    /**
+     * The ID of the disk in the Linode API.
+     */
     id: number;
+    /**
+     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     */
     label: string;
+    /**
+     * The size of the Disk in MB.
+     */
     size: number;
 }
 
@@ -792,11 +1110,29 @@ export interface GetProfileReferrals {
 }
 
 export interface GetStackScriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default: string;
+    /**
+     * An example value for the field.
+     */
     example: string;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     label: string;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf: string;
+    /**
+     * The name of the field.
+     */
     name: string;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf: string;
 }
 
@@ -816,31 +1152,88 @@ export interface GetStackScriptsFilter {
 }
 
 export interface GetStackScriptsStackscript {
+    /**
+     * The date this StackScript was created.
+     */
     created: string;
+    /**
+     * Count of currently active, deployed Linodes created from this StackScript.
+     */
     deploymentsActive: number;
+    /**
+     * The total number of times this StackScript has been deployed.
+     */
     deploymentsTotal: number;
+    /**
+     * A description for the StackScript.
+     */
     description: string;
+    /**
+     * The unique ID of the StackScript.
+     */
     id: number;
+    /**
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     */
     images: string[];
+    /**
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     */
     isPublic: boolean;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     label: string;
+    /**
+     * This field allows you to add notes for the set of revisions made to this StackScript.
+     */
     revNote: string;
+    /**
+     * The script to execute when provisioning a new Linode with this StackScript.
+     */
     script: string;
+    /**
+     * The date this StackScript was updated.
+     */
     updated: string;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
     userDefinedFields: outputs.GetStackScriptsStackscriptUserDefinedField[];
+    /**
+     * The Gravatar ID for the User who created the StackScript.
+     */
     userGravatarId: string;
+    /**
+     * The User who created the StackScript.
+     */
     username: string;
 }
 
 export interface GetStackScriptsStackscriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default: string;
+    /**
+     * An example value for the field.
+     */
     example: string;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
     label: string;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf: string;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf: string;
 }
 
@@ -860,9 +1253,21 @@ export interface GetVlansFilter {
 }
 
 export interface GetVlansVlan {
+    /**
+     * When the VLAN was created.
+     */
     created: string;
+    /**
+     * The unique label of the VLAN.
+     */
     label: string;
+    /**
+     * The running Linodes currently attached to the VLAN.
+     */
     linodes: number[];
+    /**
+     * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
     region: string;
 }
 
@@ -875,12 +1280,21 @@ export interface InstanceAlerts {
 }
 
 export interface InstanceBackups {
+    /**
+     * If this Linode has the Backup service enabled.
+     */
     enabled: boolean;
     schedule: outputs.InstanceBackupsSchedule;
 }
 
 export interface InstanceBackupsSchedule {
+    /**
+     * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+     */
     day: string;
+    /**
+     * The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+     */
     window: string;
 }
 
@@ -1213,13 +1627,28 @@ export interface LkeClusterPoolNode {
 }
 
 export interface NodeBalancerConfigNodeStatus {
+    /**
+     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+     */
     down: number;
+    /**
+     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
+     */
     up: number;
 }
 
 export interface NodeBalancerTransfer {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
     in: number;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
     out: number;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
     total: number;
 }
 
@@ -1293,14 +1722,29 @@ export interface ObjectStorageKeyBucketAccess {
 }
 
 export interface StackScriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
     default: string;
+    /**
+     * An example value for the field.
+     */
     example: string;
     /**
      * The StackScript's label is for display purposes only.
      */
     label: string;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
     manyOf: string;
+    /**
+     * The name of the field.
+     */
     name: string;
+    /**
+     * A list of acceptable single values for the field.
+     */
     oneOf: string;
 }
 

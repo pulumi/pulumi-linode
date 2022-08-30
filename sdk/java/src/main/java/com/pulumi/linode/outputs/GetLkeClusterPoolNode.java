@@ -14,28 +14,19 @@ public final class GetLkeClusterPoolNode {
      * @return The LKE Cluster&#39;s ID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the underlying Linode instance.
      * 
      */
-    private final Integer instanceId;
+    private Integer instanceId;
     /**
      * @return The status of the node. (`ready`, `not_ready`)
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetLkeClusterPoolNode(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") Integer instanceId,
-        @CustomType.Parameter("status") String status) {
-        this.id = id;
-        this.instanceId = instanceId;
-        this.status = status;
-    }
-
+    private GetLkeClusterPoolNode() {}
     /**
      * @return The LKE Cluster&#39;s ID.
      * 
@@ -65,16 +56,12 @@ public final class GetLkeClusterPoolNode {
     public static Builder builder(GetLkeClusterPoolNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private Integer instanceId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLkeClusterPoolNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -82,19 +69,27 @@ public final class GetLkeClusterPoolNode {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(Integer instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetLkeClusterPoolNode build() {
-            return new GetLkeClusterPoolNode(id, instanceId, status);
+        }
+        public GetLkeClusterPoolNode build() {
+            final var o = new GetLkeClusterPoolNode();
+            o.id = id;
+            o.instanceId = instanceId;
+            o.status = status;
+            return o;
         }
     }
 }

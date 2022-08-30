@@ -19,27 +19,6 @@ import * as utilities from "./utilities";
  *     address: "162.159.27.72",
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Network IP Address resource exports the following attributes:
- *
- * * `address` - The IP address.
- *
- * * `gateway` - The default gateway for this address.
- *
- * * `subnetMask` - The mask that separates host bits from network bits for this address.
- *
- * * `prefix` - The number of bits set in the subnet mask.
- *
- * * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
- *
- * * `public` - Whether this is a public or private IP address.
- *
- * * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
- *
- * * `linodeId` - The ID of the Linode this address currently belongs to.
- *
- * * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
     if (!opts) {
@@ -66,18 +45,45 @@ export interface GetNetworkingIpArgs {
  * A collection of values returned by getNetworkingIp.
  */
 export interface GetNetworkingIpResult {
+    /**
+     * The IP address.
+     */
     readonly address: string;
+    /**
+     * The default gateway for this address.
+     */
     readonly gateway: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID of the Linode this address currently belongs to.
+     */
     readonly linodeId: number;
+    /**
+     * The number of bits set in the subnet mask.
+     */
     readonly prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
     readonly public: boolean;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
     readonly rdns: string;
+    /**
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+     */
     readonly region: string;
+    /**
+     * The mask that separates host bits from network bits for this address.
+     */
     readonly subnetMask: string;
+    /**
+     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     */
     readonly type: string;
 }
 

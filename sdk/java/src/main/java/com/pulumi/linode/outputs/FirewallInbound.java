@@ -16,49 +16,34 @@ public final class FirewallInbound {
      * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
-    private final String action;
+    private String action;
     /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
-    private final @Nullable List<String> ipv4s;
+    private @Nullable List<String> ipv4s;
     /**
      * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
-    private final @Nullable List<String> ipv6s;
+    private @Nullable List<String> ipv6s;
     /**
      * @return Used to identify this rule. For display purposes only.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
      */
-    private final @Nullable String ports;
+    private @Nullable String ports;
     /**
      * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private FirewallInbound(
-        @CustomType.Parameter("action") String action,
-        @CustomType.Parameter("ipv4s") @Nullable List<String> ipv4s,
-        @CustomType.Parameter("ipv6s") @Nullable List<String> ipv6s,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("ports") @Nullable String ports,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.action = action;
-        this.ipv4s = ipv4s;
-        this.ipv6s = ipv6s;
-        this.label = label;
-        this.ports = ports;
-        this.protocol = protocol;
-    }
-
+    private FirewallInbound() {}
     /**
      * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
@@ -109,7 +94,7 @@ public final class FirewallInbound {
     public static Builder builder(FirewallInbound defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String action;
         private @Nullable List<String> ipv4s;
@@ -117,11 +102,7 @@ public final class FirewallInbound {
         private String label;
         private @Nullable String ports;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallInbound defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -132,10 +113,12 @@ public final class FirewallInbound {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder action(String action) {
             this.action = Objects.requireNonNull(action);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4s(@Nullable List<String> ipv4s) {
             this.ipv4s = ipv4s;
             return this;
@@ -143,6 +126,7 @@ public final class FirewallInbound {
         public Builder ipv4s(String... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
+        @CustomType.Setter
         public Builder ipv6s(@Nullable List<String> ipv6s) {
             this.ipv6s = ipv6s;
             return this;
@@ -150,19 +134,30 @@ public final class FirewallInbound {
         public Builder ipv6s(String... ipv6s) {
             return ipv6s(List.of(ipv6s));
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder ports(@Nullable String ports) {
             this.ports = ports;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public FirewallInbound build() {
-            return new FirewallInbound(action, ipv4s, ipv6s, label, ports, protocol);
+        }
+        public FirewallInbound build() {
+            final var o = new FirewallInbound();
+            o.action = action;
+            o.ipv4s = ipv4s;
+            o.ipv6s = ipv6s;
+            o.label = label;
+            o.ports = ports;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

@@ -65,9 +65,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports no additional attributes, however `status` may reflect degraded states.
  * 
  * ## Import
  * 

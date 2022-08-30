@@ -14,51 +14,32 @@ public final class GetNodeBalancerNodeResult {
      * @return The private IP Address where this backend can be reached.
      * 
      */
-    private final String address;
-    private final Integer configId;
-    private final Integer id;
+    private String address;
+    private Integer configId;
+    private Integer id;
     /**
      * @return The label of the Linode NodeBalancer Node. This is for display purposes only.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      * 
      */
-    private final String mode;
-    private final Integer nodebalancerId;
+    private String mode;
+    private Integer nodebalancerId;
     /**
      * @return The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetNodeBalancerNodeResult(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("configId") Integer configId,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("nodebalancerId") Integer nodebalancerId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.address = address;
-        this.configId = configId;
-        this.id = id;
-        this.label = label;
-        this.mode = mode;
-        this.nodebalancerId = nodebalancerId;
-        this.status = status;
-        this.weight = weight;
-    }
-
+    private GetNodeBalancerNodeResult() {}
     /**
      * @return The private IP Address where this backend can be reached.
      * 
@@ -111,7 +92,7 @@ public final class GetNodeBalancerNodeResult {
     public static Builder builder(GetNodeBalancerNodeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private Integer configId;
@@ -121,11 +102,7 @@ public final class GetNodeBalancerNodeResult {
         private Integer nodebalancerId;
         private String status;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeBalancerNodeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -138,39 +115,57 @@ public final class GetNodeBalancerNodeResult {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder configId(Integer configId) {
             this.configId = Objects.requireNonNull(configId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder nodebalancerId(Integer nodebalancerId) {
             this.nodebalancerId = Objects.requireNonNull(nodebalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetNodeBalancerNodeResult build() {
-            return new GetNodeBalancerNodeResult(address, configId, id, label, mode, nodebalancerId, status, weight);
+        }
+        public GetNodeBalancerNodeResult build() {
+            final var o = new GetNodeBalancerNodeResult();
+            o.address = address;
+            o.configId = configId;
+            o.id = id;
+            o.label = label;
+            o.mode = mode;
+            o.nodebalancerId = nodebalancerId;
+            o.status = status;
+            o.weight = weight;
+            return o;
         }
     }
 }

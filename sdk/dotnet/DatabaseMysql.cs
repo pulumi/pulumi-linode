@@ -86,32 +86,6 @@ namespace Pulumi.Linode
     /// 
     /// * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
     /// 
-    /// ## Attributes
-    /// 
-    /// In addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the Managed Database.
-    /// 
-    /// * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-    /// 
-    /// * `created` - When this Managed Database was created.
-    /// 
-    /// * `engine` - The Managed Database engine. (e.g. `mysql`)
-    /// 
-    /// * `host_primary` - The primary host for the Managed Database.
-    /// 
-    /// * `host_secondary` - The secondary/private network host for the Managed Database.
-    /// 
-    /// * `root_password` - The randomly-generated root password for the Managed Database instance.
-    /// 
-    /// * `root_username` - The root username for the Managed Database instance.
-    /// 
-    /// * `status` - The operating status of the Managed Database.
-    /// 
-    /// * `updated` - When this Managed Database was last updated.
-    /// 
-    /// * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-    /// 
     /// ## Import
     /// 
     /// Linode MySQL Databases can be imported using the `id`, e.g.
@@ -154,7 +128,7 @@ namespace Pulumi.Linode
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine.
+        /// The Managed Database engine. (e.g. `mysql`)
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -172,7 +146,7 @@ namespace Pulumi.Linode
         public Output<string> HostPrimary { get; private set; } = null!;
 
         /// <summary>
-        /// The secondary host for the Managed Database.
+        /// The secondary/private network host for the Managed Database.
         /// </summary>
         [Output("hostSecondary")]
         public Output<string> HostSecondary { get; private set; } = null!;
@@ -238,7 +212,7 @@ namespace Pulumi.Linode
         public Output<Outputs.DatabaseMysqlUpdates> Updates { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine version.
+        /// The Managed Database engine version. (e.g. `v8.0.26`)
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -400,7 +374,7 @@ namespace Pulumi.Linode
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Managed Database engine.
+        /// The Managed Database engine. (e.g. `mysql`)
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -418,7 +392,7 @@ namespace Pulumi.Linode
         public Input<string>? HostPrimary { get; set; }
 
         /// <summary>
-        /// The secondary host for the Managed Database.
+        /// The secondary/private network host for the Managed Database.
         /// </summary>
         [Input("hostSecondary")]
         public Input<string>? HostSecondary { get; set; }
@@ -484,7 +458,7 @@ namespace Pulumi.Linode
         public Input<Inputs.DatabaseMysqlUpdatesGetArgs>? Updates { get; set; }
 
         /// <summary>
-        /// The Managed Database engine version.
+        /// The Managed Database engine version. (e.g. `v8.0.26`)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

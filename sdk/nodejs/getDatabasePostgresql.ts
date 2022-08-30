@@ -20,52 +20,6 @@ import * as utilities from "./utilities";
  *     databaseId: 12345,
  * }));
  * ```
- * ## Attributes
- *
- * The `linode.DatabasePostgresql` data source exports the following attributes:
- *
- * * `allowList` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
- *
- * * `caCert` - The base64-encoded SSL CA certificate for the Managed Database instance.
- *
- * * `clusterSize` - The number of Linode Instance nodes deployed to the Managed Database.
- *
- * * `created` - When this Managed Database was created.
- *
- * * `encrypted` - Whether the Managed Databases is encrypted.
- *
- * * `engine` - The Managed Database engine. (e.g. `postgresql`)
- *
- * * `engineId` - The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
- *
- * * `hostPrimary` - The primary host for the Managed Database.
- *
- * * `hostSecondary` - The secondary/private network host for the Managed Database.
- *
- * * `label` - A unique, user-defined string referring to the Managed Database.
- *
- * * `region` - The region that hosts this Linode Managed Database.
- *
- * * `rootPassword` - The randomly-generated root password for the Managed Database instance.
- *
- * * `rootUsername` - The root username for the Managed Database instance.
- *
- * * `replicationType` - The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
- *
- * * `replicationCommitType` - (Optional) The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`)
- *
- * * `sslConnection` - Whether to require SSL credentials to establish a connection to the Managed Database.
- *
- * * `status` - The operating status of the Managed Database.
- *
- * * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
- *
- * * `updated` - When this Managed Database was last updated.
- *
- * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
- *
- * * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
- *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:
@@ -105,32 +59,92 @@ export interface GetDatabasePostgresqlArgs {
  * A collection of values returned by getDatabasePostgresql.
  */
 export interface GetDatabasePostgresqlResult {
+    /**
+     * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+     */
     readonly allowLists: string[];
+    /**
+     * The base64-encoded SSL CA certificate for the Managed Database instance.
+     */
     readonly caCert: string;
+    /**
+     * The number of Linode Instance nodes deployed to the Managed Database.
+     */
     readonly clusterSize: number;
+    /**
+     * When this Managed Database was created.
+     */
     readonly created: string;
     readonly databaseId: number;
+    /**
+     * Whether the Managed Databases is encrypted.
+     */
     readonly encrypted: boolean;
+    /**
+     * The Managed Database engine. (e.g. `postgresql`)
+     */
     readonly engine: string;
+    /**
+     * The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
+     */
     readonly engineId: string;
+    /**
+     * The primary host for the Managed Database.
+     */
     readonly hostPrimary: string;
+    /**
+     * The secondary/private network host for the Managed Database.
+     */
     readonly hostSecondary: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A unique, user-defined string referring to the Managed Database.
+     */
     readonly label: string;
     readonly port: number;
+    /**
+     * The region that hosts this Linode Managed Database.
+     */
     readonly region: string;
+    /**
+     * (Optional) The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`)
+     */
     readonly replicationCommitType: string;
+    /**
+     * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
+     */
     readonly replicationType: string;
+    /**
+     * The randomly-generated root password for the Managed Database instance.
+     */
     readonly rootPassword: string;
+    /**
+     * The root username for the Managed Database instance.
+     */
     readonly rootUsername: string;
+    /**
+     * Whether to require SSL credentials to establish a connection to the Managed Database.
+     */
     readonly sslConnection: boolean;
+    /**
+     * The operating status of the Managed Database.
+     */
     readonly status: string;
+    /**
+     * The Linode Instance type used for the nodes of the  Managed Database instance.
+     */
     readonly type: string;
+    /**
+     * When this Managed Database was last updated.
+     */
     readonly updated: string;
     readonly updates: outputs.GetDatabasePostgresqlUpdate[];
+    /**
+     * The Managed Database engine version. (e.g. `v8.0.26`)
+     */
     readonly version: string;
 }
 

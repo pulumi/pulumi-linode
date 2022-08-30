@@ -30,9 +30,17 @@ public final class GetInstanceTypeArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * The Linode Type&#39;s label is for display purposes only
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return The Linode Type&#39;s label is for display purposes only
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
@@ -83,11 +91,23 @@ public final class GetInstanceTypeArgs extends com.pulumi.resources.InvokeArgs {
             return id(Output.of(id));
         }
 
+        /**
+         * @param label The Linode Type&#39;s label is for display purposes only
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label The Linode Type&#39;s label is for display purposes only
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

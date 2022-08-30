@@ -13,14 +13,29 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetStackScriptsStackscriptUserDefinedFieldResult
     {
+        /// <summary>
+        /// The default value. If not specified, this value will be used.
+        /// </summary>
         public readonly string Default;
+        /// <summary>
+        /// An example value for the field.
+        /// </summary>
         public readonly string Example;
+        /// <summary>
+        /// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// A list of acceptable values for the field in any quantity, combination or order.
+        /// </summary>
         public readonly string ManyOf;
         /// <summary>
         /// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A list of acceptable single values for the field.
+        /// </summary>
         public readonly string OneOf;
 
         [OutputConstructor]

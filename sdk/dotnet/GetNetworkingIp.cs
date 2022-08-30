@@ -36,27 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Network IP Address resource exports the following attributes:
-        /// 
-        /// * `address` - The IP address.
-        /// 
-        /// * `gateway` - The default gateway for this address.
-        /// 
-        /// * `subnet_mask` - The mask that separates host bits from network bits for this address.
-        /// 
-        /// * `prefix` - The number of bits set in the subnet mask.
-        /// 
-        /// * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-        /// 
-        /// * `public` - Whether this is a public or private IP address.
-        /// 
-        /// * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-        /// 
-        /// * `linode_id` - The ID of the Linode this address currently belongs to.
-        /// 
-        /// * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public static Task<GetNetworkingIpResult> InvokeAsync(GetNetworkingIpArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpArgs(), options.WithDefaults());
@@ -86,27 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// The Linode Network IP Address resource exports the following attributes:
-        /// 
-        /// * `address` - The IP address.
-        /// 
-        /// * `gateway` - The default gateway for this address.
-        /// 
-        /// * `subnet_mask` - The mask that separates host bits from network bits for this address.
-        /// 
-        /// * `prefix` - The number of bits set in the subnet mask.
-        /// 
-        /// * `type` - The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-        /// 
-        /// * `public` - Whether this is a public or private IP address.
-        /// 
-        /// * `rdns` - The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-        /// 
-        /// * `linode_id` - The ID of the Linode this address currently belongs to.
-        /// 
-        /// * `region` - The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public static Output<GetNetworkingIpResult> Invoke(GetNetworkingIpInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpInvokeArgs(), options.WithDefaults());
@@ -145,18 +103,45 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetNetworkingIpResult
     {
+        /// <summary>
+        /// The IP address.
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The default gateway for this address.
+        /// </summary>
         public readonly string Gateway;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the Linode this address currently belongs to.
+        /// </summary>
         public readonly int LinodeId;
+        /// <summary>
+        /// The number of bits set in the subnet mask.
+        /// </summary>
         public readonly int Prefix;
+        /// <summary>
+        /// Whether this is a public or private IP address.
+        /// </summary>
         public readonly bool Public;
+        /// <summary>
+        /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        /// </summary>
         public readonly string Rdns;
+        /// <summary>
+        /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The mask that separates host bits from network bits for this address.
+        /// </summary>
         public readonly string SubnetMask;
+        /// <summary>
+        /// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -96,15 +96,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each engine will be stored in the `engines` attribute and will export the following attributes:
-        /// 
-        /// * `engine` - The Managed Database engine type.
-        /// 
-        /// * `id` - The Managed Database engine ID in engine/version format.
-        /// 
-        /// * `version` - The Managed Database engine version.
         /// </summary>
         public static Task<GetDatabaseEnginesResult> InvokeAsync(GetDatabaseEnginesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesArgs(), options.WithDefaults());
@@ -194,15 +185,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each engine will be stored in the `engines` attribute and will export the following attributes:
-        /// 
-        /// * `engine` - The Managed Database engine type.
-        /// 
-        /// * `id` - The Managed Database engine ID in engine/version format.
-        /// 
-        /// * `version` - The Managed Database engine version.
         /// </summary>
         public static Output<GetDatabaseEnginesResult> Invoke(GetDatabaseEnginesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesInvokeArgs(), options.WithDefaults());

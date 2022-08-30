@@ -100,7 +100,7 @@ class _NodeBalancerState:
         """
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-        :param pulumi.Input[str] created: When this NodeBalancer was created.
+        :param pulumi.Input[str] created: When this NodeBalancer was created
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
@@ -147,7 +147,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
-        When this NodeBalancer was created.
+        When this NodeBalancer was created
         """
         return pulumi.get(self, "created")
 
@@ -280,31 +280,6 @@ class NodeBalancer(pulumi.CustomResource):
             region="us-east",
             tags=["foobar"])
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-
-        * `ipv4` - The Public IPv4 Address of this NodeBalancer
-
-        * `ipv6` - The Public IPv6 Address of this NodeBalancer
-
-        * `created` - When this NodeBalancer was created
-
-        * `updated` - When this NodeBalancer was last updated.
-
-        * `transfer` - The network transfer stats for the current month
-
-        ### transfer
-
-        The following attributes are available on transfer:
-
-        * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
-
-        * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
-
-        * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
 
         ## Import
 
@@ -347,31 +322,6 @@ class NodeBalancer(pulumi.CustomResource):
             region="us-east",
             tags=["foobar"])
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-
-        * `ipv4` - The Public IPv4 Address of this NodeBalancer
-
-        * `ipv6` - The Public IPv6 Address of this NodeBalancer
-
-        * `created` - When this NodeBalancer was created
-
-        * `updated` - When this NodeBalancer was last updated.
-
-        * `transfer` - The network transfer stats for the current month
-
-        ### transfer
-
-        The following attributes are available on transfer:
-
-        * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
-
-        * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
-
-        * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
 
         ## Import
 
@@ -451,7 +401,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-        :param pulumi.Input[str] created: When this NodeBalancer was created.
+        :param pulumi.Input[str] created: When this NodeBalancer was created
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
@@ -489,7 +439,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """
-        When this NodeBalancer was created.
+        When this NodeBalancer was created
         """
         return pulumi.get(self, "created")
 

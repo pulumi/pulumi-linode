@@ -39,29 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Volume resource exports the following attributes:
-//
-// - `id` - The unique ID of this Volume.
-//
-// - `created` - When this Volume was created.
-//
-// - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
-//
-// - `label` - This Volume's label is for display purposes only.
-//
-// - `tags` - An array of tags applied to this object.
-//
-// - `size` - The Volume's size, in GiB.
-//
-// - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-//
-// - `updated` - When this Volume was last updated.
-//
-// - `linodeId` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-//
-// - `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("linode:index/getVolume:getVolume", args, &rv, opts...)
@@ -79,16 +56,26 @@ type LookupVolumeArgs struct {
 
 // A collection of values returned by getVolume.
 type LookupVolumeResult struct {
-	Created        string   `pulumi:"created"`
-	FilesystemPath string   `pulumi:"filesystemPath"`
-	Id             int      `pulumi:"id"`
-	Label          string   `pulumi:"label"`
-	LinodeId       int      `pulumi:"linodeId"`
-	Region         string   `pulumi:"region"`
-	Size           int      `pulumi:"size"`
-	Status         string   `pulumi:"status"`
-	Tags           []string `pulumi:"tags"`
-	Updated        string   `pulumi:"updated"`
+	// When this Volume was created.
+	Created string `pulumi:"created"`
+	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+	FilesystemPath string `pulumi:"filesystemPath"`
+	// The unique ID of this Volume.
+	Id int `pulumi:"id"`
+	// This Volume's label is for display purposes only.
+	Label string `pulumi:"label"`
+	// If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+	LinodeId int `pulumi:"linodeId"`
+	// The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+	Region string `pulumi:"region"`
+	// The Volume's size, in GiB.
+	Size int `pulumi:"size"`
+	// The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
+	Status string `pulumi:"status"`
+	// An array of tags applied to this object.
+	Tags []string `pulumi:"tags"`
+	// When this Volume was last updated.
+	Updated string `pulumi:"updated"`
 }
 
 func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
@@ -129,42 +116,52 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 	return o
 }
 
+// When this Volume was created.
 func (o LookupVolumeResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 func (o LookupVolumeResultOutput) FilesystemPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.FilesystemPath }).(pulumi.StringOutput)
 }
 
+// The unique ID of this Volume.
 func (o LookupVolumeResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVolumeResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// This Volume's label is for display purposes only.
 func (o LookupVolumeResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
 func (o LookupVolumeResultOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVolumeResult) int { return v.LinodeId }).(pulumi.IntOutput)
 }
 
+// The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
 func (o LookupVolumeResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The Volume's size, in GiB.
 func (o LookupVolumeResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVolumeResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 func (o LookupVolumeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// An array of tags applied to this object.
 func (o LookupVolumeResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// When this Volume was last updated.
 func (o LookupVolumeResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Updated }).(pulumi.StringOutput)
 }

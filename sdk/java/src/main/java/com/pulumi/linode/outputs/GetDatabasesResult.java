@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabasesResult {
-    private final List<GetDatabasesDatabase> databases;
-    private final @Nullable List<GetDatabasesFilter> filters;
+    private List<GetDatabasesDatabase> databases;
+    private @Nullable List<GetDatabasesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean latest;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
+    private String id;
+    private @Nullable Boolean latest;
+    private @Nullable String order;
+    private @Nullable String orderBy;
 
-    @CustomType.Constructor
-    private GetDatabasesResult(
-        @CustomType.Parameter("databases") List<GetDatabasesDatabase> databases,
-        @CustomType.Parameter("filters") @Nullable List<GetDatabasesFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy) {
-        this.databases = databases;
-        this.filters = filters;
-        this.id = id;
-        this.latest = latest;
-        this.order = order;
-        this.orderBy = orderBy;
-    }
-
+    private GetDatabasesResult() {}
     public List<GetDatabasesDatabase> databases() {
         return this.databases;
     }
@@ -72,7 +57,7 @@ public final class GetDatabasesResult {
     public static Builder builder(GetDatabasesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDatabasesDatabase> databases;
         private @Nullable List<GetDatabasesFilter> filters;
@@ -80,11 +65,7 @@ public final class GetDatabasesResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
@@ -95,6 +76,7 @@ public final class GetDatabasesResult {
     	      this.orderBy = defaults.orderBy;
         }
 
+        @CustomType.Setter
         public Builder databases(List<GetDatabasesDatabase> databases) {
             this.databases = Objects.requireNonNull(databases);
             return this;
@@ -102,6 +84,7 @@ public final class GetDatabasesResult {
         public Builder databases(GetDatabasesDatabase... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetDatabasesFilter> filters) {
             this.filters = filters;
             return this;
@@ -109,23 +92,35 @@ public final class GetDatabasesResult {
         public Builder filters(GetDatabasesFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
-        }        public GetDatabasesResult build() {
-            return new GetDatabasesResult(databases, filters, id, latest, order, orderBy);
+        }
+        public GetDatabasesResult build() {
+            final var o = new GetDatabasesResult();
+            o.databases = databases;
+            o.filters = filters;
+            o.id = id;
+            o.latest = latest;
+            o.order = order;
+            o.orderBy = orderBy;
+            return o;
         }
     }
 }

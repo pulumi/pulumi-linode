@@ -14,38 +14,25 @@ public final class GetFirewallDevice {
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    private final Integer entityId;
+    private Integer entityId;
     /**
      * @return The Firewall&#39;s ID.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The label of the underlying entity this device references.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The type of Firewall Device.
      * 
      */
-    private final String type;
-    private final String url;
+    private String type;
+    private String url;
 
-    @CustomType.Constructor
-    private GetFirewallDevice(
-        @CustomType.Parameter("entityId") Integer entityId,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("url") String url) {
-        this.entityId = entityId;
-        this.id = id;
-        this.label = label;
-        this.type = type;
-        this.url = url;
-    }
-
+    private GetFirewallDevice() {}
     /**
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
@@ -85,18 +72,14 @@ public final class GetFirewallDevice {
     public static Builder builder(GetFirewallDevice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer entityId;
         private Integer id;
         private String label;
         private String type;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityId = defaults.entityId;
@@ -106,27 +89,39 @@ public final class GetFirewallDevice {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder entityId(Integer entityId) {
             this.entityId = Objects.requireNonNull(entityId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetFirewallDevice build() {
-            return new GetFirewallDevice(entityId, id, label, type, url);
+        }
+        public GetFirewallDevice build() {
+            final var o = new GetFirewallDevice();
+            o.entityId = entityId;
+            o.id = id;
+            o.label = label;
+            o.type = type;
+            o.url = url;
+            return o;
         }
     }
 }

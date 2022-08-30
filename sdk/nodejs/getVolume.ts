@@ -19,29 +19,6 @@ import * as utilities from "./utilities";
  *     id: 1234567,
  * }));
  * ```
- * ## Attributes
- *
- * The Linode Volume resource exports the following attributes:
- *
- * - `id` - The unique ID of this Volume.
- *
- * - `created` - When this Volume was created.
- *
- * - `status` - The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
- *
- * - `label` - This Volume's label is for display purposes only.
- *
- * - `tags` - An array of tags applied to this object.
- *
- * - `size` - The Volume's size, in GiB.
- *
- * - `region` - The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
- *
- * - `updated` - When this Volume was last updated.
- *
- * - `linodeId` - If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
- *
- * - `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {
@@ -68,15 +45,45 @@ export interface GetVolumeArgs {
  * A collection of values returned by getVolume.
  */
 export interface GetVolumeResult {
+    /**
+     * When this Volume was created.
+     */
     readonly created: string;
+    /**
+     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+     */
     readonly filesystemPath: string;
+    /**
+     * The unique ID of this Volume.
+     */
     readonly id: number;
+    /**
+     * This Volume's label is for display purposes only.
+     */
     readonly label: string;
+    /**
+     * If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+     */
     readonly linodeId: number;
+    /**
+     * The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+     */
     readonly region: string;
+    /**
+     * The Volume's size, in GiB.
+     */
     readonly size: number;
+    /**
+     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
+     */
     readonly status: string;
+    /**
+     * An array of tags applied to this object.
+     */
     readonly tags: string[];
+    /**
+     * When this Volume was last updated.
+     */
     readonly updated: string;
 }
 

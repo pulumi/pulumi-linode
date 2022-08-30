@@ -62,13 +62,6 @@ import * as utilities from "./utilities";
  *     sourceVolumeId: 12345,
  * });
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
- *
- * * `filesystemPath` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
  *
  * ## Import
  *
@@ -109,8 +102,7 @@ export class Volume extends pulumi.CustomResource {
     }
 
     /**
-     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
     public /*out*/ readonly filesystemPath!: pulumi.Output<string>;
     /**
@@ -134,7 +126,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly sourceVolumeId!: pulumi.Output<number | undefined>;
     /**
-     * The status of the volume, indicating the current readiness state.
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -187,8 +179,7 @@ export class Volume extends pulumi.CustomResource {
  */
 export interface VolumeState {
     /**
-     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
     filesystemPath?: pulumi.Input<string>;
     /**
@@ -212,7 +203,7 @@ export interface VolumeState {
      */
     sourceVolumeId?: pulumi.Input<number>;
     /**
-     * The status of the volume, indicating the current readiness state.
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      */
     status?: pulumi.Input<string>;
     /**

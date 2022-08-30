@@ -78,15 +78,6 @@ namespace Pulumi.Linode
     ///     }
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
-    /// 
-    /// * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-    /// 
-    /// * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
     /// 
     /// ## Import
     /// 
@@ -132,7 +123,7 @@ namespace Pulumi.Linode
         public Output<int> NodebalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -264,7 +255,7 @@ namespace Pulumi.Linode
         public Input<int>? NodebalancerId { get; set; }
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

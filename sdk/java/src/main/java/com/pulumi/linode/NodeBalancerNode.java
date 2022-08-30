@@ -94,15 +94,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
- * 
- * * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
- * 
- * * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
  * 
  * ## Import
  * 
@@ -188,14 +179,14 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
         return this.nodebalancerId;
     }
     /**
-     * The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+     * @return The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
     public Output<String> status() {

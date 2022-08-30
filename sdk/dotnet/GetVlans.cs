@@ -61,18 +61,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-        /// 
-        /// * `label` - The unique label of the VLAN.
-        /// 
-        /// * `linodes` - The running Linodes currently attached to the VLAN.
-        /// 
-        /// * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// 
-        /// * `created` - When the VLAN was created.
-        /// 
         /// ## Filterable Fields
         /// 
         /// * `label`
@@ -132,18 +120,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// Each Linode VLAN will be stored in the `vlans` attribute and will export the following attributes:
-        /// 
-        /// * `label` - The unique label of the VLAN.
-        /// 
-        /// * `linodes` - The running Linodes currently attached to the VLAN.
-        /// 
-        /// * `region` - The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// 
-        /// * `created` - When the VLAN was created.
-        /// 
         /// ## Filterable Fields
         /// 
         /// * `label`

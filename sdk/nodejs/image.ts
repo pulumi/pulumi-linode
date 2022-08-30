@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
  *
  * For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
  *
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `id` - The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
- *
- * * `created` - When this Image was created.
- *
- * * `createdBy` - The name of the User who created this Image.
- *
- * * `deprecated` - Whether or not this Image is deprecated. Will only be True for deprecated public Images.
- *
- * * `isPublic` - True if the Image is public.
- *
- * * `size` - The minimum size this Image needs to deploy. Size is in MB.
- *
- * * `type` - How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
- *
- * * `expiry` - Only Images created automatically (from a deleted Linode; type=automatic) will expire.
- *
- * * `vendor` - The upstream distribution vendor. Nil for private Images.
- *
  * ## Import
  *
  * Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -124,8 +102,7 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-     * a deleted Linode.
+     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -250,8 +227,7 @@ export interface ImageState {
      */
     status?: pulumi.Input<string>;
     /**
-     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from
-     * a deleted Linode.
+     * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
     type?: pulumi.Input<string>;
     /**

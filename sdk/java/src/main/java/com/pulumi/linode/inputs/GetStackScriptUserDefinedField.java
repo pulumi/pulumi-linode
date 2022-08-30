@@ -12,44 +12,92 @@ public final class GetStackScriptUserDefinedField extends com.pulumi.resources.I
 
     public static final GetStackScriptUserDefinedField Empty = new GetStackScriptUserDefinedField();
 
+    /**
+     * The default value. If not specified, this value will be used.
+     * 
+     */
     @Import(name="default", required=true)
     private String default_;
 
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
     public String default_() {
         return this.default_;
     }
 
+    /**
+     * An example value for the field.
+     * 
+     */
     @Import(name="example", required=true)
     private String example;
 
+    /**
+     * @return An example value for the field.
+     * 
+     */
     public String example() {
         return this.example;
     }
 
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     @Import(name="label", required=true)
     private String label;
 
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     public String label() {
         return this.label;
     }
 
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     @Import(name="manyOf", required=true)
     private String manyOf;
 
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     public String manyOf() {
         return this.manyOf;
     }
 
+    /**
+     * The name of the field.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the field.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * A list of acceptable single values for the field.
+     * 
+     */
     @Import(name="oneOf", required=true)
     private String oneOf;
 
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
     public String oneOf() {
         return this.oneOf;
     }
@@ -83,31 +131,67 @@ public final class GetStackScriptUserDefinedField extends com.pulumi.resources.I
             $ = new GetStackScriptUserDefinedField(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param default_ The default value. If not specified, this value will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(String default_) {
             $.default_ = default_;
             return this;
         }
 
+        /**
+         * @param example An example value for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder example(String example) {
             $.example = example;
             return this;
         }
 
+        /**
+         * @param label A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param manyOf A list of acceptable values for the field in any quantity, combination or order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder manyOf(String manyOf) {
             $.manyOf = manyOf;
             return this;
         }
 
+        /**
+         * @param name The name of the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param oneOf A list of acceptable single values for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oneOf(String oneOf) {
             $.oneOf = oneOf;
             return this;

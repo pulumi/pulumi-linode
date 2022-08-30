@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class UserLongviewGrant {
-    private final Integer id;
-    private final String permissions;
+    private Integer id;
+    private String permissions;
 
-    @CustomType.Constructor
-    private UserLongviewGrant(
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("permissions") String permissions) {
-        this.id = id;
-        this.permissions = permissions;
-    }
-
+    private UserLongviewGrant() {}
     public Integer id() {
         return this.id;
     }
@@ -35,30 +28,32 @@ public final class UserLongviewGrant {
     public static Builder builder(UserLongviewGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer id;
         private String permissions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserLongviewGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.permissions = defaults.permissions;
         }
 
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(String permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
-        }        public UserLongviewGrant build() {
-            return new UserLongviewGrant(id, permissions);
+        }
+        public UserLongviewGrant build() {
+            final var o = new UserLongviewGrant();
+            o.id = id;
+            o.permissions = permissions;
+            return o;
         }
     }
 }

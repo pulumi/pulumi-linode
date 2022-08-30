@@ -11,36 +11,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StackScriptUserDefinedField {
-    private final @Nullable String default_;
-    private final @Nullable String example;
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
+    private @Nullable String default_;
+    /**
+     * @return An example value for the field.
+     * 
+     */
+    private @Nullable String example;
     /**
      * @return The StackScript&#39;s label is for display purposes only.
      * 
      */
-    private final @Nullable String label;
-    private final @Nullable String manyOf;
-    private final @Nullable String name;
-    private final @Nullable String oneOf;
+    private @Nullable String label;
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
+    private @Nullable String manyOf;
+    /**
+     * @return The name of the field.
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
+    private @Nullable String oneOf;
 
-    @CustomType.Constructor
-    private StackScriptUserDefinedField(
-        @CustomType.Parameter("default") @Nullable String default_,
-        @CustomType.Parameter("example") @Nullable String example,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("manyOf") @Nullable String manyOf,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("oneOf") @Nullable String oneOf) {
-        this.default_ = default_;
-        this.example = example;
-        this.label = label;
-        this.manyOf = manyOf;
-        this.name = name;
-        this.oneOf = oneOf;
-    }
-
+    private StackScriptUserDefinedField() {}
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
     public Optional<String> default_() {
         return Optional.ofNullable(this.default_);
     }
+    /**
+     * @return An example value for the field.
+     * 
+     */
     public Optional<String> example() {
         return Optional.ofNullable(this.example);
     }
@@ -51,12 +64,24 @@ public final class StackScriptUserDefinedField {
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     public Optional<String> manyOf() {
         return Optional.ofNullable(this.manyOf);
     }
+    /**
+     * @return The name of the field.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
     public Optional<String> oneOf() {
         return Optional.ofNullable(this.oneOf);
     }
@@ -68,7 +93,7 @@ public final class StackScriptUserDefinedField {
     public static Builder builder(StackScriptUserDefinedField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String default_;
         private @Nullable String example;
@@ -76,11 +101,7 @@ public final class StackScriptUserDefinedField {
         private @Nullable String manyOf;
         private @Nullable String name;
         private @Nullable String oneOf;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StackScriptUserDefinedField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -91,31 +112,45 @@ public final class StackScriptUserDefinedField {
     	      this.oneOf = defaults.oneOf;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(@Nullable String default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder example(@Nullable String example) {
             this.example = example;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder manyOf(@Nullable String manyOf) {
             this.manyOf = manyOf;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder oneOf(@Nullable String oneOf) {
             this.oneOf = oneOf;
             return this;
-        }        public StackScriptUserDefinedField build() {
-            return new StackScriptUserDefinedField(default_, example, label, manyOf, name, oneOf);
+        }
+        public StackScriptUserDefinedField build() {
+            final var o = new StackScriptUserDefinedField();
+            o.default_ = default_;
+            o.example = example;
+            o.label = label;
+            o.manyOf = manyOf;
+            o.name = name;
+            o.oneOf = oneOf;
+            return o;
         }
     }
 }

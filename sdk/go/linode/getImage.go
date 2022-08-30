@@ -39,29 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// The Linode Image resource exports the following attributes:
-//
-// * `label` - A short description of the Image.
-//
-// * `created` - When this Image was created.
-//
-// * `createdBy` - The name of the User who created this Image, or "linode" for official Images.
-//
-// * `deprecated` - Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-//
-// * `description` - A detailed description of this Image.
-//
-// * `isPublic` - True if the Image is public.
-//
-// * `size` - The minimum size this Image needs to deploy. Size is in MB. example: 2500
-//
-// * `status` - The current status of this image. (`creating`, `pendingUpload`, `available`)
-//
-// * `type` - How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-//
-// * `vendor` - The upstream distribution vendor. `None` for private Images.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	var rv LookupImageResult
 	err := ctx.Invoke("linode:index/getImage:getImage", args, &rv, opts...)
@@ -79,18 +56,28 @@ type LookupImageArgs struct {
 
 // A collection of values returned by getImage.
 type LookupImageResult struct {
-	Created     string `pulumi:"created"`
-	CreatedBy   string `pulumi:"createdBy"`
-	Deprecated  bool   `pulumi:"deprecated"`
+	// When this Image was created.
+	Created string `pulumi:"created"`
+	// The name of the User who created this Image, or "linode" for official Images.
+	CreatedBy string `pulumi:"createdBy"`
+	// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+	Deprecated bool `pulumi:"deprecated"`
+	// A detailed description of this Image.
 	Description string `pulumi:"description"`
 	Expiry      string `pulumi:"expiry"`
 	Id          string `pulumi:"id"`
-	IsPublic    bool   `pulumi:"isPublic"`
-	Label       string `pulumi:"label"`
-	Size        int    `pulumi:"size"`
-	Status      string `pulumi:"status"`
-	Type        string `pulumi:"type"`
-	Vendor      string `pulumi:"vendor"`
+	// True if the Image is public.
+	IsPublic bool `pulumi:"isPublic"`
+	// A short description of the Image.
+	Label string `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size int `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status string `pulumi:"status"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type string `pulumi:"type"`
+	// The upstream distribution vendor. `None` for private Images.
+	Vendor string `pulumi:"vendor"`
 }
 
 func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...pulumi.InvokeOption) LookupImageResultOutput {
@@ -131,18 +118,22 @@ func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx contex
 	return o
 }
 
+// When this Image was created.
 func (o LookupImageResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The name of the User who created this Image, or "linode" for official Images.
 func (o LookupImageResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
 func (o LookupImageResultOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
+// A detailed description of this Image.
 func (o LookupImageResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -155,26 +146,32 @@ func (o LookupImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// True if the Image is public.
 func (o LookupImageResultOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
+// A short description of the Image.
 func (o LookupImageResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 func (o LookupImageResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The current status of this image. (`creating`, `pendingUpload`, `available`)
 func (o LookupImageResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 func (o LookupImageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The upstream distribution vendor. `None` for private Images.
 func (o LookupImageResultOutput) Vendor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Vendor }).(pulumi.StringOutput)
 }

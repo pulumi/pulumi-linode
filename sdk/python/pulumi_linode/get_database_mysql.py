@@ -93,21 +93,33 @@ class GetDatabaseMysqlResult:
     @property
     @pulumi.getter(name="allowLists")
     def allow_lists(self) -> Sequence[str]:
+        """
+        A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+        """
         return pulumi.get(self, "allow_lists")
 
     @property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> str:
+        """
+        The base64-encoded SSL CA certificate for the Managed Database instance.
+        """
         return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter(name="clusterSize")
     def cluster_size(self) -> int:
+        """
+        The number of Linode Instance nodes deployed to the Managed Database.
+        """
         return pulumi.get(self, "cluster_size")
 
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When this Managed Database was created.
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -118,26 +130,41 @@ class GetDatabaseMysqlResult:
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
+        """
+        Whether the Managed Databases is encrypted.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
+        """
+        The Managed Database engine. (e.g. `mysql`)
+        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter(name="engineId")
     def engine_id(self) -> str:
+        """
+        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        """
         return pulumi.get(self, "engine_id")
 
     @property
     @pulumi.getter(name="hostPrimary")
     def host_primary(self) -> str:
+        """
+        The primary host for the Managed Database.
+        """
         return pulumi.get(self, "host_primary")
 
     @property
     @pulumi.getter(name="hostSecondary")
     def host_secondary(self) -> str:
+        """
+        The secondary/private network host for the Managed Database.
+        """
         return pulumi.get(self, "host_secondary")
 
     @property
@@ -151,46 +178,73 @@ class GetDatabaseMysqlResult:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        A unique, user-defined string referring to the Managed Database.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region that hosts this Linode Managed Database.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="replicationType")
     def replication_type(self) -> str:
+        """
+        The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+        """
         return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
+        """
+        The randomly-generated root password for the Managed Database instance.
+        """
         return pulumi.get(self, "root_password")
 
     @property
     @pulumi.getter(name="rootUsername")
     def root_username(self) -> str:
+        """
+        The root username for the Managed Database instance.
+        """
         return pulumi.get(self, "root_username")
 
     @property
     @pulumi.getter(name="sslConnection")
     def ssl_connection(self) -> bool:
+        """
+        Whether to require SSL credentials to establish a connection to the Managed Database.
+        """
         return pulumi.get(self, "ssl_connection")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The operating status of the Managed Database.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The Linode Instance type used for the nodes of the  Managed Database instance.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        When this Managed Database was last updated.
+        """
         return pulumi.get(self, "updated")
 
     @property
@@ -201,6 +255,9 @@ class GetDatabaseMysqlResult:
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The Managed Database engine version. (e.g. `v8.0.26`)
+        """
         return pulumi.get(self, "version")
 
 
@@ -249,50 +306,6 @@ def get_database_mysql(database_id: Optional[int] = None,
 
     my_db = linode.get_database_mysql(database_id=12345)
     ```
-    ## Attributes
-
-    The `DatabaseMysql` data source exports the following attributes:
-
-    * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-
-    * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-
-    * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-
-    * `created` - When this Managed Database was created.
-
-    * `encrypted` - Whether the Managed Databases is encrypted.
-
-    * `engine` - The Managed Database engine. (e.g. `mysql`)
-
-    * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-
-    * `host_primary` - The primary host for the Managed Database.
-
-    * `host_secondary` - The secondary/private network host for the Managed Database.
-
-    * `label` - A unique, user-defined string referring to the Managed Database.
-
-    * `region` - The region that hosts this Linode Managed Database.
-
-    * `root_password` - The randomly-generated root password for the Managed Database instance.
-
-    * `root_username` - The root username for the Managed Database instance.
-
-    * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-
-    * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-
-    * `status` - The operating status of the Managed Database.
-
-    * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-
-    * `updated` - When this Managed Database was last updated.
-
-    * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-
-    * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-
     ## updates
 
     The following arguments are exported by the `updates` specification block:
@@ -356,50 +369,6 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[int]] = None,
 
     my_db = linode.get_database_mysql(database_id=12345)
     ```
-    ## Attributes
-
-    The `DatabaseMysql` data source exports the following attributes:
-
-    * `allow_list` - A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
-
-    * `ca_cert` - The base64-encoded SSL CA certificate for the Managed Database instance.
-
-    * `cluster_size` - The number of Linode Instance nodes deployed to the Managed Database.
-
-    * `created` - When this Managed Database was created.
-
-    * `encrypted` - Whether the Managed Databases is encrypted.
-
-    * `engine` - The Managed Database engine. (e.g. `mysql`)
-
-    * `engine_id` - The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
-
-    * `host_primary` - The primary host for the Managed Database.
-
-    * `host_secondary` - The secondary/private network host for the Managed Database.
-
-    * `label` - A unique, user-defined string referring to the Managed Database.
-
-    * `region` - The region that hosts this Linode Managed Database.
-
-    * `root_password` - The randomly-generated root password for the Managed Database instance.
-
-    * `root_username` - The root username for the Managed Database instance.
-
-    * `replication_type` - The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
-
-    * `ssl_connection` - Whether to require SSL credentials to establish a connection to the Managed Database.
-
-    * `status` - The operating status of the Managed Database.
-
-    * `type` - The Linode Instance type used for the nodes of the  Managed Database instance.
-
-    * `updated` - When this Managed Database was last updated.
-
-    * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-
-    * `version` - The Managed Database engine version. (e.g. `v8.0.26`)
-
     ## updates
 
     The following arguments are exported by the `updates` specification block:

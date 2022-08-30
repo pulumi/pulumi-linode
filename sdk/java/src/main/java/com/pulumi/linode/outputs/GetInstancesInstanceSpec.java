@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceSpec {
-    private final Integer disk;
-    private final Integer memory;
-    private final Integer transfer;
-    private final Integer vcpus;
+    private Integer disk;
+    private Integer memory;
+    private Integer transfer;
+    private Integer vcpus;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceSpec(
-        @CustomType.Parameter("disk") Integer disk,
-        @CustomType.Parameter("memory") Integer memory,
-        @CustomType.Parameter("transfer") Integer transfer,
-        @CustomType.Parameter("vcpus") Integer vcpus) {
-        this.disk = disk;
-        this.memory = memory;
-        this.transfer = transfer;
-        this.vcpus = vcpus;
-    }
-
+    private GetInstancesInstanceSpec() {}
     public Integer disk() {
         return this.disk;
     }
@@ -46,17 +35,13 @@ public final class GetInstancesInstanceSpec {
     public static Builder builder(GetInstancesInstanceSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer disk;
         private Integer memory;
         private Integer transfer;
         private Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disk = defaults.disk;
@@ -65,23 +50,33 @@ public final class GetInstancesInstanceSpec {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             this.disk = Objects.requireNonNull(disk);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder transfer(Integer transfer) {
             this.transfer = Objects.requireNonNull(transfer);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
             this.vcpus = Objects.requireNonNull(vcpus);
             return this;
-        }        public GetInstancesInstanceSpec build() {
-            return new GetInstancesInstanceSpec(disk, memory, transfer, vcpus);
+        }
+        public GetInstancesInstanceSpec build() {
+            final var o = new GetInstancesInstanceSpec();
+            o.disk = disk;
+            o.memory = memory;
+            o.transfer = transfer;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

@@ -128,7 +128,7 @@ class _NodeBalancerNodeState:
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         if address is not None:
@@ -210,7 +210,7 @@ class _NodeBalancerNodeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         """
         return pulumi.get(self, "status")
 
@@ -288,15 +288,6 @@ class NodeBalancerNode(pulumi.CustomResource):
                 label="mynodebalancernode",
                 weight=50))
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
-
-        * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-
-        * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
 
         ## Import
 
@@ -368,15 +359,6 @@ class NodeBalancerNode(pulumi.CustomResource):
                 label="mynodebalancernode",
                 weight=50))
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `status` - The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
-
-        * `config_id` - The ID of the NodeBalancerConfig this NodeBalancerNode is attached to.
-
-        * `nodebalancer_id` - The ID of the NodeBalancer this NodeBalancerNode is attached to.
 
         ## Import
 
@@ -462,7 +444,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
-        :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -522,7 +504,7 @@ class NodeBalancerNode(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
+        The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         """
         return pulumi.get(self, "status")
 

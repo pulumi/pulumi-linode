@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLkeClusterControlPlane {
-    private final Boolean highAvailability;
+    private Boolean highAvailability;
 
-    @CustomType.Constructor
-    private GetLkeClusterControlPlane(@CustomType.Parameter("highAvailability") Boolean highAvailability) {
-        this.highAvailability = highAvailability;
-    }
-
+    private GetLkeClusterControlPlane() {}
     public Boolean highAvailability() {
         return this.highAvailability;
     }
@@ -27,24 +23,24 @@ public final class GetLkeClusterControlPlane {
     public static Builder builder(GetLkeClusterControlPlane defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean highAvailability;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.highAvailability = defaults.highAvailability;
         }
 
+        @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
             this.highAvailability = Objects.requireNonNull(highAvailability);
             return this;
-        }        public GetLkeClusterControlPlane build() {
-            return new GetLkeClusterControlPlane(highAvailability);
+        }
+        public GetLkeClusterControlPlane build() {
+            final var o = new GetLkeClusterControlPlane();
+            o.highAvailability = highAvailability;
+            return o;
         }
     }
 }

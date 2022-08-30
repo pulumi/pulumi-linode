@@ -415,9 +415,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        ## Attributes
-
-        This resource exports no additional attributes.
 
         ## Import
 
@@ -471,9 +468,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        ## Attributes
-
-        This resource exports no additional attributes.
 
         ## Import
 

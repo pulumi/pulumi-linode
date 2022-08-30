@@ -13,21 +13,14 @@ public final class GetNodeBalancerConfigNodeStatus {
      * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
      */
-    private final Integer down;
+    private Integer down;
     /**
      * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
      * 
      */
-    private final Integer up;
+    private Integer up;
 
-    @CustomType.Constructor
-    private GetNodeBalancerConfigNodeStatus(
-        @CustomType.Parameter("down") Integer down,
-        @CustomType.Parameter("up") Integer up) {
-        this.down = down;
-        this.up = up;
-    }
-
+    private GetNodeBalancerConfigNodeStatus() {}
     /**
      * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
@@ -50,30 +43,32 @@ public final class GetNodeBalancerConfigNodeStatus {
     public static Builder builder(GetNodeBalancerConfigNodeStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer down;
         private Integer up;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeBalancerConfigNodeStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.down = defaults.down;
     	      this.up = defaults.up;
         }
 
+        @CustomType.Setter
         public Builder down(Integer down) {
             this.down = Objects.requireNonNull(down);
             return this;
         }
+        @CustomType.Setter
         public Builder up(Integer up) {
             this.up = Objects.requireNonNull(up);
             return this;
-        }        public GetNodeBalancerConfigNodeStatus build() {
-            return new GetNodeBalancerConfigNodeStatus(down, up);
+        }
+        public GetNodeBalancerConfigNodeStatus build() {
+            final var o = new GetNodeBalancerConfigNodeStatus();
+            o.down = down;
+            o.up = up;
+            return o;
         }
     }
 }

@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceBackupsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If this Linode has the Backup service enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

@@ -31,8 +31,7 @@ class StackScriptArgs:
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-               parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "images", images)
@@ -121,8 +120,7 @@ class StackScriptArgs:
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]:
         """
-        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-        parameters during deployment.
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         return pulumi.get(self, "user_defined_fields")
 
@@ -159,8 +157,7 @@ class _StackScriptState:
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-               parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
         """
@@ -315,8 +312,7 @@ class _StackScriptState:
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]:
         """
-        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-        parameters during deployment.
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         return pulumi.get(self, "user_defined_fields")
 
@@ -399,35 +395,6 @@ class StackScript(pulumi.CustomResource):
                 "package": "nginx",
             })
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-
-        * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-
-        * `deployments_total` - The total number of times this StackScript has been deployed.
-
-        * `username` - The User who created the StackScript.
-
-        * `created` - The date this StackScript was created.
-
-        * `updated` - The date this StackScript was updated.
-
-        * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-          
-          * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-          
-          * `name` - The name of the field.
-          
-          * `example` - An example value for the field.
-          
-          * `one_of` - A list of acceptable single values for the field.
-          
-          * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-          
-          * `default` - The default value. If not specified, this value will be used.
 
         ## Import
 
@@ -445,8 +412,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-               parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         ...
     @overload
@@ -491,35 +457,6 @@ class StackScript(pulumi.CustomResource):
                 "package": "nginx",
             })
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-
-        * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-
-        * `deployments_total` - The total number of times this StackScript has been deployed.
-
-        * `username` - The User who created the StackScript.
-
-        * `created` - The date this StackScript was created.
-
-        * `updated` - The date this StackScript was updated.
-
-        * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-          
-          * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-          
-          * `name` - The name of the field.
-          
-          * `example` - An example value for the field.
-          
-          * `one_of` - A list of acceptable single values for the field.
-          
-          * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-          
-          * `default` - The default value. If not specified, this value will be used.
 
         ## Import
 
@@ -621,8 +558,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-               parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
         """
@@ -729,8 +665,7 @@ class StackScript(pulumi.CustomResource):
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> pulumi.Output[Sequence['outputs.StackScriptUserDefinedField']]:
         """
-        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized
-        parameters during deployment.
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         return pulumi.get(self, "user_defined_fields")
 

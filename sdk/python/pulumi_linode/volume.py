@@ -127,14 +127,13 @@ class _VolumeState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
-        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-               Volume label.
+        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
-        :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
+        :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         if filesystem_path is not None:
@@ -158,8 +157,7 @@ class _VolumeState:
     @pulumi.getter(name="filesystemPath")
     def filesystem_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-        Volume label.
+        The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         """
         return pulumi.get(self, "filesystem_path")
 
@@ -231,7 +229,7 @@ class _VolumeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the volume, indicating the current readiness state.
+        The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         """
         return pulumi.get(self, "status")
 
@@ -318,13 +316,6 @@ class Volume(pulumi.CustomResource):
             label="my-cloned-volume",
             source_volume_id=12345)
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
-
-        * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 
         ## Import
 
@@ -405,13 +396,6 @@ class Volume(pulumi.CustomResource):
             label="my-cloned-volume",
             source_volume_id=12345)
         ```
-        ## Attributes
-
-        This resource exports the following attributes:
-
-        * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
-
-        * `filesystem_path` - The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 
         ## Import
 
@@ -488,14 +472,13 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-               Volume label.
+        :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
-        :param pulumi.Input[str] status: The status of the volume, indicating the current readiness state.
+        :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -516,8 +499,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="filesystemPath")
     def filesystem_path(self) -> pulumi.Output[str]:
         """
-        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-        Volume label.
+        The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         """
         return pulumi.get(self, "filesystem_path")
 
@@ -565,7 +547,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the volume, indicating the current readiness state.
+        The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         """
         return pulumi.get(self, "status")
 

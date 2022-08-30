@@ -12,9 +12,15 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class NodeBalancerConfigNodeStatusArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        /// </summary>
         [Input("down")]
         public Input<int>? Down { get; set; }
 
+        /// <summary>
+        /// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        /// </summary>
         [Input("up")]
         public Input<int>? Up { get; set; }
 

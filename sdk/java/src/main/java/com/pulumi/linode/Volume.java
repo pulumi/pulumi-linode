@@ -137,13 +137,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes
- * 
- * This resource exports the following attributes:
- * 
- * * `status` - The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
- * 
- * * `filesystem_path` - The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
  * 
  * ## Import
  * 
@@ -159,16 +152,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {
     /**
-     * The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
     @Export(name="filesystemPath", type=String.class, parameters={})
     private Output<String> filesystemPath;
 
     /**
-     * @return The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
-     * Volume label.
+     * @return The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
     public Output<String> filesystemPath() {
@@ -245,14 +236,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceVolumeId);
     }
     /**
-     * The status of the volume, indicating the current readiness state.
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the volume, indicating the current readiness state.
+     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
      * 
      */
     public Output<String> status() {

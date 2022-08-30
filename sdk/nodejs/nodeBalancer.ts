@@ -24,31 +24,6 @@ import * as utilities from "./utilities";
  *     tags: ["foobar"],
  * });
  * ```
- * ## Attributes
- *
- * This resource exports the following attributes:
- *
- * * `hostname` - This NodeBalancer's hostname, ending with .nodebalancer.linode.com
- *
- * * `ipv4` - The Public IPv4 Address of this NodeBalancer
- *
- * * `ipv6` - The Public IPv6 Address of this NodeBalancer
- *
- * * `created` - When this NodeBalancer was created
- *
- * * `updated` - When this NodeBalancer was last updated.
- *
- * * `transfer` - The network transfer stats for the current month
- *
- * ### transfer
- *
- * The following attributes are available on transfer:
- *
- * * `in` - The total transfer, in MB, used by this NodeBalancer for the current month
- *
- * * `out` - The total inbound transfer, in MB, used for this NodeBalancer for the current month
- *
- * * `total` - The total outbound transfer, in MB, used for this NodeBalancer for the current month
  *
  * ## Import
  *
@@ -93,7 +68,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public readonly clientConnThrottle!: pulumi.Output<number | undefined>;
     /**
-     * When this NodeBalancer was created.
+     * When this NodeBalancer was created
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
@@ -182,7 +157,7 @@ export interface NodeBalancerState {
      */
     clientConnThrottle?: pulumi.Input<number>;
     /**
-     * When this NodeBalancer was created.
+     * When this NodeBalancer was created
      */
     created?: pulumi.Input<string>;
     /**

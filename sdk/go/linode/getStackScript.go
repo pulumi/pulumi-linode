@@ -39,47 +39,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `label` - The StackScript's label is for display purposes only.
-//
-// * `script` - The script to execute when provisioning a new Linode with this StackScript.
-//
-// * `description` - A description for the StackScript.
-//
-// * `revNote` - This field allows you to add notes for the set of revisions made to this StackScript.
-//
-// * `isPublic` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-//
-// * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-//
-// * `deploymentsActive` - Count of currently active, deployed Linodes created from this StackScript.
-//
-// * `userGravatarId` - The Gravatar ID for the User who created the StackScript.
-//
-// * `deploymentsTotal` - The total number of times this StackScript has been deployed.
-//
-// * `username` - The User who created the StackScript.
-//
-// * `created` - The date this StackScript was created.
-//
-// * `updated` - The date this StackScript was updated.
-//
-// * `userDefinedFields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-//
-//   - `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-//
-//   - `name` - The name of the field.
-//
-//   - `example` - An example value for the field.
-//
-//   - `oneOf` - A list of acceptable single values for the field.
-//
-//   - `manyOf` - A list of acceptable values for the field in any quantity, combination or order.
-//
-//   - `default` - The default value. If not specified, this value will be used.
 func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ...pulumi.InvokeOption) (*LookupStackScriptResult, error) {
 	var rv LookupStackScriptResult
 	err := ctx.Invoke("linode:index/getStackScript:getStackScript", args, &rv, opts...)
@@ -92,26 +51,40 @@ func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ..
 // A collection of arguments for invoking getStackScript.
 type LookupStackScriptArgs struct {
 	// The unique numeric ID of the StackScript to query.
-	Id                int                              `pulumi:"id"`
+	Id int `pulumi:"id"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
 }
 
 // A collection of values returned by getStackScript.
 type LookupStackScriptResult struct {
-	Created           string                           `pulumi:"created"`
-	DeploymentsActive int                              `pulumi:"deploymentsActive"`
-	DeploymentsTotal  int                              `pulumi:"deploymentsTotal"`
-	Description       string                           `pulumi:"description"`
-	Id                int                              `pulumi:"id"`
-	Images            []string                         `pulumi:"images"`
-	IsPublic          bool                             `pulumi:"isPublic"`
-	Label             string                           `pulumi:"label"`
-	RevNote           string                           `pulumi:"revNote"`
-	Script            string                           `pulumi:"script"`
-	Updated           string                           `pulumi:"updated"`
+	// The date this StackScript was created.
+	Created string `pulumi:"created"`
+	// Count of currently active, deployed Linodes created from this StackScript.
+	DeploymentsActive int `pulumi:"deploymentsActive"`
+	// The total number of times this StackScript has been deployed.
+	DeploymentsTotal int `pulumi:"deploymentsTotal"`
+	// A description for the StackScript.
+	Description string `pulumi:"description"`
+	Id          int    `pulumi:"id"`
+	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+	Images []string `pulumi:"images"`
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+	IsPublic bool `pulumi:"isPublic"`
+	// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+	Label string `pulumi:"label"`
+	// This field allows you to add notes for the set of revisions made to this StackScript.
+	RevNote string `pulumi:"revNote"`
+	// The script to execute when provisioning a new Linode with this StackScript.
+	Script string `pulumi:"script"`
+	// The date this StackScript was updated.
+	Updated string `pulumi:"updated"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
-	UserGravatarId    string                           `pulumi:"userGravatarId"`
-	Username          string                           `pulumi:"username"`
+	// The Gravatar ID for the User who created the StackScript.
+	UserGravatarId string `pulumi:"userGravatarId"`
+	// The User who created the StackScript.
+	Username string `pulumi:"username"`
 }
 
 func LookupStackScriptOutput(ctx *pulumi.Context, args LookupStackScriptOutputArgs, opts ...pulumi.InvokeOption) LookupStackScriptResultOutput {
@@ -130,7 +103,8 @@ func LookupStackScriptOutput(ctx *pulumi.Context, args LookupStackScriptOutputAr
 // A collection of arguments for invoking getStackScript.
 type LookupStackScriptOutputArgs struct {
 	// The unique numeric ID of the StackScript to query.
-	Id                pulumi.IntInput                          `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	UserDefinedFields GetStackScriptUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
 }
 
@@ -153,18 +127,22 @@ func (o LookupStackScriptResultOutput) ToLookupStackScriptResultOutputWithContex
 	return o
 }
 
+// The date this StackScript was created.
 func (o LookupStackScriptResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Count of currently active, deployed Linodes created from this StackScript.
 func (o LookupStackScriptResultOutput) DeploymentsActive() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) int { return v.DeploymentsActive }).(pulumi.IntOutput)
 }
 
+// The total number of times this StackScript has been deployed.
 func (o LookupStackScriptResultOutput) DeploymentsTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) int { return v.DeploymentsTotal }).(pulumi.IntOutput)
 }
 
+// A description for the StackScript.
 func (o LookupStackScriptResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -173,38 +151,47 @@ func (o LookupStackScriptResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 func (o LookupStackScriptResultOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
 func (o LookupStackScriptResultOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
+// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
 func (o LookupStackScriptResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// This field allows you to add notes for the set of revisions made to this StackScript.
 func (o LookupStackScriptResultOutput) RevNote() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.RevNote }).(pulumi.StringOutput)
 }
 
+// The script to execute when provisioning a new Linode with this StackScript.
 func (o LookupStackScriptResultOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Script }).(pulumi.StringOutput)
 }
 
+// The date this StackScript was updated.
 func (o LookupStackScriptResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Updated }).(pulumi.StringOutput)
 }
 
+// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 func (o LookupStackScriptResultOutput) UserDefinedFields() GetStackScriptUserDefinedFieldArrayOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) []GetStackScriptUserDefinedField { return v.UserDefinedFields }).(GetStackScriptUserDefinedFieldArrayOutput)
 }
 
+// The Gravatar ID for the User who created the StackScript.
 func (o LookupStackScriptResultOutput) UserGravatarId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.UserGravatarId }).(pulumi.StringOutput)
 }
 
+// The User who created the StackScript.
 func (o LookupStackScriptResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Username }).(pulumi.StringOutput)
 }

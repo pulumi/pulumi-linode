@@ -36,47 +36,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// This resource exports the following attributes:
-        /// 
-        /// * `label` - The StackScript's label is for display purposes only.
-        /// 
-        /// * `script` - The script to execute when provisioning a new Linode with this StackScript.
-        /// 
-        /// * `description` - A description for the StackScript.
-        /// 
-        /// * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-        /// 
-        /// * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-        /// 
-        /// * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-        /// 
-        /// * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-        /// 
-        /// * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-        /// 
-        /// * `deployments_total` - The total number of times this StackScript has been deployed.
-        /// 
-        /// * `username` - The User who created the StackScript.
-        /// 
-        /// * `created` - The date this StackScript was created.
-        /// 
-        /// * `updated` - The date this StackScript was updated.
-        /// 
-        /// * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-        /// 
-        ///   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-        /// 
-        ///   * `name` - The name of the field.
-        /// 
-        ///   * `example` - An example value for the field.
-        /// 
-        ///   * `one_of` - A list of acceptable single values for the field.
-        /// 
-        ///   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-        /// 
-        ///   * `default` - The default value. If not specified, this value will be used.
         /// </summary>
         public static Task<GetStackScriptResult> InvokeAsync(GetStackScriptArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithDefaults());
@@ -106,47 +65,6 @@ namespace Pulumi.Linode
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
-        /// ## Attributes
-        /// 
-        /// This resource exports the following attributes:
-        /// 
-        /// * `label` - The StackScript's label is for display purposes only.
-        /// 
-        /// * `script` - The script to execute when provisioning a new Linode with this StackScript.
-        /// 
-        /// * `description` - A description for the StackScript.
-        /// 
-        /// * `rev_note` - This field allows you to add notes for the set of revisions made to this StackScript.
-        /// 
-        /// * `is_public` - This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-        /// 
-        /// * `images` - An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-        /// 
-        /// * `deployments_active` - Count of currently active, deployed Linodes created from this StackScript.
-        /// 
-        /// * `user_gravatar_id` - The Gravatar ID for the User who created the StackScript.
-        /// 
-        /// * `deployments_total` - The total number of times this StackScript has been deployed.
-        /// 
-        /// * `username` - The User who created the StackScript.
-        /// 
-        /// * `created` - The date this StackScript was created.
-        /// 
-        /// * `updated` - The date this StackScript was updated.
-        /// 
-        /// * `user_defined_fields` - This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-        /// 
-        ///   * `label` - A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-        /// 
-        ///   * `name` - The name of the field.
-        /// 
-        ///   * `example` - An example value for the field.
-        /// 
-        ///   * `one_of` - A list of acceptable single values for the field.
-        /// 
-        ///   * `many_of` - A list of acceptable values for the field in any quantity, combination or order.
-        /// 
-        ///   * `default` - The default value. If not specified, this value will be used.
         /// </summary>
         public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
@@ -163,6 +81,10 @@ namespace Pulumi.Linode
 
         [Input("userDefinedFields")]
         private List<Inputs.GetStackScriptUserDefinedFieldArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// </summary>
         public List<Inputs.GetStackScriptUserDefinedFieldArgs> UserDefinedFields
         {
             get => _userDefinedFields ?? (_userDefinedFields = new List<Inputs.GetStackScriptUserDefinedFieldArgs>());
@@ -185,6 +107,10 @@ namespace Pulumi.Linode
 
         [Input("userDefinedFields")]
         private InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// </summary>
         public InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs> UserDefinedFields
         {
             get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs>());
@@ -201,19 +127,58 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetStackScriptResult
     {
+        /// <summary>
+        /// The date this StackScript was created.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// Count of currently active, deployed Linodes created from this StackScript.
+        /// </summary>
         public readonly int DeploymentsActive;
+        /// <summary>
+        /// The total number of times this StackScript has been deployed.
+        /// </summary>
         public readonly int DeploymentsTotal;
+        /// <summary>
+        /// A description for the StackScript.
+        /// </summary>
         public readonly string Description;
         public readonly int Id;
+        /// <summary>
+        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        /// </summary>
         public readonly ImmutableArray<string> Images;
+        /// <summary>
+        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+        /// </summary>
         public readonly bool IsPublic;
+        /// <summary>
+        /// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// This field allows you to add notes for the set of revisions made to this StackScript.
+        /// </summary>
         public readonly string RevNote;
+        /// <summary>
+        /// The script to execute when provisioning a new Linode with this StackScript.
+        /// </summary>
         public readonly string Script;
+        /// <summary>
+        /// The date this StackScript was updated.
+        /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStackScriptUserDefinedFieldResult> UserDefinedFields;
+        /// <summary>
+        /// The Gravatar ID for the User who created the StackScript.
+        /// </summary>
         public readonly string UserGravatarId;
+        /// <summary>
+        /// The User who created the StackScript.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

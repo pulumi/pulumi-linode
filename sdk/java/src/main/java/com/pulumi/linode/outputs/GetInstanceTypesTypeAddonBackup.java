@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesTypeAddonBackup {
-    private final List<GetInstanceTypesTypeAddonBackupPrice> prices;
+    private List<GetInstanceTypesTypeAddonBackupPrice> prices;
 
-    @CustomType.Constructor
-    private GetInstanceTypesTypeAddonBackup(@CustomType.Parameter("prices") List<GetInstanceTypesTypeAddonBackupPrice> prices) {
-        this.prices = prices;
-    }
-
+    private GetInstanceTypesTypeAddonBackup() {}
     public List<GetInstanceTypesTypeAddonBackupPrice> prices() {
         return this.prices;
     }
@@ -28,27 +24,27 @@ public final class GetInstanceTypesTypeAddonBackup {
     public static Builder builder(GetInstanceTypesTypeAddonBackup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypesTypeAddonBackupPrice> prices;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesTypeAddonBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prices = defaults.prices;
         }
 
+        @CustomType.Setter
         public Builder prices(List<GetInstanceTypesTypeAddonBackupPrice> prices) {
             this.prices = Objects.requireNonNull(prices);
             return this;
         }
         public Builder prices(GetInstanceTypesTypeAddonBackupPrice... prices) {
             return prices(List.of(prices));
-        }        public GetInstanceTypesTypeAddonBackup build() {
-            return new GetInstanceTypesTypeAddonBackup(prices);
+        }
+        public GetInstanceTypesTypeAddonBackup build() {
+            final var o = new GetInstanceTypesTypeAddonBackup();
+            o.prices = prices;
+            return o;
         }
     }
 }

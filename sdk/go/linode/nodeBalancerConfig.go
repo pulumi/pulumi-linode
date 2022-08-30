@@ -57,23 +57,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes
-//
-// This resource exports the following attributes:
-//
-// * `sslCommonname` - The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-//
-// * `sslFingerprint` - The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-//
-// * `nodeStatus` - The status of the attached nodes.
-//
-// ### nodeStatus
-//
-// The following attributes are available on node_status:
-//
-// * `up` - The number of backends considered to be 'UP' and healthy, and that are serving requests.
-//
-// * `down` - The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 //
 // ## Import
 //
@@ -121,11 +104,9 @@ type NodeBalancerConfig struct {
 	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrOutput `pulumi:"sslCert"`
-	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslCommonname pulumi.StringOutput `pulumi:"sslCommonname"`
-	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslFingerprint pulumi.StringOutput `pulumi:"sslFingerprint"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey pulumi.StringPtrOutput `pulumi:"sslKey"`
@@ -197,11 +178,9 @@ type nodeBalancerConfigState struct {
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert *string `pulumi:"sslCert"`
-	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslCommonname *string `pulumi:"sslCommonname"`
-	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslFingerprint *string `pulumi:"sslFingerprint"`
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey *string `pulumi:"sslKey"`
@@ -242,11 +221,9 @@ type NodeBalancerConfigState struct {
 	ProxyProtocol pulumi.StringPtrInput
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrInput
-	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslCommonname pulumi.StringPtrInput
-	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-	// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 	SslFingerprint pulumi.StringPtrInput
 	// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslKey pulumi.StringPtrInput
@@ -495,14 +472,12 @@ func (o NodeBalancerConfigOutput) SslCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringPtrOutput { return v.SslCert }).(pulumi.StringPtrOutput)
 }
 
-// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 func (o NodeBalancerConfigOutput) SslCommonname() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.SslCommonname }).(pulumi.StringOutput)
 }
 
-// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please
-// refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
 func (o NodeBalancerConfigOutput) SslFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.SslFingerprint }).(pulumi.StringOutput)
 }

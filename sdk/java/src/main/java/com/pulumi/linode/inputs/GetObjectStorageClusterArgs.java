@@ -15,9 +15,17 @@ public final class GetObjectStorageClusterArgs extends com.pulumi.resources.Invo
 
     public static final GetObjectStorageClusterArgs Empty = new GetObjectStorageClusterArgs();
 
+    /**
+     * The base URL for this cluster.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return The base URL for this cluster.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -37,23 +45,47 @@ public final class GetObjectStorageClusterArgs extends com.pulumi.resources.Invo
         return this.id;
     }
 
+    /**
+     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The base URL for this cluster used when hosting static sites.
+     * 
+     */
     @Import(name="staticSiteDomain")
     private @Nullable Output<String> staticSiteDomain;
 
+    /**
+     * @return The base URL for this cluster used when hosting static sites.
+     * 
+     */
     public Optional<Output<String>> staticSiteDomain() {
         return Optional.ofNullable(this.staticSiteDomain);
     }
 
+    /**
+     * This cluster&#39;s status. (`available`, `unavailable`)
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return This cluster&#39;s status. (`available`, `unavailable`)
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -86,11 +118,23 @@ public final class GetObjectStorageClusterArgs extends com.pulumi.resources.Invo
             $ = new GetObjectStorageClusterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain The base URL for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The base URL for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
@@ -116,29 +160,65 @@ public final class GetObjectStorageClusterArgs extends com.pulumi.resources.Invo
             return id(Output.of(id));
         }
 
+        /**
+         * @param region The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param staticSiteDomain The base URL for this cluster used when hosting static sites.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticSiteDomain(@Nullable Output<String> staticSiteDomain) {
             $.staticSiteDomain = staticSiteDomain;
             return this;
         }
 
+        /**
+         * @param staticSiteDomain The base URL for this cluster used when hosting static sites.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticSiteDomain(String staticSiteDomain) {
             return staticSiteDomain(Output.of(staticSiteDomain));
         }
 
+        /**
+         * @param status This cluster&#39;s status. (`available`, `unavailable`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status This cluster&#39;s status. (`available`, `unavailable`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

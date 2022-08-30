@@ -41,6 +41,9 @@ class GetObjectStorageClusterResult:
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The base URL for this cluster.
+        """
         return pulumi.get(self, "domain")
 
     @property
@@ -51,16 +54,25 @@ class GetObjectStorageClusterResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="staticSiteDomain")
     def static_site_domain(self) -> str:
+        """
+        The base URL for this cluster used when hosting static sites.
+        """
         return pulumi.get(self, "static_site_domain")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        This cluster's status. (`available`, `unavailable`)
+        """
         return pulumi.get(self, "status")
 
 
@@ -96,20 +108,13 @@ def get_object_storage_cluster(domain: Optional[str] = None,
 
     primary = linode.get_object_storage_cluster(id="us-east-1")
     ```
-    ## Attributes
-
-    The Linode Object Storage Cluster resource exports the following attributes:
-
-    * `domain` - The base URL for this cluster.
-
-    * `status` - This cluster's status. (`available`, `unavailable`)
-
-    * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-
-    * `static_site_domain` - The base URL for this cluster used when hosting static sites.
 
 
+    :param str domain: The base URL for this cluster.
     :param str id: The unique ID of this cluster.
+    :param str region: The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+    :param str static_site_domain: The base URL for this cluster used when hosting static sites.
+    :param str status: This cluster's status. (`available`, `unavailable`)
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -148,19 +153,12 @@ def get_object_storage_cluster_output(domain: Optional[pulumi.Input[Optional[str
 
     primary = linode.get_object_storage_cluster(id="us-east-1")
     ```
-    ## Attributes
-
-    The Linode Object Storage Cluster resource exports the following attributes:
-
-    * `domain` - The base URL for this cluster.
-
-    * `status` - This cluster's status. (`available`, `unavailable`)
-
-    * `region` - The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-
-    * `static_site_domain` - The base URL for this cluster used when hosting static sites.
 
 
+    :param str domain: The base URL for this cluster.
     :param str id: The unique ID of this cluster.
+    :param str region: The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
+    :param str static_site_domain: The base URL for this cluster used when hosting static sites.
+    :param str status: This cluster's status. (`available`, `unavailable`)
     """
     ...

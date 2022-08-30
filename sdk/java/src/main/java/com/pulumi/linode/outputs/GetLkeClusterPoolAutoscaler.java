@@ -13,21 +13,14 @@ public final class GetLkeClusterPoolAutoscaler {
      * @return The maximum number of nodes to autoscale to.
      * 
      */
-    private final Integer max;
+    private Integer max;
     /**
      * @return The minimum number of nodes to autoscale to.
      * 
      */
-    private final Integer min;
+    private Integer min;
 
-    @CustomType.Constructor
-    private GetLkeClusterPoolAutoscaler(
-        @CustomType.Parameter("max") Integer max,
-        @CustomType.Parameter("min") Integer min) {
-        this.max = max;
-        this.min = min;
-    }
-
+    private GetLkeClusterPoolAutoscaler() {}
     /**
      * @return The maximum number of nodes to autoscale to.
      * 
@@ -50,30 +43,32 @@ public final class GetLkeClusterPoolAutoscaler {
     public static Builder builder(GetLkeClusterPoolAutoscaler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer max;
         private Integer min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLkeClusterPoolAutoscaler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder max(Integer max) {
             this.max = Objects.requireNonNull(max);
             return this;
         }
+        @CustomType.Setter
         public Builder min(Integer min) {
             this.min = Objects.requireNonNull(min);
             return this;
-        }        public GetLkeClusterPoolAutoscaler build() {
-            return new GetLkeClusterPoolAutoscaler(max, min);
+        }
+        public GetLkeClusterPoolAutoscaler build() {
+            final var o = new GetLkeClusterPoolAutoscaler();
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

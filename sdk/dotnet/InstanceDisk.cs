@@ -79,15 +79,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ## Attributes
-    /// 
-    /// This resource exports the following attributes:
-    /// 
-    /// * `created` - When this disk was created.
-    /// 
-    /// * `status` - A brief description of this Disk's current state.
-    /// 
-    /// * `updated` - When this disk was last updated.
     /// 
     /// ## Import
     /// 

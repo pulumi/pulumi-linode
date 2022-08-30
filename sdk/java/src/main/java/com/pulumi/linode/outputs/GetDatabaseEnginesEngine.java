@@ -9,26 +9,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseEnginesEngine {
-    private final String engine;
-    private final String id;
-    private final String version;
+    /**
+     * @return The Managed Database engine type.
+     * 
+     */
+    private String engine;
+    /**
+     * @return The Managed Database engine ID in engine/version format.
+     * 
+     */
+    private String id;
+    /**
+     * @return The Managed Database engine version.
+     * 
+     */
+    private String version;
 
-    @CustomType.Constructor
-    private GetDatabaseEnginesEngine(
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("version") String version) {
-        this.engine = engine;
-        this.id = id;
-        this.version = version;
-    }
-
+    private GetDatabaseEnginesEngine() {}
+    /**
+     * @return The Managed Database engine type.
+     * 
+     */
     public String engine() {
         return this.engine;
     }
+    /**
+     * @return The Managed Database engine ID in engine/version format.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Managed Database engine version.
+     * 
+     */
     public String version() {
         return this.version;
     }
@@ -40,16 +55,12 @@ public final class GetDatabaseEnginesEngine {
     public static Builder builder(GetDatabaseEnginesEngine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String engine;
         private String id;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseEnginesEngine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engine = defaults.engine;
@@ -57,19 +68,27 @@ public final class GetDatabaseEnginesEngine {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetDatabaseEnginesEngine build() {
-            return new GetDatabaseEnginesEngine(engine, id, version);
+        }
+        public GetDatabaseEnginesEngine build() {
+            final var o = new GetDatabaseEnginesEngine();
+            o.engine = engine;
+            o.id = id;
+            o.version = version;
+            return o;
         }
     }
 }

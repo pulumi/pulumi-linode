@@ -15,33 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseEnginesResult {
-    private final List<GetDatabaseEnginesEngine> engines;
-    private final @Nullable List<GetDatabaseEnginesFilter> filters;
+    private List<GetDatabaseEnginesEngine> engines;
+    private @Nullable List<GetDatabaseEnginesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean latest;
-    private final @Nullable String order;
-    private final @Nullable String orderBy;
+    private String id;
+    private @Nullable Boolean latest;
+    private @Nullable String order;
+    private @Nullable String orderBy;
 
-    @CustomType.Constructor
-    private GetDatabaseEnginesResult(
-        @CustomType.Parameter("engines") List<GetDatabaseEnginesEngine> engines,
-        @CustomType.Parameter("filters") @Nullable List<GetDatabaseEnginesFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy) {
-        this.engines = engines;
-        this.filters = filters;
-        this.id = id;
-        this.latest = latest;
-        this.order = order;
-        this.orderBy = orderBy;
-    }
-
+    private GetDatabaseEnginesResult() {}
     public List<GetDatabaseEnginesEngine> engines() {
         return this.engines;
     }
@@ -72,7 +57,7 @@ public final class GetDatabaseEnginesResult {
     public static Builder builder(GetDatabaseEnginesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDatabaseEnginesEngine> engines;
         private @Nullable List<GetDatabaseEnginesFilter> filters;
@@ -80,11 +65,7 @@ public final class GetDatabaseEnginesResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseEnginesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engines = defaults.engines;
@@ -95,6 +76,7 @@ public final class GetDatabaseEnginesResult {
     	      this.orderBy = defaults.orderBy;
         }
 
+        @CustomType.Setter
         public Builder engines(List<GetDatabaseEnginesEngine> engines) {
             this.engines = Objects.requireNonNull(engines);
             return this;
@@ -102,6 +84,7 @@ public final class GetDatabaseEnginesResult {
         public Builder engines(GetDatabaseEnginesEngine... engines) {
             return engines(List.of(engines));
         }
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetDatabaseEnginesFilter> filters) {
             this.filters = filters;
             return this;
@@ -109,23 +92,35 @@ public final class GetDatabaseEnginesResult {
         public Builder filters(GetDatabaseEnginesFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
-        }        public GetDatabaseEnginesResult build() {
-            return new GetDatabaseEnginesResult(engines, filters, id, latest, order, orderBy);
+        }
+        public GetDatabaseEnginesResult build() {
+            final var o = new GetDatabaseEnginesResult();
+            o.engines = engines;
+            o.filters = filters;
+            o.id = id;
+            o.latest = latest;
+            o.order = order;
+            o.orderBy = orderBy;
+            return o;
         }
     }
 }

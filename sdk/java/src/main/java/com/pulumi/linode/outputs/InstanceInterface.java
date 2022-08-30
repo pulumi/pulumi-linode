@@ -15,28 +15,19 @@ public final class InstanceInterface {
      * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
      * 
      */
-    private final @Nullable String ipamAddress;
+    private @Nullable String ipamAddress;
     /**
      * @return The name of this interface. If the interface is a VLAN, a label is required.
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return The type of interface. (`public`, `vlan`)
      * 
      */
-    private final @Nullable String purpose;
+    private @Nullable String purpose;
 
-    @CustomType.Constructor
-    private InstanceInterface(
-        @CustomType.Parameter("ipamAddress") @Nullable String ipamAddress,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("purpose") @Nullable String purpose) {
-        this.ipamAddress = ipamAddress;
-        this.label = label;
-        this.purpose = purpose;
-    }
-
+    private InstanceInterface() {}
     /**
      * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
      * 
@@ -66,16 +57,12 @@ public final class InstanceInterface {
     public static Builder builder(InstanceInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipamAddress;
         private @Nullable String label;
         private @Nullable String purpose;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipamAddress = defaults.ipamAddress;
@@ -83,19 +70,27 @@ public final class InstanceInterface {
     	      this.purpose = defaults.purpose;
         }
 
+        @CustomType.Setter
         public Builder ipamAddress(@Nullable String ipamAddress) {
             this.ipamAddress = ipamAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder purpose(@Nullable String purpose) {
             this.purpose = purpose;
             return this;
-        }        public InstanceInterface build() {
-            return new InstanceInterface(ipamAddress, label, purpose);
+        }
+        public InstanceInterface build() {
+            final var o = new InstanceInterface();
+            o.ipamAddress = ipamAddress;
+            o.label = label;
+            o.purpose = purpose;
+            return o;
         }
     }
 }

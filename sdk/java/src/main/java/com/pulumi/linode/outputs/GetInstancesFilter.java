@@ -16,28 +16,19 @@ public final class GetInstancesFilter {
      * @return The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
      */
-    private final @Nullable String matchBy;
+    private @Nullable String matchBy;
     /**
      * @return The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A list of values for the filter to allow. These values should all be in string form.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetInstancesFilter(
-        @CustomType.Parameter("matchBy") @Nullable String matchBy,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("values") List<String> values) {
-        this.matchBy = matchBy;
-        this.name = name;
-        this.values = values;
-    }
-
+    private GetInstancesFilter() {}
     /**
      * @return The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
@@ -67,16 +58,12 @@ public final class GetInstancesFilter {
     public static Builder builder(GetInstancesFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String matchBy;
         private String name;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.matchBy = defaults.matchBy;
@@ -84,22 +71,30 @@ public final class GetInstancesFilter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder matchBy(@Nullable String matchBy) {
             this.matchBy = matchBy;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetInstancesFilter build() {
-            return new GetInstancesFilter(matchBy, name, values);
+        }
+        public GetInstancesFilter build() {
+            final var o = new GetInstancesFilter();
+            o.matchBy = matchBy;
+            o.name = name;
+            o.values = values;
+            return o;
         }
     }
 }

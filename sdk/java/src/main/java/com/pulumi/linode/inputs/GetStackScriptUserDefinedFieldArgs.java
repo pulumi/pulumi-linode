@@ -13,44 +13,92 @@ public final class GetStackScriptUserDefinedFieldArgs extends com.pulumi.resourc
 
     public static final GetStackScriptUserDefinedFieldArgs Empty = new GetStackScriptUserDefinedFieldArgs();
 
+    /**
+     * The default value. If not specified, this value will be used.
+     * 
+     */
     @Import(name="default", required=true)
     private Output<String> default_;
 
+    /**
+     * @return The default value. If not specified, this value will be used.
+     * 
+     */
     public Output<String> default_() {
         return this.default_;
     }
 
+    /**
+     * An example value for the field.
+     * 
+     */
     @Import(name="example", required=true)
     private Output<String> example;
 
+    /**
+     * @return An example value for the field.
+     * 
+     */
     public Output<String> example() {
         return this.example;
     }
 
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     @Import(name="label", required=true)
     private Output<String> label;
 
+    /**
+     * @return A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     * 
+     */
     public Output<String> label() {
         return this.label;
     }
 
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     @Import(name="manyOf", required=true)
     private Output<String> manyOf;
 
+    /**
+     * @return A list of acceptable values for the field in any quantity, combination or order.
+     * 
+     */
     public Output<String> manyOf() {
         return this.manyOf;
     }
 
+    /**
+     * The name of the field.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the field.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * A list of acceptable single values for the field.
+     * 
+     */
     @Import(name="oneOf", required=true)
     private Output<String> oneOf;
 
+    /**
+     * @return A list of acceptable single values for the field.
+     * 
+     */
     public Output<String> oneOf() {
         return this.oneOf;
     }
@@ -84,56 +132,128 @@ public final class GetStackScriptUserDefinedFieldArgs extends com.pulumi.resourc
             $ = new GetStackScriptUserDefinedFieldArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param default_ The default value. If not specified, this value will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(Output<String> default_) {
             $.default_ = default_;
             return this;
         }
 
+        /**
+         * @param default_ The default value. If not specified, this value will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(String default_) {
             return default_(Output.of(default_));
         }
 
+        /**
+         * @param example An example value for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder example(Output<String> example) {
             $.example = example;
             return this;
         }
 
+        /**
+         * @param example An example value for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder example(String example) {
             return example(Output.of(example));
         }
 
+        /**
+         * @param label A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
+        /**
+         * @param manyOf A list of acceptable values for the field in any quantity, combination or order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder manyOf(Output<String> manyOf) {
             $.manyOf = manyOf;
             return this;
         }
 
+        /**
+         * @param manyOf A list of acceptable values for the field in any quantity, combination or order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder manyOf(String manyOf) {
             return manyOf(Output.of(manyOf));
         }
 
+        /**
+         * @param name The name of the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param oneOf A list of acceptable single values for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oneOf(Output<String> oneOf) {
             $.oneOf = oneOf;
             return this;
         }
 
+        /**
+         * @param oneOf A list of acceptable single values for the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oneOf(String oneOf) {
             return oneOf(Output.of(oneOf));
         }

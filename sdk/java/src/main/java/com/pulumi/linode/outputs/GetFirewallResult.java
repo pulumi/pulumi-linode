@@ -15,76 +15,51 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFirewallResult {
-    private final List<GetFirewallDevice> devices;
+    private List<GetFirewallDevice> devices;
     /**
      * @return If true, the firewall is inactive.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
     /**
      * @return The ID of the Firewall Device.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
      * 
      */
-    private final String inboundPolicy;
-    private final List<GetFirewallInbound> inbounds;
+    private String inboundPolicy;
+    private List<GetFirewallInbound> inbounds;
     /**
      * @return The label of the underlying entity this device references.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The IDs of Linodes to apply this firewall to.
      * 
      */
-    private final List<Integer> linodes;
+    private List<Integer> linodes;
     /**
      * @return The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
      * 
      */
-    private final String outboundPolicy;
-    private final List<GetFirewallOutbound> outbounds;
+    private String outboundPolicy;
+    private List<GetFirewallOutbound> outbounds;
     /**
      * @return The status of the firewall. (`enabled`, `disabled`, `deleted`)
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The tags applied to the firewall.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
 
-    @CustomType.Constructor
-    private GetFirewallResult(
-        @CustomType.Parameter("devices") List<GetFirewallDevice> devices,
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("inboundPolicy") String inboundPolicy,
-        @CustomType.Parameter("inbounds") List<GetFirewallInbound> inbounds,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("linodes") List<Integer> linodes,
-        @CustomType.Parameter("outboundPolicy") String outboundPolicy,
-        @CustomType.Parameter("outbounds") List<GetFirewallOutbound> outbounds,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") List<String> tags) {
-        this.devices = devices;
-        this.disabled = disabled;
-        this.id = id;
-        this.inboundPolicy = inboundPolicy;
-        this.inbounds = inbounds;
-        this.label = label;
-        this.linodes = linodes;
-        this.outboundPolicy = outboundPolicy;
-        this.outbounds = outbounds;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetFirewallResult() {}
     public List<GetFirewallDevice> devices() {
         return this.devices;
     }
@@ -158,7 +133,7 @@ public final class GetFirewallResult {
     public static Builder builder(GetFirewallResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetFirewallDevice> devices;
         private Boolean disabled;
@@ -171,11 +146,7 @@ public final class GetFirewallResult {
         private List<GetFirewallOutbound> outbounds;
         private String status;
         private List<String> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.devices = defaults.devices;
@@ -191,6 +162,7 @@ public final class GetFirewallResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder devices(List<GetFirewallDevice> devices) {
             this.devices = Objects.requireNonNull(devices);
             return this;
@@ -198,18 +170,22 @@ public final class GetFirewallResult {
         public Builder devices(GetFirewallDevice... devices) {
             return devices(List.of(devices));
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inboundPolicy(String inboundPolicy) {
             this.inboundPolicy = Objects.requireNonNull(inboundPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder inbounds(List<GetFirewallInbound> inbounds) {
             this.inbounds = Objects.requireNonNull(inbounds);
             return this;
@@ -217,10 +193,12 @@ public final class GetFirewallResult {
         public Builder inbounds(GetFirewallInbound... inbounds) {
             return inbounds(List.of(inbounds));
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder linodes(List<Integer> linodes) {
             this.linodes = Objects.requireNonNull(linodes);
             return this;
@@ -228,10 +206,12 @@ public final class GetFirewallResult {
         public Builder linodes(Integer... linodes) {
             return linodes(List.of(linodes));
         }
+        @CustomType.Setter
         public Builder outboundPolicy(String outboundPolicy) {
             this.outboundPolicy = Objects.requireNonNull(outboundPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder outbounds(List<GetFirewallOutbound> outbounds) {
             this.outbounds = Objects.requireNonNull(outbounds);
             return this;
@@ -239,18 +219,33 @@ public final class GetFirewallResult {
         public Builder outbounds(GetFirewallOutbound... outbounds) {
             return outbounds(List.of(outbounds));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }        public GetFirewallResult build() {
-            return new GetFirewallResult(devices, disabled, id, inboundPolicy, inbounds, label, linodes, outboundPolicy, outbounds, status, tags);
+        }
+        public GetFirewallResult build() {
+            final var o = new GetFirewallResult();
+            o.devices = devices;
+            o.disabled = disabled;
+            o.id = id;
+            o.inboundPolicy = inboundPolicy;
+            o.inbounds = inbounds;
+            o.label = label;
+            o.linodes = linodes;
+            o.outboundPolicy = outboundPolicy;
+            o.outbounds = outbounds;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }
