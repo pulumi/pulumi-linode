@@ -77,7 +77,7 @@ namespace Pulumi.Linode
         /// * `username`
         /// </summary>
         public static Task<GetStackScriptsResult> InvokeAsync(GetStackScriptsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about Linode StackScripts that match a set of filters.
@@ -145,7 +145,7 @@ namespace Pulumi.Linode
         /// * `username`
         /// </summary>
         public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
     }
 
 

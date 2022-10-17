@@ -5,7 +5,6 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,15 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigDevicesSdg {
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this `device` slot
      * 
      */
     private @Nullable Integer diskId;
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    private @Nullable String diskLabel;
     /**
      * @return The Volume ID to map to this `device` slot.
      * 
@@ -30,18 +24,11 @@ public final class InstanceConfigDevicesSdg {
 
     private InstanceConfigDevicesSdg() {}
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this `device` slot
      * 
      */
     public Optional<Integer> diskId() {
         return Optional.ofNullable(this.diskId);
-    }
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    public Optional<String> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
     }
     /**
      * @return The Volume ID to map to this `device` slot.
@@ -61,24 +48,17 @@ public final class InstanceConfigDevicesSdg {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskId;
-        private @Nullable String diskLabel;
         private @Nullable Integer volumeId;
         public Builder() {}
         public Builder(InstanceConfigDevicesSdg defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskId = defaults.diskId;
-    	      this.diskLabel = defaults.diskLabel;
     	      this.volumeId = defaults.volumeId;
         }
 
         @CustomType.Setter
         public Builder diskId(@Nullable Integer diskId) {
             this.diskId = diskId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder diskLabel(@Nullable String diskLabel) {
-            this.diskLabel = diskLabel;
             return this;
         }
         @CustomType.Setter
@@ -89,7 +69,6 @@ public final class InstanceConfigDevicesSdg {
         public InstanceConfigDevicesSdg build() {
             final var o = new InstanceConfigDevicesSdg();
             o.diskId = diskId;
-            o.diskLabel = diskLabel;
             o.volumeId = volumeId;
             return o;
         }

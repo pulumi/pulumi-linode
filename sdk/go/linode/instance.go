@@ -55,6 +55,86 @@ import (
 //	}
 //
 // ```
+// ### Linode Instance with explicit Configs and Disks
+//
+// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := linode.GetProfile(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			web, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				Label: pulumi.String("complex_instance"),
+//				Group: pulumi.String("foo"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//				},
+//				Region:    pulumi.String("us-central"),
+//				Type:      pulumi.String("g6-nanode-1"),
+//				PrivateIp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			webVolume, err := linode.NewVolume(ctx, "webVolume", &linode.VolumeArgs{
+//				Label:  pulumi.String("web_volume"),
+//				Size:   pulumi.Int(20),
+//				Region: pulumi.String("us-central"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bootDisk, err := linode.NewInstanceDisk(ctx, "bootDisk", &linode.InstanceDiskArgs{
+//				Label:    pulumi.String("boot"),
+//				LinodeId: web.ID(),
+//				Size:     pulumi.Int(3000),
+//				Image:    pulumi.String("linode/ubuntu18.04"),
+//				AuthorizedKeys: pulumi.StringArray{
+//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+//				},
+//				AuthorizedUsers: pulumi.StringArray{
+//					pulumi.String(me.Username),
+//				},
+//				RootPass: pulumi.String("terr4form-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceConfig(ctx, "bootConfig", &linode.InstanceConfigArgs{
+//				Label:    pulumi.String("boot_config"),
+//				LinodeId: web.ID(),
+//				Devices: &InstanceConfigDevicesArgs{
+//					Sda: &InstanceConfigDevicesSdaArgs{
+//						DiskId: bootDisk.ID(),
+//					},
+//					Sdb: &InstanceConfigDevicesSdbArgs{
+//						VolumeId: webVolume.ID(),
+//					},
+//				},
+//				RootDevice: pulumi.String("/dev/sda"),
+//				Kernel:     pulumi.String("linode/latest-64bit"),
+//				Booted:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -91,8 +171,8 @@ type Instance struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs InstanceConfigArrayOutput   `pulumi:"configs"`
-	Disks   InstanceDiskTypeArrayOutput `pulumi:"disks"`
+	Configs InstanceConfigTypeArrayOutput `pulumi:"configs"`
+	Disks   InstanceDiskTypeArrayOutput   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -148,6 +228,17 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	if args.RootPass != nil {
+		args.RootPass = pulumi.ToSecret(args.RootPass).(pulumi.StringPtrOutput)
+	}
+	if args.StackscriptData != nil {
+		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.MapOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"rootPass",
+		"stackscriptData",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("linode:index/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -187,8 +278,8 @@ type instanceState struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig   `pulumi:"configs"`
-	Disks   []InstanceDiskType `pulumi:"disks"`
+	Configs []InstanceConfigType `pulumi:"configs"`
+	Disks   []InstanceDiskType   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -252,7 +343,7 @@ type InstanceState struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs InstanceConfigArrayInput
+	Configs InstanceConfigTypeArrayInput
 	Disks   InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
@@ -319,8 +410,8 @@ type instanceArgs struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig   `pulumi:"configs"`
-	Disks   []InstanceDiskType `pulumi:"disks"`
+	Configs []InstanceConfigType `pulumi:"configs"`
+	Disks   []InstanceDiskType   `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -371,7 +462,7 @@ type InstanceArgs struct {
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs InstanceConfigArrayInput
+	Configs InstanceConfigTypeArrayInput
 	Disks   InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
@@ -534,8 +625,8 @@ func (o InstanceOutput) Booted() pulumi.BoolOutput {
 }
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
-	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
+func (o InstanceOutput) Configs() InstanceConfigTypeArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceConfigTypeArrayOutput { return v.Configs }).(InstanceConfigTypeArrayOutput)
 }
 
 func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {

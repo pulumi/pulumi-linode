@@ -185,6 +185,12 @@ func NewDatabaseMongodb(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"rootPassword",
+		"rootUsername",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseMongodb
 	err := ctx.RegisterResource("linode:index/databaseMongodb:DatabaseMongodb", name, args, &resource, opts...)
 	if err != nil {

@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabasePostgresqlResult> InvokeAsync(GetDatabasePostgresqlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode PostgreSQL Database.
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabasePostgresqlResult> Invoke(GetDatabasePostgresqlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
     }
 
 

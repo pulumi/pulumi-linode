@@ -220,6 +220,8 @@ class ObjectStorageKey(pulumi.CustomResource):
             __props__.__dict__["access_key"] = None
             __props__.__dict__["limited"] = None
             __props__.__dict__["secret_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ObjectStorageKey, __self__).__init__(
             'linode:index/objectStorageKey:ObjectStorageKey',
             resource_name,

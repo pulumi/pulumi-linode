@@ -273,6 +273,8 @@ class Token(pulumi.CustomResource):
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["created"] = None
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Token, __self__).__init__(
             'linode:index/token:Token',
             resource_name,

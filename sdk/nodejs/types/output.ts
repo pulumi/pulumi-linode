@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DatabaseMongodbUpdates {
     dayOfWeek: string;
@@ -1340,27 +1341,23 @@ export interface InstanceConfig {
 
 export interface InstanceConfigDevices {
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
-    sda: outputs.InstanceConfigDevicesSda;
-    sdb: outputs.InstanceConfigDevicesSdb;
-    sdc: outputs.InstanceConfigDevicesSdc;
-    sdd: outputs.InstanceConfigDevicesSdd;
-    sde: outputs.InstanceConfigDevicesSde;
-    sdf: outputs.InstanceConfigDevicesSdf;
-    sdg: outputs.InstanceConfigDevicesSdg;
-    sdh: outputs.InstanceConfigDevicesSdh;
+    sda?: outputs.InstanceConfigDevicesSda;
+    sdb?: outputs.InstanceConfigDevicesSdb;
+    sdc?: outputs.InstanceConfigDevicesSdc;
+    sdd?: outputs.InstanceConfigDevicesSdd;
+    sde?: outputs.InstanceConfigDevicesSde;
+    sdf?: outputs.InstanceConfigDevicesSdf;
+    sdg?: outputs.InstanceConfigDevicesSdg;
+    sdh?: outputs.InstanceConfigDevicesSdh;
 }
 
 export interface InstanceConfigDevicesSda {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1369,13 +1366,9 @@ export interface InstanceConfigDevicesSda {
 
 export interface InstanceConfigDevicesSdb {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1384,13 +1377,9 @@ export interface InstanceConfigDevicesSdb {
 
 export interface InstanceConfigDevicesSdc {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1399,13 +1388,9 @@ export interface InstanceConfigDevicesSdc {
 
 export interface InstanceConfigDevicesSdd {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1414,13 +1399,9 @@ export interface InstanceConfigDevicesSdd {
 
 export interface InstanceConfigDevicesSde {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1429,13 +1410,9 @@ export interface InstanceConfigDevicesSde {
 
 export interface InstanceConfigDevicesSdf {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1444,13 +1421,9 @@ export interface InstanceConfigDevicesSdf {
 
 export interface InstanceConfigDevicesSdg {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
@@ -1459,17 +1432,36 @@ export interface InstanceConfigDevicesSdg {
 
 export interface InstanceConfigDevicesSdh {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Volume ID to map to this `device` slot.
      */
     volumeId?: number;
+}
+
+export interface InstanceConfigHelper {
+    /**
+     * Populates the /dev directory early during boot without udev. (default `true`)
+     */
+    devtmpfsAutomount?: boolean;
+    /**
+     * Helps maintain correct inittab/upstart console device. (default `true`)
+     */
+    distro?: boolean;
+    /**
+     * Creates a modules dependency file for the Kernel you run. (default `true`)
+     */
+    modulesDep?: boolean;
+    /**
+     * Automatically configures static networking. (default `true`)
+     */
+    network?: boolean;
+    /**
+     * Disables updatedb cron job to avoid disk thrashing. (default `true`)
+     */
+    updatedbDisabled?: boolean;
 }
 
 export interface InstanceConfigHelpers {
@@ -1494,17 +1486,17 @@ export interface InstanceConfigHelpers {
 
 export interface InstanceConfigInterface {
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
      */
     ipamAddress?: string;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The name of this interface.
      */
     label?: string;
     /**
      * The type of interface. (`public`, `vlan`)
      */
-    purpose?: string;
+    purpose: string;
 }
 
 export interface InstanceDisk {

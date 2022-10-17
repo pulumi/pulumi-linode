@@ -47,6 +47,78 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// ### Linode Instance with explicit Configs and Disks
+    /// 
+    /// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = Linode.GetProfile.Invoke();
+    /// 
+    ///     var web = new Linode.Instance("web", new()
+    ///     {
+    ///         Label = "complex_instance",
+    ///         Group = "foo",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///         },
+    ///         Region = "us-central",
+    ///         Type = "g6-nanode-1",
+    ///         PrivateIp = true,
+    ///     });
+    /// 
+    ///     var webVolume = new Linode.Volume("webVolume", new()
+    ///     {
+    ///         Label = "web_volume",
+    ///         Size = 20,
+    ///         Region = "us-central",
+    ///     });
+    /// 
+    ///     var bootDisk = new Linode.InstanceDisk("bootDisk", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = web.Id,
+    ///         Size = 3000,
+    ///         Image = "linode/ubuntu18.04",
+    ///         AuthorizedKeys = new[]
+    ///         {
+    ///             "ssh-rsa AAAA...Gw== user@example.local",
+    ///         },
+    ///         AuthorizedUsers = new[]
+    ///         {
+    ///             me.Apply(getProfileResult =&gt; getProfileResult.Username),
+    ///         },
+    ///         RootPass = "terr4form-test",
+    ///     });
+    /// 
+    ///     var bootConfig = new Linode.InstanceConfig("bootConfig", new()
+    ///     {
+    ///         Label = "boot_config",
+    ///         LinodeId = web.Id,
+    ///         Devices = new Linode.Inputs.InstanceConfigDevicesArgs
+    ///         {
+    ///             Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs
+    ///             {
+    ///                 DiskId = bootDisk.Id,
+    ///             },
+    ///             Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs
+    ///             {
+    ///                 VolumeId = webVolume.Id,
+    ///             },
+    ///         },
+    ///         RootDevice = "/dev/sda",
+    ///         Kernel = "linode/latest-64bit",
+    ///         Booted = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -272,6 +344,11 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "rootPass",
+                    "stackscriptData",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -418,11 +495,21 @@ namespace Pulumi.Linode
         [Input("resizeDisk")]
         public Input<bool>? ResizeDisk { get; set; }
 
+        [Input("rootPass")]
+        private Input<string>? _rootPass;
+
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         /// </summary>
-        [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("sharedIpv4s")]
         private InputList<string>? _sharedIpv4s;
@@ -445,7 +532,11 @@ namespace Pulumi.Linode
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -651,11 +742,21 @@ namespace Pulumi.Linode
         [Input("resizeDisk")]
         public Input<bool>? ResizeDisk { get; set; }
 
+        [Input("rootPass")]
+        private Input<string>? _rootPass;
+
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         /// </summary>
-        [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("sharedIpv4s")]
         private InputList<string>? _sharedIpv4s;
@@ -684,7 +785,11 @@ namespace Pulumi.Linode
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
         /// </summary>
         [Input("ipamAddress")]
         public Input<string>? IpamAddress { get; set; }
 
         /// <summary>
-        /// The name of this interface. If the interface is a VLAN, a label is required.
+        /// The name of this interface.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
@@ -27,8 +27,8 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The type of interface. (`public`, `vlan`)
         /// </summary>
-        [Input("purpose")]
-        public Input<string>? Purpose { get; set; }
+        [Input("purpose", required: true)]
+        public Input<string> Purpose { get; set; } = null!;
 
         public InstanceConfigInterfaceArgs()
         {

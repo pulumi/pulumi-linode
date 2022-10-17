@@ -16,14 +16,14 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
     public static final InstanceConfigInterfaceArgs Empty = new InstanceConfigInterfaceArgs();
 
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
      * 
      */
     @Import(name="ipamAddress")
     private @Nullable Output<String> ipamAddress;
 
     /**
-     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
      * 
      */
     public Optional<Output<String>> ipamAddress() {
@@ -31,14 +31,14 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The name of this interface.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The name of this interface.
      * 
      */
     public Optional<Output<String>> label() {
@@ -49,15 +49,15 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
      * The type of interface. (`public`, `vlan`)
      * 
      */
-    @Import(name="purpose")
-    private @Nullable Output<String> purpose;
+    @Import(name="purpose", required=true)
+    private Output<String> purpose;
 
     /**
      * @return The type of interface. (`public`, `vlan`)
      * 
      */
-    public Optional<Output<String>> purpose() {
-        return Optional.ofNullable(this.purpose);
+    public Output<String> purpose() {
+        return this.purpose;
     }
 
     private InstanceConfigInterfaceArgs() {}
@@ -87,7 +87,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipamAddress This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+         * @param ipamAddress This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipamAddress This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+         * @param ipamAddress This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param label The name of this interface. If the interface is a VLAN, a label is required.
+         * @param label The name of this interface.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param label The name of this interface. If the interface is a VLAN, a label is required.
+         * @param label The name of this interface.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder purpose(@Nullable Output<String> purpose) {
+        public Builder purpose(Output<String> purpose) {
             $.purpose = purpose;
             return this;
         }
@@ -150,6 +150,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         public InstanceConfigInterfaceArgs build() {
+            $.purpose = Objects.requireNonNull($.purpose, "expected parameter 'purpose' to be non-null");
             return $;
         }
     }

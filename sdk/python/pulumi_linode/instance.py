@@ -959,6 +959,49 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
+        ### Linode Instance with explicit Configs and Disks
+
+        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            group="foo",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("webVolume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("bootDisk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu18.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.InstanceConfig("bootConfig",
+            label="boot_config",
+            linode_id=web.id,
+            devices=linode.InstanceConfigDevicesArgs(
+                sda=linode.InstanceConfigDevicesSdaArgs(
+                    disk_id=boot_disk.id,
+                ),
+                sdb=linode.InstanceConfigDevicesSdbArgs(
+                    volume_id=web_volume.id,
+                ),
+            ),
+            root_device="/dev/sda",
+            kernel="linode/latest-64bit",
+            booted=True)
+        ```
 
         ## Import
 
@@ -1031,6 +1074,49 @@ class Instance(pulumi.CustomResource):
             swap_size=256,
             tags=["foo"],
             type="g6-standard-1")
+        ```
+        ### Linode Instance with explicit Configs and Disks
+
+        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            group="foo",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("webVolume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("bootDisk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu18.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.InstanceConfig("bootConfig",
+            label="boot_config",
+            linode_id=web.id,
+            devices=linode.InstanceConfigDevicesArgs(
+                sda=linode.InstanceConfigDevicesSdaArgs(
+                    disk_id=boot_disk.id,
+                ),
+                sdb=linode.InstanceConfigDevicesSdbArgs(
+                    volume_id=web_volume.id,
+                ),
+            ),
+            root_device="/dev/sda",
+            kernel="linode/latest-64bit",
+            booted=True)
         ```
 
         ## Import
@@ -1113,9 +1199,9 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk
-            __props__.__dict__["root_pass"] = root_pass
+            __props__.__dict__["root_pass"] = None if root_pass is None else pulumi.Output.secret(root_pass)
             __props__.__dict__["shared_ipv4s"] = shared_ipv4s
-            __props__.__dict__["stackscript_data"] = stackscript_data
+            __props__.__dict__["stackscript_data"] = None if stackscript_data is None else pulumi.Output.secret(stackscript_data)
             __props__.__dict__["stackscript_id"] = stackscript_id
             __props__.__dict__["swap_size"] = swap_size
             __props__.__dict__["tags"] = tags
@@ -1128,6 +1214,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["private_ip_address"] = None
             __props__.__dict__["specs"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["rootPass", "stackscriptData"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'linode:index/instance:Instance',
             resource_name,

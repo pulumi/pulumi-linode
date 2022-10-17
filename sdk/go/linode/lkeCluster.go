@@ -146,6 +146,10 @@ func NewLkeCluster(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeconfig",
+	})
+	opts = append(opts, secrets)
 	var resource LkeCluster
 	err := ctx.RegisterResource("linode:index/lkeCluster:LkeCluster", name, args, &resource, opts...)
 	if err != nil {

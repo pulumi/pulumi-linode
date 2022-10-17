@@ -175,6 +175,10 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "kubeconfig",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -284,11 +288,21 @@ namespace Pulumi.Linode
         [Input("k8sVersion")]
         public Input<string>? K8sVersion { get; set; }
 
+        [Input("kubeconfig")]
+        private Input<string>? _kubeconfig;
+
         /// <summary>
         /// The base64 encoded kubeconfig for the Kubernetes cluster.
         /// </summary>
-        [Input("kubeconfig")]
-        public Input<string>? Kubeconfig { get; set; }
+        public Input<string>? Kubeconfig
+        {
+            get => _kubeconfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeconfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This Kubernetes cluster's unique label.

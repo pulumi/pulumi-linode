@@ -14,17 +14,17 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigInterface
     {
         /// <summary>
-        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
         /// </summary>
         public readonly string? IpamAddress;
         /// <summary>
-        /// The name of this interface. If the interface is a VLAN, a label is required.
+        /// The name of this interface.
         /// </summary>
         public readonly string? Label;
         /// <summary>
         /// The type of interface. (`public`, `vlan`)
         /// </summary>
-        public readonly string? Purpose;
+        public readonly string Purpose;
 
         [OutputConstructor]
         private InstanceConfigInterface(
@@ -32,7 +32,7 @@ namespace Pulumi.Linode.Outputs
 
             string? label,
 
-            string? purpose)
+            string purpose)
         {
             IpamAddress = ipamAddress;
             Label = label;

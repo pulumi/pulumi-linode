@@ -14,13 +14,9 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigDevicesSda
     {
         /// <summary>
-        /// The Disk ID of the associated `disk_label`, if used.
+        /// The Disk ID to map to this `device` slot
         /// </summary>
         public readonly int? DiskId;
-        /// <summary>
-        /// The `label` of the `disk` to map to this `device` slot.
-        /// </summary>
-        public readonly string? DiskLabel;
         /// <summary>
         /// The Volume ID to map to this `device` slot.
         /// </summary>
@@ -30,12 +26,9 @@ namespace Pulumi.Linode.Outputs
         private InstanceConfigDevicesSda(
             int? diskId,
 
-            string? diskLabel,
-
             int? volumeId)
         {
             DiskId = diskId;
-            DiskLabel = diskLabel;
             VolumeId = volumeId;
         }
     }

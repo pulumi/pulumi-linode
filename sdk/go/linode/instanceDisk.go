@@ -159,6 +159,17 @@ func NewInstanceDisk(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	if args.RootPass != nil {
+		args.RootPass = pulumi.ToSecret(args.RootPass).(pulumi.StringPtrOutput)
+	}
+	if args.StackscriptData != nil {
+		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.MapOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"rootPass",
+		"stackscriptData",
+	})
+	opts = append(opts, secrets)
 	var resource InstanceDisk
 	err := ctx.RegisterResource("linode:index/instanceDisk:InstanceDisk", name, args, &resource, opts...)
 	if err != nil {

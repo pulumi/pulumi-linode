@@ -66,11 +66,21 @@ namespace Pulumi.Linode.Inputs
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        [Input("rootPass")]
+        private Input<string>? _rootPass;
+
         /// <summary>
         /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         /// </summary>
-        [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The size of the Disk in MB.
@@ -87,7 +97,11 @@ namespace Pulumi.Linode.Inputs
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

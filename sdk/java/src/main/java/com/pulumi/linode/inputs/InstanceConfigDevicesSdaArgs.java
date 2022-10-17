@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,33 +16,18 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
     public static final InstanceConfigDevicesSdaArgs Empty = new InstanceConfigDevicesSdaArgs();
 
     /**
-     * The Disk ID of the associated `disk_label`, if used.
+     * The Disk ID to map to this `device` slot
      * 
      */
     @Import(name="diskId")
     private @Nullable Output<Integer> diskId;
 
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this `device` slot
      * 
      */
     public Optional<Output<Integer>> diskId() {
         return Optional.ofNullable(this.diskId);
-    }
-
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    @Import(name="diskLabel")
-    private @Nullable Output<String> diskLabel;
-
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    public Optional<Output<String>> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
     }
 
     /**
@@ -65,7 +49,6 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
 
     private InstanceConfigDevicesSdaArgs(InstanceConfigDevicesSdaArgs $) {
         this.diskId = $.diskId;
-        this.diskLabel = $.diskLabel;
         this.volumeId = $.volumeId;
     }
 
@@ -88,7 +71,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID of the associated `disk_label`, if used.
+         * @param diskId The Disk ID to map to this `device` slot
          * 
          * @return builder
          * 
@@ -99,34 +82,13 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID of the associated `disk_label`, if used.
+         * @param diskId The Disk ID to map to this `device` slot
          * 
          * @return builder
          * 
          */
         public Builder diskId(Integer diskId) {
             return diskId(Output.of(diskId));
-        }
-
-        /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(@Nullable Output<String> diskLabel) {
-            $.diskLabel = diskLabel;
-            return this;
-        }
-
-        /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(String diskLabel) {
-            return diskLabel(Output.of(diskLabel));
         }
 
         /**

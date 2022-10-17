@@ -45,7 +45,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainRecordResult> InvokeAsync(GetDomainRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode Domain Record.
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
     }
 
 

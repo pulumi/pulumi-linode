@@ -5,68 +5,319 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./databaseAccessControls";
-export * from "./databaseMongodb";
-export * from "./databaseMysql";
-export * from "./databasePostgresql";
-export * from "./domain";
-export * from "./domainRecord";
-export * from "./firewall";
-export * from "./firewallDevice";
-export * from "./getAccount";
-export * from "./getDatabaseBackups";
-export * from "./getDatabaseEngines";
-export * from "./getDatabaseMongodb";
-export * from "./getDatabaseMysql";
-export * from "./getDatabaseMysqlBackups";
-export * from "./getDatabasePostgresql";
-export * from "./getDatabases";
-export * from "./getDomain";
-export * from "./getDomainRecord";
-export * from "./getDomainZonefile";
-export * from "./getFirewall";
-export * from "./getImage";
-export * from "./getImages";
-export * from "./getInstanceBackups";
-export * from "./getInstanceType";
-export * from "./getInstanceTypes";
-export * from "./getInstances";
-export * from "./getIpv6Range";
-export * from "./getKernel";
-export * from "./getLkeCluster";
-export * from "./getNetworkingIp";
-export * from "./getNodeBalancer";
-export * from "./getNodeBalancerConfig";
-export * from "./getNodeBalancerNode";
-export * from "./getObjectStorageCluster";
-export * from "./getProfile";
-export * from "./getRegion";
-export * from "./getSshKey";
-export * from "./getStackScript";
-export * from "./getStackScripts";
-export * from "./getUser";
-export * from "./getVlans";
-export * from "./getVolume";
-export * from "./image";
-export * from "./instance";
-export * from "./instanceDisk";
-export * from "./instanceIp";
-export * from "./instanceSharedIps";
-export * from "./ipv6Range";
-export * from "./lkeCluster";
-export * from "./nodeBalancer";
-export * from "./nodeBalancerConfig";
-export * from "./nodeBalancerNode";
-export * from "./objectStorageBucket";
-export * from "./objectStorageKey";
-export * from "./objectStorageObject";
-export * from "./provider";
-export * from "./rdns";
-export * from "./sshKey";
-export * from "./stackScript";
-export * from "./token";
-export * from "./user";
-export * from "./volume";
+export { DatabaseAccessControlsArgs, DatabaseAccessControlsState } from "./databaseAccessControls";
+export type DatabaseAccessControls = import("./databaseAccessControls").DatabaseAccessControls;
+export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
+
+export { DatabaseMongodbArgs, DatabaseMongodbState } from "./databaseMongodb";
+export type DatabaseMongodb = import("./databaseMongodb").DatabaseMongodb;
+export const DatabaseMongodb: typeof import("./databaseMongodb").DatabaseMongodb = null as any;
+
+export { DatabaseMysqlArgs, DatabaseMysqlState } from "./databaseMysql";
+export type DatabaseMysql = import("./databaseMysql").DatabaseMysql;
+export const DatabaseMysql: typeof import("./databaseMysql").DatabaseMysql = null as any;
+
+export { DatabasePostgresqlArgs, DatabasePostgresqlState } from "./databasePostgresql";
+export type DatabasePostgresql = import("./databasePostgresql").DatabasePostgresql;
+export const DatabasePostgresql: typeof import("./databasePostgresql").DatabasePostgresql = null as any;
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+
+export { DomainRecordArgs, DomainRecordState } from "./domainRecord";
+export type DomainRecord = import("./domainRecord").DomainRecord;
+export const DomainRecord: typeof import("./domainRecord").DomainRecord = null as any;
+
+export { FirewallArgs, FirewallState } from "./firewall";
+export type Firewall = import("./firewall").Firewall;
+export const Firewall: typeof import("./firewall").Firewall = null as any;
+
+export { FirewallDeviceArgs, FirewallDeviceState } from "./firewallDevice";
+export type FirewallDevice = import("./firewallDevice").FirewallDevice;
+export const FirewallDevice: typeof import("./firewallDevice").FirewallDevice = null as any;
+
+export { GetAccountResult } from "./getAccount";
+export const getAccount: typeof import("./getAccount").getAccount = null as any;
+
+export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
+export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
+export const getDatabaseBackupsOutput: typeof import("./getDatabaseBackups").getDatabaseBackupsOutput = null as any;
+
+export { GetDatabaseEnginesArgs, GetDatabaseEnginesResult, GetDatabaseEnginesOutputArgs } from "./getDatabaseEngines";
+export const getDatabaseEngines: typeof import("./getDatabaseEngines").getDatabaseEngines = null as any;
+export const getDatabaseEnginesOutput: typeof import("./getDatabaseEngines").getDatabaseEnginesOutput = null as any;
+
+export { GetDatabaseMongodbArgs, GetDatabaseMongodbResult, GetDatabaseMongodbOutputArgs } from "./getDatabaseMongodb";
+export const getDatabaseMongodb: typeof import("./getDatabaseMongodb").getDatabaseMongodb = null as any;
+export const getDatabaseMongodbOutput: typeof import("./getDatabaseMongodb").getDatabaseMongodbOutput = null as any;
+
+export { GetDatabaseMysqlArgs, GetDatabaseMysqlResult, GetDatabaseMysqlOutputArgs } from "./getDatabaseMysql";
+export const getDatabaseMysql: typeof import("./getDatabaseMysql").getDatabaseMysql = null as any;
+export const getDatabaseMysqlOutput: typeof import("./getDatabaseMysql").getDatabaseMysqlOutput = null as any;
+
+export { GetDatabaseMysqlBackupsArgs, GetDatabaseMysqlBackupsResult, GetDatabaseMysqlBackupsOutputArgs } from "./getDatabaseMysqlBackups";
+export const getDatabaseMysqlBackups: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackups = null as any;
+export const getDatabaseMysqlBackupsOutput: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackupsOutput = null as any;
+
+export { GetDatabasePostgresqlArgs, GetDatabasePostgresqlResult, GetDatabasePostgresqlOutputArgs } from "./getDatabasePostgresql";
+export const getDatabasePostgresql: typeof import("./getDatabasePostgresql").getDatabasePostgresql = null as any;
+export const getDatabasePostgresqlOutput: typeof import("./getDatabasePostgresql").getDatabasePostgresqlOutput = null as any;
+
+export { GetDatabasesArgs, GetDatabasesResult, GetDatabasesOutputArgs } from "./getDatabases";
+export const getDatabases: typeof import("./getDatabases").getDatabases = null as any;
+export const getDatabasesOutput: typeof import("./getDatabases").getDatabasesOutput = null as any;
+
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+
+export { GetDomainRecordArgs, GetDomainRecordResult, GetDomainRecordOutputArgs } from "./getDomainRecord";
+export const getDomainRecord: typeof import("./getDomainRecord").getDomainRecord = null as any;
+export const getDomainRecordOutput: typeof import("./getDomainRecord").getDomainRecordOutput = null as any;
+
+export { GetDomainZonefileArgs, GetDomainZonefileResult, GetDomainZonefileOutputArgs } from "./getDomainZonefile";
+export const getDomainZonefile: typeof import("./getDomainZonefile").getDomainZonefile = null as any;
+export const getDomainZonefileOutput: typeof import("./getDomainZonefile").getDomainZonefileOutput = null as any;
+
+export { GetFirewallArgs, GetFirewallResult, GetFirewallOutputArgs } from "./getFirewall";
+export const getFirewall: typeof import("./getFirewall").getFirewall = null as any;
+export const getFirewallOutput: typeof import("./getFirewall").getFirewallOutput = null as any;
+
+export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
+export const getImage: typeof import("./getImage").getImage = null as any;
+export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
+
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+
+export { GetInstanceBackupsArgs, GetInstanceBackupsResult, GetInstanceBackupsOutputArgs } from "./getInstanceBackups";
+export const getInstanceBackups: typeof import("./getInstanceBackups").getInstanceBackups = null as any;
+export const getInstanceBackupsOutput: typeof import("./getInstanceBackups").getInstanceBackupsOutput = null as any;
+
+export { GetInstanceTypeArgs, GetInstanceTypeResult, GetInstanceTypeOutputArgs } from "./getInstanceType";
+export const getInstanceType: typeof import("./getInstanceType").getInstanceType = null as any;
+export const getInstanceTypeOutput: typeof import("./getInstanceType").getInstanceTypeOutput = null as any;
+
+export { GetInstanceTypesArgs, GetInstanceTypesResult, GetInstanceTypesOutputArgs } from "./getInstanceTypes";
+export const getInstanceTypes: typeof import("./getInstanceTypes").getInstanceTypes = null as any;
+export const getInstanceTypesOutput: typeof import("./getInstanceTypes").getInstanceTypesOutput = null as any;
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+
+export { GetIpv6RangeArgs, GetIpv6RangeResult, GetIpv6RangeOutputArgs } from "./getIpv6Range";
+export const getIpv6Range: typeof import("./getIpv6Range").getIpv6Range = null as any;
+export const getIpv6RangeOutput: typeof import("./getIpv6Range").getIpv6RangeOutput = null as any;
+
+export { GetKernelArgs, GetKernelResult, GetKernelOutputArgs } from "./getKernel";
+export const getKernel: typeof import("./getKernel").getKernel = null as any;
+export const getKernelOutput: typeof import("./getKernel").getKernelOutput = null as any;
+
+export { GetLkeClusterArgs, GetLkeClusterResult, GetLkeClusterOutputArgs } from "./getLkeCluster";
+export const getLkeCluster: typeof import("./getLkeCluster").getLkeCluster = null as any;
+export const getLkeClusterOutput: typeof import("./getLkeCluster").getLkeClusterOutput = null as any;
+
+export { GetNetworkingIpArgs, GetNetworkingIpResult, GetNetworkingIpOutputArgs } from "./getNetworkingIp";
+export const getNetworkingIp: typeof import("./getNetworkingIp").getNetworkingIp = null as any;
+export const getNetworkingIpOutput: typeof import("./getNetworkingIp").getNetworkingIpOutput = null as any;
+
+export { GetNodeBalancerArgs, GetNodeBalancerResult, GetNodeBalancerOutputArgs } from "./getNodeBalancer";
+export const getNodeBalancer: typeof import("./getNodeBalancer").getNodeBalancer = null as any;
+export const getNodeBalancerOutput: typeof import("./getNodeBalancer").getNodeBalancerOutput = null as any;
+
+export { GetNodeBalancerConfigArgs, GetNodeBalancerConfigResult, GetNodeBalancerConfigOutputArgs } from "./getNodeBalancerConfig";
+export const getNodeBalancerConfig: typeof import("./getNodeBalancerConfig").getNodeBalancerConfig = null as any;
+export const getNodeBalancerConfigOutput: typeof import("./getNodeBalancerConfig").getNodeBalancerConfigOutput = null as any;
+
+export { GetNodeBalancerNodeArgs, GetNodeBalancerNodeResult, GetNodeBalancerNodeOutputArgs } from "./getNodeBalancerNode";
+export const getNodeBalancerNode: typeof import("./getNodeBalancerNode").getNodeBalancerNode = null as any;
+export const getNodeBalancerNodeOutput: typeof import("./getNodeBalancerNode").getNodeBalancerNodeOutput = null as any;
+
+export { GetObjectStorageClusterArgs, GetObjectStorageClusterResult, GetObjectStorageClusterOutputArgs } from "./getObjectStorageCluster";
+export const getObjectStorageCluster: typeof import("./getObjectStorageCluster").getObjectStorageCluster = null as any;
+export const getObjectStorageClusterOutput: typeof import("./getObjectStorageCluster").getObjectStorageClusterOutput = null as any;
+
+export { GetProfileResult } from "./getProfile";
+export const getProfile: typeof import("./getProfile").getProfile = null as any;
+
+export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
+export const getRegion: typeof import("./getRegion").getRegion = null as any;
+export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
+
+export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
+export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
+export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
+
+export { GetStackScriptArgs, GetStackScriptResult, GetStackScriptOutputArgs } from "./getStackScript";
+export const getStackScript: typeof import("./getStackScript").getStackScript = null as any;
+export const getStackScriptOutput: typeof import("./getStackScript").getStackScriptOutput = null as any;
+
+export { GetStackScriptsArgs, GetStackScriptsResult, GetStackScriptsOutputArgs } from "./getStackScripts";
+export const getStackScripts: typeof import("./getStackScripts").getStackScripts = null as any;
+export const getStackScriptsOutput: typeof import("./getStackScripts").getStackScriptsOutput = null as any;
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+
+export { GetVlansArgs, GetVlansResult, GetVlansOutputArgs } from "./getVlans";
+export const getVlans: typeof import("./getVlans").getVlans = null as any;
+export const getVlansOutput: typeof import("./getVlans").getVlansOutput = null as any;
+
+export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
+export const getVolume: typeof import("./getVolume").getVolume = null as any;
+export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceConfigArgs, InstanceConfigState } from "./instanceConfig";
+export type InstanceConfig = import("./instanceConfig").InstanceConfig;
+export const InstanceConfig: typeof import("./instanceConfig").InstanceConfig = null as any;
+
+export { InstanceDiskArgs, InstanceDiskState } from "./instanceDisk";
+export type InstanceDisk = import("./instanceDisk").InstanceDisk;
+export const InstanceDisk: typeof import("./instanceDisk").InstanceDisk = null as any;
+
+export { InstanceIpArgs, InstanceIpState } from "./instanceIp";
+export type InstanceIp = import("./instanceIp").InstanceIp;
+export const InstanceIp: typeof import("./instanceIp").InstanceIp = null as any;
+
+export { InstanceSharedIpsArgs, InstanceSharedIpsState } from "./instanceSharedIps";
+export type InstanceSharedIps = import("./instanceSharedIps").InstanceSharedIps;
+export const InstanceSharedIps: typeof import("./instanceSharedIps").InstanceSharedIps = null as any;
+
+export { Ipv6RangeArgs, Ipv6RangeState } from "./ipv6Range";
+export type Ipv6Range = import("./ipv6Range").Ipv6Range;
+export const Ipv6Range: typeof import("./ipv6Range").Ipv6Range = null as any;
+
+export { LkeClusterArgs, LkeClusterState } from "./lkeCluster";
+export type LkeCluster = import("./lkeCluster").LkeCluster;
+export const LkeCluster: typeof import("./lkeCluster").LkeCluster = null as any;
+
+export { NodeBalancerArgs, NodeBalancerState } from "./nodeBalancer";
+export type NodeBalancer = import("./nodeBalancer").NodeBalancer;
+export const NodeBalancer: typeof import("./nodeBalancer").NodeBalancer = null as any;
+
+export { NodeBalancerConfigArgs, NodeBalancerConfigState } from "./nodeBalancerConfig";
+export type NodeBalancerConfig = import("./nodeBalancerConfig").NodeBalancerConfig;
+export const NodeBalancerConfig: typeof import("./nodeBalancerConfig").NodeBalancerConfig = null as any;
+
+export { NodeBalancerNodeArgs, NodeBalancerNodeState } from "./nodeBalancerNode";
+export type NodeBalancerNode = import("./nodeBalancerNode").NodeBalancerNode;
+export const NodeBalancerNode: typeof import("./nodeBalancerNode").NodeBalancerNode = null as any;
+
+export { ObjectStorageBucketArgs, ObjectStorageBucketState } from "./objectStorageBucket";
+export type ObjectStorageBucket = import("./objectStorageBucket").ObjectStorageBucket;
+export const ObjectStorageBucket: typeof import("./objectStorageBucket").ObjectStorageBucket = null as any;
+
+export { ObjectStorageKeyArgs, ObjectStorageKeyState } from "./objectStorageKey";
+export type ObjectStorageKey = import("./objectStorageKey").ObjectStorageKey;
+export const ObjectStorageKey: typeof import("./objectStorageKey").ObjectStorageKey = null as any;
+
+export { ObjectStorageObjectArgs, ObjectStorageObjectState } from "./objectStorageObject";
+export type ObjectStorageObject = import("./objectStorageObject").ObjectStorageObject;
+export const ObjectStorageObject: typeof import("./objectStorageObject").ObjectStorageObject = null as any;
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+
+export { RdnsArgs, RdnsState } from "./rdns";
+export type Rdns = import("./rdns").Rdns;
+export const Rdns: typeof import("./rdns").Rdns = null as any;
+
+export { SshKeyArgs, SshKeyState } from "./sshKey";
+export type SshKey = import("./sshKey").SshKey;
+export const SshKey: typeof import("./sshKey").SshKey = null as any;
+
+export { StackScriptArgs, StackScriptState } from "./stackScript";
+export type StackScript = import("./stackScript").StackScript;
+export const StackScript: typeof import("./stackScript").StackScript = null as any;
+
+export { TokenArgs, TokenState } from "./token";
+export type Token = import("./token").Token;
+export const Token: typeof import("./token").Token = null as any;
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+
+export { VolumeArgs, VolumeState } from "./volume";
+export type Volume = import("./volume").Volume;
+export const Volume: typeof import("./volume").Volume = null as any;
+
+utilities.lazyLoad(exports, ["DatabaseAccessControls"], () => require("./databaseAccessControls"));
+utilities.lazyLoad(exports, ["DatabaseMongodb"], () => require("./databaseMongodb"));
+utilities.lazyLoad(exports, ["DatabaseMysql"], () => require("./databaseMysql"));
+utilities.lazyLoad(exports, ["DatabasePostgresql"], () => require("./databasePostgresql"));
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+utilities.lazyLoad(exports, ["DomainRecord"], () => require("./domainRecord"));
+utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
+utilities.lazyLoad(exports, ["FirewallDevice"], () => require("./firewallDevice"));
+utilities.lazyLoad(exports, ["getAccount"], () => require("./getAccount"));
+utilities.lazyLoad(exports, ["getDatabaseBackups","getDatabaseBackupsOutput"], () => require("./getDatabaseBackups"));
+utilities.lazyLoad(exports, ["getDatabaseEngines","getDatabaseEnginesOutput"], () => require("./getDatabaseEngines"));
+utilities.lazyLoad(exports, ["getDatabaseMongodb","getDatabaseMongodbOutput"], () => require("./getDatabaseMongodb"));
+utilities.lazyLoad(exports, ["getDatabaseMysql","getDatabaseMysqlOutput"], () => require("./getDatabaseMysql"));
+utilities.lazyLoad(exports, ["getDatabaseMysqlBackups","getDatabaseMysqlBackupsOutput"], () => require("./getDatabaseMysqlBackups"));
+utilities.lazyLoad(exports, ["getDatabasePostgresql","getDatabasePostgresqlOutput"], () => require("./getDatabasePostgresql"));
+utilities.lazyLoad(exports, ["getDatabases","getDatabasesOutput"], () => require("./getDatabases"));
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+utilities.lazyLoad(exports, ["getDomainRecord","getDomainRecordOutput"], () => require("./getDomainRecord"));
+utilities.lazyLoad(exports, ["getDomainZonefile","getDomainZonefileOutput"], () => require("./getDomainZonefile"));
+utilities.lazyLoad(exports, ["getFirewall","getFirewallOutput"], () => require("./getFirewall"));
+utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+utilities.lazyLoad(exports, ["getInstanceBackups","getInstanceBackupsOutput"], () => require("./getInstanceBackups"));
+utilities.lazyLoad(exports, ["getInstanceType","getInstanceTypeOutput"], () => require("./getInstanceType"));
+utilities.lazyLoad(exports, ["getInstanceTypes","getInstanceTypesOutput"], () => require("./getInstanceTypes"));
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+utilities.lazyLoad(exports, ["getIpv6Range","getIpv6RangeOutput"], () => require("./getIpv6Range"));
+utilities.lazyLoad(exports, ["getKernel","getKernelOutput"], () => require("./getKernel"));
+utilities.lazyLoad(exports, ["getLkeCluster","getLkeClusterOutput"], () => require("./getLkeCluster"));
+utilities.lazyLoad(exports, ["getNetworkingIp","getNetworkingIpOutput"], () => require("./getNetworkingIp"));
+utilities.lazyLoad(exports, ["getNodeBalancer","getNodeBalancerOutput"], () => require("./getNodeBalancer"));
+utilities.lazyLoad(exports, ["getNodeBalancerConfig","getNodeBalancerConfigOutput"], () => require("./getNodeBalancerConfig"));
+utilities.lazyLoad(exports, ["getNodeBalancerNode","getNodeBalancerNodeOutput"], () => require("./getNodeBalancerNode"));
+utilities.lazyLoad(exports, ["getObjectStorageCluster","getObjectStorageClusterOutput"], () => require("./getObjectStorageCluster"));
+utilities.lazyLoad(exports, ["getProfile"], () => require("./getProfile"));
+utilities.lazyLoad(exports, ["getRegion","getRegionOutput"], () => require("./getRegion"));
+utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./getSshKey"));
+utilities.lazyLoad(exports, ["getStackScript","getStackScriptOutput"], () => require("./getStackScript"));
+utilities.lazyLoad(exports, ["getStackScripts","getStackScriptsOutput"], () => require("./getStackScripts"));
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+utilities.lazyLoad(exports, ["getVlans","getVlansOutput"], () => require("./getVlans"));
+utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceConfig"], () => require("./instanceConfig"));
+utilities.lazyLoad(exports, ["InstanceDisk"], () => require("./instanceDisk"));
+utilities.lazyLoad(exports, ["InstanceIp"], () => require("./instanceIp"));
+utilities.lazyLoad(exports, ["InstanceSharedIps"], () => require("./instanceSharedIps"));
+utilities.lazyLoad(exports, ["Ipv6Range"], () => require("./ipv6Range"));
+utilities.lazyLoad(exports, ["LkeCluster"], () => require("./lkeCluster"));
+utilities.lazyLoad(exports, ["NodeBalancer"], () => require("./nodeBalancer"));
+utilities.lazyLoad(exports, ["NodeBalancerConfig"], () => require("./nodeBalancerConfig"));
+utilities.lazyLoad(exports, ["NodeBalancerNode"], () => require("./nodeBalancerNode"));
+utilities.lazyLoad(exports, ["ObjectStorageBucket"], () => require("./objectStorageBucket"));
+utilities.lazyLoad(exports, ["ObjectStorageKey"], () => require("./objectStorageKey"));
+utilities.lazyLoad(exports, ["ObjectStorageObject"], () => require("./objectStorageObject"));
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+utilities.lazyLoad(exports, ["Rdns"], () => require("./rdns"));
+utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
+utilities.lazyLoad(exports, ["StackScript"], () => require("./stackScript"));
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
 // Export sub-modules:
 import * as config from "./config";
@@ -76,35 +327,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { DatabaseAccessControls } from "./databaseAccessControls";
-import { DatabaseMongodb } from "./databaseMongodb";
-import { DatabaseMysql } from "./databaseMysql";
-import { DatabasePostgresql } from "./databasePostgresql";
-import { Domain } from "./domain";
-import { DomainRecord } from "./domainRecord";
-import { Firewall } from "./firewall";
-import { FirewallDevice } from "./firewallDevice";
-import { Image } from "./image";
-import { Instance } from "./instance";
-import { InstanceDisk } from "./instanceDisk";
-import { InstanceIp } from "./instanceIp";
-import { InstanceSharedIps } from "./instanceSharedIps";
-import { Ipv6Range } from "./ipv6Range";
-import { LkeCluster } from "./lkeCluster";
-import { NodeBalancer } from "./nodeBalancer";
-import { NodeBalancerConfig } from "./nodeBalancerConfig";
-import { NodeBalancerNode } from "./nodeBalancerNode";
-import { ObjectStorageBucket } from "./objectStorageBucket";
-import { ObjectStorageKey } from "./objectStorageKey";
-import { ObjectStorageObject } from "./objectStorageObject";
-import { Rdns } from "./rdns";
-import { SshKey } from "./sshKey";
-import { StackScript } from "./stackScript";
-import { Token } from "./token";
-import { User } from "./user";
-import { Volume } from "./volume";
 
 const _module = {
     version: utilities.getVersion(),
@@ -130,6 +352,8 @@ const _module = {
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "linode:index/instanceConfig:InstanceConfig":
+                return new InstanceConfig(name, <any>undefined, { urn })
             case "linode:index/instanceDisk:InstanceDisk":
                 return new InstanceDisk(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
@@ -179,6 +403,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
+pulumi.runtime.registerResourceModule("linode", "index/instanceConfig", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceDisk", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)
@@ -196,9 +421,6 @@ pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
 pulumi.runtime.registerResourceModule("linode", "index/token", _module)
 pulumi.runtime.registerResourceModule("linode", "index/user", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("linode", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

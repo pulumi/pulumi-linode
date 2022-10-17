@@ -825,6 +825,8 @@ class DatabaseMongodb(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated"] = None
             __props__.__dict__["version"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCert", "rootPassword", "rootUsername"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseMongodb, __self__).__init__(
             'linode:index/databaseMongodb:DatabaseMongodb',
             resource_name,

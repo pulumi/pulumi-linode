@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -29,6 +30,53 @@ import * as utilities from "./utilities";
  *     swapSize: 256,
  *     tags: ["foo"],
  *     type: "g6-standard-1",
+ * });
+ * ```
+ * ### Linode Instance with explicit Configs and Disks
+ *
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const me = linode.getProfile({});
+ * const web = new linode.Instance("web", {
+ *     label: "complex_instance",
+ *     group: "foo",
+ *     tags: ["foo"],
+ *     region: "us-central",
+ *     type: "g6-nanode-1",
+ *     privateIp: true,
+ * });
+ * const webVolume = new linode.Volume("webVolume", {
+ *     label: "web_volume",
+ *     size: 20,
+ *     region: "us-central",
+ * });
+ * const bootDisk = new linode.InstanceDisk("bootDisk", {
+ *     label: "boot",
+ *     linodeId: web.id,
+ *     size: 3000,
+ *     image: "linode/ubuntu18.04",
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *     authorizedUsers: [me.then(me => me.username)],
+ *     rootPass: "terr4form-test",
+ * });
+ * const bootConfig = new linode.InstanceConfig("bootConfig", {
+ *     label: "boot_config",
+ *     linodeId: web.id,
+ *     devices: {
+ *         sda: {
+ *             diskId: bootDisk.id,
+ *         },
+ *         sdb: {
+ *             volumeId: webVolume.id,
+ *         },
+ *     },
+ *     rootDevice: "/dev/sda",
+ *     kernel: "linode/latest-64bit",
+ *     booted: true,
  * });
  * ```
  *
@@ -262,9 +310,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
-            resourceInputs["rootPass"] = args ? args.rootPass : undefined;
+            resourceInputs["rootPass"] = args?.rootPass ? pulumi.secret(args.rootPass) : undefined;
             resourceInputs["sharedIpv4s"] = args ? args.sharedIpv4s : undefined;
-            resourceInputs["stackscriptData"] = args ? args.stackscriptData : undefined;
+            resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
             resourceInputs["swapSize"] = args ? args.swapSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -279,6 +327,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["rootPass", "stackscriptData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

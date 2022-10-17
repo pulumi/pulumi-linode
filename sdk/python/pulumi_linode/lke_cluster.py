@@ -458,6 +458,8 @@ class LkeCluster(pulumi.CustomResource):
             __props__.__dict__["dashboard_url"] = None
             __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LkeCluster, __self__).__init__(
             'linode:index/lkeCluster:LkeCluster',
             resource_name,

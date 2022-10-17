@@ -181,6 +181,12 @@ func NewDatabasePostgresql(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"rootPassword",
+		"rootUsername",
+	})
+	opts = append(opts, secrets)
 	var resource DatabasePostgresql
 	err := ctx.RegisterResource("linode:index/databasePostgresql:DatabasePostgresql", name, args, &resource, opts...)
 	if err != nil {

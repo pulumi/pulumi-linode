@@ -71,8 +71,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Configs: InstanceConfigArray{
-//					&InstanceConfigArgs{
+//				Configs: InstanceConfigTypeArray{
+//					&InstanceConfigTypeArgs{
 //						Devices: &InstanceConfigDevicesArgs{
 //							Sda: &InstanceConfigDevicesSdaArgs{
 //								VolumeId: pulumi.Int(123),

@@ -194,6 +194,11 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "rootPass",
+                    "stackscriptData",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -265,11 +270,21 @@ namespace Pulumi.Linode
         [Input("linodeId", required: true)]
         public Input<int> LinodeId { get; set; } = null!;
 
+        [Input("rootPass")]
+        private Input<string>? _rootPass;
+
         /// <summary>
         /// The root user’s password on a newly-created Linode Disk when deploying from an Image.
         /// </summary>
-        [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
@@ -286,7 +301,11 @@ namespace Pulumi.Linode
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -357,11 +376,21 @@ namespace Pulumi.Linode
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
 
+        [Input("rootPass")]
+        private Input<string>? _rootPass;
+
         /// <summary>
         /// The root user’s password on a newly-created Linode Disk when deploying from an Image.
         /// </summary>
-        [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
@@ -378,7 +407,11 @@ namespace Pulumi.Linode
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

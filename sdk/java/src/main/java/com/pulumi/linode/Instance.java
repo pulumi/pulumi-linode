@@ -70,6 +70,86 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Linode Instance with explicit Configs and Disks
+ * 
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LinodeFunctions;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigDevicesArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigDevicesSdbArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = LinodeFunctions.getProfile();
+ * 
+ *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
+ *             .label(&#34;complex_instance&#34;)
+ *             .group(&#34;foo&#34;)
+ *             .tags(&#34;foo&#34;)
+ *             .region(&#34;us-central&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .privateIp(true)
+ *             .build());
+ * 
+ *         var webVolume = new Volume(&#34;webVolume&#34;, VolumeArgs.builder()        
+ *             .label(&#34;web_volume&#34;)
+ *             .size(20)
+ *             .region(&#34;us-central&#34;)
+ *             .build());
+ * 
+ *         var bootDisk = new InstanceDisk(&#34;bootDisk&#34;, InstanceDiskArgs.builder()        
+ *             .label(&#34;boot&#34;)
+ *             .linodeId(web.id())
+ *             .size(3000)
+ *             .image(&#34;linode/ubuntu18.04&#34;)
+ *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .authorizedUsers(me.applyValue(getProfileResult -&gt; getProfileResult.username()))
+ *             .rootPass(&#34;terr4form-test&#34;)
+ *             .build());
+ * 
+ *         var bootConfig = new InstanceConfig(&#34;bootConfig&#34;, InstanceConfigArgs.builder()        
+ *             .label(&#34;boot_config&#34;)
+ *             .linodeId(web.id())
+ *             .devices(InstanceConfigDevicesArgs.builder()
+ *                 .sda(InstanceConfigDevicesSdaArgs.builder()
+ *                     .diskId(bootDisk.id())
+ *                     .build())
+ *                 .sdb(InstanceConfigDevicesSdbArgs.builder()
+ *                     .volumeId(webVolume.id())
+ *                     .build())
+ *                 .build())
+ *             .rootDevice(&#34;/dev/sda&#34;)
+ *             .kernel(&#34;linode/latest-64bit&#34;)
+ *             .booted(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -549,6 +629,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "rootPass",
+                "stackscriptData"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

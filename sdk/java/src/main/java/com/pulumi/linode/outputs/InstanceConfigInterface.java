@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigInterface {
     /**
-     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
      * 
      */
     private @Nullable String ipamAddress;
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The name of this interface.
      * 
      */
     private @Nullable String label;
@@ -25,18 +25,18 @@ public final class InstanceConfigInterface {
      * @return The type of interface. (`public`, `vlan`)
      * 
      */
-    private @Nullable String purpose;
+    private String purpose;
 
     private InstanceConfigInterface() {}
     /**
-     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * @return This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)
      * 
      */
     public Optional<String> ipamAddress() {
         return Optional.ofNullable(this.ipamAddress);
     }
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The name of this interface.
      * 
      */
     public Optional<String> label() {
@@ -46,8 +46,8 @@ public final class InstanceConfigInterface {
      * @return The type of interface. (`public`, `vlan`)
      * 
      */
-    public Optional<String> purpose() {
-        return Optional.ofNullable(this.purpose);
+    public String purpose() {
+        return this.purpose;
     }
 
     public static Builder builder() {
@@ -61,7 +61,7 @@ public final class InstanceConfigInterface {
     public static final class Builder {
         private @Nullable String ipamAddress;
         private @Nullable String label;
-        private @Nullable String purpose;
+        private String purpose;
         public Builder() {}
         public Builder(InstanceConfigInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,8 +81,8 @@ public final class InstanceConfigInterface {
             return this;
         }
         @CustomType.Setter
-        public Builder purpose(@Nullable String purpose) {
-            this.purpose = purpose;
+        public Builder purpose(String purpose) {
+            this.purpose = Objects.requireNonNull(purpose);
             return this;
         }
         public InstanceConfigInterface build() {

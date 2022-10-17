@@ -704,7 +704,7 @@
             "properties": {
                 "sda": {
                     "$ref": "#/types/linode:index/InstanceConfigDevicesSda:InstanceConfigDevicesSda",
-                    "description": "... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `\"fullvirt\"` `virt_mode`.\n",
+                    "description": "... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `\"fullvirt\"` `virt_mode`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -768,36 +768,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "sda",
-                        "sdb",
-                        "sdc",
-                        "sdd",
-                        "sde",
-                        "sdf",
-                        "sdg",
-                        "sdh"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSda:InstanceConfigDevicesSda": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -814,29 +791,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -853,29 +814,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -892,29 +837,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -931,29 +860,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSde:InstanceConfigDevicesSde": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -970,29 +883,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1009,29 +906,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1048,29 +929,13 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "linode:index/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh": {
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "diskLabel": {
-                    "type": "string",
-                    "description": "The `label` of the `disk` to map to this `device` slot.\n",
+                    "description": "The Disk ID to map to this `device` slot\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1087,14 +952,57 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "diskId"
-                    ]
+            "type": "object"
+        },
+        "linode:index/InstanceConfigHelper:InstanceConfigHelper": {
+            "properties": {
+                "devtmpfsAutomount": {
+                    "type": "boolean",
+                    "description": "Populates the /dev directory early during boot without udev. (default `true`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "distro": {
+                    "type": "boolean",
+                    "description": "Helps maintain correct inittab/upstart console device. (default `true`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "modulesDep": {
+                    "type": "boolean",
+                    "description": "Creates a modules dependency file for the Kernel you run. (default `true`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "network": {
+                    "type": "boolean",
+                    "description": "Automatically configures static networking. (default `true`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedbDisabled": {
+                    "type": "boolean",
+                    "description": "Disables updatedb cron job to avoid disk thrashing. (default `true`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
-            }
+            },
+            "type": "object"
         },
         "linode:index/InstanceConfigHelpers:InstanceConfigHelpers": {
             "properties": {
@@ -1149,7 +1057,7 @@
             "properties": {
                 "ipamAddress": {
                     "type": "string",
-                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n",
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1158,7 +1066,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n",
+                    "description": "The name of this interface.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1175,7 +1083,10 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "purpose"
+            ]
         },
         "linode:index/InstanceDisk:InstanceDisk": {
             "properties": {
@@ -1261,6 +1172,7 @@
                             "mapCase": false
                         }
                     },
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "size": {
@@ -1283,6 +1195,7 @@
                             "mapCase": false
                         }
                     },
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
@@ -1630,7 +1543,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "privateKey": {
                     "type": "string",
@@ -1639,7 +1553,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "secret": true
                 }
             },
             "type": "object",
@@ -6094,7 +6009,8 @@
                 },
                 "caCert": {
                     "type": "string",
-                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "clusterSize": {
                     "type": "integer",
@@ -6153,11 +6069,13 @@
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "The randomly-generated root password for the Managed Database instance.\n"
+                    "description": "The randomly-generated root password for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "rootUsername": {
                     "type": "string",
-                    "description": "The root username for the Managed Database instance.\n"
+                    "description": "The root username for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "sslConnection": {
                     "type": "boolean",
@@ -6284,7 +6202,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -6348,11 +6267,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -6401,7 +6322,8 @@
                 },
                 "caCert": {
                     "type": "string",
-                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "clusterSize": {
                     "type": "integer",
@@ -6445,11 +6367,13 @@
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "The randomly-generated root password for the Managed Database instance.\n"
+                    "description": "The randomly-generated root password for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "rootUsername": {
                     "type": "string",
-                    "description": "The root username for the Managed Database instance.\n"
+                    "description": "The root username for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "sslConnection": {
                     "type": "boolean",
@@ -6564,7 +6488,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -6613,11 +6538,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -6661,7 +6588,8 @@
                 },
                 "caCert": {
                     "type": "string",
-                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                    "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "clusterSize": {
                     "type": "integer",
@@ -6713,11 +6641,13 @@
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "The randomly-generated root password for the Managed Database instance.\n"
+                    "description": "The randomly-generated root password for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "rootUsername": {
                     "type": "string",
-                    "description": "The root username for the Managed Database instance.\n"
+                    "description": "The root username for the Managed Database instance.\n",
+                    "secret": true
                 },
                 "sslConnection": {
                     "type": "boolean",
@@ -6838,7 +6768,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -6896,11 +6827,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -7769,7 +7702,7 @@
             }
         },
         "linode:index/instance:Instance": {
-            "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group: \"foo\",\n    image: \"linode/ubuntu18.04\",\n    label: \"simple_instance\",\n    privateIp: true,\n    region: \"us-central\",\n    rootPass: \"terr4form-test\",\n    swapSize: 256,\n    tags: [\"foo\"],\n    type: \"g6-standard-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group=\"foo\",\n    image=\"linode/ubuntu18.04\",\n    label=\"simple_instance\",\n    private_ip=True,\n    region=\"us-central\",\n    root_pass=\"terr4form-test\",\n    swap_size=256,\n    tags=[\"foo\"],\n    type=\"g6-standard-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        Group = \"foo\",\n        Image = \"linode/ubuntu18.04\",\n        Label = \"simple_instance\",\n        PrivateIp = true,\n        Region = \"us-central\",\n        RootPass = \"terr4form-test\",\n        SwapSize = 256,\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        Type = \"g6-standard-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tGroup:     pulumi.String(\"foo\"),\n\t\t\tImage:     pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:     pulumi.String(\"simple_instance\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tRootPass:  pulumi.String(\"terr4form-test\"),\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()        \n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .group(\"foo\")\n            .image(\"linode/ubuntu18.04\")\n            .label(\"simple_instance\")\n            .privateIp(true)\n            .region(\"us-central\")\n            .rootPass(\"terr4form-test\")\n            .swapSize(256)\n            .tags(\"foo\")\n            .type(\"g6-standard-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      group: foo\n      image: linode/ubuntu18.04\n      label: simple_instance\n      privateIp: true\n      region: us-central\n      rootPass: terr4form-test\n      swapSize: 256\n      tags:\n        - foo\n      type: g6-standard-1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Instances can be imported using the Linode `id`, e.g.\n\n```sh\n $ pulumi import linode:index/instance:Instance mylinode 1234567\n```\n\n When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.\n\n**Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.\n\nThe instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types. ",
+            "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group: \"foo\",\n    image: \"linode/ubuntu18.04\",\n    label: \"simple_instance\",\n    privateIp: true,\n    region: \"us-central\",\n    rootPass: \"terr4form-test\",\n    swapSize: 256,\n    tags: [\"foo\"],\n    type: \"g6-standard-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    group=\"foo\",\n    image=\"linode/ubuntu18.04\",\n    label=\"simple_instance\",\n    private_ip=True,\n    region=\"us-central\",\n    root_pass=\"terr4form-test\",\n    swap_size=256,\n    tags=[\"foo\"],\n    type=\"g6-standard-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        Group = \"foo\",\n        Image = \"linode/ubuntu18.04\",\n        Label = \"simple_instance\",\n        PrivateIp = true,\n        Region = \"us-central\",\n        RootPass = \"terr4form-test\",\n        SwapSize = 256,\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        Type = \"g6-standard-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tGroup:     pulumi.String(\"foo\"),\n\t\t\tImage:     pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tLabel:     pulumi.String(\"simple_instance\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tRootPass:  pulumi.String(\"terr4form-test\"),\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"g6-standard-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()        \n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .group(\"foo\")\n            .image(\"linode/ubuntu18.04\")\n            .label(\"simple_instance\")\n            .privateIp(true)\n            .region(\"us-central\")\n            .rootPass(\"terr4form-test\")\n            .swapSize(256)\n            .tags(\"foo\")\n            .type(\"g6-standard-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      group: foo\n      image: linode/ubuntu18.04\n      label: simple_instance\n      privateIp: true\n      region: us-central\n      rootPass: terr4form-test\n      swapSize: 256\n      tags:\n        - foo\n      type: g6-standard-1\n```\n{{% /example %}}\n{{% example %}}\n### Linode Instance with explicit Configs and Disks\n\nUsing explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst me = linode.getProfile({});\nconst web = new linode.Instance(\"web\", {\n    label: \"complex_instance\",\n    group: \"foo\",\n    tags: [\"foo\"],\n    region: \"us-central\",\n    type: \"g6-nanode-1\",\n    privateIp: true,\n});\nconst webVolume = new linode.Volume(\"webVolume\", {\n    label: \"web_volume\",\n    size: 20,\n    region: \"us-central\",\n});\nconst bootDisk = new linode.InstanceDisk(\"bootDisk\", {\n    label: \"boot\",\n    linodeId: web.id,\n    size: 3000,\n    image: \"linode/ubuntu18.04\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorizedUsers: [me.then(me =\u003e me.username)],\n    rootPass: \"terr4form-test\",\n});\nconst bootConfig = new linode.InstanceConfig(\"bootConfig\", {\n    label: \"boot_config\",\n    linodeId: web.id,\n    devices: {\n        sda: {\n            diskId: bootDisk.id,\n        },\n        sdb: {\n            volumeId: webVolume.id,\n        },\n    },\n    rootDevice: \"/dev/sda\",\n    kernel: \"linode/latest-64bit\",\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nme = linode.get_profile()\nweb = linode.Instance(\"web\",\n    label=\"complex_instance\",\n    group=\"foo\",\n    tags=[\"foo\"],\n    region=\"us-central\",\n    type=\"g6-nanode-1\",\n    private_ip=True)\nweb_volume = linode.Volume(\"webVolume\",\n    label=\"web_volume\",\n    size=20,\n    region=\"us-central\")\nboot_disk = linode.InstanceDisk(\"bootDisk\",\n    label=\"boot\",\n    linode_id=web.id,\n    size=3000,\n    image=\"linode/ubuntu18.04\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorized_users=[me.username],\n    root_pass=\"terr4form-test\")\nboot_config = linode.InstanceConfig(\"bootConfig\",\n    label=\"boot_config\",\n    linode_id=web.id,\n    devices=linode.InstanceConfigDevicesArgs(\n        sda=linode.InstanceConfigDevicesSdaArgs(\n            disk_id=boot_disk.id,\n        ),\n        sdb=linode.InstanceConfigDevicesSdbArgs(\n            volume_id=web_volume.id,\n        ),\n    ),\n    root_device=\"/dev/sda\",\n    kernel=\"linode/latest-64bit\",\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = Linode.GetProfile.Invoke();\n\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"complex_instance\",\n        Group = \"foo\",\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        Region = \"us-central\",\n        Type = \"g6-nanode-1\",\n        PrivateIp = true,\n    });\n\n    var webVolume = new Linode.Volume(\"webVolume\", new()\n    {\n        Label = \"web_volume\",\n        Size = 20,\n        Region = \"us-central\",\n    });\n\n    var bootDisk = new Linode.InstanceDisk(\"bootDisk\", new()\n    {\n        Label = \"boot\",\n        LinodeId = web.Id,\n        Size = 3000,\n        Image = \"linode/ubuntu18.04\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        AuthorizedUsers = new[]\n        {\n            me.Apply(getProfileResult =\u003e getProfileResult.Username),\n        },\n        RootPass = \"terr4form-test\",\n    });\n\n    var bootConfig = new Linode.InstanceConfig(\"bootConfig\", new()\n    {\n        Label = \"boot_config\",\n        LinodeId = web.Id,\n        Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n        {\n            Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n            {\n                DiskId = bootDisk.Id,\n            },\n            Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs\n            {\n                VolumeId = webVolume.Id,\n            },\n        },\n        RootDevice = \"/dev/sda\",\n        Kernel = \"linode/latest-64bit\",\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tme, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tweb, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel: pulumi.String(\"complex_instance\"),\n\t\t\tGroup: pulumi.String(\"foo\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tType:      pulumi.String(\"g6-nanode-1\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\twebVolume, err := linode.NewVolume(ctx, \"webVolume\", \u0026linode.VolumeArgs{\n\t\t\tLabel:  pulumi.String(\"web_volume\"),\n\t\t\tSize:   pulumi.Int(20),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbootDisk, err := linode.NewInstanceDisk(ctx, \"bootDisk\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: web.ID(),\n\t\t\tSize:     pulumi.Int(3000),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tAuthorizedUsers: pulumi.StringArray{\n\t\t\t\tpulumi.String(me.Username),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"terr4form-test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"bootConfig\", \u0026linode.InstanceConfigArgs{\n\t\t\tLabel:    pulumi.String(\"boot_config\"),\n\t\t\tLinodeId: web.ID(),\n\t\t\tDevices: \u0026InstanceConfigDevicesArgs{\n\t\t\t\tSda: \u0026InstanceConfigDevicesSdaArgs{\n\t\t\t\t\tDiskId: bootDisk.ID(),\n\t\t\t\t},\n\t\t\t\tSdb: \u0026InstanceConfigDevicesSdbArgs{\n\t\t\t\t\tVolumeId: webVolume.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRootDevice: pulumi.String(\"/dev/sda\"),\n\t\t\tKernel:     pulumi.String(\"linode/latest-64bit\"),\n\t\t\tBooted:     pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport com.pulumi.linode.InstanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdbArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var me = LinodeFunctions.getProfile();\n\n        var web = new Instance(\"web\", InstanceArgs.builder()        \n            .label(\"complex_instance\")\n            .group(\"foo\")\n            .tags(\"foo\")\n            .region(\"us-central\")\n            .type(\"g6-nanode-1\")\n            .privateIp(true)\n            .build());\n\n        var webVolume = new Volume(\"webVolume\", VolumeArgs.builder()        \n            .label(\"web_volume\")\n            .size(20)\n            .region(\"us-central\")\n            .build());\n\n        var bootDisk = new InstanceDisk(\"bootDisk\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(web.id())\n            .size(3000)\n            .image(\"linode/ubuntu18.04\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .authorizedUsers(me.applyValue(getProfileResult -\u003e getProfileResult.username()))\n            .rootPass(\"terr4form-test\")\n            .build());\n\n        var bootConfig = new InstanceConfig(\"bootConfig\", InstanceConfigArgs.builder()        \n            .label(\"boot_config\")\n            .linodeId(web.id())\n            .devices(InstanceConfigDevicesArgs.builder()\n                .sda(InstanceConfigDevicesSdaArgs.builder()\n                    .diskId(bootDisk.id())\n                    .build())\n                .sdb(InstanceConfigDevicesSdbArgs.builder()\n                    .volumeId(webVolume.id())\n                    .build())\n                .build())\n            .rootDevice(\"/dev/sda\")\n            .kernel(\"linode/latest-64bit\")\n            .booted(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: complex_instance\n      group: foo\n      tags:\n        - foo\n      region: us-central\n      type: g6-nanode-1\n      privateIp: true\n  webVolume:\n    type: linode:Volume\n    properties:\n      label: web_volume\n      size: 20\n      region: us-central\n  bootDisk:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${web.id}\n      size: 3000\n      image: linode/ubuntu18.04\n      # Any of authorized_keys, authorized_users, and root_pass\n      #   # can be used for provisioning.\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      authorizedUsers:\n        - ${me.username}\n      rootPass: terr4form-test\n  bootConfig:\n    type: linode:InstanceConfig\n    properties:\n      label: boot_config\n      linodeId: ${web.id}\n      devices:\n        sda:\n          diskId: ${bootDisk.id}\n        sdb:\n          volumeId: ${webVolume.id}\n      rootDevice: /dev/sda\n      kernel: linode/latest-64bit\n      booted: true\nvariables:\n  me:\n    Fn::Invoke:\n      Function: linode:getProfile\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Instances can be imported using the Linode `id`, e.g.\n\n```sh\n $ pulumi import linode:index/instance:Instance mylinode 1234567\n```\n\n When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.\n\n**Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.\n\nThe instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types. ",
             "properties": {
                 "alerts": {
                     "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
@@ -7874,7 +7807,8 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n"
+                    "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n",
+                    "secret": true
                 },
                 "sharedIpv4s": {
                     "type": "array",
@@ -7892,7 +7826,8 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n"
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                    "secret": true
                 },
                 "stackscriptId": {
                     "type": "integer",
@@ -8028,6 +7963,7 @@
                 "rootPass": {
                     "type": "string",
                     "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "sharedIpv4s": {
@@ -8043,6 +7979,7 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
@@ -8185,6 +8122,7 @@
                     "rootPass": {
                         "type": "string",
                         "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "sharedIpv4s": {
@@ -8204,6 +8142,7 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "stackscriptId": {
@@ -8233,6 +8172,195 @@
                     "watchdogEnabled": {
                         "type": "boolean",
                         "description": "The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/instanceConfig:InstanceConfig": {
+            "description": "Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.\n\n**NOTE:** Deleting a config will shut down the attached instance if the config is in use.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a simple bootable Linode Instance Configuration Profile:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: my_instance.specs.apply(specs =\u003e specs.disk),\n    image: \"linode/ubuntu20.04\",\n    rootPass: \"myc00lpass!\",\n});\nconst my_config = new linode.InstanceConfig(\"my-config\", {\n    linodeId: my_instance.id,\n    label: \"my-config\",\n    devices: {\n        sda: {\n            diskId: boot.id,\n        },\n    },\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=my_instance.specs.disk,\n    image=\"linode/ubuntu20.04\",\n    root_pass=\"myc00lpass!\")\nmy_config = linode.InstanceConfig(\"my-config\",\n    linode_id=my_instance.id,\n    label=\"my-config\",\n    devices=linode.InstanceConfigDevicesArgs(\n        sda=linode.InstanceConfigDevicesSdaArgs(\n            disk_id=boot.id,\n        ),\n    ),\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = my_instance.Specs.Apply(specs =\u003e specs.Disk),\n        Image = \"linode/ubuntu20.04\",\n        RootPass = \"myc00lpass!\",\n    });\n\n    var my_config = new Linode.InstanceConfig(\"my-config\", new()\n    {\n        LinodeId = my_instance.Id,\n        Label = \"my-config\",\n        Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n        {\n            Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n            {\n                DiskId = boot.Id,\n            },\n        },\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tboot, err := linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tSize: my_instance.Specs.ApplyT(func(specs InstanceSpecs) (int, error) {\n\t\t\t\treturn specs.Disk, nil\n\t\t\t}).(pulumi.IntOutput),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu20.04\"),\n\t\t\tRootPass: pulumi.String(\"myc00lpass!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"my-config\", \u0026linode.InstanceConfigArgs{\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tLabel:    pulumi.String(\"my-config\"),\n\t\t\tDevices: \u0026InstanceConfigDevicesArgs{\n\t\t\t\tSda: \u0026InstanceConfigDevicesSdaArgs{\n\t\t\t\t\tDiskId: boot.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBooted: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport com.pulumi.linode.InstanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(my_instance.specs().applyValue(specs -\u003e specs.disk()))\n            .image(\"linode/ubuntu20.04\")\n            .rootPass(\"myc00lpass!\")\n            .build());\n\n        var my_config = new InstanceConfig(\"my-config\", InstanceConfigArgs.builder()        \n            .linodeId(my_instance.id())\n            .label(\"my-config\")\n            .devices(InstanceConfigDevicesArgs.builder()\n                .sda(InstanceConfigDevicesSdaArgs.builder()\n                    .diskId(boot.id())\n                    .build())\n                .build())\n            .booted(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-config:\n    type: linode:InstanceConfig\n    properties:\n      linodeId: ${[\"my-instance\"].id}\n      label: my-config\n      devices:\n        sda:\n          diskId: ${boot.id}\n      booted: true\n  boot:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${[\"my-instance\"].id}\n      size: ${[\"my-instance\"].specs.disk}\n      image: linode/ubuntu20.04\n      rootPass: myc00lpass!\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      type: g6-standard-1\n      region: us-southeast\n```\n\nCreating a complex bootable Instance Configuration Profile:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\n// Create a boot disk\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: my_instance.specs.apply(specs =\u003e specs.disk - 512),\n    image: \"linode/ubuntu20.04\",\n    rootPass: \"myc00lpass!\",\n});\n// Create a swap disk\nconst swap = new linode.InstanceDisk(\"swap\", {\n    label: \"swap\",\n    linodeId: my_instance.id,\n    size: 512,\n    filesystem: \"swap\",\n});\nconst my_config = new linode.InstanceConfig(\"my-config\", {\n    linodeId: my_instance.id,\n    label: \"my-config\",\n    devices: {\n        sda: {\n            diskId: boot.id,\n        },\n        sdb: {\n            diskId: swap.id,\n        },\n    },\n    helpers: [{\n        updatedbDisabled: false,\n    }],\n    interfaces: [\n        {\n            purpose: \"public\",\n        },\n        {\n            purpose: \"vlan\",\n            label: \"my-vlan\",\n            ipamAddress: \"10.0.0.2/24\",\n        },\n    ],\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\n# Create a boot disk\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=my_instance.specs.apply(lambda specs: specs.disk - 512),\n    image=\"linode/ubuntu20.04\",\n    root_pass=\"myc00lpass!\")\n# Create a swap disk\nswap = linode.InstanceDisk(\"swap\",\n    label=\"swap\",\n    linode_id=my_instance.id,\n    size=512,\n    filesystem=\"swap\")\nmy_config = linode.InstanceConfig(\"my-config\",\n    linode_id=my_instance.id,\n    label=\"my-config\",\n    devices=linode.InstanceConfigDevicesArgs(\n        sda=linode.InstanceConfigDevicesSdaArgs(\n            disk_id=boot.id,\n        ),\n        sdb=linode.InstanceConfigDevicesSdbArgs(\n            disk_id=swap.id,\n        ),\n    ),\n    helpers=[linode.InstanceConfigHelperArgs(\n        updatedb_disabled=False,\n    )],\n    interfaces=[\n        linode.InstanceConfigInterfaceArgs(\n            purpose=\"public\",\n        ),\n        linode.InstanceConfigInterfaceArgs(\n            purpose=\"vlan\",\n            label=\"my-vlan\",\n            ipam_address=\"10.0.0.2/24\",\n        ),\n    ],\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    // Create a boot disk\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = my_instance.Specs.Apply(specs =\u003e specs.Disk - 512),\n        Image = \"linode/ubuntu20.04\",\n        RootPass = \"myc00lpass!\",\n    });\n\n    // Create a swap disk\n    var swap = new Linode.InstanceDisk(\"swap\", new()\n    {\n        Label = \"swap\",\n        LinodeId = my_instance.Id,\n        Size = 512,\n        Filesystem = \"swap\",\n    });\n\n    var my_config = new Linode.InstanceConfig(\"my-config\", new()\n    {\n        LinodeId = my_instance.Id,\n        Label = \"my-config\",\n        Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n        {\n            Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n            {\n                DiskId = boot.Id,\n            },\n            Sdb = new Linode.Inputs.InstanceConfigDevicesSdbArgs\n            {\n                DiskId = swap.Id,\n            },\n        },\n        Helpers = new[]\n        {\n            new Linode.Inputs.InstanceConfigHelperArgs\n            {\n                UpdatedbDisabled = false,\n            },\n        },\n        Interfaces = new[]\n        {\n            new Linode.Inputs.InstanceConfigInterfaceArgs\n            {\n                Purpose = \"public\",\n            },\n            new Linode.Inputs.InstanceConfigInterfaceArgs\n            {\n                Purpose = \"vlan\",\n                Label = \"my-vlan\",\n                IpamAddress = \"10.0.0.2/24\",\n            },\n        },\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tboot, err := linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tSize: my_instance.Specs.ApplyT(func(specs InstanceSpecs) (float64, error) {\n\t\t\t\treturn specs.Disk - 512, nil\n\t\t\t}).(pulumi.Float64Output),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu20.04\"),\n\t\t\tRootPass: pulumi.String(\"myc00lpass!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tswap, err := linode.NewInstanceDisk(ctx, \"swap\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:      pulumi.String(\"swap\"),\n\t\t\tLinodeId:   my_instance.ID(),\n\t\t\tSize:       pulumi.Int(512),\n\t\t\tFilesystem: pulumi.String(\"swap\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"my-config\", \u0026linode.InstanceConfigArgs{\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tLabel:    pulumi.String(\"my-config\"),\n\t\t\tDevices: \u0026InstanceConfigDevicesArgs{\n\t\t\t\tSda: \u0026InstanceConfigDevicesSdaArgs{\n\t\t\t\t\tDiskId: boot.ID(),\n\t\t\t\t},\n\t\t\t\tSdb: \u0026InstanceConfigDevicesSdbArgs{\n\t\t\t\t\tDiskId: swap.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tHelpers: InstanceConfigHelperArray{\n\t\t\t\t\u0026InstanceConfigHelperArgs{\n\t\t\t\t\tUpdatedbDisabled: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInterfaces: InstanceConfigInterfaceArray{\n\t\t\t\t\u0026InstanceConfigInterfaceArgs{\n\t\t\t\t\tPurpose: pulumi.String(\"public\"),\n\t\t\t\t},\n\t\t\t\t\u0026InstanceConfigInterfaceArgs{\n\t\t\t\t\tPurpose:     pulumi.String(\"vlan\"),\n\t\t\t\t\tLabel:       pulumi.String(\"my-vlan\"),\n\t\t\t\t\tIpamAddress: pulumi.String(\"10.0.0.2/24\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBooted: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport com.pulumi.linode.InstanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdbArgs;\nimport com.pulumi.linode.inputs.InstanceConfigHelperArgs;\nimport com.pulumi.linode.inputs.InstanceConfigInterfaceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(my_instance.specs().applyValue(specs -\u003e specs.disk() - 512))\n            .image(\"linode/ubuntu20.04\")\n            .rootPass(\"myc00lpass!\")\n            .build());\n\n        var swap = new InstanceDisk(\"swap\", InstanceDiskArgs.builder()        \n            .label(\"swap\")\n            .linodeId(my_instance.id())\n            .size(512)\n            .filesystem(\"swap\")\n            .build());\n\n        var my_config = new InstanceConfig(\"my-config\", InstanceConfigArgs.builder()        \n            .linodeId(my_instance.id())\n            .label(\"my-config\")\n            .devices(InstanceConfigDevicesArgs.builder()\n                .sda(InstanceConfigDevicesSdaArgs.builder()\n                    .diskId(boot.id())\n                    .build())\n                .sdb(InstanceConfigDevicesSdbArgs.builder()\n                    .diskId(swap.id())\n                    .build())\n                .build())\n            .helpers(InstanceConfigHelperArgs.builder()\n                .updatedbDisabled(false)\n                .build())\n            .interfaces(            \n                InstanceConfigInterfaceArgs.builder()\n                    .purpose(\"public\")\n                    .build(),\n                InstanceConfigInterfaceArgs.builder()\n                    .purpose(\"vlan\")\n                    .label(\"my-vlan\")\n                    .ipamAddress(\"10.0.0.2/24\")\n                    .build())\n            .booted(true)\n            .build());\n\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInstance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.\n\n```sh\n $ pulumi import linode:index/instanceConfig:InstanceConfig my-config 1234567,7654321\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types. ",
+            "properties": {
+                "booted": {
+                    "type": "boolean",
+                    "description": "If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.\n"
+                },
+                "comments": {
+                    "type": "string",
+                    "description": "Optional field for arbitrary User comments on this Config.\n"
+                },
+                "devices": {
+                    "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
+                    "description": "A dictionary of device disks to use as a device map in a Linode’s configuration profile.\n"
+                },
+                "helpers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
+                    },
+                    "description": "Helpers enabled when booting to this Linode Config.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
+                    },
+                    "description": "An array of Network Interfaces to add to this Linode’s Configuration Profile.\n"
+                },
+                "kernel": {
+                    "type": "string",
+                    "description": "A Kernel ID to boot a Linode with. (default `linode/latest-64bit`)\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The name of this interface.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to create this configuration profile under.\n"
+                },
+                "memoryLimit": {
+                    "type": "integer",
+                    "description": "The memory limit of the Config. Defaults to the total ram of the Linode.\n"
+                },
+                "rootDevice": {
+                    "type": "string",
+                    "description": "The root device to boot. (default `/dev/sda`)\n"
+                },
+                "runLevel": {
+                    "type": "string",
+                    "description": "Defines the state of your Linode after booting. (`default`, `single`, `binbash`)\n"
+                },
+                "virtMode": {
+                    "type": "string",
+                    "description": "Controls the virtualization mode. (`paravirt`, `fullvirt`)\n"
+                }
+            },
+            "required": [
+                "booted",
+                "devices",
+                "helpers",
+                "label",
+                "linodeId",
+                "memoryLimit"
+            ],
+            "inputProperties": {
+                "booted": {
+                    "type": "boolean",
+                    "description": "If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.\n"
+                },
+                "comments": {
+                    "type": "string",
+                    "description": "Optional field for arbitrary User comments on this Config.\n"
+                },
+                "devices": {
+                    "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
+                    "description": "A dictionary of device disks to use as a device map in a Linode’s configuration profile.\n"
+                },
+                "helpers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
+                    },
+                    "description": "Helpers enabled when booting to this Linode Config.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
+                    },
+                    "description": "An array of Network Interfaces to add to this Linode’s Configuration Profile.\n"
+                },
+                "kernel": {
+                    "type": "string",
+                    "description": "A Kernel ID to boot a Linode with. (default `linode/latest-64bit`)\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The name of this interface.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to create this configuration profile under.\n",
+                    "willReplaceOnChanges": true
+                },
+                "memoryLimit": {
+                    "type": "integer",
+                    "description": "The memory limit of the Config. Defaults to the total ram of the Linode.\n"
+                },
+                "rootDevice": {
+                    "type": "string",
+                    "description": "The root device to boot. (default `/dev/sda`)\n"
+                },
+                "runLevel": {
+                    "type": "string",
+                    "description": "Defines the state of your Linode after booting. (`default`, `single`, `binbash`)\n"
+                },
+                "virtMode": {
+                    "type": "string",
+                    "description": "Controls the virtualization mode. (`paravirt`, `fullvirt`)\n"
+                }
+            },
+            "requiredInputs": [
+                "label",
+                "linodeId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InstanceConfig resources.\n",
+                "properties": {
+                    "booted": {
+                        "type": "boolean",
+                        "description": "If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.\n"
+                    },
+                    "comments": {
+                        "type": "string",
+                        "description": "Optional field for arbitrary User comments on this Config.\n"
+                    },
+                    "devices": {
+                        "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
+                        "description": "A dictionary of device disks to use as a device map in a Linode’s configuration profile.\n"
+                    },
+                    "helpers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
+                        },
+                        "description": "Helpers enabled when booting to this Linode Config.\n"
+                    },
+                    "interfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
+                        },
+                        "description": "An array of Network Interfaces to add to this Linode’s Configuration Profile.\n"
+                    },
+                    "kernel": {
+                        "type": "string",
+                        "description": "A Kernel ID to boot a Linode with. (default `linode/latest-64bit`)\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The name of this interface.\n"
+                    },
+                    "linodeId": {
+                        "type": "integer",
+                        "description": "The ID of the Linode to create this configuration profile under.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "memoryLimit": {
+                        "type": "integer",
+                        "description": "The memory limit of the Config. Defaults to the total ram of the Linode.\n"
+                    },
+                    "rootDevice": {
+                        "type": "string",
+                        "description": "The root device to boot. (default `/dev/sda`)\n"
+                    },
+                    "runLevel": {
+                        "type": "string",
+                        "description": "Defines the state of your Linode after booting. (`default`, `single`, `binbash`)\n"
+                    },
+                    "virtMode": {
+                        "type": "string",
+                        "description": "Controls the virtualization mode. (`paravirt`, `fullvirt`)\n"
                     }
                 },
                 "type": "object"
@@ -8277,7 +8405,8 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image.\n"
+                    "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image.\n",
+                    "secret": true
                 },
                 "size": {
                     "type": "integer",
@@ -8288,7 +8417,8 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.\n"
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.\n",
+                    "secret": true
                 },
                 "stackscriptId": {
                     "type": "integer",
@@ -8351,6 +8481,7 @@
                 "rootPass": {
                     "type": "string",
                     "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image.\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "size": {
@@ -8363,6 +8494,7 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.\n",
+                    "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
@@ -8421,6 +8553,7 @@
                     "rootPass": {
                         "type": "string",
                         "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image.\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "size": {
@@ -8433,6 +8566,7 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.\n",
+                        "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "stackscriptId": {
@@ -8758,7 +8892,8 @@
                 },
                 "kubeconfig": {
                     "type": "string",
-                    "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n"
+                    "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n",
+                    "secret": true
                 },
                 "label": {
                     "type": "string",
@@ -8861,7 +8996,8 @@
                     },
                     "kubeconfig": {
                         "type": "string",
-                        "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n"
+                        "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n",
+                        "secret": true
                     },
                     "label": {
                         "type": "string",
@@ -9096,7 +9232,8 @@
                 },
                 "sslCert": {
                     "type": "string",
-                    "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                    "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                    "secret": true
                 },
                 "sslCommonname": {
                     "type": "string",
@@ -9108,7 +9245,8 @@
                 },
                 "sslKey": {
                     "type": "string",
-                    "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                    "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                    "secret": true
                 },
                 "stickiness": {
                     "type": "string",
@@ -9187,11 +9325,13 @@
                 },
                 "sslCert": {
                     "type": "string",
-                    "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                    "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                    "secret": true
                 },
                 "sslKey": {
                     "type": "string",
-                    "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                    "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                    "secret": true
                 },
                 "stickiness": {
                     "type": "string",
@@ -9266,7 +9406,8 @@
                     },
                     "sslCert": {
                         "type": "string",
-                        "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                        "description": "The certificate this port is serving. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                        "secret": true
                     },
                     "sslCommonname": {
                         "type": "string",
@@ -9278,7 +9419,8 @@
                     },
                     "sslKey": {
                         "type": "string",
-                        "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n"
+                        "description": "The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `\u003cREDACTED\u003e`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.\n",
+                        "secret": true
                     },
                     "stickiness": {
                         "type": "string",
@@ -9576,7 +9718,8 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "This keypair's secret key.\n"
+                    "description": "This keypair's secret key.\n",
+                    "secret": true
                 }
             },
             "required": [
@@ -9627,7 +9770,8 @@
                     },
                     "secretKey": {
                         "type": "string",
-                        "description": "This keypair's secret key.\n"
+                        "description": "This keypair's secret key.\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -10257,7 +10401,8 @@
                         "csharp": {
                             "name": "TokenName"
                         }
-                    }
+                    },
+                    "secret": true
                 }
             },
             "required": [
@@ -10312,7 +10457,8 @@
                             "csharp": {
                                 "name": "TokenName"
                             }
-                        }
+                        },
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -10591,7 +10737,7 @@
             }
         },
         "linode:index/volume:Volume": {
-            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobaz = new Linode.Instance(\"foobaz\", new()\n    {\n        RootPass = \"3X4mp13\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-west\",\n        Tags = new[]\n        {\n            \"foobaz\",\n        },\n    });\n\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"foo-volume\",\n        Region = foobaz.Region,\n        LinodeId = foobaz.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobaz = new Instance(\"foobaz\", InstanceArgs.builder()        \n            .rootPass(\"3X4mp13\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-west\")\n            .tags(\"foobaz\")\n            .build());\n\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"foo-volume\")\n            .region(foobaz.region())\n            .linodeId(foobaz.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobaz:\n    type: linode:Instance\n    properties:\n      rootPass: 3X4mp13\n      type: g6-nanode-1\n      region: us-west\n      tags:\n        - foobaz\n  foobar:\n    type: linode:Volume\n    properties:\n      label: foo-volume\n      region: ${foobaz.region}\n      linodeId: ${foobaz.id}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Configs = new[]\n        {\n            new Linode.Inputs.InstanceConfigArgs\n            {\n                Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                {\n                    Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                    {\n                        VolumeId = 123,\n                    },\n                },\n                Kernel = \"linode/latest-64bit\",\n                Label = \"boot-existing-volume\",\n            },\n        },\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: InstanceConfigArray{\n\t\t\t\t\u0026InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()        \n            .configs(InstanceConfigArgs.builder()\n                .devices(InstanceConfigDevicesArgs.builder()\n                    .sda(InstanceConfigDevicesSdaArgs.builder()\n                        .volumeId(\"123\")\n                        .build())\n                    .build())\n                .kernel(\"linode/latest-64bit\")\n                .label(\"boot-existing-volume\")\n                .build())\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      configs:\n        - devices:\n            sda:\n              volumeId: 123\n          kernel: linode/latest-64bit\n          label: boot-existing-volume\n      region: us-east\n      type: g6-nanode-1\n```\n\nVolumes may also be cloned from existing volumes.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"my-cloned-volume\",\n    sourceVolumeId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.Volume(\"foobar\",\n    label=\"my-cloned-volume\",\n    source_volume_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"my-cloned-volume\",\n        SourceVolumeId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:          pulumi.String(\"my-cloned-volume\"),\n\t\t\tSourceVolumeId: pulumi.Int(12345),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"my-cloned-volume\")\n            .sourceVolumeId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Volume\n    properties:\n      label: my-cloned-volume\n      sourceVolumeId: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types. ",
+            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobaz = new Linode.Instance(\"foobaz\", new()\n    {\n        RootPass = \"3X4mp13\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-west\",\n        Tags = new[]\n        {\n            \"foobaz\",\n        },\n    });\n\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"foo-volume\",\n        Region = foobaz.Region,\n        LinodeId = foobaz.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobaz = new Instance(\"foobaz\", InstanceArgs.builder()        \n            .rootPass(\"3X4mp13\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-west\")\n            .tags(\"foobaz\")\n            .build());\n\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"foo-volume\")\n            .region(foobaz.region())\n            .linodeId(foobaz.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobaz:\n    type: linode:Instance\n    properties:\n      rootPass: 3X4mp13\n      type: g6-nanode-1\n      region: us-west\n      tags:\n        - foobaz\n  foobar:\n    type: linode:Volume\n    properties:\n      label: foo-volume\n      region: ${foobaz.region}\n      linodeId: ${foobaz.id}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Configs = new[]\n        {\n            new Linode.Inputs.InstanceConfigArgs\n            {\n                Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                {\n                    Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                    {\n                        VolumeId = 123,\n                    },\n                },\n                Kernel = \"linode/latest-64bit\",\n                Label = \"boot-existing-volume\",\n            },\n        },\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: InstanceConfigTypeArray{\n\t\t\t\t\u0026InstanceConfigTypeArgs{\n\t\t\t\t\tDevices: \u0026InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()        \n            .configs(InstanceConfigArgs.builder()\n                .devices(InstanceConfigDevicesArgs.builder()\n                    .sda(InstanceConfigDevicesSdaArgs.builder()\n                        .volumeId(\"123\")\n                        .build())\n                    .build())\n                .kernel(\"linode/latest-64bit\")\n                .label(\"boot-existing-volume\")\n                .build())\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      configs:\n        - devices:\n            sda:\n              volumeId: 123\n          kernel: linode/latest-64bit\n          label: boot-existing-volume\n      region: us-east\n      type: g6-nanode-1\n```\n\nVolumes may also be cloned from existing volumes.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"my-cloned-volume\",\n    sourceVolumeId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.Volume(\"foobar\",\n    label=\"my-cloned-volume\",\n    source_volume_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"my-cloned-volume\",\n        SourceVolumeId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v3/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:          pulumi.String(\"my-cloned-volume\"),\n\t\t\tSourceVolumeId: pulumi.Int(12345),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"my-cloned-volume\")\n            .sourceVolumeId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Volume\n    properties:\n      label: my-cloned-volume\n      sourceVolumeId: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types. ",
             "properties": {
                 "filesystemPath": {
                     "type": "string",
@@ -10964,7 +11110,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -11030,11 +11177,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -11125,7 +11274,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -11176,11 +11326,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -11336,7 +11488,8 @@
                     },
                     "caCert": {
                         "type": "string",
-                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n"
+                        "description": "The base64-encoded SSL CA certificate for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "clusterSize": {
                         "type": "integer",
@@ -11394,11 +11547,13 @@
                     },
                     "rootPassword": {
                         "type": "string",
-                        "description": "The randomly-generated root password for the Managed Database instance.\n"
+                        "description": "The randomly-generated root password for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "rootUsername": {
                         "type": "string",
-                        "description": "The root username for the Managed Database instance.\n"
+                        "description": "The root username for the Managed Database instance.\n",
+                        "secret": true
                     },
                     "sslConnection": {
                         "type": "boolean",
@@ -12396,7 +12551,8 @@
                     },
                     "kubeconfig": {
                         "type": "string",
-                        "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n"
+                        "description": "The base64 encoded kubeconfig for the Kubernetes cluster.\n",
+                        "secret": true
                     },
                     "label": {
                         "type": "string"
