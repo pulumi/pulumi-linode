@@ -29,22 +29,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-//				Image: pulumi.String("linode/ubuntu18.04"),
+//				Label:    pulumi.String("my_instance"),
+//				Image:    pulumi.String("linode/ubuntu18.04"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-standard-1"),
+//				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
 //				Interfaces: InstanceInterfaceArray{
 //					&InstanceInterfaceArgs{
-//						Label:   pulumi.String("my-vlan"),
 //						Purpose: pulumi.String("vlan"),
+//						Label:   pulumi.String("my-vlan"),
 //					},
 //				},
-//				Label:    pulumi.String("my_instance"),
-//				Region:   pulumi.String("us-southeast"),
-//				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
-//				Type:     pulumi.String("g6-standard-1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.GetVlans(ctx, &GetVlansArgs{
+//			my_vlans, err := linode.GetVlans(ctx, &GetVlansArgs{
 //				Filters: []GetVlansFilter{
 //					GetVlansFilter{
 //						Name: "label",
@@ -57,6 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("vlanLinodes", my_vlans.Vlans[0].Linodes)
 //			return nil
 //		})
 //	}

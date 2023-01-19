@@ -69,7 +69,7 @@ export interface GetStackScriptResult {
     readonly description: string;
     readonly id: number;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      */
     readonly images: string[];
     /**

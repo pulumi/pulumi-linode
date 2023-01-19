@@ -108,7 +108,7 @@ class GetStackScriptResult:
     @pulumi.getter
     def images(self) -> Sequence[str]:
         """
-        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
         """
         return pulumi.get(self, "images")
 

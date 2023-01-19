@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my_instances = pulumi.output(linode.getInstances({
+ * const my-instances = linode.getInstances({
  *     filters: [
  *         {
  *             name: "label",
@@ -30,7 +30,8 @@ import * as utilities from "./utilities";
  *             values: ["my-tag"],
  *         },
  *     ],
- * }));
+ * });
+ * export const instanceId = my_instances.then(my_instances => my_instances.instances?[0]?.id);
  * ```
  *
  * Get information about all Linode instances associated with the current token:
@@ -39,7 +40,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all_instances = pulumi.output(linode.getInstances());
+ * const all-instances = linode.getInstances({});
+ * export const instanceIds = [all_instances.then(all_instances => all_instances.instances)].map(__item => __item?.id);
  * ```
  * ## Filterable Fields
  *

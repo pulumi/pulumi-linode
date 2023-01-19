@@ -22,6 +22,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -29,6 +30,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all = Linode.GetDatabases.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = new[]
+        ///         {
+        ///             all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// 
@@ -36,6 +44,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -56,6 +65,13 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = new[]
+        ///         {
+        ///             mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}
@@ -75,6 +91,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -82,6 +99,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all = Linode.GetDatabases.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = new[]
+        ///         {
+        ///             all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// 
@@ -89,6 +113,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -109,6 +134,13 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = new[]
+        ///         {
+        ///             mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}

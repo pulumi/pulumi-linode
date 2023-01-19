@@ -51,6 +51,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceId"] = my_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// 
@@ -58,6 +62,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -65,6 +70,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all_instances = Linode.GetInstances.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceIds"] = new[]
+        ///         {
+        ///             all_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}
@@ -132,6 +144,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceId"] = my_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// 
@@ -139,6 +155,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -146,6 +163,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all_instances = Linode.GetInstances.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceIds"] = new[]
+        ///         {
+        ///             all_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}

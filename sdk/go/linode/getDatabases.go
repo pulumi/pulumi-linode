@@ -11,65 +11,6 @@ import (
 )
 
 // Provides information about Linode Managed Databases that match a set of filters.
-//
-// ## Example Usage
-//
-// Get information about all Linode Managed Databases:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabases(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Get information about all Linode MySQL Databases:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabases(ctx, &GetDatabasesArgs{
-//				Filters: []GetDatabasesFilter{
-//					GetDatabasesFilter{
-//						Name: "engine",
-//						Values: []string{
-//							"mysql",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	var rv GetDatabasesResult
 	err := ctx.Invoke("linode:index/getDatabases:getDatabases", args, &rv, opts...)

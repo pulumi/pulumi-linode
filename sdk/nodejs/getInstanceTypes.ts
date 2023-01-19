@@ -16,12 +16,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific_types = pulumi.output(linode.getInstanceTypes({
+ * const specific-types = linode.getInstanceTypes({
  *     filters: [{
  *         name: "vcpus",
  *         values: ["2"],
  *     }],
- * }));
+ * });
+ * export const typeIds = [specific_types.then(specific_types => specific_types.types)].map(__item => __item?.id);
  * ```
  *
  * Get information about all Linode Instance types:
@@ -30,7 +31,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all_types = pulumi.output(linode.getInstanceTypes());
+ * const all-types = linode.getInstanceTypes({});
+ * export const typeIds = [all_types.then(all_types => all_types.types)].map(__item => __item?.id);
  * ```
  * ## Filterable Fields
  *

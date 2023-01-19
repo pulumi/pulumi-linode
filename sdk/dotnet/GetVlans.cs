@@ -27,19 +27,19 @@ namespace Pulumi.Linode
         /// {
         ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
+        ///         Label = "my_instance",
         ///         Image = "linode/ubuntu18.04",
+        ///         Region = "us-southeast",
+        ///         Type = "g6-standard-1",
+        ///         RootPass = "bogusPassword$",
         ///         Interfaces = new[]
         ///         {
         ///             new Linode.Inputs.InstanceInterfaceArgs
         ///             {
-        ///                 Label = "my-vlan",
         ///                 Purpose = "vlan",
+        ///                 Label = "my-vlan",
         ///             },
         ///         },
-        ///         Label = "my_instance",
-        ///         Region = "us-southeast",
-        ///         RootPass = "bogusPassword$",
-        ///         Type = "g6-standard-1",
         ///     });
         /// 
         ///     var my_vlans = Linode.GetVlans.Invoke(new()
@@ -57,6 +57,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vlanLinodes"] = my_vlans.Apply(getVlansResult =&gt; getVlansResult).Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}
@@ -86,19 +90,19 @@ namespace Pulumi.Linode
         /// {
         ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
+        ///         Label = "my_instance",
         ///         Image = "linode/ubuntu18.04",
+        ///         Region = "us-southeast",
+        ///         Type = "g6-standard-1",
+        ///         RootPass = "bogusPassword$",
         ///         Interfaces = new[]
         ///         {
         ///             new Linode.Inputs.InstanceInterfaceArgs
         ///             {
-        ///                 Label = "my-vlan",
         ///                 Purpose = "vlan",
+        ///                 Label = "my-vlan",
         ///             },
         ///         },
-        ///         Label = "my_instance",
-        ///         Region = "us-southeast",
-        ///         RootPass = "bogusPassword$",
-        ///         Type = "g6-standard-1",
         ///     });
         /// 
         ///     var my_vlans = Linode.GetVlans.Invoke(new()
@@ -116,6 +120,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vlanLinodes"] = my_vlans.Apply(getVlansResult =&gt; getVlansResult).Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}

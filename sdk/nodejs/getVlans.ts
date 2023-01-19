@@ -14,23 +14,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("my_instance", {
- *     image: "linode/ubuntu18.04",
- *     interfaces: [{
- *         label: "my-vlan",
- *         purpose: "vlan",
- *     }],
+ * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
+ *     image: "linode/ubuntu18.04",
  *     region: "us-southeast",
- *     rootPass: "bogusPassword$",
  *     type: "g6-standard-1",
+ *     rootPass: `bogusPassword$`,
+ *     interfaces: [{
+ *         purpose: "vlan",
+ *         label: "my-vlan",
+ *     }],
  * });
- * const my_vlans = pulumi.output(linode.getVlans({
+ * const my-vlans = linode.getVlans({
  *     filters: [{
  *         name: "label",
  *         values: ["my-vlan"],
  *     }],
- * }));
+ * });
+ * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?[0]?.linodes);
  * ```
  * ## Filterable Fields
  *

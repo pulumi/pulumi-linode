@@ -110,13 +110,14 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     specific_images = linode.get_images(filters=[
         linode.GetImagesFilterArgs(
             name="label",
-            values=["Debian 8"],
+            values=["Debian 11"],
         ),
         linode.GetImagesFilterArgs(
             name="is_public",
             values=["true"],
         ),
     ])
+    pulumi.export("imageId", specific_images.images[0].id)
     ```
 
     Get information about all Linode images associated with the current token:
@@ -126,6 +127,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     import pulumi_linode as linode
 
     all_images = linode.get_images()
+    pulumi.export("imageIds", [__item.id for __item in [all_images.images]])
     ```
     ## Filterable Fields
 
@@ -189,13 +191,14 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     specific_images = linode.get_images(filters=[
         linode.GetImagesFilterArgs(
             name="label",
-            values=["Debian 8"],
+            values=["Debian 11"],
         ),
         linode.GetImagesFilterArgs(
             name="is_public",
             values=["true"],
         ),
     ])
+    pulumi.export("imageId", specific_images.images[0].id)
     ```
 
     Get information about all Linode images associated with the current token:
@@ -205,6 +208,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     import pulumi_linode as linode
 
     all_images = linode.get_images()
+    pulumi.export("imageIds", [__item.id for __item in [all_images.images]])
     ```
     ## Filterable Fields
 

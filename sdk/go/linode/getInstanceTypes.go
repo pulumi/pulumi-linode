@@ -12,64 +12,6 @@ import (
 
 // Provides information about Linode Instance types that match a set of filters.
 //
-// ## Example Usage
-//
-// Get information about all Linode Instance types with a certain number of VCPUs:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetInstanceTypes(ctx, &GetInstanceTypesArgs{
-//				Filters: []GetInstanceTypesFilter{
-//					GetInstanceTypesFilter{
-//						Name: "vcpus",
-//						Values: []string{
-//							"2",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Get information about all Linode Instance types:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetInstanceTypes(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Filterable Fields
 //
 // * `class`

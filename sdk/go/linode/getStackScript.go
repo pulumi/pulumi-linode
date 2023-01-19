@@ -67,7 +67,7 @@ type LookupStackScriptResult struct {
 	// A description for the StackScript.
 	Description string `pulumi:"description"`
 	Id          int    `pulumi:"id"`
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
 	IsPublic bool `pulumi:"isPublic"`
@@ -151,7 +151,7 @@ func (o LookupStackScriptResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
 func (o LookupStackScriptResultOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) []string { return v.Images }).(pulumi.StringArrayOutput)
 }

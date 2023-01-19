@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific_stackscripts = pulumi.output(linode.getStackScripts({
+ * const specific-stackscripts = linode.getStackScripts({
  *     filters: [
  *         {
  *             name: "label",
@@ -29,7 +29,8 @@ import * as utilities from "./utilities";
  *             values: ["false"],
  *         },
  *     ],
- * }));
+ * });
+ * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?[0]?.id);
  * ```
  * ## Filterable Fields
  *

@@ -26,7 +26,7 @@ class StackScriptArgs:
         """
         The set of arguments for constructing a StackScript resource.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
@@ -60,7 +60,7 @@ class StackScriptArgs:
     @pulumi.getter
     def images(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         """
         return pulumi.get(self, "images")
 
@@ -151,7 +151,7 @@ class _StackScriptState:
         :param pulumi.Input[int] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
         :param pulumi.Input[int] deployments_total: The total number of times this StackScript has been deployed.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
@@ -240,7 +240,7 @@ class _StackScriptState:
     @pulumi.getter
     def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         """
         return pulumi.get(self, "images")
 
@@ -407,7 +407,7 @@ class StackScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
@@ -552,7 +552,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[int] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
         :param pulumi.Input[int] deployments_total: The total number of times this StackScript has been deployed.
         :param pulumi.Input[str] description: A description for the StackScript.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] label: The StackScript's label is for display purposes only.
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
@@ -617,7 +617,7 @@ class StackScript(pulumi.CustomResource):
     @pulumi.getter
     def images(self) -> pulumi.Output[Sequence[str]]:
         """
-        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         """
         return pulumi.get(self, "images")
 

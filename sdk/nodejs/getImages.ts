@@ -16,18 +16,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific_images = pulumi.output(linode.getImages({
+ * const specific-images = linode.getImages({
  *     filters: [
  *         {
  *             name: "label",
- *             values: ["Debian 8"],
+ *             values: ["Debian 11"],
  *         },
  *         {
  *             name: "is_public",
  *             values: ["true"],
  *         },
  *     ],
- * }));
+ * });
+ * export const imageId = specific_images.then(specific_images => specific_images.images?[0]?.id);
  * ```
  *
  * Get information about all Linode images associated with the current token:
@@ -36,7 +37,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all_images = pulumi.output(linode.getImages());
+ * const all-images = linode.getImages({});
+ * export const imageIds = [all_images.then(all_images => all_images.images)].map(__item => __item?.id);
  * ```
  * ## Filterable Fields
  *

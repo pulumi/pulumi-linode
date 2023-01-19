@@ -108,6 +108,7 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
     import pulumi_linode as linode
 
     all = linode.get_database_engines()
+    pulumi.export("engineIds", [__item.id for __item in [all.engines]])
     ```
 
     Get information about all Linode MySQL Database engines:
@@ -120,6 +121,7 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
         name="engine",
         values=["mysql"],
     )])
+    pulumi.export("engineIds", [__item.id for __item in [mysql.engines]])
     ```
 
     Create a Linode MySQL Database using the latest support MySQL version:
@@ -180,6 +182,7 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
     import pulumi_linode as linode
 
     all = linode.get_database_engines()
+    pulumi.export("engineIds", [__item.id for __item in [all.engines]])
     ```
 
     Get information about all Linode MySQL Database engines:
@@ -192,6 +195,7 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
         name="engine",
         values=["mysql"],
     )])
+    pulumi.export("engineIds", [__item.id for __item in [mysql.engines]])
     ```
 
     Create a Linode MySQL Database using the latest support MySQL version:
