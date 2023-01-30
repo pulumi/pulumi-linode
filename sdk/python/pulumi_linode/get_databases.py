@@ -108,6 +108,7 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
     import pulumi_linode as linode
 
     all = linode.get_databases()
+    pulumi.export("databaseIds", [__item.id for __item in [all.databases]])
     ```
 
     Get information about all Linode MySQL Databases:
@@ -120,6 +121,7 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
         name="engine",
         values=["mysql"],
     )])
+    pulumi.export("databaseIds", [__item.id for __item in [mysql.databases]])
     ```
 
 
@@ -162,6 +164,7 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     import pulumi_linode as linode
 
     all = linode.get_databases()
+    pulumi.export("databaseIds", [__item.id for __item in [all.databases]])
     ```
 
     Get information about all Linode MySQL Databases:
@@ -174,6 +177,7 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
         name="engine",
         values=["mysql"],
     )])
+    pulumi.export("databaseIds", [__item.id for __item in [mysql.databases]])
     ```
 
 

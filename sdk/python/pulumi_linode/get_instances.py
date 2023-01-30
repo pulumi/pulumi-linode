@@ -110,6 +110,7 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
             values=["my-tag"],
         ),
     ])
+    pulumi.export("instanceId", my_instances.instances[0].id)
     ```
 
     Get information about all Linode instances associated with the current token:
@@ -119,6 +120,7 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     import pulumi_linode as linode
 
     all_instances = linode.get_instances()
+    pulumi.export("instanceIds", [__item.id for __item in [all_instances.instances]])
     ```
     ## Filterable Fields
 
@@ -188,6 +190,7 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
             values=["my-tag"],
         ),
     ])
+    pulumi.export("instanceId", my_instances.instances[0].id)
     ```
 
     Get information about all Linode instances associated with the current token:
@@ -197,6 +200,7 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     import pulumi_linode as linode
 
     all_instances = linode.get_instances()
+    pulumi.export("instanceIds", [__item.id for __item in [all_instances.instances]])
     ```
     ## Filterable Fields
 

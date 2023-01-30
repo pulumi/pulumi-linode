@@ -52,6 +52,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stackscriptId"] = specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult).Apply(specific_stackscripts =&gt; specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult.Stackscripts[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}
@@ -120,6 +124,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stackscriptId"] = specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult).Apply(specific_stackscripts =&gt; specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult.Stackscripts[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}

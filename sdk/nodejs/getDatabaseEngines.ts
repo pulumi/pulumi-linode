@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all = pulumi.output(linode.getDatabaseEngines());
+ * const all = linode.getDatabaseEngines({});
+ * export const engineIds = [all.then(all => all.engines)].map(__item => __item?.id);
  * ```
  *
  * Get information about all Linode MySQL Database engines:
@@ -25,12 +26,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const mysql = pulumi.output(linode.getDatabaseEngines({
+ * const mysql = linode.getDatabaseEngines({
  *     filters: [{
  *         name: "engine",
  *         values: ["mysql"],
  *     }],
- * }));
+ * });
+ * export const engineIds = [mysql.then(mysql => mysql.engines)].map(__item => __item?.id);
  * ```
  *
  * Create a Linode MySQL Database using the latest support MySQL version:

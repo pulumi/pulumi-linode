@@ -145,7 +145,7 @@ namespace Pulumi.Linode
         public readonly string Description;
         public readonly int Id;
         /// <summary>
-        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>

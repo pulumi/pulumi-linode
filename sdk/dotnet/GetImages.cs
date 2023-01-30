@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         ///                 Name = "label",
         ///                 Values = new[]
         ///                 {
-        ///                     "Debian 8",
+        ///                     "Debian 11",
         ///                 },
         ///             },
         ///             new Linode.Inputs.GetImagesFilterInputArgs
@@ -50,6 +50,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageId"] = specific_images.Apply(getImagesResult =&gt; getImagesResult).Apply(specific_images =&gt; specific_images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// 
@@ -57,6 +61,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -64,6 +69,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all_images = Linode.GetImages.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageIds"] = new[]
+        ///         {
+        ///             all_images.Apply(getImagesResult =&gt; getImagesResult).Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images)),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}
@@ -116,7 +128,7 @@ namespace Pulumi.Linode
         ///                 Name = "label",
         ///                 Values = new[]
         ///                 {
-        ///                     "Debian 8",
+        ///                     "Debian 11",
         ///                 },
         ///             },
         ///             new Linode.Inputs.GetImagesFilterInputArgs
@@ -130,6 +142,10 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageId"] = specific_images.Apply(getImagesResult =&gt; getImagesResult).Apply(specific_images =&gt; specific_images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
+        ///     };
         /// });
         /// ```
         /// 
@@ -137,6 +153,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -144,6 +161,13 @@ namespace Pulumi.Linode
         /// {
         ///     var all_images = Linode.GetImages.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageIds"] = new[]
+        ///         {
+        ///             all_images.Apply(getImagesResult =&gt; getImagesResult).Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images)),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
         /// });
         /// ```
         /// {{% /example %}}

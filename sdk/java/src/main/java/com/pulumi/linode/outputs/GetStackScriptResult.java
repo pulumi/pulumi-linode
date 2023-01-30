@@ -35,7 +35,7 @@ public final class GetStackScriptResult {
     private String description;
     private Integer id;
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      * 
      */
     private List<String> images;
@@ -113,7 +113,7 @@ public final class GetStackScriptResult {
         return this.id;
     }
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      * 
      */
     public List<String> images() {

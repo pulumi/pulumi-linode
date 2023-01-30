@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetStackScripts(ctx, &GetStackScriptsArgs{
+//			specific_stackscripts, err := linode.GetStackScripts(ctx, &GetStackScriptsArgs{
 //				Filters: []GetStackScriptsFilter{
 //					GetStackScriptsFilter{
 //						Name: "label",
@@ -49,6 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("stackscriptId", specific_stackscripts.Stackscripts[0].Id)
 //			return nil
 //		})
 //	}

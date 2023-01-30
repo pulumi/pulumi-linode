@@ -98,7 +98,7 @@ export class StackScript extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      */
     public readonly images!: pulumi.Output<string[]>;
     /**
@@ -214,7 +214,7 @@ export interface StackScriptState {
      */
     description?: pulumi.Input<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      */
     images?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -260,7 +260,7 @@ export interface StackScriptArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      */
     images: pulumi.Input<pulumi.Input<string>[]>;
     /**

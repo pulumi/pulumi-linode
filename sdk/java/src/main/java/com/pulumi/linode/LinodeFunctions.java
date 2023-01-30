@@ -667,6 +667,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -700,6 +701,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -780,6 +782,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -813,6 +816,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -893,6 +897,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -926,6 +931,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1006,6 +1012,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1039,6 +1046,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1119,6 +1127,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1152,6 +1161,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1232,6 +1242,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
+     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1265,6 +1276,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2269,6 +2281,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2302,6 +2315,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2339,6 +2353,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2372,6 +2387,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2409,6 +2425,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2442,6 +2459,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2479,6 +2497,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2512,6 +2531,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2549,6 +2569,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2582,6 +2603,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2619,6 +2641,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
+     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -2652,6 +2675,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -3589,7 +3613,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -3597,6 +3621,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -3625,6 +3650,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -3683,7 +3709,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -3691,6 +3717,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -3719,6 +3746,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -3777,7 +3805,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -3785,6 +3813,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -3813,6 +3842,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -3871,7 +3901,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -3879,6 +3909,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -3907,6 +3938,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -3965,7 +3997,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -3973,6 +4005,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -4001,6 +4034,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4059,7 +4093,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 8&#34;)
+     *                     .values(&#34;Debian 11&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -4067,6 +4101,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
      *     }
      * }
      * ```
@@ -4095,6 +4130,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
+     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4460,6 +4496,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4488,6 +4525,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4547,6 +4585,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4575,6 +4614,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4634,6 +4674,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4662,6 +4703,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4721,6 +4763,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4749,6 +4792,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4808,6 +4852,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4836,6 +4881,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4895,6 +4941,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4923,6 +4970,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
+     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -4989,6 +5037,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5017,6 +5066,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -5085,6 +5135,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5113,6 +5164,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -5181,6 +5233,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5209,6 +5262,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -5277,6 +5331,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5305,6 +5360,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -5373,6 +5429,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5401,6 +5458,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -5469,6 +5527,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
      *     }
      * }
      * ```
@@ -5497,6 +5556,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
+     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -7477,6 +7537,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -7545,6 +7606,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -7613,6 +7675,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -7681,6 +7744,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -7749,6 +7813,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -7817,6 +7882,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
+     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
      * ```
@@ -8029,15 +8095,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8047,6 +8113,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```
@@ -8089,15 +8156,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8107,6 +8174,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```
@@ -8149,15 +8217,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8167,6 +8235,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```
@@ -8209,15 +8278,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8227,6 +8296,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```
@@ -8269,15 +8339,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8287,6 +8357,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```
@@ -8329,15 +8400,15 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .image(&#34;linode/ubuntu18.04&#34;)
-     *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .label(&#34;my-vlan&#34;)
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .build())
      *             .label(&#34;my_instance&#34;)
+     *             .image(&#34;linode/ubuntu18.04&#34;)
      *             .region(&#34;us-southeast&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
      *             .type(&#34;g6-standard-1&#34;)
+     *             .rootPass(&#34;bogusPassword$&#34;)
+     *             .interfaces(InstanceInterfaceArgs.builder()
+     *                 .purpose(&#34;vlan&#34;)
+     *                 .label(&#34;my-vlan&#34;)
+     *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
@@ -8347,6 +8418,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
      *     }
      * }
      * ```

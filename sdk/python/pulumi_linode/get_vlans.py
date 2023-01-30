@@ -96,19 +96,20 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     import pulumi_linode as linode
 
     my_instance = linode.Instance("myInstance",
-        image="linode/ubuntu18.04",
-        interfaces=[linode.InstanceInterfaceArgs(
-            label="my-vlan",
-            purpose="vlan",
-        )],
         label="my_instance",
+        image="linode/ubuntu18.04",
         region="us-southeast",
+        type="g6-standard-1",
         root_pass="bogusPassword$",
-        type="g6-standard-1")
+        interfaces=[linode.InstanceInterfaceArgs(
+            purpose="vlan",
+            label="my-vlan",
+        )])
     my_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(
         name="label",
         values=["my-vlan"],
     )])
+    pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
     ## Filterable Fields
 
@@ -150,19 +151,20 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     import pulumi_linode as linode
 
     my_instance = linode.Instance("myInstance",
-        image="linode/ubuntu18.04",
-        interfaces=[linode.InstanceInterfaceArgs(
-            label="my-vlan",
-            purpose="vlan",
-        )],
         label="my_instance",
+        image="linode/ubuntu18.04",
         region="us-southeast",
+        type="g6-standard-1",
         root_pass="bogusPassword$",
-        type="g6-standard-1")
+        interfaces=[linode.InstanceInterfaceArgs(
+            purpose="vlan",
+            label="my-vlan",
+        )])
     my_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(
         name="label",
         values=["my-vlan"],
     )])
+    pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
     ## Filterable Fields
 

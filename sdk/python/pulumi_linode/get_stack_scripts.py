@@ -119,6 +119,7 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
             values=["false"],
         ),
     ])
+    pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```
     ## Filterable Fields
 
@@ -191,6 +192,7 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
             values=["false"],
         ),
     ])
+    pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```
     ## Filterable Fields
 
