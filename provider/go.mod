@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-linode/provider/v3
 
-go 1.18
+go 1.19
 
 require (
 	github.com/linode/terraform-provider-linode v1.11.0
