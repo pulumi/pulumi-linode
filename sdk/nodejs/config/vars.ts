@@ -35,6 +35,17 @@ Object.defineProperty(exports, "configProfile", {
 });
 
 /**
+ * Disable the internal caching system that backs certain Linode API requests.
+ */
+export declare const disableInternalCache: boolean | undefined;
+Object.defineProperty(exports, "disableInternalCache", {
+    get() {
+        return __config.getObject<boolean>("disableInternalCache");
+    },
+    enumerable: true,
+});
+
+/**
  * The rate in milliseconds to poll for events.
  */
 export declare const eventPollMs: number | undefined;

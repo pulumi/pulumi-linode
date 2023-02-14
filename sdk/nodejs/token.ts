@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooToken = new linode.Token("foo", {
+ * const fooToken = new linode.Token("fooToken", {
  *     expiry: "2100-01-02T03:04:05Z",
  *     label: "token",
  *     scopes: "linodes:read_only",
  * });
- * const fooInstance = new linode.Instance("foo", {});
+ * const fooInstance = new linode.Instance("fooInstance", {});
  * ```
  *
  * ## Import
@@ -116,6 +116,8 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }

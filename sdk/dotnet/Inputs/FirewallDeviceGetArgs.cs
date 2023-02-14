@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<int>? Id { get; set; }
 
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
@@ -36,6 +36,9 @@ namespace Pulumi.Linode.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// The URL of the underlying entity this device references.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

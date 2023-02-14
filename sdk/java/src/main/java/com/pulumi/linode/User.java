@@ -108,6 +108,8 @@ import javax.annotation.Nullable;
  * 
  * * `add_domains` - (optional) If true, this User may add Domains.
  * 
+ * * `add_databases` - (optional) If true, this User may add Databases.
+ * 
  * * `add_firewalls` - (optional) If true, this User may add Firewalls.
  * 
  * * `add_images` - (optional) If true, this User may add Images.

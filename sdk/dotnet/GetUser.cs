@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode user
@@ -67,17 +67,113 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        [Input("domainGrants")]
+        private List<Inputs.GetUserDomainGrantArgs>? _domainGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Domains on this Account.
+        /// </summary>
+        public List<Inputs.GetUserDomainGrantArgs> DomainGrants
+        {
+            get => _domainGrants ?? (_domainGrants = new List<Inputs.GetUserDomainGrantArgs>());
+            set => _domainGrants = value;
+        }
+
+        [Input("firewallGrants")]
+        private List<Inputs.GetUserFirewallGrantArgs>? _firewallGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Firewalls on this Account.
+        /// </summary>
+        public List<Inputs.GetUserFirewallGrantArgs> FirewallGrants
+        {
+            get => _firewallGrants ?? (_firewallGrants = new List<Inputs.GetUserFirewallGrantArgs>());
+            set => _firewallGrants = value;
+        }
+
+        [Input("imageGrants")]
+        private List<Inputs.GetUserImageGrantArgs>? _imageGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Images on this Account.
+        /// </summary>
+        public List<Inputs.GetUserImageGrantArgs> ImageGrants
+        {
+            get => _imageGrants ?? (_imageGrants = new List<Inputs.GetUserImageGrantArgs>());
+            set => _imageGrants = value;
+        }
+
+        [Input("linodeGrants")]
+        private List<Inputs.GetUserLinodeGrantArgs>? _linodeGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Linodes on this Account.
+        /// </summary>
+        public List<Inputs.GetUserLinodeGrantArgs> LinodeGrants
+        {
+            get => _linodeGrants ?? (_linodeGrants = new List<Inputs.GetUserLinodeGrantArgs>());
+            set => _linodeGrants = value;
+        }
+
+        [Input("longviewGrants")]
+        private List<Inputs.GetUserLongviewGrantArgs>? _longviewGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Longview Clients on this Account.
+        /// </summary>
+        public List<Inputs.GetUserLongviewGrantArgs> LongviewGrants
+        {
+            get => _longviewGrants ?? (_longviewGrants = new List<Inputs.GetUserLongviewGrantArgs>());
+            set => _longviewGrants = value;
+        }
+
+        [Input("nodebalancerGrants")]
+        private List<Inputs.GetUserNodebalancerGrantArgs>? _nodebalancerGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to NodeBalancers on this Account.
+        /// </summary>
+        public List<Inputs.GetUserNodebalancerGrantArgs> NodebalancerGrants
+        {
+            get => _nodebalancerGrants ?? (_nodebalancerGrants = new List<Inputs.GetUserNodebalancerGrantArgs>());
+            set => _nodebalancerGrants = value;
+        }
+
+        [Input("stackscriptGrants")]
+        private List<Inputs.GetUserStackscriptGrantArgs>? _stackscriptGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to StackScripts on this Account.
+        /// </summary>
+        public List<Inputs.GetUserStackscriptGrantArgs> StackscriptGrants
+        {
+            get => _stackscriptGrants ?? (_stackscriptGrants = new List<Inputs.GetUserStackscriptGrantArgs>());
+            set => _stackscriptGrants = value;
+        }
+
         /// <summary>
         /// The unique username of this User.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
+
+        [Input("volumeGrants")]
+        private List<Inputs.GetUserVolumeGrantArgs>? _volumeGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Volumes on this Account.
+        /// </summary>
+        public List<Inputs.GetUserVolumeGrantArgs> VolumeGrants
+        {
+            get => _volumeGrants ?? (_volumeGrants = new List<Inputs.GetUserVolumeGrantArgs>());
+            set => _volumeGrants = value;
+        }
 
         public GetUserArgs()
         {
@@ -87,11 +183,107 @@ namespace Pulumi.Linode
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("domainGrants")]
+        private InputList<Inputs.GetUserDomainGrantInputArgs>? _domainGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Domains on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserDomainGrantInputArgs> DomainGrants
+        {
+            get => _domainGrants ?? (_domainGrants = new InputList<Inputs.GetUserDomainGrantInputArgs>());
+            set => _domainGrants = value;
+        }
+
+        [Input("firewallGrants")]
+        private InputList<Inputs.GetUserFirewallGrantInputArgs>? _firewallGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Firewalls on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserFirewallGrantInputArgs> FirewallGrants
+        {
+            get => _firewallGrants ?? (_firewallGrants = new InputList<Inputs.GetUserFirewallGrantInputArgs>());
+            set => _firewallGrants = value;
+        }
+
+        [Input("imageGrants")]
+        private InputList<Inputs.GetUserImageGrantInputArgs>? _imageGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Images on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserImageGrantInputArgs> ImageGrants
+        {
+            get => _imageGrants ?? (_imageGrants = new InputList<Inputs.GetUserImageGrantInputArgs>());
+            set => _imageGrants = value;
+        }
+
+        [Input("linodeGrants")]
+        private InputList<Inputs.GetUserLinodeGrantInputArgs>? _linodeGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Linodes on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserLinodeGrantInputArgs> LinodeGrants
+        {
+            get => _linodeGrants ?? (_linodeGrants = new InputList<Inputs.GetUserLinodeGrantInputArgs>());
+            set => _linodeGrants = value;
+        }
+
+        [Input("longviewGrants")]
+        private InputList<Inputs.GetUserLongviewGrantInputArgs>? _longviewGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Longview Clients on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserLongviewGrantInputArgs> LongviewGrants
+        {
+            get => _longviewGrants ?? (_longviewGrants = new InputList<Inputs.GetUserLongviewGrantInputArgs>());
+            set => _longviewGrants = value;
+        }
+
+        [Input("nodebalancerGrants")]
+        private InputList<Inputs.GetUserNodebalancerGrantInputArgs>? _nodebalancerGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to NodeBalancers on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserNodebalancerGrantInputArgs> NodebalancerGrants
+        {
+            get => _nodebalancerGrants ?? (_nodebalancerGrants = new InputList<Inputs.GetUserNodebalancerGrantInputArgs>());
+            set => _nodebalancerGrants = value;
+        }
+
+        [Input("stackscriptGrants")]
+        private InputList<Inputs.GetUserStackscriptGrantInputArgs>? _stackscriptGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to StackScripts on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserStackscriptGrantInputArgs> StackscriptGrants
+        {
+            get => _stackscriptGrants ?? (_stackscriptGrants = new InputList<Inputs.GetUserStackscriptGrantInputArgs>());
+            set => _stackscriptGrants = value;
+        }
+
         /// <summary>
         /// The unique username of this User.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
+
+        [Input("volumeGrants")]
+        private InputList<Inputs.GetUserVolumeGrantInputArgs>? _volumeGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Volumes on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserVolumeGrantInputArgs> VolumeGrants
+        {
+            get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.GetUserVolumeGrantInputArgs>());
+            set => _volumeGrants = value;
+        }
 
         public GetUserInvokeArgs()
         {
@@ -104,13 +296,41 @@ namespace Pulumi.Linode
     public sealed class GetUserResult
     {
         /// <summary>
+        /// The grants this User has pertaining to Domains on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserDomainGrantResult> DomainGrants;
+        /// <summary>
         /// The email address for this User, for account management communications, and may be used for other communications as configured.
         /// </summary>
         public readonly string Email;
         /// <summary>
+        /// The grants this User has pertaining to Firewalls on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserFirewallGrantResult> FirewallGrants;
+        /// <summary>
+        /// The Account-level grants a User has.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserGlobalGrantResult> GlobalGrants;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The grants this User has pertaining to Images on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserImageGrantResult> ImageGrants;
+        /// <summary>
+        /// The grants this User has pertaining to Linodes on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserLinodeGrantResult> LinodeGrants;
+        /// <summary>
+        /// The grants this User has pertaining to Longview Clients on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserLongviewGrantResult> LongviewGrants;
+        /// <summary>
+        /// The grants this User has pertaining to NodeBalancers on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserNodebalancerGrantResult> NodebalancerGrants;
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
@@ -119,25 +339,60 @@ namespace Pulumi.Linode
         /// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
         /// </summary>
         public readonly ImmutableArray<string> SshKeys;
+        /// <summary>
+        /// The grants this User has pertaining to StackScripts on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserStackscriptGrantResult> StackscriptGrants;
         public readonly string Username;
+        /// <summary>
+        /// The grants this User has pertaining to Volumes on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserVolumeGrantResult> VolumeGrants;
 
         [OutputConstructor]
         private GetUserResult(
+            ImmutableArray<Outputs.GetUserDomainGrantResult> domainGrants,
+
             string email,
 
+            ImmutableArray<Outputs.GetUserFirewallGrantResult> firewallGrants,
+
+            ImmutableArray<Outputs.GetUserGlobalGrantResult> globalGrants,
+
             string id,
+
+            ImmutableArray<Outputs.GetUserImageGrantResult> imageGrants,
+
+            ImmutableArray<Outputs.GetUserLinodeGrantResult> linodeGrants,
+
+            ImmutableArray<Outputs.GetUserLongviewGrantResult> longviewGrants,
+
+            ImmutableArray<Outputs.GetUserNodebalancerGrantResult> nodebalancerGrants,
 
             bool restricted,
 
             ImmutableArray<string> sshKeys,
 
-            string username)
+            ImmutableArray<Outputs.GetUserStackscriptGrantResult> stackscriptGrants,
+
+            string username,
+
+            ImmutableArray<Outputs.GetUserVolumeGrantResult> volumeGrants)
         {
+            DomainGrants = domainGrants;
             Email = email;
+            FirewallGrants = firewallGrants;
+            GlobalGrants = globalGrants;
             Id = id;
+            ImageGrants = imageGrants;
+            LinodeGrants = linodeGrants;
+            LongviewGrants = longviewGrants;
+            NodebalancerGrants = nodebalancerGrants;
             Restricted = restricted;
             SshKeys = sshKeys;
+            StackscriptGrants = stackscriptGrants;
             Username = username;
+            VolumeGrants = volumeGrants;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Date { get; set; }
 
         /// <summary>
-        /// Specifies the number of days non-current object versions expire.
+        /// Specifies the number of days after object creation when the specific rule action takes effect.
         /// </summary>
         [Input("days")]
         public Input<int>? Days { get; set; }

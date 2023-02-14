@@ -82,14 +82,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall&#39;s unique label.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public Optional<Output<String>> label() {
@@ -309,7 +309,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 

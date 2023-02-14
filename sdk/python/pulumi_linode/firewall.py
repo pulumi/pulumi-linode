@@ -27,7 +27,7 @@ class FirewallArgs:
         """
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
@@ -65,7 +65,7 @@ class FirewallArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -165,7 +165,7 @@ class _FirewallState:
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
@@ -245,7 +245,7 @@ class _FirewallState:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -402,7 +402,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
@@ -562,7 +562,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
@@ -621,7 +621,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 

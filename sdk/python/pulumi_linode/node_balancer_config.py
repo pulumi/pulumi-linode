@@ -773,12 +773,14 @@ class NodeBalancerConfig(pulumi.CustomResource):
             __props__.__dict__["port"] = port
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["proxy_protocol"] = proxy_protocol
-            __props__.__dict__["ssl_cert"] = ssl_cert
-            __props__.__dict__["ssl_key"] = ssl_key
+            __props__.__dict__["ssl_cert"] = None if ssl_cert is None else pulumi.Output.secret(ssl_cert)
+            __props__.__dict__["ssl_key"] = None if ssl_key is None else pulumi.Output.secret(ssl_key)
             __props__.__dict__["stickiness"] = stickiness
             __props__.__dict__["node_statuses"] = None
             __props__.__dict__["ssl_commonname"] = None
             __props__.__dict__["ssl_fingerprint"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sslCert", "sslKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodeBalancerConfig, __self__).__init__(
             'linode:index/nodeBalancerConfig:NodeBalancerConfig',
             resource_name,

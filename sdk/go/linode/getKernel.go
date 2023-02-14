@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetKernel(ctx, &GetKernelArgs{
+//			_, err := linode.GetKernel(ctx, &linode.GetKernelArgs{
 //				Id: "linode/latest-64bit",
 //			}, nil)
 //			if err != nil {

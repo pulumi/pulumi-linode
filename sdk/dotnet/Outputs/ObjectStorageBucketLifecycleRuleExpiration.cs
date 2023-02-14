@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Date;
         /// <summary>
-        /// Specifies the number of days non-current object versions expire.
+        /// Specifies the number of days after object creation when the specific rule action takes effect.
         /// </summary>
         public readonly int? Days;
         /// <summary>

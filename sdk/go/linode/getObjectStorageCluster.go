@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
+//			_, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
 //				Id: "us-east-1",
 //			}, nil)
 //			if err != nil {

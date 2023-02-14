@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceBackup {
+    private Boolean available;
     /**
      * @return If this Linode has the Backup service enabled.
      * 
@@ -19,6 +20,9 @@ public final class GetInstancesInstanceBackup {
     private List<GetInstancesInstanceBackupSchedule> schedules;
 
     private GetInstancesInstanceBackup() {}
+    public Boolean available() {
+        return this.available;
+    }
     /**
      * @return If this Linode has the Backup service enabled.
      * 
@@ -39,15 +43,22 @@ public final class GetInstancesInstanceBackup {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean available;
         private Boolean enabled;
         private List<GetInstancesInstanceBackupSchedule> schedules;
         public Builder() {}
         public Builder(GetInstancesInstanceBackup defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.available = defaults.available;
     	      this.enabled = defaults.enabled;
     	      this.schedules = defaults.schedules;
         }
 
+        @CustomType.Setter
+        public Builder available(Boolean available) {
+            this.available = Objects.requireNonNull(available);
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
@@ -63,6 +74,7 @@ public final class GetInstancesInstanceBackup {
         }
         public GetInstancesInstanceBackup build() {
             final var o = new GetInstancesInstanceBackup();
+            o.available = available;
             o.enabled = enabled;
             o.schedules = schedules;
             return o;

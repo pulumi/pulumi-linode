@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupLkeCluster(ctx, &GetLkeClusterArgs{
+//			_, err := linode.LookupLkeCluster(ctx, &linode.LookupLkeClusterArgs{
 //				Id: 123,
 //			}, nil)
 //			if err != nil {

@@ -15,13 +15,13 @@ namespace Pulumi.Linode
         /// Provides details about the backups of an Instance.
         /// </summary>
         public static Task<GetInstanceBackupsResult> InvokeAsync(GetInstanceBackupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about the backups of an Instance.
         /// </summary>
         public static Output<GetInstanceBackupsResult> Invoke(GetInstanceBackupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

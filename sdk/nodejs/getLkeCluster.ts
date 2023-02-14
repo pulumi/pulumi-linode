@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my_cluster = pulumi.output(linode.getLkeCluster({
+ * const my-cluster = linode.getLkeCluster({
  *     id: 123,
- * }));
+ * });
  * ```
  */
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeCluster:getLkeCluster", {
         "id": args.id,
     }, opts);
@@ -83,9 +81,22 @@ export interface GetLkeClusterResult {
      */
     readonly tags: string[];
 }
-
+/**
+ * Provides details about an LKE Cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-cluster = linode.getLkeCluster({
+ *     id: 123,
+ * });
+ * ```
+ */
 export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
-    return pulumi.output(args).apply(a => getLkeCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getLkeCluster(a, opts))
 }
 
 /**

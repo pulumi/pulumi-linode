@@ -53,7 +53,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instanceId"] = my_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///         ["instanceId"] = my_instances.Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -74,7 +74,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["instanceIds"] = new[]
         ///         {
-        ///             all_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
+        ///             all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -102,7 +102,7 @@ namespace Pulumi.Linode
         /// * `watchdog_enabled`
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about Linode instances that match a set of filters.
@@ -146,7 +146,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instanceId"] = my_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///         ["instanceId"] = my_instances.Apply(my_instances =&gt; my_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -167,7 +167,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["instanceIds"] = new[]
         ///         {
-        ///             all_instances.Apply(getInstancesResult =&gt; getInstancesResult).Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
+        ///             all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -195,7 +195,7 @@ namespace Pulumi.Linode
         /// * `watchdog_enabled`
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("linode:index/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

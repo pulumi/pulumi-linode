@@ -18,6 +18,11 @@ configPath: Optional[str]
 
 configProfile: Optional[str]
 
+disableInternalCache: Optional[bool]
+"""
+Disable the internal caching system that backs certain Linode API requests.
+"""
+
 eventPollMs: Optional[int]
 """
 The rate in milliseconds to poll for events.

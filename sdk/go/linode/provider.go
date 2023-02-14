@@ -58,6 +58,8 @@ type providerArgs struct {
 	ApiVersion    *string `pulumi:"apiVersion"`
 	ConfigPath    *string `pulumi:"configPath"`
 	ConfigProfile *string `pulumi:"configProfile"`
+	// Disable the internal caching system that backs certain Linode API requests.
+	DisableInternalCache *bool `pulumi:"disableInternalCache"`
 	// The rate in milliseconds to poll for events.
 	EventPollMs *int `pulumi:"eventPollMs"`
 	// The rate in milliseconds to poll for LKE events.
@@ -86,6 +88,8 @@ type ProviderArgs struct {
 	ApiVersion    pulumi.StringPtrInput
 	ConfigPath    pulumi.StringPtrInput
 	ConfigProfile pulumi.StringPtrInput
+	// Disable the internal caching system that backs certain Linode API requests.
+	DisableInternalCache pulumi.BoolPtrInput
 	// The rate in milliseconds to poll for events.
 	EventPollMs pulumi.IntPtrInput
 	// The rate in milliseconds to poll for LKE events.

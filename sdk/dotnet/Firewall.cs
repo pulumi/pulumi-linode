@@ -149,7 +149,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.FirewallInbound>> Inbounds { get; private set; } = null!;
 
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }

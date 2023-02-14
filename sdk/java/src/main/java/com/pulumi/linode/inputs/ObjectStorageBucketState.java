@@ -35,14 +35,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      * 
      */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      * 
      */
     public Optional<Output<String>> acl() {
@@ -226,7 +226,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
          * 
          * @return builder
          * 

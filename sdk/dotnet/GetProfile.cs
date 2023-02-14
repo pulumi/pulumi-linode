@@ -35,7 +35,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProfileResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

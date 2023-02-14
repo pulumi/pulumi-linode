@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupDatabasePostgresql(ctx, &GetDatabasePostgresqlArgs{
+//			_, err := linode.LookupDatabasePostgresql(ctx, &linode.LookupDatabasePostgresqlArgs{
 //				DatabaseId: 12345,
 //			}, nil)
 //			if err != nil {

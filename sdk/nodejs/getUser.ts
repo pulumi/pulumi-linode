@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,19 +17,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = pulumi.output(linode.getUser({
+ * const foo = linode.getUser({
  *     username: "foo",
- * }));
+ * });
  * ```
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getUser:getUser", {
+        "domainGrants": args.domainGrants,
+        "firewallGrants": args.firewallGrants,
+        "imageGrants": args.imageGrants,
+        "linodeGrants": args.linodeGrants,
+        "longviewGrants": args.longviewGrants,
+        "nodebalancerGrants": args.nodebalancerGrants,
+        "stackscriptGrants": args.stackscriptGrants,
         "username": args.username,
+        "volumeGrants": args.volumeGrants,
     }, opts);
 }
 
@@ -36,9 +43,41 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetUserArgs {
     /**
+     * The grants this User has pertaining to Domains on this Account.
+     */
+    domainGrants?: inputs.GetUserDomainGrant[];
+    /**
+     * The grants this User has pertaining to Firewalls on this Account.
+     */
+    firewallGrants?: inputs.GetUserFirewallGrant[];
+    /**
+     * The grants this User has pertaining to Images on this Account.
+     */
+    imageGrants?: inputs.GetUserImageGrant[];
+    /**
+     * The grants this User has pertaining to Linodes on this Account.
+     */
+    linodeGrants?: inputs.GetUserLinodeGrant[];
+    /**
+     * The grants this User has pertaining to Longview Clients on this Account.
+     */
+    longviewGrants?: inputs.GetUserLongviewGrant[];
+    /**
+     * The grants this User has pertaining to NodeBalancers on this Account.
+     */
+    nodebalancerGrants?: inputs.GetUserNodebalancerGrant[];
+    /**
+     * The grants this User has pertaining to StackScripts on this Account.
+     */
+    stackscriptGrants?: inputs.GetUserStackscriptGrant[];
+    /**
      * The unique username of this User.
      */
     username: string;
+    /**
+     * The grants this User has pertaining to Volumes on this Account.
+     */
+    volumeGrants?: inputs.GetUserVolumeGrant[];
 }
 
 /**
@@ -46,13 +85,41 @@ export interface GetUserArgs {
  */
 export interface GetUserResult {
     /**
+     * The grants this User has pertaining to Domains on this Account.
+     */
+    readonly domainGrants: outputs.GetUserDomainGrant[];
+    /**
      * The email address for this User, for account management communications, and may be used for other communications as configured.
      */
     readonly email: string;
     /**
+     * The grants this User has pertaining to Firewalls on this Account.
+     */
+    readonly firewallGrants: outputs.GetUserFirewallGrant[];
+    /**
+     * The Account-level grants a User has.
+     */
+    readonly globalGrants: outputs.GetUserGlobalGrant[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The grants this User has pertaining to Images on this Account.
+     */
+    readonly imageGrants: outputs.GetUserImageGrant[];
+    /**
+     * The grants this User has pertaining to Linodes on this Account.
+     */
+    readonly linodeGrants: outputs.GetUserLinodeGrant[];
+    /**
+     * The grants this User has pertaining to Longview Clients on this Account.
+     */
+    readonly longviewGrants: outputs.GetUserLongviewGrant[];
+    /**
+     * The grants this User has pertaining to NodeBalancers on this Account.
+     */
+    readonly nodebalancerGrants: outputs.GetUserNodebalancerGrant[];
     /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
@@ -61,11 +128,34 @@ export interface GetUserResult {
      * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      */
     readonly sshKeys: string[];
+    /**
+     * The grants this User has pertaining to StackScripts on this Account.
+     */
+    readonly stackscriptGrants: outputs.GetUserStackscriptGrant[];
     readonly username: string;
+    /**
+     * The grants this User has pertaining to Volumes on this Account.
+     */
+    readonly volumeGrants: outputs.GetUserVolumeGrant[];
 }
-
+/**
+ * Provides information about a Linode user
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode user.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getUser({
+ *     username: "foo",
+ * });
+ * ```
+ */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply(a => getUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
 
 /**
@@ -73,7 +163,39 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetUserOutputArgs {
     /**
+     * The grants this User has pertaining to Domains on this Account.
+     */
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDomainGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to Firewalls on this Account.
+     */
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUserFirewallGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to Images on this Account.
+     */
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUserImageGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to Linodes on this Account.
+     */
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLinodeGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to Longview Clients on this Account.
+     */
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLongviewGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to NodeBalancers on this Account.
+     */
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUserNodebalancerGrantArgs>[]>;
+    /**
+     * The grants this User has pertaining to StackScripts on this Account.
+     */
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUserStackscriptGrantArgs>[]>;
+    /**
      * The unique username of this User.
      */
     username: pulumi.Input<string>;
+    /**
+     * The grants this User has pertaining to Volumes on this Account.
+     */
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVolumeGrantArgs>[]>;
 }

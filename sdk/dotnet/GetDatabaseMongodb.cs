@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabaseMongodbResult> InvokeAsync(GetDatabaseMongodbArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMongodbResult>("linode:index/getDatabaseMongodb:getDatabaseMongodb", args ?? new GetDatabaseMongodbArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMongodbResult>("linode:index/getDatabaseMongodb:getDatabaseMongodb", args ?? new GetDatabaseMongodbArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode MongoDB Database.
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMongodbResult> Invoke(GetDatabaseMongodbInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseMongodbResult>("linode:index/getDatabaseMongodb:getDatabaseMongodb", args ?? new GetDatabaseMongodbInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMongodbResult>("linode:index/getDatabaseMongodb:getDatabaseMongodb", args ?? new GetDatabaseMongodbInvokeArgs(), options.WithDefaults());
     }
 
 

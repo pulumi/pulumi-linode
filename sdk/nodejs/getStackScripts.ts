@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -30,7 +31,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?[0]?.id);
+ * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
  * ```
  * ## Filterable Fields
  *
@@ -54,11 +55,8 @@ import * as utilities from "./utilities";
  */
 export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getStackScripts:getStackScripts", {
         "filters": args.filters,
         "latest": args.latest,
@@ -100,9 +98,55 @@ export interface GetStackScriptsResult {
     readonly orderBy?: string;
     readonly stackscripts: outputs.GetStackScriptsStackscript[];
 }
-
+/**
+ * Provides information about Linode StackScripts that match a set of filters.
+ *
+ * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode StackScript.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific-stackscripts = linode.getStackScripts({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: ["my-cool-stackscript"],
+ *         },
+ *         {
+ *             name: "is_public",
+ *             values: ["false"],
+ *         },
+ *     ],
+ * });
+ * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
+ * ```
+ * ## Filterable Fields
+ *
+ * * `deploymentsActive`
+ *
+ * * `deploymentsTotal`
+ *
+ * * `description`
+ *
+ * * `images`
+ *
+ * * `isPublic`
+ *
+ * * `label`
+ *
+ * * `mine`
+ *
+ * * `revNote`
+ *
+ * * `username`
+ */
 export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptsResult> {
-    return pulumi.output(args).apply(a => getStackScripts(a, opts))
+    return pulumi.output(args).apply((a: any) => getStackScripts(a, opts))
 }
 
 /**

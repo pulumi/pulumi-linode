@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const ns1LinodeCom = pulumi.output(linode.getNetworkingIp({
+ * const ns1LinodeCom = linode.getNetworkingIp({
  *     address: "162.159.27.72",
- * }));
+ * });
  * ```
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {
         "address": args.address,
     }, opts);
@@ -86,9 +83,24 @@ export interface GetNetworkingIpResult {
      */
     readonly type: string;
 }
-
+/**
+ * Provides information about a Linode Networking IP Address
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const ns1LinodeCom = linode.getNetworkingIp({
+ *     address: "162.159.27.72",
+ * });
+ * ```
+ */
 export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkingIpResult> {
-    return pulumi.output(args).apply(a => getNetworkingIp(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkingIp(a, opts))
 }
 
 /**

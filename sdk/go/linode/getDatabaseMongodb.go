@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupDatabaseMongodb(ctx, &GetDatabaseMongodbArgs{
+//			_, err := linode.LookupDatabaseMongodb(ctx, &linode.LookupDatabaseMongodbArgs{
 //				DatabaseId: 12345,
 //			}, nil)
 //			if err != nil {

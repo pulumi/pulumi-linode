@@ -15,21 +15,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = pulumi.output(linode.getDomain({
+ * const foo = linode.getDomain({
  *     id: "1234567",
- * }));
- * const bar = pulumi.output(linode.getDomain({
+ * });
+ * const bar = linode.getDomain({
  *     domain: "bar.example.com",
- * }));
+ * });
  * ```
  */
 export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomain:getDomain", {
         "domain": args.domain,
         "id": args.id,
@@ -111,9 +108,27 @@ export interface GetDomainResult {
      */
     readonly type: string;
 }
-
+/**
+ * Provides information about a Linode domain.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode domain.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getDomain({
+ *     id: "1234567",
+ * });
+ * const bar = linode.getDomain({
+ *     domain: "bar.example.com",
+ * });
+ * ```
+ */
 export function getDomainOutput(args?: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply(a => getDomain(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
 }
 
 /**

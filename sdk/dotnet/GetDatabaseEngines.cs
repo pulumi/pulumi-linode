@@ -114,7 +114,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseEnginesResult> InvokeAsync(GetDatabaseEnginesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about Linode Managed Database engines that match a set of filters.
@@ -219,7 +219,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseEnginesResult> Invoke(GetDatabaseEnginesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesInvokeArgs(), options.WithDefaults());
     }
 
 

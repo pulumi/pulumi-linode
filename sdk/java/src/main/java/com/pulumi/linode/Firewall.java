@@ -173,14 +173,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.inbounds);
     }
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall&#39;s unique label.
      * 
      */
     @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public Output<String> label() {

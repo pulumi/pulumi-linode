@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDomainZonefile(ctx, &GetDomainZonefileArgs{
+//			_, err := linode.GetDomainZonefile(ctx, &linode.GetDomainZonefileArgs{
 //				DomainId: 3150401,
 //			}, nil)
 //			if err != nil {

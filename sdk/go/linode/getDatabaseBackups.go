@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
+//			_, err := linode.GetDatabaseBackups(ctx, &linode.GetDatabaseBackupsArgs{
 //				DatabaseId:   12345,
 //				DatabaseType: "mysql",
 //			}, nil)
@@ -55,11 +55,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseBackups(ctx, &GetDatabaseBackupsArgs{
+//			_, err := linode.GetDatabaseBackups(ctx, &linode.GetDatabaseBackupsArgs{
 //				DatabaseId:   12345,
 //				DatabaseType: "mongodb",
-//				Filters: []GetDatabaseBackupsFilter{
-//					GetDatabaseBackupsFilter{
+//				Filters: []linode.GetDatabaseBackupsFilter{
+//					{
 //						Name: "type",
 //						Values: []string{
 //							"auto",

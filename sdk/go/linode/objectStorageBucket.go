@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := linode.GetObjectStorageCluster(ctx, &GetObjectStorageClusterArgs{
+//			primary, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
 //				Id: "us-east-1",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
-//				Cluster: pulumi.String(primary.Id),
+//				Cluster: *pulumi.String(primary.Id),
 //				Label:   pulumi.String("mybucket"),
 //			})
 //			if err != nil {
@@ -73,12 +73,12 @@ import (
 //				SecretKey: mykey.SecretKey,
 //				Cluster:   pulumi.String("us-east-1"),
 //				Label:     pulumi.String("mybucket"),
-//				LifecycleRules: ObjectStorageBucketLifecycleRuleArray{
-//					&ObjectStorageBucketLifecycleRuleArgs{
+//				LifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{
+//					&linode.ObjectStorageBucketLifecycleRuleArgs{
 //						Id:                                 pulumi.String("my-rule"),
 //						Enabled:                            pulumi.Bool(true),
 //						AbortIncompleteMultipartUploadDays: pulumi.Int(5),
-//						Expiration: &ObjectStorageBucketLifecycleRuleExpirationArgs{
+//						Expiration: &linode.ObjectStorageBucketLifecycleRuleExpirationArgs{
 //							Date: pulumi.String("2021-06-21"),
 //						},
 //					},
@@ -107,7 +107,7 @@ type ObjectStorageBucket struct {
 
 	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrOutput `pulumi:"cert"`
@@ -165,7 +165,7 @@ func GetObjectStorageBucket(ctx *pulumi.Context,
 type objectStorageBucketState struct {
 	// The access key to authenticate with.
 	AccessKey *string `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl *string `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
@@ -189,7 +189,7 @@ type objectStorageBucketState struct {
 type ObjectStorageBucketState struct {
 	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrInput
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrInput
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrInput
@@ -217,7 +217,7 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 type objectStorageBucketArgs struct {
 	// The access key to authenticate with.
 	AccessKey *string `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl *string `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
@@ -239,7 +239,7 @@ type objectStorageBucketArgs struct {
 type ObjectStorageBucketArgs struct {
 	// The access key to authenticate with.
 	AccessKey pulumi.StringPtrInput
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrInput
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrInput
@@ -349,7 +349,7 @@ func (o ObjectStorageBucketOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 func (o ObjectStorageBucketOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }

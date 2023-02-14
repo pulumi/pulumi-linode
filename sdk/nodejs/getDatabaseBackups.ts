@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all_backups = pulumi.output(linode.getDatabaseBackups({
+ * const all-backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "mysql",
- * }));
+ * });
  * ```
  *
  * Get information about all automatic MongoDB Database Backups:
@@ -28,22 +29,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const auto_backups = pulumi.output(linode.getDatabaseBackups({
+ * const auto-backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "mongodb",
  *     filters: [{
  *         name: "type",
  *         values: ["auto"],
  *     }],
- * }));
+ * });
  * ```
  */
 export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseBackupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseBackups:getDatabaseBackups", {
         "databaseId": args.databaseId,
         "databaseType": args.databaseType,
@@ -97,9 +95,41 @@ export interface GetDatabaseBackupsResult {
     readonly order?: string;
     readonly orderBy?: string;
 }
-
+/**
+ * Provides information about Linode Database Backups that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all backups for a MySQL database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-backups = linode.getDatabaseBackups({
+ *     databaseId: 12345,
+ *     databaseType: "mysql",
+ * });
+ * ```
+ *
+ * Get information about all automatic MongoDB Database Backups:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const auto-backups = linode.getDatabaseBackups({
+ *     databaseId: 12345,
+ *     databaseType: "mongodb",
+ *     filters: [{
+ *         name: "type",
+ *         values: ["auto"],
+ *     }],
+ * });
+ * ```
+ */
 export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseBackupsResult> {
-    return pulumi.output(args).apply(a => getDatabaseBackups(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabaseBackups(a, opts))
 }
 
 /**

@@ -585,15 +585,17 @@ class InstanceDisk(pulumi.CustomResource):
             if linode_id is None and not opts.urn:
                 raise TypeError("Missing required property 'linode_id'")
             __props__.__dict__["linode_id"] = linode_id
-            __props__.__dict__["root_pass"] = root_pass
+            __props__.__dict__["root_pass"] = None if root_pass is None else pulumi.Output.secret(root_pass)
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
-            __props__.__dict__["stackscript_data"] = stackscript_data
+            __props__.__dict__["stackscript_data"] = None if stackscript_data is None else pulumi.Output.secret(stackscript_data)
             __props__.__dict__["stackscript_id"] = stackscript_id
             __props__.__dict__["created"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["rootPass", "stackscriptData"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InstanceDisk, __self__).__init__(
             'linode:index/instanceDisk:InstanceDisk',
             resource_name,

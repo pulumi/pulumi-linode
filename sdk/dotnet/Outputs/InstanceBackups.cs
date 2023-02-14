@@ -13,6 +13,7 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class InstanceBackups
     {
+        public readonly bool? Available;
         /// <summary>
         /// If this Linode has the Backup service enabled.
         /// </summary>
@@ -21,10 +22,13 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private InstanceBackups(
+            bool? available,
+
             bool? enabled,
 
             Outputs.InstanceBackupsSchedule? schedule)
         {
+            Available = available;
             Enabled = enabled;
             Schedule = schedule;
         }

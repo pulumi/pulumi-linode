@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupStackScript(ctx, &GetStackScriptArgs{
+//			_, err := linode.LookupStackScript(ctx, &linode.LookupStackScriptArgs{
 //				Id: 355872,
 //			}, nil)
 //			if err != nil {

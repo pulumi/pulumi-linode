@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const latest = pulumi.output(linode.getKernel({
+ * const latest = linode.getKernel({
  *     id: "linode/latest-64bit",
- * }));
+ * });
  * ```
  */
 export function getKernel(args: GetKernelArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getKernel:getKernel", {
         "id": args.id,
     }, opts);
@@ -75,9 +72,24 @@ export interface GetKernelResult {
      */
     readonly xen: boolean;
 }
-
+/**
+ * Provides information about a Linode kernel
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode kernel.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const latest = linode.getKernel({
+ *     id: "linode/latest-64bit",
+ * });
+ * ```
+ */
 export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelResult> {
-    return pulumi.output(args).apply(a => getKernel(a, opts))
+    return pulumi.output(args).apply((a: any) => getKernel(a, opts))
 }
 
 /**

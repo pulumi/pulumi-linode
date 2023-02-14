@@ -14,6 +14,8 @@ from .domain_record import *
 from .firewall import *
 from .firewall_device import *
 from .get_account import *
+from .get_account_login import *
+from .get_account_logins import *
 from .get_database_backups import *
 from .get_database_engines import *
 from .get_database_mongodb import *
@@ -28,12 +30,14 @@ from .get_firewall import *
 from .get_image import *
 from .get_images import *
 from .get_instance_backups import *
+from .get_instance_networking import *
 from .get_instance_type import *
 from .get_instance_types import *
 from .get_instances import *
 from .get_ipv6_range import *
 from .get_kernel import *
 from .get_lke_cluster import *
+from .get_lke_versions import *
 from .get_networking_ip import *
 from .get_node_balancer import *
 from .get_node_balancer_config import *

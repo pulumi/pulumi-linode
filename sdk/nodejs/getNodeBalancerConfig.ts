@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my_config = pulumi.output(linode.getNodeBalancerConfig({
+ * const my-config = linode.getNodeBalancerConfig({
  *     id: 123,
  *     nodebalancerId: 456,
- * }));
+ * });
  * ```
  */
 export function getNodeBalancerConfig(args: GetNodeBalancerConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodeBalancerConfig:getNodeBalancerConfig", {
         "id": args.id,
         "nodebalancerId": args.nodebalancerId,
@@ -111,9 +109,23 @@ export interface GetNodeBalancerConfigResult {
      */
     readonly stickiness: string;
 }
-
+/**
+ * Provides details about a Linode NodeBalancer Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-config = linode.getNodeBalancerConfig({
+ *     id: 123,
+ *     nodebalancerId: 456,
+ * });
+ * ```
+ */
 export function getNodeBalancerConfigOutput(args: GetNodeBalancerConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerConfigResult> {
-    return pulumi.output(args).apply(a => getNodeBalancerConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeBalancerConfig(a, opts))
 }
 
 /**

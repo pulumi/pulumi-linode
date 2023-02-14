@@ -107,7 +107,7 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
                                order_by: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseMysqlBackupsResult:
     """
-    > **NOTICE:** This data source has been deprecated in favor of `get_database_backups`.
+    > **NOTICE:** This data source has been deprecated in favor of _get_database_backups_.
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
 
@@ -168,7 +168,7 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
                                       order_by: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlBackupsResult]:
     """
-    > **NOTICE:** This data source has been deprecated in favor of `get_database_backups`.
+    > **NOTICE:** This data source has been deprecated in favor of _get_database_backups_.
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
 

@@ -240,6 +240,12 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "caCert",
+                    "rootPassword",
+                    "rootUsername",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -349,11 +355,21 @@ namespace Pulumi.Linode
             set => _allowLists = value;
         }
 
+        [Input("caCert")]
+        private Input<string>? _caCert;
+
         /// <summary>
         /// The base64-encoded SSL CA certificate for the Managed Database instance.
         /// </summary>
-        [Input("caCert")]
-        public Input<string>? CaCert { get; set; }
+        public Input<string>? CaCert
+        {
+            get => _caCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
@@ -415,17 +431,37 @@ namespace Pulumi.Linode
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
 
+        [Input("rootPassword")]
+        private Input<string>? _rootPassword;
+
         /// <summary>
         /// The randomly-generated root password for the Managed Database instance.
         /// </summary>
-        [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("rootUsername")]
+        private Input<string>? _rootUsername;
 
         /// <summary>
         /// The root username for the Managed Database instance.
         /// </summary>
-        [Input("rootUsername")]
-        public Input<string>? RootUsername { get; set; }
+        public Input<string>? RootUsername
+        {
+            get => _rootUsername;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootUsername = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)

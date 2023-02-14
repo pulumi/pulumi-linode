@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfig
     {
         /// <summary>
-        /// - Arbitrary user comments about this `config`.
+        /// Arbitrary user comments about this `config`.
         /// </summary>
         public readonly string? Comments;
         /// <summary>
@@ -27,27 +27,27 @@ namespace Pulumi.Linode.Outputs
         public readonly Outputs.InstanceConfigHelpers? Helpers;
         public readonly ImmutableArray<Outputs.InstanceConfigInterface> Interfaces;
         /// <summary>
-        /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         /// </summary>
         public readonly string? Kernel;
         /// <summary>
-        /// The name of this interface. If the interface is a VLAN, a label is required.
+        /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// - Defaults to the total RAM of the Linode
+        /// Defaults to the total RAM of the Linode
         /// </summary>
         public readonly int? MemoryLimit;
         /// <summary>
-        /// - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        /// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         /// </summary>
         public readonly string? RootDevice;
         /// <summary>
-        /// - Defines the state of your Linode after booting. Defaults to `"default"`.
+        /// Defines the state of your Linode after booting. Defaults to `"default"`.
         /// </summary>
         public readonly string? RunLevel;
         /// <summary>
-        /// - Controls the virtualization mode. Defaults to `"paravirt"`.
+        /// Controls the virtualization mode. Defaults to `"paravirt"`.
         /// </summary>
         public readonly string? VirtMode;
 

@@ -26,6 +26,13 @@ public final class Config {
         return Codegen.stringProp("configProfile").config(config).get();
     }
 /**
+ * Disable the internal caching system that backs certain Linode API requests.
+ * 
+ */
+    public Optional<Boolean> disableInternalCache() {
+        return Codegen.booleanProp("disableInternalCache").config(config).get();
+    }
+/**
  * The rate in milliseconds to poll for events.
  * 
  */

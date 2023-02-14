@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceBackups {
+    private @Nullable Boolean available;
     /**
      * @return If this Linode has the Backup service enabled.
      * 
@@ -20,6 +21,9 @@ public final class InstanceBackups {
     private @Nullable InstanceBackupsSchedule schedule;
 
     private InstanceBackups() {}
+    public Optional<Boolean> available() {
+        return Optional.ofNullable(this.available);
+    }
     /**
      * @return If this Linode has the Backup service enabled.
      * 
@@ -40,15 +44,22 @@ public final class InstanceBackups {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean available;
         private @Nullable Boolean enabled;
         private @Nullable InstanceBackupsSchedule schedule;
         public Builder() {}
         public Builder(InstanceBackups defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.available = defaults.available;
     	      this.enabled = defaults.enabled;
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
+        public Builder available(@Nullable Boolean available) {
+            this.available = available;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
@@ -61,6 +72,7 @@ public final class InstanceBackups {
         }
         public InstanceBackups build() {
             final var o = new InstanceBackups();
+            o.available = available;
             o.enabled = enabled;
             o.schedule = schedule;
             return o;

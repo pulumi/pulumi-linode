@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfig {
     /**
-     * @return - Arbitrary user comments about this `config`.
+     * @return Arbitrary user comments about this `config`.
      * 
      */
     private @Nullable String comments;
@@ -33,39 +33,39 @@ public final class InstanceConfig {
     private @Nullable InstanceConfigHelpers helpers;
     private @Nullable List<InstanceConfigInterface> interfaces;
     /**
-     * @return - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      * 
      */
     private @Nullable String kernel;
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     private String label;
     /**
-     * @return - Defaults to the total RAM of the Linode
+     * @return Defaults to the total RAM of the Linode
      * 
      */
     private @Nullable Integer memoryLimit;
     /**
-     * @return - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+     * @return The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
      * 
      */
     private @Nullable String rootDevice;
     /**
-     * @return - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+     * @return Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
      * 
      */
     private @Nullable String runLevel;
     /**
-     * @return - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+     * @return Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
      * 
      */
     private @Nullable String virtMode;
 
     private InstanceConfig() {}
     /**
-     * @return - Arbitrary user comments about this `config`.
+     * @return Arbitrary user comments about this `config`.
      * 
      */
     public Optional<String> comments() {
@@ -89,42 +89,42 @@ public final class InstanceConfig {
         return this.interfaces == null ? List.of() : this.interfaces;
     }
     /**
-     * @return - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      * 
      */
     public Optional<String> kernel() {
         return Optional.ofNullable(this.kernel);
     }
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     public String label() {
         return this.label;
     }
     /**
-     * @return - Defaults to the total RAM of the Linode
+     * @return Defaults to the total RAM of the Linode
      * 
      */
     public Optional<Integer> memoryLimit() {
         return Optional.ofNullable(this.memoryLimit);
     }
     /**
-     * @return - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+     * @return The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
      * 
      */
     public Optional<String> rootDevice() {
         return Optional.ofNullable(this.rootDevice);
     }
     /**
-     * @return - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+     * @return Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
      * 
      */
     public Optional<String> runLevel() {
         return Optional.ofNullable(this.runLevel);
     }
     /**
-     * @return - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+     * @return Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
      * 
      */
     public Optional<String> virtMode() {

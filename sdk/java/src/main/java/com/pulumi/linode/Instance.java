@@ -103,14 +103,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.alerts;
     }
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="authorizedKeys", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<List<String>>> authorizedKeys() {
@@ -235,14 +235,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.group);
     }
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * The Linode’s host machine, as a UUID.
+     * 
+     */
+    @Export(name="hostUuid", type=String.class, parameters={})
+    private Output<String> hostUuid;
+
+    /**
+     * @return The Linode’s host machine, as a UUID.
+     * 
+     */
+    public Output<String> hostUuid() {
+        return this.hostUuid;
+    }
+    /**
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="image", type=String.class, parameters={})
     private Output</* @Nullable */ String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<String>> image() {
@@ -307,14 +321,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv6;
     }
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     public Output<String> label() {
@@ -377,14 +391,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resizeDisk);
     }
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      * 
      */
     @Export(name="rootPass", type=String.class, parameters={})
     private Output</* @Nullable */ String> rootPass;
 
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      * 
      */
     public Output<Optional<String>> rootPass() {
@@ -549,6 +563,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "rootPass",
+                "stackscriptData"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

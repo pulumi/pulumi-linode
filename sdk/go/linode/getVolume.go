@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupVolume(ctx, &GetVolumeArgs{
+//			_, err := linode.LookupVolume(ctx, &linode.LookupVolumeArgs{
 //				Id: 1234567,
 //			}, nil)
 //			if err != nil {

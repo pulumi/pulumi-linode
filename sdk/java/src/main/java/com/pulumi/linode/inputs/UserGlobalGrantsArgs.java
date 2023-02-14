@@ -23,6 +23,13 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.accountAccess);
     }
 
+    @Import(name="addDatabases")
+    private @Nullable Output<Boolean> addDatabases;
+
+    public Optional<Output<Boolean>> addDatabases() {
+        return Optional.ofNullable(this.addDatabases);
+    }
+
     @Import(name="addDomains")
     private @Nullable Output<Boolean> addDomains;
 
@@ -97,6 +104,7 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
 
     private UserGlobalGrantsArgs(UserGlobalGrantsArgs $) {
         this.accountAccess = $.accountAccess;
+        this.addDatabases = $.addDatabases;
         this.addDomains = $.addDomains;
         this.addFirewalls = $.addFirewalls;
         this.addImages = $.addImages;
@@ -134,6 +142,15 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
 
         public Builder accountAccess(String accountAccess) {
             return accountAccess(Output.of(accountAccess));
+        }
+
+        public Builder addDatabases(@Nullable Output<Boolean> addDatabases) {
+            $.addDatabases = addDatabases;
+            return this;
+        }
+
+        public Builder addDatabases(Boolean addDatabases) {
+            return addDatabases(Output.of(addDatabases));
         }
 
         public Builder addDomains(@Nullable Output<Boolean> addDomains) {

@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkingIpResult> InvokeAsync(GetNetworkingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode Networking IP Address
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkingIpResult> Invoke(GetNetworkingIpInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -8,6 +8,10 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.linode.Utilities;
+import com.pulumi.linode.inputs.GetAccountLoginArgs;
+import com.pulumi.linode.inputs.GetAccountLoginPlainArgs;
+import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+import com.pulumi.linode.inputs.GetAccountLoginsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
@@ -36,6 +40,8 @@ import com.pulumi.linode.inputs.GetImagesArgs;
 import com.pulumi.linode.inputs.GetImagesPlainArgs;
 import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
 import com.pulumi.linode.inputs.GetInstanceBackupsPlainArgs;
+import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
+import com.pulumi.linode.inputs.GetInstanceNetworkingPlainArgs;
 import com.pulumi.linode.inputs.GetInstanceTypeArgs;
 import com.pulumi.linode.inputs.GetInstanceTypePlainArgs;
 import com.pulumi.linode.inputs.GetInstanceTypesArgs;
@@ -72,6 +78,8 @@ import com.pulumi.linode.inputs.GetVlansArgs;
 import com.pulumi.linode.inputs.GetVlansPlainArgs;
 import com.pulumi.linode.inputs.GetVolumeArgs;
 import com.pulumi.linode.inputs.GetVolumePlainArgs;
+import com.pulumi.linode.outputs.GetAccountLoginResult;
+import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
@@ -87,12 +95,14 @@ import com.pulumi.linode.outputs.GetFirewallResult;
 import com.pulumi.linode.outputs.GetImageResult;
 import com.pulumi.linode.outputs.GetImagesResult;
 import com.pulumi.linode.outputs.GetInstanceBackupsResult;
+import com.pulumi.linode.outputs.GetInstanceNetworkingResult;
 import com.pulumi.linode.outputs.GetInstanceTypeResult;
 import com.pulumi.linode.outputs.GetInstanceTypesResult;
 import com.pulumi.linode.outputs.GetInstancesResult;
 import com.pulumi.linode.outputs.GetIpv6RangeResult;
 import com.pulumi.linode.outputs.GetKernelResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
+import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
@@ -337,6 +347,492 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific Linode account login.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountLogin = LinodeFunctions.getAccountLogin(GetAccountLoginArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountLoginResult> getAccountLogin(GetAccountLoginArgs args) {
+        return getAccountLogin(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific Linode account login.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountLogin = LinodeFunctions.getAccountLogin(GetAccountLoginArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountLoginResult> getAccountLoginPlain(GetAccountLoginPlainArgs args) {
+        return getAccountLoginPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific Linode account login.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountLogin = LinodeFunctions.getAccountLogin(GetAccountLoginArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountLoginResult> getAccountLogin(GetAccountLoginArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountLogin:getAccountLogin", TypeShape.of(GetAccountLoginResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific Linode account login.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountLogin = LinodeFunctions.getAccountLogin(GetAccountLoginArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountLoginResult> getAccountLoginPlain(GetAccountLoginPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountLogin:getAccountLogin", TypeShape.of(GetAccountLoginResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static Output<GetAccountLoginsResult> getAccountLogins() {
+        return getAccountLogins(GetAccountLoginsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static CompletableFuture<GetAccountLoginsResult> getAccountLoginsPlain() {
+        return getAccountLoginsPlain(GetAccountLoginsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static Output<GetAccountLoginsResult> getAccountLogins(GetAccountLoginsArgs args) {
+        return getAccountLogins(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static CompletableFuture<GetAccountLoginsResult> getAccountLoginsPlain(GetAccountLoginsPlainArgs args) {
+        return getAccountLoginsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static Output<GetAccountLoginsResult> getAccountLogins(GetAccountLoginsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountLogins:getAccountLogins", TypeShape.of(GetAccountLoginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account logins that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account login.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
+     *             .filters(            
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;restricted&#34;)
+     *                     .values(&#34;true&#34;)
+     *                     .build(),
+     *                 GetAccountLoginsFilterArgs.builder()
+     *                     .name(&#34;username&#34;)
+     *                     .values(&#34;myUsername&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `ip`
+     * 
+     * * `restricted`
+     * 
+     * * `username`
+     * 
+     */
+    public static CompletableFuture<GetAccountLoginsResult> getAccountLoginsPlain(GetAccountLoginsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountLogins:getAccountLogins", TypeShape.of(GetAccountLoginsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
@@ -4162,6 +4658,7 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4199,6 +4696,7 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4236,6 +4734,7 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4273,6 +4772,7 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4305,6 +4805,158 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetInstanceBackupsResult> getInstanceBackupsPlain(GetInstanceBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getInstanceBackups:getInstanceBackups", TypeShape.of(GetInstanceBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the networking configuration of an Instance.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceNetworkingResult> getInstanceNetworking(GetInstanceNetworkingArgs args) {
+        return getInstanceNetworking(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the networking configuration of an Instance.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceNetworkingResult> getInstanceNetworkingPlain(GetInstanceNetworkingPlainArgs args) {
+        return getInstanceNetworkingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the networking configuration of an Instance.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceNetworkingResult> getInstanceNetworking(GetInstanceNetworkingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getInstanceNetworking:getInstanceNetworking", TypeShape.of(GetInstanceNetworkingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the networking configuration of an Instance.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceNetworkingResult> getInstanceNetworkingPlain(GetInstanceNetworkingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getInstanceNetworking:getInstanceNetworking", TypeShape.of(GetInstanceNetworkingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode instance type
@@ -6043,6 +6695,222 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetLkeClusterResult> getLkeClusterPlain(GetLkeClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeCluster:getLkeCluster", TypeShape.of(GetLkeClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLkeVersionsResult> getLkeVersions() {
+        return getLkeVersions(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain() {
+        return getLkeVersionsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args) {
+        return getLkeVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args) {
+        return getLkeVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode Networking IP Address

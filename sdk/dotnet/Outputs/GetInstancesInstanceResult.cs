@@ -22,6 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// The display group of the Linode instance.
         /// </summary>
         public readonly string Group;
+        public readonly string HostUuid;
         /// <summary>
         /// The ID of the disk in the Linode API.
         /// </summary>
@@ -90,6 +91,8 @@ namespace Pulumi.Linode.Outputs
 
             string group,
 
+            string hostUuid,
+
             int id,
 
             string image,
@@ -124,6 +127,7 @@ namespace Pulumi.Linode.Outputs
             Configs = configs;
             Disks = disks;
             Group = group;
+            HostUuid = hostUuid;
             Id = id;
             Image = image;
             IpAddress = ipAddress;

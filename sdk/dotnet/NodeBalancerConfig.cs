@@ -199,6 +199,11 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "sslCert",
+                    "sslKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -301,17 +306,37 @@ namespace Pulumi.Linode
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
+        [Input("sslCert")]
+        private Input<string>? _sslCert;
+
         /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
-        [Input("sslCert")]
-        public Input<string>? SslCert { get; set; }
+        public Input<string>? SslCert
+        {
+            get => _sslCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sslKey")]
+        private Input<string>? _sslKey;
 
         /// <summary>
         /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
-        [Input("sslKey")]
-        public Input<string>? SslKey { get; set; }
+        public Input<string>? SslKey
+        {
+            get => _sslKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
@@ -419,11 +444,21 @@ namespace Pulumi.Linode
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
+        [Input("sslCert")]
+        private Input<string>? _sslCert;
+
         /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
-        [Input("sslCert")]
-        public Input<string>? SslCert { get; set; }
+        public Input<string>? SslCert
+        {
+            get => _sslCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
@@ -437,11 +472,21 @@ namespace Pulumi.Linode
         [Input("sslFingerprint")]
         public Input<string>? SslFingerprint { get; set; }
 
+        [Input("sslKey")]
+        private Input<string>? _sslKey;
+
         /// <summary>
         /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         /// </summary>
-        [Input("sslKey")]
-        public Input<string>? SslKey { get; set; }
+        public Input<string>? SslKey
+        {
+            get => _sslKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)

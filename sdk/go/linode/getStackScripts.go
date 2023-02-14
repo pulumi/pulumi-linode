@@ -30,15 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			specific_stackscripts, err := linode.GetStackScripts(ctx, &GetStackScriptsArgs{
-//				Filters: []GetStackScriptsFilter{
-//					GetStackScriptsFilter{
+//			specific_stackscripts, err := linode.GetStackScripts(ctx, &linode.GetStackScriptsArgs{
+//				Filters: []linode.GetStackScriptsFilter{
+//					{
 //						Name: "label",
 //						Values: []string{
 //							"my-cool-stackscript",
 //						},
 //					},
-//					GetStackScriptsFilter{
+//					{
 //						Name: "is_public",
 //						Values: []string{
 //							"false",

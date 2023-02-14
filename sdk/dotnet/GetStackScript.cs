@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStackScriptResult> InvokeAsync(GetStackScriptArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a specific Linode StackScript.
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,12 +58,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
 //				Email: pulumi.String("cool@acme.io"),
-//				GlobalGrants: &UserGlobalGrantsArgs{
+//				GlobalGrants: &linode.UserGlobalGrantsArgs{
 //					AddImages:  pulumi.Bool(true),
 //					AddLinodes: pulumi.Bool(true),
 //				},
-//				LinodeGrants: UserLinodeGrantArray{
-//					&UserLinodeGrantArgs{
+//				LinodeGrants: linode.UserLinodeGrantArray{
+//					&linode.UserLinodeGrantArgs{
 //						Id:          pulumi.Int(12345),
 //						Permissions: pulumi.String("read_write"),
 //					},
@@ -84,6 +84,8 @@ import (
 // * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
 //
 // * `addDomains` - (optional) If true, this User may add Domains.
+//
+// * `addDatabases` - (optional) If true, this User may add Databases.
 //
 // * `addFirewalls` - (optional) If true, this User may add Firewalls.
 //

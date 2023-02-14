@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -31,7 +32,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * export const instanceId = my_instances.then(my_instances => my_instances.instances?[0]?.id);
+ * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
  * ```
  *
  * Get information about all Linode instances associated with the current token:
@@ -65,11 +66,8 @@ import * as utilities from "./utilities";
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getInstances:getInstances", {
         "filters": args.filters,
         "order": args.order,
@@ -105,9 +103,66 @@ export interface GetInstancesResult {
     readonly order?: string;
     readonly orderBy?: string;
 }
-
+/**
+ * Provides information about Linode instances that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode instances with a certain label and tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-instances = linode.getInstances({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: [
+ *                 "my-label",
+ *                 "my-other-label",
+ *             ],
+ *         },
+ *         {
+ *             name: "tags",
+ *             values: ["my-tag"],
+ *         },
+ *     ],
+ * });
+ * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
+ * ```
+ *
+ * Get information about all Linode instances associated with the current token:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-instances = linode.getInstances({});
+ * export const instanceIds = [all_instances.then(all_instances => all_instances.instances)].map(__item => __item?.id);
+ * ```
+ * ## Filterable Fields
+ *
+ * * `group`
+ *
+ * * `id`
+ *
+ * * `image`
+ *
+ * * `label`
+ *
+ * * `region`
+ *
+ * * `status`
+ *
+ * * `tags`
+ *
+ * * `type`
+ *
+ * * `watchdogEnabled`
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

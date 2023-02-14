@@ -34,8 +34,8 @@ import (
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-standard-1"),
 //				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
-//				Interfaces: InstanceInterfaceArray{
-//					&InstanceInterfaceArgs{
+//				Interfaces: linode.InstanceInterfaceArray{
+//					&linode.InstanceInterfaceArgs{
 //						Purpose: pulumi.String("vlan"),
 //						Label:   pulumi.String("my-vlan"),
 //					},
@@ -44,9 +44,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			my_vlans, err := linode.GetVlans(ctx, &GetVlansArgs{
-//				Filters: []GetVlansFilter{
-//					GetVlansFilter{
+//			my_vlans, err := linode.GetVlans(ctx, &linode.GetVlansArgs{
+//				Filters: []linode.GetVlansFilter{
+//					{
 //						Name: "label",
 //						Values: []string{
 //							"my-vlan",

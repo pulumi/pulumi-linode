@@ -14,6 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class UserGlobalGrants
     {
         public readonly string? AccountAccess;
+        public readonly bool? AddDatabases;
         public readonly bool? AddDomains;
         public readonly bool? AddFirewalls;
         public readonly bool? AddImages;
@@ -28,6 +29,8 @@ namespace Pulumi.Linode.Outputs
         [OutputConstructor]
         private UserGlobalGrants(
             string? accountAccess,
+
+            bool? addDatabases,
 
             bool? addDomains,
 
@@ -50,6 +53,7 @@ namespace Pulumi.Linode.Outputs
             bool? longviewSubscription)
         {
             AccountAccess = accountAccess;
+            AddDatabases = addDatabases;
             AddDomains = addDomains;
             AddFirewalls = addFirewalls;
             AddImages = addImages;

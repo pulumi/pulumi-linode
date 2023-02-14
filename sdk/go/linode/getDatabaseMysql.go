@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupDatabaseMysql(ctx, &GetDatabaseMysqlArgs{
+//			_, err := linode.LookupDatabaseMysql(ctx, &linode.LookupDatabaseMysqlArgs{
 //				DatabaseId: 12345,
 //			}, nil)
 //			if err != nil {

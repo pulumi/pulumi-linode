@@ -29,6 +29,9 @@ namespace Pulumi.Linode.Outputs
         /// The type of Firewall Device.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The URL of the underlying entity this device references.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

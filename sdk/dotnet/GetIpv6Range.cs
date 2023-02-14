@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6RangeResult> InvokeAsync(GetIpv6RangeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode IPv6 Range.
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6RangeResult> Invoke(GetIpv6RangeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeInvokeArgs(), options.WithDefaults());
     }
 
 

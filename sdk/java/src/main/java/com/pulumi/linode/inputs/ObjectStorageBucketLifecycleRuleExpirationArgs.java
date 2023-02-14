@@ -33,14 +33,14 @@ public final class ObjectStorageBucketLifecycleRuleExpirationArgs extends com.pu
     }
 
     /**
-     * Specifies the number of days non-current object versions expire.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     @Import(name="days")
     private @Nullable Output<Integer> days;
 
     /**
-     * @return Specifies the number of days non-current object versions expire.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Optional<Output<Integer>> days() {
@@ -110,7 +110,7 @@ public final class ObjectStorageBucketLifecycleRuleExpirationArgs extends com.pu
         }
 
         /**
-         * @param days Specifies the number of days non-current object versions expire.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ObjectStorageBucketLifecycleRuleExpirationArgs extends com.pu
         }
 
         /**
-         * @param days Specifies the number of days non-current object versions expire.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 

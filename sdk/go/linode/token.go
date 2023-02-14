@@ -87,6 +87,10 @@ func NewToken(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource Token
 	err := ctx.RegisterResource("linode:index/token:Token", name, args, &resource, opts...)
 	if err != nil {

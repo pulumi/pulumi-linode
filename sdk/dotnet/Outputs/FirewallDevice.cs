@@ -22,13 +22,16 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         public readonly string? Label;
         /// <summary>
         /// The type of Firewall Device.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// The URL of the underlying entity this device references.
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

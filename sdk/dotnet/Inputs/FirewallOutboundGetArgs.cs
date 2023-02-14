@@ -43,7 +43,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

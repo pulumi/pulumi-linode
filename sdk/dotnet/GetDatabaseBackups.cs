@@ -68,7 +68,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseBackupsResult> InvokeAsync(GetDatabaseBackupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about Linode Database Backups that match a set of filters.
@@ -127,7 +127,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseBackupsResult> Invoke(GetDatabaseBackupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetRegion(ctx, &GetRegionArgs{
+//			_, err := linode.GetRegion(ctx, &linode.GetRegionArgs{
 //				Id: "us-east",
 //			}, nil)
 //			if err != nil {

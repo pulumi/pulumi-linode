@@ -68,7 +68,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseMysqlBackupsResult> InvokeAsync(GetDatabaseMysqlBackupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
@@ -127,7 +127,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseMysqlBackupsResult> Invoke(GetDatabaseMysqlBackupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

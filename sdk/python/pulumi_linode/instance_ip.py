@@ -274,7 +274,7 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo_instance = linode.Instance("fooInstance",
-            image="linode/alpine3.12",
+            image="linode/alpine3.16",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")
@@ -310,7 +310,7 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo_instance = linode.Instance("fooInstance",
-            image="linode/alpine3.12",
+            image="linode/alpine3.16",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")

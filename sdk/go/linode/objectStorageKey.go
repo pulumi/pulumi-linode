@@ -65,6 +65,10 @@ func NewObjectStorageKey(ctx *pulumi.Context,
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretKey",
+	})
+	opts = append(opts, secrets)
 	var resource ObjectStorageKey
 	err := ctx.RegisterResource("linode:index/objectStorageKey:ObjectStorageKey", name, args, &resource, opts...)
 	if err != nil {

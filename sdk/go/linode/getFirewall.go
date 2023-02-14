@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupFirewall(ctx, &GetFirewallArgs{
+//			_, err := linode.LookupFirewall(ctx, &linode.LookupFirewallArgs{
 //				Id: 123,
 //			}, nil)
 //			if err != nil {

@@ -71,10 +71,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Configs: InstanceConfigArray{
-//					&InstanceConfigArgs{
-//						Devices: &InstanceConfigDevicesArgs{
-//							Sda: &InstanceConfigDevicesSdaArgs{
+//				Configs: linode.InstanceConfigArray{
+//					&linode.InstanceConfigArgs{
+//						Devices: &linode.InstanceConfigDevicesArgs{
+//							Sda: &linode.InstanceConfigDevicesSdaArgs{
 //								VolumeId: pulumi.Int(123),
 //							},
 //						},

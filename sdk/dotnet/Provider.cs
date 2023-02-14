@@ -89,6 +89,12 @@ namespace Pulumi.Linode
         public Input<string>? ConfigProfile { get; set; }
 
         /// <summary>
+        /// Disable the internal caching system that backs certain Linode API requests.
+        /// </summary>
+        [Input("disableInternalCache", json: true)]
+        public Input<bool>? DisableInternalCache { get; set; }
+
+        /// <summary>
         /// The rate in milliseconds to poll for events.
         /// </summary>
         [Input("eventPollMs", json: true)]

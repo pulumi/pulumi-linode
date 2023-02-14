@@ -4,6 +4,15 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.linode.outputs.GetUserDomainGrant;
+import com.pulumi.linode.outputs.GetUserFirewallGrant;
+import com.pulumi.linode.outputs.GetUserGlobalGrant;
+import com.pulumi.linode.outputs.GetUserImageGrant;
+import com.pulumi.linode.outputs.GetUserLinodeGrant;
+import com.pulumi.linode.outputs.GetUserLongviewGrant;
+import com.pulumi.linode.outputs.GetUserNodebalancerGrant;
+import com.pulumi.linode.outputs.GetUserStackscriptGrant;
+import com.pulumi.linode.outputs.GetUserVolumeGrant;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -12,15 +21,50 @@ import java.util.Objects;
 @CustomType
 public final class GetUserResult {
     /**
+     * @return The grants this User has pertaining to Domains on this Account.
+     * 
+     */
+    private List<GetUserDomainGrant> domainGrants;
+    /**
      * @return The email address for this User, for account management communications, and may be used for other communications as configured.
      * 
      */
     private String email;
     /**
+     * @return The grants this User has pertaining to Firewalls on this Account.
+     * 
+     */
+    private List<GetUserFirewallGrant> firewallGrants;
+    /**
+     * @return The Account-level grants a User has.
+     * 
+     */
+    private List<GetUserGlobalGrant> globalGrants;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The grants this User has pertaining to Images on this Account.
+     * 
+     */
+    private List<GetUserImageGrant> imageGrants;
+    /**
+     * @return The grants this User has pertaining to Linodes on this Account.
+     * 
+     */
+    private List<GetUserLinodeGrant> linodeGrants;
+    /**
+     * @return The grants this User has pertaining to Longview Clients on this Account.
+     * 
+     */
+    private List<GetUserLongviewGrant> longviewGrants;
+    /**
+     * @return The grants this User has pertaining to NodeBalancers on this Account.
+     * 
+     */
+    private List<GetUserNodebalancerGrant> nodebalancerGrants;
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
      * 
@@ -31,9 +75,26 @@ public final class GetUserResult {
      * 
      */
     private List<String> sshKeys;
+    /**
+     * @return The grants this User has pertaining to StackScripts on this Account.
+     * 
+     */
+    private List<GetUserStackscriptGrant> stackscriptGrants;
     private String username;
+    /**
+     * @return The grants this User has pertaining to Volumes on this Account.
+     * 
+     */
+    private List<GetUserVolumeGrant> volumeGrants;
 
     private GetUserResult() {}
+    /**
+     * @return The grants this User has pertaining to Domains on this Account.
+     * 
+     */
+    public List<GetUserDomainGrant> domainGrants() {
+        return this.domainGrants;
+    }
     /**
      * @return The email address for this User, for account management communications, and may be used for other communications as configured.
      * 
@@ -42,11 +103,53 @@ public final class GetUserResult {
         return this.email;
     }
     /**
+     * @return The grants this User has pertaining to Firewalls on this Account.
+     * 
+     */
+    public List<GetUserFirewallGrant> firewallGrants() {
+        return this.firewallGrants;
+    }
+    /**
+     * @return The Account-level grants a User has.
+     * 
+     */
+    public List<GetUserGlobalGrant> globalGrants() {
+        return this.globalGrants;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The grants this User has pertaining to Images on this Account.
+     * 
+     */
+    public List<GetUserImageGrant> imageGrants() {
+        return this.imageGrants;
+    }
+    /**
+     * @return The grants this User has pertaining to Linodes on this Account.
+     * 
+     */
+    public List<GetUserLinodeGrant> linodeGrants() {
+        return this.linodeGrants;
+    }
+    /**
+     * @return The grants this User has pertaining to Longview Clients on this Account.
+     * 
+     */
+    public List<GetUserLongviewGrant> longviewGrants() {
+        return this.longviewGrants;
+    }
+    /**
+     * @return The grants this User has pertaining to NodeBalancers on this Account.
+     * 
+     */
+    public List<GetUserNodebalancerGrant> nodebalancerGrants() {
+        return this.nodebalancerGrants;
     }
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
@@ -62,8 +165,22 @@ public final class GetUserResult {
     public List<String> sshKeys() {
         return this.sshKeys;
     }
+    /**
+     * @return The grants this User has pertaining to StackScripts on this Account.
+     * 
+     */
+    public List<GetUserStackscriptGrant> stackscriptGrants() {
+        return this.stackscriptGrants;
+    }
     public String username() {
         return this.username;
+    }
+    /**
+     * @return The grants this User has pertaining to Volumes on this Account.
+     * 
+     */
+    public List<GetUserVolumeGrant> volumeGrants() {
+        return this.volumeGrants;
     }
 
     public static Builder builder() {
@@ -75,30 +192,104 @@ public final class GetUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetUserDomainGrant> domainGrants;
         private String email;
+        private List<GetUserFirewallGrant> firewallGrants;
+        private List<GetUserGlobalGrant> globalGrants;
         private String id;
+        private List<GetUserImageGrant> imageGrants;
+        private List<GetUserLinodeGrant> linodeGrants;
+        private List<GetUserLongviewGrant> longviewGrants;
+        private List<GetUserNodebalancerGrant> nodebalancerGrants;
         private Boolean restricted;
         private List<String> sshKeys;
+        private List<GetUserStackscriptGrant> stackscriptGrants;
         private String username;
+        private List<GetUserVolumeGrant> volumeGrants;
         public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.domainGrants = defaults.domainGrants;
     	      this.email = defaults.email;
+    	      this.firewallGrants = defaults.firewallGrants;
+    	      this.globalGrants = defaults.globalGrants;
     	      this.id = defaults.id;
+    	      this.imageGrants = defaults.imageGrants;
+    	      this.linodeGrants = defaults.linodeGrants;
+    	      this.longviewGrants = defaults.longviewGrants;
+    	      this.nodebalancerGrants = defaults.nodebalancerGrants;
     	      this.restricted = defaults.restricted;
     	      this.sshKeys = defaults.sshKeys;
+    	      this.stackscriptGrants = defaults.stackscriptGrants;
     	      this.username = defaults.username;
+    	      this.volumeGrants = defaults.volumeGrants;
         }
 
+        @CustomType.Setter
+        public Builder domainGrants(List<GetUserDomainGrant> domainGrants) {
+            this.domainGrants = Objects.requireNonNull(domainGrants);
+            return this;
+        }
+        public Builder domainGrants(GetUserDomainGrant... domainGrants) {
+            return domainGrants(List.of(domainGrants));
+        }
         @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
         @CustomType.Setter
+        public Builder firewallGrants(List<GetUserFirewallGrant> firewallGrants) {
+            this.firewallGrants = Objects.requireNonNull(firewallGrants);
+            return this;
+        }
+        public Builder firewallGrants(GetUserFirewallGrant... firewallGrants) {
+            return firewallGrants(List.of(firewallGrants));
+        }
+        @CustomType.Setter
+        public Builder globalGrants(List<GetUserGlobalGrant> globalGrants) {
+            this.globalGrants = Objects.requireNonNull(globalGrants);
+            return this;
+        }
+        public Builder globalGrants(GetUserGlobalGrant... globalGrants) {
+            return globalGrants(List.of(globalGrants));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
+        }
+        @CustomType.Setter
+        public Builder imageGrants(List<GetUserImageGrant> imageGrants) {
+            this.imageGrants = Objects.requireNonNull(imageGrants);
+            return this;
+        }
+        public Builder imageGrants(GetUserImageGrant... imageGrants) {
+            return imageGrants(List.of(imageGrants));
+        }
+        @CustomType.Setter
+        public Builder linodeGrants(List<GetUserLinodeGrant> linodeGrants) {
+            this.linodeGrants = Objects.requireNonNull(linodeGrants);
+            return this;
+        }
+        public Builder linodeGrants(GetUserLinodeGrant... linodeGrants) {
+            return linodeGrants(List.of(linodeGrants));
+        }
+        @CustomType.Setter
+        public Builder longviewGrants(List<GetUserLongviewGrant> longviewGrants) {
+            this.longviewGrants = Objects.requireNonNull(longviewGrants);
+            return this;
+        }
+        public Builder longviewGrants(GetUserLongviewGrant... longviewGrants) {
+            return longviewGrants(List.of(longviewGrants));
+        }
+        @CustomType.Setter
+        public Builder nodebalancerGrants(List<GetUserNodebalancerGrant> nodebalancerGrants) {
+            this.nodebalancerGrants = Objects.requireNonNull(nodebalancerGrants);
+            return this;
+        }
+        public Builder nodebalancerGrants(GetUserNodebalancerGrant... nodebalancerGrants) {
+            return nodebalancerGrants(List.of(nodebalancerGrants));
         }
         @CustomType.Setter
         public Builder restricted(Boolean restricted) {
@@ -114,17 +305,42 @@ public final class GetUserResult {
             return sshKeys(List.of(sshKeys));
         }
         @CustomType.Setter
+        public Builder stackscriptGrants(List<GetUserStackscriptGrant> stackscriptGrants) {
+            this.stackscriptGrants = Objects.requireNonNull(stackscriptGrants);
+            return this;
+        }
+        public Builder stackscriptGrants(GetUserStackscriptGrant... stackscriptGrants) {
+            return stackscriptGrants(List.of(stackscriptGrants));
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
         }
+        @CustomType.Setter
+        public Builder volumeGrants(List<GetUserVolumeGrant> volumeGrants) {
+            this.volumeGrants = Objects.requireNonNull(volumeGrants);
+            return this;
+        }
+        public Builder volumeGrants(GetUserVolumeGrant... volumeGrants) {
+            return volumeGrants(List.of(volumeGrants));
+        }
         public GetUserResult build() {
             final var o = new GetUserResult();
+            o.domainGrants = domainGrants;
             o.email = email;
+            o.firewallGrants = firewallGrants;
+            o.globalGrants = globalGrants;
             o.id = id;
+            o.imageGrants = imageGrants;
+            o.linodeGrants = linodeGrants;
+            o.longviewGrants = longviewGrants;
+            o.nodebalancerGrants = nodebalancerGrants;
             o.restricted = restricted;
             o.sshKeys = sshKeys;
+            o.stackscriptGrants = stackscriptGrants;
             o.username = username;
+            o.volumeGrants = volumeGrants;
             return o;
         }
     }

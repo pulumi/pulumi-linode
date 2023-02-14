@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        /// A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -49,13 +49,13 @@ namespace Pulumi.Linode.Inputs
         public Input<int>? Id { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// The name of this interface. If the interface is a VLAN, a label is required.
+        /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
@@ -66,11 +66,21 @@ namespace Pulumi.Linode.Inputs
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        /// <summary>
-        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
-        /// </summary>
         [Input("rootPass")]
-        public Input<string>? RootPass { get; set; }
+        private Input<string>? _rootPass;
+
+        /// <summary>
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+        /// </summary>
+        public Input<string>? RootPass
+        {
+            get => _rootPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The size of the Disk in MB.
@@ -87,7 +97,11 @@ namespace Pulumi.Linode.Inputs
         public InputMap<object> StackscriptData
         {
             get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
-            set => _stackscriptData = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

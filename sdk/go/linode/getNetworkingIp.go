@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetNetworkingIp(ctx, &GetNetworkingIpArgs{
+//			_, err := linode.GetNetworkingIp(ctx, &linode.GetNetworkingIpArgs{
 //				Address: "162.159.27.72",
 //			}, nil)
 //			if err != nil {

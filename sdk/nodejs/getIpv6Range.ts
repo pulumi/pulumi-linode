@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const range_info = pulumi.output(linode.getIpv6Range({
+ * const range-info = linode.getIpv6Range({
  *     range: "2001:0db8::",
- * }));
+ * });
  * ```
  */
 export function getIpv6Range(args: GetIpv6RangeArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6RangeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getIpv6Range:getIpv6Range", {
         "range": args.range,
     }, opts);
@@ -64,9 +61,24 @@ export interface GetIpv6RangeResult {
      */
     readonly region: string;
 }
-
+/**
+ * Provides information about a Linode IPv6 Range.
+ *
+ * ## Example Usage
+ *
+ * Get information about an IPv6 range assigned to a Linode:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const range-info = linode.getIpv6Range({
+ *     range: "2001:0db8::",
+ * });
+ * ```
+ */
 export function getIpv6RangeOutput(args: GetIpv6RangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangeResult> {
-    return pulumi.output(args).apply(a => getIpv6Range(a, opts))
+    return pulumi.output(args).apply((a: any) => getIpv6Range(a, opts))
 }
 
 /**

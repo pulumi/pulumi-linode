@@ -23,6 +23,11 @@ func GetConfigProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:configProfile")
 }
 
+// Disable the internal caching system that backs certain Linode API requests.
+func GetDisableInternalCache(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:disableInternalCache")
+}
+
 // The rate in milliseconds to poll for events.
 func GetEventPollMs(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "linode:eventPollMs")
