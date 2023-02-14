@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeBalancerNodeResult> InvokeAsync(GetNodeBalancerNodeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a Linode NodeBalancer node.
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeBalancerNodeResult> Invoke(GetNodeBalancerNodeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -59,7 +59,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vlanLinodes"] = my_vlans.Apply(getVlansResult =&gt; getVlansResult).Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
+        ///         ["vlanLinodes"] = my_vlans.Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
         ///     };
         /// });
         /// ```
@@ -72,7 +72,7 @@ namespace Pulumi.Linode
         /// * `region`
         /// </summary>
         public static Task<GetVlansResult> InvokeAsync(GetVlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about Linode VLANs.
@@ -122,7 +122,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vlanLinodes"] = my_vlans.Apply(getVlansResult =&gt; getVlansResult).Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
+        ///         ["vlanLinodes"] = my_vlans.Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
         ///     };
         /// });
         /// ```
@@ -135,7 +135,7 @@ namespace Pulumi.Linode
         /// * `region`
         /// </summary>
         public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
     }
 
 

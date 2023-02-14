@@ -23,7 +23,7 @@ public final class FirewallDevice {
      */
     private @Nullable Integer id;
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     private @Nullable String label;
@@ -32,6 +32,10 @@ public final class FirewallDevice {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     private @Nullable String url;
 
     private FirewallDevice() {}
@@ -50,7 +54,7 @@ public final class FirewallDevice {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public Optional<String> label() {
@@ -63,6 +67,10 @@ public final class FirewallDevice {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

@@ -17,6 +17,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceConfigDevice {
+    /**
+     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * 
+     */
     private List<GetInstancesInstanceConfigDeviceSda> sdas;
     private List<GetInstancesInstanceConfigDeviceSdb> sdbs;
     private List<GetInstancesInstanceConfigDeviceSdc> sdcs;
@@ -27,6 +31,10 @@ public final class GetInstancesInstanceConfigDevice {
     private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
 
     private GetInstancesInstanceConfigDevice() {}
+    /**
+     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * 
+     */
     public List<GetInstancesInstanceConfigDeviceSda> sdas() {
         return this.sdas;
     }

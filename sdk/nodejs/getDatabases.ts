@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,11 +38,8 @@ import * as utilities from "./utilities";
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabases:getDatabases", {
         "filters": args.filters,
         "latest": args.latest,
@@ -83,9 +81,38 @@ export interface GetDatabasesResult {
     readonly order?: string;
     readonly orderBy?: string;
 }
-
+/**
+ * Provides information about Linode Managed Databases that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode Managed Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all = linode.getDatabases({});
+ * export const databaseIds = [all.then(all => all.databases)].map(__item => __item?.id);
+ * ```
+ *
+ * Get information about all Linode MySQL Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const mysql = linode.getDatabases({
+ *     filters: [{
+ *         name: "engine",
+ *         values: ["mysql"],
+ *     }],
+ * });
+ * export const databaseIds = [mysql.then(mysql => mysql.databases)].map(__item => __item?.id);
+ * ```
+ */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
-    return pulumi.output(args).apply(a => getDatabases(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabases(a, opts))
 }
 
 /**

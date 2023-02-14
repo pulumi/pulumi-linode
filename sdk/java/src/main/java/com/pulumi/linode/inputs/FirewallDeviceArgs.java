@@ -47,14 +47,14 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall&#39;s unique label.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public Optional<Output<String>> label() {
@@ -76,9 +76,17 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * The URL of the underlying entity this device references.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -154,7 +162,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 
@@ -165,7 +173,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 
@@ -195,11 +203,23 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
             return type(Output.of(type));
         }
 
+        /**
+         * @param url The URL of the underlying entity this device references.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The URL of the underlying entity this device references.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

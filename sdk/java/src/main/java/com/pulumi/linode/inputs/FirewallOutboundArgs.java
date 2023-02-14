@@ -62,14 +62,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall&#39;s unique label.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public Output<String> label() {
@@ -219,7 +219,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param label Used to identify this rule. For display purposes only.
+         * @param label This Firewall&#39;s unique label.
          * 
          * @return builder
          * 

@@ -55,6 +55,7 @@ __all__ = [
     'UserNodebalancerGrantArgs',
     'UserStackscriptGrantArgs',
     'UserVolumeGrantArgs',
+    'GetAccountLoginsFilterArgs',
     'GetDatabaseBackupsFilterArgs',
     'GetDatabaseEnginesFilterArgs',
     'GetDatabaseMysqlBackupsFilterArgs',
@@ -64,6 +65,14 @@ __all__ = [
     'GetInstancesFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
     'GetStackScriptsFilterArgs',
+    'GetUserDomainGrantArgs',
+    'GetUserFirewallGrantArgs',
+    'GetUserImageGrantArgs',
+    'GetUserLinodeGrantArgs',
+    'GetUserLongviewGrantArgs',
+    'GetUserNodebalancerGrantArgs',
+    'GetUserStackscriptGrantArgs',
+    'GetUserVolumeGrantArgs',
     'GetVlansFilterArgs',
 ]
 
@@ -261,8 +270,9 @@ class FirewallDeviceArgs:
         """
         :param pulumi.Input[int] entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param pulumi.Input[int] id: The ID of the Firewall Device.
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] type: The type of Firewall Device.
+        :param pulumi.Input[str] url: The URL of the underlying entity this device references.
         """
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
@@ -303,7 +313,7 @@ class FirewallDeviceArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -326,6 +336,9 @@ class FirewallDeviceArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the underlying entity this device references.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -444,7 +457,7 @@ class FirewallOutboundArgs:
                  ports: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
+        :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -476,7 +489,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -601,15 +614,27 @@ class InstanceAlertsArgs:
 @pulumi.input_type
 class InstanceBackupsArgs:
     def __init__(__self__, *,
+                 available: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input['InstanceBackupsScheduleArgs']] = None):
         """
         :param pulumi.Input[bool] enabled: If this Linode has the Backup service enabled.
         """
+        if available is not None:
+            pulumi.set(__self__, "available", available)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def available(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "available", value)
 
     @property
     @pulumi.getter
@@ -686,15 +711,15 @@ class InstanceConfigArgs:
                  run_level: Optional[pulumi.Input[str]] = None,
                  virt_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
-        :param pulumi.Input[str] comments: - Arbitrary user comments about this `config`.
+        :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[str] comments: Arbitrary user comments about this `config`.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
-        :param pulumi.Input[str] kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
-        :param pulumi.Input[int] memory_limit: - Defaults to the total RAM of the Linode
-        :param pulumi.Input[str] root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-        :param pulumi.Input[str] run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
-        :param pulumi.Input[str] virt_mode: - Controls the virtualization mode. Defaults to `"paravirt"`.
+        :param pulumi.Input[str] kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        :param pulumi.Input[int] memory_limit: Defaults to the total RAM of the Linode
+        :param pulumi.Input[str] root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        :param pulumi.Input[str] run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
+        :param pulumi.Input[str] virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
         """
         pulumi.set(__self__, "label", label)
         if comments is not None:
@@ -720,7 +745,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         """
         return pulumi.get(self, "label")
 
@@ -732,7 +757,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def comments(self) -> Optional[pulumi.Input[str]]:
         """
-        - Arbitrary user comments about this `config`.
+        Arbitrary user comments about this `config`.
         """
         return pulumi.get(self, "comments")
 
@@ -777,7 +802,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def kernel(self) -> Optional[pulumi.Input[str]]:
         """
-        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         """
         return pulumi.get(self, "kernel")
 
@@ -789,7 +814,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        - Defaults to the total RAM of the Linode
+        Defaults to the total RAM of the Linode
         """
         return pulumi.get(self, "memory_limit")
 
@@ -801,7 +826,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> Optional[pulumi.Input[str]]:
         """
-        - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         """
         return pulumi.get(self, "root_device")
 
@@ -813,7 +838,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="runLevel")
     def run_level(self) -> Optional[pulumi.Input[str]]:
         """
-        - Defines the state of your Linode after booting. Defaults to `"default"`.
+        Defines the state of your Linode after booting. Defaults to `"default"`.
         """
         return pulumi.get(self, "run_level")
 
@@ -825,7 +850,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="virtMode")
     def virt_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        - Controls the virtualization mode. Defaults to `"paravirt"`.
+        Controls the virtualization mode. Defaults to `"paravirt"`.
         """
         return pulumi.get(self, "virt_mode")
 
@@ -1534,15 +1559,15 @@ class InstanceDiskArgs:
                  stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[int] size: The size of the Disk in MB.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param pulumi.Input[int] id: The ID of the disk in the Linode API.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[bool] read_only: If true, this Disk is read-only.
-        :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
@@ -1571,7 +1596,7 @@ class InstanceDiskArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         """
         return pulumi.get(self, "label")
 
@@ -1595,7 +1620,7 @@ class InstanceDiskArgs:
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -1643,7 +1668,7 @@ class InstanceDiskArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -1667,7 +1692,7 @@ class InstanceDiskArgs:
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[pulumi.Input[str]]:
         """
-        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
         """
         return pulumi.get(self, "root_pass")
 
@@ -2233,7 +2258,7 @@ class ObjectStorageBucketLifecycleRuleExpirationArgs:
                  expired_object_delete_marker: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] date: Specifies the date after which you want the corresponding action to take effect.
-        :param pulumi.Input[int] days: Specifies the number of days non-current object versions expire.
+        :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param pulumi.Input[bool] expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
         """
         if date is not None:
@@ -2259,7 +2284,7 @@ class ObjectStorageBucketLifecycleRuleExpirationArgs:
     @pulumi.getter
     def days(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the number of days non-current object versions expire.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -2515,6 +2540,7 @@ class UserFirewallGrantArgs:
 class UserGlobalGrantsArgs:
     def __init__(__self__, *,
                  account_access: Optional[pulumi.Input[str]] = None,
+                 add_databases: Optional[pulumi.Input[bool]] = None,
                  add_domains: Optional[pulumi.Input[bool]] = None,
                  add_firewalls: Optional[pulumi.Input[bool]] = None,
                  add_images: Optional[pulumi.Input[bool]] = None,
@@ -2527,6 +2553,8 @@ class UserGlobalGrantsArgs:
                  longview_subscription: Optional[pulumi.Input[bool]] = None):
         if account_access is not None:
             pulumi.set(__self__, "account_access", account_access)
+        if add_databases is not None:
+            pulumi.set(__self__, "add_databases", add_databases)
         if add_domains is not None:
             pulumi.set(__self__, "add_domains", add_domains)
         if add_firewalls is not None:
@@ -2556,6 +2584,15 @@ class UserGlobalGrantsArgs:
     @account_access.setter
     def account_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_access", value)
+
+    @property
+    @pulumi.getter(name="addDatabases")
+    def add_databases(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_databases")
+
+    @add_databases.setter
+    def add_databases(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_databases", value)
 
     @property
     @pulumi.getter(name="addDomains")
@@ -2808,6 +2845,59 @@ class UserVolumeGrantArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetAccountLoginsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
 
 
 @pulumi.input_type
@@ -3329,6 +3419,222 @@ class GetStackScriptsFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetUserDomainGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserFirewallGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserImageGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserLinodeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserLongviewGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserNodebalancerGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserStackscriptGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
 
 
 @pulumi.input_type

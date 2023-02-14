@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -54,11 +55,8 @@ import * as utilities from "./utilities";
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getInstanceTypes:getInstanceTypes", {
         "filters": args.filters,
         "order": args.order,
@@ -94,9 +92,55 @@ export interface GetInstanceTypesResult {
     readonly orderBy?: string;
     readonly types: outputs.GetInstanceTypesType[];
 }
-
+/**
+ * Provides information about Linode Instance types that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode Instance types with a certain number of VCPUs:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific-types = linode.getInstanceTypes({
+ *     filters: [{
+ *         name: "vcpus",
+ *         values: ["2"],
+ *     }],
+ * });
+ * export const typeIds = [specific_types.then(specific_types => specific_types.types)].map(__item => __item?.id);
+ * ```
+ *
+ * Get information about all Linode Instance types:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-types = linode.getInstanceTypes({});
+ * export const typeIds = [all_types.then(all_types => all_types.types)].map(__item => __item?.id);
+ * ```
+ * ## Filterable Fields
+ *
+ * * `class`
+ *
+ * * `disk`
+ *
+ * * `gpus`
+ *
+ * * `label`
+ *
+ * * `memory`
+ *
+ * * `networkOut`
+ *
+ * * `transfer`
+ *
+ * * `vcpus`
+ */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
-    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))
 }
 
 /**

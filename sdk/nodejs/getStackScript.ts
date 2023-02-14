@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,17 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myStackscript = pulumi.output(linode.getStackScript({
+ * const myStackscript = linode.getStackScript({
  *     id: 355872,
- * }));
+ * });
  * ```
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getStackScript:getStackScript", {
         "id": args.id,
         "userDefinedFields": args.userDefinedFields,
@@ -105,9 +103,24 @@ export interface GetStackScriptResult {
      */
     readonly username: string;
 }
-
+/**
+ * Provides details about a specific Linode StackScript.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode StackScript.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myStackscript = linode.getStackScript({
+ *     id: 355872,
+ * });
+ * ```
+ */
 export function getStackScriptOutput(args: GetStackScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptResult> {
-    return pulumi.output(args).apply(a => getStackScript(a, opts))
+    return pulumi.output(args).apply((a: any) => getStackScript(a, opts))
 }
 
 /**

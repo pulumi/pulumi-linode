@@ -28,7 +28,7 @@ public final class FirewallOutbound {
      */
     private @Nullable List<String> ipv6s;
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     private String label;
@@ -66,7 +66,7 @@ public final class FirewallOutbound {
         return this.ipv6s == null ? List.of() : this.ipv6s;
     }
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return This Firewall&#39;s unique label.
      * 
      */
     public String label() {

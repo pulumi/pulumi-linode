@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupSshKey(ctx, &GetSshKeyArgs{
+//			_, err := linode.LookupSshKey(ctx, &linode.LookupSshKeyArgs{
 //				Label: "foo",
 //			}, nil)
 //			if err != nil {

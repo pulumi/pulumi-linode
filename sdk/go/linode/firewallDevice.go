@@ -31,8 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
-//				Inbounds: FirewallInboundArray{
-//					&FirewallInboundArgs{
+//				Inbounds: linode.FirewallInboundArray{
+//					&linode.FirewallInboundArgs{
 //						Label:    pulumi.String("http"),
 //						Action:   pulumi.String("ACCEPT"),
 //						Protocol: pulumi.String("TCP"),

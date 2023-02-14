@@ -74,7 +74,7 @@ import (
 //				ReplicationType:       pulumi.String("semi_synch"),
 //				SslConnection:         pulumi.Bool(true),
 //				Type:                  pulumi.String("g6-nanode-1"),
-//				Updates: &DatabasePostgresqlUpdatesArgs{
+//				Updates: &linode.DatabasePostgresqlUpdatesArgs{
 //					DayOfWeek:   pulumi.String("saturday"),
 //					Duration:    pulumi.Int(1),
 //					Frequency:   pulumi.String("monthly"),
@@ -181,6 +181,12 @@ func NewDatabasePostgresql(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"rootPassword",
+		"rootUsername",
+	})
+	opts = append(opts, secrets)
 	var resource DatabasePostgresql
 	err := ctx.RegisterResource("linode:index/databasePostgresql:DatabasePostgresql", name, args, &resource, opts...)
 	if err != nil {

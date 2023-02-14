@@ -13,6 +13,7 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstanceBackupsAutomaticResult
     {
+        public readonly bool Available;
         /// <summary>
         /// A list of the labels of the Configuration profiles that are part of the Backup.
         /// </summary>
@@ -49,6 +50,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetInstanceBackupsAutomaticResult(
+            bool available,
+
             ImmutableArray<string> configs,
 
             string created,
@@ -67,6 +70,7 @@ namespace Pulumi.Linode.Outputs
 
             string updated)
         {
+            Available = available;
             Configs = configs;
             Created = created;
             Disks = disks;

@@ -56,6 +56,8 @@ __all__ = [
     'UserNodebalancerGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
+    'GetAccountLoginsFilterResult',
+    'GetAccountLoginsLoginResult',
     'GetDatabaseBackupsBackupResult',
     'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
@@ -78,6 +80,15 @@ __all__ = [
     'GetInstanceBackupsCurrentDiskResult',
     'GetInstanceBackupsInProgressResult',
     'GetInstanceBackupsInProgressDiskResult',
+    'GetInstanceNetworkingIpv4Result',
+    'GetInstanceNetworkingIpv4PrivateResult',
+    'GetInstanceNetworkingIpv4PublicResult',
+    'GetInstanceNetworkingIpv4ReservedResult',
+    'GetInstanceNetworkingIpv4SharedResult',
+    'GetInstanceNetworkingIpv6Result',
+    'GetInstanceNetworkingIpv6GlobalResult',
+    'GetInstanceNetworkingIpv6LinkLocalResult',
+    'GetInstanceNetworkingIpv6SlaacResult',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupsResult',
     'GetInstanceTypeAddonsBackupsPriceResult',
@@ -111,6 +122,7 @@ __all__ = [
     'GetLkeClusterPoolResult',
     'GetLkeClusterPoolAutoscalerResult',
     'GetLkeClusterPoolNodeResult',
+    'GetLkeVersionsVersionResult',
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerTransferResult',
     'GetProfileReferralsResult',
@@ -118,6 +130,15 @@ __all__ = [
     'GetStackScriptsFilterResult',
     'GetStackScriptsStackscriptResult',
     'GetStackScriptsStackscriptUserDefinedFieldResult',
+    'GetUserDomainGrantResult',
+    'GetUserFirewallGrantResult',
+    'GetUserGlobalGrantResult',
+    'GetUserImageGrantResult',
+    'GetUserLinodeGrantResult',
+    'GetUserLongviewGrantResult',
+    'GetUserNodebalancerGrantResult',
+    'GetUserStackscriptGrantResult',
+    'GetUserVolumeGrantResult',
     'GetVlansFilterResult',
     'GetVlansVlanResult',
 ]
@@ -336,8 +357,9 @@ class FirewallDevice(dict):
         """
         :param int entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param int id: The ID of the Firewall Device.
-        :param str label: Used to identify this rule. For display purposes only.
+        :param str label: This Firewall's unique label.
         :param str type: The type of Firewall Device.
+        :param str url: The URL of the underlying entity this device references.
         """
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
@@ -370,7 +392,7 @@ class FirewallDevice(dict):
     @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -385,6 +407,9 @@ class FirewallDevice(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        The URL of the underlying entity this device references.
+        """
         return pulumi.get(self, "url")
 
 
@@ -475,7 +500,7 @@ class FirewallOutbound(dict):
                  ports: Optional[str] = None):
         """
         :param str action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        :param str label: Used to identify this rule. For display purposes only.
+        :param str label: This Firewall's unique label.
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -503,7 +528,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Used to identify this rule. For display purposes only.
+        This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
@@ -609,15 +634,23 @@ class InstanceAlerts(dict):
 @pulumi.output_type
 class InstanceBackups(dict):
     def __init__(__self__, *,
+                 available: Optional[bool] = None,
                  enabled: Optional[bool] = None,
                  schedule: Optional['outputs.InstanceBackupsSchedule'] = None):
         """
         :param bool enabled: If this Linode has the Backup service enabled.
         """
+        if available is not None:
+            pulumi.set(__self__, "available", available)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def available(self) -> Optional[bool]:
+        return pulumi.get(self, "available")
 
     @property
     @pulumi.getter
@@ -701,15 +734,15 @@ class InstanceConfig(dict):
                  run_level: Optional[str] = None,
                  virt_mode: Optional[str] = None):
         """
-        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
-        :param str comments: - Arbitrary user comments about this `config`.
+        :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param str comments: Arbitrary user comments about this `config`.
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
-        :param str kernel: - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
-        :param int memory_limit: - Defaults to the total RAM of the Linode
-        :param str root_device: - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-        :param str run_level: - Defines the state of your Linode after booting. Defaults to `"default"`.
-        :param str virt_mode: - Controls the virtualization mode. Defaults to `"paravirt"`.
+        :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        :param int memory_limit: Defaults to the total RAM of the Linode
+        :param str root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        :param str run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
+        :param str virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
         """
         pulumi.set(__self__, "label", label)
         if comments is not None:
@@ -735,7 +768,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         """
         return pulumi.get(self, "label")
 
@@ -743,7 +776,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def comments(self) -> Optional[str]:
         """
-        - Arbitrary user comments about this `config`.
+        Arbitrary user comments about this `config`.
         """
         return pulumi.get(self, "comments")
 
@@ -772,7 +805,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def kernel(self) -> Optional[str]:
         """
-        - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         """
         return pulumi.get(self, "kernel")
 
@@ -780,7 +813,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[int]:
         """
-        - Defaults to the total RAM of the Linode
+        Defaults to the total RAM of the Linode
         """
         return pulumi.get(self, "memory_limit")
 
@@ -788,7 +821,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> Optional[str]:
         """
-        - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         """
         return pulumi.get(self, "root_device")
 
@@ -796,7 +829,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="runLevel")
     def run_level(self) -> Optional[str]:
         """
-        - Defines the state of your Linode after booting. Defaults to `"default"`.
+        Defines the state of your Linode after booting. Defaults to `"default"`.
         """
         return pulumi.get(self, "run_level")
 
@@ -804,7 +837,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="virtMode")
     def virt_mode(self) -> Optional[str]:
         """
-        - Controls the virtualization mode. Defaults to `"paravirt"`.
+        Controls the virtualization mode. Defaults to `"paravirt"`.
         """
         return pulumi.get(self, "virt_mode")
 
@@ -1582,15 +1615,15 @@ class InstanceDisk(dict):
                  stackscript_data: Optional[Mapping[str, Any]] = None,
                  stackscript_id: Optional[int] = None):
         """
-        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
+        :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param int size: The size of the Disk in MB.
-        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param int id: The ID of the disk in the Linode API.
-        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param bool read_only: If true, this Disk is read-only.
-        :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
         :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
@@ -1619,7 +1652,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         """
         return pulumi.get(self, "label")
 
@@ -1635,7 +1668,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[Sequence[str]]:
         """
-        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -1667,7 +1700,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -1683,7 +1716,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[str]:
         """
-        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
         """
         return pulumi.get(self, "root_pass")
 
@@ -2234,7 +2267,7 @@ class ObjectStorageBucketLifecycleRuleExpiration(dict):
                  expired_object_delete_marker: Optional[bool] = None):
         """
         :param str date: Specifies the date after which you want the corresponding action to take effect.
-        :param int days: Specifies the number of days non-current object versions expire.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
         """
         if date is not None:
@@ -2256,7 +2289,7 @@ class ObjectStorageBucketLifecycleRuleExpiration(dict):
     @pulumi.getter
     def days(self) -> Optional[int]:
         """
-        Specifies the number of days non-current object versions expire.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -2487,6 +2520,8 @@ class UserGlobalGrants(dict):
         suggest = None
         if key == "accountAccess":
             suggest = "account_access"
+        elif key == "addDatabases":
+            suggest = "add_databases"
         elif key == "addDomains":
             suggest = "add_domains"
         elif key == "addFirewalls":
@@ -2521,6 +2556,7 @@ class UserGlobalGrants(dict):
 
     def __init__(__self__, *,
                  account_access: Optional[str] = None,
+                 add_databases: Optional[bool] = None,
                  add_domains: Optional[bool] = None,
                  add_firewalls: Optional[bool] = None,
                  add_images: Optional[bool] = None,
@@ -2533,6 +2569,8 @@ class UserGlobalGrants(dict):
                  longview_subscription: Optional[bool] = None):
         if account_access is not None:
             pulumi.set(__self__, "account_access", account_access)
+        if add_databases is not None:
+            pulumi.set(__self__, "add_databases", add_databases)
         if add_domains is not None:
             pulumi.set(__self__, "add_domains", add_domains)
         if add_firewalls is not None:
@@ -2558,6 +2596,11 @@ class UserGlobalGrants(dict):
     @pulumi.getter(name="accountAccess")
     def account_access(self) -> Optional[str]:
         return pulumi.get(self, "account_access")
+
+    @property
+    @pulumi.getter(name="addDatabases")
+    def add_databases(self) -> Optional[bool]:
+        return pulumi.get(self, "add_databases")
 
     @property
     @pulumi.getter(name="addDomains")
@@ -2722,6 +2765,109 @@ class UserVolumeGrant(dict):
     @pulumi.getter
     def permissions(self) -> str:
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetAccountLoginsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetAccountLoginsLoginResult(dict):
+    def __init__(__self__, *,
+                 datetime: str,
+                 id: int,
+                 ip: str,
+                 restricted: bool,
+                 username: str):
+        """
+        :param str datetime: When the login was initiated.
+        :param int id: The unique ID of this login object.
+        :param str ip: The remote IP address that requested the login.
+        :param bool restricted: True if the User that was logged into was a restricted User, false otherwise.
+        :param str username: The username of the User that was logged into.
+        """
+        pulumi.set(__self__, "datetime", datetime)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "restricted", restricted)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def datetime(self) -> str:
+        """
+        When the login was initiated.
+        """
+        return pulumi.get(self, "datetime")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this login object.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The remote IP address that requested the login.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> bool:
+        """
+        True if the User that was logged into was a restricted User, false otherwise.
+        """
+        return pulumi.get(self, "restricted")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the User that was logged into.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -3353,6 +3499,7 @@ class GetFirewallDeviceResult(dict):
         :param int id: The Firewall's ID.
         :param str label: The label of the underlying entity this device references.
         :param str type: The type of Firewall Device.
+        :param str url: The URL of the underlying entity this device references.
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "id", id)
@@ -3395,6 +3542,9 @@ class GetFirewallDeviceResult(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The URL of the underlying entity this device references.
+        """
         return pulumi.get(self, "url")
 
 
@@ -3723,6 +3873,7 @@ class GetImagesImageResult(dict):
 @pulumi.output_type
 class GetInstanceBackupsAutomaticResult(dict):
     def __init__(__self__, *,
+                 available: bool,
                  configs: Sequence[str],
                  created: str,
                  disks: Sequence['outputs.GetInstanceBackupsAutomaticDiskResult'],
@@ -3742,6 +3893,7 @@ class GetInstanceBackupsAutomaticResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
+        pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "disks", disks)
@@ -3751,6 +3903,11 @@ class GetInstanceBackupsAutomaticResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        return pulumi.get(self, "available")
 
     @property
     @pulumi.getter
@@ -3865,6 +4022,7 @@ class GetInstanceBackupsAutomaticDiskResult(dict):
 @pulumi.output_type
 class GetInstanceBackupsCurrentResult(dict):
     def __init__(__self__, *,
+                 available: bool,
                  configs: Sequence[str],
                  created: str,
                  disks: Sequence['outputs.GetInstanceBackupsCurrentDiskResult'],
@@ -3884,6 +4042,7 @@ class GetInstanceBackupsCurrentResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
+        pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "disks", disks)
@@ -3893,6 +4052,11 @@ class GetInstanceBackupsCurrentResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        return pulumi.get(self, "available")
 
     @property
     @pulumi.getter
@@ -4007,6 +4171,7 @@ class GetInstanceBackupsCurrentDiskResult(dict):
 @pulumi.output_type
 class GetInstanceBackupsInProgressResult(dict):
     def __init__(__self__, *,
+                 available: bool,
                  configs: Sequence[str],
                  created: str,
                  disks: Sequence['outputs.GetInstanceBackupsInProgressDiskResult'],
@@ -4026,6 +4191,7 @@ class GetInstanceBackupsInProgressResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
+        pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "disks", disks)
@@ -4035,6 +4201,11 @@ class GetInstanceBackupsInProgressResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        return pulumi.get(self, "available")
 
     @property
     @pulumi.getter
@@ -4144,6 +4315,626 @@ class GetInstanceBackupsInProgressDiskResult(dict):
         The size of this disk.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4Result(dict):
+    def __init__(__self__, *,
+                 privates: Sequence['outputs.GetInstanceNetworkingIpv4PrivateResult'],
+                 publics: Sequence['outputs.GetInstanceNetworkingIpv4PublicResult'],
+                 reserveds: Sequence['outputs.GetInstanceNetworkingIpv4ReservedResult'],
+                 shareds: Sequence['outputs.GetInstanceNetworkingIpv4SharedResult']):
+        """
+        :param Sequence['GetInstanceNetworkingIpv4PublicArgs'] publics: Whether this is a public or private IP address.
+        """
+        pulumi.set(__self__, "privates", privates)
+        pulumi.set(__self__, "publics", publics)
+        pulumi.set(__self__, "reserveds", reserveds)
+        pulumi.set(__self__, "shareds", shareds)
+
+    @property
+    @pulumi.getter
+    def privates(self) -> Sequence['outputs.GetInstanceNetworkingIpv4PrivateResult']:
+        return pulumi.get(self, "privates")
+
+    @property
+    @pulumi.getter
+    def publics(self) -> Sequence['outputs.GetInstanceNetworkingIpv4PublicResult']:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "publics")
+
+    @property
+    @pulumi.getter
+    def reserveds(self) -> Sequence['outputs.GetInstanceNetworkingIpv4ReservedResult']:
+        return pulumi.get(self, "reserveds")
+
+    @property
+    @pulumi.getter
+    def shareds(self) -> Sequence['outputs.GetInstanceNetworkingIpv4SharedResult']:
+        return pulumi.get(self, "shareds")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4PrivateResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4PublicResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4ReservedResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4SharedResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6Result(dict):
+    def __init__(__self__, *,
+                 globals: Sequence['outputs.GetInstanceNetworkingIpv6GlobalResult'],
+                 link_locals: Sequence['outputs.GetInstanceNetworkingIpv6LinkLocalResult'],
+                 slaacs: Sequence['outputs.GetInstanceNetworkingIpv6SlaacResult']):
+        pulumi.set(__self__, "globals", globals)
+        pulumi.set(__self__, "link_locals", link_locals)
+        pulumi.set(__self__, "slaacs", slaacs)
+
+    @property
+    @pulumi.getter
+    def globals(self) -> Sequence['outputs.GetInstanceNetworkingIpv6GlobalResult']:
+        return pulumi.get(self, "globals")
+
+    @property
+    @pulumi.getter(name="linkLocals")
+    def link_locals(self) -> Sequence['outputs.GetInstanceNetworkingIpv6LinkLocalResult']:
+        return pulumi.get(self, "link_locals")
+
+    @property
+    @pulumi.getter
+    def slaacs(self) -> Sequence['outputs.GetInstanceNetworkingIpv6SlaacResult']:
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6GlobalResult(dict):
+    def __init__(__self__, *,
+                 prefix: int,
+                 range: str,
+                 region: str,
+                 route_target: str):
+        """
+        :param int prefix: The network prefix.
+        :param str range: The IPv6 range of addresses in this pool.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str route_target: (Nullable) The last address in this block of IPv6 addresses.
+        """
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "route_target", route_target)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def range(self) -> str:
+        """
+        The IPv6 range of addresses in this pool.
+        """
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> str:
+        """
+        (Nullable) The last address in this block of IPv6 addresses.
+        """
+        return pulumi.get(self, "route_target")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6LinkLocalResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6SlaacResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 prefix: int,
+                 rdns: str,
+                 region: str,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The address.
+        :param str gateway: The default gateway for this address.
+        :param int prefix: The network prefix.
+        :param str rdns: The reverse DNS assigned to this address.
+        :param str region: (Filterable) The Region this address resides in.
+        :param str subnet_mask: The subnet mask.
+        :param str type: The type of address this is.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -4470,6 +5261,7 @@ class GetInstancesInstanceResult(dict):
                  configs: Sequence['outputs.GetInstancesInstanceConfigResult'],
                  disks: Sequence['outputs.GetInstancesInstanceDiskResult'],
                  group: str,
+                 host_uuid: str,
                  id: int,
                  image: str,
                  ip_address: str,
@@ -4506,6 +5298,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "host_uuid", host_uuid)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -4553,6 +5346,11 @@ class GetInstancesInstanceResult(dict):
         The display group of the Linode instance.
         """
         return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="hostUuid")
+    def host_uuid(self) -> str:
+        return pulumi.get(self, "host_uuid")
 
     @property
     @pulumi.getter
@@ -4707,13 +5505,20 @@ class GetInstancesInstanceAlertsResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceBackupResult(dict):
     def __init__(__self__, *,
+                 available: bool,
                  enabled: bool,
                  schedules: Sequence['outputs.GetInstancesInstanceBackupScheduleResult']):
         """
         :param bool enabled: If this Linode has the Backup service enabled.
         """
+        pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        return pulumi.get(self, "available")
 
     @property
     @pulumi.getter
@@ -4882,6 +5687,9 @@ class GetInstancesInstanceConfigDeviceResult(dict):
                  sdfs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdfResult'],
                  sdgs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdgResult'],
                  sdhs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult']):
+        """
+        :param Sequence['GetInstancesInstanceConfigDeviceSdaArgs'] sdas: ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        """
         pulumi.set(__self__, "sdas", sdas)
         pulumi.set(__self__, "sdbs", sdbs)
         pulumi.set(__self__, "sdcs", sdcs)
@@ -4894,6 +5702,9 @@ class GetInstancesInstanceConfigDeviceResult(dict):
     @property
     @pulumi.getter
     def sdas(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdaResult']:
+        """
+        ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        """
         return pulumi.get(self, "sdas")
 
     @property
@@ -5593,6 +6404,24 @@ class GetLkeClusterPoolNodeResult(dict):
 
 
 @pulumi.output_type
+class GetLkeVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetNodeBalancerConfigNodeStatusResult(dict):
     def __init__(__self__, *,
                  down: int,
@@ -6054,6 +6883,259 @@ class GetStackScriptsStackscriptUserDefinedFieldResult(dict):
         A list of acceptable single values for the field.
         """
         return pulumi.get(self, "one_of")
+
+
+@pulumi.output_type
+class GetUserDomainGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserFirewallGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserGlobalGrantResult(dict):
+    def __init__(__self__, *,
+                 account_access: Optional[str] = None,
+                 add_databases: Optional[bool] = None,
+                 add_domains: Optional[bool] = None,
+                 add_firewalls: Optional[bool] = None,
+                 add_images: Optional[bool] = None,
+                 add_linodes: Optional[bool] = None,
+                 add_longview: Optional[bool] = None,
+                 add_nodebalancers: Optional[bool] = None,
+                 add_stackscripts: Optional[bool] = None,
+                 add_volumes: Optional[bool] = None,
+                 cancel_account: Optional[bool] = None,
+                 longview_subscription: Optional[bool] = None):
+        if account_access is not None:
+            pulumi.set(__self__, "account_access", account_access)
+        if add_databases is not None:
+            pulumi.set(__self__, "add_databases", add_databases)
+        if add_domains is not None:
+            pulumi.set(__self__, "add_domains", add_domains)
+        if add_firewalls is not None:
+            pulumi.set(__self__, "add_firewalls", add_firewalls)
+        if add_images is not None:
+            pulumi.set(__self__, "add_images", add_images)
+        if add_linodes is not None:
+            pulumi.set(__self__, "add_linodes", add_linodes)
+        if add_longview is not None:
+            pulumi.set(__self__, "add_longview", add_longview)
+        if add_nodebalancers is not None:
+            pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        if add_stackscripts is not None:
+            pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+        if add_volumes is not None:
+            pulumi.set(__self__, "add_volumes", add_volumes)
+        if cancel_account is not None:
+            pulumi.set(__self__, "cancel_account", cancel_account)
+        if longview_subscription is not None:
+            pulumi.set(__self__, "longview_subscription", longview_subscription)
+
+    @property
+    @pulumi.getter(name="accountAccess")
+    def account_access(self) -> Optional[str]:
+        return pulumi.get(self, "account_access")
+
+    @property
+    @pulumi.getter(name="addDatabases")
+    def add_databases(self) -> Optional[bool]:
+        return pulumi.get(self, "add_databases")
+
+    @property
+    @pulumi.getter(name="addDomains")
+    def add_domains(self) -> Optional[bool]:
+        return pulumi.get(self, "add_domains")
+
+    @property
+    @pulumi.getter(name="addFirewalls")
+    def add_firewalls(self) -> Optional[bool]:
+        return pulumi.get(self, "add_firewalls")
+
+    @property
+    @pulumi.getter(name="addImages")
+    def add_images(self) -> Optional[bool]:
+        return pulumi.get(self, "add_images")
+
+    @property
+    @pulumi.getter(name="addLinodes")
+    def add_linodes(self) -> Optional[bool]:
+        return pulumi.get(self, "add_linodes")
+
+    @property
+    @pulumi.getter(name="addLongview")
+    def add_longview(self) -> Optional[bool]:
+        return pulumi.get(self, "add_longview")
+
+    @property
+    @pulumi.getter(name="addNodebalancers")
+    def add_nodebalancers(self) -> Optional[bool]:
+        return pulumi.get(self, "add_nodebalancers")
+
+    @property
+    @pulumi.getter(name="addStackscripts")
+    def add_stackscripts(self) -> Optional[bool]:
+        return pulumi.get(self, "add_stackscripts")
+
+    @property
+    @pulumi.getter(name="addVolumes")
+    def add_volumes(self) -> Optional[bool]:
+        return pulumi.get(self, "add_volumes")
+
+    @property
+    @pulumi.getter(name="cancelAccount")
+    def cancel_account(self) -> Optional[bool]:
+        return pulumi.get(self, "cancel_account")
+
+    @property
+    @pulumi.getter(name="longviewSubscription")
+    def longview_subscription(self) -> Optional[bool]:
+        return pulumi.get(self, "longview_subscription")
+
+
+@pulumi.output_type
+class GetUserImageGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserLinodeGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserLongviewGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserNodebalancerGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserStackscriptGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserVolumeGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
 
 
 @pulumi.output_type

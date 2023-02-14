@@ -47,7 +47,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["typeIds"] = new[]
         ///         {
-        ///             specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
+        ///             specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["typeIds"] = new[]
         ///         {
-        ///             all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
+        ///             all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// * `vcpus`
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about Linode Instance types that match a set of filters.
@@ -133,7 +133,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["typeIds"] = new[]
         ///         {
-        ///             specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
+        ///             specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -155,7 +155,7 @@ namespace Pulumi.Linode
         ///     {
         ///         ["typeIds"] = new[]
         ///         {
-        ///             all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
+        ///             all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
         ///         }.Select(__item =&gt; __item?.Id).ToList(),
         ///     };
         /// });
@@ -181,7 +181,7 @@ namespace Pulumi.Linode
         /// * `vcpus`
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 

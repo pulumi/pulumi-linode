@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - Arbitrary user comments about this `config`.
+        /// Arbitrary user comments about this `config`.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -39,37 +39,37 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         /// </summary>
         [Input("kernel")]
         public Input<string>? Kernel { get; set; }
 
         /// <summary>
-        /// The name of this interface. If the interface is a VLAN, a label is required.
+        /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// - Defaults to the total RAM of the Linode
+        /// Defaults to the total RAM of the Linode
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        /// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         /// </summary>
         [Input("rootDevice")]
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// - Defines the state of your Linode after booting. Defaults to `"default"`.
+        /// Defines the state of your Linode after booting. Defaults to `"default"`.
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// - Controls the virtualization mode. Defaults to `"paravirt"`.
+        /// Controls the virtualization mode. Defaults to `"paravirt"`.
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }

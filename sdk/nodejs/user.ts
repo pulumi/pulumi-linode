@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -47,6 +48,8 @@ import * as utilities from "./utilities";
  * * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
  *
  * * `addDomains` - (optional) If true, this User may add Domains.
+ *
+ * * `addDatabases` - (optional) If true, this User may add Databases.
  *
  * * `addFirewalls` - (optional) If true, this User may add Firewalls.
  *

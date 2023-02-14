@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabaseMysqlResult> InvokeAsync(GetDatabaseMysqlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode MySQL Database.
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMysqlResult> Invoke(GetDatabaseMysqlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DatabaseMongodbUpdates {
     dayOfWeek: pulumi.Input<string>;
@@ -38,13 +39,16 @@ export interface FirewallDevice {
      */
     id?: pulumi.Input<number>;
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall's unique label.
      */
     label?: pulumi.Input<string>;
     /**
      * The type of Firewall Device.
      */
     type?: pulumi.Input<string>;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url?: pulumi.Input<string>;
 }
 
@@ -89,7 +93,7 @@ export interface FirewallOutbound {
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall's unique label.
      */
     label: pulumi.Input<string>;
     /**
@@ -102,13 +106,28 @@ export interface FirewallOutbound {
     protocol: pulumi.Input<string>;
 }
 
-export interface GetDatabaseBackupsFilterArgs {
+export interface GetAccountLoginsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetAccountLoginsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: pulumi.Input<string>;
     /**
-     * The name of the field to filter by.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: pulumi.Input<string>;
     /**
@@ -130,6 +149,21 @@ export interface GetDatabaseBackupsFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetDatabaseBackupsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetDatabaseEnginesFilter {
@@ -396,19 +430,84 @@ export interface GetStackScriptsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetVlansFilterArgs {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+export interface GetUserDomainGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserDomainGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserFirewallGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserFirewallGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserImageGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserImageGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserLinodeGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserLinodeGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserLongviewGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserLongviewGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserNodebalancerGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserNodebalancerGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserStackscriptGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserStackscriptGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserVolumeGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserVolumeGrantArgs {
+    id: pulumi.Input<number>;
+    permissions: pulumi.Input<string>;
 }
 
 export interface GetVlansFilter {
@@ -426,6 +525,21 @@ export interface GetVlansFilter {
     values: string[];
 }
 
+export interface GetVlansFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface InstanceAlerts {
     cpu?: pulumi.Input<number>;
     io?: pulumi.Input<number>;
@@ -435,6 +549,7 @@ export interface InstanceAlerts {
 }
 
 export interface InstanceBackups {
+    available?: pulumi.Input<boolean>;
     /**
      * If this Linode has the Backup service enabled.
      */
@@ -455,7 +570,7 @@ export interface InstanceBackupsSchedule {
 
 export interface InstanceConfig {
     /**
-     * - Arbitrary user comments about this `config`.
+     * Arbitrary user comments about this `config`.
      */
     comments?: pulumi.Input<string>;
     /**
@@ -468,27 +583,27 @@ export interface InstanceConfig {
     helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
     /**
-     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      */
     kernel?: pulumi.Input<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label: pulumi.Input<string>;
     /**
-     * - Defaults to the total RAM of the Linode
+     * Defaults to the total RAM of the Linode
      */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+     * The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
      */
     rootDevice?: pulumi.Input<string>;
     /**
-     * - Defines the state of your Linode after booting. Defaults to `"default"`.
+     * Defines the state of your Linode after booting. Defaults to `"default"`.
      */
     runLevel?: pulumi.Input<string>;
     /**
-     * - Controls the virtualization mode. Defaults to `"paravirt"`.
+     * Controls the virtualization mode. Defaults to `"paravirt"`.
      */
     virtMode?: pulumi.Input<string>;
 }
@@ -664,7 +779,7 @@ export interface InstanceConfigInterface {
 
 export interface InstanceDisk {
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -680,11 +795,11 @@ export interface InstanceDisk {
      */
     id?: pulumi.Input<number>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label: pulumi.Input<string>;
     /**
@@ -692,7 +807,7 @@ export interface InstanceDisk {
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -845,7 +960,7 @@ export interface ObjectStorageBucketLifecycleRuleExpiration {
      */
     date?: pulumi.Input<string>;
     /**
-     * Specifies the number of days non-current object versions expire.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      */
     days?: pulumi.Input<number>;
     /**
@@ -915,6 +1030,7 @@ export interface UserFirewallGrant {
 
 export interface UserGlobalGrants {
     accountAccess?: pulumi.Input<string>;
+    addDatabases?: pulumi.Input<boolean>;
     addDomains?: pulumi.Input<boolean>;
     addFirewalls?: pulumi.Input<boolean>;
     addImages?: pulumi.Input<boolean>;
@@ -956,4 +1072,3 @@ export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
 }
-

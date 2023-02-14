@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DatabaseMongodbUpdates {
     dayOfWeek: string;
@@ -38,13 +39,16 @@ export interface FirewallDevice {
      */
     id: number;
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall's unique label.
      */
     label: string;
     /**
      * The type of Firewall Device.
      */
     type: string;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url: string;
 }
 
@@ -89,7 +93,7 @@ export interface FirewallOutbound {
      */
     ipv6s?: string[];
     /**
-     * Used to identify this rule. For display purposes only.
+     * This Firewall's unique label.
      */
     label: string;
     /**
@@ -100,6 +104,44 @@ export interface FirewallOutbound {
      * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
+}
+
+export interface GetAccountLoginsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetAccountLoginsLogin {
+    /**
+     * When the login was initiated.
+     */
+    datetime: string;
+    /**
+     * The unique ID of this login object.
+     */
+    id: number;
+    /**
+     * The remote IP address that requested the login.
+     */
+    ip: string;
+    /**
+     * True if the User that was logged into was a restricted User, false otherwise.
+     */
+    restricted: boolean;
+    /**
+     * The username of the User that was logged into.
+     */
+    username: string;
 }
 
 export interface GetDatabaseBackupsBackup {
@@ -324,6 +366,9 @@ export interface GetFirewallDevice {
      * The type of Firewall Device.
      */
     type: string;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url: string;
 }
 
@@ -445,6 +490,7 @@ export interface GetImagesImage {
 }
 
 export interface GetInstanceBackupsAutomatic {
+    available: boolean;
     /**
      * A list of the labels of the Configuration profiles that are part of the Backup.
      */
@@ -496,6 +542,7 @@ export interface GetInstanceBackupsAutomaticDisk {
 }
 
 export interface GetInstanceBackupsCurrent {
+    available: boolean;
     /**
      * A list of the labels of the Configuration profiles that are part of the Backup.
      */
@@ -547,6 +594,7 @@ export interface GetInstanceBackupsCurrentDisk {
 }
 
 export interface GetInstanceBackupsInProgress {
+    available: boolean;
     /**
      * A list of the labels of the Configuration profiles that are part of the Backup.
      */
@@ -595,6 +643,227 @@ export interface GetInstanceBackupsInProgressDisk {
      * The size of this disk.
      */
     size: number;
+}
+
+export interface GetInstanceNetworkingIpv4 {
+    privates: outputs.GetInstanceNetworkingIpv4Private[];
+    /**
+     * Whether this is a public or private IP address.
+     */
+    publics: outputs.GetInstanceNetworkingIpv4Public[];
+    reserveds: outputs.GetInstanceNetworkingIpv4Reserved[];
+    shareds: outputs.GetInstanceNetworkingIpv4Shared[];
+}
+
+export interface GetInstanceNetworkingIpv4Private {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+}
+
+export interface GetInstanceNetworkingIpv4Public {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+}
+
+export interface GetInstanceNetworkingIpv4Reserved {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+}
+
+export interface GetInstanceNetworkingIpv4Shared {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+}
+
+export interface GetInstanceNetworkingIpv6 {
+    globals: outputs.GetInstanceNetworkingIpv6Global[];
+    linkLocals: outputs.GetInstanceNetworkingIpv6LinkLocal[];
+    slaacs: outputs.GetInstanceNetworkingIpv6Slaac[];
+}
+
+export interface GetInstanceNetworkingIpv6Global {
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The IPv6 range of addresses in this pool.
+     */
+    range: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * (Nullable) The last address in this block of IPv6 addresses.
+     */
+    routeTarget: string;
+}
+
+export interface GetInstanceNetworkingIpv6LinkLocal {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+}
+
+export interface GetInstanceNetworkingIpv6Slaac {
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * The reverse DNS assigned to this address.
+     */
+    rdns: string;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
 }
 
 export interface GetInstanceTypeAddons {
@@ -710,6 +979,7 @@ export interface GetInstancesInstance {
      * The display group of the Linode instance.
      */
     group: string;
+    hostUuid: string;
     /**
      * The ID of the disk in the Linode API.
      */
@@ -774,6 +1044,7 @@ export interface GetInstancesInstanceAlerts {
 }
 
 export interface GetInstancesInstanceBackup {
+    available: boolean;
     /**
      * If this Linode has the Backup service enabled.
      */
@@ -833,6 +1104,9 @@ export interface GetInstancesInstanceConfig {
 }
 
 export interface GetInstancesInstanceConfigDevice {
+    /**
+     * ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     */
     sdas: outputs.GetInstancesInstanceConfigDeviceSda[];
     sdbs: outputs.GetInstancesInstanceConfigDeviceSdb[];
     sdcs: outputs.GetInstancesInstanceConfigDeviceSdc[];
@@ -1074,6 +1348,13 @@ export interface GetLkeClusterPoolNode {
     status: string;
 }
 
+export interface GetLkeVersionsVersion {
+    /**
+     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+     */
+    id: string;
+}
+
 export interface GetNodeBalancerConfigNodeStatus {
     /**
      * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
@@ -1237,6 +1518,61 @@ export interface GetStackScriptsStackscriptUserDefinedField {
     oneOf: string;
 }
 
+export interface GetUserDomainGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserFirewallGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserGlobalGrant {
+    accountAccess?: string;
+    addDatabases?: boolean;
+    addDomains?: boolean;
+    addFirewalls?: boolean;
+    addImages?: boolean;
+    addLinodes?: boolean;
+    addLongview?: boolean;
+    addNodebalancers?: boolean;
+    addStackscripts?: boolean;
+    addVolumes?: boolean;
+    cancelAccount?: boolean;
+    longviewSubscription?: boolean;
+}
+
+export interface GetUserImageGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserLinodeGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserLongviewGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserNodebalancerGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserStackscriptGrant {
+    id: number;
+    permissions: string;
+}
+
+export interface GetUserVolumeGrant {
+    id: number;
+    permissions: string;
+}
+
 export interface GetVlansFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1280,6 +1616,7 @@ export interface InstanceAlerts {
 }
 
 export interface InstanceBackups {
+    available: boolean;
     /**
      * If this Linode has the Backup service enabled.
      */
@@ -1300,7 +1637,7 @@ export interface InstanceBackupsSchedule {
 
 export interface InstanceConfig {
     /**
-     * - Arbitrary user comments about this `config`.
+     * Arbitrary user comments about this `config`.
      */
     comments?: string;
     /**
@@ -1313,27 +1650,27 @@ export interface InstanceConfig {
     helpers: outputs.InstanceConfigHelpers;
     interfaces?: outputs.InstanceConfigInterface[];
     /**
-     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      */
     kernel?: string;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label: string;
     /**
-     * - Defaults to the total RAM of the Linode
+     * Defaults to the total RAM of the Linode
      */
     memoryLimit?: number;
     /**
-     * - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+     * The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
      */
     rootDevice: string;
     /**
-     * - Defines the state of your Linode after booting. Defaults to `"default"`.
+     * Defines the state of your Linode after booting. Defaults to `"default"`.
      */
     runLevel?: string;
     /**
-     * - Controls the virtualization mode. Defaults to `"paravirt"`.
+     * Controls the virtualization mode. Defaults to `"paravirt"`.
      */
     virtMode?: string;
 }
@@ -1509,7 +1846,7 @@ export interface InstanceConfigInterface {
 
 export interface InstanceDisk {
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: string[];
     /**
@@ -1525,11 +1862,11 @@ export interface InstanceDisk {
      */
     id: number;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image: string;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label: string;
     /**
@@ -1537,7 +1874,7 @@ export interface InstanceDisk {
      */
     readOnly: boolean;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      */
     rootPass?: string;
     /**
@@ -1690,7 +2027,7 @@ export interface ObjectStorageBucketLifecycleRuleExpiration {
      */
     date?: string;
     /**
-     * Specifies the number of days non-current object versions expire.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      */
     days?: number;
     /**
@@ -1760,6 +2097,7 @@ export interface UserFirewallGrant {
 
 export interface UserGlobalGrants {
     accountAccess?: string;
+    addDatabases?: boolean;
     addDomains?: boolean;
     addFirewalls?: boolean;
     addImages?: boolean;
@@ -1801,3 +2139,4 @@ export interface UserVolumeGrant {
     id: number;
     permissions: string;
 }
+

@@ -189,15 +189,17 @@ export class InstanceDisk extends pulumi.CustomResource {
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["rootPass"] = args ? args.rootPass : undefined;
+            resourceInputs["rootPass"] = args?.rootPass ? pulumi.secret(args.rootPass) : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["stackscriptData"] = args ? args.stackscriptData : undefined;
+            resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["rootPass", "stackscriptData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(InstanceDisk.__pulumiType, name, resourceInputs, opts);
     }
 }

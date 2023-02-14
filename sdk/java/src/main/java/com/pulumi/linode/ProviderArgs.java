@@ -48,6 +48,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disable the internal caching system that backs certain Linode API requests.
+     * 
+     */
+    @Import(name="disableInternalCache", json=true)
+    private @Nullable Output<Boolean> disableInternalCache;
+
+    /**
+     * @return Disable the internal caching system that backs certain Linode API requests.
+     * 
+     */
+    public Optional<Output<Boolean>> disableInternalCache() {
+        return Optional.ofNullable(this.disableInternalCache);
+    }
+
+    /**
      * The rate in milliseconds to poll for events.
      * 
      */
@@ -203,6 +218,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.apiVersion = $.apiVersion;
         this.configPath = $.configPath;
         this.configProfile = $.configProfile;
+        this.disableInternalCache = $.disableInternalCache;
         this.eventPollMs = $.eventPollMs;
         this.lkeEventPollMs = $.lkeEventPollMs;
         this.lkeNodeReadyPollMs = $.lkeNodeReadyPollMs;
@@ -270,6 +286,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder configProfile(String configProfile) {
             return configProfile(Output.of(configProfile));
+        }
+
+        /**
+         * @param disableInternalCache Disable the internal caching system that backs certain Linode API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableInternalCache(@Nullable Output<Boolean> disableInternalCache) {
+            $.disableInternalCache = disableInternalCache;
+            return this;
+        }
+
+        /**
+         * @param disableInternalCache Disable the internal caching system that backs certain Linode API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableInternalCache(Boolean disableInternalCache) {
+            return disableInternalCache(Output.of(disableInternalCache));
         }
 
         /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,7 +29,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * export const imageId = specific_images.then(specific_images => specific_images.images?[0]?.id);
+ * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
  * ```
  *
  * Get information about all Linode images associated with the current token:
@@ -62,11 +63,8 @@ import * as utilities from "./utilities";
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getImages:getImages", {
         "filters": args.filters,
         "latest": args.latest,
@@ -108,9 +106,63 @@ export interface GetImagesResult {
     readonly order?: string;
     readonly orderBy?: string;
 }
-
+/**
+ * Provides information about Linode images that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode images with a certain label and visibility:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific-images = linode.getImages({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: ["Debian 11"],
+ *         },
+ *         {
+ *             name: "is_public",
+ *             values: ["true"],
+ *         },
+ *     ],
+ * });
+ * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
+ * ```
+ *
+ * Get information about all Linode images associated with the current token:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-images = linode.getImages({});
+ * export const imageIds = [all_images.then(all_images => all_images.images)].map(__item => __item?.id);
+ * ```
+ * ## Filterable Fields
+ *
+ * * `createdBy`
+ *
+ * * `deprecated`
+ *
+ * * `description`
+ *
+ * * `id`
+ *
+ * * `isPublic`
+ *
+ * * `label`
+ *
+ * * `size`
+ *
+ * * `status`
+ *
+ * * `vendor`
+ */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply(a => getImages(a, opts))
+    return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }
 
 /**

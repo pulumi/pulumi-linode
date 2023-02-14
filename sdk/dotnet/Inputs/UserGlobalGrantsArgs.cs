@@ -15,6 +15,9 @@ namespace Pulumi.Linode.Inputs
         [Input("accountAccess")]
         public Input<string>? AccountAccess { get; set; }
 
+        [Input("addDatabases")]
+        public Input<bool>? AddDatabases { get; set; }
+
         [Input("addDomains")]
         public Input<bool>? AddDomains { get; set; }
 

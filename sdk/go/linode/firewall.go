@@ -44,8 +44,8 @@ import (
 //			}
 //			_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
-//				Inbounds: FirewallInboundArray{
-//					&FirewallInboundArgs{
+//				Inbounds: linode.FirewallInboundArray{
+//					&linode.FirewallInboundArgs{
 //						Label:    pulumi.String("allow-http"),
 //						Action:   pulumi.String("ACCEPT"),
 //						Protocol: pulumi.String("TCP"),
@@ -57,7 +57,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallInboundArgs{
+//					&linode.FirewallInboundArgs{
 //						Label:    pulumi.String("allow-https"),
 //						Action:   pulumi.String("ACCEPT"),
 //						Protocol: pulumi.String("TCP"),
@@ -71,8 +71,8 @@ import (
 //					},
 //				},
 //				InboundPolicy: pulumi.String("DROP"),
-//				Outbounds: FirewallOutboundArray{
-//					&FirewallOutboundArgs{
+//				Outbounds: linode.FirewallOutboundArray{
+//					&linode.FirewallOutboundArgs{
 //						Label:    pulumi.String("reject-http"),
 //						Action:   pulumi.String("DROP"),
 //						Protocol: pulumi.String("TCP"),
@@ -84,7 +84,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallOutboundArgs{
+//					&linode.FirewallOutboundArgs{
 //						Label:    pulumi.String("reject-https"),
 //						Action:   pulumi.String("DROP"),
 //						Protocol: pulumi.String("TCP"),
@@ -131,7 +131,7 @@ type Firewall struct {
 	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
-	// Used to identify this rule. For display purposes only.
+	// This Firewall's unique label.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayOutput `pulumi:"linodes"`
@@ -191,7 +191,7 @@ type firewallState struct {
 	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
-	// Used to identify this rule. For display purposes only.
+	// This Firewall's unique label.
 	Label *string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
@@ -214,7 +214,7 @@ type FirewallState struct {
 	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
-	// Used to identify this rule. For display purposes only.
+	// This Firewall's unique label.
 	Label pulumi.StringPtrInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
@@ -239,7 +239,7 @@ type firewallArgs struct {
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
-	// Used to identify this rule. For display purposes only.
+	// This Firewall's unique label.
 	Label string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes []int `pulumi:"linodes"`
@@ -259,7 +259,7 @@ type FirewallArgs struct {
 	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
-	// Used to identify this rule. For display purposes only.
+	// This Firewall's unique label.
 	Label pulumi.StringInput
 	// A list of IDs of Linodes this Firewall should govern it's network traffic for.
 	Linodes pulumi.IntArrayInput
@@ -378,7 +378,7 @@ func (o FirewallOutput) Inbounds() FirewallInboundArrayOutput {
 	return o.ApplyT(func(v *Firewall) FirewallInboundArrayOutput { return v.Inbounds }).(FirewallInboundArrayOutput)
 }
 
-// Used to identify this rule. For display purposes only.
+// This Firewall's unique label.
 func (o FirewallOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }

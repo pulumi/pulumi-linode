@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainZonefileResult> InvokeAsync(GetDomainZonefileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode Domain Zonefile.
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainZonefileResult> Invoke(GetDomainZonefileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
     }
 
 

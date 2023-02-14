@@ -135,14 +135,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessKey);
     }
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      * 
      */
     @Export(name="acl", type=String.class, parameters={})
     private Output</* @Nullable */ String> acl;
 
     /**
-     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      * 
      */
     public Output<Optional<String>> acl() {

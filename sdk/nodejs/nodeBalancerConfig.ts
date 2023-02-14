@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -202,14 +203,16 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            resourceInputs["sslCert"] = args ? args.sslCert : undefined;
-            resourceInputs["sslKey"] = args ? args.sslKey : undefined;
+            resourceInputs["sslCert"] = args?.sslCert ? pulumi.secret(args.sslCert) : undefined;
+            resourceInputs["sslKey"] = args?.sslKey ? pulumi.secret(args.sslKey) : undefined;
             resourceInputs["stickiness"] = args ? args.stickiness : undefined;
             resourceInputs["nodeStatuses"] = undefined /*out*/;
             resourceInputs["sslCommonname"] = undefined /*out*/;
             resourceInputs["sslFingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["sslCert", "sslKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NodeBalancerConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

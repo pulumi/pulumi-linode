@@ -30,6 +30,10 @@ public final class GetFirewallDevice {
      * 
      */
     private String type;
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     private String url;
 
     private GetFirewallDevice() {}
@@ -61,6 +65,10 @@ public final class GetFirewallDevice {
     public String type() {
         return this.type;
     }
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public String url() {
         return this.url;
     }

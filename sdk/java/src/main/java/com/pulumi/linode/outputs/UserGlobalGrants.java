@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class UserGlobalGrants {
     private @Nullable String accountAccess;
+    private @Nullable Boolean addDatabases;
     private @Nullable Boolean addDomains;
     private @Nullable Boolean addFirewalls;
     private @Nullable Boolean addImages;
@@ -27,6 +28,9 @@ public final class UserGlobalGrants {
     private UserGlobalGrants() {}
     public Optional<String> accountAccess() {
         return Optional.ofNullable(this.accountAccess);
+    }
+    public Optional<Boolean> addDatabases() {
+        return Optional.ofNullable(this.addDatabases);
     }
     public Optional<Boolean> addDomains() {
         return Optional.ofNullable(this.addDomains);
@@ -69,6 +73,7 @@ public final class UserGlobalGrants {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountAccess;
+        private @Nullable Boolean addDatabases;
         private @Nullable Boolean addDomains;
         private @Nullable Boolean addFirewalls;
         private @Nullable Boolean addImages;
@@ -83,6 +88,7 @@ public final class UserGlobalGrants {
         public Builder(UserGlobalGrants defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountAccess = defaults.accountAccess;
+    	      this.addDatabases = defaults.addDatabases;
     	      this.addDomains = defaults.addDomains;
     	      this.addFirewalls = defaults.addFirewalls;
     	      this.addImages = defaults.addImages;
@@ -98,6 +104,11 @@ public final class UserGlobalGrants {
         @CustomType.Setter
         public Builder accountAccess(@Nullable String accountAccess) {
             this.accountAccess = accountAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder addDatabases(@Nullable Boolean addDatabases) {
+            this.addDatabases = addDatabases;
             return this;
         }
         @CustomType.Setter
@@ -153,6 +164,7 @@ public final class UserGlobalGrants {
         public UserGlobalGrants build() {
             final var o = new UserGlobalGrants();
             o.accountAccess = accountAccess;
+            o.addDatabases = addDatabases;
             o.addDomains = addDomains;
             o.addFirewalls = addFirewalls;
             o.addImages = addImages;

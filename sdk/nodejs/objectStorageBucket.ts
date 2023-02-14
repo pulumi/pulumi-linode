@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -89,7 +90,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     /**
@@ -182,7 +183,7 @@ export interface ObjectStorageBucketState {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      */
     acl?: pulumi.Input<string>;
     /**
@@ -229,7 +230,7 @@ export interface ObjectStorageBucketArgs {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      */
     acl?: pulumi.Input<string>;
     /**

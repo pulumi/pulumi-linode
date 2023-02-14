@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLkeClusterResult> InvokeAsync(GetLkeClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about an LKE Cluster.
@@ -63,7 +63,7 @@ namespace Pulumi.Linode
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLkeClusterResult> Invoke(GetLkeClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterInvokeArgs(), options.WithDefaults());
     }
 
 

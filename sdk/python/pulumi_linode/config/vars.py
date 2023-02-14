@@ -31,6 +31,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('configProfile')
 
     @property
+    def disable_internal_cache(self) -> Optional[bool]:
+        """
+        Disable the internal caching system that backs certain Linode API requests.
+        """
+        return __config__.get_bool('disableInternalCache')
+
+    @property
     def event_poll_ms(self) -> Optional[int]:
         """
         The rate in milliseconds to poll for events.

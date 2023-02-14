@@ -58,6 +58,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
             resourceInputs["configPath"] = args ? args.configPath : undefined;
             resourceInputs["configProfile"] = args ? args.configProfile : undefined;
+            resourceInputs["disableInternalCache"] = pulumi.output(args ? args.disableInternalCache : undefined).apply(JSON.stringify);
             resourceInputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
             resourceInputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
             resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
@@ -84,6 +85,10 @@ export interface ProviderArgs {
     apiVersion?: pulumi.Input<string>;
     configPath?: pulumi.Input<string>;
     configProfile?: pulumi.Input<string>;
+    /**
+     * Disable the internal caching system that backs certain Linode API requests.
+     */
+    disableInternalCache?: pulumi.Input<boolean>;
     /**
      * The rate in milliseconds to poll for events.
      */

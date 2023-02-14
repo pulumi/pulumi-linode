@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,7 +80,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly alerts!: pulumi.Output<outputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
     /**
@@ -116,7 +117,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * The Linode’s host machine, as a UUID.
+     */
+    public /*out*/ readonly hostUuid!: pulumi.Output<string>;
+    /**
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
@@ -137,7 +142,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     public readonly label!: pulumi.Output<string>;
     /**
@@ -157,7 +162,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
     /**
@@ -221,6 +226,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["configs"] = state ? state.configs : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["hostUuid"] = state ? state.hostUuid : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["interfaces"] = state ? state.interfaces : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -262,15 +268,16 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
-            resourceInputs["rootPass"] = args ? args.rootPass : undefined;
+            resourceInputs["rootPass"] = args?.rootPass ? pulumi.secret(args.rootPass) : undefined;
             resourceInputs["sharedIpv4s"] = args ? args.sharedIpv4s : undefined;
-            resourceInputs["stackscriptData"] = args ? args.stackscriptData : undefined;
+            resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
             resourceInputs["swapSize"] = args ? args.swapSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
             resourceInputs["backups"] = undefined /*out*/;
+            resourceInputs["hostUuid"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["ipv4s"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
@@ -279,6 +286,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["rootPass", "stackscriptData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -292,7 +301,7 @@ export interface InstanceState {
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -329,7 +338,11 @@ export interface InstanceState {
      */
     group?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * The Linode’s host machine, as a UUID.
+     */
+    hostUuid?: pulumi.Input<string>;
+    /**
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -350,7 +363,7 @@ export interface InstanceState {
      */
     ipv6?: pulumi.Input<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
     /**
@@ -370,7 +383,7 @@ export interface InstanceState {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -420,7 +433,7 @@ export interface InstanceArgs {
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -453,7 +466,7 @@ export interface InstanceArgs {
      */
     group?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -462,7 +475,7 @@ export interface InstanceArgs {
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
     /**
@@ -478,7 +491,7 @@ export interface InstanceArgs {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      */
     rootPass?: pulumi.Input<string>;
     /**

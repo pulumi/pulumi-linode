@@ -74,7 +74,7 @@ import (
 //				SslConnection:   pulumi.Bool(true),
 //				StorageEngine:   pulumi.String("wiredtiger"),
 //				Type:            pulumi.String("g6-nanode-1"),
-//				Updates: &DatabaseMongodbUpdatesArgs{
+//				Updates: &linode.DatabaseMongodbUpdatesArgs{
 //					DayOfWeek:   pulumi.String("saturday"),
 //					Duration:    pulumi.Int(1),
 //					Frequency:   pulumi.String("monthly"),
@@ -185,6 +185,12 @@ func NewDatabaseMongodb(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"rootPassword",
+		"rootUsername",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseMongodb
 	err := ctx.RegisterResource("linode:index/databaseMongodb:DatabaseMongodb", name, args, &resource, opts...)
 	if err != nil {

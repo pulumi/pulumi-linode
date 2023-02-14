@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const web: linode.Instance[];
+ * const web: linode.Instance[] = [];
  * for (const range = {value: 0}; range.value < "3"; range.value++) {
  *     web.push(new linode.Instance(`web-${range.value}`, {
  *         label: `web-${range.value + 1}`,
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *     stickiness: "http_cookie",
  *     algorithm: "source",
  * });
- * const foonode: linode.NodeBalancerNode[];
+ * const foonode: linode.NodeBalancerNode[] = [];
  * for (const range = {value: 0}; range.value < "3"; range.value++) {
  *     foonode.push(new linode.NodeBalancerNode(`foonode-${range.value}`, {
  *         nodebalancerId: foobar.id,

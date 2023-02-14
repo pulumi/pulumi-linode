@@ -19,7 +19,7 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
      */
     private @Nullable String date;
     /**
-     * @return Specifies the number of days non-current object versions expire.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     private @Nullable Integer days;
@@ -38,7 +38,7 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
         return Optional.ofNullable(this.date);
     }
     /**
-     * @return Specifies the number of days non-current object versions expire.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Optional<Integer> days() {

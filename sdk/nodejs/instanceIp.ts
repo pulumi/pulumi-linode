@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const fooInstance = new linode.Instance("fooInstance", {
- *     image: "linode/alpine3.12",
+ *     image: "linode/alpine3.16",
  *     label: "foobar-test",
  *     type: "g6-nanode-1",
  *     region: "us-east",

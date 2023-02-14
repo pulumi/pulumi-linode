@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my_db = pulumi.output(linode.getDatabaseMongodb({
+ * const my-db = linode.getDatabaseMongodb({
  *     databaseId: 12345,
- * }));
+ * });
  * ```
  * ## updates
  *
@@ -35,11 +36,8 @@ import * as utilities from "./utilities";
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
 export function getDatabaseMongodb(args: GetDatabaseMongodbArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMongodbResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseMongodb:getDatabaseMongodb", {
         "databaseId": args.databaseId,
     }, opts);
@@ -158,9 +156,37 @@ export interface GetDatabaseMongodbResult {
      */
     readonly version: string;
 }
-
+/**
+ * Provides information about a Linode MongoDB Database.
+ *
+ * ## Example Usage
+ *
+ * Get information about a MongoDB database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-db = linode.getDatabaseMongodb({
+ *     databaseId: 12345,
+ * });
+ * ```
+ * ## updates
+ *
+ * The following arguments are exported by the `updates` specification block:
+ *
+ * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+ *
+ * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+ *
+ * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+ *
+ * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
+ * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+ */
 export function getDatabaseMongodbOutput(args: GetDatabaseMongodbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMongodbResult> {
-    return pulumi.output(args).apply(a => getDatabaseMongodb(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabaseMongodb(a, opts))
 }
 
 /**

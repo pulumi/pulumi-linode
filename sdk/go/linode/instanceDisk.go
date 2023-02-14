@@ -79,9 +79,9 @@ import (
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
 //				LinodeId: my_instance.ID(),
-//				Size: my_instance.Specs.ApplyT(func(specs InstanceSpecs) (int, error) {
-//					return specs.Disk, nil
-//				}).(pulumi.IntOutput),
+//				Size: my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {
+//					return &specs.Disk, nil
+//				}).(pulumi.IntPtrOutput),
 //				Image:    pulumi.String("linode/ubuntu20.04"),
 //				RootPass: pulumi.String("myc00lpass!"),
 //				AuthorizedKeys: pulumi.StringArray{
@@ -159,6 +159,17 @@ func NewInstanceDisk(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	if args.RootPass != nil {
+		args.RootPass = pulumi.ToSecret(args.RootPass).(pulumi.StringPtrInput)
+	}
+	if args.StackscriptData != nil {
+		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.MapInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"rootPass",
+		"stackscriptData",
+	})
+	opts = append(opts, secrets)
 	var resource InstanceDisk
 	err := ctx.RegisterResource("linode:index/instanceDisk:InstanceDisk", name, args, &resource, opts...)
 	if err != nil {

@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.GetInstanceBackupsInProgressDisk;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceBackupsInProgress {
+    private Boolean available;
     /**
      * @return A list of the labels of the Configuration profiles that are part of the Backup.
      * 
@@ -55,6 +57,9 @@ public final class GetInstanceBackupsInProgress {
     private String updated;
 
     private GetInstanceBackupsInProgress() {}
+    public Boolean available() {
+        return this.available;
+    }
     /**
      * @return A list of the labels of the Configuration profiles that are part of the Backup.
      * 
@@ -124,6 +129,7 @@ public final class GetInstanceBackupsInProgress {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean available;
         private List<String> configs;
         private String created;
         private List<GetInstanceBackupsInProgressDisk> disks;
@@ -136,6 +142,7 @@ public final class GetInstanceBackupsInProgress {
         public Builder() {}
         public Builder(GetInstanceBackupsInProgress defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.available = defaults.available;
     	      this.configs = defaults.configs;
     	      this.created = defaults.created;
     	      this.disks = defaults.disks;
@@ -147,6 +154,11 @@ public final class GetInstanceBackupsInProgress {
     	      this.updated = defaults.updated;
         }
 
+        @CustomType.Setter
+        public Builder available(Boolean available) {
+            this.available = Objects.requireNonNull(available);
+            return this;
+        }
         @CustomType.Setter
         public Builder configs(List<String> configs) {
             this.configs = Objects.requireNonNull(configs);
@@ -200,6 +212,7 @@ public final class GetInstanceBackupsInProgress {
         }
         public GetInstanceBackupsInProgress build() {
             final var o = new GetInstanceBackupsInProgress();
+            o.available = available;
             o.configs = configs;
             o.created = created;
             o.disks = disks;

@@ -17,6 +17,7 @@ class ProviderArgs:
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
+                 disable_internal_cache: Optional[pulumi.Input[bool]] = None,
                  event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
@@ -30,6 +31,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
@@ -49,6 +51,8 @@ class ProviderArgs:
             pulumi.set(__self__, "config_path", config_path)
         if config_profile is not None:
             pulumi.set(__self__, "config_profile", config_profile)
+        if disable_internal_cache is not None:
+            pulumi.set(__self__, "disable_internal_cache", disable_internal_cache)
         if event_poll_ms is not None:
             pulumi.set(__self__, "event_poll_ms", event_poll_ms)
         if lke_event_poll_ms is not None:
@@ -103,6 +107,18 @@ class ProviderArgs:
     @config_profile.setter
     def config_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_profile", value)
+
+    @property
+    @pulumi.getter(name="disableInternalCache")
+    def disable_internal_cache(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the internal caching system that backs certain Linode API requests.
+        """
+        return pulumi.get(self, "disable_internal_cache")
+
+    @disable_internal_cache.setter
+    def disable_internal_cache(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_internal_cache", value)
 
     @property
     @pulumi.getter(name="eventPollMs")
@@ -233,6 +249,7 @@ class Provider(pulumi.ProviderResource):
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
+                 disable_internal_cache: Optional[pulumi.Input[bool]] = None,
                  event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
@@ -253,6 +270,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
@@ -294,6 +312,7 @@ class Provider(pulumi.ProviderResource):
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
+                 disable_internal_cache: Optional[pulumi.Input[bool]] = None,
                  event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
@@ -318,6 +337,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_version"] = api_version
             __props__.__dict__["config_path"] = config_path
             __props__.__dict__["config_profile"] = config_profile
+            __props__.__dict__["disable_internal_cache"] = pulumi.Output.from_input(disable_internal_cache).apply(pulumi.runtime.to_json) if disable_internal_cache is not None else None
             __props__.__dict__["event_poll_ms"] = pulumi.Output.from_input(event_poll_ms).apply(pulumi.runtime.to_json) if event_poll_ms is not None else None
             __props__.__dict__["lke_event_poll_ms"] = pulumi.Output.from_input(lke_event_poll_ms).apply(pulumi.runtime.to_json) if lke_event_poll_ms is not None else None
             __props__.__dict__["lke_node_ready_poll_ms"] = pulumi.Output.from_input(lke_node_ready_poll_ms).apply(pulumi.runtime.to_json) if lke_node_ready_poll_ms is not None else None

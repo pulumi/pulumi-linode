@@ -32,8 +32,8 @@ import (
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
 //				K8sVersion: pulumi.String("1.21"),
 //				Label:      pulumi.String("my-cluster"),
-//				Pools: LkeClusterPoolArray{
-//					&LkeClusterPoolArgs{
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
 //						Count: pulumi.Int(3),
 //						Type:  pulumi.String("g6-standard-2"),
 //					},
@@ -73,11 +73,11 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("prod"),
 //				},
-//				Pools: LkeClusterPoolArray{
-//					&LkeClusterPoolArgs{
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
 //						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(3),
-//						Autoscaler: &LkeClusterPoolAutoscalerArgs{
+//						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
 //							Min: pulumi.Int(3),
 //							Max: pulumi.Int(10),
 //						},
@@ -146,6 +146,10 @@ func NewLkeCluster(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeconfig",
+	})
+	opts = append(opts, secrets)
 	var resource LkeCluster
 	err := ctx.RegisterResource("linode:index/lkeCluster:LkeCluster", name, args, &resource, opts...)
 	if err != nil {

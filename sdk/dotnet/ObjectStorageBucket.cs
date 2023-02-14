@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Linode
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.Linode
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }

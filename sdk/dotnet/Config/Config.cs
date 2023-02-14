@@ -30,7 +30,7 @@ namespace Pulumi.Linode
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("linode");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("linode");
 
         private static readonly __Value<string?> _apiVersion = new __Value<string?>(() => __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION"));
         /// <summary>
@@ -54,6 +54,16 @@ namespace Pulumi.Linode
         {
             get => _configProfile.Get();
             set => _configProfile.Set(value);
+        }
+
+        private static readonly __Value<bool?> _disableInternalCache = new __Value<bool?>(() => __config.GetBoolean("disableInternalCache"));
+        /// <summary>
+        /// Disable the internal caching system that backs certain Linode API requests.
+        /// </summary>
+        public static bool? DisableInternalCache
+        {
+            get => _disableInternalCache.Get();
+            set => _disableInternalCache.Set(value);
         }
 
         private static readonly __Value<int?> _eventPollMs = new __Value<int?>(() => __config.GetInt32("eventPollMs"));

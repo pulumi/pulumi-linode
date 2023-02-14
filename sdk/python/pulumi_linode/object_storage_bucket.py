@@ -30,7 +30,7 @@ class ObjectStorageBucketArgs:
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
@@ -94,7 +94,7 @@ class ObjectStorageBucketArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         """
         return pulumi.get(self, "acl")
 
@@ -179,7 +179,7 @@ class _ObjectStorageBucketState:
         """
         Input properties used for looking up and filtering ObjectStorageBucket resources.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
@@ -227,7 +227,7 @@ class _ObjectStorageBucketState:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         """
         return pulumi.get(self, "acl")
 
@@ -398,7 +398,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
@@ -535,7 +535,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
-        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
@@ -574,7 +574,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[str]]:
         """
-        The Access Control Level of the bucket using a canned ACL string. See all ACL strings in the Linode API v4 documentation.
+        The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
         """
         return pulumi.get(self, "acl")
 

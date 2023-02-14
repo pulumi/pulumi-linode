@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupIpv6Range(ctx, &GetIpv6RangeArgs{
+//			_, err := linode.LookupIpv6Range(ctx, &linode.LookupIpv6RangeArgs{
 //				Range: "2001:0db8::",
 //			}, nil)
 //			if err != nil {

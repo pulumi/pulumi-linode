@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ipv6s;
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// This Firewall's unique label.
         /// </summary>
         public readonly string Label;
         /// <summary>

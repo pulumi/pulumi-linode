@@ -124,6 +124,17 @@ func NewNodeBalancerConfig(ctx *pulumi.Context,
 	if args.NodebalancerId == nil {
 		return nil, errors.New("invalid value for required argument 'NodebalancerId'")
 	}
+	if args.SslCert != nil {
+		args.SslCert = pulumi.ToSecret(args.SslCert).(pulumi.StringPtrInput)
+	}
+	if args.SslKey != nil {
+		args.SslKey = pulumi.ToSecret(args.SslKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"sslCert",
+		"sslKey",
+	})
+	opts = append(opts, secrets)
 	var resource NodeBalancerConfig
 	err := ctx.RegisterResource("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args, &resource, opts...)
 	if err != nil {

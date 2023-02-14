@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -31,7 +32,7 @@ import * as utilities from "./utilities";
  *         values: ["my-vlan"],
  *     }],
  * });
- * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?[0]?.linodes);
+ * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
  * ```
  * ## Filterable Fields
  *
@@ -41,11 +42,8 @@ import * as utilities from "./utilities";
  */
 export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Promise<GetVlansResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVlans:getVlans", {
         "filters": args.filters,
         "order": args.order,
@@ -81,9 +79,42 @@ export interface GetVlansResult {
     readonly orderBy?: string;
     readonly vlans: outputs.GetVlansVlan[];
 }
-
+/**
+ * Provides details about Linode VLANs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myInstance = new linode.Instance("myInstance", {
+ *     label: "my_instance",
+ *     image: "linode/ubuntu18.04",
+ *     region: "us-southeast",
+ *     type: "g6-standard-1",
+ *     rootPass: `bogusPassword$`,
+ *     interfaces: [{
+ *         purpose: "vlan",
+ *         label: "my-vlan",
+ *     }],
+ * });
+ * const my-vlans = linode.getVlans({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["my-vlan"],
+ *     }],
+ * });
+ * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
+ * ```
+ * ## Filterable Fields
+ *
+ * * `label`
+ *
+ * * `region`
+ */
 export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlansResult> {
-    return pulumi.output(args).apply(a => getVlans(a, opts))
+    return pulumi.output(args).apply((a: any) => getVlans(a, opts))
 }
 
 /**

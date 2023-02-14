@@ -73,7 +73,7 @@ import (
 //				ReplicationType: pulumi.String("asynch"),
 //				SslConnection:   pulumi.Bool(true),
 //				Type:            pulumi.String("g6-nanode-1"),
-//				Updates: &DatabaseMysqlUpdatesArgs{
+//				Updates: &linode.DatabaseMysqlUpdatesArgs{
 //					DayOfWeek:   pulumi.String("saturday"),
 //					Duration:    pulumi.Int(1),
 //					Frequency:   pulumi.String("monthly"),
@@ -176,6 +176,12 @@ func NewDatabaseMysql(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"rootPassword",
+		"rootUsername",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseMysql
 	err := ctx.RegisterResource("linode:index/databaseMysql:DatabaseMysql", name, args, &resource, opts...)
 	if err != nil {

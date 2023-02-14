@@ -21,14 +21,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     public static final InstanceConfigArgs Empty = new InstanceConfigArgs();
 
     /**
-     * - Arbitrary user comments about this `config`.
+     * Arbitrary user comments about this `config`.
      * 
      */
     @Import(name="comments")
     private @Nullable Output<String> comments;
 
     /**
-     * @return - Arbitrary user comments about this `config`.
+     * @return Arbitrary user comments about this `config`.
      * 
      */
     public Optional<Output<String>> comments() {
@@ -73,14 +73,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      * 
      */
     @Import(name="kernel")
     private @Nullable Output<String> kernel;
 
     /**
-     * @return - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
      * 
      */
     public Optional<Output<String>> kernel() {
@@ -88,14 +88,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The name of this interface. If the interface is a VLAN, a label is required.
+     * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     public Output<String> label() {
@@ -103,14 +103,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * - Defaults to the total RAM of the Linode
+     * Defaults to the total RAM of the Linode
      * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
-     * @return - Defaults to the total RAM of the Linode
+     * @return Defaults to the total RAM of the Linode
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -118,14 +118,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+     * The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
      * 
      */
     @Import(name="rootDevice")
     private @Nullable Output<String> rootDevice;
 
     /**
-     * @return - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+     * @return The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
      * 
      */
     public Optional<Output<String>> rootDevice() {
@@ -133,14 +133,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+     * Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
      * 
      */
     @Import(name="runLevel")
     private @Nullable Output<String> runLevel;
 
     /**
-     * @return - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+     * @return Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
      * 
      */
     public Optional<Output<String>> runLevel() {
@@ -148,14 +148,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+     * Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
      * 
      */
     @Import(name="virtMode")
     private @Nullable Output<String> virtMode;
 
     /**
-     * @return - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+     * @return Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
      * 
      */
     public Optional<Output<String>> virtMode() {
@@ -196,7 +196,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comments - Arbitrary user comments about this `config`.
+         * @param comments Arbitrary user comments about this `config`.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param comments - Arbitrary user comments about this `config`.
+         * @param comments Arbitrary user comments about this `config`.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kernel - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+         * @param kernel A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kernel - A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+         * @param kernel A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param label The name of this interface. If the interface is a VLAN, a label is required.
+         * @param label The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param label The name of this interface. If the interface is a VLAN, a label is required.
+         * @param label The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memoryLimit - Defaults to the total RAM of the Linode
+         * @param memoryLimit Defaults to the total RAM of the Linode
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memoryLimit - Defaults to the total RAM of the Linode
+         * @param memoryLimit Defaults to the total RAM of the Linode
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rootDevice - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+         * @param rootDevice The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rootDevice - The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
+         * @param rootDevice The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `&#34;/dev/sda&#34;`
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param runLevel - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+         * @param runLevel Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param runLevel - Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
+         * @param runLevel Defines the state of your Linode after booting. Defaults to `&#34;default&#34;`.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param virtMode - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+         * @param virtMode Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param virtMode - Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
+         * @param virtMode Controls the virtualization mode. Defaults to `&#34;paravirt&#34;`.
          * 
          * @return builder
          * 

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
+//			_, err := linode.GetDatabaseMysqlBackups(ctx, &linode.GetDatabaseMysqlBackupsArgs{
 //				DatabaseId: 12345,
 //			}, nil)
 //			if err != nil {
@@ -56,10 +56,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseMysqlBackups(ctx, &GetDatabaseMysqlBackupsArgs{
+//			_, err := linode.GetDatabaseMysqlBackups(ctx, &linode.GetDatabaseMysqlBackupsArgs{
 //				DatabaseId: 12345,
-//				Filters: []GetDatabaseMysqlBackupsFilter{
-//					GetDatabaseMysqlBackupsFilter{
+//				Filters: []linode.GetDatabaseMysqlBackupsFilter{
+//					{
 //						Name: "type",
 //						Values: []string{
 //							"auto",
