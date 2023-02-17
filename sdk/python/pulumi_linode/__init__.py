@@ -5,7 +5,6 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .account_settings import *
 from .database_access_controls import *
 from .database_mongodb import *
 from .database_mysql import *
@@ -17,7 +16,6 @@ from .firewall_device import *
 from .get_account import *
 from .get_account_login import *
 from .get_account_logins import *
-from .get_account_settings import *
 from .get_database_backups import *
 from .get_database_engines import *
 from .get_database_mongodb import *
@@ -47,7 +45,6 @@ from .get_node_balancer_node import *
 from .get_object_storage_cluster import *
 from .get_profile import *
 from .get_region import *
-from .get_regions import *
 from .get_ssh_key import *
 from .get_stack_script import *
 from .get_stack_scripts import *
@@ -87,14 +84,6 @@ else:
 _utilities.register(
     resource_modules="""
 [
- {
-  "pkg": "linode",
-  "mod": "index/accountSettings",
-  "fqn": "pulumi_linode",
-  "classes": {
-   "linode:index/accountSettings:AccountSettings": "AccountSettings"
-  }
- },
  {
   "pkg": "linode",
   "mod": "index/databaseAccessControls",

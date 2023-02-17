@@ -126,10 +126,6 @@ __all__ = [
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerTransferResult',
     'GetProfileReferralsResult',
-    'GetRegionResolverResult',
-    'GetRegionsFilterResult',
-    'GetRegionsRegionResult',
-    'GetRegionsRegionResolverResult',
     'GetStackScriptUserDefinedFieldResult',
     'GetStackScriptsFilterResult',
     'GetStackScriptsStackscriptResult',
@@ -6539,118 +6535,6 @@ class GetProfileReferralsResult(dict):
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
-
-
-@pulumi.output_type
-class GetRegionResolverResult(dict):
-    def __init__(__self__, *,
-                 ipv4: str,
-                 ipv6: str):
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
-
-    @property
-    @pulumi.getter
-    def ipv4(self) -> str:
-        return pulumi.get(self, "ipv4")
-
-    @property
-    @pulumi.getter
-    def ipv6(self) -> str:
-        return pulumi.get(self, "ipv6")
-
-
-@pulumi.output_type
-class GetRegionsFilterResult(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str],
-                 match_by: Optional[str] = None):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-    @property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[str]:
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetRegionsRegionResult(dict):
-    def __init__(__self__, *,
-                 capabilities: Sequence[str],
-                 country: str,
-                 id: str,
-                 label: str,
-                 resolvers: Sequence['outputs.GetRegionsRegionResolverResult'],
-                 status: str):
-        pulumi.set(__self__, "capabilities", capabilities)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "resolvers", resolvers)
-        pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def capabilities(self) -> Sequence[str]:
-        return pulumi.get(self, "capabilities")
-
-    @property
-    @pulumi.getter
-    def country(self) -> str:
-        return pulumi.get(self, "country")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def resolvers(self) -> Sequence['outputs.GetRegionsRegionResolverResult']:
-        return pulumi.get(self, "resolvers")
-
-    @property
-    @pulumi.getter
-    def status(self) -> str:
-        return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class GetRegionsRegionResolverResult(dict):
-    def __init__(__self__, *,
-                 ipv4: str,
-                 ipv6: str):
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
-
-    @property
-    @pulumi.getter
-    def ipv4(self) -> str:
-        return pulumi.get(self, "ipv4")
-
-    @property
-    @pulumi.getter
-    def ipv6(self) -> str:
-        return pulumi.get(self, "ipv6")
 
 
 @pulumi.output_type

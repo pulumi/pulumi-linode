@@ -8,7 +8,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
-from . import outputs
 
 __all__ = [
     'GetRegionResult',
@@ -22,30 +21,13 @@ class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, capabilities=None, country=None, id=None, label=None, resolvers=None, status=None):
-        if capabilities and not isinstance(capabilities, list):
-            raise TypeError("Expected argument 'capabilities' to be a list")
-        pulumi.set(__self__, "capabilities", capabilities)
+    def __init__(__self__, country=None, id=None):
         if country and not isinstance(country, str):
             raise TypeError("Expected argument 'country' to be a str")
         pulumi.set(__self__, "country", country)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if label and not isinstance(label, str):
-            raise TypeError("Expected argument 'label' to be a str")
-        pulumi.set(__self__, "label", label)
-        if resolvers and not isinstance(resolvers, list):
-            raise TypeError("Expected argument 'resolvers' to be a list")
-        pulumi.set(__self__, "resolvers", resolvers)
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def capabilities(self) -> Sequence[str]:
-        return pulumi.get(self, "capabilities")
 
     @property
     @pulumi.getter
@@ -60,21 +42,6 @@ class GetRegionResult:
     def id(self) -> str:
         return pulumi.get(self, "id")
 
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def resolvers(self) -> Sequence['outputs.GetRegionResolverResult']:
-        return pulumi.get(self, "resolvers")
-
-    @property
-    @pulumi.getter
-    def status(self) -> str:
-        return pulumi.get(self, "status")
-
 
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
@@ -82,12 +49,8 @@ class AwaitableGetRegionResult(GetRegionResult):
         if False:
             yield self
         return GetRegionResult(
-            capabilities=self.capabilities,
             country=self.country,
-            id=self.id,
-            label=self.label,
-            resolvers=self.resolvers,
-            status=self.status)
+            id=self.id)
 
 
 def get_region(country: Optional[str] = None,
@@ -118,12 +81,8 @@ def get_region(country: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
     return AwaitableGetRegionResult(
-        capabilities=__ret__.capabilities,
         country=__ret__.country,
-        id=__ret__.id,
-        label=__ret__.label,
-        resolvers=__ret__.resolvers,
-        status=__ret__.status)
+        id=__ret__.id)
 
 
 @_utilities.lift_output_func(get_region)

@@ -1390,31 +1390,6 @@ export interface GetProfileReferrals {
     url: string;
 }
 
-export interface GetRegionResolver {
-    ipv4: string;
-    ipv6: string;
-}
-
-export interface GetRegionsFilter {
-    matchBy?: string;
-    name: string;
-    values: string[];
-}
-
-export interface GetRegionsRegion {
-    capabilities: string[];
-    country: string;
-    id: string;
-    label: string;
-    resolvers: outputs.GetRegionsRegionResolver[];
-    status: string;
-}
-
-export interface GetRegionsRegionResolver {
-    ipv4: string;
-    ipv6: string;
-}
-
 export interface GetStackScriptUserDefinedField {
     /**
      * The default value. If not specified, this value will be used.

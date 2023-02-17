@@ -63,7 +63,6 @@ __all__ = [
     'GetImagesFilterArgs',
     'GetInstanceTypesFilterArgs',
     'GetInstancesFilterArgs',
-    'GetRegionsFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
     'GetStackScriptsFilterArgs',
     'GetUserDomainGrantArgs',
@@ -3265,45 +3264,6 @@ class GetInstancesFilterArgs:
         """
         The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[str]):
-        pulumi.set(self, "match_by", value)
-
-
-@pulumi.input_type
-class GetRegionsFilterArgs:
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str],
-                 match_by: Optional[str] = None):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[str]):
-        pulumi.set(self, "values", value)
-
-    @property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[str]:
         return pulumi.get(self, "match_by")
 
     @match_by.setter

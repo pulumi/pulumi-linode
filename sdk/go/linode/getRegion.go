@@ -58,13 +58,9 @@ type GetRegionArgs struct {
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
-	Capabilities []string `pulumi:"capabilities"`
 	// The country the region resides in.
-	Country   string              `pulumi:"country"`
-	Id        string              `pulumi:"id"`
-	Label     string              `pulumi:"label"`
-	Resolvers []GetRegionResolver `pulumi:"resolvers"`
-	Status    string              `pulumi:"status"`
+	Country string `pulumi:"country"`
+	Id      string `pulumi:"id"`
 }
 
 func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
@@ -107,10 +103,6 @@ func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GetRegionResultOutput) Capabilities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRegionResult) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
-}
-
 // The country the region resides in.
 func (o GetRegionResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Country }).(pulumi.StringOutput)
@@ -118,18 +110,6 @@ func (o GetRegionResultOutput) Country() pulumi.StringOutput {
 
 func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetRegionResultOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionResult) string { return v.Label }).(pulumi.StringOutput)
-}
-
-func (o GetRegionResultOutput) Resolvers() GetRegionResolverArrayOutput {
-	return o.ApplyT(func(v GetRegionResult) []GetRegionResolver { return v.Resolvers }).(GetRegionResolverArrayOutput)
-}
-
-func (o GetRegionResultOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func init() {

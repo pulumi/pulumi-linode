@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { AccountSettingsArgs, AccountSettingsState } from "./accountSettings";
-export type AccountSettings = import("./accountSettings").AccountSettings;
-export const AccountSettings: typeof import("./accountSettings").AccountSettings = null as any;
-utilities.lazyLoad(exports, ["AccountSettings"], () => require("./accountSettings"));
-
 export { DatabaseAccessControlsArgs, DatabaseAccessControlsState } from "./databaseAccessControls";
 export type DatabaseAccessControls = import("./databaseAccessControls").DatabaseAccessControls;
 export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
@@ -63,10 +58,6 @@ export { GetAccountLoginsArgs, GetAccountLoginsResult, GetAccountLoginsOutputArg
 export const getAccountLogins: typeof import("./getAccountLogins").getAccountLogins = null as any;
 export const getAccountLoginsOutput: typeof import("./getAccountLogins").getAccountLoginsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountLogins","getAccountLoginsOutput"], () => require("./getAccountLogins"));
-
-export { GetAccountSettingsResult } from "./getAccountSettings";
-export const getAccountSettings: typeof import("./getAccountSettings").getAccountSettings = null as any;
-utilities.lazyLoad(exports, ["getAccountSettings"], () => require("./getAccountSettings"));
 
 export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
 export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
@@ -210,11 +201,6 @@ export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion
 export const getRegion: typeof import("./getRegion").getRegion = null as any;
 export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegion","getRegionOutput"], () => require("./getRegion"));
-
-export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
-export const getRegions: typeof import("./getRegions").getRegions = null as any;
-export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
-utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
 
 export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
 export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
@@ -360,8 +346,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "linode:index/accountSettings:AccountSettings":
-                return new AccountSettings(name, <any>undefined, { urn })
             case "linode:index/databaseAccessControls:DatabaseAccessControls":
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
             case "linode:index/databaseMongodb:DatabaseMongodb":
@@ -421,7 +405,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMongodb", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
