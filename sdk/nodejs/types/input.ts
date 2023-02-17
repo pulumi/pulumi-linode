@@ -346,6 +346,18 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetRegionsFilter {
+    matchBy?: string;
+    name: string;
+    values: string[];
+}
+
+export interface GetRegionsFilterArgs {
+    matchBy?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetStackScriptUserDefinedField {
     /**
      * The default value. If not specified, this value will be used.

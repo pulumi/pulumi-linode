@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "accountSettings.ts",
         "config/index.ts",
         "config/vars.ts",
         "databaseAccessControls.ts",
@@ -26,6 +27,7 @@
         "getAccount.ts",
         "getAccountLogin.ts",
         "getAccountLogins.ts",
+        "getAccountSettings.ts",
         "getDatabaseBackups.ts",
         "getDatabaseEngines.ts",
         "getDatabaseMongodb.ts",
@@ -55,6 +57,7 @@
         "getObjectStorageCluster.ts",
         "getProfile.ts",
         "getRegion.ts",
+        "getRegions.ts",
         "getSshKey.ts",
         "getStackScript.ts",
         "getStackScripts.ts",

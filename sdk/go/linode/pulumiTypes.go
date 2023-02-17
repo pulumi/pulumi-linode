@@ -15461,6 +15461,436 @@ func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
 }
 
+type GetRegionResolver struct {
+	Ipv4 string `pulumi:"ipv4"`
+	Ipv6 string `pulumi:"ipv6"`
+}
+
+// GetRegionResolverInput is an input type that accepts GetRegionResolverArgs and GetRegionResolverOutput values.
+// You can construct a concrete instance of `GetRegionResolverInput` via:
+//
+//	GetRegionResolverArgs{...}
+type GetRegionResolverInput interface {
+	pulumi.Input
+
+	ToGetRegionResolverOutput() GetRegionResolverOutput
+	ToGetRegionResolverOutputWithContext(context.Context) GetRegionResolverOutput
+}
+
+type GetRegionResolverArgs struct {
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
+}
+
+func (GetRegionResolverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionResolver)(nil)).Elem()
+}
+
+func (i GetRegionResolverArgs) ToGetRegionResolverOutput() GetRegionResolverOutput {
+	return i.ToGetRegionResolverOutputWithContext(context.Background())
+}
+
+func (i GetRegionResolverArgs) ToGetRegionResolverOutputWithContext(ctx context.Context) GetRegionResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionResolverOutput)
+}
+
+// GetRegionResolverArrayInput is an input type that accepts GetRegionResolverArray and GetRegionResolverArrayOutput values.
+// You can construct a concrete instance of `GetRegionResolverArrayInput` via:
+//
+//	GetRegionResolverArray{ GetRegionResolverArgs{...} }
+type GetRegionResolverArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionResolverArrayOutput() GetRegionResolverArrayOutput
+	ToGetRegionResolverArrayOutputWithContext(context.Context) GetRegionResolverArrayOutput
+}
+
+type GetRegionResolverArray []GetRegionResolverInput
+
+func (GetRegionResolverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionResolver)(nil)).Elem()
+}
+
+func (i GetRegionResolverArray) ToGetRegionResolverArrayOutput() GetRegionResolverArrayOutput {
+	return i.ToGetRegionResolverArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionResolverArray) ToGetRegionResolverArrayOutputWithContext(ctx context.Context) GetRegionResolverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionResolverArrayOutput)
+}
+
+type GetRegionResolverOutput struct{ *pulumi.OutputState }
+
+func (GetRegionResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionResolver)(nil)).Elem()
+}
+
+func (o GetRegionResolverOutput) ToGetRegionResolverOutput() GetRegionResolverOutput {
+	return o
+}
+
+func (o GetRegionResolverOutput) ToGetRegionResolverOutputWithContext(ctx context.Context) GetRegionResolverOutput {
+	return o
+}
+
+func (o GetRegionResolverOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResolver) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+func (o GetRegionResolverOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResolver) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+type GetRegionResolverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionResolverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionResolver)(nil)).Elem()
+}
+
+func (o GetRegionResolverArrayOutput) ToGetRegionResolverArrayOutput() GetRegionResolverArrayOutput {
+	return o
+}
+
+func (o GetRegionResolverArrayOutput) ToGetRegionResolverArrayOutputWithContext(ctx context.Context) GetRegionResolverArrayOutput {
+	return o
+}
+
+func (o GetRegionResolverArrayOutput) Index(i pulumi.IntInput) GetRegionResolverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionResolver {
+		return vs[0].([]GetRegionResolver)[vs[1].(int)]
+	}).(GetRegionResolverOutput)
+}
+
+type GetRegionsFilter struct {
+	MatchBy *string  `pulumi:"matchBy"`
+	Name    string   `pulumi:"name"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetRegionsFilterInput is an input type that accepts GetRegionsFilterArgs and GetRegionsFilterOutput values.
+// You can construct a concrete instance of `GetRegionsFilterInput` via:
+//
+//	GetRegionsFilterArgs{...}
+type GetRegionsFilterInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterOutput() GetRegionsFilterOutput
+	ToGetRegionsFilterOutputWithContext(context.Context) GetRegionsFilterOutput
+}
+
+type GetRegionsFilterArgs struct {
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Name    pulumi.StringInput      `pulumi:"name"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return i.ToGetRegionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterOutput)
+}
+
+// GetRegionsFilterArrayInput is an input type that accepts GetRegionsFilterArray and GetRegionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetRegionsFilterArrayInput` via:
+//
+//	GetRegionsFilterArray{ GetRegionsFilterArgs{...} }
+type GetRegionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput
+	ToGetRegionsFilterArrayOutputWithContext(context.Context) GetRegionsFilterArrayOutput
+}
+
+type GetRegionsFilterArray []GetRegionsFilterInput
+
+func (GetRegionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return i.ToGetRegionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterArrayOutput)
+}
+
+type GetRegionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return o
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return o
+}
+
+func (o GetRegionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegionsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsFilter {
+		return vs[0].([]GetRegionsFilter)[vs[1].(int)]
+	}).(GetRegionsFilterOutput)
+}
+
+type GetRegionsRegion struct {
+	Capabilities []string                   `pulumi:"capabilities"`
+	Country      string                     `pulumi:"country"`
+	Id           string                     `pulumi:"id"`
+	Label        string                     `pulumi:"label"`
+	Resolvers    []GetRegionsRegionResolver `pulumi:"resolvers"`
+	Status       string                     `pulumi:"status"`
+}
+
+// GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
+// You can construct a concrete instance of `GetRegionsRegionInput` via:
+//
+//	GetRegionsRegionArgs{...}
+type GetRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionOutput() GetRegionsRegionOutput
+	ToGetRegionsRegionOutputWithContext(context.Context) GetRegionsRegionOutput
+}
+
+type GetRegionsRegionArgs struct {
+	Capabilities pulumi.StringArrayInput            `pulumi:"capabilities"`
+	Country      pulumi.StringInput                 `pulumi:"country"`
+	Id           pulumi.StringInput                 `pulumi:"id"`
+	Label        pulumi.StringInput                 `pulumi:"label"`
+	Resolvers    GetRegionsRegionResolverArrayInput `pulumi:"resolvers"`
+	Status       pulumi.StringInput                 `pulumi:"status"`
+}
+
+func (GetRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return i.ToGetRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
+}
+
+// GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
+//
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+type GetRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput
+	ToGetRegionsRegionArrayOutputWithContext(context.Context) GetRegionsRegionArrayOutput
+}
+
+type GetRegionsRegionArray []GetRegionsRegionInput
+
+func (GetRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return i.ToGetRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
+}
+
+type GetRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegionsRegionOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Country }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsRegionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsRegionOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsRegionOutput) Resolvers() GetRegionsRegionResolverArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegion) []GetRegionsRegionResolver { return v.Resolvers }).(GetRegionsRegionResolverArrayOutput)
+}
+
+func (o GetRegionsRegionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
+		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
+	}).(GetRegionsRegionOutput)
+}
+
+type GetRegionsRegionResolver struct {
+	Ipv4 string `pulumi:"ipv4"`
+	Ipv6 string `pulumi:"ipv6"`
+}
+
+// GetRegionsRegionResolverInput is an input type that accepts GetRegionsRegionResolverArgs and GetRegionsRegionResolverOutput values.
+// You can construct a concrete instance of `GetRegionsRegionResolverInput` via:
+//
+//	GetRegionsRegionResolverArgs{...}
+type GetRegionsRegionResolverInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionResolverOutput() GetRegionsRegionResolverOutput
+	ToGetRegionsRegionResolverOutputWithContext(context.Context) GetRegionsRegionResolverOutput
+}
+
+type GetRegionsRegionResolverArgs struct {
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
+}
+
+func (GetRegionsRegionResolverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionResolver)(nil)).Elem()
+}
+
+func (i GetRegionsRegionResolverArgs) ToGetRegionsRegionResolverOutput() GetRegionsRegionResolverOutput {
+	return i.ToGetRegionsRegionResolverOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionResolverArgs) ToGetRegionsRegionResolverOutputWithContext(ctx context.Context) GetRegionsRegionResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionResolverOutput)
+}
+
+// GetRegionsRegionResolverArrayInput is an input type that accepts GetRegionsRegionResolverArray and GetRegionsRegionResolverArrayOutput values.
+// You can construct a concrete instance of `GetRegionsRegionResolverArrayInput` via:
+//
+//	GetRegionsRegionResolverArray{ GetRegionsRegionResolverArgs{...} }
+type GetRegionsRegionResolverArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionResolverArrayOutput() GetRegionsRegionResolverArrayOutput
+	ToGetRegionsRegionResolverArrayOutputWithContext(context.Context) GetRegionsRegionResolverArrayOutput
+}
+
+type GetRegionsRegionResolverArray []GetRegionsRegionResolverInput
+
+func (GetRegionsRegionResolverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegionResolver)(nil)).Elem()
+}
+
+func (i GetRegionsRegionResolverArray) ToGetRegionsRegionResolverArrayOutput() GetRegionsRegionResolverArrayOutput {
+	return i.ToGetRegionsRegionResolverArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionResolverArray) ToGetRegionsRegionResolverArrayOutputWithContext(ctx context.Context) GetRegionsRegionResolverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionResolverArrayOutput)
+}
+
+type GetRegionsRegionResolverOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionResolver)(nil)).Elem()
+}
+
+func (o GetRegionsRegionResolverOutput) ToGetRegionsRegionResolverOutput() GetRegionsRegionResolverOutput {
+	return o
+}
+
+func (o GetRegionsRegionResolverOutput) ToGetRegionsRegionResolverOutputWithContext(ctx context.Context) GetRegionsRegionResolverOutput {
+	return o
+}
+
+func (o GetRegionsRegionResolverOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegionResolver) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+func (o GetRegionsRegionResolverOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegionResolver) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+type GetRegionsRegionResolverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionResolverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegionResolver)(nil)).Elem()
+}
+
+func (o GetRegionsRegionResolverArrayOutput) ToGetRegionsRegionResolverArrayOutput() GetRegionsRegionResolverArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionResolverArrayOutput) ToGetRegionsRegionResolverArrayOutputWithContext(ctx context.Context) GetRegionsRegionResolverArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionResolverArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionResolverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegionResolver {
+		return vs[0].([]GetRegionsRegionResolver)[vs[1].(int)]
+	}).(GetRegionsRegionResolverOutput)
+}
+
 type GetStackScriptUserDefinedField struct {
 	// The default value. If not specified, this value will be used.
 	Default string `pulumi:"default"`
@@ -17500,6 +17930,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferInput)(nil)).Elem(), GetNodeBalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferArrayInput)(nil)).Elem(), GetNodeBalancerTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverInput)(nil)).Elem(), GetRegionResolverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverArrayInput)(nil)).Elem(), GetRegionResolverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverInput)(nil)).Elem(), GetRegionsRegionResolverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverArrayInput)(nil)).Elem(), GetRegionsRegionResolverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldArrayInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsFilterInput)(nil)).Elem(), GetStackScriptsFilterArgs{})
@@ -17754,6 +18192,14 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
+	pulumi.RegisterOutputType(GetRegionResolverOutput{})
+	pulumi.RegisterOutputType(GetRegionResolverArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionResolverOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionResolverArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptsFilterOutput{})
