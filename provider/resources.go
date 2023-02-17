@@ -82,14 +82,15 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "linode",
-		Description: "A Pulumi package for creating and managing linode cloud resources.",
-		Keywords:    []string{"pulumi", "linode"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-linode",
-		GitHubOrg:   "linode",
+		P:                p,
+		Name:             "linode",
+		Description:      "A Pulumi package for creating and managing linode cloud resources.",
+		Keywords:         []string{"pulumi", "linode"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-linode",
+		GitHubOrg:        "linode",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"url": {
 				Default: &tfbridge.DefaultInfo{
