@@ -115,20 +115,36 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetRegionResult
     {
+        public readonly ImmutableArray<string> Capabilities;
         /// <summary>
         /// The country the region resides in.
         /// </summary>
         public readonly string Country;
         public readonly string Id;
+        public readonly string Label;
+        public readonly ImmutableArray<Outputs.GetRegionResolverResult> Resolvers;
+        public readonly string Status;
 
         [OutputConstructor]
         private GetRegionResult(
+            ImmutableArray<string> capabilities,
+
             string country,
 
-            string id)
+            string id,
+
+            string label,
+
+            ImmutableArray<Outputs.GetRegionResolverResult> resolvers,
+
+            string status)
         {
+            Capabilities = capabilities;
             Country = country;
             Id = id;
+            Label = label;
+            Resolvers = resolvers;
+            Status = status;
         }
     }
 }
