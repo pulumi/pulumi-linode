@@ -36,13 +36,13 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.ApiVersion) {
+	if args.ApiVersion == nil {
 		args.ApiVersion = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_API_VERSION").(string))
 	}
-	if isZero(args.UaPrefix) {
+	if args.UaPrefix == nil {
 		args.UaPrefix = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_UA_PREFIX").(string))
 	}
-	if isZero(args.Url) {
+	if args.Url == nil {
 		args.Url = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_URL").(string))
 	}
 	var resource Provider
