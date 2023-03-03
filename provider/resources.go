@@ -22,6 +22,7 @@ import (
 	"github.com/linode/terraform-provider-linode/linode"
 	"github.com/pulumi/pulumi-linode/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -308,8 +309,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := prov.ComputeDefaults(tfbridge.TokensSingleModule(
-		"linode_", mainMod, tfbridge.MakeStandardToken(mainPkg)))
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule(
+		"linode_", mainMod, x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
 
 	return prov
