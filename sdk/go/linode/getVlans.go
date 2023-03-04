@@ -19,8 +19,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,7 +31,7 @@ import (
 //				Image:    pulumi.String("linode/ubuntu18.04"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-standard-1"),
-//				RootPass: pulumi.String(fmt.Sprintf("bogusPassword$")),
+//				RootPass: pulumi.String("bogusPassword$"),
 //				Interfaces: linode.InstanceInterfaceArray{
 //					&linode.InstanceInterfaceArgs{
 //						Purpose: pulumi.String("vlan"),

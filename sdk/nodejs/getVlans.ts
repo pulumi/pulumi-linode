@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     image: "linode/ubuntu18.04",
  *     region: "us-southeast",
  *     type: "g6-standard-1",
- *     rootPass: `bogusPassword$`,
+ *     rootPass: "bogusPassword$",
  *     interfaces: [{
  *         purpose: "vlan",
  *         label: "my-vlan",
@@ -93,7 +93,7 @@ export interface GetVlansResult {
  *     image: "linode/ubuntu18.04",
  *     region: "us-southeast",
  *     type: "g6-standard-1",
- *     rootPass: `bogusPassword$`,
+ *     rootPass: "bogusPassword$",
  *     interfaces: [{
  *         purpose: "vlan",
  *         label: "my-vlan",
