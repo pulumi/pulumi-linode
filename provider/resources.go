@@ -16,11 +16,13 @@ package linode
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"unicode"
 
 	"github.com/linode/terraform-provider-linode/linode"
-	"github.com/pulumi/pulumi-linode/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -176,14 +178,6 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_stackscript": {
 				Tok: makeResource(mainMod, "StackScript"),
 			},
-			"linode_token": {
-				Tok: makeResource(mainMod, "Token"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"token": {
-						CSharpName: "TokenName",
-					},
-				},
-			},
 			"linode_volume": {
 				Tok: makeResource(mainMod, "Volume"),
 			},
@@ -275,6 +269,10 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_database_postgresql":    {Tok: makeDataSource(mainMod, "getDatabasePostgresql")},
 			"linode_ipv6_range":             {Tok: makeDataSource(mainMod, "getIpv6Range")},
 			"linode_domain_zonefile":        {Tok: makeDataSource(mainMod, "getDomainZonefile")},
+			"linode_object_storage_bucket": {
+				Tok:  makeDataSource(mainMod, "getLinodeObjectStorageBucket"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -307,11 +305,17 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "Linode",
 			},
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule(
 		"linode_", mainMod, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "compute defaults failed")
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing failed")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-linode/bridge-metadata.json
+var metadata []byte

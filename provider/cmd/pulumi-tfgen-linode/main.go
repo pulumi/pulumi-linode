@@ -15,8 +15,8 @@
 package main
 
 import (
-	linode "github.com/pulumi/pulumi-linode/provider/v3"
-	"github.com/pulumi/pulumi-linode/provider/v3/pkg/version"
+	linode "github.com/pulumi/pulumi-linode/provider/v4"
+	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
