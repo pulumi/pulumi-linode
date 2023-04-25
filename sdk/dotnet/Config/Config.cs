@@ -34,7 +34,7 @@ namespace Pulumi.Linode
 
         private static readonly __Value<string?> _apiVersion = new __Value<string?>(() => __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION"));
         /// <summary>
-        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// The version of Linode API.
         /// </summary>
         public static string? ApiVersion
         {

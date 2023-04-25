@@ -22,6 +22,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -51,6 +52,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -116,19 +118,44 @@ namespace Pulumi.Linode
     public sealed class GetRegionResult
     {
         /// <summary>
+        /// A list of capabilities of this region.
+        /// </summary>
+        public readonly ImmutableArray<string> Capabilities;
+        /// <summary>
         /// The country the region resides in.
         /// </summary>
         public readonly string Country;
         public readonly string Id;
+        /// <summary>
+        /// Detailed location information for this Region, including city, state or region, and country.
+        /// </summary>
+        public readonly string Label;
+        public readonly ImmutableArray<Outputs.GetRegionResolverResult> Resolvers;
+        /// <summary>
+        /// This region’s current operational status (ok or outage).
+        /// </summary>
+        public readonly string Status;
 
         [OutputConstructor]
         private GetRegionResult(
+            ImmutableArray<string> capabilities,
+
             string country,
 
-            string id)
+            string id,
+
+            string label,
+
+            ImmutableArray<Outputs.GetRegionResolverResult> resolvers,
+
+            string status)
         {
+            Capabilities = capabilities;
             Country = country;
             Id = id;
+            Label = label;
+            Resolvers = resolvers;
+            Status = status;
         }
     }
 }

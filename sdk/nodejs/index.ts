@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccountSettingsArgs, AccountSettingsState } from "./accountSettings";
+export type AccountSettings = import("./accountSettings").AccountSettings;
+export const AccountSettings: typeof import("./accountSettings").AccountSettings = null as any;
+utilities.lazyLoad(exports, ["AccountSettings"], () => require("./accountSettings"));
+
 export { DatabaseAccessControlsArgs, DatabaseAccessControlsState } from "./databaseAccessControls";
 export type DatabaseAccessControls = import("./databaseAccessControls").DatabaseAccessControls;
 export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
@@ -58,6 +63,10 @@ export { GetAccountLoginsArgs, GetAccountLoginsResult, GetAccountLoginsOutputArg
 export const getAccountLogins: typeof import("./getAccountLogins").getAccountLogins = null as any;
 export const getAccountLoginsOutput: typeof import("./getAccountLogins").getAccountLoginsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountLogins","getAccountLoginsOutput"], () => require("./getAccountLogins"));
+
+export { GetAccountSettingsResult } from "./getAccountSettings";
+export const getAccountSettings: typeof import("./getAccountSettings").getAccountSettings = null as any;
+utilities.lazyLoad(exports, ["getAccountSettings"], () => require("./getAccountSettings"));
 
 export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
 export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
@@ -159,6 +168,11 @@ export const getKernel: typeof import("./getKernel").getKernel = null as any;
 export const getKernelOutput: typeof import("./getKernel").getKernelOutput = null as any;
 utilities.lazyLoad(exports, ["getKernel","getKernelOutput"], () => require("./getKernel"));
 
+export { GetLinodeObjectStorageBucketArgs, GetLinodeObjectStorageBucketResult, GetLinodeObjectStorageBucketOutputArgs } from "./getLinodeObjectStorageBucket";
+export const getLinodeObjectStorageBucket: typeof import("./getLinodeObjectStorageBucket").getLinodeObjectStorageBucket = null as any;
+export const getLinodeObjectStorageBucketOutput: typeof import("./getLinodeObjectStorageBucket").getLinodeObjectStorageBucketOutput = null as any;
+utilities.lazyLoad(exports, ["getLinodeObjectStorageBucket","getLinodeObjectStorageBucketOutput"], () => require("./getLinodeObjectStorageBucket"));
+
 export { GetLkeClusterArgs, GetLkeClusterResult, GetLkeClusterOutputArgs } from "./getLkeCluster";
 export const getLkeCluster: typeof import("./getLkeCluster").getLkeCluster = null as any;
 export const getLkeClusterOutput: typeof import("./getLkeCluster").getLkeClusterOutput = null as any;
@@ -201,6 +215,11 @@ export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion
 export const getRegion: typeof import("./getRegion").getRegion = null as any;
 export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegion","getRegionOutput"], () => require("./getRegion"));
+
+export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
+export const getRegions: typeof import("./getRegions").getRegions = null as any;
+export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
 
 export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
 export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
@@ -317,11 +336,6 @@ export type StackScript = import("./stackScript").StackScript;
 export const StackScript: typeof import("./stackScript").StackScript = null as any;
 utilities.lazyLoad(exports, ["StackScript"], () => require("./stackScript"));
 
-export { TokenArgs, TokenState } from "./token";
-export type Token = import("./token").Token;
-export const Token: typeof import("./token").Token = null as any;
-utilities.lazyLoad(exports, ["Token"], () => require("./token"));
-
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -346,6 +360,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "linode:index/accountSettings:AccountSettings":
+                return new AccountSettings(name, <any>undefined, { urn })
             case "linode:index/databaseAccessControls:DatabaseAccessControls":
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
             case "linode:index/databaseMongodb:DatabaseMongodb":
@@ -394,8 +410,6 @@ const _module = {
                 return new SshKey(name, <any>undefined, { urn })
             case "linode:index/stackScript:StackScript":
                 return new StackScript(name, <any>undefined, { urn })
-            case "linode:index/token:Token":
-                return new Token(name, <any>undefined, { urn })
             case "linode:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "linode:index/volume:Volume":
@@ -405,6 +419,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMongodb", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
@@ -429,7 +444,6 @@ pulumi.runtime.registerResourceModule("linode", "index/objectStorageObject", _mo
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
-pulumi.runtime.registerResourceModule("linode", "index/token", _module)
 pulumi.runtime.registerResourceModule("linode", "index/user", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
 pulumi.runtime.registerResourcePackage("linode", {

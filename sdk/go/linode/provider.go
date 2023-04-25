@@ -17,7 +17,7 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// An HTTP User-Agent Prefix to prepend in API requests.
+	// The version of Linode API.
 	ApiVersion    pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	ConfigPath    pulumi.StringPtrOutput `pulumi:"configPath"`
 	ConfigProfile pulumi.StringPtrOutput `pulumi:"configProfile"`
@@ -54,7 +54,7 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// An HTTP User-Agent Prefix to prepend in API requests.
+	// The version of Linode API.
 	ApiVersion    *string `pulumi:"apiVersion"`
 	ConfigPath    *string `pulumi:"configPath"`
 	ConfigProfile *string `pulumi:"configProfile"`
@@ -84,7 +84,7 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// An HTTP User-Agent Prefix to prepend in API requests.
+	// The version of Linode API.
 	ApiVersion    pulumi.StringPtrInput
 	ConfigPath    pulumi.StringPtrInput
 	ConfigProfile pulumi.StringPtrInput
@@ -149,7 +149,7 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// An HTTP User-Agent Prefix to prepend in API requests.
+// The version of Linode API.
 func (o ProviderOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }

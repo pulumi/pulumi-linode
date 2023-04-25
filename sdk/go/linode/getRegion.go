@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -58,9 +58,16 @@ type GetRegionArgs struct {
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
+	// A list of capabilities of this region.
+	Capabilities []string `pulumi:"capabilities"`
 	// The country the region resides in.
 	Country string `pulumi:"country"`
 	Id      string `pulumi:"id"`
+	// Detailed location information for this Region, including city, state or region, and country.
+	Label     string              `pulumi:"label"`
+	Resolvers []GetRegionResolver `pulumi:"resolvers"`
+	// This region’s current operational status (ok or outage).
+	Status string `pulumi:"status"`
 }
 
 func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
@@ -103,6 +110,11 @@ func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// A list of capabilities of this region.
+func (o GetRegionResultOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
 // The country the region resides in.
 func (o GetRegionResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Country }).(pulumi.StringOutput)
@@ -110,6 +122,20 @@ func (o GetRegionResultOutput) Country() pulumi.StringOutput {
 
 func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Detailed location information for this Region, including city, state or region, and country.
+func (o GetRegionResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetRegionResultOutput) Resolvers() GetRegionResolverArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []GetRegionResolver { return v.Resolvers }).(GetRegionResolverArrayOutput)
+}
+
+// This region’s current operational status (ok or outage).
+func (o GetRegionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func init() {

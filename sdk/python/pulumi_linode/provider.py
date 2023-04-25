@@ -30,7 +30,7 @@ class ProviderArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[str] api_version: The version of Linode API.
         :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
@@ -82,7 +82,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> Optional[pulumi.Input[str]]:
         """
-        An HTTP User-Agent Prefix to prepend in API requests.
+        The version of Linode API.
         """
         return pulumi.get(self, "api_version")
 
@@ -269,7 +269,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_version: An HTTP User-Agent Prefix to prepend in API requests.
+        :param pulumi.Input[str] api_version: The version of Linode API.
         :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
@@ -362,7 +362,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> pulumi.Output[Optional[str]]:
         """
-        An HTTP User-Agent Prefix to prepend in API requests.
+        The version of Linode API.
         """
         return pulumi.get(self, "api_version")
 

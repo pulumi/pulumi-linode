@@ -19,14 +19,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * An HTTP User-Agent Prefix to prepend in API requests.
+     * The version of Linode API.
      * 
      */
     @Import(name="apiVersion")
     private @Nullable Output<String> apiVersion;
 
     /**
-     * @return An HTTP User-Agent Prefix to prepend in API requests.
+     * @return The version of Linode API.
      * 
      */
     public Optional<Output<String>> apiVersion() {
@@ -250,7 +250,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiVersion An HTTP User-Agent Prefix to prepend in API requests.
+         * @param apiVersion The version of Linode API.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiVersion An HTTP User-Agent Prefix to prepend in API requests.
+         * @param apiVersion The version of Linode API.
          * 
          * @return builder
          * 

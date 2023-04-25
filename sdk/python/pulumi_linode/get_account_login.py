@@ -21,7 +21,7 @@ class GetAccountLoginResult:
     """
     A collection of values returned by getAccountLogin.
     """
-    def __init__(__self__, datetime=None, id=None, ip=None, restricted=None, username=None):
+    def __init__(__self__, datetime=None, id=None, ip=None, restricted=None, status=None, username=None):
         if datetime and not isinstance(datetime, str):
             raise TypeError("Expected argument 'datetime' to be a str")
         pulumi.set(__self__, "datetime", datetime)
@@ -34,6 +34,9 @@ class GetAccountLoginResult:
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")
         pulumi.set(__self__, "restricted", restricted)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
@@ -72,6 +75,11 @@ class GetAccountLoginResult:
 
     @property
     @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def username(self) -> str:
         """
         The username of the User that was logged into.
@@ -89,6 +97,7 @@ class AwaitableGetAccountLoginResult(GetAccountLoginResult):
             id=self.id,
             ip=self.ip,
             restricted=self.restricted,
+            status=self.status,
             username=self.username)
 
 
@@ -121,6 +130,7 @@ def get_account_login(id: Optional[int] = None,
         id=__ret__.id,
         ip=__ret__.ip,
         restricted=__ret__.restricted,
+        status=__ret__.status,
         username=__ret__.username)
 
 

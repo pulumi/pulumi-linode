@@ -11,7 +11,7 @@ from .. import _utilities
 
 apiVersion: Optional[str]
 """
-An HTTP User-Agent Prefix to prepend in API requests.
+The version of Linode API.
 """
 
 configPath: Optional[str]

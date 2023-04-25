@@ -52,6 +52,8 @@ import com.pulumi.linode.inputs.GetIpv6RangeArgs;
 import com.pulumi.linode.inputs.GetIpv6RangePlainArgs;
 import com.pulumi.linode.inputs.GetKernelArgs;
 import com.pulumi.linode.inputs.GetKernelPlainArgs;
+import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
+import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketPlainArgs;
 import com.pulumi.linode.inputs.GetLkeClusterArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpArgs;
@@ -66,6 +68,8 @@ import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
 import com.pulumi.linode.inputs.GetRegionArgs;
 import com.pulumi.linode.inputs.GetRegionPlainArgs;
+import com.pulumi.linode.inputs.GetRegionsArgs;
+import com.pulumi.linode.inputs.GetRegionsPlainArgs;
 import com.pulumi.linode.inputs.GetSshKeyArgs;
 import com.pulumi.linode.inputs.GetSshKeyPlainArgs;
 import com.pulumi.linode.inputs.GetStackScriptArgs;
@@ -81,6 +85,7 @@ import com.pulumi.linode.inputs.GetVolumePlainArgs;
 import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
+import com.pulumi.linode.outputs.GetAccountSettingsResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
 import com.pulumi.linode.outputs.GetDatabaseMongodbResult;
@@ -101,6 +106,7 @@ import com.pulumi.linode.outputs.GetInstanceTypesResult;
 import com.pulumi.linode.outputs.GetInstancesResult;
 import com.pulumi.linode.outputs.GetIpv6RangeResult;
 import com.pulumi.linode.outputs.GetKernelResult;
+import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
@@ -110,6 +116,7 @@ import com.pulumi.linode.outputs.GetNodeBalancerResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
+import com.pulumi.linode.outputs.GetRegionsResult;
 import com.pulumi.linode.outputs.GetSshKeyResult;
 import com.pulumi.linode.outputs.GetStackScriptResult;
 import com.pulumi.linode.outputs.GetStackScriptsResult;
@@ -833,6 +840,222 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetAccountLoginsResult> getAccountLoginsPlain(GetAccountLoginsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccountLogins:getAccountLogins", TypeShape.of(GetAccountLoginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountSettingsResult> getAccountSettings() {
+        return getAccountSettings(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain() {
+        return getAccountSettingsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountSettingsResult> getAccountSettings(InvokeArgs args) {
+        return getAccountSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args) {
+        return getAccountSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountSettingsResult> getAccountSettings(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountSettings:getAccountSettings", TypeShape.of(GetAccountSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account settings.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Linode account settings.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getAccountSettings();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountSettings:getAccountSettings", TypeShape.of(GetAccountSettingsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
@@ -6548,6 +6771,18 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getKernel:getKernel", TypeShape.of(GetKernelResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs args) {
+        return getLinodeObjectStorageBucket(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucketPlain(GetLinodeObjectStorageBucketPlainArgs args) {
+        return getLinodeObjectStorageBucketPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", TypeShape.of(GetLinodeObjectStorageBucketResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucketPlain(GetLinodeObjectStorageBucketPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", TypeShape.of(GetLinodeObjectStorageBucketResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides details about an LKE Cluster.
      * 
@@ -8051,6 +8286,318 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static Output<GetRegionsResult> getRegions() {
+        return getRegions(GetRegionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
+        return getRegionsPlain(GetRegionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
+        return getRegions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
+        return getRegionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode regions that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;status&#34;)
+     *                     .values(&#34;ok&#34;)
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .name(&#34;capabilities&#34;)
+     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `status`
+     * 
+     * * `country`
+     * 
+     * * `capabilities`
+     * 
+     */
+    public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.

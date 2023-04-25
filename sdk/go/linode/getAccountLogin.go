@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v3/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,8 @@ type GetAccountLoginResult struct {
 	// The remote IP address that requested the login.
 	Ip string `pulumi:"ip"`
 	// True if the User that was logged into was a restricted User, false otherwise.
-	Restricted bool `pulumi:"restricted"`
+	Restricted bool   `pulumi:"restricted"`
+	Status     string `pulumi:"status"`
 	// The username of the User that was logged into.
 	Username string `pulumi:"username"`
 }
@@ -124,6 +125,10 @@ func (o GetAccountLoginResultOutput) Ip() pulumi.StringOutput {
 // True if the User that was logged into was a restricted User, false otherwise.
 func (o GetAccountLoginResultOutput) Restricted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAccountLoginResult) bool { return v.Restricted }).(pulumi.BoolOutput)
+}
+
+func (o GetAccountLoginResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountLoginResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The username of the User that was logged into.

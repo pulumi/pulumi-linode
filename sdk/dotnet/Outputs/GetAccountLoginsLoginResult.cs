@@ -29,6 +29,7 @@ namespace Pulumi.Linode.Outputs
         /// True if the User that was logged into was a restricted User, false otherwise.
         /// </summary>
         public readonly bool Restricted;
+        public readonly string Status;
         /// <summary>
         /// The username of the User that was logged into.
         /// </summary>
@@ -44,12 +45,15 @@ namespace Pulumi.Linode.Outputs
 
             bool restricted,
 
+            string status,
+
             string username)
         {
             Datetime = datetime;
             Id = id;
             Ip = ip;
             Restricted = restricted;
+            Status = status;
             Username = username;
         }
     }
