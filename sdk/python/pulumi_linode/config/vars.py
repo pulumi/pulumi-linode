@@ -18,7 +18,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def api_version(self) -> Optional[str]:
         """
-        An HTTP User-Agent Prefix to prepend in API requests.
+        The version of Linode API.
         """
         return __config__.get('apiVersion') or _utilities.get_env('LINODE_API_VERSION')
 

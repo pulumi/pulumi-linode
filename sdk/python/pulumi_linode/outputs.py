@@ -126,6 +126,10 @@ __all__ = [
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerTransferResult',
     'GetProfileReferralsResult',
+    'GetRegionResolverResult',
+    'GetRegionsFilterResult',
+    'GetRegionsRegionResult',
+    'GetRegionsRegionResolverResult',
     'GetStackScriptUserDefinedFieldResult',
     'GetStackScriptsFilterResult',
     'GetStackScriptsStackscriptResult',
@@ -2815,6 +2819,7 @@ class GetAccountLoginsLoginResult(dict):
                  id: int,
                  ip: str,
                  restricted: bool,
+                 status: str,
                  username: str):
         """
         :param str datetime: When the login was initiated.
@@ -2827,6 +2832,7 @@ class GetAccountLoginsLoginResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "restricted", restricted)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "username", username)
 
     @property
@@ -2860,6 +2866,11 @@ class GetAccountLoginsLoginResult(dict):
         True if the User that was logged into was a restricted User, false otherwise.
         """
         return pulumi.get(self, "restricted")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -6535,6 +6546,170 @@ class GetProfileReferralsResult(dict):
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetRegionResolverResult(dict):
+    def __init__(__self__, *,
+                 ipv4: str,
+                 ipv6: str):
+        """
+        :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetRegionsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[str],
+                 country: str,
+                 id: str,
+                 label: str,
+                 resolvers: Sequence['outputs.GetRegionsRegionResolverResult'],
+                 status: str):
+        """
+        :param Sequence[str] capabilities: A list of capabilities of this region.
+        :param str country: The country the region resides in.
+        :param str label: Detailed location information for this Region, including city, state or region, and country.
+        :param str status: This region’s current operational status (ok or outage).
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "resolvers", resolvers)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        """
+        A list of capabilities of this region.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The country the region resides in.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Detailed location information for this Region, including city, state or region, and country.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def resolvers(self) -> Sequence['outputs.GetRegionsRegionResolverResult']:
+        return pulumi.get(self, "resolvers")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        This region’s current operational status (ok or outage).
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetRegionsRegionResolverResult(dict):
+    def __init__(__self__, *,
+                 ipv4: str,
+                 ipv6: str):
+        """
+        :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv6")
 
 
 @pulumi.output_type

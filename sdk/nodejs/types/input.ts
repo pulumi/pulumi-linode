@@ -346,6 +346,36 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetRegionsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetRegionsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetStackScriptUserDefinedField {
     /**
      * The default value. If not specified, this value will be used.

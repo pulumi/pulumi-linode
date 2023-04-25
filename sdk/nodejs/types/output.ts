@@ -138,6 +138,7 @@ export interface GetAccountLoginsLogin {
      * True if the User that was logged into was a restricted User, false otherwise.
      */
     restricted: boolean;
+    status: string;
     /**
      * The username of the User that was logged into.
      */
@@ -1388,6 +1389,64 @@ export interface GetProfileReferrals {
     pending: number;
     total: number;
     url: string;
+}
+
+export interface GetRegionResolver {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4: string;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6: string;
+}
+
+export interface GetRegionsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetRegionsRegion {
+    /**
+     * A list of capabilities of this region.
+     */
+    capabilities: string[];
+    /**
+     * The country the region resides in.
+     */
+    country: string;
+    id: string;
+    /**
+     * Detailed location information for this Region, including city, state or region, and country.
+     */
+    label: string;
+    resolvers: outputs.GetRegionsRegionResolver[];
+    /**
+     * This region’s current operational status (ok or outage).
+     */
+    status: string;
+}
+
+export interface GetRegionsRegionResolver {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4: string;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6: string;
 }
 
 export interface GetStackScriptUserDefinedField {

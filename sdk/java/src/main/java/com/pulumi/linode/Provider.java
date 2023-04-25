@@ -23,14 +23,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:linode")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * An HTTP User-Agent Prefix to prepend in API requests.
+     * The version of Linode API.
      * 
      */
     @Export(name="apiVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiVersion;
 
     /**
-     * @return An HTTP User-Agent Prefix to prepend in API requests.
+     * @return The version of Linode API.
      * 
      */
     public Output<Optional<String>> apiVersion() {

@@ -58,6 +58,7 @@ export interface GetAccountLoginResult {
      * True if the User that was logged into was a restricted User, false otherwise.
      */
     readonly restricted: boolean;
+    readonly status: string;
     /**
      * The username of the User that was logged into.
      */

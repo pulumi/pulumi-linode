@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "linode:index/accountSettings:AccountSettings":
+		r = &AccountSettings{}
 	case "linode:index/databaseAccessControls:DatabaseAccessControls":
 		r = &DatabaseAccessControls{}
 	case "linode:index/databaseMongodb:DatabaseMongodb":
@@ -68,8 +70,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SshKey{}
 	case "linode:index/stackScript:StackScript":
 		r = &StackScript{}
-	case "linode:index/token:Token":
-		r = &Token{}
 	case "linode:index/user:User":
 		r = &User{}
 	case "linode:index/volume:Volume":
@@ -102,6 +102,11 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 
 func init() {
 	version, _ := PkgVersion()
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/accountSettings",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/databaseAccessControls",
@@ -220,11 +225,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/stackScript",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"linode",
-		"index/token",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

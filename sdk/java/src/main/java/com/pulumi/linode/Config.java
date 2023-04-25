@@ -13,7 +13,7 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("linode");
 /**
- * An HTTP User-Agent Prefix to prepend in API requests.
+ * The version of Linode API.
  * 
  */
     public Optional<String> apiVersion() {

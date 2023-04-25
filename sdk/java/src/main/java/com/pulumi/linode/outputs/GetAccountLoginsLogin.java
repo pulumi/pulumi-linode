@@ -31,6 +31,7 @@ public final class GetAccountLoginsLogin {
      * 
      */
     private Boolean restricted;
+    private String status;
     /**
      * @return The username of the User that was logged into.
      * 
@@ -66,6 +67,9 @@ public final class GetAccountLoginsLogin {
     public Boolean restricted() {
         return this.restricted;
     }
+    public String status() {
+        return this.status;
+    }
     /**
      * @return The username of the User that was logged into.
      * 
@@ -87,6 +91,7 @@ public final class GetAccountLoginsLogin {
         private Integer id;
         private String ip;
         private Boolean restricted;
+        private String status;
         private String username;
         public Builder() {}
         public Builder(GetAccountLoginsLogin defaults) {
@@ -95,6 +100,7 @@ public final class GetAccountLoginsLogin {
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.restricted = defaults.restricted;
+    	      this.status = defaults.status;
     	      this.username = defaults.username;
         }
 
@@ -119,6 +125,11 @@ public final class GetAccountLoginsLogin {
             return this;
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
@@ -129,6 +140,7 @@ public final class GetAccountLoginsLogin {
             o.id = id;
             o.ip = ip;
             o.restricted = restricted;
+            o.status = status;
             o.username = username;
             return o;
         }

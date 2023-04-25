@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -48,10 +50,23 @@ export interface GetRegionArgs {
  */
 export interface GetRegionResult {
     /**
+     * A list of capabilities of this region.
+     */
+    readonly capabilities: string[];
+    /**
      * The country the region resides in.
      */
     readonly country: string;
     readonly id: string;
+    /**
+     * Detailed location information for this Region, including city, state or region, and country.
+     */
+    readonly label: string;
+    readonly resolvers: outputs.GetRegionResolver[];
+    /**
+     * This region’s current operational status (ok or outage).
+     */
+    readonly status: string;
 }
 /**
  * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).

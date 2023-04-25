@@ -63,6 +63,7 @@ __all__ = [
     'GetImagesFilterArgs',
     'GetInstanceTypesFilterArgs',
     'GetInstancesFilterArgs',
+    'GetRegionsFilterArgs',
     'GetStackScriptUserDefinedFieldArgs',
     'GetStackScriptsFilterArgs',
     'GetUserDomainGrantArgs',
@@ -3239,6 +3240,59 @@ class GetInstancesFilterArgs:
     def name(self) -> str:
         """
         The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetRegionsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 

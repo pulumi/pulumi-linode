@@ -19,7 +19,7 @@ namespace Pulumi.Linode
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// The version of Linode API.
         /// </summary>
         [Output("apiVersion")]
         public Output<string?> ApiVersion { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.Linode
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An HTTP User-Agent Prefix to prepend in API requests.
+        /// The version of Linode API.
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }

@@ -24,6 +24,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 

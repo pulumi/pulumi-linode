@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-// An HTTP User-Agent Prefix to prepend in API requests.
+// The version of Linode API.
 func GetApiVersion(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "linode:apiVersion")
 	if err == nil {

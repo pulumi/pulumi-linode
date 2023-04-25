@@ -22,6 +22,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -51,6 +52,7 @@ namespace Pulumi.Linode
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Linode = Pulumi.Linode;
         /// 
@@ -119,6 +121,7 @@ namespace Pulumi.Linode
         /// True if the User that was logged into was a restricted User, false otherwise.
         /// </summary>
         public readonly bool Restricted;
+        public readonly string Status;
         /// <summary>
         /// The username of the User that was logged into.
         /// </summary>
@@ -134,12 +137,15 @@ namespace Pulumi.Linode
 
             bool restricted,
 
+            string status,
+
             string username)
         {
             Datetime = datetime;
             Id = id;
             Ip = ip;
             Restricted = restricted;
+            Status = status;
             Username = username;
         }
     }

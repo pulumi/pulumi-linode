@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("linode");
 
 /**
- * An HTTP User-Agent Prefix to prepend in API requests.
+ * The version of Linode API.
  */
 export declare const apiVersion: string | undefined;
 Object.defineProperty(exports, "apiVersion", {

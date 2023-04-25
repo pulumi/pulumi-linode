@@ -26,7 +26,7 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * An HTTP User-Agent Prefix to prepend in API requests.
+     * The version of Linode API.
      */
     public readonly apiVersion!: pulumi.Output<string | undefined>;
     public readonly configPath!: pulumi.Output<string | undefined>;
@@ -80,7 +80,7 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * An HTTP User-Agent Prefix to prepend in API requests.
+     * The version of Linode API.
      */
     apiVersion?: pulumi.Input<string>;
     configPath?: pulumi.Input<string>;
