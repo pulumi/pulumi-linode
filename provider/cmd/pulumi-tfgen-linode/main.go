@@ -16,11 +16,10 @@ package main
 
 import (
 	linode "github.com/pulumi/pulumi-linode/provider/v4"
-	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("linode", version.Version, linode.Provider())
+	tfgen.MainWithMuxer("linode", linode.Provider())
 }

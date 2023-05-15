@@ -20,8 +20,7 @@ import (
 	_ "embed"
 
 	linode "github.com/pulumi/pulumi-linode/provider/v4"
-	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
@@ -29,5 +28,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("linode", version.Version, linode.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer("linode", linode.Provider(), pulumiSchema)
 }
