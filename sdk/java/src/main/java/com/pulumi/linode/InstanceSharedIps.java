@@ -21,7 +21,7 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      * The set of IPs to share with the Linode.
      * 
      */
-    @Export(name="addresses", type=List.class, parameters={String.class})
+    @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
@@ -35,7 +35,7 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      * The ID of the Linode to share the IPs to.
      * 
      */
-    @Export(name="linodeId", type=Integer.class, parameters={})
+    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output<Integer> linodeId;
 
     /**

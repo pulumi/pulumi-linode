@@ -92,7 +92,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Configuration options for alert triggers on this Linode.
      * 
      */
-    @Export(name="alerts", type=InstanceAlerts.class, parameters={})
+    @Export(name="alerts", refs={InstanceAlerts.class}, tree="[0]")
     private Output<InstanceAlerts> alerts;
 
     /**
@@ -106,7 +106,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="authorizedKeys", type=List.class, parameters={String.class})
+    @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
@@ -120,7 +120,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="authorizedUsers", type=List.class, parameters={String.class})
+    @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
@@ -134,7 +134,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="backupId", type=Integer.class, parameters={})
+    @Export(name="backupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupId;
 
     /**
@@ -148,7 +148,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Information about this Linode&#39;s backups status.
      * 
      */
-    @Export(name="backups", type=InstanceBackups.class, parameters={})
+    @Export(name="backups", refs={InstanceBackups.class}, tree="[0]")
     private Output<InstanceBackups> backups;
 
     /**
@@ -162,7 +162,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      * 
      */
-    @Export(name="backupsEnabled", type=Boolean.class, parameters={})
+    @Export(name="backupsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> backupsEnabled;
 
     /**
@@ -176,7 +176,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
      * 
      */
-    @Export(name="bootConfigLabel", type=String.class, parameters={})
+    @Export(name="bootConfigLabel", refs={String.class}, tree="[0]")
     private Output<String> bootConfigLabel;
 
     /**
@@ -192,7 +192,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
      */
-    @Export(name="booted", type=Boolean.class, parameters={})
+    @Export(name="booted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> booted;
 
     /**
@@ -208,7 +208,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      */
-    @Export(name="configs", type=List.class, parameters={InstanceConfig.class})
+    @Export(name="configs", refs={List.class,InstanceConfig.class}, tree="[0,1]")
     private Output<List<InstanceConfig>> configs;
 
     /**
@@ -218,7 +218,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceConfig>> configs() {
         return this.configs;
     }
-    @Export(name="disks", type=List.class, parameters={InstanceDisk.class})
+    @Export(name="disks", refs={List.class,InstanceDisk.class}, tree="[0,1]")
     private Output<List<InstanceDisk>> disks;
 
     public Output<List<InstanceDisk>> disks() {
@@ -228,7 +228,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The display group of the Linode instance.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> group;
 
     /**
@@ -242,7 +242,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Linode’s host machine, as a UUID.
      * 
      */
-    @Export(name="hostUuid", type=String.class, parameters={})
+    @Export(name="hostUuid", refs={String.class}, tree="[0]")
     private Output<String> hostUuid;
 
     /**
@@ -256,7 +256,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="image", type=String.class, parameters={})
+    @Export(name="image", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> image;
 
     /**
@@ -271,7 +271,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * must be declared in the config block.
      * 
      */
-    @Export(name="interfaces", type=List.class, parameters={InstanceInterface.class})
+    @Export(name="interfaces", refs={List.class,InstanceInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceInterface>> interfaces;
 
     /**
@@ -286,7 +286,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A string containing the Linode&#39;s public IP address.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -300,7 +300,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      * 
      */
-    @Export(name="ipv4s", type=List.class, parameters={String.class})
+    @Export(name="ipv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv4s;
 
     /**
@@ -314,7 +314,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      * 
      */
-    @Export(name="ipv6", type=String.class, parameters={})
+    @Export(name="ipv6", refs={String.class}, tree="[0]")
     private Output<String> ipv6;
 
     /**
@@ -328,7 +328,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -342,7 +342,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.
      * 
      */
-    @Export(name="privateIp", type=Boolean.class, parameters={})
+    @Export(name="privateIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> privateIp;
 
     /**
@@ -356,7 +356,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> privateIpAddress;
 
     /**
@@ -370,7 +370,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -394,7 +394,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
-    @Export(name="resizeDisk", type=Boolean.class, parameters={})
+    @Export(name="resizeDisk", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resizeDisk;
 
     /**
@@ -418,7 +418,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
      * 
      */
-    @Export(name="rootPass", type=String.class, parameters={})
+    @Export(name="rootPass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootPass;
 
     /**
@@ -432,7 +432,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
      */
-    @Export(name="sharedIpv4s", type=List.class, parameters={String.class})
+    @Export(name="sharedIpv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sharedIpv4s;
 
     /**
@@ -446,7 +446,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Information about the resources available to this Linode.
      * 
      */
-    @Export(name="specs", type=InstanceSpecs.class, parameters={})
+    @Export(name="specs", refs={InstanceSpecs.class}, tree="[0]")
     private Output<InstanceSpecs> specs;
 
     /**
@@ -460,7 +460,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="stackscriptData", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> stackscriptData;
 
     /**
@@ -474,7 +474,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
      * 
      */
-    @Export(name="stackscriptId", type=Integer.class, parameters={})
+    @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
@@ -488,7 +488,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -502,7 +502,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      * 
      */
-    @Export(name="swapSize", type=Integer.class, parameters={})
+    @Export(name="swapSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> swapSize;
 
     /**
@@ -516,7 +516,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -532,7 +532,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -548,7 +548,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
      * 
      */
-    @Export(name="watchdogEnabled", type=Boolean.class, parameters={})
+    @Export(name="watchdogEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> watchdogEnabled;
 
     /**

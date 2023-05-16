@@ -83,7 +83,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * When the Firewall Device was last created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -97,7 +97,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * The unique ID of the entity to attach.
      * 
      */
-    @Export(name="entityId", type=Integer.class, parameters={})
+    @Export(name="entityId", refs={Integer.class}, tree="[0]")
     private Output<Integer> entityId;
 
     /**
@@ -111,7 +111,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * The type of the entity to attach. (default: `linode`)
      * 
      */
-    @Export(name="entityType", type=String.class, parameters={})
+    @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entityType;
 
     /**
@@ -125,7 +125,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * The unique ID of the target Firewall.
      * 
      */
-    @Export(name="firewallId", type=Integer.class, parameters={})
+    @Export(name="firewallId", refs={Integer.class}, tree="[0]")
     private Output<Integer> firewallId;
 
     /**
@@ -139,7 +139,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * When the Firewall Device was last updated.
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
