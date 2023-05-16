@@ -120,6 +120,10 @@ type LkeCluster struct {
 	// Additional nested attributes:
 	Pools LkeClusterPoolArrayOutput `pulumi:"pools"`
 	// This Kubernetes cluster's location.
+	//
+	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	//
+	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -187,6 +191,10 @@ type lkeClusterState struct {
 	// Additional nested attributes:
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
+	//
+	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	//
+	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region *string `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
@@ -210,6 +218,10 @@ type LkeClusterState struct {
 	// Additional nested attributes:
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
+	//
+	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	//
+	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringPtrInput
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput
@@ -231,6 +243,10 @@ type lkeClusterArgs struct {
 	// Additional nested attributes:
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
+	//
+	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	//
+	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region string `pulumi:"region"`
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -247,6 +263,10 @@ type LkeClusterArgs struct {
 	// Additional nested attributes:
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
+	//
+	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	//
+	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringInput
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -375,6 +395,10 @@ func (o LkeClusterOutput) Pools() LkeClusterPoolArrayOutput {
 }
 
 // This Kubernetes cluster's location.
+//
+// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+//
+// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 func (o LkeClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

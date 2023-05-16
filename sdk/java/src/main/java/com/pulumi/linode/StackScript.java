@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -146,14 +145,18 @@ public class StackScript extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
     @Export(name="images", type=List.class, parameters={String.class})
     private Output<List<String>> images;
 
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
     public Output<List<String>> images() {
@@ -164,14 +167,14 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="isPublic", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> isPublic;
+    private Output<Boolean> isPublic;
 
     /**
      * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
      * 
      */
-    public Output<Optional<Boolean>> isPublic() {
-        return Codegen.optional(this.isPublic);
+    public Output<Boolean> isPublic() {
+        return this.isPublic;
     }
     /**
      * The StackScript&#39;s label is for display purposes only.
@@ -192,14 +195,14 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="revNote", type=String.class, parameters={})
-    private Output</* @Nullable */ String> revNote;
+    private Output<String> revNote;
 
     /**
      * @return This field allows you to add notes for the set of revisions made to this StackScript.
      * 
      */
-    public Output<Optional<String>> revNote() {
-        return Codegen.optional(this.revNote);
+    public Output<String> revNote() {
+        return this.revNote;
     }
     /**
      * The script to execute when provisioning a new Linode with this StackScript.

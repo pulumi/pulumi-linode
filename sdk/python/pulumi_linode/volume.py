@@ -25,6 +25,8 @@ class VolumeArgs:
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+               
+               - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -70,6 +72,8 @@ class VolumeArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+
+        - - -
         """
         return pulumi.get(self, "region")
 
@@ -131,6 +135,8 @@ class _VolumeState:
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+               
+               - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
@@ -194,6 +200,8 @@ class _VolumeState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+
+        - - -
         """
         return pulumi.get(self, "region")
 
@@ -332,6 +340,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+               
+               - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
@@ -476,6 +486,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] label: The label of the Linode Volume
         :param pulumi.Input[int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+               
+               - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
@@ -524,6 +536,8 @@ class Volume(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+
+        - - -
         """
         return pulumi.get(self, "region")
 

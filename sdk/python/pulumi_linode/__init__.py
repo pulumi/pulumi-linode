@@ -7,7 +7,6 @@ import typing
 # Export this package's modules as members:
 from .account_settings import *
 from .database_access_controls import *
-from .database_mongodb import *
 from .database_mysql import *
 from .database_postgresql import *
 from .domain import *
@@ -20,7 +19,6 @@ from .get_account_logins import *
 from .get_account_settings import *
 from .get_database_backups import *
 from .get_database_engines import *
-from .get_database_mongodb import *
 from .get_database_mysql import *
 from .get_database_mysql_backups import *
 from .get_database_postgresql import *
@@ -72,6 +70,7 @@ from .provider import *
 from .rdns import *
 from .ssh_key import *
 from .stack_script import *
+from .token import *
 from .user import *
 from .volume import *
 from ._inputs import *
@@ -101,14 +100,6 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/databaseAccessControls:DatabaseAccessControls": "DatabaseAccessControls"
-  }
- },
- {
-  "pkg": "linode",
-  "mod": "index/databaseMongodb",
-  "fqn": "pulumi_linode",
-  "classes": {
-   "linode:index/databaseMongodb:DatabaseMongodb": "DatabaseMongodb"
   }
  },
  {
@@ -285,6 +276,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/stackScript:StackScript": "StackScript"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/token",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/token:Token": "Token"
   }
  },
  {

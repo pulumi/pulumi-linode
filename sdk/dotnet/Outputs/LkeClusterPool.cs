@@ -16,6 +16,8 @@ namespace Pulumi.Linode.Outputs
         public readonly Outputs.LkeClusterPoolAutoscaler? Autoscaler;
         /// <summary>
         /// The number of nodes in the Node Pool.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public readonly int Count;
         /// <summary>

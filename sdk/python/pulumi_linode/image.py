@@ -25,10 +25,20 @@ class ImageArgs:
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[str] description: A detailed description of this Image.
+               
+               - - -
+               
+               The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+               
+               - - -
+               
+               > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+               
+               The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
         pulumi.set(__self__, "label", label)
@@ -62,6 +72,10 @@ class ImageArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A detailed description of this Image.
+
+        - - -
+
+        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "description")
 
@@ -110,6 +124,12 @@ class ImageArgs:
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the Linode that this Image will be created from.
+
+        - - -
+
+        > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+
+        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 
@@ -155,6 +175,10 @@ class _ImageState:
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
+               
+               - - -
+               
+               The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
@@ -162,6 +186,12 @@ class _ImageState:
         :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+               
+               - - -
+               
+               > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+               
+               The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The current status of this Image.
@@ -242,6 +272,10 @@ class _ImageState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A detailed description of this Image.
+
+        - - -
+
+        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "description")
 
@@ -326,6 +360,12 @@ class _ImageState:
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the Linode that this Image will be created from.
+
+        - - -
+
+        > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+
+        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 
@@ -423,11 +463,21 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of this Image.
+               
+               - - -
+               
+               The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+               
+               - - -
+               
+               > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+               
+               The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
         ...
@@ -535,6 +585,10 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
+               
+               - - -
+               
+               The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
         :param pulumi.Input[str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
@@ -542,6 +596,12 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[bool] is_public: True if the Image is public.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
+               
+               - - -
+               
+               > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+               
+               The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The current status of this Image.
@@ -599,6 +659,10 @@ class Image(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A detailed description of this Image.
+
+        - - -
+
+        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "description")
 
@@ -655,6 +719,12 @@ class Image(pulumi.CustomResource):
     def linode_id(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the Linode that this Image will be created from.
+
+        - - -
+
+        > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+
+        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 

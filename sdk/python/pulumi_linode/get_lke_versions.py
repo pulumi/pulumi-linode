@@ -33,7 +33,7 @@ class GetLkeVersionsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
         """
         return pulumi.get(self, "id")
 

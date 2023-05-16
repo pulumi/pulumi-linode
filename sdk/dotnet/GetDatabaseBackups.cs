@@ -37,7 +37,7 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// Get information about all automatic MongoDB Database Backups:
+        /// Get information about all automatic PostgreSQL Database Backups:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         ///     var auto_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
         ///         DatabaseId = 12345,
-        ///         DatabaseType = "mongodb",
+        ///         DatabaseType = "postgresql",
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetDatabaseBackupsFilterInputArgs
@@ -98,7 +98,7 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// Get information about all automatic MongoDB Database Backups:
+        /// Get information about all automatic PostgreSQL Database Backups:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -111,7 +111,7 @@ namespace Pulumi.Linode
         ///     var auto_backups = Linode.GetDatabaseBackups.Invoke(new()
         ///     {
         ///         DatabaseId = 12345,
-        ///         DatabaseType = "mongodb",
+        ///         DatabaseType = "postgresql",
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetDatabaseBackupsFilterInputArgs
@@ -144,7 +144,7 @@ namespace Pulumi.Linode
         public int DatabaseId { get; set; }
 
         /// <summary>
-        /// The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+        /// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
         /// </summary>
         [Input("databaseType", required: true)]
         public string DatabaseType { get; set; } = null!;
@@ -159,6 +159,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -190,7 +192,7 @@ namespace Pulumi.Linode
         public Input<int> DatabaseId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+        /// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
         /// </summary>
         [Input("databaseType", required: true)]
         public Input<string> DatabaseType { get; set; } = null!;
@@ -205,6 +207,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

@@ -30,8 +30,8 @@ type GetInstanceBackupsArgs struct {
 type GetInstanceBackupsResult struct {
 	Automatics []GetInstanceBackupsAutomatic `pulumi:"automatics"`
 	Currents   []GetInstanceBackupsCurrent   `pulumi:"currents"`
-	// The provider-assigned unique ID for this managed resource.
-	Id           string                         `pulumi:"id"`
+	// The unique ID of this Backup.
+	Id           int                            `pulumi:"id"`
 	InProgresses []GetInstanceBackupsInProgress `pulumi:"inProgresses"`
 	LinodeId     int                            `pulumi:"linodeId"`
 }
@@ -82,9 +82,9 @@ func (o GetInstanceBackupsResultOutput) Currents() GetInstanceBackupsCurrentArra
 	return o.ApplyT(func(v GetInstanceBackupsResult) []GetInstanceBackupsCurrent { return v.Currents }).(GetInstanceBackupsCurrentArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o GetInstanceBackupsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceBackupsResult) string { return v.Id }).(pulumi.StringOutput)
+// The unique ID of this Backup.
+func (o GetInstanceBackupsResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBackupsResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetInstanceBackupsResultOutput) InProgresses() GetInstanceBackupsInProgressArrayOutput {

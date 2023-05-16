@@ -95,12 +95,16 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The IP addresses representing the master DNS for this Domain.
      * 
+     * ***
+     * 
      */
     @Import(name="masterIps")
     private @Nullable Output<List<String>> masterIps;
 
     /**
      * @return The IP addresses representing the master DNS for this Domain.
+     * 
+     * ***
      * 
      */
     public Optional<Output<List<String>>> masterIps() {
@@ -366,6 +370,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterIps The IP addresses representing the master DNS for this Domain.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -377,6 +383,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterIps The IP addresses representing the master DNS for this Domain.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -386,6 +394,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param masterIps The IP addresses representing the master DNS for this Domain.
+         * 
+         * ***
          * 
          * @return builder
          * 

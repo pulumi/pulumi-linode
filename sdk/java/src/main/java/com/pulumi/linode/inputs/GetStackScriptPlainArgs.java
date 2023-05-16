@@ -4,12 +4,8 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetStackScriptUserDefinedField;
-import java.lang.Integer;
-import java.util.List;
+import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetStackScriptPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,36 +17,20 @@ public final class GetStackScriptPlainArgs extends com.pulumi.resources.InvokeAr
      * 
      */
     @Import(name="id", required=true)
-    private Integer id;
+    private String id;
 
     /**
      * @return The unique numeric ID of the StackScript to query.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
-    }
-
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     * 
-     */
-    @Import(name="userDefinedFields")
-    private @Nullable List<GetStackScriptUserDefinedField> userDefinedFields;
-
-    /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     * 
-     */
-    public Optional<List<GetStackScriptUserDefinedField>> userDefinedFields() {
-        return Optional.ofNullable(this.userDefinedFields);
     }
 
     private GetStackScriptPlainArgs() {}
 
     private GetStackScriptPlainArgs(GetStackScriptPlainArgs $) {
         this.id = $.id;
-        this.userDefinedFields = $.userDefinedFields;
     }
 
     public static Builder builder() {
@@ -77,30 +57,9 @@ public final class GetStackScriptPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             $.id = id;
             return this;
-        }
-
-        /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userDefinedFields(@Nullable List<GetStackScriptUserDefinedField> userDefinedFields) {
-            $.userDefinedFields = userDefinedFields;
-            return this;
-        }
-
-        /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userDefinedFields(GetStackScriptUserDefinedField... userDefinedFields) {
-            return userDefinedFields(List.of(userDefinedFields));
         }
 
         public GetStackScriptPlainArgs build() {

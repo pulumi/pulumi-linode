@@ -45,10 +45,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["typeIds"] = new[]
-        ///         {
-        ///             specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["typeIds"] = specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -67,10 +64,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["typeIds"] = new[]
-        ///         {
-        ///             all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["typeIds"] = all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -131,10 +125,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["typeIds"] = new[]
-        ///         {
-        ///             specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["typeIds"] = specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -153,10 +144,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["typeIds"] = new[]
-        ///         {
-        ///             all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["typeIds"] = all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```

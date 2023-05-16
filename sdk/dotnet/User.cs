@@ -148,6 +148,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
+        /// 
+        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Output("restricted")]
         public Output<bool?> Restricted { get; private set; } = null!;
@@ -314,6 +318,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
+        /// 
+        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }
@@ -442,6 +450,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
+        /// 
+        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }

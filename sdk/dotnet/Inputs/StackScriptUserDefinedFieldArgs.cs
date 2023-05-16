@@ -15,38 +15,38 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The default value. If not specified, this value will be used.
         /// </summary>
-        [Input("default")]
-        public Input<string>? Default { get; set; }
+        [Input("default", required: true)]
+        public Input<string> Default { get; set; } = null!;
 
         /// <summary>
         /// An example value for the field.
         /// </summary>
-        [Input("example")]
-        public Input<string>? Example { get; set; }
+        [Input("example", required: true)]
+        public Input<string> Example { get; set; } = null!;
 
         /// <summary>
         /// The StackScript's label is for display purposes only.
         /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
 
         /// <summary>
         /// A list of acceptable values for the field in any quantity, combination or order.
         /// </summary>
-        [Input("manyOf")]
-        public Input<string>? ManyOf { get; set; }
+        [Input("manyOf", required: true)]
+        public Input<string> ManyOf { get; set; } = null!;
 
         /// <summary>
         /// The name of the field.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// A list of acceptable single values for the field.
         /// </summary>
-        [Input("oneOf")]
-        public Input<string>? OneOf { get; set; }
+        [Input("oneOf", required: true)]
+        public Input<string> OneOf { get; set; } = null!;
 
         public StackScriptUserDefinedFieldArgs()
         {

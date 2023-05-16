@@ -12,6 +12,76 @@ import (
 
 // Provides information about Linode images that match a set of filters.
 //
+// ## Example Usage
+//
+// Get information about all Linode images with a certain label and visibility:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			specific_images, err := linode.GetImages(ctx, &linode.GetImagesArgs{
+//				Filters: []linode.GetImagesFilter{
+//					{
+//						Name: "label",
+//						Values: []string{
+//							"Debian 11",
+//						},
+//					},
+//					{
+//						Name: "is_public",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("imageId", specific_images.Images[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode images associated with the current token:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all_images, err := linode.GetImages(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range all_images.Images {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("imageIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Filterable Fields
 //
 // * `createdBy`
@@ -44,6 +114,8 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 type GetImagesArgs struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -79,6 +151,8 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 type GetImagesOutputArgs struct {
 	Filters GetImagesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

@@ -62,6 +62,8 @@ export interface GetDatabaseMysqlBackupsArgs {
     filters?: inputs.GetDatabaseMysqlBackupsFilter[];
     /**
      * If true, only the latest backup will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -137,6 +139,8 @@ export interface GetDatabaseMysqlBackupsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseMysqlBackupsFilterArgs>[]>;
     /**
      * If true, only the latest backup will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

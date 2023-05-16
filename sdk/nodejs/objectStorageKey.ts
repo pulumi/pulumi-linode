@@ -58,6 +58,8 @@ export class ObjectStorageKey extends pulumi.CustomResource {
     public readonly bucketAccesses!: pulumi.Output<outputs.ObjectStorageKeyBucketAccess[] | undefined>;
     /**
      * The label given to this key. For display purposes only.
+     *
+     * - - -
      */
     public readonly label!: pulumi.Output<string>;
     /**
@@ -119,6 +121,8 @@ export interface ObjectStorageKeyState {
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
+     *
+     * - - -
      */
     label?: pulumi.Input<string>;
     /**
@@ -141,6 +145,8 @@ export interface ObjectStorageKeyArgs {
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
+     *
+     * - - -
      */
     label: pulumi.Input<string>;
 }

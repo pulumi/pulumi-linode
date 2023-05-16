@@ -153,6 +153,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -193,6 +195,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

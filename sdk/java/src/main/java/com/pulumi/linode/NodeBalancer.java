@@ -156,12 +156,16 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      * 
+     * ***
+     * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
      * @return The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+     * 
+     * ***
      * 
      */
     public Output<String> region() {

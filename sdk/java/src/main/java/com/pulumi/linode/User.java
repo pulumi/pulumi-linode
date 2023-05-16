@@ -250,12 +250,20 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
+     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
+     * 
      */
     @Export(name="restricted", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> restricted;
 
     /**
      * @return If true, this user will only have explicit permissions granted.
+     * 
+     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
      * 
      */
     public Output<Optional<Boolean>> restricted() {

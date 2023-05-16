@@ -41,7 +41,7 @@ import (
 //
 // ```
 //
-// Get information about all automatic MongoDB Database Backups:
+// Get information about all automatic PostgreSQL Database Backups:
 //
 // ```go
 // package main
@@ -57,7 +57,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetDatabaseBackups(ctx, &linode.GetDatabaseBackupsArgs{
 //				DatabaseId:   12345,
-//				DatabaseType: "mongodb",
+//				DatabaseType: "postgresql",
 //				Filters: []linode.GetDatabaseBackupsFilter{
 //					{
 //						Name: "type",
@@ -88,10 +88,12 @@ func GetDatabaseBackups(ctx *pulumi.Context, args *GetDatabaseBackupsArgs, opts 
 type GetDatabaseBackupsArgs struct {
 	// The ID of the database to retrieve backups for.
 	DatabaseId int `pulumi:"databaseId"`
-	// The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
 	DatabaseType string                     `pulumi:"databaseType"`
 	Filters      []GetDatabaseBackupsFilter `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -129,10 +131,12 @@ func GetDatabaseBackupsOutput(ctx *pulumi.Context, args GetDatabaseBackupsOutput
 type GetDatabaseBackupsOutputArgs struct {
 	// The ID of the database to retrieve backups for.
 	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
-	// The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringInput                 `pulumi:"databaseType"`
 	Filters      GetDatabaseBackupsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

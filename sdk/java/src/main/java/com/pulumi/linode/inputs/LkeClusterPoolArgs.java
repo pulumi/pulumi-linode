@@ -29,12 +29,16 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The number of nodes in the Node Pool.
      * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
      */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
     /**
      * @return The number of nodes in the Node Pool.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Output<Integer> count() {
@@ -118,6 +122,8 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param count The number of nodes in the Node Pool.
          * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
          * @return builder
          * 
          */
@@ -128,6 +134,8 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param count The number of nodes in the Node Pool.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 

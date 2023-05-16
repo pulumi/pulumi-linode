@@ -125,6 +125,10 @@ type ObjectStorageBucket struct {
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolOutput `pulumi:"versioning"`
 }
 
@@ -183,6 +187,10 @@ type objectStorageBucketState struct {
 	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning *bool `pulumi:"versioning"`
 }
 
@@ -207,6 +215,10 @@ type ObjectStorageBucketState struct {
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolPtrInput
 }
 
@@ -232,6 +244,10 @@ type objectStorageBucketArgs struct {
 	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning *bool `pulumi:"versioning"`
 }
 
@@ -254,6 +270,10 @@ type ObjectStorageBucketArgs struct {
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+	//
+	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolPtrInput
 }
 
@@ -391,6 +411,10 @@ func (o ObjectStorageBucketOutput) SecretKey() pulumi.StringPtrOutput {
 }
 
 // Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+//
+// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+//
+// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 func (o ObjectStorageBucketOutput) Versioning() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolOutput { return v.Versioning }).(pulumi.BoolOutput)
 }

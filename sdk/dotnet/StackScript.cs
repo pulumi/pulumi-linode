@@ -99,7 +99,9 @@ namespace Pulumi.Linode
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// 
+        /// - - -
         /// </summary>
         [Output("images")]
         public Output<ImmutableArray<string>> Images { get; private set; } = null!;
@@ -108,7 +110,7 @@ namespace Pulumi.Linode
         /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         /// </summary>
         [Output("isPublic")]
-        public Output<bool?> IsPublic { get; private set; } = null!;
+        public Output<bool> IsPublic { get; private set; } = null!;
 
         /// <summary>
         /// The StackScript's label is for display purposes only.
@@ -120,7 +122,7 @@ namespace Pulumi.Linode
         /// This field allows you to add notes for the set of revisions made to this StackScript.
         /// </summary>
         [Output("revNote")]
-        public Output<string?> RevNote { get; private set; } = null!;
+        public Output<string> RevNote { get; private set; } = null!;
 
         /// <summary>
         /// The script to execute when provisioning a new Linode with this StackScript.
@@ -208,7 +210,9 @@ namespace Pulumi.Linode
         private InputList<string>? _images;
 
         /// <summary>
-        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<string> Images
         {
@@ -239,18 +243,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
-
-        [Input("userDefinedFields")]
-        private InputList<Inputs.StackScriptUserDefinedFieldArgs>? _userDefinedFields;
-
-        /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-        /// </summary>
-        public InputList<Inputs.StackScriptUserDefinedFieldArgs> UserDefinedFields
-        {
-            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.StackScriptUserDefinedFieldArgs>());
-            set => _userDefinedFields = value;
-        }
 
         public StackScriptArgs()
         {
@@ -288,7 +280,9 @@ namespace Pulumi.Linode
         private InputList<string>? _images;
 
         /// <summary>
-        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<string> Images
         {

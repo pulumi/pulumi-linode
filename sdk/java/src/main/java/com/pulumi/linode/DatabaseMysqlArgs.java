@@ -112,12 +112,20 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
      * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * 
      */
     @Import(name="replicationType")
     private @Nullable Output<String> replicationType;
 
     /**
      * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
      * 
      */
     public Optional<Output<String>> replicationType() {
@@ -127,12 +135,16 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * 
      */
     @Import(name="sslConnection")
     private @Nullable Output<Boolean> sslConnection;
 
     /**
      * @return Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Optional<Output<Boolean>> sslConnection() {
@@ -142,12 +154,16 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
+     * ***
+     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
+     * 
+     * ***
      * 
      */
     public Output<String> type() {
@@ -341,6 +357,10 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
          * 
+         * * Must be `none` for a single node cluster.
+         * 
+         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * 
          * @return builder
          * 
          */
@@ -352,6 +372,10 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
          * 
+         * * Must be `none` for a single node cluster.
+         * 
+         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * 
          * @return builder
          * 
          */
@@ -361,6 +385,8 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslConnection Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+         * 
+         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
          * 
@@ -373,6 +399,8 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sslConnection Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
          * 
+         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+         * 
          * @return builder
          * 
          */
@@ -382,6 +410,8 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -393,6 +423,8 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * Get information about all automatic MongoDB Database Backups:
+ * Get information about all automatic PostgreSQL Database Backups:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * const auto-backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
- *     databaseType: "mongodb",
+ *     databaseType: "postgresql",
  *     filters: [{
  *         name: "type",
  *         values: ["auto"],
@@ -61,12 +61,14 @@ export interface GetDatabaseBackupsArgs {
      */
     databaseId: number;
     /**
-     * The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      */
     databaseType: string;
     filters?: inputs.GetDatabaseBackupsFilter[];
     /**
      * If true, only the latest backup will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -112,7 +114,7 @@ export interface GetDatabaseBackupsResult {
  * });
  * ```
  *
- * Get information about all automatic MongoDB Database Backups:
+ * Get information about all automatic PostgreSQL Database Backups:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,7 +122,7 @@ export interface GetDatabaseBackupsResult {
  *
  * const auto-backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
- *     databaseType: "mongodb",
+ *     databaseType: "postgresql",
  *     filters: [{
  *         name: "type",
  *         values: ["auto"],
@@ -141,12 +143,14 @@ export interface GetDatabaseBackupsOutputArgs {
      */
     databaseId: pulumi.Input<number>;
     /**
-     * The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      */
     databaseType: pulumi.Input<string>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseBackupsFilterArgs>[]>;
     /**
      * If true, only the latest backup will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

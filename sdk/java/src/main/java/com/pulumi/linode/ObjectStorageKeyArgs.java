@@ -35,12 +35,16 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     /**
      * The label given to this key. For display purposes only.
      * 
+     * ***
+     * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
+     * 
+     * ***
      * 
      */
     public Output<String> label() {
@@ -106,6 +110,8 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param label The label given to this key. For display purposes only.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -116,6 +122,8 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param label The label given to this key. For display purposes only.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const all = linode.getDatabases({});
- * export const databaseIds = [all.then(all => all.databases)].map(__item => __item?.id);
+ * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
  *
  * Get information about all Linode MySQL Databases:
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *         values: ["mysql"],
  *     }],
  * });
- * export const databaseIds = [mysql.then(mysql => mysql.databases)].map(__item => __item?.id);
+ * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
@@ -55,6 +55,8 @@ export interface GetDatabasesArgs {
     filters?: inputs.GetDatabasesFilter[];
     /**
      * If true, only the latest create database will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -93,7 +95,7 @@ export interface GetDatabasesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const all = linode.getDatabases({});
- * export const databaseIds = [all.then(all => all.databases)].map(__item => __item?.id);
+ * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
  *
  * Get information about all Linode MySQL Databases:
@@ -108,7 +110,7 @@ export interface GetDatabasesResult {
  *         values: ["mysql"],
  *     }],
  * });
- * export const databaseIds = [mysql.then(mysql => mysql.databases)].map(__item => __item?.id);
+ * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
  */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
@@ -122,6 +124,8 @@ export interface GetDatabasesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabasesFilterArgs>[]>;
     /**
      * If true, only the latest create database will be returned.
+     *
+     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

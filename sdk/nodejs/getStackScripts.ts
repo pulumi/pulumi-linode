@@ -72,6 +72,8 @@ export interface GetStackScriptsArgs {
     filters?: inputs.GetStackScriptsFilter[];
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -156,6 +158,8 @@ export interface GetStackScriptsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsFilterArgs>[]>;
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

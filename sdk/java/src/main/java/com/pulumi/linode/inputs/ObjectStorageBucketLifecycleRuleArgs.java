@@ -22,12 +22,20 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
+     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * 
+     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+     * 
      */
     @Import(name="abortIncompleteMultipartUploadDays")
     private @Nullable Output<Integer> abortIncompleteMultipartUploadDays;
 
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+     * 
+     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * 
+     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
      * 
      */
     public Optional<Output<Integer>> abortIncompleteMultipartUploadDays() {
@@ -125,6 +133,10 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
          * 
+         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * 
+         * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+         * 
          * @return builder
          * 
          */
@@ -135,6 +147,10 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
 
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+         * 
+         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * 
+         * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
          * 
          * @return builder
          * 

@@ -32,10 +32,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["engineIds"] = new[]
-        ///         {
-        ///             all.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["engineIds"] = all.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -67,10 +64,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["engineIds"] = new[]
-        ///         {
-        ///             mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["engineIds"] = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -138,10 +132,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["engineIds"] = new[]
-        ///         {
-        ///             all.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["engineIds"] = all.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -173,10 +164,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["engineIds"] = new[]
-        ///         {
-        ///             mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["engineIds"] = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -237,6 +225,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest engine version will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -271,6 +261,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest engine version will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

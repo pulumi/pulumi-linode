@@ -251,12 +251,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
      * 
+     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+     * 
      */
     @Export(name="versioning", type=Boolean.class, parameters={})
     private Output<Boolean> versioning;
 
     /**
      * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Output<Boolean> versioning() {

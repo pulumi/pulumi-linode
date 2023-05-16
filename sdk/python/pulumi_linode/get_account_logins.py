@@ -87,7 +87,7 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
             values=["myUsername"],
         ),
     ])
-    pulumi.export("loginIds", [__item.id for __item in [filtered_account_logins.logins]])
+    pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```
     ## Filterable Fields
 
@@ -132,7 +132,7 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
             values=["myUsername"],
         ),
     ])
-    pulumi.export("loginIds", [__item.id for __item in [filtered_account_logins.logins]])
+    pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```
     ## Filterable Fields
 

@@ -19,12 +19,16 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      * 
+     * ***
+     * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
      * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * 
+     * ***
      * 
      */
     public Output<String> address() {
@@ -138,6 +142,8 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param address The private IP Address where this backend can be reached. This must be a private IP address.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -148,6 +154,8 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param address The private IP Address where this backend can be reached. This must be a private IP address.
+         * 
+         * ***
          * 
          * @return builder
          * 

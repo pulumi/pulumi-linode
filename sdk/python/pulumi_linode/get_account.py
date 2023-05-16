@@ -27,8 +27,8 @@ class GetAccountResult:
         if address2 and not isinstance(address2, str):
             raise TypeError("Expected argument 'address2' to be a str")
         pulumi.set(__self__, "address2", address2)
-        if balance and not isinstance(balance, int):
-            raise TypeError("Expected argument 'balance' to be a int")
+        if balance and not isinstance(balance, float):
+            raise TypeError("Expected argument 'balance' to be a float")
         pulumi.set(__self__, "balance", balance)
         if city and not isinstance(city, str):
             raise TypeError("Expected argument 'city' to be a str")
@@ -79,7 +79,7 @@ class GetAccountResult:
 
     @property
     @pulumi.getter
-    def balance(self) -> int:
+    def balance(self) -> float:
         """
         This Account's balance, in US dollars.
         """
@@ -128,9 +128,6 @@ class GetAccountResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property

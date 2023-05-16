@@ -142,12 +142,20 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
      * 
+     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+     * 
      */
     @Import(name="versioning")
     private @Nullable Output<Boolean> versioning;
 
     /**
      * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * 
+     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Optional<Output<Boolean>> versioning() {
@@ -367,6 +375,10 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
          * 
+         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+         * 
+         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+         * 
          * @return builder
          * 
          */
@@ -377,6 +389,10 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
 
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+         * 
+         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+         * 
+         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 
          * @return builder
          * 

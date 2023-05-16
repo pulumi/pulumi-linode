@@ -32,10 +32,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["databaseIds"] = new[]
-        ///         {
-        ///             all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["databaseIds"] = all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -67,10 +64,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["databaseIds"] = new[]
-        ///         {
-        ///             mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["databaseIds"] = mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -101,10 +95,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["databaseIds"] = new[]
-        ///         {
-        ///             all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["databaseIds"] = all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -136,10 +127,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["databaseIds"] = new[]
-        ///         {
-        ///             mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["databaseIds"] = mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -163,6 +151,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest create database will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -197,6 +187,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest create database will be returned.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

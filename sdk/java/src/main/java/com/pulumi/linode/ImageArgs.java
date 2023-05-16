@@ -19,12 +19,20 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A detailed description of this Image.
      * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return A detailed description of this Image.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Optional<Output<String>> description() {
@@ -94,12 +102,24 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the Linode that this Image will be created from.
      * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
+     * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
 
     /**
      * @return The ID of the Linode that this Image will be created from.
+     * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
      * 
      */
     public Optional<Output<Integer>> linodeId() {
@@ -154,6 +174,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description A detailed description of this Image.
          * 
+         * ***
+         * 
+         * The following arguments apply to creating an image from an existing Linode Instance:
+         * 
          * @return builder
          * 
          */
@@ -164,6 +188,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description A detailed description of this Image.
+         * 
+         * ***
+         * 
+         * The following arguments apply to creating an image from an existing Linode Instance:
          * 
          * @return builder
          * 
@@ -259,6 +287,12 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param linodeId The ID of the Linode that this Image will be created from.
          * 
+         * ***
+         * 
+         * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+         * 
+         * The following arguments apply to uploading an image:
+         * 
          * @return builder
          * 
          */
@@ -269,6 +303,12 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linodeId The ID of the Linode that this Image will be created from.
+         * 
+         * ***
+         * 
+         * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+         * 
+         * The following arguments apply to uploading an image:
          * 
          * @return builder
          * 

@@ -239,12 +239,16 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      * 
+     * ***
+     * 
      */
     @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
      * @return The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
+     * 
+     * ***
      * 
      */
     public Output<Integer> size() {

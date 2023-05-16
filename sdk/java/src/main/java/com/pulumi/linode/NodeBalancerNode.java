@@ -111,12 +111,16 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      * 
+     * ***
+     * 
      */
     @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
      * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * 
+     * ***
      * 
      */
     public Output<String> address() {

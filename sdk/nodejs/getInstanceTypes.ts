@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         values: ["2"],
  *     }],
  * });
- * export const typeIds = [specific_types.then(specific_types => specific_types.types)].map(__item => __item?.id);
+ * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
  *
  * Get information about all Linode Instance types:
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const all-types = linode.getInstanceTypes({});
- * export const typeIds = [all_types.then(all_types => all_types.types)].map(__item => __item?.id);
+ * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *
@@ -109,7 +109,7 @@ export interface GetInstanceTypesResult {
  *         values: ["2"],
  *     }],
  * });
- * export const typeIds = [specific_types.then(specific_types => specific_types.types)].map(__item => __item?.id);
+ * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
  *
  * Get information about all Linode Instance types:
@@ -119,7 +119,7 @@ export interface GetInstanceTypesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const all-types = linode.getInstanceTypes({});
- * export const typeIds = [all_types.then(all_types => all_types.types)].map(__item => __item?.id);
+ * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *

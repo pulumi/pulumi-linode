@@ -215,12 +215,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
+     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * 
+     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
      * @return This Kubernetes cluster&#39;s location.
+     * 
+     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * 
+     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Output<String> region() {

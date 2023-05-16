@@ -108,7 +108,7 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
     import pulumi_linode as linode
 
     all = linode.get_database_engines()
-    pulumi.export("engineIds", [__item.id for __item in [all.engines]])
+    pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
 
     Get information about all Linode MySQL Database engines:
@@ -121,7 +121,7 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
         name="engine",
         values=["mysql"],
     )])
-    pulumi.export("engineIds", [__item.id for __item in [mysql.engines]])
+    pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
 
     Create a Linode MySQL Database using the latest support MySQL version:
@@ -144,6 +144,8 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
 
 
     :param bool latest: If true, only the latest engine version will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
@@ -182,7 +184,7 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
     import pulumi_linode as linode
 
     all = linode.get_database_engines()
-    pulumi.export("engineIds", [__item.id for __item in [all.engines]])
+    pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
 
     Get information about all Linode MySQL Database engines:
@@ -195,7 +197,7 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
         name="engine",
         values=["mysql"],
     )])
-    pulumi.export("engineIds", [__item.id for __item in [mysql.engines]])
+    pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
 
     Create a Linode MySQL Database using the latest support MySQL version:
@@ -218,6 +220,8 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
 
 
     :param bool latest: If true, only the latest engine version will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """

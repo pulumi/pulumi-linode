@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetStackScriptResult',
@@ -36,8 +35,8 @@ class GetStackScriptResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
@@ -101,14 +100,14 @@ class GetStackScriptResult:
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def images(self) -> Sequence[str]:
         """
-        An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+        A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
         """
         return pulumi.get(self, "images")
 
@@ -199,8 +198,7 @@ class AwaitableGetStackScriptResult(GetStackScriptResult):
             username=self.username)
 
 
-def get_stack_script(id: Optional[int] = None,
-                     user_defined_fields: Optional[Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']]] = None,
+def get_stack_script(id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptResult:
     """
     Provides details about a specific Linode StackScript.
@@ -213,16 +211,14 @@ def get_stack_script(id: Optional[int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_stackscript = linode.get_stack_script(id=355872)
+    my_stackscript = linode.get_stack_script(id="355872")
     ```
 
 
-    :param int id: The unique numeric ID of the StackScript to query.
-    :param Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+    :param str id: The unique numeric ID of the StackScript to query.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['userDefinedFields'] = user_defined_fields
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getStackScript:getStackScript', __args__, opts=opts, typ=GetStackScriptResult).value
 
@@ -244,8 +240,7 @@ def get_stack_script(id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_stack_script)
-def get_stack_script_output(id: Optional[pulumi.Input[int]] = None,
-                            user_defined_fields: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']]]]] = None,
+def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptResult]:
     """
     Provides details about a specific Linode StackScript.
@@ -258,11 +253,10 @@ def get_stack_script_output(id: Optional[pulumi.Input[int]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_stackscript = linode.get_stack_script(id=355872)
+    my_stackscript = linode.get_stack_script(id="355872")
     ```
 
 
-    :param int id: The unique numeric ID of the StackScript to query.
-    :param Sequence[pulumi.InputType['GetStackScriptUserDefinedFieldArgs']] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+    :param str id: The unique numeric ID of the StackScript to query.
     """
     ...

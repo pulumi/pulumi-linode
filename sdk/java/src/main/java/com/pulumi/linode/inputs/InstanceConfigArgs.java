@@ -105,12 +105,16 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Defaults to the total RAM of the Linode
      * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
      * @return Defaults to the total RAM of the Linode
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -316,6 +320,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param memoryLimit Defaults to the total RAM of the Linode
          * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+         * 
          * @return builder
          * 
          */
@@ -326,6 +332,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param memoryLimit Defaults to the total RAM of the Linode
+         * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
          * 
          * @return builder
          * 

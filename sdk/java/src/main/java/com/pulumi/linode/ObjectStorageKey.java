@@ -86,12 +86,16 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
     /**
      * The label given to this key. For display purposes only.
      * 
+     * ***
+     * 
      */
     @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
+     * 
+     * ***
      * 
      */
     public Output<String> label() {

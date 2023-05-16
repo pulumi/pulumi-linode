@@ -286,12 +286,20 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
      * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * 
      */
     @Export(name="replicationType", type=String.class, parameters={})
     private Output</* @Nullable */ String> replicationType;
 
     /**
      * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
      * 
      */
     public Output<Optional<String>> replicationType() {
@@ -328,12 +336,16 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * 
      */
     @Export(name="sslConnection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sslConnection;
 
     /**
      * @return Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Output<Optional<Boolean>> sslConnection() {
@@ -356,12 +368,16 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
+     * ***
+     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
+     * 
+     * ***
      * 
      */
     public Output<String> type() {

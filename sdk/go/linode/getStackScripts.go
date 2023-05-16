@@ -87,6 +87,8 @@ func GetStackScripts(ctx *pulumi.Context, args *GetStackScriptsArgs, opts ...pul
 type GetStackScriptsArgs struct {
 	Filters []GetStackScriptsFilter `pulumi:"filters"`
 	// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -122,6 +124,8 @@ func GetStackScriptsOutput(ctx *pulumi.Context, args GetStackScriptsOutputArgs, 
 type GetStackScriptsOutputArgs struct {
 	Filters GetStackScriptsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

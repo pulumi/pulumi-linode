@@ -19,6 +19,8 @@ public final class LkeClusterPool {
     /**
      * @return The number of nodes in the Node Pool.
      * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
      */
     private Integer count;
     /**
@@ -39,6 +41,8 @@ public final class LkeClusterPool {
     }
     /**
      * @return The number of nodes in the Node Pool.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Integer count() {

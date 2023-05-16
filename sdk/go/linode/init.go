@@ -24,8 +24,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountSettings{}
 	case "linode:index/databaseAccessControls:DatabaseAccessControls":
 		r = &DatabaseAccessControls{}
-	case "linode:index/databaseMongodb:DatabaseMongodb":
-		r = &DatabaseMongodb{}
 	case "linode:index/databaseMysql:DatabaseMysql":
 		r = &DatabaseMysql{}
 	case "linode:index/databasePostgresql:DatabasePostgresql":
@@ -70,6 +68,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SshKey{}
 	case "linode:index/stackScript:StackScript":
 		r = &StackScript{}
+	case "linode:index/token:Token":
+		r = &Token{}
 	case "linode:index/user:User":
 		r = &User{}
 	case "linode:index/volume:Volume":
@@ -110,11 +110,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/databaseAccessControls",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"linode",
-		"index/databaseMongodb",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -225,6 +220,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/stackScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/token",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const all-images = linode.getImages({});
- * export const imageIds = [all_images.then(all_images => all_images.images)].map(__item => __item?.id);
+ * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *
@@ -80,6 +80,8 @@ export interface GetImagesArgs {
     filters?: inputs.GetImagesFilter[];
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -139,7 +141,7 @@ export interface GetImagesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const all-images = linode.getImages({});
- * export const imageIds = [all_images.then(all_images => all_images.images)].map(__item => __item?.id);
+ * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *
@@ -172,6 +174,8 @@ export interface GetImagesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

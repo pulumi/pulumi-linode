@@ -77,12 +77,20 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * A detailed description of this Image.
      * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
      * @return A detailed description of this Image.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Output<Optional<String>> description() {
@@ -175,12 +183,24 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Linode that this Image will be created from.
      * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
+     * 
      */
     @Export(name="linodeId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> linodeId;
 
     /**
      * @return The ID of the Linode that this Image will be created from.
+     * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
      * 
      */
     public Output<Optional<Integer>> linodeId() {

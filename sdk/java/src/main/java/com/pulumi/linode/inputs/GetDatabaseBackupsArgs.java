@@ -35,14 +35,14 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      * 
      */
     @Import(name="databaseType", required=true)
     private Output<String> databaseType;
 
     /**
-     * @return The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * @return The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      * 
      */
     public Output<String> databaseType() {
@@ -59,12 +59,16 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
     /**
      * If true, only the latest backup will be returned.
      * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
      */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
     /**
      * @return If true, only the latest backup will be returned.
+     * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -152,7 +156,7 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `postgresql`)
          * 
          * @return builder
          * 
@@ -163,7 +167,7 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `postgresql`)
          * 
          * @return builder
          * 
@@ -188,6 +192,8 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param latest If true, only the latest backup will be returned.
          * 
+         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
          * @return builder
          * 
          */
@@ -198,6 +204,8 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param latest If true, only the latest backup will be returned.
+         * 
+         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 

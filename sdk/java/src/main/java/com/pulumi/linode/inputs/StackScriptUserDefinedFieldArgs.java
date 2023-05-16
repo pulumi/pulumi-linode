@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,90 +17,90 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
      * The default value. If not specified, this value will be used.
      * 
      */
-    @Import(name="default")
-    private @Nullable Output<String> default_;
+    @Import(name="default", required=true)
+    private Output<String> default_;
 
     /**
      * @return The default value. If not specified, this value will be used.
      * 
      */
-    public Optional<Output<String>> default_() {
-        return Optional.ofNullable(this.default_);
+    public Output<String> default_() {
+        return this.default_;
     }
 
     /**
      * An example value for the field.
      * 
      */
-    @Import(name="example")
-    private @Nullable Output<String> example;
+    @Import(name="example", required=true)
+    private Output<String> example;
 
     /**
      * @return An example value for the field.
      * 
      */
-    public Optional<Output<String>> example() {
-        return Optional.ofNullable(this.example);
+    public Output<String> example() {
+        return this.example;
     }
 
     /**
      * The StackScript&#39;s label is for display purposes only.
      * 
      */
-    @Import(name="label")
-    private @Nullable Output<String> label;
+    @Import(name="label", required=true)
+    private Output<String> label;
 
     /**
      * @return The StackScript&#39;s label is for display purposes only.
      * 
      */
-    public Optional<Output<String>> label() {
-        return Optional.ofNullable(this.label);
+    public Output<String> label() {
+        return this.label;
     }
 
     /**
      * A list of acceptable values for the field in any quantity, combination or order.
      * 
      */
-    @Import(name="manyOf")
-    private @Nullable Output<String> manyOf;
+    @Import(name="manyOf", required=true)
+    private Output<String> manyOf;
 
     /**
      * @return A list of acceptable values for the field in any quantity, combination or order.
      * 
      */
-    public Optional<Output<String>> manyOf() {
-        return Optional.ofNullable(this.manyOf);
+    public Output<String> manyOf() {
+        return this.manyOf;
     }
 
     /**
      * The name of the field.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of the field.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
      * A list of acceptable single values for the field.
      * 
      */
-    @Import(name="oneOf")
-    private @Nullable Output<String> oneOf;
+    @Import(name="oneOf", required=true)
+    private Output<String> oneOf;
 
     /**
      * @return A list of acceptable single values for the field.
      * 
      */
-    public Optional<Output<String>> oneOf() {
-        return Optional.ofNullable(this.oneOf);
+    public Output<String> oneOf() {
+        return this.oneOf;
     }
 
     private StackScriptUserDefinedFieldArgs() {}
@@ -140,7 +138,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder default_(@Nullable Output<String> default_) {
+        public Builder default_(Output<String> default_) {
             $.default_ = default_;
             return this;
         }
@@ -161,7 +159,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder example(@Nullable Output<String> example) {
+        public Builder example(Output<String> example) {
             $.example = example;
             return this;
         }
@@ -182,7 +180,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder label(@Nullable Output<String> label) {
+        public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
@@ -203,7 +201,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder manyOf(@Nullable Output<String> manyOf) {
+        public Builder manyOf(Output<String> manyOf) {
             $.manyOf = manyOf;
             return this;
         }
@@ -224,7 +222,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -245,7 +243,7 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder oneOf(@Nullable Output<String> oneOf) {
+        public Builder oneOf(Output<String> oneOf) {
             $.oneOf = oneOf;
             return this;
         }
@@ -261,6 +259,12 @@ public final class StackScriptUserDefinedFieldArgs extends com.pulumi.resources.
         }
 
         public StackScriptUserDefinedFieldArgs build() {
+            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
+            $.example = Objects.requireNonNull($.example, "expected parameter 'example' to be non-null");
+            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            $.manyOf = Objects.requireNonNull($.manyOf, "expected parameter 'manyOf' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            $.oneOf = Objects.requireNonNull($.oneOf, "expected parameter 'oneOf' to be non-null");
             return $;
         }
     }

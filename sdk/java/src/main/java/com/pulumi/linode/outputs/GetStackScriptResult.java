@@ -33,9 +33,9 @@ public final class GetStackScriptResult {
      * 
      */
     private String description;
-    private Integer id;
+    private String id;
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+     * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      * 
      */
     private List<String> images;
@@ -109,11 +109,11 @@ public final class GetStackScriptResult {
     public String description() {
         return this.description;
     }
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+     * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      * 
      */
     public List<String> images() {
@@ -189,7 +189,7 @@ public final class GetStackScriptResult {
         private Integer deploymentsActive;
         private Integer deploymentsTotal;
         private String description;
-        private Integer id;
+        private String id;
         private List<String> images;
         private Boolean isPublic;
         private String label;
@@ -239,7 +239,7 @@ public final class GetStackScriptResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }

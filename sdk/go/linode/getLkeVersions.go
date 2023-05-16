@@ -45,7 +45,7 @@ func GetLkeVersions(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLkeVe
 
 // A collection of values returned by getLkeVersions.
 type GetLkeVersionsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id       string                  `pulumi:"id"`
 	Versions []GetLkeVersionsVersion `pulumi:"versions"`
 }

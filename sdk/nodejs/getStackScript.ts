@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const myStackscript = linode.getStackScript({
- *     id: 355872,
+ *     id: "355872",
  * });
  * ```
  */
@@ -27,7 +27,6 @@ export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOpt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getStackScript:getStackScript", {
         "id": args.id,
-        "userDefinedFields": args.userDefinedFields,
     }, opts);
 }
 
@@ -38,11 +37,7 @@ export interface GetStackScriptArgs {
     /**
      * The unique numeric ID of the StackScript to query.
      */
-    id: number;
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     */
-    userDefinedFields?: inputs.GetStackScriptUserDefinedField[];
+    id: string;
 }
 
 /**
@@ -65,9 +60,9 @@ export interface GetStackScriptResult {
      * A description for the StackScript.
      */
     readonly description: string;
-    readonly id: number;
+    readonly id: string;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
      */
     readonly images: string[];
     /**
@@ -115,7 +110,7 @@ export interface GetStackScriptResult {
  * import * as linode from "@pulumi/linode";
  *
  * const myStackscript = linode.getStackScript({
- *     id: 355872,
+ *     id: "355872",
  * });
  * ```
  */
@@ -130,9 +125,5 @@ export interface GetStackScriptOutputArgs {
     /**
      * The unique numeric ID of the StackScript to query.
      */
-    id: pulumi.Input<number>;
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.GetStackScriptUserDefinedFieldArgs>[]>;
+    id: pulumi.Input<string>;
 }

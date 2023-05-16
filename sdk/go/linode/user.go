@@ -128,6 +128,10 @@ type User struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
+	//
+	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrOutput `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
@@ -193,6 +197,10 @@ type userState struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
+	//
+	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys []string `pulumi:"sshKeys"`
@@ -224,6 +232,10 @@ type UserState struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
+	//
+	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayInput
@@ -259,6 +271,10 @@ type userArgs struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
+	//
+	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
 	// The StackScripts the user has permissions access to.
 	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
@@ -287,6 +303,10 @@ type UserArgs struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
+	//
+	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
 	// The StackScripts the user has permissions access to.
 	StackscriptGrants UserStackscriptGrantArrayInput
@@ -424,6 +444,10 @@ func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
 }
 
 // If true, this user will only have explicit permissions granted.
+//
+// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+//
+// The following arguments are sets of entity grants:
 func (o UserOutput) Restricted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Restricted }).(pulumi.BoolPtrOutput)
 }

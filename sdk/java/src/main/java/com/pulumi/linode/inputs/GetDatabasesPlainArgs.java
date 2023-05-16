@@ -27,12 +27,16 @@ public final class GetDatabasesPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * If true, only the latest create database will be returned.
      * 
+     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest create database will be returned.
+     * 
+     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -107,6 +111,8 @@ public final class GetDatabasesPlainArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param latest If true, only the latest create database will be returned.
+         * 
+         * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
          * 
          * @return builder
          * 

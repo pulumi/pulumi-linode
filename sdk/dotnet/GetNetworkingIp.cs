@@ -113,9 +113,6 @@ namespace Pulumi.Linode
         /// The default gateway for this address.
         /// </summary>
         public readonly string Gateway;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the Linode this address currently belongs to.

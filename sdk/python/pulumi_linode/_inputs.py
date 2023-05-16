@@ -10,7 +10,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'DatabaseMongodbUpdatesArgs',
     'DatabaseMysqlUpdatesArgs',
     'DatabasePostgresqlUpdatesArgs',
     'FirewallDeviceArgs',
@@ -64,7 +63,6 @@ __all__ = [
     'GetInstanceTypesFilterArgs',
     'GetInstancesFilterArgs',
     'GetRegionsFilterArgs',
-    'GetStackScriptUserDefinedFieldArgs',
     'GetStackScriptsFilterArgs',
     'GetUserDomainGrantArgs',
     'GetUserFirewallGrantArgs',
@@ -76,67 +74,6 @@ __all__ = [
     'GetUserVolumeGrantArgs',
     'GetVlansFilterArgs',
 ]
-
-@pulumi.input_type
-class DatabaseMongodbUpdatesArgs:
-    def __init__(__self__, *,
-                 day_of_week: pulumi.Input[str],
-                 duration: pulumi.Input[int],
-                 frequency: pulumi.Input[str],
-                 hour_of_day: pulumi.Input[int],
-                 week_of_month: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: pulumi.Input[str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: pulumi.Input[int]):
-        pulumi.set(self, "duration", value)
-
-    @property
-    @pulumi.getter
-    def frequency(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: pulumi.Input[str]):
-        pulumi.set(self, "frequency", value)
-
-    @property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "hour_of_day")
-
-    @hour_of_day.setter
-    def hour_of_day(self, value: pulumi.Input[int]):
-        pulumi.set(self, "hour_of_day", value)
-
-    @property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "week_of_month")
-
-    @week_of_month.setter
-    def week_of_month(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "week_of_month", value)
-
 
 @pulumi.input_type
 class DatabaseMysqlUpdatesArgs:
@@ -718,6 +655,8 @@ class InstanceConfigArgs:
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param pulumi.Input[str] kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param pulumi.Input[int] memory_limit: Defaults to the total RAM of the Linode
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         :param pulumi.Input[str] root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param pulumi.Input[str] run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
         :param pulumi.Input[str] virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
@@ -816,6 +755,8 @@ class InstanceConfigArgs:
     def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
         Defaults to the total RAM of the Linode
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -1867,6 +1808,8 @@ class LkeClusterPoolArgs:
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
         """
         :param pulumi.Input[int] count: The number of nodes in the Node Pool.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[int] id: The ID of the node.
         """
@@ -1884,6 +1827,8 @@ class LkeClusterPoolArgs:
     def count(self) -> pulumi.Input[int]:
         """
         The number of nodes in the Node Pool.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "count")
 
@@ -2169,6 +2114,10 @@ class ObjectStorageBucketLifecycleRuleArgs:
         """
         :param pulumi.Input[bool] enabled: Specifies whether the lifecycle rule is active.
         :param pulumi.Input[int] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+               
+               * `expiration` - (Optional) Specifies a period in the object's expire.
+               
+               * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         :param pulumi.Input[str] id: The unique identifier for the rule.
         :param pulumi.Input[str] prefix: The object key prefix identifying one or more objects to which the rule applies.
         """
@@ -2201,6 +2150,10 @@ class ObjectStorageBucketLifecycleRuleArgs:
     def abort_incomplete_multipart_upload_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+
+        * `expiration` - (Optional) Specifies a period in the object's expire.
+
+        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         """
         return pulumi.get(self, "abort_incomplete_multipart_upload_days")
 
@@ -2383,12 +2336,12 @@ class ObjectStorageKeyBucketAccessArgs:
 @pulumi.input_type
 class StackScriptUserDefinedFieldArgs:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[str]] = None,
-                 example: Optional[pulumi.Input[str]] = None,
-                 label: Optional[pulumi.Input[str]] = None,
-                 many_of: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 one_of: Optional[pulumi.Input[str]] = None):
+                 default: pulumi.Input[str],
+                 example: pulumi.Input[str],
+                 label: pulumi.Input[str],
+                 many_of: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 one_of: pulumi.Input[str]):
         """
         :param pulumi.Input[str] default: The default value. If not specified, this value will be used.
         :param pulumi.Input[str] example: An example value for the field.
@@ -2397,89 +2350,83 @@ class StackScriptUserDefinedFieldArgs:
         :param pulumi.Input[str] name: The name of the field.
         :param pulumi.Input[str] one_of: A list of acceptable single values for the field.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if example is not None:
-            pulumi.set(__self__, "example", example)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if many_of is not None:
-            pulumi.set(__self__, "many_of", many_of)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if one_of is not None:
-            pulumi.set(__self__, "one_of", one_of)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "many_of", many_of)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "one_of", one_of)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[str]]:
+    def default(self) -> pulumi.Input[str]:
         """
         The default value. If not specified, this value will be used.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[str]]):
+    def default(self, value: pulumi.Input[str]):
         pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter
-    def example(self) -> Optional[pulumi.Input[str]]:
+    def example(self) -> pulumi.Input[str]:
         """
         An example value for the field.
         """
         return pulumi.get(self, "example")
 
     @example.setter
-    def example(self, value: Optional[pulumi.Input[str]]):
+    def example(self, value: pulumi.Input[str]):
         pulumi.set(self, "example", value)
 
     @property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[str]]:
+    def label(self) -> pulumi.Input[str]:
         """
         The StackScript's label is for display purposes only.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[str]]):
+    def label(self, value: pulumi.Input[str]):
         pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter(name="manyOf")
-    def many_of(self) -> Optional[pulumi.Input[str]]:
+    def many_of(self) -> pulumi.Input[str]:
         """
         A list of acceptable values for the field in any quantity, combination or order.
         """
         return pulumi.get(self, "many_of")
 
     @many_of.setter
-    def many_of(self, value: Optional[pulumi.Input[str]]):
+    def many_of(self, value: pulumi.Input[str]):
         pulumi.set(self, "many_of", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="oneOf")
-    def one_of(self) -> Optional[pulumi.Input[str]]:
+    def one_of(self) -> pulumi.Input[str]:
         """
         A list of acceptable single values for the field.
         """
         return pulumi.get(self, "one_of")
 
     @one_of.setter
-    def one_of(self, value: Optional[pulumi.Input[str]]):
+    def one_of(self, value: pulumi.Input[str]):
         pulumi.set(self, "one_of", value)
 
 
@@ -3323,103 +3270,6 @@ class GetRegionsFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
-
-
-@pulumi.input_type
-class GetStackScriptUserDefinedFieldArgs:
-    def __init__(__self__, *,
-                 default: str,
-                 example: str,
-                 label: str,
-                 many_of: str,
-                 name: str,
-                 one_of: str):
-        """
-        :param str default: The default value. If not specified, this value will be used.
-        :param str example: An example value for the field.
-        :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-        :param str many_of: A list of acceptable values for the field in any quantity, combination or order.
-        :param str name: The name of the field.
-        :param str one_of: A list of acceptable single values for the field.
-        """
-        pulumi.set(__self__, "default", default)
-        pulumi.set(__self__, "example", example)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "many_of", many_of)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "one_of", one_of)
-
-    @property
-    @pulumi.getter
-    def default(self) -> str:
-        """
-        The default value. If not specified, this value will be used.
-        """
-        return pulumi.get(self, "default")
-
-    @default.setter
-    def default(self, value: str):
-        pulumi.set(self, "default", value)
-
-    @property
-    @pulumi.getter
-    def example(self) -> str:
-        """
-        An example value for the field.
-        """
-        return pulumi.get(self, "example")
-
-    @example.setter
-    def example(self, value: str):
-        pulumi.set(self, "example", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        """
-        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-        """
-        return pulumi.get(self, "label")
-
-    @label.setter
-    def label(self, value: str):
-        pulumi.set(self, "label", value)
-
-    @property
-    @pulumi.getter(name="manyOf")
-    def many_of(self) -> str:
-        """
-        A list of acceptable values for the field in any quantity, combination or order.
-        """
-        return pulumi.get(self, "many_of")
-
-    @many_of.setter
-    def many_of(self, value: str):
-        pulumi.set(self, "many_of", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The name of the field.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="oneOf")
-    def one_of(self) -> str:
-        """
-        A list of acceptable single values for the field.
-        """
-        return pulumi.get(self, "one_of")
-
-    @one_of.setter
-    def one_of(self, value: str):
-        pulumi.set(self, "one_of", value)
 
 
 @pulumi.input_type

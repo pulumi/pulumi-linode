@@ -45,6 +45,8 @@ public final class InstanceConfig {
     /**
      * @return Defaults to the total RAM of the Linode
      * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
      */
     private @Nullable Integer memoryLimit;
     /**
@@ -104,6 +106,8 @@ public final class InstanceConfig {
     }
     /**
      * @return Defaults to the total RAM of the Linode
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     public Optional<Integer> memoryLimit() {

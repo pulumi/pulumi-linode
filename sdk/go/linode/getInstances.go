@@ -12,6 +12,77 @@ import (
 
 // Provides information about Linode instances that match a set of filters.
 //
+// ## Example Usage
+//
+// Get information about all Linode instances with a certain label and tag:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_instances, err := linode.GetInstances(ctx, &linode.GetInstancesArgs{
+//				Filters: []linode.GetInstancesFilter{
+//					{
+//						Name: "label",
+//						Values: []string{
+//							"my-label",
+//							"my-other-label",
+//						},
+//					},
+//					{
+//						Name: "tags",
+//						Values: []string{
+//							"my-tag",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("instanceId", my_instances.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode instances associated with the current token:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all_instances, err := linode.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*int
+//			for _, val0 := range all_instances.Instances {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("instanceIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Filterable Fields
 //
 // * `group`

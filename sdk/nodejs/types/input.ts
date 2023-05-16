@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DatabaseMongodbUpdates {
-    dayOfWeek: pulumi.Input<string>;
-    duration: pulumi.Input<number>;
-    frequency: pulumi.Input<string>;
-    hourOfDay: pulumi.Input<number>;
-    weekOfMonth?: pulumi.Input<number>;
-}
-
 export interface DatabaseMysqlUpdates {
     dayOfWeek: pulumi.Input<string>;
     duration: pulumi.Input<number>;
@@ -376,60 +368,6 @@ export interface GetRegionsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetStackScriptUserDefinedField {
-    /**
-     * The default value. If not specified, this value will be used.
-     */
-    default?: string;
-    /**
-     * An example value for the field.
-     */
-    example?: string;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label?: string;
-    /**
-     * A list of acceptable values for the field in any quantity, combination or order.
-     */
-    manyOf?: string;
-    /**
-     * The name of the field.
-     */
-    name?: string;
-    /**
-     * A list of acceptable single values for the field.
-     */
-    oneOf?: string;
-}
-
-export interface GetStackScriptUserDefinedFieldArgs {
-    /**
-     * The default value. If not specified, this value will be used.
-     */
-    default?: pulumi.Input<string>;
-    /**
-     * An example value for the field.
-     */
-    example?: pulumi.Input<string>;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A list of acceptable values for the field in any quantity, combination or order.
-     */
-    manyOf?: pulumi.Input<string>;
-    /**
-     * The name of the field.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * A list of acceptable single values for the field.
-     */
-    oneOf?: pulumi.Input<string>;
-}
-
 export interface GetStackScriptsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -622,6 +560,8 @@ export interface InstanceConfig {
     label: pulumi.Input<string>;
     /**
      * Defaults to the total RAM of the Linode
+     *
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
@@ -887,6 +827,8 @@ export interface LkeClusterPool {
     autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
      * The number of nodes in the Node Pool.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     count: pulumi.Input<number>;
     /**
@@ -966,6 +908,10 @@ export interface ObjectStorageBucketCert {
 export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+     *
+     * * `expiration` - (Optional) Specifies a period in the object's expire.
+     *
+     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      */
     abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
     /**
@@ -1025,27 +971,27 @@ export interface StackScriptUserDefinedField {
     /**
      * The default value. If not specified, this value will be used.
      */
-    default?: pulumi.Input<string>;
+    default: pulumi.Input<string>;
     /**
      * An example value for the field.
      */
-    example?: pulumi.Input<string>;
+    example: pulumi.Input<string>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    label?: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * A list of acceptable values for the field in any quantity, combination or order.
      */
-    manyOf?: pulumi.Input<string>;
+    manyOf: pulumi.Input<string>;
     /**
      * The name of the field.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * A list of acceptable single values for the field.
      */
-    oneOf?: pulumi.Input<string>;
+    oneOf: pulumi.Input<string>;
 }
 
 export interface UserDomainGrant {

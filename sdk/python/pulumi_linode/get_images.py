@@ -127,7 +127,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     import pulumi_linode as linode
 
     all_images = linode.get_images()
-    pulumi.export("imageIds", [__item.id for __item in [all_images.images]])
+    pulumi.export("imageIds", [__item.id for __item in all_images.images])
     ```
     ## Filterable Fields
 
@@ -151,6 +151,8 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
 
     :param bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+           
+           * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -208,7 +210,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     import pulumi_linode as linode
 
     all_images = linode.get_images()
-    pulumi.export("imageIds", [__item.id for __item in [all_images.images]])
+    pulumi.export("imageIds", [__item.id for __item in all_images.images])
     ```
     ## Filterable Fields
 
@@ -232,6 +234,8 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
 
 
     :param bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+           
+           * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

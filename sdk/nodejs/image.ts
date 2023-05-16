@@ -59,6 +59,10 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
     /**
      * A detailed description of this Image.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -87,6 +91,12 @@ export class Image extends pulumi.CustomResource {
     public readonly label!: pulumi.Output<string>;
     /**
      * The ID of the Linode that this Image will be created from.
+     *
+     * - - -
+     *
+     * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     *
+     * The following arguments apply to uploading an image:
      */
     public readonly linodeId!: pulumi.Output<number | undefined>;
     /**
@@ -184,6 +194,10 @@ export interface ImageState {
     deprecated?: pulumi.Input<boolean>;
     /**
      * A detailed description of this Image.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     description?: pulumi.Input<string>;
     /**
@@ -212,6 +226,12 @@ export interface ImageState {
     label?: pulumi.Input<string>;
     /**
      * The ID of the Linode that this Image will be created from.
+     *
+     * - - -
+     *
+     * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     *
+     * The following arguments apply to uploading an image:
      */
     linodeId?: pulumi.Input<number>;
     /**
@@ -242,6 +262,10 @@ export interface ImageState {
 export interface ImageArgs {
     /**
      * A detailed description of this Image.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     description?: pulumi.Input<string>;
     /**
@@ -262,6 +286,12 @@ export interface ImageArgs {
     label: pulumi.Input<string>;
     /**
      * The ID of the Linode that this Image will be created from.
+     *
+     * - - -
+     *
+     * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     *
+     * The following arguments apply to uploading an image:
      */
     linodeId?: pulumi.Input<number>;
     /**

@@ -43,12 +43,16 @@ public final class GetDatabaseMysqlBackupsPlainArgs extends com.pulumi.resources
     /**
      * If true, only the latest backup will be returned.
      * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest backup will be returned.
+     * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -135,6 +139,8 @@ public final class GetDatabaseMysqlBackupsPlainArgs extends com.pulumi.resources
 
         /**
          * @param latest If true, only the latest backup will be returned.
+         * 
+         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 

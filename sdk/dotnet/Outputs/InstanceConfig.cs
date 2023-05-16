@@ -36,6 +36,8 @@ namespace Pulumi.Linode.Outputs
         public readonly string Label;
         /// <summary>
         /// Defaults to the total RAM of the Linode
+        /// 
+        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         /// </summary>
         public readonly int? MemoryLimit;
         /// <summary>
