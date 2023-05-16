@@ -17,6 +17,7 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
 	linode "github.com/pulumi/pulumi-linode/provider/v4"
@@ -28,5 +29,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.MainWithMuxer("linode", linode.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "linode", linode.Provider(), pulumiSchema)
 }
