@@ -60,9 +60,9 @@ namespace Pulumi.Linode
         public readonly ImmutableArray<Outputs.GetInstanceBackupsAutomaticResult> Automatics;
         public readonly ImmutableArray<Outputs.GetInstanceBackupsCurrentResult> Currents;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The unique ID of this Backup.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         public readonly ImmutableArray<Outputs.GetInstanceBackupsInProgressResult> InProgresses;
         public readonly int LinodeId;
 
@@ -72,7 +72,7 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetInstanceBackupsCurrentResult> currents,
 
-            string id,
+            int id,
 
             ImmutableArray<Outputs.GetInstanceBackupsInProgressResult> inProgresses,
 

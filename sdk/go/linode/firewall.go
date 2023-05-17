@@ -124,8 +124,12 @@ type Firewall struct {
 	// The devices associated with this firewall.
 	Devices FirewallDeviceTypeArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+	//
+	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+	//
+	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
@@ -184,8 +188,12 @@ type firewallState struct {
 	// The devices associated with this firewall.
 	Devices []FirewallDeviceType `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+	//
+	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled *bool `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+	//
+	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -207,8 +215,12 @@ type FirewallState struct {
 	// The devices associated with this firewall.
 	Devices FirewallDeviceTypeArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+	//
+	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolPtrInput
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+	//
+	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -232,8 +244,12 @@ func (FirewallState) ElementType() reflect.Type {
 
 type firewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+	//
+	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled *bool `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+	//
+	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -252,8 +268,12 @@ type firewallArgs struct {
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
+	//
+	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolPtrInput
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+	//
+	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -362,11 +382,15 @@ func (o FirewallOutput) Devices() FirewallDeviceTypeArrayOutput {
 }
 
 // If `true`, the Firewall's rules are not enforced (defaults to `false`).
+//
+// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
 func (o FirewallOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
+//
+// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
 func (o FirewallOutput) InboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.InboundPolicy }).(pulumi.StringOutput)
 }

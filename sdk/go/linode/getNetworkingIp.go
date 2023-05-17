@@ -60,8 +60,7 @@ type GetNetworkingIpResult struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	// The ID of the Linode this address currently belongs to.
 	LinodeId int `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
@@ -126,7 +125,6 @@ func (o GetNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetNetworkingIpResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
 }

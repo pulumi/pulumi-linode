@@ -96,6 +96,8 @@ export class NodeBalancerNode extends pulumi.CustomResource {
 
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
+     *
+     * - - -
      */
     public readonly address!: pulumi.Output<string>;
     /**
@@ -176,6 +178,8 @@ export class NodeBalancerNode extends pulumi.CustomResource {
 export interface NodeBalancerNodeState {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
+     *
+     * - - -
      */
     address?: pulumi.Input<string>;
     /**
@@ -210,6 +214,8 @@ export interface NodeBalancerNodeState {
 export interface NodeBalancerNodeArgs {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
+     *
+     * - - -
      */
     address: pulumi.Input<string>;
     /**

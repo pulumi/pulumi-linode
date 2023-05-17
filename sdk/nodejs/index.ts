@@ -15,11 +15,6 @@ export type DatabaseAccessControls = import("./databaseAccessControls").Database
 export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
 utilities.lazyLoad(exports, ["DatabaseAccessControls"], () => require("./databaseAccessControls"));
 
-export { DatabaseMongodbArgs, DatabaseMongodbState } from "./databaseMongodb";
-export type DatabaseMongodb = import("./databaseMongodb").DatabaseMongodb;
-export const DatabaseMongodb: typeof import("./databaseMongodb").DatabaseMongodb = null as any;
-utilities.lazyLoad(exports, ["DatabaseMongodb"], () => require("./databaseMongodb"));
-
 export { DatabaseMysqlArgs, DatabaseMysqlState } from "./databaseMysql";
 export type DatabaseMysql = import("./databaseMysql").DatabaseMysql;
 export const DatabaseMysql: typeof import("./databaseMysql").DatabaseMysql = null as any;
@@ -77,11 +72,6 @@ export { GetDatabaseEnginesArgs, GetDatabaseEnginesResult, GetDatabaseEnginesOut
 export const getDatabaseEngines: typeof import("./getDatabaseEngines").getDatabaseEngines = null as any;
 export const getDatabaseEnginesOutput: typeof import("./getDatabaseEngines").getDatabaseEnginesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseEngines","getDatabaseEnginesOutput"], () => require("./getDatabaseEngines"));
-
-export { GetDatabaseMongodbArgs, GetDatabaseMongodbResult, GetDatabaseMongodbOutputArgs } from "./getDatabaseMongodb";
-export const getDatabaseMongodb: typeof import("./getDatabaseMongodb").getDatabaseMongodb = null as any;
-export const getDatabaseMongodbOutput: typeof import("./getDatabaseMongodb").getDatabaseMongodbOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabaseMongodb","getDatabaseMongodbOutput"], () => require("./getDatabaseMongodb"));
 
 export { GetDatabaseMysqlArgs, GetDatabaseMysqlResult, GetDatabaseMysqlOutputArgs } from "./getDatabaseMysql";
 export const getDatabaseMysql: typeof import("./getDatabaseMysql").getDatabaseMysql = null as any;
@@ -336,6 +326,11 @@ export type StackScript = import("./stackScript").StackScript;
 export const StackScript: typeof import("./stackScript").StackScript = null as any;
 utilities.lazyLoad(exports, ["StackScript"], () => require("./stackScript"));
 
+export { TokenArgs, TokenState } from "./token";
+export type Token = import("./token").Token;
+export const Token: typeof import("./token").Token = null as any;
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
+
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -364,8 +359,6 @@ const _module = {
                 return new AccountSettings(name, <any>undefined, { urn })
             case "linode:index/databaseAccessControls:DatabaseAccessControls":
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
-            case "linode:index/databaseMongodb:DatabaseMongodb":
-                return new DatabaseMongodb(name, <any>undefined, { urn })
             case "linode:index/databaseMysql:DatabaseMysql":
                 return new DatabaseMysql(name, <any>undefined, { urn })
             case "linode:index/databasePostgresql:DatabasePostgresql":
@@ -410,6 +403,8 @@ const _module = {
                 return new SshKey(name, <any>undefined, { urn })
             case "linode:index/stackScript:StackScript":
                 return new StackScript(name, <any>undefined, { urn })
+            case "linode:index/token:Token":
+                return new Token(name, <any>undefined, { urn })
             case "linode:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "linode:index/volume:Volume":
@@ -421,7 +416,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
-pulumi.runtime.registerResourceModule("linode", "index/databaseMongodb", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databasePostgresql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
@@ -444,6 +438,7 @@ pulumi.runtime.registerResourceModule("linode", "index/objectStorageObject", _mo
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
+pulumi.runtime.registerResourceModule("linode", "index/token", _module)
 pulumi.runtime.registerResourceModule("linode", "index/user", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
 pulumi.runtime.registerResourcePackage("linode", {

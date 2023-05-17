@@ -56,7 +56,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Account's balance, in US dollars.
         /// </summary>
-        public readonly int Balance;
+        public readonly double Balance;
         /// <summary>
         /// The city for this Account's billing address.
         /// </summary>
@@ -77,9 +77,6 @@ namespace Pulumi.Linode
         /// The first name of the person associated with this Account.
         /// </summary>
         public readonly string FirstName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The last name of the person associated with this Account.
@@ -104,7 +101,7 @@ namespace Pulumi.Linode
 
             string address2,
 
-            int balance,
+            double balance,
 
             string city,
 

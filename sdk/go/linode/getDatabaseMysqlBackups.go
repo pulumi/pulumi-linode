@@ -90,6 +90,8 @@ type GetDatabaseMysqlBackupsArgs struct {
 	DatabaseId int                             `pulumi:"databaseId"`
 	Filters    []GetDatabaseMysqlBackupsFilter `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -128,6 +130,8 @@ type GetDatabaseMysqlBackupsOutputArgs struct {
 	DatabaseId pulumi.IntInput                         `pulumi:"databaseId"`
 	Filters    GetDatabaseMysqlBackupsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

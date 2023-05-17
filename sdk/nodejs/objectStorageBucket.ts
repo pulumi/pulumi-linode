@@ -124,6 +124,10 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
     public readonly versioning!: pulumi.Output<boolean>;
 
@@ -217,6 +221,10 @@ export interface ObjectStorageBucketState {
     secretKey?: pulumi.Input<string>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
     versioning?: pulumi.Input<boolean>;
 }
@@ -259,6 +267,10 @@ export interface ObjectStorageBucketArgs {
     secretKey?: pulumi.Input<string>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+     *
+     * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
     versioning?: pulumi.Input<boolean>;
 }

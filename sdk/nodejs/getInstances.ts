@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const all-instances = linode.getInstances({});
- * export const instanceIds = [all_instances.then(all_instances => all_instances.instances)].map(__item => __item?.id);
+ * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *
@@ -139,7 +139,7 @@ export interface GetInstancesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const all-instances = linode.getInstances({});
- * export const instanceIds = [all_instances.then(all_instances => all_instances.instances)].map(__item => __item?.id);
+ * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *

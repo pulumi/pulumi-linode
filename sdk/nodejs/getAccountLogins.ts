@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * export const loginIds = [filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins)].map(__item => __item?.id);
+ * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *
@@ -89,7 +89,7 @@ export interface GetAccountLoginsResult {
  *         },
  *     ],
  * });
- * export const loginIds = [filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins)].map(__item => __item?.id);
+ * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
  * ```
  * ## Filterable Fields
  *

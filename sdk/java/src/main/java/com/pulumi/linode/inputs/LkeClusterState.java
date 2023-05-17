@@ -126,12 +126,20 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
+     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * 
+     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return This Kubernetes cluster&#39;s location.
+     * 
+     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * 
+     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Optional<Output<String>> region() {
@@ -371,6 +379,10 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region This Kubernetes cluster&#39;s location.
          * 
+         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * 
+         * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * 
          * @return builder
          * 
          */
@@ -381,6 +393,10 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region This Kubernetes cluster&#39;s location.
+         * 
+         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * 
+         * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
          * 
          * @return builder
          * 

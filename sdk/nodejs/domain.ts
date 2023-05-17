@@ -93,6 +93,8 @@ export class Domain extends pulumi.CustomResource {
     public readonly group!: pulumi.Output<string | undefined>;
     /**
      * The IP addresses representing the master DNS for this Domain.
+     *
+     * - - -
      */
     public readonly masterIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -203,6 +205,8 @@ export interface DomainState {
     group?: pulumi.Input<string>;
     /**
      * The IP addresses representing the master DNS for this Domain.
+     *
+     * - - -
      */
     masterIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -261,6 +265,8 @@ export interface DomainArgs {
     group?: pulumi.Input<string>;
     /**
      * The IP addresses representing the master DNS for this Domain.
+     *
+     * - - -
      */
     masterIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

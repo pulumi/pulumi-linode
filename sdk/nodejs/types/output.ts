@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DatabaseMongodbUpdates {
-    dayOfWeek: string;
-    duration: number;
-    frequency: string;
-    hourOfDay: number;
-    weekOfMonth?: number;
-}
-
 export interface DatabaseMysqlUpdates {
     dayOfWeek: string;
     duration: number;
@@ -207,14 +199,6 @@ export interface GetDatabaseEnginesFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
-}
-
-export interface GetDatabaseMongodbUpdate {
-    dayOfWeek: string;
-    duration: number;
-    frequency: string;
-    hourOfDay: number;
-    weekOfMonth: number;
 }
 
 export interface GetDatabaseMysqlBackupsBackup {
@@ -1718,6 +1702,8 @@ export interface InstanceConfig {
     label: string;
     /**
      * Defaults to the total RAM of the Linode
+     *
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     memoryLimit?: number;
     /**
@@ -1983,6 +1969,8 @@ export interface LkeClusterPool {
     autoscaler?: outputs.LkeClusterPoolAutoscaler;
     /**
      * The number of nodes in the Node Pool.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     count: number;
     /**
@@ -2062,6 +2050,10 @@ export interface ObjectStorageBucketCert {
 export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+     *
+     * * `expiration` - (Optional) Specifies a period in the object's expire.
+     *
+     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      */
     abortIncompleteMultipartUploadDays?: number;
     /**

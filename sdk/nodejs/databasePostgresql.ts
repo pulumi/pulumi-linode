@@ -154,10 +154,18 @@ export class DatabasePostgresql extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
+     *
+     * * Must be `local` or `off` for the `asynch` replication type.
+     *
+     * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      */
     public readonly replicationCommitType!: pulumi.Output<string | undefined>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
+     *
+     * * Must be `none` for a single node cluster.
+     *
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
     public readonly replicationType!: pulumi.Output<string | undefined>;
     /**
@@ -170,6 +178,8 @@ export class DatabasePostgresql extends pulumi.CustomResource {
     public /*out*/ readonly rootUsername!: pulumi.Output<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     *
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     public readonly sslConnection!: pulumi.Output<boolean | undefined>;
     /**
@@ -178,6 +188,8 @@ export class DatabasePostgresql extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
+     *
+     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -326,10 +338,18 @@ export interface DatabasePostgresqlState {
     region?: pulumi.Input<string>;
     /**
      * The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
+     *
+     * * Must be `local` or `off` for the `asynch` replication type.
+     *
+     * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      */
     replicationCommitType?: pulumi.Input<string>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
+     *
+     * * Must be `none` for a single node cluster.
+     *
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
     replicationType?: pulumi.Input<string>;
     /**
@@ -342,6 +362,8 @@ export interface DatabasePostgresqlState {
     rootUsername?: pulumi.Input<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     *
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     sslConnection?: pulumi.Input<boolean>;
     /**
@@ -350,6 +372,8 @@ export interface DatabasePostgresqlState {
     status?: pulumi.Input<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
+     *
+     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -396,18 +420,30 @@ export interface DatabasePostgresqlArgs {
     region: pulumi.Input<string>;
     /**
      * The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
+     *
+     * * Must be `local` or `off` for the `asynch` replication type.
+     *
+     * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      */
     replicationCommitType?: pulumi.Input<string>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
+     *
+     * * Must be `none` for a single node cluster.
+     *
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
     replicationType?: pulumi.Input<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     *
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     sslConnection?: pulumi.Input<boolean>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
+     *
+     * - - -
      */
     type: pulumi.Input<string>;
     /**

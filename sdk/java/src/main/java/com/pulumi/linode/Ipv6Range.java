@@ -67,7 +67,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * Whether this IPv6 range is shared.
      * 
      */
-    @Export(name="isBgp", type=Boolean.class, parameters={})
+    @Export(name="isBgp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isBgp;
 
     /**
@@ -81,7 +81,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      * 
      */
-    @Export(name="linodeId", type=Integer.class, parameters={})
+    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> linodeId;
 
     /**
@@ -95,7 +95,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
      * 
      */
-    @Export(name="linodes", type=List.class, parameters={Integer.class})
+    @Export(name="linodes", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> linodes;
 
     /**
@@ -109,7 +109,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * The prefix length of the IPv6 range.
      * 
      */
-    @Export(name="prefixLength", type=Integer.class, parameters={})
+    @Export(name="prefixLength", refs={Integer.class}, tree="[0]")
     private Output<Integer> prefixLength;
 
     /**
@@ -123,7 +123,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * The IPv6 range of addresses in this pool.
      * 
      */
-    @Export(name="range", type=String.class, parameters={})
+    @Export(name="range", refs={String.class}, tree="[0]")
     private Output<String> range;
 
     /**
@@ -137,7 +137,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * The region for this range of IPv6 addresses.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -151,7 +151,7 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * The IPv6 SLAAC address to assign this range to.
      * 
      */
-    @Export(name="routeTarget", type=String.class, parameters={})
+    @Export(name="routeTarget", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routeTarget;
 
     /**

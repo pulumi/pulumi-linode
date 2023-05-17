@@ -5,7 +5,6 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.StackScriptUserDefinedFieldArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -34,14 +33,18 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
     @Import(name="images", required=true)
     private Output<List<String>> images;
 
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
     public Output<List<String>> images() {
@@ -108,21 +111,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         return this.script;
     }
 
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     * 
-     */
-    @Import(name="userDefinedFields")
-    private @Nullable Output<List<StackScriptUserDefinedFieldArgs>> userDefinedFields;
-
-    /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     * 
-     */
-    public Optional<Output<List<StackScriptUserDefinedFieldArgs>>> userDefinedFields() {
-        return Optional.ofNullable(this.userDefinedFields);
-    }
-
     private StackScriptArgs() {}
 
     private StackScriptArgs(StackScriptArgs $) {
@@ -132,7 +120,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.revNote = $.revNote;
         this.script = $.script;
-        this.userDefinedFields = $.userDefinedFields;
     }
 
     public static Builder builder() {
@@ -175,7 +162,9 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param images An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -186,7 +175,9 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param images An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -196,7 +187,9 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param images An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -287,37 +280,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder script(String script) {
             return script(Output.of(script));
-        }
-
-        /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userDefinedFields(@Nullable Output<List<StackScriptUserDefinedFieldArgs>> userDefinedFields) {
-            $.userDefinedFields = userDefinedFields;
-            return this;
-        }
-
-        /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userDefinedFields(List<StackScriptUserDefinedFieldArgs> userDefinedFields) {
-            return userDefinedFields(Output.of(userDefinedFields));
-        }
-
-        /**
-         * @param userDefinedFields This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userDefinedFields(StackScriptUserDefinedFieldArgs... userDefinedFields) {
-            return userDefinedFields(List.of(userDefinedFields));
         }
 
         public StackScriptArgs build() {

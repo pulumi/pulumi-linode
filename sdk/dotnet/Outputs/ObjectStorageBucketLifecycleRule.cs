@@ -15,6 +15,10 @@ namespace Pulumi.Linode.Outputs
     {
         /// <summary>
         /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        /// 
+        /// * `expiration` - (Optional) Specifies a period in the object's expire.
+        /// 
+        /// * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         /// </summary>
         public readonly int? AbortIncompleteMultipartUploadDays;
         /// <summary>

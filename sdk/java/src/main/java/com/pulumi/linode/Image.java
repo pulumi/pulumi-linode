@@ -36,7 +36,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * When this Image was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -50,7 +50,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the User who created this Image.
      * 
      */
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
@@ -64,7 +64,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether or not this Image is deprecated. Will only be True for deprecated public Images.
      * 
      */
-    @Export(name="deprecated", type=Boolean.class, parameters={})
+    @Export(name="deprecated", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deprecated;
 
     /**
@@ -77,12 +77,20 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * A detailed description of this Image.
      * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
      * @return A detailed description of this Image.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Output<Optional<String>> description() {
@@ -92,7 +100,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The ID of the Linode Disk that this Image will be created from.
      * 
      */
-    @Export(name="diskId", type=Integer.class, parameters={})
+    @Export(name="diskId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> diskId;
 
     /**
@@ -106,7 +114,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      * 
      */
-    @Export(name="expiry", type=String.class, parameters={})
+    @Export(name="expiry", refs={String.class}, tree="[0]")
     private Output<String> expiry;
 
     /**
@@ -120,7 +128,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      * 
      */
-    @Export(name="fileHash", type=String.class, parameters={})
+    @Export(name="fileHash", refs={String.class}, tree="[0]")
     private Output<String> fileHash;
 
     /**
@@ -134,7 +142,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The path of the image file to be uploaded.
      * 
      */
-    @Export(name="filePath", type=String.class, parameters={})
+    @Export(name="filePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filePath;
 
     /**
@@ -148,7 +156,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * True if the Image is public.
      * 
      */
-    @Export(name="isPublic", type=Boolean.class, parameters={})
+    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isPublic;
 
     /**
@@ -162,7 +170,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * A short description of the Image. Labels cannot contain special characters.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -175,12 +183,24 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Linode that this Image will be created from.
      * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
+     * 
      */
-    @Export(name="linodeId", type=Integer.class, parameters={})
+    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> linodeId;
 
     /**
      * @return The ID of the Linode that this Image will be created from.
+     * 
+     * ***
+     * 
+     * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+     * 
+     * The following arguments apply to uploading an image:
      * 
      */
     public Output<Optional<Integer>> linodeId() {
@@ -190,7 +210,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -204,7 +224,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The minimum size this Image needs to deploy. Size is in MB.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -218,7 +238,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The current status of this Image.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -232,7 +252,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -246,7 +266,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The upstream distribution vendor. Nil for private Images.
      * 
      */
-    @Export(name="vendor", type=String.class, parameters={})
+    @Export(name="vendor", refs={String.class}, tree="[0]")
     private Output<String> vendor;
 
     /**

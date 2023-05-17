@@ -19,12 +19,16 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      * 
+     * ***
+     * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
      * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> address() {
@@ -154,6 +158,8 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         /**
          * @param address The private IP Address where this backend can be reached. This must be a private IP address.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -164,6 +170,8 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param address The private IP Address where this backend can be reached. This must be a private IP address.
+         * 
+         * ***
          * 
          * @return builder
          * 

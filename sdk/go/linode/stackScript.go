@@ -87,14 +87,16 @@ type StackScript struct {
 	DeploymentsTotal pulumi.IntOutput `pulumi:"deploymentsTotal"`
 	// A description for the StackScript.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	//
+	// ***
 	Images pulumi.StringArrayOutput `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
-	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
+	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
 	// The StackScript's label is for display purposes only.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// This field allows you to add notes for the set of revisions made to this StackScript.
-	RevNote pulumi.StringPtrOutput `pulumi:"revNote"`
+	RevNote pulumi.StringOutput `pulumi:"revNote"`
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script pulumi.StringOutput `pulumi:"script"`
 	// The date this StackScript was updated.
@@ -156,7 +158,9 @@ type stackScriptState struct {
 	DeploymentsTotal *int `pulumi:"deploymentsTotal"`
 	// A description for the StackScript.
 	Description *string `pulumi:"description"`
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	//
+	// ***
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic *bool `pulumi:"isPublic"`
@@ -185,7 +189,9 @@ type StackScriptState struct {
 	DeploymentsTotal pulumi.IntPtrInput
 	// A description for the StackScript.
 	Description pulumi.StringPtrInput
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	//
+	// ***
 	Images pulumi.StringArrayInput
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic pulumi.BoolPtrInput
@@ -212,7 +218,9 @@ func (StackScriptState) ElementType() reflect.Type {
 type stackScriptArgs struct {
 	// A description for the StackScript.
 	Description string `pulumi:"description"`
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	//
+	// ***
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic *bool `pulumi:"isPublic"`
@@ -222,15 +230,15 @@ type stackScriptArgs struct {
 	RevNote *string `pulumi:"revNote"`
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script string `pulumi:"script"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-	UserDefinedFields []StackScriptUserDefinedField `pulumi:"userDefinedFields"`
 }
 
 // The set of arguments for constructing a StackScript resource.
 type StackScriptArgs struct {
 	// A description for the StackScript.
 	Description pulumi.StringInput
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+	//
+	// ***
 	Images pulumi.StringArrayInput
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic pulumi.BoolPtrInput
@@ -240,8 +248,6 @@ type StackScriptArgs struct {
 	RevNote pulumi.StringPtrInput
 	// The script to execute when provisioning a new Linode with this StackScript.
 	Script pulumi.StringInput
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-	UserDefinedFields StackScriptUserDefinedFieldArrayInput
 }
 
 func (StackScriptArgs) ElementType() reflect.Type {
@@ -351,14 +357,16 @@ func (o StackScriptOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+//
+// ***
 func (o StackScriptOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
 }
 
 // This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
-func (o StackScriptOutput) IsPublic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *StackScript) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
+func (o StackScriptOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.BoolOutput { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
 // The StackScript's label is for display purposes only.
@@ -367,8 +375,8 @@ func (o StackScriptOutput) Label() pulumi.StringOutput {
 }
 
 // This field allows you to add notes for the set of revisions made to this StackScript.
-func (o StackScriptOutput) RevNote() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StackScript) pulumi.StringPtrOutput { return v.RevNote }).(pulumi.StringPtrOutput)
+func (o StackScriptOutput) RevNote() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.RevNote }).(pulumi.StringOutput)
 }
 
 // The script to execute when provisioning a new Linode with this StackScript.

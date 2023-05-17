@@ -50,9 +50,6 @@ export interface GetNetworkingIpResult {
      * The default gateway for this address.
      */
     readonly gateway: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The ID of the Linode this address currently belongs to.

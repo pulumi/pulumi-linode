@@ -52,7 +52,7 @@ type GetAccountResult struct {
 	// Second line of this Account's billing address.
 	Address2 string `pulumi:"address2"`
 	// This Account's balance, in US dollars.
-	Balance int `pulumi:"balance"`
+	Balance float64 `pulumi:"balance"`
 	// The city for this Account's billing address.
 	City string `pulumi:"city"`
 	// The company name associated with this Account.
@@ -63,8 +63,7 @@ type GetAccountResult struct {
 	Email string `pulumi:"email"`
 	// The first name of the person associated with this Account.
 	FirstName string `pulumi:"firstName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string `pulumi:"id"`
 	// The last name of the person associated with this Account.
 	LastName string `pulumi:"lastName"`
 	// The phone number associated with this Account.

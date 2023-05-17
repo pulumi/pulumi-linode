@@ -45,6 +45,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A detailed description of this Image.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -87,6 +91,12 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
+        /// 
+        /// - - -
+        /// 
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// 
+        /// The following arguments apply to uploading an image:
         /// </summary>
         [Output("linodeId")]
         public Output<int?> LinodeId { get; private set; } = null!;
@@ -169,6 +179,10 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// A detailed description of this Image.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -199,6 +213,12 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
+        /// 
+        /// - - -
+        /// 
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// 
+        /// The following arguments apply to uploading an image:
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -237,6 +257,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A detailed description of this Image.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -279,6 +303,12 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
+        /// 
+        /// - - -
+        /// 
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// 
+        /// The following arguments apply to uploading an image:
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }

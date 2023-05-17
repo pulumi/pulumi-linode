@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.LookupStackScript(ctx, &linode.LookupStackScriptArgs{
-//				Id: 355872,
+//				Id: "355872",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,9 +51,7 @@ func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ..
 // A collection of arguments for invoking getStackScript.
 type LookupStackScriptArgs struct {
 	// The unique numeric ID of the StackScript to query.
-	Id int `pulumi:"id"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-	UserDefinedFields []GetStackScriptUserDefinedField `pulumi:"userDefinedFields"`
+	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getStackScript.
@@ -66,8 +64,8 @@ type LookupStackScriptResult struct {
 	DeploymentsTotal int `pulumi:"deploymentsTotal"`
 	// A description for the StackScript.
 	Description string `pulumi:"description"`
-	Id          int    `pulumi:"id"`
-	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+	Id          string `pulumi:"id"`
+	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
 	IsPublic bool `pulumi:"isPublic"`
@@ -103,9 +101,7 @@ func LookupStackScriptOutput(ctx *pulumi.Context, args LookupStackScriptOutputAr
 // A collection of arguments for invoking getStackScript.
 type LookupStackScriptOutputArgs struct {
 	// The unique numeric ID of the StackScript to query.
-	Id pulumi.IntInput `pulumi:"id"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-	UserDefinedFields GetStackScriptUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (LookupStackScriptOutputArgs) ElementType() reflect.Type {
@@ -147,11 +143,11 @@ func (o LookupStackScriptResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o LookupStackScriptResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupStackScriptResult) int { return v.Id }).(pulumi.IntOutput)
+func (o LookupStackScriptResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackScriptResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
 func (o LookupStackScriptResultOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStackScriptResult) []string { return v.Images }).(pulumi.StringArrayOutput)
 }

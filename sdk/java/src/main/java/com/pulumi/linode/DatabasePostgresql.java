@@ -134,7 +134,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      * 
      */
-    @Export(name="allowLists", type=List.class, parameters={String.class})
+    @Export(name="allowLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowLists;
 
     /**
@@ -148,7 +148,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The base64-encoded SSL CA certificate for the Managed Database instance.
      * 
      */
-    @Export(name="caCert", type=String.class, parameters={})
+    @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
@@ -162,7 +162,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      * 
      */
-    @Export(name="clusterSize", type=Integer.class, parameters={})
+    @Export(name="clusterSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clusterSize;
 
     /**
@@ -176,7 +176,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * When this Managed Database was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -190,7 +190,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * Whether the Managed Databases is encrypted. (default `false`)
      * 
      */
-    @Export(name="encrypted", type=Boolean.class, parameters={})
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
     /**
@@ -204,7 +204,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine. (e.g. `postgresql`)
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -218,7 +218,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
      * 
      */
-    @Export(name="engineId", type=String.class, parameters={})
+    @Export(name="engineId", refs={String.class}, tree="[0]")
     private Output<String> engineId;
 
     /**
@@ -232,7 +232,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The primary host for the Managed Database.
      * 
      */
-    @Export(name="hostPrimary", type=String.class, parameters={})
+    @Export(name="hostPrimary", refs={String.class}, tree="[0]")
     private Output<String> hostPrimary;
 
     /**
@@ -246,7 +246,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The secondary/private network host for the Managed Database.
      * 
      */
-    @Export(name="hostSecondary", type=String.class, parameters={})
+    @Export(name="hostSecondary", refs={String.class}, tree="[0]")
     private Output<String> hostSecondary;
 
     /**
@@ -260,7 +260,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * A unique, user-defined string referring to the Managed Database.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -274,7 +274,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The access port for this Managed Database.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -288,7 +288,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The region to use for the Managed Database.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -301,12 +301,20 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
     /**
      * The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
      * 
+     * * Must be `local` or `off` for the `asynch` replication type.
+     * 
+     * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+     * 
      */
-    @Export(name="replicationCommitType", type=String.class, parameters={})
+    @Export(name="replicationCommitType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replicationCommitType;
 
     /**
      * @return The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+     * 
+     * * Must be `local` or `off` for the `asynch` replication type.
+     * 
+     * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
      * 
      */
     public Output<Optional<String>> replicationCommitType() {
@@ -315,12 +323,20 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
      * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * 
      */
-    @Export(name="replicationType", type=String.class, parameters={})
+    @Export(name="replicationType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replicationType;
 
     /**
      * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * 
+     * * Must be `none` for a single node cluster.
+     * 
+     * * Must be `asynch` or `semi_synch` for a high availability cluster.
      * 
      */
     public Output<Optional<String>> replicationType() {
@@ -330,7 +346,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The randomly-generated root password for the Managed Database instance.
      * 
      */
-    @Export(name="rootPassword", type=String.class, parameters={})
+    @Export(name="rootPassword", refs={String.class}, tree="[0]")
     private Output<String> rootPassword;
 
     /**
@@ -344,7 +360,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The root username for the Managed Database instance.
      * 
      */
-    @Export(name="rootUsername", type=String.class, parameters={})
+    @Export(name="rootUsername", refs={String.class}, tree="[0]")
     private Output<String> rootUsername;
 
     /**
@@ -357,12 +373,16 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * 
      */
-    @Export(name="sslConnection", type=Boolean.class, parameters={})
+    @Export(name="sslConnection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sslConnection;
 
     /**
      * @return Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+     * 
+     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Output<Optional<Boolean>> sslConnection() {
@@ -372,7 +392,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The operating status of the Managed Database.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -385,12 +405,16 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
+     * ***
+     * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
+     * 
+     * ***
      * 
      */
     public Output<String> type() {
@@ -400,7 +424,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * When this Managed Database was last updated.
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
@@ -414,7 +438,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
-    @Export(name="updates", type=DatabasePostgresqlUpdates.class, parameters={})
+    @Export(name="updates", refs={DatabasePostgresqlUpdates.class}, tree="[0]")
     private Output<DatabasePostgresqlUpdates> updates;
 
     /**
@@ -428,7 +452,7 @@ public class DatabasePostgresql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine version. (e.g. `13.2`)
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

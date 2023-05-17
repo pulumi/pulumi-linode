@@ -11,6 +11,118 @@ import (
 )
 
 // Provides information about Linode Managed Database engines that match a set of filters.
+//
+// ## Example Usage
+//
+// Get information about all Linode Managed Database engines:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := linode.GetDatabaseEngines(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range all.Engines {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("engineIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode MySQL Database engines:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mysql, err := linode.GetDatabaseEngines(ctx, &linode.GetDatabaseEnginesArgs{
+//				Filters: []linode.GetDatabaseEnginesFilter{
+//					{
+//						Name: "engine",
+//						Values: []string{
+//							"mysql",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range mysql.Engines {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("engineIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a Linode MySQL Database using the latest support MySQL version:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mysql, err := linode.GetDatabaseEngines(ctx, &linode.GetDatabaseEnginesArgs{
+//				Latest: pulumi.BoolRef(true),
+//				Filters: []linode.GetDatabaseEnginesFilter{
+//					{
+//						Name: "engine",
+//						Values: []string{
+//							"mysql",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewDatabaseMysql(ctx, "myDb", &linode.DatabaseMysqlArgs{
+//				Label:    pulumi.String("mydb"),
+//				EngineId: *pulumi.String(mysql.Engines[0].Id),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseEnginesResult, error) {
 	var rv GetDatabaseEnginesResult
 	err := ctx.Invoke("linode:index/getDatabaseEngines:getDatabaseEngines", args, &rv, opts...)
@@ -24,6 +136,8 @@ func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts 
 type GetDatabaseEnginesArgs struct {
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -59,6 +173,8 @@ func GetDatabaseEnginesOutput(ctx *pulumi.Context, args GetDatabaseEnginesOutput
 type GetDatabaseEnginesOutputArgs struct {
 	Filters GetDatabaseEnginesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

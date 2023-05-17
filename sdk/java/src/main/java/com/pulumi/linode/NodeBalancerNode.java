@@ -111,12 +111,16 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
     /**
      * The private IP Address where this backend can be reached. This must be a private IP address.
      * 
+     * ***
+     * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
      * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * 
+     * ***
      * 
      */
     public Output<String> address() {
@@ -126,7 +130,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * The ID of the NodeBalancerConfig to access.
      * 
      */
-    @Export(name="configId", type=Integer.class, parameters={})
+    @Export(name="configId", refs={Integer.class}, tree="[0]")
     private Output<Integer> configId;
 
     /**
@@ -140,7 +144,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * The label of the Linode NodeBalancer Node. This is for display purposes only.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -154,7 +158,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -168,7 +172,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * The ID of the NodeBalancer to access.
      * 
      */
-    @Export(name="nodebalancerId", type=Integer.class, parameters={})
+    @Export(name="nodebalancerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodebalancerId;
 
     /**
@@ -182,7 +186,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -196,7 +200,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

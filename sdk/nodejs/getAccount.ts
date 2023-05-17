@@ -63,9 +63,6 @@ export interface GetAccountResult {
      * The first name of the person associated with this Account.
      */
     readonly firstName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The last name of the person associated with this Account.

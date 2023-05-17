@@ -34,6 +34,10 @@ type Image struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated pulumi.BoolOutput `pulumi:"deprecated"`
 	// A detailed description of this Image.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrOutput `pulumi:"diskId"`
@@ -48,6 +52,12 @@ type Image struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
+	//
+	// ***
+	//
+	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+	//
+	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -100,6 +110,10 @@ type imageState struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated *bool `pulumi:"deprecated"`
 	// A detailed description of this Image.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId *int `pulumi:"diskId"`
@@ -114,6 +128,12 @@ type imageState struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label *string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
+	//
+	// ***
+	//
+	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+	//
+	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
 	Region *string `pulumi:"region"`
@@ -135,6 +155,10 @@ type ImageState struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated pulumi.BoolPtrInput
 	// A detailed description of this Image.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrInput
@@ -149,6 +173,12 @@ type ImageState struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringPtrInput
 	// The ID of the Linode that this Image will be created from.
+	//
+	// ***
+	//
+	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+	//
+	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
 	Region pulumi.StringPtrInput
@@ -168,6 +198,10 @@ func (ImageState) ElementType() reflect.Type {
 
 type imageArgs struct {
 	// A detailed description of this Image.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId *int `pulumi:"diskId"`
@@ -178,6 +212,12 @@ type imageArgs struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
+	//
+	// ***
+	//
+	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+	//
+	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
 	Region *string `pulumi:"region"`
@@ -186,6 +226,10 @@ type imageArgs struct {
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
 	// A detailed description of this Image.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrInput
@@ -196,6 +240,12 @@ type ImageArgs struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringInput
 	// The ID of the Linode that this Image will be created from.
+	//
+	// ***
+	//
+	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+	//
+	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
 	Region pulumi.StringPtrInput
@@ -304,6 +354,10 @@ func (o ImageOutput) Deprecated() pulumi.BoolOutput {
 }
 
 // A detailed description of this Image.
+//
+// ***
+//
+// The following arguments apply to creating an image from an existing Linode Instance:
 func (o ImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -339,6 +393,12 @@ func (o ImageOutput) Label() pulumi.StringOutput {
 }
 
 // The ID of the Linode that this Image will be created from.
+//
+// ***
+//
+// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+//
+// The following arguments apply to uploading an image:
 func (o ImageOutput) LinodeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.LinodeId }).(pulumi.IntPtrOutput)
 }

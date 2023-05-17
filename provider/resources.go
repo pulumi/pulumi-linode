@@ -15,6 +15,7 @@
 package linode
 
 import (
+	"context"
 	"fmt"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -23,6 +24,7 @@ import (
 
 	"github.com/linode/terraform-provider-linode/linode"
 	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -74,14 +76,17 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
-func boolRef(b bool) *bool {
+func ref[T any](b T) *T {
 	return &b
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(linode.Provider())
+	p := pfbridge.MuxShimWithPF(context.Background(),
+		shimv2.NewProvider(linode.Provider()),
+		linode.CreateFrameworkProvider(version.Version),
+	)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -94,6 +99,8 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-linode",
 		GitHubOrg:        "linode",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+
 		Config: map[string]*tfbridge.SchemaInfo{
 			"url": {
 				Default: &tfbridge.DefaultInfo{
@@ -125,14 +132,14 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "Instance"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"specs": {
-						MaxItemsOne: boolRef(true),
+						MaxItemsOne: ref(true),
 					},
 					"backups": {
-						MaxItemsOne: boolRef(true),
+						MaxItemsOne: ref(true),
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"schedule": {
-									MaxItemsOne: boolRef(true),
+									MaxItemsOne: ref(true),
 								},
 							},
 						},
@@ -195,11 +202,16 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_firewall_device":          {Tok: makeResource(mainMod, "FirewallDevice")},
 			"linode_ipv6_range":               {Tok: makeResource(mainMod, "Ipv6Range")},
 			"linode_database_mysql":           {Tok: makeResource(mainMod, "DatabaseMysql")},
-			"linode_database_mongodb":         {Tok: makeResource(mainMod, "DatabaseMongodb")},
 			"linode_database_postgresql":      {Tok: makeResource(mainMod, "DatabasePostgresql")},
 			"linode_database_access_controls": {Tok: makeResource(mainMod, "DatabaseAccessControls")},
 			"linode_instance_shared_ips":      {Tok: makeResource(mainMod, "InstanceSharedIps")},
 			"linode_instance_disk":            {Tok: makeResource(mainMod, "InstanceDisk")},
+			"linode_token": {
+				Tok: makeResource(mainMod, "Token"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"token": {CSharpName: "ApiToken"},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_vlans":   {Tok: makeDataSource(mainMod, "getVlans")},
@@ -210,18 +222,18 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeDataSource(mainMod, "getInstanceType"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"price": {
-						MaxItemsOne: boolRef(true),
+						MaxItemsOne: ref(true),
 					},
 					"addons": {
-						MaxItemsOne: boolRef(true),
+						MaxItemsOne: ref(true),
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"backups": {
-									MaxItemsOne: boolRef(true),
+									MaxItemsOne: ref(true),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"price": {
-												MaxItemsOne: boolRef(true),
+												MaxItemsOne: ref(true),
 											},
 										},
 									},
@@ -236,7 +248,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeDataSource(mainMod, "getProfile"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"referrals": {
-						MaxItemsOne: boolRef(true),
+						MaxItemsOne: ref(true),
 					},
 				},
 			},
@@ -264,7 +276,6 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_database_mysql_backups": {Tok: makeDataSource(mainMod, "getDatabaseMysqlBackups")},
 			"linode_databases":              {Tok: makeDataSource(mainMod, "getDatabases")},
 			"linode_database_backups":       {Tok: makeDataSource(mainMod, "getDatabaseBackups")},
-			"linode_database_mongodb":       {Tok: makeDataSource(mainMod, "getDatabaseMongodb")},
 			"linode_database_mysql":         {Tok: makeDataSource(mainMod, "getDatabaseMysql")},
 			"linode_database_postgresql":    {Tok: makeDataSource(mainMod, "getDatabasePostgresql")},
 			"linode_ipv6_range":             {Tok: makeDataSource(mainMod, "getIpv6Range")},

@@ -138,6 +138,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// This Kubernetes cluster's location.
+        /// 
+        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// 
+        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -236,6 +240,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// This Kubernetes cluster's location.
+        /// 
+        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// 
+        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -326,6 +334,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// This Kubernetes cluster's location.
+        /// 
+        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// 
+        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

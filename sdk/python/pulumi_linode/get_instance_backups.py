@@ -29,8 +29,8 @@ class GetInstanceBackupsResult:
         if currents and not isinstance(currents, list):
             raise TypeError("Expected argument 'currents' to be a list")
         pulumi.set(__self__, "currents", currents)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if in_progresses and not isinstance(in_progresses, list):
             raise TypeError("Expected argument 'in_progresses' to be a list")
@@ -51,9 +51,9 @@ class GetInstanceBackupsResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique ID of this Backup.
         """
         return pulumi.get(self, "id")
 

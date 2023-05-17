@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// {
         ///     var myStackscript = Linode.GetStackScript.Invoke(new()
         ///     {
-        ///         Id = 355872,
+        ///         Id = "355872",
         ///     });
         /// 
         /// });
@@ -60,7 +60,7 @@ namespace Pulumi.Linode
         /// {
         ///     var myStackscript = Linode.GetStackScript.Invoke(new()
         ///     {
-        ///         Id = 355872,
+        ///         Id = "355872",
         ///     });
         /// 
         /// });
@@ -79,19 +79,7 @@ namespace Pulumi.Linode
         /// The unique numeric ID of the StackScript to query.
         /// </summary>
         [Input("id", required: true)]
-        public int Id { get; set; }
-
-        [Input("userDefinedFields")]
-        private List<Inputs.GetStackScriptUserDefinedFieldArgs>? _userDefinedFields;
-
-        /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-        /// </summary>
-        public List<Inputs.GetStackScriptUserDefinedFieldArgs> UserDefinedFields
-        {
-            get => _userDefinedFields ?? (_userDefinedFields = new List<Inputs.GetStackScriptUserDefinedFieldArgs>());
-            set => _userDefinedFields = value;
-        }
+        public string Id { get; set; } = null!;
 
         public GetStackScriptArgs()
         {
@@ -105,19 +93,7 @@ namespace Pulumi.Linode
         /// The unique numeric ID of the StackScript to query.
         /// </summary>
         [Input("id", required: true)]
-        public Input<int> Id { get; set; } = null!;
-
-        [Input("userDefinedFields")]
-        private InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs>? _userDefinedFields;
-
-        /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-        /// </summary>
-        public InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs> UserDefinedFields
-        {
-            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.GetStackScriptUserDefinedFieldInputArgs>());
-            set => _userDefinedFields = value;
-        }
+        public Input<string> Id { get; set; } = null!;
 
         public GetStackScriptInvokeArgs()
         {
@@ -145,9 +121,9 @@ namespace Pulumi.Linode
         /// A description for the StackScript.
         /// </summary>
         public readonly string Description;
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
-        /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
+        /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted.
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>
@@ -193,7 +169,7 @@ namespace Pulumi.Linode
 
             string description,
 
-            int id,
+            string id,
 
             ImmutableArray<string> images,
 

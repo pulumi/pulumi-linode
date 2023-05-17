@@ -145,6 +145,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Output("versioning")]
         public Output<bool> Versioning { get; private set; } = null!;
@@ -251,6 +255,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -326,6 +334,10 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// 
+        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

@@ -2,85 +2,400 @@
     "auto-aliasing": {
         "resources": {
             "linode_account_settings": {
-                "current": "linode:index/accountSettings:AccountSettings"
+                "current": "linode:index/accountSettings:AccountSettings",
+                "majorVersion": 4
             },
             "linode_database_access_controls": {
-                "current": "linode:index/databaseAccessControls:DatabaseAccessControls"
+                "current": "linode:index/databaseAccessControls:DatabaseAccessControls",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_database_mongodb": {
                 "current": "linode:index/databaseMongodb:DatabaseMongodb"
             },
             "linode_database_mysql": {
-                "current": "linode:index/databaseMysql:DatabaseMysql"
+                "current": "linode:index/databaseMysql:DatabaseMysql",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "updates": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "linode_database_postgresql": {
-                "current": "linode:index/databasePostgresql:DatabasePostgresql"
+                "current": "linode:index/databasePostgresql:DatabasePostgresql",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "updates": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "linode_domain": {
-                "current": "linode:index/domain:Domain"
+                "current": "linode:index/domain:Domain",
+                "majorVersion": 4,
+                "fields": {
+                    "axfr_ips": {
+                        "maxItemsOne": false
+                    },
+                    "master_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_domain_record": {
-                "current": "linode:index/domainRecord:DomainRecord"
+                "current": "linode:index/domainRecord:DomainRecord",
+                "majorVersion": 4
             },
             "linode_firewall": {
-                "current": "linode:index/firewall:Firewall"
+                "current": "linode:index/firewall:Firewall",
+                "majorVersion": 4,
+                "fields": {
+                    "devices": {
+                        "maxItemsOne": false
+                    },
+                    "inbound": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "linodes": {
+                        "maxItemsOne": false
+                    },
+                    "outbound": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_firewall_device": {
-                "current": "linode:index/firewallDevice:FirewallDevice"
+                "current": "linode:index/firewallDevice:FirewallDevice",
+                "majorVersion": 4
             },
             "linode_image": {
-                "current": "linode:index/image:Image"
+                "current": "linode:index/image:Image",
+                "majorVersion": 4
             },
             "linode_instance": {
-                "current": "linode:index/instance:Instance"
+                "current": "linode:index/instance:Instance",
+                "majorVersion": 4,
+                "fields": {
+                    "alerts": {
+                        "maxItemsOne": true
+                    },
+                    "authorized_keys": {
+                        "maxItemsOne": false
+                    },
+                    "authorized_users": {
+                        "maxItemsOne": false
+                    },
+                    "backups": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "schedule": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "devices": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "sda": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdb": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdc": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdd": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sde": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdf": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdg": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdh": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "helpers": {
+                                    "maxItemsOne": true
+                                },
+                                "interface": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "disk": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "authorized_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "authorized_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "interface": {
+                        "maxItemsOne": false
+                    },
+                    "ipv4": {
+                        "maxItemsOne": false
+                    },
+                    "shared_ipv4": {
+                        "maxItemsOne": false
+                    },
+                    "specs": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_instance_disk": {
-                "current": "linode:index/instanceDisk:InstanceDisk"
+                "current": "linode:index/instanceDisk:InstanceDisk",
+                "majorVersion": 4,
+                "fields": {
+                    "authorized_keys": {
+                        "maxItemsOne": false
+                    },
+                    "authorized_users": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_instance_ip": {
-                "current": "linode:index/instanceIp:InstanceIp"
+                "current": "linode:index/instanceIp:InstanceIp",
+                "majorVersion": 4
             },
             "linode_instance_shared_ips": {
-                "current": "linode:index/instanceSharedIps:InstanceSharedIps"
+                "current": "linode:index/instanceSharedIps:InstanceSharedIps",
+                "majorVersion": 4,
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_ipv6_range": {
-                "current": "linode:index/ipv6Range:Ipv6Range"
+                "current": "linode:index/ipv6Range:Ipv6Range",
+                "majorVersion": 4,
+                "fields": {
+                    "linodes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_lke_cluster": {
-                "current": "linode:index/lkeCluster:LkeCluster"
+                "current": "linode:index/lkeCluster:LkeCluster",
+                "majorVersion": 4,
+                "fields": {
+                    "api_endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "control_plane": {
+                        "maxItemsOne": true
+                    },
+                    "pool": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "autoscaler": {
+                                    "maxItemsOne": true
+                                },
+                                "nodes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_nodebalancer": {
-                "current": "linode:index/nodeBalancer:NodeBalancer"
+                "current": "linode:index/nodeBalancer:NodeBalancer",
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "transfer": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_nodebalancer_config": {
-                "current": "linode:index/nodeBalancerConfig:NodeBalancerConfig"
+                "current": "linode:index/nodeBalancerConfig:NodeBalancerConfig",
+                "majorVersion": 4,
+                "fields": {
+                    "node_status": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_nodebalancer_node": {
-                "current": "linode:index/nodeBalancerNode:NodeBalancerNode"
+                "current": "linode:index/nodeBalancerNode:NodeBalancerNode",
+                "majorVersion": 4
             },
             "linode_object_storage_bucket": {
-                "current": "linode:index/objectStorageBucket:ObjectStorageBucket"
+                "current": "linode:index/objectStorageBucket:ObjectStorageBucket",
+                "majorVersion": 4,
+                "fields": {
+                    "cert": {
+                        "maxItemsOne": true
+                    },
+                    "lifecycle_rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "expiration": {
+                                    "maxItemsOne": true
+                                },
+                                "noncurrent_version_expiration": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "linode_object_storage_key": {
-                "current": "linode:index/objectStorageKey:ObjectStorageKey"
+                "current": "linode:index/objectStorageKey:ObjectStorageKey",
+                "majorVersion": 4,
+                "fields": {
+                    "bucket_access": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_object_storage_object": {
-                "current": "linode:index/objectStorageObject:ObjectStorageObject"
+                "current": "linode:index/objectStorageObject:ObjectStorageObject",
+                "majorVersion": 4
             },
             "linode_rdns": {
-                "current": "linode:index/rdns:Rdns"
+                "current": "linode:index/rdns:Rdns",
+                "majorVersion": 4
             },
             "linode_sshkey": {
-                "current": "linode:index/sshKey:SshKey"
+                "current": "linode:index/sshKey:SshKey",
+                "majorVersion": 4
             },
             "linode_stackscript": {
-                "current": "linode:index/stackScript:StackScript"
+                "current": "linode:index/stackScript:StackScript",
+                "majorVersion": 4,
+                "fields": {
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "user_defined_fields": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_token": {
+                "current": "linode:index/token:Token",
+                "majorVersion": 4
             },
             "linode_user": {
-                "current": "linode:index/user:User"
+                "current": "linode:index/user:User",
+                "majorVersion": 4,
+                "fields": {
+                    "domain_grant": {
+                        "maxItemsOne": false
+                    },
+                    "firewall_grant": {
+                        "maxItemsOne": false
+                    },
+                    "global_grants": {
+                        "maxItemsOne": true
+                    },
+                    "image_grant": {
+                        "maxItemsOne": false
+                    },
+                    "linode_grant": {
+                        "maxItemsOne": false
+                    },
+                    "longview_grant": {
+                        "maxItemsOne": false
+                    },
+                    "nodebalancer_grant": {
+                        "maxItemsOne": false
+                    },
+                    "ssh_keys": {
+                        "maxItemsOne": false
+                    },
+                    "stackscript_grant": {
+                        "maxItemsOne": false
+                    },
+                    "volume_grant": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_volume": {
-                "current": "linode:index/volume:Volume"
+                "current": "linode:index/volume:Volume",
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -209,11 +524,83 @@
             }
         }
     },
+    "mux": {
+        "resources": {
+            "linode:index/accountSettings:AccountSettings": 0,
+            "linode:index/databaseAccessControls:DatabaseAccessControls": 0,
+            "linode:index/databaseMysql:DatabaseMysql": 0,
+            "linode:index/databasePostgresql:DatabasePostgresql": 0,
+            "linode:index/domain:Domain": 0,
+            "linode:index/domainRecord:DomainRecord": 0,
+            "linode:index/firewall:Firewall": 0,
+            "linode:index/firewallDevice:FirewallDevice": 0,
+            "linode:index/image:Image": 0,
+            "linode:index/instance:Instance": 0,
+            "linode:index/instanceDisk:InstanceDisk": 0,
+            "linode:index/instanceIp:InstanceIp": 0,
+            "linode:index/instanceSharedIps:InstanceSharedIps": 0,
+            "linode:index/ipv6Range:Ipv6Range": 0,
+            "linode:index/lkeCluster:LkeCluster": 0,
+            "linode:index/nodeBalancer:NodeBalancer": 0,
+            "linode:index/nodeBalancerConfig:NodeBalancerConfig": 0,
+            "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
+            "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
+            "linode:index/objectStorageKey:ObjectStorageKey": 0,
+            "linode:index/objectStorageObject:ObjectStorageObject": 0,
+            "linode:index/rdns:Rdns": 0,
+            "linode:index/sshKey:SshKey": 0,
+            "linode:index/stackScript:StackScript": 1,
+            "linode:index/token:Token": 1,
+            "linode:index/user:User": 0,
+            "linode:index/volume:Volume": 0
+        },
+        "functions": {
+            "linode:index/getAccount:getAccount": 1,
+            "linode:index/getAccountLogin:getAccountLogin": 0,
+            "linode:index/getAccountLogins:getAccountLogins": 0,
+            "linode:index/getAccountSettings:getAccountSettings": 0,
+            "linode:index/getDatabaseBackups:getDatabaseBackups": 0,
+            "linode:index/getDatabaseEngines:getDatabaseEngines": 0,
+            "linode:index/getDatabaseMysql:getDatabaseMysql": 0,
+            "linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups": 0,
+            "linode:index/getDatabasePostgresql:getDatabasePostgresql": 0,
+            "linode:index/getDatabases:getDatabases": 0,
+            "linode:index/getDomain:getDomain": 0,
+            "linode:index/getDomainRecord:getDomainRecord": 0,
+            "linode:index/getDomainZonefile:getDomainZonefile": 0,
+            "linode:index/getFirewall:getFirewall": 0,
+            "linode:index/getImage:getImage": 0,
+            "linode:index/getImages:getImages": 0,
+            "linode:index/getInstanceBackups:getInstanceBackups": 1,
+            "linode:index/getInstanceNetworking:getInstanceNetworking": 0,
+            "linode:index/getInstanceType:getInstanceType": 0,
+            "linode:index/getInstanceTypes:getInstanceTypes": 0,
+            "linode:index/getInstances:getInstances": 0,
+            "linode:index/getIpv6Range:getIpv6Range": 0,
+            "linode:index/getKernel:getKernel": 1,
+            "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 0,
+            "linode:index/getLkeCluster:getLkeCluster": 0,
+            "linode:index/getLkeVersions:getLkeVersions": 1,
+            "linode:index/getNetworkingIp:getNetworkingIp": 1,
+            "linode:index/getNodeBalancer:getNodeBalancer": 0,
+            "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 0,
+            "linode:index/getNodeBalancerNode:getNodeBalancerNode": 0,
+            "linode:index/getObjectStorageCluster:getObjectStorageCluster": 0,
+            "linode:index/getProfile:getProfile": 0,
+            "linode:index/getRegion:getRegion": 0,
+            "linode:index/getRegions:getRegions": 0,
+            "linode:index/getSshKey:getSshKey": 0,
+            "linode:index/getStackScript:getStackScript": 1,
+            "linode:index/getStackScripts:getStackScripts": 0,
+            "linode:index/getUser:getUser": 0,
+            "linode:index/getVlans:getVlans": 0,
+            "linode:index/getVolume:getVolume": 0
+        }
+    },
     "renames": {
         "resources": {
             "linode:index/accountSettings:AccountSettings": "linode_account_settings",
             "linode:index/databaseAccessControls:DatabaseAccessControls": "linode_database_access_controls",
-            "linode:index/databaseMongodb:DatabaseMongodb": "linode_database_mongodb",
             "linode:index/databaseMysql:DatabaseMysql": "linode_database_mysql",
             "linode:index/databasePostgresql:DatabasePostgresql": "linode_database_postgresql",
             "linode:index/domain:Domain": "linode_domain",
@@ -236,6 +623,7 @@
             "linode:index/rdns:Rdns": "linode_rdns",
             "linode:index/sshKey:SshKey": "linode_sshkey",
             "linode:index/stackScript:StackScript": "linode_stackscript",
+            "linode:index/token:Token": "linode_token",
             "linode:index/user:User": "linode_user",
             "linode:index/volume:Volume": "linode_volume"
         },
@@ -246,7 +634,6 @@
             "linode:index/getAccountSettings:getAccountSettings": "linode_account_settings",
             "linode:index/getDatabaseBackups:getDatabaseBackups": "linode_database_backups",
             "linode:index/getDatabaseEngines:getDatabaseEngines": "linode_database_engines",
-            "linode:index/getDatabaseMongodb:getDatabaseMongodb": "linode_database_mongodb",
             "linode:index/getDatabaseMysql:getDatabaseMysql": "linode_database_mysql",
             "linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups": "linode_database_mysql_backups",
             "linode:index/getDatabasePostgresql:getDatabasePostgresql": "linode_database_postgresql",
@@ -283,11 +670,6 @@
             "linode:index/getVolume:getVolume": "linode_volume"
         },
         "renamedProperties": {
-            "linode:index/DatabaseMongodbUpdates:DatabaseMongodbUpdates": {
-                "dayOfWeek": "day_of_week",
-                "hourOfDay": "hour_of_day",
-                "weekOfMonth": "week_of_month"
-            },
             "linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates": {
                 "dayOfWeek": "day_of_week",
                 "hourOfDay": "hour_of_day",
@@ -428,20 +810,6 @@
                 "databaseId": "database_id",
                 "databaseType": "database_type"
             },
-            "linode:index/databaseMongodb:DatabaseMongodb": {
-                "allowLists": "allow_list",
-                "caCert": "ca_cert",
-                "clusterSize": "cluster_size",
-                "compressionType": "compression_type",
-                "engineId": "engine_id",
-                "hostPrimary": "host_primary",
-                "hostSecondary": "host_secondary",
-                "replicaSet": "replica_set",
-                "rootPassword": "root_password",
-                "rootUsername": "root_username",
-                "sslConnection": "ssl_connection",
-                "storageEngine": "storage_engine"
-            },
             "linode:index/databaseMysql:DatabaseMysql": {
                 "allowLists": "allow_list",
                 "caCert": "ca_cert",
@@ -525,26 +893,6 @@
             },
             "linode:index/getDatabaseEnginesFilter:getDatabaseEnginesFilter": {
                 "matchBy": "match_by"
-            },
-            "linode:index/getDatabaseMongodb:getDatabaseMongodb": {
-                "allowLists": "allow_list",
-                "caCert": "ca_cert",
-                "clusterSize": "cluster_size",
-                "compressionType": "compression_type",
-                "databaseId": "database_id",
-                "engineId": "engine_id",
-                "hostPrimary": "host_primary",
-                "hostSecondary": "host_secondary",
-                "replicaSet": "replica_set",
-                "rootPassword": "root_password",
-                "rootUsername": "root_username",
-                "sslConnection": "ssl_connection",
-                "storageEngine": "storage_engine"
-            },
-            "linode:index/getDatabaseMongodbUpdate:getDatabaseMongodbUpdate": {
-                "dayOfWeek": "day_of_week",
-                "hourOfDay": "hour_of_day",
-                "weekOfMonth": "week_of_month"
             },
             "linode:index/getDatabaseMysql:getDatabaseMysql": {
                 "allowLists": "allow_list",

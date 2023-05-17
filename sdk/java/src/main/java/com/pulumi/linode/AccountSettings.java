@@ -62,7 +62,7 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
      * The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
      * 
      */
-    @Export(name="backupsEnabled", type=Boolean.class, parameters={})
+    @Export(name="backupsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> backupsEnabled;
 
     /**
@@ -76,7 +76,7 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
      * 
      */
-    @Export(name="longviewSubscription", type=String.class, parameters={})
+    @Export(name="longviewSubscription", refs={String.class}, tree="[0]")
     private Output<String> longviewSubscription;
 
     /**
@@ -90,7 +90,7 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
      * Enables monitoring for connectivity, response, and total request time.
      * 
      */
-    @Export(name="managed", type=Boolean.class, parameters={})
+    @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 
     /**
@@ -104,7 +104,7 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
      * Enables network helper across all users by default for new Linodes and Linode Configs.
      * 
      */
-    @Export(name="networkHelper", type=Boolean.class, parameters={})
+    @Export(name="networkHelper", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> networkHelper;
 
     /**
@@ -118,7 +118,7 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
      * A string describing the status of this account&#39;s Object Storage service enrollment.
      * 
      */
-    @Export(name="objectStorage", type=String.class, parameters={})
+    @Export(name="objectStorage", refs={String.class}, tree="[0]")
     private Output<String> objectStorage;
 
     /**

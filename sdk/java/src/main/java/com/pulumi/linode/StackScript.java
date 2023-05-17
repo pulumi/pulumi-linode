@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -93,7 +92,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * The date this StackScript was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -107,7 +106,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * Count of currently active, deployed Linodes created from this StackScript.
      * 
      */
-    @Export(name="deploymentsActive", type=Integer.class, parameters={})
+    @Export(name="deploymentsActive", refs={Integer.class}, tree="[0]")
     private Output<Integer> deploymentsActive;
 
     /**
@@ -121,7 +120,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * The total number of times this StackScript has been deployed.
      * 
      */
-    @Export(name="deploymentsTotal", type=Integer.class, parameters={})
+    @Export(name="deploymentsTotal", refs={Integer.class}, tree="[0]")
     private Output<Integer> deploymentsTotal;
 
     /**
@@ -135,7 +134,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * A description for the StackScript.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -146,14 +145,18 @@ public class StackScript extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
-    @Export(name="images", type=List.class, parameters={String.class})
+    @Export(name="images", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> images;
 
     /**
-     * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * 
+     * ***
      * 
      */
     public Output<List<String>> images() {
@@ -163,21 +166,21 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
      * 
      */
-    @Export(name="isPublic", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> isPublic;
+    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isPublic;
 
     /**
      * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
      * 
      */
-    public Output<Optional<Boolean>> isPublic() {
-        return Codegen.optional(this.isPublic);
+    public Output<Boolean> isPublic() {
+        return this.isPublic;
     }
     /**
      * The StackScript&#39;s label is for display purposes only.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -191,21 +194,21 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * This field allows you to add notes for the set of revisions made to this StackScript.
      * 
      */
-    @Export(name="revNote", type=String.class, parameters={})
-    private Output</* @Nullable */ String> revNote;
+    @Export(name="revNote", refs={String.class}, tree="[0]")
+    private Output<String> revNote;
 
     /**
      * @return This field allows you to add notes for the set of revisions made to this StackScript.
      * 
      */
-    public Output<Optional<String>> revNote() {
-        return Codegen.optional(this.revNote);
+    public Output<String> revNote() {
+        return this.revNote;
     }
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      * 
      */
-    @Export(name="script", type=String.class, parameters={})
+    @Export(name="script", refs={String.class}, tree="[0]")
     private Output<String> script;
 
     /**
@@ -219,7 +222,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * The date this StackScript was updated.
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
@@ -233,7 +236,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      * 
      */
-    @Export(name="userDefinedFields", type=List.class, parameters={StackScriptUserDefinedField.class})
+    @Export(name="userDefinedFields", refs={List.class,StackScriptUserDefinedField.class}, tree="[0,1]")
     private Output<List<StackScriptUserDefinedField>> userDefinedFields;
 
     /**
@@ -247,7 +250,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * The Gravatar ID for the User who created the StackScript.
      * 
      */
-    @Export(name="userGravatarId", type=String.class, parameters={})
+    @Export(name="userGravatarId", refs={String.class}, tree="[0]")
     private Output<String> userGravatarId;
 
     /**
@@ -261,7 +264,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * The User who created the StackScript.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

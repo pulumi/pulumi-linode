@@ -16,8 +16,6 @@ import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesPlainArgs;
-import com.pulumi.linode.inputs.GetDatabaseMongodbArgs;
-import com.pulumi.linode.inputs.GetDatabaseMongodbPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsPlainArgs;
@@ -88,7 +86,6 @@ import com.pulumi.linode.outputs.GetAccountResult;
 import com.pulumi.linode.outputs.GetAccountSettingsResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
-import com.pulumi.linode.outputs.GetDatabaseMongodbResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlResult;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlResult;
@@ -1093,7 +1090,7 @@ public final class LinodeFunctions {
      * }
      * ```
      * 
-     * Get information about all automatic MongoDB Database Backups:
+     * Get information about all automatic PostgreSQL Database Backups:
      * ```java
      * package generated_program;
      * 
@@ -1117,7 +1114,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mongodb&#34;)
+     *             .databaseType(&#34;postgresql&#34;)
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
      *                 .name(&#34;type&#34;)
      *                 .values(&#34;auto&#34;)
@@ -1168,7 +1165,7 @@ public final class LinodeFunctions {
      * }
      * ```
      * 
-     * Get information about all automatic MongoDB Database Backups:
+     * Get information about all automatic PostgreSQL Database Backups:
      * ```java
      * package generated_program;
      * 
@@ -1192,7 +1189,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mongodb&#34;)
+     *             .databaseType(&#34;postgresql&#34;)
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
      *                 .name(&#34;type&#34;)
      *                 .values(&#34;auto&#34;)
@@ -1243,7 +1240,7 @@ public final class LinodeFunctions {
      * }
      * ```
      * 
-     * Get information about all automatic MongoDB Database Backups:
+     * Get information about all automatic PostgreSQL Database Backups:
      * ```java
      * package generated_program;
      * 
@@ -1267,7 +1264,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mongodb&#34;)
+     *             .databaseType(&#34;postgresql&#34;)
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
      *                 .name(&#34;type&#34;)
      *                 .values(&#34;auto&#34;)
@@ -1318,7 +1315,7 @@ public final class LinodeFunctions {
      * }
      * ```
      * 
-     * Get information about all automatic MongoDB Database Backups:
+     * Get information about all automatic PostgreSQL Database Backups:
      * ```java
      * package generated_program;
      * 
@@ -1342,7 +1339,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mongodb&#34;)
+     *             .databaseType(&#34;postgresql&#34;)
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
      *                 .name(&#34;type&#34;)
      *                 .values(&#34;auto&#34;)
@@ -2046,214 +2043,6 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseEngines:getDatabaseEngines", TypeShape.of(GetDatabaseEnginesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides information about a Linode MongoDB Database.
-     * 
-     * ## Example Usage
-     * 
-     * Get information about a MongoDB database:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMongodbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMongodb(GetDatabaseMongodbArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMongodbResult> getDatabaseMongodb(GetDatabaseMongodbArgs args) {
-        return getDatabaseMongodb(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides information about a Linode MongoDB Database.
-     * 
-     * ## Example Usage
-     * 
-     * Get information about a MongoDB database:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMongodbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMongodb(GetDatabaseMongodbArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMongodbResult> getDatabaseMongodbPlain(GetDatabaseMongodbPlainArgs args) {
-        return getDatabaseMongodbPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides information about a Linode MongoDB Database.
-     * 
-     * ## Example Usage
-     * 
-     * Get information about a MongoDB database:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMongodbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMongodb(GetDatabaseMongodbArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMongodbResult> getDatabaseMongodb(GetDatabaseMongodbArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseMongodb:getDatabaseMongodb", TypeShape.of(GetDatabaseMongodbResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides information about a Linode MongoDB Database.
-     * 
-     * ## Example Usage
-     * 
-     * Get information about a MongoDB database:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMongodbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMongodb(GetDatabaseMongodbArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMongodbResult> getDatabaseMongodbPlain(GetDatabaseMongodbPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMongodb:getDatabaseMongodb", TypeShape.of(GetDatabaseMongodbResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode MySQL Database.

@@ -52,6 +52,8 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// Defaults to the total RAM of the Linode
+        /// 
+        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }

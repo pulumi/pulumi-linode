@@ -17,6 +17,8 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// The number of nodes in the Node Pool.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;

@@ -21,10 +21,6 @@ public final class GetNetworkingIpResult {
      * 
      */
     private String gateway;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The ID of the Linode this address currently belongs to.
@@ -77,10 +73,6 @@ public final class GetNetworkingIpResult {
     public String gateway() {
         return this.gateway;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

@@ -73,10 +73,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instanceIds"] = new[]
-        ///         {
-        ///             all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["instanceIds"] = all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -167,10 +164,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instanceIds"] = new[]
-        ///         {
-        ///             all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["instanceIds"] = all_instances.Apply(all_instances =&gt; all_instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```

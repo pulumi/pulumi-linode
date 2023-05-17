@@ -28,6 +28,10 @@ class LkeClusterArgs:
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
+               
+               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               
+               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
@@ -81,6 +85,10 @@ class LkeClusterArgs:
     def region(self) -> pulumi.Input[str]:
         """
         This Kubernetes cluster's location.
+
+        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+
+        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "region")
 
@@ -136,6 +144,10 @@ class _LkeClusterState:
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
+               
+               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               
+               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
@@ -249,6 +261,10 @@ class _LkeClusterState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         This Kubernetes cluster's location.
+
+        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+
+        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "region")
 
@@ -351,6 +367,10 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
+               
+               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               
+               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         ...
@@ -495,6 +515,10 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
         :param pulumi.Input[str] region: This Kubernetes cluster's location.
+               
+               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               
+               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
@@ -575,6 +599,10 @@ class LkeCluster(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         This Kubernetes cluster's location.
+
+        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+
+        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "region")
 

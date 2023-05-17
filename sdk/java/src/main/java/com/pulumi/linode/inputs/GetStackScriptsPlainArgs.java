@@ -27,12 +27,16 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      * 
+     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+     * 
+     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -107,6 +111,8 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param latest If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+         * 
+         * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
          * 
          * @return builder
          * 

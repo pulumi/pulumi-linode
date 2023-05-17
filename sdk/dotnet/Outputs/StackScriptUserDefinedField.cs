@@ -16,41 +16,41 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The default value. If not specified, this value will be used.
         /// </summary>
-        public readonly string? Default;
+        public readonly string Default;
         /// <summary>
         /// An example value for the field.
         /// </summary>
-        public readonly string? Example;
+        public readonly string Example;
         /// <summary>
         /// The StackScript's label is for display purposes only.
         /// </summary>
-        public readonly string? Label;
+        public readonly string Label;
         /// <summary>
         /// A list of acceptable values for the field in any quantity, combination or order.
         /// </summary>
-        public readonly string? ManyOf;
+        public readonly string ManyOf;
         /// <summary>
         /// The name of the field.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// A list of acceptable single values for the field.
         /// </summary>
-        public readonly string? OneOf;
+        public readonly string OneOf;
 
         [OutputConstructor]
         private StackScriptUserDefinedField(
-            string? @default,
+            string @default,
 
-            string? example,
+            string example,
 
-            string? label,
+            string label,
 
-            string? manyOf,
+            string manyOf,
 
-            string? name,
+            string name,
 
-            string? oneOf)
+            string oneOf)
         {
             Default = @default;
             Example = example;

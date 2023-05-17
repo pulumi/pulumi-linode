@@ -11,6 +11,75 @@ import (
 )
 
 // Provides information about Linode Managed Databases that match a set of filters.
+//
+// ## Example Usage
+//
+// Get information about all Linode Managed Databases:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := linode.GetDatabases(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*int
+//			for _, val0 := range all.Databases {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("databaseIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode MySQL Databases:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mysql, err := linode.GetDatabases(ctx, &linode.GetDatabasesArgs{
+//				Filters: []linode.GetDatabasesFilter{
+//					{
+//						Name: "engine",
+//						Values: []string{
+//							"mysql",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*int
+//			for _, val0 := range mysql.Databases {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("databaseIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	var rv GetDatabasesResult
 	err := ctx.Invoke("linode:index/getDatabases:getDatabases", args, &rv, opts...)
@@ -24,6 +93,8 @@ func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.In
 type GetDatabasesArgs struct {
 	Filters []GetDatabasesFilter `pulumi:"filters"`
 	// If true, only the latest create database will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -59,6 +130,8 @@ func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts .
 type GetDatabasesOutputArgs struct {
 	Filters GetDatabasesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest create database will be returned.
+	//
+	// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

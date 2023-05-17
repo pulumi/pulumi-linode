@@ -174,12 +174,20 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+        /// 
+        /// * Must be `local` or `off` for the `asynch` replication type.
+        /// 
+        /// * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
         /// </summary>
         [Output("replicationCommitType")]
         public Output<string?> ReplicationCommitType { get; private set; } = null!;
 
         /// <summary>
         /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// 
+        /// * Must be `none` for a single node cluster.
+        /// 
+        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
         /// </summary>
         [Output("replicationType")]
         public Output<string?> ReplicationType { get; private set; } = null!;
@@ -198,6 +206,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// 
+        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Output("sslConnection")]
         public Output<bool?> SslConnection { get; private set; } = null!;
@@ -210,6 +220,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The Linode Instance type used for the nodes of the  Managed Database instance.
+        /// 
+        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -328,24 +340,36 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+        /// 
+        /// * Must be `local` or `off` for the `asynch` replication type.
+        /// 
+        /// * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
         /// </summary>
         [Input("replicationCommitType")]
         public Input<string>? ReplicationCommitType { get; set; }
 
         /// <summary>
         /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// 
+        /// * Must be `none` for a single node cluster.
+        /// 
+        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
         /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
 
         /// <summary>
         /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// 
+        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("sslConnection")]
         public Input<bool>? SslConnection { get; set; }
 
         /// <summary>
         /// The Linode Instance type used for the nodes of the  Managed Database instance.
+        /// 
+        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -454,12 +478,20 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+        /// 
+        /// * Must be `local` or `off` for the `asynch` replication type.
+        /// 
+        /// * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
         /// </summary>
         [Input("replicationCommitType")]
         public Input<string>? ReplicationCommitType { get; set; }
 
         /// <summary>
         /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// 
+        /// * Must be `none` for a single node cluster.
+        /// 
+        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
         /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
@@ -498,6 +530,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// 
+        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("sslConnection")]
         public Input<bool>? SslConnection { get; set; }
@@ -510,6 +544,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The Linode Instance type used for the nodes of the  Managed Database instance.
+        /// 
+        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

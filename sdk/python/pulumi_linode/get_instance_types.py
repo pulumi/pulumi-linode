@@ -101,7 +101,7 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
         name="vcpus",
         values=["2"],
     )])
-    pulumi.export("typeIds", [__item.id for __item in [specific_types.types]])
+    pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
 
     Get information about all Linode Instance types:
@@ -111,7 +111,7 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
     import pulumi_linode as linode
 
     all_types = linode.get_instance_types()
-    pulumi.export("typeIds", [__item.id for __item in [all_types.types]])
+    pulumi.export("typeIds", [__item.id for __item in all_types.types])
     ```
     ## Filterable Fields
 
@@ -170,7 +170,7 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
         name="vcpus",
         values=["2"],
     )])
-    pulumi.export("typeIds", [__item.id for __item in [specific_types.types]])
+    pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
 
     Get information about all Linode Instance types:
@@ -180,7 +180,7 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi_linode as linode
 
     all_types = linode.get_instance_types()
-    pulumi.export("typeIds", [__item.id for __item in [all_types.types]])
+    pulumi.export("typeIds", [__item.id for __item in all_types.types])
     ```
     ## Filterable Fields
 

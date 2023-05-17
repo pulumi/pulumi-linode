@@ -34,14 +34,14 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      * 
      */
     @Import(name="databaseType", required=true)
     private String databaseType;
 
     /**
-     * @return The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+     * @return The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      * 
      */
     public String databaseType() {
@@ -58,12 +58,16 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
     /**
      * If true, only the latest backup will be returned.
      * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest backup will be returned.
+     * 
+     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -141,7 +145,7 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `mongodb`, `postgresql`)
+         * @param databaseType The type of the database to retrieve backups for. (`mysql`, `postgresql`)
          * 
          * @return builder
          * 
@@ -162,6 +166,8 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param latest If true, only the latest backup will be returned.
+         * 
+         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 

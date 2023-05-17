@@ -49,6 +49,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
+        /// 
+        /// - - -
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
@@ -129,6 +131,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
+        /// 
+        /// - - -
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
@@ -161,6 +165,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
+        /// 
+        /// - - -
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }

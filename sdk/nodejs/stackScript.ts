@@ -99,13 +99,15 @@ export class StackScript extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     *
+     * - - -
      */
     public readonly images!: pulumi.Output<string[]>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    public readonly isPublic!: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean>;
     /**
      * The StackScript's label is for display purposes only.
      */
@@ -113,7 +115,7 @@ export class StackScript extends pulumi.CustomResource {
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    public readonly revNote!: pulumi.Output<string | undefined>;
+    public readonly revNote!: pulumi.Output<string>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
@@ -125,7 +127,7 @@ export class StackScript extends pulumi.CustomResource {
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      */
-    public readonly userDefinedFields!: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
+    public /*out*/ readonly userDefinedFields!: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
@@ -181,11 +183,11 @@ export class StackScript extends pulumi.CustomResource {
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["revNote"] = args ? args.revNote : undefined;
             resourceInputs["script"] = args ? args.script : undefined;
-            resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["deploymentsActive"] = undefined /*out*/;
             resourceInputs["deploymentsTotal"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["userDefinedFields"] = undefined /*out*/;
             resourceInputs["userGravatarId"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;
         }
@@ -215,7 +217,9 @@ export interface StackScriptState {
      */
     description?: pulumi.Input<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     *
+     * - - -
      */
     images?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -261,7 +265,9 @@ export interface StackScriptArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
+     *
+     * - - -
      */
     images: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -280,8 +286,4 @@ export interface StackScriptArgs {
      * The script to execute when provisioning a new Linode with this StackScript.
      */
     script: pulumi.Input<string>;
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
 }

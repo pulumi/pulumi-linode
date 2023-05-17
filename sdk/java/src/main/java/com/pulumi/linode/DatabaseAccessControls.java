@@ -77,7 +77,7 @@ public class DatabaseAccessControls extends com.pulumi.resources.CustomResource 
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
      * 
      */
-    @Export(name="allowLists", type=List.class, parameters={String.class})
+    @Export(name="allowLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowLists;
 
     /**
@@ -91,7 +91,7 @@ public class DatabaseAccessControls extends com.pulumi.resources.CustomResource 
      * The unique ID of the target database.
      * 
      */
-    @Export(name="databaseId", type=Integer.class, parameters={})
+    @Export(name="databaseId", refs={Integer.class}, tree="[0]")
     private Output<Integer> databaseId;
 
     /**
@@ -105,7 +105,7 @@ public class DatabaseAccessControls extends com.pulumi.resources.CustomResource 
      * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
      * 
      */
-    @Export(name="databaseType", type=String.class, parameters={})
+    @Export(name="databaseType", refs={String.class}, tree="[0]")
     private Output<String> databaseType;
 
     /**

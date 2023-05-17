@@ -72,10 +72,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["imageIds"] = new[]
-        ///         {
-        ///             all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["imageIds"] = all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -165,10 +162,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["imageIds"] = new[]
-        ///         {
-        ///             all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images)),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["imageIds"] = all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images).Select(__item =&gt; __item.Id).ToList()),
         ///     };
         /// });
         /// ```
@@ -211,6 +205,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -245,6 +241,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// 
+        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

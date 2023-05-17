@@ -10,199 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type DatabaseMongodbUpdates struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth *int   `pulumi:"weekOfMonth"`
-}
-
-// DatabaseMongodbUpdatesInput is an input type that accepts DatabaseMongodbUpdatesArgs and DatabaseMongodbUpdatesOutput values.
-// You can construct a concrete instance of `DatabaseMongodbUpdatesInput` via:
-//
-//	DatabaseMongodbUpdatesArgs{...}
-type DatabaseMongodbUpdatesInput interface {
-	pulumi.Input
-
-	ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput
-	ToDatabaseMongodbUpdatesOutputWithContext(context.Context) DatabaseMongodbUpdatesOutput
-}
-
-type DatabaseMongodbUpdatesArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
-	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
-}
-
-func (DatabaseMongodbUpdatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseMongodbUpdates)(nil)).Elem()
-}
-
-func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput {
-	return i.ToDatabaseMongodbUpdatesOutputWithContext(context.Background())
-}
-
-func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesOutput)
-}
-
-func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
-	return i.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseMongodbUpdatesArgs) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesOutput).ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx)
-}
-
-// DatabaseMongodbUpdatesPtrInput is an input type that accepts DatabaseMongodbUpdatesArgs, DatabaseMongodbUpdatesPtr and DatabaseMongodbUpdatesPtrOutput values.
-// You can construct a concrete instance of `DatabaseMongodbUpdatesPtrInput` via:
-//
-//	        DatabaseMongodbUpdatesArgs{...}
-//
-//	or:
-//
-//	        nil
-type DatabaseMongodbUpdatesPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput
-	ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Context) DatabaseMongodbUpdatesPtrOutput
-}
-
-type databaseMongodbUpdatesPtrType DatabaseMongodbUpdatesArgs
-
-func DatabaseMongodbUpdatesPtr(v *DatabaseMongodbUpdatesArgs) DatabaseMongodbUpdatesPtrInput {
-	return (*databaseMongodbUpdatesPtrType)(v)
-}
-
-func (*databaseMongodbUpdatesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseMongodbUpdates)(nil)).Elem()
-}
-
-func (i *databaseMongodbUpdatesPtrType) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
-	return i.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseMongodbUpdatesPtrType) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMongodbUpdatesPtrOutput)
-}
-
-type DatabaseMongodbUpdatesOutput struct{ *pulumi.OutputState }
-
-func (DatabaseMongodbUpdatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseMongodbUpdates)(nil)).Elem()
-}
-
-func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesOutput() DatabaseMongodbUpdatesOutput {
-	return o
-}
-
-func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesOutput {
-	return o
-}
-
-func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
-	return o.ToDatabaseMongodbUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseMongodbUpdatesOutput) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMongodbUpdates) *DatabaseMongodbUpdates {
-		return &v
-	}).(DatabaseMongodbUpdatesPtrOutput)
-}
-
-func (o DatabaseMongodbUpdatesOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMongodbUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-func (o DatabaseMongodbUpdatesOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMongodbUpdates) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-func (o DatabaseMongodbUpdatesOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMongodbUpdates) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-func (o DatabaseMongodbUpdatesOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMongodbUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-func (o DatabaseMongodbUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseMongodbUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
-}
-
-type DatabaseMongodbUpdatesPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseMongodbUpdatesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseMongodbUpdates)(nil)).Elem()
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) ToDatabaseMongodbUpdatesPtrOutput() DatabaseMongodbUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) ToDatabaseMongodbUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMongodbUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) Elem() DatabaseMongodbUpdatesOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) DatabaseMongodbUpdates {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseMongodbUpdates
-		return ret
-	}).(DatabaseMongodbUpdatesOutput)
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Duration
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.HourOfDay
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o DatabaseMongodbUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMongodbUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return v.WeekOfMonth
-	}).(pulumi.IntPtrOutput)
-}
-
 type DatabaseMysqlUpdates struct {
 	DayOfWeek   string `pulumi:"dayOfWeek"`
 	Duration    int    `pulumi:"duration"`
@@ -1535,6 +1342,8 @@ type InstanceConfig struct {
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
 	RootDevice *string `pulumi:"rootDevice"`
@@ -1568,6 +1377,8 @@ type InstanceConfigArgs struct {
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit pulumi.IntPtrInput `pulumi:"memoryLimit"`
 	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
 	RootDevice pulumi.StringPtrInput `pulumi:"rootDevice"`
@@ -1658,6 +1469,8 @@ func (o InstanceConfigOutput) Label() pulumi.StringOutput {
 }
 
 // Defaults to the total RAM of the Linode
+//
+// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 func (o InstanceConfigOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
@@ -4283,6 +4096,8 @@ func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput
 type LkeClusterPool struct {
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count int `pulumi:"count"`
 	// The ID of the node.
 	Id    *int                 `pulumi:"id"`
@@ -4305,6 +4120,8 @@ type LkeClusterPoolInput interface {
 type LkeClusterPoolArgs struct {
 	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count pulumi.IntInput `pulumi:"count"`
 	// The ID of the node.
 	Id    pulumi.IntPtrInput           `pulumi:"id"`
@@ -4369,6 +4186,8 @@ func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 }
 
 // The number of nodes in the Node Pool.
+//
+// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
 }
@@ -5057,6 +4876,10 @@ func (o ObjectStorageBucketCertPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 
 type ObjectStorageBucketLifecycleRule struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+	//
+	// * `expiration` - (Optional) Specifies a period in the object's expire.
+	//
+	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays *int `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
 	Enabled    bool                                        `pulumi:"enabled"`
@@ -5081,6 +4904,10 @@ type ObjectStorageBucketLifecycleRuleInput interface {
 
 type ObjectStorageBucketLifecycleRuleArgs struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+	//
+	// * `expiration` - (Optional) Specifies a period in the object's expire.
+	//
+	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays pulumi.IntPtrInput `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
 	Enabled    pulumi.BoolInput                                   `pulumi:"enabled"`
@@ -5144,6 +4971,10 @@ func (o ObjectStorageBucketLifecycleRuleOutput) ToObjectStorageBucketLifecycleRu
 }
 
 // Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+//
+// * `expiration` - (Optional) Specifies a period in the object's expire.
+//
+// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) AbortIncompleteMultipartUploadDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *int { return v.AbortIncompleteMultipartUploadDays }).(pulumi.IntPtrOutput)
 }
@@ -5624,17 +5455,17 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 
 type StackScriptUserDefinedField struct {
 	// The default value. If not specified, this value will be used.
-	Default *string `pulumi:"default"`
+	Default string `pulumi:"default"`
 	// An example value for the field.
-	Example *string `pulumi:"example"`
+	Example string `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label *string `pulumi:"label"`
+	Label string `pulumi:"label"`
 	// A list of acceptable values for the field in any quantity, combination or order.
-	ManyOf *string `pulumi:"manyOf"`
+	ManyOf string `pulumi:"manyOf"`
 	// The name of the field.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// A list of acceptable single values for the field.
-	OneOf *string `pulumi:"oneOf"`
+	OneOf string `pulumi:"oneOf"`
 }
 
 // StackScriptUserDefinedFieldInput is an input type that accepts StackScriptUserDefinedFieldArgs and StackScriptUserDefinedFieldOutput values.
@@ -5650,17 +5481,17 @@ type StackScriptUserDefinedFieldInput interface {
 
 type StackScriptUserDefinedFieldArgs struct {
 	// The default value. If not specified, this value will be used.
-	Default pulumi.StringPtrInput `pulumi:"default"`
+	Default pulumi.StringInput `pulumi:"default"`
 	// An example value for the field.
-	Example pulumi.StringPtrInput `pulumi:"example"`
+	Example pulumi.StringInput `pulumi:"example"`
 	// The StackScript's label is for display purposes only.
-	Label pulumi.StringPtrInput `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
 	// A list of acceptable values for the field in any quantity, combination or order.
-	ManyOf pulumi.StringPtrInput `pulumi:"manyOf"`
+	ManyOf pulumi.StringInput `pulumi:"manyOf"`
 	// The name of the field.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// A list of acceptable single values for the field.
-	OneOf pulumi.StringPtrInput `pulumi:"oneOf"`
+	OneOf pulumi.StringInput `pulumi:"oneOf"`
 }
 
 func (StackScriptUserDefinedFieldArgs) ElementType() reflect.Type {
@@ -5715,33 +5546,33 @@ func (o StackScriptUserDefinedFieldOutput) ToStackScriptUserDefinedFieldOutputWi
 }
 
 // The default value. If not specified, this value will be used.
-func (o StackScriptUserDefinedFieldOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.Default }).(pulumi.StringOutput)
 }
 
 // An example value for the field.
-func (o StackScriptUserDefinedFieldOutput) Example() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Example }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.Example }).(pulumi.StringOutput)
 }
 
 // The StackScript's label is for display purposes only.
-func (o StackScriptUserDefinedFieldOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // A list of acceptable values for the field in any quantity, combination or order.
-func (o StackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.ManyOf }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) ManyOf() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
 }
 
 // The name of the field.
-func (o StackScriptUserDefinedFieldOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A list of acceptable single values for the field.
-func (o StackScriptUserDefinedFieldOutput) OneOf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackScriptUserDefinedField) *string { return v.OneOf }).(pulumi.StringPtrOutput)
+func (o StackScriptUserDefinedFieldOutput) OneOf() pulumi.StringOutput {
+	return o.ApplyT(func(v StackScriptUserDefinedField) string { return v.OneOf }).(pulumi.StringOutput)
 }
 
 type StackScriptUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
@@ -7583,124 +7414,6 @@ func (o GetDatabaseEnginesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabas
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEnginesFilter {
 		return vs[0].([]GetDatabaseEnginesFilter)[vs[1].(int)]
 	}).(GetDatabaseEnginesFilterOutput)
-}
-
-type GetDatabaseMongodbUpdate struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth int    `pulumi:"weekOfMonth"`
-}
-
-// GetDatabaseMongodbUpdateInput is an input type that accepts GetDatabaseMongodbUpdateArgs and GetDatabaseMongodbUpdateOutput values.
-// You can construct a concrete instance of `GetDatabaseMongodbUpdateInput` via:
-//
-//	GetDatabaseMongodbUpdateArgs{...}
-type GetDatabaseMongodbUpdateInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput
-	ToGetDatabaseMongodbUpdateOutputWithContext(context.Context) GetDatabaseMongodbUpdateOutput
-}
-
-type GetDatabaseMongodbUpdateArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
-	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
-}
-
-func (GetDatabaseMongodbUpdateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMongodbUpdate)(nil)).Elem()
-}
-
-func (i GetDatabaseMongodbUpdateArgs) ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput {
-	return i.ToGetDatabaseMongodbUpdateOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMongodbUpdateArgs) ToGetDatabaseMongodbUpdateOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMongodbUpdateOutput)
-}
-
-// GetDatabaseMongodbUpdateArrayInput is an input type that accepts GetDatabaseMongodbUpdateArray and GetDatabaseMongodbUpdateArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseMongodbUpdateArrayInput` via:
-//
-//	GetDatabaseMongodbUpdateArray{ GetDatabaseMongodbUpdateArgs{...} }
-type GetDatabaseMongodbUpdateArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput
-	ToGetDatabaseMongodbUpdateArrayOutputWithContext(context.Context) GetDatabaseMongodbUpdateArrayOutput
-}
-
-type GetDatabaseMongodbUpdateArray []GetDatabaseMongodbUpdateInput
-
-func (GetDatabaseMongodbUpdateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMongodbUpdate)(nil)).Elem()
-}
-
-func (i GetDatabaseMongodbUpdateArray) ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput {
-	return i.ToGetDatabaseMongodbUpdateArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMongodbUpdateArray) ToGetDatabaseMongodbUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMongodbUpdateArrayOutput)
-}
-
-type GetDatabaseMongodbUpdateOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMongodbUpdateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMongodbUpdate)(nil)).Elem()
-}
-
-func (o GetDatabaseMongodbUpdateOutput) ToGetDatabaseMongodbUpdateOutput() GetDatabaseMongodbUpdateOutput {
-	return o
-}
-
-func (o GetDatabaseMongodbUpdateOutput) ToGetDatabaseMongodbUpdateOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateOutput {
-	return o
-}
-
-func (o GetDatabaseMongodbUpdateOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMongodbUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseMongodbUpdateOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-func (o GetDatabaseMongodbUpdateOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMongodbUpdate) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseMongodbUpdateOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-func (o GetDatabaseMongodbUpdateOutput) WeekOfMonth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMongodbUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
-}
-
-type GetDatabaseMongodbUpdateArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMongodbUpdateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMongodbUpdate)(nil)).Elem()
-}
-
-func (o GetDatabaseMongodbUpdateArrayOutput) ToGetDatabaseMongodbUpdateArrayOutput() GetDatabaseMongodbUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMongodbUpdateArrayOutput) ToGetDatabaseMongodbUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMongodbUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMongodbUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseMongodbUpdateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMongodbUpdate {
-		return vs[0].([]GetDatabaseMongodbUpdate)[vs[1].(int)]
-	}).(GetDatabaseMongodbUpdateOutput)
 }
 
 type GetDatabaseMysqlBackupsBackup struct {
@@ -17745,8 +17458,6 @@ func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMongodbUpdatesInput)(nil)).Elem(), DatabaseMongodbUpdatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMongodbUpdatesPtrInput)(nil)).Elem(), DatabaseMongodbUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesPtrInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
@@ -17847,8 +17558,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineArrayInput)(nil)).Elem(), GetDatabaseEnginesEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterInput)(nil)).Elem(), GetDatabaseEnginesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterArrayInput)(nil)).Elem(), GetDatabaseEnginesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMongodbUpdateInput)(nil)).Elem(), GetDatabaseMongodbUpdateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMongodbUpdateArrayInput)(nil)).Elem(), GetDatabaseMongodbUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArgs{})
@@ -18007,8 +17716,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanArrayInput)(nil)).Elem(), GetVlansVlanArray{})
-	pulumi.RegisterOutputType(DatabaseMongodbUpdatesOutput{})
-	pulumi.RegisterOutputType(DatabaseMongodbUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesOutput{})
@@ -18109,8 +17816,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseEnginesEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMongodbUpdateOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMongodbUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterOutput{})

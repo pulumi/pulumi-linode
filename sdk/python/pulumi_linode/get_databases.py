@@ -108,7 +108,7 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
     import pulumi_linode as linode
 
     all = linode.get_databases()
-    pulumi.export("databaseIds", [__item.id for __item in [all.databases]])
+    pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
 
     Get information about all Linode MySQL Databases:
@@ -121,11 +121,13 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
         name="engine",
         values=["mysql"],
     )])
-    pulumi.export("databaseIds", [__item.id for __item in [mysql.databases]])
+    pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
 
 
     :param bool latest: If true, only the latest create database will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
@@ -164,7 +166,7 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     import pulumi_linode as linode
 
     all = linode.get_databases()
-    pulumi.export("databaseIds", [__item.id for __item in [all.databases]])
+    pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
 
     Get information about all Linode MySQL Databases:
@@ -177,11 +179,13 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
         name="engine",
         values=["mysql"],
     )])
-    pulumi.export("databaseIds", [__item.id for __item in [mysql.databases]])
+    pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
 
 
     :param bool latest: If true, only the latest create database will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """

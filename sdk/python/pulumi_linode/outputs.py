@@ -11,7 +11,6 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'DatabaseMongodbUpdates',
     'DatabaseMysqlUpdates',
     'DatabasePostgresqlUpdates',
     'FirewallDevice',
@@ -62,7 +61,6 @@ __all__ = [
     'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
     'GetDatabaseEnginesFilterResult',
-    'GetDatabaseMongodbUpdateResult',
     'GetDatabaseMysqlBackupsBackupResult',
     'GetDatabaseMysqlBackupsFilterResult',
     'GetDatabaseMysqlUpdateResult',
@@ -146,68 +144,6 @@ __all__ = [
     'GetVlansFilterResult',
     'GetVlansVlanResult',
 ]
-
-@pulumi.output_type
-class DatabaseMongodbUpdates(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "hourOfDay":
-            suggest = "hour_of_day"
-        elif key == "weekOfMonth":
-            suggest = "week_of_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseMongodbUpdates. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseMongodbUpdates.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseMongodbUpdates.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 day_of_week: str,
-                 duration: int,
-                 frequency: str,
-                 hour_of_day: int,
-                 week_of_month: Optional[int] = None):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> str:
-        return pulumi.get(self, "day_of_week")
-
-    @property
-    @pulumi.getter
-    def duration(self) -> int:
-        return pulumi.get(self, "duration")
-
-    @property
-    @pulumi.getter
-    def frequency(self) -> str:
-        return pulumi.get(self, "frequency")
-
-    @property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> int:
-        return pulumi.get(self, "hour_of_day")
-
-    @property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[int]:
-        return pulumi.get(self, "week_of_month")
-
 
 @pulumi.output_type
 class DatabaseMysqlUpdates(dict):
@@ -744,6 +680,8 @@ class InstanceConfig(dict):
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param int memory_limit: Defaults to the total RAM of the Linode
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         :param str root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param str run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
         :param str virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
@@ -818,6 +756,8 @@ class InstanceConfig(dict):
     def memory_limit(self) -> Optional[int]:
         """
         Defaults to the total RAM of the Linode
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -1884,6 +1824,8 @@ class LkeClusterPool(dict):
                  nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None):
         """
         :param int count: The number of nodes in the Node Pool.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param int id: The ID of the node.
         """
@@ -1901,6 +1843,8 @@ class LkeClusterPool(dict):
     def count(self) -> int:
         """
         The number of nodes in the Node Pool.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "count")
 
@@ -2188,6 +2132,10 @@ class ObjectStorageBucketLifecycleRule(dict):
         """
         :param bool enabled: Specifies whether the lifecycle rule is active.
         :param int abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+               
+               * `expiration` - (Optional) Specifies a period in the object's expire.
+               
+               * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         :param str id: The unique identifier for the rule.
         :param str prefix: The object key prefix identifying one or more objects to which the rule applies.
         """
@@ -2216,6 +2164,10 @@ class ObjectStorageBucketLifecycleRule(dict):
     def abort_incomplete_multipart_upload_days(self) -> Optional[int]:
         """
         Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+
+        * `expiration` - (Optional) Specifies a period in the object's expire.
+
+        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         """
         return pulumi.get(self, "abort_incomplete_multipart_upload_days")
 
@@ -2403,12 +2355,12 @@ class StackScriptUserDefinedField(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 default: Optional[str] = None,
-                 example: Optional[str] = None,
-                 label: Optional[str] = None,
-                 many_of: Optional[str] = None,
-                 name: Optional[str] = None,
-                 one_of: Optional[str] = None):
+                 default: str,
+                 example: str,
+                 label: str,
+                 many_of: str,
+                 name: str,
+                 one_of: str):
         """
         :param str default: The default value. If not specified, this value will be used.
         :param str example: An example value for the field.
@@ -2417,22 +2369,16 @@ class StackScriptUserDefinedField(dict):
         :param str name: The name of the field.
         :param str one_of: A list of acceptable single values for the field.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if example is not None:
-            pulumi.set(__self__, "example", example)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if many_of is not None:
-            pulumi.set(__self__, "many_of", many_of)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if one_of is not None:
-            pulumi.set(__self__, "one_of", one_of)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "many_of", many_of)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "one_of", one_of)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[str]:
+    def default(self) -> str:
         """
         The default value. If not specified, this value will be used.
         """
@@ -2440,7 +2386,7 @@ class StackScriptUserDefinedField(dict):
 
     @property
     @pulumi.getter
-    def example(self) -> Optional[str]:
+    def example(self) -> str:
         """
         An example value for the field.
         """
@@ -2448,7 +2394,7 @@ class StackScriptUserDefinedField(dict):
 
     @property
     @pulumi.getter
-    def label(self) -> Optional[str]:
+    def label(self) -> str:
         """
         The StackScript's label is for display purposes only.
         """
@@ -2456,7 +2402,7 @@ class StackScriptUserDefinedField(dict):
 
     @property
     @pulumi.getter(name="manyOf")
-    def many_of(self) -> Optional[str]:
+    def many_of(self) -> str:
         """
         A list of acceptable values for the field in any quantity, combination or order.
         """
@@ -2464,7 +2410,7 @@ class StackScriptUserDefinedField(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         The name of the field.
         """
@@ -2472,7 +2418,7 @@ class StackScriptUserDefinedField(dict):
 
     @property
     @pulumi.getter(name="oneOf")
-    def one_of(self) -> Optional[str]:
+    def one_of(self) -> str:
         """
         A list of acceptable single values for the field.
         """
@@ -3052,46 +2998,6 @@ class GetDatabaseEnginesFilterResult(dict):
         The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetDatabaseMongodbUpdateResult(dict):
-    def __init__(__self__, *,
-                 day_of_week: str,
-                 duration: int,
-                 frequency: str,
-                 hour_of_day: int,
-                 week_of_month: int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> str:
-        return pulumi.get(self, "day_of_week")
-
-    @property
-    @pulumi.getter
-    def duration(self) -> int:
-        return pulumi.get(self, "duration")
-
-    @property
-    @pulumi.getter
-    def frequency(self) -> str:
-        return pulumi.get(self, "frequency")
-
-    @property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> int:
-        return pulumi.get(self, "hour_of_day")
-
-    @property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> int:
-        return pulumi.get(self, "week_of_month")
 
 
 @pulumi.output_type

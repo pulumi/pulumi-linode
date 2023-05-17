@@ -59,7 +59,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * This keypair&#39;s access key. This is not secret.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
@@ -73,7 +73,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      * 
      */
-    @Export(name="bucketAccesses", type=List.class, parameters={ObjectStorageKeyBucketAccess.class})
+    @Export(name="bucketAccesses", refs={List.class,ObjectStorageKeyBucketAccess.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ObjectStorageKeyBucketAccess>> bucketAccesses;
 
     /**
@@ -86,12 +86,16 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
     /**
      * The label given to this key. For display purposes only.
      * 
+     * ***
+     * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
+     * 
+     * ***
      * 
      */
     public Output<String> label() {
@@ -101,7 +105,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * Whether or not this key is a limited access key.
      * 
      */
-    @Export(name="limited", type=Boolean.class, parameters={})
+    @Export(name="limited", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> limited;
 
     /**
@@ -115,7 +119,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * This keypair&#39;s secret key.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     /**

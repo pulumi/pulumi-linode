@@ -32,7 +32,7 @@ export function getLkeVersions(opts?: pulumi.InvokeOptions): Promise<GetLkeVersi
  */
 export interface GetLkeVersionsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      */
     readonly id: string;
     readonly versions: outputs.GetLkeVersionsVersion[];

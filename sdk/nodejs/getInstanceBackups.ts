@@ -34,9 +34,9 @@ export interface GetInstanceBackupsResult {
     readonly automatics: outputs.GetInstanceBackupsAutomatic[];
     readonly currents: outputs.GetInstanceBackupsCurrent[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of this Backup.
      */
-    readonly id: string;
+    readonly id: number;
     readonly inProgresses: outputs.GetInstanceBackupsInProgress[];
     readonly linodeId: number;
 }

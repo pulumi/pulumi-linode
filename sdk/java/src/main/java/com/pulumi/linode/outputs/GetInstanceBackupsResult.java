@@ -8,7 +8,6 @@ import com.pulumi.linode.outputs.GetInstanceBackupsAutomatic;
 import com.pulumi.linode.outputs.GetInstanceBackupsCurrent;
 import com.pulumi.linode.outputs.GetInstanceBackupsInProgress;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,10 +16,10 @@ public final class GetInstanceBackupsResult {
     private List<GetInstanceBackupsAutomatic> automatics;
     private List<GetInstanceBackupsCurrent> currents;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this Backup.
      * 
      */
-    private String id;
+    private Integer id;
     private List<GetInstanceBackupsInProgress> inProgresses;
     private Integer linodeId;
 
@@ -32,10 +31,10 @@ public final class GetInstanceBackupsResult {
         return this.currents;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this Backup.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     public List<GetInstanceBackupsInProgress> inProgresses() {
@@ -56,7 +55,7 @@ public final class GetInstanceBackupsResult {
     public static final class Builder {
         private List<GetInstanceBackupsAutomatic> automatics;
         private List<GetInstanceBackupsCurrent> currents;
-        private String id;
+        private Integer id;
         private List<GetInstanceBackupsInProgress> inProgresses;
         private Integer linodeId;
         public Builder() {}
@@ -86,7 +85,7 @@ public final class GetInstanceBackupsResult {
             return currents(List.of(currents));
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }

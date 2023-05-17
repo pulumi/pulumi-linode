@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeVersionsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      * 
      */
     private String id;
@@ -20,7 +20,7 @@ public final class GetLkeVersionsResult {
 
     private GetLkeVersionsResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      * 
      */
     public String id() {

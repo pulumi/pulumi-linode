@@ -4,7 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
@@ -24,7 +24,7 @@ public final class GetAccountResult {
      * @return This Account&#39;s balance, in US dollars.
      * 
      */
-    private Integer balance;
+    private Double balance;
     /**
      * @return The city for this Account&#39;s billing address.
      * 
@@ -50,10 +50,6 @@ public final class GetAccountResult {
      * 
      */
     private String firstName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The last name of the person associated with this Account.
@@ -95,7 +91,7 @@ public final class GetAccountResult {
      * @return This Account&#39;s balance, in US dollars.
      * 
      */
-    public Integer balance() {
+    public Double balance() {
         return this.balance;
     }
     /**
@@ -133,10 +129,6 @@ public final class GetAccountResult {
     public String firstName() {
         return this.firstName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -180,7 +172,7 @@ public final class GetAccountResult {
     public static final class Builder {
         private String address1;
         private String address2;
-        private Integer balance;
+        private Double balance;
         private String city;
         private String company;
         private String country;
@@ -220,7 +212,7 @@ public final class GetAccountResult {
             return this;
         }
         @CustomType.Setter
-        public Builder balance(Integer balance) {
+        public Builder balance(Double balance) {
             this.balance = Objects.requireNonNull(balance);
             return this;
         }

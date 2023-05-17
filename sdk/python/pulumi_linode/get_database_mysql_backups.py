@@ -138,6 +138,8 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
 
     :param int database_id: The ID of the database to retrieve backups for.
     :param bool latest: If true, only the latest backup will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`created`)
     """
@@ -199,6 +201,8 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
 
     :param int database_id: The ID of the database to retrieve backups for.
     :param bool latest: If true, only the latest backup will be returned.
+           
+           * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`created`)
     """

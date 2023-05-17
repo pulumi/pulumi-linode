@@ -36,6 +36,10 @@ class ObjectStorageBucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+               
+               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               
+               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "label", label)
@@ -155,6 +159,10 @@ class ObjectStorageBucketArgs:
     def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+
+        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+
+        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 
@@ -189,6 +197,10 @@ class _ObjectStorageBucketState:
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+               
+               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               
+               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -325,6 +337,10 @@ class _ObjectStorageBucketState:
     def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+
+        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+
+        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 
@@ -406,6 +422,10 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+               
+               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               
+               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         ...
     @overload
@@ -545,6 +565,10 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+               
+               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               
+               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -640,6 +664,10 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def versioning(self) -> pulumi.Output[bool]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+
+        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+
+        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 
