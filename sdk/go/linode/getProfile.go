@@ -50,9 +50,8 @@ type GetProfileResult struct {
 	// The profile email address. This address will be used for communication with Linode as necessary.
 	Email string `pulumi:"email"`
 	// If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
-	EmailNotifications bool `pulumi:"emailNotifications"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	EmailNotifications bool   `pulumi:"emailNotifications"`
+	Id                 string `pulumi:"id"`
 	// If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
 	IpWhitelistEnabled bool `pulumi:"ipWhitelistEnabled"`
 	// The methods of authentication allowed when connecting via Lish. 'keys_only' is the most secure with the intent to use Lish, and 'disabled' is recommended for users that will not use Lish at all.

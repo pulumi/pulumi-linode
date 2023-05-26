@@ -43,9 +43,6 @@ export interface GetProfileResult {
      * If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
      */
     readonly emailNotifications: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
