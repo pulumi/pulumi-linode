@@ -586,7 +586,7 @@
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 0,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 0,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 0,
-            "linode:index/getProfile:getProfile": 0,
+            "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 0,
             "linode:index/getRegions:getRegions": 0,
             "linode:index/getSshKey:getSshKey": 0,
