@@ -55,9 +55,6 @@ namespace Pulumi.Linode
         /// If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
         /// </summary>
         public readonly bool EmailNotifications;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.

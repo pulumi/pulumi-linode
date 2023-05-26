@@ -11156,8 +11156,7 @@
                         "description": "If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "ipWhitelistEnabled": {
                         "type": "boolean",
@@ -11193,14 +11192,14 @@
                     "authorizedKeys",
                     "email",
                     "emailNotifications",
+                    "id",
                     "ipWhitelistEnabled",
                     "lishAuthMethod",
                     "referrals",
                     "restricted",
                     "timezone",
                     "twoFactorAuth",
-                    "username",
-                    "id"
+                    "username"
                 ]
             }
         },

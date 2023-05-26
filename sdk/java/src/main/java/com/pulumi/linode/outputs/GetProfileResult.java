@@ -27,10 +27,6 @@ public final class GetProfileResult {
      * 
      */
     private Boolean emailNotifications;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
@@ -90,10 +86,6 @@ public final class GetProfileResult {
     public Boolean emailNotifications() {
         return this.emailNotifications;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
