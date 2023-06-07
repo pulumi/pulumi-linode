@@ -2260,9 +2260,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2285,7 +2293,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -2307,9 +2317,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2332,7 +2350,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -2354,9 +2374,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2379,7 +2407,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -2401,9 +2431,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2426,7 +2464,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -2446,24 +2486,18 @@
                         "$ref": "#/types/linode:index/getInstanceNetworkingIpv6Global:getInstanceNetworkingIpv6Global"
                     }
                 },
-                "linkLocals": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/linode:index/getInstanceNetworkingIpv6LinkLocal:getInstanceNetworkingIpv6LinkLocal"
-                    }
+                "linkLocal": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6LinkLocal:getInstanceNetworkingIpv6LinkLocal"
                 },
-                "slaacs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/linode:index/getInstanceNetworkingIpv6Slaac:getInstanceNetworkingIpv6Slaac"
-                    }
+                "slaac": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6Slaac:getInstanceNetworkingIpv6Slaac"
                 }
             },
             "type": "object",
             "required": [
                 "globals",
-                "linkLocals",
-                "slaacs"
+                "linkLocal",
+                "slaac"
             ],
             "language": {
                 "nodejs": {
@@ -2513,9 +2547,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2538,7 +2580,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -2560,9 +2604,17 @@
                     "type": "string",
                     "description": "The default gateway for this address.\n"
                 },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
                 "prefix": {
                     "type": "integer",
                     "description": "The network prefix.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -2585,7 +2637,9 @@
             "required": [
                 "address",
                 "gateway",
+                "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -3815,7 +3869,6 @@
                 "country",
                 "id",
                 "label",
-                "resolvers",
                 "status"
             ],
             "language": {
@@ -9255,19 +9308,20 @@
             }
         },
         "linode:index/getDatabaseMysql:getDatabaseMysql": {
-            "description": "Provides information about a Linode MySQL Database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about a MySQL database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my-db = linode.getDatabaseMysql({\n    databaseId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_db = linode.get_database_mysql(database_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_db = Linode.GetDatabaseMysql.Invoke(new()\n    {\n        DatabaseId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDatabaseMysql(ctx, \u0026linode.LookupDatabaseMysqlArgs{\n\t\t\tDatabaseId: 12345,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDatabaseMysqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()\n            .databaseId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-db:\n    fn::invoke:\n      Function: linode:getDatabaseMysql\n      Arguments:\n        databaseId: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are exported by the `updates` specification block:\n\n* `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n",
+            "description": "Provides information about a Linode MySQL Database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about a MySQL database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my-db = linode.getDatabaseMysql({\n    id: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_db = linode.get_database_mysql(id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_db = Linode.GetDatabaseMysql.Invoke(new()\n    {\n        Id = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDatabaseMysql(ctx, \u0026linode.LookupDatabaseMysqlArgs{\n\t\t\tId: pulumi.IntRef(12345),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDatabaseMysqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()\n            .id(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-db:\n    fn::invoke:\n      Function: linode:getDatabaseMysql\n      Arguments:\n        id: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are exported by the `updates` specification block:\n\n* `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabaseMysql.\n",
                 "properties": {
                     "databaseId": {
                         "type": "integer",
-                        "description": "The ID of the MySQL database.\n"
+                        "description": "The ID of the MySQL database. Deprecated: Use id instead.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the MySQL database. Mutually exclusive with `database_id`.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "databaseId"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getDatabaseMysql.\n",
@@ -9316,8 +9370,7 @@
                         "description": "The secondary/private network host for the Managed Database.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "integer"
                     },
                     "label": {
                         "type": "string",
@@ -9374,7 +9427,6 @@
                     "caCert",
                     "clusterSize",
                     "created",
-                    "databaseId",
                     "encrypted",
                     "engine",
                     "engineId",
@@ -9390,8 +9442,7 @@
                     "type",
                     "updated",
                     "updates",
-                    "version",
-                    "id"
+                    "version"
                 ]
             }
         },
@@ -9469,19 +9520,20 @@
             }
         },
         "linode:index/getDatabasePostgresql:getDatabasePostgresql": {
-            "description": "Provides information about a Linode PostgreSQL Database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about a PostgreSQL database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my-db = linode.getDatabasePostgresql({\n    databaseId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_db = linode.get_database_postgresql(database_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_db = Linode.GetDatabasePostgresql.Invoke(new()\n    {\n        DatabaseId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDatabasePostgresql(ctx, \u0026linode.LookupDatabasePostgresqlArgs{\n\t\t\tDatabaseId: 12345,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()\n            .databaseId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-db:\n    fn::invoke:\n      Function: linode:getDatabasePostgresql\n      Arguments:\n        databaseId: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are exported by the `updates` specification block:\n\n* `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n",
+            "description": "Provides information about a Linode PostgreSQL Database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about a PostgreSQL database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my-db = linode.getDatabasePostgresql({\n    id: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_db = linode.get_database_postgresql(id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_db = Linode.GetDatabasePostgresql.Invoke(new()\n    {\n        Id = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDatabasePostgresql(ctx, \u0026linode.LookupDatabasePostgresqlArgs{\n\t\t\tId: pulumi.IntRef(12345),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()\n            .id(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-db:\n    fn::invoke:\n      Function: linode:getDatabasePostgresql\n      Arguments:\n        id: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are exported by the `updates` specification block:\n\n* `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabasePostgresql.\n",
                 "properties": {
                     "databaseId": {
                         "type": "integer",
-                        "description": "The ID of the PostgreSQL database.\n"
+                        "description": "The ID of the PostgreSQL database. Deprecated: Use id instead.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the PostgreSQL database. Mutually exclusive with `database_id`.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "databaseId"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getDatabasePostgresql.\n",
@@ -9530,8 +9582,7 @@
                         "description": "The secondary/private network host for the Managed Database.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "integer"
                     },
                     "label": {
                         "type": "string",
@@ -9595,7 +9646,6 @@
                     "caCert",
                     "clusterSize",
                     "created",
-                    "databaseId",
                     "encrypted",
                     "engine",
                     "engineId",
@@ -9613,8 +9663,7 @@
                     "type",
                     "updated",
                     "updates",
-                    "version",
-                    "id"
+                    "version"
                 ]
             }
         },
@@ -9681,7 +9730,7 @@
             }
         },
         "linode:index/getDomain:getDomain": {
-            "description": "Provides information about a Linode domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode domain.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = linode.getDomain({\n    id: \"1234567\",\n});\nconst bar = linode.getDomain({\n    domain: \"bar.example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_domain(id=\"1234567\")\nbar = linode.get_domain(domain=\"bar.example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Linode.GetDomain.Invoke(new()\n    {\n        Id = \"1234567\",\n    });\n\n    var bar = Linode.GetDomain.Invoke(new()\n    {\n        Domain = \"bar.example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tId: pulumi.StringRef(\"1234567\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tDomain: pulumi.StringRef(\"bar.example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()\n            .id(\"1234567\")\n            .build());\n\n        final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()\n            .domain(\"bar.example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: linode:getDomain\n      Arguments:\n        id: '1234567'\n  bar:\n    fn::invoke:\n      Function: linode:getDomain\n      Arguments:\n        domain: bar.example.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides information about a Linode domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode domain.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = linode.getDomain({\n    id: 1234567,\n});\nconst bar = linode.getDomain({\n    domain: \"bar.example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_domain(id=1234567)\nbar = linode.get_domain(domain=\"bar.example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Linode.GetDomain.Invoke(new()\n    {\n        Id = 1234567,\n    });\n\n    var bar = Linode.GetDomain.Invoke(new()\n    {\n        Domain = \"bar.example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tId: pulumi.IntRef(1234567),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.LookupDomain(ctx, \u0026linode.LookupDomainArgs{\n\t\t\tDomain: pulumi.StringRef(\"bar.example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()\n            .id(\"1234567\")\n            .build());\n\n        final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()\n            .domain(\"bar.example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: linode:getDomain\n      Arguments:\n        id: '1234567'\n  bar:\n    fn::invoke:\n      Function: linode:getDomain\n      Arguments:\n        domain: bar.example.com\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
@@ -9690,7 +9739,7 @@
                         "description": "The unique domain name of the Domain record to query.\n"
                     },
                     "id": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "The unique numeric ID of the Domain record to query.\n"
                     }
                 },
@@ -9723,7 +9772,7 @@
                         "description": "The group this Domain belongs to.\n"
                     },
                     "id": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "The unique ID of this Domain.\n"
                     },
                     "masterIps": {
@@ -9880,13 +9929,6 @@
                     "domainId": {
                         "type": "integer",
                         "description": "The associated domain's unique ID.\n"
-                    },
-                    "zoneFiles": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Array of strings representing the Domain Zonefile.\n"
                     }
                 },
                 "type": "object",
@@ -9902,8 +9944,7 @@
                         "description": "The associated domain's unique ID.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "zoneFiles": {
                         "type": "array",
@@ -9916,7 +9957,8 @@
                 "type": "object",
                 "required": [
                     "domainId",
-                    "id"
+                    "id",
+                    "zoneFiles"
                 ]
             }
         },
@@ -10216,8 +10258,7 @@
                 "properties": {
                     "linodeId": {
                         "type": "integer",
-                        "description": "The Linode instance's ID.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Linode instance's ID.\n"
                     }
                 },
                 "type": "object",
@@ -10229,8 +10270,7 @@
                 "description": "A collection of values returned by getInstanceNetworking.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "ipv4s": {
                         "type": "array",
@@ -10251,10 +10291,10 @@
                 },
                 "type": "object",
                 "required": [
+                    "id",
                     "ipv4s",
                     "ipv6s",
-                    "linodeId",
-                    "id"
+                    "linodeId"
                 ]
             }
         },
@@ -10463,8 +10503,7 @@
                 "description": "A collection of values returned by getIpv6Range.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "isBgp": {
                         "type": "boolean"
@@ -10490,12 +10529,12 @@
                 },
                 "type": "object",
                 "required": [
+                    "id",
                     "isBgp",
                     "linodes",
                     "prefix",
                     "range",
-                    "region",
-                    "id"
+                    "region"
                 ]
             }
         },
@@ -11076,25 +11115,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getObjectStorageCluster.\n",
                 "properties": {
-                    "domain": {
-                        "type": "string",
-                        "description": "The base URL for this cluster.\n"
-                    },
                     "id": {
                         "type": "string",
                         "description": "The unique ID of this cluster.\n"
-                    },
-                    "region": {
-                        "type": "string",
-                        "description": "The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).\n"
-                    },
-                    "staticSiteDomain": {
-                        "type": "string",
-                        "description": "The base URL for this cluster used when hosting static sites.\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "This cluster's status. (`available`, `unavailable`)\n"
                     }
                 },
                 "type": "object",
@@ -11275,6 +11298,12 @@
                         "items": {
                             "$ref": "#/types/linode:index/getRegionsFilter:getRegionsFilter"
                         }
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getRegionsRegion:getRegionsRegion"
+                        }
                     }
                 },
                 "type": "object"
@@ -11289,8 +11318,7 @@
                         }
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "regions": {
                         "type": "array",
@@ -11301,7 +11329,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "regions",
                     "id"
                 ]
             }
@@ -11311,6 +11338,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getSshKey.\n",
                 "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the SSH Key\n"
+                    },
                     "label": {
                         "type": "string",
                         "description": "The label of the SSH Key to select.\n"
@@ -11330,7 +11361,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of the SSH Key\n"
                     },
                     "label": {
                         "type": "string"
@@ -11344,8 +11375,7 @@
                 "required": [
                     "created",
                     "label",
-                    "sshKey",
-                    "id"
+                    "sshKey"
                 ]
             }
         },

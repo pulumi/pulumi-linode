@@ -3,4 +3,4 @@
 ---
 upstream-provider-name: terraform-provider-linode
 pulumi-infer-version: true
-
+pr-reviewers: pulumi/Ecosystem
