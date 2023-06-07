@@ -63,6 +63,8 @@ __all__ = [
     'GetInstanceTypesFilterArgs',
     'GetInstancesFilterArgs',
     'GetRegionsFilterArgs',
+    'GetRegionsRegionArgs',
+    'GetRegionsRegionResolverArgs',
     'GetStackScriptsFilterArgs',
     'GetUserDomainGrantArgs',
     'GetUserFirewallGrantArgs',
@@ -3270,6 +3272,133 @@ class GetRegionsFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetRegionsRegionArgs:
+    def __init__(__self__, *,
+                 capabilities: Sequence[str],
+                 country: str,
+                 id: str,
+                 label: str,
+                 status: str,
+                 resolvers: Optional[Sequence['GetRegionsRegionResolverArgs']] = None):
+        """
+        :param Sequence[str] capabilities: A list of capabilities of this region.
+        :param str country: The country the region resides in.
+        :param str label: Detailed location information for this Region, including city, state or region, and country.
+        :param str status: This region’s current operational status (ok or outage).
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "status", status)
+        if resolvers is not None:
+            pulumi.set(__self__, "resolvers", resolvers)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        """
+        A list of capabilities of this region.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Sequence[str]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The country the region resides in.
+        """
+        return pulumi.get(self, "country")
+
+    @country.setter
+    def country(self, value: str):
+        pulumi.set(self, "country", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Detailed location information for this Region, including city, state or region, and country.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        This region’s current operational status (ok or outage).
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def resolvers(self) -> Optional[Sequence['GetRegionsRegionResolverArgs']]:
+        return pulumi.get(self, "resolvers")
+
+    @resolvers.setter
+    def resolvers(self, value: Optional[Sequence['GetRegionsRegionResolverArgs']]):
+        pulumi.set(self, "resolvers", value)
+
+
+@pulumi.input_type
+class GetRegionsRegionResolverArgs:
+    def __init__(__self__, *,
+                 ipv4: str,
+                 ipv6: str):
+        """
+        :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: str):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: str):
+        pulumi.set(self, "ipv6", value)
 
 
 @pulumi.input_type

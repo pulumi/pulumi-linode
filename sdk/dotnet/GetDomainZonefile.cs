@@ -81,18 +81,6 @@ namespace Pulumi.Linode
         [Input("domainId", required: true)]
         public int DomainId { get; set; }
 
-        [Input("zoneFiles")]
-        private List<string>? _zoneFiles;
-
-        /// <summary>
-        /// Array of strings representing the Domain Zonefile.
-        /// </summary>
-        public List<string> ZoneFiles
-        {
-            get => _zoneFiles ?? (_zoneFiles = new List<string>());
-            set => _zoneFiles = value;
-        }
-
         public GetDomainZonefileArgs()
         {
         }
@@ -106,18 +94,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("domainId", required: true)]
         public Input<int> DomainId { get; set; } = null!;
-
-        [Input("zoneFiles")]
-        private InputList<string>? _zoneFiles;
-
-        /// <summary>
-        /// Array of strings representing the Domain Zonefile.
-        /// </summary>
-        public InputList<string> ZoneFiles
-        {
-            get => _zoneFiles ?? (_zoneFiles = new InputList<string>());
-            set => _zoneFiles = value;
-        }
 
         public GetDomainZonefileInvokeArgs()
         {
@@ -133,9 +109,6 @@ namespace Pulumi.Linode
         /// The associated domain's unique ID.
         /// </summary>
         public readonly int DomainId;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Array of strings representing the Domain Zonefile.

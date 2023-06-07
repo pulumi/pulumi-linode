@@ -37,7 +37,7 @@ public class Rdns extends com.pulumi.resources.CustomResource {
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
@@ -51,7 +51,7 @@ public class Rdns extends com.pulumi.resources.CustomResource {
      * The name of the RDNS address.
      * 
      */
-    @Export(name="rdns", refs={String.class}, tree="[0]")
+    @Export(name="rdns", type=String.class, parameters={})
     private Output<String> rdns;
 
     /**
@@ -65,7 +65,7 @@ public class Rdns extends com.pulumi.resources.CustomResource {
      * If true, the RDNS assignment will be retried within the operation timeout period.
      * 
      */
-    @Export(name="waitForAvailable", refs={Boolean.class}, tree="[0]")
+    @Export(name="waitForAvailable", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForAvailable;
 
     /**

@@ -87,7 +87,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
      * 
      */
-    @Export(name="algorithm", refs={String.class}, tree="[0]")
+    @Export(name="algorithm", type=String.class, parameters={})
     private Output<String> algorithm;
 
     /**
@@ -101,7 +101,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
      * 
      */
-    @Export(name="check", refs={String.class}, tree="[0]")
+    @Export(name="check", type=String.class, parameters={})
     private Output<String> check;
 
     /**
@@ -115,7 +115,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * How many times to attempt a check before considering a backend to be down. (1-30)
      * 
      */
-    @Export(name="checkAttempts", refs={Integer.class}, tree="[0]")
+    @Export(name="checkAttempts", type=Integer.class, parameters={})
     private Output<Integer> checkAttempts;
 
     /**
@@ -130,7 +130,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * the response body of a check request, the backend is considered to be down
      * 
      */
-    @Export(name="checkBody", refs={String.class}, tree="[0]")
+    @Export(name="checkBody", type=String.class, parameters={})
     private Output<String> checkBody;
 
     /**
@@ -145,7 +145,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * How often, in seconds, to check that backends are up and serving requests.
      * 
      */
-    @Export(name="checkInterval", refs={Integer.class}, tree="[0]")
+    @Export(name="checkInterval", type=Integer.class, parameters={})
     private Output<Integer> checkInterval;
 
     /**
@@ -159,7 +159,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      * 
      */
-    @Export(name="checkPassive", refs={Boolean.class}, tree="[0]")
+    @Export(name="checkPassive", type=Boolean.class, parameters={})
     private Output<Boolean> checkPassive;
 
     /**
@@ -173,7 +173,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
      * 
      */
-    @Export(name="checkPath", refs={String.class}, tree="[0]")
+    @Export(name="checkPath", type=String.class, parameters={})
     private Output<String> checkPath;
 
     /**
@@ -187,7 +187,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
      * 
      */
-    @Export(name="checkTimeout", refs={Integer.class}, tree="[0]")
+    @Export(name="checkTimeout", type=Integer.class, parameters={})
     private Output<Integer> checkTimeout;
 
     /**
@@ -201,7 +201,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      * 
      */
-    @Export(name="cipherSuite", refs={String.class}, tree="[0]")
+    @Export(name="cipherSuite", type=String.class, parameters={})
     private Output<String> cipherSuite;
 
     /**
@@ -216,7 +216,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * periodically as checks are performed against backends.
      * 
      */
-    @Export(name="nodeStatuses", refs={List.class,NodeBalancerConfigNodeStatus.class}, tree="[0,1]")
+    @Export(name="nodeStatuses", type=List.class, parameters={NodeBalancerConfigNodeStatus.class})
     private Output<List<NodeBalancerConfigNodeStatus>> nodeStatuses;
 
     /**
@@ -231,7 +231,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The ID of the NodeBalancer to access.
      * 
      */
-    @Export(name="nodebalancerId", refs={Integer.class}, tree="[0]")
+    @Export(name="nodebalancerId", type=Integer.class, parameters={})
     private Output<Integer> nodebalancerId;
 
     /**
@@ -245,7 +245,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can&#39;t have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
+    @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -259,7 +259,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -273,7 +273,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      * 
      */
-    @Export(name="proxyProtocol", refs={String.class}, tree="[0]")
+    @Export(name="proxyProtocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> proxyProtocol;
 
     /**
@@ -287,7 +287,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      * 
      */
-    @Export(name="sslCert", refs={String.class}, tree="[0]")
+    @Export(name="sslCert", type=String.class, parameters={})
     private Output</* @Nullable */ String> sslCert;
 
     /**
@@ -301,7 +301,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
-    @Export(name="sslCommonname", refs={String.class}, tree="[0]")
+    @Export(name="sslCommonname", type=String.class, parameters={})
     private Output<String> sslCommonname;
 
     /**
@@ -315,7 +315,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      * 
      */
-    @Export(name="sslFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="sslFingerprint", type=String.class, parameters={})
     private Output<String> sslFingerprint;
 
     /**
@@ -329,7 +329,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * The private key corresponding to this port&#39;s certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
      * 
      */
-    @Export(name="sslKey", refs={String.class}, tree="[0]")
+    @Export(name="sslKey", type=String.class, parameters={})
     private Output</* @Nullable */ String> sslKey;
 
     /**
@@ -343,7 +343,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
      * 
      */
-    @Export(name="stickiness", refs={String.class}, tree="[0]")
+    @Export(name="stickiness", type=String.class, parameters={})
     private Output<String> stickiness;
 
     /**

@@ -56,7 +56,6 @@ type LookupIpv6RangeArgs struct {
 
 // A collection of values returned by getIpv6Range.
 type LookupIpv6RangeResult struct {
-	// The provider-assigned unique ID for this managed resource.
 	Id    string `pulumi:"id"`
 	IsBgp bool   `pulumi:"isBgp"`
 	// A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
@@ -106,7 +105,6 @@ func (o LookupIpv6RangeResultOutput) ToLookupIpv6RangeResultOutputWithContext(ct
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupIpv6RangeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpv6RangeResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -76,34 +76,10 @@ namespace Pulumi.Linode
     public sealed class GetObjectStorageClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The base URL for this cluster.
-        /// </summary>
-        [Input("domain")]
-        public string? Domain { get; set; }
-
-        /// <summary>
         /// The unique ID of this cluster.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
-
-        /// <summary>
-        /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// </summary>
-        [Input("region")]
-        public string? Region { get; set; }
-
-        /// <summary>
-        /// The base URL for this cluster used when hosting static sites.
-        /// </summary>
-        [Input("staticSiteDomain")]
-        public string? StaticSiteDomain { get; set; }
-
-        /// <summary>
-        /// This cluster's status. (`available`, `unavailable`)
-        /// </summary>
-        [Input("status")]
-        public string? Status { get; set; }
 
         public GetObjectStorageClusterArgs()
         {
@@ -114,34 +90,10 @@ namespace Pulumi.Linode
     public sealed class GetObjectStorageClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The base URL for this cluster.
-        /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        /// <summary>
         /// The unique ID of this cluster.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
-        /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// The base URL for this cluster used when hosting static sites.
-        /// </summary>
-        [Input("staticSiteDomain")]
-        public Input<string>? StaticSiteDomain { get; set; }
-
-        /// <summary>
-        /// This cluster's status. (`available`, `unavailable`)
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
 
         public GetObjectStorageClusterInvokeArgs()
         {

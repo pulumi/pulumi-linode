@@ -76,6 +76,12 @@ namespace Pulumi.Linode
     public sealed class GetSshKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The ID of the SSH Key
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// The label of the SSH Key to select.
         /// </summary>
         [Input("label", required: true)]
@@ -89,6 +95,12 @@ namespace Pulumi.Linode
 
     public sealed class GetSshKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the SSH Key
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         /// <summary>
         /// The label of the SSH Key to select.
         /// </summary>
@@ -110,9 +122,9 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of the SSH Key
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         public readonly string Label;
         /// <summary>
         /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -123,7 +135,7 @@ namespace Pulumi.Linode
         private GetSshKeyResult(
             string created,
 
-            string id,
+            string? id,
 
             string label,
 

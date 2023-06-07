@@ -31,9 +31,6 @@ export interface GetInstanceNetworkingArgs {
  * A collection of values returned by getInstanceNetworking.
  */
 export interface GetInstanceNetworkingResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly ipv4s: outputs.GetInstanceNetworkingIpv4[];
     readonly ipv6s: outputs.GetInstanceNetworkingIpv6[];

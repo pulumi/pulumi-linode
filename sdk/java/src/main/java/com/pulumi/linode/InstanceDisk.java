@@ -128,7 +128,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
      * 
      */
-    @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="authorizedKeys", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
@@ -142,7 +142,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
      * 
      */
-    @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="authorizedUsers", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
@@ -156,7 +156,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * When this disk was created.
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -170,7 +170,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      * 
      */
-    @Export(name="filesystem", refs={String.class}, tree="[0]")
+    @Export(name="filesystem", type=String.class, parameters={})
     private Output<String> filesystem;
 
     /**
@@ -184,7 +184,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * An Image ID to deploy the Linode Disk from.
      * 
      */
-    @Export(name="image", refs={String.class}, tree="[0]")
+    @Export(name="image", type=String.class, parameters={})
     private Output</* @Nullable */ String> image;
 
     /**
@@ -198,7 +198,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * The Disk&#39;s label for display purposes only.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -212,7 +212,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * The ID of the Linode to create this Disk under.
      * 
      */
-    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
+    @Export(name="linodeId", type=Integer.class, parameters={})
     private Output<Integer> linodeId;
 
     /**
@@ -226,7 +226,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * The root user’s password on a newly-created Linode Disk when deploying from an Image.
      * 
      */
-    @Export(name="rootPass", refs={String.class}, tree="[0]")
+    @Export(name="rootPass", type=String.class, parameters={})
     private Output</* @Nullable */ String> rootPass;
 
     /**
@@ -242,7 +242,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -258,7 +258,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
      * 
      */
-    @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="stackscriptData", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> stackscriptData;
 
     /**
@@ -272,7 +272,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
      * 
      */
-    @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
+    @Export(name="stackscriptId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
@@ -286,7 +286,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * A brief description of this Disk&#39;s current state.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -300,7 +300,7 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * When this disk was last updated.
      * 
      */
-    @Export(name="updated", refs={String.class}, tree="[0]")
+    @Export(name="updated", type=String.class, parameters={})
     private Output<String> updated;
 
     /**

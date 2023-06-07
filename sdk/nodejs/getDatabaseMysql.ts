@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my-db = linode.getDatabaseMysql({
- *     databaseId: 12345,
+ *     id: 12345,
  * });
  * ```
  * ## updates
@@ -35,11 +35,13 @@ import * as utilities from "./utilities";
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabaseMysql(args: GetDatabaseMysqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlResult> {
+export function getDatabaseMysql(args?: GetDatabaseMysqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseMysql:getDatabaseMysql", {
         "databaseId": args.databaseId,
+        "id": args.id,
     }, opts);
 }
 
@@ -48,9 +50,13 @@ export function getDatabaseMysql(args: GetDatabaseMysqlArgs, opts?: pulumi.Invok
  */
 export interface GetDatabaseMysqlArgs {
     /**
-     * The ID of the MySQL database.
+     * The ID of the MySQL database. Deprecated: Use id instead.
      */
-    databaseId: number;
+    databaseId?: number;
+    /**
+     * The ID of the MySQL database. Mutually exclusive with `databaseId`.
+     */
+    id?: number;
 }
 
 /**
@@ -73,7 +79,7 @@ export interface GetDatabaseMysqlResult {
      * When this Managed Database was created.
      */
     readonly created: string;
-    readonly databaseId: number;
+    readonly databaseId?: number;
     /**
      * Whether the Managed Databases is encrypted.
      */
@@ -94,10 +100,7 @@ export interface GetDatabaseMysqlResult {
      * The secondary/private network host for the Managed Database.
      */
     readonly hostSecondary: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
+    readonly id?: number;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
@@ -152,7 +155,7 @@ export interface GetDatabaseMysqlResult {
  * import * as linode from "@pulumi/linode";
  *
  * const my-db = linode.getDatabaseMysql({
- *     databaseId: 12345,
+ *     id: 12345,
  * });
  * ```
  * ## updates
@@ -169,7 +172,7 @@ export interface GetDatabaseMysqlResult {
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabaseMysqlOutput(args: GetDatabaseMysqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlResult> {
+export function getDatabaseMysqlOutput(args?: GetDatabaseMysqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseMysql(a, opts))
 }
 
@@ -178,7 +181,11 @@ export function getDatabaseMysqlOutput(args: GetDatabaseMysqlOutputArgs, opts?: 
  */
 export interface GetDatabaseMysqlOutputArgs {
     /**
-     * The ID of the MySQL database.
+     * The ID of the MySQL database. Deprecated: Use id instead.
      */
-    databaseId: pulumi.Input<number>;
+    databaseId?: pulumi.Input<number>;
+    /**
+     * The ID of the MySQL database. Mutually exclusive with `databaseId`.
+     */
+    id?: pulumi.Input<number>;
 }

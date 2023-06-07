@@ -118,7 +118,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * The endpoints for the Kubernetes API server.
      * 
      */
-    @Export(name="apiEndpoints", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="apiEndpoints", type=List.class, parameters={String.class})
     private Output<List<String>> apiEndpoints;
 
     /**
@@ -132,7 +132,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * Defines settings for the Kubernetes Control Plane.
      * 
      */
-    @Export(name="controlPlane", refs={LkeClusterControlPlane.class}, tree="[0]")
+    @Export(name="controlPlane", type=LkeClusterControlPlane.class, parameters={})
     private Output<LkeClusterControlPlane> controlPlane;
 
     /**
@@ -146,7 +146,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * The Kubernetes Dashboard access URL for this cluster.
      * 
      */
-    @Export(name="dashboardUrl", refs={String.class}, tree="[0]")
+    @Export(name="dashboardUrl", type=String.class, parameters={})
     private Output<String> dashboardUrl;
 
     /**
@@ -160,7 +160,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      * 
      */
-    @Export(name="k8sVersion", refs={String.class}, tree="[0]")
+    @Export(name="k8sVersion", type=String.class, parameters={})
     private Output<String> k8sVersion;
 
     /**
@@ -174,7 +174,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * The base64 encoded kubeconfig for the Kubernetes cluster.
      * 
      */
-    @Export(name="kubeconfig", refs={String.class}, tree="[0]")
+    @Export(name="kubeconfig", type=String.class, parameters={})
     private Output<String> kubeconfig;
 
     /**
@@ -188,7 +188,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * This Kubernetes cluster&#39;s unique label.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -202,7 +202,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * Additional nested attributes:
      * 
      */
-    @Export(name="pools", refs={List.class,LkeClusterPool.class}, tree="[0,1]")
+    @Export(name="pools", type=List.class, parameters={LkeClusterPool.class})
     private Output<List<LkeClusterPool>> pools;
 
     /**
@@ -220,7 +220,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -238,7 +238,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * The status of the node. (`ready`, `not_ready`)
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -252,7 +252,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**

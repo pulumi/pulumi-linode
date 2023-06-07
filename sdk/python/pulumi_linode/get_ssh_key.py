@@ -45,9 +45,9 @@ class GetSshKeyResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the SSH Key
         """
         return pulumi.get(self, "id")
 
@@ -77,7 +77,8 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
             ssh_key=self.ssh_key)
 
 
-def get_ssh_key(label: Optional[str] = None,
+def get_ssh_key(id: Optional[str] = None,
+                label: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
@@ -94,9 +95,11 @@ def get_ssh_key(label: Optional[str] = None,
     ```
 
 
+    :param str id: The ID of the SSH Key
     :param str label: The label of the SSH Key to select.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['label'] = label
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult).value
@@ -109,7 +112,8 @@ def get_ssh_key(label: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_ssh_key)
-def get_ssh_key_output(label: Optional[pulumi.Input[str]] = None,
+def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                       label: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
@@ -126,6 +130,7 @@ def get_ssh_key_output(label: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param str id: The ID of the SSH Key
     :param str label: The label of the SSH Key to select.
     """
     ...

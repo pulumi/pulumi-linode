@@ -76,7 +76,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * The date this Token was created.
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -90,7 +90,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with &#39;null&#39; as their expiry and will never expire unless revoked.
      * 
      */
-    @Export(name="expiry", refs={String.class}, tree="[0]")
+    @Export(name="expiry", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiry;
 
     /**
@@ -104,7 +104,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * A label for the Token.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output</* @Nullable */ String> label;
 
     /**
@@ -118,7 +118,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
      * 
      */
-    @Export(name="scopes", refs={String.class}, tree="[0]")
+    @Export(name="scopes", type=String.class, parameters={})
     private Output<String> scopes;
 
     /**
@@ -132,7 +132,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * The token used to access the API.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output<String> token;
 
     /**

@@ -105,9 +105,6 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetIpv6RangeResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly bool IsBgp;
         /// <summary>

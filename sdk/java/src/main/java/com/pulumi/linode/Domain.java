@@ -83,7 +83,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      * 
      */
-    @Export(name="axfrIps", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="axfrIps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> axfrIps;
 
     /**
@@ -97,7 +97,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A description for this Domain. This is for display purposes only.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -111,7 +111,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
     /**
@@ -125,7 +125,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      * 
      */
-    @Export(name="expireSec", refs={Integer.class}, tree="[0]")
+    @Export(name="expireSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> expireSec;
 
     /**
@@ -139,7 +139,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The group this Domain belongs to. This is for display purposes only.
      * 
      */
-    @Export(name="group", refs={String.class}, tree="[0]")
+    @Export(name="group", type=String.class, parameters={})
     private Output</* @Nullable */ String> group;
 
     /**
@@ -155,7 +155,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="masterIps", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="masterIps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> masterIps;
 
     /**
@@ -171,7 +171,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      * 
      */
-    @Export(name="refreshSec", refs={Integer.class}, tree="[0]")
+    @Export(name="refreshSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> refreshSec;
 
     /**
@@ -185,7 +185,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      * 
      */
-    @Export(name="retrySec", refs={Integer.class}, tree="[0]")
+    @Export(name="retrySec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retrySec;
 
     /**
@@ -199,7 +199,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Start of Authority email address. This is required for master Domains.
      * 
      */
-    @Export(name="soaEmail", refs={String.class}, tree="[0]")
+    @Export(name="soaEmail", type=String.class, parameters={})
     private Output</* @Nullable */ String> soaEmail;
 
     /**
@@ -213,7 +213,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Used to control whether this Domain is currently being rendered (defaults to &#34;active&#34;).
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -227,7 +227,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -241,7 +241,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * &#39;Time to Live&#39; - the amount of time in seconds that this Domain&#39;s records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      * 
      */
-    @Export(name="ttlSec", refs={Integer.class}, tree="[0]")
+    @Export(name="ttlSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ttlSec;
 
     /**
@@ -255,7 +255,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

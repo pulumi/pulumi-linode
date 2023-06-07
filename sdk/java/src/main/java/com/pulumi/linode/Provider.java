@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The version of Linode API.
      * 
      */
-    @Export(name="apiVersion", refs={String.class}, tree="[0]")
+    @Export(name="apiVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiVersion;
 
     /**
@@ -36,13 +36,13 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> apiVersion() {
         return Codegen.optional(this.apiVersion);
     }
-    @Export(name="configPath", refs={String.class}, tree="[0]")
+    @Export(name="configPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> configPath;
 
     public Output<Optional<String>> configPath() {
         return Codegen.optional(this.configPath);
     }
-    @Export(name="configProfile", refs={String.class}, tree="[0]")
+    @Export(name="configProfile", type=String.class, parameters={})
     private Output</* @Nullable */ String> configProfile;
 
     public Output<Optional<String>> configProfile() {
@@ -52,7 +52,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The token that allows you access to your Linode account
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 
     /**
@@ -66,7 +66,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * An HTTP User-Agent Prefix to prepend in API requests.
      * 
      */
-    @Export(name="uaPrefix", refs={String.class}, tree="[0]")
+    @Export(name="uaPrefix", type=String.class, parameters={})
     private Output</* @Nullable */ String> uaPrefix;
 
     /**
@@ -80,7 +80,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The HTTP(S) API address of the Linode API to use.
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output</* @Nullable */ String> url;
 
     /**

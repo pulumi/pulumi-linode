@@ -155,7 +155,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
-    @Export(name="filesystemPath", refs={String.class}, tree="[0]")
+    @Export(name="filesystemPath", type=String.class, parameters={})
     private Output<String> filesystemPath;
 
     /**
@@ -169,7 +169,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The label of the Linode Volume
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -183,7 +183,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The ID of a Linode Instance where the Volume should be attached.
      * 
      */
-    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
+    @Export(name="linodeId", type=Integer.class, parameters={})
     private Output<Integer> linodeId;
 
     /**
@@ -199,7 +199,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -215,7 +215,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Size of the Volume in GB.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -229,7 +229,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
      * 
      */
-    @Export(name="sourceVolumeId", refs={Integer.class}, tree="[0]")
+    @Export(name="sourceVolumeId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> sourceVolumeId;
 
     /**
@@ -243,7 +243,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -257,7 +257,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**

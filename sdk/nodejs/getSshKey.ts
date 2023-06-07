@@ -24,6 +24,7 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getSshKey:getSshKey", {
+        "id": args.id,
         "label": args.label,
     }, opts);
 }
@@ -32,6 +33,10 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getSshKey.
  */
 export interface GetSshKeyArgs {
+    /**
+     * The ID of the SSH Key
+     */
+    id?: string;
     /**
      * The label of the SSH Key to select.
      */
@@ -47,9 +52,9 @@ export interface GetSshKeyResult {
      */
     readonly created: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the SSH Key
      */
-    readonly id: string;
+    readonly id?: string;
     readonly label: string;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -80,6 +85,10 @@ export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getSshKey.
  */
 export interface GetSshKeyOutputArgs {
+    /**
+     * The ID of the SSH Key
+     */
+    id?: pulumi.Input<string>;
     /**
      * The label of the SSH Key to select.
      */

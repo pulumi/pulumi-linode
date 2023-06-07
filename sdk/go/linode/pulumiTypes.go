@@ -9950,8 +9950,12 @@ type GetInstanceNetworkingIpv4Private struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -9978,8 +9982,12 @@ type GetInstanceNetworkingIpv4PrivateArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10051,9 +10059,19 @@ func (o GetInstanceNetworkingIpv4PrivateOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv4PrivateOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv4PrivateOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv4PrivateOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -10101,8 +10119,12 @@ type GetInstanceNetworkingIpv4Public struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10129,8 +10151,12 @@ type GetInstanceNetworkingIpv4PublicArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10202,9 +10228,19 @@ func (o GetInstanceNetworkingIpv4PublicOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv4PublicOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv4PublicOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv4PublicOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -10252,8 +10288,12 @@ type GetInstanceNetworkingIpv4Reserved struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10280,8 +10320,12 @@ type GetInstanceNetworkingIpv4ReservedArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10353,9 +10397,19 @@ func (o GetInstanceNetworkingIpv4ReservedOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv4ReservedOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv4ReservedOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv4ReservedOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -10403,8 +10457,12 @@ type GetInstanceNetworkingIpv4Shared struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10431,8 +10489,12 @@ type GetInstanceNetworkingIpv4SharedArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10504,9 +10566,19 @@ func (o GetInstanceNetworkingIpv4SharedOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv4SharedOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv4SharedOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv4SharedOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -10550,9 +10622,9 @@ func (o GetInstanceNetworkingIpv4SharedArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetInstanceNetworkingIpv6 struct {
-	Globals    []GetInstanceNetworkingIpv6Global    `pulumi:"globals"`
-	LinkLocals []GetInstanceNetworkingIpv6LinkLocal `pulumi:"linkLocals"`
-	Slaacs     []GetInstanceNetworkingIpv6Slaac     `pulumi:"slaacs"`
+	Globals   []GetInstanceNetworkingIpv6Global  `pulumi:"globals"`
+	LinkLocal GetInstanceNetworkingIpv6LinkLocal `pulumi:"linkLocal"`
+	Slaac     GetInstanceNetworkingIpv6Slaac     `pulumi:"slaac"`
 }
 
 // GetInstanceNetworkingIpv6Input is an input type that accepts GetInstanceNetworkingIpv6Args and GetInstanceNetworkingIpv6Output values.
@@ -10567,9 +10639,9 @@ type GetInstanceNetworkingIpv6Input interface {
 }
 
 type GetInstanceNetworkingIpv6Args struct {
-	Globals    GetInstanceNetworkingIpv6GlobalArrayInput    `pulumi:"globals"`
-	LinkLocals GetInstanceNetworkingIpv6LinkLocalArrayInput `pulumi:"linkLocals"`
-	Slaacs     GetInstanceNetworkingIpv6SlaacArrayInput     `pulumi:"slaacs"`
+	Globals   GetInstanceNetworkingIpv6GlobalArrayInput `pulumi:"globals"`
+	LinkLocal GetInstanceNetworkingIpv6LinkLocalInput   `pulumi:"linkLocal"`
+	Slaac     GetInstanceNetworkingIpv6SlaacInput       `pulumi:"slaac"`
 }
 
 func (GetInstanceNetworkingIpv6Args) ElementType() reflect.Type {
@@ -10627,12 +10699,12 @@ func (o GetInstanceNetworkingIpv6Output) Globals() GetInstanceNetworkingIpv6Glob
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6) []GetInstanceNetworkingIpv6Global { return v.Globals }).(GetInstanceNetworkingIpv6GlobalArrayOutput)
 }
 
-func (o GetInstanceNetworkingIpv6Output) LinkLocals() GetInstanceNetworkingIpv6LinkLocalArrayOutput {
-	return o.ApplyT(func(v GetInstanceNetworkingIpv6) []GetInstanceNetworkingIpv6LinkLocal { return v.LinkLocals }).(GetInstanceNetworkingIpv6LinkLocalArrayOutput)
+func (o GetInstanceNetworkingIpv6Output) LinkLocal() GetInstanceNetworkingIpv6LinkLocalOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6) GetInstanceNetworkingIpv6LinkLocal { return v.LinkLocal }).(GetInstanceNetworkingIpv6LinkLocalOutput)
 }
 
-func (o GetInstanceNetworkingIpv6Output) Slaacs() GetInstanceNetworkingIpv6SlaacArrayOutput {
-	return o.ApplyT(func(v GetInstanceNetworkingIpv6) []GetInstanceNetworkingIpv6Slaac { return v.Slaacs }).(GetInstanceNetworkingIpv6SlaacArrayOutput)
+func (o GetInstanceNetworkingIpv6Output) Slaac() GetInstanceNetworkingIpv6SlaacOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6) GetInstanceNetworkingIpv6Slaac { return v.Slaac }).(GetInstanceNetworkingIpv6SlaacOutput)
 }
 
 type GetInstanceNetworkingIpv6ArrayOutput struct{ *pulumi.OutputState }
@@ -10784,8 +10856,12 @@ type GetInstanceNetworkingIpv6LinkLocal struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10812,8 +10888,12 @@ type GetInstanceNetworkingIpv6LinkLocalArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10834,31 +10914,6 @@ func (i GetInstanceNetworkingIpv6LinkLocalArgs) ToGetInstanceNetworkingIpv6LinkL
 
 func (i GetInstanceNetworkingIpv6LinkLocalArgs) ToGetInstanceNetworkingIpv6LinkLocalOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6LinkLocalOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6LinkLocalOutput)
-}
-
-// GetInstanceNetworkingIpv6LinkLocalArrayInput is an input type that accepts GetInstanceNetworkingIpv6LinkLocalArray and GetInstanceNetworkingIpv6LinkLocalArrayOutput values.
-// You can construct a concrete instance of `GetInstanceNetworkingIpv6LinkLocalArrayInput` via:
-//
-//	GetInstanceNetworkingIpv6LinkLocalArray{ GetInstanceNetworkingIpv6LinkLocalArgs{...} }
-type GetInstanceNetworkingIpv6LinkLocalArrayInput interface {
-	pulumi.Input
-
-	ToGetInstanceNetworkingIpv6LinkLocalArrayOutput() GetInstanceNetworkingIpv6LinkLocalArrayOutput
-	ToGetInstanceNetworkingIpv6LinkLocalArrayOutputWithContext(context.Context) GetInstanceNetworkingIpv6LinkLocalArrayOutput
-}
-
-type GetInstanceNetworkingIpv6LinkLocalArray []GetInstanceNetworkingIpv6LinkLocalInput
-
-func (GetInstanceNetworkingIpv6LinkLocalArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceNetworkingIpv6LinkLocal)(nil)).Elem()
-}
-
-func (i GetInstanceNetworkingIpv6LinkLocalArray) ToGetInstanceNetworkingIpv6LinkLocalArrayOutput() GetInstanceNetworkingIpv6LinkLocalArrayOutput {
-	return i.ToGetInstanceNetworkingIpv6LinkLocalArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstanceNetworkingIpv6LinkLocalArray) ToGetInstanceNetworkingIpv6LinkLocalArrayOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6LinkLocalArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6LinkLocalArrayOutput)
 }
 
 type GetInstanceNetworkingIpv6LinkLocalOutput struct{ *pulumi.OutputState }
@@ -10885,9 +10940,19 @@ func (o GetInstanceNetworkingIpv6LinkLocalOutput) Gateway() pulumi.StringOutput 
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv6LinkLocalOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv6LinkLocalOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv6LinkLocalOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -10910,33 +10975,17 @@ func (o GetInstanceNetworkingIpv6LinkLocalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetInstanceNetworkingIpv6LinkLocalArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceNetworkingIpv6LinkLocalArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceNetworkingIpv6LinkLocal)(nil)).Elem()
-}
-
-func (o GetInstanceNetworkingIpv6LinkLocalArrayOutput) ToGetInstanceNetworkingIpv6LinkLocalArrayOutput() GetInstanceNetworkingIpv6LinkLocalArrayOutput {
-	return o
-}
-
-func (o GetInstanceNetworkingIpv6LinkLocalArrayOutput) ToGetInstanceNetworkingIpv6LinkLocalArrayOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6LinkLocalArrayOutput {
-	return o
-}
-
-func (o GetInstanceNetworkingIpv6LinkLocalArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkingIpv6LinkLocalOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkingIpv6LinkLocal {
-		return vs[0].([]GetInstanceNetworkingIpv6LinkLocal)[vs[1].(int)]
-	}).(GetInstanceNetworkingIpv6LinkLocalOutput)
-}
-
 type GetInstanceNetworkingIpv6Slaac struct {
 	// The address.
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns string `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10963,8 +11012,12 @@ type GetInstanceNetworkingIpv6SlaacArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The Linode instance's ID.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
 	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
 	// (Filterable) The Region this address resides in.
@@ -10985,31 +11038,6 @@ func (i GetInstanceNetworkingIpv6SlaacArgs) ToGetInstanceNetworkingIpv6SlaacOutp
 
 func (i GetInstanceNetworkingIpv6SlaacArgs) ToGetInstanceNetworkingIpv6SlaacOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6SlaacOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6SlaacOutput)
-}
-
-// GetInstanceNetworkingIpv6SlaacArrayInput is an input type that accepts GetInstanceNetworkingIpv6SlaacArray and GetInstanceNetworkingIpv6SlaacArrayOutput values.
-// You can construct a concrete instance of `GetInstanceNetworkingIpv6SlaacArrayInput` via:
-//
-//	GetInstanceNetworkingIpv6SlaacArray{ GetInstanceNetworkingIpv6SlaacArgs{...} }
-type GetInstanceNetworkingIpv6SlaacArrayInput interface {
-	pulumi.Input
-
-	ToGetInstanceNetworkingIpv6SlaacArrayOutput() GetInstanceNetworkingIpv6SlaacArrayOutput
-	ToGetInstanceNetworkingIpv6SlaacArrayOutputWithContext(context.Context) GetInstanceNetworkingIpv6SlaacArrayOutput
-}
-
-type GetInstanceNetworkingIpv6SlaacArray []GetInstanceNetworkingIpv6SlaacInput
-
-func (GetInstanceNetworkingIpv6SlaacArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceNetworkingIpv6Slaac)(nil)).Elem()
-}
-
-func (i GetInstanceNetworkingIpv6SlaacArray) ToGetInstanceNetworkingIpv6SlaacArrayOutput() GetInstanceNetworkingIpv6SlaacArrayOutput {
-	return i.ToGetInstanceNetworkingIpv6SlaacArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstanceNetworkingIpv6SlaacArray) ToGetInstanceNetworkingIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6SlaacArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6SlaacArrayOutput)
 }
 
 type GetInstanceNetworkingIpv6SlaacOutput struct{ *pulumi.OutputState }
@@ -11036,9 +11064,19 @@ func (o GetInstanceNetworkingIpv6SlaacOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The Linode instance's ID.
+func (o GetInstanceNetworkingIpv6SlaacOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
 // The network prefix.
 func (o GetInstanceNetworkingIpv6SlaacOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetInstanceNetworkingIpv6SlaacOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
@@ -11059,26 +11097,6 @@ func (o GetInstanceNetworkingIpv6SlaacOutput) SubnetMask() pulumi.StringOutput {
 // The type of address this is.
 func (o GetInstanceNetworkingIpv6SlaacOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetInstanceNetworkingIpv6SlaacArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceNetworkingIpv6SlaacArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceNetworkingIpv6Slaac)(nil)).Elem()
-}
-
-func (o GetInstanceNetworkingIpv6SlaacArrayOutput) ToGetInstanceNetworkingIpv6SlaacArrayOutput() GetInstanceNetworkingIpv6SlaacArrayOutput {
-	return o
-}
-
-func (o GetInstanceNetworkingIpv6SlaacArrayOutput) ToGetInstanceNetworkingIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6SlaacArrayOutput {
-	return o
-}
-
-func (o GetInstanceNetworkingIpv6SlaacArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkingIpv6SlaacOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkingIpv6Slaac {
-		return vs[0].([]GetInstanceNetworkingIpv6Slaac)[vs[1].(int)]
-	}).(GetInstanceNetworkingIpv6SlaacOutput)
 }
 
 type GetInstanceTypeAddons struct {
@@ -17607,9 +17625,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6GlobalInput)(nil)).Elem(), GetInstanceNetworkingIpv6GlobalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6GlobalArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv6GlobalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalInput)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacInput)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsInput)(nil)).Elem(), GetInstanceTypeAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsPriceArgs{})
@@ -17865,9 +17881,7 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6GlobalOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6GlobalArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalOutput{})
-	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacOutput{})
-	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})

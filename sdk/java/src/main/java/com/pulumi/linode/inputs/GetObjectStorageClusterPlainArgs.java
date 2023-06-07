@@ -6,28 +6,11 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetObjectStorageClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetObjectStorageClusterPlainArgs Empty = new GetObjectStorageClusterPlainArgs();
-
-    /**
-     * The base URL for this cluster.
-     * 
-     */
-    @Import(name="domain")
-    private @Nullable String domain;
-
-    /**
-     * @return The base URL for this cluster.
-     * 
-     */
-    public Optional<String> domain() {
-        return Optional.ofNullable(this.domain);
-    }
 
     /**
      * The unique ID of this cluster.
@@ -44,59 +27,10 @@ public final class GetObjectStorageClusterPlainArgs extends com.pulumi.resources
         return this.id;
     }
 
-    /**
-     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     */
-    @Import(name="region")
-    private @Nullable String region;
-
-    /**
-     * @return The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     * 
-     */
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
-    }
-
-    /**
-     * The base URL for this cluster used when hosting static sites.
-     * 
-     */
-    @Import(name="staticSiteDomain")
-    private @Nullable String staticSiteDomain;
-
-    /**
-     * @return The base URL for this cluster used when hosting static sites.
-     * 
-     */
-    public Optional<String> staticSiteDomain() {
-        return Optional.ofNullable(this.staticSiteDomain);
-    }
-
-    /**
-     * This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     */
-    @Import(name="status")
-    private @Nullable String status;
-
-    /**
-     * @return This cluster&#39;s status. (`available`, `unavailable`)
-     * 
-     */
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
-    }
-
     private GetObjectStorageClusterPlainArgs() {}
 
     private GetObjectStorageClusterPlainArgs(GetObjectStorageClusterPlainArgs $) {
-        this.domain = $.domain;
         this.id = $.id;
-        this.region = $.region;
-        this.staticSiteDomain = $.staticSiteDomain;
-        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -118,17 +52,6 @@ public final class GetObjectStorageClusterPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param domain The base URL for this cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domain(@Nullable String domain) {
-            $.domain = domain;
-            return this;
-        }
-
-        /**
          * @param id The unique ID of this cluster.
          * 
          * @return builder
@@ -136,39 +59,6 @@ public final class GetObjectStorageClusterPlainArgs extends com.pulumi.resources
          */
         public Builder id(String id) {
             $.id = id;
-            return this;
-        }
-
-        /**
-         * @param region The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder region(@Nullable String region) {
-            $.region = region;
-            return this;
-        }
-
-        /**
-         * @param staticSiteDomain The base URL for this cluster used when hosting static sites.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder staticSiteDomain(@Nullable String staticSiteDomain) {
-            $.staticSiteDomain = staticSiteDomain;
-            return this;
-        }
-
-        /**
-         * @param status This cluster&#39;s status. (`available`, `unavailable`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder status(@Nullable String status) {
-            $.status = status;
             return this;
         }
 

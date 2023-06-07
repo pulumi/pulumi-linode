@@ -14,7 +14,11 @@ func GetApiVersion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "LINODE_API_VERSION").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetConfigPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:configPath")
@@ -74,7 +78,11 @@ func GetUaPrefix(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "LINODE_UA_PREFIX").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The HTTP(S) API address of the Linode API to use.
@@ -83,5 +91,9 @@ func GetUrl(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "LINODE_URL").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }

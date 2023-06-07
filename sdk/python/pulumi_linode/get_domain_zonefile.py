@@ -43,14 +43,11 @@ class GetDomainZonefileResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="zoneFiles")
-    def zone_files(self) -> Optional[Sequence[str]]:
+    def zone_files(self) -> Sequence[str]:
         """
         Array of strings representing the Domain Zonefile.
         """
@@ -69,7 +66,6 @@ class AwaitableGetDomainZonefileResult(GetDomainZonefileResult):
 
 
 def get_domain_zonefile(domain_id: Optional[int] = None,
-                        zone_files: Optional[Sequence[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainZonefileResult:
     """
     Provides information about a Linode Domain Zonefile.
@@ -87,11 +83,9 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
 
 
     :param int domain_id: The associated domain's unique ID.
-    :param Sequence[str] zone_files: Array of strings representing the Domain Zonefile.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
-    __args__['zoneFiles'] = zone_files
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getDomainZonefile:getDomainZonefile', __args__, opts=opts, typ=GetDomainZonefileResult).value
 
@@ -103,7 +97,6 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
 
 @_utilities.lift_output_func(get_domain_zonefile)
 def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
-                               zone_files: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainZonefileResult]:
     """
     Provides information about a Linode Domain Zonefile.
@@ -121,6 +114,5 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
 
 
     :param int domain_id: The associated domain's unique ID.
-    :param Sequence[str] zone_files: Array of strings representing the Domain Zonefile.
     """
     ...

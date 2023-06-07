@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,13 +36,13 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="id")
-    private @Nullable Output<String> id;
+    private @Nullable Output<Integer> id;
 
     /**
      * @return The unique numeric ID of the Domain record to query.
      * 
      */
-    public Optional<Output<String>> id() {
+    public Optional<Output<Integer>> id() {
         return Optional.ofNullable(this.id);
     }
 
@@ -97,7 +98,7 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(@Nullable Output<Integer> id) {
             $.id = id;
             return this;
         }
@@ -108,7 +109,7 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             return id(Output.of(id));
         }
 

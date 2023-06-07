@@ -120,7 +120,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The devices associated with this firewall.
      * 
      */
-    @Export(name="devices", refs={List.class,FirewallDevice.class}, tree="[0,1]")
+    @Export(name="devices", type=List.class, parameters={FirewallDevice.class})
     private Output<List<FirewallDevice>> devices;
 
     /**
@@ -136,7 +136,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -154,7 +154,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
-    @Export(name="inboundPolicy", refs={String.class}, tree="[0]")
+    @Export(name="inboundPolicy", type=String.class, parameters={})
     private Output<String> inboundPolicy;
 
     /**
@@ -170,7 +170,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
-    @Export(name="inbounds", refs={List.class,FirewallInbound.class}, tree="[0,1]")
+    @Export(name="inbounds", type=List.class, parameters={FirewallInbound.class})
     private Output</* @Nullable */ List<FirewallInbound>> inbounds;
 
     /**
@@ -184,7 +184,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * This Firewall&#39;s unique label.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -198,7 +198,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
      * 
      */
-    @Export(name="linodes", refs={List.class,Integer.class}, tree="[0,1]")
+    @Export(name="linodes", type=List.class, parameters={Integer.class})
     private Output<List<Integer>> linodes;
 
     /**
@@ -212,7 +212,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      * 
      */
-    @Export(name="outboundPolicy", refs={String.class}, tree="[0]")
+    @Export(name="outboundPolicy", type=String.class, parameters={})
     private Output<String> outboundPolicy;
 
     /**
@@ -226,7 +226,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
-    @Export(name="outbounds", refs={List.class,FirewallOutbound.class}, tree="[0,1]")
+    @Export(name="outbounds", type=List.class, parameters={FirewallOutbound.class})
     private Output</* @Nullable */ List<FirewallOutbound>> outbounds;
 
     /**
@@ -240,7 +240,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The status of the Firewall.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -254,7 +254,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**

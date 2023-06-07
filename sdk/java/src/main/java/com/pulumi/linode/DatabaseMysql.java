@@ -133,7 +133,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      * 
      */
-    @Export(name="allowLists", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allowLists", type=List.class, parameters={String.class})
     private Output<List<String>> allowLists;
 
     /**
@@ -147,7 +147,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The base64-encoded SSL CA certificate for the Managed Database instance.
      * 
      */
-    @Export(name="caCert", refs={String.class}, tree="[0]")
+    @Export(name="caCert", type=String.class, parameters={})
     private Output<String> caCert;
 
     /**
@@ -161,7 +161,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      * 
      */
-    @Export(name="clusterSize", refs={Integer.class}, tree="[0]")
+    @Export(name="clusterSize", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> clusterSize;
 
     /**
@@ -175,7 +175,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * When this Managed Database was created.
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -189,7 +189,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * Whether the Managed Databases is encrypted. (default `false`)
      * 
      */
-    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
+    @Export(name="encrypted", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> encrypted;
 
     /**
@@ -203,7 +203,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine. (e.g. `mysql`)
      * 
      */
-    @Export(name="engine", refs={String.class}, tree="[0]")
+    @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
@@ -217,7 +217,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
      * 
      */
-    @Export(name="engineId", refs={String.class}, tree="[0]")
+    @Export(name="engineId", type=String.class, parameters={})
     private Output<String> engineId;
 
     /**
@@ -231,7 +231,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The primary host for the Managed Database.
      * 
      */
-    @Export(name="hostPrimary", refs={String.class}, tree="[0]")
+    @Export(name="hostPrimary", type=String.class, parameters={})
     private Output<String> hostPrimary;
 
     /**
@@ -245,7 +245,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The secondary/private network host for the Managed Database.
      * 
      */
-    @Export(name="hostSecondary", refs={String.class}, tree="[0]")
+    @Export(name="hostSecondary", type=String.class, parameters={})
     private Output<String> hostSecondary;
 
     /**
@@ -259,7 +259,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * A unique, user-defined string referring to the Managed Database.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -273,7 +273,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The region to use for the Managed Database.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -291,7 +291,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * * Must be `asynch` or `semi_synch` for a high availability cluster.
      * 
      */
-    @Export(name="replicationType", refs={String.class}, tree="[0]")
+    @Export(name="replicationType", type=String.class, parameters={})
     private Output</* @Nullable */ String> replicationType;
 
     /**
@@ -309,7 +309,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The randomly-generated root password for the Managed Database instance.
      * 
      */
-    @Export(name="rootPassword", refs={String.class}, tree="[0]")
+    @Export(name="rootPassword", type=String.class, parameters={})
     private Output<String> rootPassword;
 
     /**
@@ -323,7 +323,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The root username for the Managed Database instance.
      * 
      */
-    @Export(name="rootUsername", refs={String.class}, tree="[0]")
+    @Export(name="rootUsername", type=String.class, parameters={})
     private Output<String> rootUsername;
 
     /**
@@ -339,7 +339,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
-    @Export(name="sslConnection", refs={Boolean.class}, tree="[0]")
+    @Export(name="sslConnection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sslConnection;
 
     /**
@@ -355,7 +355,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The operating status of the Managed Database.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -371,7 +371,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -387,7 +387,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * When this Managed Database was last updated.
      * 
      */
-    @Export(name="updated", refs={String.class}, tree="[0]")
+    @Export(name="updated", type=String.class, parameters={})
     private Output<String> updated;
 
     /**
@@ -401,7 +401,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
-    @Export(name="updates", refs={DatabaseMysqlUpdates.class}, tree="[0]")
+    @Export(name="updates", type=DatabaseMysqlUpdates.class, parameters={})
     private Output<DatabaseMysqlUpdates> updates;
 
     /**
@@ -415,7 +415,7 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
      * The Managed Database engine version. (e.g. `v8.0.26`)
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**

@@ -73,7 +73,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      * 
      */
-    @Export(name="clientConnThrottle", refs={Integer.class}, tree="[0]")
+    @Export(name="clientConnThrottle", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> clientConnThrottle;
 
     /**
@@ -87,7 +87,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * When this NodeBalancer was created
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -101,7 +101,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
@@ -115,7 +115,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * The Public IPv4 Address of this NodeBalancer
      * 
      */
-    @Export(name="ipv4", refs={String.class}, tree="[0]")
+    @Export(name="ipv4", type=String.class, parameters={})
     private Output<String> ipv4;
 
     /**
@@ -129,7 +129,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * The Public IPv6 Address of this NodeBalancer
      * 
      */
-    @Export(name="ipv6", refs={String.class}, tree="[0]")
+    @Export(name="ipv6", type=String.class, parameters={})
     private Output<String> ipv6;
 
     /**
@@ -143,7 +143,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * The label of the Linode NodeBalancer
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output</* @Nullable */ String> label;
 
     /**
@@ -159,7 +159,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -175,7 +175,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -189,7 +189,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      * 
      */
-    @Export(name="transfers", refs={List.class,NodeBalancerTransfer.class}, tree="[0,1]")
+    @Export(name="transfers", type=List.class, parameters={NodeBalancerTransfer.class})
     private Output<List<NodeBalancerTransfer>> transfers;
 
     /**
@@ -203,7 +203,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * When this NodeBalancer was last updated.
      * 
      */
-    @Export(name="updated", refs={String.class}, tree="[0]")
+    @Export(name="updated", type=String.class, parameters={})
     private Output<String> updated;
 
     /**

@@ -32,7 +32,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * The date this SSH Key was created.
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -46,7 +46,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * A label for the SSH Key.
      * 
      */
-    @Export(name="label", refs={String.class}, tree="[0]")
+    @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
@@ -60,7 +60,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      * 
      */
-    @Export(name="sshKey", refs={String.class}, tree="[0]")
+    @Export(name="sshKey", type=String.class, parameters={})
     private Output<String> sshKey;
 
     /**

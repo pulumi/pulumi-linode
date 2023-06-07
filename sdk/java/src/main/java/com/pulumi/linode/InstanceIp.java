@@ -70,7 +70,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The resulting IPv4 address.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
@@ -84,7 +84,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * If true, the instance will be rebooted to update network interfaces.
      * 
      */
-    @Export(name="applyImmediately", refs={Boolean.class}, tree="[0]")
+    @Export(name="applyImmediately", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> applyImmediately;
 
     /**
@@ -98,7 +98,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The default gateway for this address
      * 
      */
-    @Export(name="gateway", refs={String.class}, tree="[0]")
+    @Export(name="gateway", type=String.class, parameters={})
     private Output<String> gateway;
 
     /**
@@ -112,7 +112,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The ID of the Linode to allocate an IPv4 address for.
      * 
      */
-    @Export(name="linodeId", refs={Integer.class}, tree="[0]")
+    @Export(name="linodeId", type=Integer.class, parameters={})
     private Output<Integer> linodeId;
 
     /**
@@ -126,7 +126,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The number of bits set in the subnet mask.
      * 
      */
-    @Export(name="prefix", refs={Integer.class}, tree="[0]")
+    @Export(name="prefix", type=Integer.class, parameters={})
     private Output<Integer> prefix;
 
     /**
@@ -140,7 +140,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * Whether the IPv4 address is public or private. Defaults to true.
      * 
      */
-    @Export(name="public", refs={Boolean.class}, tree="[0]")
+    @Export(name="public", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> public_;
 
     /**
@@ -154,7 +154,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The reverse DNS assigned to this address.
      * 
      */
-    @Export(name="rdns", refs={String.class}, tree="[0]")
+    @Export(name="rdns", type=String.class, parameters={})
     private Output<String> rdns;
 
     /**
@@ -168,7 +168,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The region this IP resides in.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -182,7 +182,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The mask that separates host bits from network bits for this address.
      * 
      */
-    @Export(name="subnetMask", refs={String.class}, tree="[0]")
+    @Export(name="subnetMask", type=String.class, parameters={})
     private Output<String> subnetMask;
 
     /**
@@ -196,7 +196,7 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

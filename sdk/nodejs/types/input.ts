@@ -368,6 +368,70 @@ export interface GetRegionsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetRegionsRegion {
+    /**
+     * A list of capabilities of this region.
+     */
+    capabilities?: string[];
+    /**
+     * The country the region resides in.
+     */
+    country?: string;
+    id?: string;
+    /**
+     * Detailed location information for this Region, including city, state or region, and country.
+     */
+    label?: string;
+    resolvers?: inputs.GetRegionsRegionResolver[];
+    /**
+     * This region’s current operational status (ok or outage).
+     */
+    status?: string;
+}
+
+export interface GetRegionsRegionArgs {
+    /**
+     * A list of capabilities of this region.
+     */
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The country the region resides in.
+     */
+    country?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * Detailed location information for this Region, including city, state or region, and country.
+     */
+    label?: pulumi.Input<string>;
+    resolvers?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionResolverArgs>[]>;
+    /**
+     * This region’s current operational status (ok or outage).
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface GetRegionsRegionResolver {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4?: string;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6?: string;
+}
+
+export interface GetRegionsRegionResolverArgs {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6?: pulumi.Input<string>;
+}
+
 export interface GetStackScriptsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)

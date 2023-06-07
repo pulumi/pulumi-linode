@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// {
         ///     var foo = Linode.GetDomain.Invoke(new()
         ///     {
-        ///         Id = "1234567",
+        ///         Id = 1234567,
         ///     });
         /// 
         ///     var bar = Linode.GetDomain.Invoke(new()
@@ -65,7 +65,7 @@ namespace Pulumi.Linode
         /// {
         ///     var foo = Linode.GetDomain.Invoke(new()
         ///     {
-        ///         Id = "1234567",
+        ///         Id = 1234567,
         ///     });
         /// 
         ///     var bar = Linode.GetDomain.Invoke(new()
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// The unique numeric ID of the Domain record to query.
         /// </summary>
         [Input("id")]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
         public GetDomainArgs()
         {
@@ -115,7 +115,7 @@ namespace Pulumi.Linode
         /// The unique numeric ID of the Domain record to query.
         /// </summary>
         [Input("id")]
-        public Input<string>? Id { get; set; }
+        public Input<int>? Id { get; set; }
 
         public GetDomainInvokeArgs()
         {
@@ -150,7 +150,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The unique ID of this Domain.
         /// </summary>
-        public readonly string? Id;
+        public readonly int? Id;
         /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Pulumi.Linode
 
             string group,
 
-            string? id,
+            int? id,
 
             ImmutableArray<string> masterIps,
 

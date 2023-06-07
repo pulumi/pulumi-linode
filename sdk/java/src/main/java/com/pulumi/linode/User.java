@@ -139,7 +139,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The domains the user has permissions access to.
      * 
      */
-    @Export(name="domainGrants", refs={List.class,UserDomainGrant.class}, tree="[0,1]")
+    @Export(name="domainGrants", type=List.class, parameters={UserDomainGrant.class})
     private Output<List<UserDomainGrant>> domainGrants;
 
     /**
@@ -153,7 +153,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The email address of the user.
      * 
      */
-    @Export(name="email", refs={String.class}, tree="[0]")
+    @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
@@ -167,7 +167,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The firewalls the user has permissions access to.
      * 
      */
-    @Export(name="firewallGrants", refs={List.class,UserFirewallGrant.class}, tree="[0,1]")
+    @Export(name="firewallGrants", type=List.class, parameters={UserFirewallGrant.class})
     private Output<List<UserFirewallGrant>> firewallGrants;
 
     /**
@@ -181,7 +181,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A structure containing the Account-level grants a User has.
      * 
      */
-    @Export(name="globalGrants", refs={UserGlobalGrants.class}, tree="[0]")
+    @Export(name="globalGrants", type=UserGlobalGrants.class, parameters={})
     private Output<UserGlobalGrants> globalGrants;
 
     /**
@@ -195,7 +195,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The images the user has permissions access to.
      * 
      */
-    @Export(name="imageGrants", refs={List.class,UserImageGrant.class}, tree="[0,1]")
+    @Export(name="imageGrants", type=List.class, parameters={UserImageGrant.class})
     private Output<List<UserImageGrant>> imageGrants;
 
     /**
@@ -209,7 +209,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The Linodes the user has permissions access to.
      * 
      */
-    @Export(name="linodeGrants", refs={List.class,UserLinodeGrant.class}, tree="[0,1]")
+    @Export(name="linodeGrants", type=List.class, parameters={UserLinodeGrant.class})
     private Output<List<UserLinodeGrant>> linodeGrants;
 
     /**
@@ -223,7 +223,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The longview the user has permissions access to.
      * 
      */
-    @Export(name="longviewGrants", refs={List.class,UserLongviewGrant.class}, tree="[0,1]")
+    @Export(name="longviewGrants", type=List.class, parameters={UserLongviewGrant.class})
     private Output<List<UserLongviewGrant>> longviewGrants;
 
     /**
@@ -237,7 +237,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The NodeBalancers the user has permissions access to.
      * 
      */
-    @Export(name="nodebalancerGrants", refs={List.class,UserNodebalancerGrant.class}, tree="[0,1]")
+    @Export(name="nodebalancerGrants", type=List.class, parameters={UserNodebalancerGrant.class})
     private Output<List<UserNodebalancerGrant>> nodebalancerGrants;
 
     /**
@@ -255,7 +255,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The following arguments are sets of entity grants:
      * 
      */
-    @Export(name="restricted", refs={Boolean.class}, tree="[0]")
+    @Export(name="restricted", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> restricted;
 
     /**
@@ -273,7 +273,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A list of the User&#39;s SSH keys.
      * 
      */
-    @Export(name="sshKeys", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="sshKeys", type=List.class, parameters={String.class})
     private Output<List<String>> sshKeys;
 
     /**
@@ -287,7 +287,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The StackScripts the user has permissions access to.
      * 
      */
-    @Export(name="stackscriptGrants", refs={List.class,UserStackscriptGrant.class}, tree="[0,1]")
+    @Export(name="stackscriptGrants", type=List.class, parameters={UserStackscriptGrant.class})
     private Output<List<UserStackscriptGrant>> stackscriptGrants;
 
     /**
@@ -301,7 +301,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether the user has two-factor-authentication enabled.
      * 
      */
-    @Export(name="tfaEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="tfaEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> tfaEnabled;
 
     /**
@@ -315,7 +315,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The username of the user.
      * 
      */
-    @Export(name="username", refs={String.class}, tree="[0]")
+    @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**
@@ -329,7 +329,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The volumes the user has permissions access to.
      * 
      */
-    @Export(name="volumeGrants", refs={List.class,UserVolumeGrant.class}, tree="[0,1]")
+    @Export(name="volumeGrants", type=List.class, parameters={UserVolumeGrant.class})
     private Output<List<UserVolumeGrant>> volumeGrants;
 
     /**
