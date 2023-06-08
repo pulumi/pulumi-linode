@@ -124,7 +124,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The access key to authenticate with.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
@@ -138,7 +138,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
@@ -152,7 +152,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The cert used by this Object Storage Bucket.
      * 
      */
-    @Export(name="cert", type=ObjectStorageBucketCert.class, parameters={})
+    @Export(name="cert", refs={ObjectStorageBucketCert.class}, tree="[0]")
     private Output</* @Nullable */ ObjectStorageBucketCert> cert;
 
     /**
@@ -166,7 +166,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The cluster of the Linode Object Storage Bucket.
      * 
      */
-    @Export(name="cluster", type=String.class, parameters={})
+    @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
@@ -180,7 +180,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * If true, the bucket will have CORS enabled for all origins.
      * 
      */
-    @Export(name="corsEnabled", type=Boolean.class, parameters={})
+    @Export(name="corsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> corsEnabled;
 
     /**
@@ -195,7 +195,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * public.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -210,7 +210,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The label of the Linode Object Storage Bucket.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -224,7 +224,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * Lifecycle rules to be applied to the bucket.
      * 
      */
-    @Export(name="lifecycleRules", type=List.class, parameters={ObjectStorageBucketLifecycleRule.class})
+    @Export(name="lifecycleRules", refs={List.class,ObjectStorageBucketLifecycleRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ObjectStorageBucketLifecycleRule>> lifecycleRules;
 
     /**
@@ -238,7 +238,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The secret key to authenticate with.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
@@ -256,7 +256,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
-    @Export(name="versioning", type=Boolean.class, parameters={})
+    @Export(name="versioning", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> versioning;
 
     /**
