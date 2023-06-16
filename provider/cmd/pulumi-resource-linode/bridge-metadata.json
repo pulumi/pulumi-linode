@@ -561,40 +561,40 @@
             "linode:index/getAccountSettings:getAccountSettings": 0,
             "linode:index/getDatabaseBackups:getDatabaseBackups": 0,
             "linode:index/getDatabaseEngines:getDatabaseEngines": 0,
-            "linode:index/getDatabaseMysql:getDatabaseMysql": 0,
+            "linode:index/getDatabaseMysql:getDatabaseMysql": 1,
             "linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups": 0,
-            "linode:index/getDatabasePostgresql:getDatabasePostgresql": 0,
+            "linode:index/getDatabasePostgresql:getDatabasePostgresql": 1,
             "linode:index/getDatabases:getDatabases": 0,
-            "linode:index/getDomain:getDomain": 0,
-            "linode:index/getDomainRecord:getDomainRecord": 0,
-            "linode:index/getDomainZonefile:getDomainZonefile": 0,
-            "linode:index/getFirewall:getFirewall": 0,
+            "linode:index/getDomain:getDomain": 1,
+            "linode:index/getDomainRecord:getDomainRecord": 1,
+            "linode:index/getDomainZonefile:getDomainZonefile": 1,
+            "linode:index/getFirewall:getFirewall": 1,
             "linode:index/getImage:getImage": 0,
             "linode:index/getImages:getImages": 0,
             "linode:index/getInstanceBackups:getInstanceBackups": 1,
-            "linode:index/getInstanceNetworking:getInstanceNetworking": 0,
+            "linode:index/getInstanceNetworking:getInstanceNetworking": 1,
             "linode:index/getInstanceType:getInstanceType": 0,
             "linode:index/getInstanceTypes:getInstanceTypes": 0,
             "linode:index/getInstances:getInstances": 0,
-            "linode:index/getIpv6Range:getIpv6Range": 0,
+            "linode:index/getIpv6Range:getIpv6Range": 1,
             "linode:index/getKernel:getKernel": 1,
-            "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 0,
+            "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 1,
             "linode:index/getLkeCluster:getLkeCluster": 0,
             "linode:index/getLkeVersions:getLkeVersions": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
-            "linode:index/getNodeBalancer:getNodeBalancer": 0,
-            "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 0,
+            "linode:index/getNodeBalancer:getNodeBalancer": 1,
+            "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 0,
-            "linode:index/getObjectStorageCluster:getObjectStorageCluster": 0,
+            "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 0,
-            "linode:index/getRegions:getRegions": 0,
-            "linode:index/getSshKey:getSshKey": 0,
+            "linode:index/getRegions:getRegions": 1,
+            "linode:index/getSshKey:getSshKey": 1,
             "linode:index/getStackScript:getStackScript": 1,
             "linode:index/getStackScripts:getStackScripts": 0,
             "linode:index/getUser:getUser": 0,
             "linode:index/getVlans:getVlans": 0,
-            "linode:index/getVolume:getVolume": 0
+            "linode:index/getVolume:getVolume": 1
         }
     },
     "renames": {
@@ -1022,29 +1022,34 @@
                 "shareds": "shared"
             },
             "linode:index/getInstanceNetworkingIpv4Private:getInstanceNetworkingIpv4Private": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceNetworkingIpv4Public:getInstanceNetworkingIpv4Public": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceNetworkingIpv4Reserved:getInstanceNetworkingIpv4Reserved": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceNetworkingIpv4Shared:getInstanceNetworkingIpv4Shared": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceNetworkingIpv6:getInstanceNetworkingIpv6": {
                 "globals": "global",
-                "linkLocals": "link_local",
-                "slaacs": "slaac"
+                "linkLocal": "link_local"
             },
             "linode:index/getInstanceNetworkingIpv6Global:getInstanceNetworkingIpv6Global": {
                 "routeTarget": "route_target"
             },
             "linode:index/getInstanceNetworkingIpv6LinkLocal:getInstanceNetworkingIpv6LinkLocal": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceNetworkingIpv6Slaac:getInstanceNetworkingIpv6Slaac": {
+                "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceType:getInstanceType": {
