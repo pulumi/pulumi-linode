@@ -6,6 +6,8 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSshKeyResult {
@@ -15,10 +17,10 @@ public final class GetSshKeyResult {
      */
     private String created;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the SSH Key
      * 
      */
-    private String id;
+    private @Nullable String id;
     private String label;
     /**
      * @return The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -35,11 +37,11 @@ public final class GetSshKeyResult {
         return this.created;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the SSH Key
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     public String label() {
         return this.label;
@@ -62,7 +64,7 @@ public final class GetSshKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String created;
-        private String id;
+        private @Nullable String id;
         private String label;
         private String sshKey;
         public Builder() {}
@@ -80,8 +82,8 @@ public final class GetSshKeyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter

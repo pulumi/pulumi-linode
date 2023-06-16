@@ -127,6 +127,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("regions")]
+        private List<Inputs.GetRegionsRegionArgs>? _regions;
+        public List<Inputs.GetRegionsRegionArgs> Regions
+        {
+            get => _regions ?? (_regions = new List<Inputs.GetRegionsRegionArgs>());
+            set => _regions = value;
+        }
+
         public GetRegionsArgs()
         {
         }
@@ -143,6 +151,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("regions")]
+        private InputList<Inputs.GetRegionsRegionInputArgs>? _regions;
+        public InputList<Inputs.GetRegionsRegionInputArgs> Regions
+        {
+            get => _regions ?? (_regions = new InputList<Inputs.GetRegionsRegionInputArgs>());
+            set => _regions = value;
+        }
+
         public GetRegionsInvokeArgs()
         {
         }
@@ -154,9 +170,6 @@ namespace Pulumi.Linode
     public sealed class GetRegionsResult
     {
         public readonly ImmutableArray<Outputs.GetRegionsFilterResult> Filters;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 

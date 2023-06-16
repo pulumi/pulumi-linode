@@ -6,6 +6,8 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDatabasePostgresqlPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -13,24 +15,40 @@ public final class GetDatabasePostgresqlPlainArgs extends com.pulumi.resources.I
     public static final GetDatabasePostgresqlPlainArgs Empty = new GetDatabasePostgresqlPlainArgs();
 
     /**
-     * The ID of the PostgreSQL database.
+     * The ID of the PostgreSQL database. Deprecated: Use id instead.
      * 
      */
-    @Import(name="databaseId", required=true)
-    private Integer databaseId;
+    @Import(name="databaseId")
+    private @Nullable Integer databaseId;
 
     /**
-     * @return The ID of the PostgreSQL database.
+     * @return The ID of the PostgreSQL database. Deprecated: Use id instead.
      * 
      */
-    public Integer databaseId() {
-        return this.databaseId;
+    public Optional<Integer> databaseId() {
+        return Optional.ofNullable(this.databaseId);
+    }
+
+    /**
+     * The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Integer id;
+
+    /**
+     * @return The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+     * 
+     */
+    public Optional<Integer> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetDatabasePostgresqlPlainArgs() {}
 
     private GetDatabasePostgresqlPlainArgs(GetDatabasePostgresqlPlainArgs $) {
         this.databaseId = $.databaseId;
+        this.id = $.id;
     }
 
     public static Builder builder() {
@@ -52,18 +70,28 @@ public final class GetDatabasePostgresqlPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param databaseId The ID of the PostgreSQL database.
+         * @param databaseId The ID of the PostgreSQL database. Deprecated: Use id instead.
          * 
          * @return builder
          * 
          */
-        public Builder databaseId(Integer databaseId) {
+        public Builder databaseId(@Nullable Integer databaseId) {
             $.databaseId = databaseId;
             return this;
         }
 
+        /**
+         * @param id The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Integer id) {
+            $.id = id;
+            return this;
+        }
+
         public GetDatabasePostgresqlPlainArgs build() {
-            $.databaseId = Objects.requireNonNull($.databaseId, "expected parameter 'databaseId' to be non-null");
             return $;
         }
     }

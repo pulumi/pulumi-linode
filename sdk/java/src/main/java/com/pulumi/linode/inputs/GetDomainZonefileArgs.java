@@ -6,11 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDomainZonefileArgs extends com.pulumi.resources.InvokeArgs {
@@ -32,26 +28,10 @@ public final class GetDomainZonefileArgs extends com.pulumi.resources.InvokeArgs
         return this.domainId;
     }
 
-    /**
-     * Array of strings representing the Domain Zonefile.
-     * 
-     */
-    @Import(name="zoneFiles")
-    private @Nullable Output<List<String>> zoneFiles;
-
-    /**
-     * @return Array of strings representing the Domain Zonefile.
-     * 
-     */
-    public Optional<Output<List<String>>> zoneFiles() {
-        return Optional.ofNullable(this.zoneFiles);
-    }
-
     private GetDomainZonefileArgs() {}
 
     private GetDomainZonefileArgs(GetDomainZonefileArgs $) {
         this.domainId = $.domainId;
-        this.zoneFiles = $.zoneFiles;
     }
 
     public static Builder builder() {
@@ -91,37 +71,6 @@ public final class GetDomainZonefileArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder domainId(Integer domainId) {
             return domainId(Output.of(domainId));
-        }
-
-        /**
-         * @param zoneFiles Array of strings representing the Domain Zonefile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneFiles(@Nullable Output<List<String>> zoneFiles) {
-            $.zoneFiles = zoneFiles;
-            return this;
-        }
-
-        /**
-         * @param zoneFiles Array of strings representing the Domain Zonefile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneFiles(List<String> zoneFiles) {
-            return zoneFiles(Output.of(zoneFiles));
-        }
-
-        /**
-         * @param zoneFiles Array of strings representing the Domain Zonefile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneFiles(String... zoneFiles) {
-            return zoneFiles(List.of(zoneFiles));
         }
 
         public GetDomainZonefileArgs build() {

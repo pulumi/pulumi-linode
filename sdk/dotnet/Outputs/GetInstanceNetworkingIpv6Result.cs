@@ -14,20 +14,20 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceNetworkingIpv6Result
     {
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv6GlobalResult> Globals;
-        public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv6LinkLocalResult> LinkLocals;
-        public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv6SlaacResult> Slaacs;
+        public readonly Outputs.GetInstanceNetworkingIpv6LinkLocalResult LinkLocal;
+        public readonly Outputs.GetInstanceNetworkingIpv6SlaacResult Slaac;
 
         [OutputConstructor]
         private GetInstanceNetworkingIpv6Result(
             ImmutableArray<Outputs.GetInstanceNetworkingIpv6GlobalResult> globals,
 
-            ImmutableArray<Outputs.GetInstanceNetworkingIpv6LinkLocalResult> linkLocals,
+            Outputs.GetInstanceNetworkingIpv6LinkLocalResult linkLocal,
 
-            ImmutableArray<Outputs.GetInstanceNetworkingIpv6SlaacResult> slaacs)
+            Outputs.GetInstanceNetworkingIpv6SlaacResult slaac)
         {
             Globals = globals;
-            LinkLocals = linkLocals;
-            Slaacs = slaacs;
+            LinkLocal = linkLocal;
+            Slaac = slaac;
         }
     }
 }

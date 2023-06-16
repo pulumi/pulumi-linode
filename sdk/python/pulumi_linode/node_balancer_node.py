@@ -255,48 +255,6 @@ class NodeBalancerNode(pulumi.CustomResource):
         Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        web = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            web.append(linode.Instance(f"web-{range['value']}",
-                label=f"web-{range['value'] + 1}",
-                image="linode/ubuntu18.04",
-                region="us-east",
-                type="g6-standard-1",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                root_pass="test",
-                private_ip=True))
-        foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
-            client_conn_throttle=20)
-        foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
-            port=80,
-            protocol="http",
-            check="http",
-            check_path="/foo",
-            check_attempts=3,
-            check_timeout=30,
-            stickiness="http_cookie",
-            algorithm="source")
-        foonode = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            foonode.append(linode.NodeBalancerNode(f"foonode-{range['value']}",
-                nodebalancer_id=foobar.id,
-                config_id=foofig.id,
-                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
-                label="mynodebalancernode",
-                weight=50))
-        ```
-
         ## Import
 
         NodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.
@@ -327,48 +285,6 @@ class NodeBalancerNode(pulumi.CustomResource):
         """
         Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        web = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            web.append(linode.Instance(f"web-{range['value']}",
-                label=f"web-{range['value'] + 1}",
-                image="linode/ubuntu18.04",
-                region="us-east",
-                type="g6-standard-1",
-                authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-                root_pass="test",
-                private_ip=True))
-        foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
-            client_conn_throttle=20)
-        foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
-            port=80,
-            protocol="http",
-            check="http",
-            check_path="/foo",
-            check_attempts=3,
-            check_timeout=30,
-            stickiness="http_cookie",
-            algorithm="source")
-        foonode = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            foonode.append(linode.NodeBalancerNode(f"foonode-{range['value']}",
-                nodebalancer_id=foobar.id,
-                config_id=foofig.id,
-                address=[__item.private_ip_address for __item in web][range["value"]].apply(lambda private_ip_addresses: f"{private_ip_addresses}:80"),
-                label="mynodebalancernode",
-                weight=50))
-        ```
 
         ## Import
 

@@ -10,6 +10,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabasePostgresqlResult {
@@ -33,7 +35,7 @@ public final class GetDatabasePostgresqlResult {
      * 
      */
     private String created;
-    private Integer databaseId;
+    private @Nullable Integer databaseId;
     /**
      * @return Whether the Managed Databases is encrypted.
      * 
@@ -59,11 +61,7 @@ public final class GetDatabasePostgresqlResult {
      * 
      */
     private String hostSecondary;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
+    private @Nullable Integer id;
     /**
      * @return A unique, user-defined string referring to the Managed Database.
      * 
@@ -151,8 +149,8 @@ public final class GetDatabasePostgresqlResult {
     public String created() {
         return this.created;
     }
-    public Integer databaseId() {
-        return this.databaseId;
+    public Optional<Integer> databaseId() {
+        return Optional.ofNullable(this.databaseId);
     }
     /**
      * @return Whether the Managed Databases is encrypted.
@@ -189,12 +187,8 @@ public final class GetDatabasePostgresqlResult {
     public String hostSecondary() {
         return this.hostSecondary;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
+    public Optional<Integer> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return A unique, user-defined string referring to the Managed Database.
@@ -293,13 +287,13 @@ public final class GetDatabasePostgresqlResult {
         private String caCert;
         private Integer clusterSize;
         private String created;
-        private Integer databaseId;
+        private @Nullable Integer databaseId;
         private Boolean encrypted;
         private String engine;
         private String engineId;
         private String hostPrimary;
         private String hostSecondary;
-        private String id;
+        private @Nullable Integer id;
         private String label;
         private Integer port;
         private String region;
@@ -366,8 +360,8 @@ public final class GetDatabasePostgresqlResult {
             return this;
         }
         @CustomType.Setter
-        public Builder databaseId(Integer databaseId) {
-            this.databaseId = Objects.requireNonNull(databaseId);
+        public Builder databaseId(@Nullable Integer databaseId) {
+            this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
@@ -396,8 +390,8 @@ public final class GetDatabasePostgresqlResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable Integer id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter

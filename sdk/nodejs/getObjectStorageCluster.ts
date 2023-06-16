@@ -24,11 +24,7 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
-        "domain": args.domain,
         "id": args.id,
-        "region": args.region,
-        "staticSiteDomain": args.staticSiteDomain,
-        "status": args.status,
     }, opts);
 }
 
@@ -37,25 +33,9 @@ export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?
  */
 export interface GetObjectStorageClusterArgs {
     /**
-     * The base URL for this cluster.
-     */
-    domain?: string;
-    /**
      * The unique ID of this cluster.
      */
     id: string;
-    /**
-     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: string;
-    /**
-     * The base URL for this cluster used when hosting static sites.
-     */
-    staticSiteDomain?: string;
-    /**
-     * This cluster's status. (`available`, `unavailable`)
-     */
-    status?: string;
 }
 
 /**
@@ -105,23 +85,7 @@ export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutpu
  */
 export interface GetObjectStorageClusterOutputArgs {
     /**
-     * The base URL for this cluster.
-     */
-    domain?: pulumi.Input<string>;
-    /**
      * The unique ID of this cluster.
      */
     id: pulumi.Input<string>;
-    /**
-     * The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The base URL for this cluster used when hosting static sites.
-     */
-    staticSiteDomain?: pulumi.Input<string>;
-    /**
-     * This cluster's status. (`available`, `unavailable`)
-     */
-    status?: pulumi.Input<string>;
 }

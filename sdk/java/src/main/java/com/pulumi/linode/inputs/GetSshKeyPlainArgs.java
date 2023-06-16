@@ -6,11 +6,28 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSshKeyPlainArgs Empty = new GetSshKeyPlainArgs();
+
+    /**
+     * The ID of the SSH Key
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return The ID of the SSH Key
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
 
     /**
      * The label of the SSH Key to select.
@@ -30,6 +47,7 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetSshKeyPlainArgs() {}
 
     private GetSshKeyPlainArgs(GetSshKeyPlainArgs $) {
+        this.id = $.id;
         this.label = $.label;
     }
 
@@ -49,6 +67,17 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetSshKeyPlainArgs defaults) {
             $ = new GetSshKeyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param id The ID of the SSH Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
         }
 
         /**

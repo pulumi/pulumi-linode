@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.LookupDomain(ctx, &linode.LookupDomainArgs{
-//				Id: pulumi.StringRef("1234567"),
+//				Id: pulumi.IntRef(1234567),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ type LookupDomainArgs struct {
 	// The unique domain name of the Domain record to query.
 	Domain *string `pulumi:"domain"`
 	// The unique numeric ID of the Domain record to query.
-	Id *string `pulumi:"id"`
+	Id *int `pulumi:"id"`
 }
 
 // A collection of values returned by getDomain.
@@ -75,7 +75,7 @@ type LookupDomainResult struct {
 	// The group this Domain belongs to.
 	Group string `pulumi:"group"`
 	// The unique ID of this Domain.
-	Id *string `pulumi:"id"`
+	Id *int `pulumi:"id"`
 	// The IP addresses representing the master DNS for this Domain.
 	MasterIps []string `pulumi:"masterIps"`
 	// The amount of time in seconds before this Domain should be refreshed.
@@ -112,7 +112,7 @@ type LookupDomainOutputArgs struct {
 	// The unique domain name of the Domain record to query.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The unique numeric ID of the Domain record to query.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
 }
 
 func (LookupDomainOutputArgs) ElementType() reflect.Type {
@@ -160,8 +160,8 @@ func (o LookupDomainResultOutput) Group() pulumi.StringOutput {
 }
 
 // The unique ID of this Domain.
-func (o LookupDomainResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDomainResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LookupDomainResultOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // The IP addresses representing the master DNS for this Domain.

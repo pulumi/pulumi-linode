@@ -37,13 +37,19 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ApiVersion == nil {
-		args.ApiVersion = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_API_VERSION").(string))
+		if d := getEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
+			args.ApiVersion = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.UaPrefix == nil {
-		args.UaPrefix = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_UA_PREFIX").(string))
+		if d := getEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
+			args.UaPrefix = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Url == nil {
-		args.Url = pulumi.StringPtr(getEnvOrDefault("", nil, "LINODE_URL").(string))
+		if d := getEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
+			args.Url = pulumi.StringPtr(d.(string))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:linode", name, args, &resource, opts...)

@@ -12,10 +12,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIpv6RangeResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private Boolean isBgp;
     /**
@@ -36,10 +32,6 @@ public final class GetIpv6RangeResult {
     private String region;
 
     private GetIpv6RangeResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

@@ -89,11 +89,7 @@ class AwaitableGetObjectStorageClusterResult(GetObjectStorageClusterResult):
             status=self.status)
 
 
-def get_object_storage_cluster(domain: Optional[str] = None,
-                               id: Optional[str] = None,
-                               region: Optional[str] = None,
-                               static_site_domain: Optional[str] = None,
-                               status: Optional[str] = None,
+def get_object_storage_cluster(id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageClusterResult:
     """
     Provides information about a Linode Object Storage Cluster
@@ -110,18 +106,10 @@ def get_object_storage_cluster(domain: Optional[str] = None,
     ```
 
 
-    :param str domain: The base URL for this cluster.
     :param str id: The unique ID of this cluster.
-    :param str region: The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-    :param str static_site_domain: The base URL for this cluster used when hosting static sites.
-    :param str status: This cluster's status. (`available`, `unavailable`)
     """
     __args__ = dict()
-    __args__['domain'] = domain
     __args__['id'] = id
-    __args__['region'] = region
-    __args__['staticSiteDomain'] = static_site_domain
-    __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts, typ=GetObjectStorageClusterResult).value
 
@@ -134,11 +122,7 @@ def get_object_storage_cluster(domain: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_object_storage_cluster)
-def get_object_storage_cluster_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
-                                      id: Optional[pulumi.Input[str]] = None,
-                                      region: Optional[pulumi.Input[Optional[str]]] = None,
-                                      static_site_domain: Optional[pulumi.Input[Optional[str]]] = None,
-                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
     Provides information about a Linode Object Storage Cluster
@@ -155,10 +139,6 @@ def get_object_storage_cluster_output(domain: Optional[pulumi.Input[Optional[str
     ```
 
 
-    :param str domain: The base URL for this cluster.
     :param str id: The unique ID of this cluster.
-    :param str region: The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-    :param str static_site_domain: The base URL for this cluster used when hosting static sites.
-    :param str status: This cluster's status. (`available`, `unavailable`)
     """
     ...

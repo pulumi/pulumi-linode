@@ -25,7 +25,6 @@ export function getDomainZonefile(args: GetDomainZonefileArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomainZonefile:getDomainZonefile", {
         "domainId": args.domainId,
-        "zoneFiles": args.zoneFiles,
     }, opts);
 }
 
@@ -37,10 +36,6 @@ export interface GetDomainZonefileArgs {
      * The associated domain's unique ID.
      */
     domainId: number;
-    /**
-     * Array of strings representing the Domain Zonefile.
-     */
-    zoneFiles?: string[];
 }
 
 /**
@@ -51,14 +46,11 @@ export interface GetDomainZonefileResult {
      * The associated domain's unique ID.
      */
     readonly domainId: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * Array of strings representing the Domain Zonefile.
      */
-    readonly zoneFiles?: string[];
+    readonly zoneFiles: string[];
 }
 /**
  * Provides information about a Linode Domain Zonefile.
@@ -88,8 +80,4 @@ export interface GetDomainZonefileOutputArgs {
      * The associated domain's unique ID.
      */
     domainId: pulumi.Input<number>;
-    /**
-     * Array of strings representing the Domain Zonefile.
-     */
-    zoneFiles?: pulumi.Input<pulumi.Input<string>[]>;
 }

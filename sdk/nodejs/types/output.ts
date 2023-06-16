@@ -650,9 +650,17 @@ export interface GetInstanceNetworkingIpv4Private {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -681,9 +689,17 @@ export interface GetInstanceNetworkingIpv4Public {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -712,9 +728,17 @@ export interface GetInstanceNetworkingIpv4Reserved {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -743,9 +767,17 @@ export interface GetInstanceNetworkingIpv4Shared {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -766,8 +798,8 @@ export interface GetInstanceNetworkingIpv4Shared {
 
 export interface GetInstanceNetworkingIpv6 {
     globals: outputs.GetInstanceNetworkingIpv6Global[];
-    linkLocals: outputs.GetInstanceNetworkingIpv6LinkLocal[];
-    slaacs: outputs.GetInstanceNetworkingIpv6Slaac[];
+    linkLocal: outputs.GetInstanceNetworkingIpv6LinkLocal;
+    slaac: outputs.GetInstanceNetworkingIpv6Slaac;
 }
 
 export interface GetInstanceNetworkingIpv6Global {
@@ -799,9 +831,17 @@ export interface GetInstanceNetworkingIpv6LinkLocal {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -830,9 +870,17 @@ export interface GetInstanceNetworkingIpv6Slaac {
      */
     gateway: string;
     /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
      * The network prefix.
      */
     prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
     /**
      * The reverse DNS assigned to this address.
      */
@@ -1415,7 +1463,7 @@ export interface GetRegionsRegion {
      * Detailed location information for this Region, including city, state or region, and country.
      */
     label: string;
-    resolvers: outputs.GetRegionsRegionResolver[];
+    resolvers?: outputs.GetRegionsRegionResolver[];
     /**
      * This region’s current operational status (ok or outage).
      */
