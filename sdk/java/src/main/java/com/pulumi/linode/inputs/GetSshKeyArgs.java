@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSshKeyArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSshKeyArgs Empty = new GetSshKeyArgs();
+
+    /**
+     * The ID of the SSH Key
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The ID of the SSH Key
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
 
     /**
      * The label of the SSH Key to select.
@@ -31,6 +48,7 @@ public final class GetSshKeyArgs extends com.pulumi.resources.InvokeArgs {
     private GetSshKeyArgs() {}
 
     private GetSshKeyArgs(GetSshKeyArgs $) {
+        this.id = $.id;
         this.label = $.label;
     }
 
@@ -50,6 +68,27 @@ public final class GetSshKeyArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetSshKeyArgs defaults) {
             $ = new GetSshKeyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param id The ID of the SSH Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The ID of the SSH Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**

@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.LookupDatabasePostgresql(ctx, &linode.LookupDatabasePostgresqlArgs{
-//				DatabaseId: 12345,
+//				Id: pulumi.IntRef(12345),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -63,8 +63,10 @@ func LookupDatabasePostgresql(ctx *pulumi.Context, args *LookupDatabasePostgresq
 
 // A collection of arguments for invoking getDatabasePostgresql.
 type LookupDatabasePostgresqlArgs struct {
-	// The ID of the PostgreSQL database.
-	DatabaseId int `pulumi:"databaseId"`
+	// The ID of the PostgreSQL database. Deprecated: Use id instead.
+	DatabaseId *int `pulumi:"databaseId"`
+	// The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
+	Id *int `pulumi:"id"`
 }
 
 // A collection of values returned by getDatabasePostgresql.
@@ -77,7 +79,7 @@ type LookupDatabasePostgresqlResult struct {
 	ClusterSize int `pulumi:"clusterSize"`
 	// When this Managed Database was created.
 	Created    string `pulumi:"created"`
-	DatabaseId int    `pulumi:"databaseId"`
+	DatabaseId *int   `pulumi:"databaseId"`
 	// Whether the Managed Databases is encrypted.
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `postgresql`)
@@ -88,8 +90,7 @@ type LookupDatabasePostgresqlResult struct {
 	HostPrimary string `pulumi:"hostPrimary"`
 	// The secondary/private network host for the Managed Database.
 	HostSecondary string `pulumi:"hostSecondary"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id            *int   `pulumi:"id"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
 	Port  int    `pulumi:"port"`
@@ -131,8 +132,10 @@ func LookupDatabasePostgresqlOutput(ctx *pulumi.Context, args LookupDatabasePost
 
 // A collection of arguments for invoking getDatabasePostgresql.
 type LookupDatabasePostgresqlOutputArgs struct {
-	// The ID of the PostgreSQL database.
-	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
+	// The ID of the PostgreSQL database. Deprecated: Use id instead.
+	DatabaseId pulumi.IntPtrInput `pulumi:"databaseId"`
+	// The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
+	Id pulumi.IntPtrInput `pulumi:"id"`
 }
 
 func (LookupDatabasePostgresqlOutputArgs) ElementType() reflect.Type {
@@ -174,8 +177,8 @@ func (o LookupDatabasePostgresqlResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabasePostgresqlResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-func (o LookupDatabasePostgresqlResultOutput) DatabaseId() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupDatabasePostgresqlResult) int { return v.DatabaseId }).(pulumi.IntOutput)
+func (o LookupDatabasePostgresqlResultOutput) DatabaseId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlResult) *int { return v.DatabaseId }).(pulumi.IntPtrOutput)
 }
 
 // Whether the Managed Databases is encrypted.
@@ -203,9 +206,8 @@ func (o LookupDatabasePostgresqlResultOutput) HostSecondary() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupDatabasePostgresqlResult) string { return v.HostSecondary }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDatabasePostgresqlResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabasePostgresqlResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDatabasePostgresqlResultOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlResult) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // A unique, user-defined string referring to the Managed Database.

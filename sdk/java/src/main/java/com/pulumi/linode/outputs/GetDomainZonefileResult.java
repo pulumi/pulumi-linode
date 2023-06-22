@@ -8,7 +8,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainZonefileResult {
@@ -17,16 +16,12 @@ public final class GetDomainZonefileResult {
      * 
      */
     private Integer domainId;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return Array of strings representing the Domain Zonefile.
      * 
      */
-    private @Nullable List<String> zoneFiles;
+    private List<String> zoneFiles;
 
     private GetDomainZonefileResult() {}
     /**
@@ -36,10 +31,6 @@ public final class GetDomainZonefileResult {
     public Integer domainId() {
         return this.domainId;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -48,7 +39,7 @@ public final class GetDomainZonefileResult {
      * 
      */
     public List<String> zoneFiles() {
-        return this.zoneFiles == null ? List.of() : this.zoneFiles;
+        return this.zoneFiles;
     }
 
     public static Builder builder() {
@@ -62,7 +53,7 @@ public final class GetDomainZonefileResult {
     public static final class Builder {
         private Integer domainId;
         private String id;
-        private @Nullable List<String> zoneFiles;
+        private List<String> zoneFiles;
         public Builder() {}
         public Builder(GetDomainZonefileResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,8 +73,8 @@ public final class GetDomainZonefileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneFiles(@Nullable List<String> zoneFiles) {
-            this.zoneFiles = zoneFiles;
+        public Builder zoneFiles(List<String> zoneFiles) {
+            this.zoneFiles = Objects.requireNonNull(zoneFiles);
             return this;
         }
         public Builder zoneFiles(String... zoneFiles) {

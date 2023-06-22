@@ -42,9 +42,6 @@ export interface GetIpv6RangeArgs {
  * A collection of values returned by getIpv6Range.
  */
 export interface GetIpv6RangeResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly isBgp: boolean;
     /**

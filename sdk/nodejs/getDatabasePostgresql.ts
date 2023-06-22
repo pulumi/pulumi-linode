@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my-db = linode.getDatabasePostgresql({
- *     databaseId: 12345,
+ *     id: 12345,
  * });
  * ```
  * ## updates
@@ -35,11 +35,13 @@ import * as utilities from "./utilities";
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabasePostgresql(args: GetDatabasePostgresqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePostgresqlResult> {
+export function getDatabasePostgresql(args?: GetDatabasePostgresqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePostgresqlResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", {
         "databaseId": args.databaseId,
+        "id": args.id,
     }, opts);
 }
 
@@ -48,9 +50,13 @@ export function getDatabasePostgresql(args: GetDatabasePostgresqlArgs, opts?: pu
  */
 export interface GetDatabasePostgresqlArgs {
     /**
-     * The ID of the PostgreSQL database.
+     * The ID of the PostgreSQL database. Deprecated: Use id instead.
      */
-    databaseId: number;
+    databaseId?: number;
+    /**
+     * The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
+     */
+    id?: number;
 }
 
 /**
@@ -73,7 +79,7 @@ export interface GetDatabasePostgresqlResult {
      * When this Managed Database was created.
      */
     readonly created: string;
-    readonly databaseId: number;
+    readonly databaseId?: number;
     /**
      * Whether the Managed Databases is encrypted.
      */
@@ -94,10 +100,7 @@ export interface GetDatabasePostgresqlResult {
      * The secondary/private network host for the Managed Database.
      */
     readonly hostSecondary: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
+    readonly id?: number;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
@@ -157,7 +160,7 @@ export interface GetDatabasePostgresqlResult {
  * import * as linode from "@pulumi/linode";
  *
  * const my-db = linode.getDatabasePostgresql({
- *     databaseId: 12345,
+ *     id: 12345,
  * });
  * ```
  * ## updates
@@ -174,7 +177,7 @@ export interface GetDatabasePostgresqlResult {
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabasePostgresqlOutput(args: GetDatabasePostgresqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgresqlResult> {
+export function getDatabasePostgresqlOutput(args?: GetDatabasePostgresqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgresqlResult> {
     return pulumi.output(args).apply((a: any) => getDatabasePostgresql(a, opts))
 }
 
@@ -183,7 +186,11 @@ export function getDatabasePostgresqlOutput(args: GetDatabasePostgresqlOutputArg
  */
 export interface GetDatabasePostgresqlOutputArgs {
     /**
-     * The ID of the PostgreSQL database.
+     * The ID of the PostgreSQL database. Deprecated: Use id instead.
      */
-    databaseId: pulumi.Input<number>;
+    databaseId?: pulumi.Input<number>;
+    /**
+     * The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
+     */
+    id?: pulumi.Input<number>;
 }

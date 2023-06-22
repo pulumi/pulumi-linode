@@ -42,7 +42,7 @@ public final class GetDomainResult {
      * @return The unique ID of this Domain.
      * 
      */
-    private @Nullable String id;
+    private @Nullable Integer id;
     /**
      * @return The IP addresses representing the master DNS for this Domain.
      * 
@@ -124,7 +124,7 @@ public final class GetDomainResult {
      * @return The unique ID of this Domain.
      * 
      */
-    public Optional<String> id() {
+    public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
     /**
@@ -198,7 +198,7 @@ public final class GetDomainResult {
         private @Nullable String domain;
         private Integer expireSec;
         private String group;
-        private @Nullable String id;
+        private @Nullable Integer id;
         private List<String> masterIps;
         private Integer refreshSec;
         private Integer retrySec;
@@ -255,7 +255,7 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
+        public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }

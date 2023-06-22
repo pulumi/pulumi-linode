@@ -50,16 +50,8 @@ func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterA
 
 // A collection of arguments for invoking getObjectStorageCluster.
 type GetObjectStorageClusterArgs struct {
-	// The base URL for this cluster.
-	Domain *string `pulumi:"domain"`
 	// The unique ID of this cluster.
 	Id string `pulumi:"id"`
-	// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-	Region *string `pulumi:"region"`
-	// The base URL for this cluster used when hosting static sites.
-	StaticSiteDomain *string `pulumi:"staticSiteDomain"`
-	// This cluster's status. (`available`, `unavailable`)
-	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getObjectStorageCluster.
@@ -90,16 +82,8 @@ func GetObjectStorageClusterOutput(ctx *pulumi.Context, args GetObjectStorageClu
 
 // A collection of arguments for invoking getObjectStorageCluster.
 type GetObjectStorageClusterOutputArgs struct {
-	// The base URL for this cluster.
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The unique ID of this cluster.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The base URL for this cluster used when hosting static sites.
-	StaticSiteDomain pulumi.StringPtrInput `pulumi:"staticSiteDomain"`
-	// This cluster's status. (`available`, `unavailable`)
-	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetObjectStorageClusterOutputArgs) ElementType() reflect.Type {

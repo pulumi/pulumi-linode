@@ -52,16 +52,13 @@ func GetDomainZonefile(ctx *pulumi.Context, args *GetDomainZonefileArgs, opts ..
 type GetDomainZonefileArgs struct {
 	// The associated domain's unique ID.
 	DomainId int `pulumi:"domainId"`
-	// Array of strings representing the Domain Zonefile.
-	ZoneFiles []string `pulumi:"zoneFiles"`
 }
 
 // A collection of values returned by getDomainZonefile.
 type GetDomainZonefileResult struct {
 	// The associated domain's unique ID.
-	DomainId int `pulumi:"domainId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	DomainId int    `pulumi:"domainId"`
+	Id       string `pulumi:"id"`
 	// Array of strings representing the Domain Zonefile.
 	ZoneFiles []string `pulumi:"zoneFiles"`
 }
@@ -83,8 +80,6 @@ func GetDomainZonefileOutput(ctx *pulumi.Context, args GetDomainZonefileOutputAr
 type GetDomainZonefileOutputArgs struct {
 	// The associated domain's unique ID.
 	DomainId pulumi.IntInput `pulumi:"domainId"`
-	// Array of strings representing the Domain Zonefile.
-	ZoneFiles pulumi.StringArrayInput `pulumi:"zoneFiles"`
 }
 
 func (GetDomainZonefileOutputArgs) ElementType() reflect.Type {
@@ -111,7 +106,6 @@ func (o GetDomainZonefileResultOutput) DomainId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDomainZonefileResult) int { return v.DomainId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetDomainZonefileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainZonefileResult) string { return v.Id }).(pulumi.StringOutput)
 }

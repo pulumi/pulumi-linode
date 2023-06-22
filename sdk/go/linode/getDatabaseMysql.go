@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.LookupDatabaseMysql(ctx, &linode.LookupDatabaseMysqlArgs{
-//				DatabaseId: 12345,
+//				Id: pulumi.IntRef(12345),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -63,8 +63,10 @@ func LookupDatabaseMysql(ctx *pulumi.Context, args *LookupDatabaseMysqlArgs, opt
 
 // A collection of arguments for invoking getDatabaseMysql.
 type LookupDatabaseMysqlArgs struct {
-	// The ID of the MySQL database.
-	DatabaseId int `pulumi:"databaseId"`
+	// The ID of the MySQL database. Deprecated: Use id instead.
+	DatabaseId *int `pulumi:"databaseId"`
+	// The ID of the MySQL database. Mutually exclusive with `databaseId`.
+	Id *int `pulumi:"id"`
 }
 
 // A collection of values returned by getDatabaseMysql.
@@ -77,7 +79,7 @@ type LookupDatabaseMysqlResult struct {
 	ClusterSize int `pulumi:"clusterSize"`
 	// When this Managed Database was created.
 	Created    string `pulumi:"created"`
-	DatabaseId int    `pulumi:"databaseId"`
+	DatabaseId *int   `pulumi:"databaseId"`
 	// Whether the Managed Databases is encrypted.
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `mysql`)
@@ -88,8 +90,7 @@ type LookupDatabaseMysqlResult struct {
 	HostPrimary string `pulumi:"hostPrimary"`
 	// The secondary/private network host for the Managed Database.
 	HostSecondary string `pulumi:"hostSecondary"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id            *int   `pulumi:"id"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
 	// The region that hosts this Linode Managed Database.
@@ -128,8 +129,10 @@ func LookupDatabaseMysqlOutput(ctx *pulumi.Context, args LookupDatabaseMysqlOutp
 
 // A collection of arguments for invoking getDatabaseMysql.
 type LookupDatabaseMysqlOutputArgs struct {
-	// The ID of the MySQL database.
-	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
+	// The ID of the MySQL database. Deprecated: Use id instead.
+	DatabaseId pulumi.IntPtrInput `pulumi:"databaseId"`
+	// The ID of the MySQL database. Mutually exclusive with `databaseId`.
+	Id pulumi.IntPtrInput `pulumi:"id"`
 }
 
 func (LookupDatabaseMysqlOutputArgs) ElementType() reflect.Type {
@@ -171,8 +174,8 @@ func (o LookupDatabaseMysqlResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-func (o LookupDatabaseMysqlResultOutput) DatabaseId() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupDatabaseMysqlResult) int { return v.DatabaseId }).(pulumi.IntOutput)
+func (o LookupDatabaseMysqlResultOutput) DatabaseId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlResult) *int { return v.DatabaseId }).(pulumi.IntPtrOutput)
 }
 
 // Whether the Managed Databases is encrypted.
@@ -200,9 +203,8 @@ func (o LookupDatabaseMysqlResultOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.HostSecondary }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDatabaseMysqlResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDatabaseMysqlResultOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlResult) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // A unique, user-defined string referring to the Managed Database.

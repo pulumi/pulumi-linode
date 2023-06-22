@@ -2072,7 +2072,111 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## updates
+     * 
+     * The following arguments are exported by the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabaseMysqlResult> getDatabaseMysql() {
+        return getDatabaseMysql(GetDatabaseMysqlArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## updates
+     * 
+     * The following arguments are exported by the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlResult> getDatabaseMysqlPlain() {
+        return getDatabaseMysqlPlain(GetDatabaseMysqlPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2124,7 +2228,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2176,7 +2280,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2228,7 +2332,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2580,7 +2684,111 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## updates
+     * 
+     * The following arguments are exported by the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabasePostgresqlResult> getDatabasePostgresql() {
+        return getDatabasePostgresql(GetDatabasePostgresqlArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## updates
+     * 
+     * The following arguments are exported by the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain() {
+        return getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2632,7 +2840,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2684,7 +2892,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }
@@ -2736,7 +2944,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .databaseId(12345)
+     *             .id(12345)
      *             .build());
      * 
      *     }

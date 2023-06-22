@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,13 +35,13 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="id")
-    private @Nullable String id;
+    private @Nullable Integer id;
 
     /**
      * @return The unique numeric ID of the Domain record to query.
      * 
      */
-    public Optional<String> id() {
+    public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
 
@@ -86,7 +87,7 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder id(@Nullable String id) {
+        public Builder id(@Nullable Integer id) {
             $.id = id;
             return this;
         }

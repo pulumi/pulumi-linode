@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = linode.getDomain({
- *     id: "1234567",
+ *     id: 1234567,
  * });
  * const bar = linode.getDomain({
  *     domain: "bar.example.com",
@@ -44,7 +44,7 @@ export interface GetDomainArgs {
     /**
      * The unique numeric ID of the Domain record to query.
      */
-    id?: string;
+    id?: number;
 }
 
 /**
@@ -74,7 +74,7 @@ export interface GetDomainResult {
     /**
      * The unique ID of this Domain.
      */
-    readonly id?: string;
+    readonly id?: number;
     /**
      * The IP addresses representing the master DNS for this Domain.
      */
@@ -120,7 +120,7 @@ export interface GetDomainResult {
  * import * as linode from "@pulumi/linode";
  *
  * const foo = linode.getDomain({
- *     id: "1234567",
+ *     id: 1234567,
  * });
  * const bar = linode.getDomain({
  *     domain: "bar.example.com",
@@ -142,5 +142,5 @@ export interface GetDomainOutputArgs {
     /**
      * The unique numeric ID of the Domain record to query.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<number>;
 }

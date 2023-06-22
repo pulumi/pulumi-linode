@@ -14,26 +14,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRegionsResult {
     private @Nullable List<GetRegionsFilter> filters;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
-    private List<GetRegionsRegion> regions;
+    private @Nullable List<GetRegionsRegion> regions;
 
     private GetRegionsResult() {}
     public List<GetRegionsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
     public List<GetRegionsRegion> regions() {
-        return this.regions;
+        return this.regions == null ? List.of() : this.regions;
     }
 
     public static Builder builder() {
@@ -47,7 +39,7 @@ public final class GetRegionsResult {
     public static final class Builder {
         private @Nullable List<GetRegionsFilter> filters;
         private String id;
-        private List<GetRegionsRegion> regions;
+        private @Nullable List<GetRegionsRegion> regions;
         public Builder() {}
         public Builder(GetRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,8 +62,8 @@ public final class GetRegionsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder regions(List<GetRegionsRegion> regions) {
-            this.regions = Objects.requireNonNull(regions);
+        public Builder regions(@Nullable List<GetRegionsRegion> regions) {
+            this.regions = regions;
             return this;
         }
         public Builder regions(GetRegionsRegion... regions) {

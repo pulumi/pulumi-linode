@@ -50,6 +50,8 @@ func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSshKey.
 type LookupSshKeyArgs struct {
+	// The ID of the SSH Key
+	Id *string `pulumi:"id"`
 	// The label of the SSH Key to select.
 	Label string `pulumi:"label"`
 }
@@ -58,9 +60,9 @@ type LookupSshKeyArgs struct {
 type LookupSshKeyResult struct {
 	// The date this key was added.
 	Created string `pulumi:"created"`
-	// The provider-assigned unique ID for this managed resource.
-	Id    string `pulumi:"id"`
-	Label string `pulumi:"label"`
+	// The ID of the SSH Key
+	Id    *string `pulumi:"id"`
+	Label string  `pulumi:"label"`
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
 	SshKey string `pulumi:"sshKey"`
 }
@@ -80,6 +82,8 @@ func LookupSshKeyOutput(ctx *pulumi.Context, args LookupSshKeyOutputArgs, opts .
 
 // A collection of arguments for invoking getSshKey.
 type LookupSshKeyOutputArgs struct {
+	// The ID of the SSH Key
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The label of the SSH Key to select.
 	Label pulumi.StringInput `pulumi:"label"`
 }
@@ -108,9 +112,9 @@ func (o LookupSshKeyResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSshKeyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Id }).(pulumi.StringOutput)
+// The ID of the SSH Key
+func (o LookupSshKeyResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupSshKeyResultOutput) Label() pulumi.StringOutput {

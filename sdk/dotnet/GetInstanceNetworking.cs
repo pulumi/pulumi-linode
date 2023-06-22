@@ -57,9 +57,6 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetInstanceNetworkingResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4Result> Ipv4s;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv6Result> Ipv6s;

@@ -69,12 +69,12 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getRegions.
 type GetRegionsArgs struct {
 	Filters []GetRegionsFilter `pulumi:"filters"`
+	Regions []GetRegionsRegion `pulumi:"regions"`
 }
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	Filters []GetRegionsFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
 	Id      string             `pulumi:"id"`
 	Regions []GetRegionsRegion `pulumi:"regions"`
 }
@@ -95,6 +95,7 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 // A collection of arguments for invoking getRegions.
 type GetRegionsOutputArgs struct {
 	Filters GetRegionsFilterArrayInput `pulumi:"filters"`
+	Regions GetRegionsRegionArrayInput `pulumi:"regions"`
 }
 
 func (GetRegionsOutputArgs) ElementType() reflect.Type {
@@ -120,7 +121,6 @@ func (o GetRegionsResultOutput) Filters() GetRegionsFilterArrayOutput {
 	return o.ApplyT(func(v GetRegionsResult) []GetRegionsFilter { return v.Filters }).(GetRegionsFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
 }

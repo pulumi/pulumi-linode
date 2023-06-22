@@ -4278,7 +4278,9 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4286,7 +4288,9 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4294,7 +4298,9 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4317,12 +4323,28 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -4362,7 +4384,9 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4370,7 +4394,9 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4378,7 +4404,9 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4401,12 +4429,28 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -4446,7 +4490,9 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4454,7 +4500,9 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4462,7 +4510,9 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4485,12 +4535,28 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -4530,7 +4596,9 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4538,7 +4606,9 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4546,7 +4616,9 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4569,12 +4641,28 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -4613,11 +4701,11 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
 class GetInstanceNetworkingIpv6Result(dict):
     def __init__(__self__, *,
                  globals: Sequence['outputs.GetInstanceNetworkingIpv6GlobalResult'],
-                 link_locals: Sequence['outputs.GetInstanceNetworkingIpv6LinkLocalResult'],
-                 slaacs: Sequence['outputs.GetInstanceNetworkingIpv6SlaacResult']):
+                 link_local: 'outputs.GetInstanceNetworkingIpv6LinkLocalResult',
+                 slaac: 'outputs.GetInstanceNetworkingIpv6SlaacResult'):
         pulumi.set(__self__, "globals", globals)
-        pulumi.set(__self__, "link_locals", link_locals)
-        pulumi.set(__self__, "slaacs", slaacs)
+        pulumi.set(__self__, "link_local", link_local)
+        pulumi.set(__self__, "slaac", slaac)
 
     @property
     @pulumi.getter
@@ -4625,14 +4713,14 @@ class GetInstanceNetworkingIpv6Result(dict):
         return pulumi.get(self, "globals")
 
     @property
-    @pulumi.getter(name="linkLocals")
-    def link_locals(self) -> Sequence['outputs.GetInstanceNetworkingIpv6LinkLocalResult']:
-        return pulumi.get(self, "link_locals")
+    @pulumi.getter(name="linkLocal")
+    def link_local(self) -> 'outputs.GetInstanceNetworkingIpv6LinkLocalResult':
+        return pulumi.get(self, "link_local")
 
     @property
     @pulumi.getter
-    def slaacs(self) -> Sequence['outputs.GetInstanceNetworkingIpv6SlaacResult']:
-        return pulumi.get(self, "slaacs")
+    def slaac(self) -> 'outputs.GetInstanceNetworkingIpv6SlaacResult':
+        return pulumi.get(self, "slaac")
 
 
 @pulumi.output_type
@@ -4691,7 +4779,9 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4699,7 +4789,9 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4707,7 +4799,9 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4730,12 +4824,28 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -4775,7 +4885,9 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
     def __init__(__self__, *,
                  address: str,
                  gateway: str,
+                 linode_id: int,
                  prefix: int,
+                 public: bool,
                  rdns: str,
                  region: str,
                  subnet_mask: str,
@@ -4783,7 +4895,9 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
+        :param int linode_id: The Linode instance's ID.
         :param int prefix: The network prefix.
+        :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address.
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
@@ -4791,7 +4905,9 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "rdns", rdns)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -4814,12 +4930,28 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         return pulumi.get(self, "gateway")
 
     @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
     @pulumi.getter
     def prefix(self) -> int:
         """
         The network prefix.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
@@ -6531,8 +6663,8 @@ class GetRegionsRegionResult(dict):
                  country: str,
                  id: str,
                  label: str,
-                 resolvers: Sequence['outputs.GetRegionsRegionResolverResult'],
-                 status: str):
+                 status: str,
+                 resolvers: Optional[Sequence['outputs.GetRegionsRegionResolverResult']] = None):
         """
         :param Sequence[str] capabilities: A list of capabilities of this region.
         :param str country: The country the region resides in.
@@ -6543,8 +6675,9 @@ class GetRegionsRegionResult(dict):
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "resolvers", resolvers)
         pulumi.set(__self__, "status", status)
+        if resolvers is not None:
+            pulumi.set(__self__, "resolvers", resolvers)
 
     @property
     @pulumi.getter
@@ -6577,16 +6710,16 @@ class GetRegionsRegionResult(dict):
 
     @property
     @pulumi.getter
-    def resolvers(self) -> Sequence['outputs.GetRegionsRegionResolverResult']:
-        return pulumi.get(self, "resolvers")
-
-    @property
-    @pulumi.getter
     def status(self) -> str:
         """
         This region’s current operational status (ok or outage).
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def resolvers(self) -> Optional[Sequence['outputs.GetRegionsRegionResolverResult']]:
+        return pulumi.get(self, "resolvers")
 
 
 @pulumi.output_type

@@ -42,14 +42,11 @@ class GetRegionsResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
+    def regions(self) -> Optional[Sequence['outputs.GetRegionsRegionResult']]:
         return pulumi.get(self, "regions")
 
 
@@ -65,6 +62,7 @@ class AwaitableGetRegionsResult(GetRegionsResult):
 
 
 def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArgs']]] = None,
+                regions: Optional[Sequence[pulumi.InputType['GetRegionsRegionArgs']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
     Provides information about Linode regions that match a set of filters.
@@ -96,6 +94,7 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['regions'] = regions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
 
@@ -107,6 +106,7 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
 
 @_utilities.lift_output_func(get_regions)
 def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRegionsFilterArgs']]]]] = None,
+                       regions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRegionsRegionArgs']]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides information about Linode regions that match a set of filters.

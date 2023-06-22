@@ -5,11 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDomainZonefilePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,26 +27,10 @@ public final class GetDomainZonefilePlainArgs extends com.pulumi.resources.Invok
         return this.domainId;
     }
 
-    /**
-     * Array of strings representing the Domain Zonefile.
-     * 
-     */
-    @Import(name="zoneFiles")
-    private @Nullable List<String> zoneFiles;
-
-    /**
-     * @return Array of strings representing the Domain Zonefile.
-     * 
-     */
-    public Optional<List<String>> zoneFiles() {
-        return Optional.ofNullable(this.zoneFiles);
-    }
-
     private GetDomainZonefilePlainArgs() {}
 
     private GetDomainZonefilePlainArgs(GetDomainZonefilePlainArgs $) {
         this.domainId = $.domainId;
-        this.zoneFiles = $.zoneFiles;
     }
 
     public static Builder builder() {
@@ -80,27 +60,6 @@ public final class GetDomainZonefilePlainArgs extends com.pulumi.resources.Invok
         public Builder domainId(Integer domainId) {
             $.domainId = domainId;
             return this;
-        }
-
-        /**
-         * @param zoneFiles Array of strings representing the Domain Zonefile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneFiles(@Nullable List<String> zoneFiles) {
-            $.zoneFiles = zoneFiles;
-            return this;
-        }
-
-        /**
-         * @param zoneFiles Array of strings representing the Domain Zonefile.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneFiles(String... zoneFiles) {
-            return zoneFiles(List.of(zoneFiles));
         }
 
         public GetDomainZonefilePlainArgs build() {

@@ -8,54 +8,6 @@ import * as utilities from "./utilities";
  * Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
  * For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
  *
- * ## Example Usage
- *
- * The following example shows how one might use this resource to configure NodeBalancer Nodes attached to Linode instances.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const web: linode.Instance[] = [];
- * for (const range = {value: 0}; range.value < "3"; range.value++) {
- *     web.push(new linode.Instance(`web-${range.value}`, {
- *         label: `web-${range.value + 1}`,
- *         image: "linode/ubuntu18.04",
- *         region: "us-east",
- *         type: "g6-standard-1",
- *         authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
- *         rootPass: "test",
- *         privateIp: true,
- *     }));
- * }
- * const foobar = new linode.NodeBalancer("foobar", {
- *     label: "mynodebalancer",
- *     region: "us-east",
- *     clientConnThrottle: 20,
- * });
- * const foofig = new linode.NodeBalancerConfig("foofig", {
- *     nodebalancerId: foobar.id,
- *     port: 80,
- *     protocol: "http",
- *     check: "http",
- *     checkPath: "/foo",
- *     checkAttempts: 3,
- *     checkTimeout: 30,
- *     stickiness: "http_cookie",
- *     algorithm: "source",
- * });
- * const foonode: linode.NodeBalancerNode[] = [];
- * for (const range = {value: 0}; range.value < "3"; range.value++) {
- *     foonode.push(new linode.NodeBalancerNode(`foonode-${range.value}`, {
- *         nodebalancerId: foobar.id,
- *         configId: foofig.id,
- *         address: web.map(__item => __item.privateIpAddress)[range.value].apply(privateIpAddresses => `${privateIpAddresses}:80`),
- *         label: "mynodebalancernode",
- *         weight: 50,
- *     }));
- * }
- * ```
- *
  * ## Import
  *
  * NodeBalancer Nodes can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `config_id` followed by the NodeBalancer Node `id`, separated by a comma, e.g.

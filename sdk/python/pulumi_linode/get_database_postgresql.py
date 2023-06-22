@@ -53,8 +53,8 @@ class GetDatabasePostgresqlResult:
         if host_secondary and not isinstance(host_secondary, str):
             raise TypeError("Expected argument 'host_secondary' to be a str")
         pulumi.set(__self__, "host_secondary", host_secondary)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
@@ -130,7 +130,7 @@ class GetDatabasePostgresqlResult:
 
     @property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> int:
+    def database_id(self) -> Optional[int]:
         return pulumi.get(self, "database_id")
 
     @property
@@ -175,10 +175,7 @@ class GetDatabasePostgresqlResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> Optional[int]:
         return pulumi.get(self, "id")
 
     @property
@@ -313,6 +310,7 @@ class AwaitableGetDatabasePostgresqlResult(GetDatabasePostgresqlResult):
 
 
 def get_database_postgresql(database_id: Optional[int] = None,
+                            id: Optional[int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgresqlResult:
     """
     Provides information about a Linode PostgreSQL Database.
@@ -325,7 +323,7 @@ def get_database_postgresql(database_id: Optional[int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_db = linode.get_database_postgresql(database_id=12345)
+    my_db = linode.get_database_postgresql(id=12345)
     ```
     ## updates
 
@@ -342,10 +340,12 @@ def get_database_postgresql(database_id: Optional[int] = None,
     * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
 
-    :param int database_id: The ID of the PostgreSQL database.
+    :param int database_id: The ID of the PostgreSQL database. Deprecated: Use id instead.
+    :param int id: The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
     """
     __args__ = dict()
     __args__['databaseId'] = database_id
+    __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getDatabasePostgresql:getDatabasePostgresql', __args__, opts=opts, typ=GetDatabasePostgresqlResult).value
 
@@ -377,7 +377,8 @@ def get_database_postgresql(database_id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_database_postgresql)
-def get_database_postgresql_output(database_id: Optional[pulumi.Input[int]] = None,
+def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[int]]] = None,
+                                   id: Optional[pulumi.Input[Optional[int]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
     """
     Provides information about a Linode PostgreSQL Database.
@@ -390,7 +391,7 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[int]] = No
     import pulumi
     import pulumi_linode as linode
 
-    my_db = linode.get_database_postgresql(database_id=12345)
+    my_db = linode.get_database_postgresql(id=12345)
     ```
     ## updates
 
@@ -407,6 +408,7 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[int]] = No
     * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
 
-    :param int database_id: The ID of the PostgreSQL database.
+    :param int database_id: The ID of the PostgreSQL database. Deprecated: Use id instead.
+    :param int id: The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
     """
     ...

@@ -37,8 +37,8 @@ class GetDomainResult:
         if group and not isinstance(group, str):
             raise TypeError("Expected argument 'group' to be a str")
         pulumi.set(__self__, "group", group)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if master_ips and not isinstance(master_ips, list):
             raise TypeError("Expected argument 'master_ips' to be a list")
@@ -107,7 +107,7 @@ class GetDomainResult:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> Optional[int]:
         """
         The unique ID of this Domain.
         """
@@ -201,7 +201,7 @@ class AwaitableGetDomainResult(GetDomainResult):
 
 
 def get_domain(domain: Optional[str] = None,
-               id: Optional[str] = None,
+               id: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     Provides information about a Linode domain.
@@ -214,13 +214,13 @@ def get_domain(domain: Optional[str] = None,
     import pulumi
     import pulumi_linode as linode
 
-    foo = linode.get_domain(id="1234567")
+    foo = linode.get_domain(id=1234567)
     bar = linode.get_domain(domain="bar.example.com")
     ```
 
 
     :param str domain: The unique domain name of the Domain record to query.
-    :param str id: The unique numeric ID of the Domain record to query.
+    :param int id: The unique numeric ID of the Domain record to query.
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -247,7 +247,7 @@ def get_domain(domain: Optional[str] = None,
 
 @_utilities.lift_output_func(get_domain)
 def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
-                      id: Optional[pulumi.Input[Optional[str]]] = None,
+                      id: Optional[pulumi.Input[Optional[int]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
     """
     Provides information about a Linode domain.
@@ -260,12 +260,12 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    foo = linode.get_domain(id="1234567")
+    foo = linode.get_domain(id=1234567)
     bar = linode.get_domain(domain="bar.example.com")
     ```
 
 
     :param str domain: The unique domain name of the Domain record to query.
-    :param str id: The unique numeric ID of the Domain record to query.
+    :param int id: The unique numeric ID of the Domain record to query.
     """
     ...

@@ -53,8 +53,8 @@ class GetDatabaseMysqlResult:
         if host_secondary and not isinstance(host_secondary, str):
             raise TypeError("Expected argument 'host_secondary' to be a str")
         pulumi.set(__self__, "host_secondary", host_secondary)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
@@ -124,7 +124,7 @@ class GetDatabaseMysqlResult:
 
     @property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> int:
+    def database_id(self) -> Optional[int]:
         return pulumi.get(self, "database_id")
 
     @property
@@ -169,10 +169,7 @@ class GetDatabaseMysqlResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+    def id(self) -> Optional[int]:
         return pulumi.get(self, "id")
 
     @property
@@ -292,6 +289,7 @@ class AwaitableGetDatabaseMysqlResult(GetDatabaseMysqlResult):
 
 
 def get_database_mysql(database_id: Optional[int] = None,
+                       id: Optional[int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseMysqlResult:
     """
     Provides information about a Linode MySQL Database.
@@ -304,7 +302,7 @@ def get_database_mysql(database_id: Optional[int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_db = linode.get_database_mysql(database_id=12345)
+    my_db = linode.get_database_mysql(id=12345)
     ```
     ## updates
 
@@ -321,10 +319,12 @@ def get_database_mysql(database_id: Optional[int] = None,
     * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
 
-    :param int database_id: The ID of the MySQL database.
+    :param int database_id: The ID of the MySQL database. Deprecated: Use id instead.
+    :param int id: The ID of the MySQL database. Mutually exclusive with `database_id`.
     """
     __args__ = dict()
     __args__['databaseId'] = database_id
+    __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getDatabaseMysql:getDatabaseMysql', __args__, opts=opts, typ=GetDatabaseMysqlResult).value
 
@@ -354,7 +354,8 @@ def get_database_mysql(database_id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_database_mysql)
-def get_database_mysql_output(database_id: Optional[pulumi.Input[int]] = None,
+def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]] = None,
+                              id: Optional[pulumi.Input[Optional[int]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlResult]:
     """
     Provides information about a Linode MySQL Database.
@@ -367,7 +368,7 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[int]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_db = linode.get_database_mysql(database_id=12345)
+    my_db = linode.get_database_mysql(id=12345)
     ```
     ## updates
 
@@ -384,6 +385,7 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[int]] = None,
     * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
 
-    :param int database_id: The ID of the MySQL database.
+    :param int database_id: The ID of the MySQL database. Deprecated: Use id instead.
+    :param int id: The ID of the MySQL database. Mutually exclusive with `database_id`.
     """
     ...

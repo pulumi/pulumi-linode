@@ -22,9 +22,17 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Gateway;
         /// <summary>
+        /// The Linode instance's ID.
+        /// </summary>
+        public readonly int LinodeId;
+        /// <summary>
         /// The network prefix.
         /// </summary>
         public readonly int Prefix;
+        /// <summary>
+        /// Whether this is a public or private IP address.
+        /// </summary>
+        public readonly bool Public;
         /// <summary>
         /// The reverse DNS assigned to this address.
         /// </summary>
@@ -48,7 +56,11 @@ namespace Pulumi.Linode.Outputs
 
             string gateway,
 
+            int linodeId,
+
             int prefix,
+
+            bool @public,
 
             string rdns,
 
@@ -60,7 +72,9 @@ namespace Pulumi.Linode.Outputs
         {
             Address = address;
             Gateway = gateway;
+            LinodeId = linodeId;
             Prefix = prefix;
+            Public = @public;
             Rdns = rdns;
             Region = region;
             SubnetMask = subnetMask;

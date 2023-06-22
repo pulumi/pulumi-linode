@@ -13,18 +13,18 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceNetworkingIpv6 {
     private List<GetInstanceNetworkingIpv6Global> globals;
-    private List<GetInstanceNetworkingIpv6LinkLocal> linkLocals;
-    private List<GetInstanceNetworkingIpv6Slaac> slaacs;
+    private GetInstanceNetworkingIpv6LinkLocal linkLocal;
+    private GetInstanceNetworkingIpv6Slaac slaac;
 
     private GetInstanceNetworkingIpv6() {}
     public List<GetInstanceNetworkingIpv6Global> globals() {
         return this.globals;
     }
-    public List<GetInstanceNetworkingIpv6LinkLocal> linkLocals() {
-        return this.linkLocals;
+    public GetInstanceNetworkingIpv6LinkLocal linkLocal() {
+        return this.linkLocal;
     }
-    public List<GetInstanceNetworkingIpv6Slaac> slaacs() {
-        return this.slaacs;
+    public GetInstanceNetworkingIpv6Slaac slaac() {
+        return this.slaac;
     }
 
     public static Builder builder() {
@@ -37,14 +37,14 @@ public final class GetInstanceNetworkingIpv6 {
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceNetworkingIpv6Global> globals;
-        private List<GetInstanceNetworkingIpv6LinkLocal> linkLocals;
-        private List<GetInstanceNetworkingIpv6Slaac> slaacs;
+        private GetInstanceNetworkingIpv6LinkLocal linkLocal;
+        private GetInstanceNetworkingIpv6Slaac slaac;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv6 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.globals = defaults.globals;
-    	      this.linkLocals = defaults.linkLocals;
-    	      this.slaacs = defaults.slaacs;
+    	      this.linkLocal = defaults.linkLocal;
+    	      this.slaac = defaults.slaac;
         }
 
         @CustomType.Setter
@@ -56,26 +56,20 @@ public final class GetInstanceNetworkingIpv6 {
             return globals(List.of(globals));
         }
         @CustomType.Setter
-        public Builder linkLocals(List<GetInstanceNetworkingIpv6LinkLocal> linkLocals) {
-            this.linkLocals = Objects.requireNonNull(linkLocals);
+        public Builder linkLocal(GetInstanceNetworkingIpv6LinkLocal linkLocal) {
+            this.linkLocal = Objects.requireNonNull(linkLocal);
             return this;
-        }
-        public Builder linkLocals(GetInstanceNetworkingIpv6LinkLocal... linkLocals) {
-            return linkLocals(List.of(linkLocals));
         }
         @CustomType.Setter
-        public Builder slaacs(List<GetInstanceNetworkingIpv6Slaac> slaacs) {
-            this.slaacs = Objects.requireNonNull(slaacs);
+        public Builder slaac(GetInstanceNetworkingIpv6Slaac slaac) {
+            this.slaac = Objects.requireNonNull(slaac);
             return this;
-        }
-        public Builder slaacs(GetInstanceNetworkingIpv6Slaac... slaacs) {
-            return slaacs(List.of(slaacs));
         }
         public GetInstanceNetworkingIpv6 build() {
             final var o = new GetInstanceNetworkingIpv6();
             o.globals = globals;
-            o.linkLocals = linkLocals;
-            o.slaacs = slaacs;
+            o.linkLocal = linkLocal;
+            o.slaac = slaac;
             return o;
         }
     }

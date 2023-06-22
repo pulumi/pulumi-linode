@@ -13,10 +13,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNetworkingResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private List<GetInstanceNetworkingIpv4> ipv4s;
     private List<GetInstanceNetworkingIpv6> ipv6s;
@@ -27,10 +23,6 @@ public final class GetInstanceNetworkingResult {
     private Integer linodeId;
 
     private GetInstanceNetworkingResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

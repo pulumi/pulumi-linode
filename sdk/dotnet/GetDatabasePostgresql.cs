@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// {
         ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
         ///     {
-        ///         DatabaseId = 12345,
+        ///         Id = 12345,
         ///     });
         /// 
         /// });
@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// 
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
-        public static Task<GetDatabasePostgresqlResult> InvokeAsync(GetDatabasePostgresqlArgs args, InvokeOptions? options = null)
+        public static Task<GetDatabasePostgresqlResult> InvokeAsync(GetDatabasePostgresqlArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlArgs(), options.WithDefaults());
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.Linode
         /// {
         ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
         ///     {
-        ///         DatabaseId = 12345,
+        ///         Id = 12345,
         ///     });
         /// 
         /// });
@@ -94,7 +94,7 @@ namespace Pulumi.Linode
         /// 
         /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
-        public static Output<GetDatabasePostgresqlResult> Invoke(GetDatabasePostgresqlInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDatabasePostgresqlResult> Invoke(GetDatabasePostgresqlInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
     }
 
@@ -102,10 +102,16 @@ namespace Pulumi.Linode
     public sealed class GetDatabasePostgresqlArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the PostgreSQL database.
+        /// The ID of the PostgreSQL database. Deprecated: Use id instead.
         /// </summary>
-        [Input("databaseId", required: true)]
-        public int DatabaseId { get; set; }
+        [Input("databaseId")]
+        public int? DatabaseId { get; set; }
+
+        /// <summary>
+        /// The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+        /// </summary>
+        [Input("id")]
+        public int? Id { get; set; }
 
         public GetDatabasePostgresqlArgs()
         {
@@ -116,10 +122,16 @@ namespace Pulumi.Linode
     public sealed class GetDatabasePostgresqlInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the PostgreSQL database.
+        /// The ID of the PostgreSQL database. Deprecated: Use id instead.
         /// </summary>
-        [Input("databaseId", required: true)]
-        public Input<int> DatabaseId { get; set; } = null!;
+        [Input("databaseId")]
+        public Input<int>? DatabaseId { get; set; }
+
+        /// <summary>
+        /// The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
 
         public GetDatabasePostgresqlInvokeArgs()
         {
@@ -147,7 +159,7 @@ namespace Pulumi.Linode
         /// When this Managed Database was created.
         /// </summary>
         public readonly string Created;
-        public readonly int DatabaseId;
+        public readonly int? DatabaseId;
         /// <summary>
         /// Whether the Managed Databases is encrypted.
         /// </summary>
@@ -168,10 +180,7 @@ namespace Pulumi.Linode
         /// The secondary/private network host for the Managed Database.
         /// </summary>
         public readonly string HostSecondary;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly int? Id;
         /// <summary>
         /// A unique, user-defined string referring to the Managed Database.
         /// </summary>
@@ -229,7 +238,7 @@ namespace Pulumi.Linode
 
             string created,
 
-            int databaseId,
+            int? databaseId,
 
             bool encrypted,
 
@@ -241,7 +250,7 @@ namespace Pulumi.Linode
 
             string hostSecondary,
 
-            string id,
+            int? id,
 
             string label,
 

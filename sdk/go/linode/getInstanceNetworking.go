@@ -28,7 +28,6 @@ type GetInstanceNetworkingArgs struct {
 
 // A collection of values returned by getInstanceNetworking.
 type GetInstanceNetworkingResult struct {
-	// The provider-assigned unique ID for this managed resource.
 	Id    string                      `pulumi:"id"`
 	Ipv4s []GetInstanceNetworkingIpv4 `pulumi:"ipv4s"`
 	Ipv6s []GetInstanceNetworkingIpv6 `pulumi:"ipv6s"`
@@ -74,7 +73,6 @@ func (o GetInstanceNetworkingResultOutput) ToGetInstanceNetworkingResultOutputWi
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetInstanceNetworkingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingResult) string { return v.Id }).(pulumi.StringOutput)
 }
