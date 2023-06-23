@@ -14,15 +14,19 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetUserNodebalancerGrantResult
     {
         public readonly int Id;
+        public readonly string Label;
         public readonly string Permissions;
 
         [OutputConstructor]
         private GetUserNodebalancerGrantResult(
             int id,
 
+            string label,
+
             string permissions)
         {
             Id = id;
+            Label = label;
             Permissions = permissions;
         }
     }

@@ -1348,7 +1348,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -1926,7 +1928,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -2654,7 +2658,10 @@
         "linode:index/getInstanceTypeAddons:getInstanceTypeAddons": {
             "properties": {
                 "backups": {
-                    "$ref": "#/types/linode:index/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypeAddonsBackup:getInstanceTypeAddonsBackup"
+                    }
                 }
             },
             "type": "object",
@@ -2667,15 +2674,18 @@
                 }
             }
         },
-        "linode:index/getInstanceTypeAddonsBackups:getInstanceTypeAddonsBackups": {
+        "linode:index/getInstanceTypeAddonsBackup:getInstanceTypeAddonsBackup": {
             "properties": {
-                "price": {
-                    "$ref": "#/types/linode:index/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice"
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypeAddonsBackupPrice:getInstanceTypeAddonsBackupPrice"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "price"
+                "prices"
             ],
             "language": {
                 "nodejs": {
@@ -2683,7 +2693,7 @@
                 }
             }
         },
-        "linode:index/getInstanceTypeAddonsBackupsPrice:getInstanceTypeAddonsBackupsPrice": {
+        "linode:index/getInstanceTypeAddonsBackupPrice:getInstanceTypeAddonsBackupPrice": {
             "properties": {
                 "hourly": {
                     "type": "number"
@@ -2809,7 +2819,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -2825,12 +2837,7 @@
             "type": "object",
             "required": [
                 "backups"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            ]
         },
         "linode:index/getInstanceTypesTypeAddonBackup:getInstanceTypesTypeAddonBackup": {
             "properties": {
@@ -2844,12 +2851,7 @@
             "type": "object",
             "required": [
                 "prices"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            ]
         },
         "linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice": {
             "properties": {
@@ -2864,12 +2866,7 @@
             "required": [
                 "hourly",
                 "monthly"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            ]
         },
         "linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice": {
             "properties": {
@@ -2884,12 +2881,7 @@
             "required": [
                 "hourly",
                 "monthly"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            ]
         },
         "linode:index/getInstancesFilter:getInstancesFilter": {
             "properties": {
@@ -3984,7 +3976,7 @@
                     "description": "A description for the StackScript.\n"
                 },
                 "id": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "The unique ID of the StackScript.\n"
                 },
                 "images": {
@@ -4049,7 +4041,9 @@
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -4088,17 +4082,15 @@
                 "manyOf",
                 "name",
                 "oneOf"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            ]
         },
-        "linode:index/getUserDomainGrant:getUserDomainGrant": {
+        "linode:index/getUserDatabaseGrant:getUserDatabaseGrant": {
             "properties": {
                 "id": {
                     "type": "integer"
+                },
+                "label": {
+                    "type": "string"
                 },
                 "permissions": {
                     "type": "string"
@@ -4107,6 +4099,26 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUserDomainGrant:getUserDomainGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4115,6 +4127,9 @@
                 "id": {
                     "type": "integer"
                 },
+                "label": {
+                    "type": "string"
+                },
                 "permissions": {
                     "type": "string"
                 }
@@ -4122,6 +4137,7 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4164,12 +4180,34 @@
                     "type": "boolean"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "accountAccess",
+                "addDatabases",
+                "addDomains",
+                "addFirewalls",
+                "addImages",
+                "addLinodes",
+                "addLongview",
+                "addNodebalancers",
+                "addStackscripts",
+                "addVolumes",
+                "cancelAccount",
+                "longviewSubscription"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "linode:index/getUserImageGrant:getUserImageGrant": {
             "properties": {
                 "id": {
                     "type": "integer"
+                },
+                "label": {
+                    "type": "string"
                 },
                 "permissions": {
                     "type": "string"
@@ -4178,6 +4216,7 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4186,6 +4225,9 @@
                 "id": {
                     "type": "integer"
                 },
+                "label": {
+                    "type": "string"
+                },
                 "permissions": {
                     "type": "string"
                 }
@@ -4193,6 +4235,7 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4201,6 +4244,9 @@
                 "id": {
                     "type": "integer"
                 },
+                "label": {
+                    "type": "string"
+                },
                 "permissions": {
                     "type": "string"
                 }
@@ -4208,6 +4254,7 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4216,6 +4263,9 @@
                 "id": {
                     "type": "integer"
                 },
+                "label": {
+                    "type": "string"
+                },
                 "permissions": {
                     "type": "string"
                 }
@@ -4223,6 +4273,7 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
                 "permissions"
             ]
         },
@@ -4231,20 +4282,8 @@
                 "id": {
                     "type": "integer"
                 },
-                "permissions": {
+                "label": {
                     "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "id",
-                "permissions"
-            ]
-        },
-        "linode:index/getUserVolumeGrant:getUserVolumeGrant": {
-            "properties": {
-                "id": {
-                    "type": "integer"
                 },
                 "permissions": {
                     "type": "string"
@@ -4253,6 +4292,26 @@
             "type": "object",
             "required": [
                 "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUserVolumeGrant:getUserVolumeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
                 "permissions"
             ]
         },
@@ -9091,6 +9150,12 @@
                         "items": {
                             "$ref": "#/types/linode:index/getAccountLoginsFilter:getAccountLoginsFilter"
                         }
+                    },
+                    "logins": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getAccountLoginsLogin:getAccountLoginsLogin"
+                        }
                     }
                 },
                 "type": "object"
@@ -9106,7 +9171,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The unique ID of this login object.\n"
                     },
                     "logins": {
                         "type": "array",
@@ -9117,7 +9182,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "logins",
                     "id"
                 ]
             }
@@ -9132,8 +9196,7 @@
                         "description": "Account-wide backups default.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "longviewSubscription": {
                         "type": "string",
@@ -9155,11 +9218,11 @@
                 "type": "object",
                 "required": [
                     "backupsEnabled",
+                    "id",
                     "longviewSubscription",
                     "managed",
                     "networkHelper",
-                    "objectStorage",
-                    "id"
+                    "objectStorage"
                 ]
             }
         },
@@ -9168,6 +9231,12 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabaseBackups.\n",
                 "properties": {
+                    "backups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getDatabaseBackupsBackup:getDatabaseBackupsBackup"
+                        }
+                    },
                     "databaseId": {
                         "type": "integer",
                         "description": "The ID of the database to retrieve backups for.\n"
@@ -9223,8 +9292,8 @@
                         }
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "integer",
+                        "description": "The ID of the database backup object.\n"
                     },
                     "latest": {
                         "type": "boolean"
@@ -9238,7 +9307,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "backups",
                     "databaseId",
                     "databaseType",
                     "id"
@@ -9250,6 +9318,12 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabaseEngines.\n",
                 "properties": {
+                    "engines": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getDatabaseEnginesEngine:getDatabaseEnginesEngine"
+                        }
+                    },
                     "filters": {
                         "type": "array",
                         "items": {
@@ -9288,7 +9362,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The Managed Database engine ID in engine/version format.\n"
                     },
                     "latest": {
                         "type": "boolean"
@@ -9302,7 +9376,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "engines",
                     "id"
                 ]
             }
@@ -9672,15 +9745,17 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabases.\n",
                 "properties": {
+                    "databases": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getDatabasesDatabase:getDatabasesDatabase"
+                        }
+                    },
                     "filters": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getDatabasesFilter:getDatabasesFilter"
                         }
-                    },
-                    "latest": {
-                        "type": "boolean",
-                        "description": "If true, only the latest create database will be returned.\n\n* `filter` - (Optional) A set of filters used to select databases that meet certain requirements.\n"
                     },
                     "order": {
                         "type": "string",
@@ -9710,10 +9785,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "latest": {
-                        "type": "boolean"
+                        "description": "The ID of the Managed Database.\n"
                     },
                     "order": {
                         "type": "string"
@@ -9724,7 +9796,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "databases",
                     "id"
                 ]
             }
@@ -10146,6 +10217,12 @@
                             "$ref": "#/types/linode:index/getImagesFilter:getImagesFilter"
                         }
                     },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getImagesImage:getImagesImage"
+                        }
+                    },
                     "latest": {
                         "type": "boolean",
                         "description": "If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.\n\n* `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.\n"
@@ -10172,7 +10249,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n"
                     },
                     "images": {
                         "type": "array",
@@ -10192,7 +10269,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "images",
                     "id"
                 ]
             }
@@ -10392,6 +10468,12 @@
                     "orderBy": {
                         "type": "string",
                         "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getInstanceTypesType:getInstanceTypesType"
+                        }
                     }
                 },
                 "type": "object"
@@ -10407,7 +10489,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID representing the Linode Type.\n"
                     },
                     "order": {
                         "type": "string"
@@ -10424,7 +10506,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "types",
                     "id"
                 ]
             }
@@ -11231,13 +11312,15 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getRegion.\n",
                 "properties": {
-                    "country": {
-                        "type": "string",
-                        "description": "The country the region resides in.\n"
-                    },
                     "id": {
                         "type": "string",
                         "description": "The code name of the region to select.\n"
+                    },
+                    "resolvers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getRegionResolver:getRegionResolver"
+                        }
                     }
                 },
                 "type": "object",
@@ -11283,7 +11366,6 @@
                     "country",
                     "id",
                     "label",
-                    "resolvers",
                     "status"
                 ]
             }
@@ -11500,6 +11582,12 @@
                     "orderBy": {
                         "type": "string",
                         "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "stackscripts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getStackScriptsStackscript:getStackScriptsStackscript"
+                        }
                     }
                 },
                 "type": "object"
@@ -11515,7 +11603,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The unique ID of the StackScript.\n"
                     },
                     "latest": {
                         "type": "boolean"
@@ -11535,16 +11623,22 @@
                 },
                 "type": "object",
                 "required": [
-                    "stackscripts",
                     "id"
                 ]
             }
         },
         "linode:index/getUser:getUser": {
-            "description": "Provides information about a Linode user\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode user.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = linode.getUser({\n    username: \"foo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_user(username=\"foo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Linode.GetUser.Invoke(new()\n    {\n        Username = \"foo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupUser(ctx, \u0026linode.LookupUserArgs{\n\t\t\tUsername: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = LinodeFunctions.getUser(GetUserArgs.builder()\n            .username(\"foo\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: linode:getUser\n      Arguments:\n        username: foo\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides information about a Linode user\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {
+                    "databaseGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserDatabaseGrant:getUserDatabaseGrant"
+                        },
+                        "description": "The grants this User has pertaining to Databases on this Account.\n"
+                    },
                     "domainGrants": {
                         "type": "array",
                         "items": {
@@ -11614,6 +11708,13 @@
             "outputs": {
                 "description": "A collection of values returned by getUser.\n",
                 "properties": {
+                    "databaseGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserDatabaseGrant:getUserDatabaseGrant"
+                        },
+                        "description": "The grants this User has pertaining to Databases on this Account.\n"
+                    },
                     "domainGrants": {
                         "type": "array",
                         "items": {
@@ -11640,8 +11741,7 @@
                         "description": "The Account-level grants a User has.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "imageGrants": {
                         "type": "array",
@@ -11702,10 +11802,12 @@
                 },
                 "type": "object",
                 "required": [
+                    "databaseGrants",
                     "domainGrants",
                     "email",
                     "firewallGrants",
                     "globalGrants",
+                    "id",
                     "imageGrants",
                     "linodeGrants",
                     "longviewGrants",
@@ -11714,8 +11816,7 @@
                     "sshKeys",
                     "stackscriptGrants",
                     "username",
-                    "volumeGrants",
-                    "id"
+                    "volumeGrants"
                 ]
             }
         },
@@ -11737,6 +11838,12 @@
                     "orderBy": {
                         "type": "string",
                         "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "vlans": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVlansVlan:getVlansVlan"
+                        }
                     }
                 },
                 "type": "object"
@@ -11751,8 +11858,7 @@
                         }
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "order": {
                         "type": "string"
@@ -11769,7 +11875,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "vlans",
                     "id"
                 ]
             }

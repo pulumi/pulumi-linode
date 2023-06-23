@@ -32,7 +32,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The unique ID of the StackScript.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Linode.Outputs
 
             string description,
 
-            int id,
+            string id,
 
             ImmutableArray<string> images,
 

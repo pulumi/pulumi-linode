@@ -52,13 +52,13 @@ class GetImagesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def images(self) -> Sequence['outputs.GetImagesImageResult']:
+    def images(self) -> Optional[Sequence['outputs.GetImagesImageResult']]:
         return pulumi.get(self, "images")
 
     @property
@@ -92,6 +92,7 @@ class AwaitableGetImagesResult(GetImagesResult):
 
 
 def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]] = None,
+               images: Optional[Sequence[pulumi.InputType['GetImagesImageArgs']]] = None,
                latest: Optional[bool] = None,
                order: Optional[str] = None,
                order_by: Optional[str] = None,
@@ -158,6 +159,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['images'] = images
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -175,6 +177,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
 @_utilities.lift_output_func(get_images)
 def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]]]] = None,
+                      images: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesImageArgs']]]]] = None,
                       latest: Optional[pulumi.Input[Optional[bool]]] = None,
                       order: Optional[pulumi.Input[Optional[str]]] = None,
                       order_by: Optional[pulumi.Input[Optional[str]]] = None,

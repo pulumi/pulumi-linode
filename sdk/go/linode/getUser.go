@@ -11,34 +11,6 @@ import (
 )
 
 // Provides information about a Linode user
-//
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about a Linode user.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupUser(ctx, &linode.LookupUserArgs{
-//				Username: "foo",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("linode:index/getUser:getUser", args, &rv, opts...)
@@ -50,6 +22,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// The grants this User has pertaining to Databases on this Account.
+	DatabaseGrants []GetUserDatabaseGrant `pulumi:"databaseGrants"`
 	// The grants this User has pertaining to Domains on this Account.
 	DomainGrants []GetUserDomainGrant `pulumi:"domainGrants"`
 	// The grants this User has pertaining to Firewalls on this Account.
@@ -72,6 +46,8 @@ type LookupUserArgs struct {
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// The grants this User has pertaining to Databases on this Account.
+	DatabaseGrants []GetUserDatabaseGrant `pulumi:"databaseGrants"`
 	// The grants this User has pertaining to Domains on this Account.
 	DomainGrants []GetUserDomainGrant `pulumi:"domainGrants"`
 	// The email address for this User, for account management communications, and may be used for other communications as configured.
@@ -80,8 +56,7 @@ type LookupUserResult struct {
 	FirewallGrants []GetUserFirewallGrant `pulumi:"firewallGrants"`
 	// The Account-level grants a User has.
 	GlobalGrants []GetUserGlobalGrant `pulumi:"globalGrants"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id           string               `pulumi:"id"`
 	// The grants this User has pertaining to Images on this Account.
 	ImageGrants []GetUserImageGrant `pulumi:"imageGrants"`
 	// The grants this User has pertaining to Linodes on this Account.
@@ -116,6 +91,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// The grants this User has pertaining to Databases on this Account.
+	DatabaseGrants GetUserDatabaseGrantArrayInput `pulumi:"databaseGrants"`
 	// The grants this User has pertaining to Domains on this Account.
 	DomainGrants GetUserDomainGrantArrayInput `pulumi:"domainGrants"`
 	// The grants this User has pertaining to Firewalls on this Account.
@@ -155,6 +132,11 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// The grants this User has pertaining to Databases on this Account.
+func (o LookupUserResultOutput) DatabaseGrants() GetUserDatabaseGrantArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []GetUserDatabaseGrant { return v.DatabaseGrants }).(GetUserDatabaseGrantArrayOutput)
+}
+
 // The grants this User has pertaining to Domains on this Account.
 func (o LookupUserResultOutput) DomainGrants() GetUserDomainGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserDomainGrant { return v.DomainGrants }).(GetUserDomainGrantArrayOutput)
@@ -175,7 +157,6 @@ func (o LookupUserResultOutput) GlobalGrants() GetUserGlobalGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserGlobalGrant { return v.GlobalGrants }).(GetUserGlobalGrantArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }

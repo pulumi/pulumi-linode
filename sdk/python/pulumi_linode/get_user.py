@@ -23,7 +23,10 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, restricted=None, ssh_keys=None, stackscript_grants=None, username=None, volume_grants=None):
+    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, restricted=None, ssh_keys=None, stackscript_grants=None, username=None, volume_grants=None):
+        if database_grants and not isinstance(database_grants, list):
+            raise TypeError("Expected argument 'database_grants' to be a list")
+        pulumi.set(__self__, "database_grants", database_grants)
         if domain_grants and not isinstance(domain_grants, list):
             raise TypeError("Expected argument 'domain_grants' to be a list")
         pulumi.set(__self__, "domain_grants", domain_grants)
@@ -68,6 +71,14 @@ class GetUserResult:
         pulumi.set(__self__, "volume_grants", volume_grants)
 
     @property
+    @pulumi.getter(name="databaseGrants")
+    def database_grants(self) -> Sequence['outputs.GetUserDatabaseGrantResult']:
+        """
+        The grants this User has pertaining to Databases on this Account.
+        """
+        return pulumi.get(self, "database_grants")
+
+    @property
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> Sequence['outputs.GetUserDomainGrantResult']:
         """
@@ -102,9 +113,6 @@ class GetUserResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -183,6 +191,7 @@ class AwaitableGetUserResult(GetUserResult):
         if False:
             yield self
         return GetUserResult(
+            database_grants=self.database_grants,
             domain_grants=self.domain_grants,
             email=self.email,
             firewall_grants=self.firewall_grants,
@@ -199,7 +208,8 @@ class AwaitableGetUserResult(GetUserResult):
             volume_grants=self.volume_grants)
 
 
-def get_user(domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGrantArgs']]] = None,
+def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']]] = None,
+             domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGrantArgs']]] = None,
              firewall_grants: Optional[Sequence[pulumi.InputType['GetUserFirewallGrantArgs']]] = None,
              image_grants: Optional[Sequence[pulumi.InputType['GetUserImageGrantArgs']]] = None,
              linode_grants: Optional[Sequence[pulumi.InputType['GetUserLinodeGrantArgs']]] = None,
@@ -212,18 +222,8 @@ def get_user(domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGra
     """
     Provides information about a Linode user
 
-    ## Example Usage
 
-    The following example shows how one might use this data source to access information about a Linode user.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    foo = linode.get_user(username="foo")
-    ```
-
-
+    :param Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']] database_grants: The grants this User has pertaining to Databases on this Account.
     :param Sequence[pulumi.InputType['GetUserDomainGrantArgs']] domain_grants: The grants this User has pertaining to Domains on this Account.
     :param Sequence[pulumi.InputType['GetUserFirewallGrantArgs']] firewall_grants: The grants this User has pertaining to Firewalls on this Account.
     :param Sequence[pulumi.InputType['GetUserImageGrantArgs']] image_grants: The grants this User has pertaining to Images on this Account.
@@ -235,6 +235,7 @@ def get_user(domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGra
     :param Sequence[pulumi.InputType['GetUserVolumeGrantArgs']] volume_grants: The grants this User has pertaining to Volumes on this Account.
     """
     __args__ = dict()
+    __args__['databaseGrants'] = database_grants
     __args__['domainGrants'] = domain_grants
     __args__['firewallGrants'] = firewall_grants
     __args__['imageGrants'] = image_grants
@@ -248,6 +249,7 @@ def get_user(domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGra
     __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
+        database_grants=__ret__.database_grants,
         domain_grants=__ret__.domain_grants,
         email=__ret__.email,
         firewall_grants=__ret__.firewall_grants,
@@ -265,7 +267,8 @@ def get_user(domain_grants: Optional[Sequence[pulumi.InputType['GetUserDomainGra
 
 
 @_utilities.lift_output_func(get_user)
-def get_user_output(domain_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserDomainGrantArgs']]]]] = None,
+def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']]]]] = None,
+                    domain_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserDomainGrantArgs']]]]] = None,
                     firewall_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserFirewallGrantArgs']]]]] = None,
                     image_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserImageGrantArgs']]]]] = None,
                     linode_grants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserLinodeGrantArgs']]]]] = None,
@@ -278,18 +281,8 @@ def get_user_output(domain_grants: Optional[pulumi.Input[Optional[Sequence[pulum
     """
     Provides information about a Linode user
 
-    ## Example Usage
 
-    The following example shows how one might use this data source to access information about a Linode user.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    foo = linode.get_user(username="foo")
-    ```
-
-
+    :param Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']] database_grants: The grants this User has pertaining to Databases on this Account.
     :param Sequence[pulumi.InputType['GetUserDomainGrantArgs']] domain_grants: The grants this User has pertaining to Domains on this Account.
     :param Sequence[pulumi.InputType['GetUserFirewallGrantArgs']] firewall_grants: The grants this User has pertaining to Firewalls on this Account.
     :param Sequence[pulumi.InputType['GetUserImageGrantArgs']] image_grants: The grants this User has pertaining to Images on this Account.

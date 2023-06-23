@@ -11,19 +11,14 @@ namespace Pulumi.Linode.Outputs
 {
 
     [OutputType]
-    public sealed class GetInstanceTypeAddonsBackupsPriceResult
+    public sealed class GetInstanceTypeAddonsBackupResult
     {
-        public readonly double Hourly;
-        public readonly double Monthly;
+        public readonly ImmutableArray<Outputs.GetInstanceTypeAddonsBackupPriceResult> Prices;
 
         [OutputConstructor]
-        private GetInstanceTypeAddonsBackupsPriceResult(
-            double hourly,
-
-            double monthly)
+        private GetInstanceTypeAddonsBackupResult(ImmutableArray<Outputs.GetInstanceTypeAddonsBackupPriceResult> prices)
         {
-            Hourly = hourly;
-            Monthly = monthly;
+            Prices = prices;
         }
     }
 }

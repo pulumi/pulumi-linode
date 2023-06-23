@@ -88,8 +88,8 @@ __all__ = [
     'GetInstanceNetworkingIpv6LinkLocalResult',
     'GetInstanceNetworkingIpv6SlaacResult',
     'GetInstanceTypeAddonsResult',
-    'GetInstanceTypeAddonsBackupsResult',
-    'GetInstanceTypeAddonsBackupsPriceResult',
+    'GetInstanceTypeAddonsBackupResult',
+    'GetInstanceTypeAddonsBackupPriceResult',
     'GetInstanceTypePriceResult',
     'GetInstanceTypesFilterResult',
     'GetInstanceTypesTypeResult',
@@ -132,6 +132,7 @@ __all__ = [
     'GetStackScriptsFilterResult',
     'GetStackScriptsStackscriptResult',
     'GetStackScriptsStackscriptUserDefinedFieldResult',
+    'GetUserDatabaseGrantResult',
     'GetUserDomainGrantResult',
     'GetUserFirewallGrantResult',
     'GetUserGlobalGrantResult',
@@ -4989,29 +4990,29 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
 @pulumi.output_type
 class GetInstanceTypeAddonsResult(dict):
     def __init__(__self__, *,
-                 backups: 'outputs.GetInstanceTypeAddonsBackupsResult'):
+                 backups: Sequence['outputs.GetInstanceTypeAddonsBackupResult']):
         pulumi.set(__self__, "backups", backups)
 
     @property
     @pulumi.getter
-    def backups(self) -> 'outputs.GetInstanceTypeAddonsBackupsResult':
+    def backups(self) -> Sequence['outputs.GetInstanceTypeAddonsBackupResult']:
         return pulumi.get(self, "backups")
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsBackupsResult(dict):
+class GetInstanceTypeAddonsBackupResult(dict):
     def __init__(__self__, *,
-                 price: 'outputs.GetInstanceTypeAddonsBackupsPriceResult'):
-        pulumi.set(__self__, "price", price)
+                 prices: Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult']):
+        pulumi.set(__self__, "prices", prices)
 
     @property
     @pulumi.getter
-    def price(self) -> 'outputs.GetInstanceTypeAddonsBackupsPriceResult':
-        return pulumi.get(self, "price")
+    def prices(self) -> Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult']:
+        return pulumi.get(self, "prices")
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsBackupsPriceResult(dict):
+class GetInstanceTypeAddonsBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
@@ -6872,7 +6873,7 @@ class GetStackScriptsStackscriptResult(dict):
                  deployments_active: int,
                  deployments_total: int,
                  description: str,
-                 id: int,
+                 id: str,
                  images: Sequence[str],
                  is_public: bool,
                  label: str,
@@ -6887,7 +6888,7 @@ class GetStackScriptsStackscriptResult(dict):
         :param int deployments_active: Count of currently active, deployed Linodes created from this StackScript.
         :param int deployments_total: The total number of times this StackScript has been deployed.
         :param str description: A description for the StackScript.
-        :param int id: The unique ID of the StackScript.
+        :param str id: The unique ID of the StackScript.
         :param Sequence[str] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
         :param bool is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
         :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
@@ -6947,7 +6948,7 @@ class GetStackScriptsStackscriptResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         """
         The unique ID of the StackScript.
         """
@@ -7100,17 +7101,50 @@ class GetStackScriptsStackscriptUserDefinedFieldResult(dict):
 
 
 @pulumi.output_type
-class GetUserDomainGrantResult(dict):
+class GetUserDatabaseGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetUserDomainGrantResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7122,14 +7156,21 @@ class GetUserDomainGrantResult(dict):
 class GetUserFirewallGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7140,101 +7181,89 @@ class GetUserFirewallGrantResult(dict):
 @pulumi.output_type
 class GetUserGlobalGrantResult(dict):
     def __init__(__self__, *,
-                 account_access: Optional[str] = None,
-                 add_databases: Optional[bool] = None,
-                 add_domains: Optional[bool] = None,
-                 add_firewalls: Optional[bool] = None,
-                 add_images: Optional[bool] = None,
-                 add_linodes: Optional[bool] = None,
-                 add_longview: Optional[bool] = None,
-                 add_nodebalancers: Optional[bool] = None,
-                 add_stackscripts: Optional[bool] = None,
-                 add_volumes: Optional[bool] = None,
-                 cancel_account: Optional[bool] = None,
-                 longview_subscription: Optional[bool] = None):
-        if account_access is not None:
-            pulumi.set(__self__, "account_access", account_access)
-        if add_databases is not None:
-            pulumi.set(__self__, "add_databases", add_databases)
-        if add_domains is not None:
-            pulumi.set(__self__, "add_domains", add_domains)
-        if add_firewalls is not None:
-            pulumi.set(__self__, "add_firewalls", add_firewalls)
-        if add_images is not None:
-            pulumi.set(__self__, "add_images", add_images)
-        if add_linodes is not None:
-            pulumi.set(__self__, "add_linodes", add_linodes)
-        if add_longview is not None:
-            pulumi.set(__self__, "add_longview", add_longview)
-        if add_nodebalancers is not None:
-            pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        if add_stackscripts is not None:
-            pulumi.set(__self__, "add_stackscripts", add_stackscripts)
-        if add_volumes is not None:
-            pulumi.set(__self__, "add_volumes", add_volumes)
-        if cancel_account is not None:
-            pulumi.set(__self__, "cancel_account", cancel_account)
-        if longview_subscription is not None:
-            pulumi.set(__self__, "longview_subscription", longview_subscription)
+                 account_access: str,
+                 add_databases: bool,
+                 add_domains: bool,
+                 add_firewalls: bool,
+                 add_images: bool,
+                 add_linodes: bool,
+                 add_longview: bool,
+                 add_nodebalancers: bool,
+                 add_stackscripts: bool,
+                 add_volumes: bool,
+                 cancel_account: bool,
+                 longview_subscription: bool):
+        pulumi.set(__self__, "account_access", account_access)
+        pulumi.set(__self__, "add_databases", add_databases)
+        pulumi.set(__self__, "add_domains", add_domains)
+        pulumi.set(__self__, "add_firewalls", add_firewalls)
+        pulumi.set(__self__, "add_images", add_images)
+        pulumi.set(__self__, "add_linodes", add_linodes)
+        pulumi.set(__self__, "add_longview", add_longview)
+        pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+        pulumi.set(__self__, "add_volumes", add_volumes)
+        pulumi.set(__self__, "cancel_account", cancel_account)
+        pulumi.set(__self__, "longview_subscription", longview_subscription)
 
     @property
     @pulumi.getter(name="accountAccess")
-    def account_access(self) -> Optional[str]:
+    def account_access(self) -> str:
         return pulumi.get(self, "account_access")
 
     @property
     @pulumi.getter(name="addDatabases")
-    def add_databases(self) -> Optional[bool]:
+    def add_databases(self) -> bool:
         return pulumi.get(self, "add_databases")
 
     @property
     @pulumi.getter(name="addDomains")
-    def add_domains(self) -> Optional[bool]:
+    def add_domains(self) -> bool:
         return pulumi.get(self, "add_domains")
 
     @property
     @pulumi.getter(name="addFirewalls")
-    def add_firewalls(self) -> Optional[bool]:
+    def add_firewalls(self) -> bool:
         return pulumi.get(self, "add_firewalls")
 
     @property
     @pulumi.getter(name="addImages")
-    def add_images(self) -> Optional[bool]:
+    def add_images(self) -> bool:
         return pulumi.get(self, "add_images")
 
     @property
     @pulumi.getter(name="addLinodes")
-    def add_linodes(self) -> Optional[bool]:
+    def add_linodes(self) -> bool:
         return pulumi.get(self, "add_linodes")
 
     @property
     @pulumi.getter(name="addLongview")
-    def add_longview(self) -> Optional[bool]:
+    def add_longview(self) -> bool:
         return pulumi.get(self, "add_longview")
 
     @property
     @pulumi.getter(name="addNodebalancers")
-    def add_nodebalancers(self) -> Optional[bool]:
+    def add_nodebalancers(self) -> bool:
         return pulumi.get(self, "add_nodebalancers")
 
     @property
     @pulumi.getter(name="addStackscripts")
-    def add_stackscripts(self) -> Optional[bool]:
+    def add_stackscripts(self) -> bool:
         return pulumi.get(self, "add_stackscripts")
 
     @property
     @pulumi.getter(name="addVolumes")
-    def add_volumes(self) -> Optional[bool]:
+    def add_volumes(self) -> bool:
         return pulumi.get(self, "add_volumes")
 
     @property
     @pulumi.getter(name="cancelAccount")
-    def cancel_account(self) -> Optional[bool]:
+    def cancel_account(self) -> bool:
         return pulumi.get(self, "cancel_account")
 
     @property
     @pulumi.getter(name="longviewSubscription")
-    def longview_subscription(self) -> Optional[bool]:
+    def longview_subscription(self) -> bool:
         return pulumi.get(self, "longview_subscription")
 
 
@@ -7242,14 +7271,21 @@ class GetUserGlobalGrantResult(dict):
 class GetUserImageGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7261,14 +7297,21 @@ class GetUserImageGrantResult(dict):
 class GetUserLinodeGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7280,14 +7323,21 @@ class GetUserLinodeGrantResult(dict):
 class GetUserLongviewGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7299,14 +7349,21 @@ class GetUserLongviewGrantResult(dict):
 class GetUserNodebalancerGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7318,14 +7375,21 @@ class GetUserNodebalancerGrantResult(dict):
 class GetUserStackscriptGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -7337,14 +7401,21 @@ class GetUserStackscriptGrantResult(dict):
 class GetUserVolumeGrantResult(dict):
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter

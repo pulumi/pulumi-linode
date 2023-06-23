@@ -13,44 +13,44 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetUserGlobalGrantResult
     {
-        public readonly string? AccountAccess;
-        public readonly bool? AddDatabases;
-        public readonly bool? AddDomains;
-        public readonly bool? AddFirewalls;
-        public readonly bool? AddImages;
-        public readonly bool? AddLinodes;
-        public readonly bool? AddLongview;
-        public readonly bool? AddNodebalancers;
-        public readonly bool? AddStackscripts;
-        public readonly bool? AddVolumes;
-        public readonly bool? CancelAccount;
-        public readonly bool? LongviewSubscription;
+        public readonly string AccountAccess;
+        public readonly bool AddDatabases;
+        public readonly bool AddDomains;
+        public readonly bool AddFirewalls;
+        public readonly bool AddImages;
+        public readonly bool AddLinodes;
+        public readonly bool AddLongview;
+        public readonly bool AddNodebalancers;
+        public readonly bool AddStackscripts;
+        public readonly bool AddVolumes;
+        public readonly bool CancelAccount;
+        public readonly bool LongviewSubscription;
 
         [OutputConstructor]
         private GetUserGlobalGrantResult(
-            string? accountAccess,
+            string accountAccess,
 
-            bool? addDatabases,
+            bool addDatabases,
 
-            bool? addDomains,
+            bool addDomains,
 
-            bool? addFirewalls,
+            bool addFirewalls,
 
-            bool? addImages,
+            bool addImages,
 
-            bool? addLinodes,
+            bool addLinodes,
 
-            bool? addLongview,
+            bool addLongview,
 
-            bool? addNodebalancers,
+            bool addNodebalancers,
 
-            bool? addStackscripts,
+            bool addStackscripts,
 
-            bool? addVolumes,
+            bool addVolumes,
 
-            bool? cancelAccount,
+            bool cancelAccount,
 
-            bool? longviewSubscription)
+            bool longviewSubscription)
         {
             AccountAccess = accountAccess;
             AddDatabases = addDatabases;

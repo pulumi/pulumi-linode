@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.linode.outputs.GetUserDatabaseGrant;
 import com.pulumi.linode.outputs.GetUserDomainGrant;
 import com.pulumi.linode.outputs.GetUserFirewallGrant;
 import com.pulumi.linode.outputs.GetUserGlobalGrant;
@@ -20,6 +21,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserResult {
+    /**
+     * @return The grants this User has pertaining to Databases on this Account.
+     * 
+     */
+    private List<GetUserDatabaseGrant> databaseGrants;
     /**
      * @return The grants this User has pertaining to Domains on this Account.
      * 
@@ -40,10 +46,6 @@ public final class GetUserResult {
      * 
      */
     private List<GetUserGlobalGrant> globalGrants;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The grants this User has pertaining to Images on this Account.
@@ -89,6 +91,13 @@ public final class GetUserResult {
 
     private GetUserResult() {}
     /**
+     * @return The grants this User has pertaining to Databases on this Account.
+     * 
+     */
+    public List<GetUserDatabaseGrant> databaseGrants() {
+        return this.databaseGrants;
+    }
+    /**
      * @return The grants this User has pertaining to Domains on this Account.
      * 
      */
@@ -116,10 +125,6 @@ public final class GetUserResult {
     public List<GetUserGlobalGrant> globalGrants() {
         return this.globalGrants;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -192,6 +197,7 @@ public final class GetUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetUserDatabaseGrant> databaseGrants;
         private List<GetUserDomainGrant> domainGrants;
         private String email;
         private List<GetUserFirewallGrant> firewallGrants;
@@ -209,6 +215,7 @@ public final class GetUserResult {
         public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.databaseGrants = defaults.databaseGrants;
     	      this.domainGrants = defaults.domainGrants;
     	      this.email = defaults.email;
     	      this.firewallGrants = defaults.firewallGrants;
@@ -225,6 +232,14 @@ public final class GetUserResult {
     	      this.volumeGrants = defaults.volumeGrants;
         }
 
+        @CustomType.Setter
+        public Builder databaseGrants(List<GetUserDatabaseGrant> databaseGrants) {
+            this.databaseGrants = Objects.requireNonNull(databaseGrants);
+            return this;
+        }
+        public Builder databaseGrants(GetUserDatabaseGrant... databaseGrants) {
+            return databaseGrants(List.of(databaseGrants));
+        }
         @CustomType.Setter
         public Builder domainGrants(List<GetUserDomainGrant> domainGrants) {
             this.domainGrants = Objects.requireNonNull(domainGrants);
@@ -327,6 +342,7 @@ public final class GetUserResult {
         }
         public GetUserResult build() {
             final var o = new GetUserResult();
+            o.databaseGrants = databaseGrants;
             o.domainGrants = domainGrants;
             o.email = email;
             o.firewallGrants = firewallGrants;

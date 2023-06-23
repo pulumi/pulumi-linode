@@ -91,11 +91,8 @@ func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDatabases.
 type GetDatabasesArgs struct {
-	Filters []GetDatabasesFilter `pulumi:"filters"`
-	// If true, only the latest create database will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-	Latest *bool `pulumi:"latest"`
+	Databases []GetDatabasesDatabase `pulumi:"databases"`
+	Filters   []GetDatabasesFilter   `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. (`version`)
@@ -106,9 +103,8 @@ type GetDatabasesArgs struct {
 type GetDatabasesResult struct {
 	Databases []GetDatabasesDatabase `pulumi:"databases"`
 	Filters   []GetDatabasesFilter   `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of the Managed Database.
 	Id      string  `pulumi:"id"`
-	Latest  *bool   `pulumi:"latest"`
 	Order   *string `pulumi:"order"`
 	OrderBy *string `pulumi:"orderBy"`
 }
@@ -128,11 +124,8 @@ func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts .
 
 // A collection of arguments for invoking getDatabases.
 type GetDatabasesOutputArgs struct {
-	Filters GetDatabasesFilterArrayInput `pulumi:"filters"`
-	// If true, only the latest create database will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-	Latest pulumi.BoolPtrInput `pulumi:"latest"`
+	Databases GetDatabasesDatabaseArrayInput `pulumi:"databases"`
+	Filters   GetDatabasesFilterArrayInput   `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. (`version`)
@@ -166,13 +159,9 @@ func (o GetDatabasesResultOutput) Filters() GetDatabasesFilterArrayOutput {
 	return o.ApplyT(func(v GetDatabasesResult) []GetDatabasesFilter { return v.Filters }).(GetDatabasesFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of the Managed Database.
 func (o GetDatabasesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetDatabasesResultOutput) Latest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetDatabasesResult) *bool { return v.Latest }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetDatabasesResultOutput) Order() pulumi.StringPtrOutput {

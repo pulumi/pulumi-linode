@@ -7,60 +7,58 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserGlobalGrant {
-    private @Nullable String accountAccess;
-    private @Nullable Boolean addDatabases;
-    private @Nullable Boolean addDomains;
-    private @Nullable Boolean addFirewalls;
-    private @Nullable Boolean addImages;
-    private @Nullable Boolean addLinodes;
-    private @Nullable Boolean addLongview;
-    private @Nullable Boolean addNodebalancers;
-    private @Nullable Boolean addStackscripts;
-    private @Nullable Boolean addVolumes;
-    private @Nullable Boolean cancelAccount;
-    private @Nullable Boolean longviewSubscription;
+    private String accountAccess;
+    private Boolean addDatabases;
+    private Boolean addDomains;
+    private Boolean addFirewalls;
+    private Boolean addImages;
+    private Boolean addLinodes;
+    private Boolean addLongview;
+    private Boolean addNodebalancers;
+    private Boolean addStackscripts;
+    private Boolean addVolumes;
+    private Boolean cancelAccount;
+    private Boolean longviewSubscription;
 
     private GetUserGlobalGrant() {}
-    public Optional<String> accountAccess() {
-        return Optional.ofNullable(this.accountAccess);
+    public String accountAccess() {
+        return this.accountAccess;
     }
-    public Optional<Boolean> addDatabases() {
-        return Optional.ofNullable(this.addDatabases);
+    public Boolean addDatabases() {
+        return this.addDatabases;
     }
-    public Optional<Boolean> addDomains() {
-        return Optional.ofNullable(this.addDomains);
+    public Boolean addDomains() {
+        return this.addDomains;
     }
-    public Optional<Boolean> addFirewalls() {
-        return Optional.ofNullable(this.addFirewalls);
+    public Boolean addFirewalls() {
+        return this.addFirewalls;
     }
-    public Optional<Boolean> addImages() {
-        return Optional.ofNullable(this.addImages);
+    public Boolean addImages() {
+        return this.addImages;
     }
-    public Optional<Boolean> addLinodes() {
-        return Optional.ofNullable(this.addLinodes);
+    public Boolean addLinodes() {
+        return this.addLinodes;
     }
-    public Optional<Boolean> addLongview() {
-        return Optional.ofNullable(this.addLongview);
+    public Boolean addLongview() {
+        return this.addLongview;
     }
-    public Optional<Boolean> addNodebalancers() {
-        return Optional.ofNullable(this.addNodebalancers);
+    public Boolean addNodebalancers() {
+        return this.addNodebalancers;
     }
-    public Optional<Boolean> addStackscripts() {
-        return Optional.ofNullable(this.addStackscripts);
+    public Boolean addStackscripts() {
+        return this.addStackscripts;
     }
-    public Optional<Boolean> addVolumes() {
-        return Optional.ofNullable(this.addVolumes);
+    public Boolean addVolumes() {
+        return this.addVolumes;
     }
-    public Optional<Boolean> cancelAccount() {
-        return Optional.ofNullable(this.cancelAccount);
+    public Boolean cancelAccount() {
+        return this.cancelAccount;
     }
-    public Optional<Boolean> longviewSubscription() {
-        return Optional.ofNullable(this.longviewSubscription);
+    public Boolean longviewSubscription() {
+        return this.longviewSubscription;
     }
 
     public static Builder builder() {
@@ -72,18 +70,18 @@ public final class GetUserGlobalGrant {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountAccess;
-        private @Nullable Boolean addDatabases;
-        private @Nullable Boolean addDomains;
-        private @Nullable Boolean addFirewalls;
-        private @Nullable Boolean addImages;
-        private @Nullable Boolean addLinodes;
-        private @Nullable Boolean addLongview;
-        private @Nullable Boolean addNodebalancers;
-        private @Nullable Boolean addStackscripts;
-        private @Nullable Boolean addVolumes;
-        private @Nullable Boolean cancelAccount;
-        private @Nullable Boolean longviewSubscription;
+        private String accountAccess;
+        private Boolean addDatabases;
+        private Boolean addDomains;
+        private Boolean addFirewalls;
+        private Boolean addImages;
+        private Boolean addLinodes;
+        private Boolean addLongview;
+        private Boolean addNodebalancers;
+        private Boolean addStackscripts;
+        private Boolean addVolumes;
+        private Boolean cancelAccount;
+        private Boolean longviewSubscription;
         public Builder() {}
         public Builder(GetUserGlobalGrant defaults) {
     	      Objects.requireNonNull(defaults);
@@ -102,63 +100,63 @@ public final class GetUserGlobalGrant {
         }
 
         @CustomType.Setter
-        public Builder accountAccess(@Nullable String accountAccess) {
-            this.accountAccess = accountAccess;
+        public Builder accountAccess(String accountAccess) {
+            this.accountAccess = Objects.requireNonNull(accountAccess);
             return this;
         }
         @CustomType.Setter
-        public Builder addDatabases(@Nullable Boolean addDatabases) {
-            this.addDatabases = addDatabases;
+        public Builder addDatabases(Boolean addDatabases) {
+            this.addDatabases = Objects.requireNonNull(addDatabases);
             return this;
         }
         @CustomType.Setter
-        public Builder addDomains(@Nullable Boolean addDomains) {
-            this.addDomains = addDomains;
+        public Builder addDomains(Boolean addDomains) {
+            this.addDomains = Objects.requireNonNull(addDomains);
             return this;
         }
         @CustomType.Setter
-        public Builder addFirewalls(@Nullable Boolean addFirewalls) {
-            this.addFirewalls = addFirewalls;
+        public Builder addFirewalls(Boolean addFirewalls) {
+            this.addFirewalls = Objects.requireNonNull(addFirewalls);
             return this;
         }
         @CustomType.Setter
-        public Builder addImages(@Nullable Boolean addImages) {
-            this.addImages = addImages;
+        public Builder addImages(Boolean addImages) {
+            this.addImages = Objects.requireNonNull(addImages);
             return this;
         }
         @CustomType.Setter
-        public Builder addLinodes(@Nullable Boolean addLinodes) {
-            this.addLinodes = addLinodes;
+        public Builder addLinodes(Boolean addLinodes) {
+            this.addLinodes = Objects.requireNonNull(addLinodes);
             return this;
         }
         @CustomType.Setter
-        public Builder addLongview(@Nullable Boolean addLongview) {
-            this.addLongview = addLongview;
+        public Builder addLongview(Boolean addLongview) {
+            this.addLongview = Objects.requireNonNull(addLongview);
             return this;
         }
         @CustomType.Setter
-        public Builder addNodebalancers(@Nullable Boolean addNodebalancers) {
-            this.addNodebalancers = addNodebalancers;
+        public Builder addNodebalancers(Boolean addNodebalancers) {
+            this.addNodebalancers = Objects.requireNonNull(addNodebalancers);
             return this;
         }
         @CustomType.Setter
-        public Builder addStackscripts(@Nullable Boolean addStackscripts) {
-            this.addStackscripts = addStackscripts;
+        public Builder addStackscripts(Boolean addStackscripts) {
+            this.addStackscripts = Objects.requireNonNull(addStackscripts);
             return this;
         }
         @CustomType.Setter
-        public Builder addVolumes(@Nullable Boolean addVolumes) {
-            this.addVolumes = addVolumes;
+        public Builder addVolumes(Boolean addVolumes) {
+            this.addVolumes = Objects.requireNonNull(addVolumes);
             return this;
         }
         @CustomType.Setter
-        public Builder cancelAccount(@Nullable Boolean cancelAccount) {
-            this.cancelAccount = cancelAccount;
+        public Builder cancelAccount(Boolean cancelAccount) {
+            this.cancelAccount = Objects.requireNonNull(cancelAccount);
             return this;
         }
         @CustomType.Setter
-        public Builder longviewSubscription(@Nullable Boolean longviewSubscription) {
-            this.longviewSubscription = longviewSubscription;
+        public Builder longviewSubscription(Boolean longviewSubscription) {
+            this.longviewSubscription = Objects.requireNonNull(longviewSubscription);
             return this;
         }
         public GetUserGlobalGrant build() {

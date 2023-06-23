@@ -141,6 +141,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("logins")]
+        private List<Inputs.GetAccountLoginsLoginArgs>? _logins;
+        public List<Inputs.GetAccountLoginsLoginArgs> Logins
+        {
+            get => _logins ?? (_logins = new List<Inputs.GetAccountLoginsLoginArgs>());
+            set => _logins = value;
+        }
+
         public GetAccountLoginsArgs()
         {
         }
@@ -157,6 +165,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("logins")]
+        private InputList<Inputs.GetAccountLoginsLoginInputArgs>? _logins;
+        public InputList<Inputs.GetAccountLoginsLoginInputArgs> Logins
+        {
+            get => _logins ?? (_logins = new InputList<Inputs.GetAccountLoginsLoginInputArgs>());
+            set => _logins = value;
+        }
+
         public GetAccountLoginsInvokeArgs()
         {
         }
@@ -169,7 +185,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetAccountLoginsFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The unique ID of this login object.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAccountLoginsLoginResult> Logins;

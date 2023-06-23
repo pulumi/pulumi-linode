@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.GetUserDatabaseGrant;
 import com.pulumi.linode.inputs.GetUserDomainGrant;
 import com.pulumi.linode.inputs.GetUserFirewallGrant;
 import com.pulumi.linode.inputs.GetUserImageGrant;
@@ -22,6 +23,21 @@ import javax.annotation.Nullable;
 public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
+
+    /**
+     * The grants this User has pertaining to Databases on this Account.
+     * 
+     */
+    @Import(name="databaseGrants")
+    private @Nullable List<GetUserDatabaseGrant> databaseGrants;
+
+    /**
+     * @return The grants this User has pertaining to Databases on this Account.
+     * 
+     */
+    public Optional<List<GetUserDatabaseGrant>> databaseGrants() {
+        return Optional.ofNullable(this.databaseGrants);
+    }
 
     /**
      * The grants this User has pertaining to Domains on this Account.
@@ -161,6 +177,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserPlainArgs() {}
 
     private GetUserPlainArgs(GetUserPlainArgs $) {
+        this.databaseGrants = $.databaseGrants;
         this.domainGrants = $.domainGrants;
         this.firewallGrants = $.firewallGrants;
         this.imageGrants = $.imageGrants;
@@ -188,6 +205,27 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserPlainArgs defaults) {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param databaseGrants The grants this User has pertaining to Databases on this Account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseGrants(@Nullable List<GetUserDatabaseGrant> databaseGrants) {
+            $.databaseGrants = databaseGrants;
+            return this;
+        }
+
+        /**
+         * @param databaseGrants The grants this User has pertaining to Databases on this Account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseGrants(GetUserDatabaseGrant... databaseGrants) {
+            return databaseGrants(List.of(databaseGrants));
         }
 
         /**

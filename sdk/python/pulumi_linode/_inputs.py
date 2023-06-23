@@ -55,17 +55,31 @@ __all__ = [
     'UserStackscriptGrantArgs',
     'UserVolumeGrantArgs',
     'GetAccountLoginsFilterArgs',
+    'GetAccountLoginsLoginArgs',
+    'GetDatabaseBackupsBackupArgs',
     'GetDatabaseBackupsFilterArgs',
+    'GetDatabaseEnginesEngineArgs',
     'GetDatabaseEnginesFilterArgs',
     'GetDatabaseMysqlBackupsFilterArgs',
+    'GetDatabasesDatabaseArgs',
     'GetDatabasesFilterArgs',
     'GetImagesFilterArgs',
+    'GetImagesImageArgs',
     'GetInstanceTypesFilterArgs',
+    'GetInstanceTypesTypeArgs',
+    'GetInstanceTypesTypeAddonArgs',
+    'GetInstanceTypesTypeAddonBackupArgs',
+    'GetInstanceTypesTypeAddonBackupPriceArgs',
+    'GetInstanceTypesTypePriceArgs',
     'GetInstancesFilterArgs',
+    'GetRegionResolverArgs',
     'GetRegionsFilterArgs',
     'GetRegionsRegionArgs',
     'GetRegionsRegionResolverArgs',
     'GetStackScriptsFilterArgs',
+    'GetStackScriptsStackscriptArgs',
+    'GetStackScriptsStackscriptUserDefinedFieldArgs',
+    'GetUserDatabaseGrantArgs',
     'GetUserDomainGrantArgs',
     'GetUserFirewallGrantArgs',
     'GetUserImageGrantArgs',
@@ -75,6 +89,7 @@ __all__ = [
     'GetUserStackscriptGrantArgs',
     'GetUserVolumeGrantArgs',
     'GetVlansFilterArgs',
+    'GetVlansVlanArgs',
 ]
 
 @pulumi.input_type
@@ -2851,6 +2866,166 @@ class GetAccountLoginsFilterArgs:
 
 
 @pulumi.input_type
+class GetAccountLoginsLoginArgs:
+    def __init__(__self__, *,
+                 datetime: str,
+                 id: int,
+                 ip: str,
+                 restricted: bool,
+                 status: str,
+                 username: str):
+        """
+        :param str datetime: When the login was initiated.
+        :param int id: The unique ID of this login object.
+        :param str ip: The remote IP address that requested the login.
+        :param bool restricted: True if the User that was logged into was a restricted User, false otherwise.
+        :param str username: The username of the User that was logged into.
+        """
+        pulumi.set(__self__, "datetime", datetime)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "restricted", restricted)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def datetime(self) -> str:
+        """
+        When the login was initiated.
+        """
+        return pulumi.get(self, "datetime")
+
+    @datetime.setter
+    def datetime(self, value: str):
+        pulumi.set(self, "datetime", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this login object.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The remote IP address that requested the login.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: str):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> bool:
+        """
+        True if the User that was logged into was a restricted User, false otherwise.
+        """
+        return pulumi.get(self, "restricted")
+
+    @restricted.setter
+    def restricted(self, value: bool):
+        pulumi.set(self, "restricted", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the User that was logged into.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class GetDatabaseBackupsBackupArgs:
+    def __init__(__self__, *,
+                 created: str,
+                 id: int,
+                 label: str,
+                 type: str):
+        """
+        :param str created: A time value given in a combined date and time format that represents when the database backup was created.
+        :param int id: The ID of the database backup object.
+        :param str label: The database backup’s label, for display purposes only.
+        :param str type: The type of database backup, determined by how the backup was created.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        A time value given in a combined date and time format that represents when the database backup was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the database backup object.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The database backup’s label, for display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of database backup, determined by how the backup was created.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class GetDatabaseBackupsFilterArgs:
     def __init__(__self__, *,
                  name: str,
@@ -2901,6 +3076,58 @@ class GetDatabaseBackupsFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetDatabaseEnginesEngineArgs:
+    def __init__(__self__, *,
+                 engine: str,
+                 id: str,
+                 version: str):
+        """
+        :param str engine: The Managed Database engine type.
+        :param str id: The Managed Database engine ID in engine/version format.
+        :param str version: The Managed Database engine version.
+        """
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The Managed Database engine type.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: str):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The Managed Database engine ID in engine/version format.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Managed Database engine version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: str):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -3010,6 +3237,264 @@ class GetDatabaseMysqlBackupsFilterArgs:
 
 
 @pulumi.input_type
+class GetDatabasesDatabaseArgs:
+    def __init__(__self__, *,
+                 allow_lists: Sequence[str],
+                 cluster_size: int,
+                 created: str,
+                 encrypted: bool,
+                 engine: str,
+                 host_primary: str,
+                 host_secondary: str,
+                 id: int,
+                 instance_uri: str,
+                 label: str,
+                 region: str,
+                 replication_type: str,
+                 ssl_connection: bool,
+                 status: str,
+                 type: str,
+                 updated: str,
+                 version: str):
+        """
+        :param Sequence[str] allow_lists: A list of IP addresses that can access the Managed Database.
+        :param int cluster_size: The number of Linode Instance nodes deployed to the Managed Database.
+        :param str created: When this Managed Database was created.
+        :param bool encrypted: Whether the Managed Databases is encrypted.
+        :param str engine: The Managed Database engine.
+        :param str host_primary: The primary host for the Managed Database.
+        :param str host_secondary: The secondary/private network host for the Managed Database.
+        :param int id: The ID of the Managed Database.
+        :param str label: A unique, user-defined string referring to the Managed Database.
+        :param str region: The region to use for the Managed Database.
+        :param str replication_type: The replication method used for the Managed Database.
+        :param bool ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database.
+        :param str status: The operating status of the Managed Database.
+        :param str type: The Linode Instance type used for the nodes of the  Managed Database instance.
+        :param str updated: When this Managed Database was last updated.
+        :param str version: The Managed Database engine version.
+        """
+        pulumi.set(__self__, "allow_lists", allow_lists)
+        pulumi.set(__self__, "cluster_size", cluster_size)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "host_primary", host_primary)
+        pulumi.set(__self__, "host_secondary", host_secondary)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_uri", instance_uri)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "replication_type", replication_type)
+        pulumi.set(__self__, "ssl_connection", ssl_connection)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="allowLists")
+    def allow_lists(self) -> Sequence[str]:
+        """
+        A list of IP addresses that can access the Managed Database.
+        """
+        return pulumi.get(self, "allow_lists")
+
+    @allow_lists.setter
+    def allow_lists(self, value: Sequence[str]):
+        pulumi.set(self, "allow_lists", value)
+
+    @property
+    @pulumi.getter(name="clusterSize")
+    def cluster_size(self) -> int:
+        """
+        The number of Linode Instance nodes deployed to the Managed Database.
+        """
+        return pulumi.get(self, "cluster_size")
+
+    @cluster_size.setter
+    def cluster_size(self, value: int):
+        pulumi.set(self, "cluster_size", value)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Managed Database was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> bool:
+        """
+        Whether the Managed Databases is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: bool):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The Managed Database engine.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: str):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="hostPrimary")
+    def host_primary(self) -> str:
+        """
+        The primary host for the Managed Database.
+        """
+        return pulumi.get(self, "host_primary")
+
+    @host_primary.setter
+    def host_primary(self, value: str):
+        pulumi.set(self, "host_primary", value)
+
+    @property
+    @pulumi.getter(name="hostSecondary")
+    def host_secondary(self) -> str:
+        """
+        The secondary/private network host for the Managed Database.
+        """
+        return pulumi.get(self, "host_secondary")
+
+    @host_secondary.setter
+    def host_secondary(self, value: str):
+        pulumi.set(self, "host_secondary", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the Managed Database.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> str:
+        return pulumi.get(self, "instance_uri")
+
+    @instance_uri.setter
+    def instance_uri(self, value: str):
+        pulumi.set(self, "instance_uri", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A unique, user-defined string referring to the Managed Database.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region to use for the Managed Database.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="replicationType")
+    def replication_type(self) -> str:
+        """
+        The replication method used for the Managed Database.
+        """
+        return pulumi.get(self, "replication_type")
+
+    @replication_type.setter
+    def replication_type(self, value: str):
+        pulumi.set(self, "replication_type", value)
+
+    @property
+    @pulumi.getter(name="sslConnection")
+    def ssl_connection(self) -> bool:
+        """
+        Whether to require SSL credentials to establish a connection to the Managed Database.
+        """
+        return pulumi.get(self, "ssl_connection")
+
+    @ssl_connection.setter
+    def ssl_connection(self, value: bool):
+        pulumi.set(self, "ssl_connection", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The operating status of the Managed Database.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The Linode Instance type used for the nodes of the  Managed Database instance.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this Managed Database was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: str):
+        pulumi.set(self, "updated", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Managed Database engine version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: str):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class GetDatabasesFilterArgs:
     def __init__(__self__, *,
                  name: str,
@@ -3116,6 +3601,189 @@ class GetImagesFilterArgs:
 
 
 @pulumi.input_type
+class GetImagesImageArgs:
+    def __init__(__self__, *,
+                 created: str,
+                 created_by: str,
+                 deprecated: bool,
+                 description: str,
+                 expiry: str,
+                 id: str,
+                 is_public: bool,
+                 label: str,
+                 size: int,
+                 status: str,
+                 type: str,
+                 vendor: str):
+        """
+        :param str created: When this Image was created.
+        :param str created_by: The name of the User who created this Image, or "linode" for official Images.
+        :param bool deprecated: Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+        :param str description: A detailed description of this Image.
+        :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+        :param bool is_public: True if the Image is public.
+        :param str label: A short description of the Image.
+        :param int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        :param str status: The current status of this image. (`creating`, `pending_upload`, `available`)
+        :param str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        :param str vendor: The upstream distribution vendor. `None` for private Images.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expiry", expiry)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Image was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The name of the User who created this Image, or "linode" for official Images.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: str):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> bool:
+        """
+        Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @deprecated.setter
+    def deprecated(self, value: bool):
+        pulumi.set(self, "deprecated", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A detailed description of this Image.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expiry(self) -> str:
+        return pulumi.get(self, "expiry")
+
+    @expiry.setter
+    def expiry(self, value: str):
+        pulumi.set(self, "expiry", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        """
+        True if the Image is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: bool):
+        pulumi.set(self, "is_public", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A short description of the Image.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: int):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current status of this image. (`creating`, `pending_upload`, `available`)
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        """
+        The upstream distribution vendor. `None` for private Images.
+        """
+        return pulumi.get(self, "vendor")
+
+    @vendor.setter
+    def vendor(self, value: str):
+        pulumi.set(self, "vendor", value)
+
+
+@pulumi.input_type
 class GetInstanceTypesFilterArgs:
     def __init__(__self__, *,
                  name: str,
@@ -3169,6 +3837,241 @@ class GetInstanceTypesFilterArgs:
 
 
 @pulumi.input_type
+class GetInstanceTypesTypeArgs:
+    def __init__(__self__, *,
+                 addons: Sequence['GetInstanceTypesTypeAddonArgs'],
+                 class_: str,
+                 disk: int,
+                 id: str,
+                 label: str,
+                 memory: int,
+                 network_out: int,
+                 prices: Sequence['GetInstanceTypesTypePriceArgs'],
+                 transfer: int,
+                 vcpus: int):
+        """
+        :param str class_: The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        :param int disk: The Disk size, in MB, of the Linode Type.
+        :param str id: The ID representing the Linode Type.
+        :param str label: The Linode Type's label is for display purposes only.
+        :param int memory: The amount of RAM included in this Linode Type.
+        :param int network_out: The Mbits outbound bandwidth allocation.
+        :param int transfer: The monthly outbound transfer amount, in MB.
+        :param int vcpus: The number of VCPU cores this Linode Type offers.
+        """
+        pulumi.set(__self__, "addons", addons)
+        pulumi.set(__self__, "class_", class_)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "network_out", network_out)
+        pulumi.set(__self__, "prices", prices)
+        pulumi.set(__self__, "transfer", transfer)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def addons(self) -> Sequence['GetInstanceTypesTypeAddonArgs']:
+        return pulumi.get(self, "addons")
+
+    @addons.setter
+    def addons(self, value: Sequence['GetInstanceTypesTypeAddonArgs']):
+        pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="class")
+    def class_(self) -> str:
+        """
+        The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        """
+        return pulumi.get(self, "class_")
+
+    @class_.setter
+    def class_(self, value: str):
+        pulumi.set(self, "class_", value)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> int:
+        """
+        The Disk size, in MB, of the Linode Type.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: int):
+        pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID representing the Linode Type.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The Linode Type's label is for display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The amount of RAM included in this Linode Type.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: int):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="networkOut")
+    def network_out(self) -> int:
+        """
+        The Mbits outbound bandwidth allocation.
+        """
+        return pulumi.get(self, "network_out")
+
+    @network_out.setter
+    def network_out(self, value: int):
+        pulumi.set(self, "network_out", value)
+
+    @property
+    @pulumi.getter
+    def prices(self) -> Sequence['GetInstanceTypesTypePriceArgs']:
+        return pulumi.get(self, "prices")
+
+    @prices.setter
+    def prices(self, value: Sequence['GetInstanceTypesTypePriceArgs']):
+        pulumi.set(self, "prices", value)
+
+    @property
+    @pulumi.getter
+    def transfer(self) -> int:
+        """
+        The monthly outbound transfer amount, in MB.
+        """
+        return pulumi.get(self, "transfer")
+
+    @transfer.setter
+    def transfer(self, value: int):
+        pulumi.set(self, "transfer", value)
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> int:
+        """
+        The number of VCPU cores this Linode Type offers.
+        """
+        return pulumi.get(self, "vcpus")
+
+    @vcpus.setter
+    def vcpus(self, value: int):
+        pulumi.set(self, "vcpus", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesTypeAddonArgs:
+    def __init__(__self__, *,
+                 backups: Sequence['GetInstanceTypesTypeAddonBackupArgs']):
+        pulumi.set(__self__, "backups", backups)
+
+    @property
+    @pulumi.getter
+    def backups(self) -> Sequence['GetInstanceTypesTypeAddonBackupArgs']:
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Sequence['GetInstanceTypesTypeAddonBackupArgs']):
+        pulumi.set(self, "backups", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesTypeAddonBackupArgs:
+    def __init__(__self__, *,
+                 prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']):
+        pulumi.set(__self__, "prices", prices)
+
+    @property
+    @pulumi.getter
+    def prices(self) -> Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']:
+        return pulumi.get(self, "prices")
+
+    @prices.setter
+    def prices(self, value: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']):
+        pulumi.set(self, "prices", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesTypeAddonBackupPriceArgs:
+    def __init__(__self__, *,
+                 hourly: float,
+                 monthly: float):
+        pulumi.set(__self__, "hourly", hourly)
+        pulumi.set(__self__, "monthly", monthly)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> float:
+        return pulumi.get(self, "hourly")
+
+    @hourly.setter
+    def hourly(self, value: float):
+        pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> float:
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: float):
+        pulumi.set(self, "monthly", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesTypePriceArgs:
+    def __init__(__self__, *,
+                 hourly: float,
+                 monthly: float):
+        pulumi.set(__self__, "hourly", hourly)
+        pulumi.set(__self__, "monthly", monthly)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> float:
+        return pulumi.get(self, "hourly")
+
+    @hourly.setter
+    def hourly(self, value: float):
+        pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> float:
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: float):
+        pulumi.set(self, "monthly", value)
+
+
+@pulumi.input_type
 class GetInstancesFilterArgs:
     def __init__(__self__, *,
                  name: str,
@@ -3219,6 +4122,43 @@ class GetInstancesFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetRegionResolverArgs:
+    def __init__(__self__, *,
+                 ipv4: str,
+                 ipv6: str):
+        """
+        :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: str):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: str):
+        pulumi.set(self, "ipv6", value)
 
 
 @pulumi.input_type
@@ -3455,11 +4395,327 @@ class GetStackScriptsFilterArgs:
 
 
 @pulumi.input_type
-class GetUserDomainGrantArgs:
+class GetStackScriptsStackscriptArgs:
+    def __init__(__self__, *,
+                 created: str,
+                 deployments_active: int,
+                 deployments_total: int,
+                 description: str,
+                 id: str,
+                 images: Sequence[str],
+                 is_public: bool,
+                 label: str,
+                 rev_note: str,
+                 script: str,
+                 updated: str,
+                 user_defined_fields: Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs'],
+                 user_gravatar_id: str,
+                 username: str):
+        """
+        :param str created: The date this StackScript was created.
+        :param int deployments_active: Count of currently active, deployed Linodes created from this StackScript.
+        :param int deployments_total: The total number of times this StackScript has been deployed.
+        :param str description: A description for the StackScript.
+        :param str id: The unique ID of the StackScript.
+        :param Sequence[str] images: An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        :param bool is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+        :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        :param str rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
+        :param str script: The script to execute when provisioning a new Linode with this StackScript.
+        :param str updated: The date this StackScript was updated.
+        :param Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs'] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        :param str user_gravatar_id: The Gravatar ID for the User who created the StackScript.
+        :param str username: The User who created the StackScript.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "deployments_active", deployments_active)
+        pulumi.set(__self__, "deployments_total", deployments_total)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "rev_note", rev_note)
+        pulumi.set(__self__, "script", script)
+        pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+        pulumi.set(__self__, "user_gravatar_id", user_gravatar_id)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date this StackScript was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter(name="deploymentsActive")
+    def deployments_active(self) -> int:
+        """
+        Count of currently active, deployed Linodes created from this StackScript.
+        """
+        return pulumi.get(self, "deployments_active")
+
+    @deployments_active.setter
+    def deployments_active(self, value: int):
+        pulumi.set(self, "deployments_active", value)
+
+    @property
+    @pulumi.getter(name="deploymentsTotal")
+    def deployments_total(self) -> int:
+        """
+        The total number of times this StackScript has been deployed.
+        """
+        return pulumi.get(self, "deployments_total")
+
+    @deployments_total.setter
+    def deployments_total(self, value: int):
+        pulumi.set(self, "deployments_total", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description for the StackScript.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique ID of the StackScript.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Sequence[str]:
+        """
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Sequence[str]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
+        """
+        This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: bool):
+        pulumi.set(self, "is_public", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="revNote")
+    def rev_note(self) -> str:
+        """
+        This field allows you to add notes for the set of revisions made to this StackScript.
+        """
+        return pulumi.get(self, "rev_note")
+
+    @rev_note.setter
+    def rev_note(self, value: str):
+        pulumi.set(self, "rev_note", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        """
+        The script to execute when provisioning a new Linode with this StackScript.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: str):
+        pulumi.set(self, "script", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date this StackScript was updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: str):
+        pulumi.set(self, "updated", value)
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs']:
+        """
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+    @user_defined_fields.setter
+    def user_defined_fields(self, value: Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs']):
+        pulumi.set(self, "user_defined_fields", value)
+
+    @property
+    @pulumi.getter(name="userGravatarId")
+    def user_gravatar_id(self) -> str:
+        """
+        The Gravatar ID for the User who created the StackScript.
+        """
+        return pulumi.get(self, "user_gravatar_id")
+
+    @user_gravatar_id.setter
+    def user_gravatar_id(self, value: str):
+        pulumi.set(self, "user_gravatar_id", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The User who created the StackScript.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class GetStackScriptsStackscriptUserDefinedFieldArgs:
+    def __init__(__self__, *,
+                 default: str,
+                 example: str,
+                 label: str,
+                 many_of: str,
+                 name: str,
+                 one_of: str):
+        """
+        :param str default: The default value. If not specified, this value will be used.
+        :param str example: An example value for the field.
+        :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        :param str many_of: A list of acceptable values for the field in any quantity, combination or order.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param str one_of: A list of acceptable single values for the field.
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "many_of", many_of)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "one_of", one_of)
+
+    @property
+    @pulumi.getter
+    def default(self) -> str:
+        """
+        The default value. If not specified, this value will be used.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: str):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter
+    def example(self) -> str:
+        """
+        An example value for the field.
+        """
+        return pulumi.get(self, "example")
+
+    @example.setter
+    def example(self, value: str):
+        pulumi.set(self, "example", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="manyOf")
+    def many_of(self) -> str:
+        """
+        A list of acceptable values for the field in any quantity, combination or order.
+        """
+        return pulumi.get(self, "many_of")
+
+    @many_of.setter
+    def many_of(self, value: str):
+        pulumi.set(self, "many_of", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oneOf")
+    def one_of(self) -> str:
+        """
+        A list of acceptable single values for the field.
+        """
+        return pulumi.get(self, "one_of")
+
+    @one_of.setter
+    def one_of(self, value: str):
+        pulumi.set(self, "one_of", value)
+
+
+@pulumi.input_type
+class GetUserDatabaseGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3470,6 +4726,53 @@ class GetUserDomainGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUserDomainGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3485,8 +4788,10 @@ class GetUserDomainGrantArgs:
 class GetUserFirewallGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3497,6 +4802,15 @@ class GetUserFirewallGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3512,8 +4826,10 @@ class GetUserFirewallGrantArgs:
 class GetUserImageGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3524,6 +4840,15 @@ class GetUserImageGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3539,8 +4864,10 @@ class GetUserImageGrantArgs:
 class GetUserLinodeGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3551,6 +4878,15 @@ class GetUserLinodeGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3566,8 +4902,10 @@ class GetUserLinodeGrantArgs:
 class GetUserLongviewGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3578,6 +4916,15 @@ class GetUserLongviewGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3593,8 +4940,10 @@ class GetUserLongviewGrantArgs:
 class GetUserNodebalancerGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3605,6 +4954,15 @@ class GetUserNodebalancerGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3620,8 +4978,10 @@ class GetUserNodebalancerGrantArgs:
 class GetUserStackscriptGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3632,6 +4992,15 @@ class GetUserStackscriptGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3647,8 +5016,10 @@ class GetUserStackscriptGrantArgs:
 class GetUserVolumeGrantArgs:
     def __init__(__self__, *,
                  id: int,
+                 label: str,
                  permissions: str):
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
@@ -3659,6 +5030,15 @@ class GetUserVolumeGrantArgs:
     @id.setter
     def id(self, value: int):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -3721,5 +5101,72 @@ class GetVlansFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetVlansVlanArgs:
+    def __init__(__self__, *,
+                 created: str,
+                 label: str,
+                 linodes: Sequence[int],
+                 region: str):
+        """
+        :param str created: When the VLAN was created.
+        :param str label: The unique label of the VLAN.
+        :param Sequence[int] linodes: The running Linodes currently attached to the VLAN.
+        :param str region: The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When the VLAN was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The unique label of the VLAN.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Sequence[int]:
+        """
+        The running Linodes currently attached to the VLAN.
+        """
+        return pulumi.get(self, "linodes")
+
+    @linodes.setter
+    def linodes(self, value: Sequence[int]):
+        pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
 
 

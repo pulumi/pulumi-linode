@@ -93,13 +93,14 @@ type GetStackScriptsArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string `pulumi:"orderBy"`
+	OrderBy      *string                      `pulumi:"orderBy"`
+	Stackscripts []GetStackScriptsStackscript `pulumi:"stackscripts"`
 }
 
 // A collection of values returned by getStackScripts.
 type GetStackScriptsResult struct {
 	Filters []GetStackScriptsFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of the StackScript.
 	Id           string                       `pulumi:"id"`
 	Latest       *bool                        `pulumi:"latest"`
 	Order        *string                      `pulumi:"order"`
@@ -130,7 +131,8 @@ type GetStackScriptsOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderBy      pulumi.StringPtrInput                `pulumi:"orderBy"`
+	Stackscripts GetStackScriptsStackscriptArrayInput `pulumi:"stackscripts"`
 }
 
 func (GetStackScriptsOutputArgs) ElementType() reflect.Type {
@@ -156,7 +158,7 @@ func (o GetStackScriptsResultOutput) Filters() GetStackScriptsFilterArrayOutput 
 	return o.ApplyT(func(v GetStackScriptsResult) []GetStackScriptsFilter { return v.Filters }).(GetStackScriptsFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of the StackScript.
 func (o GetStackScriptsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsResult) string { return v.Id }).(pulumi.StringOutput)
 }

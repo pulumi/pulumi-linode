@@ -195,6 +195,14 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
+        [Input("types")]
+        private List<Inputs.GetInstanceTypesTypeArgs>? _types;
+        public List<Inputs.GetInstanceTypesTypeArgs> Types
+        {
+            get => _types ?? (_types = new List<Inputs.GetInstanceTypesTypeArgs>());
+            set => _types = value;
+        }
+
         public GetInstanceTypesArgs()
         {
         }
@@ -223,6 +231,14 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
+        [Input("types")]
+        private InputList<Inputs.GetInstanceTypesTypeInputArgs>? _types;
+        public InputList<Inputs.GetInstanceTypesTypeInputArgs> Types
+        {
+            get => _types ?? (_types = new InputList<Inputs.GetInstanceTypesTypeInputArgs>());
+            set => _types = value;
+        }
+
         public GetInstanceTypesInvokeArgs()
         {
         }
@@ -235,7 +251,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetInstanceTypesFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID representing the Linode Type.
         /// </summary>
         public readonly string Id;
         public readonly string? Order;

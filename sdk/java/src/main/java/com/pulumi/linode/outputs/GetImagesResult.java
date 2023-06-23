@@ -17,11 +17,11 @@ import javax.annotation.Nullable;
 public final class GetImagesResult {
     private @Nullable List<GetImagesFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      * 
      */
     private String id;
-    private List<GetImagesImage> images;
+    private @Nullable List<GetImagesImage> images;
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -31,14 +31,14 @@ public final class GetImagesResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      * 
      */
     public String id() {
         return this.id;
     }
     public List<GetImagesImage> images() {
-        return this.images;
+        return this.images == null ? List.of() : this.images;
     }
     public Optional<Boolean> latest() {
         return Optional.ofNullable(this.latest);
@@ -61,7 +61,7 @@ public final class GetImagesResult {
     public static final class Builder {
         private @Nullable List<GetImagesFilter> filters;
         private String id;
-        private List<GetImagesImage> images;
+        private @Nullable List<GetImagesImage> images;
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
@@ -90,8 +90,8 @@ public final class GetImagesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder images(List<GetImagesImage> images) {
-            this.images = Objects.requireNonNull(images);
+        public Builder images(@Nullable List<GetImagesImage> images) {
+            this.images = images;
             return this;
         }
         public Builder images(GetImagesImage... images) {

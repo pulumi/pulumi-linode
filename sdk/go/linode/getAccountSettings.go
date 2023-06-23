@@ -46,9 +46,8 @@ func LookupAccountSettings(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*L
 // A collection of values returned by getAccountSettings.
 type LookupAccountSettingsResult struct {
 	// Account-wide backups default.
-	BackupsEnabled bool `pulumi:"backupsEnabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	BackupsEnabled bool   `pulumi:"backupsEnabled"`
+	Id             string `pulumi:"id"`
 	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription string `pulumi:"longviewSubscription"`
 	// Enables monitoring for connectivity, response, and total request time.

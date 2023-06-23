@@ -23,7 +23,7 @@ class GetDatabasesResult:
     """
     A collection of values returned by getDatabases.
     """
-    def __init__(__self__, databases=None, filters=None, id=None, latest=None, order=None, order_by=None):
+    def __init__(__self__, databases=None, filters=None, id=None, order=None, order_by=None):
         if databases and not isinstance(databases, list):
             raise TypeError("Expected argument 'databases' to be a list")
         pulumi.set(__self__, "databases", databases)
@@ -33,9 +33,6 @@ class GetDatabasesResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if latest and not isinstance(latest, bool):
-            raise TypeError("Expected argument 'latest' to be a bool")
-        pulumi.set(__self__, "latest", latest)
         if order and not isinstance(order, str):
             raise TypeError("Expected argument 'order' to be a str")
         pulumi.set(__self__, "order", order)
@@ -45,7 +42,7 @@ class GetDatabasesResult:
 
     @property
     @pulumi.getter
-    def databases(self) -> Sequence['outputs.GetDatabasesDatabaseResult']:
+    def databases(self) -> Optional[Sequence['outputs.GetDatabasesDatabaseResult']]:
         return pulumi.get(self, "databases")
 
     @property
@@ -57,14 +54,9 @@ class GetDatabasesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the Managed Database.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def latest(self) -> Optional[bool]:
-        return pulumi.get(self, "latest")
 
     @property
     @pulumi.getter
@@ -86,13 +78,12 @@ class AwaitableGetDatabasesResult(GetDatabasesResult):
             databases=self.databases,
             filters=self.filters,
             id=self.id,
-            latest=self.latest,
             order=self.order,
             order_by=self.order_by)
 
 
-def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]] = None,
-                  latest: Optional[bool] = None,
+def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDatabaseArgs']]] = None,
+                  filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]] = None,
                   order: Optional[str] = None,
                   order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
@@ -125,15 +116,12 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
     ```
 
 
-    :param bool latest: If true, only the latest create database will be returned.
-           
-           * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
+    __args__['databases'] = databases
     __args__['filters'] = filters
-    __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -143,14 +131,13 @@ def get_databases(filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilte
         databases=__ret__.databases,
         filters=__ret__.filters,
         id=__ret__.id,
-        latest=__ret__.latest,
         order=__ret__.order,
         order_by=__ret__.order_by)
 
 
 @_utilities.lift_output_func(get_databases)
-def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]]]] = None,
-                         latest: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabasesDatabaseArgs']]]]] = None,
+                         filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
@@ -183,9 +170,6 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     ```
 
 
-    :param bool latest: If true, only the latest create database will be returned.
-           
-           * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """

@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetImagesFilter;
+import com.pulumi.linode.inputs.GetImagesImage;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,13 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<List<GetImagesFilter>> filters() {
         return Optional.ofNullable(this.filters);
+    }
+
+    @Import(name="images")
+    private @Nullable List<GetImagesImage> images;
+
+    public Optional<List<GetImagesImage>> images() {
+        return Optional.ofNullable(this.images);
     }
 
     /**
@@ -77,6 +85,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetImagesPlainArgs(GetImagesPlainArgs $) {
         this.filters = $.filters;
+        this.images = $.images;
         this.latest = $.latest;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -107,6 +116,15 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetImagesFilter... filters) {
             return filters(List.of(filters));
+        }
+
+        public Builder images(@Nullable List<GetImagesImage> images) {
+            $.images = images;
+            return this;
+        }
+
+        public Builder images(GetImagesImage... images) {
+            return images(List.of(images));
         }
 
         /**

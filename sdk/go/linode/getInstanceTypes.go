@@ -112,13 +112,14 @@ type GetInstanceTypesArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string `pulumi:"orderBy"`
+	OrderBy *string                `pulumi:"orderBy"`
+	Types   []GetInstanceTypesType `pulumi:"types"`
 }
 
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
 	Filters []GetInstanceTypesFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID representing the Linode Type.
 	Id      string                 `pulumi:"id"`
 	Order   *string                `pulumi:"order"`
 	OrderBy *string                `pulumi:"orderBy"`
@@ -144,7 +145,8 @@ type GetInstanceTypesOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderBy pulumi.StringPtrInput          `pulumi:"orderBy"`
+	Types   GetInstanceTypesTypeArrayInput `pulumi:"types"`
 }
 
 func (GetInstanceTypesOutputArgs) ElementType() reflect.Type {
@@ -170,7 +172,7 @@ func (o GetInstanceTypesResultOutput) Filters() GetInstanceTypesFilterArrayOutpu
 	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesFilter { return v.Filters }).(GetInstanceTypesFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID representing the Linode Type.
 func (o GetInstanceTypesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.Id }).(pulumi.StringOutput)
 }

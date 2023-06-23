@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetAccountLoginsFilter;
+import com.pulumi.linode.inputs.GetAccountLoginsLogin;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,10 +23,18 @@ public final class GetAccountLoginsPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.filters);
     }
 
+    @Import(name="logins")
+    private @Nullable List<GetAccountLoginsLogin> logins;
+
+    public Optional<List<GetAccountLoginsLogin>> logins() {
+        return Optional.ofNullable(this.logins);
+    }
+
     private GetAccountLoginsPlainArgs() {}
 
     private GetAccountLoginsPlainArgs(GetAccountLoginsPlainArgs $) {
         this.filters = $.filters;
+        this.logins = $.logins;
     }
 
     public static Builder builder() {
@@ -53,6 +62,15 @@ public final class GetAccountLoginsPlainArgs extends com.pulumi.resources.Invoke
 
         public Builder filters(GetAccountLoginsFilter... filters) {
             return filters(List.of(filters));
+        }
+
+        public Builder logins(@Nullable List<GetAccountLoginsLogin> logins) {
+            $.logins = logins;
+            return this;
+        }
+
+        public Builder logins(GetAccountLoginsLogin... logins) {
+            return logins(List.of(logins));
         }
 
         public GetAccountLoginsPlainArgs build() {

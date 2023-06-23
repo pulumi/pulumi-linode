@@ -48,6 +48,7 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
+        "vlans": args.vlans,
     }, opts);
 }
 
@@ -64,6 +65,7 @@ export interface GetVlansArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
+    vlans?: inputs.GetVlansVlan[];
 }
 
 /**
@@ -71,13 +73,10 @@ export interface GetVlansArgs {
  */
 export interface GetVlansResult {
     readonly filters?: outputs.GetVlansFilter[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly vlans: outputs.GetVlansVlan[];
+    readonly vlans?: outputs.GetVlansVlan[];
 }
 /**
  * Provides details about Linode VLANs.
@@ -130,4 +129,5 @@ export interface GetVlansOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
+    vlans?: pulumi.Input<pulumi.Input<inputs.GetVlansVlanArgs>[]>;
 }

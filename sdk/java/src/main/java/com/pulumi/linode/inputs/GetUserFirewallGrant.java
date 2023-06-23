@@ -20,6 +20,13 @@ public final class GetUserFirewallGrant extends com.pulumi.resources.InvokeArgs 
         return this.id;
     }
 
+    @Import(name="label", required=true)
+    private String label;
+
+    public String label() {
+        return this.label;
+    }
+
     @Import(name="permissions", required=true)
     private String permissions;
 
@@ -31,6 +38,7 @@ public final class GetUserFirewallGrant extends com.pulumi.resources.InvokeArgs 
 
     private GetUserFirewallGrant(GetUserFirewallGrant $) {
         this.id = $.id;
+        this.label = $.label;
         this.permissions = $.permissions;
     }
 
@@ -57,6 +65,11 @@ public final class GetUserFirewallGrant extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        public Builder label(String label) {
+            $.label = label;
+            return this;
+        }
+
         public Builder permissions(String permissions) {
             $.permissions = permissions;
             return this;
@@ -64,6 +77,7 @@ public final class GetUserFirewallGrant extends com.pulumi.resources.InvokeArgs 
 
         public GetUserFirewallGrant build() {
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
             $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
             return $;
         }

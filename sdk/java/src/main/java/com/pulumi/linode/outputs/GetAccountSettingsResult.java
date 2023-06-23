@@ -15,10 +15,6 @@ public final class GetAccountSettingsResult {
      * 
      */
     private Boolean backupsEnabled;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The Longview Pro tier you are currently subscribed to.
@@ -49,10 +45,6 @@ public final class GetAccountSettingsResult {
     public Boolean backupsEnabled() {
         return this.backupsEnabled;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

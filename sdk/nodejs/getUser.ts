@@ -8,24 +8,12 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode user
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode user.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foo = linode.getUser({
- *     username: "foo",
- * });
- * ```
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getUser:getUser", {
+        "databaseGrants": args.databaseGrants,
         "domainGrants": args.domainGrants,
         "firewallGrants": args.firewallGrants,
         "imageGrants": args.imageGrants,
@@ -42,6 +30,10 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The grants this User has pertaining to Databases on this Account.
+     */
+    databaseGrants?: inputs.GetUserDatabaseGrant[];
     /**
      * The grants this User has pertaining to Domains on this Account.
      */
@@ -85,6 +77,10 @@ export interface GetUserArgs {
  */
 export interface GetUserResult {
     /**
+     * The grants this User has pertaining to Databases on this Account.
+     */
+    readonly databaseGrants: outputs.GetUserDatabaseGrant[];
+    /**
      * The grants this User has pertaining to Domains on this Account.
      */
     readonly domainGrants: outputs.GetUserDomainGrant[];
@@ -100,9 +96,6 @@ export interface GetUserResult {
      * The Account-level grants a User has.
      */
     readonly globalGrants: outputs.GetUserGlobalGrant[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The grants this User has pertaining to Images on this Account.
@@ -140,19 +133,6 @@ export interface GetUserResult {
 }
 /**
  * Provides information about a Linode user
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode user.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foo = linode.getUser({
- *     username: "foo",
- * });
- * ```
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))
@@ -162,6 +142,10 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * The grants this User has pertaining to Databases on this Account.
+     */
+    databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDatabaseGrantArgs>[]>;
     /**
      * The grants this User has pertaining to Domains on this Account.
      */

@@ -215,6 +215,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabaseEnginesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("engines")]
+        private List<Inputs.GetDatabaseEnginesEngineArgs>? _engines;
+        public List<Inputs.GetDatabaseEnginesEngineArgs> Engines
+        {
+            get => _engines ?? (_engines = new List<Inputs.GetDatabaseEnginesEngineArgs>());
+            set => _engines = value;
+        }
+
         [Input("filters")]
         private List<Inputs.GetDatabaseEnginesFilterArgs>? _filters;
         public List<Inputs.GetDatabaseEnginesFilterArgs> Filters
@@ -251,6 +259,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabaseEnginesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("engines")]
+        private InputList<Inputs.GetDatabaseEnginesEngineInputArgs>? _engines;
+        public InputList<Inputs.GetDatabaseEnginesEngineInputArgs> Engines
+        {
+            get => _engines ?? (_engines = new InputList<Inputs.GetDatabaseEnginesEngineInputArgs>());
+            set => _engines = value;
+        }
+
         [Input("filters")]
         private InputList<Inputs.GetDatabaseEnginesFilterInputArgs>? _filters;
         public InputList<Inputs.GetDatabaseEnginesFilterInputArgs> Filters
@@ -292,7 +308,7 @@ namespace Pulumi.Linode
         public readonly ImmutableArray<Outputs.GetDatabaseEnginesEngineResult> Engines;
         public readonly ImmutableArray<Outputs.GetDatabaseEnginesFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The Managed Database engine ID in engine/version format.
         /// </summary>
         public readonly string Id;
         public readonly bool? Latest;

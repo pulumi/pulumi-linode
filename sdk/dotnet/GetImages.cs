@@ -203,6 +203,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("images")]
+        private List<Inputs.GetImagesImageArgs>? _images;
+        public List<Inputs.GetImagesImageArgs> Images
+        {
+            get => _images ?? (_images = new List<Inputs.GetImagesImageArgs>());
+            set => _images = value;
+        }
+
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
         /// 
@@ -239,6 +247,14 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("images")]
+        private InputList<Inputs.GetImagesImageInputArgs>? _images;
+        public InputList<Inputs.GetImagesImageInputArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.GetImagesImageInputArgs>());
+            set => _images = value;
+        }
+
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
         /// 
@@ -271,7 +287,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetImagesFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;

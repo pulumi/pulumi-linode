@@ -41,8 +41,8 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabases:getDatabases", {
+        "databases": args.databases,
         "filters": args.filters,
-        "latest": args.latest,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -52,13 +52,8 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getDatabases.
  */
 export interface GetDatabasesArgs {
+    databases?: inputs.GetDatabasesDatabase[];
     filters?: inputs.GetDatabasesFilter[];
-    /**
-     * If true, only the latest create database will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-     */
-    latest?: boolean;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -73,13 +68,12 @@ export interface GetDatabasesArgs {
  * A collection of values returned by getDatabases.
  */
 export interface GetDatabasesResult {
-    readonly databases: outputs.GetDatabasesDatabase[];
+    readonly databases?: outputs.GetDatabasesDatabase[];
     readonly filters?: outputs.GetDatabasesFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the Managed Database.
      */
     readonly id: string;
-    readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
 }
@@ -121,13 +115,8 @@ export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getDatabases.
  */
 export interface GetDatabasesOutputArgs {
+    databases?: pulumi.Input<pulumi.Input<inputs.GetDatabasesDatabaseArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabasesFilterArgs>[]>;
-    /**
-     * If true, only the latest create database will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-     */
-    latest?: pulumi.Input<boolean>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.GetDatabaseBackupsBackup;
 import com.pulumi.linode.inputs.GetDatabaseBackupsFilter;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabaseBackupsPlainArgs Empty = new GetDatabaseBackupsPlainArgs();
+
+    @Import(name="backups")
+    private @Nullable List<GetDatabaseBackupsBackup> backups;
+
+    public Optional<List<GetDatabaseBackupsBackup>> backups() {
+        return Optional.ofNullable(this.backups);
+    }
 
     /**
      * The ID of the database to retrieve backups for.
@@ -107,6 +115,7 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
     private GetDatabaseBackupsPlainArgs() {}
 
     private GetDatabaseBackupsPlainArgs(GetDatabaseBackupsPlainArgs $) {
+        this.backups = $.backups;
         this.databaseId = $.databaseId;
         this.databaseType = $.databaseType;
         this.filters = $.filters;
@@ -131,6 +140,15 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
 
         public Builder(GetDatabaseBackupsPlainArgs defaults) {
             $ = new GetDatabaseBackupsPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder backups(@Nullable List<GetDatabaseBackupsBackup> backups) {
+            $.backups = backups;
+            return this;
+        }
+
+        public Builder backups(GetDatabaseBackupsBackup... backups) {
+            return backups(List.of(backups));
         }
 
         /**

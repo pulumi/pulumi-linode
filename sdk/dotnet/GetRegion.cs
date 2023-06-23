@@ -76,16 +76,18 @@ namespace Pulumi.Linode
     public sealed class GetRegionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The country the region resides in.
-        /// </summary>
-        [Input("country")]
-        public string? Country { get; set; }
-
-        /// <summary>
         /// The code name of the region to select.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
+
+        [Input("resolvers")]
+        private List<Inputs.GetRegionResolverArgs>? _resolvers;
+        public List<Inputs.GetRegionResolverArgs> Resolvers
+        {
+            get => _resolvers ?? (_resolvers = new List<Inputs.GetRegionResolverArgs>());
+            set => _resolvers = value;
+        }
 
         public GetRegionArgs()
         {
@@ -96,16 +98,18 @@ namespace Pulumi.Linode
     public sealed class GetRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The country the region resides in.
-        /// </summary>
-        [Input("country")]
-        public Input<string>? Country { get; set; }
-
-        /// <summary>
         /// The code name of the region to select.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        [Input("resolvers")]
+        private InputList<Inputs.GetRegionResolverInputArgs>? _resolvers;
+        public InputList<Inputs.GetRegionResolverInputArgs> Resolvers
+        {
+            get => _resolvers ?? (_resolvers = new InputList<Inputs.GetRegionResolverInputArgs>());
+            set => _resolvers = value;
+        }
 
         public GetRegionInvokeArgs()
         {

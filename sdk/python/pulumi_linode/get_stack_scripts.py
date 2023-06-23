@@ -52,7 +52,7 @@ class GetStackScriptsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique ID of the StackScript.
         """
         return pulumi.get(self, "id")
 
@@ -73,7 +73,7 @@ class GetStackScriptsResult:
 
     @property
     @pulumi.getter
-    def stackscripts(self) -> Sequence['outputs.GetStackScriptsStackscriptResult']:
+    def stackscripts(self) -> Optional[Sequence['outputs.GetStackScriptsStackscriptResult']]:
         return pulumi.get(self, "stackscripts")
 
 
@@ -95,6 +95,7 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
                       latest: Optional[bool] = None,
                       order: Optional[str] = None,
                       order_by: Optional[str] = None,
+                      stackscripts: Optional[Sequence[pulumi.InputType['GetStackScriptsStackscriptArgs']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptsResult:
     """
     Provides information about Linode StackScripts that match a set of filters.
@@ -153,6 +154,7 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
+    __args__['stackscripts'] = stackscripts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getStackScripts:getStackScripts', __args__, opts=opts, typ=GetStackScriptsResult).value
 
@@ -170,6 +172,7 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
                              latest: Optional[pulumi.Input[Optional[bool]]] = None,
                              order: Optional[pulumi.Input[Optional[str]]] = None,
                              order_by: Optional[pulumi.Input[Optional[str]]] = None,
+                             stackscripts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetStackScriptsStackscriptArgs']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptsResult]:
     """
     Provides information about Linode StackScripts that match a set of filters.

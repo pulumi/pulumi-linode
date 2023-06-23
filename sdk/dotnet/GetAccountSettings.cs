@@ -47,9 +47,6 @@ namespace Pulumi.Linode
         /// Account-wide backups default.
         /// </summary>
         public readonly bool BackupsEnabled;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Longview Pro tier you are currently subscribed to.

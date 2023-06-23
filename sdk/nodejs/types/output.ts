@@ -900,14 +900,14 @@ export interface GetInstanceNetworkingIpv6Slaac {
 }
 
 export interface GetInstanceTypeAddons {
-    backups: outputs.GetInstanceTypeAddonsBackups;
+    backups: outputs.GetInstanceTypeAddonsBackup[];
 }
 
-export interface GetInstanceTypeAddonsBackups {
-    price: outputs.GetInstanceTypeAddonsBackupsPrice;
+export interface GetInstanceTypeAddonsBackup {
+    prices: outputs.GetInstanceTypeAddonsBackupPrice[];
 }
 
-export interface GetInstanceTypeAddonsBackupsPrice {
+export interface GetInstanceTypeAddonsBackupPrice {
     hourly: number;
     monthly: number;
 }
@@ -1543,7 +1543,7 @@ export interface GetStackScriptsStackscript {
     /**
      * The unique ID of the StackScript.
      */
-    id: number;
+    id: string;
     /**
      * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
      */
@@ -1609,58 +1609,72 @@ export interface GetStackScriptsStackscriptUserDefinedField {
     oneOf: string;
 }
 
+export interface GetUserDatabaseGrant {
+    id: number;
+    label: string;
+    permissions: string;
+}
+
 export interface GetUserDomainGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserFirewallGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserGlobalGrant {
-    accountAccess?: string;
-    addDatabases?: boolean;
-    addDomains?: boolean;
-    addFirewalls?: boolean;
-    addImages?: boolean;
-    addLinodes?: boolean;
-    addLongview?: boolean;
-    addNodebalancers?: boolean;
-    addStackscripts?: boolean;
-    addVolumes?: boolean;
-    cancelAccount?: boolean;
-    longviewSubscription?: boolean;
+    accountAccess: string;
+    addDatabases: boolean;
+    addDomains: boolean;
+    addFirewalls: boolean;
+    addImages: boolean;
+    addLinodes: boolean;
+    addLongview: boolean;
+    addNodebalancers: boolean;
+    addStackscripts: boolean;
+    addVolumes: boolean;
+    cancelAccount: boolean;
+    longviewSubscription: boolean;
 }
 
 export interface GetUserImageGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserLinodeGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserLongviewGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserNodebalancerGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserStackscriptGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserVolumeGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 

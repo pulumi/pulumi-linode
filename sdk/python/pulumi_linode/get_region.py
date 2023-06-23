@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetRegionResult',
@@ -73,7 +74,7 @@ class GetRegionResult:
 
     @property
     @pulumi.getter
-    def resolvers(self) -> Sequence['outputs.GetRegionResolverResult']:
+    def resolvers(self) -> Optional[Sequence['outputs.GetRegionResolverResult']]:
         return pulumi.get(self, "resolvers")
 
     @property
@@ -99,8 +100,8 @@ class AwaitableGetRegionResult(GetRegionResult):
             status=self.status)
 
 
-def get_region(country: Optional[str] = None,
-               id: Optional[str] = None,
+def get_region(id: Optional[str] = None,
+               resolvers: Optional[Sequence[pulumi.InputType['GetRegionResolverArgs']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -117,12 +118,11 @@ def get_region(country: Optional[str] = None,
     ```
 
 
-    :param str country: The country the region resides in.
     :param str id: The code name of the region to select.
     """
     __args__ = dict()
-    __args__['country'] = country
     __args__['id'] = id
+    __args__['resolvers'] = resolvers
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
@@ -136,8 +136,8 @@ def get_region(country: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_region)
-def get_region_output(country: Optional[pulumi.Input[Optional[str]]] = None,
-                      id: Optional[pulumi.Input[str]] = None,
+def get_region_output(id: Optional[pulumi.Input[str]] = None,
+                      resolvers: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRegionResolverArgs']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -154,7 +154,6 @@ def get_region_output(country: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str country: The country the region resides in.
     :param str id: The code name of the region to select.
     """
     ...

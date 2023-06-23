@@ -43,13 +43,13 @@ class GetAccountLoginsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique ID of this login object.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def logins(self) -> Sequence['outputs.GetAccountLoginsLoginResult']:
+    def logins(self) -> Optional[Sequence['outputs.GetAccountLoginsLoginResult']]:
         return pulumi.get(self, "logins")
 
 
@@ -65,6 +65,7 @@ class AwaitableGetAccountLoginsResult(GetAccountLoginsResult):
 
 
 def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']]] = None,
+                       logins: Optional[Sequence[pulumi.InputType['GetAccountLoginsLoginArgs']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginsResult:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -99,6 +100,7 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['logins'] = logins
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult).value
 
@@ -110,6 +112,7 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
 
 @_utilities.lift_output_func(get_account_logins)
 def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']]]]] = None,
+                              logins: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountLoginsLoginArgs']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.

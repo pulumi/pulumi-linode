@@ -37,7 +37,7 @@ public final class GetStackScriptsStackscript {
      * @return The unique ID of the StackScript.
      * 
      */
-    private Integer id;
+    private String id;
     /**
      * @return An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
      * 
@@ -117,7 +117,7 @@ public final class GetStackScriptsStackscript {
      * @return The unique ID of the StackScript.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
@@ -197,7 +197,7 @@ public final class GetStackScriptsStackscript {
         private Integer deploymentsActive;
         private Integer deploymentsTotal;
         private String description;
-        private Integer id;
+        private String id;
         private List<String> images;
         private Boolean isPublic;
         private String label;
@@ -247,7 +247,7 @@ public final class GetStackScriptsStackscript {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }

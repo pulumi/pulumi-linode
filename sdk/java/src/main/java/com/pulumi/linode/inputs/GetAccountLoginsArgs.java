@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetAccountLoginsFilterArgs;
+import com.pulumi.linode.inputs.GetAccountLoginsLoginArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,10 +24,18 @@ public final class GetAccountLoginsArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.filters);
     }
 
+    @Import(name="logins")
+    private @Nullable Output<List<GetAccountLoginsLoginArgs>> logins;
+
+    public Optional<Output<List<GetAccountLoginsLoginArgs>>> logins() {
+        return Optional.ofNullable(this.logins);
+    }
+
     private GetAccountLoginsArgs() {}
 
     private GetAccountLoginsArgs(GetAccountLoginsArgs $) {
         this.filters = $.filters;
+        this.logins = $.logins;
     }
 
     public static Builder builder() {
@@ -58,6 +67,19 @@ public final class GetAccountLoginsArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder filters(GetAccountLoginsFilterArgs... filters) {
             return filters(List.of(filters));
+        }
+
+        public Builder logins(@Nullable Output<List<GetAccountLoginsLoginArgs>> logins) {
+            $.logins = logins;
+            return this;
+        }
+
+        public Builder logins(List<GetAccountLoginsLoginArgs> logins) {
+            return logins(Output.of(logins));
+        }
+
+        public Builder logins(GetAccountLoginsLoginArgs... logins) {
+            return logins(List.of(logins));
         }
 
         public GetAccountLoginsArgs build() {

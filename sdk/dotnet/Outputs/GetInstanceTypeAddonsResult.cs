@@ -13,10 +13,10 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstanceTypeAddonsResult
     {
-        public readonly Outputs.GetInstanceTypeAddonsBackupsResult Backups;
+        public readonly ImmutableArray<Outputs.GetInstanceTypeAddonsBackupResult> Backups;
 
         [OutputConstructor]
-        private GetInstanceTypeAddonsResult(Outputs.GetInstanceTypeAddonsBackupsResult backups)
+        private GetInstanceTypeAddonsResult(ImmutableArray<Outputs.GetInstanceTypeAddonsBackupResult> backups)
         {
             Backups = backups;
         }

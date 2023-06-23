@@ -17,21 +17,21 @@ import javax.annotation.Nullable;
 public final class GetStackScriptsResult {
     private @Nullable List<GetStackScriptsFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the StackScript.
      * 
      */
     private String id;
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private List<GetStackScriptsStackscript> stackscripts;
+    private @Nullable List<GetStackScriptsStackscript> stackscripts;
 
     private GetStackScriptsResult() {}
     public List<GetStackScriptsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the StackScript.
      * 
      */
     public String id() {
@@ -47,7 +47,7 @@ public final class GetStackScriptsResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetStackScriptsStackscript> stackscripts() {
-        return this.stackscripts;
+        return this.stackscripts == null ? List.of() : this.stackscripts;
     }
 
     public static Builder builder() {
@@ -64,7 +64,7 @@ public final class GetStackScriptsResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private List<GetStackScriptsStackscript> stackscripts;
+        private @Nullable List<GetStackScriptsStackscript> stackscripts;
         public Builder() {}
         public Builder(GetStackScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -105,8 +105,8 @@ public final class GetStackScriptsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stackscripts(List<GetStackScriptsStackscript> stackscripts) {
-            this.stackscripts = Objects.requireNonNull(stackscripts);
+        public Builder stackscripts(@Nullable List<GetStackScriptsStackscript> stackscripts) {
+            this.stackscripts = stackscripts;
             return this;
         }
         public Builder stackscripts(GetStackScriptsStackscript... stackscripts) {

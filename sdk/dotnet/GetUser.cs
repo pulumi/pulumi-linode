@@ -13,60 +13,12 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode user
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode user.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Linode.GetUser.Invoke(new()
-        ///     {
-        ///         Username = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode user
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode user.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Linode.GetUser.Invoke(new()
-        ///     {
-        ///         Username = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("linode:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -75,6 +27,18 @@ namespace Pulumi.Linode
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        [Input("databaseGrants")]
+        private List<Inputs.GetUserDatabaseGrantArgs>? _databaseGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Databases on this Account.
+        /// </summary>
+        public List<Inputs.GetUserDatabaseGrantArgs> DatabaseGrants
+        {
+            get => _databaseGrants ?? (_databaseGrants = new List<Inputs.GetUserDatabaseGrantArgs>());
+            set => _databaseGrants = value;
+        }
+
         [Input("domainGrants")]
         private List<Inputs.GetUserDomainGrantArgs>? _domainGrants;
 
@@ -185,6 +149,18 @@ namespace Pulumi.Linode
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("databaseGrants")]
+        private InputList<Inputs.GetUserDatabaseGrantInputArgs>? _databaseGrants;
+
+        /// <summary>
+        /// The grants this User has pertaining to Databases on this Account.
+        /// </summary>
+        public InputList<Inputs.GetUserDatabaseGrantInputArgs> DatabaseGrants
+        {
+            get => _databaseGrants ?? (_databaseGrants = new InputList<Inputs.GetUserDatabaseGrantInputArgs>());
+            set => _databaseGrants = value;
+        }
+
         [Input("domainGrants")]
         private InputList<Inputs.GetUserDomainGrantInputArgs>? _domainGrants;
 
@@ -298,6 +274,10 @@ namespace Pulumi.Linode
     public sealed class GetUserResult
     {
         /// <summary>
+        /// The grants this User has pertaining to Databases on this Account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserDatabaseGrantResult> DatabaseGrants;
+        /// <summary>
         /// The grants this User has pertaining to Domains on this Account.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUserDomainGrantResult> DomainGrants;
@@ -313,9 +293,6 @@ namespace Pulumi.Linode
         /// The Account-level grants a User has.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUserGlobalGrantResult> GlobalGrants;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The grants this User has pertaining to Images on this Account.
@@ -353,6 +330,8 @@ namespace Pulumi.Linode
 
         [OutputConstructor]
         private GetUserResult(
+            ImmutableArray<Outputs.GetUserDatabaseGrantResult> databaseGrants,
+
             ImmutableArray<Outputs.GetUserDomainGrantResult> domainGrants,
 
             string email,
@@ -381,6 +360,7 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetUserVolumeGrantResult> volumeGrants)
         {
+            DatabaseGrants = databaseGrants;
             DomainGrants = domainGrants;
             Email = email;
             FirewallGrants = firewallGrants;

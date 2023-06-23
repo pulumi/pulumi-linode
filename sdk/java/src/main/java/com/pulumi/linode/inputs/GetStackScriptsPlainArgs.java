@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetStackScriptsFilter;
+import com.pulumi.linode.inputs.GetStackScriptsStackscript;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -73,6 +74,13 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.orderBy);
     }
 
+    @Import(name="stackscripts")
+    private @Nullable List<GetStackScriptsStackscript> stackscripts;
+
+    public Optional<List<GetStackScriptsStackscript>> stackscripts() {
+        return Optional.ofNullable(this.stackscripts);
+    }
+
     private GetStackScriptsPlainArgs() {}
 
     private GetStackScriptsPlainArgs(GetStackScriptsPlainArgs $) {
@@ -80,6 +88,7 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
         this.latest = $.latest;
         this.order = $.order;
         this.orderBy = $.orderBy;
+        this.stackscripts = $.stackscripts;
     }
 
     public static Builder builder() {
@@ -142,6 +151,15 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
+        }
+
+        public Builder stackscripts(@Nullable List<GetStackScriptsStackscript> stackscripts) {
+            $.stackscripts = stackscripts;
+            return this;
+        }
+
+        public Builder stackscripts(GetStackScriptsStackscript... stackscripts) {
+            return stackscripts(List.of(stackscripts));
         }
 
         public GetStackScriptsPlainArgs build() {

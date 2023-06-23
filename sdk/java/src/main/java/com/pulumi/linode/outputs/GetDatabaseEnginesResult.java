@@ -15,10 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseEnginesResult {
-    private List<GetDatabaseEnginesEngine> engines;
+    private @Nullable List<GetDatabaseEnginesEngine> engines;
     private @Nullable List<GetDatabaseEnginesFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The Managed Database engine ID in engine/version format.
      * 
      */
     private String id;
@@ -28,13 +28,13 @@ public final class GetDatabaseEnginesResult {
 
     private GetDatabaseEnginesResult() {}
     public List<GetDatabaseEnginesEngine> engines() {
-        return this.engines;
+        return this.engines == null ? List.of() : this.engines;
     }
     public List<GetDatabaseEnginesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The Managed Database engine ID in engine/version format.
      * 
      */
     public String id() {
@@ -59,7 +59,7 @@ public final class GetDatabaseEnginesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetDatabaseEnginesEngine> engines;
+        private @Nullable List<GetDatabaseEnginesEngine> engines;
         private @Nullable List<GetDatabaseEnginesFilter> filters;
         private String id;
         private @Nullable Boolean latest;
@@ -77,8 +77,8 @@ public final class GetDatabaseEnginesResult {
         }
 
         @CustomType.Setter
-        public Builder engines(List<GetDatabaseEnginesEngine> engines) {
-            this.engines = Objects.requireNonNull(engines);
+        public Builder engines(@Nullable List<GetDatabaseEnginesEngine> engines) {
+            this.engines = engines;
             return this;
         }
         public Builder engines(GetDatabaseEnginesEngine... engines) {
