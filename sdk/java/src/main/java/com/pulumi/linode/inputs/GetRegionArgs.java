@@ -5,7 +5,9 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.GetRegionResolverArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,21 +16,6 @@ import javax.annotation.Nullable;
 public final class GetRegionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRegionArgs Empty = new GetRegionArgs();
-
-    /**
-     * The country the region resides in.
-     * 
-     */
-    @Import(name="country")
-    private @Nullable Output<String> country;
-
-    /**
-     * @return The country the region resides in.
-     * 
-     */
-    public Optional<Output<String>> country() {
-        return Optional.ofNullable(this.country);
-    }
 
     /**
      * The code name of the region to select.
@@ -45,11 +32,18 @@ public final class GetRegionArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    @Import(name="resolvers")
+    private @Nullable Output<List<GetRegionResolverArgs>> resolvers;
+
+    public Optional<Output<List<GetRegionResolverArgs>>> resolvers() {
+        return Optional.ofNullable(this.resolvers);
+    }
+
     private GetRegionArgs() {}
 
     private GetRegionArgs(GetRegionArgs $) {
-        this.country = $.country;
         this.id = $.id;
+        this.resolvers = $.resolvers;
     }
 
     public static Builder builder() {
@@ -71,27 +65,6 @@ public final class GetRegionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param country The country the region resides in.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder country(@Nullable Output<String> country) {
-            $.country = country;
-            return this;
-        }
-
-        /**
-         * @param country The country the region resides in.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder country(String country) {
-            return country(Output.of(country));
-        }
-
-        /**
          * @param id The code name of the region to select.
          * 
          * @return builder
@@ -110,6 +83,19 @@ public final class GetRegionArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder resolvers(@Nullable Output<List<GetRegionResolverArgs>> resolvers) {
+            $.resolvers = resolvers;
+            return this;
+        }
+
+        public Builder resolvers(List<GetRegionResolverArgs> resolvers) {
+            return resolvers(Output.of(resolvers));
+        }
+
+        public Builder resolvers(GetRegionResolverArgs... resolvers) {
+            return resolvers(List.of(resolvers));
         }
 
         public GetRegionArgs build() {

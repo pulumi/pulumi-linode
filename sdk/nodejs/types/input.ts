@@ -128,6 +128,92 @@ export interface GetAccountLoginsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetAccountLoginsLogin {
+    /**
+     * When the login was initiated.
+     */
+    datetime?: string;
+    /**
+     * The unique ID of this login object.
+     */
+    id: number;
+    /**
+     * The remote IP address that requested the login.
+     */
+    ip?: string;
+    /**
+     * True if the User that was logged into was a restricted User, false otherwise.
+     */
+    restricted?: boolean;
+    status?: string;
+    /**
+     * The username of the User that was logged into.
+     */
+    username?: string;
+}
+
+export interface GetAccountLoginsLoginArgs {
+    /**
+     * When the login was initiated.
+     */
+    datetime?: pulumi.Input<string>;
+    /**
+     * The unique ID of this login object.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The remote IP address that requested the login.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * True if the User that was logged into was a restricted User, false otherwise.
+     */
+    restricted?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
+    /**
+     * The username of the User that was logged into.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface GetDatabaseBackupsBackup {
+    /**
+     * A time value given in a combined date and time format that represents when the database backup was created.
+     */
+    created?: string;
+    /**
+     * The ID of the database backup object.
+     */
+    id?: number;
+    /**
+     * The database backup’s label, for display purposes only.
+     */
+    label?: string;
+    /**
+     * The type of database backup, determined by how the backup was created.
+     */
+    type?: string;
+}
+
+export interface GetDatabaseBackupsBackupArgs {
+    /**
+     * A time value given in a combined date and time format that represents when the database backup was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The ID of the database backup object.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The database backup’s label, for display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The type of database backup, determined by how the backup was created.
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface GetDatabaseBackupsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -156,6 +242,36 @@ export interface GetDatabaseBackupsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDatabaseEnginesEngine {
+    /**
+     * The Managed Database engine type.
+     */
+    engine?: string;
+    /**
+     * The Managed Database engine ID in engine/version format.
+     */
+    id?: string;
+    /**
+     * The Managed Database engine version.
+     */
+    version?: string;
+}
+
+export interface GetDatabaseEnginesEngineArgs {
+    /**
+     * The Managed Database engine type.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * The Managed Database engine ID in engine/version format.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The Managed Database engine version.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface GetDatabaseEnginesFilter {
@@ -218,6 +334,142 @@ export interface GetDatabaseMysqlBackupsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetDatabasesDatabase {
+    /**
+     * A list of IP addresses that can access the Managed Database.
+     */
+    allowLists?: string[];
+    /**
+     * The number of Linode Instance nodes deployed to the Managed Database.
+     */
+    clusterSize?: number;
+    /**
+     * When this Managed Database was created.
+     */
+    created?: string;
+    /**
+     * Whether the Managed Databases is encrypted.
+     */
+    encrypted?: boolean;
+    /**
+     * The Managed Database engine.
+     */
+    engine?: string;
+    /**
+     * The primary host for the Managed Database.
+     */
+    hostPrimary?: string;
+    /**
+     * The secondary/private network host for the Managed Database.
+     */
+    hostSecondary?: string;
+    /**
+     * The ID of the Managed Database.
+     */
+    id?: number;
+    instanceUri?: string;
+    /**
+     * A unique, user-defined string referring to the Managed Database.
+     */
+    label?: string;
+    /**
+     * The region to use for the Managed Database.
+     */
+    region?: string;
+    /**
+     * The replication method used for the Managed Database.
+     */
+    replicationType?: string;
+    /**
+     * Whether to require SSL credentials to establish a connection to the Managed Database.
+     */
+    sslConnection?: boolean;
+    /**
+     * The operating status of the Managed Database.
+     */
+    status?: string;
+    /**
+     * The Linode Instance type used for the nodes of the  Managed Database instance.
+     */
+    type?: string;
+    /**
+     * When this Managed Database was last updated.
+     */
+    updated?: string;
+    /**
+     * The Managed Database engine version.
+     */
+    version?: string;
+}
+
+export interface GetDatabasesDatabaseArgs {
+    /**
+     * A list of IP addresses that can access the Managed Database.
+     */
+    allowLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of Linode Instance nodes deployed to the Managed Database.
+     */
+    clusterSize?: pulumi.Input<number>;
+    /**
+     * When this Managed Database was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * Whether the Managed Databases is encrypted.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * The Managed Database engine.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * The primary host for the Managed Database.
+     */
+    hostPrimary?: pulumi.Input<string>;
+    /**
+     * The secondary/private network host for the Managed Database.
+     */
+    hostSecondary?: pulumi.Input<string>;
+    /**
+     * The ID of the Managed Database.
+     */
+    id?: pulumi.Input<number>;
+    instanceUri?: pulumi.Input<string>;
+    /**
+     * A unique, user-defined string referring to the Managed Database.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The region to use for the Managed Database.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The replication method used for the Managed Database.
+     */
+    replicationType?: pulumi.Input<string>;
+    /**
+     * Whether to require SSL credentials to establish a connection to the Managed Database.
+     */
+    sslConnection?: pulumi.Input<boolean>;
+    /**
+     * The operating status of the Managed Database.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The Linode Instance type used for the nodes of the  Managed Database instance.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * When this Managed Database was last updated.
+     */
+    updated?: pulumi.Input<string>;
+    /**
+     * The Managed Database engine version.
+     */
+    version?: pulumi.Input<string>;
+}
+
 export interface GetDatabasesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -278,6 +530,102 @@ export interface GetImagesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetImagesImage {
+    /**
+     * When this Image was created.
+     */
+    created?: string;
+    /**
+     * The name of the User who created this Image, or "linode" for official Images.
+     */
+    createdBy?: string;
+    /**
+     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     */
+    deprecated?: boolean;
+    /**
+     * A detailed description of this Image.
+     */
+    description?: string;
+    expiry?: string;
+    /**
+     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+     */
+    id: string;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: boolean;
+    /**
+     * A short description of the Image.
+     */
+    label?: string;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size?: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status?: string;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
+    type?: string;
+    /**
+     * The upstream distribution vendor. `None` for private Images.
+     */
+    vendor?: string;
+}
+
+export interface GetImagesImageArgs {
+    /**
+     * When this Image was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The name of the User who created this Image, or "linode" for official Images.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+     */
+    deprecated?: pulumi.Input<boolean>;
+    /**
+     * A detailed description of this Image.
+     */
+    description?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string>;
+    /**
+     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * A short description of the Image.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The upstream distribution vendor. `None` for private Images.
+     */
+    vendor?: pulumi.Input<string>;
+}
+
 export interface GetInstanceTypesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -308,6 +656,116 @@ export interface GetInstanceTypesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetInstanceTypesType {
+    addons?: inputs.GetInstanceTypesTypeAddon[];
+    /**
+     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     */
+    class?: string;
+    /**
+     * The Disk size, in MB, of the Linode Type.
+     */
+    disk?: number;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: string;
+    /**
+     * The Linode Type's label is for display purposes only.
+     */
+    label?: string;
+    /**
+     * The amount of RAM included in this Linode Type.
+     */
+    memory?: number;
+    /**
+     * The Mbits outbound bandwidth allocation.
+     */
+    networkOut?: number;
+    prices?: inputs.GetInstanceTypesTypePrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: number;
+    /**
+     * The number of VCPU cores this Linode Type offers.
+     */
+    vcpus?: number;
+}
+
+export interface GetInstanceTypesTypeArgs {
+    addons?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonArgs>[]>;
+    /**
+     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     */
+    class?: pulumi.Input<string>;
+    /**
+     * The Disk size, in MB, of the Linode Type.
+     */
+    disk?: pulumi.Input<number>;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The Linode Type's label is for display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The amount of RAM included in this Linode Type.
+     */
+    memory?: pulumi.Input<number>;
+    /**
+     * The Mbits outbound bandwidth allocation.
+     */
+    networkOut?: pulumi.Input<number>;
+    prices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypePriceArgs>[]>;
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: pulumi.Input<number>;
+    /**
+     * The number of VCPU cores this Linode Type offers.
+     */
+    vcpus?: pulumi.Input<number>;
+}
+
+export interface GetInstanceTypesTypeAddon {
+    backups: inputs.GetInstanceTypesTypeAddonBackup[];
+}
+
+export interface GetInstanceTypesTypeAddonArgs {
+    backups: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupArgs>[]>;
+}
+
+export interface GetInstanceTypesTypeAddonBackup {
+    prices: inputs.GetInstanceTypesTypeAddonBackupPrice[];
+}
+
+export interface GetInstanceTypesTypeAddonBackupArgs {
+    prices: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupPriceArgs>[]>;
+}
+
+export interface GetInstanceTypesTypeAddonBackupPrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetInstanceTypesTypeAddonBackupPriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetInstanceTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetInstanceTypesTypePriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
 export interface GetInstancesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -336,6 +794,28 @@ export interface GetInstancesFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetRegionResolver {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4?: string;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6?: string;
+}
+
+export interface GetRegionResolverArgs {
+    /**
+     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     */
+    ipv6?: pulumi.Input<string>;
 }
 
 export interface GetRegionsFilter {
@@ -462,83 +942,283 @@ export interface GetStackScriptsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetStackScriptsStackscript {
+    /**
+     * The date this StackScript was created.
+     */
+    created?: string;
+    /**
+     * Count of currently active, deployed Linodes created from this StackScript.
+     */
+    deploymentsActive?: number;
+    /**
+     * The total number of times this StackScript has been deployed.
+     */
+    deploymentsTotal?: number;
+    /**
+     * A description for the StackScript.
+     */
+    description?: string;
+    /**
+     * The unique ID of the StackScript.
+     */
+    id: string;
+    /**
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     */
+    images?: string[];
+    /**
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     */
+    isPublic?: boolean;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
+    label?: string;
+    /**
+     * This field allows you to add notes for the set of revisions made to this StackScript.
+     */
+    revNote?: string;
+    /**
+     * The script to execute when provisioning a new Linode with this StackScript.
+     */
+    script?: string;
+    /**
+     * The date this StackScript was updated.
+     */
+    updated?: string;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
+    userDefinedFields?: inputs.GetStackScriptsStackscriptUserDefinedField[];
+    /**
+     * The Gravatar ID for the User who created the StackScript.
+     */
+    userGravatarId?: string;
+    /**
+     * The User who created the StackScript.
+     */
+    username?: string;
+}
+
+export interface GetStackScriptsStackscriptArgs {
+    /**
+     * The date this StackScript was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * Count of currently active, deployed Linodes created from this StackScript.
+     */
+    deploymentsActive?: pulumi.Input<number>;
+    /**
+     * The total number of times this StackScript has been deployed.
+     */
+    deploymentsTotal?: pulumi.Input<number>;
+    /**
+     * A description for the StackScript.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID of the StackScript.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+     */
+    images?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * This field allows you to add notes for the set of revisions made to this StackScript.
+     */
+    revNote?: pulumi.Input<string>;
+    /**
+     * The script to execute when provisioning a new Linode with this StackScript.
+     */
+    script?: pulumi.Input<string>;
+    /**
+     * The date this StackScript was updated.
+     */
+    updated?: pulumi.Input<string>;
+    /**
+     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     */
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsStackscriptUserDefinedFieldArgs>[]>;
+    /**
+     * The Gravatar ID for the User who created the StackScript.
+     */
+    userGravatarId?: pulumi.Input<string>;
+    /**
+     * The User who created the StackScript.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface GetStackScriptsStackscriptUserDefinedField {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
+    default: string;
+    /**
+     * An example value for the field.
+     */
+    example: string;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
+    label: string;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
+    manyOf: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of acceptable single values for the field.
+     */
+    oneOf: string;
+}
+
+export interface GetStackScriptsStackscriptUserDefinedFieldArgs {
+    /**
+     * The default value. If not specified, this value will be used.
+     */
+    default: pulumi.Input<string>;
+    /**
+     * An example value for the field.
+     */
+    example: pulumi.Input<string>;
+    /**
+     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * A list of acceptable values for the field in any quantity, combination or order.
+     */
+    manyOf: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of acceptable single values for the field.
+     */
+    oneOf: pulumi.Input<string>;
+}
+
+export interface GetUserDatabaseGrant {
+    id: number;
+    label: string;
+    permissions: string;
+}
+
+export interface GetUserDatabaseGrantArgs {
+    id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
+    permissions: pulumi.Input<string>;
+}
+
 export interface GetUserDomainGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserDomainGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserFirewallGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserFirewallGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserImageGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserImageGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserLinodeGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserLinodeGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserLongviewGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserLongviewGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserNodebalancerGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserNodebalancerGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserStackscriptGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserStackscriptGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
 export interface GetUserVolumeGrant {
     id: number;
+    label: string;
     permissions: string;
 }
 
 export interface GetUserVolumeGrantArgs {
     id: pulumi.Input<number>;
+    label: pulumi.Input<string>;
     permissions: pulumi.Input<string>;
 }
 
@@ -570,6 +1250,44 @@ export interface GetVlansFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVlansVlan {
+    /**
+     * When the VLAN was created.
+     */
+    created?: string;
+    /**
+     * The unique label of the VLAN.
+     */
+    label?: string;
+    /**
+     * The running Linodes currently attached to the VLAN.
+     */
+    linodes?: number[];
+    /**
+     * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    region?: string;
+}
+
+export interface GetVlansVlanArgs {
+    /**
+     * When the VLAN was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The unique label of the VLAN.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The running Linodes currently attached to the VLAN.
+     */
+    linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface InstanceAlerts {

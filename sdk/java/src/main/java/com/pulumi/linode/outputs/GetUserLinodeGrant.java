@@ -11,11 +11,15 @@ import java.util.Objects;
 @CustomType
 public final class GetUserLinodeGrant {
     private Integer id;
+    private String label;
     private String permissions;
 
     private GetUserLinodeGrant() {}
     public Integer id() {
         return this.id;
+    }
+    public String label() {
+        return this.label;
     }
     public String permissions() {
         return this.permissions;
@@ -31,17 +35,24 @@ public final class GetUserLinodeGrant {
     @CustomType.Builder
     public static final class Builder {
         private Integer id;
+        private String label;
         private String permissions;
         public Builder() {}
         public Builder(GetUserLinodeGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.label = defaults.label;
     	      this.permissions = defaults.permissions;
         }
 
         @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder label(String label) {
+            this.label = Objects.requireNonNull(label);
             return this;
         }
         @CustomType.Setter
@@ -52,6 +63,7 @@ public final class GetUserLinodeGrant {
         public GetUserLinodeGrant build() {
             final var o = new GetUserLinodeGrant();
             o.id = id;
+            o.label = label;
             o.permissions = permissions;
             return o;
         }

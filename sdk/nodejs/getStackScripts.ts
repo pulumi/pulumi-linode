@@ -62,6 +62,7 @@ export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.Invoke
         "latest": args.latest,
         "order": args.order,
         "orderBy": args.orderBy,
+        "stackscripts": args.stackscripts,
     }, opts);
 }
 
@@ -84,6 +85,7 @@ export interface GetStackScriptsArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
+    stackscripts?: inputs.GetStackScriptsStackscript[];
 }
 
 /**
@@ -92,13 +94,13 @@ export interface GetStackScriptsArgs {
 export interface GetStackScriptsResult {
     readonly filters?: outputs.GetStackScriptsFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of the StackScript.
      */
     readonly id: string;
     readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly stackscripts: outputs.GetStackScriptsStackscript[];
+    readonly stackscripts?: outputs.GetStackScriptsStackscript[];
 }
 /**
  * Provides information about Linode StackScripts that match a set of filters.
@@ -170,4 +172,5 @@ export interface GetStackScriptsOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
+    stackscripts?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsStackscriptArgs>[]>;
 }

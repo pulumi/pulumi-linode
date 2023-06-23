@@ -36,8 +36,8 @@ class GetDatabaseBackupsResult:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if latest and not isinstance(latest, bool):
             raise TypeError("Expected argument 'latest' to be a bool")
@@ -51,7 +51,7 @@ class GetDatabaseBackupsResult:
 
     @property
     @pulumi.getter
-    def backups(self) -> Sequence['outputs.GetDatabaseBackupsBackupResult']:
+    def backups(self) -> Optional[Sequence['outputs.GetDatabaseBackupsBackupResult']]:
         return pulumi.get(self, "backups")
 
     @property
@@ -71,9 +71,9 @@ class GetDatabaseBackupsResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the database backup object.
         """
         return pulumi.get(self, "id")
 
@@ -109,7 +109,8 @@ class AwaitableGetDatabaseBackupsResult(GetDatabaseBackupsResult):
             order_by=self.order_by)
 
 
-def get_database_backups(database_id: Optional[int] = None,
+def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabaseBackupsBackupArgs']]] = None,
+                         database_id: Optional[int] = None,
                          database_type: Optional[str] = None,
                          filters: Optional[Sequence[pulumi.InputType['GetDatabaseBackupsFilterArgs']]] = None,
                          latest: Optional[bool] = None,
@@ -155,6 +156,7 @@ def get_database_backups(database_id: Optional[int] = None,
     :param str order_by: The attribute to order the results by. (`created`)
     """
     __args__ = dict()
+    __args__['backups'] = backups
     __args__['databaseId'] = database_id
     __args__['databaseType'] = database_type
     __args__['filters'] = filters
@@ -176,7 +178,8 @@ def get_database_backups(database_id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_database_backups)
-def get_database_backups_output(database_id: Optional[pulumi.Input[int]] = None,
+def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseBackupsBackupArgs']]]]] = None,
+                                database_id: Optional[pulumi.Input[int]] = None,
                                 database_type: Optional[pulumi.Input[str]] = None,
                                 filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseBackupsFilterArgs']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,

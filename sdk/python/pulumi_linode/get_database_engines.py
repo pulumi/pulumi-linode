@@ -45,7 +45,7 @@ class GetDatabaseEnginesResult:
 
     @property
     @pulumi.getter
-    def engines(self) -> Sequence['outputs.GetDatabaseEnginesEngineResult']:
+    def engines(self) -> Optional[Sequence['outputs.GetDatabaseEnginesEngineResult']]:
         return pulumi.get(self, "engines")
 
     @property
@@ -57,7 +57,7 @@ class GetDatabaseEnginesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The Managed Database engine ID in engine/version format.
         """
         return pulumi.get(self, "id")
 
@@ -91,7 +91,8 @@ class AwaitableGetDatabaseEnginesResult(GetDatabaseEnginesResult):
             order_by=self.order_by)
 
 
-def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]] = None,
+def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabaseEnginesEngineArgs']]] = None,
+                         filters: Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]] = None,
                          latest: Optional[bool] = None,
                          order: Optional[str] = None,
                          order_by: Optional[str] = None,
@@ -150,6 +151,7 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
     :param str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
+    __args__['engines'] = engines
     __args__['filters'] = filters
     __args__['latest'] = latest
     __args__['order'] = order
@@ -167,7 +169,8 @@ def get_database_engines(filters: Optional[Sequence[pulumi.InputType['GetDatabas
 
 
 @_utilities.lift_output_func(get_database_engines)
-def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]]]] = None,
+def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseEnginesEngineArgs']]]]] = None,
+                                filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                 order: Optional[pulumi.Input[Optional[str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,

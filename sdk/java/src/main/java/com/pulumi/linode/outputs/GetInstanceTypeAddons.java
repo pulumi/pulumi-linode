@@ -4,15 +4,16 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackups;
+import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackup;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypeAddons {
-    private GetInstanceTypeAddonsBackups backups;
+    private List<GetInstanceTypeAddonsBackup> backups;
 
     private GetInstanceTypeAddons() {}
-    public GetInstanceTypeAddonsBackups backups() {
+    public List<GetInstanceTypeAddonsBackup> backups() {
         return this.backups;
     }
 
@@ -25,7 +26,7 @@ public final class GetInstanceTypeAddons {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetInstanceTypeAddonsBackups backups;
+        private List<GetInstanceTypeAddonsBackup> backups;
         public Builder() {}
         public Builder(GetInstanceTypeAddons defaults) {
     	      Objects.requireNonNull(defaults);
@@ -33,9 +34,12 @@ public final class GetInstanceTypeAddons {
         }
 
         @CustomType.Setter
-        public Builder backups(GetInstanceTypeAddonsBackups backups) {
+        public Builder backups(List<GetInstanceTypeAddonsBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
+        }
+        public Builder backups(GetInstanceTypeAddonsBackup... backups) {
+            return backups(List.of(backups));
         }
         public GetInstanceTypeAddons build() {
             final var o = new GetInstanceTypeAddons();

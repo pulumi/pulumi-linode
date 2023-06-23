@@ -11100,7 +11100,7 @@ func (o GetInstanceNetworkingIpv6SlaacOutput) Type() pulumi.StringOutput {
 }
 
 type GetInstanceTypeAddons struct {
-	Backups GetInstanceTypeAddonsBackups `pulumi:"backups"`
+	Backups []GetInstanceTypeAddonsBackup `pulumi:"backups"`
 }
 
 // GetInstanceTypeAddonsInput is an input type that accepts GetInstanceTypeAddonsArgs and GetInstanceTypeAddonsOutput values.
@@ -11115,7 +11115,7 @@ type GetInstanceTypeAddonsInput interface {
 }
 
 type GetInstanceTypeAddonsArgs struct {
-	Backups GetInstanceTypeAddonsBackupsInput `pulumi:"backups"`
+	Backups GetInstanceTypeAddonsBackupArrayInput `pulumi:"backups"`
 }
 
 func (GetInstanceTypeAddonsArgs) ElementType() reflect.Type {
@@ -11144,112 +11144,202 @@ func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutputWithContext(ct
 	return o
 }
 
-func (o GetInstanceTypeAddonsOutput) Backups() GetInstanceTypeAddonsBackupsOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddons) GetInstanceTypeAddonsBackups { return v.Backups }).(GetInstanceTypeAddonsBackupsOutput)
+func (o GetInstanceTypeAddonsOutput) Backups() GetInstanceTypeAddonsBackupArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddons) []GetInstanceTypeAddonsBackup { return v.Backups }).(GetInstanceTypeAddonsBackupArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackups struct {
-	Price GetInstanceTypeAddonsBackupsPrice `pulumi:"price"`
+type GetInstanceTypeAddonsBackup struct {
+	Prices []GetInstanceTypeAddonsBackupPrice `pulumi:"prices"`
 }
 
-// GetInstanceTypeAddonsBackupsInput is an input type that accepts GetInstanceTypeAddonsBackupsArgs and GetInstanceTypeAddonsBackupsOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupsInput` via:
+// GetInstanceTypeAddonsBackupInput is an input type that accepts GetInstanceTypeAddonsBackupArgs and GetInstanceTypeAddonsBackupOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonsBackupInput` via:
 //
-//	GetInstanceTypeAddonsBackupsArgs{...}
-type GetInstanceTypeAddonsBackupsInput interface {
+//	GetInstanceTypeAddonsBackupArgs{...}
+type GetInstanceTypeAddonsBackupInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput
-	ToGetInstanceTypeAddonsBackupsOutputWithContext(context.Context) GetInstanceTypeAddonsBackupsOutput
+	ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput
+	ToGetInstanceTypeAddonsBackupOutputWithContext(context.Context) GetInstanceTypeAddonsBackupOutput
 }
 
-type GetInstanceTypeAddonsBackupsArgs struct {
-	Price GetInstanceTypeAddonsBackupsPriceInput `pulumi:"price"`
+type GetInstanceTypeAddonsBackupArgs struct {
+	Prices GetInstanceTypeAddonsBackupPriceArrayInput `pulumi:"prices"`
 }
 
-func (GetInstanceTypeAddonsBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackups)(nil)).Elem()
+func (GetInstanceTypeAddonsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonsBackup)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupsArgs) ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput {
-	return i.ToGetInstanceTypeAddonsBackupsOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonsBackupArgs) ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput {
+	return i.ToGetInstanceTypeAddonsBackupOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupsArgs) ToGetInstanceTypeAddonsBackupsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsOutput)
+func (i GetInstanceTypeAddonsBackupArgs) ToGetInstanceTypeAddonsBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupOutput)
 }
 
-type GetInstanceTypeAddonsBackupsOutput struct{ *pulumi.OutputState }
+// GetInstanceTypeAddonsBackupArrayInput is an input type that accepts GetInstanceTypeAddonsBackupArray and GetInstanceTypeAddonsBackupArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonsBackupArrayInput` via:
+//
+//	GetInstanceTypeAddonsBackupArray{ GetInstanceTypeAddonsBackupArgs{...} }
+type GetInstanceTypeAddonsBackupArrayInput interface {
+	pulumi.Input
 
-func (GetInstanceTypeAddonsBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackups)(nil)).Elem()
+	ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput
+	ToGetInstanceTypeAddonsBackupArrayOutputWithContext(context.Context) GetInstanceTypeAddonsBackupArrayOutput
 }
 
-func (o GetInstanceTypeAddonsBackupsOutput) ToGetInstanceTypeAddonsBackupsOutput() GetInstanceTypeAddonsBackupsOutput {
+type GetInstanceTypeAddonsBackupArray []GetInstanceTypeAddonsBackupInput
+
+func (GetInstanceTypeAddonsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonsBackupArray) ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput {
+	return i.ToGetInstanceTypeAddonsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonsBackupArray) ToGetInstanceTypeAddonsBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupArrayOutput)
+}
+
+type GetInstanceTypeAddonsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonsBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonsBackupOutput) ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsOutput) ToGetInstanceTypeAddonsBackupsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsOutput {
+func (o GetInstanceTypeAddonsBackupOutput) ToGetInstanceTypeAddonsBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsOutput) Price() GetInstanceTypeAddonsBackupsPriceOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackups) GetInstanceTypeAddonsBackupsPrice { return v.Price }).(GetInstanceTypeAddonsBackupsPriceOutput)
+func (o GetInstanceTypeAddonsBackupOutput) Prices() GetInstanceTypeAddonsBackupPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackup) []GetInstanceTypeAddonsBackupPrice { return v.Prices }).(GetInstanceTypeAddonsBackupPriceArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackupsPrice struct {
+type GetInstanceTypeAddonsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonsBackupArrayOutput) ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonsBackupArrayOutput) ToGetInstanceTypeAddonsBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonsBackupArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonsBackup {
+		return vs[0].([]GetInstanceTypeAddonsBackup)[vs[1].(int)]
+	}).(GetInstanceTypeAddonsBackupOutput)
+}
+
+type GetInstanceTypeAddonsBackupPrice struct {
 	Hourly  float64 `pulumi:"hourly"`
 	Monthly float64 `pulumi:"monthly"`
 }
 
-// GetInstanceTypeAddonsBackupsPriceInput is an input type that accepts GetInstanceTypeAddonsBackupsPriceArgs and GetInstanceTypeAddonsBackupsPriceOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupsPriceInput` via:
+// GetInstanceTypeAddonsBackupPriceInput is an input type that accepts GetInstanceTypeAddonsBackupPriceArgs and GetInstanceTypeAddonsBackupPriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonsBackupPriceInput` via:
 //
-//	GetInstanceTypeAddonsBackupsPriceArgs{...}
-type GetInstanceTypeAddonsBackupsPriceInput interface {
+//	GetInstanceTypeAddonsBackupPriceArgs{...}
+type GetInstanceTypeAddonsBackupPriceInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput
-	ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(context.Context) GetInstanceTypeAddonsBackupsPriceOutput
+	ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput
+	ToGetInstanceTypeAddonsBackupPriceOutputWithContext(context.Context) GetInstanceTypeAddonsBackupPriceOutput
 }
 
-type GetInstanceTypeAddonsBackupsPriceArgs struct {
+type GetInstanceTypeAddonsBackupPriceArgs struct {
 	Hourly  pulumi.Float64Input `pulumi:"hourly"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
-func (GetInstanceTypeAddonsBackupsPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupsPrice)(nil)).Elem()
+func (GetInstanceTypeAddonsBackupPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupsPriceArgs) ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput {
-	return i.ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonsBackupPriceArgs) ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput {
+	return i.ToGetInstanceTypeAddonsBackupPriceOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupsPriceArgs) ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupsPriceOutput)
+func (i GetInstanceTypeAddonsBackupPriceArgs) ToGetInstanceTypeAddonsBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupPriceOutput)
 }
 
-type GetInstanceTypeAddonsBackupsPriceOutput struct{ *pulumi.OutputState }
+// GetInstanceTypeAddonsBackupPriceArrayInput is an input type that accepts GetInstanceTypeAddonsBackupPriceArray and GetInstanceTypeAddonsBackupPriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonsBackupPriceArrayInput` via:
+//
+//	GetInstanceTypeAddonsBackupPriceArray{ GetInstanceTypeAddonsBackupPriceArgs{...} }
+type GetInstanceTypeAddonsBackupPriceArrayInput interface {
+	pulumi.Input
 
-func (GetInstanceTypeAddonsBackupsPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupsPrice)(nil)).Elem()
+	ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput
+	ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) ToGetInstanceTypeAddonsBackupsPriceOutput() GetInstanceTypeAddonsBackupsPriceOutput {
+type GetInstanceTypeAddonsBackupPriceArray []GetInstanceTypeAddonsBackupPriceInput
+
+func (GetInstanceTypeAddonsBackupPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonsBackupPriceArray) ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput {
+	return i.ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonsBackupPriceArray) ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupPriceArrayOutput)
+}
+
+type GetInstanceTypeAddonsBackupPriceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonsBackupPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) ToGetInstanceTypeAddonsBackupsPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupsPriceOutput {
+func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonsBackupPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
-func (o GetInstanceTypeAddonsBackupsPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupsPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonsBackupPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetInstanceTypeAddonsBackupPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonsBackupPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonsBackupPriceArrayOutput) ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonsBackupPriceArrayOutput) ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonsBackupPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonsBackupPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonsBackupPrice {
+		return vs[0].([]GetInstanceTypeAddonsBackupPrice)[vs[1].(int)]
+	}).(GetInstanceTypeAddonsBackupPriceOutput)
 }
 
 type GetInstanceTypePrice struct {
@@ -15928,7 +16018,7 @@ type GetStackScriptsStackscript struct {
 	// A description for the StackScript.
 	Description string `pulumi:"description"`
 	// The unique ID of the StackScript.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
@@ -15970,7 +16060,7 @@ type GetStackScriptsStackscriptArgs struct {
 	// A description for the StackScript.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The unique ID of the StackScript.
-	Id pulumi.IntInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
@@ -16063,8 +16153,8 @@ func (o GetStackScriptsStackscriptOutput) Description() pulumi.StringOutput {
 }
 
 // The unique ID of the StackScript.
-func (o GetStackScriptsStackscriptOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStackScriptsStackscript) int { return v.Id }).(pulumi.IntOutput)
+func (o GetStackScriptsStackscriptOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackScriptsStackscript) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
@@ -16276,8 +16366,115 @@ func (o GetStackScriptsStackscriptUserDefinedFieldArrayOutput) Index(i pulumi.In
 	}).(GetStackScriptsStackscriptUserDefinedFieldOutput)
 }
 
+type GetUserDatabaseGrant struct {
+	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
+	Permissions string `pulumi:"permissions"`
+}
+
+// GetUserDatabaseGrantInput is an input type that accepts GetUserDatabaseGrantArgs and GetUserDatabaseGrantOutput values.
+// You can construct a concrete instance of `GetUserDatabaseGrantInput` via:
+//
+//	GetUserDatabaseGrantArgs{...}
+type GetUserDatabaseGrantInput interface {
+	pulumi.Input
+
+	ToGetUserDatabaseGrantOutput() GetUserDatabaseGrantOutput
+	ToGetUserDatabaseGrantOutputWithContext(context.Context) GetUserDatabaseGrantOutput
+}
+
+type GetUserDatabaseGrantArgs struct {
+	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (GetUserDatabaseGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserDatabaseGrant)(nil)).Elem()
+}
+
+func (i GetUserDatabaseGrantArgs) ToGetUserDatabaseGrantOutput() GetUserDatabaseGrantOutput {
+	return i.ToGetUserDatabaseGrantOutputWithContext(context.Background())
+}
+
+func (i GetUserDatabaseGrantArgs) ToGetUserDatabaseGrantOutputWithContext(ctx context.Context) GetUserDatabaseGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserDatabaseGrantOutput)
+}
+
+// GetUserDatabaseGrantArrayInput is an input type that accepts GetUserDatabaseGrantArray and GetUserDatabaseGrantArrayOutput values.
+// You can construct a concrete instance of `GetUserDatabaseGrantArrayInput` via:
+//
+//	GetUserDatabaseGrantArray{ GetUserDatabaseGrantArgs{...} }
+type GetUserDatabaseGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetUserDatabaseGrantArrayOutput() GetUserDatabaseGrantArrayOutput
+	ToGetUserDatabaseGrantArrayOutputWithContext(context.Context) GetUserDatabaseGrantArrayOutput
+}
+
+type GetUserDatabaseGrantArray []GetUserDatabaseGrantInput
+
+func (GetUserDatabaseGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserDatabaseGrant)(nil)).Elem()
+}
+
+func (i GetUserDatabaseGrantArray) ToGetUserDatabaseGrantArrayOutput() GetUserDatabaseGrantArrayOutput {
+	return i.ToGetUserDatabaseGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserDatabaseGrantArray) ToGetUserDatabaseGrantArrayOutputWithContext(ctx context.Context) GetUserDatabaseGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserDatabaseGrantArrayOutput)
+}
+
+type GetUserDatabaseGrantOutput struct{ *pulumi.OutputState }
+
+func (GetUserDatabaseGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserDatabaseGrant)(nil)).Elem()
+}
+
+func (o GetUserDatabaseGrantOutput) ToGetUserDatabaseGrantOutput() GetUserDatabaseGrantOutput {
+	return o
+}
+
+func (o GetUserDatabaseGrantOutput) ToGetUserDatabaseGrantOutputWithContext(ctx context.Context) GetUserDatabaseGrantOutput {
+	return o
+}
+
+func (o GetUserDatabaseGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUserDatabaseGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetUserDatabaseGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserDatabaseGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetUserDatabaseGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserDatabaseGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type GetUserDatabaseGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserDatabaseGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserDatabaseGrant)(nil)).Elem()
+}
+
+func (o GetUserDatabaseGrantArrayOutput) ToGetUserDatabaseGrantArrayOutput() GetUserDatabaseGrantArrayOutput {
+	return o
+}
+
+func (o GetUserDatabaseGrantArrayOutput) ToGetUserDatabaseGrantArrayOutputWithContext(ctx context.Context) GetUserDatabaseGrantArrayOutput {
+	return o
+}
+
+func (o GetUserDatabaseGrantArrayOutput) Index(i pulumi.IntInput) GetUserDatabaseGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserDatabaseGrant {
+		return vs[0].([]GetUserDatabaseGrant)[vs[1].(int)]
+	}).(GetUserDatabaseGrantOutput)
+}
+
 type GetUserDomainGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16294,6 +16491,7 @@ type GetUserDomainGrantInput interface {
 
 type GetUserDomainGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -16352,6 +16550,10 @@ func (o GetUserDomainGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserDomainGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserDomainGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserDomainGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserDomainGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserDomainGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -16378,6 +16580,7 @@ func (o GetUserDomainGrantArrayOutput) Index(i pulumi.IntInput) GetUserDomainGra
 
 type GetUserFirewallGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16394,6 +16597,7 @@ type GetUserFirewallGrantInput interface {
 
 type GetUserFirewallGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -16452,6 +16656,10 @@ func (o GetUserFirewallGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserFirewallGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserFirewallGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserFirewallGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserFirewallGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserFirewallGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -16477,18 +16685,18 @@ func (o GetUserFirewallGrantArrayOutput) Index(i pulumi.IntInput) GetUserFirewal
 }
 
 type GetUserGlobalGrant struct {
-	AccountAccess        *string `pulumi:"accountAccess"`
-	AddDatabases         *bool   `pulumi:"addDatabases"`
-	AddDomains           *bool   `pulumi:"addDomains"`
-	AddFirewalls         *bool   `pulumi:"addFirewalls"`
-	AddImages            *bool   `pulumi:"addImages"`
-	AddLinodes           *bool   `pulumi:"addLinodes"`
-	AddLongview          *bool   `pulumi:"addLongview"`
-	AddNodebalancers     *bool   `pulumi:"addNodebalancers"`
-	AddStackscripts      *bool   `pulumi:"addStackscripts"`
-	AddVolumes           *bool   `pulumi:"addVolumes"`
-	CancelAccount        *bool   `pulumi:"cancelAccount"`
-	LongviewSubscription *bool   `pulumi:"longviewSubscription"`
+	AccountAccess        string `pulumi:"accountAccess"`
+	AddDatabases         bool   `pulumi:"addDatabases"`
+	AddDomains           bool   `pulumi:"addDomains"`
+	AddFirewalls         bool   `pulumi:"addFirewalls"`
+	AddImages            bool   `pulumi:"addImages"`
+	AddLinodes           bool   `pulumi:"addLinodes"`
+	AddLongview          bool   `pulumi:"addLongview"`
+	AddNodebalancers     bool   `pulumi:"addNodebalancers"`
+	AddStackscripts      bool   `pulumi:"addStackscripts"`
+	AddVolumes           bool   `pulumi:"addVolumes"`
+	CancelAccount        bool   `pulumi:"cancelAccount"`
+	LongviewSubscription bool   `pulumi:"longviewSubscription"`
 }
 
 // GetUserGlobalGrantInput is an input type that accepts GetUserGlobalGrantArgs and GetUserGlobalGrantOutput values.
@@ -16503,18 +16711,18 @@ type GetUserGlobalGrantInput interface {
 }
 
 type GetUserGlobalGrantArgs struct {
-	AccountAccess        pulumi.StringPtrInput `pulumi:"accountAccess"`
-	AddDatabases         pulumi.BoolPtrInput   `pulumi:"addDatabases"`
-	AddDomains           pulumi.BoolPtrInput   `pulumi:"addDomains"`
-	AddFirewalls         pulumi.BoolPtrInput   `pulumi:"addFirewalls"`
-	AddImages            pulumi.BoolPtrInput   `pulumi:"addImages"`
-	AddLinodes           pulumi.BoolPtrInput   `pulumi:"addLinodes"`
-	AddLongview          pulumi.BoolPtrInput   `pulumi:"addLongview"`
-	AddNodebalancers     pulumi.BoolPtrInput   `pulumi:"addNodebalancers"`
-	AddStackscripts      pulumi.BoolPtrInput   `pulumi:"addStackscripts"`
-	AddVolumes           pulumi.BoolPtrInput   `pulumi:"addVolumes"`
-	CancelAccount        pulumi.BoolPtrInput   `pulumi:"cancelAccount"`
-	LongviewSubscription pulumi.BoolPtrInput   `pulumi:"longviewSubscription"`
+	AccountAccess        pulumi.StringInput `pulumi:"accountAccess"`
+	AddDatabases         pulumi.BoolInput   `pulumi:"addDatabases"`
+	AddDomains           pulumi.BoolInput   `pulumi:"addDomains"`
+	AddFirewalls         pulumi.BoolInput   `pulumi:"addFirewalls"`
+	AddImages            pulumi.BoolInput   `pulumi:"addImages"`
+	AddLinodes           pulumi.BoolInput   `pulumi:"addLinodes"`
+	AddLongview          pulumi.BoolInput   `pulumi:"addLongview"`
+	AddNodebalancers     pulumi.BoolInput   `pulumi:"addNodebalancers"`
+	AddStackscripts      pulumi.BoolInput   `pulumi:"addStackscripts"`
+	AddVolumes           pulumi.BoolInput   `pulumi:"addVolumes"`
+	CancelAccount        pulumi.BoolInput   `pulumi:"cancelAccount"`
+	LongviewSubscription pulumi.BoolInput   `pulumi:"longviewSubscription"`
 }
 
 func (GetUserGlobalGrantArgs) ElementType() reflect.Type {
@@ -16568,52 +16776,52 @@ func (o GetUserGlobalGrantOutput) ToGetUserGlobalGrantOutputWithContext(ctx cont
 	return o
 }
 
-func (o GetUserGlobalGrantOutput) AccountAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *string { return v.AccountAccess }).(pulumi.StringPtrOutput)
+func (o GetUserGlobalGrantOutput) AccountAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) string { return v.AccountAccess }).(pulumi.StringOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddDatabases() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddDatabases }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddDatabases() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddDatabases }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddDomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddDomains }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddDomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddDomains }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddFirewalls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddFirewalls }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddFirewalls() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddFirewalls }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddImages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddImages }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddImages() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddImages }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddLinodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddLinodes }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddLinodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddLinodes }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddLongview() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddLongview }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddLongview() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddLongview }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddNodebalancers() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddNodebalancers }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddNodebalancers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddNodebalancers }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddStackscripts() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddStackscripts }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddStackscripts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddStackscripts }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) AddVolumes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.AddVolumes }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) AddVolumes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddVolumes }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) CancelAccount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.CancelAccount }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) CancelAccount() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.CancelAccount }).(pulumi.BoolOutput)
 }
 
-func (o GetUserGlobalGrantOutput) LongviewSubscription() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetUserGlobalGrant) *bool { return v.LongviewSubscription }).(pulumi.BoolPtrOutput)
+func (o GetUserGlobalGrantOutput) LongviewSubscription() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.LongviewSubscription }).(pulumi.BoolOutput)
 }
 
 type GetUserGlobalGrantArrayOutput struct{ *pulumi.OutputState }
@@ -16638,6 +16846,7 @@ func (o GetUserGlobalGrantArrayOutput) Index(i pulumi.IntInput) GetUserGlobalGra
 
 type GetUserImageGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16654,6 +16863,7 @@ type GetUserImageGrantInput interface {
 
 type GetUserImageGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -16712,6 +16922,10 @@ func (o GetUserImageGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserImageGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserImageGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserImageGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserImageGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserImageGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -16738,6 +16952,7 @@ func (o GetUserImageGrantArrayOutput) Index(i pulumi.IntInput) GetUserImageGrant
 
 type GetUserLinodeGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16754,6 +16969,7 @@ type GetUserLinodeGrantInput interface {
 
 type GetUserLinodeGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -16812,6 +17028,10 @@ func (o GetUserLinodeGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserLinodeGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserLinodeGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserLinodeGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserLinodeGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserLinodeGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -16838,6 +17058,7 @@ func (o GetUserLinodeGrantArrayOutput) Index(i pulumi.IntInput) GetUserLinodeGra
 
 type GetUserLongviewGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16854,6 +17075,7 @@ type GetUserLongviewGrantInput interface {
 
 type GetUserLongviewGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -16912,6 +17134,10 @@ func (o GetUserLongviewGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserLongviewGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserLongviewGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserLongviewGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserLongviewGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserLongviewGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -16938,6 +17164,7 @@ func (o GetUserLongviewGrantArrayOutput) Index(i pulumi.IntInput) GetUserLongvie
 
 type GetUserNodebalancerGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -16954,6 +17181,7 @@ type GetUserNodebalancerGrantInput interface {
 
 type GetUserNodebalancerGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -17012,6 +17240,10 @@ func (o GetUserNodebalancerGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserNodebalancerGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserNodebalancerGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserNodebalancerGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserNodebalancerGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserNodebalancerGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -17038,6 +17270,7 @@ func (o GetUserNodebalancerGrantArrayOutput) Index(i pulumi.IntInput) GetUserNod
 
 type GetUserStackscriptGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -17054,6 +17287,7 @@ type GetUserStackscriptGrantInput interface {
 
 type GetUserStackscriptGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -17112,6 +17346,10 @@ func (o GetUserStackscriptGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserStackscriptGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+func (o GetUserStackscriptGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserStackscriptGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
 func (o GetUserStackscriptGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserStackscriptGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -17138,6 +17376,7 @@ func (o GetUserStackscriptGrantArrayOutput) Index(i pulumi.IntInput) GetUserStac
 
 type GetUserVolumeGrant struct {
 	Id          int    `pulumi:"id"`
+	Label       string `pulumi:"label"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -17154,6 +17393,7 @@ type GetUserVolumeGrantInput interface {
 
 type GetUserVolumeGrantArgs struct {
 	Id          pulumi.IntInput    `pulumi:"id"`
+	Label       pulumi.StringInput `pulumi:"label"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -17210,6 +17450,10 @@ func (o GetUserVolumeGrantOutput) ToGetUserVolumeGrantOutputWithContext(ctx cont
 
 func (o GetUserVolumeGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUserVolumeGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetUserVolumeGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserVolumeGrant) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o GetUserVolumeGrantOutput) Permissions() pulumi.StringOutput {
@@ -17627,8 +17871,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalInput)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacInput)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsInput)(nil)).Elem(), GetInstanceTypeAddonsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupsPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupsPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupPriceArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypePriceInput)(nil)).Elem(), GetInstanceTypePriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesFilterInput)(nil)).Elem(), GetInstanceTypesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesFilterArrayInput)(nil)).Elem(), GetInstanceTypesFilterArray{})
@@ -17710,6 +17956,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptArrayInput)(nil)).Elem(), GetStackScriptsStackscriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedFieldInput)(nil)).Elem(), GetStackScriptsStackscriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsStackscriptUserDefinedFieldArrayInput)(nil)).Elem(), GetStackScriptsStackscriptUserDefinedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserDatabaseGrantInput)(nil)).Elem(), GetUserDatabaseGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserDatabaseGrantArrayInput)(nil)).Elem(), GetUserDatabaseGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserDomainGrantInput)(nil)).Elem(), GetUserDomainGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserDomainGrantArrayInput)(nil)).Elem(), GetUserDomainGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserFirewallGrantInput)(nil)).Elem(), GetUserFirewallGrantArgs{})
@@ -17883,8 +18131,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupsPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesFilterOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesFilterArrayOutput{})
@@ -17966,6 +18216,8 @@ func init() {
 	pulumi.RegisterOutputType(GetStackScriptsStackscriptArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptsStackscriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptsStackscriptUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetUserDatabaseGrantOutput{})
+	pulumi.RegisterOutputType(GetUserDatabaseGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUserDomainGrantOutput{})
 	pulumi.RegisterOutputType(GetUserDomainGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUserFirewallGrantOutput{})

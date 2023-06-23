@@ -141,6 +141,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabasesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("databases")]
+        private List<Inputs.GetDatabasesDatabaseArgs>? _databases;
+        public List<Inputs.GetDatabasesDatabaseArgs> Databases
+        {
+            get => _databases ?? (_databases = new List<Inputs.GetDatabasesDatabaseArgs>());
+            set => _databases = value;
+        }
+
         [Input("filters")]
         private List<Inputs.GetDatabasesFilterArgs>? _filters;
         public List<Inputs.GetDatabasesFilterArgs> Filters
@@ -148,14 +156,6 @@ namespace Pulumi.Linode
             get => _filters ?? (_filters = new List<Inputs.GetDatabasesFilterArgs>());
             set => _filters = value;
         }
-
-        /// <summary>
-        /// If true, only the latest create database will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-        /// </summary>
-        [Input("latest")]
-        public bool? Latest { get; set; }
 
         /// <summary>
         /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -177,6 +177,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabasesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("databases")]
+        private InputList<Inputs.GetDatabasesDatabaseInputArgs>? _databases;
+        public InputList<Inputs.GetDatabasesDatabaseInputArgs> Databases
+        {
+            get => _databases ?? (_databases = new InputList<Inputs.GetDatabasesDatabaseInputArgs>());
+            set => _databases = value;
+        }
+
         [Input("filters")]
         private InputList<Inputs.GetDatabasesFilterInputArgs>? _filters;
         public InputList<Inputs.GetDatabasesFilterInputArgs> Filters
@@ -184,14 +192,6 @@ namespace Pulumi.Linode
             get => _filters ?? (_filters = new InputList<Inputs.GetDatabasesFilterInputArgs>());
             set => _filters = value;
         }
-
-        /// <summary>
-        /// If true, only the latest create database will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-        /// </summary>
-        [Input("latest")]
-        public Input<bool>? Latest { get; set; }
 
         /// <summary>
         /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -218,10 +218,9 @@ namespace Pulumi.Linode
         public readonly ImmutableArray<Outputs.GetDatabasesDatabaseResult> Databases;
         public readonly ImmutableArray<Outputs.GetDatabasesFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of the Managed Database.
         /// </summary>
         public readonly string Id;
-        public readonly bool? Latest;
         public readonly string? Order;
         public readonly string? OrderBy;
 
@@ -233,8 +232,6 @@ namespace Pulumi.Linode
 
             string id,
 
-            bool? latest,
-
             string? order,
 
             string? orderBy)
@@ -242,7 +239,6 @@ namespace Pulumi.Linode
             Databases = databases;
             Filters = filters;
             Id = id;
-            Latest = latest;
             Order = order;
             OrderBy = orderBy;
         }

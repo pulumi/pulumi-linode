@@ -5,8 +5,8 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.GetDatabasesDatabaseArgs;
 import com.pulumi.linode.inputs.GetDatabasesFilterArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,30 +18,18 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabasesArgs Empty = new GetDatabasesArgs();
 
+    @Import(name="databases")
+    private @Nullable Output<List<GetDatabasesDatabaseArgs>> databases;
+
+    public Optional<Output<List<GetDatabasesDatabaseArgs>>> databases() {
+        return Optional.ofNullable(this.databases);
+    }
+
     @Import(name="filters")
     private @Nullable Output<List<GetDatabasesFilterArgs>> filters;
 
     public Optional<Output<List<GetDatabasesFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    /**
-     * If true, only the latest create database will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-     * 
-     */
-    @Import(name="latest")
-    private @Nullable Output<Boolean> latest;
-
-    /**
-     * @return If true, only the latest create database will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-     * 
-     */
-    public Optional<Output<Boolean>> latest() {
-        return Optional.ofNullable(this.latest);
     }
 
     /**
@@ -77,8 +65,8 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
     private GetDatabasesArgs() {}
 
     private GetDatabasesArgs(GetDatabasesArgs $) {
+        this.databases = $.databases;
         this.filters = $.filters;
-        this.latest = $.latest;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -101,6 +89,19 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetDatabasesArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder databases(@Nullable Output<List<GetDatabasesDatabaseArgs>> databases) {
+            $.databases = databases;
+            return this;
+        }
+
+        public Builder databases(List<GetDatabasesDatabaseArgs> databases) {
+            return databases(Output.of(databases));
+        }
+
+        public Builder databases(GetDatabasesDatabaseArgs... databases) {
+            return databases(List.of(databases));
+        }
+
         public Builder filters(@Nullable Output<List<GetDatabasesFilterArgs>> filters) {
             $.filters = filters;
             return this;
@@ -112,31 +113,6 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetDatabasesFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        /**
-         * @param latest If true, only the latest create database will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder latest(@Nullable Output<Boolean> latest) {
-            $.latest = latest;
-            return this;
-        }
-
-        /**
-         * @param latest If true, only the latest create database will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder latest(Boolean latest) {
-            return latest(Output.of(latest));
         }
 
         /**

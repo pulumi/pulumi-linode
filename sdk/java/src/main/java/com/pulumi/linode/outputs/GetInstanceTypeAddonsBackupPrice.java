@@ -8,11 +8,11 @@ import java.lang.Double;
 import java.util.Objects;
 
 @CustomType
-public final class GetInstanceTypeAddonsBackupsPrice {
+public final class GetInstanceTypeAddonsBackupPrice {
     private Double hourly;
     private Double monthly;
 
-    private GetInstanceTypeAddonsBackupsPrice() {}
+    private GetInstanceTypeAddonsBackupPrice() {}
     public Double hourly() {
         return this.hourly;
     }
@@ -24,7 +24,7 @@ public final class GetInstanceTypeAddonsBackupsPrice {
         return new Builder();
     }
 
-    public static Builder builder(GetInstanceTypeAddonsBackupsPrice defaults) {
+    public static Builder builder(GetInstanceTypeAddonsBackupPrice defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -32,7 +32,7 @@ public final class GetInstanceTypeAddonsBackupsPrice {
         private Double hourly;
         private Double monthly;
         public Builder() {}
-        public Builder(GetInstanceTypeAddonsBackupsPrice defaults) {
+        public Builder(GetInstanceTypeAddonsBackupPrice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hourly = defaults.hourly;
     	      this.monthly = defaults.monthly;
@@ -48,8 +48,8 @@ public final class GetInstanceTypeAddonsBackupsPrice {
             this.monthly = Objects.requireNonNull(monthly);
             return this;
         }
-        public GetInstanceTypeAddonsBackupsPrice build() {
-            final var o = new GetInstanceTypeAddonsBackupsPrice();
+        public GetInstanceTypeAddonsBackupPrice build() {
+            final var o = new GetInstanceTypeAddonsBackupPrice();
             o.hourly = hourly;
             o.monthly = monthly;
             return o;

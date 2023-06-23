@@ -21,6 +21,13 @@ public final class GetUserLinodeGrantArgs extends com.pulumi.resources.ResourceA
         return this.id;
     }
 
+    @Import(name="label", required=true)
+    private Output<String> label;
+
+    public Output<String> label() {
+        return this.label;
+    }
+
     @Import(name="permissions", required=true)
     private Output<String> permissions;
 
@@ -32,6 +39,7 @@ public final class GetUserLinodeGrantArgs extends com.pulumi.resources.ResourceA
 
     private GetUserLinodeGrantArgs(GetUserLinodeGrantArgs $) {
         this.id = $.id;
+        this.label = $.label;
         this.permissions = $.permissions;
     }
 
@@ -62,6 +70,15 @@ public final class GetUserLinodeGrantArgs extends com.pulumi.resources.ResourceA
             return id(Output.of(id));
         }
 
+        public Builder label(Output<String> label) {
+            $.label = label;
+            return this;
+        }
+
+        public Builder label(String label) {
+            return label(Output.of(label));
+        }
+
         public Builder permissions(Output<String> permissions) {
             $.permissions = permissions;
             return this;
@@ -73,6 +90,7 @@ public final class GetUserLinodeGrantArgs extends com.pulumi.resources.ResourceA
 
         public GetUserLinodeGrantArgs build() {
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
             $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
             return $;
         }

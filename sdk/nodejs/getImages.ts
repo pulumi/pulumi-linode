@@ -67,6 +67,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getImages:getImages", {
         "filters": args.filters,
+        "images": args.images,
         "latest": args.latest,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -78,6 +79,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     filters?: inputs.GetImagesFilter[];
+    images?: inputs.GetImagesImage[];
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
      *
@@ -100,10 +102,10 @@ export interface GetImagesArgs {
 export interface GetImagesResult {
     readonly filters?: outputs.GetImagesFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     readonly id: string;
-    readonly images: outputs.GetImagesImage[];
+    readonly images?: outputs.GetImagesImage[];
     readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
@@ -172,6 +174,7 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.GetImagesImageArgs>[]>;
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
      *

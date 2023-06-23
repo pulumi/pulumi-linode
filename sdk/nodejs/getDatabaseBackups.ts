@@ -43,6 +43,7 @@ export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.I
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseBackups:getDatabaseBackups", {
+        "backups": args.backups,
         "databaseId": args.databaseId,
         "databaseType": args.databaseType,
         "filters": args.filters,
@@ -56,6 +57,7 @@ export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDatabaseBackups.
  */
 export interface GetDatabaseBackupsArgs {
+    backups?: inputs.GetDatabaseBackupsBackup[];
     /**
      * The ID of the database to retrieve backups for.
      */
@@ -85,14 +87,14 @@ export interface GetDatabaseBackupsArgs {
  * A collection of values returned by getDatabaseBackups.
  */
 export interface GetDatabaseBackupsResult {
-    readonly backups: outputs.GetDatabaseBackupsBackup[];
+    readonly backups?: outputs.GetDatabaseBackupsBackup[];
     readonly databaseId: number;
     readonly databaseType: string;
     readonly filters?: outputs.GetDatabaseBackupsFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the database backup object.
      */
-    readonly id: string;
+    readonly id: number;
     readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
@@ -138,6 +140,7 @@ export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opt
  * A collection of arguments for invoking getDatabaseBackups.
  */
 export interface GetDatabaseBackupsOutputArgs {
+    backups?: pulumi.Input<pulumi.Input<inputs.GetDatabaseBackupsBackupArgs>[]>;
     /**
      * The ID of the database to retrieve backups for.
      */

@@ -137,6 +137,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabaseBackupsArgs : global::Pulumi.InvokeArgs
     {
+        [Input("backups")]
+        private List<Inputs.GetDatabaseBackupsBackupArgs>? _backups;
+        public List<Inputs.GetDatabaseBackupsBackupArgs> Backups
+        {
+            get => _backups ?? (_backups = new List<Inputs.GetDatabaseBackupsBackupArgs>());
+            set => _backups = value;
+        }
+
         /// <summary>
         /// The ID of the database to retrieve backups for.
         /// </summary>
@@ -185,6 +193,14 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabaseBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("backups")]
+        private InputList<Inputs.GetDatabaseBackupsBackupInputArgs>? _backups;
+        public InputList<Inputs.GetDatabaseBackupsBackupInputArgs> Backups
+        {
+            get => _backups ?? (_backups = new InputList<Inputs.GetDatabaseBackupsBackupInputArgs>());
+            set => _backups = value;
+        }
+
         /// <summary>
         /// The ID of the database to retrieve backups for.
         /// </summary>
@@ -240,9 +256,9 @@ namespace Pulumi.Linode
         public readonly string DatabaseType;
         public readonly ImmutableArray<Outputs.GetDatabaseBackupsFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of the database backup object.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         public readonly bool? Latest;
         public readonly string? Order;
         public readonly string? OrderBy;
@@ -257,7 +273,7 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetDatabaseBackupsFilterResult> filters,
 
-            string id,
+            int id,
 
             bool? latest,
 

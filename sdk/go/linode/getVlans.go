@@ -81,17 +81,17 @@ type GetVlansArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string `pulumi:"orderBy"`
+	OrderBy *string        `pulumi:"orderBy"`
+	Vlans   []GetVlansVlan `pulumi:"vlans"`
 }
 
 // A collection of values returned by getVlans.
 type GetVlansResult struct {
 	Filters []GetVlansFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
-	Id      string         `pulumi:"id"`
-	Order   *string        `pulumi:"order"`
-	OrderBy *string        `pulumi:"orderBy"`
-	Vlans   []GetVlansVlan `pulumi:"vlans"`
+	Id      string           `pulumi:"id"`
+	Order   *string          `pulumi:"order"`
+	OrderBy *string          `pulumi:"orderBy"`
+	Vlans   []GetVlansVlan   `pulumi:"vlans"`
 }
 
 func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi.InvokeOption) GetVlansResultOutput {
@@ -113,7 +113,8 @@ type GetVlansOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderBy pulumi.StringPtrInput  `pulumi:"orderBy"`
+	Vlans   GetVlansVlanArrayInput `pulumi:"vlans"`
 }
 
 func (GetVlansOutputArgs) ElementType() reflect.Type {
@@ -139,7 +140,6 @@ func (o GetVlansResultOutput) Filters() GetVlansFilterArrayOutput {
 	return o.ApplyT(func(v GetVlansResult) []GetVlansFilter { return v.Filters }).(GetVlansFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetVlansResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVlansResult) string { return v.Id }).(pulumi.StringOutput)
 }

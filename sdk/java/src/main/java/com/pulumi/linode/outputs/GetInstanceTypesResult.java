@@ -16,20 +16,20 @@ import javax.annotation.Nullable;
 public final class GetInstanceTypesResult {
     private @Nullable List<GetInstanceTypesFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID representing the Linode Type.
      * 
      */
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private List<GetInstanceTypesType> types;
+    private @Nullable List<GetInstanceTypesType> types;
 
     private GetInstanceTypesResult() {}
     public List<GetInstanceTypesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID representing the Linode Type.
      * 
      */
     public String id() {
@@ -42,7 +42,7 @@ public final class GetInstanceTypesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetInstanceTypesType> types() {
-        return this.types;
+        return this.types == null ? List.of() : this.types;
     }
 
     public static Builder builder() {
@@ -58,7 +58,7 @@ public final class GetInstanceTypesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private List<GetInstanceTypesType> types;
+        private @Nullable List<GetInstanceTypesType> types;
         public Builder() {}
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,8 +93,8 @@ public final class GetInstanceTypesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(List<GetInstanceTypesType> types) {
-            this.types = Objects.requireNonNull(types);
+        public Builder types(@Nullable List<GetInstanceTypesType> types) {
+            this.types = types;
             return this;
         }
         public Builder types(GetInstanceTypesType... types) {

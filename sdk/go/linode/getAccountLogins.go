@@ -76,12 +76,13 @@ func GetAccountLogins(ctx *pulumi.Context, args *GetAccountLoginsArgs, opts ...p
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsArgs struct {
 	Filters []GetAccountLoginsFilter `pulumi:"filters"`
+	Logins  []GetAccountLoginsLogin  `pulumi:"logins"`
 }
 
 // A collection of values returned by getAccountLogins.
 type GetAccountLoginsResult struct {
 	Filters []GetAccountLoginsFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of this login object.
 	Id     string                  `pulumi:"id"`
 	Logins []GetAccountLoginsLogin `pulumi:"logins"`
 }
@@ -102,6 +103,7 @@ func GetAccountLoginsOutput(ctx *pulumi.Context, args GetAccountLoginsOutputArgs
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsOutputArgs struct {
 	Filters GetAccountLoginsFilterArrayInput `pulumi:"filters"`
+	Logins  GetAccountLoginsLoginArrayInput  `pulumi:"logins"`
 }
 
 func (GetAccountLoginsOutputArgs) ElementType() reflect.Type {
@@ -127,7 +129,7 @@ func (o GetAccountLoginsResultOutput) Filters() GetAccountLoginsFilterArrayOutpu
 	return o.ApplyT(func(v GetAccountLoginsResult) []GetAccountLoginsFilter { return v.Filters }).(GetAccountLoginsFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of this login object.
 func (o GetAccountLoginsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountLoginsResult) string { return v.Id }).(pulumi.StringOutput)
 }

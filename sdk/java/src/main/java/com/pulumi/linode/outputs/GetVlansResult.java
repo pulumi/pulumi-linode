@@ -15,23 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetVlansResult {
     private @Nullable List<GetVlansFilter> filters;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private List<GetVlansVlan> vlans;
+    private @Nullable List<GetVlansVlan> vlans;
 
     private GetVlansResult() {}
     public List<GetVlansFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -42,7 +34,7 @@ public final class GetVlansResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetVlansVlan> vlans() {
-        return this.vlans;
+        return this.vlans == null ? List.of() : this.vlans;
     }
 
     public static Builder builder() {
@@ -58,7 +50,7 @@ public final class GetVlansResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private List<GetVlansVlan> vlans;
+        private @Nullable List<GetVlansVlan> vlans;
         public Builder() {}
         public Builder(GetVlansResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,8 +85,8 @@ public final class GetVlansResult {
             return this;
         }
         @CustomType.Setter
-        public Builder vlans(List<GetVlansVlan> vlans) {
-            this.vlans = Objects.requireNonNull(vlans);
+        public Builder vlans(@Nullable List<GetVlansVlan> vlans) {
+            this.vlans = vlans;
             return this;
         }
         public Builder vlans(GetVlansVlan... vlans) {

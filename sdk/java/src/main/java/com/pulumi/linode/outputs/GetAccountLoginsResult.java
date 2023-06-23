@@ -15,25 +15,25 @@ import javax.annotation.Nullable;
 public final class GetAccountLoginsResult {
     private @Nullable List<GetAccountLoginsFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this login object.
      * 
      */
     private String id;
-    private List<GetAccountLoginsLogin> logins;
+    private @Nullable List<GetAccountLoginsLogin> logins;
 
     private GetAccountLoginsResult() {}
     public List<GetAccountLoginsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of this login object.
      * 
      */
     public String id() {
         return this.id;
     }
     public List<GetAccountLoginsLogin> logins() {
-        return this.logins;
+        return this.logins == null ? List.of() : this.logins;
     }
 
     public static Builder builder() {
@@ -47,7 +47,7 @@ public final class GetAccountLoginsResult {
     public static final class Builder {
         private @Nullable List<GetAccountLoginsFilter> filters;
         private String id;
-        private List<GetAccountLoginsLogin> logins;
+        private @Nullable List<GetAccountLoginsLogin> logins;
         public Builder() {}
         public Builder(GetAccountLoginsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,8 +70,8 @@ public final class GetAccountLoginsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder logins(List<GetAccountLoginsLogin> logins) {
-            this.logins = Objects.requireNonNull(logins);
+        public Builder logins(@Nullable List<GetAccountLoginsLogin> logins) {
+            this.logins = logins;
             return this;
         }
         public Builder logins(GetAccountLoginsLogin... logins) {

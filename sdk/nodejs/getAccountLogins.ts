@@ -45,6 +45,7 @@ export function getAccountLogins(args?: GetAccountLoginsArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getAccountLogins:getAccountLogins", {
         "filters": args.filters,
+        "logins": args.logins,
     }, opts);
 }
 
@@ -53,6 +54,7 @@ export function getAccountLogins(args?: GetAccountLoginsArgs, opts?: pulumi.Invo
  */
 export interface GetAccountLoginsArgs {
     filters?: inputs.GetAccountLoginsFilter[];
+    logins?: inputs.GetAccountLoginsLogin[];
 }
 
 /**
@@ -61,10 +63,10 @@ export interface GetAccountLoginsArgs {
 export interface GetAccountLoginsResult {
     readonly filters?: outputs.GetAccountLoginsFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of this login object.
      */
     readonly id: string;
-    readonly logins: outputs.GetAccountLoginsLogin[];
+    readonly logins?: outputs.GetAccountLoginsLogin[];
 }
 /**
  * Provides information about Linode account logins that match a set of filters.
@@ -108,4 +110,5 @@ export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?:
  */
 export interface GetAccountLoginsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsFilterArgs>[]>;
+    logins?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsLoginArgs>[]>;
 }

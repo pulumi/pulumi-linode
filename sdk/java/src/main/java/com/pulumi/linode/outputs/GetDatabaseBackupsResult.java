@@ -16,22 +16,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseBackupsResult {
-    private List<GetDatabaseBackupsBackup> backups;
+    private @Nullable List<GetDatabaseBackupsBackup> backups;
     private Integer databaseId;
     private String databaseType;
     private @Nullable List<GetDatabaseBackupsFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the database backup object.
      * 
      */
-    private String id;
+    private Integer id;
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
 
     private GetDatabaseBackupsResult() {}
     public List<GetDatabaseBackupsBackup> backups() {
-        return this.backups;
+        return this.backups == null ? List.of() : this.backups;
     }
     public Integer databaseId() {
         return this.databaseId;
@@ -43,10 +43,10 @@ public final class GetDatabaseBackupsResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the database backup object.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     public Optional<Boolean> latest() {
@@ -68,11 +68,11 @@ public final class GetDatabaseBackupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetDatabaseBackupsBackup> backups;
+        private @Nullable List<GetDatabaseBackupsBackup> backups;
         private Integer databaseId;
         private String databaseType;
         private @Nullable List<GetDatabaseBackupsFilter> filters;
-        private String id;
+        private Integer id;
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
@@ -90,8 +90,8 @@ public final class GetDatabaseBackupsResult {
         }
 
         @CustomType.Setter
-        public Builder backups(List<GetDatabaseBackupsBackup> backups) {
-            this.backups = Objects.requireNonNull(backups);
+        public Builder backups(@Nullable List<GetDatabaseBackupsBackup> backups) {
+            this.backups = backups;
             return this;
         }
         public Builder backups(GetDatabaseBackupsBackup... backups) {
@@ -116,7 +116,7 @@ public final class GetDatabaseBackupsResult {
             return filters(List.of(filters));
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }

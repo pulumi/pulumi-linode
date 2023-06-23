@@ -113,6 +113,7 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
+	Images  []GetImagesImage  `pulumi:"images"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
@@ -126,7 +127,7 @@ type GetImagesArgs struct {
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id      string           `pulumi:"id"`
 	Images  []GetImagesImage `pulumi:"images"`
 	Latest  *bool            `pulumi:"latest"`
@@ -150,6 +151,7 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
 	Filters GetImagesFilterArrayInput `pulumi:"filters"`
+	Images  GetImagesImageArrayInput  `pulumi:"images"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
@@ -183,7 +185,7 @@ func (o GetImagesResultOutput) Filters() GetImagesFilterArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesFilter { return v.Filters }).(GetImagesFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 func (o GetImagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
 }

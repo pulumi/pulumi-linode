@@ -86,6 +86,7 @@ func GetDatabaseBackups(ctx *pulumi.Context, args *GetDatabaseBackupsArgs, opts 
 
 // A collection of arguments for invoking getDatabaseBackups.
 type GetDatabaseBackupsArgs struct {
+	Backups []GetDatabaseBackupsBackup `pulumi:"backups"`
 	// The ID of the database to retrieve backups for.
 	DatabaseId int `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
@@ -107,8 +108,8 @@ type GetDatabaseBackupsResult struct {
 	DatabaseId   int                        `pulumi:"databaseId"`
 	DatabaseType string                     `pulumi:"databaseType"`
 	Filters      []GetDatabaseBackupsFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
+	// The ID of the database backup object.
+	Id      int     `pulumi:"id"`
 	Latest  *bool   `pulumi:"latest"`
 	Order   *string `pulumi:"order"`
 	OrderBy *string `pulumi:"orderBy"`
@@ -129,6 +130,7 @@ func GetDatabaseBackupsOutput(ctx *pulumi.Context, args GetDatabaseBackupsOutput
 
 // A collection of arguments for invoking getDatabaseBackups.
 type GetDatabaseBackupsOutputArgs struct {
+	Backups GetDatabaseBackupsBackupArrayInput `pulumi:"backups"`
 	// The ID of the database to retrieve backups for.
 	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
@@ -179,9 +181,9 @@ func (o GetDatabaseBackupsResultOutput) Filters() GetDatabaseBackupsFilterArrayO
 	return o.ApplyT(func(v GetDatabaseBackupsResult) []GetDatabaseBackupsFilter { return v.Filters }).(GetDatabaseBackupsFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatabaseBackupsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsResult) string { return v.Id }).(pulumi.StringOutput)
+// The ID of the database backup object.
+func (o GetDatabaseBackupsResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseBackupsResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetDatabaseBackupsResultOutput) Latest() pulumi.BoolPtrOutput {

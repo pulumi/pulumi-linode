@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.GetDatabaseEnginesEngine;
 import com.pulumi.linode.inputs.GetDatabaseEnginesFilter;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabaseEnginesPlainArgs Empty = new GetDatabaseEnginesPlainArgs();
+
+    @Import(name="engines")
+    private @Nullable List<GetDatabaseEnginesEngine> engines;
+
+    public Optional<List<GetDatabaseEnginesEngine>> engines() {
+        return Optional.ofNullable(this.engines);
+    }
 
     @Import(name="filters")
     private @Nullable List<GetDatabaseEnginesFilter> filters;
@@ -76,6 +84,7 @@ public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.Invo
     private GetDatabaseEnginesPlainArgs() {}
 
     private GetDatabaseEnginesPlainArgs(GetDatabaseEnginesPlainArgs $) {
+        this.engines = $.engines;
         this.filters = $.filters;
         this.latest = $.latest;
         this.order = $.order;
@@ -98,6 +107,15 @@ public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.Invo
 
         public Builder(GetDatabaseEnginesPlainArgs defaults) {
             $ = new GetDatabaseEnginesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder engines(@Nullable List<GetDatabaseEnginesEngine> engines) {
+            $.engines = engines;
+            return this;
+        }
+
+        public Builder engines(GetDatabaseEnginesEngine... engines) {
+            return engines(List.of(engines));
         }
 
         public Builder filters(@Nullable List<GetDatabaseEnginesFilter> filters) {

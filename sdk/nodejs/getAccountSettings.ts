@@ -33,9 +33,6 @@ export interface GetAccountSettingsResult {
      * Account-wide backups default.
      */
     readonly backupsEnabled: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The Longview Pro tier you are currently subscribed to.

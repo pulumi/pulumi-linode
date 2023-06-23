@@ -134,6 +134,7 @@ func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts 
 
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesArgs struct {
+	Engines []GetDatabaseEnginesEngine `pulumi:"engines"`
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//
@@ -149,7 +150,7 @@ type GetDatabaseEnginesArgs struct {
 type GetDatabaseEnginesResult struct {
 	Engines []GetDatabaseEnginesEngine `pulumi:"engines"`
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The Managed Database engine ID in engine/version format.
 	Id      string  `pulumi:"id"`
 	Latest  *bool   `pulumi:"latest"`
 	Order   *string `pulumi:"order"`
@@ -171,6 +172,7 @@ func GetDatabaseEnginesOutput(ctx *pulumi.Context, args GetDatabaseEnginesOutput
 
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesOutputArgs struct {
+	Engines GetDatabaseEnginesEngineArrayInput `pulumi:"engines"`
 	Filters GetDatabaseEnginesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//
@@ -209,7 +211,7 @@ func (o GetDatabaseEnginesResultOutput) Filters() GetDatabaseEnginesFilterArrayO
 	return o.ApplyT(func(v GetDatabaseEnginesResult) []GetDatabaseEnginesFilter { return v.Filters }).(GetDatabaseEnginesFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The Managed Database engine ID in engine/version format.
 func (o GetDatabaseEnginesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEnginesResult) string { return v.Id }).(pulumi.StringOutput)
 }

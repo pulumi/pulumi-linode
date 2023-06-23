@@ -15,6 +15,9 @@ namespace Pulumi.Linode.Inputs
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
 
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
         [Input("permissions", required: true)]
         public Input<string> Permissions { get; set; } = null!;
 

@@ -6,7 +6,6 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.GetDatabasesDatabase;
 import com.pulumi.linode.outputs.GetDatabasesFilter;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,33 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabasesResult {
-    private List<GetDatabasesDatabase> databases;
+    private @Nullable List<GetDatabasesDatabase> databases;
     private @Nullable List<GetDatabasesFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the Managed Database.
      * 
      */
     private String id;
-    private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
 
     private GetDatabasesResult() {}
     public List<GetDatabasesDatabase> databases() {
-        return this.databases;
+        return this.databases == null ? List.of() : this.databases;
     }
     public List<GetDatabasesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the Managed Database.
      * 
      */
     public String id() {
         return this.id;
-    }
-    public Optional<Boolean> latest() {
-        return Optional.ofNullable(this.latest);
     }
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
@@ -59,10 +54,9 @@ public final class GetDatabasesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetDatabasesDatabase> databases;
+        private @Nullable List<GetDatabasesDatabase> databases;
         private @Nullable List<GetDatabasesFilter> filters;
         private String id;
-        private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
         public Builder() {}
@@ -71,14 +65,13 @@ public final class GetDatabasesResult {
     	      this.databases = defaults.databases;
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
-    	      this.latest = defaults.latest;
     	      this.order = defaults.order;
     	      this.orderBy = defaults.orderBy;
         }
 
         @CustomType.Setter
-        public Builder databases(List<GetDatabasesDatabase> databases) {
-            this.databases = Objects.requireNonNull(databases);
+        public Builder databases(@Nullable List<GetDatabasesDatabase> databases) {
+            this.databases = databases;
             return this;
         }
         public Builder databases(GetDatabasesDatabase... databases) {
@@ -98,11 +91,6 @@ public final class GetDatabasesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder latest(@Nullable Boolean latest) {
-            this.latest = latest;
-            return this;
-        }
-        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
@@ -117,7 +105,6 @@ public final class GetDatabasesResult {
             o.databases = databases;
             o.filters = filters;
             o.id = id;
-            o.latest = latest;
             o.order = order;
             o.orderBy = orderBy;
             return o;

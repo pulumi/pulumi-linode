@@ -50,10 +50,9 @@ func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getRegion.
 type GetRegionArgs struct {
-	// The country the region resides in.
-	Country *string `pulumi:"country"`
 	// The code name of the region to select.
-	Id string `pulumi:"id"`
+	Id        string              `pulumi:"id"`
+	Resolvers []GetRegionResolver `pulumi:"resolvers"`
 }
 
 // A collection of values returned by getRegion.
@@ -85,10 +84,9 @@ func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getRegion.
 type GetRegionOutputArgs struct {
-	// The country the region resides in.
-	Country pulumi.StringPtrInput `pulumi:"country"`
 	// The code name of the region to select.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id        pulumi.StringInput          `pulumi:"id"`
+	Resolvers GetRegionResolverArrayInput `pulumi:"resolvers"`
 }
 
 func (GetRegionOutputArgs) ElementType() reflect.Type {

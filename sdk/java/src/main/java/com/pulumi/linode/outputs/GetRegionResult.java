@@ -8,6 +8,7 @@ import com.pulumi.linode.outputs.GetRegionResolver;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionResult {
@@ -27,7 +28,7 @@ public final class GetRegionResult {
      * 
      */
     private String label;
-    private List<GetRegionResolver> resolvers;
+    private @Nullable List<GetRegionResolver> resolvers;
     /**
      * @return This region’s current operational status (ok or outage).
      * 
@@ -60,7 +61,7 @@ public final class GetRegionResult {
         return this.label;
     }
     public List<GetRegionResolver> resolvers() {
-        return this.resolvers;
+        return this.resolvers == null ? List.of() : this.resolvers;
     }
     /**
      * @return This region’s current operational status (ok or outage).
@@ -83,7 +84,7 @@ public final class GetRegionResult {
         private String country;
         private String id;
         private String label;
-        private List<GetRegionResolver> resolvers;
+        private @Nullable List<GetRegionResolver> resolvers;
         private String status;
         public Builder() {}
         public Builder(GetRegionResult defaults) {
@@ -120,8 +121,8 @@ public final class GetRegionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder resolvers(List<GetRegionResolver> resolvers) {
-            this.resolvers = Objects.requireNonNull(resolvers);
+        public Builder resolvers(@Nullable List<GetRegionResolver> resolvers) {
+            this.resolvers = resolvers;
             return this;
         }
         public Builder resolvers(GetRegionResolver... resolvers) {

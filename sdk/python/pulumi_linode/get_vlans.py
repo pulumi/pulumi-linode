@@ -48,9 +48,6 @@ class GetVlansResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -65,7 +62,7 @@ class GetVlansResult:
 
     @property
     @pulumi.getter
-    def vlans(self) -> Sequence['outputs.GetVlansVlanResult']:
+    def vlans(self) -> Optional[Sequence['outputs.GetVlansVlanResult']]:
         return pulumi.get(self, "vlans")
 
 
@@ -85,6 +82,7 @@ class AwaitableGetVlansResult(GetVlansResult):
 def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]] = None,
               order: Optional[str] = None,
               order_by: Optional[str] = None,
+              vlans: Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlansResult:
     """
     Provides details about Linode VLANs.
@@ -125,6 +123,7 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
+    __args__['vlans'] = vlans
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getVlans:getVlans', __args__, opts=opts, typ=GetVlansResult).value
 
@@ -140,6 +139,7 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
 def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]]]] = None,
                      order: Optional[pulumi.Input[Optional[str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
+                     vlans: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
     """
     Provides details about Linode VLANs.
