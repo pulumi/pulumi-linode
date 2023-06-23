@@ -556,25 +556,25 @@
         },
         "functions": {
             "linode:index/getAccount:getAccount": 1,
-            "linode:index/getAccountLogin:getAccountLogin": 0,
-            "linode:index/getAccountLogins:getAccountLogins": 0,
-            "linode:index/getAccountSettings:getAccountSettings": 0,
-            "linode:index/getDatabaseBackups:getDatabaseBackups": 0,
-            "linode:index/getDatabaseEngines:getDatabaseEngines": 0,
+            "linode:index/getAccountLogin:getAccountLogin": 1,
+            "linode:index/getAccountLogins:getAccountLogins": 1,
+            "linode:index/getAccountSettings:getAccountSettings": 1,
+            "linode:index/getDatabaseBackups:getDatabaseBackups": 1,
+            "linode:index/getDatabaseEngines:getDatabaseEngines": 1,
             "linode:index/getDatabaseMysql:getDatabaseMysql": 1,
             "linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups": 0,
             "linode:index/getDatabasePostgresql:getDatabasePostgresql": 1,
-            "linode:index/getDatabases:getDatabases": 0,
+            "linode:index/getDatabases:getDatabases": 1,
             "linode:index/getDomain:getDomain": 1,
             "linode:index/getDomainRecord:getDomainRecord": 1,
             "linode:index/getDomainZonefile:getDomainZonefile": 1,
             "linode:index/getFirewall:getFirewall": 1,
-            "linode:index/getImage:getImage": 0,
-            "linode:index/getImages:getImages": 0,
+            "linode:index/getImage:getImage": 1,
+            "linode:index/getImages:getImages": 1,
             "linode:index/getInstanceBackups:getInstanceBackups": 1,
             "linode:index/getInstanceNetworking:getInstanceNetworking": 1,
-            "linode:index/getInstanceType:getInstanceType": 0,
-            "linode:index/getInstanceTypes:getInstanceTypes": 0,
+            "linode:index/getInstanceType:getInstanceType": 1,
+            "linode:index/getInstanceTypes:getInstanceTypes": 1,
             "linode:index/getInstances:getInstances": 0,
             "linode:index/getIpv6Range:getIpv6Range": 1,
             "linode:index/getKernel:getKernel": 1,
@@ -584,16 +584,16 @@
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
-            "linode:index/getNodeBalancerNode:getNodeBalancerNode": 0,
+            "linode:index/getNodeBalancerNode:getNodeBalancerNode": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getProfile:getProfile": 1,
-            "linode:index/getRegion:getRegion": 0,
+            "linode:index/getRegion:getRegion": 1,
             "linode:index/getRegions:getRegions": 1,
             "linode:index/getSshKey:getSshKey": 1,
             "linode:index/getStackScript:getStackScript": 1,
-            "linode:index/getStackScripts:getStackScripts": 0,
-            "linode:index/getUser:getUser": 0,
-            "linode:index/getVlans:getVlans": 0,
+            "linode:index/getStackScripts:getStackScripts": 1,
+            "linode:index/getUser:getUser": 1,
+            "linode:index/getVlans:getVlans": 1,
             "linode:index/getVolume:getVolume": 1
         }
     },
@@ -1055,6 +1055,9 @@
             "linode:index/getInstanceType:getInstanceType": {
                 "networkOut": "network_out"
             },
+            "linode:index/getInstanceTypeAddonsBackup:getInstanceTypeAddonsBackup": {
+                "prices": "price"
+            },
             "linode:index/getInstanceTypes:getInstanceTypes": {
                 "filters": "filter",
                 "orderBy": "order_by"
@@ -1255,6 +1258,7 @@
                 "oneOf": "one_of"
             },
             "linode:index/getUser:getUser": {
+                "databaseGrants": "database_grant",
                 "domainGrants": "domain_grant",
                 "firewallGrants": "firewall_grant",
                 "globalGrants": "global_grants",
