@@ -181,14 +181,14 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
     __ret__ = pulumi.runtime.invoke('linode:index/getProfile:getProfile', __args__, opts=opts, typ=GetProfileResult).value
 
     return AwaitableGetProfileResult(
-        authorized_keys=__ret__.authorized_keys,
-        email=__ret__.email,
-        email_notifications=__ret__.email_notifications,
-        id=__ret__.id,
-        ip_whitelist_enabled=__ret__.ip_whitelist_enabled,
-        lish_auth_method=__ret__.lish_auth_method,
-        referrals=__ret__.referrals,
-        restricted=__ret__.restricted,
-        timezone=__ret__.timezone,
-        two_factor_auth=__ret__.two_factor_auth,
-        username=__ret__.username)
+        authorized_keys=pulumi.get(__ret__, 'authorized_keys'),
+        email=pulumi.get(__ret__, 'email'),
+        email_notifications=pulumi.get(__ret__, 'email_notifications'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_whitelist_enabled=pulumi.get(__ret__, 'ip_whitelist_enabled'),
+        lish_auth_method=pulumi.get(__ret__, 'lish_auth_method'),
+        referrals=pulumi.get(__ret__, 'referrals'),
+        restricted=pulumi.get(__ret__, 'restricted'),
+        timezone=pulumi.get(__ret__, 'timezone'),
+        two_factor_auth=pulumi.get(__ret__, 'two_factor_auth'),
+        username=pulumi.get(__ret__, 'username'))

@@ -120,12 +120,12 @@ def get_ipv6_range(range: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getIpv6Range:getIpv6Range', __args__, opts=opts, typ=GetIpv6RangeResult).value
 
     return AwaitableGetIpv6RangeResult(
-        id=__ret__.id,
-        is_bgp=__ret__.is_bgp,
-        linodes=__ret__.linodes,
-        prefix=__ret__.prefix,
-        range=__ret__.range,
-        region=__ret__.region)
+        id=pulumi.get(__ret__, 'id'),
+        is_bgp=pulumi.get(__ret__, 'is_bgp'),
+        linodes=pulumi.get(__ret__, 'linodes'),
+        prefix=pulumi.get(__ret__, 'prefix'),
+        range=pulumi.get(__ret__, 'range'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_ipv6_range)

@@ -150,14 +150,14 @@ def get_node_balancer_node(config_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancerNode:getNodeBalancerNode', __args__, opts=opts, typ=GetNodeBalancerNodeResult).value
 
     return AwaitableGetNodeBalancerNodeResult(
-        address=__ret__.address,
-        config_id=__ret__.config_id,
-        id=__ret__.id,
-        label=__ret__.label,
-        mode=__ret__.mode,
-        nodebalancer_id=__ret__.nodebalancer_id,
-        status=__ret__.status,
-        weight=__ret__.weight)
+        address=pulumi.get(__ret__, 'address'),
+        config_id=pulumi.get(__ret__, 'config_id'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        mode=pulumi.get(__ret__, 'mode'),
+        nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
+        status=pulumi.get(__ret__, 'status'),
+        weight=pulumi.get(__ret__, 'weight'))
 
 
 @_utilities.lift_output_func(get_node_balancer_node)

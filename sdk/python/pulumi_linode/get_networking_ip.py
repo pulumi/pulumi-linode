@@ -174,16 +174,16 @@ def get_networking_ip(address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts, typ=GetNetworkingIpResult).value
 
     return AwaitableGetNetworkingIpResult(
-        address=__ret__.address,
-        gateway=__ret__.gateway,
-        id=__ret__.id,
-        linode_id=__ret__.linode_id,
-        prefix=__ret__.prefix,
-        public=__ret__.public,
-        rdns=__ret__.rdns,
-        region=__ret__.region,
-        subnet_mask=__ret__.subnet_mask,
-        type=__ret__.type)
+        address=pulumi.get(__ret__, 'address'),
+        gateway=pulumi.get(__ret__, 'gateway'),
+        id=pulumi.get(__ret__, 'id'),
+        linode_id=pulumi.get(__ret__, 'linode_id'),
+        prefix=pulumi.get(__ret__, 'prefix'),
+        public=pulumi.get(__ret__, 'public'),
+        rdns=pulumi.get(__ret__, 'rdns'),
+        region=pulumi.get(__ret__, 'region'),
+        subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_networking_ip)

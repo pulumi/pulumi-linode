@@ -160,12 +160,12 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     __ret__ = pulumi.runtime.invoke('linode:index/getDatabaseEngines:getDatabaseEngines', __args__, opts=opts, typ=GetDatabaseEnginesResult).value
 
     return AwaitableGetDatabaseEnginesResult(
-        engines=__ret__.engines,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        latest=__ret__.latest,
-        order=__ret__.order,
-        order_by=__ret__.order_by)
+        engines=pulumi.get(__ret__, 'engines'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        latest=pulumi.get(__ret__, 'latest'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'))
 
 
 @_utilities.lift_output_func(get_database_engines)

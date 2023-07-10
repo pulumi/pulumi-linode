@@ -126,12 +126,12 @@ def get_account_login(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountLogin:getAccountLogin', __args__, opts=opts, typ=GetAccountLoginResult).value
 
     return AwaitableGetAccountLoginResult(
-        datetime=__ret__.datetime,
-        id=__ret__.id,
-        ip=__ret__.ip,
-        restricted=__ret__.restricted,
-        status=__ret__.status,
-        username=__ret__.username)
+        datetime=pulumi.get(__ret__, 'datetime'),
+        id=pulumi.get(__ret__, 'id'),
+        ip=pulumi.get(__ret__, 'ip'),
+        restricted=pulumi.get(__ret__, 'restricted'),
+        status=pulumi.get(__ret__, 'status'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_account_login)

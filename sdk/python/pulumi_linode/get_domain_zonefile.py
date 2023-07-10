@@ -90,9 +90,9 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getDomainZonefile:getDomainZonefile', __args__, opts=opts, typ=GetDomainZonefileResult).value
 
     return AwaitableGetDomainZonefileResult(
-        domain_id=__ret__.domain_id,
-        id=__ret__.id,
-        zone_files=__ret__.zone_files)
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        id=pulumi.get(__ret__, 'id'),
+        zone_files=pulumi.get(__ret__, 'zone_files'))
 
 
 @_utilities.lift_output_func(get_domain_zonefile)

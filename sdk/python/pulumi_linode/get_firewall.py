@@ -179,17 +179,17 @@ def get_firewall(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult).value
 
     return AwaitableGetFirewallResult(
-        devices=__ret__.devices,
-        disabled=__ret__.disabled,
-        id=__ret__.id,
-        inbound_policy=__ret__.inbound_policy,
-        inbounds=__ret__.inbounds,
-        label=__ret__.label,
-        linodes=__ret__.linodes,
-        outbound_policy=__ret__.outbound_policy,
-        outbounds=__ret__.outbounds,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        devices=pulumi.get(__ret__, 'devices'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        id=pulumi.get(__ret__, 'id'),
+        inbound_policy=pulumi.get(__ret__, 'inbound_policy'),
+        inbounds=pulumi.get(__ret__, 'inbounds'),
+        label=pulumi.get(__ret__, 'label'),
+        linodes=pulumi.get(__ret__, 'linodes'),
+        outbound_policy=pulumi.get(__ret__, 'outbound_policy'),
+        outbounds=pulumi.get(__ret__, 'outbounds'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_firewall)

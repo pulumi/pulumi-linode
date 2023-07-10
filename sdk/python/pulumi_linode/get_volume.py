@@ -177,16 +177,16 @@ def get_volume(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult).value
 
     return AwaitableGetVolumeResult(
-        created=__ret__.created,
-        filesystem_path=__ret__.filesystem_path,
-        id=__ret__.id,
-        label=__ret__.label,
-        linode_id=__ret__.linode_id,
-        region=__ret__.region,
-        size=__ret__.size,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        updated=__ret__.updated)
+        created=pulumi.get(__ret__, 'created'),
+        filesystem_path=pulumi.get(__ret__, 'filesystem_path'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        linode_id=pulumi.get(__ret__, 'linode_id'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_volume)

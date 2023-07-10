@@ -167,12 +167,12 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     __ret__ = pulumi.runtime.invoke('linode:index/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        images=__ret__.images,
-        latest=__ret__.latest,
-        order=__ret__.order,
-        order_by=__ret__.order_by)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        images=pulumi.get(__ret__, 'images'),
+        latest=pulumi.get(__ret__, 'latest'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'))
 
 
 @_utilities.lift_output_func(get_images)

@@ -145,11 +145,11 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult).value
 
     return AwaitableGetInstanceTypesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        order=__ret__.order,
-        order_by=__ret__.order_by,
-        types=__ret__.types)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        types=pulumi.get(__ret__, 'types'))
 
 
 @_utilities.lift_output_func(get_instance_types)

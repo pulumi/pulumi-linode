@@ -167,14 +167,14 @@ def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabas
     __ret__ = pulumi.runtime.invoke('linode:index/getDatabaseBackups:getDatabaseBackups', __args__, opts=opts, typ=GetDatabaseBackupsResult).value
 
     return AwaitableGetDatabaseBackupsResult(
-        backups=__ret__.backups,
-        database_id=__ret__.database_id,
-        database_type=__ret__.database_type,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        latest=__ret__.latest,
-        order=__ret__.order,
-        order_by=__ret__.order_by)
+        backups=pulumi.get(__ret__, 'backups'),
+        database_id=pulumi.get(__ret__, 'database_id'),
+        database_type=pulumi.get(__ret__, 'database_type'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        latest=pulumi.get(__ret__, 'latest'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'))
 
 
 @_utilities.lift_output_func(get_database_backups)

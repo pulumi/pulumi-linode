@@ -206,16 +206,16 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        address1=__ret__.address1,
-        address2=__ret__.address2,
-        balance=__ret__.balance,
-        city=__ret__.city,
-        company=__ret__.company,
-        country=__ret__.country,
-        email=__ret__.email,
-        first_name=__ret__.first_name,
-        id=__ret__.id,
-        last_name=__ret__.last_name,
-        phone=__ret__.phone,
-        state=__ret__.state,
-        zip=__ret__.zip)
+        address1=pulumi.get(__ret__, 'address1'),
+        address2=pulumi.get(__ret__, 'address2'),
+        balance=pulumi.get(__ret__, 'balance'),
+        city=pulumi.get(__ret__, 'city'),
+        company=pulumi.get(__ret__, 'company'),
+        country=pulumi.get(__ret__, 'country'),
+        email=pulumi.get(__ret__, 'email'),
+        first_name=pulumi.get(__ret__, 'first_name'),
+        id=pulumi.get(__ret__, 'id'),
+        last_name=pulumi.get(__ret__, 'last_name'),
+        phone=pulumi.get(__ret__, 'phone'),
+        state=pulumi.get(__ret__, 'state'),
+        zip=pulumi.get(__ret__, 'zip'))

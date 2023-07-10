@@ -105,10 +105,10 @@ def get_ssh_key(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult).value
 
     return AwaitableGetSshKeyResult(
-        created=__ret__.created,
-        id=__ret__.id,
-        label=__ret__.label,
-        ssh_key=__ret__.ssh_key)
+        created=pulumi.get(__ret__, 'created'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        ssh_key=pulumi.get(__ret__, 'ssh_key'))
 
 
 @_utilities.lift_output_func(get_ssh_key)

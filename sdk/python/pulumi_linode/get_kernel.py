@@ -150,14 +150,14 @@ def get_kernel(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getKernel:getKernel', __args__, opts=opts, typ=GetKernelResult).value
 
     return AwaitableGetKernelResult(
-        architecture=__ret__.architecture,
-        deprecated=__ret__.deprecated,
-        id=__ret__.id,
-        kvm=__ret__.kvm,
-        label=__ret__.label,
-        pvops=__ret__.pvops,
-        version=__ret__.version,
-        xen=__ret__.xen)
+        architecture=pulumi.get(__ret__, 'architecture'),
+        deprecated=pulumi.get(__ret__, 'deprecated'),
+        id=pulumi.get(__ret__, 'id'),
+        kvm=pulumi.get(__ret__, 'kvm'),
+        label=pulumi.get(__ret__, 'label'),
+        pvops=pulumi.get(__ret__, 'pvops'),
+        version=pulumi.get(__ret__, 'version'),
+        xen=pulumi.get(__ret__, 'xen'))
 
 
 @_utilities.lift_output_func(get_kernel)

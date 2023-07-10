@@ -210,18 +210,18 @@ def get_domain_record(domain_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getDomainRecord:getDomainRecord', __args__, opts=opts, typ=GetDomainRecordResult).value
 
     return AwaitableGetDomainRecordResult(
-        domain_id=__ret__.domain_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        port=__ret__.port,
-        priority=__ret__.priority,
-        protocol=__ret__.protocol,
-        service=__ret__.service,
-        tag=__ret__.tag,
-        target=__ret__.target,
-        ttl_sec=__ret__.ttl_sec,
-        type=__ret__.type,
-        weight=__ret__.weight)
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        priority=pulumi.get(__ret__, 'priority'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        service=pulumi.get(__ret__, 'service'),
+        tag=pulumi.get(__ret__, 'tag'),
+        target=pulumi.get(__ret__, 'target'),
+        ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
+        type=pulumi.get(__ret__, 'type'),
+        weight=pulumi.get(__ret__, 'weight'))
 
 
 @_utilities.lift_output_func(get_domain_record)

@@ -128,11 +128,11 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     __ret__ = pulumi.runtime.invoke('linode:index/getVlans:getVlans', __args__, opts=opts, typ=GetVlansResult).value
 
     return AwaitableGetVlansResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        order=__ret__.order,
-        order_by=__ret__.order_by,
-        vlans=__ret__.vlans)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        vlans=pulumi.get(__ret__, 'vlans'))
 
 
 @_utilities.lift_output_func(get_vlans)
