@@ -105,9 +105,9 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult).value
 
     return AwaitableGetAccountLoginsResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        logins=__ret__.logins)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        logins=pulumi.get(__ret__, 'logins'))
 
 
 @_utilities.lift_output_func(get_account_logins)

@@ -73,5 +73,5 @@ def get_lke_versions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeVersions:getLkeVersions', __args__, opts=opts, typ=GetLkeVersionsResult).value
 
     return AwaitableGetLkeVersionsResult(
-        id=__ret__.id,
-        versions=__ret__.versions)
+        id=pulumi.get(__ret__, 'id'),
+        versions=pulumi.get(__ret__, 'versions'))

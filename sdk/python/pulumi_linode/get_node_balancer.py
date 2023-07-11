@@ -173,17 +173,17 @@ def get_node_balancer(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult).value
 
     return AwaitableGetNodeBalancerResult(
-        client_conn_throttle=__ret__.client_conn_throttle,
-        created=__ret__.created,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        ipv4=__ret__.ipv4,
-        ipv6=__ret__.ipv6,
-        label=__ret__.label,
-        region=__ret__.region,
-        tags=__ret__.tags,
-        transfers=__ret__.transfers,
-        updated=__ret__.updated)
+        client_conn_throttle=pulumi.get(__ret__, 'client_conn_throttle'),
+        created=pulumi.get(__ret__, 'created'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        ipv4=pulumi.get(__ret__, 'ipv4'),
+        ipv6=pulumi.get(__ret__, 'ipv6'),
+        label=pulumi.get(__ret__, 'label'),
+        region=pulumi.get(__ret__, 'region'),
+        tags=pulumi.get(__ret__, 'tags'),
+        transfers=pulumi.get(__ret__, 'transfers'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_node_balancer)

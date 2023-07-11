@@ -195,18 +195,18 @@ def get_image(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        created=__ret__.created,
-        created_by=__ret__.created_by,
-        deprecated=__ret__.deprecated,
-        description=__ret__.description,
-        expiry=__ret__.expiry,
-        id=__ret__.id,
-        is_public=__ret__.is_public,
-        label=__ret__.label,
-        size=__ret__.size,
-        status=__ret__.status,
-        type=__ret__.type,
-        vendor=__ret__.vendor)
+        created=pulumi.get(__ret__, 'created'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        deprecated=pulumi.get(__ret__, 'deprecated'),
+        description=pulumi.get(__ret__, 'description'),
+        expiry=pulumi.get(__ret__, 'expiry'),
+        id=pulumi.get(__ret__, 'id'),
+        is_public=pulumi.get(__ret__, 'is_public'),
+        label=pulumi.get(__ret__, 'label'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        vendor=pulumi.get(__ret__, 'vendor'))
 
 
 @_utilities.lift_output_func(get_image)

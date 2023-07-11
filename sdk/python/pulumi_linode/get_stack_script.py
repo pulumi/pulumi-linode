@@ -223,20 +223,20 @@ def get_stack_script(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getStackScript:getStackScript', __args__, opts=opts, typ=GetStackScriptResult).value
 
     return AwaitableGetStackScriptResult(
-        created=__ret__.created,
-        deployments_active=__ret__.deployments_active,
-        deployments_total=__ret__.deployments_total,
-        description=__ret__.description,
-        id=__ret__.id,
-        images=__ret__.images,
-        is_public=__ret__.is_public,
-        label=__ret__.label,
-        rev_note=__ret__.rev_note,
-        script=__ret__.script,
-        updated=__ret__.updated,
-        user_defined_fields=__ret__.user_defined_fields,
-        user_gravatar_id=__ret__.user_gravatar_id,
-        username=__ret__.username)
+        created=pulumi.get(__ret__, 'created'),
+        deployments_active=pulumi.get(__ret__, 'deployments_active'),
+        deployments_total=pulumi.get(__ret__, 'deployments_total'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        images=pulumi.get(__ret__, 'images'),
+        is_public=pulumi.get(__ret__, 'is_public'),
+        label=pulumi.get(__ret__, 'label'),
+        rev_note=pulumi.get(__ret__, 'rev_note'),
+        script=pulumi.get(__ret__, 'script'),
+        updated=pulumi.get(__ret__, 'updated'),
+        user_defined_fields=pulumi.get(__ret__, 'user_defined_fields'),
+        user_gravatar_id=pulumi.get(__ret__, 'user_gravatar_id'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_stack_script)

@@ -120,9 +120,9 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountSettings:getAccountSettings', __args__, opts=opts, typ=GetAccountSettingsResult).value
 
     return AwaitableGetAccountSettingsResult(
-        backups_enabled=__ret__.backups_enabled,
-        id=__ret__.id,
-        longview_subscription=__ret__.longview_subscription,
-        managed=__ret__.managed,
-        network_helper=__ret__.network_helper,
-        object_storage=__ret__.object_storage)
+        backups_enabled=pulumi.get(__ret__, 'backups_enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        longview_subscription=pulumi.get(__ret__, 'longview_subscription'),
+        managed=pulumi.get(__ret__, 'managed'),
+        network_helper=pulumi.get(__ret__, 'network_helper'),
+        object_storage=pulumi.get(__ret__, 'object_storage'))

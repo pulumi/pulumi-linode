@@ -95,11 +95,11 @@ def get_instance_backups(linode_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceBackups:getInstanceBackups', __args__, opts=opts, typ=GetInstanceBackupsResult).value
 
     return AwaitableGetInstanceBackupsResult(
-        automatics=__ret__.automatics,
-        currents=__ret__.currents,
-        id=__ret__.id,
-        in_progresses=__ret__.in_progresses,
-        linode_id=__ret__.linode_id)
+        automatics=pulumi.get(__ret__, 'automatics'),
+        currents=pulumi.get(__ret__, 'currents'),
+        id=pulumi.get(__ret__, 'id'),
+        in_progresses=pulumi.get(__ret__, 'in_progresses'),
+        linode_id=pulumi.get(__ret__, 'linode_id'))
 
 
 @_utilities.lift_output_func(get_instance_backups)

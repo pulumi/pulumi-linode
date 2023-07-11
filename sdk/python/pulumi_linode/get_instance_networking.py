@@ -86,10 +86,10 @@ def get_instance_networking(linode_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceNetworking:getInstanceNetworking', __args__, opts=opts, typ=GetInstanceNetworkingResult).value
 
     return AwaitableGetInstanceNetworkingResult(
-        id=__ret__.id,
-        ipv4s=__ret__.ipv4s,
-        ipv6s=__ret__.ipv6s,
-        linode_id=__ret__.linode_id)
+        id=pulumi.get(__ret__, 'id'),
+        ipv4s=pulumi.get(__ret__, 'ipv4s'),
+        ipv6s=pulumi.get(__ret__, 'ipv6s'),
+        linode_id=pulumi.get(__ret__, 'linode_id'))
 
 
 @_utilities.lift_output_func(get_instance_networking)

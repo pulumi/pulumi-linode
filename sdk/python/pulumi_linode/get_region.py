@@ -127,12 +127,12 @@ def get_region(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
     return AwaitableGetRegionResult(
-        capabilities=__ret__.capabilities,
-        country=__ret__.country,
-        id=__ret__.id,
-        label=__ret__.label,
-        resolvers=__ret__.resolvers,
-        status=__ret__.status)
+        capabilities=pulumi.get(__ret__, 'capabilities'),
+        country=pulumi.get(__ret__, 'country'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        resolvers=pulumi.get(__ret__, 'resolvers'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_region)

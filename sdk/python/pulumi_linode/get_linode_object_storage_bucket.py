@@ -108,13 +108,13 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult).value
 
     return AwaitableGetLinodeObjectStorageBucketResult(
-        cluster=__ret__.cluster,
-        created=__ret__.created,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        label=__ret__.label,
-        objects=__ret__.objects,
-        size=__ret__.size)
+        cluster=pulumi.get(__ret__, 'cluster'),
+        created=pulumi.get(__ret__, 'created'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        objects=pulumi.get(__ret__, 'objects'),
+        size=pulumi.get(__ret__, 'size'))
 
 
 @_utilities.lift_output_func(get_linode_object_storage_bucket)

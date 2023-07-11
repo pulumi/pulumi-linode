@@ -264,24 +264,24 @@ def get_node_balancer_config(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancerConfig:getNodeBalancerConfig', __args__, opts=opts, typ=GetNodeBalancerConfigResult).value
 
     return AwaitableGetNodeBalancerConfigResult(
-        algorithm=__ret__.algorithm,
-        check=__ret__.check,
-        check_attempts=__ret__.check_attempts,
-        check_body=__ret__.check_body,
-        check_interval=__ret__.check_interval,
-        check_passive=__ret__.check_passive,
-        check_path=__ret__.check_path,
-        check_timeout=__ret__.check_timeout,
-        cipher_suite=__ret__.cipher_suite,
-        id=__ret__.id,
-        node_statuses=__ret__.node_statuses,
-        nodebalancer_id=__ret__.nodebalancer_id,
-        port=__ret__.port,
-        protocol=__ret__.protocol,
-        proxy_protocol=__ret__.proxy_protocol,
-        ssl_commonname=__ret__.ssl_commonname,
-        ssl_fingerprint=__ret__.ssl_fingerprint,
-        stickiness=__ret__.stickiness)
+        algorithm=pulumi.get(__ret__, 'algorithm'),
+        check=pulumi.get(__ret__, 'check'),
+        check_attempts=pulumi.get(__ret__, 'check_attempts'),
+        check_body=pulumi.get(__ret__, 'check_body'),
+        check_interval=pulumi.get(__ret__, 'check_interval'),
+        check_passive=pulumi.get(__ret__, 'check_passive'),
+        check_path=pulumi.get(__ret__, 'check_path'),
+        check_timeout=pulumi.get(__ret__, 'check_timeout'),
+        cipher_suite=pulumi.get(__ret__, 'cipher_suite'),
+        id=pulumi.get(__ret__, 'id'),
+        node_statuses=pulumi.get(__ret__, 'node_statuses'),
+        nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
+        port=pulumi.get(__ret__, 'port'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        proxy_protocol=pulumi.get(__ret__, 'proxy_protocol'),
+        ssl_commonname=pulumi.get(__ret__, 'ssl_commonname'),
+        ssl_fingerprint=pulumi.get(__ret__, 'ssl_fingerprint'),
+        stickiness=pulumi.get(__ret__, 'stickiness'))
 
 
 @_utilities.lift_output_func(get_node_balancer_config)

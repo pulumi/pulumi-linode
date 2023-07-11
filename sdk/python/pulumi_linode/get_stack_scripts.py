@@ -159,12 +159,12 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     __ret__ = pulumi.runtime.invoke('linode:index/getStackScripts:getStackScripts', __args__, opts=opts, typ=GetStackScriptsResult).value
 
     return AwaitableGetStackScriptsResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        latest=__ret__.latest,
-        order=__ret__.order,
-        order_by=__ret__.order_by,
-        stackscripts=__ret__.stackscripts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        latest=pulumi.get(__ret__, 'latest'),
+        order=pulumi.get(__ret__, 'order'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        stackscripts=pulumi.get(__ret__, 'stackscripts'))
 
 
 @_utilities.lift_output_func(get_stack_scripts)

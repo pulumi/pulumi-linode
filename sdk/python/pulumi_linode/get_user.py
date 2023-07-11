@@ -249,21 +249,21 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
     __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        database_grants=__ret__.database_grants,
-        domain_grants=__ret__.domain_grants,
-        email=__ret__.email,
-        firewall_grants=__ret__.firewall_grants,
-        global_grants=__ret__.global_grants,
-        id=__ret__.id,
-        image_grants=__ret__.image_grants,
-        linode_grants=__ret__.linode_grants,
-        longview_grants=__ret__.longview_grants,
-        nodebalancer_grants=__ret__.nodebalancer_grants,
-        restricted=__ret__.restricted,
-        ssh_keys=__ret__.ssh_keys,
-        stackscript_grants=__ret__.stackscript_grants,
-        username=__ret__.username,
-        volume_grants=__ret__.volume_grants)
+        database_grants=pulumi.get(__ret__, 'database_grants'),
+        domain_grants=pulumi.get(__ret__, 'domain_grants'),
+        email=pulumi.get(__ret__, 'email'),
+        firewall_grants=pulumi.get(__ret__, 'firewall_grants'),
+        global_grants=pulumi.get(__ret__, 'global_grants'),
+        id=pulumi.get(__ret__, 'id'),
+        image_grants=pulumi.get(__ret__, 'image_grants'),
+        linode_grants=pulumi.get(__ret__, 'linode_grants'),
+        longview_grants=pulumi.get(__ret__, 'longview_grants'),
+        nodebalancer_grants=pulumi.get(__ret__, 'nodebalancer_grants'),
+        restricted=pulumi.get(__ret__, 'restricted'),
+        ssh_keys=pulumi.get(__ret__, 'ssh_keys'),
+        stackscript_grants=pulumi.get(__ret__, 'stackscript_grants'),
+        username=pulumi.get(__ret__, 'username'),
+        volume_grants=pulumi.get(__ret__, 'volume_grants'))
 
 
 @_utilities.lift_output_func(get_user)

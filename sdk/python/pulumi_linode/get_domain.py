@@ -229,20 +229,20 @@ def get_domain(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        axfr_ips=__ret__.axfr_ips,
-        description=__ret__.description,
-        domain=__ret__.domain,
-        expire_sec=__ret__.expire_sec,
-        group=__ret__.group,
-        id=__ret__.id,
-        master_ips=__ret__.master_ips,
-        refresh_sec=__ret__.refresh_sec,
-        retry_sec=__ret__.retry_sec,
-        soa_email=__ret__.soa_email,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        ttl_sec=__ret__.ttl_sec,
-        type=__ret__.type)
+        axfr_ips=pulumi.get(__ret__, 'axfr_ips'),
+        description=pulumi.get(__ret__, 'description'),
+        domain=pulumi.get(__ret__, 'domain'),
+        expire_sec=pulumi.get(__ret__, 'expire_sec'),
+        group=pulumi.get(__ret__, 'group'),
+        id=pulumi.get(__ret__, 'id'),
+        master_ips=pulumi.get(__ret__, 'master_ips'),
+        refresh_sec=pulumi.get(__ret__, 'refresh_sec'),
+        retry_sec=pulumi.get(__ret__, 'retry_sec'),
+        soa_email=pulumi.get(__ret__, 'soa_email'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_domain)

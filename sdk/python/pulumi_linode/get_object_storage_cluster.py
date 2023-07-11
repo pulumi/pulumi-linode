@@ -114,11 +114,11 @@ def get_object_storage_cluster(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts, typ=GetObjectStorageClusterResult).value
 
     return AwaitableGetObjectStorageClusterResult(
-        domain=__ret__.domain,
-        id=__ret__.id,
-        region=__ret__.region,
-        static_site_domain=__ret__.static_site_domain,
-        status=__ret__.status)
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        region=pulumi.get(__ret__, 'region'),
+        static_site_domain=pulumi.get(__ret__, 'static_site_domain'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_object_storage_cluster)

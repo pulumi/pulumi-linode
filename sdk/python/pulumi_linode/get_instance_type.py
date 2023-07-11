@@ -175,16 +175,16 @@ def get_instance_type(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult).value
 
     return AwaitableGetInstanceTypeResult(
-        addons=__ret__.addons,
-        class_=__ret__.class_,
-        disk=__ret__.disk,
-        id=__ret__.id,
-        label=__ret__.label,
-        memory=__ret__.memory,
-        network_out=__ret__.network_out,
-        price=__ret__.price,
-        transfer=__ret__.transfer,
-        vcpus=__ret__.vcpus)
+        addons=pulumi.get(__ret__, 'addons'),
+        class_=pulumi.get(__ret__, 'class_'),
+        disk=pulumi.get(__ret__, 'disk'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        memory=pulumi.get(__ret__, 'memory'),
+        network_out=pulumi.get(__ret__, 'network_out'),
+        price=pulumi.get(__ret__, 'price'),
+        transfer=pulumi.get(__ret__, 'transfer'),
+        vcpus=pulumi.get(__ret__, 'vcpus'))
 
 
 @_utilities.lift_output_func(get_instance_type)

@@ -182,17 +182,17 @@ def get_lke_cluster(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult).value
 
     return AwaitableGetLkeClusterResult(
-        api_endpoints=__ret__.api_endpoints,
-        control_planes=__ret__.control_planes,
-        dashboard_url=__ret__.dashboard_url,
-        id=__ret__.id,
-        k8s_version=__ret__.k8s_version,
-        kubeconfig=__ret__.kubeconfig,
-        label=__ret__.label,
-        pools=__ret__.pools,
-        region=__ret__.region,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        api_endpoints=pulumi.get(__ret__, 'api_endpoints'),
+        control_planes=pulumi.get(__ret__, 'control_planes'),
+        dashboard_url=pulumi.get(__ret__, 'dashboard_url'),
+        id=pulumi.get(__ret__, 'id'),
+        k8s_version=pulumi.get(__ret__, 'k8s_version'),
+        kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
+        label=pulumi.get(__ret__, 'label'),
+        pools=pulumi.get(__ret__, 'pools'),
+        region=pulumi.get(__ret__, 'region'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_lke_cluster)
