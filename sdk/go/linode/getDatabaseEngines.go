@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +125,7 @@ import (
 //
 // ```
 func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseEnginesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseEnginesResult
 	err := ctx.Invoke("linode:index/getDatabaseEngines:getDatabaseEngines", args, &rv, opts...)
 	if err != nil {

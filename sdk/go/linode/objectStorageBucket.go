@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -145,6 +146,7 @@ func NewObjectStorageBucket(ctx *pulumi.Context,
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObjectStorageBucket
 	err := ctx.RegisterResource("linode:index/objectStorageBucket:ObjectStorageBucket", name, args, &resource, opts...)
 	if err != nil {

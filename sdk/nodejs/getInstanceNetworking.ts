@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about the networking configuration of an Instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = linode.getInstanceNetworking({
+ *     linodeId: 123,
+ * });
+ * ```
  */
 export function getInstanceNetworking(args: GetInstanceNetworkingArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceNetworkingResult> {
 
@@ -41,6 +52,17 @@ export interface GetInstanceNetworkingResult {
 }
 /**
  * Provides details about the networking configuration of an Instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = linode.getInstanceNetworking({
+ *     linodeId: 123,
+ * });
+ * ```
  */
 export function getInstanceNetworkingOutput(args: GetInstanceNetworkingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNetworkingResult> {
     return pulumi.output(args).apply((a: any) => getInstanceNetworking(a, opts))

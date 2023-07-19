@@ -9,6 +9,7 @@ import com.pulumi.linode.inputs.InstanceAlertsArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
+import com.pulumi.linode.inputs.InstanceMetadataArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -218,6 +219,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Various fields related to the Linode Metadata service.
+     * 
+     */
+    @Import(name="metadatas")
+    private @Nullable Output<List<InstanceMetadataArgs>> metadatas;
+
+    /**
+     * @return Various fields related to the Linode Metadata service.
+     * 
+     */
+    public Optional<Output<List<InstanceMetadataArgs>>> metadatas() {
+        return Optional.ofNullable(this.metadatas);
+    }
+
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.
      * 
      */
@@ -422,6 +438,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.image = $.image;
         this.interfaces = $.interfaces;
         this.label = $.label;
+        this.metadatas = $.metadatas;
         this.privateIp = $.privateIp;
         this.region = $.region;
         this.resizeDisk = $.resizeDisk;
@@ -763,6 +780,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(@Nullable Output<List<InstanceMetadataArgs>> metadatas) {
+            $.metadatas = metadatas;
+            return this;
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(List<InstanceMetadataArgs> metadatas) {
+            return metadatas(Output.of(metadatas));
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(InstanceMetadataArgs... metadatas) {
+            return metadatas(List.of(metadatas));
         }
 
         /**

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,10 @@ import (
 type Image struct {
 	pulumi.CustomResourceState
 
+	// The capabilities of this Image.
+	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
+	// Whether this image supports cloud-init.
+	CloudInit pulumi.BoolPtrOutput `pulumi:"cloudInit"`
 	// When this Image was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The name of the User who created this Image.
@@ -81,6 +86,7 @@ func NewImage(ctx *pulumi.Context,
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
 	err := ctx.RegisterResource("linode:index/image:Image", name, args, &resource, opts...)
 	if err != nil {
@@ -103,6 +109,10 @@ func GetImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Image resources.
 type imageState struct {
+	// The capabilities of this Image.
+	Capabilities []string `pulumi:"capabilities"`
+	// Whether this image supports cloud-init.
+	CloudInit *bool `pulumi:"cloudInit"`
 	// When this Image was created.
 	Created *string `pulumi:"created"`
 	// The name of the User who created this Image.
@@ -148,6 +158,10 @@ type imageState struct {
 }
 
 type ImageState struct {
+	// The capabilities of this Image.
+	Capabilities pulumi.StringArrayInput
+	// Whether this image supports cloud-init.
+	CloudInit pulumi.BoolPtrInput
 	// When this Image was created.
 	Created pulumi.StringPtrInput
 	// The name of the User who created this Image.
@@ -197,6 +211,8 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
+	// Whether this image supports cloud-init.
+	CloudInit *bool `pulumi:"cloudInit"`
 	// A detailed description of this Image.
 	//
 	// ***
@@ -225,6 +241,8 @@ type imageArgs struct {
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
+	// Whether this image supports cloud-init.
+	CloudInit pulumi.BoolPtrInput
 	// A detailed description of this Image.
 	//
 	// ***
@@ -336,6 +354,16 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+// The capabilities of this Image.
+func (o ImageOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// Whether this image supports cloud-init.
+func (o ImageOutput) CloudInit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.CloudInit }).(pulumi.BoolPtrOutput)
 }
 
 // When this Image was created.

@@ -138,6 +138,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, Linode Instances will not be rebooted on config and interface changes.
+     * 
+     */
+    @Import(name="skipImplicitReboots", json=true)
+    private @Nullable Output<Boolean> skipImplicitReboots;
+
+    /**
+     * @return If true, Linode Instances will not be rebooted on config and interface changes.
+     * 
+     */
+    public Optional<Output<Boolean>> skipImplicitReboots() {
+        return Optional.ofNullable(this.skipImplicitReboots);
+    }
+
+    /**
      * Skip waiting for a linode_instance resource to finish deleting.
      * 
      */
@@ -224,6 +239,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.lkeNodeReadyPollMs = $.lkeNodeReadyPollMs;
         this.maxRetryDelayMs = $.maxRetryDelayMs;
         this.minRetryDelayMs = $.minRetryDelayMs;
+        this.skipImplicitReboots = $.skipImplicitReboots;
         this.skipInstanceDeletePoll = $.skipInstanceDeletePoll;
         this.skipInstanceReadyPoll = $.skipInstanceReadyPoll;
         this.token = $.token;
@@ -412,6 +428,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder minRetryDelayMs(Integer minRetryDelayMs) {
             return minRetryDelayMs(Output.of(minRetryDelayMs));
+        }
+
+        /**
+         * @param skipImplicitReboots If true, Linode Instances will not be rebooted on config and interface changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipImplicitReboots(@Nullable Output<Boolean> skipImplicitReboots) {
+            $.skipImplicitReboots = skipImplicitReboots;
+            return this;
+        }
+
+        /**
+         * @param skipImplicitReboots If true, Linode Instances will not be rebooted on config and interface changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipImplicitReboots(Boolean skipImplicitReboots) {
+            return skipImplicitReboots(Output.of(skipImplicitReboots));
         }
 
         /**

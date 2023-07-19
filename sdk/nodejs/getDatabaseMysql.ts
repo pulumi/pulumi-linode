@@ -51,6 +51,8 @@ export function getDatabaseMysql(args?: GetDatabaseMysqlArgs, opts?: pulumi.Invo
 export interface GetDatabaseMysqlArgs {
     /**
      * The ID of the MySQL database. Deprecated: Use id instead.
+     *
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
      */
     databaseId?: number;
     /**
@@ -79,6 +81,9 @@ export interface GetDatabaseMysqlResult {
      * When this Managed Database was created.
      */
     readonly created: string;
+    /**
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     */
     readonly databaseId?: number;
     /**
      * Whether the Managed Databases is encrypted.
@@ -89,7 +94,7 @@ export interface GetDatabaseMysqlResult {
      */
     readonly engine: string;
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      */
     readonly engineId: string;
     /**
@@ -182,6 +187,8 @@ export function getDatabaseMysqlOutput(args?: GetDatabaseMysqlOutputArgs, opts?:
 export interface GetDatabaseMysqlOutputArgs {
     /**
      * The ID of the MySQL database. Deprecated: Use id instead.
+     *
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
      */
     databaseId?: pulumi.Input<number>;
     /**

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysql(&#34;foobar&#34;, DatabaseMysqlArgs.builder()        
- *             .engineId(&#34;mysql/8.0.26&#34;)
+ *             .engineId(&#34;mysql/8.0.30&#34;)
  *             .label(&#34;mydatabase&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .allowLists(&#34;0.0.0.0/0&#34;)
  *             .clusterSize(3)
  *             .encrypted(true)
- *             .engineId(&#34;mysql/8.0.26&#34;)
+ *             .engineId(&#34;mysql/8.0.30&#34;)
  *             .label(&#34;mydatabase&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .replicationType(&#34;asynch&#34;)
@@ -214,14 +214,14 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
         return this.engine;
     }
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     @Export(name="engineId", refs={String.class}, tree="[0]")
     private Output<String> engineId;
 
     /**
-     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     public Output<String> engineId() {

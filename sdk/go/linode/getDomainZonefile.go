@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetDomainZonefile(ctx *pulumi.Context, args *GetDomainZonefileArgs, opts ...pulumi.InvokeOption) (*GetDomainZonefileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainZonefileResult
 	err := ctx.Invoke("linode:index/getDomainZonefile:getDomainZonefile", args, &rv, opts...)
 	if err != nil {

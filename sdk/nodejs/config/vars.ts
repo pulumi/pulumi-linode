@@ -101,6 +101,17 @@ Object.defineProperty(exports, "minRetryDelayMs", {
 });
 
 /**
+ * If true, Linode Instances will not be rebooted on config and interface changes.
+ */
+export declare const skipImplicitReboots: boolean | undefined;
+Object.defineProperty(exports, "skipImplicitReboots", {
+    get() {
+        return __config.getObject<boolean>("skipImplicitReboots");
+    },
+    enumerable: true,
+});
+
+/**
  * Skip waiting for a linode_instance resource to finish deleting.
  */
 export declare const skipInstanceDeletePoll: boolean | undefined;

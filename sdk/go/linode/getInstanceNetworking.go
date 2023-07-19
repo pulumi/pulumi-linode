@@ -7,11 +7,39 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides details about the networking configuration of an Instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetInstanceNetworking(ctx, &linode.GetInstanceNetworkingArgs{
+//				LinodeId: 123,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceNetworking(ctx *pulumi.Context, args *GetInstanceNetworkingArgs, opts ...pulumi.InvokeOption) (*GetInstanceNetworkingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceNetworkingResult
 	err := ctx.Invoke("linode:index/getInstanceNetworking:getInstanceNetworking", args, &rv, opts...)
 	if err != nil {

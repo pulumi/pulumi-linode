@@ -147,7 +147,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             image="linode/alpine3.14")
         my_db = linode.DatabaseMysql("my-db",
             label="mydatabase",
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",
@@ -186,7 +186,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             image="linode/alpine3.14")
         my_db = linode.DatabaseMysql("my-db",
             label="mydatabase",
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",

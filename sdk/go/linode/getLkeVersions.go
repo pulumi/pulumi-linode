@@ -4,6 +4,7 @@
 package linode
 
 import (
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetLkeVersions(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLkeVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeVersionsResult
 	err := ctx.Invoke("linode:index/getLkeVersions:getLkeVersions", nil, &rv, opts...)
 	if err != nil {

@@ -10,53 +10,141 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserGlobalGrant {
+    /**
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * 
+     */
     private String accountAccess;
+    /**
+     * @return If true, this User may add Managed Databases.
+     * 
+     */
     private Boolean addDatabases;
+    /**
+     * @return If true, this User may add Domains.
+     * 
+     */
     private Boolean addDomains;
+    /**
+     * @return If true, this User may add Firewalls.
+     * 
+     */
     private Boolean addFirewalls;
+    /**
+     * @return If true, this User may add Images.
+     * 
+     */
     private Boolean addImages;
+    /**
+     * @return If true, this User may create Linodes.
+     * 
+     */
     private Boolean addLinodes;
+    /**
+     * @return If true, this User may create Longview clients and view the current plan.
+     * 
+     */
     private Boolean addLongview;
+    /**
+     * @return If true, this User may add NodeBalancers.
+     * 
+     */
     private Boolean addNodebalancers;
     private Boolean addStackscripts;
+    /**
+     * @return If true, this User may add Volumes.
+     * 
+     */
     private Boolean addVolumes;
+    /**
+     * @return If true, this User may cancel the entire Account.
+     * 
+     */
     private Boolean cancelAccount;
+    /**
+     * @return If true, this User may manage the Account’s Longview subscription.
+     * 
+     */
     private Boolean longviewSubscription;
 
     private GetUserGlobalGrant() {}
+    /**
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * 
+     */
     public String accountAccess() {
         return this.accountAccess;
     }
+    /**
+     * @return If true, this User may add Managed Databases.
+     * 
+     */
     public Boolean addDatabases() {
         return this.addDatabases;
     }
+    /**
+     * @return If true, this User may add Domains.
+     * 
+     */
     public Boolean addDomains() {
         return this.addDomains;
     }
+    /**
+     * @return If true, this User may add Firewalls.
+     * 
+     */
     public Boolean addFirewalls() {
         return this.addFirewalls;
     }
+    /**
+     * @return If true, this User may add Images.
+     * 
+     */
     public Boolean addImages() {
         return this.addImages;
     }
+    /**
+     * @return If true, this User may create Linodes.
+     * 
+     */
     public Boolean addLinodes() {
         return this.addLinodes;
     }
+    /**
+     * @return If true, this User may create Longview clients and view the current plan.
+     * 
+     */
     public Boolean addLongview() {
         return this.addLongview;
     }
+    /**
+     * @return If true, this User may add NodeBalancers.
+     * 
+     */
     public Boolean addNodebalancers() {
         return this.addNodebalancers;
     }
     public Boolean addStackscripts() {
         return this.addStackscripts;
     }
+    /**
+     * @return If true, this User may add Volumes.
+     * 
+     */
     public Boolean addVolumes() {
         return this.addVolumes;
     }
+    /**
+     * @return If true, this User may cancel the entire Account.
+     * 
+     */
     public Boolean cancelAccount() {
         return this.cancelAccount;
     }
+    /**
+     * @return If true, this User may manage the Account’s Longview subscription.
+     * 
+     */
     public Boolean longviewSubscription() {
         return this.longviewSubscription;
     }

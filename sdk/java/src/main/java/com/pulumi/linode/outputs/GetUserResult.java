@@ -21,52 +21,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserResult {
-    /**
-     * @return The grants this User has pertaining to Databases on this Account.
-     * 
-     */
     private List<GetUserDatabaseGrant> databaseGrants;
-    /**
-     * @return The grants this User has pertaining to Domains on this Account.
-     * 
-     */
     private List<GetUserDomainGrant> domainGrants;
     /**
      * @return The email address for this User, for account management communications, and may be used for other communications as configured.
      * 
      */
     private String email;
-    /**
-     * @return The grants this User has pertaining to Firewalls on this Account.
-     * 
-     */
     private List<GetUserFirewallGrant> firewallGrants;
-    /**
-     * @return The Account-level grants a User has.
-     * 
-     */
     private List<GetUserGlobalGrant> globalGrants;
+    /**
+     * @return The ID of entity this grant applies to.
+     * 
+     */
     private String id;
-    /**
-     * @return The grants this User has pertaining to Images on this Account.
-     * 
-     */
     private List<GetUserImageGrant> imageGrants;
-    /**
-     * @return The grants this User has pertaining to Linodes on this Account.
-     * 
-     */
     private List<GetUserLinodeGrant> linodeGrants;
-    /**
-     * @return The grants this User has pertaining to Longview Clients on this Account.
-     * 
-     */
     private List<GetUserLongviewGrant> longviewGrants;
+    private List<GetUserNodebalancerGrant> nodebalancerGrants;
     /**
-     * @return The grants this User has pertaining to NodeBalancers on this Account.
+     * @return The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
      * 
      */
-    private List<GetUserNodebalancerGrant> nodebalancerGrants;
+    private String passwordCreated;
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
      * 
@@ -77,30 +54,24 @@ public final class GetUserResult {
      * 
      */
     private List<String> sshKeys;
+    private List<GetUserStackscriptGrant> stackscriptGrants;
     /**
-     * @return The grants this User has pertaining to StackScripts on this Account.
+     * @return A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
      * 
      */
-    private List<GetUserStackscriptGrant> stackscriptGrants;
+    private Boolean tfaEnabled;
     private String username;
     /**
-     * @return The grants this User has pertaining to Volumes on this Account.
+     * @return The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      * 
      */
+    private String verifiedPhoneNumber;
     private List<GetUserVolumeGrant> volumeGrants;
 
     private GetUserResult() {}
-    /**
-     * @return The grants this User has pertaining to Databases on this Account.
-     * 
-     */
     public List<GetUserDatabaseGrant> databaseGrants() {
         return this.databaseGrants;
     }
-    /**
-     * @return The grants this User has pertaining to Domains on this Account.
-     * 
-     */
     public List<GetUserDomainGrant> domainGrants() {
         return this.domainGrants;
     }
@@ -111,50 +82,37 @@ public final class GetUserResult {
     public String email() {
         return this.email;
     }
-    /**
-     * @return The grants this User has pertaining to Firewalls on this Account.
-     * 
-     */
     public List<GetUserFirewallGrant> firewallGrants() {
         return this.firewallGrants;
     }
-    /**
-     * @return The Account-level grants a User has.
-     * 
-     */
     public List<GetUserGlobalGrant> globalGrants() {
         return this.globalGrants;
     }
+    /**
+     * @return The ID of entity this grant applies to.
+     * 
+     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return The grants this User has pertaining to Images on this Account.
-     * 
-     */
     public List<GetUserImageGrant> imageGrants() {
         return this.imageGrants;
     }
-    /**
-     * @return The grants this User has pertaining to Linodes on this Account.
-     * 
-     */
     public List<GetUserLinodeGrant> linodeGrants() {
         return this.linodeGrants;
     }
-    /**
-     * @return The grants this User has pertaining to Longview Clients on this Account.
-     * 
-     */
     public List<GetUserLongviewGrant> longviewGrants() {
         return this.longviewGrants;
     }
-    /**
-     * @return The grants this User has pertaining to NodeBalancers on this Account.
-     * 
-     */
     public List<GetUserNodebalancerGrant> nodebalancerGrants() {
         return this.nodebalancerGrants;
+    }
+    /**
+     * @return The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+     * 
+     */
+    public String passwordCreated() {
+        return this.passwordCreated;
     }
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
@@ -170,20 +128,26 @@ public final class GetUserResult {
     public List<String> sshKeys() {
         return this.sshKeys;
     }
-    /**
-     * @return The grants this User has pertaining to StackScripts on this Account.
-     * 
-     */
     public List<GetUserStackscriptGrant> stackscriptGrants() {
         return this.stackscriptGrants;
+    }
+    /**
+     * @return A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+     * 
+     */
+    public Boolean tfaEnabled() {
+        return this.tfaEnabled;
     }
     public String username() {
         return this.username;
     }
     /**
-     * @return The grants this User has pertaining to Volumes on this Account.
+     * @return The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      * 
      */
+    public String verifiedPhoneNumber() {
+        return this.verifiedPhoneNumber;
+    }
     public List<GetUserVolumeGrant> volumeGrants() {
         return this.volumeGrants;
     }
@@ -207,10 +171,13 @@ public final class GetUserResult {
         private List<GetUserLinodeGrant> linodeGrants;
         private List<GetUserLongviewGrant> longviewGrants;
         private List<GetUserNodebalancerGrant> nodebalancerGrants;
+        private String passwordCreated;
         private Boolean restricted;
         private List<String> sshKeys;
         private List<GetUserStackscriptGrant> stackscriptGrants;
+        private Boolean tfaEnabled;
         private String username;
+        private String verifiedPhoneNumber;
         private List<GetUserVolumeGrant> volumeGrants;
         public Builder() {}
         public Builder(GetUserResult defaults) {
@@ -225,10 +192,13 @@ public final class GetUserResult {
     	      this.linodeGrants = defaults.linodeGrants;
     	      this.longviewGrants = defaults.longviewGrants;
     	      this.nodebalancerGrants = defaults.nodebalancerGrants;
+    	      this.passwordCreated = defaults.passwordCreated;
     	      this.restricted = defaults.restricted;
     	      this.sshKeys = defaults.sshKeys;
     	      this.stackscriptGrants = defaults.stackscriptGrants;
+    	      this.tfaEnabled = defaults.tfaEnabled;
     	      this.username = defaults.username;
+    	      this.verifiedPhoneNumber = defaults.verifiedPhoneNumber;
     	      this.volumeGrants = defaults.volumeGrants;
         }
 
@@ -307,6 +277,11 @@ public final class GetUserResult {
             return nodebalancerGrants(List.of(nodebalancerGrants));
         }
         @CustomType.Setter
+        public Builder passwordCreated(String passwordCreated) {
+            this.passwordCreated = Objects.requireNonNull(passwordCreated);
+            return this;
+        }
+        @CustomType.Setter
         public Builder restricted(Boolean restricted) {
             this.restricted = Objects.requireNonNull(restricted);
             return this;
@@ -328,8 +303,18 @@ public final class GetUserResult {
             return stackscriptGrants(List.of(stackscriptGrants));
         }
         @CustomType.Setter
+        public Builder tfaEnabled(Boolean tfaEnabled) {
+            this.tfaEnabled = Objects.requireNonNull(tfaEnabled);
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder verifiedPhoneNumber(String verifiedPhoneNumber) {
+            this.verifiedPhoneNumber = Objects.requireNonNull(verifiedPhoneNumber);
             return this;
         }
         @CustomType.Setter
@@ -352,10 +337,13 @@ public final class GetUserResult {
             o.linodeGrants = linodeGrants;
             o.longviewGrants = longviewGrants;
             o.nodebalancerGrants = nodebalancerGrants;
+            o.passwordCreated = passwordCreated;
             o.restricted = restricted;
             o.sshKeys = sshKeys;
             o.stackscriptGrants = stackscriptGrants;
+            o.tfaEnabled = tfaEnabled;
             o.username = username;
+            o.verifiedPhoneNumber = verifiedPhoneNumber;
             o.volumeGrants = volumeGrants;
             return o;
         }

@@ -28,7 +28,7 @@ class DatabaseMysqlArgs:
                  updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None):
         """
         The set of arguments for constructing a DatabaseMysql resource.
-        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
@@ -68,7 +68,7 @@ class DatabaseMysqlArgs:
     @pulumi.getter(name="engineId")
     def engine_id(self) -> pulumi.Input[str]:
         """
-        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         """
         return pulumi.get(self, "engine_id")
 
@@ -224,7 +224,7 @@ class _DatabaseMysqlState:
         :param pulumi.Input[str] created: When this Managed Database was created.
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
         :param pulumi.Input[str] engine: The Managed Database engine. (e.g. `mysql`)
-        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         :param pulumi.Input[str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[str] host_secondary: The secondary/private network host for the Managed Database.
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
@@ -364,7 +364,7 @@ class _DatabaseMysqlState:
     @pulumi.getter(name="engineId")
     def engine_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         """
         return pulumi.get(self, "engine_id")
 
@@ -568,7 +568,7 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             label="mydatabase",
             region="us-southeast",
             type="g6-nanode-1")
@@ -584,7 +584,7 @@ class DatabaseMysql(pulumi.CustomResource):
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             label="mydatabase",
             region="us-southeast",
             replication_type="asynch",
@@ -625,7 +625,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
-        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
@@ -662,7 +662,7 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             label="mydatabase",
             region="us-southeast",
             type="g6-nanode-1")
@@ -678,7 +678,7 @@ class DatabaseMysql(pulumi.CustomResource):
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="mysql/8.0.26",
+            engine_id="mysql/8.0.30",
             label="mydatabase",
             region="us-southeast",
             replication_type="asynch",
@@ -821,7 +821,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] created: When this Managed Database was created.
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
         :param pulumi.Input[str] engine: The Managed Database engine. (e.g. `mysql`)
-        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        :param pulumi.Input[str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         :param pulumi.Input[str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[str] host_secondary: The secondary/private network host for the Managed Database.
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
@@ -922,7 +922,7 @@ class DatabaseMysql(pulumi.CustomResource):
     @pulumi.getter(name="engineId")
     def engine_id(self) -> pulumi.Output[str]:
         """
-        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         """
         return pulumi.get(self, "engine_id")
 

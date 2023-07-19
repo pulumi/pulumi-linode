@@ -13,17 +13,50 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetUserGlobalGrantResult
     {
+        /// <summary>
+        /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        /// </summary>
         public readonly string AccountAccess;
+        /// <summary>
+        /// If true, this User may add Managed Databases.
+        /// </summary>
         public readonly bool AddDatabases;
+        /// <summary>
+        /// If true, this User may add Domains.
+        /// </summary>
         public readonly bool AddDomains;
+        /// <summary>
+        /// If true, this User may add Firewalls.
+        /// </summary>
         public readonly bool AddFirewalls;
+        /// <summary>
+        /// If true, this User may add Images.
+        /// </summary>
         public readonly bool AddImages;
+        /// <summary>
+        /// If true, this User may create Linodes.
+        /// </summary>
         public readonly bool AddLinodes;
+        /// <summary>
+        /// If true, this User may create Longview clients and view the current plan.
+        /// </summary>
         public readonly bool AddLongview;
+        /// <summary>
+        /// If true, this User may add NodeBalancers.
+        /// </summary>
         public readonly bool AddNodebalancers;
         public readonly bool AddStackscripts;
+        /// <summary>
+        /// If true, this User may add Volumes.
+        /// </summary>
         public readonly bool AddVolumes;
+        /// <summary>
+        /// If true, this User may cancel the entire Account.
+        /// </summary>
         public readonly bool CancelAccount;
+        /// <summary>
+        /// If true, this User may manage the Account’s Longview subscription.
+        /// </summary>
         public readonly bool LongviewSubscription;
 
         [OutputConstructor]

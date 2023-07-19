@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,20 +38,21 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ApiVersion == nil {
-		if d := getEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
 			args.ApiVersion = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.UaPrefix == nil {
-		if d := getEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
 			args.UaPrefix = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Url == nil {
-		if d := getEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
 			args.Url = pulumi.StringPtr(d.(string))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:linode", name, args, &resource, opts...)
 	if err != nil {
@@ -76,6 +78,8 @@ type providerArgs struct {
 	MaxRetryDelayMs *int `pulumi:"maxRetryDelayMs"`
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs *int `pulumi:"minRetryDelayMs"`
+	// If true, Linode Instances will not be rebooted on config and interface changes.
+	SkipImplicitReboots *bool `pulumi:"skipImplicitReboots"`
 	// Skip waiting for a linode_instance resource to finish deleting.
 	SkipInstanceDeletePoll *bool `pulumi:"skipInstanceDeletePoll"`
 	// Skip waiting for a linode_instance resource to be running.
@@ -106,6 +110,8 @@ type ProviderArgs struct {
 	MaxRetryDelayMs pulumi.IntPtrInput
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs pulumi.IntPtrInput
+	// If true, Linode Instances will not be rebooted on config and interface changes.
+	SkipImplicitReboots pulumi.BoolPtrInput
 	// Skip waiting for a linode_instance resource to finish deleting.
 	SkipInstanceDeletePoll pulumi.BoolPtrInput
 	// Skip waiting for a linode_instance resource to be running.

@@ -12,6 +12,14 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetImagesImageInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("capabilities", required: true)]
+        private InputList<string>? _capabilities;
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
+
         /// <summary>
         /// When this Image was created.
         /// </summary>

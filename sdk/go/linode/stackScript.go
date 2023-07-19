@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewStackScript(ctx *pulumi.Context,
 	if args.Script == nil {
 		return nil, errors.New("invalid value for required argument 'Script'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StackScript
 	err := ctx.RegisterResource("linode:index/stackScript:StackScript", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewInstanceIp(ctx *pulumi.Context,
 	if args.LinodeId == nil {
 		return nil, errors.New("invalid value for required argument 'LinodeId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceIp
 	err := ctx.RegisterResource("linode:index/instanceIp:InstanceIp", name, args, &resource, opts...)
 	if err != nil {

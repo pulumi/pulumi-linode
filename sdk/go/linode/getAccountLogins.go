@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ import (
 //
 // * `username`
 func GetAccountLogins(ctx *pulumi.Context, args *GetAccountLoginsArgs, opts ...pulumi.InvokeOption) (*GetAccountLoginsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountLoginsResult
 	err := ctx.Invoke("linode:index/getAccountLogins:getAccountLogins", args, &rv, opts...)
 	if err != nil {

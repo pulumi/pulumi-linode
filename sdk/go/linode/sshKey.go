@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewSshKey(ctx *pulumi.Context,
 	if args.SshKey == nil {
 		return nil, errors.New("invalid value for required argument 'SshKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SshKey
 	err := ctx.RegisterResource("linode:index/sshKey:SshKey", name, args, &resource, opts...)
 	if err != nil {

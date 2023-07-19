@@ -46,6 +46,14 @@ export class Image extends pulumi.CustomResource {
     }
 
     /**
+     * The capabilities of this Image.
+     */
+    public /*out*/ readonly capabilities!: pulumi.Output<string[]>;
+    /**
+     * Whether this image supports cloud-init.
+     */
+    public readonly cloudInit!: pulumi.Output<boolean | undefined>;
+    /**
      * When this Image was created.
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
@@ -133,6 +141,8 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
+            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
+            resourceInputs["cloudInit"] = state ? state.cloudInit : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["deprecated"] = state ? state.deprecated : undefined;
@@ -154,6 +164,7 @@ export class Image extends pulumi.CustomResource {
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
+            resourceInputs["cloudInit"] = args ? args.cloudInit : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskId"] = args ? args.diskId : undefined;
             resourceInputs["fileHash"] = args ? args.fileHash : undefined;
@@ -161,6 +172,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["deprecated"] = undefined /*out*/;
@@ -180,6 +192,14 @@ export class Image extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Image resources.
  */
 export interface ImageState {
+    /**
+     * The capabilities of this Image.
+     */
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether this image supports cloud-init.
+     */
+    cloudInit?: pulumi.Input<boolean>;
     /**
      * When this Image was created.
      */
@@ -260,6 +280,10 @@ export interface ImageState {
  * The set of arguments for constructing a Image resource.
  */
 export interface ImageArgs {
+    /**
+     * Whether this image supports cloud-init.
+     */
+    cloudInit?: pulumi.Input<boolean>;
     /**
      * A detailed description of this Image.
      *

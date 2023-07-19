@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ import (
 //
 // ```
 func GetDatabaseMysqlBackups(ctx *pulumi.Context, args *GetDatabaseMysqlBackupsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseMysqlBackupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseMysqlBackupsResult
 	err := ctx.Invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args, &rv, opts...)
 	if err != nil {

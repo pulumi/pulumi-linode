@@ -13,6 +13,7 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetImagesImageResult
     {
+        public readonly ImmutableArray<string> Capabilities;
         /// <summary>
         /// When this Image was created.
         /// </summary>
@@ -61,6 +62,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetImagesImageResult(
+            ImmutableArray<string> capabilities,
+
             string created,
 
             string createdBy,
@@ -85,6 +88,7 @@ namespace Pulumi.Linode.Outputs
 
             string vendor)
         {
+            Capabilities = capabilities;
             Created = created;
             CreatedBy = createdBy;
             Deprecated = deprecated;

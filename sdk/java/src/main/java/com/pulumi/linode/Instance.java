@@ -15,6 +15,7 @@ import com.pulumi.linode.outputs.InstanceBackups;
 import com.pulumi.linode.outputs.InstanceConfig;
 import com.pulumi.linode.outputs.InstanceDisk;
 import com.pulumi.linode.outputs.InstanceInterface;
+import com.pulumi.linode.outputs.InstanceMetadata;
 import com.pulumi.linode.outputs.InstanceSpecs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -239,6 +240,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.group);
     }
     /**
+     * Whether or not this Instance was created with user-data.
+     * 
+     */
+    @Export(name="hasUserData", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasUserData;
+
+    /**
+     * @return Whether or not this Instance was created with user-data.
+     * 
+     */
+    public Output<Boolean> hasUserData() {
+        return this.hasUserData;
+    }
+    /**
      * The Linode’s host machine, as a UUID.
      * 
      */
@@ -337,6 +352,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> label() {
         return this.label;
+    }
+    /**
+     * Various fields related to the Linode Metadata service.
+     * 
+     */
+    @Export(name="metadatas", refs={List.class,InstanceMetadata.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceMetadata>> metadatas;
+
+    /**
+     * @return Various fields related to the Linode Metadata service.
+     * 
+     */
+    public Output<Optional<List<InstanceMetadata>>> metadatas() {
+        return Codegen.optional(this.metadatas);
     }
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.

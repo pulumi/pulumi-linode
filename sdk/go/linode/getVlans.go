@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ import (
 //
 // * `region`
 func GetVlans(ctx *pulumi.Context, args *GetVlansArgs, opts ...pulumi.InvokeOption) (*GetVlansResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVlansResult
 	err := ctx.Invoke("linode:index/getVlans:getVlans", args, &rv, opts...)
 	if err != nil {

@@ -131,6 +131,9 @@ class GetDatabasePostgresqlResult:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> Optional[int]:
+        warnings.warn("""Configure `id` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""database_id is deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.""")
+
         return pulumi.get(self, "database_id")
 
     @property

@@ -64,6 +64,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
             resourceInputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
             resourceInputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
+            resourceInputs["skipImplicitReboots"] = pulumi.output(args ? args.skipImplicitReboots : undefined).apply(JSON.stringify);
             resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args ? args.skipInstanceDeletePoll : undefined).apply(JSON.stringify);
             resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args ? args.token : undefined;
@@ -109,6 +110,10 @@ export interface ProviderArgs {
      * Minimum delay in milliseconds before retrying a request.
      */
     minRetryDelayMs?: pulumi.Input<number>;
+    /**
+     * If true, Linode Instances will not be rebooted on config and interface changes.
+     */
+    skipImplicitReboots?: pulumi.Input<boolean>;
     /**
      * Skip waiting for a linode_instance resource to finish deleting.
      */

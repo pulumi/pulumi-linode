@@ -18,14 +18,22 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The ID of the MySQL database. Deprecated: Use id instead.
      * 
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     @Import(name="databaseId")
     private @Nullable Output<Integer> databaseId;
 
     /**
      * @return The ID of the MySQL database. Deprecated: Use id instead.
      * 
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     public Optional<Output<Integer>> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -75,7 +83,11 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
         public Builder databaseId(@Nullable Output<Integer> databaseId) {
             $.databaseId = databaseId;
             return this;
@@ -86,7 +98,11 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
         public Builder databaseId(Integer databaseId) {
             return databaseId(Output.of(databaseId));
         }

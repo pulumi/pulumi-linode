@@ -116,6 +116,16 @@ namespace Pulumi.Linode
             set => _minRetryDelayMs.Set(value);
         }
 
+        private static readonly __Value<bool?> _skipImplicitReboots = new __Value<bool?>(() => __config.GetBoolean("skipImplicitReboots"));
+        /// <summary>
+        /// If true, Linode Instances will not be rebooted on config and interface changes.
+        /// </summary>
+        public static bool? SkipImplicitReboots
+        {
+            get => _skipImplicitReboots.Get();
+            set => _skipImplicitReboots.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipInstanceDeletePoll = new __Value<bool?>(() => __config.GetBoolean("skipInstanceDeletePoll"));
         /// <summary>
         /// Skip waiting for a linode_instance resource to finish deleting.

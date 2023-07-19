@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides information about a Linode user
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
 	err := ctx.Invoke("linode:index/getUser:getUser", args, &rv, opts...)
 	if err != nil {
@@ -22,58 +24,46 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The grants this User has pertaining to Databases on this Account.
-	DatabaseGrants []GetUserDatabaseGrant `pulumi:"databaseGrants"`
-	// The grants this User has pertaining to Domains on this Account.
-	DomainGrants []GetUserDomainGrant `pulumi:"domainGrants"`
-	// The grants this User has pertaining to Firewalls on this Account.
-	FirewallGrants []GetUserFirewallGrant `pulumi:"firewallGrants"`
-	// The grants this User has pertaining to Images on this Account.
-	ImageGrants []GetUserImageGrant `pulumi:"imageGrants"`
-	// The grants this User has pertaining to Linodes on this Account.
-	LinodeGrants []GetUserLinodeGrant `pulumi:"linodeGrants"`
-	// The grants this User has pertaining to Longview Clients on this Account.
-	LongviewGrants []GetUserLongviewGrant `pulumi:"longviewGrants"`
-	// The grants this User has pertaining to NodeBalancers on this Account.
+	DatabaseGrants     []GetUserDatabaseGrant     `pulumi:"databaseGrants"`
+	DomainGrants       []GetUserDomainGrant       `pulumi:"domainGrants"`
+	FirewallGrants     []GetUserFirewallGrant     `pulumi:"firewallGrants"`
+	ImageGrants        []GetUserImageGrant        `pulumi:"imageGrants"`
+	LinodeGrants       []GetUserLinodeGrant       `pulumi:"linodeGrants"`
+	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
 	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
-	// The grants this User has pertaining to StackScripts on this Account.
-	StackscriptGrants []GetUserStackscriptGrant `pulumi:"stackscriptGrants"`
+	StackscriptGrants  []GetUserStackscriptGrant  `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
-	Username string `pulumi:"username"`
-	// The grants this User has pertaining to Volumes on this Account.
+	Username     string               `pulumi:"username"`
 	VolumeGrants []GetUserVolumeGrant `pulumi:"volumeGrants"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
-	// The grants this User has pertaining to Databases on this Account.
 	DatabaseGrants []GetUserDatabaseGrant `pulumi:"databaseGrants"`
-	// The grants this User has pertaining to Domains on this Account.
-	DomainGrants []GetUserDomainGrant `pulumi:"domainGrants"`
+	DomainGrants   []GetUserDomainGrant   `pulumi:"domainGrants"`
 	// The email address for this User, for account management communications, and may be used for other communications as configured.
-	Email string `pulumi:"email"`
-	// The grants this User has pertaining to Firewalls on this Account.
+	Email          string                 `pulumi:"email"`
 	FirewallGrants []GetUserFirewallGrant `pulumi:"firewallGrants"`
-	// The Account-level grants a User has.
-	GlobalGrants []GetUserGlobalGrant `pulumi:"globalGrants"`
-	Id           string               `pulumi:"id"`
-	// The grants this User has pertaining to Images on this Account.
-	ImageGrants []GetUserImageGrant `pulumi:"imageGrants"`
-	// The grants this User has pertaining to Linodes on this Account.
-	LinodeGrants []GetUserLinodeGrant `pulumi:"linodeGrants"`
-	// The grants this User has pertaining to Longview Clients on this Account.
-	LongviewGrants []GetUserLongviewGrant `pulumi:"longviewGrants"`
-	// The grants this User has pertaining to NodeBalancers on this Account.
+	GlobalGrants   []GetUserGlobalGrant   `pulumi:"globalGrants"`
+	// The ID of entity this grant applies to.
+	Id                 string                     `pulumi:"id"`
+	ImageGrants        []GetUserImageGrant        `pulumi:"imageGrants"`
+	LinodeGrants       []GetUserLinodeGrant       `pulumi:"linodeGrants"`
+	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
 	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
+	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+	PasswordCreated string `pulumi:"passwordCreated"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted bool `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-	SshKeys []string `pulumi:"sshKeys"`
-	// The grants this User has pertaining to StackScripts on this Account.
+	SshKeys           []string                  `pulumi:"sshKeys"`
 	StackscriptGrants []GetUserStackscriptGrant `pulumi:"stackscriptGrants"`
-	Username          string                    `pulumi:"username"`
-	// The grants this User has pertaining to Volumes on this Account.
-	VolumeGrants []GetUserVolumeGrant `pulumi:"volumeGrants"`
+	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+	TfaEnabled bool   `pulumi:"tfaEnabled"`
+	Username   string `pulumi:"username"`
+	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+	VerifiedPhoneNumber string               `pulumi:"verifiedPhoneNumber"`
+	VolumeGrants        []GetUserVolumeGrant `pulumi:"volumeGrants"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -91,25 +81,16 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	// The grants this User has pertaining to Databases on this Account.
-	DatabaseGrants GetUserDatabaseGrantArrayInput `pulumi:"databaseGrants"`
-	// The grants this User has pertaining to Domains on this Account.
-	DomainGrants GetUserDomainGrantArrayInput `pulumi:"domainGrants"`
-	// The grants this User has pertaining to Firewalls on this Account.
-	FirewallGrants GetUserFirewallGrantArrayInput `pulumi:"firewallGrants"`
-	// The grants this User has pertaining to Images on this Account.
-	ImageGrants GetUserImageGrantArrayInput `pulumi:"imageGrants"`
-	// The grants this User has pertaining to Linodes on this Account.
-	LinodeGrants GetUserLinodeGrantArrayInput `pulumi:"linodeGrants"`
-	// The grants this User has pertaining to Longview Clients on this Account.
-	LongviewGrants GetUserLongviewGrantArrayInput `pulumi:"longviewGrants"`
-	// The grants this User has pertaining to NodeBalancers on this Account.
+	DatabaseGrants     GetUserDatabaseGrantArrayInput     `pulumi:"databaseGrants"`
+	DomainGrants       GetUserDomainGrantArrayInput       `pulumi:"domainGrants"`
+	FirewallGrants     GetUserFirewallGrantArrayInput     `pulumi:"firewallGrants"`
+	ImageGrants        GetUserImageGrantArrayInput        `pulumi:"imageGrants"`
+	LinodeGrants       GetUserLinodeGrantArrayInput       `pulumi:"linodeGrants"`
+	LongviewGrants     GetUserLongviewGrantArrayInput     `pulumi:"longviewGrants"`
 	NodebalancerGrants GetUserNodebalancerGrantArrayInput `pulumi:"nodebalancerGrants"`
-	// The grants this User has pertaining to StackScripts on this Account.
-	StackscriptGrants GetUserStackscriptGrantArrayInput `pulumi:"stackscriptGrants"`
+	StackscriptGrants  GetUserStackscriptGrantArrayInput  `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
-	Username pulumi.StringInput `pulumi:"username"`
-	// The grants this User has pertaining to Volumes on this Account.
+	Username     pulumi.StringInput           `pulumi:"username"`
 	VolumeGrants GetUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
 }
 
@@ -132,12 +113,10 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
-// The grants this User has pertaining to Databases on this Account.
 func (o LookupUserResultOutput) DatabaseGrants() GetUserDatabaseGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserDatabaseGrant { return v.DatabaseGrants }).(GetUserDatabaseGrantArrayOutput)
 }
 
-// The grants this User has pertaining to Domains on this Account.
 func (o LookupUserResultOutput) DomainGrants() GetUserDomainGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserDomainGrant { return v.DomainGrants }).(GetUserDomainGrantArrayOutput)
 }
@@ -147,38 +126,38 @@ func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// The grants this User has pertaining to Firewalls on this Account.
 func (o LookupUserResultOutput) FirewallGrants() GetUserFirewallGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserFirewallGrant { return v.FirewallGrants }).(GetUserFirewallGrantArrayOutput)
 }
 
-// The Account-level grants a User has.
 func (o LookupUserResultOutput) GlobalGrants() GetUserGlobalGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserGlobalGrant { return v.GlobalGrants }).(GetUserGlobalGrantArrayOutput)
 }
 
+// The ID of entity this grant applies to.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The grants this User has pertaining to Images on this Account.
 func (o LookupUserResultOutput) ImageGrants() GetUserImageGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserImageGrant { return v.ImageGrants }).(GetUserImageGrantArrayOutput)
 }
 
-// The grants this User has pertaining to Linodes on this Account.
 func (o LookupUserResultOutput) LinodeGrants() GetUserLinodeGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserLinodeGrant { return v.LinodeGrants }).(GetUserLinodeGrantArrayOutput)
 }
 
-// The grants this User has pertaining to Longview Clients on this Account.
 func (o LookupUserResultOutput) LongviewGrants() GetUserLongviewGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserLongviewGrant { return v.LongviewGrants }).(GetUserLongviewGrantArrayOutput)
 }
 
-// The grants this User has pertaining to NodeBalancers on this Account.
 func (o LookupUserResultOutput) NodebalancerGrants() GetUserNodebalancerGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserNodebalancerGrant { return v.NodebalancerGrants }).(GetUserNodebalancerGrantArrayOutput)
+}
+
+// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+func (o LookupUserResultOutput) PasswordCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.PasswordCreated }).(pulumi.StringOutput)
 }
 
 // If true, this User must be granted access to perform actions or access entities on this Account.
@@ -191,16 +170,24 @@ func (o LookupUserResultOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
 }
 
-// The grants this User has pertaining to StackScripts on this Account.
 func (o LookupUserResultOutput) StackscriptGrants() GetUserStackscriptGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserStackscriptGrant { return v.StackscriptGrants }).(GetUserStackscriptGrantArrayOutput)
+}
+
+// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+func (o LookupUserResultOutput) TfaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.TfaEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
-// The grants this User has pertaining to Volumes on this Account.
+// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+func (o LookupUserResultOutput) VerifiedPhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.VerifiedPhoneNumber }).(pulumi.StringOutput)
+}
+
 func (o LookupUserResultOutput) VolumeGrants() GetUserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserVolumeGrant { return v.VolumeGrants }).(GetUserVolumeGrantArrayOutput)
 }

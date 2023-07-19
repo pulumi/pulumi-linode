@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
 	err := ctx.Invoke("linode:index/getImage:getImage", args, &rv, opts...)
 	if err != nil {
@@ -56,6 +58,7 @@ type LookupImageArgs struct {
 
 // A collection of values returned by getImage.
 type LookupImageResult struct {
+	Capabilities []string `pulumi:"capabilities"`
 	// When this Image was created.
 	Created string `pulumi:"created"`
 	// The name of the User who created this Image, or "linode" for official Images.
@@ -116,6 +119,10 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
+}
+
+func (o LookupImageResultOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
 
 // When this Image was created.

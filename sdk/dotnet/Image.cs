@@ -26,6 +26,18 @@ namespace Pulumi.Linode
     public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The capabilities of this Image.
+        /// </summary>
+        [Output("capabilities")]
+        public Output<ImmutableArray<string>> Capabilities { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether this image supports cloud-init.
+        /// </summary>
+        [Output("cloudInit")]
+        public Output<bool?> CloudInit { get; private set; } = null!;
+
+        /// <summary>
         /// When this Image was created.
         /// </summary>
         [Output("created")]
@@ -178,6 +190,12 @@ namespace Pulumi.Linode
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether this image supports cloud-init.
+        /// </summary>
+        [Input("cloudInit")]
+        public Input<bool>? CloudInit { get; set; }
+
+        /// <summary>
         /// A detailed description of this Image.
         /// 
         /// - - -
@@ -237,6 +255,24 @@ namespace Pulumi.Linode
 
     public sealed class ImageState : global::Pulumi.ResourceArgs
     {
+        [Input("capabilities")]
+        private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// The capabilities of this Image.
+        /// </summary>
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
+
+        /// <summary>
+        /// Whether this image supports cloud-init.
+        /// </summary>
+        [Input("cloudInit")]
+        public Input<bool>? CloudInit { get; set; }
+
         /// <summary>
         /// When this Image was created.
         /// </summary>

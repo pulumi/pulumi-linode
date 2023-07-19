@@ -73,6 +73,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('minRetryDelayMs')
 
     @property
+    def skip_implicit_reboots(self) -> Optional[bool]:
+        """
+        If true, Linode Instances will not be rebooted on config and interface changes.
+        """
+        return __config__.get_bool('skipImplicitReboots')
+
+    @property
     def skip_instance_delete_poll(self) -> Optional[bool]:
         """
         Skip waiting for a linode_instance resource to finish deleting.

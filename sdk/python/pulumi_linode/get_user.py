@@ -23,7 +23,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, restricted=None, ssh_keys=None, stackscript_grants=None, username=None, volume_grants=None):
+    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, password_created=None, restricted=None, ssh_keys=None, stackscript_grants=None, tfa_enabled=None, username=None, verified_phone_number=None, volume_grants=None):
         if database_grants and not isinstance(database_grants, list):
             raise TypeError("Expected argument 'database_grants' to be a list")
         pulumi.set(__self__, "database_grants", database_grants)
@@ -54,6 +54,9 @@ class GetUserResult:
         if nodebalancer_grants and not isinstance(nodebalancer_grants, list):
             raise TypeError("Expected argument 'nodebalancer_grants' to be a list")
         pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+        if password_created and not isinstance(password_created, str):
+            raise TypeError("Expected argument 'password_created' to be a str")
+        pulumi.set(__self__, "password_created", password_created)
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")
         pulumi.set(__self__, "restricted", restricted)
@@ -63,9 +66,15 @@ class GetUserResult:
         if stackscript_grants and not isinstance(stackscript_grants, list):
             raise TypeError("Expected argument 'stackscript_grants' to be a list")
         pulumi.set(__self__, "stackscript_grants", stackscript_grants)
+        if tfa_enabled and not isinstance(tfa_enabled, bool):
+            raise TypeError("Expected argument 'tfa_enabled' to be a bool")
+        pulumi.set(__self__, "tfa_enabled", tfa_enabled)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+        if verified_phone_number and not isinstance(verified_phone_number, str):
+            raise TypeError("Expected argument 'verified_phone_number' to be a str")
+        pulumi.set(__self__, "verified_phone_number", verified_phone_number)
         if volume_grants and not isinstance(volume_grants, list):
             raise TypeError("Expected argument 'volume_grants' to be a list")
         pulumi.set(__self__, "volume_grants", volume_grants)
@@ -73,17 +82,11 @@ class GetUserResult:
     @property
     @pulumi.getter(name="databaseGrants")
     def database_grants(self) -> Sequence['outputs.GetUserDatabaseGrantResult']:
-        """
-        The grants this User has pertaining to Databases on this Account.
-        """
         return pulumi.get(self, "database_grants")
 
     @property
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> Sequence['outputs.GetUserDomainGrantResult']:
-        """
-        The grants this User has pertaining to Domains on this Account.
-        """
         return pulumi.get(self, "domain_grants")
 
     @property
@@ -97,55 +100,48 @@ class GetUserResult:
     @property
     @pulumi.getter(name="firewallGrants")
     def firewall_grants(self) -> Sequence['outputs.GetUserFirewallGrantResult']:
-        """
-        The grants this User has pertaining to Firewalls on this Account.
-        """
         return pulumi.get(self, "firewall_grants")
 
     @property
     @pulumi.getter(name="globalGrants")
     def global_grants(self) -> Sequence['outputs.GetUserGlobalGrantResult']:
-        """
-        The Account-level grants a User has.
-        """
         return pulumi.get(self, "global_grants")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="imageGrants")
     def image_grants(self) -> Sequence['outputs.GetUserImageGrantResult']:
-        """
-        The grants this User has pertaining to Images on this Account.
-        """
         return pulumi.get(self, "image_grants")
 
     @property
     @pulumi.getter(name="linodeGrants")
     def linode_grants(self) -> Sequence['outputs.GetUserLinodeGrantResult']:
-        """
-        The grants this User has pertaining to Linodes on this Account.
-        """
         return pulumi.get(self, "linode_grants")
 
     @property
     @pulumi.getter(name="longviewGrants")
     def longview_grants(self) -> Sequence['outputs.GetUserLongviewGrantResult']:
-        """
-        The grants this User has pertaining to Longview Clients on this Account.
-        """
         return pulumi.get(self, "longview_grants")
 
     @property
     @pulumi.getter(name="nodebalancerGrants")
     def nodebalancer_grants(self) -> Sequence['outputs.GetUserNodebalancerGrantResult']:
-        """
-        The grants this User has pertaining to NodeBalancers on this Account.
-        """
         return pulumi.get(self, "nodebalancer_grants")
+
+    @property
+    @pulumi.getter(name="passwordCreated")
+    def password_created(self) -> str:
+        """
+        The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        """
+        return pulumi.get(self, "password_created")
 
     @property
     @pulumi.getter
@@ -166,10 +162,15 @@ class GetUserResult:
     @property
     @pulumi.getter(name="stackscriptGrants")
     def stackscript_grants(self) -> Sequence['outputs.GetUserStackscriptGrantResult']:
-        """
-        The grants this User has pertaining to StackScripts on this Account.
-        """
         return pulumi.get(self, "stackscript_grants")
+
+    @property
+    @pulumi.getter(name="tfaEnabled")
+    def tfa_enabled(self) -> bool:
+        """
+        A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        """
+        return pulumi.get(self, "tfa_enabled")
 
     @property
     @pulumi.getter
@@ -177,11 +178,16 @@ class GetUserResult:
         return pulumi.get(self, "username")
 
     @property
+    @pulumi.getter(name="verifiedPhoneNumber")
+    def verified_phone_number(self) -> str:
+        """
+        The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+        """
+        return pulumi.get(self, "verified_phone_number")
+
+    @property
     @pulumi.getter(name="volumeGrants")
     def volume_grants(self) -> Sequence['outputs.GetUserVolumeGrantResult']:
-        """
-        The grants this User has pertaining to Volumes on this Account.
-        """
         return pulumi.get(self, "volume_grants")
 
 
@@ -201,10 +207,13 @@ class AwaitableGetUserResult(GetUserResult):
             linode_grants=self.linode_grants,
             longview_grants=self.longview_grants,
             nodebalancer_grants=self.nodebalancer_grants,
+            password_created=self.password_created,
             restricted=self.restricted,
             ssh_keys=self.ssh_keys,
             stackscript_grants=self.stackscript_grants,
+            tfa_enabled=self.tfa_enabled,
             username=self.username,
+            verified_phone_number=self.verified_phone_number,
             volume_grants=self.volume_grants)
 
 
@@ -223,16 +232,7 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
     Provides information about a Linode user
 
 
-    :param Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']] database_grants: The grants this User has pertaining to Databases on this Account.
-    :param Sequence[pulumi.InputType['GetUserDomainGrantArgs']] domain_grants: The grants this User has pertaining to Domains on this Account.
-    :param Sequence[pulumi.InputType['GetUserFirewallGrantArgs']] firewall_grants: The grants this User has pertaining to Firewalls on this Account.
-    :param Sequence[pulumi.InputType['GetUserImageGrantArgs']] image_grants: The grants this User has pertaining to Images on this Account.
-    :param Sequence[pulumi.InputType['GetUserLinodeGrantArgs']] linode_grants: The grants this User has pertaining to Linodes on this Account.
-    :param Sequence[pulumi.InputType['GetUserLongviewGrantArgs']] longview_grants: The grants this User has pertaining to Longview Clients on this Account.
-    :param Sequence[pulumi.InputType['GetUserNodebalancerGrantArgs']] nodebalancer_grants: The grants this User has pertaining to NodeBalancers on this Account.
-    :param Sequence[pulumi.InputType['GetUserStackscriptGrantArgs']] stackscript_grants: The grants this User has pertaining to StackScripts on this Account.
     :param str username: The unique username of this User.
-    :param Sequence[pulumi.InputType['GetUserVolumeGrantArgs']] volume_grants: The grants this User has pertaining to Volumes on this Account.
     """
     __args__ = dict()
     __args__['databaseGrants'] = database_grants
@@ -259,10 +259,13 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
         linode_grants=pulumi.get(__ret__, 'linode_grants'),
         longview_grants=pulumi.get(__ret__, 'longview_grants'),
         nodebalancer_grants=pulumi.get(__ret__, 'nodebalancer_grants'),
+        password_created=pulumi.get(__ret__, 'password_created'),
         restricted=pulumi.get(__ret__, 'restricted'),
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'),
         stackscript_grants=pulumi.get(__ret__, 'stackscript_grants'),
+        tfa_enabled=pulumi.get(__ret__, 'tfa_enabled'),
         username=pulumi.get(__ret__, 'username'),
+        verified_phone_number=pulumi.get(__ret__, 'verified_phone_number'),
         volume_grants=pulumi.get(__ret__, 'volume_grants'))
 
 
@@ -282,15 +285,6 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[pul
     Provides information about a Linode user
 
 
-    :param Sequence[pulumi.InputType['GetUserDatabaseGrantArgs']] database_grants: The grants this User has pertaining to Databases on this Account.
-    :param Sequence[pulumi.InputType['GetUserDomainGrantArgs']] domain_grants: The grants this User has pertaining to Domains on this Account.
-    :param Sequence[pulumi.InputType['GetUserFirewallGrantArgs']] firewall_grants: The grants this User has pertaining to Firewalls on this Account.
-    :param Sequence[pulumi.InputType['GetUserImageGrantArgs']] image_grants: The grants this User has pertaining to Images on this Account.
-    :param Sequence[pulumi.InputType['GetUserLinodeGrantArgs']] linode_grants: The grants this User has pertaining to Linodes on this Account.
-    :param Sequence[pulumi.InputType['GetUserLongviewGrantArgs']] longview_grants: The grants this User has pertaining to Longview Clients on this Account.
-    :param Sequence[pulumi.InputType['GetUserNodebalancerGrantArgs']] nodebalancer_grants: The grants this User has pertaining to NodeBalancers on this Account.
-    :param Sequence[pulumi.InputType['GetUserStackscriptGrantArgs']] stackscript_grants: The grants this User has pertaining to StackScripts on this Account.
     :param str username: The unique username of this User.
-    :param Sequence[pulumi.InputType['GetUserVolumeGrantArgs']] volume_grants: The grants this User has pertaining to Volumes on this Account.
     """
     ...

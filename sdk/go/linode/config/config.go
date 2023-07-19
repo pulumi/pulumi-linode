@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The version of Linode API.
 func GetApiVersion(ctx *pulumi.Context) string {
@@ -15,7 +18,7 @@ func GetApiVersion(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "LINODE_API_VERSION"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -57,6 +60,11 @@ func GetMinRetryDelayMs(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "linode:minRetryDelayMs")
 }
 
+// If true, Linode Instances will not be rebooted on config and interface changes.
+func GetSkipImplicitReboots(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:skipImplicitReboots")
+}
+
 // Skip waiting for a linode_instance resource to finish deleting.
 func GetSkipInstanceDeletePoll(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "linode:skipInstanceDeletePoll")
@@ -79,7 +87,7 @@ func GetUaPrefix(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "LINODE_UA_PREFIX"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -92,7 +100,7 @@ func GetUrl(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "LINODE_URL"); d != nil {
 		value = d.(string)
 	}
 	return value

@@ -13,6 +13,7 @@ import com.pulumi.linode.inputs.ImageState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -32,6 +33,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="linode:index/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
+    /**
+     * The capabilities of this Image.
+     * 
+     */
+    @Export(name="capabilities", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> capabilities;
+
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
+    public Output<List<String>> capabilities() {
+        return this.capabilities;
+    }
+    /**
+     * Whether this image supports cloud-init.
+     * 
+     */
+    @Export(name="cloudInit", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> cloudInit;
+
+    /**
+     * @return Whether this image supports cloud-init.
+     * 
+     */
+    public Output<Optional<Boolean>> cloudInit() {
+        return Codegen.optional(this.cloudInit);
+    }
     /**
      * When this Image was created.
      * 

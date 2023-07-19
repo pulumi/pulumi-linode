@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserDomainGrant {
+    /**
+     * @return The ID of entity this grant applies to.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The current label of the entity this grant applies to, for display purposes.
+     * 
+     */
     private String label;
+    /**
+     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * 
+     */
     private String permissions;
 
     private GetUserDomainGrant() {}
+    /**
+     * @return The ID of entity this grant applies to.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The current label of the entity this grant applies to, for display purposes.
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * 
+     */
     public String permissions() {
         return this.permissions;
     }

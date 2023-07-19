@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ImageArgs Empty = new ImageArgs();
+
+    /**
+     * Whether this image supports cloud-init.
+     * 
+     */
+    @Import(name="cloudInit")
+    private @Nullable Output<Boolean> cloudInit;
+
+    /**
+     * @return Whether this image supports cloud-init.
+     * 
+     */
+    public Optional<Output<Boolean>> cloudInit() {
+        return Optional.ofNullable(this.cloudInit);
+    }
 
     /**
      * A detailed description of this Image.
@@ -144,6 +160,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     private ImageArgs() {}
 
     private ImageArgs(ImageArgs $) {
+        this.cloudInit = $.cloudInit;
         this.description = $.description;
         this.diskId = $.diskId;
         this.fileHash = $.fileHash;
@@ -169,6 +186,27 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ImageArgs defaults) {
             $ = new ImageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cloudInit Whether this image supports cloud-init.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudInit(@Nullable Output<Boolean> cloudInit) {
+            $.cloudInit = cloudInit;
+            return this;
+        }
+
+        /**
+         * @param cloudInit Whether this image supports cloud-init.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudInit(Boolean cloudInit) {
+            return cloudInit(Output.of(cloudInit));
         }
 
         /**

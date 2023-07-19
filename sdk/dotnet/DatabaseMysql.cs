@@ -29,7 +29,7 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysql("foobar", new()
     ///     {
-    ///         EngineId = "mysql/8.0.26",
+    ///         EngineId = "mysql/8.0.30",
     ///         Label = "mydatabase",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
@@ -56,7 +56,7 @@ namespace Pulumi.Linode
     ///         },
     ///         ClusterSize = 3,
     ///         Encrypted = true,
-    ///         EngineId = "mysql/8.0.26",
+    ///         EngineId = "mysql/8.0.30",
     ///         Label = "mydatabase",
     ///         Region = "us-southeast",
     ///         ReplicationType = "asynch",
@@ -136,7 +136,7 @@ namespace Pulumi.Linode
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         /// </summary>
         [Output("engineId")]
         public Output<string> EngineId { get; private set; } = null!;
@@ -304,7 +304,7 @@ namespace Pulumi.Linode
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         /// </summary>
         [Input("engineId", required: true)]
         public Input<string> EngineId { get; set; } = null!;
@@ -414,7 +414,7 @@ namespace Pulumi.Linode
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         /// </summary>
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }

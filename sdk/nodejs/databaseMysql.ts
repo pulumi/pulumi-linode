@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysql("foobar", {
- *     engineId: "mysql/8.0.26",
+ *     engineId: "mysql/8.0.30",
  *     label: "mydatabase",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     allowLists: ["0.0.0.0/0"],
  *     clusterSize: 3,
  *     encrypted: true,
- *     engineId: "mysql/8.0.26",
+ *     engineId: "mysql/8.0.30",
  *     label: "mydatabase",
  *     region: "us-southeast",
  *     replicationType: "asynch",
@@ -128,7 +128,7 @@ export class DatabaseMysql extends pulumi.CustomResource {
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      */
     public readonly engineId!: pulumi.Output<string>;
     /**
@@ -296,7 +296,7 @@ export interface DatabaseMysqlState {
      */
     engine?: pulumi.Input<string>;
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      */
     engineId?: pulumi.Input<string>;
     /**
@@ -378,7 +378,7 @@ export interface DatabaseMysqlArgs {
      */
     encrypted?: pulumi.Input<boolean>;
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      */
     engineId: pulumi.Input<string>;
     /**

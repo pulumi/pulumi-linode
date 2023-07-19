@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupNodeBalancer(ctx *pulumi.Context, args *LookupNodeBalancerArgs, opts ...pulumi.InvokeOption) (*LookupNodeBalancerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeBalancerResult
 	err := ctx.Invoke("linode:index/getNodeBalancer:getNodeBalancer", args, &rv, opts...)
 	if err != nil {

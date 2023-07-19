@@ -35,7 +35,7 @@ namespace Pulumi.Linode
     ///     var my_db = new Linode.DatabaseMysql("my-db", new()
     ///     {
     ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8.0.26",
+    ///         EngineId = "mysql/8.0.30",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
     ///     });
