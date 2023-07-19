@@ -132,6 +132,12 @@ namespace Pulumi.Linode
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not this Instance was created with user-data.
+        /// </summary>
+        [Output("hasUserData")]
+        public Output<bool> HasUserData { get; private set; } = null!;
+
+        /// <summary>
         /// The Linode’s host machine, as a UUID.
         /// </summary>
         [Output("hostUuid")]
@@ -173,6 +179,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
+
+        /// <summary>
+        /// Various fields related to the Linode Metadata service.
+        /// </summary>
+        [Output("metadatas")]
+        public Output<ImmutableArray<Outputs.InstanceMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
@@ -428,6 +440,18 @@ namespace Pulumi.Linode
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        [Input("metadatas")]
+        private InputList<Inputs.InstanceMetadataArgs>? _metadatas;
+
+        /// <summary>
+        /// Various fields related to the Linode Metadata service.
+        /// </summary>
+        public InputList<Inputs.InstanceMetadataArgs> Metadatas
+        {
+            get => _metadatas ?? (_metadatas = new InputList<Inputs.InstanceMetadataArgs>());
+            set => _metadatas = value;
+        }
+
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         /// </summary>
@@ -635,6 +659,12 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
+        /// Whether or not this Instance was created with user-data.
+        /// </summary>
+        [Input("hasUserData")]
+        public Input<bool>? HasUserData { get; set; }
+
+        /// <summary>
         /// The Linode’s host machine, as a UUID.
         /// </summary>
         [Input("hostUuid")]
@@ -688,6 +718,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        [Input("metadatas")]
+        private InputList<Inputs.InstanceMetadataGetArgs>? _metadatas;
+
+        /// <summary>
+        /// Various fields related to the Linode Metadata service.
+        /// </summary>
+        public InputList<Inputs.InstanceMetadataGetArgs> Metadatas
+        {
+            get => _metadatas ?? (_metadatas = new InputList<Inputs.InstanceMetadataGetArgs>());
+            set => _metadatas = value;
+        }
 
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.

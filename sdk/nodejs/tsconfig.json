@@ -61,6 +61,7 @@
         "getStackScript.ts",
         "getStackScripts.ts",
         "getUser.ts",
+        "getUsers.ts",
         "getVlans.ts",
         "getVolume.ts",
         "image.ts",

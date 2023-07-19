@@ -29,10 +29,6 @@ namespace Pulumi.Linode
     {
         [Input("databaseGrants")]
         private List<Inputs.GetUserDatabaseGrantArgs>? _databaseGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Databases on this Account.
-        /// </summary>
         public List<Inputs.GetUserDatabaseGrantArgs> DatabaseGrants
         {
             get => _databaseGrants ?? (_databaseGrants = new List<Inputs.GetUserDatabaseGrantArgs>());
@@ -41,10 +37,6 @@ namespace Pulumi.Linode
 
         [Input("domainGrants")]
         private List<Inputs.GetUserDomainGrantArgs>? _domainGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Domains on this Account.
-        /// </summary>
         public List<Inputs.GetUserDomainGrantArgs> DomainGrants
         {
             get => _domainGrants ?? (_domainGrants = new List<Inputs.GetUserDomainGrantArgs>());
@@ -53,10 +45,6 @@ namespace Pulumi.Linode
 
         [Input("firewallGrants")]
         private List<Inputs.GetUserFirewallGrantArgs>? _firewallGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Firewalls on this Account.
-        /// </summary>
         public List<Inputs.GetUserFirewallGrantArgs> FirewallGrants
         {
             get => _firewallGrants ?? (_firewallGrants = new List<Inputs.GetUserFirewallGrantArgs>());
@@ -65,10 +53,6 @@ namespace Pulumi.Linode
 
         [Input("imageGrants")]
         private List<Inputs.GetUserImageGrantArgs>? _imageGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Images on this Account.
-        /// </summary>
         public List<Inputs.GetUserImageGrantArgs> ImageGrants
         {
             get => _imageGrants ?? (_imageGrants = new List<Inputs.GetUserImageGrantArgs>());
@@ -77,10 +61,6 @@ namespace Pulumi.Linode
 
         [Input("linodeGrants")]
         private List<Inputs.GetUserLinodeGrantArgs>? _linodeGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Linodes on this Account.
-        /// </summary>
         public List<Inputs.GetUserLinodeGrantArgs> LinodeGrants
         {
             get => _linodeGrants ?? (_linodeGrants = new List<Inputs.GetUserLinodeGrantArgs>());
@@ -89,10 +69,6 @@ namespace Pulumi.Linode
 
         [Input("longviewGrants")]
         private List<Inputs.GetUserLongviewGrantArgs>? _longviewGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Longview Clients on this Account.
-        /// </summary>
         public List<Inputs.GetUserLongviewGrantArgs> LongviewGrants
         {
             get => _longviewGrants ?? (_longviewGrants = new List<Inputs.GetUserLongviewGrantArgs>());
@@ -101,10 +77,6 @@ namespace Pulumi.Linode
 
         [Input("nodebalancerGrants")]
         private List<Inputs.GetUserNodebalancerGrantArgs>? _nodebalancerGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to NodeBalancers on this Account.
-        /// </summary>
         public List<Inputs.GetUserNodebalancerGrantArgs> NodebalancerGrants
         {
             get => _nodebalancerGrants ?? (_nodebalancerGrants = new List<Inputs.GetUserNodebalancerGrantArgs>());
@@ -113,10 +85,6 @@ namespace Pulumi.Linode
 
         [Input("stackscriptGrants")]
         private List<Inputs.GetUserStackscriptGrantArgs>? _stackscriptGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to StackScripts on this Account.
-        /// </summary>
         public List<Inputs.GetUserStackscriptGrantArgs> StackscriptGrants
         {
             get => _stackscriptGrants ?? (_stackscriptGrants = new List<Inputs.GetUserStackscriptGrantArgs>());
@@ -131,10 +99,6 @@ namespace Pulumi.Linode
 
         [Input("volumeGrants")]
         private List<Inputs.GetUserVolumeGrantArgs>? _volumeGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Volumes on this Account.
-        /// </summary>
         public List<Inputs.GetUserVolumeGrantArgs> VolumeGrants
         {
             get => _volumeGrants ?? (_volumeGrants = new List<Inputs.GetUserVolumeGrantArgs>());
@@ -151,10 +115,6 @@ namespace Pulumi.Linode
     {
         [Input("databaseGrants")]
         private InputList<Inputs.GetUserDatabaseGrantInputArgs>? _databaseGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Databases on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserDatabaseGrantInputArgs> DatabaseGrants
         {
             get => _databaseGrants ?? (_databaseGrants = new InputList<Inputs.GetUserDatabaseGrantInputArgs>());
@@ -163,10 +123,6 @@ namespace Pulumi.Linode
 
         [Input("domainGrants")]
         private InputList<Inputs.GetUserDomainGrantInputArgs>? _domainGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Domains on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserDomainGrantInputArgs> DomainGrants
         {
             get => _domainGrants ?? (_domainGrants = new InputList<Inputs.GetUserDomainGrantInputArgs>());
@@ -175,10 +131,6 @@ namespace Pulumi.Linode
 
         [Input("firewallGrants")]
         private InputList<Inputs.GetUserFirewallGrantInputArgs>? _firewallGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Firewalls on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserFirewallGrantInputArgs> FirewallGrants
         {
             get => _firewallGrants ?? (_firewallGrants = new InputList<Inputs.GetUserFirewallGrantInputArgs>());
@@ -187,10 +139,6 @@ namespace Pulumi.Linode
 
         [Input("imageGrants")]
         private InputList<Inputs.GetUserImageGrantInputArgs>? _imageGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Images on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserImageGrantInputArgs> ImageGrants
         {
             get => _imageGrants ?? (_imageGrants = new InputList<Inputs.GetUserImageGrantInputArgs>());
@@ -199,10 +147,6 @@ namespace Pulumi.Linode
 
         [Input("linodeGrants")]
         private InputList<Inputs.GetUserLinodeGrantInputArgs>? _linodeGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Linodes on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserLinodeGrantInputArgs> LinodeGrants
         {
             get => _linodeGrants ?? (_linodeGrants = new InputList<Inputs.GetUserLinodeGrantInputArgs>());
@@ -211,10 +155,6 @@ namespace Pulumi.Linode
 
         [Input("longviewGrants")]
         private InputList<Inputs.GetUserLongviewGrantInputArgs>? _longviewGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Longview Clients on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserLongviewGrantInputArgs> LongviewGrants
         {
             get => _longviewGrants ?? (_longviewGrants = new InputList<Inputs.GetUserLongviewGrantInputArgs>());
@@ -223,10 +163,6 @@ namespace Pulumi.Linode
 
         [Input("nodebalancerGrants")]
         private InputList<Inputs.GetUserNodebalancerGrantInputArgs>? _nodebalancerGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to NodeBalancers on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserNodebalancerGrantInputArgs> NodebalancerGrants
         {
             get => _nodebalancerGrants ?? (_nodebalancerGrants = new InputList<Inputs.GetUserNodebalancerGrantInputArgs>());
@@ -235,10 +171,6 @@ namespace Pulumi.Linode
 
         [Input("stackscriptGrants")]
         private InputList<Inputs.GetUserStackscriptGrantInputArgs>? _stackscriptGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to StackScripts on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserStackscriptGrantInputArgs> StackscriptGrants
         {
             get => _stackscriptGrants ?? (_stackscriptGrants = new InputList<Inputs.GetUserStackscriptGrantInputArgs>());
@@ -253,10 +185,6 @@ namespace Pulumi.Linode
 
         [Input("volumeGrants")]
         private InputList<Inputs.GetUserVolumeGrantInputArgs>? _volumeGrants;
-
-        /// <summary>
-        /// The grants this User has pertaining to Volumes on this Account.
-        /// </summary>
         public InputList<Inputs.GetUserVolumeGrantInputArgs> VolumeGrants
         {
             get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.GetUserVolumeGrantInputArgs>());
@@ -273,43 +201,26 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetUserResult
     {
-        /// <summary>
-        /// The grants this User has pertaining to Databases on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserDatabaseGrantResult> DatabaseGrants;
-        /// <summary>
-        /// The grants this User has pertaining to Domains on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserDomainGrantResult> DomainGrants;
         /// <summary>
         /// The email address for this User, for account management communications, and may be used for other communications as configured.
         /// </summary>
         public readonly string Email;
-        /// <summary>
-        /// The grants this User has pertaining to Firewalls on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserFirewallGrantResult> FirewallGrants;
-        /// <summary>
-        /// The Account-level grants a User has.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserGlobalGrantResult> GlobalGrants;
+        /// <summary>
+        /// The ID of entity this grant applies to.
+        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The grants this User has pertaining to Images on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserImageGrantResult> ImageGrants;
-        /// <summary>
-        /// The grants this User has pertaining to Linodes on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserLinodeGrantResult> LinodeGrants;
-        /// <summary>
-        /// The grants this User has pertaining to Longview Clients on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserLongviewGrantResult> LongviewGrants;
-        /// <summary>
-        /// The grants this User has pertaining to NodeBalancers on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserNodebalancerGrantResult> NodebalancerGrants;
+        /// <summary>
+        /// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        /// </summary>
+        public readonly string PasswordCreated;
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
@@ -318,14 +229,16 @@ namespace Pulumi.Linode
         /// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
         /// </summary>
         public readonly ImmutableArray<string> SshKeys;
-        /// <summary>
-        /// The grants this User has pertaining to StackScripts on this Account.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserStackscriptGrantResult> StackscriptGrants;
+        /// <summary>
+        /// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        /// </summary>
+        public readonly bool TfaEnabled;
         public readonly string Username;
         /// <summary>
-        /// The grants this User has pertaining to Volumes on this Account.
+        /// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
         /// </summary>
+        public readonly string VerifiedPhoneNumber;
         public readonly ImmutableArray<Outputs.GetUserVolumeGrantResult> VolumeGrants;
 
         [OutputConstructor]
@@ -350,13 +263,19 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetUserNodebalancerGrantResult> nodebalancerGrants,
 
+            string passwordCreated,
+
             bool restricted,
 
             ImmutableArray<string> sshKeys,
 
             ImmutableArray<Outputs.GetUserStackscriptGrantResult> stackscriptGrants,
 
+            bool tfaEnabled,
+
             string username,
+
+            string verifiedPhoneNumber,
 
             ImmutableArray<Outputs.GetUserVolumeGrantResult> volumeGrants)
         {
@@ -370,10 +289,13 @@ namespace Pulumi.Linode
             LinodeGrants = linodeGrants;
             LongviewGrants = longviewGrants;
             NodebalancerGrants = nodebalancerGrants;
+            PasswordCreated = passwordCreated;
             Restricted = restricted;
             SshKeys = sshKeys;
             StackscriptGrants = stackscriptGrants;
+            TfaEnabled = tfaEnabled;
             Username = username;
+            VerifiedPhoneNumber = verifiedPhoneNumber;
             VolumeGrants = volumeGrants;
         }
     }

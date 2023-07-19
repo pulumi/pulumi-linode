@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ func NewAccountSettings(ctx *pulumi.Context,
 		args = &AccountSettingsArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountSettings
 	err := ctx.RegisterResource("linode:index/accountSettings:AccountSettings", name, args, &resource, opts...)
 	if err != nil {

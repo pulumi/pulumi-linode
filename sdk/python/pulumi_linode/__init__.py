@@ -51,6 +51,7 @@ from .get_ssh_key import *
 from .get_stack_script import *
 from .get_stack_scripts import *
 from .get_user import *
+from .get_users import *
 from .get_vlans import *
 from .get_volume import *
 from .image import *

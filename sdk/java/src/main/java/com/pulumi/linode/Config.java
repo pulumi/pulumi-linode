@@ -68,6 +68,13 @@ public final class Config {
         return Codegen.integerProp("minRetryDelayMs").config(config).get();
     }
 /**
+ * If true, Linode Instances will not be rebooted on config and interface changes.
+ * 
+ */
+    public Optional<Boolean> skipImplicitReboots() {
+        return Codegen.booleanProp("skipImplicitReboots").config(config).get();
+    }
+/**
  * Skip waiting for a linode_instance resource to finish deleting.
  * 
  */

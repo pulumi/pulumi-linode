@@ -107,7 +107,12 @@
             },
             "linode_image": {
                 "current": "linode:index/image:Image",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_instance": {
                 "current": "linode:index/instance:Instance",
@@ -193,6 +198,9 @@
                         "maxItemsOne": false
                     },
                     "ipv4": {
+                        "maxItemsOne": false
+                    },
+                    "metadata": {
                         "maxItemsOne": false
                     },
                     "shared_ipv4": {
@@ -615,7 +623,12 @@
             },
             "linode_image": {
                 "current": "linode:index/getImage:getImage",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_images": {
                 "current": "linode:index/getImages:getImages",
@@ -632,7 +645,14 @@
                         }
                     },
                     "images": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "capabilities": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1119,6 +1139,62 @@
                     }
                 }
             },
+            "linode_users": {
+                "current": "linode:index/getUsers:getUsers",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "database_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "domain_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "firewall_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "global_grants": {
+                                    "maxItemsOne": false
+                                },
+                                "image_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "linode_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "longview_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "nodebalancer_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "stackscript_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "volume_grant": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_vlans": {
                 "current": "linode:index/getVlans:getVlans",
                 "majorVersion": 4,
@@ -1177,10 +1253,10 @@
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": 0,
             "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
-            "linode:index/objectStorageKey:ObjectStorageKey": 0,
+            "linode:index/objectStorageKey:ObjectStorageKey": 1,
             "linode:index/objectStorageObject:ObjectStorageObject": 0,
             "linode:index/rdns:Rdns": 0,
-            "linode:index/sshKey:SshKey": 0,
+            "linode:index/sshKey:SshKey": 1,
             "linode:index/stackScript:StackScript": 1,
             "linode:index/token:Token": 1,
             "linode:index/user:User": 0,
@@ -1225,6 +1301,7 @@
             "linode:index/getStackScript:getStackScript": 1,
             "linode:index/getStackScripts:getStackScripts": 1,
             "linode:index/getUser:getUser": 1,
+            "linode:index/getUsers:getUsers": 1,
             "linode:index/getVlans:getVlans": 1,
             "linode:index/getVolume:getVolume": 1
         }
@@ -1298,6 +1375,7 @@
             "linode:index/getStackScript:getStackScript": "linode_stackscript",
             "linode:index/getStackScripts:getStackScripts": "linode_stackscripts",
             "linode:index/getUser:getUser": "linode_user",
+            "linode:index/getUsers:getUsers": "linode_users",
             "linode:index/getVlans:getVlans": "linode_vlans",
             "linode:index/getVolume:getVolume": "linode_volume"
         },
@@ -1393,6 +1471,9 @@
             },
             "linode:index/InstanceInterface:InstanceInterface": {
                 "ipamAddress": "ipam_address"
+            },
+            "linode:index/InstanceMetadata:InstanceMetadata": {
+                "userData": "user_data"
             },
             "linode:index/LkeClusterControlPlane:LkeClusterControlPlane": {
                 "highAvailability": "high_availability"
@@ -1715,6 +1796,7 @@
                 "bootConfigLabel": "boot_config_label",
                 "configs": "config",
                 "disks": "disk",
+                "hasUserData": "has_user_data",
                 "hostUuid": "host_uuid",
                 "ipAddress": "ip_address",
                 "ipv4s": "ipv4",
@@ -1898,11 +1980,51 @@
                 "linodeGrants": "linode_grant",
                 "longviewGrants": "longview_grant",
                 "nodebalancerGrants": "nodebalancer_grant",
+                "passwordCreated": "password_created",
                 "sshKeys": "ssh_keys",
                 "stackscriptGrants": "stackscript_grant",
+                "tfaEnabled": "tfa_enabled",
+                "verifiedPhoneNumber": "verified_phone_number",
                 "volumeGrants": "volume_grant"
             },
             "linode:index/getUserGlobalGrant:getUserGlobalGrant": {
+                "accountAccess": "account_access",
+                "addDatabases": "add_databases",
+                "addDomains": "add_domains",
+                "addFirewalls": "add_firewalls",
+                "addImages": "add_images",
+                "addLinodes": "add_linodes",
+                "addLongview": "add_longview",
+                "addNodebalancers": "add_nodebalancers",
+                "addStackscripts": "add_stackscripts",
+                "addVolumes": "add_volumes",
+                "cancelAccount": "cancel_account",
+                "longviewSubscription": "longview_subscription"
+            },
+            "linode:index/getUsers:getUsers": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getUsersFilter:getUsersFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getUsersUser:getUsersUser": {
+                "databaseGrants": "database_grant",
+                "domainGrants": "domain_grant",
+                "firewallGrants": "firewall_grant",
+                "globalGrants": "global_grants",
+                "imageGrants": "image_grant",
+                "linodeGrants": "linode_grant",
+                "longviewGrants": "longview_grant",
+                "nodebalancerGrants": "nodebalancer_grant",
+                "passwordCreated": "password_created",
+                "sshKeys": "ssh_keys",
+                "stackscriptGrants": "stackscript_grant",
+                "tfaEnabled": "tfa_enabled",
+                "verifiedPhoneNumber": "verified_phone_number",
+                "volumeGrants": "volume_grant"
+            },
+            "linode:index/getUsersUserGlobalGrant:getUsersUserGlobalGrant": {
                 "accountAccess": "account_access",
                 "addDatabases": "add_databases",
                 "addDomains": "add_domains",
@@ -1928,6 +2050,7 @@
                 "linodeId": "linode_id"
             },
             "linode:index/image:Image": {
+                "cloudInit": "cloud_init",
                 "createdBy": "created_by",
                 "diskId": "disk_id",
                 "fileHash": "file_hash",
@@ -1943,10 +2066,12 @@
                 "bootConfigLabel": "boot_config_label",
                 "configs": "config",
                 "disks": "disk",
+                "hasUserData": "has_user_data",
                 "hostUuid": "host_uuid",
                 "interfaces": "interface",
                 "ipAddress": "ip_address",
                 "ipv4s": "ipv4",
+                "metadatas": "metadata",
                 "privateIp": "private_ip",
                 "privateIpAddress": "private_ip_address",
                 "resizeDisk": "resize_disk",
@@ -2076,6 +2201,7 @@
                 "lkeNodeReadyPollMs": "lke_node_ready_poll_ms",
                 "maxRetryDelayMs": "max_retry_delay_ms",
                 "minRetryDelayMs": "min_retry_delay_ms",
+                "skipImplicitReboots": "skip_implicit_reboots",
                 "skipInstanceDeletePoll": "skip_instance_delete_poll",
                 "skipInstanceReadyPoll": "skip_instance_ready_poll",
                 "uaPrefix": "ua_prefix"
@@ -2091,6 +2217,7 @@
             "lkeNodeReadyPollMs": "lke_node_ready_poll_ms",
             "maxRetryDelayMs": "max_retry_delay_ms",
             "minRetryDelayMs": "min_retry_delay_ms",
+            "skipImplicitReboots": "skip_implicit_reboots",
             "skipInstanceDeletePoll": "skip_instance_delete_poll",
             "skipInstanceReadyPoll": "skip_instance_ready_poll",
             "uaPrefix": "ua_prefix"

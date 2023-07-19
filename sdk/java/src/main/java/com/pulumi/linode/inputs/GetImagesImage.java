@@ -7,12 +7,20 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
 public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImagesImage Empty = new GetImagesImage();
+
+    @Import(name="capabilities", required=true)
+    private List<String> capabilities;
+
+    public List<String> capabilities() {
+        return this.capabilities;
+    }
 
     /**
      * When this Image was created.
@@ -189,6 +197,7 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
     private GetImagesImage() {}
 
     private GetImagesImage(GetImagesImage $) {
+        this.capabilities = $.capabilities;
         this.created = $.created;
         this.createdBy = $.createdBy;
         this.deprecated = $.deprecated;
@@ -219,6 +228,15 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetImagesImage defaults) {
             $ = new GetImagesImage(Objects.requireNonNull(defaults));
+        }
+
+        public Builder capabilities(List<String> capabilities) {
+            $.capabilities = capabilities;
+            return this;
+        }
+
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
 
         /**
@@ -348,6 +366,7 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetImagesImage build() {
+            $.capabilities = Objects.requireNonNull($.capabilities, "expected parameter 'capabilities' to be non-null");
             $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
             $.createdBy = Objects.requireNonNull($.createdBy, "expected parameter 'createdBy' to be non-null");
             $.deprecated = Objects.requireNonNull($.deprecated, "expected parameter 'deprecated' to be non-null");

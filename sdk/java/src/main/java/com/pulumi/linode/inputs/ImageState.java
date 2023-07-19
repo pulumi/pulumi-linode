@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,36 @@ import javax.annotation.Nullable;
 public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
     public static final ImageState Empty = new ImageState();
+
+    /**
+     * The capabilities of this Image.
+     * 
+     */
+    @Import(name="capabilities")
+    private @Nullable Output<List<String>> capabilities;
+
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
+    public Optional<Output<List<String>>> capabilities() {
+        return Optional.ofNullable(this.capabilities);
+    }
+
+    /**
+     * Whether this image supports cloud-init.
+     * 
+     */
+    @Import(name="cloudInit")
+    private @Nullable Output<Boolean> cloudInit;
+
+    /**
+     * @return Whether this image supports cloud-init.
+     * 
+     */
+    public Optional<Output<Boolean>> cloudInit() {
+        return Optional.ofNullable(this.cloudInit);
+    }
 
     /**
      * When this Image was created.
@@ -280,6 +311,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     private ImageState() {}
 
     private ImageState(ImageState $) {
+        this.capabilities = $.capabilities;
+        this.cloudInit = $.cloudInit;
         this.created = $.created;
         this.createdBy = $.createdBy;
         this.deprecated = $.deprecated;
@@ -314,6 +347,58 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ImageState defaults) {
             $ = new ImageState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(@Nullable Output<List<String>> capabilities) {
+            $.capabilities = capabilities;
+            return this;
+        }
+
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(List<String> capabilities) {
+            return capabilities(Output.of(capabilities));
+        }
+
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
+        }
+
+        /**
+         * @param cloudInit Whether this image supports cloud-init.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudInit(@Nullable Output<Boolean> cloudInit) {
+            $.cloudInit = cloudInit;
+            return this;
+        }
+
+        /**
+         * @param cloudInit Whether this image supports cloud-init.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudInit(Boolean cloudInit) {
+            return cloudInit(Output.of(cloudInit));
         }
 
         /**

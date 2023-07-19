@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const my_db = new linode.DatabaseMysql("my-db", {
  *     label: "mydatabase",
- *     engineId: "mysql/8.0.26",
+ *     engineId: "mysql/8.0.30",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
  * });

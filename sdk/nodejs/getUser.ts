@@ -30,45 +30,18 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
-    /**
-     * The grants this User has pertaining to Databases on this Account.
-     */
     databaseGrants?: inputs.GetUserDatabaseGrant[];
-    /**
-     * The grants this User has pertaining to Domains on this Account.
-     */
     domainGrants?: inputs.GetUserDomainGrant[];
-    /**
-     * The grants this User has pertaining to Firewalls on this Account.
-     */
     firewallGrants?: inputs.GetUserFirewallGrant[];
-    /**
-     * The grants this User has pertaining to Images on this Account.
-     */
     imageGrants?: inputs.GetUserImageGrant[];
-    /**
-     * The grants this User has pertaining to Linodes on this Account.
-     */
     linodeGrants?: inputs.GetUserLinodeGrant[];
-    /**
-     * The grants this User has pertaining to Longview Clients on this Account.
-     */
     longviewGrants?: inputs.GetUserLongviewGrant[];
-    /**
-     * The grants this User has pertaining to NodeBalancers on this Account.
-     */
     nodebalancerGrants?: inputs.GetUserNodebalancerGrant[];
-    /**
-     * The grants this User has pertaining to StackScripts on this Account.
-     */
     stackscriptGrants?: inputs.GetUserStackscriptGrant[];
     /**
      * The unique username of this User.
      */
     username: string;
-    /**
-     * The grants this User has pertaining to Volumes on this Account.
-     */
     volumeGrants?: inputs.GetUserVolumeGrant[];
 }
 
@@ -76,43 +49,26 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
-    /**
-     * The grants this User has pertaining to Databases on this Account.
-     */
     readonly databaseGrants: outputs.GetUserDatabaseGrant[];
-    /**
-     * The grants this User has pertaining to Domains on this Account.
-     */
     readonly domainGrants: outputs.GetUserDomainGrant[];
     /**
      * The email address for this User, for account management communications, and may be used for other communications as configured.
      */
     readonly email: string;
-    /**
-     * The grants this User has pertaining to Firewalls on this Account.
-     */
     readonly firewallGrants: outputs.GetUserFirewallGrant[];
-    /**
-     * The Account-level grants a User has.
-     */
     readonly globalGrants: outputs.GetUserGlobalGrant[];
+    /**
+     * The ID of entity this grant applies to.
+     */
     readonly id: string;
-    /**
-     * The grants this User has pertaining to Images on this Account.
-     */
     readonly imageGrants: outputs.GetUserImageGrant[];
-    /**
-     * The grants this User has pertaining to Linodes on this Account.
-     */
     readonly linodeGrants: outputs.GetUserLinodeGrant[];
-    /**
-     * The grants this User has pertaining to Longview Clients on this Account.
-     */
     readonly longviewGrants: outputs.GetUserLongviewGrant[];
-    /**
-     * The grants this User has pertaining to NodeBalancers on this Account.
-     */
     readonly nodebalancerGrants: outputs.GetUserNodebalancerGrant[];
+    /**
+     * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+     */
+    readonly passwordCreated: string;
     /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
@@ -121,14 +77,16 @@ export interface GetUserResult {
      * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      */
     readonly sshKeys: string[];
-    /**
-     * The grants this User has pertaining to StackScripts on this Account.
-     */
     readonly stackscriptGrants: outputs.GetUserStackscriptGrant[];
+    /**
+     * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+     */
+    readonly tfaEnabled: boolean;
     readonly username: string;
     /**
-     * The grants this User has pertaining to Volumes on this Account.
+     * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      */
+    readonly verifiedPhoneNumber: string;
     readonly volumeGrants: outputs.GetUserVolumeGrant[];
 }
 /**
@@ -142,44 +100,17 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    /**
-     * The grants this User has pertaining to Databases on this Account.
-     */
     databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDatabaseGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to Domains on this Account.
-     */
     domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDomainGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to Firewalls on this Account.
-     */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUserFirewallGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to Images on this Account.
-     */
     imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUserImageGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to Linodes on this Account.
-     */
     linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLinodeGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to Longview Clients on this Account.
-     */
     longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLongviewGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to NodeBalancers on this Account.
-     */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUserNodebalancerGrantArgs>[]>;
-    /**
-     * The grants this User has pertaining to StackScripts on this Account.
-     */
     stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUserStackscriptGrantArgs>[]>;
     /**
      * The unique username of this User.
      */
     username: pulumi.Input<string>;
-    /**
-     * The grants this User has pertaining to Volumes on this Account.
-     */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVolumeGrantArgs>[]>;
 }

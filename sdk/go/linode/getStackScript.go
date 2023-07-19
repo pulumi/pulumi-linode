@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupStackScript(ctx *pulumi.Context, args *LookupStackScriptArgs, opts ...pulumi.InvokeOption) (*LookupStackScriptResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStackScriptResult
 	err := ctx.Invoke("linode:index/getStackScript:getStackScript", args, &rv, opts...)
 	if err != nil {

@@ -8,12 +8,20 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
 public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetImagesImageArgs Empty = new GetImagesImageArgs();
+
+    @Import(name="capabilities", required=true)
+    private Output<List<String>> capabilities;
+
+    public Output<List<String>> capabilities() {
+        return this.capabilities;
+    }
 
     /**
      * When this Image was created.
@@ -190,6 +198,7 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
     private GetImagesImageArgs() {}
 
     private GetImagesImageArgs(GetImagesImageArgs $) {
+        this.capabilities = $.capabilities;
         this.created = $.created;
         this.createdBy = $.createdBy;
         this.deprecated = $.deprecated;
@@ -220,6 +229,19 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(GetImagesImageArgs defaults) {
             $ = new GetImagesImageArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder capabilities(Output<List<String>> capabilities) {
+            $.capabilities = capabilities;
+            return this;
+        }
+
+        public Builder capabilities(List<String> capabilities) {
+            return capabilities(Output.of(capabilities));
+        }
+
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
 
         /**
@@ -463,6 +485,7 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GetImagesImageArgs build() {
+            $.capabilities = Objects.requireNonNull($.capabilities, "expected parameter 'capabilities' to be non-null");
             $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
             $.createdBy = Objects.requireNonNull($.createdBy, "expected parameter 'createdBy' to be non-null");
             $.deprecated = Objects.requireNonNull($.deprecated, "expected parameter 'deprecated' to be non-null");

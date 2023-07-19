@@ -51,6 +51,8 @@ export function getDatabasePostgresql(args?: GetDatabasePostgresqlArgs, opts?: p
 export interface GetDatabasePostgresqlArgs {
     /**
      * The ID of the PostgreSQL database. Deprecated: Use id instead.
+     *
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
      */
     databaseId?: number;
     /**
@@ -79,6 +81,9 @@ export interface GetDatabasePostgresqlResult {
      * When this Managed Database was created.
      */
     readonly created: string;
+    /**
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     */
     readonly databaseId?: number;
     /**
      * Whether the Managed Databases is encrypted.
@@ -187,6 +192,8 @@ export function getDatabasePostgresqlOutput(args?: GetDatabasePostgresqlOutputAr
 export interface GetDatabasePostgresqlOutputArgs {
     /**
      * The ID of the PostgreSQL database. Deprecated: Use id instead.
+     *
+     * @deprecated Configure `id` instead. This attribute will be removed in the next major version of the provider.
      */
     databaseId?: pulumi.Input<number>;
     /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetKernel(ctx *pulumi.Context, args *GetKernelArgs, opts ...pulumi.InvokeOption) (*GetKernelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKernelResult
 	err := ctx.Invoke("linode:index/getKernel:getKernel", args, &rv, opts...)
 	if err != nil {

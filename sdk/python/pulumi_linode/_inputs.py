@@ -32,6 +32,7 @@ __all__ = [
     'InstanceConfigInterfaceArgs',
     'InstanceDiskArgs',
     'InstanceInterfaceArgs',
+    'InstanceMetadataArgs',
     'InstanceSpecsArgs',
     'LkeClusterControlPlaneArgs',
     'LkeClusterPoolArgs',
@@ -88,6 +89,18 @@ __all__ = [
     'GetUserNodebalancerGrantArgs',
     'GetUserStackscriptGrantArgs',
     'GetUserVolumeGrantArgs',
+    'GetUsersFilterArgs',
+    'GetUsersUserArgs',
+    'GetUsersUserDatabaseGrantArgs',
+    'GetUsersUserDomainGrantArgs',
+    'GetUsersUserFirewallGrantArgs',
+    'GetUsersUserGlobalGrantArgs',
+    'GetUsersUserImageGrantArgs',
+    'GetUsersUserLinodeGrantArgs',
+    'GetUsersUserLongviewGrantArgs',
+    'GetUsersUserNodebalancerGrantArgs',
+    'GetUsersUserStackscriptGrantArgs',
+    'GetUsersUserVolumeGrantArgs',
     'GetVlansFilterArgs',
     'GetVlansVlanArgs',
 ]
@@ -1737,6 +1750,23 @@ class InstanceInterfaceArgs:
     @purpose.setter
     def purpose(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "purpose", value)
+
+
+@pulumi.input_type
+class InstanceMetadataArgs:
+    def __init__(__self__, *,
+                 user_data: Optional[pulumi.Input[str]] = None):
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
 
 
 @pulumi.input_type
@@ -3603,6 +3633,7 @@ class GetImagesFilterArgs:
 @pulumi.input_type
 class GetImagesImageArgs:
     def __init__(__self__, *,
+                 capabilities: Sequence[str],
                  created: str,
                  created_by: str,
                  deprecated: bool,
@@ -3628,6 +3659,7 @@ class GetImagesImageArgs:
         :param str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         :param str vendor: The upstream distribution vendor. `None` for private Images.
         """
+        pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "deprecated", deprecated)
@@ -3640,6 +3672,15 @@ class GetImagesImageArgs:
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Sequence[str]):
+        pulumi.set(self, "capabilities", value)
 
     @property
     @pulumi.getter
@@ -4714,6 +4755,11 @@ class GetUserDatabaseGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4721,6 +4767,9 @@ class GetUserDatabaseGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4730,6 +4779,9 @@ class GetUserDatabaseGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4739,6 +4791,9 @@ class GetUserDatabaseGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4752,6 +4807,11 @@ class GetUserDomainGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4759,6 +4819,9 @@ class GetUserDomainGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4768,6 +4831,9 @@ class GetUserDomainGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4777,6 +4843,9 @@ class GetUserDomainGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4790,6 +4859,11 @@ class GetUserFirewallGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4797,6 +4871,9 @@ class GetUserFirewallGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4806,6 +4883,9 @@ class GetUserFirewallGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4815,6 +4895,9 @@ class GetUserFirewallGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4828,6 +4911,11 @@ class GetUserImageGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4835,6 +4923,9 @@ class GetUserImageGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4844,6 +4935,9 @@ class GetUserImageGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4853,6 +4947,9 @@ class GetUserImageGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4866,6 +4963,11 @@ class GetUserLinodeGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4873,6 +4975,9 @@ class GetUserLinodeGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4882,6 +4987,9 @@ class GetUserLinodeGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4891,6 +4999,9 @@ class GetUserLinodeGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4904,6 +5015,11 @@ class GetUserLongviewGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4911,6 +5027,9 @@ class GetUserLongviewGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4920,6 +5039,9 @@ class GetUserLongviewGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4929,6 +5051,9 @@ class GetUserLongviewGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4942,6 +5067,11 @@ class GetUserNodebalancerGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4949,6 +5079,9 @@ class GetUserNodebalancerGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4958,6 +5091,9 @@ class GetUserNodebalancerGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -4967,6 +5103,9 @@ class GetUserNodebalancerGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -4980,6 +5119,11 @@ class GetUserStackscriptGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -4987,6 +5131,9 @@ class GetUserStackscriptGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4996,6 +5143,9 @@ class GetUserStackscriptGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -5005,6 +5155,9 @@ class GetUserStackscriptGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -5018,6 +5171,11 @@ class GetUserVolumeGrantArgs:
                  id: int,
                  label: str,
                  permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "permissions", permissions)
@@ -5025,6 +5183,9 @@ class GetUserVolumeGrantArgs:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -5034,6 +5195,9 @@ class GetUserVolumeGrantArgs:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -5043,6 +5207,950 @@ class GetUserVolumeGrantArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetUsersUserArgs:
+    def __init__(__self__, *,
+                 database_grants: Sequence['GetUsersUserDatabaseGrantArgs'],
+                 domain_grants: Sequence['GetUsersUserDomainGrantArgs'],
+                 email: str,
+                 firewall_grants: Sequence['GetUsersUserFirewallGrantArgs'],
+                 global_grants: Sequence['GetUsersUserGlobalGrantArgs'],
+                 id: str,
+                 image_grants: Sequence['GetUsersUserImageGrantArgs'],
+                 linode_grants: Sequence['GetUsersUserLinodeGrantArgs'],
+                 longview_grants: Sequence['GetUsersUserLongviewGrantArgs'],
+                 nodebalancer_grants: Sequence['GetUsersUserNodebalancerGrantArgs'],
+                 password_created: str,
+                 restricted: bool,
+                 ssh_keys: Sequence[str],
+                 stackscript_grants: Sequence['GetUsersUserStackscriptGrantArgs'],
+                 tfa_enabled: bool,
+                 username: str,
+                 verified_phone_number: str,
+                 volume_grants: Sequence['GetUsersUserVolumeGrantArgs']):
+        """
+        :param str email: The email address for this User, for account management communications, and may be used for other communications as configured.
+        :param str id: The ID of entity this grant applies to.
+        :param str password_created: The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        :param bool restricted: If true, this User must be granted access to perform actions or access entities on this Account.
+        :param Sequence[str] ssh_keys: A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        :param bool tfa_enabled: A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        :param str username: This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
+        :param str verified_phone_number: The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+        """
+        pulumi.set(__self__, "database_grants", database_grants)
+        pulumi.set(__self__, "domain_grants", domain_grants)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "firewall_grants", firewall_grants)
+        pulumi.set(__self__, "global_grants", global_grants)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_grants", image_grants)
+        pulumi.set(__self__, "linode_grants", linode_grants)
+        pulumi.set(__self__, "longview_grants", longview_grants)
+        pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+        pulumi.set(__self__, "password_created", password_created)
+        pulumi.set(__self__, "restricted", restricted)
+        pulumi.set(__self__, "ssh_keys", ssh_keys)
+        pulumi.set(__self__, "stackscript_grants", stackscript_grants)
+        pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "verified_phone_number", verified_phone_number)
+        pulumi.set(__self__, "volume_grants", volume_grants)
+
+    @property
+    @pulumi.getter(name="databaseGrants")
+    def database_grants(self) -> Sequence['GetUsersUserDatabaseGrantArgs']:
+        return pulumi.get(self, "database_grants")
+
+    @database_grants.setter
+    def database_grants(self, value: Sequence['GetUsersUserDatabaseGrantArgs']):
+        pulumi.set(self, "database_grants", value)
+
+    @property
+    @pulumi.getter(name="domainGrants")
+    def domain_grants(self) -> Sequence['GetUsersUserDomainGrantArgs']:
+        return pulumi.get(self, "domain_grants")
+
+    @domain_grants.setter
+    def domain_grants(self, value: Sequence['GetUsersUserDomainGrantArgs']):
+        pulumi.set(self, "domain_grants", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email address for this User, for account management communications, and may be used for other communications as configured.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: str):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="firewallGrants")
+    def firewall_grants(self) -> Sequence['GetUsersUserFirewallGrantArgs']:
+        return pulumi.get(self, "firewall_grants")
+
+    @firewall_grants.setter
+    def firewall_grants(self, value: Sequence['GetUsersUserFirewallGrantArgs']):
+        pulumi.set(self, "firewall_grants", value)
+
+    @property
+    @pulumi.getter(name="globalGrants")
+    def global_grants(self) -> Sequence['GetUsersUserGlobalGrantArgs']:
+        return pulumi.get(self, "global_grants")
+
+    @global_grants.setter
+    def global_grants(self, value: Sequence['GetUsersUserGlobalGrantArgs']):
+        pulumi.set(self, "global_grants", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="imageGrants")
+    def image_grants(self) -> Sequence['GetUsersUserImageGrantArgs']:
+        return pulumi.get(self, "image_grants")
+
+    @image_grants.setter
+    def image_grants(self, value: Sequence['GetUsersUserImageGrantArgs']):
+        pulumi.set(self, "image_grants", value)
+
+    @property
+    @pulumi.getter(name="linodeGrants")
+    def linode_grants(self) -> Sequence['GetUsersUserLinodeGrantArgs']:
+        return pulumi.get(self, "linode_grants")
+
+    @linode_grants.setter
+    def linode_grants(self, value: Sequence['GetUsersUserLinodeGrantArgs']):
+        pulumi.set(self, "linode_grants", value)
+
+    @property
+    @pulumi.getter(name="longviewGrants")
+    def longview_grants(self) -> Sequence['GetUsersUserLongviewGrantArgs']:
+        return pulumi.get(self, "longview_grants")
+
+    @longview_grants.setter
+    def longview_grants(self, value: Sequence['GetUsersUserLongviewGrantArgs']):
+        pulumi.set(self, "longview_grants", value)
+
+    @property
+    @pulumi.getter(name="nodebalancerGrants")
+    def nodebalancer_grants(self) -> Sequence['GetUsersUserNodebalancerGrantArgs']:
+        return pulumi.get(self, "nodebalancer_grants")
+
+    @nodebalancer_grants.setter
+    def nodebalancer_grants(self, value: Sequence['GetUsersUserNodebalancerGrantArgs']):
+        pulumi.set(self, "nodebalancer_grants", value)
+
+    @property
+    @pulumi.getter(name="passwordCreated")
+    def password_created(self) -> str:
+        """
+        The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        """
+        return pulumi.get(self, "password_created")
+
+    @password_created.setter
+    def password_created(self, value: str):
+        pulumi.set(self, "password_created", value)
+
+    @property
+    @pulumi.getter
+    def restricted(self) -> bool:
+        """
+        If true, this User must be granted access to perform actions or access entities on this Account.
+        """
+        return pulumi.get(self, "restricted")
+
+    @restricted.setter
+    def restricted(self, value: bool):
+        pulumi.set(self, "restricted", value)
+
+    @property
+    @pulumi.getter(name="sshKeys")
+    def ssh_keys(self) -> Sequence[str]:
+        """
+        A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        """
+        return pulumi.get(self, "ssh_keys")
+
+    @ssh_keys.setter
+    def ssh_keys(self, value: Sequence[str]):
+        pulumi.set(self, "ssh_keys", value)
+
+    @property
+    @pulumi.getter(name="stackscriptGrants")
+    def stackscript_grants(self) -> Sequence['GetUsersUserStackscriptGrantArgs']:
+        return pulumi.get(self, "stackscript_grants")
+
+    @stackscript_grants.setter
+    def stackscript_grants(self, value: Sequence['GetUsersUserStackscriptGrantArgs']):
+        pulumi.set(self, "stackscript_grants", value)
+
+    @property
+    @pulumi.getter(name="tfaEnabled")
+    def tfa_enabled(self) -> bool:
+        """
+        A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        """
+        return pulumi.get(self, "tfa_enabled")
+
+    @tfa_enabled.setter
+    def tfa_enabled(self, value: bool):
+        pulumi.set(self, "tfa_enabled", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="verifiedPhoneNumber")
+    def verified_phone_number(self) -> str:
+        """
+        The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+        """
+        return pulumi.get(self, "verified_phone_number")
+
+    @verified_phone_number.setter
+    def verified_phone_number(self, value: str):
+        pulumi.set(self, "verified_phone_number", value)
+
+    @property
+    @pulumi.getter(name="volumeGrants")
+    def volume_grants(self) -> Sequence['GetUsersUserVolumeGrantArgs']:
+        return pulumi.get(self, "volume_grants")
+
+    @volume_grants.setter
+    def volume_grants(self, value: Sequence['GetUsersUserVolumeGrantArgs']):
+        pulumi.set(self, "volume_grants", value)
+
+
+@pulumi.input_type
+class GetUsersUserDatabaseGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserDomainGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserFirewallGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserGlobalGrantArgs:
+    def __init__(__self__, *,
+                 account_access: str,
+                 add_databases: bool,
+                 add_domains: bool,
+                 add_firewalls: bool,
+                 add_images: bool,
+                 add_linodes: bool,
+                 add_longview: bool,
+                 add_nodebalancers: bool,
+                 add_stackscripts: bool,
+                 add_volumes: bool,
+                 cancel_account: bool,
+                 longview_subscription: bool):
+        """
+        :param str account_access: The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        :param bool add_databases: If true, this User may add Managed Databases.
+        :param bool add_domains: If true, this User may add Domains.
+        :param bool add_firewalls: If true, this User may add Firewalls.
+        :param bool add_images: If true, this User may add Images.
+        :param bool add_linodes: If true, this User may create Linodes.
+        :param bool add_longview: If true, this User may create Longview clients and view the current plan.
+        :param bool add_nodebalancers: If true, this User may add NodeBalancers.
+        :param bool add_volumes: If true, this User may add Volumes.
+        :param bool cancel_account: If true, this User may cancel the entire Account.
+        :param bool longview_subscription: If true, this User may manage the Account’s Longview subscription.
+        """
+        pulumi.set(__self__, "account_access", account_access)
+        pulumi.set(__self__, "add_databases", add_databases)
+        pulumi.set(__self__, "add_domains", add_domains)
+        pulumi.set(__self__, "add_firewalls", add_firewalls)
+        pulumi.set(__self__, "add_images", add_images)
+        pulumi.set(__self__, "add_linodes", add_linodes)
+        pulumi.set(__self__, "add_longview", add_longview)
+        pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+        pulumi.set(__self__, "add_volumes", add_volumes)
+        pulumi.set(__self__, "cancel_account", cancel_account)
+        pulumi.set(__self__, "longview_subscription", longview_subscription)
+
+    @property
+    @pulumi.getter(name="accountAccess")
+    def account_access(self) -> str:
+        """
+        The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        """
+        return pulumi.get(self, "account_access")
+
+    @account_access.setter
+    def account_access(self, value: str):
+        pulumi.set(self, "account_access", value)
+
+    @property
+    @pulumi.getter(name="addDatabases")
+    def add_databases(self) -> bool:
+        """
+        If true, this User may add Managed Databases.
+        """
+        return pulumi.get(self, "add_databases")
+
+    @add_databases.setter
+    def add_databases(self, value: bool):
+        pulumi.set(self, "add_databases", value)
+
+    @property
+    @pulumi.getter(name="addDomains")
+    def add_domains(self) -> bool:
+        """
+        If true, this User may add Domains.
+        """
+        return pulumi.get(self, "add_domains")
+
+    @add_domains.setter
+    def add_domains(self, value: bool):
+        pulumi.set(self, "add_domains", value)
+
+    @property
+    @pulumi.getter(name="addFirewalls")
+    def add_firewalls(self) -> bool:
+        """
+        If true, this User may add Firewalls.
+        """
+        return pulumi.get(self, "add_firewalls")
+
+    @add_firewalls.setter
+    def add_firewalls(self, value: bool):
+        pulumi.set(self, "add_firewalls", value)
+
+    @property
+    @pulumi.getter(name="addImages")
+    def add_images(self) -> bool:
+        """
+        If true, this User may add Images.
+        """
+        return pulumi.get(self, "add_images")
+
+    @add_images.setter
+    def add_images(self, value: bool):
+        pulumi.set(self, "add_images", value)
+
+    @property
+    @pulumi.getter(name="addLinodes")
+    def add_linodes(self) -> bool:
+        """
+        If true, this User may create Linodes.
+        """
+        return pulumi.get(self, "add_linodes")
+
+    @add_linodes.setter
+    def add_linodes(self, value: bool):
+        pulumi.set(self, "add_linodes", value)
+
+    @property
+    @pulumi.getter(name="addLongview")
+    def add_longview(self) -> bool:
+        """
+        If true, this User may create Longview clients and view the current plan.
+        """
+        return pulumi.get(self, "add_longview")
+
+    @add_longview.setter
+    def add_longview(self, value: bool):
+        pulumi.set(self, "add_longview", value)
+
+    @property
+    @pulumi.getter(name="addNodebalancers")
+    def add_nodebalancers(self) -> bool:
+        """
+        If true, this User may add NodeBalancers.
+        """
+        return pulumi.get(self, "add_nodebalancers")
+
+    @add_nodebalancers.setter
+    def add_nodebalancers(self, value: bool):
+        pulumi.set(self, "add_nodebalancers", value)
+
+    @property
+    @pulumi.getter(name="addStackscripts")
+    def add_stackscripts(self) -> bool:
+        return pulumi.get(self, "add_stackscripts")
+
+    @add_stackscripts.setter
+    def add_stackscripts(self, value: bool):
+        pulumi.set(self, "add_stackscripts", value)
+
+    @property
+    @pulumi.getter(name="addVolumes")
+    def add_volumes(self) -> bool:
+        """
+        If true, this User may add Volumes.
+        """
+        return pulumi.get(self, "add_volumes")
+
+    @add_volumes.setter
+    def add_volumes(self, value: bool):
+        pulumi.set(self, "add_volumes", value)
+
+    @property
+    @pulumi.getter(name="cancelAccount")
+    def cancel_account(self) -> bool:
+        """
+        If true, this User may cancel the entire Account.
+        """
+        return pulumi.get(self, "cancel_account")
+
+    @cancel_account.setter
+    def cancel_account(self, value: bool):
+        pulumi.set(self, "cancel_account", value)
+
+    @property
+    @pulumi.getter(name="longviewSubscription")
+    def longview_subscription(self) -> bool:
+        """
+        If true, this User may manage the Account’s Longview subscription.
+        """
+        return pulumi.get(self, "longview_subscription")
+
+    @longview_subscription.setter
+    def longview_subscription(self, value: bool):
+        pulumi.set(self, "longview_subscription", value)
+
+
+@pulumi.input_type
+class GetUsersUserImageGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserLinodeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserLongviewGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserNodebalancerGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserStackscriptGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class GetUsersUserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter

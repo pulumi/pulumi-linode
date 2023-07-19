@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,8 @@ type Instance struct {
 	Disks   InstanceDiskTypeArrayOutput `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
+	// Whether or not this Instance was created with user-data.
+	HasUserData pulumi.BoolOutput `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -112,6 +115,8 @@ type Instance struct {
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringOutput `pulumi:"label"`
+	// Various fields related to the Linode Metadata service.
+	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrOutput `pulumi:"privateIp"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -175,6 +180,7 @@ func NewInstance(ctx *pulumi.Context,
 		"stackscriptData",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("linode:index/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -220,6 +226,8 @@ type instanceState struct {
 	Disks   []InstanceDiskType `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
+	// Whether or not this Instance was created with user-data.
+	HasUserData *bool `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid *string `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -235,6 +243,8 @@ type instanceState struct {
 	Ipv6 *string `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
+	// Various fields related to the Linode Metadata service.
+	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -301,6 +311,8 @@ type InstanceState struct {
 	Disks   InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
+	// Whether or not this Instance was created with user-data.
+	HasUserData pulumi.BoolPtrInput
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -316,6 +328,8 @@ type InstanceState struct {
 	Ipv6 pulumi.StringPtrInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
+	// Various fields related to the Linode Metadata service.
+	Metadatas InstanceMetadataArrayInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -391,6 +405,8 @@ type instanceArgs struct {
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
+	// Various fields related to the Linode Metadata service.
+	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
@@ -457,6 +473,8 @@ type InstanceArgs struct {
 	Interfaces InstanceInterfaceArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
+	// Various fields related to the Linode Metadata service.
+	Metadatas InstanceMetadataArrayInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
@@ -636,6 +654,11 @@ func (o InstanceOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
+// Whether or not this Instance was created with user-data.
+func (o InstanceOutput) HasUserData() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.HasUserData }).(pulumi.BoolOutput)
+}
+
 // The Linode’s host machine, as a UUID.
 func (o InstanceOutput) HostUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HostUuid }).(pulumi.StringOutput)
@@ -670,6 +693,11 @@ func (o InstanceOutput) Ipv6() pulumi.StringOutput {
 // The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 func (o InstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// Various fields related to the Linode Metadata service.
+func (o InstanceOutput) Metadatas() InstanceMetadataArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMetadataArrayOutput { return v.Metadatas }).(InstanceMetadataArrayOutput)
 }
 
 // If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.

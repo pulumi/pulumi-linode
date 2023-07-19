@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewIpv6Range(ctx *pulumi.Context,
 	if args.PrefixLength == nil {
 		return nil, errors.New("invalid value for required argument 'PrefixLength'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ipv6Range
 	err := ctx.RegisterResource("linode:index/ipv6Range:Ipv6Range", name, args, &resource, opts...)
 	if err != nil {

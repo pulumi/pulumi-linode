@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
-//				EngineId: pulumi.String("mysql/8.0.26"),
+//				EngineId: pulumi.String("mysql/8.0.30"),
 //				Label:    pulumi.String("mydatabase"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
@@ -67,7 +68,7 @@ import (
 //				},
 //				ClusterSize:     pulumi.Int(3),
 //				Encrypted:       pulumi.Bool(true),
-//				EngineId:        pulumi.String("mysql/8.0.26"),
+//				EngineId:        pulumi.String("mysql/8.0.30"),
 //				Label:           pulumi.String("mydatabase"),
 //				Region:          pulumi.String("us-southeast"),
 //				ReplicationType: pulumi.String("asynch"),
@@ -127,7 +128,7 @@ type DatabaseMysql struct {
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `mysql`)
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringOutput `pulumi:"hostPrimary"`
@@ -190,6 +191,7 @@ func NewDatabaseMysql(ctx *pulumi.Context,
 		"rootUsername",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseMysql
 	err := ctx.RegisterResource("linode:index/databaseMysql:DatabaseMysql", name, args, &resource, opts...)
 	if err != nil {
@@ -224,7 +226,7 @@ type databaseMysqlState struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `mysql`)
 	Engine *string `pulumi:"engine"`
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId *string `pulumi:"engineId"`
 	// The primary host for the Managed Database.
 	HostPrimary *string `pulumi:"hostPrimary"`
@@ -275,7 +277,7 @@ type DatabaseMysqlState struct {
 	Encrypted pulumi.BoolPtrInput
 	// The Managed Database engine. (e.g. `mysql`)
 	Engine pulumi.StringPtrInput
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId pulumi.StringPtrInput
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringPtrInput
@@ -324,7 +326,7 @@ type databaseMysqlArgs struct {
 	ClusterSize *int `pulumi:"clusterSize"`
 	// Whether the Managed Databases is encrypted. (default `false`)
 	Encrypted *bool `pulumi:"encrypted"`
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId string `pulumi:"engineId"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
@@ -356,7 +358,7 @@ type DatabaseMysqlArgs struct {
 	ClusterSize pulumi.IntPtrInput
 	// Whether the Managed Databases is encrypted. (default `false`)
 	Encrypted pulumi.BoolPtrInput
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId pulumi.StringInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
@@ -497,7 +499,7 @@ func (o DatabaseMysqlOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysql) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 func (o DatabaseMysqlOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysql) pulumi.StringOutput { return v.EngineId }).(pulumi.StringOutput)
 }

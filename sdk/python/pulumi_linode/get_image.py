@@ -21,7 +21,10 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, status=None, type=None, vendor=None):
+    def __init__(__self__, capabilities=None, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, status=None, type=None, vendor=None):
+        if capabilities and not isinstance(capabilities, list):
+            raise TypeError("Expected argument 'capabilities' to be a list")
+        pulumi.set(__self__, "capabilities", capabilities)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -58,6 +61,11 @@ class GetImageResult:
         if vendor and not isinstance(vendor, str):
             raise TypeError("Expected argument 'vendor' to be a str")
         pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        return pulumi.get(self, "capabilities")
 
     @property
     @pulumi.getter
@@ -156,6 +164,7 @@ class AwaitableGetImageResult(GetImageResult):
         if False:
             yield self
         return GetImageResult(
+            capabilities=self.capabilities,
             created=self.created,
             created_by=self.created_by,
             deprecated=self.deprecated,
@@ -195,6 +204,7 @@ def get_image(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
+        capabilities=pulumi.get(__ret__, 'capabilities'),
         created=pulumi.get(__ret__, 'created'),
         created_by=pulumi.get(__ret__, 'created_by'),
         deprecated=pulumi.get(__ret__, 'deprecated'),

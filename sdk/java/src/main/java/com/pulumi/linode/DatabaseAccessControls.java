@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         var my_db = new DatabaseMysql(&#34;my-db&#34;, DatabaseMysqlArgs.builder()        
  *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;mysql/8.0.26&#34;)
+ *             .engineId(&#34;mysql/8.0.30&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .build());

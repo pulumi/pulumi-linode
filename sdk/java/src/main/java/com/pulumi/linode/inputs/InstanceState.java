@@ -10,6 +10,7 @@ import com.pulumi.linode.inputs.InstanceBackupsArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
+import com.pulumi.linode.inputs.InstanceMetadataArgs;
 import com.pulumi.linode.inputs.InstanceSpecsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -188,6 +189,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether or not this Instance was created with user-data.
+     * 
+     */
+    @Import(name="hasUserData")
+    private @Nullable Output<Boolean> hasUserData;
+
+    /**
+     * @return Whether or not this Instance was created with user-data.
+     * 
+     */
+    public Optional<Output<Boolean>> hasUserData() {
+        return Optional.ofNullable(this.hasUserData);
+    }
+
+    /**
      * The Linode’s host machine, as a UUID.
      * 
      */
@@ -292,6 +308,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
+    }
+
+    /**
+     * Various fields related to the Linode Metadata service.
+     * 
+     */
+    @Import(name="metadatas")
+    private @Nullable Output<List<InstanceMetadataArgs>> metadatas;
+
+    /**
+     * @return Various fields related to the Linode Metadata service.
+     * 
+     */
+    public Optional<Output<List<InstanceMetadataArgs>>> metadatas() {
+        return Optional.ofNullable(this.metadatas);
     }
 
     /**
@@ -542,6 +573,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.configs = $.configs;
         this.disks = $.disks;
         this.group = $.group;
+        this.hasUserData = $.hasUserData;
         this.hostUuid = $.hostUuid;
         this.image = $.image;
         this.interfaces = $.interfaces;
@@ -549,6 +581,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv4s = $.ipv4s;
         this.ipv6 = $.ipv6;
         this.label = $.label;
+        this.metadatas = $.metadatas;
         this.privateIp = $.privateIp;
         this.privateIpAddress = $.privateIpAddress;
         this.region = $.region;
@@ -841,6 +874,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hasUserData Whether or not this Instance was created with user-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasUserData(@Nullable Output<Boolean> hasUserData) {
+            $.hasUserData = hasUserData;
+            return this;
+        }
+
+        /**
+         * @param hasUserData Whether or not this Instance was created with user-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasUserData(Boolean hasUserData) {
+            return hasUserData(Output.of(hasUserData));
+        }
+
+        /**
          * @param hostUuid The Linode’s host machine, as a UUID.
          * 
          * @return builder
@@ -1008,6 +1062,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(@Nullable Output<List<InstanceMetadataArgs>> metadatas) {
+            $.metadatas = metadatas;
+            return this;
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(List<InstanceMetadataArgs> metadatas) {
+            return metadatas(Output.of(metadatas));
+        }
+
+        /**
+         * @param metadatas Various fields related to the Linode Metadata service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadatas(InstanceMetadataArgs... metadatas) {
+            return metadatas(List.of(metadatas));
         }
 
         /**

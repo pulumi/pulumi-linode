@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func LookupDatabaseMysql(ctx *pulumi.Context, args *LookupDatabaseMysqlArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMysqlResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMysqlResult
 	err := ctx.Invoke("linode:index/getDatabaseMysql:getDatabaseMysql", args, &rv, opts...)
 	if err != nil {
@@ -64,6 +66,8 @@ func LookupDatabaseMysql(ctx *pulumi.Context, args *LookupDatabaseMysqlArgs, opt
 // A collection of arguments for invoking getDatabaseMysql.
 type LookupDatabaseMysqlArgs struct {
 	// The ID of the MySQL database. Deprecated: Use id instead.
+	//
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 	DatabaseId *int `pulumi:"databaseId"`
 	// The ID of the MySQL database. Mutually exclusive with `databaseId`.
 	Id *int `pulumi:"id"`
@@ -78,13 +82,14 @@ type LookupDatabaseMysqlResult struct {
 	// The number of Linode Instance nodes deployed to the Managed Database.
 	ClusterSize int `pulumi:"clusterSize"`
 	// When this Managed Database was created.
-	Created    string `pulumi:"created"`
-	DatabaseId *int   `pulumi:"databaseId"`
+	Created string `pulumi:"created"`
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
+	DatabaseId *int `pulumi:"databaseId"`
 	// Whether the Managed Databases is encrypted.
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `mysql`)
 	Engine string `pulumi:"engine"`
-	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+	// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 	EngineId string `pulumi:"engineId"`
 	// The primary host for the Managed Database.
 	HostPrimary string `pulumi:"hostPrimary"`
@@ -130,6 +135,8 @@ func LookupDatabaseMysqlOutput(ctx *pulumi.Context, args LookupDatabaseMysqlOutp
 // A collection of arguments for invoking getDatabaseMysql.
 type LookupDatabaseMysqlOutputArgs struct {
 	// The ID of the MySQL database. Deprecated: Use id instead.
+	//
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 	DatabaseId pulumi.IntPtrInput `pulumi:"databaseId"`
 	// The ID of the MySQL database. Mutually exclusive with `databaseId`.
 	Id pulumi.IntPtrInput `pulumi:"id"`
@@ -174,6 +181,7 @@ func (o LookupDatabaseMysqlResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 func (o LookupDatabaseMysqlResultOutput) DatabaseId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) *int { return v.DatabaseId }).(pulumi.IntPtrOutput)
 }
@@ -188,7 +196,7 @@ func (o LookupDatabaseMysqlResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
 func (o LookupDatabaseMysqlResultOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlResult) string { return v.EngineId }).(pulumi.StringOutput)
 }

@@ -427,6 +427,7 @@ export interface GetImagesFilter {
 }
 
 export interface GetImagesImage {
+    capabilities: string[];
     /**
      * When this Image was created.
      */
@@ -1012,6 +1013,7 @@ export interface GetInstancesInstance {
      * The display group of the Linode instance.
      */
     group: string;
+    hasUserData: boolean;
     hostUuid: string;
     /**
      * The ID of the disk in the Linode API.
@@ -1610,71 +1612,428 @@ export interface GetStackScriptsStackscriptUserDefinedField {
 }
 
 export interface GetUserDatabaseGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserDomainGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserFirewallGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserGlobalGrant {
+    /**
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
+     */
     accountAccess: string;
+    /**
+     * If true, this User may add Managed Databases.
+     */
     addDatabases: boolean;
+    /**
+     * If true, this User may add Domains.
+     */
     addDomains: boolean;
+    /**
+     * If true, this User may add Firewalls.
+     */
     addFirewalls: boolean;
+    /**
+     * If true, this User may add Images.
+     */
     addImages: boolean;
+    /**
+     * If true, this User may create Linodes.
+     */
     addLinodes: boolean;
+    /**
+     * If true, this User may create Longview clients and view the current plan.
+     */
     addLongview: boolean;
+    /**
+     * If true, this User may add NodeBalancers.
+     */
     addNodebalancers: boolean;
     addStackscripts: boolean;
+    /**
+     * If true, this User may add Volumes.
+     */
     addVolumes: boolean;
+    /**
+     * If true, this User may cancel the entire Account.
+     */
     cancelAccount: boolean;
+    /**
+     * If true, this User may manage the Account’s Longview subscription.
+     */
     longviewSubscription: boolean;
 }
 
 export interface GetUserImageGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserLinodeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserLongviewGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserNodebalancerGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserStackscriptGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
     permissions: string;
 }
 
 export interface GetUserVolumeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
     id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
     label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: string;
+}
+
+export interface GetUsersFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetUsersUser {
+    databaseGrants: outputs.GetUsersUserDatabaseGrant[];
+    domainGrants: outputs.GetUsersUserDomainGrant[];
+    /**
+     * The email address for this User, for account management communications, and may be used for other communications as configured.
+     */
+    email: string;
+    firewallGrants: outputs.GetUsersUserFirewallGrant[];
+    globalGrants: outputs.GetUsersUserGlobalGrant[];
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: string;
+    imageGrants: outputs.GetUsersUserImageGrant[];
+    linodeGrants: outputs.GetUsersUserLinodeGrant[];
+    longviewGrants: outputs.GetUsersUserLongviewGrant[];
+    nodebalancerGrants: outputs.GetUsersUserNodebalancerGrant[];
+    /**
+     * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+     */
+    passwordCreated: string;
+    /**
+     * If true, this User must be granted access to perform actions or access entities on this Account.
+     */
+    restricted: boolean;
+    /**
+     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
+     */
+    sshKeys: string[];
+    stackscriptGrants: outputs.GetUsersUserStackscriptGrant[];
+    /**
+     * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+     */
+    tfaEnabled: boolean;
+    /**
+     * This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
+     */
+    username: string;
+    /**
+     * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+     */
+    verifiedPhoneNumber: string;
+    volumeGrants: outputs.GetUsersUserVolumeGrant[];
+}
+
+export interface GetUsersUserDatabaseGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserDomainGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserFirewallGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserGlobalGrant {
+    /**
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
+     */
+    accountAccess: string;
+    /**
+     * If true, this User may add Managed Databases.
+     */
+    addDatabases: boolean;
+    /**
+     * If true, this User may add Domains.
+     */
+    addDomains: boolean;
+    /**
+     * If true, this User may add Firewalls.
+     */
+    addFirewalls: boolean;
+    /**
+     * If true, this User may add Images.
+     */
+    addImages: boolean;
+    /**
+     * If true, this User may create Linodes.
+     */
+    addLinodes: boolean;
+    /**
+     * If true, this User may create Longview clients and view the current plan.
+     */
+    addLongview: boolean;
+    /**
+     * If true, this User may add NodeBalancers.
+     */
+    addNodebalancers: boolean;
+    addStackscripts: boolean;
+    /**
+     * If true, this User may add Volumes.
+     */
+    addVolumes: boolean;
+    /**
+     * If true, this User may cancel the entire Account.
+     */
+    cancelAccount: boolean;
+    /**
+     * If true, this User may manage the Account’s Longview subscription.
+     */
+    longviewSubscription: boolean;
+}
+
+export interface GetUsersUserImageGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserLinodeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserLongviewGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserNodebalancerGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserStackscriptGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserVolumeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
@@ -2011,6 +2370,10 @@ export interface InstanceInterface {
      * The type of interface. (`public`, `vlan`)
      */
     purpose?: string;
+}
+
+export interface InstanceMetadata {
+    userData?: string;
 }
 
 export interface InstanceSpecs {

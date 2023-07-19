@@ -169,7 +169,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         /// </summary>
         public readonly string EngineId;
         /// <summary>

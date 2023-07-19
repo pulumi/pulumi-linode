@@ -65,14 +65,14 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     @Import(name="engineId", required=true)
     private Output<String> engineId;
 
     /**
-     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     public Output<String> engineId() {
@@ -292,7 +292,7 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineId The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+         * @param engineId The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineId The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+         * @param engineId The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
          * 
          * @return builder
          * 

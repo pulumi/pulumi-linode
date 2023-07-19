@@ -76,6 +76,8 @@ import com.pulumi.linode.inputs.GetStackScriptsArgs;
 import com.pulumi.linode.inputs.GetStackScriptsPlainArgs;
 import com.pulumi.linode.inputs.GetUserArgs;
 import com.pulumi.linode.inputs.GetUserPlainArgs;
+import com.pulumi.linode.inputs.GetUsersArgs;
+import com.pulumi.linode.inputs.GetUsersPlainArgs;
 import com.pulumi.linode.inputs.GetVlansArgs;
 import com.pulumi.linode.inputs.GetVlansPlainArgs;
 import com.pulumi.linode.inputs.GetVolumeArgs;
@@ -118,6 +120,7 @@ import com.pulumi.linode.outputs.GetSshKeyResult;
 import com.pulumi.linode.outputs.GetStackScriptResult;
 import com.pulumi.linode.outputs.GetStackScriptsResult;
 import com.pulumi.linode.outputs.GetUserResult;
+import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
 import com.pulumi.resources.InvokeArgs;
@@ -5030,7 +5033,6 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -5053,7 +5055,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -5068,7 +5070,6 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -5091,7 +5092,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -5106,7 +5107,6 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -5129,7 +5129,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -5144,7 +5144,6 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -5167,7 +5166,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -9349,6 +9348,324 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static Output<GetUsersResult> getUsers() {
+        return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain() {
+        return getUsersPlain(GetUsersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
+        return getUsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
+        return getUsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode users that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
+     *             .filters(GetUsersFilterArgs.builder()
+     *                 .name(&#34;username&#34;)
+     *                 .values(&#34;test-user&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `username`
+     * 
+     * * `email`
+     * 
+     * * `restricted`
+     * 
+     * * `password_created`
+     * 
+     * * `tfa_enabled`
+     * 
+     * * `verfied_phone_number`
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about Linode VLANs.

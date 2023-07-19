@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetImagesImage {
+    private List<String> capabilities;
     /**
      * @return When this Image was created.
      * 
@@ -69,6 +71,9 @@ public final class GetImagesImage {
     private String vendor;
 
     private GetImagesImage() {}
+    public List<String> capabilities() {
+        return this.capabilities;
+    }
     /**
      * @return When this Image was created.
      * 
@@ -159,6 +164,7 @@ public final class GetImagesImage {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> capabilities;
         private String created;
         private String createdBy;
         private Boolean deprecated;
@@ -174,6 +180,7 @@ public final class GetImagesImage {
         public Builder() {}
         public Builder(GetImagesImage defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.capabilities = defaults.capabilities;
     	      this.created = defaults.created;
     	      this.createdBy = defaults.createdBy;
     	      this.deprecated = defaults.deprecated;
@@ -188,6 +195,14 @@ public final class GetImagesImage {
     	      this.vendor = defaults.vendor;
         }
 
+        @CustomType.Setter
+        public Builder capabilities(List<String> capabilities) {
+            this.capabilities = Objects.requireNonNull(capabilities);
+            return this;
+        }
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
+        }
         @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
@@ -250,6 +265,7 @@ public final class GetImagesImage {
         }
         public GetImagesImage build() {
             final var o = new GetImagesImage();
+            o.capabilities = capabilities;
             o.created = created;
             o.createdBy = createdBy;
             o.deprecated = deprecated;

@@ -35,6 +35,12 @@ public final class GetDatabaseMysqlResult {
      * 
      */
     private String created;
+    /**
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
+     */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     private @Nullable Integer databaseId;
     /**
      * @return Whether the Managed Databases is encrypted.
@@ -47,7 +53,7 @@ public final class GetDatabaseMysqlResult {
      */
     private String engine;
     /**
-     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     private String engineId;
@@ -143,6 +149,12 @@ public final class GetDatabaseMysqlResult {
     public String created() {
         return this.created;
     }
+    /**
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
+     */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     public Optional<Integer> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -161,7 +173,7 @@ public final class GetDatabaseMysqlResult {
         return this.engine;
     }
     /**
-     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+     * @return The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
      * 
      */
     public String engineId() {

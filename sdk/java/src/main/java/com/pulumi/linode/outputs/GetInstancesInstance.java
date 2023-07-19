@@ -27,6 +27,7 @@ public final class GetInstancesInstance {
      * 
      */
     private String group;
+    private Boolean hasUserData;
     private String hostUuid;
     /**
      * @return The ID of the disk in the Linode API.
@@ -117,6 +118,9 @@ public final class GetInstancesInstance {
      */
     public String group() {
         return this.group;
+    }
+    public Boolean hasUserData() {
+        return this.hasUserData;
     }
     public String hostUuid() {
         return this.hostUuid;
@@ -231,6 +235,7 @@ public final class GetInstancesInstance {
         private List<GetInstancesInstanceConfig> configs;
         private List<GetInstancesInstanceDisk> disks;
         private String group;
+        private Boolean hasUserData;
         private String hostUuid;
         private Integer id;
         private String image;
@@ -255,6 +260,7 @@ public final class GetInstancesInstance {
     	      this.configs = defaults.configs;
     	      this.disks = defaults.disks;
     	      this.group = defaults.group;
+    	      this.hasUserData = defaults.hasUserData;
     	      this.hostUuid = defaults.hostUuid;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
@@ -309,6 +315,11 @@ public final class GetInstancesInstance {
         @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hasUserData(Boolean hasUserData) {
+            this.hasUserData = Objects.requireNonNull(hasUserData);
             return this;
         }
         @CustomType.Setter
@@ -403,6 +414,7 @@ public final class GetInstancesInstance {
             o.configs = configs;
             o.disks = disks;
             o.group = group;
+            o.hasUserData = hasUserData;
             o.hostUuid = hostUuid;
             o.id = id;
             o.image = image;

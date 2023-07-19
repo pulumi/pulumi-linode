@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewFirewallDevice(ctx *pulumi.Context,
 	if args.FirewallId == nil {
 		return nil, errors.New("invalid value for required argument 'FirewallId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallDevice
 	err := ctx.RegisterResource("linode:index/firewallDevice:FirewallDevice", name, args, &resource, opts...)
 	if err != nil {

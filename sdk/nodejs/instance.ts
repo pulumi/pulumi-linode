@@ -119,6 +119,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
+     * Whether or not this Instance was created with user-data.
+     */
+    public /*out*/ readonly hasUserData!: pulumi.Output<boolean>;
+    /**
      * The Linode’s host machine, as a UUID.
      */
     public /*out*/ readonly hostUuid!: pulumi.Output<string>;
@@ -147,6 +151,10 @@ export class Instance extends pulumi.CustomResource {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     public readonly label!: pulumi.Output<string>;
+    /**
+     * Various fields related to the Linode Metadata service.
+     */
+    public readonly metadatas!: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
@@ -240,6 +248,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["configs"] = state ? state.configs : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["hasUserData"] = state ? state.hasUserData : undefined;
             resourceInputs["hostUuid"] = state ? state.hostUuid : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["interfaces"] = state ? state.interfaces : undefined;
@@ -247,6 +256,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv4s"] = state ? state.ipv4s : undefined;
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -279,6 +289,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["interfaces"] = args ? args.interfaces : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
@@ -291,6 +302,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
             resourceInputs["backups"] = undefined /*out*/;
+            resourceInputs["hasUserData"] = undefined /*out*/;
             resourceInputs["hostUuid"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["ipv4s"] = undefined /*out*/;
@@ -354,6 +366,10 @@ export interface InstanceState {
      */
     group?: pulumi.Input<string>;
     /**
+     * Whether or not this Instance was created with user-data.
+     */
+    hasUserData?: pulumi.Input<boolean>;
+    /**
      * The Linode’s host machine, as a UUID.
      */
     hostUuid?: pulumi.Input<string>;
@@ -382,6 +398,10 @@ export interface InstanceState {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * Various fields related to the Linode Metadata service.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[]>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
@@ -508,6 +528,10 @@ export interface InstanceArgs {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * Various fields related to the Linode Metadata service.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[]>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */

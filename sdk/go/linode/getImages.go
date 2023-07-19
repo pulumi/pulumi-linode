@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ import (
 //
 // * `vendor`
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult
 	err := ctx.Invoke("linode:index/getImages:getImages", args, &rv, opts...)
 	if err != nil {

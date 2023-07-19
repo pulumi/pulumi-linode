@@ -25,122 +25,58 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserArgs Empty = new GetUserArgs();
 
-    /**
-     * The grants this User has pertaining to Databases on this Account.
-     * 
-     */
     @Import(name="databaseGrants")
     private @Nullable Output<List<GetUserDatabaseGrantArgs>> databaseGrants;
 
-    /**
-     * @return The grants this User has pertaining to Databases on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserDatabaseGrantArgs>>> databaseGrants() {
         return Optional.ofNullable(this.databaseGrants);
     }
 
-    /**
-     * The grants this User has pertaining to Domains on this Account.
-     * 
-     */
     @Import(name="domainGrants")
     private @Nullable Output<List<GetUserDomainGrantArgs>> domainGrants;
 
-    /**
-     * @return The grants this User has pertaining to Domains on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserDomainGrantArgs>>> domainGrants() {
         return Optional.ofNullable(this.domainGrants);
     }
 
-    /**
-     * The grants this User has pertaining to Firewalls on this Account.
-     * 
-     */
     @Import(name="firewallGrants")
     private @Nullable Output<List<GetUserFirewallGrantArgs>> firewallGrants;
 
-    /**
-     * @return The grants this User has pertaining to Firewalls on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserFirewallGrantArgs>>> firewallGrants() {
         return Optional.ofNullable(this.firewallGrants);
     }
 
-    /**
-     * The grants this User has pertaining to Images on this Account.
-     * 
-     */
     @Import(name="imageGrants")
     private @Nullable Output<List<GetUserImageGrantArgs>> imageGrants;
 
-    /**
-     * @return The grants this User has pertaining to Images on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserImageGrantArgs>>> imageGrants() {
         return Optional.ofNullable(this.imageGrants);
     }
 
-    /**
-     * The grants this User has pertaining to Linodes on this Account.
-     * 
-     */
     @Import(name="linodeGrants")
     private @Nullable Output<List<GetUserLinodeGrantArgs>> linodeGrants;
 
-    /**
-     * @return The grants this User has pertaining to Linodes on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserLinodeGrantArgs>>> linodeGrants() {
         return Optional.ofNullable(this.linodeGrants);
     }
 
-    /**
-     * The grants this User has pertaining to Longview Clients on this Account.
-     * 
-     */
     @Import(name="longviewGrants")
     private @Nullable Output<List<GetUserLongviewGrantArgs>> longviewGrants;
 
-    /**
-     * @return The grants this User has pertaining to Longview Clients on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserLongviewGrantArgs>>> longviewGrants() {
         return Optional.ofNullable(this.longviewGrants);
     }
 
-    /**
-     * The grants this User has pertaining to NodeBalancers on this Account.
-     * 
-     */
     @Import(name="nodebalancerGrants")
     private @Nullable Output<List<GetUserNodebalancerGrantArgs>> nodebalancerGrants;
 
-    /**
-     * @return The grants this User has pertaining to NodeBalancers on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserNodebalancerGrantArgs>>> nodebalancerGrants() {
         return Optional.ofNullable(this.nodebalancerGrants);
     }
 
-    /**
-     * The grants this User has pertaining to StackScripts on this Account.
-     * 
-     */
     @Import(name="stackscriptGrants")
     private @Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants;
 
-    /**
-     * @return The grants this User has pertaining to StackScripts on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserStackscriptGrantArgs>>> stackscriptGrants() {
         return Optional.ofNullable(this.stackscriptGrants);
     }
@@ -160,17 +96,9 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         return this.username;
     }
 
-    /**
-     * The grants this User has pertaining to Volumes on this Account.
-     * 
-     */
     @Import(name="volumeGrants")
     private @Nullable Output<List<GetUserVolumeGrantArgs>> volumeGrants;
 
-    /**
-     * @return The grants this User has pertaining to Volumes on this Account.
-     * 
-     */
     public Optional<Output<List<GetUserVolumeGrantArgs>>> volumeGrants() {
         return Optional.ofNullable(this.volumeGrants);
     }
@@ -208,250 +136,106 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param databaseGrants The grants this User has pertaining to Databases on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseGrants(@Nullable Output<List<GetUserDatabaseGrantArgs>> databaseGrants) {
             $.databaseGrants = databaseGrants;
             return this;
         }
 
-        /**
-         * @param databaseGrants The grants this User has pertaining to Databases on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseGrants(List<GetUserDatabaseGrantArgs> databaseGrants) {
             return databaseGrants(Output.of(databaseGrants));
         }
 
-        /**
-         * @param databaseGrants The grants this User has pertaining to Databases on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseGrants(GetUserDatabaseGrantArgs... databaseGrants) {
             return databaseGrants(List.of(databaseGrants));
         }
 
-        /**
-         * @param domainGrants The grants this User has pertaining to Domains on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domainGrants(@Nullable Output<List<GetUserDomainGrantArgs>> domainGrants) {
             $.domainGrants = domainGrants;
             return this;
         }
 
-        /**
-         * @param domainGrants The grants this User has pertaining to Domains on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domainGrants(List<GetUserDomainGrantArgs> domainGrants) {
             return domainGrants(Output.of(domainGrants));
         }
 
-        /**
-         * @param domainGrants The grants this User has pertaining to Domains on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domainGrants(GetUserDomainGrantArgs... domainGrants) {
             return domainGrants(List.of(domainGrants));
         }
 
-        /**
-         * @param firewallGrants The grants this User has pertaining to Firewalls on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firewallGrants(@Nullable Output<List<GetUserFirewallGrantArgs>> firewallGrants) {
             $.firewallGrants = firewallGrants;
             return this;
         }
 
-        /**
-         * @param firewallGrants The grants this User has pertaining to Firewalls on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firewallGrants(List<GetUserFirewallGrantArgs> firewallGrants) {
             return firewallGrants(Output.of(firewallGrants));
         }
 
-        /**
-         * @param firewallGrants The grants this User has pertaining to Firewalls on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firewallGrants(GetUserFirewallGrantArgs... firewallGrants) {
             return firewallGrants(List.of(firewallGrants));
         }
 
-        /**
-         * @param imageGrants The grants this User has pertaining to Images on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageGrants(@Nullable Output<List<GetUserImageGrantArgs>> imageGrants) {
             $.imageGrants = imageGrants;
             return this;
         }
 
-        /**
-         * @param imageGrants The grants this User has pertaining to Images on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageGrants(List<GetUserImageGrantArgs> imageGrants) {
             return imageGrants(Output.of(imageGrants));
         }
 
-        /**
-         * @param imageGrants The grants this User has pertaining to Images on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageGrants(GetUserImageGrantArgs... imageGrants) {
             return imageGrants(List.of(imageGrants));
         }
 
-        /**
-         * @param linodeGrants The grants this User has pertaining to Linodes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder linodeGrants(@Nullable Output<List<GetUserLinodeGrantArgs>> linodeGrants) {
             $.linodeGrants = linodeGrants;
             return this;
         }
 
-        /**
-         * @param linodeGrants The grants this User has pertaining to Linodes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder linodeGrants(List<GetUserLinodeGrantArgs> linodeGrants) {
             return linodeGrants(Output.of(linodeGrants));
         }
 
-        /**
-         * @param linodeGrants The grants this User has pertaining to Linodes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder linodeGrants(GetUserLinodeGrantArgs... linodeGrants) {
             return linodeGrants(List.of(linodeGrants));
         }
 
-        /**
-         * @param longviewGrants The grants this User has pertaining to Longview Clients on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder longviewGrants(@Nullable Output<List<GetUserLongviewGrantArgs>> longviewGrants) {
             $.longviewGrants = longviewGrants;
             return this;
         }
 
-        /**
-         * @param longviewGrants The grants this User has pertaining to Longview Clients on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder longviewGrants(List<GetUserLongviewGrantArgs> longviewGrants) {
             return longviewGrants(Output.of(longviewGrants));
         }
 
-        /**
-         * @param longviewGrants The grants this User has pertaining to Longview Clients on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder longviewGrants(GetUserLongviewGrantArgs... longviewGrants) {
             return longviewGrants(List.of(longviewGrants));
         }
 
-        /**
-         * @param nodebalancerGrants The grants this User has pertaining to NodeBalancers on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodebalancerGrants(@Nullable Output<List<GetUserNodebalancerGrantArgs>> nodebalancerGrants) {
             $.nodebalancerGrants = nodebalancerGrants;
             return this;
         }
 
-        /**
-         * @param nodebalancerGrants The grants this User has pertaining to NodeBalancers on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodebalancerGrants(List<GetUserNodebalancerGrantArgs> nodebalancerGrants) {
             return nodebalancerGrants(Output.of(nodebalancerGrants));
         }
 
-        /**
-         * @param nodebalancerGrants The grants this User has pertaining to NodeBalancers on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodebalancerGrants(GetUserNodebalancerGrantArgs... nodebalancerGrants) {
             return nodebalancerGrants(List.of(nodebalancerGrants));
         }
 
-        /**
-         * @param stackscriptGrants The grants this User has pertaining to StackScripts on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stackscriptGrants(@Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants) {
             $.stackscriptGrants = stackscriptGrants;
             return this;
         }
 
-        /**
-         * @param stackscriptGrants The grants this User has pertaining to StackScripts on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stackscriptGrants(List<GetUserStackscriptGrantArgs> stackscriptGrants) {
             return stackscriptGrants(Output.of(stackscriptGrants));
         }
 
-        /**
-         * @param stackscriptGrants The grants this User has pertaining to StackScripts on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stackscriptGrants(GetUserStackscriptGrantArgs... stackscriptGrants) {
             return stackscriptGrants(List.of(stackscriptGrants));
         }
@@ -477,33 +261,15 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
             return username(Output.of(username));
         }
 
-        /**
-         * @param volumeGrants The grants this User has pertaining to Volumes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeGrants(@Nullable Output<List<GetUserVolumeGrantArgs>> volumeGrants) {
             $.volumeGrants = volumeGrants;
             return this;
         }
 
-        /**
-         * @param volumeGrants The grants this User has pertaining to Volumes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeGrants(List<GetUserVolumeGrantArgs> volumeGrants) {
             return volumeGrants(Output.of(volumeGrants));
         }
 
-        /**
-         * @param volumeGrants The grants this User has pertaining to Volumes on this Account.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeGrants(GetUserVolumeGrantArgs... volumeGrants) {
             return volumeGrants(List.of(volumeGrants));
         }

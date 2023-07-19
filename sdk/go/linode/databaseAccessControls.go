@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,7 +41,7 @@ import (
 //			}
 //			_, err = linode.NewDatabaseMysql(ctx, "my-db", &linode.DatabaseMysqlArgs{
 //				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/8.0.26"),
+//				EngineId: pulumi.String("mysql/8.0.30"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -89,6 +90,7 @@ func NewDatabaseAccessControls(ctx *pulumi.Context,
 	if args.DatabaseType == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseAccessControls
 	err := ctx.RegisterResource("linode:index/databaseAccessControls:DatabaseAccessControls", name, args, &resource, opts...)
 	if err != nil {

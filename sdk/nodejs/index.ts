@@ -231,6 +231,11 @@ export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
 export { GetVlansArgs, GetVlansResult, GetVlansOutputArgs } from "./getVlans";
 export const getVlans: typeof import("./getVlans").getVlans = null as any;
 export const getVlansOutput: typeof import("./getVlans").getVlansOutput = null as any;

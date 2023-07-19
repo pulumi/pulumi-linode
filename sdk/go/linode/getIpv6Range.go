@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupIpv6Range(ctx *pulumi.Context, args *LookupIpv6RangeArgs, opts ...pulumi.InvokeOption) (*LookupIpv6RangeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpv6RangeResult
 	err := ctx.Invoke("linode:index/getIpv6Range:getIpv6Range", args, &rv, opts...)
 	if err != nil {

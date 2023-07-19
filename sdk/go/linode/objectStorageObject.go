@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ func NewObjectStorageObject(ctx *pulumi.Context,
 	if args.SecretKey == nil {
 		return nil, errors.New("invalid value for required argument 'SecretKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObjectStorageObject
 	err := ctx.RegisterResource("linode:index/objectStorageObject:ObjectStorageObject", name, args, &resource, opts...)
 	if err != nil {

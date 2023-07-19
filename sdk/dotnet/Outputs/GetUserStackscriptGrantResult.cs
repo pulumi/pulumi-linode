@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetUserStackscriptGrantResult
     {
+        /// <summary>
+        /// The ID of entity this grant applies to.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The current label of the entity this grant applies to, for display purposes.
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        /// </summary>
         public readonly string Permissions;
 
         [OutputConstructor]

@@ -17,14 +17,22 @@ public final class GetDatabaseMysqlPlainArgs extends com.pulumi.resources.Invoke
     /**
      * The ID of the MySQL database. Deprecated: Use id instead.
      * 
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     @Import(name="databaseId")
     private @Nullable Integer databaseId;
 
     /**
      * @return The ID of the MySQL database. Deprecated: Use id instead.
      * 
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     public Optional<Integer> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -74,7 +82,11 @@ public final class GetDatabaseMysqlPlainArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
+         * @deprecated
+         * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
         public Builder databaseId(@Nullable Integer databaseId) {
             $.databaseId = databaseId;
             return this;

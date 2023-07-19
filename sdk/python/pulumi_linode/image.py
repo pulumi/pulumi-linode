@@ -15,6 +15,7 @@ __all__ = ['ImageArgs', 'Image']
 class ImageArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[str],
+                 cloud_init: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
                  file_hash: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,7 @@ class ImageArgs:
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
+        :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
                - - -
@@ -42,6 +44,8 @@ class ImageArgs:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
         pulumi.set(__self__, "label", label)
+        if cloud_init is not None:
+            pulumi.set(__self__, "cloud_init", cloud_init)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_id is not None:
@@ -66,6 +70,18 @@ class ImageArgs:
     @label.setter
     def label(self, value: pulumi.Input[str]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="cloudInit")
+    def cloud_init(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this image supports cloud-init.
+        """
+        return pulumi.get(self, "cloud_init")
+
+    @cloud_init.setter
+    def cloud_init(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cloud_init", value)
 
     @property
     @pulumi.getter
@@ -153,6 +169,8 @@ class ImageArgs:
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cloud_init: Optional[pulumi.Input[bool]] = None,
                  created: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  deprecated: Optional[pulumi.Input[bool]] = None,
@@ -171,6 +189,8 @@ class _ImageState:
                  vendor: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: The capabilities of this Image.
+        :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] created: When this Image was created.
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
@@ -198,6 +218,10 @@ class _ImageState:
         :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
         """
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if cloud_init is not None:
+            pulumi.set(__self__, "cloud_init", cloud_init)
         if created is not None:
             pulumi.set(__self__, "created", created)
         if created_by is not None:
@@ -230,6 +254,30 @@ class _ImageState:
             pulumi.set(__self__, "type", type)
         if vendor is not None:
             pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The capabilities of this Image.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter(name="cloudInit")
+    def cloud_init(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this image supports cloud-init.
+        """
+        return pulumi.get(self, "cloud_init")
+
+    @cloud_init.setter
+    def cloud_init(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cloud_init", value)
 
     @property
     @pulumi.getter
@@ -439,6 +487,7 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_init: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
                  file_hash: Optional[pulumi.Input[str]] = None,
@@ -462,6 +511,7 @@ class Image(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
                - - -
@@ -514,6 +564,7 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_init: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[int]] = None,
                  file_hash: Optional[pulumi.Input[str]] = None,
@@ -530,6 +581,7 @@ class Image(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageArgs.__new__(ImageArgs)
 
+            __props__.__dict__["cloud_init"] = cloud_init
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_id"] = disk_id
             __props__.__dict__["file_hash"] = file_hash
@@ -539,6 +591,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["label"] = label
             __props__.__dict__["linode_id"] = linode_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["capabilities"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["deprecated"] = None
@@ -558,6 +611,8 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            cloud_init: Optional[pulumi.Input[bool]] = None,
             created: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             deprecated: Optional[pulumi.Input[bool]] = None,
@@ -581,6 +636,8 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: The capabilities of this Image.
+        :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] created: When this Image was created.
         :param pulumi.Input[str] created_by: The name of the User who created this Image.
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
@@ -612,6 +669,8 @@ class Image(pulumi.CustomResource):
 
         __props__ = _ImageState.__new__(_ImageState)
 
+        __props__.__dict__["capabilities"] = capabilities
+        __props__.__dict__["cloud_init"] = cloud_init
         __props__.__dict__["created"] = created
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["deprecated"] = deprecated
@@ -629,6 +688,22 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["vendor"] = vendor
         return Image(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The capabilities of this Image.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter(name="cloudInit")
+    def cloud_init(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether this image supports cloud-init.
+        """
+        return pulumi.get(self, "cloud_init")
 
     @property
     @pulumi.getter

@@ -35,6 +35,12 @@ public final class GetDatabasePostgresqlResult {
      * 
      */
     private String created;
+    /**
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
+     */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     private @Nullable Integer databaseId;
     /**
      * @return Whether the Managed Databases is encrypted.
@@ -149,6 +155,12 @@ public final class GetDatabasePostgresqlResult {
     public String created() {
         return this.created;
     }
+    /**
+     * @deprecated
+     * Configure `id` instead. This attribute will be removed in the next major version of the provider.
+     * 
+     */
+    @Deprecated /* Configure `id` instead. This attribute will be removed in the next major version of the provider. */
     public Optional<Integer> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }

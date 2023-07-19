@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStorageBucketArgs, opts ...pulumi.InvokeOption) (*GetLinodeObjectStorageBucketResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLinodeObjectStorageBucketResult
 	err := ctx.Invoke("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args, &rv, opts...)
 	if err != nil {

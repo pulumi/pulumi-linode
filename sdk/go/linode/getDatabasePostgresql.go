@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func LookupDatabasePostgresql(ctx *pulumi.Context, args *LookupDatabasePostgresqlArgs, opts ...pulumi.InvokeOption) (*LookupDatabasePostgresqlResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabasePostgresqlResult
 	err := ctx.Invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", args, &rv, opts...)
 	if err != nil {
@@ -64,6 +66,8 @@ func LookupDatabasePostgresql(ctx *pulumi.Context, args *LookupDatabasePostgresq
 // A collection of arguments for invoking getDatabasePostgresql.
 type LookupDatabasePostgresqlArgs struct {
 	// The ID of the PostgreSQL database. Deprecated: Use id instead.
+	//
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 	DatabaseId *int `pulumi:"databaseId"`
 	// The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
 	Id *int `pulumi:"id"`
@@ -78,8 +82,9 @@ type LookupDatabasePostgresqlResult struct {
 	// The number of Linode Instance nodes deployed to the Managed Database.
 	ClusterSize int `pulumi:"clusterSize"`
 	// When this Managed Database was created.
-	Created    string `pulumi:"created"`
-	DatabaseId *int   `pulumi:"databaseId"`
+	Created string `pulumi:"created"`
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
+	DatabaseId *int `pulumi:"databaseId"`
 	// Whether the Managed Databases is encrypted.
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `postgresql`)
@@ -133,6 +138,8 @@ func LookupDatabasePostgresqlOutput(ctx *pulumi.Context, args LookupDatabasePost
 // A collection of arguments for invoking getDatabasePostgresql.
 type LookupDatabasePostgresqlOutputArgs struct {
 	// The ID of the PostgreSQL database. Deprecated: Use id instead.
+	//
+	// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 	DatabaseId pulumi.IntPtrInput `pulumi:"databaseId"`
 	// The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
 	Id pulumi.IntPtrInput `pulumi:"id"`
@@ -177,6 +184,7 @@ func (o LookupDatabasePostgresqlResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabasePostgresqlResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.
 func (o LookupDatabasePostgresqlResultOutput) DatabaseId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDatabasePostgresqlResult) *int { return v.DatabaseId }).(pulumi.IntPtrOutput)
 }

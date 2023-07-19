@@ -125,6 +125,12 @@ namespace Pulumi.Linode
         public Input<int>? MinRetryDelayMs { get; set; }
 
         /// <summary>
+        /// If true, Linode Instances will not be rebooted on config and interface changes.
+        /// </summary>
+        [Input("skipImplicitReboots", json: true)]
+        public Input<bool>? SkipImplicitReboots { get; set; }
+
+        /// <summary>
         /// Skip waiting for a linode_instance resource to finish deleting.
         /// </summary>
         [Input("skipInstanceDeletePoll", json: true)]

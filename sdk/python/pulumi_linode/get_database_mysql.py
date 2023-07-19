@@ -125,6 +125,9 @@ class GetDatabaseMysqlResult:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> Optional[int]:
+        warnings.warn("""Configure `id` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""database_id is deprecated: Configure `id` instead. This attribute will be removed in the next major version of the provider.""")
+
         return pulumi.get(self, "database_id")
 
     @property
@@ -147,7 +150,7 @@ class GetDatabaseMysqlResult:
     @pulumi.getter(name="engineId")
     def engine_id(self) -> str:
         """
-        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)
+        The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         """
         return pulumi.get(self, "engine_id")
 

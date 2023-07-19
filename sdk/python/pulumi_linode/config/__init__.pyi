@@ -48,6 +48,11 @@ minRetryDelayMs: Optional[int]
 Minimum delay in milliseconds before retrying a request.
 """
 
+skipImplicitReboots: Optional[bool]
+"""
+If true, Linode Instances will not be rebooted on config and interface changes.
+"""
+
 skipInstanceDeletePoll: Optional[bool]
 """
 Skip waiting for a linode_instance resource to finish deleting.

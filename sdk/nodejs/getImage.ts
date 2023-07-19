@@ -42,6 +42,7 @@ export interface GetImageArgs {
  * A collection of values returned by getImage.
  */
 export interface GetImageResult {
+    readonly capabilities: string[];
     /**
      * When this Image was created.
      */
