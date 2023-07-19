@@ -93,6 +93,10 @@
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
+            "skipImplicitReboots": {
+                "type": "boolean",
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
+            },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
                 "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
@@ -806,6 +810,15 @@
                 "purpose": {
                     "type": "string",
                     "description": "The type of interface. (`public`, `vlan`)\n"
+                }
+            },
+            "type": "object"
+        },
+        "linode:index/InstanceMetadata:InstanceMetadata": {
+            "properties": {
+                "userData": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -1865,6 +1878,12 @@
         },
         "linode:index/getImagesImage:getImagesImage": {
             "properties": {
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "created": {
                     "type": "string",
                     "description": "When this Image was created.\n"
@@ -1915,6 +1934,7 @@
             },
             "type": "object",
             "required": [
+                "capabilities",
                 "created",
                 "createdBy",
                 "deprecated",
@@ -2939,6 +2959,9 @@
                     "type": "string",
                     "description": "The display group of the Linode instance.\n"
                 },
+                "hasUserData": {
+                    "type": "boolean"
+                },
                 "hostUuid": {
                     "type": "string"
                 },
@@ -3015,6 +3038,7 @@
                 "configs",
                 "disks",
                 "group",
+                "hasUserData",
                 "hostUuid",
                 "id",
                 "image",
@@ -4089,13 +4113,16 @@
         "linode:index/getUserDatabaseGrant:getUserDatabaseGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4108,13 +4135,16 @@
         "linode:index/getUserDomainGrant:getUserDomainGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4127,13 +4157,16 @@
         "linode:index/getUserFirewallGrant:getUserFirewallGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4146,40 +4179,51 @@
         "linode:index/getUserGlobalGrant:getUserGlobalGrant": {
             "properties": {
                 "accountAccess": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)\n"
                 },
                 "addDatabases": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Managed Databases.\n"
                 },
                 "addDomains": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Domains.\n"
                 },
                 "addFirewalls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Firewalls.\n"
                 },
                 "addImages": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Images.\n"
                 },
                 "addLinodes": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may create Linodes.\n"
                 },
                 "addLongview": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may create Longview clients and view the current plan.\n"
                 },
                 "addNodebalancers": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add NodeBalancers.\n"
                 },
                 "addStackscripts": {
                     "type": "boolean"
                 },
                 "addVolumes": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Volumes.\n"
                 },
                 "cancelAccount": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may cancel the entire Account.\n"
                 },
                 "longviewSubscription": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may manage the Account’s Longview subscription.\n"
                 }
             },
             "type": "object",
@@ -4206,13 +4250,16 @@
         "linode:index/getUserImageGrant:getUserImageGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4225,13 +4272,16 @@
         "linode:index/getUserLinodeGrant:getUserLinodeGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4244,13 +4294,16 @@
         "linode:index/getUserLongviewGrant:getUserLongviewGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4263,13 +4316,16 @@
         "linode:index/getUserNodebalancerGrant:getUserNodebalancerGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4282,13 +4338,16 @@
         "linode:index/getUserStackscriptGrant:getUserStackscriptGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
                 }
             },
             "type": "object",
@@ -4301,13 +4360,431 @@
         "linode:index/getUserVolumeGrant:getUserVolumeGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersFilter:getUsersFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getUsersUser:getUsersUser": {
+            "properties": {
+                "databaseGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserDatabaseGrant:getUsersUserDatabaseGrant"
+                    }
+                },
+                "domainGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserDomainGrant:getUsersUserDomainGrant"
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email address for this User, for account management communications, and may be used for other communications as configured.\n"
+                },
+                "firewallGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserFirewallGrant:getUsersUserFirewallGrant"
+                    }
+                },
+                "globalGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserGlobalGrant:getUsersUserGlobalGrant"
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "imageGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserImageGrant:getUsersUserImageGrant"
+                    }
+                },
+                "linodeGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserLinodeGrant:getUsersUserLinodeGrant"
+                    }
+                },
+                "longviewGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserLongviewGrant:getUsersUserLongviewGrant"
+                    }
+                },
+                "nodebalancerGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserNodebalancerGrant:getUsersUserNodebalancerGrant"
+                    }
+                },
+                "passwordCreated": {
+                    "type": "string",
+                    "description": "The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.\n"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "If true, this User must be granted access to perform actions or access entities on this Account.\n"
+                },
+                "sshKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.\n"
+                },
+                "stackscriptGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserStackscriptGrant:getUsersUserStackscriptGrant"
+                    }
+                },
+                "tfaEnabled": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).\n"
+                },
+                "verifiedPhoneNumber": {
+                    "type": "string",
+                    "description": "The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.\n"
+                },
+                "volumeGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserVolumeGrant:getUsersUserVolumeGrant"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "databaseGrants",
+                "domainGrants",
+                "email",
+                "firewallGrants",
+                "globalGrants",
+                "id",
+                "imageGrants",
+                "linodeGrants",
+                "longviewGrants",
+                "nodebalancerGrants",
+                "passwordCreated",
+                "restricted",
+                "sshKeys",
+                "stackscriptGrants",
+                "tfaEnabled",
+                "username",
+                "verifiedPhoneNumber",
+                "volumeGrants"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "username"
+                    ]
+                }
+            }
+        },
+        "linode:index/getUsersUserDatabaseGrant:getUsersUserDatabaseGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserDomainGrant:getUsersUserDomainGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserFirewallGrant:getUsersUserFirewallGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserGlobalGrant:getUsersUserGlobalGrant": {
+            "properties": {
+                "accountAccess": {
+                    "type": "string",
+                    "description": "The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)\n"
+                },
+                "addDatabases": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Managed Databases.\n"
+                },
+                "addDomains": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Domains.\n"
+                },
+                "addFirewalls": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Firewalls.\n"
+                },
+                "addImages": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Images.\n"
+                },
+                "addLinodes": {
+                    "type": "boolean",
+                    "description": "If true, this User may create Linodes.\n"
+                },
+                "addLongview": {
+                    "type": "boolean",
+                    "description": "If true, this User may create Longview clients and view the current plan.\n"
+                },
+                "addNodebalancers": {
+                    "type": "boolean",
+                    "description": "If true, this User may add NodeBalancers.\n"
+                },
+                "addStackscripts": {
+                    "type": "boolean"
+                },
+                "addVolumes": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Volumes.\n"
+                },
+                "cancelAccount": {
+                    "type": "boolean",
+                    "description": "If true, this User may cancel the entire Account.\n"
+                },
+                "longviewSubscription": {
+                    "type": "boolean",
+                    "description": "If true, this User may manage the Account’s Longview subscription.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountAccess",
+                "addDatabases",
+                "addDomains",
+                "addFirewalls",
+                "addImages",
+                "addLinodes",
+                "addLongview",
+                "addNodebalancers",
+                "addStackscripts",
+                "addVolumes",
+                "cancelAccount",
+                "longviewSubscription"
+            ]
+        },
+        "linode:index/getUsersUserImageGrant:getUsersUserImageGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserLinodeGrant:getUsersUserLinodeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserLongviewGrant:getUsersUserLongviewGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserNodebalancerGrant:getUsersUserNodebalancerGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserStackscriptGrant:getUsersUserStackscriptGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserVolumeGrant:getUsersUserVolumeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -4414,6 +4891,10 @@
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
+            "skipImplicitReboots": {
+                "type": "boolean",
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
+            },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
                 "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
@@ -4474,6 +4955,10 @@
             "minRetryDelayMs": {
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
+            },
+            "skipImplicitReboots": {
+                "type": "boolean",
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
@@ -4581,7 +5066,7 @@
             }
         },
         "linode:index/databaseAccessControls:DatabaseAccessControls": {
-            "description": "Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGrant a Linode access to a database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"myinstance\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n    image: \"linode/alpine3.14\",\n});\nconst my_db = new linode.DatabaseMysql(\"my-db\", {\n    label: \"mydatabase\",\n    engineId: \"mysql/8.0.26\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n});\nconst my_access = new linode.DatabaseAccessControls(\"my-access\", {\n    databaseId: my_db.id,\n    databaseType: \"mysql\",\n    allowLists: [my_instance.ipAddress],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"myinstance\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\",\n    image=\"linode/alpine3.14\")\nmy_db = linode.DatabaseMysql(\"my-db\",\n    label=\"mydatabase\",\n    engine_id=\"mysql/8.0.26\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\")\nmy_access = linode.DatabaseAccessControls(\"my-access\",\n    database_id=my_db.id,\n    database_type=\"mysql\",\n    allow_lists=[my_instance.ip_address])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"myinstance\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n        Image = \"linode/alpine3.14\",\n    });\n\n    var my_db = new Linode.DatabaseMysql(\"my-db\", new()\n    {\n        Label = \"mydatabase\",\n        EngineId = \"mysql/8.0.26\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n    });\n\n    var my_access = new Linode.DatabaseAccessControls(\"my-access\", new()\n    {\n        DatabaseId = my_db.Id,\n        DatabaseType = \"mysql\",\n        AllowLists = new[]\n        {\n            my_instance.IpAddress,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"myinstance\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tImage:  pulumi.String(\"linode/alpine3.14\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewDatabaseMysql(ctx, \"my-db\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tLabel:    pulumi.String(\"mydatabase\"),\n\t\t\tEngineId: pulumi.String(\"mysql/8.0.26\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewDatabaseAccessControls(ctx, \"my-access\", \u0026linode.DatabaseAccessControlsArgs{\n\t\t\tDatabaseId:   my_db.ID(),\n\t\t\tDatabaseType: pulumi.String(\"mysql\"),\n\t\t\tAllowLists: pulumi.StringArray{\n\t\t\t\tmy_instance.IpAddress,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport com.pulumi.linode.DatabaseAccessControls;\nimport com.pulumi.linode.DatabaseAccessControlsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"myinstance\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .image(\"linode/alpine3.14\")\n            .build());\n\n        var my_db = new DatabaseMysql(\"my-db\", DatabaseMysqlArgs.builder()        \n            .label(\"mydatabase\")\n            .engineId(\"mysql/8.0.26\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n        var my_access = new DatabaseAccessControls(\"my-access\", DatabaseAccessControlsArgs.builder()        \n            .databaseId(my_db.id())\n            .databaseType(\"mysql\")\n            .allowLists(my_instance.ipAddress())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-access:\n    type: linode:DatabaseAccessControls\n    properties:\n      databaseId: ${[\"my-db\"].id}\n      databaseType: mysql\n      allowLists:\n        - ${[\"my-instance\"].ipAddress}\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: myinstance\n      region: us-southeast\n      type: g6-nanode-1\n      image: linode/alpine3.14\n  my-db:\n    type: linode:DatabaseMysql\n    properties:\n      label: mydatabase\n      engineId: mysql/8.0.26\n      region: us-southeast\n      type: g6-nanode-1\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGrant a Linode access to a database:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"myinstance\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n    image: \"linode/alpine3.14\",\n});\nconst my_db = new linode.DatabaseMysql(\"my-db\", {\n    label: \"mydatabase\",\n    engineId: \"mysql/8.0.30\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n});\nconst my_access = new linode.DatabaseAccessControls(\"my-access\", {\n    databaseId: my_db.id,\n    databaseType: \"mysql\",\n    allowLists: [my_instance.ipAddress],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"myinstance\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\",\n    image=\"linode/alpine3.14\")\nmy_db = linode.DatabaseMysql(\"my-db\",\n    label=\"mydatabase\",\n    engine_id=\"mysql/8.0.30\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\")\nmy_access = linode.DatabaseAccessControls(\"my-access\",\n    database_id=my_db.id,\n    database_type=\"mysql\",\n    allow_lists=[my_instance.ip_address])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"myinstance\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n        Image = \"linode/alpine3.14\",\n    });\n\n    var my_db = new Linode.DatabaseMysql(\"my-db\", new()\n    {\n        Label = \"mydatabase\",\n        EngineId = \"mysql/8.0.30\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n    });\n\n    var my_access = new Linode.DatabaseAccessControls(\"my-access\", new()\n    {\n        DatabaseId = my_db.Id,\n        DatabaseType = \"mysql\",\n        AllowLists = new[]\n        {\n            my_instance.IpAddress,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"myinstance\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tImage:  pulumi.String(\"linode/alpine3.14\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewDatabaseMysql(ctx, \"my-db\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tLabel:    pulumi.String(\"mydatabase\"),\n\t\t\tEngineId: pulumi.String(\"mysql/8.0.30\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewDatabaseAccessControls(ctx, \"my-access\", \u0026linode.DatabaseAccessControlsArgs{\n\t\t\tDatabaseId:   my_db.ID(),\n\t\t\tDatabaseType: pulumi.String(\"mysql\"),\n\t\t\tAllowLists: pulumi.StringArray{\n\t\t\t\tmy_instance.IpAddress,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport com.pulumi.linode.DatabaseAccessControls;\nimport com.pulumi.linode.DatabaseAccessControlsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"myinstance\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .image(\"linode/alpine3.14\")\n            .build());\n\n        var my_db = new DatabaseMysql(\"my-db\", DatabaseMysqlArgs.builder()        \n            .label(\"mydatabase\")\n            .engineId(\"mysql/8.0.30\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n        var my_access = new DatabaseAccessControls(\"my-access\", DatabaseAccessControlsArgs.builder()        \n            .databaseId(my_db.id())\n            .databaseType(\"mysql\")\n            .allowLists(my_instance.ipAddress())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-access:\n    type: linode:DatabaseAccessControls\n    properties:\n      databaseId: ${[\"my-db\"].id}\n      databaseType: mysql\n      allowLists:\n        - ${[\"my-instance\"].ipAddress}\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: myinstance\n      region: us-southeast\n      type: g6-nanode-1\n      image: linode/alpine3.14\n  my-db:\n    type: linode:DatabaseMysql\n    properties:\n      label: mydatabase\n      engineId: mysql/8.0.30\n      region: us-southeast\n      type: g6-nanode-1\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "allowLists": {
                     "type": "array",
@@ -4653,7 +5138,7 @@
             }
         },
         "linode:index/databaseMysql:DatabaseMysql": {
-            "description": "Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.\nFor more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).\n\nPlease keep in mind that Managed Databases can take up to an hour to provision.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a simple MySQL database instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.DatabaseMysql(\"foobar\", {\n    engineId: \"mysql/8.0.26\",\n    label: \"mydatabase\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.DatabaseMysql(\"foobar\",\n    engine_id=\"mysql/8.0.26\",\n    label=\"mydatabase\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.DatabaseMysql(\"foobar\", new()\n    {\n        EngineId = \"mysql/8.0.26\",\n        Label = \"mydatabase\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewDatabaseMysql(ctx, \"foobar\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tEngineId: pulumi.String(\"mysql/8.0.26\"),\n\t\t\tLabel:    pulumi.String(\"mydatabase\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new DatabaseMysql(\"foobar\", DatabaseMysqlArgs.builder()        \n            .engineId(\"mysql/8.0.26\")\n            .label(\"mydatabase\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:DatabaseMysql\n    properties:\n      engineId: mysql/8.0.26\n      label: mydatabase\n      region: us-southeast\n      type: g6-nanode-1\n```\n\nCreating a complex MySQL database instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.DatabaseMysql(\"foobar\", {\n    allowLists: [\"0.0.0.0/0\"],\n    clusterSize: 3,\n    encrypted: true,\n    engineId: \"mysql/8.0.26\",\n    label: \"mydatabase\",\n    region: \"us-southeast\",\n    replicationType: \"asynch\",\n    sslConnection: true,\n    type: \"g6-nanode-1\",\n    updates: {\n        dayOfWeek: \"saturday\",\n        duration: 1,\n        frequency: \"monthly\",\n        hourOfDay: 22,\n        weekOfMonth: 2,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.DatabaseMysql(\"foobar\",\n    allow_lists=[\"0.0.0.0/0\"],\n    cluster_size=3,\n    encrypted=True,\n    engine_id=\"mysql/8.0.26\",\n    label=\"mydatabase\",\n    region=\"us-southeast\",\n    replication_type=\"asynch\",\n    ssl_connection=True,\n    type=\"g6-nanode-1\",\n    updates=linode.DatabaseMysqlUpdatesArgs(\n        day_of_week=\"saturday\",\n        duration=1,\n        frequency=\"monthly\",\n        hour_of_day=22,\n        week_of_month=2,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.DatabaseMysql(\"foobar\", new()\n    {\n        AllowLists = new[]\n        {\n            \"0.0.0.0/0\",\n        },\n        ClusterSize = 3,\n        Encrypted = true,\n        EngineId = \"mysql/8.0.26\",\n        Label = \"mydatabase\",\n        Region = \"us-southeast\",\n        ReplicationType = \"asynch\",\n        SslConnection = true,\n        Type = \"g6-nanode-1\",\n        Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs\n        {\n            DayOfWeek = \"saturday\",\n            Duration = 1,\n            Frequency = \"monthly\",\n            HourOfDay = 22,\n            WeekOfMonth = 2,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewDatabaseMysql(ctx, \"foobar\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tAllowLists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t},\n\t\t\tClusterSize:     pulumi.Int(3),\n\t\t\tEncrypted:       pulumi.Bool(true),\n\t\t\tEngineId:        pulumi.String(\"mysql/8.0.26\"),\n\t\t\tLabel:           pulumi.String(\"mydatabase\"),\n\t\t\tRegion:          pulumi.String(\"us-southeast\"),\n\t\t\tReplicationType: pulumi.String(\"asynch\"),\n\t\t\tSslConnection:   pulumi.Bool(true),\n\t\t\tType:            pulumi.String(\"g6-nanode-1\"),\n\t\t\tUpdates: \u0026linode.DatabaseMysqlUpdatesArgs{\n\t\t\t\tDayOfWeek:   pulumi.String(\"saturday\"),\n\t\t\t\tDuration:    pulumi.Int(1),\n\t\t\t\tFrequency:   pulumi.String(\"monthly\"),\n\t\t\t\tHourOfDay:   pulumi.Int(22),\n\t\t\t\tWeekOfMonth: pulumi.Int(2),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport com.pulumi.linode.inputs.DatabaseMysqlUpdatesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new DatabaseMysql(\"foobar\", DatabaseMysqlArgs.builder()        \n            .allowLists(\"0.0.0.0/0\")\n            .clusterSize(3)\n            .encrypted(true)\n            .engineId(\"mysql/8.0.26\")\n            .label(\"mydatabase\")\n            .region(\"us-southeast\")\n            .replicationType(\"asynch\")\n            .sslConnection(true)\n            .type(\"g6-nanode-1\")\n            .updates(DatabaseMysqlUpdatesArgs.builder()\n                .dayOfWeek(\"saturday\")\n                .duration(1)\n                .frequency(\"monthly\")\n                .hourOfDay(22)\n                .weekOfMonth(2)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:DatabaseMysql\n    properties:\n      allowLists:\n        - 0.0.0.0/0\n      clusterSize: 3\n      encrypted: true\n      engineId: mysql/8.0.26\n      label: mydatabase\n      region: us-southeast\n      replicationType: asynch\n      sslConnection: true\n      type: g6-nanode-1\n      updates:\n        dayOfWeek: saturday\n        duration: 1\n        frequency: monthly\n        hourOfDay: 22\n        weekOfMonth: 2\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are supported in the `updates` specification block:\n\n* `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n\n\n## Import\n\nLinode MySQL Databases can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567\n```\n\n ",
+            "description": "Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.\nFor more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).\n\nPlease keep in mind that Managed Databases can take up to an hour to provision.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a simple MySQL database instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.DatabaseMysql(\"foobar\", {\n    engineId: \"mysql/8.0.30\",\n    label: \"mydatabase\",\n    region: \"us-southeast\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.DatabaseMysql(\"foobar\",\n    engine_id=\"mysql/8.0.30\",\n    label=\"mydatabase\",\n    region=\"us-southeast\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.DatabaseMysql(\"foobar\", new()\n    {\n        EngineId = \"mysql/8.0.30\",\n        Label = \"mydatabase\",\n        Region = \"us-southeast\",\n        Type = \"g6-nanode-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewDatabaseMysql(ctx, \"foobar\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tEngineId: pulumi.String(\"mysql/8.0.30\"),\n\t\t\tLabel:    pulumi.String(\"mydatabase\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new DatabaseMysql(\"foobar\", DatabaseMysqlArgs.builder()        \n            .engineId(\"mysql/8.0.30\")\n            .label(\"mydatabase\")\n            .region(\"us-southeast\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:DatabaseMysql\n    properties:\n      engineId: mysql/8.0.30\n      label: mydatabase\n      region: us-southeast\n      type: g6-nanode-1\n```\n\nCreating a complex MySQL database instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.DatabaseMysql(\"foobar\", {\n    allowLists: [\"0.0.0.0/0\"],\n    clusterSize: 3,\n    encrypted: true,\n    engineId: \"mysql/8.0.30\",\n    label: \"mydatabase\",\n    region: \"us-southeast\",\n    replicationType: \"asynch\",\n    sslConnection: true,\n    type: \"g6-nanode-1\",\n    updates: {\n        dayOfWeek: \"saturday\",\n        duration: 1,\n        frequency: \"monthly\",\n        hourOfDay: 22,\n        weekOfMonth: 2,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.DatabaseMysql(\"foobar\",\n    allow_lists=[\"0.0.0.0/0\"],\n    cluster_size=3,\n    encrypted=True,\n    engine_id=\"mysql/8.0.30\",\n    label=\"mydatabase\",\n    region=\"us-southeast\",\n    replication_type=\"asynch\",\n    ssl_connection=True,\n    type=\"g6-nanode-1\",\n    updates=linode.DatabaseMysqlUpdatesArgs(\n        day_of_week=\"saturday\",\n        duration=1,\n        frequency=\"monthly\",\n        hour_of_day=22,\n        week_of_month=2,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.DatabaseMysql(\"foobar\", new()\n    {\n        AllowLists = new[]\n        {\n            \"0.0.0.0/0\",\n        },\n        ClusterSize = 3,\n        Encrypted = true,\n        EngineId = \"mysql/8.0.30\",\n        Label = \"mydatabase\",\n        Region = \"us-southeast\",\n        ReplicationType = \"asynch\",\n        SslConnection = true,\n        Type = \"g6-nanode-1\",\n        Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs\n        {\n            DayOfWeek = \"saturday\",\n            Duration = 1,\n            Frequency = \"monthly\",\n            HourOfDay = 22,\n            WeekOfMonth = 2,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewDatabaseMysql(ctx, \"foobar\", \u0026linode.DatabaseMysqlArgs{\n\t\t\tAllowLists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t},\n\t\t\tClusterSize:     pulumi.Int(3),\n\t\t\tEncrypted:       pulumi.Bool(true),\n\t\t\tEngineId:        pulumi.String(\"mysql/8.0.30\"),\n\t\t\tLabel:           pulumi.String(\"mydatabase\"),\n\t\t\tRegion:          pulumi.String(\"us-southeast\"),\n\t\t\tReplicationType: pulumi.String(\"asynch\"),\n\t\t\tSslConnection:   pulumi.Bool(true),\n\t\t\tType:            pulumi.String(\"g6-nanode-1\"),\n\t\t\tUpdates: \u0026linode.DatabaseMysqlUpdatesArgs{\n\t\t\t\tDayOfWeek:   pulumi.String(\"saturday\"),\n\t\t\t\tDuration:    pulumi.Int(1),\n\t\t\t\tFrequency:   pulumi.String(\"monthly\"),\n\t\t\t\tHourOfDay:   pulumi.Int(22),\n\t\t\t\tWeekOfMonth: pulumi.Int(2),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.DatabaseMysql;\nimport com.pulumi.linode.DatabaseMysqlArgs;\nimport com.pulumi.linode.inputs.DatabaseMysqlUpdatesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new DatabaseMysql(\"foobar\", DatabaseMysqlArgs.builder()        \n            .allowLists(\"0.0.0.0/0\")\n            .clusterSize(3)\n            .encrypted(true)\n            .engineId(\"mysql/8.0.30\")\n            .label(\"mydatabase\")\n            .region(\"us-southeast\")\n            .replicationType(\"asynch\")\n            .sslConnection(true)\n            .type(\"g6-nanode-1\")\n            .updates(DatabaseMysqlUpdatesArgs.builder()\n                .dayOfWeek(\"saturday\")\n                .duration(1)\n                .frequency(\"monthly\")\n                .hourOfDay(22)\n                .weekOfMonth(2)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:DatabaseMysql\n    properties:\n      allowLists:\n        - 0.0.0.0/0\n      clusterSize: 3\n      encrypted: true\n      engineId: mysql/8.0.30\n      label: mydatabase\n      region: us-southeast\n      replicationType: asynch\n      sslConnection: true\n      type: g6-nanode-1\n      updates:\n        dayOfWeek: saturday\n        duration: 1\n        frequency: monthly\n        hourOfDay: 22\n        weekOfMonth: 2\n```\n{{% /example %}}\n{{% /examples %}}\n## updates\n\nThe following arguments are supported in the `updates` specification block:\n\n* `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)\n\n* `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)\n\n* `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)\n\n* `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)\n\n* `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)\n\n\n## Import\n\nLinode MySQL Databases can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567\n```\n\n ",
             "properties": {
                 "allowLists": {
                     "type": "array",
@@ -4685,7 +5170,7 @@
                 },
                 "engineId": {
                     "type": "string",
-                    "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)\n"
+                    "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)\n"
                 },
                 "hostPrimary": {
                     "type": "string",
@@ -4780,7 +5265,7 @@
                 },
                 "engineId": {
                     "type": "string",
-                    "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)\n",
+                    "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)\n",
                     "willReplaceOnChanges": true
                 },
                 "label": {
@@ -4853,7 +5338,7 @@
                     },
                     "engineId": {
                         "type": "string",
-                        "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)\n",
+                        "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)\n",
                         "willReplaceOnChanges": true
                     },
                     "hostPrimary": {
@@ -5853,6 +6338,17 @@
         "linode:index/image:Image": {
             "description": "Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.\n\nFor more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).\n\n\n## Import\n\nLinodes Images can be imported using the Linode Image `id`, e.g.\n\n```sh\n $ pulumi import linode:index/image:Image myimage 1234567\n```\n\n ",
             "properties": {
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The capabilities of this Image.\n"
+                },
+                "cloudInit": {
+                    "type": "boolean",
+                    "description": "Whether this image supports cloud-init.\n"
+                },
                 "created": {
                     "type": "string",
                     "description": "When this Image was created.\n"
@@ -5919,6 +6415,7 @@
                 }
             },
             "required": [
+                "capabilities",
                 "created",
                 "createdBy",
                 "deprecated",
@@ -5932,6 +6429,11 @@
                 "vendor"
             ],
             "inputProperties": {
+                "cloudInit": {
+                    "type": "boolean",
+                    "description": "Whether this image supports cloud-init.\n",
+                    "willReplaceOnChanges": true
+                },
                 "description": {
                     "type": "string",
                     "description": "A detailed description of this Image.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
@@ -5971,6 +6473,18 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Image resources.\n",
                 "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The capabilities of this Image.\n"
+                    },
+                    "cloudInit": {
+                        "type": "boolean",
+                        "description": "Whether this image supports cloud-init.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "created": {
                         "type": "string",
                         "description": "When this Image was created.\n"
@@ -6101,6 +6615,10 @@
                     "type": "string",
                     "description": "The display group of the Linode instance.\n"
                 },
+                "hasUserData": {
+                    "type": "boolean",
+                    "description": "Whether or not this Instance was created with user-data.\n"
+                },
                 "hostUuid": {
                     "type": "string",
                     "description": "The Linode’s host machine, as a UUID.\n"
@@ -6134,6 +6652,13 @@
                 "label": {
                     "type": "string",
                     "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                },
+                "metadatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
+                    },
+                    "description": "Various fields related to the Linode Metadata service.\n"
                 },
                 "privateIp": {
                     "type": "boolean",
@@ -6211,6 +6736,7 @@
                 "booted",
                 "configs",
                 "disks",
+                "hasUserData",
                 "hostUuid",
                 "ipAddress",
                 "ipv4s",
@@ -6293,6 +6819,13 @@
                 "label": {
                     "type": "string",
                     "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                },
+                "metadatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
+                    },
+                    "description": "Various fields related to the Linode Metadata service.\n"
                 },
                 "privateIp": {
                     "type": "boolean",
@@ -6418,6 +6951,10 @@
                         "type": "string",
                         "description": "The display group of the Linode instance.\n"
                     },
+                    "hasUserData": {
+                        "type": "boolean",
+                        "description": "Whether or not this Instance was created with user-data.\n"
+                    },
                     "hostUuid": {
                         "type": "string",
                         "description": "The Linode’s host machine, as a UUID.\n"
@@ -6452,6 +6989,13 @@
                     "label": {
                         "type": "string",
                         "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                    },
+                    "metadatas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
+                        },
+                        "description": "Various fields related to the Linode Metadata service.\n"
                     },
                     "privateIp": {
                         "type": "boolean",
@@ -7896,8 +8440,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess"
                     },
-                    "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n"
                 },
                 "label": {
                     "type": "string",
@@ -7919,8 +8462,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/ObjectStorageKeyBucketAccess:ObjectStorageKeyBucketAccess"
                         },
-                        "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.\n"
                     },
                     "label": {
                         "type": "string",
@@ -8320,8 +8862,7 @@
                         "csharp": {
                             "name": "SshKeyName"
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "requiredInputs": [
@@ -8346,8 +8887,7 @@
                             "csharp": {
                                 "name": "SshKeyName"
                             }
-                        },
-                        "willReplaceOnChanges": true
+                        }
                     }
                 },
                 "type": "object"
@@ -9389,7 +9929,8 @@
                 "properties": {
                     "databaseId": {
                         "type": "integer",
-                        "description": "The ID of the MySQL database. Deprecated: Use id instead.\n"
+                        "description": "The ID of the MySQL database. Deprecated: Use id instead.\n",
+                        "deprecationMessage": "Configure `id` instead. This attribute will be removed in the next major version of the provider."
                     },
                     "id": {
                         "type": "integer",
@@ -9422,7 +9963,8 @@
                         "description": "When this Managed Database was created.\n"
                     },
                     "databaseId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "deprecationMessage": "Configure `id` instead. This attribute will be removed in the next major version of the provider."
                     },
                     "encrypted": {
                         "type": "boolean",
@@ -9434,7 +9976,7 @@
                     },
                     "engineId": {
                         "type": "string",
-                        "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.26`)\n"
+                        "description": "The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)\n"
                     },
                     "hostPrimary": {
                         "type": "string",
@@ -9601,7 +10143,8 @@
                 "properties": {
                     "databaseId": {
                         "type": "integer",
-                        "description": "The ID of the PostgreSQL database. Deprecated: Use id instead.\n"
+                        "description": "The ID of the PostgreSQL database. Deprecated: Use id instead.\n",
+                        "deprecationMessage": "Configure `id` instead. This attribute will be removed in the next major version of the provider."
                     },
                     "id": {
                         "type": "integer",
@@ -9634,7 +10177,8 @@
                         "description": "When this Managed Database was created.\n"
                     },
                     "databaseId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "deprecationMessage": "Configure `id` instead. This attribute will be removed in the next major version of the provider."
                     },
                     "encrypted": {
                         "type": "boolean",
@@ -10144,6 +10688,12 @@
             "outputs": {
                 "description": "A collection of values returned by getImage.\n",
                 "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "created": {
                         "type": "string",
                         "description": "When this Image was created.\n"
@@ -10193,6 +10743,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "capabilities",
                     "created",
                     "createdBy",
                     "deprecated",
@@ -10330,7 +10881,7 @@
             }
         },
         "linode:index/getInstanceNetworking:getInstanceNetworking": {
-            "description": "Provides details about the networking configuration of an Instance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstanceNetworkingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()\n            .id(123)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: linode:getInstanceNetworking\n      Arguments:\n        id: 123\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides details about the networking configuration of an Instance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getInstanceNetworking({\n    linodeId: 123,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_instance_networking(linode_id=123)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetInstanceNetworking.Invoke(new()\n    {\n        LinodeId = 123,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetInstanceNetworking(ctx, \u0026linode.GetInstanceNetworkingArgs{\n\t\t\tLinodeId: 123,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstanceNetworkingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getInstanceNetworking(GetInstanceNetworkingArgs.builder()\n            .linodeId(123)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: linode:getInstanceNetworking\n      Arguments:\n        linodeId: 123\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstanceNetworking.\n",
                 "properties": {
@@ -11638,57 +12189,49 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserDatabaseGrant:getUserDatabaseGrant"
-                        },
-                        "description": "The grants this User has pertaining to Databases on this Account.\n"
+                        }
                     },
                     "domainGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserDomainGrant:getUserDomainGrant"
-                        },
-                        "description": "The grants this User has pertaining to Domains on this Account.\n"
+                        }
                     },
                     "firewallGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserFirewallGrant:getUserFirewallGrant"
-                        },
-                        "description": "The grants this User has pertaining to Firewalls on this Account.\n"
+                        }
                     },
                     "imageGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserImageGrant:getUserImageGrant"
-                        },
-                        "description": "The grants this User has pertaining to Images on this Account.\n"
+                        }
                     },
                     "linodeGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserLinodeGrant:getUserLinodeGrant"
-                        },
-                        "description": "The grants this User has pertaining to Linodes on this Account.\n"
+                        }
                     },
                     "longviewGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserLongviewGrant:getUserLongviewGrant"
-                        },
-                        "description": "The grants this User has pertaining to Longview Clients on this Account.\n"
+                        }
                     },
                     "nodebalancerGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserNodebalancerGrant:getUserNodebalancerGrant"
-                        },
-                        "description": "The grants this User has pertaining to NodeBalancers on this Account.\n"
+                        }
                     },
                     "stackscriptGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserStackscriptGrant:getUserStackscriptGrant"
-                        },
-                        "description": "The grants this User has pertaining to StackScripts on this Account.\n"
+                        }
                     },
                     "username": {
                         "type": "string",
@@ -11698,8 +12241,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserVolumeGrant:getUserVolumeGrant"
-                        },
-                        "description": "The grants this User has pertaining to Volumes on this Account.\n"
+                        }
                     }
                 },
                 "type": "object",
@@ -11714,15 +12256,13 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserDatabaseGrant:getUserDatabaseGrant"
-                        },
-                        "description": "The grants this User has pertaining to Databases on this Account.\n"
+                        }
                     },
                     "domainGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserDomainGrant:getUserDomainGrant"
-                        },
-                        "description": "The grants this User has pertaining to Domains on this Account.\n"
+                        }
                     },
                     "email": {
                         "type": "string",
@@ -11732,46 +12272,45 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserFirewallGrant:getUserFirewallGrant"
-                        },
-                        "description": "The grants this User has pertaining to Firewalls on this Account.\n"
+                        }
                     },
                     "globalGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserGlobalGrant:getUserGlobalGrant"
-                        },
-                        "description": "The Account-level grants a User has.\n"
+                        }
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of entity this grant applies to.\n"
                     },
                     "imageGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserImageGrant:getUserImageGrant"
-                        },
-                        "description": "The grants this User has pertaining to Images on this Account.\n"
+                        }
                     },
                     "linodeGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserLinodeGrant:getUserLinodeGrant"
-                        },
-                        "description": "The grants this User has pertaining to Linodes on this Account.\n"
+                        }
                     },
                     "longviewGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserLongviewGrant:getUserLongviewGrant"
-                        },
-                        "description": "The grants this User has pertaining to Longview Clients on this Account.\n"
+                        }
                     },
                     "nodebalancerGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserNodebalancerGrant:getUserNodebalancerGrant"
-                        },
-                        "description": "The grants this User has pertaining to NodeBalancers on this Account.\n"
+                        }
+                    },
+                    "passwordCreated": {
+                        "type": "string",
+                        "description": "The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.\n"
                     },
                     "restricted": {
                         "type": "boolean",
@@ -11788,18 +12327,24 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserStackscriptGrant:getUserStackscriptGrant"
-                        },
-                        "description": "The grants this User has pertaining to StackScripts on this Account.\n"
+                        }
+                    },
+                    "tfaEnabled": {
+                        "type": "boolean",
+                        "description": "A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.\n"
                     },
                     "username": {
                         "type": "string"
+                    },
+                    "verifiedPhoneNumber": {
+                        "type": "string",
+                        "description": "The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.\n"
                     },
                     "volumeGrants": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserVolumeGrant:getUserVolumeGrant"
-                        },
-                        "description": "The grants this User has pertaining to Volumes on this Account.\n"
+                        }
                     }
                 },
                 "type": "object",
@@ -11814,11 +12359,74 @@
                     "linodeGrants",
                     "longviewGrants",
                     "nodebalancerGrants",
+                    "passwordCreated",
                     "restricted",
                     "sshKeys",
                     "stackscriptGrants",
+                    "tfaEnabled",
                     "username",
+                    "verifiedPhoneNumber",
                     "volumeGrants"
+                ]
+            }
+        },
+        "linode:index/getUsers:getUsers": {
+            "description": "Provides information about Linode users that match a set of filters.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-users = linode.getUsers({\n    filters: [{\n        name: \"username\",\n        values: [\"test-user\"],\n    }],\n});\nexport const users = filtered_users.then(filtered_users =\u003e filtered_users.users);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_users = linode.get_users(filters=[linode.GetUsersFilterArgs(\n    name=\"username\",\n    values=[\"test-user\"],\n)])\npulumi.export(\"users\", filtered_users.users)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_users = Linode.GetUsers.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetUsersFilterInputArgs\n            {\n                Name = \"username\",\n                Values = new[]\n                {\n                    \"test-user\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"users\"] = filtered_users.Apply(filtered_users =\u003e filtered_users.Apply(getUsersResult =\u003e getUsersResult.Users)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_users, err := linode.GetUsers(ctx, \u0026linode.GetUsersArgs{\n\t\t\tFilters: []linode.GetUsersFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"username\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test-user\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"users\", filtered_users.Users)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()\n            .filters(GetUsersFilterArgs.builder()\n                .name(\"username\")\n                .values(\"test-user\")\n                .build())\n            .build());\n\n        ctx.export(\"users\", filtered_users.users());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-users:\n    fn::invoke:\n      Function: linode:getUsers\n      Arguments:\n        filters:\n          - name: username\n            values:\n              - test-user\noutputs:\n  users: ${[\"filtered-users\"].users}\n```\n\n## Filterable Fields\n\n* `username`\n\n* `email`\n\n* `restricted`\n\n* `password_created`\n\n* `tfa_enabled`\n\n* `verfied_phone_number`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsers.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUsersFilter:getUsersFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUsersUser:getUsersUser"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUsersFilter:getUsersFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of entity this grant applies to.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUsersUser:getUsersUser"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         },
