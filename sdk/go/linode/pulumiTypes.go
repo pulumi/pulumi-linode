@@ -4702,11 +4702,11 @@ func (o NodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) NodeBa
 
 type NodeBalancerTransfer struct {
 	// The total transfer, in MB, used by this NodeBalancer for the current month
-	In *float64 `pulumi:"in"`
+	In float64 `pulumi:"in"`
 	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
-	Out *float64 `pulumi:"out"`
+	Out float64 `pulumi:"out"`
 	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
-	Total *float64 `pulumi:"total"`
+	Total float64 `pulumi:"total"`
 }
 
 // NodeBalancerTransferInput is an input type that accepts NodeBalancerTransferArgs and NodeBalancerTransferOutput values.
@@ -4722,11 +4722,11 @@ type NodeBalancerTransferInput interface {
 
 type NodeBalancerTransferArgs struct {
 	// The total transfer, in MB, used by this NodeBalancer for the current month
-	In pulumi.Float64PtrInput `pulumi:"in"`
+	In pulumi.Float64Input `pulumi:"in"`
 	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
-	Out pulumi.Float64PtrInput `pulumi:"out"`
+	Out pulumi.Float64Input `pulumi:"out"`
 	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
-	Total pulumi.Float64PtrInput `pulumi:"total"`
+	Total pulumi.Float64Input `pulumi:"total"`
 }
 
 func (NodeBalancerTransferArgs) ElementType() reflect.Type {
@@ -4781,18 +4781,18 @@ func (o NodeBalancerTransferOutput) ToNodeBalancerTransferOutputWithContext(ctx 
 }
 
 // The total transfer, in MB, used by this NodeBalancer for the current month
-func (o NodeBalancerTransferOutput) In() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.In }).(pulumi.Float64PtrOutput)
+func (o NodeBalancerTransferOutput) In() pulumi.Float64Output {
+	return o.ApplyT(func(v NodeBalancerTransfer) float64 { return v.In }).(pulumi.Float64Output)
 }
 
 // The total inbound transfer, in MB, used for this NodeBalancer for the current month
-func (o NodeBalancerTransferOutput) Out() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Out }).(pulumi.Float64PtrOutput)
+func (o NodeBalancerTransferOutput) Out() pulumi.Float64Output {
+	return o.ApplyT(func(v NodeBalancerTransfer) float64 { return v.Out }).(pulumi.Float64Output)
 }
 
 // The total outbound transfer, in MB, used for this NodeBalancer for the current month
-func (o NodeBalancerTransferOutput) Total() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NodeBalancerTransfer) *float64 { return v.Total }).(pulumi.Float64PtrOutput)
+func (o NodeBalancerTransferOutput) Total() pulumi.Float64Output {
+	return o.ApplyT(func(v NodeBalancerTransfer) float64 { return v.Total }).(pulumi.Float64Output)
 }
 
 type NodeBalancerTransferArrayOutput struct{ *pulumi.OutputState }
@@ -15318,6 +15318,420 @@ func (o GetNodeBalancerTransferArrayOutput) Index(i pulumi.IntInput) GetNodeBala
 	}).(GetNodeBalancerTransferOutput)
 }
 
+type GetNodebalancersFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetNodebalancersFilterInput is an input type that accepts GetNodebalancersFilterArgs and GetNodebalancersFilterOutput values.
+// You can construct a concrete instance of `GetNodebalancersFilterInput` via:
+//
+//	GetNodebalancersFilterArgs{...}
+type GetNodebalancersFilterInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersFilterOutput() GetNodebalancersFilterOutput
+	ToGetNodebalancersFilterOutputWithContext(context.Context) GetNodebalancersFilterOutput
+}
+
+type GetNodebalancersFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNodebalancersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersFilter)(nil)).Elem()
+}
+
+func (i GetNodebalancersFilterArgs) ToGetNodebalancersFilterOutput() GetNodebalancersFilterOutput {
+	return i.ToGetNodebalancersFilterOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersFilterArgs) ToGetNodebalancersFilterOutputWithContext(ctx context.Context) GetNodebalancersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersFilterOutput)
+}
+
+// GetNodebalancersFilterArrayInput is an input type that accepts GetNodebalancersFilterArray and GetNodebalancersFilterArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancersFilterArrayInput` via:
+//
+//	GetNodebalancersFilterArray{ GetNodebalancersFilterArgs{...} }
+type GetNodebalancersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersFilterArrayOutput() GetNodebalancersFilterArrayOutput
+	ToGetNodebalancersFilterArrayOutputWithContext(context.Context) GetNodebalancersFilterArrayOutput
+}
+
+type GetNodebalancersFilterArray []GetNodebalancersFilterInput
+
+func (GetNodebalancersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersFilter)(nil)).Elem()
+}
+
+func (i GetNodebalancersFilterArray) ToGetNodebalancersFilterArrayOutput() GetNodebalancersFilterArrayOutput {
+	return i.ToGetNodebalancersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersFilterArray) ToGetNodebalancersFilterArrayOutputWithContext(ctx context.Context) GetNodebalancersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersFilterArrayOutput)
+}
+
+type GetNodebalancersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersFilter)(nil)).Elem()
+}
+
+func (o GetNodebalancersFilterOutput) ToGetNodebalancersFilterOutput() GetNodebalancersFilterOutput {
+	return o
+}
+
+func (o GetNodebalancersFilterOutput) ToGetNodebalancersFilterOutputWithContext(ctx context.Context) GetNodebalancersFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetNodebalancersFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodebalancersFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetNodebalancersFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetNodebalancersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodebalancersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNodebalancersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersFilter)(nil)).Elem()
+}
+
+func (o GetNodebalancersFilterArrayOutput) ToGetNodebalancersFilterArrayOutput() GetNodebalancersFilterArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersFilterArrayOutput) ToGetNodebalancersFilterArrayOutputWithContext(ctx context.Context) GetNodebalancersFilterArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersFilterArrayOutput) Index(i pulumi.IntInput) GetNodebalancersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancersFilter {
+		return vs[0].([]GetNodebalancersFilter)[vs[1].(int)]
+	}).(GetNodebalancersFilterOutput)
+}
+
+type GetNodebalancersNodebalancer struct {
+	// Throttle connections per second (0-20)
+	ClientConnThrottle int `pulumi:"clientConnThrottle"`
+	// When this Linode NodeBalancer was created
+	Created string `pulumi:"created"`
+	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+	Hostname string `pulumi:"hostname"`
+	// The Linode NodeBalancer's unique ID
+	Id int `pulumi:"id"`
+	// The Public IPv4 Address of this NodeBalancer
+	Ipv4 string `pulumi:"ipv4"`
+	// The Public IPv6 Address of this NodeBalancer
+	Ipv6 string `pulumi:"ipv6"`
+	// The label of the Linode NodeBalancer
+	Label string `pulumi:"label"`
+	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+	Region string `pulumi:"region"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags      []string                               `pulumi:"tags"`
+	Transfers []GetNodebalancersNodebalancerTransfer `pulumi:"transfers"`
+	// When this Linode NodeBalancer was last updated
+	Updated string `pulumi:"updated"`
+}
+
+// GetNodebalancersNodebalancerInput is an input type that accepts GetNodebalancersNodebalancerArgs and GetNodebalancersNodebalancerOutput values.
+// You can construct a concrete instance of `GetNodebalancersNodebalancerInput` via:
+//
+//	GetNodebalancersNodebalancerArgs{...}
+type GetNodebalancersNodebalancerInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersNodebalancerOutput() GetNodebalancersNodebalancerOutput
+	ToGetNodebalancersNodebalancerOutputWithContext(context.Context) GetNodebalancersNodebalancerOutput
+}
+
+type GetNodebalancersNodebalancerArgs struct {
+	// Throttle connections per second (0-20)
+	ClientConnThrottle pulumi.IntInput `pulumi:"clientConnThrottle"`
+	// When this Linode NodeBalancer was created
+	Created pulumi.StringInput `pulumi:"created"`
+	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The Linode NodeBalancer's unique ID
+	Id pulumi.IntInput `pulumi:"id"`
+	// The Public IPv4 Address of this NodeBalancer
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	// The Public IPv6 Address of this NodeBalancer
+	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
+	// The label of the Linode NodeBalancer
+	Label pulumi.StringInput `pulumi:"label"`
+	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags      pulumi.StringArrayInput                        `pulumi:"tags"`
+	Transfers GetNodebalancersNodebalancerTransferArrayInput `pulumi:"transfers"`
+	// When this Linode NodeBalancer was last updated
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetNodebalancersNodebalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersNodebalancer)(nil)).Elem()
+}
+
+func (i GetNodebalancersNodebalancerArgs) ToGetNodebalancersNodebalancerOutput() GetNodebalancersNodebalancerOutput {
+	return i.ToGetNodebalancersNodebalancerOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersNodebalancerArgs) ToGetNodebalancersNodebalancerOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersNodebalancerOutput)
+}
+
+// GetNodebalancersNodebalancerArrayInput is an input type that accepts GetNodebalancersNodebalancerArray and GetNodebalancersNodebalancerArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancersNodebalancerArrayInput` via:
+//
+//	GetNodebalancersNodebalancerArray{ GetNodebalancersNodebalancerArgs{...} }
+type GetNodebalancersNodebalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersNodebalancerArrayOutput() GetNodebalancersNodebalancerArrayOutput
+	ToGetNodebalancersNodebalancerArrayOutputWithContext(context.Context) GetNodebalancersNodebalancerArrayOutput
+}
+
+type GetNodebalancersNodebalancerArray []GetNodebalancersNodebalancerInput
+
+func (GetNodebalancersNodebalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersNodebalancer)(nil)).Elem()
+}
+
+func (i GetNodebalancersNodebalancerArray) ToGetNodebalancersNodebalancerArrayOutput() GetNodebalancersNodebalancerArrayOutput {
+	return i.ToGetNodebalancersNodebalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersNodebalancerArray) ToGetNodebalancersNodebalancerArrayOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersNodebalancerArrayOutput)
+}
+
+type GetNodebalancersNodebalancerOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersNodebalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersNodebalancer)(nil)).Elem()
+}
+
+func (o GetNodebalancersNodebalancerOutput) ToGetNodebalancersNodebalancerOutput() GetNodebalancersNodebalancerOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerOutput) ToGetNodebalancersNodebalancerOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerOutput {
+	return o
+}
+
+// Throttle connections per second (0-20)
+func (o GetNodebalancersNodebalancerOutput) ClientConnThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
+}
+
+// When this Linode NodeBalancer was created
+func (o GetNodebalancersNodebalancerOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+func (o GetNodebalancersNodebalancerOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The Linode NodeBalancer's unique ID
+func (o GetNodebalancersNodebalancerOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The Public IPv4 Address of this NodeBalancer
+func (o GetNodebalancersNodebalancerOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// The Public IPv6 Address of this NodeBalancer
+func (o GetNodebalancersNodebalancerOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o GetNodebalancersNodebalancerOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+func (o GetNodebalancersNodebalancerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o GetNodebalancersNodebalancerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNodebalancersNodebalancerOutput) Transfers() GetNodebalancersNodebalancerTransferArrayOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) []GetNodebalancersNodebalancerTransfer { return v.Transfers }).(GetNodebalancersNodebalancerTransferArrayOutput)
+}
+
+// When this Linode NodeBalancer was last updated
+func (o GetNodebalancersNodebalancerOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetNodebalancersNodebalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersNodebalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersNodebalancer)(nil)).Elem()
+}
+
+func (o GetNodebalancersNodebalancerArrayOutput) ToGetNodebalancersNodebalancerArrayOutput() GetNodebalancersNodebalancerArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerArrayOutput) ToGetNodebalancersNodebalancerArrayOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerArrayOutput) Index(i pulumi.IntInput) GetNodebalancersNodebalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancersNodebalancer {
+		return vs[0].([]GetNodebalancersNodebalancer)[vs[1].(int)]
+	}).(GetNodebalancersNodebalancerOutput)
+}
+
+type GetNodebalancersNodebalancerTransfer struct {
+	// The total transfer, in MB, used by this NodeBalancer for the current month
+	In float64 `pulumi:"in"`
+	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+	Out float64 `pulumi:"out"`
+	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
+	Total float64 `pulumi:"total"`
+}
+
+// GetNodebalancersNodebalancerTransferInput is an input type that accepts GetNodebalancersNodebalancerTransferArgs and GetNodebalancersNodebalancerTransferOutput values.
+// You can construct a concrete instance of `GetNodebalancersNodebalancerTransferInput` via:
+//
+//	GetNodebalancersNodebalancerTransferArgs{...}
+type GetNodebalancersNodebalancerTransferInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersNodebalancerTransferOutput() GetNodebalancersNodebalancerTransferOutput
+	ToGetNodebalancersNodebalancerTransferOutputWithContext(context.Context) GetNodebalancersNodebalancerTransferOutput
+}
+
+type GetNodebalancersNodebalancerTransferArgs struct {
+	// The total transfer, in MB, used by this NodeBalancer for the current month
+	In pulumi.Float64Input `pulumi:"in"`
+	// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+	Out pulumi.Float64Input `pulumi:"out"`
+	// The total outbound transfer, in MB, used for this NodeBalancer for the current month
+	Total pulumi.Float64Input `pulumi:"total"`
+}
+
+func (GetNodebalancersNodebalancerTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersNodebalancerTransfer)(nil)).Elem()
+}
+
+func (i GetNodebalancersNodebalancerTransferArgs) ToGetNodebalancersNodebalancerTransferOutput() GetNodebalancersNodebalancerTransferOutput {
+	return i.ToGetNodebalancersNodebalancerTransferOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersNodebalancerTransferArgs) ToGetNodebalancersNodebalancerTransferOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersNodebalancerTransferOutput)
+}
+
+// GetNodebalancersNodebalancerTransferArrayInput is an input type that accepts GetNodebalancersNodebalancerTransferArray and GetNodebalancersNodebalancerTransferArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancersNodebalancerTransferArrayInput` via:
+//
+//	GetNodebalancersNodebalancerTransferArray{ GetNodebalancersNodebalancerTransferArgs{...} }
+type GetNodebalancersNodebalancerTransferArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancersNodebalancerTransferArrayOutput() GetNodebalancersNodebalancerTransferArrayOutput
+	ToGetNodebalancersNodebalancerTransferArrayOutputWithContext(context.Context) GetNodebalancersNodebalancerTransferArrayOutput
+}
+
+type GetNodebalancersNodebalancerTransferArray []GetNodebalancersNodebalancerTransferInput
+
+func (GetNodebalancersNodebalancerTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersNodebalancerTransfer)(nil)).Elem()
+}
+
+func (i GetNodebalancersNodebalancerTransferArray) ToGetNodebalancersNodebalancerTransferArrayOutput() GetNodebalancersNodebalancerTransferArrayOutput {
+	return i.ToGetNodebalancersNodebalancerTransferArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancersNodebalancerTransferArray) ToGetNodebalancersNodebalancerTransferArrayOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancersNodebalancerTransferArrayOutput)
+}
+
+type GetNodebalancersNodebalancerTransferOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersNodebalancerTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancersNodebalancerTransfer)(nil)).Elem()
+}
+
+func (o GetNodebalancersNodebalancerTransferOutput) ToGetNodebalancersNodebalancerTransferOutput() GetNodebalancersNodebalancerTransferOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerTransferOutput) ToGetNodebalancersNodebalancerTransferOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerTransferOutput {
+	return o
+}
+
+// The total transfer, in MB, used by this NodeBalancer for the current month
+func (o GetNodebalancersNodebalancerTransferOutput) In() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNodebalancersNodebalancerTransfer) float64 { return v.In }).(pulumi.Float64Output)
+}
+
+// The total inbound transfer, in MB, used for this NodeBalancer for the current month
+func (o GetNodebalancersNodebalancerTransferOutput) Out() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNodebalancersNodebalancerTransfer) float64 { return v.Out }).(pulumi.Float64Output)
+}
+
+// The total outbound transfer, in MB, used for this NodeBalancer for the current month
+func (o GetNodebalancersNodebalancerTransferOutput) Total() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNodebalancersNodebalancerTransfer) float64 { return v.Total }).(pulumi.Float64Output)
+}
+
+type GetNodebalancersNodebalancerTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancersNodebalancerTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancersNodebalancerTransfer)(nil)).Elem()
+}
+
+func (o GetNodebalancersNodebalancerTransferArrayOutput) ToGetNodebalancersNodebalancerTransferArrayOutput() GetNodebalancersNodebalancerTransferArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerTransferArrayOutput) ToGetNodebalancersNodebalancerTransferArrayOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerTransferArrayOutput {
+	return o
+}
+
+func (o GetNodebalancersNodebalancerTransferArrayOutput) Index(i pulumi.IntInput) GetNodebalancersNodebalancerTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancersNodebalancerTransfer {
+		return vs[0].([]GetNodebalancersNodebalancerTransfer)[vs[1].(int)]
+	}).(GetNodebalancersNodebalancerTransferOutput)
+}
+
 type GetProfileReferrals struct {
 	Code      string  `pulumi:"code"`
 	Completed int     `pulumi:"completed"`
@@ -19727,6 +20141,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferInput)(nil)).Elem(), GetNodeBalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferArrayInput)(nil)).Elem(), GetNodeBalancerTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersFilterInput)(nil)).Elem(), GetNodebalancersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersFilterArrayInput)(nil)).Elem(), GetNodebalancersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerInput)(nil)).Elem(), GetNodebalancersNodebalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverInput)(nil)).Elem(), GetRegionResolverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverArrayInput)(nil)).Elem(), GetRegionResolverArray{})
@@ -20013,6 +20433,12 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersFilterOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersNodebalancerOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersNodebalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferOutput{})
+	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverArrayOutput{})

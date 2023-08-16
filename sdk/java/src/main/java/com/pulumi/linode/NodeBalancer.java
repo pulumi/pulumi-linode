@@ -74,14 +74,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clientConnThrottle", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> clientConnThrottle;
+    private Output<Integer> clientConnThrottle;
 
     /**
      * @return Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      * 
      */
-    public Output<Optional<Integer>> clientConnThrottle() {
-        return Codegen.optional(this.clientConnThrottle);
+    public Output<Integer> clientConnThrottle() {
+        return this.clientConnThrottle;
     }
     /**
      * When this NodeBalancer was created
@@ -226,7 +226,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodeBalancer(String name, NodeBalancerArgs args) {
+    public NodeBalancer(String name, @Nullable NodeBalancerArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,7 +235,7 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodeBalancer(String name, NodeBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public NodeBalancer(String name, @Nullable NodeBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("linode:index/nodeBalancer:NodeBalancer", name, args == null ? NodeBalancerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

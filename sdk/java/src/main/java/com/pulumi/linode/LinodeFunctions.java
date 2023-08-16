@@ -62,6 +62,8 @@ import com.pulumi.linode.inputs.GetNodeBalancerConfigPlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerNodePlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerPlainArgs;
+import com.pulumi.linode.inputs.GetNodebalancersArgs;
+import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
 import com.pulumi.linode.inputs.GetRegionArgs;
@@ -112,6 +114,7 @@ import com.pulumi.linode.outputs.GetNetworkingIpResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
 import com.pulumi.linode.outputs.GetNodeBalancerResult;
+import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
@@ -7754,6 +7757,384 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetNodeBalancerNodeResult> getNodeBalancerNodePlain(GetNodeBalancerNodePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNodeBalancerNode:getNodeBalancerNode", TypeShape.of(GetNodeBalancerNodeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static Output<GetNodebalancersResult> getNodebalancers() {
+        return getNodebalancers(GetNodebalancersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain() {
+        return getNodebalancersPlain(GetNodebalancersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static Output<GetNodebalancersResult> getNodebalancers(GetNodebalancersArgs args) {
+        return getNodebalancers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain(GetNodebalancersPlainArgs args) {
+        return getNodebalancersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static Output<GetNodebalancersResult> getNodebalancers(GetNodebalancersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancers:getNodebalancers", TypeShape.of(GetNodebalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode NodeBalancers that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
+     *             .filters(            
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .build(),
+     *                 GetNodebalancersFilterArgs.builder()
+     *                     .name(&#34;region&#34;)
+     *                     .values(&#34;us-iad&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     * * `ipv4`
+     * 
+     * * `ipv6`
+     * 
+     * * `hostname`
+     * 
+     * * `region`
+     * 
+     * * `client_conn_throttle`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain(GetNodebalancersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNodebalancers:getNodebalancers", TypeShape.of(GetNodebalancersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode Object Storage Cluster

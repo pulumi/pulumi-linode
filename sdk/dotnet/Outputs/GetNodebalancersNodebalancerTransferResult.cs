@@ -11,7 +11,7 @@ namespace Pulumi.Linode.Outputs
 {
 
     [OutputType]
-    public sealed class NodeBalancerTransfer
+    public sealed class GetNodebalancersNodebalancerTransferResult
     {
         /// <summary>
         /// The total transfer, in MB, used by this NodeBalancer for the current month
@@ -27,7 +27,7 @@ namespace Pulumi.Linode.Outputs
         public readonly double Total;
 
         [OutputConstructor]
-        private NodeBalancerTransfer(
+        private GetNodebalancersNodebalancerTransferResult(
             double @in,
 
             double @out,

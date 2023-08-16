@@ -16,40 +16,27 @@ __all__ = ['NodeBalancerArgs', 'NodeBalancer']
 @pulumi.input_type
 class NodeBalancerArgs:
     def __init__(__self__, *,
-                 region: pulumi.Input[str],
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a NodeBalancer resource.
+        :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                - - -
-        :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-        :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
-        pulumi.set(__self__, "region", region)
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
-        """
-        The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-
-        - - -
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="clientConnThrottle")
@@ -74,6 +61,20 @@ class NodeBalancerArgs:
     @label.setter
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+
+        - - -
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
@@ -312,7 +313,7 @@ class NodeBalancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NodeBalancerArgs,
+                 args: Optional[NodeBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
@@ -373,8 +374,6 @@ class NodeBalancer(pulumi.CustomResource):
 
             __props__.__dict__["client_conn_throttle"] = client_conn_throttle
             __props__.__dict__["label"] = label
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
             __props__.__dict__["created"] = None
@@ -441,7 +440,7 @@ class NodeBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientConnThrottle")
-    def client_conn_throttle(self) -> pulumi.Output[Optional[int]]:
+    def client_conn_throttle(self) -> pulumi.Output[int]:
         """
         Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         """

@@ -192,6 +192,11 @@ export const getNodeBalancerNode: typeof import("./getNodeBalancerNode").getNode
 export const getNodeBalancerNodeOutput: typeof import("./getNodeBalancerNode").getNodeBalancerNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeBalancerNode","getNodeBalancerNodeOutput"], () => require("./getNodeBalancerNode"));
 
+export { GetNodebalancersArgs, GetNodebalancersResult, GetNodebalancersOutputArgs } from "./getNodebalancers";
+export const getNodebalancers: typeof import("./getNodebalancers").getNodebalancers = null as any;
+export const getNodebalancersOutput: typeof import("./getNodebalancers").getNodebalancersOutput = null as any;
+utilities.lazyLoad(exports, ["getNodebalancers","getNodebalancersOutput"], () => require("./getNodebalancers"));
+
 export { GetObjectStorageClusterArgs, GetObjectStorageClusterResult, GetObjectStorageClusterOutputArgs } from "./getObjectStorageCluster";
 export const getObjectStorageCluster: typeof import("./getObjectStorageCluster").getObjectStorageCluster = null as any;
 export const getObjectStorageClusterOutput: typeof import("./getObjectStorageCluster").getObjectStorageClusterOutput = null as any;

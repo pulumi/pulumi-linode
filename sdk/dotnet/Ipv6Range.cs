@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
-    /// Manages a Linode IPv6 range.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

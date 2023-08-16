@@ -3,28 +3,27 @@
 
 package com.pulumi.linode.inputs;
 
-import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.util.Objects;
 
 
-public final class NodeBalancerTransferArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetNodebalancersNodebalancerTransfer extends com.pulumi.resources.InvokeArgs {
 
-    public static final NodeBalancerTransferArgs Empty = new NodeBalancerTransferArgs();
+    public static final GetNodebalancersNodebalancerTransfer Empty = new GetNodebalancersNodebalancerTransfer();
 
     /**
      * The total transfer, in MB, used by this NodeBalancer for the current month
      * 
      */
     @Import(name="in", required=true)
-    private Output<Double> in;
+    private Double in;
 
     /**
      * @return The total transfer, in MB, used by this NodeBalancer for the current month
      * 
      */
-    public Output<Double> in() {
+    public Double in() {
         return this.in;
     }
 
@@ -33,13 +32,13 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="out", required=true)
-    private Output<Double> out;
+    private Double out;
 
     /**
      * @return The total inbound transfer, in MB, used for this NodeBalancer for the current month
      * 
      */
-    public Output<Double> out() {
+    public Double out() {
         return this.out;
     }
 
@@ -48,19 +47,19 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="total", required=true)
-    private Output<Double> total;
+    private Double total;
 
     /**
      * @return The total outbound transfer, in MB, used for this NodeBalancer for the current month
      * 
      */
-    public Output<Double> total() {
+    public Double total() {
         return this.total;
     }
 
-    private NodeBalancerTransferArgs() {}
+    private GetNodebalancersNodebalancerTransfer() {}
 
-    private NodeBalancerTransferArgs(NodeBalancerTransferArgs $) {
+    private GetNodebalancersNodebalancerTransfer(GetNodebalancersNodebalancerTransfer $) {
         this.in = $.in;
         this.out = $.out;
         this.total = $.total;
@@ -69,30 +68,19 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(NodeBalancerTransferArgs defaults) {
+    public static Builder builder(GetNodebalancersNodebalancerTransfer defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private NodeBalancerTransferArgs $;
+        private GetNodebalancersNodebalancerTransfer $;
 
         public Builder() {
-            $ = new NodeBalancerTransferArgs();
+            $ = new GetNodebalancersNodebalancerTransfer();
         }
 
-        public Builder(NodeBalancerTransferArgs defaults) {
-            $ = new NodeBalancerTransferArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param in The total transfer, in MB, used by this NodeBalancer for the current month
-         * 
-         * @return builder
-         * 
-         */
-        public Builder in(Output<Double> in) {
-            $.in = in;
-            return this;
+        public Builder(GetNodebalancersNodebalancerTransfer defaults) {
+            $ = new GetNodebalancersNodebalancerTransfer(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -102,17 +90,7 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
          * 
          */
         public Builder in(Double in) {
-            return in(Output.of(in));
-        }
-
-        /**
-         * @param out The total inbound transfer, in MB, used for this NodeBalancer for the current month
-         * 
-         * @return builder
-         * 
-         */
-        public Builder out(Output<Double> out) {
-            $.out = out;
+            $.in = in;
             return this;
         }
 
@@ -123,17 +101,7 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
          * 
          */
         public Builder out(Double out) {
-            return out(Output.of(out));
-        }
-
-        /**
-         * @param total The total outbound transfer, in MB, used for this NodeBalancer for the current month
-         * 
-         * @return builder
-         * 
-         */
-        public Builder total(Output<Double> total) {
-            $.total = total;
+            $.out = out;
             return this;
         }
 
@@ -144,10 +112,11 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
          * 
          */
         public Builder total(Double total) {
-            return total(Output.of(total));
+            $.total = total;
+            return this;
         }
 
-        public NodeBalancerTransferArgs build() {
+        public GetNodebalancersNodebalancerTransfer build() {
             $.in = Objects.requireNonNull($.in, "expected parameter 'in' to be non-null");
             $.out = Objects.requireNonNull($.out, "expected parameter 'out' to be non-null");
             $.total = Objects.requireNonNull($.total, "expected parameter 'total' to be non-null");

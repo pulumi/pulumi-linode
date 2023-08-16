@@ -1416,6 +1416,80 @@ export interface GetNodeBalancerTransfer {
     total: number;
 }
 
+export interface GetNodebalancersFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetNodebalancersNodebalancer {
+    /**
+     * Throttle connections per second (0-20)
+     */
+    clientConnThrottle: number;
+    /**
+     * When this Linode NodeBalancer was created
+     */
+    created: string;
+    /**
+     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+     */
+    hostname: string;
+    /**
+     * The Linode NodeBalancer's unique ID
+     */
+    id: number;
+    /**
+     * The Public IPv4 Address of this NodeBalancer
+     */
+    ipv4: string;
+    /**
+     * The Public IPv6 Address of this NodeBalancer
+     */
+    ipv6: string;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label: string;
+    /**
+     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+     */
+    region: string;
+    /**
+     * A list of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags: string[];
+    transfers: outputs.GetNodebalancersNodebalancerTransfer[];
+    /**
+     * When this Linode NodeBalancer was last updated
+     */
+    updated: string;
+}
+
+export interface GetNodebalancersNodebalancerTransfer {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
+    in: number;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    out: number;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    total: number;
+}
+
 export interface GetProfileReferrals {
     code: string;
     completed: number;

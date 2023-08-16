@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type NodeBalancer struct {
 	pulumi.CustomResourceState
 
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-	ClientConnThrottle pulumi.IntPtrOutput `pulumi:"clientConnThrottle"`
+	ClientConnThrottle pulumi.IntOutput `pulumi:"clientConnThrottle"`
 	// When this NodeBalancer was created
 	Created pulumi.StringOutput `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -90,12 +89,9 @@ type NodeBalancer struct {
 func NewNodeBalancer(ctx *pulumi.Context,
 	name string, args *NodeBalancerArgs, opts ...pulumi.ResourceOption) (*NodeBalancer, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NodeBalancerArgs{}
 	}
 
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodeBalancer
 	err := ctx.RegisterResource("linode:index/nodeBalancer:NodeBalancer", name, args, &resource, opts...)
@@ -180,7 +176,7 @@ type nodeBalancerArgs struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	//
 	// ***
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
@@ -194,7 +190,7 @@ type NodeBalancerArgs struct {
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	//
 	// ***
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
@@ -287,8 +283,8 @@ func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context)
 }
 
 // Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeBalancer) pulumi.IntPtrOutput { return v.ClientConnThrottle }).(pulumi.IntPtrOutput)
+func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.IntOutput { return v.ClientConnThrottle }).(pulumi.IntOutput)
 }
 
 // When this NodeBalancer was created

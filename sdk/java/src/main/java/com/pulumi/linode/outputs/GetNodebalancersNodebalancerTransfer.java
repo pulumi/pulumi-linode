@@ -8,7 +8,7 @@ import java.lang.Double;
 import java.util.Objects;
 
 @CustomType
-public final class NodeBalancerTransfer {
+public final class GetNodebalancersNodebalancerTransfer {
     /**
      * @return The total transfer, in MB, used by this NodeBalancer for the current month
      * 
@@ -25,7 +25,7 @@ public final class NodeBalancerTransfer {
      */
     private Double total;
 
-    private NodeBalancerTransfer() {}
+    private GetNodebalancersNodebalancerTransfer() {}
     /**
      * @return The total transfer, in MB, used by this NodeBalancer for the current month
      * 
@@ -52,7 +52,7 @@ public final class NodeBalancerTransfer {
         return new Builder();
     }
 
-    public static Builder builder(NodeBalancerTransfer defaults) {
+    public static Builder builder(GetNodebalancersNodebalancerTransfer defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -61,7 +61,7 @@ public final class NodeBalancerTransfer {
         private Double out;
         private Double total;
         public Builder() {}
-        public Builder(NodeBalancerTransfer defaults) {
+        public Builder(GetNodebalancersNodebalancerTransfer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.in = defaults.in;
     	      this.out = defaults.out;
@@ -83,8 +83,8 @@ public final class NodeBalancerTransfer {
             this.total = Objects.requireNonNull(total);
             return this;
         }
-        public NodeBalancerTransfer build() {
-            final var o = new NodeBalancerTransfer();
+        public GetNodebalancersNodebalancerTransfer build() {
+            final var o = new GetNodebalancersNodebalancerTransfer();
             o.in = in;
             o.out = out;
             o.total = total;

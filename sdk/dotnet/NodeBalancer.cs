@@ -56,7 +56,7 @@ namespace Pulumi.Linode
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         /// </summary>
         [Output("clientConnThrottle")]
-        public Output<int?> ClientConnThrottle { get; private set; } = null!;
+        public Output<int> ClientConnThrottle { get; private set; } = null!;
 
         /// <summary>
         /// When this NodeBalancer was created
@@ -122,7 +122,7 @@ namespace Pulumi.Linode
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NodeBalancer(string name, NodeBalancerArgs args, CustomResourceOptions? options = null)
+        public NodeBalancer(string name, NodeBalancerArgs? args = null, CustomResourceOptions? options = null)
             : base("linode:index/nodeBalancer:NodeBalancer", name, args ?? new NodeBalancerArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -177,8 +177,8 @@ namespace Pulumi.Linode
         /// 
         /// - - -
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

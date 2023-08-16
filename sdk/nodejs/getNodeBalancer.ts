@@ -46,9 +46,12 @@ export interface GetNodeBalancerResult {
      * Throttle connections per second (0-20).
      */
     readonly clientConnThrottle: number;
+    /**
+     * When this Linode NodeBalancer was created
+     */
     readonly created: string;
     /**
-     * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
      */
     readonly hostname: string;
     readonly id: number;
@@ -64,12 +67,18 @@ export interface GetNodeBalancerResult {
      * The label of the Linode NodeBalancer
      */
     readonly label: string;
+    /**
+     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+     */
     readonly region: string;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags: string[];
     readonly transfers: outputs.GetNodeBalancerTransfer[];
+    /**
+     * When this Linode NodeBalancer was last updated
+     */
     readonly updated: string;
 }
 /**

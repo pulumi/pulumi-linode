@@ -7,36 +7,32 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Linode.Outputs
+namespace Pulumi.Linode.Inputs
 {
 
-    [OutputType]
-    public sealed class NodeBalancerTransfer
+    public sealed class GetNodebalancersNodebalancerTransferInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The total transfer, in MB, used by this NodeBalancer for the current month
         /// </summary>
-        public readonly double In;
+        [Input("in", required: true)]
+        public Input<double> In { get; set; } = null!;
+
         /// <summary>
         /// The total inbound transfer, in MB, used for this NodeBalancer for the current month
         /// </summary>
-        public readonly double Out;
+        [Input("out", required: true)]
+        public Input<double> Out { get; set; } = null!;
+
         /// <summary>
         /// The total outbound transfer, in MB, used for this NodeBalancer for the current month
         /// </summary>
-        public readonly double Total;
+        [Input("total", required: true)]
+        public Input<double> Total { get; set; } = null!;
 
-        [OutputConstructor]
-        private NodeBalancerTransfer(
-            double @in,
-
-            double @out,
-
-            double total)
+        public GetNodebalancersNodebalancerTransferInputArgs()
         {
-            In = @in;
-            Out = @out;
-            Total = total;
         }
+        public static new GetNodebalancersNodebalancerTransferInputArgs Empty => new GetNodebalancersNodebalancerTransferInputArgs();
     }
 }

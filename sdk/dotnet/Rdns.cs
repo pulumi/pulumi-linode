@@ -43,7 +43,7 @@ namespace Pulumi.Linode
         /// If true, the RDNS assignment will be retried within the operation timeout period.
         /// </summary>
         [Output("waitForAvailable")]
-        public Output<bool?> WaitForAvailable { get; private set; } = null!;
+        public Output<bool> WaitForAvailable { get; private set; } = null!;
 
 
         /// <summary>
