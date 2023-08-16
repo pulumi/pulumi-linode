@@ -68,13 +68,16 @@ class GetNodeBalancerResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When this Linode NodeBalancer was created
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
         """
-        This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+        This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
         """
         return pulumi.get(self, "hostname")
 
@@ -110,6 +113,9 @@ class GetNodeBalancerResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -128,6 +134,9 @@ class GetNodeBalancerResult:
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        When this Linode NodeBalancer was last updated
+        """
         return pulumi.get(self, "updated")
 
 

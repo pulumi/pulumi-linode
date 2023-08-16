@@ -18,8 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages a Linode IPv6 range.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

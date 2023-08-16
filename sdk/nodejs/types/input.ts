@@ -798,6 +798,154 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetNodebalancersFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetNodebalancersFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetNodebalancersNodebalancer {
+    /**
+     * Throttle connections per second (0-20)
+     */
+    clientConnThrottle?: number;
+    /**
+     * When this Linode NodeBalancer was created
+     */
+    created?: string;
+    /**
+     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+     */
+    hostname?: string;
+    /**
+     * The Linode NodeBalancer's unique ID
+     */
+    id: number;
+    /**
+     * The Public IPv4 Address of this NodeBalancer
+     */
+    ipv4?: string;
+    /**
+     * The Public IPv6 Address of this NodeBalancer
+     */
+    ipv6?: string;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label?: string;
+    /**
+     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+     */
+    region?: string;
+    /**
+     * A list of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: string[];
+    transfers?: inputs.GetNodebalancersNodebalancerTransfer[];
+    /**
+     * When this Linode NodeBalancer was last updated
+     */
+    updated?: string;
+}
+
+export interface GetNodebalancersNodebalancerArgs {
+    /**
+     * Throttle connections per second (0-20)
+     */
+    clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * When this Linode NodeBalancer was created
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The Linode NodeBalancer's unique ID
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The Public IPv4 Address of this NodeBalancer
+     */
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The Public IPv6 Address of this NodeBalancer
+     */
+    ipv6?: pulumi.Input<string>;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * A list of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    transfers?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersNodebalancerTransferArgs>[]>;
+    /**
+     * When this Linode NodeBalancer was last updated
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetNodebalancersNodebalancerTransfer {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
+    in: number;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    out: number;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    total: number;
+}
+
+export interface GetNodebalancersNodebalancerTransferArgs {
+    /**
+     * The total transfer, in MB, used by this NodeBalancer for the current month
+     */
+    in: pulumi.Input<number>;
+    /**
+     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    out: pulumi.Input<number>;
+    /**
+     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
+     */
+    total: pulumi.Input<number>;
+}
+
 export interface GetRegionResolver {
     /**
      * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
@@ -2319,15 +2467,15 @@ export interface NodeBalancerTransfer {
     /**
      * The total transfer, in MB, used by this NodeBalancer for the current month
      */
-    in?: pulumi.Input<number>;
+    in: pulumi.Input<number>;
     /**
      * The total inbound transfer, in MB, used for this NodeBalancer for the current month
      */
-    out?: pulumi.Input<number>;
+    out: pulumi.Input<number>;
     /**
      * The total outbound transfer, in MB, used for this NodeBalancer for the current month
      */
-    total?: pulumi.Input<number>;
+    total: pulumi.Input<number>;
 }
 
 export interface ObjectStorageBucketCert {

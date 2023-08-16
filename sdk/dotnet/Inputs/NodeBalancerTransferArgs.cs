@@ -15,20 +15,20 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The total transfer, in MB, used by this NodeBalancer for the current month
         /// </summary>
-        [Input("in")]
-        public Input<double>? In { get; set; }
+        [Input("in", required: true)]
+        public Input<double> In { get; set; } = null!;
 
         /// <summary>
         /// The total inbound transfer, in MB, used for this NodeBalancer for the current month
         /// </summary>
-        [Input("out")]
-        public Input<double>? Out { get; set; }
+        [Input("out", required: true)]
+        public Input<double> Out { get; set; } = null!;
 
         /// <summary>
         /// The total outbound transfer, in MB, used for this NodeBalancer for the current month
         /// </summary>
-        [Input("total")]
-        public Input<double>? Total { get; set; }
+        [Input("total", required: true)]
+        public Input<double> Total { get; set; } = null!;
 
         public NodeBalancerTransferArgs()
         {

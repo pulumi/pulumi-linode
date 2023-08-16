@@ -58,7 +58,7 @@ export class Rdns extends pulumi.CustomResource {
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
-    public readonly waitForAvailable!: pulumi.Output<boolean | undefined>;
+    public readonly waitForAvailable!: pulumi.Output<boolean>;
 
     /**
      * Create a Rdns resource with the given unique name, arguments, and options.

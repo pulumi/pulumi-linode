@@ -57,9 +57,10 @@ type LookupNodeBalancerArgs struct {
 // A collection of values returned by getNodeBalancer.
 type LookupNodeBalancerResult struct {
 	// Throttle connections per second (0-20).
-	ClientConnThrottle int    `pulumi:"clientConnThrottle"`
-	Created            string `pulumi:"created"`
-	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+	ClientConnThrottle int `pulumi:"clientConnThrottle"`
+	// When this Linode NodeBalancer was created
+	Created string `pulumi:"created"`
+	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
 	Hostname string `pulumi:"hostname"`
 	Id       int    `pulumi:"id"`
 	// The Public IPv4 Address of this NodeBalancer
@@ -67,12 +68,14 @@ type LookupNodeBalancerResult struct {
 	// The Public IPv6 Address of this NodeBalancer
 	Ipv6 string `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
-	Label  string `pulumi:"label"`
+	Label string `pulumi:"label"`
+	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
-	Updated   string                    `pulumi:"updated"`
+	// When this Linode NodeBalancer was last updated
+	Updated string `pulumi:"updated"`
 }
 
 func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerResultOutput {
@@ -118,11 +121,12 @@ func (o LookupNodeBalancerResultOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
 }
 
+// When this Linode NodeBalancer was created
 func (o LookupNodeBalancerResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
 func (o LookupNodeBalancerResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -146,6 +150,7 @@ func (o LookupNodeBalancerResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 func (o LookupNodeBalancerResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -159,6 +164,7 @@ func (o LookupNodeBalancerResultOutput) Transfers() GetNodeBalancerTransferArray
 	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerTransfer { return v.Transfers }).(GetNodeBalancerTransferArrayOutput)
 }
 
+// When this Linode NodeBalancer was last updated
 func (o LookupNodeBalancerResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Updated }).(pulumi.StringOutput)
 }

@@ -12,7 +12,6 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.RdnsState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -66,14 +65,14 @@ public class Rdns extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="waitForAvailable", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> waitForAvailable;
+    private Output<Boolean> waitForAvailable;
 
     /**
      * @return If true, the RDNS assignment will be retried within the operation timeout period.
      * 
      */
-    public Output<Optional<Boolean>> waitForAvailable() {
-        return Codegen.optional(this.waitForAvailable);
+    public Output<Boolean> waitForAvailable() {
+        return this.waitForAvailable;
     }
 
     /**

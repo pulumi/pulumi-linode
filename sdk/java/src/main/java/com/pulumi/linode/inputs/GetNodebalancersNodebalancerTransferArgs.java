@@ -9,9 +9,9 @@ import java.lang.Double;
 import java.util.Objects;
 
 
-public final class NodeBalancerTransferArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetNodebalancersNodebalancerTransferArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final NodeBalancerTransferArgs Empty = new NodeBalancerTransferArgs();
+    public static final GetNodebalancersNodebalancerTransferArgs Empty = new GetNodebalancersNodebalancerTransferArgs();
 
     /**
      * The total transfer, in MB, used by this NodeBalancer for the current month
@@ -58,9 +58,9 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
         return this.total;
     }
 
-    private NodeBalancerTransferArgs() {}
+    private GetNodebalancersNodebalancerTransferArgs() {}
 
-    private NodeBalancerTransferArgs(NodeBalancerTransferArgs $) {
+    private GetNodebalancersNodebalancerTransferArgs(GetNodebalancersNodebalancerTransferArgs $) {
         this.in = $.in;
         this.out = $.out;
         this.total = $.total;
@@ -69,19 +69,19 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(NodeBalancerTransferArgs defaults) {
+    public static Builder builder(GetNodebalancersNodebalancerTransferArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private NodeBalancerTransferArgs $;
+        private GetNodebalancersNodebalancerTransferArgs $;
 
         public Builder() {
-            $ = new NodeBalancerTransferArgs();
+            $ = new GetNodebalancersNodebalancerTransferArgs();
         }
 
-        public Builder(NodeBalancerTransferArgs defaults) {
-            $ = new NodeBalancerTransferArgs(Objects.requireNonNull(defaults));
+        public Builder(GetNodebalancersNodebalancerTransferArgs defaults) {
+            $ = new GetNodebalancersNodebalancerTransferArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -147,7 +147,7 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
             return total(Output.of(total));
         }
 
-        public NodeBalancerTransferArgs build() {
+        public GetNodebalancersNodebalancerTransferArgs build() {
             $.in = Objects.requireNonNull($.in, "expected parameter 'in' to be non-null");
             $.out = Objects.requireNonNull($.out, "expected parameter 'out' to be non-null");
             $.total = Objects.requireNonNull($.total, "expected parameter 'total' to be non-null");

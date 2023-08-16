@@ -105,9 +105,12 @@ namespace Pulumi.Linode
         /// Throttle connections per second (0-20).
         /// </summary>
         public readonly int ClientConnThrottle;
+        /// <summary>
+        /// When this Linode NodeBalancer was created
+        /// </summary>
         public readonly string Created;
         /// <summary>
-        /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
+        /// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
         /// </summary>
         public readonly string Hostname;
         public readonly int Id;
@@ -123,12 +126,18 @@ namespace Pulumi.Linode
         /// The label of the Linode NodeBalancer
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+        /// </summary>
         public readonly string Region;
         /// <summary>
         /// A list of tags applied to this object. Tags are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetNodeBalancerTransferResult> Transfers;
+        /// <summary>
+        /// When this Linode NodeBalancer was last updated
+        /// </summary>
         public readonly string Updated;
 
         [OutputConstructor]

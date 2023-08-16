@@ -53,8 +53,8 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * ***
      * 
      */
-    @Import(name="region", required=true)
-    private Output<String> region;
+    @Import(name="region")
+    private @Nullable Output<String> region;
 
     /**
      * @return The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -62,8 +62,8 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * ***
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -158,7 +158,7 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder region(Output<String> region) {
+        public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
@@ -207,7 +207,6 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodeBalancerArgs build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
             return $;
         }
     }

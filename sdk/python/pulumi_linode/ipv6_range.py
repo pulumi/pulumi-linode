@@ -196,8 +196,6 @@ class Ipv6Range(pulumi.CustomResource):
                  route_target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Linode IPv6 range.
-
         ## Example Usage
 
         ```python
@@ -227,8 +225,6 @@ class Ipv6Range(pulumi.CustomResource):
                  args: Ipv6RangeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Linode IPv6 range.
-
         ## Example Usage
 
         ```python

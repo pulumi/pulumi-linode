@@ -67,7 +67,7 @@ export class NodeBalancer extends pulumi.CustomResource {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    public readonly clientConnThrottle!: pulumi.Output<number | undefined>;
+    public readonly clientConnThrottle!: pulumi.Output<number>;
     /**
      * When this NodeBalancer was created
      */
@@ -114,7 +114,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NodeBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: NodeBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeBalancerArgs | NodeBalancerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -132,9 +132,6 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             resourceInputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -216,7 +213,7 @@ export interface NodeBalancerArgs {
      *
      * - - -
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */

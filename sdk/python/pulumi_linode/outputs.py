@@ -124,6 +124,9 @@ __all__ = [
     'GetLkeVersionsVersionResult',
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerTransferResult',
+    'GetNodebalancersFilterResult',
+    'GetNodebalancersNodebalancerResult',
+    'GetNodebalancersNodebalancerTransferResult',
     'GetProfileReferralsResult',
     'GetRegionResolverResult',
     'GetRegionsFilterResult',
@@ -2059,24 +2062,21 @@ class NodeBalancerTransfer(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 in_: Optional[float] = None,
-                 out: Optional[float] = None,
-                 total: Optional[float] = None):
+                 in_: float,
+                 out: float,
+                 total: float):
         """
         :param float in_: The total transfer, in MB, used by this NodeBalancer for the current month
         :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
         :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
         """
-        if in_ is not None:
-            pulumi.set(__self__, "in_", in_)
-        if out is not None:
-            pulumi.set(__self__, "out", out)
-        if total is not None:
-            pulumi.set(__self__, "total", total)
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "out", out)
+        pulumi.set(__self__, "total", total)
 
     @property
     @pulumi.getter(name="in")
-    def in_(self) -> Optional[float]:
+    def in_(self) -> float:
         """
         The total transfer, in MB, used by this NodeBalancer for the current month
         """
@@ -2084,7 +2084,7 @@ class NodeBalancerTransfer(dict):
 
     @property
     @pulumi.getter
-    def out(self) -> Optional[float]:
+    def out(self) -> float:
         """
         The total inbound transfer, in MB, used for this NodeBalancer for the current month
         """
@@ -2092,7 +2092,7 @@ class NodeBalancerTransfer(dict):
 
     @property
     @pulumi.getter
-    def total(self) -> Optional[float]:
+    def total(self) -> float:
         """
         The total outbound transfer, in MB, used for this NodeBalancer for the current month
         """
@@ -6559,6 +6559,211 @@ class GetNodeBalancerConfigNodeStatusResult(dict):
 
 @pulumi.output_type
 class GetNodeBalancerTransferResult(dict):
+    def __init__(__self__, *,
+                 in_: float,
+                 out: float,
+                 total: float):
+        """
+        :param float in_: The total transfer, in MB, used by this NodeBalancer for the current month
+        :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "out", out)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter(name="in")
+    def in_(self) -> float:
+        """
+        The total transfer, in MB, used by this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "in_")
+
+    @property
+    @pulumi.getter
+    def out(self) -> float:
+        """
+        The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "out")
+
+    @property
+    @pulumi.getter
+    def total(self) -> float:
+        """
+        The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetNodebalancersFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetNodebalancersNodebalancerResult(dict):
+    def __init__(__self__, *,
+                 client_conn_throttle: int,
+                 created: str,
+                 hostname: str,
+                 id: int,
+                 ipv4: str,
+                 ipv6: str,
+                 label: str,
+                 region: str,
+                 tags: Sequence[str],
+                 transfers: Sequence['outputs.GetNodebalancersNodebalancerTransferResult'],
+                 updated: str):
+        """
+        :param int client_conn_throttle: Throttle connections per second (0-20)
+        :param str created: When this Linode NodeBalancer was created
+        :param str hostname: This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+        :param int id: The Linode NodeBalancer's unique ID
+        :param str ipv4: The Public IPv4 Address of this NodeBalancer
+        :param str ipv6: The Public IPv6 Address of this NodeBalancer
+        :param str label: The label of the Linode NodeBalancer
+        :param str region: The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+        :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param str updated: When this Linode NodeBalancer was last updated
+        """
+        pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "transfers", transfers)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter(name="clientConnThrottle")
+    def client_conn_throttle(self) -> int:
+        """
+        Throttle connections per second (0-20)
+        """
+        return pulumi.get(self, "client_conn_throttle")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Linode NodeBalancer was created
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The Linode NodeBalancer's unique ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The Public IPv4 Address of this NodeBalancer
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The Public IPv6 Address of this NodeBalancer
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the Linode NodeBalancer
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def transfers(self) -> Sequence['outputs.GetNodebalancersNodebalancerTransferResult']:
+        return pulumi.get(self, "transfers")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this Linode NodeBalancer was last updated
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetNodebalancersNodebalancerTransferResult(dict):
     def __init__(__self__, *,
                  in_: float,
                  out: float,

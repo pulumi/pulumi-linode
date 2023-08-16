@@ -4,16 +4,16 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.linode.outputs.GetNodeBalancerTransfer;
+import com.pulumi.linode.outputs.GetNodebalancersNodebalancerTransfer;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetNodeBalancerResult {
+public final class GetNodebalancersNodebalancer {
     /**
-     * @return Throttle connections per second (0-20).
+     * @return Throttle connections per second (0-20)
      * 
      */
     private Integer clientConnThrottle;
@@ -27,6 +27,10 @@ public final class GetNodeBalancerResult {
      * 
      */
     private String hostname;
+    /**
+     * @return The Linode NodeBalancer&#39;s unique ID
+     * 
+     */
     private Integer id;
     /**
      * @return The Public IPv4 Address of this NodeBalancer
@@ -53,16 +57,16 @@ public final class GetNodeBalancerResult {
      * 
      */
     private List<String> tags;
-    private List<GetNodeBalancerTransfer> transfers;
+    private List<GetNodebalancersNodebalancerTransfer> transfers;
     /**
      * @return When this Linode NodeBalancer was last updated
      * 
      */
     private String updated;
 
-    private GetNodeBalancerResult() {}
+    private GetNodebalancersNodebalancer() {}
     /**
-     * @return Throttle connections per second (0-20).
+     * @return Throttle connections per second (0-20)
      * 
      */
     public Integer clientConnThrottle() {
@@ -82,6 +86,10 @@ public final class GetNodeBalancerResult {
     public String hostname() {
         return this.hostname;
     }
+    /**
+     * @return The Linode NodeBalancer&#39;s unique ID
+     * 
+     */
     public Integer id() {
         return this.id;
     }
@@ -120,7 +128,7 @@ public final class GetNodeBalancerResult {
     public List<String> tags() {
         return this.tags;
     }
-    public List<GetNodeBalancerTransfer> transfers() {
+    public List<GetNodebalancersNodebalancerTransfer> transfers() {
         return this.transfers;
     }
     /**
@@ -135,7 +143,7 @@ public final class GetNodeBalancerResult {
         return new Builder();
     }
 
-    public static Builder builder(GetNodeBalancerResult defaults) {
+    public static Builder builder(GetNodebalancersNodebalancer defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -149,10 +157,10 @@ public final class GetNodeBalancerResult {
         private String label;
         private String region;
         private List<String> tags;
-        private List<GetNodeBalancerTransfer> transfers;
+        private List<GetNodebalancersNodebalancerTransfer> transfers;
         private String updated;
         public Builder() {}
-        public Builder(GetNodeBalancerResult defaults) {
+        public Builder(GetNodebalancersNodebalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientConnThrottle = defaults.clientConnThrottle;
     	      this.created = defaults.created;
@@ -216,11 +224,11 @@ public final class GetNodeBalancerResult {
             return tags(List.of(tags));
         }
         @CustomType.Setter
-        public Builder transfers(List<GetNodeBalancerTransfer> transfers) {
+        public Builder transfers(List<GetNodebalancersNodebalancerTransfer> transfers) {
             this.transfers = Objects.requireNonNull(transfers);
             return this;
         }
-        public Builder transfers(GetNodeBalancerTransfer... transfers) {
+        public Builder transfers(GetNodebalancersNodebalancerTransfer... transfers) {
             return transfers(List.of(transfers));
         }
         @CustomType.Setter
@@ -228,8 +236,8 @@ public final class GetNodeBalancerResult {
             this.updated = Objects.requireNonNull(updated);
             return this;
         }
-        public GetNodeBalancerResult build() {
-            final var o = new GetNodeBalancerResult();
+        public GetNodebalancersNodebalancer build() {
+            final var o = new GetNodebalancersNodebalancer();
             o.clientConnThrottle = clientConnThrottle;
             o.created = created;
             o.hostname = hostname;

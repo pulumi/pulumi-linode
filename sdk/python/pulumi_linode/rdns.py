@@ -257,7 +257,7 @@ class Rdns(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForAvailable")
-    def wait_for_available(self) -> pulumi.Output[Optional[bool]]:
+    def wait_for_available(self) -> pulumi.Output[bool]:
         """
         If true, the RDNS assignment will be retried within the operation timeout period.
         """
