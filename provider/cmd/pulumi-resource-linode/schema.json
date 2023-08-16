@@ -14,21 +14,22 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "linode": "Linode"
             },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-linode/sdk/v4/go/linode",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing linode cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -36,20 +37,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing linode cloud resources.",
-            "packageName": "",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/linode/terraform-provider-linode)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-linode` repo](https://github.com/pulumi/pulumi-linode/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-linode` repo](https://github.com/linode/terraform-provider-linode/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -986,15 +983,11 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "in",
-                        "out",
-                        "total"
-                    ]
-                }
-            }
+            "required": [
+                "in",
+                "out",
+                "total"
+            ]
         },
         "linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert": {
             "properties": {
@@ -3767,6 +3760,126 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "linode:index/getNodebalancersFilter:getNodebalancersFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getNodebalancersNodebalancer:getNodebalancersNodebalancer": {
+            "properties": {
+                "clientConnThrottle": {
+                    "type": "integer",
+                    "description": "Throttle connections per second (0-20)\n"
+                },
+                "created": {
+                    "type": "string",
+                    "description": "When this Linode NodeBalancer was created\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "This NodeBalancer's hostname, ending with .ip.linodeusercontent.com\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The Linode NodeBalancer's unique ID\n"
+                },
+                "ipv4": {
+                    "type": "string",
+                    "description": "The Public IPv4 Address of this NodeBalancer\n"
+                },
+                "ipv6": {
+                    "type": "string",
+                    "description": "The Public IPv6 Address of this NodeBalancer\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Linode NodeBalancer\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                },
+                "transfers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNodebalancersNodebalancerTransfer:getNodebalancersNodebalancerTransfer"
+                    }
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When this Linode NodeBalancer was last updated\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientConnThrottle",
+                "created",
+                "hostname",
+                "id",
+                "ipv4",
+                "ipv6",
+                "label",
+                "region",
+                "tags",
+                "transfers",
+                "updated"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getNodebalancersNodebalancerTransfer:getNodebalancersNodebalancerTransfer": {
+            "properties": {
+                "in": {
+                    "type": "number",
+                    "description": "The total transfer, in MB, used by this NodeBalancer for the current month\n"
+                },
+                "out": {
+                    "type": "number",
+                    "description": "The total inbound transfer, in MB, used for this NodeBalancer for the current month\n"
+                },
+                "total": {
+                    "type": "number",
+                    "description": "The total outbound transfer, in MB, used for this NodeBalancer for the current month\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "in",
+                "out",
+                "total"
+            ]
         },
         "linode:index/getProfileReferrals:getProfileReferrals": {
             "properties": {
@@ -7474,7 +7587,7 @@
             }
         },
         "linode:index/ipv6Range:Ipv6Range": {
-            "description": "Manages a Linode IPv6 range.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobarInstance = new linode.Instance(\"foobarInstance\", {\n    label: \"my-linode\",\n    image: \"linode/alpine3.14\",\n    type: \"g6-nanode-1\",\n    region: \"us-southeast\",\n});\nconst foobarIpv6Range = new linode.Ipv6Range(\"foobarIpv6Range\", {\n    linodeId: foobarInstance.id,\n    prefixLength: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar_instance = linode.Instance(\"foobarInstance\",\n    label=\"my-linode\",\n    image=\"linode/alpine3.14\",\n    type=\"g6-nanode-1\",\n    region=\"us-southeast\")\nfoobar_ipv6_range = linode.Ipv6Range(\"foobarIpv6Range\",\n    linode_id=foobar_instance.id,\n    prefix_length=64)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobarInstance = new Linode.Instance(\"foobarInstance\", new()\n    {\n        Label = \"my-linode\",\n        Image = \"linode/alpine3.14\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-southeast\",\n    });\n\n    var foobarIpv6Range = new Linode.Ipv6Range(\"foobarIpv6Range\", new()\n    {\n        LinodeId = foobarInstance.Id,\n        PrefixLength = 64,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobarInstance, err := linode.NewInstance(ctx, \"foobarInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-linode\"),\n\t\t\tImage:  pulumi.String(\"linode/alpine3.14\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewIpv6Range(ctx, \"foobarIpv6Range\", \u0026linode.Ipv6RangeArgs{\n\t\t\tLinodeId:     foobarInstance.ID(),\n\t\t\tPrefixLength: pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Ipv6Range;\nimport com.pulumi.linode.Ipv6RangeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobarInstance = new Instance(\"foobarInstance\", InstanceArgs.builder()        \n            .label(\"my-linode\")\n            .image(\"linode/alpine3.14\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var foobarIpv6Range = new Ipv6Range(\"foobarIpv6Range\", Ipv6RangeArgs.builder()        \n            .linodeId(foobarInstance.id())\n            .prefixLength(64)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobarInstance:\n    type: linode:Instance\n    properties:\n      label: my-linode\n      image: linode/alpine3.14\n      type: g6-nanode-1\n      region: us-southeast\n  foobarIpv6Range:\n    type: linode:Ipv6Range\n    properties:\n      linodeId: ${foobarInstance.id}\n      prefixLength: 64\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobarInstance = new linode.Instance(\"foobarInstance\", {\n    label: \"my-linode\",\n    image: \"linode/alpine3.14\",\n    type: \"g6-nanode-1\",\n    region: \"us-southeast\",\n});\nconst foobarIpv6Range = new linode.Ipv6Range(\"foobarIpv6Range\", {\n    linodeId: foobarInstance.id,\n    prefixLength: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar_instance = linode.Instance(\"foobarInstance\",\n    label=\"my-linode\",\n    image=\"linode/alpine3.14\",\n    type=\"g6-nanode-1\",\n    region=\"us-southeast\")\nfoobar_ipv6_range = linode.Ipv6Range(\"foobarIpv6Range\",\n    linode_id=foobar_instance.id,\n    prefix_length=64)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobarInstance = new Linode.Instance(\"foobarInstance\", new()\n    {\n        Label = \"my-linode\",\n        Image = \"linode/alpine3.14\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-southeast\",\n    });\n\n    var foobarIpv6Range = new Linode.Ipv6Range(\"foobarIpv6Range\", new()\n    {\n        LinodeId = foobarInstance.Id,\n        PrefixLength = 64,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobarInstance, err := linode.NewInstance(ctx, \"foobarInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-linode\"),\n\t\t\tImage:  pulumi.String(\"linode/alpine3.14\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewIpv6Range(ctx, \"foobarIpv6Range\", \u0026linode.Ipv6RangeArgs{\n\t\t\tLinodeId:     foobarInstance.ID(),\n\t\t\tPrefixLength: pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Ipv6Range;\nimport com.pulumi.linode.Ipv6RangeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobarInstance = new Instance(\"foobarInstance\", InstanceArgs.builder()        \n            .label(\"my-linode\")\n            .image(\"linode/alpine3.14\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var foobarIpv6Range = new Ipv6Range(\"foobarIpv6Range\", Ipv6RangeArgs.builder()        \n            .linodeId(foobarInstance.id())\n            .prefixLength(64)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobarInstance:\n    type: linode:Instance\n    properties:\n      label: my-linode\n      image: linode/alpine3.14\n      type: g6-nanode-1\n      region: us-southeast\n  foobarIpv6Range:\n    type: linode:Ipv6Range\n    properties:\n      linodeId: ${foobarInstance.id}\n      prefixLength: 64\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "isBgp": {
                     "type": "boolean",
@@ -7522,13 +7635,11 @@
                 },
                 "prefixLength": {
                     "type": "integer",
-                    "description": "The prefix length of the IPv6 range.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The prefix length of the IPv6 range.\n"
                 },
                 "routeTarget": {
                     "type": "string",
-                    "description": "The IPv6 SLAAC address to assign this range to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The IPv6 SLAAC address to assign this range to.\n"
                 }
             },
             "requiredInputs": [
@@ -7554,8 +7665,7 @@
                     },
                     "prefixLength": {
                         "type": "integer",
-                        "description": "The prefix length of the IPv6 range.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The prefix length of the IPv6 range.\n"
                     },
                     "range": {
                         "type": "string",
@@ -7567,8 +7677,7 @@
                     },
                     "routeTarget": {
                         "type": "string",
-                        "description": "The IPv6 SLAAC address to assign this range to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The IPv6 SLAAC address to assign this range to.\n"
                     }
                 },
                 "type": "object"
@@ -7787,6 +7896,7 @@
                 }
             },
             "required": [
+                "clientConnThrottle",
                 "created",
                 "hostname",
                 "ipv4",
@@ -7806,8 +7916,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n",
-                    "willReplaceOnChanges": true
+                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n"
                 },
                 "tags": {
                     "type": "array",
@@ -7817,9 +7926,6 @@
                     "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
                 }
             },
-            "requiredInputs": [
-                "region"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering NodeBalancer resources.\n",
                 "properties": {
@@ -7849,8 +7955,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n",
-                        "willReplaceOnChanges": true
+                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n"
                     },
                     "tags": {
                         "type": "array",
@@ -8773,13 +8878,13 @@
             },
             "required": [
                 "address",
-                "rdns"
+                "rdns",
+                "waitForAvailable"
             ],
             "inputProperties": {
                 "address": {
                     "type": "string",
-                    "description": "The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -8804,8 +8909,7 @@
                 "properties": {
                     "address": {
                         "type": "string",
-                        "description": "The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.\n"
                     },
                     "rdns": {
                         "type": "string",
@@ -11498,11 +11602,12 @@
                         "description": "Throttle connections per second (0-20).\n"
                     },
                     "created": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "When this Linode NodeBalancer was created\n"
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n"
+                        "description": "This NodeBalancer's hostname, ending with .ip.linodeusercontent.com\n"
                     },
                     "id": {
                         "type": "integer"
@@ -11520,7 +11625,8 @@
                         "description": "The label of the Linode NodeBalancer\n"
                     },
                     "region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -11536,7 +11642,8 @@
                         }
                     },
                     "updated": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "When this Linode NodeBalancer was last updated\n"
                     }
                 },
                 "type": "object",
@@ -11741,6 +11848,66 @@
                     "nodebalancerId",
                     "status",
                     "weight"
+                ]
+            }
+        },
+        "linode:index/getNodebalancers:getNodebalancers": {
+            "description": "Provides information about Linode NodeBalancers that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode NodeBalancer.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific-nodebalancers = linode.getNodebalancers({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-nodebalancer\"],\n        },\n        {\n            name: \"region\",\n            values: [\"us-iad\"],\n        },\n    ],\n});\nexport const nodebalancerId = specific_nodebalancers.then(specific_nodebalancers =\u003e specific_nodebalancers.nodebalancers?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_nodebalancers = linode.get_nodebalancers(filters=[\n    linode.GetNodebalancersFilterArgs(\n        name=\"label\",\n        values=[\"my-nodebalancer\"],\n    ),\n    linode.GetNodebalancersFilterArgs(\n        name=\"region\",\n        values=[\"us-iad\"],\n    ),\n])\npulumi.export(\"nodebalancerId\", specific_nodebalancers.nodebalancers[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var specific_nodebalancers = Linode.GetNodebalancers.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetNodebalancersFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-nodebalancer\",\n                },\n            },\n            new Linode.Inputs.GetNodebalancersFilterInputArgs\n            {\n                Name = \"region\",\n                Values = new[]\n                {\n                    \"us-iad\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"nodebalancerId\"] = specific_nodebalancers.Apply(specific_nodebalancers =\u003e specific_nodebalancers.Apply(getNodebalancersResult =\u003e getNodebalancersResult.Nodebalancers[0]?.Id)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tspecific_nodebalancers, err := linode.GetNodebalancers(ctx, \u0026linode.GetNodebalancersArgs{\n\t\t\tFilters: []linode.GetNodebalancersFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-nodebalancer\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"region\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"us-iad\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"nodebalancerId\", specific_nodebalancers.Nodebalancers[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetNodebalancersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()\n            .filters(            \n                GetNodebalancersFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"my-nodebalancer\")\n                    .build(),\n                GetNodebalancersFilterArgs.builder()\n                    .name(\"region\")\n                    .values(\"us-iad\")\n                    .build())\n            .build());\n\n        ctx.export(\"nodebalancerId\", specific_nodebalancers.nodebalancers()[0].id());\n    }\n}\n```\n```yaml\nvariables:\n  specific-nodebalancers:\n    fn::invoke:\n      Function: linode:getNodebalancers\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-nodebalancer\n          - name: region\n            values:\n              - us-iad\noutputs:\n  nodebalancerId: ${[\"specific-nodebalancers\"].nodebalancers[0].id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `label`\n\n* `tags`\n\n* `ipv4`\n\n* `ipv6`\n\n* `hostname`\n\n* `region`\n\n* `client_conn_throttle`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNodebalancers.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancersFilter:getNodebalancersFilter"
+                        }
+                    },
+                    "nodebalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancersNodebalancer:getNodebalancersNodebalancer"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNodebalancers.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancersFilter:getNodebalancersFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The Linode NodeBalancer's unique ID\n"
+                    },
+                    "nodebalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancersNodebalancer:getNodebalancersNodebalancer"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         },

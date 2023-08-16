@@ -994,6 +994,35 @@
                 "current": "linode:index/getNodeBalancerNode:getNodeBalancerNode",
                 "majorVersion": 4
             },
+            "linode_nodebalancers": {
+                "current": "linode:index/getNodebalancers:getNodebalancers",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "nodebalancers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "transfer": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_object_storage_bucket": {
                 "current": "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket",
                 "majorVersion": 4
@@ -1234,7 +1263,7 @@
     },
     "mux": {
         "resources": {
-            "linode:index/accountSettings:AccountSettings": 0,
+            "linode:index/accountSettings:AccountSettings": 1,
             "linode:index/databaseAccessControls:DatabaseAccessControls": 0,
             "linode:index/databaseMysql:DatabaseMysql": 0,
             "linode:index/databasePostgresql:DatabasePostgresql": 0,
@@ -1247,15 +1276,15 @@
             "linode:index/instanceDisk:InstanceDisk": 0,
             "linode:index/instanceIp:InstanceIp": 0,
             "linode:index/instanceSharedIps:InstanceSharedIps": 0,
-            "linode:index/ipv6Range:Ipv6Range": 0,
+            "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
-            "linode:index/nodeBalancer:NodeBalancer": 0,
+            "linode:index/nodeBalancer:NodeBalancer": 1,
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": 0,
             "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
             "linode:index/objectStorageKey:ObjectStorageKey": 1,
             "linode:index/objectStorageObject:ObjectStorageObject": 0,
-            "linode:index/rdns:Rdns": 0,
+            "linode:index/rdns:Rdns": 1,
             "linode:index/sshKey:SshKey": 1,
             "linode:index/stackScript:StackScript": 1,
             "linode:index/token:Token": 1,
@@ -1293,6 +1322,7 @@
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 1,
+            "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 1,
@@ -1367,6 +1397,7 @@
             "linode:index/getNodeBalancer:getNodeBalancer": "linode_nodebalancer",
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": "linode_nodebalancer_config",
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": "linode_nodebalancer_node",
+            "linode:index/getNodebalancers:getNodebalancers": "linode_nodebalancers",
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": "linode_object_storage_cluster",
             "linode:index/getProfile:getProfile": "linode_profile",
             "linode:index/getRegion:getRegion": "linode_region",
@@ -1920,6 +1951,17 @@
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": {
                 "configId": "config_id",
                 "nodebalancerId": "nodebalancer_id"
+            },
+            "linode:index/getNodebalancers:getNodebalancers": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getNodebalancersFilter:getNodebalancersFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getNodebalancersNodebalancer:getNodebalancersNodebalancer": {
+                "clientConnThrottle": "client_conn_throttle",
+                "transfers": "transfer"
             },
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": {
                 "staticSiteDomain": "static_site_domain"
