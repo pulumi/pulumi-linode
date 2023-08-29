@@ -60,6 +60,7 @@ type GetKernelArgs struct {
 type GetKernelResult struct {
 	// The architecture of this Kernel.
 	Architecture string `pulumi:"architecture"`
+	Built        string `pulumi:"built"`
 	// Whether or not this Kernel is deprecated.
 	Deprecated bool   `pulumi:"deprecated"`
 	Id         string `pulumi:"id"`
@@ -116,6 +117,10 @@ func (o GetKernelResultOutput) ToGetKernelResultOutputWithContext(ctx context.Co
 // The architecture of this Kernel.
 func (o GetKernelResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+func (o GetKernelResultOutput) Built() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelResult) string { return v.Built }).(pulumi.StringOutput)
 }
 
 // Whether or not this Kernel is deprecated.

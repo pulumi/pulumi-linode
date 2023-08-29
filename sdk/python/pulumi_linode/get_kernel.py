@@ -21,10 +21,13 @@ class GetKernelResult:
     """
     A collection of values returned by getKernel.
     """
-    def __init__(__self__, architecture=None, deprecated=None, id=None, kvm=None, label=None, pvops=None, version=None, xen=None):
+    def __init__(__self__, architecture=None, built=None, deprecated=None, id=None, kvm=None, label=None, pvops=None, version=None, xen=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
+        if built and not isinstance(built, str):
+            raise TypeError("Expected argument 'built' to be a str")
+        pulumi.set(__self__, "built", built)
         if deprecated and not isinstance(deprecated, bool):
             raise TypeError("Expected argument 'deprecated' to be a bool")
         pulumi.set(__self__, "deprecated", deprecated)
@@ -54,6 +57,11 @@ class GetKernelResult:
         The architecture of this Kernel.
         """
         return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter
+    def built(self) -> str:
+        return pulumi.get(self, "built")
 
     @property
     @pulumi.getter
@@ -116,6 +124,7 @@ class AwaitableGetKernelResult(GetKernelResult):
             yield self
         return GetKernelResult(
             architecture=self.architecture,
+            built=self.built,
             deprecated=self.deprecated,
             id=self.id,
             kvm=self.kvm,
@@ -151,6 +160,7 @@ def get_kernel(id: Optional[str] = None,
 
     return AwaitableGetKernelResult(
         architecture=pulumi.get(__ret__, 'architecture'),
+        built=pulumi.get(__ret__, 'built'),
         deprecated=pulumi.get(__ret__, 'deprecated'),
         id=pulumi.get(__ret__, 'id'),
         kvm=pulumi.get(__ret__, 'kvm'),

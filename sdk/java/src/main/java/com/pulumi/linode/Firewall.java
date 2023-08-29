@@ -117,6 +117,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/firewall:Firewall")
 public class Firewall extends com.pulumi.resources.CustomResource {
     /**
+     * When this firewall was created
+     * 
+     */
+    @Export(name="created", refs={String.class}, tree="[0]")
+    private Output<String> created;
+
+    /**
+     * @return When this firewall was created
+     * 
+     */
+    public Output<String> created() {
+        return this.created;
+    }
+    /**
      * The devices associated with this firewall.
      * 
      */
@@ -263,6 +277,20 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * When this firewall was last updated
+     * 
+     */
+    @Export(name="updated", refs={String.class}, tree="[0]")
+    private Output<String> updated;
+
+    /**
+     * @return When this firewall was last updated
+     * 
+     */
+    public Output<String> updated() {
+        return this.updated;
     }
 
     /**

@@ -22,6 +22,21 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     public static final FirewallState Empty = new FirewallState();
 
     /**
+     * When this firewall was created
+     * 
+     */
+    @Import(name="created")
+    private @Nullable Output<String> created;
+
+    /**
+     * @return When this firewall was created
+     * 
+     */
+    public Optional<Output<String>> created() {
+        return Optional.ofNullable(this.created);
+    }
+
+    /**
      * The devices associated with this firewall.
      * 
      */
@@ -179,9 +194,25 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * When this firewall was last updated
+     * 
+     */
+    @Import(name="updated")
+    private @Nullable Output<String> updated;
+
+    /**
+     * @return When this firewall was last updated
+     * 
+     */
+    public Optional<Output<String>> updated() {
+        return Optional.ofNullable(this.updated);
+    }
+
     private FirewallState() {}
 
     private FirewallState(FirewallState $) {
+        this.created = $.created;
         this.devices = $.devices;
         this.disabled = $.disabled;
         this.inboundPolicy = $.inboundPolicy;
@@ -192,6 +223,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         this.outbounds = $.outbounds;
         this.status = $.status;
         this.tags = $.tags;
+        this.updated = $.updated;
     }
 
     public static Builder builder() {
@@ -210,6 +242,27 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FirewallState defaults) {
             $ = new FirewallState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param created When this firewall was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder created(@Nullable Output<String> created) {
+            $.created = created;
+            return this;
+        }
+
+        /**
+         * @param created When this firewall was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder created(String created) {
+            return created(Output.of(created));
         }
 
         /**
@@ -478,6 +531,27 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param updated When this firewall was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(@Nullable Output<String> updated) {
+            $.updated = updated;
+            return this;
+        }
+
+        /**
+         * @param updated When this firewall was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(String updated) {
+            return updated(Output.of(updated));
         }
 
         public FirewallState build() {

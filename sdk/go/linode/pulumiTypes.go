@@ -8758,6 +8758,695 @@ func (o GetFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallOutb
 	}).(GetFirewallOutboundOutput)
 }
 
+type GetFirewallsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetFirewallsFilterInput is an input type that accepts GetFirewallsFilterArgs and GetFirewallsFilterOutput values.
+// You can construct a concrete instance of `GetFirewallsFilterInput` via:
+//
+//	GetFirewallsFilterArgs{...}
+type GetFirewallsFilterInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFilterOutput() GetFirewallsFilterOutput
+	ToGetFirewallsFilterOutputWithContext(context.Context) GetFirewallsFilterOutput
+}
+
+type GetFirewallsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetFirewallsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFilter)(nil)).Elem()
+}
+
+func (i GetFirewallsFilterArgs) ToGetFirewallsFilterOutput() GetFirewallsFilterOutput {
+	return i.ToGetFirewallsFilterOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFilterArgs) ToGetFirewallsFilterOutputWithContext(ctx context.Context) GetFirewallsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFilterOutput)
+}
+
+// GetFirewallsFilterArrayInput is an input type that accepts GetFirewallsFilterArray and GetFirewallsFilterArrayOutput values.
+// You can construct a concrete instance of `GetFirewallsFilterArrayInput` via:
+//
+//	GetFirewallsFilterArray{ GetFirewallsFilterArgs{...} }
+type GetFirewallsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFilterArrayOutput() GetFirewallsFilterArrayOutput
+	ToGetFirewallsFilterArrayOutputWithContext(context.Context) GetFirewallsFilterArrayOutput
+}
+
+type GetFirewallsFilterArray []GetFirewallsFilterInput
+
+func (GetFirewallsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFilter)(nil)).Elem()
+}
+
+func (i GetFirewallsFilterArray) ToGetFirewallsFilterArrayOutput() GetFirewallsFilterArrayOutput {
+	return i.ToGetFirewallsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFilterArray) ToGetFirewallsFilterArrayOutputWithContext(ctx context.Context) GetFirewallsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFilterArrayOutput)
+}
+
+type GetFirewallsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFilter)(nil)).Elem()
+}
+
+func (o GetFirewallsFilterOutput) ToGetFirewallsFilterOutput() GetFirewallsFilterOutput {
+	return o
+}
+
+func (o GetFirewallsFilterOutput) ToGetFirewallsFilterOutputWithContext(ctx context.Context) GetFirewallsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetFirewallsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetFirewallsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetFirewallsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetFirewallsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFilter)(nil)).Elem()
+}
+
+func (o GetFirewallsFilterArrayOutput) ToGetFirewallsFilterArrayOutput() GetFirewallsFilterArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFilterArrayOutput) ToGetFirewallsFilterArrayOutputWithContext(ctx context.Context) GetFirewallsFilterArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFilterArrayOutput) Index(i pulumi.IntInput) GetFirewallsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallsFilter {
+		return vs[0].([]GetFirewallsFilter)[vs[1].(int)]
+	}).(GetFirewallsFilterOutput)
+}
+
+type GetFirewallsFirewall struct {
+	// When this firewall was created.
+	Created string                       `pulumi:"created"`
+	Devices []GetFirewallsFirewallDevice `pulumi:"devices"`
+	// If true, the Firewall is inactive.
+	Disabled bool `pulumi:"disabled"`
+	// The unique ID assigned to this Firewall.
+	Id int `pulumi:"id"`
+	// The default behavior for inbound traffic.
+	InboundPolicy string                        `pulumi:"inboundPolicy"`
+	Inbounds      []GetFirewallsFirewallInbound `pulumi:"inbounds"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label string `pulumi:"label"`
+	// The IDs of Linodes this firewall is applied to.
+	Linodes []int `pulumi:"linodes"`
+	// The default behavior for outbound traffic.
+	OutboundPolicy string                         `pulumi:"outboundPolicy"`
+	Outbounds      []GetFirewallsFirewallOutbound `pulumi:"outbounds"`
+	// The status of the firewall.
+	Status string `pulumi:"status"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetFirewallsFirewallInput is an input type that accepts GetFirewallsFirewallArgs and GetFirewallsFirewallOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallInput` via:
+//
+//	GetFirewallsFirewallArgs{...}
+type GetFirewallsFirewallInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallOutput() GetFirewallsFirewallOutput
+	ToGetFirewallsFirewallOutputWithContext(context.Context) GetFirewallsFirewallOutput
+}
+
+type GetFirewallsFirewallArgs struct {
+	// When this firewall was created.
+	Created pulumi.StringInput                   `pulumi:"created"`
+	Devices GetFirewallsFirewallDeviceArrayInput `pulumi:"devices"`
+	// If true, the Firewall is inactive.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The unique ID assigned to this Firewall.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The default behavior for inbound traffic.
+	InboundPolicy pulumi.StringInput                    `pulumi:"inboundPolicy"`
+	Inbounds      GetFirewallsFirewallInboundArrayInput `pulumi:"inbounds"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The IDs of Linodes this firewall is applied to.
+	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
+	// The default behavior for outbound traffic.
+	OutboundPolicy pulumi.StringInput                     `pulumi:"outboundPolicy"`
+	Outbounds      GetFirewallsFirewallOutboundArrayInput `pulumi:"outbounds"`
+	// The status of the firewall.
+	Status pulumi.StringInput `pulumi:"status"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetFirewallsFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallArgs) ToGetFirewallsFirewallOutput() GetFirewallsFirewallOutput {
+	return i.ToGetFirewallsFirewallOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallArgs) ToGetFirewallsFirewallOutputWithContext(ctx context.Context) GetFirewallsFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallOutput)
+}
+
+// GetFirewallsFirewallArrayInput is an input type that accepts GetFirewallsFirewallArray and GetFirewallsFirewallArrayOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallArrayInput` via:
+//
+//	GetFirewallsFirewallArray{ GetFirewallsFirewallArgs{...} }
+type GetFirewallsFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallArrayOutput() GetFirewallsFirewallArrayOutput
+	ToGetFirewallsFirewallArrayOutputWithContext(context.Context) GetFirewallsFirewallArrayOutput
+}
+
+type GetFirewallsFirewallArray []GetFirewallsFirewallInput
+
+func (GetFirewallsFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallArray) ToGetFirewallsFirewallArrayOutput() GetFirewallsFirewallArrayOutput {
+	return i.ToGetFirewallsFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallArray) ToGetFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallArrayOutput)
+}
+
+type GetFirewallsFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallOutput) ToGetFirewallsFirewallOutput() GetFirewallsFirewallOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallOutput) ToGetFirewallsFirewallOutputWithContext(ctx context.Context) GetFirewallsFirewallOutput {
+	return o
+}
+
+// When this firewall was created.
+func (o GetFirewallsFirewallOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutput) Devices() GetFirewallsFirewallDeviceArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallDevice { return v.Devices }).(GetFirewallsFirewallDeviceArrayOutput)
+}
+
+// If true, the Firewall is inactive.
+func (o GetFirewallsFirewallOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The unique ID assigned to this Firewall.
+func (o GetFirewallsFirewallOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The default behavior for inbound traffic.
+func (o GetFirewallsFirewallOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutput) Inbounds() GetFirewallsFirewallInboundArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallInbound { return v.Inbounds }).(GetFirewallsFirewallInboundArrayOutput)
+}
+
+// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+func (o GetFirewallsFirewallOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The IDs of Linodes this firewall is applied to.
+func (o GetFirewallsFirewallOutput) Linodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Linodes }).(pulumi.IntArrayOutput)
+}
+
+// The default behavior for outbound traffic.
+func (o GetFirewallsFirewallOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutput) Outbounds() GetFirewallsFirewallOutboundArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallOutbound { return v.Outbounds }).(GetFirewallsFirewallOutboundArrayOutput)
+}
+
+// The status of the firewall.
+func (o GetFirewallsFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// An array of tags applied to this object. Tags are for organizational purposes only.
+func (o GetFirewallsFirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated.
+func (o GetFirewallsFirewallOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetFirewallsFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallArrayOutput) ToGetFirewallsFirewallArrayOutput() GetFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallArrayOutput) ToGetFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetFirewallsFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallsFirewall {
+		return vs[0].([]GetFirewallsFirewall)[vs[1].(int)]
+	}).(GetFirewallsFirewallOutput)
+}
+
+type GetFirewallsFirewallDevice struct {
+	EntityId int `pulumi:"entityId"`
+	// The unique ID assigned to this Firewall.
+	Id int `pulumi:"id"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label string `pulumi:"label"`
+	Type  string `pulumi:"type"`
+	Url   string `pulumi:"url"`
+}
+
+// GetFirewallsFirewallDeviceInput is an input type that accepts GetFirewallsFirewallDeviceArgs and GetFirewallsFirewallDeviceOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallDeviceInput` via:
+//
+//	GetFirewallsFirewallDeviceArgs{...}
+type GetFirewallsFirewallDeviceInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallDeviceOutput() GetFirewallsFirewallDeviceOutput
+	ToGetFirewallsFirewallDeviceOutputWithContext(context.Context) GetFirewallsFirewallDeviceOutput
+}
+
+type GetFirewallsFirewallDeviceArgs struct {
+	EntityId pulumi.IntInput `pulumi:"entityId"`
+	// The unique ID assigned to this Firewall.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label pulumi.StringInput `pulumi:"label"`
+	Type  pulumi.StringInput `pulumi:"type"`
+	Url   pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetFirewallsFirewallDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallDevice)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallDeviceArgs) ToGetFirewallsFirewallDeviceOutput() GetFirewallsFirewallDeviceOutput {
+	return i.ToGetFirewallsFirewallDeviceOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallDeviceArgs) ToGetFirewallsFirewallDeviceOutputWithContext(ctx context.Context) GetFirewallsFirewallDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallDeviceOutput)
+}
+
+// GetFirewallsFirewallDeviceArrayInput is an input type that accepts GetFirewallsFirewallDeviceArray and GetFirewallsFirewallDeviceArrayOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallDeviceArrayInput` via:
+//
+//	GetFirewallsFirewallDeviceArray{ GetFirewallsFirewallDeviceArgs{...} }
+type GetFirewallsFirewallDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallDeviceArrayOutput() GetFirewallsFirewallDeviceArrayOutput
+	ToGetFirewallsFirewallDeviceArrayOutputWithContext(context.Context) GetFirewallsFirewallDeviceArrayOutput
+}
+
+type GetFirewallsFirewallDeviceArray []GetFirewallsFirewallDeviceInput
+
+func (GetFirewallsFirewallDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallDevice)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallDeviceArray) ToGetFirewallsFirewallDeviceArrayOutput() GetFirewallsFirewallDeviceArrayOutput {
+	return i.ToGetFirewallsFirewallDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallDeviceArray) ToGetFirewallsFirewallDeviceArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallDeviceArrayOutput)
+}
+
+type GetFirewallsFirewallDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallDevice)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallDeviceOutput) ToGetFirewallsFirewallDeviceOutput() GetFirewallsFirewallDeviceOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallDeviceOutput) ToGetFirewallsFirewallDeviceOutputWithContext(ctx context.Context) GetFirewallsFirewallDeviceOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallDeviceOutput) EntityId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallDevice) int { return v.EntityId }).(pulumi.IntOutput)
+}
+
+// The unique ID assigned to this Firewall.
+func (o GetFirewallsFirewallDeviceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallDevice) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+func (o GetFirewallsFirewallDeviceOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallDeviceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetFirewallsFirewallDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallDevice)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallDeviceArrayOutput) ToGetFirewallsFirewallDeviceArrayOutput() GetFirewallsFirewallDeviceArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallDeviceArrayOutput) ToGetFirewallsFirewallDeviceArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallDeviceArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallDeviceArrayOutput) Index(i pulumi.IntInput) GetFirewallsFirewallDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallsFirewallDevice {
+		return vs[0].([]GetFirewallsFirewallDevice)[vs[1].(int)]
+	}).(GetFirewallsFirewallDeviceOutput)
+}
+
+type GetFirewallsFirewallInbound struct {
+	Action string   `pulumi:"action"`
+	Ipv4s  []string `pulumi:"ipv4s"`
+	Ipv6s  []string `pulumi:"ipv6s"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label    string `pulumi:"label"`
+	Ports    string `pulumi:"ports"`
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetFirewallsFirewallInboundInput is an input type that accepts GetFirewallsFirewallInboundArgs and GetFirewallsFirewallInboundOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallInboundInput` via:
+//
+//	GetFirewallsFirewallInboundArgs{...}
+type GetFirewallsFirewallInboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallInboundOutput() GetFirewallsFirewallInboundOutput
+	ToGetFirewallsFirewallInboundOutputWithContext(context.Context) GetFirewallsFirewallInboundOutput
+}
+
+type GetFirewallsFirewallInboundArgs struct {
+	Action pulumi.StringInput      `pulumi:"action"`
+	Ipv4s  pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s  pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label    pulumi.StringInput `pulumi:"label"`
+	Ports    pulumi.StringInput `pulumi:"ports"`
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetFirewallsFirewallInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallInbound)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallInboundArgs) ToGetFirewallsFirewallInboundOutput() GetFirewallsFirewallInboundOutput {
+	return i.ToGetFirewallsFirewallInboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallInboundArgs) ToGetFirewallsFirewallInboundOutputWithContext(ctx context.Context) GetFirewallsFirewallInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallInboundOutput)
+}
+
+// GetFirewallsFirewallInboundArrayInput is an input type that accepts GetFirewallsFirewallInboundArray and GetFirewallsFirewallInboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallInboundArrayInput` via:
+//
+//	GetFirewallsFirewallInboundArray{ GetFirewallsFirewallInboundArgs{...} }
+type GetFirewallsFirewallInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallInboundArrayOutput() GetFirewallsFirewallInboundArrayOutput
+	ToGetFirewallsFirewallInboundArrayOutputWithContext(context.Context) GetFirewallsFirewallInboundArrayOutput
+}
+
+type GetFirewallsFirewallInboundArray []GetFirewallsFirewallInboundInput
+
+func (GetFirewallsFirewallInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallInbound)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallInboundArray) ToGetFirewallsFirewallInboundArrayOutput() GetFirewallsFirewallInboundArrayOutput {
+	return i.ToGetFirewallsFirewallInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallInboundArray) ToGetFirewallsFirewallInboundArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallInboundArrayOutput)
+}
+
+type GetFirewallsFirewallInboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallInbound)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallInboundOutput) ToGetFirewallsFirewallInboundOutput() GetFirewallsFirewallInboundOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallInboundOutput) ToGetFirewallsFirewallInboundOutputWithContext(ctx context.Context) GetFirewallsFirewallInboundOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallsFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+func (o GetFirewallsFirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallsFirewallInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallInbound)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallInboundArrayOutput) ToGetFirewallsFirewallInboundArrayOutput() GetFirewallsFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallInboundArrayOutput) ToGetFirewallsFirewallInboundArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetFirewallsFirewallInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallsFirewallInbound {
+		return vs[0].([]GetFirewallsFirewallInbound)[vs[1].(int)]
+	}).(GetFirewallsFirewallInboundOutput)
+}
+
+type GetFirewallsFirewallOutbound struct {
+	Action string   `pulumi:"action"`
+	Ipv4s  []string `pulumi:"ipv4s"`
+	Ipv6s  []string `pulumi:"ipv6s"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label    string `pulumi:"label"`
+	Ports    string `pulumi:"ports"`
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetFirewallsFirewallOutboundInput is an input type that accepts GetFirewallsFirewallOutboundArgs and GetFirewallsFirewallOutboundOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallOutboundInput` via:
+//
+//	GetFirewallsFirewallOutboundArgs{...}
+type GetFirewallsFirewallOutboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallOutboundOutput() GetFirewallsFirewallOutboundOutput
+	ToGetFirewallsFirewallOutboundOutputWithContext(context.Context) GetFirewallsFirewallOutboundOutput
+}
+
+type GetFirewallsFirewallOutboundArgs struct {
+	Action pulumi.StringInput      `pulumi:"action"`
+	Ipv4s  pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s  pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+	Label    pulumi.StringInput `pulumi:"label"`
+	Ports    pulumi.StringInput `pulumi:"ports"`
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetFirewallsFirewallOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallOutboundArgs) ToGetFirewallsFirewallOutboundOutput() GetFirewallsFirewallOutboundOutput {
+	return i.ToGetFirewallsFirewallOutboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallOutboundArgs) ToGetFirewallsFirewallOutboundOutputWithContext(ctx context.Context) GetFirewallsFirewallOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallOutboundOutput)
+}
+
+// GetFirewallsFirewallOutboundArrayInput is an input type that accepts GetFirewallsFirewallOutboundArray and GetFirewallsFirewallOutboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallsFirewallOutboundArrayInput` via:
+//
+//	GetFirewallsFirewallOutboundArray{ GetFirewallsFirewallOutboundArgs{...} }
+type GetFirewallsFirewallOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallsFirewallOutboundArrayOutput() GetFirewallsFirewallOutboundArrayOutput
+	ToGetFirewallsFirewallOutboundArrayOutputWithContext(context.Context) GetFirewallsFirewallOutboundArrayOutput
+}
+
+type GetFirewallsFirewallOutboundArray []GetFirewallsFirewallOutboundInput
+
+func (GetFirewallsFirewallOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallsFirewallOutboundArray) ToGetFirewallsFirewallOutboundArrayOutput() GetFirewallsFirewallOutboundArrayOutput {
+	return i.ToGetFirewallsFirewallOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallsFirewallOutboundArray) ToGetFirewallsFirewallOutboundArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallsFirewallOutboundArrayOutput)
+}
+
+type GetFirewallsFirewallOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallsFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallOutboundOutput) ToGetFirewallsFirewallOutboundOutput() GetFirewallsFirewallOutboundOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallOutboundOutput) ToGetFirewallsFirewallOutboundOutputWithContext(ctx context.Context) GetFirewallsFirewallOutboundOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallsFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+func (o GetFirewallsFirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallsFirewallOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallsFirewallOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallsFirewallOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallsFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallsFirewallOutboundArrayOutput) ToGetFirewallsFirewallOutboundArrayOutput() GetFirewallsFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallOutboundArrayOutput) ToGetFirewallsFirewallOutboundArrayOutputWithContext(ctx context.Context) GetFirewallsFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallsFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallsFirewallOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallsFirewallOutbound {
+		return vs[0].([]GetFirewallsFirewallOutbound)[vs[1].(int)]
+	}).(GetFirewallsFirewallOutboundOutput)
+}
+
 type GetImagesFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -14552,6 +15241,287 @@ func (o GetInstancesInstanceSpecArrayOutput) Index(i pulumi.IntInput) GetInstanc
 	}).(GetInstancesInstanceSpecOutput)
 }
 
+type GetKernelsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetKernelsFilterInput is an input type that accepts GetKernelsFilterArgs and GetKernelsFilterOutput values.
+// You can construct a concrete instance of `GetKernelsFilterInput` via:
+//
+//	GetKernelsFilterArgs{...}
+type GetKernelsFilterInput interface {
+	pulumi.Input
+
+	ToGetKernelsFilterOutput() GetKernelsFilterOutput
+	ToGetKernelsFilterOutputWithContext(context.Context) GetKernelsFilterOutput
+}
+
+type GetKernelsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetKernelsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelsFilter)(nil)).Elem()
+}
+
+func (i GetKernelsFilterArgs) ToGetKernelsFilterOutput() GetKernelsFilterOutput {
+	return i.ToGetKernelsFilterOutputWithContext(context.Background())
+}
+
+func (i GetKernelsFilterArgs) ToGetKernelsFilterOutputWithContext(ctx context.Context) GetKernelsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKernelsFilterOutput)
+}
+
+// GetKernelsFilterArrayInput is an input type that accepts GetKernelsFilterArray and GetKernelsFilterArrayOutput values.
+// You can construct a concrete instance of `GetKernelsFilterArrayInput` via:
+//
+//	GetKernelsFilterArray{ GetKernelsFilterArgs{...} }
+type GetKernelsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetKernelsFilterArrayOutput() GetKernelsFilterArrayOutput
+	ToGetKernelsFilterArrayOutputWithContext(context.Context) GetKernelsFilterArrayOutput
+}
+
+type GetKernelsFilterArray []GetKernelsFilterInput
+
+func (GetKernelsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKernelsFilter)(nil)).Elem()
+}
+
+func (i GetKernelsFilterArray) ToGetKernelsFilterArrayOutput() GetKernelsFilterArrayOutput {
+	return i.ToGetKernelsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetKernelsFilterArray) ToGetKernelsFilterArrayOutputWithContext(ctx context.Context) GetKernelsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKernelsFilterArrayOutput)
+}
+
+type GetKernelsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetKernelsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelsFilter)(nil)).Elem()
+}
+
+func (o GetKernelsFilterOutput) ToGetKernelsFilterOutput() GetKernelsFilterOutput {
+	return o
+}
+
+func (o GetKernelsFilterOutput) ToGetKernelsFilterOutputWithContext(ctx context.Context) GetKernelsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetKernelsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKernelsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetKernelsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetKernelsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKernelsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetKernelsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKernelsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKernelsFilter)(nil)).Elem()
+}
+
+func (o GetKernelsFilterArrayOutput) ToGetKernelsFilterArrayOutput() GetKernelsFilterArrayOutput {
+	return o
+}
+
+func (o GetKernelsFilterArrayOutput) ToGetKernelsFilterArrayOutputWithContext(ctx context.Context) GetKernelsFilterArrayOutput {
+	return o
+}
+
+func (o GetKernelsFilterArrayOutput) Index(i pulumi.IntInput) GetKernelsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKernelsFilter {
+		return vs[0].([]GetKernelsFilter)[vs[1].(int)]
+	}).(GetKernelsFilterOutput)
+}
+
+type GetKernelsKernel struct {
+	// The architecture of this Kernel.
+	Architecture string `pulumi:"architecture"`
+	Built        string `pulumi:"built"`
+	// Whether or not this Kernel is deprecated.
+	Deprecated bool `pulumi:"deprecated"`
+	// The unique ID of this Kernel.
+	Id string `pulumi:"id"`
+	// If this Kernel is suitable for KVM Linodes.
+	Kvm bool `pulumi:"kvm"`
+	// The friendly name of this Kernel.
+	Label string `pulumi:"label"`
+	// If this Kernel is suitable for paravirtualized operations.
+	Pvops bool `pulumi:"pvops"`
+	// Linux Kernel version
+	Version string `pulumi:"version"`
+	// If this Kernel is suitable for Xen Linodes.
+	Xen bool `pulumi:"xen"`
+}
+
+// GetKernelsKernelInput is an input type that accepts GetKernelsKernelArgs and GetKernelsKernelOutput values.
+// You can construct a concrete instance of `GetKernelsKernelInput` via:
+//
+//	GetKernelsKernelArgs{...}
+type GetKernelsKernelInput interface {
+	pulumi.Input
+
+	ToGetKernelsKernelOutput() GetKernelsKernelOutput
+	ToGetKernelsKernelOutputWithContext(context.Context) GetKernelsKernelOutput
+}
+
+type GetKernelsKernelArgs struct {
+	// The architecture of this Kernel.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	Built        pulumi.StringInput `pulumi:"built"`
+	// Whether or not this Kernel is deprecated.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// The unique ID of this Kernel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// If this Kernel is suitable for KVM Linodes.
+	Kvm pulumi.BoolInput `pulumi:"kvm"`
+	// The friendly name of this Kernel.
+	Label pulumi.StringInput `pulumi:"label"`
+	// If this Kernel is suitable for paravirtualized operations.
+	Pvops pulumi.BoolInput `pulumi:"pvops"`
+	// Linux Kernel version
+	Version pulumi.StringInput `pulumi:"version"`
+	// If this Kernel is suitable for Xen Linodes.
+	Xen pulumi.BoolInput `pulumi:"xen"`
+}
+
+func (GetKernelsKernelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelsKernel)(nil)).Elem()
+}
+
+func (i GetKernelsKernelArgs) ToGetKernelsKernelOutput() GetKernelsKernelOutput {
+	return i.ToGetKernelsKernelOutputWithContext(context.Background())
+}
+
+func (i GetKernelsKernelArgs) ToGetKernelsKernelOutputWithContext(ctx context.Context) GetKernelsKernelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKernelsKernelOutput)
+}
+
+// GetKernelsKernelArrayInput is an input type that accepts GetKernelsKernelArray and GetKernelsKernelArrayOutput values.
+// You can construct a concrete instance of `GetKernelsKernelArrayInput` via:
+//
+//	GetKernelsKernelArray{ GetKernelsKernelArgs{...} }
+type GetKernelsKernelArrayInput interface {
+	pulumi.Input
+
+	ToGetKernelsKernelArrayOutput() GetKernelsKernelArrayOutput
+	ToGetKernelsKernelArrayOutputWithContext(context.Context) GetKernelsKernelArrayOutput
+}
+
+type GetKernelsKernelArray []GetKernelsKernelInput
+
+func (GetKernelsKernelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKernelsKernel)(nil)).Elem()
+}
+
+func (i GetKernelsKernelArray) ToGetKernelsKernelArrayOutput() GetKernelsKernelArrayOutput {
+	return i.ToGetKernelsKernelArrayOutputWithContext(context.Background())
+}
+
+func (i GetKernelsKernelArray) ToGetKernelsKernelArrayOutputWithContext(ctx context.Context) GetKernelsKernelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKernelsKernelArrayOutput)
+}
+
+type GetKernelsKernelOutput struct{ *pulumi.OutputState }
+
+func (GetKernelsKernelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKernelsKernel)(nil)).Elem()
+}
+
+func (o GetKernelsKernelOutput) ToGetKernelsKernelOutput() GetKernelsKernelOutput {
+	return o
+}
+
+func (o GetKernelsKernelOutput) ToGetKernelsKernelOutputWithContext(ctx context.Context) GetKernelsKernelOutput {
+	return o
+}
+
+// The architecture of this Kernel.
+func (o GetKernelsKernelOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsKernel) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+func (o GetKernelsKernelOutput) Built() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsKernel) string { return v.Built }).(pulumi.StringOutput)
+}
+
+// Whether or not this Kernel is deprecated.
+func (o GetKernelsKernelOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelsKernel) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// The unique ID of this Kernel.
+func (o GetKernelsKernelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsKernel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// If this Kernel is suitable for KVM Linodes.
+func (o GetKernelsKernelOutput) Kvm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelsKernel) bool { return v.Kvm }).(pulumi.BoolOutput)
+}
+
+// The friendly name of this Kernel.
+func (o GetKernelsKernelOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsKernel) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// If this Kernel is suitable for paravirtualized operations.
+func (o GetKernelsKernelOutput) Pvops() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelsKernel) bool { return v.Pvops }).(pulumi.BoolOutput)
+}
+
+// Linux Kernel version
+func (o GetKernelsKernelOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKernelsKernel) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// If this Kernel is suitable for Xen Linodes.
+func (o GetKernelsKernelOutput) Xen() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKernelsKernel) bool { return v.Xen }).(pulumi.BoolOutput)
+}
+
+type GetKernelsKernelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKernelsKernelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKernelsKernel)(nil)).Elem()
+}
+
+func (o GetKernelsKernelArrayOutput) ToGetKernelsKernelArrayOutput() GetKernelsKernelArrayOutput {
+	return o
+}
+
+func (o GetKernelsKernelArrayOutput) ToGetKernelsKernelArrayOutputWithContext(ctx context.Context) GetKernelsKernelArrayOutput {
+	return o
+}
+
+func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKernelsKernel {
+		return vs[0].([]GetKernelsKernel)[vs[1].(int)]
+	}).(GetKernelsKernelOutput)
+}
+
 type GetLkeClusterControlPlane struct {
 	HighAvailability bool `pulumi:"highAvailability"`
 }
@@ -16272,6 +17242,245 @@ func (o GetRegionsRegionResolverArrayOutput) Index(i pulumi.IntInput) GetRegions
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegionResolver {
 		return vs[0].([]GetRegionsRegionResolver)[vs[1].(int)]
 	}).(GetRegionsRegionResolverOutput)
+}
+
+type GetSshkeysFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetSshkeysFilterInput is an input type that accepts GetSshkeysFilterArgs and GetSshkeysFilterOutput values.
+// You can construct a concrete instance of `GetSshkeysFilterInput` via:
+//
+//	GetSshkeysFilterArgs{...}
+type GetSshkeysFilterInput interface {
+	pulumi.Input
+
+	ToGetSshkeysFilterOutput() GetSshkeysFilterOutput
+	ToGetSshkeysFilterOutputWithContext(context.Context) GetSshkeysFilterOutput
+}
+
+type GetSshkeysFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSshkeysFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshkeysFilter)(nil)).Elem()
+}
+
+func (i GetSshkeysFilterArgs) ToGetSshkeysFilterOutput() GetSshkeysFilterOutput {
+	return i.ToGetSshkeysFilterOutputWithContext(context.Background())
+}
+
+func (i GetSshkeysFilterArgs) ToGetSshkeysFilterOutputWithContext(ctx context.Context) GetSshkeysFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshkeysFilterOutput)
+}
+
+// GetSshkeysFilterArrayInput is an input type that accepts GetSshkeysFilterArray and GetSshkeysFilterArrayOutput values.
+// You can construct a concrete instance of `GetSshkeysFilterArrayInput` via:
+//
+//	GetSshkeysFilterArray{ GetSshkeysFilterArgs{...} }
+type GetSshkeysFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSshkeysFilterArrayOutput() GetSshkeysFilterArrayOutput
+	ToGetSshkeysFilterArrayOutputWithContext(context.Context) GetSshkeysFilterArrayOutput
+}
+
+type GetSshkeysFilterArray []GetSshkeysFilterInput
+
+func (GetSshkeysFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshkeysFilter)(nil)).Elem()
+}
+
+func (i GetSshkeysFilterArray) ToGetSshkeysFilterArrayOutput() GetSshkeysFilterArrayOutput {
+	return i.ToGetSshkeysFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshkeysFilterArray) ToGetSshkeysFilterArrayOutputWithContext(ctx context.Context) GetSshkeysFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshkeysFilterArrayOutput)
+}
+
+type GetSshkeysFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSshkeysFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshkeysFilter)(nil)).Elem()
+}
+
+func (o GetSshkeysFilterOutput) ToGetSshkeysFilterOutput() GetSshkeysFilterOutput {
+	return o
+}
+
+func (o GetSshkeysFilterOutput) ToGetSshkeysFilterOutputWithContext(ctx context.Context) GetSshkeysFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetSshkeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshkeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetSshkeysFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshkeysFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetSshkeysFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSshkeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSshkeysFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshkeysFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshkeysFilter)(nil)).Elem()
+}
+
+func (o GetSshkeysFilterArrayOutput) ToGetSshkeysFilterArrayOutput() GetSshkeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshkeysFilterArrayOutput) ToGetSshkeysFilterArrayOutputWithContext(ctx context.Context) GetSshkeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshkeysFilterArrayOutput) Index(i pulumi.IntInput) GetSshkeysFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshkeysFilter {
+		return vs[0].([]GetSshkeysFilter)[vs[1].(int)]
+	}).(GetSshkeysFilterOutput)
+}
+
+type GetSshkeysSshkey struct {
+	// The date this key was added.
+	Created string `pulumi:"created"`
+	// The ID of the SSH Key.
+	Id *string `pulumi:"id"`
+	// The label of the SSH Key.
+	Label string `pulumi:"label"`
+	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+	SshKey string `pulumi:"sshKey"`
+}
+
+// GetSshkeysSshkeyInput is an input type that accepts GetSshkeysSshkeyArgs and GetSshkeysSshkeyOutput values.
+// You can construct a concrete instance of `GetSshkeysSshkeyInput` via:
+//
+//	GetSshkeysSshkeyArgs{...}
+type GetSshkeysSshkeyInput interface {
+	pulumi.Input
+
+	ToGetSshkeysSshkeyOutput() GetSshkeysSshkeyOutput
+	ToGetSshkeysSshkeyOutputWithContext(context.Context) GetSshkeysSshkeyOutput
+}
+
+type GetSshkeysSshkeyArgs struct {
+	// The date this key was added.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The ID of the SSH Key.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The label of the SSH Key.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+	SshKey pulumi.StringInput `pulumi:"sshKey"`
+}
+
+func (GetSshkeysSshkeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshkeysSshkey)(nil)).Elem()
+}
+
+func (i GetSshkeysSshkeyArgs) ToGetSshkeysSshkeyOutput() GetSshkeysSshkeyOutput {
+	return i.ToGetSshkeysSshkeyOutputWithContext(context.Background())
+}
+
+func (i GetSshkeysSshkeyArgs) ToGetSshkeysSshkeyOutputWithContext(ctx context.Context) GetSshkeysSshkeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshkeysSshkeyOutput)
+}
+
+// GetSshkeysSshkeyArrayInput is an input type that accepts GetSshkeysSshkeyArray and GetSshkeysSshkeyArrayOutput values.
+// You can construct a concrete instance of `GetSshkeysSshkeyArrayInput` via:
+//
+//	GetSshkeysSshkeyArray{ GetSshkeysSshkeyArgs{...} }
+type GetSshkeysSshkeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSshkeysSshkeyArrayOutput() GetSshkeysSshkeyArrayOutput
+	ToGetSshkeysSshkeyArrayOutputWithContext(context.Context) GetSshkeysSshkeyArrayOutput
+}
+
+type GetSshkeysSshkeyArray []GetSshkeysSshkeyInput
+
+func (GetSshkeysSshkeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshkeysSshkey)(nil)).Elem()
+}
+
+func (i GetSshkeysSshkeyArray) ToGetSshkeysSshkeyArrayOutput() GetSshkeysSshkeyArrayOutput {
+	return i.ToGetSshkeysSshkeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshkeysSshkeyArray) ToGetSshkeysSshkeyArrayOutputWithContext(ctx context.Context) GetSshkeysSshkeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshkeysSshkeyArrayOutput)
+}
+
+type GetSshkeysSshkeyOutput struct{ *pulumi.OutputState }
+
+func (GetSshkeysSshkeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshkeysSshkey)(nil)).Elem()
+}
+
+func (o GetSshkeysSshkeyOutput) ToGetSshkeysSshkeyOutput() GetSshkeysSshkeyOutput {
+	return o
+}
+
+func (o GetSshkeysSshkeyOutput) ToGetSshkeysSshkeyOutputWithContext(ctx context.Context) GetSshkeysSshkeyOutput {
+	return o
+}
+
+// The date this key was added.
+func (o GetSshkeysSshkeyOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshkeysSshkey) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The ID of the SSH Key.
+func (o GetSshkeysSshkeyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshkeysSshkey) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The label of the SSH Key.
+func (o GetSshkeysSshkeyOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshkeysSshkey) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+func (o GetSshkeysSshkeyOutput) SshKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshkeysSshkey) string { return v.SshKey }).(pulumi.StringOutput)
+}
+
+type GetSshkeysSshkeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshkeysSshkeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshkeysSshkey)(nil)).Elem()
+}
+
+func (o GetSshkeysSshkeyArrayOutput) ToGetSshkeysSshkeyArrayOutput() GetSshkeysSshkeyArrayOutput {
+	return o
+}
+
+func (o GetSshkeysSshkeyArrayOutput) ToGetSshkeysSshkeyArrayOutputWithContext(ctx context.Context) GetSshkeysSshkeyArrayOutput {
+	return o
+}
+
+func (o GetSshkeysSshkeyArrayOutput) Index(i pulumi.IntInput) GetSshkeysSshkeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshkeysSshkey {
+		return vs[0].([]GetSshkeysSshkey)[vs[1].(int)]
+	}).(GetSshkeysSshkeyOutput)
 }
 
 type GetStackScriptUserDefinedField struct {
@@ -20040,6 +21249,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundArrayInput)(nil)).Elem(), GetFirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundInput)(nil)).Elem(), GetFirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundArrayInput)(nil)).Elem(), GetFirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFilterInput)(nil)).Elem(), GetFirewallsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFilterArrayInput)(nil)).Elem(), GetFirewallsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInput)(nil)).Elem(), GetFirewallsFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallArrayInput)(nil)).Elem(), GetFirewallsFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallDeviceInput)(nil)).Elem(), GetFirewallsFirewallDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallDeviceArrayInput)(nil)).Elem(), GetFirewallsFirewallDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInboundInput)(nil)).Elem(), GetFirewallsFirewallInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInboundArrayInput)(nil)).Elem(), GetFirewallsFirewallInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundInput)(nil)).Elem(), GetFirewallsFirewallOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundArrayInput)(nil)).Elem(), GetFirewallsFirewallOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
@@ -20127,6 +21346,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskArrayInput)(nil)).Elem(), GetInstancesInstanceDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecArrayInput)(nil)).Elem(), GetInstancesInstanceSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsFilterInput)(nil)).Elem(), GetKernelsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsFilterArrayInput)(nil)).Elem(), GetKernelsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsKernelInput)(nil)).Elem(), GetKernelsKernelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsKernelArrayInput)(nil)).Elem(), GetKernelsKernelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolInput)(nil)).Elem(), GetLkeClusterPoolArgs{})
@@ -20156,6 +21379,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverInput)(nil)).Elem(), GetRegionsRegionResolverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverArrayInput)(nil)).Elem(), GetRegionsRegionResolverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshkeysFilterInput)(nil)).Elem(), GetSshkeysFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshkeysFilterArrayInput)(nil)).Elem(), GetSshkeysFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshkeysSshkeyInput)(nil)).Elem(), GetSshkeysSshkeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshkeysSshkeyArrayInput)(nil)).Elem(), GetSshkeysSshkeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptUserDefinedFieldArrayInput)(nil)).Elem(), GetStackScriptUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackScriptsFilterInput)(nil)).Elem(), GetStackScriptsFilterArgs{})
@@ -20332,6 +21559,16 @@ func init() {
 	pulumi.RegisterOutputType(GetFirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallOutboundOutput{})
 	pulumi.RegisterOutputType(GetFirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFilterOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallDeviceOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallInboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
@@ -20419,6 +21656,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetKernelsFilterOutput{})
+	pulumi.RegisterOutputType(GetKernelsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetKernelsKernelOutput{})
+	pulumi.RegisterOutputType(GetKernelsKernelArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolOutput{})
@@ -20448,6 +21689,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionResolverOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionResolverArrayOutput{})
+	pulumi.RegisterOutputType(GetSshkeysFilterOutput{})
+	pulumi.RegisterOutputType(GetSshkeysFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSshkeysSshkeyOutput{})
+	pulumi.RegisterOutputType(GetSshkeysSshkeyArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(GetStackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetStackScriptsFilterOutput{})

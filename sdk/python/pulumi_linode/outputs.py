@@ -71,6 +71,11 @@ __all__ = [
     'GetFirewallDeviceResult',
     'GetFirewallInboundResult',
     'GetFirewallOutboundResult',
+    'GetFirewallsFilterResult',
+    'GetFirewallsFirewallResult',
+    'GetFirewallsFirewallDeviceResult',
+    'GetFirewallsFirewallInboundResult',
+    'GetFirewallsFirewallOutboundResult',
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetInstanceBackupsAutomaticResult',
@@ -117,6 +122,8 @@ __all__ = [
     'GetInstancesInstanceConfigInterfaceResult',
     'GetInstancesInstanceDiskResult',
     'GetInstancesInstanceSpecResult',
+    'GetKernelsFilterResult',
+    'GetKernelsKernelResult',
     'GetLkeClusterControlPlaneResult',
     'GetLkeClusterPoolResult',
     'GetLkeClusterPoolAutoscalerResult',
@@ -132,6 +139,8 @@ __all__ = [
     'GetRegionsFilterResult',
     'GetRegionsRegionResult',
     'GetRegionsRegionResolverResult',
+    'GetSshkeysFilterResult',
+    'GetSshkeysSshkeyResult',
     'GetStackScriptUserDefinedFieldResult',
     'GetStackScriptsFilterResult',
     'GetStackScriptsStackscriptResult',
@@ -3656,6 +3665,344 @@ class GetFirewallOutboundResult(dict):
 
 
 @pulumi.output_type
+class GetFirewallsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetFirewallsFirewallResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 disabled: bool,
+                 id: int,
+                 inbound_policy: str,
+                 label: str,
+                 linodes: Sequence[int],
+                 outbound_policy: str,
+                 status: str,
+                 tags: Sequence[str],
+                 updated: str,
+                 devices: Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']] = None,
+                 inbounds: Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']] = None,
+                 outbounds: Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']] = None):
+        """
+        :param str created: When this firewall was created.
+        :param bool disabled: If true, the Firewall is inactive.
+        :param int id: The unique ID assigned to this Firewall.
+        :param str inbound_policy: The default behavior for inbound traffic.
+        :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        :param Sequence[int] linodes: The IDs of Linodes this firewall is applied to.
+        :param str outbound_policy: The default behavior for outbound traffic.
+        :param str status: The status of the firewall.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
+        :param str updated: When this firewall was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "outbound_policy", outbound_policy)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "updated", updated)
+        if devices is not None:
+            pulumi.set(__self__, "devices", devices)
+        if inbounds is not None:
+            pulumi.set(__self__, "inbounds", inbounds)
+        if outbounds is not None:
+            pulumi.set(__self__, "outbounds", outbounds)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this firewall was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        If true, the Firewall is inactive.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID assigned to this Firewall.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="inboundPolicy")
+    def inbound_policy(self) -> str:
+        """
+        The default behavior for inbound traffic.
+        """
+        return pulumi.get(self, "inbound_policy")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Sequence[int]:
+        """
+        The IDs of Linodes this firewall is applied to.
+        """
+        return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter(name="outboundPolicy")
+    def outbound_policy(self) -> str:
+        """
+        The default behavior for outbound traffic.
+        """
+        return pulumi.get(self, "outbound_policy")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the firewall.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        An array of tags applied to this object. Tags are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this firewall was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']]:
+        return pulumi.get(self, "devices")
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']]:
+        return pulumi.get(self, "inbounds")
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']]:
+        return pulumi.get(self, "outbounds")
+
+
+@pulumi.output_type
+class GetFirewallsFirewallDeviceResult(dict):
+    def __init__(__self__, *,
+                 entity_id: int,
+                 id: int,
+                 label: str,
+                 type: str,
+                 url: str):
+        """
+        :param int id: The unique ID assigned to this Firewall.
+        :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> int:
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID assigned to this Firewall.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetFirewallsFirewallInboundResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 ipv4s: Sequence[str],
+                 ipv6s: Sequence[str],
+                 label: str,
+                 ports: str,
+                 protocol: str):
+        """
+        :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv6s")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> str:
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetFirewallsFirewallOutboundResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 ipv4s: Sequence[str],
+                 ipv6s: Sequence[str],
+                 label: str,
+                 ports: str,
+                 protocol: str):
+        """
+        :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv6s")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> str:
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
 class GetImagesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -6368,6 +6715,149 @@ class GetInstancesInstanceSpecResult(dict):
 
 
 @pulumi.output_type
+class GetKernelsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetKernelsKernelResult(dict):
+    def __init__(__self__, *,
+                 architecture: str,
+                 built: str,
+                 deprecated: bool,
+                 id: str,
+                 kvm: bool,
+                 label: str,
+                 pvops: bool,
+                 version: str,
+                 xen: bool):
+        """
+        :param str architecture: The architecture of this Kernel.
+        :param bool deprecated: Whether or not this Kernel is deprecated.
+        :param str id: The unique ID of this Kernel.
+        :param bool kvm: If this Kernel is suitable for KVM Linodes.
+        :param str label: The friendly name of this Kernel.
+        :param bool pvops: If this Kernel is suitable for paravirtualized operations.
+        :param str version: Linux Kernel version
+        :param bool xen: If this Kernel is suitable for Xen Linodes.
+        """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "built", built)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kvm", kvm)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "pvops", pvops)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "xen", xen)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of this Kernel.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter
+    def built(self) -> str:
+        return pulumi.get(self, "built")
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> bool:
+        """
+        Whether or not this Kernel is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique ID of this Kernel.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def kvm(self) -> bool:
+        """
+        If this Kernel is suitable for KVM Linodes.
+        """
+        return pulumi.get(self, "kvm")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The friendly name of this Kernel.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def pvops(self) -> bool:
+        """
+        If this Kernel is suitable for paravirtualized operations.
+        """
+        return pulumi.get(self, "pvops")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Linux Kernel version
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter
+    def xen(self) -> bool:
+        """
+        If this Kernel is suitable for Xen Linodes.
+        """
+        return pulumi.get(self, "xen")
+
+
+@pulumi.output_type
 class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
                  high_availability: bool):
@@ -7012,6 +7502,99 @@ class GetRegionsRegionResolverResult(dict):
         The IPv6 addresses for this region’s DNS resolvers, separated by commas.
         """
         return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetSshkeysFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetSshkeysSshkeyResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 label: str,
+                 ssh_key: str,
+                 id: Optional[str] = None):
+        """
+        :param str created: The date this key was added.
+        :param str label: The label of the SSH Key.
+        :param str ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        :param str id: The ID of the SSH Key.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ssh_key", ssh_key)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date this key was added.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the SSH Key.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> str:
+        """
+        The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        return pulumi.get(self, "ssh_key")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of the SSH Key.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

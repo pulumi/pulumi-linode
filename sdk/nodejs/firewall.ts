@@ -106,6 +106,10 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /**
+     * When this firewall was created
+     */
+    public /*out*/ readonly created!: pulumi.Output<string>;
+    /**
      * The devices associated with this firewall.
      */
     public /*out*/ readonly devices!: pulumi.Output<outputs.FirewallDevice[]>;
@@ -149,6 +153,10 @@ export class Firewall extends pulumi.CustomResource {
      * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * When this firewall was last updated
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -163,6 +171,7 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["devices"] = state ? state.devices : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["inboundPolicy"] = state ? state.inboundPolicy : undefined;
@@ -173,6 +182,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["outbounds"] = state ? state.outbounds : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
             if ((!args || args.inboundPolicy === undefined) && !opts.urn) {
@@ -192,8 +202,10 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
             resourceInputs["outbounds"] = args ? args.outbounds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["created"] = undefined /*out*/;
             resourceInputs["devices"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
@@ -204,6 +216,10 @@ export class Firewall extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Firewall resources.
  */
 export interface FirewallState {
+    /**
+     * When this firewall was created
+     */
+    created?: pulumi.Input<string>;
     /**
      * The devices associated with this firewall.
      */
@@ -248,6 +264,10 @@ export interface FirewallState {
      * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this firewall was last updated
+     */
+    updated?: pulumi.Input<string>;
 }
 
 /**

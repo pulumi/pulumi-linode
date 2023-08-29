@@ -101,6 +101,10 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetFirewallResult
     {
+        /// <summary>
+        /// When this firewall was created.
+        /// </summary>
+        public readonly string Created;
         public readonly ImmutableArray<Outputs.GetFirewallDeviceResult> Devices;
         /// <summary>
         /// If true, the firewall is inactive.
@@ -136,9 +140,15 @@ namespace Pulumi.Linode
         /// The tags applied to the firewall.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// When this firewall was last updated.
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetFirewallResult(
+            string created,
+
             ImmutableArray<Outputs.GetFirewallDeviceResult> devices,
 
             bool disabled,
@@ -159,8 +169,11 @@ namespace Pulumi.Linode
 
             string status,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            string updated)
         {
+            Created = created;
             Devices = devices;
             Disabled = disabled;
             Id = id;
@@ -172,6 +185,7 @@ namespace Pulumi.Linode
             Outbounds = outbounds;
             Status = status;
             Tags = tags;
+            Updated = updated;
         }
     }
 }

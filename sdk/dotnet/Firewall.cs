@@ -126,6 +126,12 @@ namespace Pulumi.Linode
     public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// When this firewall was created
+        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        /// <summary>
         /// The devices associated with this firewall.
         /// </summary>
         [Output("devices")]
@@ -188,6 +194,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// When this firewall was last updated
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
 
 
         /// <summary>
@@ -319,6 +331,12 @@ namespace Pulumi.Linode
 
     public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When this firewall was created
+        /// </summary>
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
         [Input("devices")]
         private InputList<Inputs.FirewallDeviceGetArgs>? _devices;
 
@@ -412,6 +430,12 @@ namespace Pulumi.Linode
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// When this firewall was last updated
+        /// </summary>
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
 
         public FirewallState()
         {

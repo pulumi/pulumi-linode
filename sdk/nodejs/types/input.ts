@@ -500,6 +500,204 @@ export interface GetDatabasesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetFirewallsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetFirewallsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetFirewallsFirewall {
+    /**
+     * When this firewall was created.
+     */
+    created?: string;
+    devices?: inputs.GetFirewallsFirewallDevice[];
+    /**
+     * If true, the Firewall is inactive.
+     */
+    disabled?: boolean;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id?: number;
+    /**
+     * The default behavior for inbound traffic.
+     */
+    inboundPolicy?: string;
+    inbounds?: inputs.GetFirewallsFirewallInbound[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: string;
+    /**
+     * The IDs of Linodes this firewall is applied to.
+     */
+    linodes?: number[];
+    /**
+     * The default behavior for outbound traffic.
+     */
+    outboundPolicy?: string;
+    outbounds?: inputs.GetFirewallsFirewallOutbound[];
+    /**
+     * The status of the firewall.
+     */
+    status?: string;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: string[];
+    /**
+     * When this firewall was last updated.
+     */
+    updated?: string;
+}
+
+export interface GetFirewallsFirewallArgs {
+    /**
+     * When this firewall was created.
+     */
+    created?: pulumi.Input<string>;
+    devices?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallDeviceArgs>[]>;
+    /**
+     * If true, the Firewall is inactive.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The default behavior for inbound traffic.
+     */
+    inboundPolicy?: pulumi.Input<string>;
+    inbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallInboundArgs>[]>;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The IDs of Linodes this firewall is applied to.
+     */
+    linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The default behavior for outbound traffic.
+     */
+    outboundPolicy?: pulumi.Input<string>;
+    outbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallOutboundArgs>[]>;
+    /**
+     * The status of the firewall.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this firewall was last updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetFirewallsFirewallDevice {
+    entityId?: number;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id?: number;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: string;
+    type?: string;
+    url?: string;
+}
+
+export interface GetFirewallsFirewallDeviceArgs {
+    entityId?: pulumi.Input<number>;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+}
+
+export interface GetFirewallsFirewallInbound {
+    action?: string;
+    ipv4s?: string[];
+    ipv6s?: string[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: string;
+    ports?: string;
+    protocol?: string;
+}
+
+export interface GetFirewallsFirewallInboundArgs {
+    action?: pulumi.Input<string>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: pulumi.Input<string>;
+    ports?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
+}
+
+export interface GetFirewallsFirewallOutbound {
+    action?: string;
+    ipv4s?: string[];
+    ipv6s?: string[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: string;
+    ports?: string;
+    protocol?: string;
+}
+
+export interface GetFirewallsFirewallOutboundArgs {
+    action?: pulumi.Input<string>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label?: pulumi.Input<string>;
+    ports?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -798,6 +996,108 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetKernelsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetKernelsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetKernelsKernel {
+    /**
+     * The architecture of this Kernel.
+     */
+    architecture?: string;
+    built?: string;
+    /**
+     * Whether or not this Kernel is deprecated.
+     */
+    deprecated?: boolean;
+    /**
+     * The unique ID of this Kernel.
+     */
+    id: string;
+    /**
+     * If this Kernel is suitable for KVM Linodes.
+     */
+    kvm?: boolean;
+    /**
+     * The friendly name of this Kernel.
+     */
+    label?: string;
+    /**
+     * If this Kernel is suitable for paravirtualized operations.
+     */
+    pvops?: boolean;
+    /**
+     * Linux Kernel version
+     */
+    version?: string;
+    /**
+     * If this Kernel is suitable for Xen Linodes.
+     */
+    xen?: boolean;
+}
+
+export interface GetKernelsKernelArgs {
+    /**
+     * The architecture of this Kernel.
+     */
+    architecture?: pulumi.Input<string>;
+    built?: pulumi.Input<string>;
+    /**
+     * Whether or not this Kernel is deprecated.
+     */
+    deprecated?: pulumi.Input<boolean>;
+    /**
+     * The unique ID of this Kernel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * If this Kernel is suitable for KVM Linodes.
+     */
+    kvm?: pulumi.Input<boolean>;
+    /**
+     * The friendly name of this Kernel.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * If this Kernel is suitable for paravirtualized operations.
+     */
+    pvops?: pulumi.Input<boolean>;
+    /**
+     * Linux Kernel version
+     */
+    version?: pulumi.Input<string>;
+    /**
+     * If this Kernel is suitable for Xen Linodes.
+     */
+    xen?: pulumi.Input<boolean>;
+}
+
 export interface GetNodebalancersFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1060,6 +1360,74 @@ export interface GetRegionsRegionResolverArgs {
      * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
      */
     ipv6?: pulumi.Input<string>;
+}
+
+export interface GetSshkeysFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetSshkeysFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetSshkeysSshkey {
+    /**
+     * The date this key was added.
+     */
+    created?: string;
+    /**
+     * The ID of the SSH Key.
+     */
+    id?: string;
+    /**
+     * The label of the SSH Key.
+     */
+    label: string;
+    /**
+     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+     */
+    sshKey?: string;
+}
+
+export interface GetSshkeysSshkeyArgs {
+    /**
+     * The date this key was added.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The ID of the SSH Key.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The label of the SSH Key.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+     */
+    sshKey?: pulumi.Input<string>;
 }
 
 export interface GetStackScriptsFilter {

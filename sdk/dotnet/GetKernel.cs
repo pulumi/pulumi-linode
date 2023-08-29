@@ -109,6 +109,7 @@ namespace Pulumi.Linode
         /// The architecture of this Kernel.
         /// </summary>
         public readonly string Architecture;
+        public readonly string Built;
         /// <summary>
         /// Whether or not this Kernel is deprecated.
         /// </summary>
@@ -139,6 +140,8 @@ namespace Pulumi.Linode
         private GetKernelResult(
             string architecture,
 
+            string built,
+
             bool deprecated,
 
             string id,
@@ -154,6 +157,7 @@ namespace Pulumi.Linode
             bool xen)
         {
             Architecture = architecture;
+            Built = built;
             Deprecated = deprecated;
             Id = id;
             Kvm = kvm;

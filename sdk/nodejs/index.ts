@@ -113,6 +113,11 @@ export const getFirewall: typeof import("./getFirewall").getFirewall = null as a
 export const getFirewallOutput: typeof import("./getFirewall").getFirewallOutput = null as any;
 utilities.lazyLoad(exports, ["getFirewall","getFirewallOutput"], () => require("./getFirewall"));
 
+export { GetFirewallsArgs, GetFirewallsResult, GetFirewallsOutputArgs } from "./getFirewalls";
+export const getFirewalls: typeof import("./getFirewalls").getFirewalls = null as any;
+export const getFirewallsOutput: typeof import("./getFirewalls").getFirewallsOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewalls","getFirewallsOutput"], () => require("./getFirewalls"));
+
 export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
 export const getImage: typeof import("./getImage").getImage = null as any;
 export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
@@ -157,6 +162,11 @@ export { GetKernelArgs, GetKernelResult, GetKernelOutputArgs } from "./getKernel
 export const getKernel: typeof import("./getKernel").getKernel = null as any;
 export const getKernelOutput: typeof import("./getKernel").getKernelOutput = null as any;
 utilities.lazyLoad(exports, ["getKernel","getKernelOutput"], () => require("./getKernel"));
+
+export { GetKernelsArgs, GetKernelsResult, GetKernelsOutputArgs } from "./getKernels";
+export const getKernels: typeof import("./getKernels").getKernels = null as any;
+export const getKernelsOutput: typeof import("./getKernels").getKernelsOutput = null as any;
+utilities.lazyLoad(exports, ["getKernels","getKernelsOutput"], () => require("./getKernels"));
 
 export { GetLinodeObjectStorageBucketArgs, GetLinodeObjectStorageBucketResult, GetLinodeObjectStorageBucketOutputArgs } from "./getLinodeObjectStorageBucket";
 export const getLinodeObjectStorageBucket: typeof import("./getLinodeObjectStorageBucket").getLinodeObjectStorageBucket = null as any;
@@ -220,6 +230,11 @@ export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey
 export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
 export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./getSshKey"));
+
+export { GetSshkeysArgs, GetSshkeysResult, GetSshkeysOutputArgs } from "./getSshkeys";
+export const getSshkeys: typeof import("./getSshkeys").getSshkeys = null as any;
+export const getSshkeysOutput: typeof import("./getSshkeys").getSshkeysOutput = null as any;
+utilities.lazyLoad(exports, ["getSshkeys","getSshkeysOutput"], () => require("./getSshkeys"));
 
 export { GetStackScriptArgs, GetStackScriptResult, GetStackScriptOutputArgs } from "./getStackScript";
 export const getStackScript: typeof import("./getStackScript").getStackScript = null as any;

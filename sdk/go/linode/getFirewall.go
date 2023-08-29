@@ -56,6 +56,8 @@ type LookupFirewallArgs struct {
 
 // A collection of values returned by getFirewall.
 type LookupFirewallResult struct {
+	// When this firewall was created.
+	Created string                  `pulumi:"created"`
 	Devices []GetFirewallDeviceType `pulumi:"devices"`
 	// If true, the firewall is inactive.
 	Disabled bool `pulumi:"disabled"`
@@ -75,6 +77,8 @@ type LookupFirewallResult struct {
 	Status string `pulumi:"status"`
 	// The tags applied to the firewall.
 	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated string `pulumi:"updated"`
 }
 
 func LookupFirewallOutput(ctx *pulumi.Context, args LookupFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallResultOutput {
@@ -113,6 +117,11 @@ func (o LookupFirewallResultOutput) ToLookupFirewallResultOutput() LookupFirewal
 
 func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx context.Context) LookupFirewallResultOutput {
 	return o
+}
+
+// When this firewall was created.
+func (o LookupFirewallResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
 func (o LookupFirewallResultOutput) Devices() GetFirewallDeviceTypeArrayOutput {
@@ -165,6 +174,11 @@ func (o LookupFirewallResultOutput) Status() pulumi.StringOutput {
 // The tags applied to the firewall.
 func (o LookupFirewallResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFirewallResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated.
+func (o LookupFirewallResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 func init() {

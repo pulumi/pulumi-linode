@@ -32,6 +32,8 @@ import com.pulumi.linode.inputs.GetDomainZonefileArgs;
 import com.pulumi.linode.inputs.GetDomainZonefilePlainArgs;
 import com.pulumi.linode.inputs.GetFirewallArgs;
 import com.pulumi.linode.inputs.GetFirewallPlainArgs;
+import com.pulumi.linode.inputs.GetFirewallsArgs;
+import com.pulumi.linode.inputs.GetFirewallsPlainArgs;
 import com.pulumi.linode.inputs.GetImageArgs;
 import com.pulumi.linode.inputs.GetImagePlainArgs;
 import com.pulumi.linode.inputs.GetImagesArgs;
@@ -50,6 +52,8 @@ import com.pulumi.linode.inputs.GetIpv6RangeArgs;
 import com.pulumi.linode.inputs.GetIpv6RangePlainArgs;
 import com.pulumi.linode.inputs.GetKernelArgs;
 import com.pulumi.linode.inputs.GetKernelPlainArgs;
+import com.pulumi.linode.inputs.GetKernelsArgs;
+import com.pulumi.linode.inputs.GetKernelsPlainArgs;
 import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
 import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketPlainArgs;
 import com.pulumi.linode.inputs.GetLkeClusterArgs;
@@ -72,6 +76,8 @@ import com.pulumi.linode.inputs.GetRegionsArgs;
 import com.pulumi.linode.inputs.GetRegionsPlainArgs;
 import com.pulumi.linode.inputs.GetSshKeyArgs;
 import com.pulumi.linode.inputs.GetSshKeyPlainArgs;
+import com.pulumi.linode.inputs.GetSshkeysArgs;
+import com.pulumi.linode.inputs.GetSshkeysPlainArgs;
 import com.pulumi.linode.inputs.GetStackScriptArgs;
 import com.pulumi.linode.inputs.GetStackScriptPlainArgs;
 import com.pulumi.linode.inputs.GetStackScriptsArgs;
@@ -98,6 +104,7 @@ import com.pulumi.linode.outputs.GetDomainRecordResult;
 import com.pulumi.linode.outputs.GetDomainResult;
 import com.pulumi.linode.outputs.GetDomainZonefileResult;
 import com.pulumi.linode.outputs.GetFirewallResult;
+import com.pulumi.linode.outputs.GetFirewallsResult;
 import com.pulumi.linode.outputs.GetImageResult;
 import com.pulumi.linode.outputs.GetImagesResult;
 import com.pulumi.linode.outputs.GetInstanceBackupsResult;
@@ -107,6 +114,7 @@ import com.pulumi.linode.outputs.GetInstanceTypesResult;
 import com.pulumi.linode.outputs.GetInstancesResult;
 import com.pulumi.linode.outputs.GetIpv6RangeResult;
 import com.pulumi.linode.outputs.GetKernelResult;
+import com.pulumi.linode.outputs.GetKernelsResult;
 import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
@@ -120,6 +128,7 @@ import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
 import com.pulumi.linode.outputs.GetRegionsResult;
 import com.pulumi.linode.outputs.GetSshKeyResult;
+import com.pulumi.linode.outputs.GetSshkeysResult;
 import com.pulumi.linode.outputs.GetStackScriptResult;
 import com.pulumi.linode.outputs.GetStackScriptsResult;
 import com.pulumi.linode.outputs.GetUserResult;
@@ -4149,6 +4158,678 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetFirewallsResult> getFirewalls() {
+        return getFirewalls(GetFirewallsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetFirewallsResult> getFirewallsPlain() {
+        return getFirewallsPlain(GetFirewallsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetFirewallsResult> getFirewalls(GetFirewallsArgs args) {
+        return getFirewalls(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetFirewallsResult> getFirewallsPlain(GetFirewallsPlainArgs args) {
+        return getFirewallsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetFirewallsResult> getFirewalls(GetFirewallsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewalls:getFirewalls", TypeShape.of(GetFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .filters(            
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-firewalls&#34;)
+     *                     .build(),
+     *                 GetFirewallsFilterArgs.builder()
+     *                     .name(&#34;tags&#34;)
+     *                     .values(&#34;my-tag&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     * Get information about all Linode images associated with the current token:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewalls();
+     * 
+     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Firewall Rule
+     * 
+     * * `label` - The label of this rule for display purposes only.
+     * 
+     * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     * * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     * * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     * ## Firewall Device
+     * 
+     * * `id` - The unique ID of this Firewall Device assignment.
+     * 
+     * * `entity_id` - The ID of the underlying entity this device references.
+     * 
+     * * `type` - The type of the assigned entity.
+     * 
+     * * `label` - The label of the assigned entity.
+     * 
+     * * `url` - The URL of the assigned entity.
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetFirewallsResult> getFirewallsPlain(GetFirewallsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getFirewalls:getFirewalls", TypeShape.of(GetFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about a Linode image
      * 
      * ## Example Usage
@@ -6770,6 +7451,390 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getKernel:getKernel", TypeShape.of(GetKernelResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static Output<GetKernelsResult> getKernels() {
+        return getKernels(GetKernelsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static CompletableFuture<GetKernelsResult> getKernelsPlain() {
+        return getKernelsPlain(GetKernelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static Output<GetKernelsResult> getKernels(GetKernelsArgs args) {
+        return getKernels(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static CompletableFuture<GetKernelsResult> getKernelsPlain(GetKernelsPlainArgs args) {
+        return getKernelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static Output<GetKernelsResult> getKernels(GetKernelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getKernels:getKernels", TypeShape.of(GetKernelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Kernels that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetKernelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
+     *             .filters(            
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-kernel&#34;)
+     *                     .build(),
+     *                 GetKernelsFilterArgs.builder()
+     *                     .name(&#34;architecture&#34;)
+     *                     .values(&#34;x86_64&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `architecture`
+     * 
+     * * `deprecated`
+     * 
+     * * `kvm`
+     * 
+     * * `label`
+     * 
+     * * `pvops`
+     * 
+     * * `version`
+     * 
+     * * `xen`
+     * 
+     */
+    public static CompletableFuture<GetKernelsResult> getKernelsPlain(GetKernelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getKernels:getKernels", TypeShape.of(GetKernelsResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs args) {
         return getLinodeObjectStorageBucket(args, InvokeOptions.Empty);
     }
@@ -9131,6 +10196,342 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static Output<GetSshkeysResult> getSshkeys() {
+        return getSshkeys(GetSshkeysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static CompletableFuture<GetSshkeysResult> getSshkeysPlain() {
+        return getSshkeysPlain(GetSshkeysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static Output<GetSshkeysResult> getSshkeys(GetSshkeysArgs args) {
+        return getSshkeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static CompletableFuture<GetSshkeysResult> getSshkeysPlain(GetSshkeysPlainArgs args) {
+        return getSshkeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static Output<GetSshkeysResult> getSshkeys(GetSshkeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getSshkeys:getSshkeys", TypeShape.of(GetSshkeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshkeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
+     *             .filters(            
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;label&#34;)
+     *                     .values(&#34;my-ssh&#34;)
+     *                     .build(),
+     *                 GetSshkeysFilterArgs.builder()
+     *                     .name(&#34;ssh_key&#34;)
+     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ssh_key`
+     * 
+     */
+    public static CompletableFuture<GetSshkeysResult> getSshkeysPlain(GetSshkeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getSshkeys:getSshkeys", TypeShape.of(GetSshkeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about a specific Linode StackScript.

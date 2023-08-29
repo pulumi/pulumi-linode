@@ -122,6 +122,8 @@ import (
 type Firewall struct {
 	pulumi.CustomResourceState
 
+	// When this firewall was created
+	Created pulumi.StringOutput `pulumi:"created"`
 	// The devices associated with this firewall.
 	Devices FirewallDeviceTypeArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -146,6 +148,8 @@ type Firewall struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// When this firewall was last updated
+	Updated pulumi.StringOutput `pulumi:"updated"`
 }
 
 // NewFirewall registers a new resource with the given unique name, arguments, and options.
@@ -187,6 +191,8 @@ func GetFirewall(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
+	// When this firewall was created
+	Created *string `pulumi:"created"`
 	// The devices associated with this firewall.
 	Devices []FirewallDeviceType `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -211,9 +217,13 @@ type firewallState struct {
 	Status *string `pulumi:"status"`
 	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated
+	Updated *string `pulumi:"updated"`
 }
 
 type FirewallState struct {
+	// When this firewall was created
+	Created pulumi.StringPtrInput
 	// The devices associated with this firewall.
 	Devices FirewallDeviceTypeArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -238,6 +248,8 @@ type FirewallState struct {
 	Status pulumi.StringPtrInput
 	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
+	// When this firewall was last updated
+	Updated pulumi.StringPtrInput
 }
 
 func (FirewallState) ElementType() reflect.Type {
@@ -378,6 +390,11 @@ func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) Firewal
 	return o
 }
 
+// When this firewall was created
+func (o FirewallOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
 // The devices associated with this firewall.
 func (o FirewallOutput) Devices() FirewallDeviceTypeArrayOutput {
 	return o.ApplyT(func(v *Firewall) FirewallDeviceTypeArrayOutput { return v.Devices }).(FirewallDeviceTypeArrayOutput)
@@ -430,6 +447,11 @@ func (o FirewallOutput) Status() pulumi.StringOutput {
 // A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated
+func (o FirewallOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
 type FirewallArrayOutput struct{ *pulumi.OutputState }

@@ -621,6 +621,64 @@
                     }
                 }
             },
+            "linode_firewalls": {
+                "current": "linode:index/getFirewalls:getFirewalls",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "firewalls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "devices": {
+                                    "maxItemsOne": false
+                                },
+                                "inbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "linodes": {
+                                    "maxItemsOne": false
+                                },
+                                "outbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_image": {
                 "current": "linode:index/getImage:getImage",
                 "majorVersion": 4,
@@ -928,6 +986,25 @@
                 "current": "linode:index/getKernel:getKernel",
                 "majorVersion": 4
             },
+            "linode_kernels": {
+                "current": "linode:index/getKernels:getKernels",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "kernels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_lke_cluster": {
                 "current": "linode:index/getLkeCluster:getLkeCluster",
                 "majorVersion": 4,
@@ -1087,6 +1164,25 @@
             "linode_sshkey": {
                 "current": "linode:index/getSshKey:getSshKey",
                 "majorVersion": 4
+            },
+            "linode_sshkeys": {
+                "current": "linode:index/getSshkeys:getSshkeys",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sshkeys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_stackscript": {
                 "current": "linode:index/getStackScript:getStackScript",
@@ -1306,6 +1402,7 @@
             "linode:index/getDomainRecord:getDomainRecord": 1,
             "linode:index/getDomainZonefile:getDomainZonefile": 1,
             "linode:index/getFirewall:getFirewall": 1,
+            "linode:index/getFirewalls:getFirewalls": 1,
             "linode:index/getImage:getImage": 1,
             "linode:index/getImages:getImages": 1,
             "linode:index/getInstanceBackups:getInstanceBackups": 1,
@@ -1315,6 +1412,7 @@
             "linode:index/getInstances:getInstances": 0,
             "linode:index/getIpv6Range:getIpv6Range": 1,
             "linode:index/getKernel:getKernel": 1,
+            "linode:index/getKernels:getKernels": 1,
             "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 1,
             "linode:index/getLkeCluster:getLkeCluster": 0,
             "linode:index/getLkeVersions:getLkeVersions": 1,
@@ -1328,6 +1426,7 @@
             "linode:index/getRegion:getRegion": 1,
             "linode:index/getRegions:getRegions": 1,
             "linode:index/getSshKey:getSshKey": 1,
+            "linode:index/getSshkeys:getSshkeys": 1,
             "linode:index/getStackScript:getStackScript": 1,
             "linode:index/getStackScripts:getStackScripts": 1,
             "linode:index/getUser:getUser": 1,
@@ -1381,6 +1480,7 @@
             "linode:index/getDomainRecord:getDomainRecord": "linode_domain_record",
             "linode:index/getDomainZonefile:getDomainZonefile": "linode_domain_zonefile",
             "linode:index/getFirewall:getFirewall": "linode_firewall",
+            "linode:index/getFirewalls:getFirewalls": "linode_firewalls",
             "linode:index/getImage:getImage": "linode_image",
             "linode:index/getImages:getImages": "linode_images",
             "linode:index/getInstanceBackups:getInstanceBackups": "linode_instance_backups",
@@ -1390,6 +1490,7 @@
             "linode:index/getInstances:getInstances": "linode_instances",
             "linode:index/getIpv6Range:getIpv6Range": "linode_ipv6_range",
             "linode:index/getKernel:getKernel": "linode_kernel",
+            "linode:index/getKernels:getKernels": "linode_kernels",
             "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": "linode_object_storage_bucket",
             "linode:index/getLkeCluster:getLkeCluster": "linode_lke_cluster",
             "linode:index/getLkeVersions:getLkeVersions": "linode_lke_versions",
@@ -1403,6 +1504,7 @@
             "linode:index/getRegion:getRegion": "linode_region",
             "linode:index/getRegions:getRegions": "linode_regions",
             "linode:index/getSshKey:getSshKey": "linode_sshkey",
+            "linode:index/getSshkeys:getSshkeys": "linode_sshkeys",
             "linode:index/getStackScript:getStackScript": "linode_stackscript",
             "linode:index/getStackScripts:getStackScripts": "linode_stackscripts",
             "linode:index/getUser:getUser": "linode_user",
@@ -1733,6 +1835,30 @@
                 "ipv4s": "ipv4",
                 "ipv6s": "ipv6"
             },
+            "linode:index/getFirewalls:getFirewalls": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getFirewallsFilter:getFirewallsFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getFirewallsFirewall:getFirewallsFirewall": {
+                "inboundPolicy": "inbound_policy",
+                "inbounds": "inbound",
+                "outboundPolicy": "outbound_policy",
+                "outbounds": "outbound"
+            },
+            "linode:index/getFirewallsFirewallDevice:getFirewallsFirewallDevice": {
+                "entityId": "entity_id"
+            },
+            "linode:index/getFirewallsFirewallInbound:getFirewallsFirewallInbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
+            },
+            "linode:index/getFirewallsFirewallOutbound:getFirewallsFirewallOutbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
+            },
             "linode:index/getImage:getImage": {
                 "createdBy": "created_by",
                 "isPublic": "is_public"
@@ -1911,6 +2037,13 @@
             "linode:index/getIpv6Range:getIpv6Range": {
                 "isBgp": "is_bgp"
             },
+            "linode:index/getKernels:getKernels": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getKernelsFilter:getKernelsFilter": {
+                "matchBy": "match_by"
+            },
             "linode:index/getLkeCluster:getLkeCluster": {
                 "apiEndpoints": "api_endpoints",
                 "controlPlanes": "control_plane",
@@ -1980,6 +2113,16 @@
                 "matchBy": "match_by"
             },
             "linode:index/getSshKey:getSshKey": {
+                "sshKey": "ssh_key"
+            },
+            "linode:index/getSshkeys:getSshkeys": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getSshkeysFilter:getSshkeysFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getSshkeysSshkey:getSshkeysSshkey": {
                 "sshKey": "ssh_key"
             },
             "linode:index/getStackScript:getStackScript": {
