@@ -46,6 +46,7 @@ export interface GetKernelResult {
      * The architecture of this Kernel.
      */
     readonly architecture: string;
+    readonly built: string;
     /**
      * Whether or not this Kernel is deprecated.
      */

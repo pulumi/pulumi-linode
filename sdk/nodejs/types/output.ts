@@ -411,6 +411,105 @@ export interface GetFirewallOutbound {
     protocol: string;
 }
 
+export interface GetFirewallsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetFirewallsFirewall {
+    /**
+     * When this firewall was created.
+     */
+    created: string;
+    devices?: outputs.GetFirewallsFirewallDevice[];
+    /**
+     * If true, the Firewall is inactive.
+     */
+    disabled: boolean;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id: number;
+    /**
+     * The default behavior for inbound traffic.
+     */
+    inboundPolicy: string;
+    inbounds?: outputs.GetFirewallsFirewallInbound[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label: string;
+    /**
+     * The IDs of Linodes this firewall is applied to.
+     */
+    linodes: number[];
+    /**
+     * The default behavior for outbound traffic.
+     */
+    outboundPolicy: string;
+    outbounds?: outputs.GetFirewallsFirewallOutbound[];
+    /**
+     * The status of the firewall.
+     */
+    status: string;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags: string[];
+    /**
+     * When this firewall was last updated.
+     */
+    updated: string;
+}
+
+export interface GetFirewallsFirewallDevice {
+    entityId: number;
+    /**
+     * The unique ID assigned to this Firewall.
+     */
+    id: number;
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label: string;
+    type: string;
+    url: string;
+}
+
+export interface GetFirewallsFirewallInbound {
+    action: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
+export interface GetFirewallsFirewallOutbound {
+    action: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    /**
+     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+     */
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1330,6 +1429,57 @@ export interface GetInstancesInstanceSpec {
     vcpus: number;
 }
 
+export interface GetKernelsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetKernelsKernel {
+    /**
+     * The architecture of this Kernel.
+     */
+    architecture: string;
+    built: string;
+    /**
+     * Whether or not this Kernel is deprecated.
+     */
+    deprecated: boolean;
+    /**
+     * The unique ID of this Kernel.
+     */
+    id: string;
+    /**
+     * If this Kernel is suitable for KVM Linodes.
+     */
+    kvm: boolean;
+    /**
+     * The friendly name of this Kernel.
+     */
+    label: string;
+    /**
+     * If this Kernel is suitable for paravirtualized operations.
+     */
+    pvops: boolean;
+    /**
+     * Linux Kernel version
+     */
+    version: string;
+    /**
+     * If this Kernel is suitable for Xen Linodes.
+     */
+    xen: boolean;
+}
+
 export interface GetLkeClusterControlPlane {
     highAvailability: boolean;
 }
@@ -1555,6 +1705,40 @@ export interface GetRegionsRegionResolver {
      * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
      */
     ipv6: string;
+}
+
+export interface GetSshkeysFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetSshkeysSshkey {
+    /**
+     * The date this key was added.
+     */
+    created: string;
+    /**
+     * The ID of the SSH Key.
+     */
+    id?: string;
+    /**
+     * The label of the SSH Key.
+     */
+    label: string;
+    /**
+     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+     */
+    sshKey: string;
 }
 
 export interface GetStackScriptUserDefinedField {

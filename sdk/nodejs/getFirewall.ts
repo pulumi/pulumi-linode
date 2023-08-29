@@ -42,6 +42,10 @@ export interface GetFirewallArgs {
  * A collection of values returned by getFirewall.
  */
 export interface GetFirewallResult {
+    /**
+     * When this firewall was created.
+     */
+    readonly created: string;
     readonly devices: outputs.GetFirewallDevice[];
     /**
      * If true, the firewall is inactive.
@@ -77,6 +81,10 @@ export interface GetFirewallResult {
      * The tags applied to the firewall.
      */
     readonly tags: string[];
+    /**
+     * When this firewall was last updated.
+     */
+    readonly updated: string;
 }
 /**
  * Provides details about a Linode Firewall.

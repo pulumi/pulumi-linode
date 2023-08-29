@@ -15,6 +15,7 @@ public final class GetKernelResult {
      * 
      */
     private String architecture;
+    private String built;
     /**
      * @return Whether or not this Kernel is deprecated.
      * 
@@ -54,6 +55,9 @@ public final class GetKernelResult {
      */
     public String architecture() {
         return this.architecture;
+    }
+    public String built() {
+        return this.built;
     }
     /**
      * @return Whether or not this Kernel is deprecated.
@@ -111,6 +115,7 @@ public final class GetKernelResult {
     @CustomType.Builder
     public static final class Builder {
         private String architecture;
+        private String built;
         private Boolean deprecated;
         private String id;
         private Boolean kvm;
@@ -122,6 +127,7 @@ public final class GetKernelResult {
         public Builder(GetKernelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architecture = defaults.architecture;
+    	      this.built = defaults.built;
     	      this.deprecated = defaults.deprecated;
     	      this.id = defaults.id;
     	      this.kvm = defaults.kvm;
@@ -134,6 +140,11 @@ public final class GetKernelResult {
         @CustomType.Setter
         public Builder architecture(String architecture) {
             this.architecture = Objects.requireNonNull(architecture);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder built(String built) {
+            this.built = Objects.requireNonNull(built);
             return this;
         }
         @CustomType.Setter
@@ -174,6 +185,7 @@ public final class GetKernelResult {
         public GetKernelResult build() {
             final var o = new GetKernelResult();
             o.architecture = architecture;
+            o.built = built;
             o.deprecated = deprecated;
             o.id = id;
             o.kvm = kvm;

@@ -157,6 +157,7 @@ class FirewallArgs:
 @pulumi.input_type
 class _FirewallState:
     def __init__(__self__, *,
+                 created: Optional[pulumi.Input[str]] = None,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  inbound_policy: Optional[pulumi.Input[str]] = None,
@@ -166,9 +167,11 @@ class _FirewallState:
                  outbound_policy: Optional[pulumi.Input[str]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+        :param pulumi.Input[str] created: When this firewall was created
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]] devices: The devices associated with this firewall.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
                
@@ -183,7 +186,10 @@ class _FirewallState:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[str] updated: When this firewall was last updated
         """
+        if created is not None:
+            pulumi.set(__self__, "created", created)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
         if disabled is not None:
@@ -204,6 +210,20 @@ class _FirewallState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this firewall was created
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
 
     @property
     @pulumi.getter
@@ -328,6 +348,18 @@ class _FirewallState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this firewall was last updated
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated", value)
 
 
 class Firewall(pulumi.CustomResource):
@@ -549,8 +581,10 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["outbound_policy"] = outbound_policy
             __props__.__dict__["outbounds"] = outbounds
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["created"] = None
             __props__.__dict__["devices"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["updated"] = None
         super(Firewall, __self__).__init__(
             'linode:index/firewall:Firewall',
             resource_name,
@@ -561,6 +595,7 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created: Optional[pulumi.Input[str]] = None,
             devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             inbound_policy: Optional[pulumi.Input[str]] = None,
@@ -570,7 +605,8 @@ class Firewall(pulumi.CustomResource):
             outbound_policy: Optional[pulumi.Input[str]] = None,
             outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Firewall':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            updated: Optional[pulumi.Input[str]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -578,6 +614,7 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created: When this firewall was created
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]] devices: The devices associated with this firewall.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
                
@@ -592,11 +629,13 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[str] updated: When this firewall was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FirewallState.__new__(_FirewallState)
 
+        __props__.__dict__["created"] = created
         __props__.__dict__["devices"] = devices
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["inbound_policy"] = inbound_policy
@@ -607,7 +646,16 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["outbounds"] = outbounds
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["updated"] = updated
         return Firewall(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        """
+        When this firewall was created
+        """
+        return pulumi.get(self, "created")
 
     @property
     @pulumi.getter
@@ -692,4 +740,12 @@ class Firewall(pulumi.CustomResource):
         A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        When this firewall was last updated
+        """
+        return pulumi.get(self, "updated")
 

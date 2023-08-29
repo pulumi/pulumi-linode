@@ -15,6 +15,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFirewallResult {
+    /**
+     * @return When this firewall was created.
+     * 
+     */
+    private String created;
     private List<GetFirewallDevice> devices;
     /**
      * @return If true, the firewall is inactive.
@@ -58,8 +63,20 @@ public final class GetFirewallResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return When this firewall was last updated.
+     * 
+     */
+    private String updated;
 
     private GetFirewallResult() {}
+    /**
+     * @return When this firewall was created.
+     * 
+     */
+    public String created() {
+        return this.created;
+    }
     public List<GetFirewallDevice> devices() {
         return this.devices;
     }
@@ -125,6 +142,13 @@ public final class GetFirewallResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return When this firewall was last updated.
+     * 
+     */
+    public String updated() {
+        return this.updated;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -135,6 +159,7 @@ public final class GetFirewallResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String created;
         private List<GetFirewallDevice> devices;
         private Boolean disabled;
         private Integer id;
@@ -146,9 +171,11 @@ public final class GetFirewallResult {
         private List<GetFirewallOutbound> outbounds;
         private String status;
         private List<String> tags;
+        private String updated;
         public Builder() {}
         public Builder(GetFirewallResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.created = defaults.created;
     	      this.devices = defaults.devices;
     	      this.disabled = defaults.disabled;
     	      this.id = defaults.id;
@@ -160,8 +187,14 @@ public final class GetFirewallResult {
     	      this.outbounds = defaults.outbounds;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.updated = defaults.updated;
         }
 
+        @CustomType.Setter
+        public Builder created(String created) {
+            this.created = Objects.requireNonNull(created);
+            return this;
+        }
         @CustomType.Setter
         public Builder devices(List<GetFirewallDevice> devices) {
             this.devices = Objects.requireNonNull(devices);
@@ -232,8 +265,14 @@ public final class GetFirewallResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            this.updated = Objects.requireNonNull(updated);
+            return this;
+        }
         public GetFirewallResult build() {
             final var o = new GetFirewallResult();
+            o.created = created;
             o.devices = devices;
             o.disabled = disabled;
             o.id = id;
@@ -245,6 +284,7 @@ public final class GetFirewallResult {
             o.outbounds = outbounds;
             o.status = status;
             o.tags = tags;
+            o.updated = updated;
             return o;
         }
     }

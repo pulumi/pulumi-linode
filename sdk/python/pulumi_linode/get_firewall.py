@@ -22,7 +22,10 @@ class GetFirewallResult:
     """
     A collection of values returned by getFirewall.
     """
-    def __init__(__self__, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, label=None, linodes=None, outbound_policy=None, outbounds=None, status=None, tags=None):
+    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, label=None, linodes=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
         if devices and not isinstance(devices, list):
             raise TypeError("Expected argument 'devices' to be a list")
         pulumi.set(__self__, "devices", devices)
@@ -56,6 +59,17 @@ class GetFirewallResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if updated and not isinstance(updated, str):
+            raise TypeError("Expected argument 'updated' to be a str")
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this firewall was created.
+        """
+        return pulumi.get(self, "created")
 
     @property
     @pulumi.getter
@@ -136,6 +150,14 @@ class GetFirewallResult:
         """
         return pulumi.get(self, "tags")
 
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this firewall was last updated.
+        """
+        return pulumi.get(self, "updated")
+
 
 class AwaitableGetFirewallResult(GetFirewallResult):
     # pylint: disable=using-constant-test
@@ -143,6 +165,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
         if False:
             yield self
         return GetFirewallResult(
+            created=self.created,
             devices=self.devices,
             disabled=self.disabled,
             id=self.id,
@@ -153,7 +176,8 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             outbound_policy=self.outbound_policy,
             outbounds=self.outbounds,
             status=self.status,
-            tags=self.tags)
+            tags=self.tags,
+            updated=self.updated)
 
 
 def get_firewall(id: Optional[int] = None,
@@ -179,6 +203,7 @@ def get_firewall(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult).value
 
     return AwaitableGetFirewallResult(
+        created=pulumi.get(__ret__, 'created'),
         devices=pulumi.get(__ret__, 'devices'),
         disabled=pulumi.get(__ret__, 'disabled'),
         id=pulumi.get(__ret__, 'id'),
@@ -189,7 +214,8 @@ def get_firewall(id: Optional[int] = None,
         outbound_policy=pulumi.get(__ret__, 'outbound_policy'),
         outbounds=pulumi.get(__ret__, 'outbounds'),
         status=pulumi.get(__ret__, 'status'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_firewall)
