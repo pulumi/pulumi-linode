@@ -1845,6 +1845,236 @@
                 }
             }
         },
+        "linode:index/getFirewallsFilter:getFirewallsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getFirewallsFirewall:getFirewallsFirewall": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "When this firewall was created.\n"
+                },
+                "devices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getFirewallsFirewallDevice:getFirewallsFirewallDevice"
+                    }
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "If true, the Firewall is inactive.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID assigned to this Firewall.\n"
+                },
+                "inboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for inbound traffic.\n"
+                },
+                "inbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getFirewallsFirewallInbound:getFirewallsFirewallInbound"
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "The IDs of Linodes this firewall is applied to.\n"
+                },
+                "outboundPolicy": {
+                    "type": "string",
+                    "description": "The default behavior for outbound traffic.\n"
+                },
+                "outbounds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getFirewallsFirewallOutbound:getFirewallsFirewallOutbound"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the firewall.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When this firewall was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "disabled",
+                "id",
+                "inboundPolicy",
+                "label",
+                "linodes",
+                "outboundPolicy",
+                "status",
+                "tags",
+                "updated"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getFirewallsFirewallDevice:getFirewallsFirewallDevice": {
+            "properties": {
+                "entityId": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID assigned to this Firewall.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "entityId",
+                "id",
+                "label",
+                "type",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getFirewallsFirewallInbound:getFirewallsFirewallInbound": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
+                },
+                "ports": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "ipv4s",
+                "ipv6s",
+                "label",
+                "ports",
+                "protocol"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getFirewallsFirewallOutbound:getFirewallsFirewallOutbound": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
+                },
+                "ports": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "ipv4s",
+                "ipv6s",
+                "label",
+                "ports",
+                "protocol"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getImagesFilter:getImagesFilter": {
             "properties": {
                 "matchBy": {
@@ -3587,6 +3817,88 @@
                 }
             }
         },
+        "linode:index/getKernelsFilter:getKernelsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getKernelsKernel:getKernelsKernel": {
+            "properties": {
+                "architecture": {
+                    "type": "string",
+                    "description": "The architecture of this Kernel.\n"
+                },
+                "built": {
+                    "type": "string"
+                },
+                "deprecated": {
+                    "type": "boolean",
+                    "description": "Whether or not this Kernel is deprecated.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID of this Kernel.\n"
+                },
+                "kvm": {
+                    "type": "boolean",
+                    "description": "If this Kernel is suitable for KVM Linodes.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The friendly name of this Kernel.\n"
+                },
+                "pvops": {
+                    "type": "boolean",
+                    "description": "If this Kernel is suitable for paravirtualized operations.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Linux Kernel version\n"
+                },
+                "xen": {
+                    "type": "boolean",
+                    "description": "If this Kernel is suitable for Xen Linodes.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "architecture",
+                "built",
+                "deprecated",
+                "id",
+                "kvm",
+                "label",
+                "pvops",
+                "version",
+                "xen"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
         "linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane": {
             "properties": {
                 "highAvailability": {
@@ -4027,6 +4339,63 @@
             "language": {
                 "nodejs": {
                     "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getSshkeysFilter:getSshkeysFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getSshkeysSshkey:getSshkeysSshkey": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "The date this key was added.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the SSH Key.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the SSH Key.\n"
+                },
+                "sshKey": {
+                    "type": "string",
+                    "description": "The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "label",
+                "sshKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "label"
+                    ]
                 }
             }
         },
@@ -6190,6 +6559,10 @@
         "linode:index/firewall:Firewall": {
             "description": "Manages a Linode Firewall.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAccept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n    rootPass: \"bogusPassword$\",\n    swapSize: 256,\n});\nconst myFirewall = new linode.Firewall(\"myFirewall\", {\n    label: \"my_firewall\",\n    inbounds: [\n        {\n            label: \"allow-http\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"::/0\"],\n        },\n        {\n            label: \"allow-https\",\n            action: \"ACCEPT\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"::/0\"],\n        },\n    ],\n    inboundPolicy: \"DROP\",\n    outbounds: [\n        {\n            label: \"reject-http\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"80\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"::/0\"],\n        },\n        {\n            label: \"reject-https\",\n            action: \"DROP\",\n            protocol: \"TCP\",\n            ports: \"443\",\n            ipv4s: [\"0.0.0.0/0\"],\n            ipv6s: [\"::/0\"],\n        },\n    ],\n    outboundPolicy: \"ACCEPT\",\n    linodes: [myInstance.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    swap_size=256)\nmy_firewall = linode.Firewall(\"myFirewall\",\n    label=\"my_firewall\",\n    inbounds=[\n        linode.FirewallInboundArgs(\n            label=\"allow-http\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"::/0\"],\n        ),\n        linode.FirewallInboundArgs(\n            label=\"allow-https\",\n            action=\"ACCEPT\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"::/0\"],\n        ),\n    ],\n    inbound_policy=\"DROP\",\n    outbounds=[\n        linode.FirewallOutboundArgs(\n            label=\"reject-http\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"80\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"::/0\"],\n        ),\n        linode.FirewallOutboundArgs(\n            label=\"reject-https\",\n            action=\"DROP\",\n            protocol=\"TCP\",\n            ports=\"443\",\n            ipv4s=[\"0.0.0.0/0\"],\n            ipv6s=[\"::/0\"],\n        ),\n    ],\n    outbound_policy=\"ACCEPT\",\n    linodes=[my_instance.id])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myInstance = new Linode.Instance(\"myInstance\", new()\n    {\n        Label = \"my_instance\",\n        Image = \"linode/ubuntu18.04\",\n        Region = \"us-southeast\",\n        Type = \"g6-standard-1\",\n        RootPass = \"bogusPassword$\",\n        SwapSize = 256,\n    });\n\n    var myFirewall = new Linode.Firewall(\"myFirewall\", new()\n    {\n        Label = \"my_firewall\",\n        Inbounds = new[]\n        {\n            new Linode.Inputs.FirewallInboundArgs\n            {\n                Label = \"allow-http\",\n                Action = \"ACCEPT\",\n                Protocol = \"TCP\",\n                Ports = \"80\",\n                Ipv4s = new[]\n                {\n                    \"0.0.0.0/0\",\n                },\n                Ipv6s = new[]\n                {\n                    \"::/0\",\n                },\n            },\n            new Linode.Inputs.FirewallInboundArgs\n            {\n                Label = \"allow-https\",\n                Action = \"ACCEPT\",\n                Protocol = \"TCP\",\n                Ports = \"443\",\n                Ipv4s = new[]\n                {\n                    \"0.0.0.0/0\",\n                },\n                Ipv6s = new[]\n                {\n                    \"::/0\",\n                },\n            },\n        },\n        InboundPolicy = \"DROP\",\n        Outbounds = new[]\n        {\n            new Linode.Inputs.FirewallOutboundArgs\n            {\n                Label = \"reject-http\",\n                Action = \"DROP\",\n                Protocol = \"TCP\",\n                Ports = \"80\",\n                Ipv4s = new[]\n                {\n                    \"0.0.0.0/0\",\n                },\n                Ipv6s = new[]\n                {\n                    \"::/0\",\n                },\n            },\n            new Linode.Inputs.FirewallOutboundArgs\n            {\n                Label = \"reject-https\",\n                Action = \"DROP\",\n                Protocol = \"TCP\",\n                Ports = \"443\",\n                Ipv4s = new[]\n                {\n                    \"0.0.0.0/0\",\n                },\n                Ipv6s = new[]\n                {\n                    \"::/0\",\n                },\n            },\n        },\n        OutboundPolicy = \"ACCEPT\",\n        Linodes = new[]\n        {\n            myInstance.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyInstance, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:    pulumi.String(\"my_instance\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-standard-1\"),\n\t\t\tRootPass: pulumi.String(\"bogusPassword$\"),\n\t\t\tSwapSize: pulumi.Int(256),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewFirewall(ctx, \"myFirewall\", \u0026linode.FirewallArgs{\n\t\t\tLabel: pulumi.String(\"my_firewall\"),\n\t\t\tInbounds: linode.FirewallInboundArray{\n\t\t\t\t\u0026linode.FirewallInboundArgs{\n\t\t\t\t\tLabel:    pulumi.String(\"allow-http\"),\n\t\t\t\t\tAction:   pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts:    pulumi.String(\"80\"),\n\t\t\t\t\tIpv4s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"::/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026linode.FirewallInboundArgs{\n\t\t\t\t\tLabel:    pulumi.String(\"allow-https\"),\n\t\t\t\t\tAction:   pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts:    pulumi.String(\"443\"),\n\t\t\t\t\tIpv4s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"::/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tInboundPolicy: pulumi.String(\"DROP\"),\n\t\t\tOutbounds: linode.FirewallOutboundArray{\n\t\t\t\t\u0026linode.FirewallOutboundArgs{\n\t\t\t\t\tLabel:    pulumi.String(\"reject-http\"),\n\t\t\t\t\tAction:   pulumi.String(\"DROP\"),\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts:    pulumi.String(\"80\"),\n\t\t\t\t\tIpv4s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"::/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026linode.FirewallOutboundArgs{\n\t\t\t\t\tLabel:    pulumi.String(\"reject-https\"),\n\t\t\t\t\tAction:   pulumi.String(\"DROP\"),\n\t\t\t\t\tProtocol: pulumi.String(\"TCP\"),\n\t\t\t\t\tPorts:    pulumi.String(\"443\"),\n\t\t\t\t\tIpv4s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6s: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"::/0\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOutboundPolicy: pulumi.String(\"ACCEPT\"),\n\t\t\tLinodes: pulumi.IntArray{\n\t\t\t\tmyInstance.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Firewall;\nimport com.pulumi.linode.FirewallArgs;\nimport com.pulumi.linode.inputs.FirewallInboundArgs;\nimport com.pulumi.linode.inputs.FirewallOutboundArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myInstance = new Instance(\"myInstance\", InstanceArgs.builder()        \n            .label(\"my_instance\")\n            .image(\"linode/ubuntu18.04\")\n            .region(\"us-southeast\")\n            .type(\"g6-standard-1\")\n            .rootPass(\"bogusPassword$\")\n            .swapSize(256)\n            .build());\n\n        var myFirewall = new Firewall(\"myFirewall\", FirewallArgs.builder()        \n            .label(\"my_firewall\")\n            .inbounds(            \n                FirewallInboundArgs.builder()\n                    .label(\"allow-http\")\n                    .action(\"ACCEPT\")\n                    .protocol(\"TCP\")\n                    .ports(\"80\")\n                    .ipv4s(\"0.0.0.0/0\")\n                    .ipv6s(\"::/0\")\n                    .build(),\n                FirewallInboundArgs.builder()\n                    .label(\"allow-https\")\n                    .action(\"ACCEPT\")\n                    .protocol(\"TCP\")\n                    .ports(\"443\")\n                    .ipv4s(\"0.0.0.0/0\")\n                    .ipv6s(\"::/0\")\n                    .build())\n            .inboundPolicy(\"DROP\")\n            .outbounds(            \n                FirewallOutboundArgs.builder()\n                    .label(\"reject-http\")\n                    .action(\"DROP\")\n                    .protocol(\"TCP\")\n                    .ports(\"80\")\n                    .ipv4s(\"0.0.0.0/0\")\n                    .ipv6s(\"::/0\")\n                    .build(),\n                FirewallOutboundArgs.builder()\n                    .label(\"reject-https\")\n                    .action(\"DROP\")\n                    .protocol(\"TCP\")\n                    .ports(\"443\")\n                    .ipv4s(\"0.0.0.0/0\")\n                    .ipv6s(\"::/0\")\n                    .build())\n            .outboundPolicy(\"ACCEPT\")\n            .linodes(myInstance.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myFirewall:\n    type: linode:Firewall\n    properties:\n      label: my_firewall\n      inbounds:\n        - label: allow-http\n          action: ACCEPT\n          protocol: TCP\n          ports: '80'\n          ipv4s:\n            - 0.0.0.0/0\n          ipv6s:\n            - ::/0\n        - label: allow-https\n          action: ACCEPT\n          protocol: TCP\n          ports: '443'\n          ipv4s:\n            - 0.0.0.0/0\n          ipv6s:\n            - ::/0\n      inboundPolicy: DROP\n      outbounds:\n        - label: reject-http\n          action: DROP\n          protocol: TCP\n          ports: '80'\n          ipv4s:\n            - 0.0.0.0/0\n          ipv6s:\n            - ::/0\n        - label: reject-https\n          action: DROP\n          protocol: TCP\n          ports: '443'\n          ipv4s:\n            - 0.0.0.0/0\n          ipv6s:\n            - ::/0\n      outboundPolicy: ACCEPT\n      linodes:\n        - ${myInstance.id}\n  myInstance:\n    type: linode:Instance\n    properties:\n      label: my_instance\n      image: linode/ubuntu18.04\n      region: us-southeast\n      type: g6-standard-1\n      rootPass: bogusPassword$\n      swapSize: 256\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewalls can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import linode:index/firewall:Firewall my_firewall 12345\n```\n\n ",
             "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "When this firewall was created\n"
+                },
                 "devices": {
                     "type": "array",
                     "items": {
@@ -6244,15 +6617,21 @@
                         "type": "string"
                     },
                     "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When this firewall was last updated\n"
                 }
             },
             "required": [
+                "created",
                 "devices",
                 "inboundPolicy",
                 "label",
                 "linodes",
                 "outboundPolicy",
-                "status"
+                "status",
+                "updated"
             ],
             "inputProperties": {
                 "disabled": {
@@ -6308,6 +6687,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Firewall resources.\n",
                 "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "When this firewall was created\n"
+                    },
                     "devices": {
                         "type": "array",
                         "items": {
@@ -6362,6 +6745,10 @@
                             "type": "string"
                         },
                         "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "When this firewall was last updated\n"
                     }
                 },
                 "type": "object"
@@ -10701,6 +11088,10 @@
             "outputs": {
                 "description": "A collection of values returned by getFirewall.\n",
                 "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "When this firewall was created.\n"
+                    },
                     "devices": {
                         "type": "array",
                         "items": {
@@ -10756,10 +11147,15 @@
                             "type": "string"
                         },
                         "description": "The tags applied to the firewall.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "When this firewall was last updated.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "created",
                     "devices",
                     "disabled",
                     "id",
@@ -10770,7 +11166,68 @@
                     "outbounds",
                     "outboundPolicy",
                     "status",
-                    "tags"
+                    "tags",
+                    "updated"
+                ]
+            }
+        },
+        "linode:index/getFirewalls:getFirewalls": {
+            "description": "Provides information about Linode Cloud Firewalls that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet information about all Linode Cloud Firewalls with a certain label and visibility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific = linode.getFirewalls({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-firewalls\"],\n        },\n        {\n            name: \"tags\",\n            values: [\"my-tag\"],\n        },\n    ],\n});\nexport const firewallId = specific.then(specific =\u003e specific.firewalls?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific = linode.get_firewalls(filters=[\n    linode.GetFirewallsFilterArgs(\n        name=\"label\",\n        values=[\"my-firewalls\"],\n    ),\n    linode.GetFirewallsFilterArgs(\n        name=\"tags\",\n        values=[\"my-tag\"],\n    ),\n])\npulumi.export(\"firewallId\", specific.firewalls[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var specific = Linode.GetFirewalls.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetFirewallsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-firewalls\",\n                },\n            },\n            new Linode.Inputs.GetFirewallsFilterInputArgs\n            {\n                Name = \"tags\",\n                Values = new[]\n                {\n                    \"my-tag\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"firewallId\"] = specific.Apply(getFirewallsResult =\u003e getFirewallsResult.Firewalls[0]?.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tspecific, err := linode.GetFirewalls(ctx, \u0026linode.GetFirewallsArgs{\n\t\t\tFilters: []linode.GetFirewallsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-firewalls\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"tags\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-tag\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"firewallId\", specific.Firewalls[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetFirewallsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()\n            .filters(            \n                GetFirewallsFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"my-firewalls\")\n                    .build(),\n                GetFirewallsFilterArgs.builder()\n                    .name(\"tags\")\n                    .values(\"my-tag\")\n                    .build())\n            .build());\n\n        ctx.export(\"firewallId\", specific.applyValue(getFirewallsResult -\u003e getFirewallsResult.firewalls()[0].id()));\n    }\n}\n```\n```yaml\nvariables:\n  specific:\n    fn::invoke:\n      Function: linode:getFirewalls\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-firewalls\n          - name: tags\n            values:\n              - my-tag\noutputs:\n  firewallId: ${specific.firewalls[0].id}\n```\n\nGet information about all Linode images associated with the current token:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all = linode.getFirewalls({});\nexport const firewallIds = all.then(all =\u003e all.firewalls.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_firewalls()\npulumi.export(\"firewallIds\", [__item.id for __item in all.firewalls])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetFirewalls.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"firewallIds\"] = all.Apply(getFirewallsResult =\u003e getFirewallsResult.Firewalls).Select(__item =\u003e __item.Id).ToList(),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := linode.GetFirewalls(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar splat0 []*int\n\t\tfor _, val0 := range all.Firewalls {\n\t\t\tsplat0 = append(splat0, val0.Id)\n\t\t}\n\t\tctx.Export(\"firewallIds\", splat0)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetFirewallsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getFirewalls();\n\n        ctx.export(\"firewallIds\", all.applyValue(getFirewallsResult -\u003e getFirewallsResult.firewalls()).stream().map(element -\u003e element.id()).collect(toList()));\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Firewall Rule\n\n* `label` - The label of this rule for display purposes only.\n\n* `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).\n\n* `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)\n\n* `ports` - A string representation of ports and/or port ranges (i.e. \"443\" or \"80-90, 91\").\n\n* `ipv4` - A list of IPv4 addresses or networks in IP/mask format.\n\n* `ipv6` - A list of IPv6 addresses or networks in IP/mask format.\n\n## Firewall Device\n\n* `id` - The unique ID of this Firewall Device assignment.\n\n* `entity_id` - The ID of the underlying entity this device references.\n\n* `type` - The type of the assigned entity.\n\n* `label` - The label of the assigned entity.\n\n* `url` - The URL of the assigned entity.\n\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `status`\n\n* `tags`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFirewalls.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getFirewallsFilter:getFirewallsFilter"
+                        }
+                    },
+                    "firewalls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getFirewallsFirewall:getFirewallsFirewall"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFirewalls.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getFirewallsFilter:getFirewallsFilter"
+                        }
+                    },
+                    "firewalls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getFirewallsFirewall:getFirewallsFirewall"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique ID assigned to this Firewall.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         },
@@ -11298,6 +11755,9 @@
                         "type": "string",
                         "description": "The architecture of this Kernel.\n"
                     },
+                    "built": {
+                        "type": "string"
+                    },
                     "deprecated": {
                         "type": "boolean",
                         "description": "Whether or not this Kernel is deprecated.\n"
@@ -11329,6 +11789,7 @@
                 "type": "object",
                 "required": [
                     "architecture",
+                    "built",
                     "deprecated",
                     "id",
                     "kvm",
@@ -11336,6 +11797,66 @@
                     "pvops",
                     "version",
                     "xen"
+                ]
+            }
+        },
+        "linode:index/getKernels:getKernels": {
+            "description": "Provides information about Linode Kernels that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode Kernel.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filteredKernels = linode.getKernels({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-kernel\"],\n        },\n        {\n            name: \"architecture\",\n            values: [\"x86_64\"],\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_kernels = linode.get_kernels(filters=[\n    linode.GetKernelsFilterArgs(\n        name=\"label\",\n        values=[\"my-kernel\"],\n    ),\n    linode.GetKernelsFilterArgs(\n        name=\"architecture\",\n        values=[\"x86_64\"],\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filteredKernels = Linode.GetKernels.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetKernelsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-kernel\",\n                },\n            },\n            new Linode.Inputs.GetKernelsFilterInputArgs\n            {\n                Name = \"architecture\",\n                Values = new[]\n                {\n                    \"x86_64\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetKernels(ctx, \u0026linode.GetKernelsArgs{\n\t\t\tFilters: []linode.GetKernelsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-kernel\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"architecture\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"x86_64\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetKernelsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()\n            .filters(            \n                GetKernelsFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"my-kernel\")\n                    .build(),\n                GetKernelsFilterArgs.builder()\n                    .name(\"architecture\")\n                    .values(\"x86_64\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filteredKernels:\n    fn::invoke:\n      Function: linode:getKernels\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-kernel\n          - name: architecture\n            values:\n              - x86_64\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `id`\n\n* `architecture`\n\n* `deprecated`\n\n* `kvm`\n\n* `label`\n\n* `pvops`\n\n* `version`\n\n* `xen`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKernels.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getKernelsFilter:getKernelsFilter"
+                        }
+                    },
+                    "kernels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getKernelsKernel:getKernelsKernel"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKernels.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getKernelsFilter:getKernelsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique ID of this Kernel.\n"
+                    },
+                    "kernels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getKernelsKernel:getKernelsKernel"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         },
@@ -12178,6 +12699,66 @@
                     "created",
                     "label",
                     "sshKey"
+                ]
+            }
+        },
+        "linode:index/getSshkeys:getSshkeys": {
+            "description": "`linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.\n\nThe following example shows how one might use this data source to access information about a Linode Kernel.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filteredSsh = linode.getSshkeys({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"my-ssh\"],\n        },\n        {\n            name: \"ssh_key\",\n            values: [\"RSA-6522525\"],\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_ssh = linode.get_sshkeys(filters=[\n    linode.GetSshkeysFilterArgs(\n        name=\"label\",\n        values=[\"my-ssh\"],\n    ),\n    linode.GetSshkeysFilterArgs(\n        name=\"ssh_key\",\n        values=[\"RSA-6522525\"],\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filteredSsh = Linode.GetSshkeys.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetSshkeysFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-ssh\",\n                },\n            },\n            new Linode.Inputs.GetSshkeysFilterInputArgs\n            {\n                Name = \"ssh_key\",\n                Values = new[]\n                {\n                    \"RSA-6522525\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetSshkeys(ctx, \u0026linode.GetSshkeysArgs{\n\t\t\tFilters: []linode.GetSshkeysFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-ssh\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"ssh_key\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"RSA-6522525\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetSshkeysArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()\n            .filters(            \n                GetSshkeysFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"my-ssh\")\n                    .build(),\n                GetSshkeysFilterArgs.builder()\n                    .name(\"ssh_key\")\n                    .values(\"RSA-6522525\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filteredSsh:\n    fn::invoke:\n      Function: linode:getSshkeys\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-ssh\n          - name: ssh_key\n            values:\n              - RSA-6522525\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `ssh_key`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSshkeys.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getSshkeysFilter:getSshkeysFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "sshkeys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getSshkeysSshkey:getSshkeysSshkey"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSshkeys.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getSshkeysFilter:getSshkeysFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the SSH Key.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "sshkeys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getSshkeysSshkey:getSshkeysSshkey"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         },
