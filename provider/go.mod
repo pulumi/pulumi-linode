@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/linode/terraform-provider-linode v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.15.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.58.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 )
 
