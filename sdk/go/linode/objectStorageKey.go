@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
@@ -170,6 +171,12 @@ func (i *ObjectStorageKey) ToObjectStorageKeyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyOutput)
 }
 
+func (i *ObjectStorageKey) ToOutput(ctx context.Context) pulumix.Output[*ObjectStorageKey] {
+	return pulumix.Output[*ObjectStorageKey]{
+		OutputState: i.ToObjectStorageKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ObjectStorageKeyArrayInput is an input type that accepts ObjectStorageKeyArray and ObjectStorageKeyArrayOutput values.
 // You can construct a concrete instance of `ObjectStorageKeyArrayInput` via:
 //
@@ -193,6 +200,12 @@ func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutput() ObjectStorageKeyA
 
 func (i ObjectStorageKeyArray) ToObjectStorageKeyArrayOutputWithContext(ctx context.Context) ObjectStorageKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyArrayOutput)
+}
+
+func (i ObjectStorageKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectStorageKey] {
+	return pulumix.Output[[]*ObjectStorageKey]{
+		OutputState: i.ToObjectStorageKeyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ObjectStorageKeyMapInput is an input type that accepts ObjectStorageKeyMap and ObjectStorageKeyMapOutput values.
@@ -220,6 +233,12 @@ func (i ObjectStorageKeyMap) ToObjectStorageKeyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyMapOutput)
 }
 
+func (i ObjectStorageKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectStorageKey] {
+	return pulumix.Output[map[string]*ObjectStorageKey]{
+		OutputState: i.ToObjectStorageKeyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ObjectStorageKeyOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageKeyOutput) ElementType() reflect.Type {
@@ -232,6 +251,12 @@ func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutput() ObjectStorageKeyOutpu
 
 func (o ObjectStorageKeyOutput) ToObjectStorageKeyOutputWithContext(ctx context.Context) ObjectStorageKeyOutput {
 	return o
+}
+
+func (o ObjectStorageKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectStorageKey] {
+	return pulumix.Output[*ObjectStorageKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This keypair's access key. This is not secret.
@@ -275,6 +300,12 @@ func (o ObjectStorageKeyArrayOutput) ToObjectStorageKeyArrayOutputWithContext(ct
 	return o
 }
 
+func (o ObjectStorageKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectStorageKey] {
+	return pulumix.Output[[]*ObjectStorageKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ObjectStorageKeyArrayOutput) Index(i pulumi.IntInput) ObjectStorageKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectStorageKey {
 		return vs[0].([]*ObjectStorageKey)[vs[1].(int)]
@@ -293,6 +324,12 @@ func (o ObjectStorageKeyMapOutput) ToObjectStorageKeyMapOutput() ObjectStorageKe
 
 func (o ObjectStorageKeyMapOutput) ToObjectStorageKeyMapOutputWithContext(ctx context.Context) ObjectStorageKeyMapOutput {
 	return o
+}
+
+func (o ObjectStorageKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectStorageKey] {
+	return pulumix.Output[map[string]*ObjectStorageKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectStorageKeyMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageKeyOutput {

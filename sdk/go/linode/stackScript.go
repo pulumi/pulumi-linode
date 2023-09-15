@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
@@ -275,6 +276,12 @@ func (i *StackScript) ToStackScriptOutputWithContext(ctx context.Context) StackS
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptOutput)
 }
 
+func (i *StackScript) ToOutput(ctx context.Context) pulumix.Output[*StackScript] {
+	return pulumix.Output[*StackScript]{
+		OutputState: i.ToStackScriptOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StackScriptArrayInput is an input type that accepts StackScriptArray and StackScriptArrayOutput values.
 // You can construct a concrete instance of `StackScriptArrayInput` via:
 //
@@ -298,6 +305,12 @@ func (i StackScriptArray) ToStackScriptArrayOutput() StackScriptArrayOutput {
 
 func (i StackScriptArray) ToStackScriptArrayOutputWithContext(ctx context.Context) StackScriptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptArrayOutput)
+}
+
+func (i StackScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]*StackScript] {
+	return pulumix.Output[[]*StackScript]{
+		OutputState: i.ToStackScriptArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StackScriptMapInput is an input type that accepts StackScriptMap and StackScriptMapOutput values.
@@ -325,6 +338,12 @@ func (i StackScriptMap) ToStackScriptMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(StackScriptMapOutput)
 }
 
+func (i StackScriptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackScript] {
+	return pulumix.Output[map[string]*StackScript]{
+		OutputState: i.ToStackScriptMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StackScriptOutput struct{ *pulumi.OutputState }
 
 func (StackScriptOutput) ElementType() reflect.Type {
@@ -337,6 +356,12 @@ func (o StackScriptOutput) ToStackScriptOutput() StackScriptOutput {
 
 func (o StackScriptOutput) ToStackScriptOutputWithContext(ctx context.Context) StackScriptOutput {
 	return o
+}
+
+func (o StackScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*StackScript] {
+	return pulumix.Output[*StackScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date this StackScript was created.
@@ -420,6 +445,12 @@ func (o StackScriptArrayOutput) ToStackScriptArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o StackScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StackScript] {
+	return pulumix.Output[[]*StackScript]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StackScriptArrayOutput) Index(i pulumi.IntInput) StackScriptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackScript {
 		return vs[0].([]*StackScript)[vs[1].(int)]
@@ -438,6 +469,12 @@ func (o StackScriptMapOutput) ToStackScriptMapOutput() StackScriptMapOutput {
 
 func (o StackScriptMapOutput) ToStackScriptMapOutputWithContext(ctx context.Context) StackScriptMapOutput {
 	return o
+}
+
+func (o StackScriptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackScript] {
+	return pulumix.Output[map[string]*StackScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StackScriptMapOutput) MapIndex(k pulumi.StringInput) StackScriptOutput {

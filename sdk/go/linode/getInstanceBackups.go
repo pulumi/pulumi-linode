@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about the backups of an Instance.
@@ -74,6 +75,12 @@ func (o GetInstanceBackupsResultOutput) ToGetInstanceBackupsResultOutput() GetIn
 
 func (o GetInstanceBackupsResultOutput) ToGetInstanceBackupsResultOutputWithContext(ctx context.Context) GetInstanceBackupsResultOutput {
 	return o
+}
+
+func (o GetInstanceBackupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceBackupsResult] {
+	return pulumix.Output[GetInstanceBackupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceBackupsResultOutput) Automatics() GetInstanceBackupsAutomaticArrayOutput {

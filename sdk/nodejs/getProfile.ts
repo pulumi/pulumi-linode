@@ -73,3 +73,20 @@ export interface GetProfileResult {
      */
     readonly username: string;
 }
+/**
+ * Provides information about a Linode profile.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access profile details.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const profile = linode.getProfile({});
+ * ```
+ */
+export function getProfileOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProfileResult> {
+    return pulumi.output(getProfile(opts))
+}

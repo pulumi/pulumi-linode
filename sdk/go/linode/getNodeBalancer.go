@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about a Linode NodeBalancer.
@@ -114,6 +115,12 @@ func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutput() Looku
 
 func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutputWithContext(ctx context.Context) LookupNodeBalancerResultOutput {
 	return o
+}
+
+func (o LookupNodeBalancerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeBalancerResult] {
+	return pulumix.Output[LookupNodeBalancerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Throttle connections per second (0-20).

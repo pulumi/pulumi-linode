@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode PostgreSQL Database.
@@ -162,6 +163,12 @@ func (o LookupDatabasePostgresqlResultOutput) ToLookupDatabasePostgresqlResultOu
 
 func (o LookupDatabasePostgresqlResultOutput) ToLookupDatabasePostgresqlResultOutputWithContext(ctx context.Context) LookupDatabasePostgresqlResultOutput {
 	return o
+}
+
+func (o LookupDatabasePostgresqlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabasePostgresqlResult] {
+	return pulumix.Output[LookupDatabasePostgresqlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.

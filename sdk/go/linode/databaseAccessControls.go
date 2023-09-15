@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
@@ -176,6 +177,12 @@ func (i *DatabaseAccessControls) ToDatabaseAccessControlsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccessControlsOutput)
 }
 
+func (i *DatabaseAccessControls) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccessControls] {
+	return pulumix.Output[*DatabaseAccessControls]{
+		OutputState: i.ToDatabaseAccessControlsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseAccessControlsArrayInput is an input type that accepts DatabaseAccessControlsArray and DatabaseAccessControlsArrayOutput values.
 // You can construct a concrete instance of `DatabaseAccessControlsArrayInput` via:
 //
@@ -199,6 +206,12 @@ func (i DatabaseAccessControlsArray) ToDatabaseAccessControlsArrayOutput() Datab
 
 func (i DatabaseAccessControlsArray) ToDatabaseAccessControlsArrayOutputWithContext(ctx context.Context) DatabaseAccessControlsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccessControlsArrayOutput)
+}
+
+func (i DatabaseAccessControlsArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseAccessControls] {
+	return pulumix.Output[[]*DatabaseAccessControls]{
+		OutputState: i.ToDatabaseAccessControlsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseAccessControlsMapInput is an input type that accepts DatabaseAccessControlsMap and DatabaseAccessControlsMapOutput values.
@@ -226,6 +239,12 @@ func (i DatabaseAccessControlsMap) ToDatabaseAccessControlsMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccessControlsMapOutput)
 }
 
+func (i DatabaseAccessControlsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseAccessControls] {
+	return pulumix.Output[map[string]*DatabaseAccessControls]{
+		OutputState: i.ToDatabaseAccessControlsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseAccessControlsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseAccessControlsOutput) ElementType() reflect.Type {
@@ -238,6 +257,12 @@ func (o DatabaseAccessControlsOutput) ToDatabaseAccessControlsOutput() DatabaseA
 
 func (o DatabaseAccessControlsOutput) ToDatabaseAccessControlsOutputWithContext(ctx context.Context) DatabaseAccessControlsOutput {
 	return o
+}
+
+func (o DatabaseAccessControlsOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccessControls] {
+	return pulumix.Output[*DatabaseAccessControls]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
@@ -269,6 +294,12 @@ func (o DatabaseAccessControlsArrayOutput) ToDatabaseAccessControlsArrayOutputWi
 	return o
 }
 
+func (o DatabaseAccessControlsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseAccessControls] {
+	return pulumix.Output[[]*DatabaseAccessControls]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseAccessControlsArrayOutput) Index(i pulumi.IntInput) DatabaseAccessControlsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseAccessControls {
 		return vs[0].([]*DatabaseAccessControls)[vs[1].(int)]
@@ -287,6 +318,12 @@ func (o DatabaseAccessControlsMapOutput) ToDatabaseAccessControlsMapOutput() Dat
 
 func (o DatabaseAccessControlsMapOutput) ToDatabaseAccessControlsMapOutputWithContext(ctx context.Context) DatabaseAccessControlsMapOutput {
 	return o
+}
+
+func (o DatabaseAccessControlsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseAccessControls] {
+	return pulumix.Output[map[string]*DatabaseAccessControls]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseAccessControlsMapOutput) MapIndex(k pulumi.StringInput) DatabaseAccessControlsOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode Managed Databases that match a set of filters.
@@ -151,6 +152,12 @@ func (o GetDatabasesResultOutput) ToGetDatabasesResultOutput() GetDatabasesResul
 
 func (o GetDatabasesResultOutput) ToGetDatabasesResultOutputWithContext(ctx context.Context) GetDatabasesResultOutput {
 	return o
+}
+
+func (o GetDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabasesResult] {
+	return pulumix.Output[GetDatabasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDatabasesResultOutput) Databases() GetDatabasesDatabaseArrayOutput {

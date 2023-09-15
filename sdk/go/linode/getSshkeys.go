@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
@@ -132,6 +133,12 @@ func (o GetSshkeysResultOutput) ToGetSshkeysResultOutput() GetSshkeysResultOutpu
 
 func (o GetSshkeysResultOutput) ToGetSshkeysResultOutputWithContext(ctx context.Context) GetSshkeysResultOutput {
 	return o
+}
+
+func (o GetSshkeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSshkeysResult] {
+	return pulumix.Output[GetSshkeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSshkeysResultOutput) Filters() GetSshkeysFilterArrayOutput {

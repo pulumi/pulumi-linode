@@ -37,6 +37,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Task<GetAccountSettingsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountSettingsResult>("linode:index/getAccountSettings:getAccountSettings", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode account settings.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about Linode account settings.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Linode.GetAccountSettings.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccountSettingsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingsResult>("linode:index/getAccountSettings:getAccountSettings", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

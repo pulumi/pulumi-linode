@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode Cloud Firewalls that match a set of filters.
@@ -188,6 +189,12 @@ func (o GetFirewallsResultOutput) ToGetFirewallsResultOutput() GetFirewallsResul
 
 func (o GetFirewallsResultOutput) ToGetFirewallsResultOutputWithContext(ctx context.Context) GetFirewallsResultOutput {
 	return o
+}
+
+func (o GetFirewallsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFirewallsResult] {
+	return pulumix.Output[GetFirewallsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFirewallsResultOutput) Filters() GetFirewallsFilterArrayOutput {

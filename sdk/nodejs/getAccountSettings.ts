@@ -51,3 +51,20 @@ export interface GetAccountSettingsResult {
      */
     readonly objectStorage: string;
 }
+/**
+ * Provides information about Linode account settings.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about Linode account settings.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = linode.getAccountSettings({});
+ * ```
+ */
+export function getAccountSettingsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountSettingsResult> {
+    return pulumi.output(getAccountSettings(opts))
+}

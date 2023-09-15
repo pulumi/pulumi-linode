@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Linode Firewall Device.
@@ -194,6 +195,12 @@ func (i *FirewallDevice) ToFirewallDeviceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceOutput)
 }
 
+func (i *FirewallDevice) ToOutput(ctx context.Context) pulumix.Output[*FirewallDevice] {
+	return pulumix.Output[*FirewallDevice]{
+		OutputState: i.ToFirewallDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallDeviceArrayInput is an input type that accepts FirewallDeviceArray and FirewallDeviceArrayOutput values.
 // You can construct a concrete instance of `FirewallDeviceArrayInput` via:
 //
@@ -217,6 +224,12 @@ func (i FirewallDeviceArray) ToFirewallDeviceArrayOutput() FirewallDeviceArrayOu
 
 func (i FirewallDeviceArray) ToFirewallDeviceArrayOutputWithContext(ctx context.Context) FirewallDeviceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceArrayOutput)
+}
+
+func (i FirewallDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallDevice] {
+	return pulumix.Output[[]*FirewallDevice]{
+		OutputState: i.ToFirewallDeviceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallDeviceMapInput is an input type that accepts FirewallDeviceMap and FirewallDeviceMapOutput values.
@@ -244,6 +257,12 @@ func (i FirewallDeviceMap) ToFirewallDeviceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallDeviceMapOutput)
 }
 
+func (i FirewallDeviceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallDevice] {
+	return pulumix.Output[map[string]*FirewallDevice]{
+		OutputState: i.ToFirewallDeviceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallDeviceOutput struct{ *pulumi.OutputState }
 
 func (FirewallDeviceOutput) ElementType() reflect.Type {
@@ -256,6 +275,12 @@ func (o FirewallDeviceOutput) ToFirewallDeviceOutput() FirewallDeviceOutput {
 
 func (o FirewallDeviceOutput) ToFirewallDeviceOutputWithContext(ctx context.Context) FirewallDeviceOutput {
 	return o
+}
+
+func (o FirewallDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallDevice] {
+	return pulumix.Output[*FirewallDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the Firewall Device was last created.
@@ -297,6 +322,12 @@ func (o FirewallDeviceArrayOutput) ToFirewallDeviceArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o FirewallDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallDevice] {
+	return pulumix.Output[[]*FirewallDevice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallDeviceArrayOutput) Index(i pulumi.IntInput) FirewallDeviceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallDevice {
 		return vs[0].([]*FirewallDevice)[vs[1].(int)]
@@ -315,6 +346,12 @@ func (o FirewallDeviceMapOutput) ToFirewallDeviceMapOutput() FirewallDeviceMapOu
 
 func (o FirewallDeviceMapOutput) ToFirewallDeviceMapOutputWithContext(ctx context.Context) FirewallDeviceMapOutput {
 	return o
+}
+
+func (o FirewallDeviceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallDevice] {
+	return pulumix.Output[map[string]*FirewallDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallDeviceMapOutput) MapIndex(k pulumi.StringInput) FirewallDeviceOutput {

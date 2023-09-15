@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
@@ -405,6 +406,12 @@ func (i *DatabaseMysql) ToDatabaseMysqlOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlOutput)
 }
 
+func (i *DatabaseMysql) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMysql] {
+	return pulumix.Output[*DatabaseMysql]{
+		OutputState: i.ToDatabaseMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseMysqlArrayInput is an input type that accepts DatabaseMysqlArray and DatabaseMysqlArrayOutput values.
 // You can construct a concrete instance of `DatabaseMysqlArrayInput` via:
 //
@@ -428,6 +435,12 @@ func (i DatabaseMysqlArray) ToDatabaseMysqlArrayOutput() DatabaseMysqlArrayOutpu
 
 func (i DatabaseMysqlArray) ToDatabaseMysqlArrayOutputWithContext(ctx context.Context) DatabaseMysqlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlArrayOutput)
+}
+
+func (i DatabaseMysqlArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseMysql] {
+	return pulumix.Output[[]*DatabaseMysql]{
+		OutputState: i.ToDatabaseMysqlArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseMysqlMapInput is an input type that accepts DatabaseMysqlMap and DatabaseMysqlMapOutput values.
@@ -455,6 +468,12 @@ func (i DatabaseMysqlMap) ToDatabaseMysqlMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlMapOutput)
 }
 
+func (i DatabaseMysqlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseMysql] {
+	return pulumix.Output[map[string]*DatabaseMysql]{
+		OutputState: i.ToDatabaseMysqlMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseMysqlOutput struct{ *pulumi.OutputState }
 
 func (DatabaseMysqlOutput) ElementType() reflect.Type {
@@ -467,6 +486,12 @@ func (o DatabaseMysqlOutput) ToDatabaseMysqlOutput() DatabaseMysqlOutput {
 
 func (o DatabaseMysqlOutput) ToDatabaseMysqlOutputWithContext(ctx context.Context) DatabaseMysqlOutput {
 	return o
+}
+
+func (o DatabaseMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMysql] {
+	return pulumix.Output[*DatabaseMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
@@ -591,6 +616,12 @@ func (o DatabaseMysqlArrayOutput) ToDatabaseMysqlArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o DatabaseMysqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseMysql] {
+	return pulumix.Output[[]*DatabaseMysql]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseMysqlArrayOutput) Index(i pulumi.IntInput) DatabaseMysqlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseMysql {
 		return vs[0].([]*DatabaseMysql)[vs[1].(int)]
@@ -609,6 +640,12 @@ func (o DatabaseMysqlMapOutput) ToDatabaseMysqlMapOutput() DatabaseMysqlMapOutpu
 
 func (o DatabaseMysqlMapOutput) ToDatabaseMysqlMapOutputWithContext(ctx context.Context) DatabaseMysqlMapOutput {
 	return o
+}
+
+func (o DatabaseMysqlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseMysql] {
+	return pulumix.Output[map[string]*DatabaseMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseMysqlMapOutput) MapIndex(k pulumi.StringInput) DatabaseMysqlOutput {
