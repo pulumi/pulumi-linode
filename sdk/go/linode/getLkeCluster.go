@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about an LKE Cluster.
@@ -114,6 +115,12 @@ func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutput() LookupLke
 
 func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutputWithContext(ctx context.Context) LookupLkeClusterResultOutput {
 	return o
+}
+
+func (o LookupLkeClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLkeClusterResult] {
+	return pulumix.Output[LookupLkeClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoints for the Kubernetes API server.

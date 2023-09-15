@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about a specific Linode account login.
@@ -107,6 +108,12 @@ func (o GetAccountLoginResultOutput) ToGetAccountLoginResultOutput() GetAccountL
 
 func (o GetAccountLoginResultOutput) ToGetAccountLoginResultOutputWithContext(ctx context.Context) GetAccountLoginResultOutput {
 	return o
+}
+
+func (o GetAccountLoginResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountLoginResult] {
+	return pulumix.Output[GetAccountLoginResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the login was initiated.

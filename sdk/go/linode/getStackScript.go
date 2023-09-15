@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about a specific Linode StackScript.
@@ -123,6 +124,12 @@ func (o LookupStackScriptResultOutput) ToLookupStackScriptResultOutput() LookupS
 
 func (o LookupStackScriptResultOutput) ToLookupStackScriptResultOutputWithContext(ctx context.Context) LookupStackScriptResultOutput {
 	return o
+}
+
+func (o LookupStackScriptResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStackScriptResult] {
+	return pulumix.Output[LookupStackScriptResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date this StackScript was created.

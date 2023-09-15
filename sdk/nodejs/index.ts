@@ -47,7 +47,8 @@ utilities.lazyLoad(exports, ["FirewallDevice"], () => require("./firewallDevice"
 
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
-utilities.lazyLoad(exports, ["getAccount"], () => require("./getAccount"));
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
 
 export { GetAccountLoginArgs, GetAccountLoginResult, GetAccountLoginOutputArgs } from "./getAccountLogin";
 export const getAccountLogin: typeof import("./getAccountLogin").getAccountLogin = null as any;
@@ -61,7 +62,8 @@ utilities.lazyLoad(exports, ["getAccountLogins","getAccountLoginsOutput"], () =>
 
 export { GetAccountSettingsResult } from "./getAccountSettings";
 export const getAccountSettings: typeof import("./getAccountSettings").getAccountSettings = null as any;
-utilities.lazyLoad(exports, ["getAccountSettings"], () => require("./getAccountSettings"));
+export const getAccountSettingsOutput: typeof import("./getAccountSettings").getAccountSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountSettings","getAccountSettingsOutput"], () => require("./getAccountSettings"));
 
 export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
 export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
@@ -180,7 +182,8 @@ utilities.lazyLoad(exports, ["getLkeCluster","getLkeClusterOutput"], () => requi
 
 export { GetLkeVersionsResult } from "./getLkeVersions";
 export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = null as any;
-utilities.lazyLoad(exports, ["getLkeVersions"], () => require("./getLkeVersions"));
+export const getLkeVersionsOutput: typeof import("./getLkeVersions").getLkeVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getLkeVersions","getLkeVersionsOutput"], () => require("./getLkeVersions"));
 
 export { GetNetworkingIpArgs, GetNetworkingIpResult, GetNetworkingIpOutputArgs } from "./getNetworkingIp";
 export const getNetworkingIp: typeof import("./getNetworkingIp").getNetworkingIp = null as any;
@@ -214,7 +217,8 @@ utilities.lazyLoad(exports, ["getObjectStorageCluster","getObjectStorageClusterO
 
 export { GetProfileResult } from "./getProfile";
 export const getProfile: typeof import("./getProfile").getProfile = null as any;
-utilities.lazyLoad(exports, ["getProfile"], () => require("./getProfile"));
+export const getProfileOutput: typeof import("./getProfile").getProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getProfile","getProfileOutput"], () => require("./getProfile"));
 
 export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
 export const getRegion: typeof import("./getRegion").getRegion = null as any;

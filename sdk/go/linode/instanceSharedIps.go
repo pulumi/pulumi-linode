@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type InstanceSharedIps struct {
@@ -112,6 +113,12 @@ func (i *InstanceSharedIps) ToInstanceSharedIpsOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSharedIpsOutput)
 }
 
+func (i *InstanceSharedIps) ToOutput(ctx context.Context) pulumix.Output[*InstanceSharedIps] {
+	return pulumix.Output[*InstanceSharedIps]{
+		OutputState: i.ToInstanceSharedIpsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceSharedIpsArrayInput is an input type that accepts InstanceSharedIpsArray and InstanceSharedIpsArrayOutput values.
 // You can construct a concrete instance of `InstanceSharedIpsArrayInput` via:
 //
@@ -135,6 +142,12 @@ func (i InstanceSharedIpsArray) ToInstanceSharedIpsArrayOutput() InstanceSharedI
 
 func (i InstanceSharedIpsArray) ToInstanceSharedIpsArrayOutputWithContext(ctx context.Context) InstanceSharedIpsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSharedIpsArrayOutput)
+}
+
+func (i InstanceSharedIpsArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceSharedIps] {
+	return pulumix.Output[[]*InstanceSharedIps]{
+		OutputState: i.ToInstanceSharedIpsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceSharedIpsMapInput is an input type that accepts InstanceSharedIpsMap and InstanceSharedIpsMapOutput values.
@@ -162,6 +175,12 @@ func (i InstanceSharedIpsMap) ToInstanceSharedIpsMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSharedIpsMapOutput)
 }
 
+func (i InstanceSharedIpsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceSharedIps] {
+	return pulumix.Output[map[string]*InstanceSharedIps]{
+		OutputState: i.ToInstanceSharedIpsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSharedIpsOutput struct{ *pulumi.OutputState }
 
 func (InstanceSharedIpsOutput) ElementType() reflect.Type {
@@ -174,6 +193,12 @@ func (o InstanceSharedIpsOutput) ToInstanceSharedIpsOutput() InstanceSharedIpsOu
 
 func (o InstanceSharedIpsOutput) ToInstanceSharedIpsOutputWithContext(ctx context.Context) InstanceSharedIpsOutput {
 	return o
+}
+
+func (o InstanceSharedIpsOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceSharedIps] {
+	return pulumix.Output[*InstanceSharedIps]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The set of IPs to share with the Linode.
@@ -200,6 +225,12 @@ func (o InstanceSharedIpsArrayOutput) ToInstanceSharedIpsArrayOutputWithContext(
 	return o
 }
 
+func (o InstanceSharedIpsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceSharedIps] {
+	return pulumix.Output[[]*InstanceSharedIps]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceSharedIpsArrayOutput) Index(i pulumi.IntInput) InstanceSharedIpsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceSharedIps {
 		return vs[0].([]*InstanceSharedIps)[vs[1].(int)]
@@ -218,6 +249,12 @@ func (o InstanceSharedIpsMapOutput) ToInstanceSharedIpsMapOutput() InstanceShare
 
 func (o InstanceSharedIpsMapOutput) ToInstanceSharedIpsMapOutputWithContext(ctx context.Context) InstanceSharedIpsMapOutput {
 	return o
+}
+
+func (o InstanceSharedIpsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceSharedIps] {
+	return pulumix.Output[map[string]*InstanceSharedIps]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSharedIpsMapOutput) MapIndex(k pulumi.StringInput) InstanceSharedIpsOutput {

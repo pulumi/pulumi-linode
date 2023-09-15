@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode Object Storage Cluster
@@ -105,6 +106,12 @@ func (o GetObjectStorageClusterResultOutput) ToGetObjectStorageClusterResultOutp
 
 func (o GetObjectStorageClusterResultOutput) ToGetObjectStorageClusterResultOutputWithContext(ctx context.Context) GetObjectStorageClusterResultOutput {
 	return o
+}
+
+func (o GetObjectStorageClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetObjectStorageClusterResult] {
+	return pulumix.Output[GetObjectStorageClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The base URL for this cluster.

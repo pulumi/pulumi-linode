@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode StackScripts that match a set of filters.
@@ -154,6 +155,12 @@ func (o GetStackScriptsResultOutput) ToGetStackScriptsResultOutput() GetStackScr
 
 func (o GetStackScriptsResultOutput) ToGetStackScriptsResultOutputWithContext(ctx context.Context) GetStackScriptsResultOutput {
 	return o
+}
+
+func (o GetStackScriptsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackScriptsResult] {
+	return pulumix.Output[GetStackScriptsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetStackScriptsResultOutput) Filters() GetStackScriptsFilterArrayOutput {

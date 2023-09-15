@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStorageBucketArgs, opts ...pulumi.InvokeOption) (*GetLinodeObjectStorageBucketResult, error) {
@@ -74,6 +75,12 @@ func (o GetLinodeObjectStorageBucketResultOutput) ToGetLinodeObjectStorageBucket
 
 func (o GetLinodeObjectStorageBucketResultOutput) ToGetLinodeObjectStorageBucketResultOutputWithContext(ctx context.Context) GetLinodeObjectStorageBucketResultOutput {
 	return o
+}
+
+func (o GetLinodeObjectStorageBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLinodeObjectStorageBucketResult] {
+	return pulumix.Output[GetLinodeObjectStorageBucketResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLinodeObjectStorageBucketResultOutput) Cluster() pulumi.StringOutput {

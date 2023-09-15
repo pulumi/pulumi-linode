@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about a Linode NodeBalancer Config.
@@ -131,6 +132,12 @@ func (o LookupNodeBalancerConfigResultOutput) ToLookupNodeBalancerConfigResultOu
 
 func (o LookupNodeBalancerConfigResultOutput) ToLookupNodeBalancerConfigResultOutputWithContext(ctx context.Context) LookupNodeBalancerConfigResultOutput {
 	return o
+}
+
+func (o LookupNodeBalancerConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeBalancerConfigResult] {
+	return pulumix.Output[LookupNodeBalancerConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)

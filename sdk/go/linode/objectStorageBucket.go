@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
@@ -302,6 +303,12 @@ func (i *ObjectStorageBucket) ToObjectStorageBucketOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketOutput)
 }
 
+func (i *ObjectStorageBucket) ToOutput(ctx context.Context) pulumix.Output[*ObjectStorageBucket] {
+	return pulumix.Output[*ObjectStorageBucket]{
+		OutputState: i.ToObjectStorageBucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ObjectStorageBucketArrayInput is an input type that accepts ObjectStorageBucketArray and ObjectStorageBucketArrayOutput values.
 // You can construct a concrete instance of `ObjectStorageBucketArrayInput` via:
 //
@@ -325,6 +332,12 @@ func (i ObjectStorageBucketArray) ToObjectStorageBucketArrayOutput() ObjectStora
 
 func (i ObjectStorageBucketArray) ToObjectStorageBucketArrayOutputWithContext(ctx context.Context) ObjectStorageBucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketArrayOutput)
+}
+
+func (i ObjectStorageBucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectStorageBucket] {
+	return pulumix.Output[[]*ObjectStorageBucket]{
+		OutputState: i.ToObjectStorageBucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ObjectStorageBucketMapInput is an input type that accepts ObjectStorageBucketMap and ObjectStorageBucketMapOutput values.
@@ -352,6 +365,12 @@ func (i ObjectStorageBucketMap) ToObjectStorageBucketMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageBucketMapOutput)
 }
 
+func (i ObjectStorageBucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectStorageBucket] {
+	return pulumix.Output[map[string]*ObjectStorageBucket]{
+		OutputState: i.ToObjectStorageBucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ObjectStorageBucketOutput struct{ *pulumi.OutputState }
 
 func (ObjectStorageBucketOutput) ElementType() reflect.Type {
@@ -364,6 +383,12 @@ func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutput() ObjectStorageBu
 
 func (o ObjectStorageBucketOutput) ToObjectStorageBucketOutputWithContext(ctx context.Context) ObjectStorageBucketOutput {
 	return o
+}
+
+func (o ObjectStorageBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectStorageBucket] {
+	return pulumix.Output[*ObjectStorageBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access key to authenticate with.
@@ -435,6 +460,12 @@ func (o ObjectStorageBucketArrayOutput) ToObjectStorageBucketArrayOutputWithCont
 	return o
 }
 
+func (o ObjectStorageBucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectStorageBucket] {
+	return pulumix.Output[[]*ObjectStorageBucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ObjectStorageBucketArrayOutput) Index(i pulumi.IntInput) ObjectStorageBucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectStorageBucket {
 		return vs[0].([]*ObjectStorageBucket)[vs[1].(int)]
@@ -453,6 +484,12 @@ func (o ObjectStorageBucketMapOutput) ToObjectStorageBucketMapOutput() ObjectSto
 
 func (o ObjectStorageBucketMapOutput) ToObjectStorageBucketMapOutputWithContext(ctx context.Context) ObjectStorageBucketMapOutput {
 	return o
+}
+
+func (o ObjectStorageBucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectStorageBucket] {
+	return pulumix.Output[map[string]*ObjectStorageBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectStorageBucketMapOutput) MapIndex(k pulumi.StringInput) ObjectStorageBucketOutput {

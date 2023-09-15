@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about Linode VLANs.
@@ -136,6 +137,12 @@ func (o GetVlansResultOutput) ToGetVlansResultOutput() GetVlansResultOutput {
 
 func (o GetVlansResultOutput) ToGetVlansResultOutputWithContext(ctx context.Context) GetVlansResultOutput {
 	return o
+}
+
+func (o GetVlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVlansResult] {
+	return pulumix.Output[GetVlansResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVlansResultOutput) Filters() GetVlansFilterArrayOutput {

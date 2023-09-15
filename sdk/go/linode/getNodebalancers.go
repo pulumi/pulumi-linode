@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode NodeBalancers that match a set of filters.
@@ -139,6 +140,12 @@ func (o GetNodebalancersResultOutput) ToGetNodebalancersResultOutput() GetNodeba
 
 func (o GetNodebalancersResultOutput) ToGetNodebalancersResultOutputWithContext(ctx context.Context) GetNodebalancersResultOutput {
 	return o
+}
+
+func (o GetNodebalancersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodebalancersResult] {
+	return pulumix.Output[GetNodebalancersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodebalancersResultOutput) Filters() GetNodebalancersFilterArrayOutput {
