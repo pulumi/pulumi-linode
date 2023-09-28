@@ -1912,6 +1912,12 @@
                     },
                     "description": "The IDs of Linodes this firewall is applied to.\n"
                 },
+                "nodebalancers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
                 "outboundPolicy": {
                     "type": "string",
                     "description": "The default behavior for outbound traffic.\n"
@@ -1946,6 +1952,7 @@
                 "inboundPolicy",
                 "label",
                 "linodes",
+                "nodebalancers",
                 "outboundPolicy",
                 "status",
                 "tags",
@@ -6596,7 +6603,14 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                    "description": "A list of IDs of Linodes this Firewall should govern network traffic for.\n"
+                },
+                "nodebalancers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of NodeBalancers this Firewall should govern network traffic for.\n"
                 },
                 "outboundPolicy": {
                     "type": "string",
@@ -6631,6 +6645,7 @@
                 "inboundPolicy",
                 "label",
                 "linodes",
+                "nodebalancers",
                 "outboundPolicy",
                 "status",
                 "updated"
@@ -6660,7 +6675,14 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                    "description": "A list of IDs of Linodes this Firewall should govern network traffic for.\n"
+                },
+                "nodebalancers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of IDs of NodeBalancers this Firewall should govern network traffic for.\n"
                 },
                 "outboundPolicy": {
                     "type": "string",
@@ -6724,7 +6746,14 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "A list of IDs of Linodes this Firewall should govern it's network traffic for.\n"
+                        "description": "A list of IDs of Linodes this Firewall should govern network traffic for.\n"
+                    },
+                    "nodebalancers": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "A list of IDs of NodeBalancers this Firewall should govern network traffic for.\n"
                     },
                     "outboundPolicy": {
                         "type": "string",
@@ -7105,13 +7134,15 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
-                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
+                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                    "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
                 },
                 "disks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
-                    }
+                    },
+                    "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
                 "group": {
                     "type": "string",
@@ -7294,13 +7325,15 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
-                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
+                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                    "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
                 },
                 "disks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
-                    }
+                    },
+                    "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
                 "group": {
                     "type": "string",
@@ -7441,13 +7474,15 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                         },
-                        "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
+                        "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                        "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
                     },
                     "disks": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
-                        }
+                        },
+                        "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                     },
                     "group": {
                         "type": "string",
@@ -8245,6 +8280,10 @@
                     "type": "string",
                     "description": "When this NodeBalancer was created\n"
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
+                },
                 "hostname": {
                     "type": "string",
                     "description": "This NodeBalancer's hostname, ending with .nodebalancer.linode.com\n"
@@ -8291,6 +8330,7 @@
                 "ipv4",
                 "ipv6",
                 "region",
+                "tags",
                 "transfers",
                 "updated"
             ],
@@ -8298,6 +8338,10 @@
                 "clientConnThrottle": {
                     "type": "integer",
                     "description": "Throttle connections per second (0-20). Set to 0 (default) to disable throttling.\n"
+                },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
                 },
                 "label": {
                     "type": "string",
@@ -8325,6 +8369,10 @@
                     "created": {
                         "type": "string",
                         "description": "When this NodeBalancer was created\n"
+                    },
+                    "firewallId": {
+                        "type": "integer",
+                        "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
                     },
                     "hostname": {
                         "type": "string",
@@ -11127,7 +11175,14 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "The IDs of Linodes to apply this firewall to.\n"
+                        "description": "The IDs of Linodes assigned to this Firewall.\n"
+                    },
+                    "nodebalancers": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "The IDs of NodeBalancers assigned to this Firewall.\n"
                     },
                     "outboundPolicy": {
                         "type": "string",
@@ -11165,6 +11220,7 @@
                     "inboundPolicy",
                     "label",
                     "linodes",
+                    "nodebalancers",
                     "outbounds",
                     "outboundPolicy",
                     "status",
