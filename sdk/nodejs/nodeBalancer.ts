@@ -73,6 +73,10 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
+     * ID for the firewall you'd like to use with this NodeBalancer.
+     */
+    public readonly firewallId!: pulumi.Output<number | undefined>;
+    /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
     public /*out*/ readonly hostname!: pulumi.Output<string>;
@@ -97,7 +101,7 @@ export class NodeBalancer extends pulumi.CustomResource {
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     /**
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      */
@@ -122,6 +126,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             const state = argsOrState as NodeBalancerState | undefined;
             resourceInputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
@@ -133,6 +138,7 @@ export class NodeBalancer extends pulumi.CustomResource {
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
             resourceInputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
+            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -160,6 +166,10 @@ export interface NodeBalancerState {
      * When this NodeBalancer was created
      */
     created?: pulumi.Input<string>;
+    /**
+     * ID for the firewall you'd like to use with this NodeBalancer.
+     */
+    firewallId?: pulumi.Input<number>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
@@ -204,6 +214,10 @@ export interface NodeBalancerArgs {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * ID for the firewall you'd like to use with this NodeBalancer.
+     */
+    firewallId?: pulumi.Input<number>;
     /**
      * The label of the Linode NodeBalancer
      */

@@ -98,6 +98,20 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
+     * ID for the firewall you&#39;d like to use with this NodeBalancer.
+     * 
+     */
+    @Export(name="firewallId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> firewallId;
+
+    /**
+     * @return ID for the firewall you&#39;d like to use with this NodeBalancer.
+     * 
+     */
+    public Output<Optional<Integer>> firewallId() {
+        return Codegen.optional(this.firewallId);
+    }
+    /**
      * This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
      * 
      */
@@ -176,14 +190,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
      * @return A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
      * Information about the amount of transfer this NodeBalancer has had so far this month.

@@ -111,8 +111,13 @@ export class Instance extends pulumi.CustomResource {
     public readonly booted!: pulumi.Output<boolean>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     *
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     public readonly configs!: pulumi.Output<outputs.InstanceConfig[]>;
+    /**
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     */
     public readonly disks!: pulumi.Output<outputs.InstanceDisk[]>;
     /**
      * The display group of the Linode instance.
@@ -358,8 +363,13 @@ export interface InstanceState {
     booted?: pulumi.Input<boolean>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     *
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    /**
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.
@@ -508,8 +518,13 @@ export interface InstanceArgs {
     booted?: pulumi.Input<boolean>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     *
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    /**
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
      * The display group of the Linode instance.

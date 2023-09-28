@@ -65,9 +65,13 @@ export interface GetFirewallResult {
      */
     readonly label: string;
     /**
-     * The IDs of Linodes to apply this firewall to.
+     * The IDs of Linodes assigned to this Firewall.
      */
     readonly linodes: number[];
+    /**
+     * The IDs of NodeBalancers assigned to this Firewall.
+     */
+    readonly nodebalancers: number[];
     /**
      * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
      */

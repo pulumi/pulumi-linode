@@ -69,8 +69,10 @@ type LookupFirewallResult struct {
 	Inbounds      []GetFirewallInbound `pulumi:"inbounds"`
 	// The label of the underlying entity this device references.
 	Label string `pulumi:"label"`
-	// The IDs of Linodes to apply this firewall to.
+	// The IDs of Linodes assigned to this Firewall.
 	Linodes []int `pulumi:"linodes"`
+	// The IDs of NodeBalancers assigned to this Firewall.
+	Nodebalancers []int `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
 	OutboundPolicy string                `pulumi:"outboundPolicy"`
 	Outbounds      []GetFirewallOutbound `pulumi:"outbounds"`
@@ -159,9 +161,14 @@ func (o LookupFirewallResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The IDs of Linodes to apply this firewall to.
+// The IDs of Linodes assigned to this Firewall.
 func (o LookupFirewallResultOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v LookupFirewallResult) []int { return v.Linodes }).(pulumi.IntArrayOutput)
+}
+
+// The IDs of NodeBalancers assigned to this Firewall.
+func (o LookupFirewallResultOutput) Nodebalancers() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []int { return v.Nodebalancers }).(pulumi.IntArrayOutput)
 }
 
 // The default behavior for outbound traffic. (`ACCEPT`, `DROP`)

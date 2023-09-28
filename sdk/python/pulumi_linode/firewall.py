@@ -22,6 +22,7 @@ class FirewallArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -35,7 +36,8 @@ class FirewallArgs:
                
                * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
@@ -48,6 +50,8 @@ class FirewallArgs:
             pulumi.set(__self__, "inbounds", inbounds)
         if linodes is not None:
             pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers is not None:
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
         if outbounds is not None:
             pulumi.set(__self__, "outbounds", outbounds)
         if tags is not None:
@@ -121,13 +125,25 @@ class FirewallArgs:
     @pulumi.getter
     def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        A list of IDs of Linodes this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
     def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @nodebalancers.setter
+    def nodebalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "nodebalancers", value)
 
     @property
     @pulumi.getter
@@ -164,6 +180,7 @@ class _FirewallState:
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbound_policy: Optional[pulumi.Input[str]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -181,7 +198,8 @@ class _FirewallState:
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
@@ -202,6 +220,8 @@ class _FirewallState:
             pulumi.set(__self__, "label", label)
         if linodes is not None:
             pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers is not None:
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
         if outbound_policy is not None:
             pulumi.set(__self__, "outbound_policy", outbound_policy)
         if outbounds is not None:
@@ -293,13 +313,25 @@ class _FirewallState:
     @pulumi.getter
     def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        A list of IDs of Linodes this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
     def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @nodebalancers.setter
+    def nodebalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "nodebalancers", value)
 
     @property
     @pulumi.getter(name="outboundPolicy")
@@ -372,6 +404,7 @@ class Firewall(pulumi.CustomResource):
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbound_policy: Optional[pulumi.Input[str]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -455,7 +488,8 @@ class Firewall(pulumi.CustomResource):
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
@@ -555,6 +589,7 @@ class Firewall(pulumi.CustomResource):
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbound_policy: Optional[pulumi.Input[str]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -576,6 +611,7 @@ class Firewall(pulumi.CustomResource):
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
             __props__.__dict__["linodes"] = linodes
+            __props__.__dict__["nodebalancers"] = nodebalancers
             if outbound_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'outbound_policy'")
             __props__.__dict__["outbound_policy"] = outbound_policy
@@ -602,6 +638,7 @@ class Firewall(pulumi.CustomResource):
             inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
             label: Optional[pulumi.Input[str]] = None,
             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             outbound_policy: Optional[pulumi.Input[str]] = None,
             outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -624,7 +661,8 @@ class Firewall(pulumi.CustomResource):
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
@@ -642,6 +680,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["inbounds"] = inbounds
         __props__.__dict__["label"] = label
         __props__.__dict__["linodes"] = linodes
+        __props__.__dict__["nodebalancers"] = nodebalancers
         __props__.__dict__["outbound_policy"] = outbound_policy
         __props__.__dict__["outbounds"] = outbounds
         __props__.__dict__["status"] = status
@@ -705,9 +744,17 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def linodes(self) -> pulumi.Output[Sequence[int]]:
         """
-        A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        A list of IDs of Linodes this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> pulumi.Output[Sequence[int]]:
+        """
+        A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "nodebalancers")
 
     @property
     @pulumi.getter(name="outboundPolicy")

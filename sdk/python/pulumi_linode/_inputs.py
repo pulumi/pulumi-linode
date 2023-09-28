@@ -3648,6 +3648,7 @@ class GetFirewallsFirewallArgs:
                  inbound_policy: str,
                  label: str,
                  linodes: Sequence[int],
+                 nodebalancers: Sequence[int],
                  outbound_policy: str,
                  status: str,
                  tags: Sequence[str],
@@ -3673,6 +3674,7 @@ class GetFirewallsFirewallArgs:
         pulumi.set(__self__, "inbound_policy", inbound_policy)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
         pulumi.set(__self__, "outbound_policy", outbound_policy)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
@@ -3755,6 +3757,15 @@ class GetFirewallsFirewallArgs:
     @linodes.setter
     def linodes(self, value: Sequence[int]):
         pulumi.set(self, "linodes", value)
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence[int]:
+        return pulumi.get(self, "nodebalancers")
+
+    @nodebalancers.setter
+    def nodebalancers(self, value: Sequence[int]):
+        pulumi.set(self, "nodebalancers", value)
 
     @property
     @pulumi.getter(name="outboundPolicy")

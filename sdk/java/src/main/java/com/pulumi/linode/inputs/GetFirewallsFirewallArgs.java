@@ -125,6 +125,13 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         return this.linodes;
     }
 
+    @Import(name="nodebalancers", required=true)
+    private Output<List<Integer>> nodebalancers;
+
+    public Output<List<Integer>> nodebalancers() {
+        return this.nodebalancers;
+    }
+
     /**
      * The default behavior for outbound traffic.
      * 
@@ -203,6 +210,7 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         this.inbounds = $.inbounds;
         this.label = $.label;
         this.linodes = $.linodes;
+        this.nodebalancers = $.nodebalancers;
         this.outboundPolicy = $.outboundPolicy;
         this.outbounds = $.outbounds;
         this.status = $.status;
@@ -390,6 +398,19 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             return linodes(List.of(linodes));
         }
 
+        public Builder nodebalancers(Output<List<Integer>> nodebalancers) {
+            $.nodebalancers = nodebalancers;
+            return this;
+        }
+
+        public Builder nodebalancers(List<Integer> nodebalancers) {
+            return nodebalancers(Output.of(nodebalancers));
+        }
+
+        public Builder nodebalancers(Integer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+
         /**
          * @param outboundPolicy The default behavior for outbound traffic.
          * 
@@ -504,6 +525,7 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             $.inboundPolicy = Objects.requireNonNull($.inboundPolicy, "expected parameter 'inboundPolicy' to be non-null");
             $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
             $.linodes = Objects.requireNonNull($.linodes, "expected parameter 'linodes' to be non-null");
+            $.nodebalancers = Objects.requireNonNull($.nodebalancers, "expected parameter 'nodebalancers' to be non-null");
             $.outboundPolicy = Objects.requireNonNull($.outboundPolicy, "expected parameter 'outboundPolicy' to be non-null");
             $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
             $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");

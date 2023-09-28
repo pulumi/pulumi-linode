@@ -66,6 +66,8 @@ type NodeBalancer struct {
 	ClientConnThrottle pulumi.IntOutput `pulumi:"clientConnThrottle"`
 	// When this NodeBalancer was created
 	Created pulumi.StringOutput `pulumi:"created"`
+	// ID for the firewall you'd like to use with this NodeBalancer.
+	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The Public IPv4 Address of this NodeBalancer
@@ -120,6 +122,8 @@ type nodeBalancerState struct {
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
 	// When this NodeBalancer was created
 	Created *string `pulumi:"created"`
+	// ID for the firewall you'd like to use with this NodeBalancer.
+	FirewallId *int `pulumi:"firewallId"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname *string `pulumi:"hostname"`
 	// The Public IPv4 Address of this NodeBalancer
@@ -145,6 +149,8 @@ type NodeBalancerState struct {
 	ClientConnThrottle pulumi.IntPtrInput
 	// When this NodeBalancer was created
 	Created pulumi.StringPtrInput
+	// ID for the firewall you'd like to use with this NodeBalancer.
+	FirewallId pulumi.IntPtrInput
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringPtrInput
 	// The Public IPv4 Address of this NodeBalancer
@@ -172,6 +178,8 @@ func (NodeBalancerState) ElementType() reflect.Type {
 type nodeBalancerArgs struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
+	// ID for the firewall you'd like to use with this NodeBalancer.
+	FirewallId *int `pulumi:"firewallId"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -186,6 +194,8 @@ type nodeBalancerArgs struct {
 type NodeBalancerArgs struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
+	// ID for the firewall you'd like to use with this NodeBalancer.
+	FirewallId pulumi.IntPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -315,6 +325,11 @@ func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntOutput {
 // When this NodeBalancer was created
 func (o NodeBalancerOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// ID for the firewall you'd like to use with this NodeBalancer.
+func (o NodeBalancerOutput) FirewallId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.IntPtrOutput { return v.FirewallId }).(pulumi.IntPtrOutput)
 }
 
 // This NodeBalancer's hostname, ending with .nodebalancer.linode.com

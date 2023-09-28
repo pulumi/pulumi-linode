@@ -453,6 +453,7 @@ export interface GetFirewallsFirewall {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes: number[];
+    nodebalancers: number[];
     /**
      * The default behavior for outbound traffic.
      */

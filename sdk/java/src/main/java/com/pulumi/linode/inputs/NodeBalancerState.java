@@ -49,6 +49,21 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ID for the firewall you&#39;d like to use with this NodeBalancer.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<Integer> firewallId;
+
+    /**
+     * @return ID for the firewall you&#39;d like to use with this NodeBalancer.
+     * 
+     */
+    public Optional<Output<Integer>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
      * 
      */
@@ -177,6 +192,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     private NodeBalancerState(NodeBalancerState $) {
         this.clientConnThrottle = $.clientConnThrottle;
         this.created = $.created;
+        this.firewallId = $.firewallId;
         this.hostname = $.hostname;
         this.ipv4 = $.ipv4;
         this.ipv6 = $.ipv6;
@@ -245,6 +261,27 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder created(String created) {
             return created(Output.of(created));
+        }
+
+        /**
+         * @param firewallId ID for the firewall you&#39;d like to use with this NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<Integer> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId ID for the firewall you&#39;d like to use with this NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Integer firewallId) {
+            return firewallId(Output.of(firewallId));
         }
 
         /**

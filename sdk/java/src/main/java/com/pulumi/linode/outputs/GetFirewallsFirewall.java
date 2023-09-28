@@ -48,6 +48,7 @@ public final class GetFirewallsFirewall {
      * 
      */
     private List<Integer> linodes;
+    private List<Integer> nodebalancers;
     /**
      * @return The default behavior for outbound traffic.
      * 
@@ -119,6 +120,9 @@ public final class GetFirewallsFirewall {
     public List<Integer> linodes() {
         return this.linodes;
     }
+    public List<Integer> nodebalancers() {
+        return this.nodebalancers;
+    }
     /**
      * @return The default behavior for outbound traffic.
      * 
@@ -168,6 +172,7 @@ public final class GetFirewallsFirewall {
         private @Nullable List<GetFirewallsFirewallInbound> inbounds;
         private String label;
         private List<Integer> linodes;
+        private List<Integer> nodebalancers;
         private String outboundPolicy;
         private @Nullable List<GetFirewallsFirewallOutbound> outbounds;
         private String status;
@@ -184,6 +189,7 @@ public final class GetFirewallsFirewall {
     	      this.inbounds = defaults.inbounds;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
+    	      this.nodebalancers = defaults.nodebalancers;
     	      this.outboundPolicy = defaults.outboundPolicy;
     	      this.outbounds = defaults.outbounds;
     	      this.status = defaults.status;
@@ -241,6 +247,14 @@ public final class GetFirewallsFirewall {
             return linodes(List.of(linodes));
         }
         @CustomType.Setter
+        public Builder nodebalancers(List<Integer> nodebalancers) {
+            this.nodebalancers = Objects.requireNonNull(nodebalancers);
+            return this;
+        }
+        public Builder nodebalancers(Integer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+        @CustomType.Setter
         public Builder outboundPolicy(String outboundPolicy) {
             this.outboundPolicy = Objects.requireNonNull(outboundPolicy);
             return this;
@@ -281,6 +295,7 @@ public final class GetFirewallsFirewall {
             o.inbounds = inbounds;
             o.label = label;
             o.linodes = linodes;
+            o.nodebalancers = nodebalancers;
             o.outboundPolicy = outboundPolicy;
             o.outbounds = outbounds;
             o.status = status;

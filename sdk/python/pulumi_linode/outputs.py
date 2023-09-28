@@ -3714,6 +3714,7 @@ class GetFirewallsFirewallResult(dict):
                  inbound_policy: str,
                  label: str,
                  linodes: Sequence[int],
+                 nodebalancers: Sequence[int],
                  outbound_policy: str,
                  status: str,
                  tags: Sequence[str],
@@ -3739,6 +3740,7 @@ class GetFirewallsFirewallResult(dict):
         pulumi.set(__self__, "inbound_policy", inbound_policy)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
         pulumi.set(__self__, "outbound_policy", outbound_policy)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
@@ -3797,6 +3799,11 @@ class GetFirewallsFirewallResult(dict):
         The IDs of Linodes this firewall is applied to.
         """
         return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence[int]:
+        return pulumi.get(self, "nodebalancers")
 
     @property
     @pulumi.getter(name="outboundPolicy")
