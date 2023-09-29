@@ -65,6 +65,12 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// ID for the firewall you'd like to use with this NodeBalancer.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<int?> FirewallId { get; private set; } = null!;
+
+        /// <summary>
         /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         /// </summary>
         [Output("hostname")]
@@ -167,6 +173,12 @@ namespace Pulumi.Linode
         public Input<int>? ClientConnThrottle { get; set; }
 
         /// <summary>
+        /// ID for the firewall you'd like to use with this NodeBalancer.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
         /// The label of the Linode NodeBalancer
         /// </summary>
         [Input("label")]
@@ -211,6 +223,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
+
+        /// <summary>
+        /// ID for the firewall you'd like to use with this NodeBalancer.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
 
         /// <summary>
         /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com

@@ -166,10 +166,16 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        /// A list of IDs of Linodes this Firewall should govern network traffic for.
         /// </summary>
         [Output("linodes")]
         public Output<ImmutableArray<int>> Linodes { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        /// </summary>
+        [Output("nodebalancers")]
+        public Output<ImmutableArray<int>> Nodebalancers { get; private set; } = null!;
 
         /// <summary>
         /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
@@ -285,12 +291,24 @@ namespace Pulumi.Linode
         private InputList<int>? _linodes;
 
         /// <summary>
-        /// A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        /// A list of IDs of Linodes this Firewall should govern network traffic for.
         /// </summary>
         public InputList<int> Linodes
         {
             get => _linodes ?? (_linodes = new InputList<int>());
             set => _linodes = value;
+        }
+
+        [Input("nodebalancers")]
+        private InputList<int>? _nodebalancers;
+
+        /// <summary>
+        /// A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        /// </summary>
+        public InputList<int> Nodebalancers
+        {
+            get => _nodebalancers ?? (_nodebalancers = new InputList<int>());
+            set => _nodebalancers = value;
         }
 
         /// <summary>
@@ -387,12 +405,24 @@ namespace Pulumi.Linode
         private InputList<int>? _linodes;
 
         /// <summary>
-        /// A list of IDs of Linodes this Firewall should govern it's network traffic for.
+        /// A list of IDs of Linodes this Firewall should govern network traffic for.
         /// </summary>
         public InputList<int> Linodes
         {
             get => _linodes ?? (_linodes = new InputList<int>());
             set => _linodes = value;
+        }
+
+        [Input("nodebalancers")]
+        private InputList<int>? _nodebalancers;
+
+        /// <summary>
+        /// A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+        /// </summary>
+        public InputList<int> Nodebalancers
+        {
+            get => _nodebalancers ?? (_nodebalancers = new InputList<int>());
+            set => _nodebalancers = value;
         }
 
         /// <summary>

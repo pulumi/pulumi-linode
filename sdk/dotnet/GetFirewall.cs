@@ -124,9 +124,13 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// The IDs of Linodes to apply this firewall to.
+        /// The IDs of Linodes assigned to this Firewall.
         /// </summary>
         public readonly ImmutableArray<int> Linodes;
+        /// <summary>
+        /// The IDs of NodeBalancers assigned to this Firewall.
+        /// </summary>
+        public readonly ImmutableArray<int> Nodebalancers;
         /// <summary>
         /// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         /// </summary>
@@ -163,6 +167,8 @@ namespace Pulumi.Linode
 
             ImmutableArray<int> linodes,
 
+            ImmutableArray<int> nodebalancers,
+
             string outboundPolicy,
 
             ImmutableArray<Outputs.GetFirewallOutboundResult> outbounds,
@@ -181,6 +187,7 @@ namespace Pulumi.Linode
             Inbounds = inbounds;
             Label = label;
             Linodes = linodes;
+            Nodebalancers = nodebalancers;
             OutboundPolicy = outboundPolicy;
             Outbounds = outbounds;
             Status = status;

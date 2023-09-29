@@ -70,6 +70,14 @@ namespace Pulumi.Linode.Inputs
             set => _linodes = value;
         }
 
+        [Input("nodebalancers", required: true)]
+        private List<int>? _nodebalancers;
+        public List<int> Nodebalancers
+        {
+            get => _nodebalancers ?? (_nodebalancers = new List<int>());
+            set => _nodebalancers = value;
+        }
+
         /// <summary>
         /// The default behavior for outbound traffic.
         /// </summary>

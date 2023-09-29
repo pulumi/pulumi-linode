@@ -83,6 +83,9 @@
                     "linodes": {
                         "maxItemsOne": false
                     },
+                    "nodebalancers": {
+                        "maxItemsOne": false
+                    },
                     "outbound": {
                         "maxItemsOne": false,
                         "elem": {
@@ -601,6 +604,9 @@
                     "linodes": {
                         "maxItemsOne": false
                     },
+                    "nodebalancers": {
+                        "maxItemsOne": false
+                    },
                     "outbound": {
                         "maxItemsOne": false,
                         "elem": {
@@ -656,6 +662,9 @@
                                     }
                                 },
                                 "linodes": {
+                                    "maxItemsOne": false
+                                },
+                                "nodebalancers": {
                                     "maxItemsOne": false
                                 },
                                 "outbound": {
@@ -2298,6 +2307,7 @@
             },
             "linode:index/nodeBalancer:NodeBalancer": {
                 "clientConnThrottle": "client_conn_throttle",
+                "firewallId": "firewall_id",
                 "transfers": "transfer"
             },
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": {

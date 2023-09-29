@@ -22,7 +22,7 @@ class GetFirewallResult:
     """
     A collection of values returned by getFirewall.
     """
-    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, label=None, linodes=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
+    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, label=None, linodes=None, nodebalancers=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -47,6 +47,9 @@ class GetFirewallResult:
         if linodes and not isinstance(linodes, list):
             raise TypeError("Expected argument 'linodes' to be a list")
         pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers and not isinstance(nodebalancers, list):
+            raise TypeError("Expected argument 'nodebalancers' to be a list")
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
         if outbound_policy and not isinstance(outbound_policy, str):
             raise TypeError("Expected argument 'outbound_policy' to be a str")
         pulumi.set(__self__, "outbound_policy", outbound_policy)
@@ -117,9 +120,17 @@ class GetFirewallResult:
     @pulumi.getter
     def linodes(self) -> Sequence[int]:
         """
-        The IDs of Linodes to apply this firewall to.
+        The IDs of Linodes assigned to this Firewall.
         """
         return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence[int]:
+        """
+        The IDs of NodeBalancers assigned to this Firewall.
+        """
+        return pulumi.get(self, "nodebalancers")
 
     @property
     @pulumi.getter(name="outboundPolicy")
@@ -173,6 +184,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             inbounds=self.inbounds,
             label=self.label,
             linodes=self.linodes,
+            nodebalancers=self.nodebalancers,
             outbound_policy=self.outbound_policy,
             outbounds=self.outbounds,
             status=self.status,
@@ -211,6 +223,7 @@ def get_firewall(id: Optional[int] = None,
         inbounds=pulumi.get(__ret__, 'inbounds'),
         label=pulumi.get(__ret__, 'label'),
         linodes=pulumi.get(__ret__, 'linodes'),
+        nodebalancers=pulumi.get(__ret__, 'nodebalancers'),
         outbound_policy=pulumi.get(__ret__, 'outbound_policy'),
         outbounds=pulumi.get(__ret__, 'outbounds'),
         status=pulumi.get(__ret__, 'status'),

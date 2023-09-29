@@ -17,12 +17,14 @@ __all__ = ['NodeBalancerArgs', 'NodeBalancer']
 class NodeBalancerArgs:
     def __init__(__self__, *,
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a NodeBalancer resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
@@ -31,6 +33,8 @@ class NodeBalancerArgs:
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if region is not None:
@@ -49,6 +53,18 @@ class NodeBalancerArgs:
     @client_conn_throttle.setter
     def client_conn_throttle(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "client_conn_throttle", value)
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID for the firewall you'd like to use with this NodeBalancer.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "firewall_id", value)
 
     @property
     @pulumi.getter
@@ -94,6 +110,7 @@ class _NodeBalancerState:
     def __init__(__self__, *,
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
                  created: Optional[pulumi.Input[str]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ipv4: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
@@ -106,6 +123,7 @@ class _NodeBalancerState:
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] created: When this NodeBalancer was created
+        :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
@@ -121,6 +139,8 @@ class _NodeBalancerState:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ipv4 is not None:
@@ -161,6 +181,18 @@ class _NodeBalancerState:
     @created.setter
     def created(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID for the firewall you'd like to use with this NodeBalancer.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "firewall_id", value)
 
     @property
     @pulumi.getter
@@ -267,6 +299,7 @@ class NodeBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -303,6 +336,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
@@ -360,6 +394,7 @@ class NodeBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -373,6 +408,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__ = NodeBalancerArgs.__new__(NodeBalancerArgs)
 
             __props__.__dict__["client_conn_throttle"] = client_conn_throttle
+            __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["label"] = label
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
@@ -394,6 +430,7 @@ class NodeBalancer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             client_conn_throttle: Optional[pulumi.Input[int]] = None,
             created: Optional[pulumi.Input[str]] = None,
+            firewall_id: Optional[pulumi.Input[int]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             ipv4: Optional[pulumi.Input[str]] = None,
             ipv6: Optional[pulumi.Input[str]] = None,
@@ -411,6 +448,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] created: When this NodeBalancer was created
+        :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
@@ -428,6 +466,7 @@ class NodeBalancer(pulumi.CustomResource):
 
         __props__.__dict__["client_conn_throttle"] = client_conn_throttle
         __props__.__dict__["created"] = created
+        __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ipv4"] = ipv4
         __props__.__dict__["ipv6"] = ipv6
@@ -453,6 +492,14 @@ class NodeBalancer(pulumi.CustomResource):
         When this NodeBalancer was created
         """
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        ID for the firewall you'd like to use with this NodeBalancer.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @property
     @pulumi.getter
@@ -498,7 +545,7 @@ class NodeBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """

@@ -208,7 +208,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
+     * @deprecated
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * 
      */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
     @Export(name="configs", refs={List.class,InstanceConfig.class}, tree="[0,1]")
     private Output<List<InstanceConfig>> configs;
 
@@ -219,6 +223,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceConfig>> configs() {
         return this.configs;
     }
+    /**
+     * @deprecated
+     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     * 
+     */
+    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
     @Export(name="disks", refs={List.class,InstanceDisk.class}, tree="[0,1]")
     private Output<List<InstanceDisk>> disks;
 

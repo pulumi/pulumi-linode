@@ -134,9 +134,13 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * A list of IDs of Linodes this Firewall should govern it's network traffic for.
+     * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
     public readonly linodes!: pulumi.Output<number[]>;
+    /**
+     * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     */
+    public readonly nodebalancers!: pulumi.Output<number[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
@@ -178,6 +182,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["inbounds"] = state ? state.inbounds : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["linodes"] = state ? state.linodes : undefined;
+            resourceInputs["nodebalancers"] = state ? state.nodebalancers : undefined;
             resourceInputs["outboundPolicy"] = state ? state.outboundPolicy : undefined;
             resourceInputs["outbounds"] = state ? state.outbounds : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -199,6 +204,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["inbounds"] = args ? args.inbounds : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodes"] = args ? args.linodes : undefined;
+            resourceInputs["nodebalancers"] = args ? args.nodebalancers : undefined;
             resourceInputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
             resourceInputs["outbounds"] = args ? args.outbounds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -245,9 +251,13 @@ export interface FirewallState {
      */
     label?: pulumi.Input<string>;
     /**
-     * A list of IDs of Linodes this Firewall should govern it's network traffic for.
+     * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
     linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     */
+    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
@@ -295,9 +305,13 @@ export interface FirewallArgs {
      */
     label: pulumi.Input<string>;
     /**
-     * A list of IDs of Linodes this Firewall should govern it's network traffic for.
+     * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
     linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     */
+    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */

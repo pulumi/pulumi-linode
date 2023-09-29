@@ -99,7 +99,13 @@ class InstanceArgs:
         if booted is not None:
             pulumi.set(__self__, "booted", booted)
         if configs is not None:
+            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+        if configs is not None:
             pulumi.set(__self__, "configs", configs)
+        if disks is not None:
+            warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+            pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if group is not None:
@@ -237,6 +243,9 @@ class InstanceArgs:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
+        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+
         return pulumi.get(self, "configs")
 
     @configs.setter
@@ -246,6 +255,9 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
+
         return pulumi.get(self, "disks")
 
     @disks.setter
@@ -551,7 +563,13 @@ class _InstanceState:
         if booted is not None:
             pulumi.set(__self__, "booted", booted)
         if configs is not None:
+            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+        if configs is not None:
             pulumi.set(__self__, "configs", configs)
+        if disks is not None:
+            warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+            pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if group is not None:
@@ -707,6 +725,9 @@ class _InstanceState:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
+        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+
         return pulumi.get(self, "configs")
 
     @configs.setter
@@ -716,6 +737,9 @@ class _InstanceState:
     @property
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
+
         return pulumi.get(self, "disks")
 
     @disks.setter
@@ -1239,7 +1263,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["backups_enabled"] = backups_enabled
             __props__.__dict__["boot_config_label"] = boot_config_label
             __props__.__dict__["booted"] = booted
+            if configs is not None and not opts.urn:
+                warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+                pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
             __props__.__dict__["configs"] = configs
+            if disks is not None and not opts.urn:
+                warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+                pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
             __props__.__dict__["disks"] = disks
             __props__.__dict__["group"] = group
             __props__.__dict__["image"] = image
@@ -1482,11 +1512,17 @@ class Instance(pulumi.CustomResource):
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
+        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
+        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+
         return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
     def disks(self) -> pulumi.Output[Sequence['outputs.InstanceDisk']]:
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
+
         return pulumi.get(self, "disks")
 
     @property

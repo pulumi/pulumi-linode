@@ -209,18 +209,32 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+     * A list of IDs of Linodes this Firewall should govern network traffic for.
      * 
      */
     @Export(name="linodes", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> linodes;
 
     /**
-     * @return A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+     * @return A list of IDs of Linodes this Firewall should govern network traffic for.
      * 
      */
     public Output<List<Integer>> linodes() {
         return this.linodes;
+    }
+    /**
+     * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     * 
+     */
+    @Export(name="nodebalancers", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> nodebalancers;
+
+    /**
+     * @return A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     * 
+     */
+    public Output<List<Integer>> nodebalancers() {
+        return this.nodebalancers;
     }
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)

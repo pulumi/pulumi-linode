@@ -557,6 +557,7 @@ export interface GetFirewallsFirewall {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes?: number[];
+    nodebalancers?: number[];
     /**
      * The default behavior for outbound traffic.
      */
@@ -603,6 +604,7 @@ export interface GetFirewallsFirewallArgs {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic.
      */

@@ -154,21 +154,41 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
+     * @deprecated
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * 
      */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
     @Import(name="configs")
     private @Nullable Output<List<InstanceConfigArgs>> configs;
 
     /**
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
+     * @deprecated
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * 
      */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
     public Optional<Output<List<InstanceConfigArgs>>> configs() {
         return Optional.ofNullable(this.configs);
     }
 
+    /**
+     * @deprecated
+     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     * 
+     */
+    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
     @Import(name="disks")
     private @Nullable Output<List<InstanceDiskArgs>> disks;
 
+    /**
+     * @deprecated
+     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     * 
+     */
+    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
     public Optional<Output<List<InstanceDiskArgs>>> disks() {
         return Optional.ofNullable(this.disks);
     }
@@ -813,7 +833,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * 
          */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
         public Builder configs(@Nullable Output<List<InstanceConfigArgs>> configs) {
             $.configs = configs;
             return this;
@@ -824,7 +848,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * 
          */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
         public Builder configs(List<InstanceConfigArgs> configs) {
             return configs(Output.of(configs));
         }
@@ -834,20 +862,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * 
          */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
         public Builder configs(InstanceConfigArgs... configs) {
             return configs(List.of(configs));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+         * 
+         */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(@Nullable Output<List<InstanceDiskArgs>> disks) {
             $.disks = disks;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+         * 
+         */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(List<InstanceDiskArgs> disks) {
             return disks(Output.of(disks));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+         * 
+         */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(InstanceDiskArgs... disks) {
             return disks(List.of(disks));
         }

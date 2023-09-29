@@ -120,18 +120,33 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+     * A list of IDs of Linodes this Firewall should govern network traffic for.
      * 
      */
     @Import(name="linodes")
     private @Nullable Output<List<Integer>> linodes;
 
     /**
-     * @return A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+     * @return A list of IDs of Linodes this Firewall should govern network traffic for.
      * 
      */
     public Optional<Output<List<Integer>>> linodes() {
         return Optional.ofNullable(this.linodes);
+    }
+
+    /**
+     * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     * 
+     */
+    @Import(name="nodebalancers")
+    private @Nullable Output<List<Integer>> nodebalancers;
+
+    /**
+     * @return A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+     * 
+     */
+    public Optional<Output<List<Integer>>> nodebalancers() {
+        return Optional.ofNullable(this.nodebalancers);
     }
 
     /**
@@ -219,6 +234,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         this.inbounds = $.inbounds;
         this.label = $.label;
         this.linodes = $.linodes;
+        this.nodebalancers = $.nodebalancers;
         this.outboundPolicy = $.outboundPolicy;
         this.outbounds = $.outbounds;
         this.status = $.status;
@@ -399,7 +415,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+         * @param linodes A list of IDs of Linodes this Firewall should govern network traffic for.
          * 
          * @return builder
          * 
@@ -410,7 +426,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+         * @param linodes A list of IDs of Linodes this Firewall should govern network traffic for.
          * 
          * @return builder
          * 
@@ -420,13 +436,44 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of IDs of Linodes this Firewall should govern it&#39;s network traffic for.
+         * @param linodes A list of IDs of Linodes this Firewall should govern network traffic for.
          * 
          * @return builder
          * 
          */
         public Builder linodes(Integer... linodes) {
             return linodes(List.of(linodes));
+        }
+
+        /**
+         * @param nodebalancers A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodebalancers(@Nullable Output<List<Integer>> nodebalancers) {
+            $.nodebalancers = nodebalancers;
+            return this;
+        }
+
+        /**
+         * @param nodebalancers A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodebalancers(List<Integer> nodebalancers) {
+            return nodebalancers(Output.of(nodebalancers));
+        }
+
+        /**
+         * @param nodebalancers A list of IDs of NodeBalancers this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodebalancers(Integer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
         }
 
         /**

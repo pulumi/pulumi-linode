@@ -395,6 +395,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
+        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.")]
         public InputList<Inputs.InstanceConfigArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.InstanceConfigArgs>());
@@ -403,6 +404,7 @@ namespace Pulumi.Linode
 
         [Input("disks")]
         private InputList<Inputs.InstanceDiskArgs>? _disks;
+        [Obsolete(@"The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.")]
         public InputList<Inputs.InstanceDiskArgs> Disks
         {
             get => _disks ?? (_disks = new InputList<Inputs.InstanceDiskArgs>());
@@ -638,6 +640,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
+        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.")]
         public InputList<Inputs.InstanceConfigGetArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.InstanceConfigGetArgs>());
@@ -646,6 +649,7 @@ namespace Pulumi.Linode
 
         [Input("disks")]
         private InputList<Inputs.InstanceDiskGetArgs>? _disks;
+        [Obsolete(@"The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.")]
         public InputList<Inputs.InstanceDiskGetArgs> Disks
         {
             get => _disks ?? (_disks = new InputList<Inputs.InstanceDiskGetArgs>());

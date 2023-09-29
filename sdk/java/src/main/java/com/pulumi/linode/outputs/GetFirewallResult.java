@@ -43,10 +43,15 @@ public final class GetFirewallResult {
      */
     private String label;
     /**
-     * @return The IDs of Linodes to apply this firewall to.
+     * @return The IDs of Linodes assigned to this Firewall.
      * 
      */
     private List<Integer> linodes;
+    /**
+     * @return The IDs of NodeBalancers assigned to this Firewall.
+     * 
+     */
+    private List<Integer> nodebalancers;
     /**
      * @return The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
      * 
@@ -112,11 +117,18 @@ public final class GetFirewallResult {
         return this.label;
     }
     /**
-     * @return The IDs of Linodes to apply this firewall to.
+     * @return The IDs of Linodes assigned to this Firewall.
      * 
      */
     public List<Integer> linodes() {
         return this.linodes;
+    }
+    /**
+     * @return The IDs of NodeBalancers assigned to this Firewall.
+     * 
+     */
+    public List<Integer> nodebalancers() {
+        return this.nodebalancers;
     }
     /**
      * @return The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
@@ -167,6 +179,7 @@ public final class GetFirewallResult {
         private List<GetFirewallInbound> inbounds;
         private String label;
         private List<Integer> linodes;
+        private List<Integer> nodebalancers;
         private String outboundPolicy;
         private List<GetFirewallOutbound> outbounds;
         private String status;
@@ -183,6 +196,7 @@ public final class GetFirewallResult {
     	      this.inbounds = defaults.inbounds;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
+    	      this.nodebalancers = defaults.nodebalancers;
     	      this.outboundPolicy = defaults.outboundPolicy;
     	      this.outbounds = defaults.outbounds;
     	      this.status = defaults.status;
@@ -240,6 +254,14 @@ public final class GetFirewallResult {
             return linodes(List.of(linodes));
         }
         @CustomType.Setter
+        public Builder nodebalancers(List<Integer> nodebalancers) {
+            this.nodebalancers = Objects.requireNonNull(nodebalancers);
+            return this;
+        }
+        public Builder nodebalancers(Integer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+        @CustomType.Setter
         public Builder outboundPolicy(String outboundPolicy) {
             this.outboundPolicy = Objects.requireNonNull(outboundPolicy);
             return this;
@@ -280,6 +302,7 @@ public final class GetFirewallResult {
             o.inbounds = inbounds;
             o.label = label;
             o.linodes = linodes;
+            o.nodebalancers = nodebalancers;
             o.outboundPolicy = outboundPolicy;
             o.outbounds = outbounds;
             o.status = status;

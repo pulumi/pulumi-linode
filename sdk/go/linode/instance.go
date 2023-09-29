@@ -95,8 +95,11 @@ type Instance struct {
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs InstanceConfigArrayOutput   `pulumi:"configs"`
-	Disks   InstanceDiskTypeArrayOutput `pulumi:"disks"`
+	//
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	Configs InstanceConfigArrayOutput `pulumi:"configs"`
+	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	Disks InstanceDiskTypeArrayOutput `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// Whether or not this Instance was created with user-data.
@@ -223,8 +226,11 @@ type instanceState struct {
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig   `pulumi:"configs"`
-	Disks   []InstanceDiskType `pulumi:"disks"`
+	//
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	Configs []InstanceConfig `pulumi:"configs"`
+	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	Disks []InstanceDiskType `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// Whether or not this Instance was created with user-data.
@@ -308,8 +314,11 @@ type InstanceState struct {
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+	//
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
 	Configs InstanceConfigArrayInput
-	Disks   InstanceDiskTypeArrayInput
+	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	Disks InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// Whether or not this Instance was created with user-data.
@@ -395,8 +404,11 @@ type instanceArgs struct {
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-	Configs []InstanceConfig   `pulumi:"configs"`
-	Disks   []InstanceDiskType `pulumi:"disks"`
+	//
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	Configs []InstanceConfig `pulumi:"configs"`
+	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	Disks []InstanceDiskType `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -463,8 +475,11 @@ type InstanceArgs struct {
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+	//
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
 	Configs InstanceConfigArrayInput
-	Disks   InstanceDiskTypeArrayInput
+	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	Disks InstanceDiskTypeArrayInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -666,10 +681,13 @@ func (o InstanceOutput) Booted() pulumi.BoolOutput {
 }
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+//
+// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
 func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
 }
 
+// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
 }

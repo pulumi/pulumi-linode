@@ -10352,7 +10352,8 @@ type GetFirewallsFirewall struct {
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label string `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
-	Linodes []int `pulumi:"linodes"`
+	Linodes       []int `pulumi:"linodes"`
+	Nodebalancers []int `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
 	OutboundPolicy string                         `pulumi:"outboundPolicy"`
 	Outbounds      []GetFirewallsFirewallOutbound `pulumi:"outbounds"`
@@ -10389,7 +10390,8 @@ type GetFirewallsFirewallArgs struct {
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
-	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
+	Linodes       pulumi.IntArrayInput `pulumi:"linodes"`
+	Nodebalancers pulumi.IntArrayInput `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
 	OutboundPolicy pulumi.StringInput                     `pulumi:"outboundPolicy"`
 	Outbounds      GetFirewallsFirewallOutboundArrayInput `pulumi:"outbounds"`
@@ -10506,6 +10508,10 @@ func (o GetFirewallsFirewallOutput) Label() pulumi.StringOutput {
 // The IDs of Linodes this firewall is applied to.
 func (o GetFirewallsFirewallOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Linodes }).(pulumi.IntArrayOutput)
+}
+
+func (o GetFirewallsFirewallOutput) Nodebalancers() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Nodebalancers }).(pulumi.IntArrayOutput)
 }
 
 // The default behavior for outbound traffic.

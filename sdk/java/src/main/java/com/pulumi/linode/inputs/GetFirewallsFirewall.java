@@ -124,6 +124,13 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         return this.linodes;
     }
 
+    @Import(name="nodebalancers", required=true)
+    private List<Integer> nodebalancers;
+
+    public List<Integer> nodebalancers() {
+        return this.nodebalancers;
+    }
+
     /**
      * The default behavior for outbound traffic.
      * 
@@ -202,6 +209,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         this.inbounds = $.inbounds;
         this.label = $.label;
         this.linodes = $.linodes;
+        this.nodebalancers = $.nodebalancers;
         this.outboundPolicy = $.outboundPolicy;
         this.outbounds = $.outbounds;
         this.status = $.status;
@@ -321,6 +329,15 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
             return linodes(List.of(linodes));
         }
 
+        public Builder nodebalancers(List<Integer> nodebalancers) {
+            $.nodebalancers = nodebalancers;
+            return this;
+        }
+
+        public Builder nodebalancers(Integer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+
         /**
          * @param outboundPolicy The default behavior for outbound traffic.
          * 
@@ -391,6 +408,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
             $.inboundPolicy = Objects.requireNonNull($.inboundPolicy, "expected parameter 'inboundPolicy' to be non-null");
             $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
             $.linodes = Objects.requireNonNull($.linodes, "expected parameter 'linodes' to be non-null");
+            $.nodebalancers = Objects.requireNonNull($.nodebalancers, "expected parameter 'nodebalancers' to be non-null");
             $.outboundPolicy = Objects.requireNonNull($.outboundPolicy, "expected parameter 'outboundPolicy' to be non-null");
             $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
             $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
