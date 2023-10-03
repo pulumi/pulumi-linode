@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountSettingsArgs', 'AccountSettings']
@@ -23,12 +23,25 @@ class AccountSettingsArgs:
         :param pulumi.Input[str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
         :param pulumi.Input[bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
         """
+        AccountSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backups_enabled=backups_enabled,
+            longview_subscription=longview_subscription,
+            network_helper=network_helper,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backups_enabled: Optional[pulumi.Input[bool]] = None,
+             longview_subscription: Optional[pulumi.Input[str]] = None,
+             network_helper: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backups_enabled is not None:
-            pulumi.set(__self__, "backups_enabled", backups_enabled)
+            _setter("backups_enabled", backups_enabled)
         if longview_subscription is not None:
-            pulumi.set(__self__, "longview_subscription", longview_subscription)
+            _setter("longview_subscription", longview_subscription)
         if network_helper is not None:
-            pulumi.set(__self__, "network_helper", network_helper)
+            _setter("network_helper", network_helper)
 
     @property
     @pulumi.getter(name="backupsEnabled")
@@ -83,16 +96,33 @@ class _AccountSettingsState:
         :param pulumi.Input[bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
         :param pulumi.Input[str] object_storage: A string describing the status of this account's Object Storage service enrollment.
         """
+        _AccountSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backups_enabled=backups_enabled,
+            longview_subscription=longview_subscription,
+            managed=managed,
+            network_helper=network_helper,
+            object_storage=object_storage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backups_enabled: Optional[pulumi.Input[bool]] = None,
+             longview_subscription: Optional[pulumi.Input[str]] = None,
+             managed: Optional[pulumi.Input[bool]] = None,
+             network_helper: Optional[pulumi.Input[bool]] = None,
+             object_storage: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backups_enabled is not None:
-            pulumi.set(__self__, "backups_enabled", backups_enabled)
+            _setter("backups_enabled", backups_enabled)
         if longview_subscription is not None:
-            pulumi.set(__self__, "longview_subscription", longview_subscription)
+            _setter("longview_subscription", longview_subscription)
         if managed is not None:
-            pulumi.set(__self__, "managed", managed)
+            _setter("managed", managed)
         if network_helper is not None:
-            pulumi.set(__self__, "network_helper", network_helper)
+            _setter("network_helper", network_helper)
         if object_storage is not None:
-            pulumi.set(__self__, "object_storage", object_storage)
+            _setter("object_storage", object_storage)
 
     @property
     @pulumi.getter(name="backupsEnabled")
@@ -228,6 +258,10 @@ class AccountSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

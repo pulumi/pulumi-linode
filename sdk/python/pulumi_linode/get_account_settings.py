@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetAccountSettingsResult',
     'AwaitableGetAccountSettingsResult',
     'get_account_settings',
+    'get_account_settings_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,22 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
         managed=pulumi.get(__ret__, 'managed'),
         network_helper=pulumi.get(__ret__, 'network_helper'),
         object_storage=pulumi.get(__ret__, 'object_storage'))
+
+
+@_utilities.lift_output_func(get_account_settings)
+def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSettingsResult]:
+    """
+    Provides information about Linode account settings.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about Linode account settings.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_account_settings()
+    ```
+    """
+    ...

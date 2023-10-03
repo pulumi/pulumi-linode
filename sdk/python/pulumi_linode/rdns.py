@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RdnsArgs', 'Rdns']
@@ -23,10 +23,23 @@ class RdnsArgs:
         :param pulumi.Input[str] rdns: The name of the RDNS address.
         :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "rdns", rdns)
+        RdnsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            rdns=rdns,
+            wait_for_available=wait_for_available,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             rdns: pulumi.Input[str],
+             wait_for_available: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("rdns", rdns)
         if wait_for_available is not None:
-            pulumi.set(__self__, "wait_for_available", wait_for_available)
+            _setter("wait_for_available", wait_for_available)
 
     @property
     @pulumi.getter
@@ -77,12 +90,25 @@ class _RdnsState:
         :param pulumi.Input[str] rdns: The name of the RDNS address.
         :param pulumi.Input[bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
         """
+        _RdnsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            rdns=rdns,
+            wait_for_available=wait_for_available,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             rdns: Optional[pulumi.Input[str]] = None,
+             wait_for_available: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if rdns is not None:
-            pulumi.set(__self__, "rdns", rdns)
+            _setter("rdns", rdns)
         if wait_for_available is not None:
-            pulumi.set(__self__, "wait_for_available", wait_for_available)
+            _setter("wait_for_available", wait_for_available)
 
     @property
     @pulumi.getter
@@ -182,6 +208,10 @@ class Rdns(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RdnsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

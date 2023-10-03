@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetProfileResult',
     'AwaitableGetProfileResult',
     'get_profile',
+    'get_profile_output',
 ]
 
 @pulumi.output_type
@@ -192,3 +193,22 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
         timezone=pulumi.get(__ret__, 'timezone'),
         two_factor_auth=pulumi.get(__ret__, 'two_factor_auth'),
         username=pulumi.get(__ret__, 'username'))
+
+
+@_utilities.lift_output_func(get_profile)
+def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProfileResult]:
+    """
+    Provides information about a Linode profile.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access profile details.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    profile = linode.get_profile()
+    ```
+    """
+    ...

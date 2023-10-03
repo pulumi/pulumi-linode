@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NodeBalancerNodeArgs', 'NodeBalancerNode']
@@ -31,14 +31,33 @@ class NodeBalancerNodeArgs:
         :param pulumi.Input[str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+        NodeBalancerNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            config_id=config_id,
+            label=label,
+            nodebalancer_id=nodebalancer_id,
+            mode=mode,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             config_id: pulumi.Input[int],
+             label: pulumi.Input[str],
+             nodebalancer_id: pulumi.Input[int],
+             mode: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("config_id", config_id)
+        _setter("label", label)
+        _setter("nodebalancer_id", nodebalancer_id)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -137,20 +156,41 @@ class _NodeBalancerNodeState:
         :param pulumi.Input[str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         :param pulumi.Input[int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
+        _NodeBalancerNodeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            config_id=config_id,
+            label=label,
+            mode=mode,
+            nodebalancer_id=nodebalancer_id,
+            status=status,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[int]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             nodebalancer_id: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if nodebalancer_id is not None:
-            pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+            _setter("nodebalancer_id", nodebalancer_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -306,6 +346,10 @@ class NodeBalancerNode(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeBalancerNodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,28 +47,59 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "username", username)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            username=username,
+            domain_grants=domain_grants,
+            firewall_grants=firewall_grants,
+            global_grants=global_grants,
+            image_grants=image_grants,
+            linode_grants=linode_grants,
+            longview_grants=longview_grants,
+            nodebalancer_grants=nodebalancer_grants,
+            restricted=restricted,
+            stackscript_grants=stackscript_grants,
+            volume_grants=volume_grants,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             username: pulumi.Input[str],
+             domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]] = None,
+             firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]] = None,
+             global_grants: Optional[pulumi.Input['UserGlobalGrantsArgs']] = None,
+             image_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]]] = None,
+             linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
+             longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
+             nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
+             restricted: Optional[pulumi.Input[bool]] = None,
+             stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
+             volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
+        _setter("username", username)
         if domain_grants is not None:
-            pulumi.set(__self__, "domain_grants", domain_grants)
+            _setter("domain_grants", domain_grants)
         if firewall_grants is not None:
-            pulumi.set(__self__, "firewall_grants", firewall_grants)
+            _setter("firewall_grants", firewall_grants)
         if global_grants is not None:
-            pulumi.set(__self__, "global_grants", global_grants)
+            _setter("global_grants", global_grants)
         if image_grants is not None:
-            pulumi.set(__self__, "image_grants", image_grants)
+            _setter("image_grants", image_grants)
         if linode_grants is not None:
-            pulumi.set(__self__, "linode_grants", linode_grants)
+            _setter("linode_grants", linode_grants)
         if longview_grants is not None:
-            pulumi.set(__self__, "longview_grants", longview_grants)
+            _setter("longview_grants", longview_grants)
         if nodebalancer_grants is not None:
-            pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+            _setter("nodebalancer_grants", nodebalancer_grants)
         if restricted is not None:
-            pulumi.set(__self__, "restricted", restricted)
+            _setter("restricted", restricted)
         if stackscript_grants is not None:
-            pulumi.set(__self__, "stackscript_grants", stackscript_grants)
+            _setter("stackscript_grants", stackscript_grants)
         if volume_grants is not None:
-            pulumi.set(__self__, "volume_grants", volume_grants)
+            _setter("volume_grants", volume_grants)
 
     @property
     @pulumi.getter
@@ -257,34 +288,69 @@ class _UserState:
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_grants=domain_grants,
+            email=email,
+            firewall_grants=firewall_grants,
+            global_grants=global_grants,
+            image_grants=image_grants,
+            linode_grants=linode_grants,
+            longview_grants=longview_grants,
+            nodebalancer_grants=nodebalancer_grants,
+            restricted=restricted,
+            ssh_keys=ssh_keys,
+            stackscript_grants=stackscript_grants,
+            tfa_enabled=tfa_enabled,
+            username=username,
+            volume_grants=volume_grants,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]] = None,
+             global_grants: Optional[pulumi.Input['UserGlobalGrantsArgs']] = None,
+             image_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]]] = None,
+             linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
+             longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
+             nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
+             restricted: Optional[pulumi.Input[bool]] = None,
+             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
+             tfa_enabled: Optional[pulumi.Input[bool]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain_grants is not None:
-            pulumi.set(__self__, "domain_grants", domain_grants)
+            _setter("domain_grants", domain_grants)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if firewall_grants is not None:
-            pulumi.set(__self__, "firewall_grants", firewall_grants)
+            _setter("firewall_grants", firewall_grants)
         if global_grants is not None:
-            pulumi.set(__self__, "global_grants", global_grants)
+            _setter("global_grants", global_grants)
         if image_grants is not None:
-            pulumi.set(__self__, "image_grants", image_grants)
+            _setter("image_grants", image_grants)
         if linode_grants is not None:
-            pulumi.set(__self__, "linode_grants", linode_grants)
+            _setter("linode_grants", linode_grants)
         if longview_grants is not None:
-            pulumi.set(__self__, "longview_grants", longview_grants)
+            _setter("longview_grants", longview_grants)
         if nodebalancer_grants is not None:
-            pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+            _setter("nodebalancer_grants", nodebalancer_grants)
         if restricted is not None:
-            pulumi.set(__self__, "restricted", restricted)
+            _setter("restricted", restricted)
         if ssh_keys is not None:
-            pulumi.set(__self__, "ssh_keys", ssh_keys)
+            _setter("ssh_keys", ssh_keys)
         if stackscript_grants is not None:
-            pulumi.set(__self__, "stackscript_grants", stackscript_grants)
+            _setter("stackscript_grants", stackscript_grants)
         if tfa_enabled is not None:
-            pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+            _setter("tfa_enabled", tfa_enabled)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if volume_grants is not None:
-            pulumi.set(__self__, "volume_grants", volume_grants)
+            _setter("volume_grants", volume_grants)
 
     @property
     @pulumi.getter(name="domainGrants")
@@ -642,6 +708,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -673,6 +743,11 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
             __props__.__dict__["firewall_grants"] = firewall_grants
+            if global_grants is not None and not isinstance(global_grants, UserGlobalGrantsArgs):
+                global_grants = global_grants or {}
+                def _setter(key, value):
+                    global_grants[key] = value
+                UserGlobalGrantsArgs._configure(_setter, **global_grants)
             __props__.__dict__["global_grants"] = global_grants
             __props__.__dict__["image_grants"] = image_grants
             __props__.__dict__["linode_grants"] = linode_grants

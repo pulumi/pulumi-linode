@@ -80,7 +80,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly alerts!: pulumi.Output<outputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
     /**
@@ -132,7 +132,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly hostUuid!: pulumi.Output<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
@@ -187,7 +187,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface InstanceState {
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -384,7 +384,7 @@ export interface InstanceState {
      */
     hostUuid?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -439,7 +439,7 @@ export interface InstanceState {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -491,7 +491,7 @@ export interface InstanceArgs {
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -531,7 +531,7 @@ export interface InstanceArgs {
      */
     group?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -570,7 +570,7 @@ export interface InstanceArgs {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
      */
     rootPass?: pulumi.Input<string>;
     /**

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetLkeVersionsResult',
     'AwaitableGetLkeVersionsResult',
     'get_lke_versions',
+    'get_lke_versions_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,22 @@ def get_lke_versions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetLkeVersionsResult(
         id=pulumi.get(__ret__, 'id'),
         versions=pulumi.get(__ret__, 'versions'))
+
+
+@_utilities.lift_output_func(get_lke_versions)
+def get_lke_versions_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeVersionsResult]:
+    """
+    Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode LKE Version.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_lke_versions()
+    ```
+    """
+    ...

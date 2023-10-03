@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FirewallDeviceInitArgs', 'FirewallDevice']
@@ -23,10 +23,23 @@ class FirewallDeviceInitArgs:
         :param pulumi.Input[int] firewall_id: The unique ID of the target Firewall.
         :param pulumi.Input[str] entity_type: The type of the entity to attach. (default: `linode`)
         """
-        pulumi.set(__self__, "entity_id", entity_id)
-        pulumi.set(__self__, "firewall_id", firewall_id)
+        FirewallDeviceInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_id=entity_id,
+            firewall_id=firewall_id,
+            entity_type=entity_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_id: pulumi.Input[int],
+             firewall_id: pulumi.Input[int],
+             entity_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_id", entity_id)
+        _setter("firewall_id", firewall_id)
         if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
+            _setter("entity_type", entity_type)
 
     @property
     @pulumi.getter(name="entityId")
@@ -81,16 +94,33 @@ class _FirewallDeviceState:
         :param pulumi.Input[int] firewall_id: The unique ID of the target Firewall.
         :param pulumi.Input[str] updated: When the Firewall Device was last updated.
         """
+        _FirewallDeviceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            entity_id=entity_id,
+            entity_type=entity_type,
+            firewall_id=firewall_id,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             entity_id: Optional[pulumi.Input[int]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             firewall_id: Optional[pulumi.Input[int]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
+            _setter("entity_id", entity_id)
         if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
+            _setter("entity_type", entity_type)
         if firewall_id is not None:
-            pulumi.set(__self__, "firewall_id", firewall_id)
+            _setter("firewall_id", firewall_id)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
 
     @property
     @pulumi.getter
@@ -248,6 +278,10 @@ class FirewallDevice(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallDeviceInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
