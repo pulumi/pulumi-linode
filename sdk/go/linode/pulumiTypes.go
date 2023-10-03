@@ -3961,7 +3961,7 @@ func (o InstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceCon
 }
 
 type InstanceDiskType struct {
-	// A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
@@ -3969,13 +3969,13 @@ type InstanceDiskType struct {
 	Filesystem *string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -3997,7 +3997,7 @@ type InstanceDiskTypeInput interface {
 }
 
 type InstanceDiskTypeArgs struct {
-	// A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 	AuthorizedKeys pulumi.StringArrayInput `pulumi:"authorizedKeys"`
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
 	AuthorizedUsers pulumi.StringArrayInput `pulumi:"authorizedUsers"`
@@ -4005,13 +4005,13 @@ type InstanceDiskTypeArgs struct {
 	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -4090,7 +4090,7 @@ func (o InstanceDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[Ins
 	}
 }
 
-// A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
 func (o InstanceDiskTypeOutput) AuthorizedKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceDiskType) []string { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
 }
@@ -4110,7 +4110,7 @@ func (o InstanceDiskTypeOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskTypeOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -4125,7 +4125,7 @@ func (o InstanceDiskTypeOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
 func (o InstanceDiskTypeOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.RootPass }).(pulumi.StringPtrOutput)
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InstanceSharedIpsArgs', 'InstanceSharedIps']
@@ -21,8 +21,19 @@ class InstanceSharedIpsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The set of IPs to share with the Linode.
         :param pulumi.Input[int] linode_id: The ID of the Linode to share the IPs to.
         """
-        pulumi.set(__self__, "addresses", addresses)
-        pulumi.set(__self__, "linode_id", linode_id)
+        InstanceSharedIpsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addresses=addresses,
+            linode_id=linode_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+             linode_id: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addresses", addresses)
+        _setter("linode_id", linode_id)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _InstanceSharedIpsState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The set of IPs to share with the Linode.
         :param pulumi.Input[int] linode_id: The ID of the Linode to share the IPs to.
         """
+        _InstanceSharedIpsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addresses=addresses,
+            linode_id=linode_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addresses is not None:
-            pulumi.set(__self__, "addresses", addresses)
+            _setter("addresses", addresses)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
 
     @property
     @pulumi.getter
@@ -122,6 +144,10 @@ class InstanceSharedIps(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceSharedIpsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -200,12 +200,29 @@ class DatabaseMysqlUpdates(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: Optional[int] = None):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        DatabaseMysqlUpdates._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day_of_week=day_of_week,
+            duration=duration,
+            frequency=frequency,
+            hour_of_day=hour_of_day,
+            week_of_month=week_of_month,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day_of_week: str,
+             duration: int,
+             frequency: str,
+             hour_of_day: int,
+             week_of_month: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day_of_week", day_of_week)
+        _setter("duration", duration)
+        _setter("frequency", frequency)
+        _setter("hour_of_day", hour_of_day)
         if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
+            _setter("week_of_month", week_of_month)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -262,12 +279,29 @@ class DatabasePostgresqlUpdates(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: Optional[int] = None):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
+        DatabasePostgresqlUpdates._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day_of_week=day_of_week,
+            duration=duration,
+            frequency=frequency,
+            hour_of_day=hour_of_day,
+            week_of_month=week_of_month,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day_of_week: str,
+             duration: int,
+             frequency: str,
+             hour_of_day: int,
+             week_of_month: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day_of_week", day_of_week)
+        _setter("duration", duration)
+        _setter("frequency", frequency)
+        _setter("hour_of_day", hour_of_day)
         if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
+            _setter("week_of_month", week_of_month)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -327,16 +361,33 @@ class FirewallDevice(dict):
         :param str type: The type of Firewall Device.
         :param str url: The URL of the underlying entity this device references.
         """
+        FirewallDevice._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_id=entity_id,
+            id=id,
+            label=label,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_id: Optional[int] = None,
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             type: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
+            _setter("entity_id", entity_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="entityId")
@@ -396,15 +447,34 @@ class FirewallInbound(dict):
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "protocol", protocol)
+        FirewallInbound._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            label=label,
+            protocol=protocol,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             label: str,
+             protocol: str,
+             ipv4s: Optional[Sequence[str]] = None,
+             ipv6s: Optional[Sequence[str]] = None,
+             ports: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("label", label)
+        _setter("protocol", protocol)
         if ipv4s is not None:
-            pulumi.set(__self__, "ipv4s", ipv4s)
+            _setter("ipv4s", ipv4s)
         if ipv6s is not None:
-            pulumi.set(__self__, "ipv6s", ipv6s)
+            _setter("ipv6s", ipv6s)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -472,15 +542,34 @@ class FirewallOutbound(dict):
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "protocol", protocol)
+        FirewallOutbound._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            label=label,
+            protocol=protocol,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             label: str,
+             protocol: str,
+             ipv4s: Optional[Sequence[str]] = None,
+             ipv6s: Optional[Sequence[str]] = None,
+             ports: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("label", label)
+        _setter("protocol", protocol)
         if ipv4s is not None:
-            pulumi.set(__self__, "ipv4s", ipv4s)
+            _setter("ipv4s", ipv4s)
         if ipv6s is not None:
-            pulumi.set(__self__, "ipv6s", ipv6s)
+            _setter("ipv6s", ipv6s)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -560,16 +649,33 @@ class InstanceAlerts(dict):
                  network_in: Optional[int] = None,
                  network_out: Optional[int] = None,
                  transfer_quota: Optional[int] = None):
+        InstanceAlerts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu=cpu,
+            io=io,
+            network_in=network_in,
+            network_out=network_out,
+            transfer_quota=transfer_quota,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu: Optional[int] = None,
+             io: Optional[int] = None,
+             network_in: Optional[int] = None,
+             network_out: Optional[int] = None,
+             transfer_quota: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if io is not None:
-            pulumi.set(__self__, "io", io)
+            _setter("io", io)
         if network_in is not None:
-            pulumi.set(__self__, "network_in", network_in)
+            _setter("network_in", network_in)
         if network_out is not None:
-            pulumi.set(__self__, "network_out", network_out)
+            _setter("network_out", network_out)
         if transfer_quota is not None:
-            pulumi.set(__self__, "transfer_quota", transfer_quota)
+            _setter("transfer_quota", transfer_quota)
 
     @property
     @pulumi.getter
@@ -606,12 +712,25 @@ class InstanceBackups(dict):
         """
         :param bool enabled: If this Linode has the Backup service enabled.
         """
+        InstanceBackups._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available=available,
+            enabled=enabled,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available: Optional[bool] = None,
+             enabled: Optional[bool] = None,
+             schedule: Optional['outputs.InstanceBackupsSchedule'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if available is not None:
-            pulumi.set(__self__, "available", available)
+            _setter("available", available)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter
@@ -641,10 +760,21 @@ class InstanceBackupsSchedule(dict):
         :param str day: The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
         :param str window: The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
         """
+        InstanceBackupsSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: Optional[str] = None,
+             window: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if day is not None:
-            pulumi.set(__self__, "day", day)
+            _setter("day", day)
         if window is not None:
-            pulumi.set(__self__, "window", window)
+            _setter("window", window)
 
     @property
     @pulumi.getter
@@ -712,25 +842,52 @@ class InstanceConfig(dict):
         :param str run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
         :param str virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
         """
-        pulumi.set(__self__, "label", label)
+        InstanceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            comments=comments,
+            devices=devices,
+            helpers=helpers,
+            interfaces=interfaces,
+            kernel=kernel,
+            memory_limit=memory_limit,
+            root_device=root_device,
+            run_level=run_level,
+            virt_mode=virt_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             comments: Optional[str] = None,
+             devices: Optional['outputs.InstanceConfigDevices'] = None,
+             helpers: Optional['outputs.InstanceConfigHelpers'] = None,
+             interfaces: Optional[Sequence['outputs.InstanceConfigInterface']] = None,
+             kernel: Optional[str] = None,
+             memory_limit: Optional[int] = None,
+             root_device: Optional[str] = None,
+             run_level: Optional[str] = None,
+             virt_mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if comments is not None:
-            pulumi.set(__self__, "comments", comments)
+            _setter("comments", comments)
         if devices is not None:
-            pulumi.set(__self__, "devices", devices)
+            _setter("devices", devices)
         if helpers is not None:
-            pulumi.set(__self__, "helpers", helpers)
+            _setter("helpers", helpers)
         if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
+            _setter("interfaces", interfaces)
         if kernel is not None:
-            pulumi.set(__self__, "kernel", kernel)
+            _setter("kernel", kernel)
         if memory_limit is not None:
-            pulumi.set(__self__, "memory_limit", memory_limit)
+            _setter("memory_limit", memory_limit)
         if root_device is not None:
-            pulumi.set(__self__, "root_device", root_device)
+            _setter("root_device", root_device)
         if run_level is not None:
-            pulumi.set(__self__, "run_level", run_level)
+            _setter("run_level", run_level)
         if virt_mode is not None:
-            pulumi.set(__self__, "virt_mode", virt_mode)
+            _setter("virt_mode", virt_mode)
 
     @property
     @pulumi.getter
@@ -826,22 +983,45 @@ class InstanceConfigDevices(dict):
         """
         :param 'InstanceConfigDevicesSdaArgs' sda: ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
         """
+        InstanceConfigDevices._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sda=sda,
+            sdb=sdb,
+            sdc=sdc,
+            sdd=sdd,
+            sde=sde,
+            sdf=sdf,
+            sdg=sdg,
+            sdh=sdh,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sda: Optional['outputs.InstanceConfigDevicesSda'] = None,
+             sdb: Optional['outputs.InstanceConfigDevicesSdb'] = None,
+             sdc: Optional['outputs.InstanceConfigDevicesSdc'] = None,
+             sdd: Optional['outputs.InstanceConfigDevicesSdd'] = None,
+             sde: Optional['outputs.InstanceConfigDevicesSde'] = None,
+             sdf: Optional['outputs.InstanceConfigDevicesSdf'] = None,
+             sdg: Optional['outputs.InstanceConfigDevicesSdg'] = None,
+             sdh: Optional['outputs.InstanceConfigDevicesSdh'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if sda is not None:
-            pulumi.set(__self__, "sda", sda)
+            _setter("sda", sda)
         if sdb is not None:
-            pulumi.set(__self__, "sdb", sdb)
+            _setter("sdb", sdb)
         if sdc is not None:
-            pulumi.set(__self__, "sdc", sdc)
+            _setter("sdc", sdc)
         if sdd is not None:
-            pulumi.set(__self__, "sdd", sdd)
+            _setter("sdd", sdd)
         if sde is not None:
-            pulumi.set(__self__, "sde", sde)
+            _setter("sde", sde)
         if sdf is not None:
-            pulumi.set(__self__, "sdf", sdf)
+            _setter("sdf", sdf)
         if sdg is not None:
-            pulumi.set(__self__, "sdg", sdg)
+            _setter("sdg", sdg)
         if sdh is not None:
-            pulumi.set(__self__, "sdh", sdh)
+            _setter("sdh", sdh)
 
     @property
     @pulumi.getter
@@ -919,12 +1099,25 @@ class InstanceConfigDevicesSda(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSda._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -983,12 +1176,25 @@ class InstanceConfigDevicesSdb(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdb._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1047,12 +1253,25 @@ class InstanceConfigDevicesSdc(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1111,12 +1330,25 @@ class InstanceConfigDevicesSdd(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdd._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1175,12 +1407,25 @@ class InstanceConfigDevicesSde(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSde._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1239,12 +1484,25 @@ class InstanceConfigDevicesSdf(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1303,12 +1561,25 @@ class InstanceConfigDevicesSdg(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdg._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1367,12 +1638,25 @@ class InstanceConfigDevicesSdh(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
+        InstanceConfigDevicesSdh._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: Optional[int] = None,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -1434,16 +1718,33 @@ class InstanceConfigHelpers(dict):
         :param bool network: Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
         :param bool updatedb_disabled: Disables updatedb cron job to avoid disk thrashing.
         """
+        InstanceConfigHelpers._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            devtmpfs_automount=devtmpfs_automount,
+            distro=distro,
+            modules_dep=modules_dep,
+            network=network,
+            updatedb_disabled=updatedb_disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             devtmpfs_automount: Optional[bool] = None,
+             distro: Optional[bool] = None,
+             modules_dep: Optional[bool] = None,
+             network: Optional[bool] = None,
+             updatedb_disabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if devtmpfs_automount is not None:
-            pulumi.set(__self__, "devtmpfs_automount", devtmpfs_automount)
+            _setter("devtmpfs_automount", devtmpfs_automount)
         if distro is not None:
-            pulumi.set(__self__, "distro", distro)
+            _setter("distro", distro)
         if modules_dep is not None:
-            pulumi.set(__self__, "modules_dep", modules_dep)
+            _setter("modules_dep", modules_dep)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if updatedb_disabled is not None:
-            pulumi.set(__self__, "updatedb_disabled", updatedb_disabled)
+            _setter("updatedb_disabled", updatedb_disabled)
 
     @property
     @pulumi.getter(name="devtmpfsAutomount")
@@ -1511,12 +1812,25 @@ class InstanceConfigInterface(dict):
         :param str label: The name of this interface. If the interface is a VLAN, a label is required.
         :param str purpose: The type of interface. (`public`, `vlan`)
         """
+        InstanceConfigInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipam_address=ipam_address,
+            label=label,
+            purpose=purpose,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipam_address: Optional[str] = None,
+             label: Optional[str] = None,
+             purpose: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ipam_address is not None:
-            pulumi.set(__self__, "ipam_address", ipam_address)
+            _setter("ipam_address", ipam_address)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
 
     @property
     @pulumi.getter(name="ipamAddress")
@@ -1587,36 +1901,65 @@ class InstanceDisk(dict):
         """
         :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param int size: The size of the Disk in MB.
-        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param int id: The ID of the disk in the Linode API.
-        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param bool read_only: If true, this Disk is read-only.
-        :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+        :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         """
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
+        InstanceDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            size=size,
+            authorized_keys=authorized_keys,
+            authorized_users=authorized_users,
+            filesystem=filesystem,
+            id=id,
+            image=image,
+            read_only=read_only,
+            root_pass=root_pass,
+            stackscript_data=stackscript_data,
+            stackscript_id=stackscript_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             size: int,
+             authorized_keys: Optional[Sequence[str]] = None,
+             authorized_users: Optional[Sequence[str]] = None,
+             filesystem: Optional[str] = None,
+             id: Optional[int] = None,
+             image: Optional[str] = None,
+             read_only: Optional[bool] = None,
+             root_pass: Optional[str] = None,
+             stackscript_data: Optional[Mapping[str, Any]] = None,
+             stackscript_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("size", size)
         if authorized_keys is not None:
-            pulumi.set(__self__, "authorized_keys", authorized_keys)
+            _setter("authorized_keys", authorized_keys)
         if authorized_users is not None:
-            pulumi.set(__self__, "authorized_users", authorized_users)
+            _setter("authorized_users", authorized_users)
         if filesystem is not None:
-            pulumi.set(__self__, "filesystem", filesystem)
+            _setter("filesystem", filesystem)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
         if root_pass is not None:
-            pulumi.set(__self__, "root_pass", root_pass)
+            _setter("root_pass", root_pass)
         if stackscript_data is not None:
-            pulumi.set(__self__, "stackscript_data", stackscript_data)
+            _setter("stackscript_data", stackscript_data)
         if stackscript_id is not None:
-            pulumi.set(__self__, "stackscript_id", stackscript_id)
+            _setter("stackscript_id", stackscript_id)
 
     @property
     @pulumi.getter
@@ -1638,7 +1981,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[Sequence[str]]:
         """
-        A list of SSH public keys to deploy for the root user on the newly created Linode. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -1670,7 +2013,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -1686,7 +2029,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[str]:
         """
-        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in the state.*
+        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
         """
         return pulumi.get(self, "root_pass")
 
@@ -1735,12 +2078,25 @@ class InstanceInterface(dict):
         :param str label: The name of this interface. If the interface is a VLAN, a label is required.
         :param str purpose: The type of interface. (`public`, `vlan`)
         """
+        InstanceInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipam_address=ipam_address,
+            label=label,
+            purpose=purpose,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipam_address: Optional[str] = None,
+             label: Optional[str] = None,
+             purpose: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ipam_address is not None:
-            pulumi.set(__self__, "ipam_address", ipam_address)
+            _setter("ipam_address", ipam_address)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
 
     @property
     @pulumi.getter(name="ipamAddress")
@@ -1788,8 +2144,17 @@ class InstanceMetadata(dict):
 
     def __init__(__self__, *,
                  user_data: Optional[str] = None):
+        InstanceMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             user_data: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="userData")
@@ -1804,14 +2169,29 @@ class InstanceSpecs(dict):
                  memory: Optional[int] = None,
                  transfer: Optional[int] = None,
                  vcpus: Optional[int] = None):
+        InstanceSpecs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk=disk,
+            memory=memory,
+            transfer=transfer,
+            vcpus=vcpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk: Optional[int] = None,
+             memory: Optional[int] = None,
+             transfer: Optional[int] = None,
+             vcpus: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disk is not None:
-            pulumi.set(__self__, "disk", disk)
+            _setter("disk", disk)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if transfer is not None:
-            pulumi.set(__self__, "transfer", transfer)
+            _setter("transfer", transfer)
         if vcpus is not None:
-            pulumi.set(__self__, "vcpus", vcpus)
+            _setter("vcpus", vcpus)
 
     @property
     @pulumi.getter
@@ -1858,8 +2238,17 @@ class LkeClusterControlPlane(dict):
         """
         :param bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
         """
+        LkeClusterControlPlane._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            high_availability=high_availability,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             high_availability: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if high_availability is not None:
-            pulumi.set(__self__, "high_availability", high_availability)
+            _setter("high_availability", high_availability)
 
     @property
     @pulumi.getter(name="highAvailability")
@@ -1885,14 +2274,31 @@ class LkeClusterPool(dict):
         :param str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param int id: The ID of the node.
         """
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "type", type)
+        LkeClusterPool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            type=type,
+            autoscaler=autoscaler,
+            id=id,
+            nodes=nodes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: int,
+             type: str,
+             autoscaler: Optional['outputs.LkeClusterPoolAutoscaler'] = None,
+             id: Optional[int] = None,
+             nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("count", count)
+        _setter("type", type)
         if autoscaler is not None:
-            pulumi.set(__self__, "autoscaler", autoscaler)
+            _setter("autoscaler", autoscaler)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+            _setter("nodes", nodes)
 
     @property
     @pulumi.getter
@@ -1940,8 +2346,19 @@ class LkeClusterPoolAutoscaler(dict):
         :param int max: The maximum number of nodes to autoscale to.
         :param int min: The minimum number of nodes to autoscale to.
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
+        LkeClusterPoolAutoscaler._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: int,
+             min: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max", max)
+        _setter("min", min)
 
     @property
     @pulumi.getter
@@ -1988,12 +2405,25 @@ class LkeClusterPoolNode(dict):
         :param int instance_id: The ID of the underlying Linode instance.
         :param str status: The status of the node. (`ready`, `not_ready`)
         """
+        LkeClusterPoolNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             instance_id: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2029,10 +2459,21 @@ class NodeBalancerConfigNodeStatus(dict):
         :param int down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         :param int up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
         """
+        NodeBalancerConfigNodeStatus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            down=down,
+            up=up,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             down: Optional[int] = None,
+             up: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if down is not None:
-            pulumi.set(__self__, "down", down)
+            _setter("down", down)
         if up is not None:
-            pulumi.set(__self__, "up", up)
+            _setter("up", up)
 
     @property
     @pulumi.getter
@@ -2079,9 +2520,22 @@ class NodeBalancerTransfer(dict):
         :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
         :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "out", out)
-        pulumi.set(__self__, "total", total)
+        NodeBalancerTransfer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            out=out,
+            total=total,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: float,
+             out: float,
+             total: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("in_", in_)
+        _setter("out", out)
+        _setter("total", total)
 
     @property
     @pulumi.getter(name="in")
@@ -2134,8 +2588,19 @@ class ObjectStorageBucketCert(dict):
         :param str certificate: The Base64 encoded and PEM formatted SSL certificate.
         :param str private_key: The private key associated with the TLS/SSL certificate.
         """
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "private_key", private_key)
+        ObjectStorageBucketCert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate=certificate,
+            private_key=private_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate: str,
+             private_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate", certificate)
+        _setter("private_key", private_key)
 
     @property
     @pulumi.getter
@@ -2192,17 +2657,36 @@ class ObjectStorageBucketLifecycleRule(dict):
         :param str id: The unique identifier for the rule.
         :param str prefix: The object key prefix identifying one or more objects to which the rule applies.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        ObjectStorageBucketLifecycleRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            abort_incomplete_multipart_upload_days=abort_incomplete_multipart_upload_days,
+            expiration=expiration,
+            id=id,
+            noncurrent_version_expiration=noncurrent_version_expiration,
+            prefix=prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             abort_incomplete_multipart_upload_days: Optional[int] = None,
+             expiration: Optional['outputs.ObjectStorageBucketLifecycleRuleExpiration'] = None,
+             id: Optional[str] = None,
+             noncurrent_version_expiration: Optional['outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration'] = None,
+             prefix: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
         if abort_incomplete_multipart_upload_days is not None:
-            pulumi.set(__self__, "abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
+            _setter("abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if noncurrent_version_expiration is not None:
-            pulumi.set(__self__, "noncurrent_version_expiration", noncurrent_version_expiration)
+            _setter("noncurrent_version_expiration", noncurrent_version_expiration)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
 
     @property
     @pulumi.getter
@@ -2279,12 +2763,25 @@ class ObjectStorageBucketLifecycleRuleExpiration(dict):
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
         """
+        ObjectStorageBucketLifecycleRuleExpiration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            date=date,
+            days=days,
+            expired_object_delete_marker=expired_object_delete_marker,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             date: Optional[str] = None,
+             days: Optional[int] = None,
+             expired_object_delete_marker: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if date is not None:
-            pulumi.set(__self__, "date", date)
+            _setter("date", date)
         if days is not None:
-            pulumi.set(__self__, "days", days)
+            _setter("days", days)
         if expired_object_delete_marker is not None:
-            pulumi.set(__self__, "expired_object_delete_marker", expired_object_delete_marker)
+            _setter("expired_object_delete_marker", expired_object_delete_marker)
 
     @property
     @pulumi.getter
@@ -2318,7 +2815,16 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration(dict):
         """
         :param int days: Specifies the number of days non-current object versions expire.
         """
-        pulumi.set(__self__, "days", days)
+        ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            days=days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             days: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("days", days)
 
     @property
     @pulumi.getter
@@ -2357,9 +2863,22 @@ class ObjectStorageKeyBucketAccess(dict):
         :param str cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
         :param str permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "permissions", permissions)
+        ObjectStorageKeyBucketAccess._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            cluster=cluster,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: str,
+             cluster: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_name", bucket_name)
+        _setter("cluster", cluster)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -2422,12 +2941,31 @@ class StackScriptUserDefinedField(dict):
         :param str name: The name of the field.
         :param str one_of: A list of acceptable single values for the field.
         """
-        pulumi.set(__self__, "default", default)
-        pulumi.set(__self__, "example", example)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "many_of", many_of)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "one_of", one_of)
+        StackScriptUserDefinedField._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+            example=example,
+            label=label,
+            many_of=many_of,
+            name=name,
+            one_of=one_of,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: str,
+             example: str,
+             label: str,
+             many_of: str,
+             name: str,
+             one_of: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
+        _setter("example", example)
+        _setter("label", label)
+        _setter("many_of", many_of)
+        _setter("name", name)
+        _setter("one_of", one_of)
 
     @property
     @pulumi.getter
@@ -2483,8 +3021,19 @@ class UserDomainGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserDomainGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2502,8 +3051,19 @@ class UserFirewallGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserFirewallGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2570,30 +3130,61 @@ class UserGlobalGrants(dict):
                  add_volumes: Optional[bool] = None,
                  cancel_account: Optional[bool] = None,
                  longview_subscription: Optional[bool] = None):
+        UserGlobalGrants._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_access=account_access,
+            add_databases=add_databases,
+            add_domains=add_domains,
+            add_firewalls=add_firewalls,
+            add_images=add_images,
+            add_linodes=add_linodes,
+            add_longview=add_longview,
+            add_nodebalancers=add_nodebalancers,
+            add_stackscripts=add_stackscripts,
+            add_volumes=add_volumes,
+            cancel_account=cancel_account,
+            longview_subscription=longview_subscription,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_access: Optional[str] = None,
+             add_databases: Optional[bool] = None,
+             add_domains: Optional[bool] = None,
+             add_firewalls: Optional[bool] = None,
+             add_images: Optional[bool] = None,
+             add_linodes: Optional[bool] = None,
+             add_longview: Optional[bool] = None,
+             add_nodebalancers: Optional[bool] = None,
+             add_stackscripts: Optional[bool] = None,
+             add_volumes: Optional[bool] = None,
+             cancel_account: Optional[bool] = None,
+             longview_subscription: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_access is not None:
-            pulumi.set(__self__, "account_access", account_access)
+            _setter("account_access", account_access)
         if add_databases is not None:
-            pulumi.set(__self__, "add_databases", add_databases)
+            _setter("add_databases", add_databases)
         if add_domains is not None:
-            pulumi.set(__self__, "add_domains", add_domains)
+            _setter("add_domains", add_domains)
         if add_firewalls is not None:
-            pulumi.set(__self__, "add_firewalls", add_firewalls)
+            _setter("add_firewalls", add_firewalls)
         if add_images is not None:
-            pulumi.set(__self__, "add_images", add_images)
+            _setter("add_images", add_images)
         if add_linodes is not None:
-            pulumi.set(__self__, "add_linodes", add_linodes)
+            _setter("add_linodes", add_linodes)
         if add_longview is not None:
-            pulumi.set(__self__, "add_longview", add_longview)
+            _setter("add_longview", add_longview)
         if add_nodebalancers is not None:
-            pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+            _setter("add_nodebalancers", add_nodebalancers)
         if add_stackscripts is not None:
-            pulumi.set(__self__, "add_stackscripts", add_stackscripts)
+            _setter("add_stackscripts", add_stackscripts)
         if add_volumes is not None:
-            pulumi.set(__self__, "add_volumes", add_volumes)
+            _setter("add_volumes", add_volumes)
         if cancel_account is not None:
-            pulumi.set(__self__, "cancel_account", cancel_account)
+            _setter("cancel_account", cancel_account)
         if longview_subscription is not None:
-            pulumi.set(__self__, "longview_subscription", longview_subscription)
+            _setter("longview_subscription", longview_subscription)
 
     @property
     @pulumi.getter(name="accountAccess")
@@ -2661,8 +3252,19 @@ class UserImageGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserImageGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2680,8 +3282,19 @@ class UserLinodeGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserLinodeGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2699,8 +3312,19 @@ class UserLongviewGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserLongviewGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2718,8 +3342,19 @@ class UserNodebalancerGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserNodebalancerGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2737,8 +3372,19 @@ class UserStackscriptGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserStackscriptGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2756,8 +3402,19 @@ class UserVolumeGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
+        UserVolumeGrant._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -2781,10 +3438,23 @@ class GetAccountLoginsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetAccountLoginsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2827,12 +3497,31 @@ class GetAccountLoginsLoginResult(dict):
         :param bool restricted: True if the User that was logged into was a restricted User, false otherwise.
         :param str username: The username of the User that was logged into.
         """
-        pulumi.set(__self__, "datetime", datetime)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "restricted", restricted)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "username", username)
+        GetAccountLoginsLoginResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datetime=datetime,
+            id=id,
+            ip=ip,
+            restricted=restricted,
+            status=status,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datetime: str,
+             id: int,
+             ip: str,
+             restricted: bool,
+             status: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datetime", datetime)
+        _setter("id", id)
+        _setter("ip", ip)
+        _setter("restricted", restricted)
+        _setter("status", status)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -2893,10 +3582,25 @@ class GetDatabaseBackupsBackupResult(dict):
         :param str label: The database backup’s label, for display purposes only.
         :param str type: The type of database backup, determined by how the backup was created.
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
+        GetDatabaseBackupsBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            id=id,
+            label=label,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             id: int,
+             label: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2942,10 +3646,23 @@ class GetDatabaseBackupsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetDatabaseBackupsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -2983,9 +3700,22 @@ class GetDatabaseEnginesEngineResult(dict):
         :param str id: The Managed Database engine ID in engine/version format.
         :param str version: The Managed Database engine version.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "version", version)
+        GetDatabaseEnginesEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            id=id,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: str,
+             id: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("id", id)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -3023,10 +3753,23 @@ class GetDatabaseEnginesFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetDatabaseEnginesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -3066,10 +3809,25 @@ class GetDatabaseMysqlBackupsBackupResult(dict):
         :param str label: The database backup’s label, for display purposes only.
         :param str type: The type of database backup, determined by how the backup was created.
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
+        GetDatabaseMysqlBackupsBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            id=id,
+            label=label,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             id: int,
+             label: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3115,10 +3873,23 @@ class GetDatabaseMysqlBackupsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetDatabaseMysqlBackupsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -3153,11 +3924,28 @@ class GetDatabaseMysqlUpdateResult(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        pulumi.set(__self__, "week_of_month", week_of_month)
+        GetDatabaseMysqlUpdateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day_of_week=day_of_week,
+            duration=duration,
+            frequency=frequency,
+            hour_of_day=hour_of_day,
+            week_of_month=week_of_month,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day_of_week: str,
+             duration: int,
+             frequency: str,
+             hour_of_day: int,
+             week_of_month: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day_of_week", day_of_week)
+        _setter("duration", duration)
+        _setter("frequency", frequency)
+        _setter("hour_of_day", hour_of_day)
+        _setter("week_of_month", week_of_month)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -3193,11 +3981,28 @@ class GetDatabasePostgresqlUpdateResult(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        pulumi.set(__self__, "week_of_month", week_of_month)
+        GetDatabasePostgresqlUpdateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day_of_week=day_of_week,
+            duration=duration,
+            frequency=frequency,
+            hour_of_day=hour_of_day,
+            week_of_month=week_of_month,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day_of_week: str,
+             duration: int,
+             frequency: str,
+             hour_of_day: int,
+             week_of_month: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day_of_week", day_of_week)
+        _setter("duration", duration)
+        _setter("frequency", frequency)
+        _setter("hour_of_day", hour_of_day)
+        _setter("week_of_month", week_of_month)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -3263,23 +4068,64 @@ class GetDatabasesDatabaseResult(dict):
         :param str updated: When this Managed Database was last updated.
         :param str version: The Managed Database engine version.
         """
-        pulumi.set(__self__, "allow_lists", allow_lists)
-        pulumi.set(__self__, "cluster_size", cluster_size)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "host_primary", host_primary)
-        pulumi.set(__self__, "host_secondary", host_secondary)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_uri", instance_uri)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "replication_type", replication_type)
-        pulumi.set(__self__, "ssl_connection", ssl_connection)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated", updated)
-        pulumi.set(__self__, "version", version)
+        GetDatabasesDatabaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_lists=allow_lists,
+            cluster_size=cluster_size,
+            created=created,
+            encrypted=encrypted,
+            engine=engine,
+            host_primary=host_primary,
+            host_secondary=host_secondary,
+            id=id,
+            instance_uri=instance_uri,
+            label=label,
+            region=region,
+            replication_type=replication_type,
+            ssl_connection=ssl_connection,
+            status=status,
+            type=type,
+            updated=updated,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_lists: Sequence[str],
+             cluster_size: int,
+             created: str,
+             encrypted: bool,
+             engine: str,
+             host_primary: str,
+             host_secondary: str,
+             id: int,
+             instance_uri: str,
+             label: str,
+             region: str,
+             replication_type: str,
+             ssl_connection: bool,
+             status: str,
+             type: str,
+             updated: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allow_lists", allow_lists)
+        _setter("cluster_size", cluster_size)
+        _setter("created", created)
+        _setter("encrypted", encrypted)
+        _setter("engine", engine)
+        _setter("host_primary", host_primary)
+        _setter("host_secondary", host_secondary)
+        _setter("id", id)
+        _setter("instance_uri", instance_uri)
+        _setter("label", label)
+        _setter("region", region)
+        _setter("replication_type", replication_type)
+        _setter("ssl_connection", ssl_connection)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("updated", updated)
+        _setter("version", version)
 
     @property
     @pulumi.getter(name="allowLists")
@@ -3426,10 +4272,23 @@ class GetDatabasesFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetDatabasesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -3471,11 +4330,28 @@ class GetFirewallDeviceResult(dict):
         :param str type: The type of Firewall Device.
         :param str url: The URL of the underlying entity this device references.
         """
-        pulumi.set(__self__, "entity_id", entity_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "url", url)
+        GetFirewallDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_id=entity_id,
+            id=id,
+            label=label,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_id: int,
+             id: int,
+             label: str,
+             type: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_id", entity_id)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("type", type)
+        _setter("url", url)
 
     @property
     @pulumi.getter(name="entityId")
@@ -3535,12 +4411,31 @@ class GetFirewallInboundResult(dict):
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "ipv4s", ipv4s)
-        pulumi.set(__self__, "ipv6s", ipv6s)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "protocol", protocol)
+        GetFirewallInboundResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            label=label,
+            ports=ports,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             ipv4s: Sequence[str],
+             ipv6s: Sequence[str],
+             label: str,
+             ports: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("ipv4s", ipv4s)
+        _setter("ipv6s", ipv6s)
+        _setter("label", label)
+        _setter("ports", ports)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -3608,12 +4503,31 @@ class GetFirewallOutboundResult(dict):
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "ipv4s", ipv4s)
-        pulumi.set(__self__, "ipv6s", ipv6s)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "protocol", protocol)
+        GetFirewallOutboundResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            label=label,
+            ports=ports,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             ipv4s: Sequence[str],
+             ipv6s: Sequence[str],
+             label: str,
+             ports: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("ipv4s", ipv4s)
+        _setter("ipv6s", ipv6s)
+        _setter("label", label)
+        _setter("ports", ports)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -3675,10 +4589,23 @@ class GetFirewallsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetFirewallsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -3734,23 +4661,58 @@ class GetFirewallsFirewallResult(dict):
         :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
         :param str updated: When this firewall was last updated.
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inbound_policy", inbound_policy)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "linodes", linodes)
-        pulumi.set(__self__, "nodebalancers", nodebalancers)
-        pulumi.set(__self__, "outbound_policy", outbound_policy)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "updated", updated)
+        GetFirewallsFirewallResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            disabled=disabled,
+            id=id,
+            inbound_policy=inbound_policy,
+            label=label,
+            linodes=linodes,
+            nodebalancers=nodebalancers,
+            outbound_policy=outbound_policy,
+            status=status,
+            tags=tags,
+            updated=updated,
+            devices=devices,
+            inbounds=inbounds,
+            outbounds=outbounds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             disabled: bool,
+             id: int,
+             inbound_policy: str,
+             label: str,
+             linodes: Sequence[int],
+             nodebalancers: Sequence[int],
+             outbound_policy: str,
+             status: str,
+             tags: Sequence[str],
+             updated: str,
+             devices: Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']] = None,
+             inbounds: Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']] = None,
+             outbounds: Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("disabled", disabled)
+        _setter("id", id)
+        _setter("inbound_policy", inbound_policy)
+        _setter("label", label)
+        _setter("linodes", linodes)
+        _setter("nodebalancers", nodebalancers)
+        _setter("outbound_policy", outbound_policy)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("updated", updated)
         if devices is not None:
-            pulumi.set(__self__, "devices", devices)
+            _setter("devices", devices)
         if inbounds is not None:
-            pulumi.set(__self__, "inbounds", inbounds)
+            _setter("inbounds", inbounds)
         if outbounds is not None:
-            pulumi.set(__self__, "outbounds", outbounds)
+            _setter("outbounds", outbounds)
 
     @property
     @pulumi.getter
@@ -3865,11 +4827,28 @@ class GetFirewallsFirewallDeviceResult(dict):
         :param int id: The unique ID assigned to this Firewall.
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         """
-        pulumi.set(__self__, "entity_id", entity_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "url", url)
+        GetFirewallsFirewallDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_id=entity_id,
+            id=id,
+            label=label,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_id: int,
+             id: int,
+             label: str,
+             type: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_id", entity_id)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("type", type)
+        _setter("url", url)
 
     @property
     @pulumi.getter(name="entityId")
@@ -3915,12 +4894,31 @@ class GetFirewallsFirewallInboundResult(dict):
         """
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "ipv4s", ipv4s)
-        pulumi.set(__self__, "ipv6s", ipv6s)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "protocol", protocol)
+        GetFirewallsFirewallInboundResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            label=label,
+            ports=ports,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             ipv4s: Sequence[str],
+             ipv6s: Sequence[str],
+             label: str,
+             ports: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("ipv4s", ipv4s)
+        _setter("ipv6s", ipv6s)
+        _setter("label", label)
+        _setter("ports", ports)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -3968,12 +4966,31 @@ class GetFirewallsFirewallOutboundResult(dict):
         """
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "ipv4s", ipv4s)
-        pulumi.set(__self__, "ipv6s", ipv6s)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "protocol", protocol)
+        GetFirewallsFirewallOutboundResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            ipv4s=ipv4s,
+            ipv6s=ipv6s,
+            label=label,
+            ports=ports,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             ipv4s: Sequence[str],
+             ipv6s: Sequence[str],
+             label: str,
+             ports: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("ipv4s", ipv4s)
+        _setter("ipv6s", ipv6s)
+        _setter("label", label)
+        _setter("ports", ports)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -4020,10 +5037,23 @@ class GetImagesFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetImagesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -4079,19 +5109,52 @@ class GetImagesImageResult(dict):
         :param str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         :param str vendor: The upstream distribution vendor. `None` for private Images.
         """
-        pulumi.set(__self__, "capabilities", capabilities)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "deprecated", deprecated)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expiry", expiry)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_public", is_public)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vendor", vendor)
+        GetImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capabilities=capabilities,
+            created=created,
+            created_by=created_by,
+            deprecated=deprecated,
+            description=description,
+            expiry=expiry,
+            id=id,
+            is_public=is_public,
+            label=label,
+            size=size,
+            status=status,
+            type=type,
+            vendor=vendor,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capabilities: Sequence[str],
+             created: str,
+             created_by: str,
+             deprecated: bool,
+             description: str,
+             expiry: str,
+             id: str,
+             is_public: bool,
+             label: str,
+             size: int,
+             status: str,
+             type: str,
+             vendor: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capabilities", capabilities)
+        _setter("created", created)
+        _setter("created_by", created_by)
+        _setter("deprecated", deprecated)
+        _setter("description", description)
+        _setter("expiry", expiry)
+        _setter("id", id)
+        _setter("is_public", is_public)
+        _setter("label", label)
+        _setter("size", size)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("vendor", vendor)
 
     @property
     @pulumi.getter
@@ -4215,16 +5278,43 @@ class GetInstanceBackupsAutomaticResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
-        pulumi.set(__self__, "available", available)
-        pulumi.set(__self__, "configs", configs)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "finished", finished)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated", updated)
+        GetInstanceBackupsAutomaticResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available=available,
+            configs=configs,
+            created=created,
+            disks=disks,
+            finished=finished,
+            id=id,
+            label=label,
+            status=status,
+            type=type,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available: bool,
+             configs: Sequence[str],
+             created: str,
+             disks: Sequence['outputs.GetInstanceBackupsAutomaticDiskResult'],
+             finished: str,
+             id: int,
+             label: str,
+             status: str,
+             type: str,
+             updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available", available)
+        _setter("configs", configs)
+        _setter("created", created)
+        _setter("disks", disks)
+        _setter("finished", finished)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("updated", updated)
 
     @property
     @pulumi.getter
@@ -4312,9 +5402,22 @@ class GetInstanceBackupsAutomaticDiskResult(dict):
         :param str label: The label of this disk.
         :param int size: The size of this disk.
         """
-        pulumi.set(__self__, "filesystem", filesystem)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
+        GetInstanceBackupsAutomaticDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filesystem=filesystem,
+            label=label,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filesystem: str,
+             label: str,
+             size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filesystem", filesystem)
+        _setter("label", label)
+        _setter("size", size)
 
     @property
     @pulumi.getter
@@ -4364,16 +5467,43 @@ class GetInstanceBackupsCurrentResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
-        pulumi.set(__self__, "available", available)
-        pulumi.set(__self__, "configs", configs)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "finished", finished)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated", updated)
+        GetInstanceBackupsCurrentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available=available,
+            configs=configs,
+            created=created,
+            disks=disks,
+            finished=finished,
+            id=id,
+            label=label,
+            status=status,
+            type=type,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available: bool,
+             configs: Sequence[str],
+             created: str,
+             disks: Sequence['outputs.GetInstanceBackupsCurrentDiskResult'],
+             finished: str,
+             id: int,
+             label: str,
+             status: str,
+             type: str,
+             updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available", available)
+        _setter("configs", configs)
+        _setter("created", created)
+        _setter("disks", disks)
+        _setter("finished", finished)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("updated", updated)
 
     @property
     @pulumi.getter
@@ -4461,9 +5591,22 @@ class GetInstanceBackupsCurrentDiskResult(dict):
         :param str label: The label of this disk.
         :param int size: The size of this disk.
         """
-        pulumi.set(__self__, "filesystem", filesystem)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
+        GetInstanceBackupsCurrentDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filesystem=filesystem,
+            label=label,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filesystem: str,
+             label: str,
+             size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filesystem", filesystem)
+        _setter("label", label)
+        _setter("size", size)
 
     @property
     @pulumi.getter
@@ -4513,16 +5656,43 @@ class GetInstanceBackupsInProgressResult(dict):
         :param str type: This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
         :param str updated: The date the Backup was most recently updated.
         """
-        pulumi.set(__self__, "available", available)
-        pulumi.set(__self__, "configs", configs)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "finished", finished)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated", updated)
+        GetInstanceBackupsInProgressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available=available,
+            configs=configs,
+            created=created,
+            disks=disks,
+            finished=finished,
+            id=id,
+            label=label,
+            status=status,
+            type=type,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available: bool,
+             configs: Sequence[str],
+             created: str,
+             disks: Sequence['outputs.GetInstanceBackupsInProgressDiskResult'],
+             finished: str,
+             id: int,
+             label: str,
+             status: str,
+             type: str,
+             updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available", available)
+        _setter("configs", configs)
+        _setter("created", created)
+        _setter("disks", disks)
+        _setter("finished", finished)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("updated", updated)
 
     @property
     @pulumi.getter
@@ -4610,9 +5780,22 @@ class GetInstanceBackupsInProgressDiskResult(dict):
         :param str label: The label of this disk.
         :param int size: The size of this disk.
         """
-        pulumi.set(__self__, "filesystem", filesystem)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
+        GetInstanceBackupsInProgressDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filesystem=filesystem,
+            label=label,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filesystem: str,
+             label: str,
+             size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filesystem", filesystem)
+        _setter("label", label)
+        _setter("size", size)
 
     @property
     @pulumi.getter
@@ -4649,10 +5832,25 @@ class GetInstanceNetworkingIpv4Result(dict):
         """
         :param Sequence['GetInstanceNetworkingIpv4PublicArgs'] publics: Whether this is a public or private IP address.
         """
-        pulumi.set(__self__, "privates", privates)
-        pulumi.set(__self__, "publics", publics)
-        pulumi.set(__self__, "reserveds", reserveds)
-        pulumi.set(__self__, "shareds", shareds)
+        GetInstanceNetworkingIpv4Result._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            privates=privates,
+            publics=publics,
+            reserveds=reserveds,
+            shareds=shareds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             privates: Sequence['outputs.GetInstanceNetworkingIpv4PrivateResult'],
+             publics: Sequence['outputs.GetInstanceNetworkingIpv4PublicResult'],
+             reserveds: Sequence['outputs.GetInstanceNetworkingIpv4ReservedResult'],
+             shareds: Sequence['outputs.GetInstanceNetworkingIpv4SharedResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("privates", privates)
+        _setter("publics", publics)
+        _setter("reserveds", reserveds)
+        _setter("shareds", shareds)
 
     @property
     @pulumi.getter
@@ -4701,15 +5899,40 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv4PrivateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -4807,15 +6030,40 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv4PublicResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -4913,15 +6161,40 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv4ReservedResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -5019,15 +6292,40 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv4SharedResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -5108,9 +6406,22 @@ class GetInstanceNetworkingIpv6Result(dict):
                  globals: Sequence['outputs.GetInstanceNetworkingIpv6GlobalResult'],
                  link_local: 'outputs.GetInstanceNetworkingIpv6LinkLocalResult',
                  slaac: 'outputs.GetInstanceNetworkingIpv6SlaacResult'):
-        pulumi.set(__self__, "globals", globals)
-        pulumi.set(__self__, "link_local", link_local)
-        pulumi.set(__self__, "slaac", slaac)
+        GetInstanceNetworkingIpv6Result._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            globals=globals,
+            link_local=link_local,
+            slaac=slaac,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             globals: Sequence['outputs.GetInstanceNetworkingIpv6GlobalResult'],
+             link_local: 'outputs.GetInstanceNetworkingIpv6LinkLocalResult',
+             slaac: 'outputs.GetInstanceNetworkingIpv6SlaacResult',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("globals", globals)
+        _setter("link_local", link_local)
+        _setter("slaac", slaac)
 
     @property
     @pulumi.getter
@@ -5141,10 +6452,25 @@ class GetInstanceNetworkingIpv6GlobalResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str route_target: (Nullable) The last address in this block of IPv6 addresses.
         """
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "range", range)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "route_target", route_target)
+        GetInstanceNetworkingIpv6GlobalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefix=prefix,
+            range=range,
+            region=region,
+            route_target=route_target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefix: int,
+             range: str,
+             region: str,
+             route_target: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("prefix", prefix)
+        _setter("range", range)
+        _setter("region", region)
+        _setter("route_target", route_target)
 
     @property
     @pulumi.getter
@@ -5202,15 +6528,40 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv6LinkLocalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -5308,15 +6659,40 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "linode_id", linode_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "rdns", rdns)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_mask", subnet_mask)
-        pulumi.set(__self__, "type", type)
+        GetInstanceNetworkingIpv6SlaacResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             gateway: str,
+             linode_id: int,
+             prefix: int,
+             public: bool,
+             rdns: str,
+             region: str,
+             subnet_mask: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("gateway", gateway)
+        _setter("linode_id", linode_id)
+        _setter("prefix", prefix)
+        _setter("public", public)
+        _setter("rdns", rdns)
+        _setter("region", region)
+        _setter("subnet_mask", subnet_mask)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -5395,7 +6771,16 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
 class GetInstanceTypeAddonsResult(dict):
     def __init__(__self__, *,
                  backups: Sequence['outputs.GetInstanceTypeAddonsBackupResult']):
-        pulumi.set(__self__, "backups", backups)
+        GetInstanceTypeAddonsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backups=backups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backups: Sequence['outputs.GetInstanceTypeAddonsBackupResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backups", backups)
 
     @property
     @pulumi.getter
@@ -5407,7 +6792,16 @@ class GetInstanceTypeAddonsResult(dict):
 class GetInstanceTypeAddonsBackupResult(dict):
     def __init__(__self__, *,
                  prices: Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult']):
-        pulumi.set(__self__, "prices", prices)
+        GetInstanceTypeAddonsBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prices=prices,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prices: Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("prices", prices)
 
     @property
     @pulumi.getter
@@ -5420,8 +6814,19 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
-        pulumi.set(__self__, "hourly", hourly)
-        pulumi.set(__self__, "monthly", monthly)
+        GetInstanceTypeAddonsBackupPriceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("monthly", monthly)
 
     @property
     @pulumi.getter
@@ -5439,8 +6844,19 @@ class GetInstanceTypePriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
-        pulumi.set(__self__, "hourly", hourly)
-        pulumi.set(__self__, "monthly", monthly)
+        GetInstanceTypePriceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("monthly", monthly)
 
     @property
     @pulumi.getter
@@ -5464,10 +6880,23 @@ class GetInstanceTypesFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetInstanceTypesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -5517,16 +6946,43 @@ class GetInstanceTypesTypeResult(dict):
         :param int transfer: The monthly outbound transfer amount, in MB.
         :param int vcpus: The number of VCPU cores this Linode Type offers.
         """
-        pulumi.set(__self__, "addons", addons)
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "disk", disk)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "network_out", network_out)
-        pulumi.set(__self__, "prices", prices)
-        pulumi.set(__self__, "transfer", transfer)
-        pulumi.set(__self__, "vcpus", vcpus)
+        GetInstanceTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons=addons,
+            class_=class_,
+            disk=disk,
+            id=id,
+            label=label,
+            memory=memory,
+            network_out=network_out,
+            prices=prices,
+            transfer=transfer,
+            vcpus=vcpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons: Sequence['outputs.GetInstanceTypesTypeAddonResult'],
+             class_: str,
+             disk: int,
+             id: str,
+             label: str,
+             memory: int,
+             network_out: int,
+             prices: Sequence['outputs.GetInstanceTypesTypePriceResult'],
+             transfer: int,
+             vcpus: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addons", addons)
+        _setter("class_", class_)
+        _setter("disk", disk)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("memory", memory)
+        _setter("network_out", network_out)
+        _setter("prices", prices)
+        _setter("transfer", transfer)
+        _setter("vcpus", vcpus)
 
     @property
     @pulumi.getter
@@ -5607,7 +7063,16 @@ class GetInstanceTypesTypeResult(dict):
 class GetInstanceTypesTypeAddonResult(dict):
     def __init__(__self__, *,
                  backups: Sequence['outputs.GetInstanceTypesTypeAddonBackupResult']):
-        pulumi.set(__self__, "backups", backups)
+        GetInstanceTypesTypeAddonResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backups=backups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backups: Sequence['outputs.GetInstanceTypesTypeAddonBackupResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backups", backups)
 
     @property
     @pulumi.getter
@@ -5619,7 +7084,16 @@ class GetInstanceTypesTypeAddonResult(dict):
 class GetInstanceTypesTypeAddonBackupResult(dict):
     def __init__(__self__, *,
                  prices: Sequence['outputs.GetInstanceTypesTypeAddonBackupPriceResult']):
-        pulumi.set(__self__, "prices", prices)
+        GetInstanceTypesTypeAddonBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prices=prices,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prices: Sequence['outputs.GetInstanceTypesTypeAddonBackupPriceResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("prices", prices)
 
     @property
     @pulumi.getter
@@ -5632,8 +7106,19 @@ class GetInstanceTypesTypeAddonBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
-        pulumi.set(__self__, "hourly", hourly)
-        pulumi.set(__self__, "monthly", monthly)
+        GetInstanceTypesTypeAddonBackupPriceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("monthly", monthly)
 
     @property
     @pulumi.getter
@@ -5651,8 +7136,19 @@ class GetInstanceTypesTypePriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
-        pulumi.set(__self__, "hourly", hourly)
-        pulumi.set(__self__, "monthly", monthly)
+        GetInstanceTypesTypePriceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("monthly", monthly)
 
     @property
     @pulumi.getter
@@ -5676,10 +7172,23 @@ class GetInstancesFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetInstancesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -5747,28 +7256,79 @@ class GetInstancesInstanceResult(dict):
         :param str type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         :param bool watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
-        pulumi.set(__self__, "alerts", alerts)
-        pulumi.set(__self__, "backups", backups)
-        pulumi.set(__self__, "boot_config_label", boot_config_label)
-        pulumi.set(__self__, "configs", configs)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "has_user_data", has_user_data)
-        pulumi.set(__self__, "host_uuid", host_uuid)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "ipv4s", ipv4s)
-        pulumi.set(__self__, "ipv6", ipv6)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "private_ip_address", private_ip_address)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "specs", specs)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "swap_size", swap_size)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "watchdog_enabled", watchdog_enabled)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alerts=alerts,
+            backups=backups,
+            boot_config_label=boot_config_label,
+            configs=configs,
+            disks=disks,
+            group=group,
+            has_user_data=has_user_data,
+            host_uuid=host_uuid,
+            id=id,
+            image=image,
+            ip_address=ip_address,
+            ipv4s=ipv4s,
+            ipv6=ipv6,
+            label=label,
+            private_ip_address=private_ip_address,
+            region=region,
+            specs=specs,
+            status=status,
+            swap_size=swap_size,
+            tags=tags,
+            type=type,
+            watchdog_enabled=watchdog_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alerts: 'outputs.GetInstancesInstanceAlertsResult',
+             backups: Sequence['outputs.GetInstancesInstanceBackupResult'],
+             boot_config_label: str,
+             configs: Sequence['outputs.GetInstancesInstanceConfigResult'],
+             disks: Sequence['outputs.GetInstancesInstanceDiskResult'],
+             group: str,
+             has_user_data: bool,
+             host_uuid: str,
+             id: int,
+             image: str,
+             ip_address: str,
+             ipv4s: Sequence[str],
+             ipv6: str,
+             label: str,
+             private_ip_address: str,
+             region: str,
+             specs: Sequence['outputs.GetInstancesInstanceSpecResult'],
+             status: str,
+             swap_size: int,
+             tags: Sequence[str],
+             type: str,
+             watchdog_enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alerts", alerts)
+        _setter("backups", backups)
+        _setter("boot_config_label", boot_config_label)
+        _setter("configs", configs)
+        _setter("disks", disks)
+        _setter("group", group)
+        _setter("has_user_data", has_user_data)
+        _setter("host_uuid", host_uuid)
+        _setter("id", id)
+        _setter("image", image)
+        _setter("ip_address", ip_address)
+        _setter("ipv4s", ipv4s)
+        _setter("ipv6", ipv6)
+        _setter("label", label)
+        _setter("private_ip_address", private_ip_address)
+        _setter("region", region)
+        _setter("specs", specs)
+        _setter("status", status)
+        _setter("swap_size", swap_size)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("watchdog_enabled", watchdog_enabled)
 
     @property
     @pulumi.getter
@@ -5931,11 +7491,28 @@ class GetInstancesInstanceAlertsResult(dict):
                  network_in: int,
                  network_out: int,
                  transfer_quota: int):
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "io", io)
-        pulumi.set(__self__, "network_in", network_in)
-        pulumi.set(__self__, "network_out", network_out)
-        pulumi.set(__self__, "transfer_quota", transfer_quota)
+        GetInstancesInstanceAlertsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu=cpu,
+            io=io,
+            network_in=network_in,
+            network_out=network_out,
+            transfer_quota=transfer_quota,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu: int,
+             io: int,
+             network_in: int,
+             network_out: int,
+             transfer_quota: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu", cpu)
+        _setter("io", io)
+        _setter("network_in", network_in)
+        _setter("network_out", network_out)
+        _setter("transfer_quota", transfer_quota)
 
     @property
     @pulumi.getter
@@ -5972,9 +7549,22 @@ class GetInstancesInstanceBackupResult(dict):
         """
         :param bool enabled: If this Linode has the Backup service enabled.
         """
-        pulumi.set(__self__, "available", available)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "schedules", schedules)
+        GetInstancesInstanceBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available=available,
+            enabled=enabled,
+            schedules=schedules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available: bool,
+             enabled: bool,
+             schedules: Sequence['outputs.GetInstancesInstanceBackupScheduleResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available", available)
+        _setter("enabled", enabled)
+        _setter("schedules", schedules)
 
     @property
     @pulumi.getter
@@ -6004,8 +7594,19 @@ class GetInstancesInstanceBackupScheduleResult(dict):
         :param str day: The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
         :param str window: The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
         """
-        pulumi.set(__self__, "day", day)
-        pulumi.set(__self__, "window", window)
+        GetInstancesInstanceBackupScheduleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            day=day,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             day: str,
+             window: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("day", day)
+        _setter("window", window)
 
     @property
     @pulumi.getter
@@ -6048,16 +7649,43 @@ class GetInstancesInstanceConfigResult(dict):
         :param str run_level: Defines the state of your Linode after booting.
         :param str virt_mode: Controls the virtualization mode.
         """
-        pulumi.set(__self__, "comments", comments)
-        pulumi.set(__self__, "devices", devices)
-        pulumi.set(__self__, "helpers", helpers)
-        pulumi.set(__self__, "interfaces", interfaces)
-        pulumi.set(__self__, "kernel", kernel)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "memory_limit", memory_limit)
-        pulumi.set(__self__, "root_device", root_device)
-        pulumi.set(__self__, "run_level", run_level)
-        pulumi.set(__self__, "virt_mode", virt_mode)
+        GetInstancesInstanceConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comments=comments,
+            devices=devices,
+            helpers=helpers,
+            interfaces=interfaces,
+            kernel=kernel,
+            label=label,
+            memory_limit=memory_limit,
+            root_device=root_device,
+            run_level=run_level,
+            virt_mode=virt_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comments: str,
+             devices: Sequence['outputs.GetInstancesInstanceConfigDeviceResult'],
+             helpers: Sequence['outputs.GetInstancesInstanceConfigHelperResult'],
+             interfaces: Sequence['outputs.GetInstancesInstanceConfigInterfaceResult'],
+             kernel: str,
+             label: str,
+             memory_limit: int,
+             root_device: str,
+             run_level: str,
+             virt_mode: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comments", comments)
+        _setter("devices", devices)
+        _setter("helpers", helpers)
+        _setter("interfaces", interfaces)
+        _setter("kernel", kernel)
+        _setter("label", label)
+        _setter("memory_limit", memory_limit)
+        _setter("root_device", root_device)
+        _setter("run_level", run_level)
+        _setter("virt_mode", virt_mode)
 
     @property
     @pulumi.getter
@@ -6151,14 +7779,37 @@ class GetInstancesInstanceConfigDeviceResult(dict):
         """
         :param Sequence['GetInstancesInstanceConfigDeviceSdaArgs'] sdas: ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
         """
-        pulumi.set(__self__, "sdas", sdas)
-        pulumi.set(__self__, "sdbs", sdbs)
-        pulumi.set(__self__, "sdcs", sdcs)
-        pulumi.set(__self__, "sdds", sdds)
-        pulumi.set(__self__, "sdes", sdes)
-        pulumi.set(__self__, "sdfs", sdfs)
-        pulumi.set(__self__, "sdgs", sdgs)
-        pulumi.set(__self__, "sdhs", sdhs)
+        GetInstancesInstanceConfigDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sdas=sdas,
+            sdbs=sdbs,
+            sdcs=sdcs,
+            sdds=sdds,
+            sdes=sdes,
+            sdfs=sdfs,
+            sdgs=sdgs,
+            sdhs=sdhs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sdas: Sequence['outputs.GetInstancesInstanceConfigDeviceSdaResult'],
+             sdbs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdbResult'],
+             sdcs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdcResult'],
+             sdds: Sequence['outputs.GetInstancesInstanceConfigDeviceSddResult'],
+             sdes: Sequence['outputs.GetInstancesInstanceConfigDeviceSdeResult'],
+             sdfs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdfResult'],
+             sdgs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdgResult'],
+             sdhs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sdas", sdas)
+        _setter("sdbs", sdbs)
+        _setter("sdcs", sdcs)
+        _setter("sdds", sdds)
+        _setter("sdes", sdes)
+        _setter("sdfs", sdfs)
+        _setter("sdgs", sdgs)
+        _setter("sdhs", sdhs)
 
     @property
     @pulumi.getter
@@ -6215,11 +7866,24 @@ class GetInstancesInstanceConfigDeviceSdaResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdaResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6257,11 +7921,24 @@ class GetInstancesInstanceConfigDeviceSdbResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdbResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6299,11 +7976,24 @@ class GetInstancesInstanceConfigDeviceSdcResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6341,11 +8031,24 @@ class GetInstancesInstanceConfigDeviceSddResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSddResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6383,11 +8086,24 @@ class GetInstancesInstanceConfigDeviceSdeResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6425,11 +8141,24 @@ class GetInstancesInstanceConfigDeviceSdfResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdfResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6467,11 +8196,24 @@ class GetInstancesInstanceConfigDeviceSdgResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdgResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6509,11 +8251,24 @@ class GetInstancesInstanceConfigDeviceSdhResult(dict):
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param int volume_id: The Volume ID to map to this `device` slot.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
+        GetInstancesInstanceConfigDeviceSdhResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            disk_label=disk_label,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: int,
+             disk_label: Optional[str] = None,
+             volume_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
         if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
+            _setter("disk_label", disk_label)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="diskId")
@@ -6554,11 +8309,28 @@ class GetInstancesInstanceConfigHelperResult(dict):
         :param bool network: Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
         :param bool updatedb_disabled: Disables updatedb cron job to avoid disk thrashing.
         """
-        pulumi.set(__self__, "devtmpfs_automount", devtmpfs_automount)
-        pulumi.set(__self__, "distro", distro)
-        pulumi.set(__self__, "modules_dep", modules_dep)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "updatedb_disabled", updatedb_disabled)
+        GetInstancesInstanceConfigHelperResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            devtmpfs_automount=devtmpfs_automount,
+            distro=distro,
+            modules_dep=modules_dep,
+            network=network,
+            updatedb_disabled=updatedb_disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             devtmpfs_automount: bool,
+             distro: bool,
+             modules_dep: bool,
+             network: bool,
+             updatedb_disabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("devtmpfs_automount", devtmpfs_automount)
+        _setter("distro", distro)
+        _setter("modules_dep", modules_dep)
+        _setter("network", network)
+        _setter("updatedb_disabled", updatedb_disabled)
 
     @property
     @pulumi.getter(name="devtmpfsAutomount")
@@ -6609,12 +8381,25 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
         :param str purpose: (Required) The type of interface. (`public`, `vlan`)
         """
+        GetInstancesInstanceConfigInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipam_address=ipam_address,
+            label=label,
+            purpose=purpose,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipam_address: Optional[str] = None,
+             label: Optional[str] = None,
+             purpose: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ipam_address is not None:
-            pulumi.set(__self__, "ipam_address", ipam_address)
+            _setter("ipam_address", ipam_address)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+            _setter("purpose", purpose)
 
     @property
     @pulumi.getter(name="ipamAddress")
@@ -6653,10 +8438,25 @@ class GetInstancesInstanceDiskResult(dict):
         :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
         :param int size: The size of the Disk in MB.
         """
-        pulumi.set(__self__, "filesystem", filesystem)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "size", size)
+        GetInstancesInstanceDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filesystem=filesystem,
+            id=id,
+            label=label,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filesystem: str,
+             id: int,
+             label: str,
+             size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filesystem", filesystem)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("size", size)
 
     @property
     @pulumi.getter
@@ -6695,10 +8495,25 @@ class GetInstancesInstanceSpecResult(dict):
                  memory: int,
                  transfer: int,
                  vcpus: int):
-        pulumi.set(__self__, "disk", disk)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "transfer", transfer)
-        pulumi.set(__self__, "vcpus", vcpus)
+        GetInstancesInstanceSpecResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk=disk,
+            memory=memory,
+            transfer=transfer,
+            vcpus=vcpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk: int,
+             memory: int,
+             transfer: int,
+             vcpus: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk", disk)
+        _setter("memory", memory)
+        _setter("transfer", transfer)
+        _setter("vcpus", vcpus)
 
     @property
     @pulumi.getter
@@ -6732,10 +8547,23 @@ class GetKernelsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetKernelsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -6784,15 +8612,40 @@ class GetKernelsKernelResult(dict):
         :param str version: Linux Kernel version
         :param bool xen: If this Kernel is suitable for Xen Linodes.
         """
-        pulumi.set(__self__, "architecture", architecture)
-        pulumi.set(__self__, "built", built)
-        pulumi.set(__self__, "deprecated", deprecated)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "kvm", kvm)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "pvops", pvops)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "xen", xen)
+        GetKernelsKernelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture=architecture,
+            built=built,
+            deprecated=deprecated,
+            id=id,
+            kvm=kvm,
+            label=label,
+            pvops=pvops,
+            version=version,
+            xen=xen,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture: str,
+             built: str,
+             deprecated: bool,
+             id: str,
+             kvm: bool,
+             label: str,
+             pvops: bool,
+             version: str,
+             xen: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("architecture", architecture)
+        _setter("built", built)
+        _setter("deprecated", deprecated)
+        _setter("id", id)
+        _setter("kvm", kvm)
+        _setter("label", label)
+        _setter("pvops", pvops)
+        _setter("version", version)
+        _setter("xen", xen)
 
     @property
     @pulumi.getter
@@ -6868,7 +8721,16 @@ class GetKernelsKernelResult(dict):
 class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
                  high_availability: bool):
-        pulumi.set(__self__, "high_availability", high_availability)
+        GetLkeClusterControlPlaneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            high_availability=high_availability,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             high_availability: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("high_availability", high_availability)
 
     @property
     @pulumi.getter(name="highAvailability")
@@ -6891,11 +8753,28 @@ class GetLkeClusterPoolResult(dict):
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         :param str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
-        pulumi.set(__self__, "autoscalers", autoscalers)
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "nodes", nodes)
-        pulumi.set(__self__, "type", type)
+        GetLkeClusterPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscalers=autoscalers,
+            count=count,
+            id=id,
+            nodes=nodes,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscalers: Sequence['outputs.GetLkeClusterPoolAutoscalerResult'],
+             count: int,
+             id: int,
+             nodes: Sequence['outputs.GetLkeClusterPoolNodeResult'],
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("autoscalers", autoscalers)
+        _setter("count", count)
+        _setter("id", id)
+        _setter("nodes", nodes)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -6947,8 +8826,19 @@ class GetLkeClusterPoolAutoscalerResult(dict):
         :param int max: The maximum number of nodes to autoscale to.
         :param int min: The minimum number of nodes to autoscale to.
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
+        GetLkeClusterPoolAutoscalerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: int,
+             min: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max", max)
+        _setter("min", min)
 
     @property
     @pulumi.getter
@@ -6978,9 +8868,22 @@ class GetLkeClusterPoolNodeResult(dict):
         :param int instance_id: The ID of the underlying Linode instance.
         :param str status: The status of the node. (`ready`, `not_ready`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetLkeClusterPoolNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             instance_id: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -7014,7 +8917,16 @@ class GetLkeVersionsVersionResult(dict):
         """
         :param str id: The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
         """
-        pulumi.set(__self__, "id", id)
+        GetLkeVersionsVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
 
     @property
     @pulumi.getter
@@ -7034,8 +8946,19 @@ class GetNodeBalancerConfigNodeStatusResult(dict):
         :param int down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         :param int up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
         """
-        pulumi.set(__self__, "down", down)
-        pulumi.set(__self__, "up", up)
+        GetNodeBalancerConfigNodeStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            down=down,
+            up=up,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             down: int,
+             up: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("down", down)
+        _setter("up", up)
 
     @property
     @pulumi.getter
@@ -7065,9 +8988,22 @@ class GetNodeBalancerTransferResult(dict):
         :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
         :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "out", out)
-        pulumi.set(__self__, "total", total)
+        GetNodeBalancerTransferResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            out=out,
+            total=total,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: float,
+             out: float,
+             total: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("in_", in_)
+        _setter("out", out)
+        _setter("total", total)
 
     @property
     @pulumi.getter(name="in")
@@ -7105,10 +9041,23 @@ class GetNodebalancersFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetNodebalancersFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -7161,17 +9110,46 @@ class GetNodebalancersNodebalancerResult(dict):
         :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param str updated: When this Linode NodeBalancer was last updated
         """
-        pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "transfers", transfers)
-        pulumi.set(__self__, "updated", updated)
+        GetNodebalancersNodebalancerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_conn_throttle=client_conn_throttle,
+            created=created,
+            hostname=hostname,
+            id=id,
+            ipv4=ipv4,
+            ipv6=ipv6,
+            label=label,
+            region=region,
+            tags=tags,
+            transfers=transfers,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_conn_throttle: int,
+             created: str,
+             hostname: str,
+             id: int,
+             ipv4: str,
+             ipv6: str,
+             label: str,
+             region: str,
+             tags: Sequence[str],
+             transfers: Sequence['outputs.GetNodebalancersNodebalancerTransferResult'],
+             updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_conn_throttle", client_conn_throttle)
+        _setter("created", created)
+        _setter("hostname", hostname)
+        _setter("id", id)
+        _setter("ipv4", ipv4)
+        _setter("ipv6", ipv6)
+        _setter("label", label)
+        _setter("region", region)
+        _setter("tags", tags)
+        _setter("transfers", transfers)
+        _setter("updated", updated)
 
     @property
     @pulumi.getter(name="clientConnThrottle")
@@ -7270,9 +9248,22 @@ class GetNodebalancersNodebalancerTransferResult(dict):
         :param float out: The total inbound transfer, in MB, used for this NodeBalancer for the current month
         :param float total: The total outbound transfer, in MB, used for this NodeBalancer for the current month
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "out", out)
-        pulumi.set(__self__, "total", total)
+        GetNodebalancersNodebalancerTransferResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            out=out,
+            total=total,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: float,
+             out: float,
+             total: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("in_", in_)
+        _setter("out", out)
+        _setter("total", total)
 
     @property
     @pulumi.getter(name="in")
@@ -7308,12 +9299,31 @@ class GetProfileReferralsResult(dict):
                  pending: int,
                  total: int,
                  url: str):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "completed", completed)
-        pulumi.set(__self__, "credit", credit)
-        pulumi.set(__self__, "pending", pending)
-        pulumi.set(__self__, "total", total)
-        pulumi.set(__self__, "url", url)
+        GetProfileReferralsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            completed=completed,
+            credit=credit,
+            pending=pending,
+            total=total,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             completed: int,
+             credit: float,
+             pending: int,
+             total: int,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("code", code)
+        _setter("completed", completed)
+        _setter("credit", credit)
+        _setter("pending", pending)
+        _setter("total", total)
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -7355,8 +9365,19 @@ class GetRegionResolverResult(dict):
         :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
         :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
         """
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
+        GetRegionResolverResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4=ipv4,
+            ipv6=ipv6,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4: str,
+             ipv6: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ipv4", ipv4)
+        _setter("ipv6", ipv6)
 
     @property
     @pulumi.getter
@@ -7386,10 +9407,23 @@ class GetRegionsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetRegionsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -7431,13 +9465,32 @@ class GetRegionsRegionResult(dict):
         :param str label: Detailed location information for this Region, including city, state or region, and country.
         :param str status: This region’s current operational status (ok or outage).
         """
-        pulumi.set(__self__, "capabilities", capabilities)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "status", status)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capabilities=capabilities,
+            country=country,
+            id=id,
+            label=label,
+            status=status,
+            resolvers=resolvers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capabilities: Sequence[str],
+             country: str,
+             id: str,
+             label: str,
+             status: str,
+             resolvers: Optional[Sequence['outputs.GetRegionsRegionResolverResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capabilities", capabilities)
+        _setter("country", country)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("status", status)
         if resolvers is not None:
-            pulumi.set(__self__, "resolvers", resolvers)
+            _setter("resolvers", resolvers)
 
     @property
     @pulumi.getter
@@ -7491,8 +9544,19 @@ class GetRegionsRegionResolverResult(dict):
         :param str ipv4: The IPv4 addresses for this region’s DNS resolvers, separated by commas.
         :param str ipv6: The IPv6 addresses for this region’s DNS resolvers, separated by commas.
         """
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
+        GetRegionsRegionResolverResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4=ipv4,
+            ipv6=ipv6,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4: str,
+             ipv6: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ipv4", ipv4)
+        _setter("ipv6", ipv6)
 
     @property
     @pulumi.getter
@@ -7522,10 +9586,23 @@ class GetSshkeysFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetSshkeysFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -7565,11 +9642,26 @@ class GetSshkeysSshkeyResult(dict):
         :param str ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         :param str id: The ID of the SSH Key.
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "ssh_key", ssh_key)
+        GetSshkeysSshkeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            label=label,
+            ssh_key=ssh_key,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             label: str,
+             ssh_key: str,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("label", label)
+        _setter("ssh_key", ssh_key)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -7621,12 +9713,31 @@ class GetStackScriptUserDefinedFieldResult(dict):
         :param str name: The name of the field.
         :param str one_of: A list of acceptable single values for the field.
         """
-        pulumi.set(__self__, "default", default)
-        pulumi.set(__self__, "example", example)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "many_of", many_of)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "one_of", one_of)
+        GetStackScriptUserDefinedFieldResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+            example=example,
+            label=label,
+            many_of=many_of,
+            name=name,
+            one_of=one_of,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: str,
+             example: str,
+             label: str,
+             many_of: str,
+             name: str,
+             one_of: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
+        _setter("example", example)
+        _setter("label", label)
+        _setter("many_of", many_of)
+        _setter("name", name)
+        _setter("one_of", one_of)
 
     @property
     @pulumi.getter
@@ -7688,10 +9799,23 @@ class GetStackScriptsFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetStackScriptsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -7751,20 +9875,55 @@ class GetStackScriptsStackscriptResult(dict):
         :param str user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param str username: The User who created the StackScript.
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "deployments_active", deployments_active)
-        pulumi.set(__self__, "deployments_total", deployments_total)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "images", images)
-        pulumi.set(__self__, "is_public", is_public)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "rev_note", rev_note)
-        pulumi.set(__self__, "script", script)
-        pulumi.set(__self__, "updated", updated)
-        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
-        pulumi.set(__self__, "user_gravatar_id", user_gravatar_id)
-        pulumi.set(__self__, "username", username)
+        GetStackScriptsStackscriptResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            deployments_active=deployments_active,
+            deployments_total=deployments_total,
+            description=description,
+            id=id,
+            images=images,
+            is_public=is_public,
+            label=label,
+            rev_note=rev_note,
+            script=script,
+            updated=updated,
+            user_defined_fields=user_defined_fields,
+            user_gravatar_id=user_gravatar_id,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             deployments_active: int,
+             deployments_total: int,
+             description: str,
+             id: str,
+             images: Sequence[str],
+             is_public: bool,
+             label: str,
+             rev_note: str,
+             script: str,
+             updated: str,
+             user_defined_fields: Sequence['outputs.GetStackScriptsStackscriptUserDefinedFieldResult'],
+             user_gravatar_id: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("deployments_active", deployments_active)
+        _setter("deployments_total", deployments_total)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("images", images)
+        _setter("is_public", is_public)
+        _setter("label", label)
+        _setter("rev_note", rev_note)
+        _setter("script", script)
+        _setter("updated", updated)
+        _setter("user_defined_fields", user_defined_fields)
+        _setter("user_gravatar_id", user_gravatar_id)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -7896,12 +10055,31 @@ class GetStackScriptsStackscriptUserDefinedFieldResult(dict):
         :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         :param str one_of: A list of acceptable single values for the field.
         """
-        pulumi.set(__self__, "default", default)
-        pulumi.set(__self__, "example", example)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "many_of", many_of)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "one_of", one_of)
+        GetStackScriptsStackscriptUserDefinedFieldResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default=default,
+            example=example,
+            label=label,
+            many_of=many_of,
+            name=name,
+            one_of=one_of,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default: str,
+             example: str,
+             label: str,
+             many_of: str,
+             name: str,
+             one_of: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default", default)
+        _setter("example", example)
+        _setter("label", label)
+        _setter("many_of", many_of)
+        _setter("name", name)
+        _setter("one_of", one_of)
 
     @property
     @pulumi.getter
@@ -7963,9 +10141,22 @@ class GetUserDatabaseGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserDatabaseGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8003,9 +10194,22 @@ class GetUserDomainGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserDomainGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8043,9 +10247,22 @@ class GetUserFirewallGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserFirewallGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8100,18 +10317,49 @@ class GetUserGlobalGrantResult(dict):
         :param bool cancel_account: If true, this User may cancel the entire Account.
         :param bool longview_subscription: If true, this User may manage the Account’s Longview subscription.
         """
-        pulumi.set(__self__, "account_access", account_access)
-        pulumi.set(__self__, "add_databases", add_databases)
-        pulumi.set(__self__, "add_domains", add_domains)
-        pulumi.set(__self__, "add_firewalls", add_firewalls)
-        pulumi.set(__self__, "add_images", add_images)
-        pulumi.set(__self__, "add_linodes", add_linodes)
-        pulumi.set(__self__, "add_longview", add_longview)
-        pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        pulumi.set(__self__, "add_stackscripts", add_stackscripts)
-        pulumi.set(__self__, "add_volumes", add_volumes)
-        pulumi.set(__self__, "cancel_account", cancel_account)
-        pulumi.set(__self__, "longview_subscription", longview_subscription)
+        GetUserGlobalGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_access=account_access,
+            add_databases=add_databases,
+            add_domains=add_domains,
+            add_firewalls=add_firewalls,
+            add_images=add_images,
+            add_linodes=add_linodes,
+            add_longview=add_longview,
+            add_nodebalancers=add_nodebalancers,
+            add_stackscripts=add_stackscripts,
+            add_volumes=add_volumes,
+            cancel_account=cancel_account,
+            longview_subscription=longview_subscription,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_access: str,
+             add_databases: bool,
+             add_domains: bool,
+             add_firewalls: bool,
+             add_images: bool,
+             add_linodes: bool,
+             add_longview: bool,
+             add_nodebalancers: bool,
+             add_stackscripts: bool,
+             add_volumes: bool,
+             cancel_account: bool,
+             longview_subscription: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_access", account_access)
+        _setter("add_databases", add_databases)
+        _setter("add_domains", add_domains)
+        _setter("add_firewalls", add_firewalls)
+        _setter("add_images", add_images)
+        _setter("add_linodes", add_linodes)
+        _setter("add_longview", add_longview)
+        _setter("add_nodebalancers", add_nodebalancers)
+        _setter("add_stackscripts", add_stackscripts)
+        _setter("add_volumes", add_volumes)
+        _setter("cancel_account", cancel_account)
+        _setter("longview_subscription", longview_subscription)
 
     @property
     @pulumi.getter(name="accountAccess")
@@ -8218,9 +10466,22 @@ class GetUserImageGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserImageGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8258,9 +10519,22 @@ class GetUserLinodeGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserLinodeGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8298,9 +10572,22 @@ class GetUserLongviewGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserLongviewGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8338,9 +10625,22 @@ class GetUserNodebalancerGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserNodebalancerGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8378,9 +10678,22 @@ class GetUserStackscriptGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserStackscriptGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8418,9 +10731,22 @@ class GetUserVolumeGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUserVolumeGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8458,10 +10784,23 @@ class GetUsersFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetUsersFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -8519,24 +10858,67 @@ class GetUsersUserResult(dict):
         :param str username: This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         :param str verified_phone_number: The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
         """
-        pulumi.set(__self__, "database_grants", database_grants)
-        pulumi.set(__self__, "domain_grants", domain_grants)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "firewall_grants", firewall_grants)
-        pulumi.set(__self__, "global_grants", global_grants)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_grants", image_grants)
-        pulumi.set(__self__, "linode_grants", linode_grants)
-        pulumi.set(__self__, "longview_grants", longview_grants)
-        pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
-        pulumi.set(__self__, "password_created", password_created)
-        pulumi.set(__self__, "restricted", restricted)
-        pulumi.set(__self__, "ssh_keys", ssh_keys)
-        pulumi.set(__self__, "stackscript_grants", stackscript_grants)
-        pulumi.set(__self__, "tfa_enabled", tfa_enabled)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "verified_phone_number", verified_phone_number)
-        pulumi.set(__self__, "volume_grants", volume_grants)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_grants=database_grants,
+            domain_grants=domain_grants,
+            email=email,
+            firewall_grants=firewall_grants,
+            global_grants=global_grants,
+            id=id,
+            image_grants=image_grants,
+            linode_grants=linode_grants,
+            longview_grants=longview_grants,
+            nodebalancer_grants=nodebalancer_grants,
+            password_created=password_created,
+            restricted=restricted,
+            ssh_keys=ssh_keys,
+            stackscript_grants=stackscript_grants,
+            tfa_enabled=tfa_enabled,
+            username=username,
+            verified_phone_number=verified_phone_number,
+            volume_grants=volume_grants,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_grants: Sequence['outputs.GetUsersUserDatabaseGrantResult'],
+             domain_grants: Sequence['outputs.GetUsersUserDomainGrantResult'],
+             email: str,
+             firewall_grants: Sequence['outputs.GetUsersUserFirewallGrantResult'],
+             global_grants: Sequence['outputs.GetUsersUserGlobalGrantResult'],
+             id: str,
+             image_grants: Sequence['outputs.GetUsersUserImageGrantResult'],
+             linode_grants: Sequence['outputs.GetUsersUserLinodeGrantResult'],
+             longview_grants: Sequence['outputs.GetUsersUserLongviewGrantResult'],
+             nodebalancer_grants: Sequence['outputs.GetUsersUserNodebalancerGrantResult'],
+             password_created: str,
+             restricted: bool,
+             ssh_keys: Sequence[str],
+             stackscript_grants: Sequence['outputs.GetUsersUserStackscriptGrantResult'],
+             tfa_enabled: bool,
+             username: str,
+             verified_phone_number: str,
+             volume_grants: Sequence['outputs.GetUsersUserVolumeGrantResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database_grants", database_grants)
+        _setter("domain_grants", domain_grants)
+        _setter("email", email)
+        _setter("firewall_grants", firewall_grants)
+        _setter("global_grants", global_grants)
+        _setter("id", id)
+        _setter("image_grants", image_grants)
+        _setter("linode_grants", linode_grants)
+        _setter("longview_grants", longview_grants)
+        _setter("nodebalancer_grants", nodebalancer_grants)
+        _setter("password_created", password_created)
+        _setter("restricted", restricted)
+        _setter("ssh_keys", ssh_keys)
+        _setter("stackscript_grants", stackscript_grants)
+        _setter("tfa_enabled", tfa_enabled)
+        _setter("username", username)
+        _setter("verified_phone_number", verified_phone_number)
+        _setter("volume_grants", volume_grants)
 
     @property
     @pulumi.getter(name="databaseGrants")
@@ -8664,9 +11046,22 @@ class GetUsersUserDatabaseGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserDatabaseGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8704,9 +11099,22 @@ class GetUsersUserDomainGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserDomainGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8744,9 +11152,22 @@ class GetUsersUserFirewallGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserFirewallGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8801,18 +11222,49 @@ class GetUsersUserGlobalGrantResult(dict):
         :param bool cancel_account: If true, this User may cancel the entire Account.
         :param bool longview_subscription: If true, this User may manage the Account’s Longview subscription.
         """
-        pulumi.set(__self__, "account_access", account_access)
-        pulumi.set(__self__, "add_databases", add_databases)
-        pulumi.set(__self__, "add_domains", add_domains)
-        pulumi.set(__self__, "add_firewalls", add_firewalls)
-        pulumi.set(__self__, "add_images", add_images)
-        pulumi.set(__self__, "add_linodes", add_linodes)
-        pulumi.set(__self__, "add_longview", add_longview)
-        pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        pulumi.set(__self__, "add_stackscripts", add_stackscripts)
-        pulumi.set(__self__, "add_volumes", add_volumes)
-        pulumi.set(__self__, "cancel_account", cancel_account)
-        pulumi.set(__self__, "longview_subscription", longview_subscription)
+        GetUsersUserGlobalGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_access=account_access,
+            add_databases=add_databases,
+            add_domains=add_domains,
+            add_firewalls=add_firewalls,
+            add_images=add_images,
+            add_linodes=add_linodes,
+            add_longview=add_longview,
+            add_nodebalancers=add_nodebalancers,
+            add_stackscripts=add_stackscripts,
+            add_volumes=add_volumes,
+            cancel_account=cancel_account,
+            longview_subscription=longview_subscription,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_access: str,
+             add_databases: bool,
+             add_domains: bool,
+             add_firewalls: bool,
+             add_images: bool,
+             add_linodes: bool,
+             add_longview: bool,
+             add_nodebalancers: bool,
+             add_stackscripts: bool,
+             add_volumes: bool,
+             cancel_account: bool,
+             longview_subscription: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_access", account_access)
+        _setter("add_databases", add_databases)
+        _setter("add_domains", add_domains)
+        _setter("add_firewalls", add_firewalls)
+        _setter("add_images", add_images)
+        _setter("add_linodes", add_linodes)
+        _setter("add_longview", add_longview)
+        _setter("add_nodebalancers", add_nodebalancers)
+        _setter("add_stackscripts", add_stackscripts)
+        _setter("add_volumes", add_volumes)
+        _setter("cancel_account", cancel_account)
+        _setter("longview_subscription", longview_subscription)
 
     @property
     @pulumi.getter(name="accountAccess")
@@ -8919,9 +11371,22 @@ class GetUsersUserImageGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserImageGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8959,9 +11424,22 @@ class GetUsersUserLinodeGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserLinodeGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -8999,9 +11477,22 @@ class GetUsersUserLongviewGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserLongviewGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -9039,9 +11530,22 @@ class GetUsersUserNodebalancerGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserNodebalancerGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -9079,9 +11583,22 @@ class GetUsersUserStackscriptGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserStackscriptGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -9119,9 +11636,22 @@ class GetUsersUserVolumeGrantResult(dict):
         :param str label: The current label of the entity this grant applies to, for display purposes.
         :param str permissions: The level of access this User has to this entity. If null, this User has no access.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
+        GetUsersUserVolumeGrantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label=label,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             label: str,
+             permissions: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("label", label)
+        _setter("permissions", permissions)
 
     @property
     @pulumi.getter
@@ -9159,10 +11689,23 @@ class GetVlansFilterResult(dict):
         :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
         :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetVlansFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -9202,10 +11745,25 @@ class GetVlansVlanResult(dict):
         :param Sequence[int] linodes: The running Linodes currently attached to the VLAN.
         :param str region: The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
         """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "linodes", linodes)
-        pulumi.set(__self__, "region", region)
+        GetVlansVlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            label=label,
+            linodes=linodes,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             label: str,
+             linodes: Sequence[int],
+             region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("label", label)
+        _setter("linodes", linodes)
+        _setter("region", region)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InstanceIpArgs', 'InstanceIp']
@@ -25,13 +25,28 @@ class InstanceIpArgs:
         :param pulumi.Input[bool] public: Whether the IPv4 address is public or private. Defaults to true.
         :param pulumi.Input[str] rdns: The reverse DNS assigned to this address.
         """
-        pulumi.set(__self__, "linode_id", linode_id)
+        InstanceIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            linode_id=linode_id,
+            apply_immediately=apply_immediately,
+            public=public,
+            rdns=rdns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             linode_id: pulumi.Input[int],
+             apply_immediately: Optional[pulumi.Input[bool]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             rdns: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("linode_id", linode_id)
         if apply_immediately is not None:
-            pulumi.set(__self__, "apply_immediately", apply_immediately)
+            _setter("apply_immediately", apply_immediately)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if rdns is not None:
-            pulumi.set(__self__, "rdns", rdns)
+            _setter("rdns", rdns)
 
     @property
     @pulumi.getter(name="linodeId")
@@ -108,26 +123,53 @@ class _InstanceIpState:
         :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
+        _InstanceIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            apply_immediately=apply_immediately,
+            gateway=gateway,
+            linode_id=linode_id,
+            prefix=prefix,
+            public=public,
+            rdns=rdns,
+            region=region,
+            subnet_mask=subnet_mask,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             apply_immediately: Optional[pulumi.Input[bool]] = None,
+             gateway: Optional[pulumi.Input[str]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             prefix: Optional[pulumi.Input[int]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             rdns: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_mask: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if apply_immediately is not None:
-            pulumi.set(__self__, "apply_immediately", apply_immediately)
+            _setter("apply_immediately", apply_immediately)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if rdns is not None:
-            pulumi.set(__self__, "rdns", rdns)
+            _setter("rdns", rdns)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_mask is not None:
-            pulumi.set(__self__, "subnet_mask", subnet_mask)
+            _setter("subnet_mask", subnet_mask)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -329,6 +371,10 @@ class InstanceIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

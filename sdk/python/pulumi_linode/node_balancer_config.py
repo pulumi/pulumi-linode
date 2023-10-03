@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,37 +52,76 @@ class NodeBalancerConfigArgs:
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
-        pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+        NodeBalancerConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            nodebalancer_id=nodebalancer_id,
+            algorithm=algorithm,
+            check=check,
+            check_attempts=check_attempts,
+            check_body=check_body,
+            check_interval=check_interval,
+            check_passive=check_passive,
+            check_path=check_path,
+            check_timeout=check_timeout,
+            cipher_suite=cipher_suite,
+            port=port,
+            protocol=protocol,
+            proxy_protocol=proxy_protocol,
+            ssl_cert=ssl_cert,
+            ssl_key=ssl_key,
+            stickiness=stickiness,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             nodebalancer_id: pulumi.Input[int],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             check: Optional[pulumi.Input[str]] = None,
+             check_attempts: Optional[pulumi.Input[int]] = None,
+             check_body: Optional[pulumi.Input[str]] = None,
+             check_interval: Optional[pulumi.Input[int]] = None,
+             check_passive: Optional[pulumi.Input[bool]] = None,
+             check_path: Optional[pulumi.Input[str]] = None,
+             check_timeout: Optional[pulumi.Input[int]] = None,
+             cipher_suite: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol: Optional[pulumi.Input[str]] = None,
+             ssl_cert: Optional[pulumi.Input[str]] = None,
+             ssl_key: Optional[pulumi.Input[str]] = None,
+             stickiness: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("nodebalancer_id", nodebalancer_id)
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if check_attempts is not None:
-            pulumi.set(__self__, "check_attempts", check_attempts)
+            _setter("check_attempts", check_attempts)
         if check_body is not None:
-            pulumi.set(__self__, "check_body", check_body)
+            _setter("check_body", check_body)
         if check_interval is not None:
-            pulumi.set(__self__, "check_interval", check_interval)
+            _setter("check_interval", check_interval)
         if check_passive is not None:
-            pulumi.set(__self__, "check_passive", check_passive)
+            _setter("check_passive", check_passive)
         if check_path is not None:
-            pulumi.set(__self__, "check_path", check_path)
+            _setter("check_path", check_path)
         if check_timeout is not None:
-            pulumi.set(__self__, "check_timeout", check_timeout)
+            _setter("check_timeout", check_timeout)
         if cipher_suite is not None:
-            pulumi.set(__self__, "cipher_suite", cipher_suite)
+            _setter("cipher_suite", cipher_suite)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if ssl_cert is not None:
-            pulumi.set(__self__, "ssl_cert", ssl_cert)
+            _setter("ssl_cert", ssl_cert)
         if ssl_key is not None:
-            pulumi.set(__self__, "ssl_key", ssl_key)
+            _setter("ssl_key", ssl_key)
         if stickiness is not None:
-            pulumi.set(__self__, "stickiness", stickiness)
+            _setter("stickiness", stickiness)
 
     @property
     @pulumi.getter(name="nodebalancerId")
@@ -324,44 +363,89 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
+        _NodeBalancerConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            check=check,
+            check_attempts=check_attempts,
+            check_body=check_body,
+            check_interval=check_interval,
+            check_passive=check_passive,
+            check_path=check_path,
+            check_timeout=check_timeout,
+            cipher_suite=cipher_suite,
+            node_statuses=node_statuses,
+            nodebalancer_id=nodebalancer_id,
+            port=port,
+            protocol=protocol,
+            proxy_protocol=proxy_protocol,
+            ssl_cert=ssl_cert,
+            ssl_commonname=ssl_commonname,
+            ssl_fingerprint=ssl_fingerprint,
+            ssl_key=ssl_key,
+            stickiness=stickiness,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             check: Optional[pulumi.Input[str]] = None,
+             check_attempts: Optional[pulumi.Input[int]] = None,
+             check_body: Optional[pulumi.Input[str]] = None,
+             check_interval: Optional[pulumi.Input[int]] = None,
+             check_passive: Optional[pulumi.Input[bool]] = None,
+             check_path: Optional[pulumi.Input[str]] = None,
+             check_timeout: Optional[pulumi.Input[int]] = None,
+             cipher_suite: Optional[pulumi.Input[str]] = None,
+             node_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]] = None,
+             nodebalancer_id: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol: Optional[pulumi.Input[str]] = None,
+             ssl_cert: Optional[pulumi.Input[str]] = None,
+             ssl_commonname: Optional[pulumi.Input[str]] = None,
+             ssl_fingerprint: Optional[pulumi.Input[str]] = None,
+             ssl_key: Optional[pulumi.Input[str]] = None,
+             stickiness: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if check_attempts is not None:
-            pulumi.set(__self__, "check_attempts", check_attempts)
+            _setter("check_attempts", check_attempts)
         if check_body is not None:
-            pulumi.set(__self__, "check_body", check_body)
+            _setter("check_body", check_body)
         if check_interval is not None:
-            pulumi.set(__self__, "check_interval", check_interval)
+            _setter("check_interval", check_interval)
         if check_passive is not None:
-            pulumi.set(__self__, "check_passive", check_passive)
+            _setter("check_passive", check_passive)
         if check_path is not None:
-            pulumi.set(__self__, "check_path", check_path)
+            _setter("check_path", check_path)
         if check_timeout is not None:
-            pulumi.set(__self__, "check_timeout", check_timeout)
+            _setter("check_timeout", check_timeout)
         if cipher_suite is not None:
-            pulumi.set(__self__, "cipher_suite", cipher_suite)
+            _setter("cipher_suite", cipher_suite)
         if node_statuses is not None:
-            pulumi.set(__self__, "node_statuses", node_statuses)
+            _setter("node_statuses", node_statuses)
         if nodebalancer_id is not None:
-            pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+            _setter("nodebalancer_id", nodebalancer_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if ssl_cert is not None:
-            pulumi.set(__self__, "ssl_cert", ssl_cert)
+            _setter("ssl_cert", ssl_cert)
         if ssl_commonname is not None:
-            pulumi.set(__self__, "ssl_commonname", ssl_commonname)
+            _setter("ssl_commonname", ssl_commonname)
         if ssl_fingerprint is not None:
-            pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
+            _setter("ssl_fingerprint", ssl_fingerprint)
         if ssl_key is not None:
-            pulumi.set(__self__, "ssl_key", ssl_key)
+            _setter("ssl_key", ssl_key)
         if stickiness is not None:
-            pulumi.set(__self__, "stickiness", stickiness)
+            _setter("stickiness", stickiness)
 
     @property
     @pulumi.getter
@@ -728,6 +812,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeBalancerConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
