@@ -89,8 +89,6 @@ namespace Pulumi.Linode
     /// ```sh
     ///  $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
     /// ```
-    /// 
-    ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/instanceDisk:InstanceDisk")]
     public partial class InstanceDisk : global::Pulumi.CustomResource

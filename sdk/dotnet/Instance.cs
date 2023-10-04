@@ -61,7 +61,7 @@ namespace Pulumi.Linode
     /// 
     /// **Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
     /// 
-    /// The instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types.
+    /// The instance must include a `boot_config_label` referring to the correct configuration profile.
     /// </summary>
     [LinodeResourceType("linode:index/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
@@ -221,7 +221,7 @@ namespace Pulumi.Linode
         public Output<bool?> ResizeDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         /// </summary>
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
@@ -486,7 +486,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         /// </summary>
         public Input<string>? RootPass
         {
@@ -773,7 +773,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         /// </summary>
         public Input<string>? RootPass
         {

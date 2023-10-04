@@ -68,8 +68,6 @@ import (
 //	$ pulumi import linode:index/domain:Domain foobar 1234567
 //
 // ```
-//
-//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
 type Domain struct {
 	pulumi.CustomResourceState
 

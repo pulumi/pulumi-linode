@@ -64,8 +64,6 @@ import javax.annotation.Nullable;
  *  $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
  * ```
  * 
- *  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
- * 
  */
 @ResourceType(type="linode:index/nodeBalancer:NodeBalancer")
 public class NodeBalancer extends com.pulumi.resources.CustomResource {

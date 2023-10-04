@@ -2727,7 +2727,7 @@ export interface InstanceDisk {
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
      */
     rootPass?: pulumi.Input<string>;
     /**

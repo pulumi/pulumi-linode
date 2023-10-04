@@ -52,7 +52,7 @@ public final class InstanceDisk {
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
      * 
      */
     private @Nullable String rootPass;
@@ -123,7 +123,7 @@ public final class InstanceDisk {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
      * 
      */
     public Optional<String> rootPass() {

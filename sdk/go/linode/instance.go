@@ -72,7 +72,7 @@ import (
 //
 // **Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
 //
-// The instance must include a `boot_config_label` referring to the correct configuration profile. The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Instances and other Linode resource types.
+// The instance must include a `boot_config_label` referring to the correct configuration profile.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -139,7 +139,7 @@ type Instance struct {
 	//
 	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
@@ -270,7 +270,7 @@ type instanceState struct {
 	//
 	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
@@ -358,7 +358,7 @@ type InstanceState struct {
 	//
 	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrInput
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 	SharedIpv4s pulumi.StringArrayInput
@@ -436,7 +436,7 @@ type instanceArgs struct {
 	//
 	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
@@ -507,7 +507,7 @@ type InstanceArgs struct {
 	//
 	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrInput
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 	SharedIpv4s pulumi.StringArrayInput
@@ -773,7 +773,7 @@ func (o InstanceOutput) ResizeDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ResizeDisk }).(pulumi.BoolPtrOutput)
 }
 
-// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 func (o InstanceOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RootPass }).(pulumi.StringPtrOutput)
 }

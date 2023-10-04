@@ -107,8 +107,6 @@ namespace Pulumi.Linode
     /// ```sh
     ///  $ pulumi import linode:index/volume:Volume myvolume 1234567
     /// ```
-    /// 
-    ///  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
     /// </summary>
     [LinodeResourceType("linode:index/volume:Volume")]
     public partial class Volume : global::Pulumi.CustomResource

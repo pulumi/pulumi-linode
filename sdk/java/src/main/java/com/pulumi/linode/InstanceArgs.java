@@ -319,14 +319,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -953,7 +953,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
          * 
          * @return builder
          * 
@@ -964,7 +964,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
          * 
          * @return builder
          * 
