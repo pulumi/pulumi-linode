@@ -1,75 +1,22 @@
-diff --git b/linode/instance/helpers.go a/linode/instance/helpers.go
-index 4815d968..58604619 100644
---- b/linode/instance/helpers.go
-+++ a/linode/instance/helpers.go
-@@ -1004,13 +1004,14 @@ func isInstanceBooted(instance *linodego.Instance) bool {
- 
- func validateBooted(ctx context.Context, d *schema.ResourceData) error {
- 	booted := d.Get("booted").(bool)
--	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
- 
-+	// FORK: we don't need to check the rawConfig for the boote
-+	// this doesn't work for us
- 	_, imageOk := d.GetOk("image")
- 	_, disksOk := d.GetOk("disk")
- 	_, configsOk := d.GetOk("config")
- 
--	if !bootedNull && booted && !imageOk && !(disksOk && configsOk) {
-+	if booted && !imageOk && !(disksOk && configsOk) {
- 		return fmt.Errorf("booted requires an image or disk/config be defined")
- 	}
- 
-diff --git b/linode/instance/resource.go a/linode/instance/resource.go
-index b284d7d8..f23f2771 100644
---- b/linode/instance/resource.go
-+++ a/linode/instance/resource.go
-@@ -182,7 +182,6 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
- 
- 	_, disksOk := d.GetOk("disk")
- 	_, configsOk := d.GetOk("config")
--	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
- 	booted := d.Get("booted").(bool)
- 
- 	// If we don't have disks and we don't have configs, use the single API call approach
-@@ -214,10 +213,6 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
- 
- 		createOpts.Booted = &boolTrue
- 
--		if !d.GetRawConfig().GetAttr("booted").IsNull() {
--			createOpts.Booted = &booted
--		}
--
- 		createOpts.BackupID = d.Get("backup_id").(int)
- 		if swapSize := d.Get("swap_size").(int); swapSize > 0 {
- 			createOpts.SwapSize = &swapSize
-@@ -362,7 +357,7 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
- 	targetStatus := linodego.InstanceRunning
- 
- 	if createOpts.Booted == nil || !*createOpts.Booted {
--		if disksOk && configsOk && (bootedNull || booted) {
-+		if disksOk && configsOk && booted {
- 			p, err := client.NewEventPoller(ctx, instance.ID, linodego.EntityLinode, linodego.ActionLinodeBoot)
- 			if err != nil {
- 				return diag.Errorf("failed to initialize event poller: %s", err)
-@@ -635,11 +630,12 @@ func updateResource(ctx context.Context, d *schema.ResourceData, meta interface{
- 		}
- 	}
- 
-+	// FORK: we don't need to check the rawConfig for the boote
-+	// this doesn't work for us
- 	booted := d.Get("booted").(bool)
--	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
- 
- 	// Don't reboot if the Linode should be powered off
--	if !bootedNull && !booted {
-+	if !booted {
- 		rebootInstance = false
- 	}
- 
-diff --git b/website/docs/r/domain.html.markdown a/website/docs/r/domain.html.markdown
+From 333ee7c4922bb920c8958a172e250e694986a214 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Wed, 4 Oct 2023 13:20:42 -0700
+Subject: [PATCH 2/2] Remove TF from docs
+
+---
+ website/docs/r/domain.html.markdown              |  2 --
+ website/docs/r/instance.html.markdown            | 12 ++++--------
+ website/docs/r/nodebalancer.html.markdown        |  2 --
+ website/docs/r/nodebalancer_config.html.markdown |  2 --
+ website/docs/r/nodebalancer_node.html.markdown   |  4 +---
+ website/docs/r/stackscript.html.markdown         |  2 --
+ website/docs/r/token.html.markdown               |  4 ++--
+ 7 files changed, 7 insertions(+), 21 deletions(-)
+
+diff --git a/website/docs/r/domain.html.markdown b/website/docs/r/domain.html.markdown
 index 895a998c..5dc8f106 100644
---- b/website/docs/r/domain.html.markdown
-+++ a/website/docs/r/domain.html.markdown
+--- a/website/docs/r/domain.html.markdown
++++ b/website/docs/r/domain.html.markdown
 @@ -11,8 +11,6 @@ description: |-
  Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
  For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
@@ -79,80 +26,10 @@ index 895a998c..5dc8f106 100644
  ## Example Usage
  
  The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-diff --git b/website/docs/r/firewall.html.markdown a/website/docs/r/firewall.html.markdown
-index 82ff604a..66630433 100644
---- b/website/docs/r/firewall.html.markdown
-+++ a/website/docs/r/firewall.html.markdown
-@@ -26,7 +26,7 @@ resource "linode_firewall" "my_firewall" {
-     ipv4     = ["0.0.0.0/0"]
-     ipv6     = ["::/0"]
-   }
--  
-+
-   inbound {
-     label    = "allow-https"
-     action   = "ACCEPT"
-@@ -35,7 +35,7 @@ resource "linode_firewall" "my_firewall" {
-     ipv4     = ["0.0.0.0/0"]
-     ipv6     = ["::/0"]
-   }
--  
-+
-   inbound_policy = "DROP"
- 
-   outbound {
-@@ -46,7 +46,7 @@ resource "linode_firewall" "my_firewall" {
-     ipv4     = ["0.0.0.0/0"]
-     ipv6     = ["::/0"]
-   }
--  
-+
-   outbound {
-     label    = "reject-https"
-     action   = "DROP"
-@@ -55,7 +55,7 @@ resource "linode_firewall" "my_firewall" {
-     ipv4     = ["0.0.0.0/0"]
-     ipv6     = ["::/0"]
-   }
--  
-+
-   outbound_policy = "ACCEPT"
- 
-   linodes = [linode_instance.my_instance.id]
-@@ -80,11 +80,11 @@ The following arguments are supported:
- * `disabled` - (Optional) If `true`, the Firewall's rules are not enforced (defaults to `false`).
- 
- * [`inbound`](#inbound) - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
--  
-+
- * `inbound_policy` - (Required) The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
- 
- * [`outbound`](#outbound) - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
--  
-+
- * `outbound_policy` - (Required) The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
- 
- * `linodes` - (Optional) A list of IDs of Linodes this Firewall should govern it's network traffic for.
-@@ -98,13 +98,13 @@ The following arguments are supported:
- The following arguments are supported in the inbound and outbound rule blocks:
- 
- * `label` - (required) Used to identify this rule. For display purposes only.
--  
-+
- * `action` - (required) Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
- 
- * `protocol` - (Required) The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
- 
- * `ports` - (Optional) A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
--  
-+
- * `ipv4` - (Optional) A list of IPv4 addresses or networks. Must be in IP/mask format.
- 
- * `ipv6` - (Optional) A list of IPv6 addresses or networks. Must be in IP/mask format.
-diff --git b/website/docs/r/instance.html.markdown a/website/docs/r/instance.html.markdown
+diff --git a/website/docs/r/instance.html.markdown b/website/docs/r/instance.html.markdown
 index e92815a3..6c18c49f 100644
---- b/website/docs/r/instance.html.markdown
-+++ a/website/docs/r/instance.html.markdown
+--- a/website/docs/r/instance.html.markdown
++++ b/website/docs/r/instance.html.markdown
 @@ -11,10 +11,6 @@ description: |-
  Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
  For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
@@ -198,10 +75,10 @@ index e92815a3..6c18c49f 100644
  
    * `stackscript_id` - (Optional with `image`) The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
  
-diff --git b/website/docs/r/nodebalancer.html.markdown a/website/docs/r/nodebalancer.html.markdown
+diff --git a/website/docs/r/nodebalancer.html.markdown b/website/docs/r/nodebalancer.html.markdown
 index 55c073a6..43defcd2 100644
---- b/website/docs/r/nodebalancer.html.markdown
-+++ a/website/docs/r/nodebalancer.html.markdown
+--- a/website/docs/r/nodebalancer.html.markdown
++++ b/website/docs/r/nodebalancer.html.markdown
 @@ -11,8 +11,6 @@ description: |-
  Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
  For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
@@ -211,10 +88,10 @@ index 55c073a6..43defcd2 100644
  ## Example Usage
  
  The following example shows how one might use this resource to configure a NodeBalancer.
-diff --git b/website/docs/r/nodebalancer_config.html.markdown a/website/docs/r/nodebalancer_config.html.markdown
+diff --git a/website/docs/r/nodebalancer_config.html.markdown b/website/docs/r/nodebalancer_config.html.markdown
 index 31cb86aa..1b961a1b 100644
---- b/website/docs/r/nodebalancer_config.html.markdown
-+++ a/website/docs/r/nodebalancer_config.html.markdown
+--- a/website/docs/r/nodebalancer_config.html.markdown
++++ b/website/docs/r/nodebalancer_config.html.markdown
 @@ -11,8 +11,6 @@ description: |-
  Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
  For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
@@ -224,10 +101,10 @@ index 31cb86aa..1b961a1b 100644
  ## Example Usage
  
  The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
-diff --git b/website/docs/r/nodebalancer_node.html.markdown a/website/docs/r/nodebalancer_node.html.markdown
+diff --git a/website/docs/r/nodebalancer_node.html.markdown b/website/docs/r/nodebalancer_node.html.markdown
 index 72785256..7a667565 100644
---- b/website/docs/r/nodebalancer_node.html.markdown
-+++ a/website/docs/r/nodebalancer_node.html.markdown
+--- a/website/docs/r/nodebalancer_node.html.markdown
++++ b/website/docs/r/nodebalancer_node.html.markdown
 @@ -11,8 +11,6 @@ description: |-
  Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
  For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerNode).
@@ -246,10 +123,10 @@ index 72785256..7a667565 100644
  
      private_ip = true
  }
-diff --git b/website/docs/r/stackscript.html.markdown a/website/docs/r/stackscript.html.markdown
-index 2ec5368b..924e8a71 100644
---- b/website/docs/r/stackscript.html.markdown
-+++ a/website/docs/r/stackscript.html.markdown
+diff --git a/website/docs/r/stackscript.html.markdown b/website/docs/r/stackscript.html.markdown
+index f97301b0..24e83561 100644
+--- a/website/docs/r/stackscript.html.markdown
++++ b/website/docs/r/stackscript.html.markdown
 @@ -12,8 +12,6 @@ Provides a Linode StackScript resource.  This can be used to create, modify, and
  
  For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
@@ -259,10 +136,10 @@ index 2ec5368b..924e8a71 100644
  ## Example Usage
  
  The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
-diff --git b/website/docs/r/token.html.markdown a/website/docs/r/token.html.markdown
+diff --git a/website/docs/r/token.html.markdown b/website/docs/r/token.html.markdown
 index f68eb1e4..c43ab892 100644
---- b/website/docs/r/token.html.markdown
-+++ a/website/docs/r/token.html.markdown
+--- a/website/docs/r/token.html.markdown
++++ b/website/docs/r/token.html.markdown
 @@ -8,9 +8,9 @@ description: |-
  
  # linode\_token
@@ -275,3 +152,6 @@ index f68eb1e4..c43ab892 100644
  
  For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
  
+-- 
+2.42.0
+

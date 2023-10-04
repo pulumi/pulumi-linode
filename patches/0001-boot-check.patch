@@ -1,0 +1,81 @@
+From 51a7e780b6f09eaf3faa23f4b703baf137248568 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Wed, 4 Oct 2023 13:19:23 -0700
+Subject: [PATCH 1/2] boot check
+
+---
+ linode/instance/helpers.go  |  5 +++--
+ linode/instance/resource.go | 12 ++++--------
+ 2 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/linode/instance/helpers.go b/linode/instance/helpers.go
+index 4815d968..58604619 100644
+--- a/linode/instance/helpers.go
++++ b/linode/instance/helpers.go
+@@ -1004,13 +1004,14 @@ func isInstanceBooted(instance *linodego.Instance) bool {
+ 
+ func validateBooted(ctx context.Context, d *schema.ResourceData) error {
+ 	booted := d.Get("booted").(bool)
+-	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
+ 
++	// FORK: we don't need to check the rawConfig for the boote
++	// this doesn't work for us
+ 	_, imageOk := d.GetOk("image")
+ 	_, disksOk := d.GetOk("disk")
+ 	_, configsOk := d.GetOk("config")
+ 
+-	if !bootedNull && booted && !imageOk && !(disksOk && configsOk) {
++	if booted && !imageOk && !(disksOk && configsOk) {
+ 		return fmt.Errorf("booted requires an image or disk/config be defined")
+ 	}
+ 
+diff --git a/linode/instance/resource.go b/linode/instance/resource.go
+index 61446cd8..717231bd 100644
+--- a/linode/instance/resource.go
++++ b/linode/instance/resource.go
+@@ -200,7 +200,6 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
+ 
+ 	_, disksOk := d.GetOk("disk")
+ 	_, configsOk := d.GetOk("config")
+-	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
+ 	booted := d.Get("booted").(bool)
+ 
+ 	// If we don't have disks and we don't have configs, use the single API call approach
+@@ -232,10 +231,6 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
+ 
+ 		createOpts.Booted = &boolTrue
+ 
+-		if !d.GetRawConfig().GetAttr("booted").IsNull() {
+-			createOpts.Booted = &booted
+-		}
+-
+ 		createOpts.BackupID = d.Get("backup_id").(int)
+ 		if swapSize := d.Get("swap_size").(int); swapSize > 0 {
+ 			createOpts.SwapSize = &swapSize
+@@ -380,7 +375,7 @@ func createResource(ctx context.Context, d *schema.ResourceData, meta interface{
+ 	targetStatus := linodego.InstanceRunning
+ 
+ 	if createOpts.Booted == nil || !*createOpts.Booted {
+-		if disksOk && configsOk && (bootedNull || booted) {
++		if disksOk && configsOk && booted {
+ 			p, err := client.NewEventPoller(ctx, instance.ID, linodego.EntityLinode, linodego.ActionLinodeBoot)
+ 			if err != nil {
+ 				return diag.Errorf("failed to initialize event poller: %s", err)
+@@ -653,11 +648,12 @@ func updateResource(ctx context.Context, d *schema.ResourceData, meta interface{
+ 		}
+ 	}
+ 
++	// FORK: we don't need to check the rawConfig for the boote
++	// this doesn't work for us
+ 	booted := d.Get("booted").(bool)
+-	bootedNull := d.GetRawConfig().GetAttr("booted").IsNull()
+ 
+ 	// Don't reboot if the Linode should be powered off
+-	if !bootedNull && !booted {
++	if !booted {
+ 		rebootInstance = false
+ 	}
+ 
+-- 
+2.42.0
+
