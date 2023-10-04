@@ -21,6 +21,7 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"path/filepath"
+	"regexp"
 	"unicode"
 
 	"github.com/linode/terraform-provider-linode/linode"
@@ -80,6 +81,19 @@ func ref[T any](b T) *T {
 	return &b
 }
 
+// Lots of docs have a "The Linode Guide, [Deploy a ... Using Terraform](...)" line. We
+// don't want to include those blocks in our documentation, since they link to a TF guide
+// which won't help our users.
+func stripLinodeGuide() tfbridge.DocsEdit {
+	linodeGuide := regexp.MustCompile("The Linode Guide[^\n]*[tT]erraform[^\n]*\n\n?")
+	return tfbridge.DocsEdit{
+		Path: "*",
+		Edit: func(_ string, bytes []byte) ([]byte, error) {
+			return linodeGuide.ReplaceAllLiteral(bytes, nil), nil
+		},
+	}
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -100,6 +114,11 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "linode",
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
+		DocRules: &tfbridge.DocRuleInfo{
+			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+				return append(defaults, stripLinodeGuide())
+			},
+		},
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"url": {
