@@ -24,15 +24,14 @@ import (
 	"regexp"
 	"unicode"
 
-	"github.com/linode/terraform-provider-linode/linode"
-	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/linode/terraform-provider-linode/linode"
+	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 )
 
 // all of the token components used below.
@@ -67,18 +66,6 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return makeType(mod+"/"+fn, res)
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
-func ref[T any](b T) *T {
-	return &b
 }
 
 // Lots of docs have a "The Linode Guide, [Deploy a ... Using Terraform](...)" line. We
@@ -137,7 +124,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		IgnoreMappings: []string{
 			"linode_instance_config", // Mapping causes a panic due to duplicate types
 		},
