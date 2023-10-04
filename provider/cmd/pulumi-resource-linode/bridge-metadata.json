@@ -829,6 +829,9 @@
                                                 "fields": {
                                                     "price": {
                                                         "maxItemsOne": false
+                                                    },
+                                                    "region_prices": {
+                                                        "maxItemsOne": false
                                                     }
                                                 }
                                             }
@@ -840,6 +843,9 @@
                     },
                     "price": {
                         "maxItemsOne": true
+                    },
+                    "region_prices": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -873,6 +879,9 @@
                                                             "fields": {
                                                                 "price": {
                                                                     "maxItemsOne": false
+                                                                },
+                                                                "region_prices": {
+                                                                    "maxItemsOne": false
                                                                 }
                                                             }
                                                         }
@@ -883,6 +892,9 @@
                                     }
                                 },
                                 "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1363,6 +1375,32 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "linode_volumes": {
+                "current": "linode:index/getVolumes:getVolumes",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "volumes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },
@@ -1441,7 +1479,8 @@
             "linode:index/getUser:getUser": 1,
             "linode:index/getUsers:getUsers": 1,
             "linode:index/getVlans:getVlans": 1,
-            "linode:index/getVolume:getVolume": 1
+            "linode:index/getVolume:getVolume": 1,
+            "linode:index/getVolumes:getVolumes": 1
         }
     },
     "renames": {
@@ -1519,7 +1558,8 @@
             "linode:index/getUser:getUser": "linode_user",
             "linode:index/getUsers:getUsers": "linode_users",
             "linode:index/getVlans:getVlans": "linode_vlans",
-            "linode:index/getVolume:getVolume": "linode_volume"
+            "linode:index/getVolume:getVolume": "linode_volume",
+            "linode:index/getVolumes:getVolumes": "linode_volumes"
         },
         "renamedProperties": {
             "linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates": {
@@ -1932,10 +1972,12 @@
                 "subnetMask": "subnet_mask"
             },
             "linode:index/getInstanceType:getInstanceType": {
-                "networkOut": "network_out"
+                "networkOut": "network_out",
+                "regionPrices": "region_prices"
             },
             "linode:index/getInstanceTypeAddonsBackup:getInstanceTypeAddonsBackup": {
-                "prices": "price"
+                "prices": "price",
+                "regionPrices": "region_prices"
             },
             "linode:index/getInstanceTypes:getInstanceTypes": {
                 "filters": "filter",
@@ -1946,10 +1988,12 @@
             },
             "linode:index/getInstanceTypesType:getInstanceTypesType": {
                 "networkOut": "network_out",
-                "prices": "price"
+                "prices": "price",
+                "regionPrices": "region_prices"
             },
             "linode:index/getInstanceTypesTypeAddonBackup:getInstanceTypesTypeAddonBackup": {
-                "prices": "price"
+                "prices": "price",
+                "regionPrices": "region_prices"
             },
             "linode:index/getInstances:getInstances": {
                 "filters": "filter",
@@ -2240,6 +2284,17 @@
                 "matchBy": "match_by"
             },
             "linode:index/getVolume:getVolume": {
+                "filesystemPath": "filesystem_path",
+                "linodeId": "linode_id"
+            },
+            "linode:index/getVolumes:getVolumes": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getVolumesFilter:getVolumesFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getVolumesVolume:getVolumesVolume": {
                 "filesystemPath": "filesystem_path",
                 "linodeId": "linode_id"
             },
