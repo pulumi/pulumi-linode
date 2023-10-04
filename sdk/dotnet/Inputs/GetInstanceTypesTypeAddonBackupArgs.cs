@@ -20,6 +20,14 @@ namespace Pulumi.Linode.Inputs
             set => _prices = value;
         }
 
+        [Input("regionPrices", required: true)]
+        private InputList<Inputs.GetInstanceTypesTypeAddonBackupRegionPriceInputArgs>? _regionPrices;
+        public InputList<Inputs.GetInstanceTypesTypeAddonBackupRegionPriceInputArgs> RegionPrices
+        {
+            get => _regionPrices ?? (_regionPrices = new InputList<Inputs.GetInstanceTypesTypeAddonBackupRegionPriceInputArgs>());
+            set => _regionPrices = value;
+        }
+
         public GetInstanceTypesTypeAddonBackupInputArgs()
         {
         }

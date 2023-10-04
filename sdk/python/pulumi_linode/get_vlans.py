@@ -85,6 +85,10 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
               vlans: Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlansResult:
     """
+    > **Beta Notice** VLANs are currently available through early access.
+    To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+    To learn more, see the early access documentation.
+
     Provides details about Linode VLANs.
 
     ## Example Usage
@@ -142,6 +146,10 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
                      vlans: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
     """
+    > **Beta Notice** VLANs are currently available through early access.
+    To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+    To learn more, see the early access documentation.
+
     Provides details about Linode VLANs.
 
     ## Example Usage

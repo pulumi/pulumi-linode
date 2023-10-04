@@ -90,6 +90,8 @@ import com.pulumi.linode.inputs.GetVlansArgs;
 import com.pulumi.linode.inputs.GetVlansPlainArgs;
 import com.pulumi.linode.inputs.GetVolumeArgs;
 import com.pulumi.linode.inputs.GetVolumePlainArgs;
+import com.pulumi.linode.inputs.GetVolumesArgs;
+import com.pulumi.linode.inputs.GetVolumesPlainArgs;
 import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
@@ -135,6 +137,7 @@ import com.pulumi.linode.outputs.GetUserResult;
 import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
+import com.pulumi.linode.outputs.GetVolumesResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -11450,6 +11453,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11511,6 +11518,10 @@ public final class LinodeFunctions {
         return getVlans(GetVlansArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11572,6 +11583,10 @@ public final class LinodeFunctions {
         return getVlansPlain(GetVlansPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11633,6 +11648,10 @@ public final class LinodeFunctions {
         return getVlans(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11694,6 +11713,10 @@ public final class LinodeFunctions {
         return getVlansPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11755,6 +11778,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getVlans:getVlans", TypeShape.of(GetVlansResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Beta Notice** VLANs are currently available through early access.
+     * To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+     * To learn more, see the early access documentation.
+     * 
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
@@ -11970,5 +11997,275 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes() {
+        return getVolumes(GetVolumesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain() {
+        return getVolumesPlain(GetVolumesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args) {
+        return getVolumes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args) {
+        return getVolumesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode volumes that match a set of filters.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .filters(GetVolumesFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test-volume&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `tags`
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
 }

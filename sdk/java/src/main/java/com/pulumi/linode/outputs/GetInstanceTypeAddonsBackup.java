@@ -5,16 +5,21 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackupPrice;
+import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackupRegionPrice;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypeAddonsBackup {
     private List<GetInstanceTypeAddonsBackupPrice> prices;
+    private List<GetInstanceTypeAddonsBackupRegionPrice> regionPrices;
 
     private GetInstanceTypeAddonsBackup() {}
     public List<GetInstanceTypeAddonsBackupPrice> prices() {
         return this.prices;
+    }
+    public List<GetInstanceTypeAddonsBackupRegionPrice> regionPrices() {
+        return this.regionPrices;
     }
 
     public static Builder builder() {
@@ -27,10 +32,12 @@ public final class GetInstanceTypeAddonsBackup {
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypeAddonsBackupPrice> prices;
+        private List<GetInstanceTypeAddonsBackupRegionPrice> regionPrices;
         public Builder() {}
         public Builder(GetInstanceTypeAddonsBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prices = defaults.prices;
+    	      this.regionPrices = defaults.regionPrices;
         }
 
         @CustomType.Setter
@@ -41,9 +48,18 @@ public final class GetInstanceTypeAddonsBackup {
         public Builder prices(GetInstanceTypeAddonsBackupPrice... prices) {
             return prices(List.of(prices));
         }
+        @CustomType.Setter
+        public Builder regionPrices(List<GetInstanceTypeAddonsBackupRegionPrice> regionPrices) {
+            this.regionPrices = Objects.requireNonNull(regionPrices);
+            return this;
+        }
+        public Builder regionPrices(GetInstanceTypeAddonsBackupRegionPrice... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
         public GetInstanceTypeAddonsBackup build() {
             final var o = new GetInstanceTypeAddonsBackup();
             o.prices = prices;
+            o.regionPrices = regionPrices;
             return o;
         }
     }

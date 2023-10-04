@@ -64,6 +64,14 @@ namespace Pulumi.Linode.Inputs
             set => _prices = value;
         }
 
+        [Input("regionPrices", required: true)]
+        private InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs>? _regionPrices;
+        public InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs> RegionPrices
+        {
+            get => _regionPrices ?? (_regionPrices = new InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs>());
+            set => _regionPrices = value;
+        }
+
         /// <summary>
         /// The monthly outbound transfer amount, in MB.
         /// </summary>

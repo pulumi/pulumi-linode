@@ -76,7 +76,9 @@ __all__ = [
     'GetInstanceTypesTypeAddonArgs',
     'GetInstanceTypesTypeAddonBackupArgs',
     'GetInstanceTypesTypeAddonBackupPriceArgs',
+    'GetInstanceTypesTypeAddonBackupRegionPriceArgs',
     'GetInstanceTypesTypePriceArgs',
+    'GetInstanceTypesTypeRegionPriceArgs',
     'GetInstancesFilterArgs',
     'GetKernelsFilterArgs',
     'GetKernelsKernelArgs',
@@ -115,6 +117,8 @@ __all__ = [
     'GetUsersUserVolumeGrantArgs',
     'GetVlansFilterArgs',
     'GetVlansVlanArgs',
+    'GetVolumesFilterArgs',
+    'GetVolumesVolumeArgs',
 ]
 
 @pulumi.input_type
@@ -390,8 +394,8 @@ class FirewallInboundArgs:
         :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
         FirewallInboundArgs._configure(
@@ -463,7 +467,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         """
         return pulumi.get(self, "ipv4s")
 
@@ -475,7 +479,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         """
         return pulumi.get(self, "ipv6s")
 
@@ -509,8 +513,8 @@ class FirewallOutboundArgs:
         :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
         FirewallOutboundArgs._configure(
@@ -582,7 +586,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         """
         return pulumi.get(self, "ipv4s")
 
@@ -594,7 +598,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         """
         return pulumi.get(self, "ipv6s")
 
@@ -5350,6 +5354,7 @@ class GetInstanceTypesTypeArgs:
                  memory: int,
                  network_out: int,
                  prices: Sequence['GetInstanceTypesTypePriceArgs'],
+                 region_prices: Sequence['GetInstanceTypesTypeRegionPriceArgs'],
                  transfer: int,
                  vcpus: int):
         """
@@ -5372,6 +5377,7 @@ class GetInstanceTypesTypeArgs:
             memory=memory,
             network_out=network_out,
             prices=prices,
+            region_prices=region_prices,
             transfer=transfer,
             vcpus=vcpus,
         )
@@ -5386,6 +5392,7 @@ class GetInstanceTypesTypeArgs:
              memory: int,
              network_out: int,
              prices: Sequence['GetInstanceTypesTypePriceArgs'],
+             region_prices: Sequence['GetInstanceTypesTypeRegionPriceArgs'],
              transfer: int,
              vcpus: int,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -5397,6 +5404,7 @@ class GetInstanceTypesTypeArgs:
         _setter("memory", memory)
         _setter("network_out", network_out)
         _setter("prices", prices)
+        _setter("region_prices", region_prices)
         _setter("transfer", transfer)
         _setter("vcpus", vcpus)
 
@@ -5491,6 +5499,15 @@ class GetInstanceTypesTypeArgs:
         pulumi.set(self, "prices", value)
 
     @property
+    @pulumi.getter(name="regionPrices")
+    def region_prices(self) -> Sequence['GetInstanceTypesTypeRegionPriceArgs']:
+        return pulumi.get(self, "region_prices")
+
+    @region_prices.setter
+    def region_prices(self, value: Sequence['GetInstanceTypesTypeRegionPriceArgs']):
+        pulumi.set(self, "region_prices", value)
+
+    @property
     @pulumi.getter
     def transfer(self) -> int:
         """
@@ -5543,17 +5560,21 @@ class GetInstanceTypesTypeAddonArgs:
 @pulumi.input_type
 class GetInstanceTypesTypeAddonBackupArgs:
     def __init__(__self__, *,
-                 prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']):
+                 prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs'],
+                 region_prices: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs']):
         GetInstanceTypesTypeAddonBackupArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             prices=prices,
+            region_prices=region_prices,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs'],
+             region_prices: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs'],
              opts: Optional[pulumi.ResourceOptions]=None):
         _setter("prices", prices)
+        _setter("region_prices", region_prices)
 
     @property
     @pulumi.getter
@@ -5563,6 +5584,15 @@ class GetInstanceTypesTypeAddonBackupArgs:
     @prices.setter
     def prices(self, value: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']):
         pulumi.set(self, "prices", value)
+
+    @property
+    @pulumi.getter(name="regionPrices")
+    def region_prices(self) -> Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs']:
+        return pulumi.get(self, "region_prices")
+
+    @region_prices.setter
+    def region_prices(self, value: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs']):
+        pulumi.set(self, "region_prices", value)
 
 
 @pulumi.input_type
@@ -5604,6 +5634,63 @@ class GetInstanceTypesTypeAddonBackupPriceArgs:
 
 
 @pulumi.input_type
+class GetInstanceTypesTypeAddonBackupRegionPriceArgs:
+    def __init__(__self__, *,
+                 hourly: float,
+                 id: str,
+                 monthly: float):
+        """
+        :param str id: The ID representing the Linode Type.
+        """
+        GetInstanceTypesTypeAddonBackupRegionPriceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            id=id,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             id: str,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("id", id)
+        _setter("monthly", monthly)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> float:
+        return pulumi.get(self, "hourly")
+
+    @hourly.setter
+    def hourly(self, value: float):
+        pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID representing the Linode Type.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> float:
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: float):
+        pulumi.set(self, "monthly", value)
+
+
+@pulumi.input_type
 class GetInstanceTypesTypePriceArgs:
     def __init__(__self__, *,
                  hourly: float,
@@ -5630,6 +5717,63 @@ class GetInstanceTypesTypePriceArgs:
     @hourly.setter
     def hourly(self, value: float):
         pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> float:
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: float):
+        pulumi.set(self, "monthly", value)
+
+
+@pulumi.input_type
+class GetInstanceTypesTypeRegionPriceArgs:
+    def __init__(__self__, *,
+                 hourly: float,
+                 id: str,
+                 monthly: float):
+        """
+        :param str id: The ID representing the Linode Type.
+        """
+        GetInstanceTypesTypeRegionPriceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hourly=hourly,
+            id=id,
+            monthly=monthly,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hourly: float,
+             id: str,
+             monthly: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hourly", hourly)
+        _setter("id", id)
+        _setter("monthly", monthly)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> float:
+        return pulumi.get(self, "hourly")
+
+    @hourly.setter
+    def hourly(self, value: float):
+        pulumi.set(self, "hourly", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID representing the Linode Type.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -8994,5 +9138,255 @@ class GetVlansVlanArgs:
     @region.setter
     def region(self, value: str):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetVolumesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        GetVolumesFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
+        if match_by is not None:
+            _setter("match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetVolumesVolumeArgs:
+    def __init__(__self__, *,
+                 created: str,
+                 filesystem_path: str,
+                 id: int,
+                 label: str,
+                 linode_id: int,
+                 region: str,
+                 size: int,
+                 status: str,
+                 tags: Sequence[str],
+                 updated: str):
+        """
+        :param str created: When this Volume was created.
+        :param str filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+        :param int id: The unique ID of this Volume.
+        :param str label: This Volume's label is for display purposes only.
+        :param int linode_id: If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+        :param str region: The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+        :param int size: The Volume's size, in GiB.
+        :param str status: The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        :param Sequence[str] tags: An array of tags applied to this object.
+        :param str updated: When this Volume was last updated.
+        """
+        GetVolumesVolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            filesystem_path=filesystem_path,
+            id=id,
+            label=label,
+            linode_id=linode_id,
+            region=region,
+            size=size,
+            status=status,
+            tags=tags,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: str,
+             filesystem_path: str,
+             id: int,
+             label: str,
+             linode_id: int,
+             region: str,
+             size: int,
+             status: str,
+             tags: Sequence[str],
+             updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created", created)
+        _setter("filesystem_path", filesystem_path)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("linode_id", linode_id)
+        _setter("region", region)
+        _setter("size", size)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Volume was created.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: str):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter(name="filesystemPath")
+    def filesystem_path(self) -> str:
+        """
+        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+        """
+        return pulumi.get(self, "filesystem_path")
+
+    @filesystem_path.setter
+    def filesystem_path(self, value: str):
+        pulumi.set(self, "filesystem_path", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique ID of this Volume.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        This Volume's label is for display purposes only.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The Volume's size, in GiB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: int):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        An array of tags applied to this object.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Sequence[str]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this Volume was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: str):
+        pulumi.set(self, "updated", value)
 
 

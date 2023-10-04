@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Beta Notice** VLANs are currently available through early access.
+// To use early access resources, the `apiVersion` provider argument must be set to `v4beta`.
+// To learn more, see the early access documentation.
+//
 // Provides details about Linode VLANs.
 //
 // ## Example Usage

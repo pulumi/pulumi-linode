@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
+        /// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         /// </summary>
         public InputList<string> Ipv4s
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _ipv6s;
 
         /// <summary>
-        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
+        /// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         /// </summary>
         public InputList<string> Ipv6s
         {

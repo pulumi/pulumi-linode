@@ -32,14 +32,14 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     @Import(name="ipv4s")
     private @Nullable Output<List<String>> ipv4s;
 
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     public Optional<Output<List<String>>> ipv4s() {
@@ -47,14 +47,14 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     @Import(name="ipv6s")
     private @Nullable Output<List<String>> ipv6s;
 
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     public Optional<Output<List<String>>> ipv6s() {
@@ -157,7 +157,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask format.
+         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask format.
+         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask format.
+         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
          * 
          * @return builder
          * 

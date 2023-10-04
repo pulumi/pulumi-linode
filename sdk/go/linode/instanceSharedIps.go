@@ -13,6 +13,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Beta Notice** IPv6 sharing is currently available through early access.
+// To use early access resources, the `apiVersion` provider argument must be set to `v4beta`.
+// To learn more, see the early access documentation.
+//
+// > **Notice** This resource should only be defined once per-instance and should not be used alongside the `sharedIpv4` field in `Instance`.
+//
+// Manages IPs shared to a Linode instance.
 type InstanceSharedIps struct {
 	pulumi.CustomResourceState
 

@@ -68,6 +68,7 @@
         "getUsers.ts",
         "getVlans.ts",
         "getVolume.ts",
+        "getVolumes.ts",
         "image.ts",
         "index.ts",
         "instance.ts",

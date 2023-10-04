@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupPriceArgs;
+import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupRegionPriceArgs;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,10 +22,18 @@ public final class GetInstanceTypesTypeAddonBackupArgs extends com.pulumi.resour
         return this.prices;
     }
 
+    @Import(name="regionPrices", required=true)
+    private Output<List<GetInstanceTypesTypeAddonBackupRegionPriceArgs>> regionPrices;
+
+    public Output<List<GetInstanceTypesTypeAddonBackupRegionPriceArgs>> regionPrices() {
+        return this.regionPrices;
+    }
+
     private GetInstanceTypesTypeAddonBackupArgs() {}
 
     private GetInstanceTypesTypeAddonBackupArgs(GetInstanceTypesTypeAddonBackupArgs $) {
         this.prices = $.prices;
+        this.regionPrices = $.regionPrices;
     }
 
     public static Builder builder() {
@@ -58,8 +67,22 @@ public final class GetInstanceTypesTypeAddonBackupArgs extends com.pulumi.resour
             return prices(List.of(prices));
         }
 
+        public Builder regionPrices(Output<List<GetInstanceTypesTypeAddonBackupRegionPriceArgs>> regionPrices) {
+            $.regionPrices = regionPrices;
+            return this;
+        }
+
+        public Builder regionPrices(List<GetInstanceTypesTypeAddonBackupRegionPriceArgs> regionPrices) {
+            return regionPrices(Output.of(regionPrices));
+        }
+
+        public Builder regionPrices(GetInstanceTypesTypeAddonBackupRegionPriceArgs... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
+
         public GetInstanceTypesTypeAddonBackupArgs build() {
             $.prices = Objects.requireNonNull($.prices, "expected parameter 'prices' to be non-null");
+            $.regionPrices = Objects.requireNonNull($.regionPrices, "expected parameter 'regionPrices' to be non-null");
             return $;
         }
     }

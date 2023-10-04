@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Action;
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
+        /// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
         /// <summary>
-        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
+        /// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         /// </summary>
         public readonly ImmutableArray<string> Ipv6s;
         /// <summary>
