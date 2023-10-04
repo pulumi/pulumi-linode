@@ -68,14 +68,20 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// Lots of docs have a "The Linode Guide, [Deploy a ... Using Terraform](...)" line. We
-// don't want to include those blocks in our documentation, since they link to a TF guide
-// which won't help our users.
-func stripLinodeGuide() tfbridge.DocsEdit {
+func stripTfFromDocs() tfbridge.DocsEdit {
+	// Lots of docs have a "The Linode Guide, [Deploy a ... Using Terraform](...)" line. We
+	// don't want to include those blocks in our documentation, since they link to a TF guide
+	// which won't help our users.
 	linodeGuide := regexp.MustCompile("The Linode Guide[^\n]*[tT]erraform[^\n]*\n\n?")
+
+	// There are also a bunch of phrases that appear in the downstream docs that we
+	// know how to replace.
 	state := regexp.MustCompile("in [tT]erraform state")
 	thisProvider := regexp.MustCompile("this Terraform Provider")
 	provisioners := regexp.MustCompile("Linode Instances can also use provisioners.\n\n?")
+	suchAs := regexp.MustCompile(", such as [tT]erraform,")
+	inTf := regexp.MustCompile("in Terraform.")
+	itself := regexp.MustCompile("for Terraform itself")
 	return tfbridge.DocsEdit{
 		Path: "*",
 		Edit: func(_ string, b []byte) ([]byte, error) {
@@ -83,6 +89,9 @@ func stripLinodeGuide() tfbridge.DocsEdit {
 			b = provisioners.ReplaceAllLiteral(b, nil)
 			b = thisProvider.ReplaceAllLiteral(b, []byte("this provider"))
 			b = state.ReplaceAllLiteral(b, []byte("in Pulumi state"))
+			b = suchAs.ReplaceAllLiteral(b, []byte(", such as Pulumi,"))
+			b = inTf.ReplaceAllLiteral(b, []byte("in the provider"))
+			b = itself.ReplaceAllLiteral(b, []byte("for the provider itself"))
 			return b, nil
 		},
 	}
@@ -110,7 +119,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version:          version.Version,
 		DocRules: &tfbridge.DocRuleInfo{
 			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-				return append(defaults, stripLinodeGuide())
+				return append(defaults, stripTfFromDocs())
 			},
 		},
 
