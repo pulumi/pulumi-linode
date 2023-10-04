@@ -5,7 +5,6 @@ Subject: [PATCH 2/2] Remove TF from docs
 
 ---
  website/docs/r/instance.html.markdown          | 10 ++++------
- website/docs/r/nodebalancer_node.html.markdown |  2 +-
  website/docs/r/token.html.markdown             |  4 ++--
  3 files changed, 7 insertions(+), 9 deletions(-)
 
@@ -56,19 +55,6 @@ index e92815a3..35689436 100644
  
    * `stackscript_id` - (Optional with `image`) The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
  
-diff --git a/website/docs/r/nodebalancer_node.html.markdown b/website/docs/r/nodebalancer_node.html.markdown
-index 72785256..28a70285 100644
---- a/website/docs/r/nodebalancer_node.html.markdown
-+++ b/website/docs/r/nodebalancer_node.html.markdown
-@@ -25,7 +25,7 @@ resource "linode_instance" "web" {
-     region = "us-east"
-     type = "g6-standard-1"
-     authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
--    root_pass = "terraform-test"
-+    root_pass = "test"
- 
-     private_ip = true
- }
 diff --git a/website/docs/r/token.html.markdown b/website/docs/r/token.html.markdown
 index f68eb1e4..c43ab892 100644
 --- a/website/docs/r/token.html.markdown
