@@ -531,8 +531,6 @@ class InstanceDisk(pulumi.CustomResource):
          $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
         ```
 
-         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
@@ -608,8 +606,6 @@ class InstanceDisk(pulumi.CustomResource):
         ```sh
          $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
         ```
-
-         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types.
 
         :param str resource_name: The name of the resource.
         :param InstanceDiskInitArgs args: The arguments to use to populate this resource's properties.

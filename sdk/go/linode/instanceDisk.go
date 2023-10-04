@@ -112,8 +112,6 @@ import (
 //	$ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
 //
 // ```
-//
-//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types.
 type InstanceDisk struct {
 	pulumi.CustomResourceState
 

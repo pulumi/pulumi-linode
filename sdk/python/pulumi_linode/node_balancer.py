@@ -377,8 +377,6 @@ class NodeBalancer(pulumi.CustomResource):
          $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
 
-         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -421,8 +419,6 @@ class NodeBalancer(pulumi.CustomResource):
         ```sh
          $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
-
-         The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancers and other Linode resource types.
 
         :param str resource_name: The name of the resource.
         :param NodeBalancerArgs args: The arguments to use to populate this resource's properties.

@@ -3975,7 +3975,7 @@ type InstanceDiskType struct {
 	Label string `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -4011,7 +4011,7 @@ type InstanceDiskTypeArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -4125,7 +4125,7 @@ func (o InstanceDiskTypeOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in state.*
+// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 func (o InstanceDiskTypeOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.RootPass }).(pulumi.StringPtrOutput)
 }
@@ -17572,6 +17572,7 @@ func (o GetInstancesInstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceDisk struct {
+	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 	Filesystem string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
@@ -17593,6 +17594,7 @@ type GetInstancesInstanceDiskInput interface {
 }
 
 type GetInstancesInstanceDiskArgs struct {
+	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 	Filesystem pulumi.StringInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
@@ -17671,6 +17673,7 @@ func (o GetInstancesInstanceDiskOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 func (o GetInstancesInstanceDiskOutput) Filesystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Filesystem }).(pulumi.StringOutput)
 }

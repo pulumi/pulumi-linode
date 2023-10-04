@@ -74,8 +74,6 @@ import javax.annotation.Nullable;
  *  $ pulumi import linode:index/domain:Domain foobar 1234567
  * ```
  * 
- *  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Domains and other Linode resource types.
- * 
  */
 @ResourceType(type="linode:index/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {

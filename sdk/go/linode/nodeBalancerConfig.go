@@ -69,8 +69,6 @@ import (
 //	$ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
 //
 // ```
-//
-//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for NodeBalancer Configs and other Linode resource types.
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState
 

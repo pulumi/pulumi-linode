@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
-    /// Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, to interact with Linode services on a user's behalf.
+    /// Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, such as Pulumi, to interact with Linode services on a user's behalf.
     /// 
     /// It is common for the provider itself to be configured with broadly scoped Personal Access Tokens.  Provisioning scripts or tools configured within a Linode Instance should follow the principle of least privilege to afford only the required roles for tools to perform their necessary tasks.  The `linode.Token` resource allows for the management of Personal Access Tokens with scopes mirroring or narrowing the scope of the parent token.
     /// 

@@ -132,8 +132,6 @@ import (
 //	$ pulumi import linode:index/volume:Volume myvolume 1234567
 //
 // ```
-//
-//	The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for Block Storage Volumes and other Linode resource types.
 type Volume struct {
 	pulumi.CustomResourceState
 

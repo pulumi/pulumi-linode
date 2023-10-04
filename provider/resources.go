@@ -21,17 +21,17 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"path/filepath"
+	"regexp"
 	"unicode"
 
-	"github.com/linode/terraform-provider-linode/linode"
-	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/linode/terraform-provider-linode/linode"
+	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 )
 
 // all of the token components used below.
@@ -68,16 +68,33 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
+func stripTfFromDocs() tfbridge.DocsEdit {
+	// Lots of docs have a "The Linode Guide, [Deploy a ... Using Terraform](...)" line. We
+	// don't want to include those blocks in our documentation, since they link to a TF guide
+	// which won't help our users.
+	linodeGuide := regexp.MustCompile("The Linode Guide[^\n]*[tT]erraform[^\n]*\n\n?")
 
-func ref[T any](b T) *T {
-	return &b
+	// There are also a bunch of phrases that appear in the downstream docs that we
+	// know how to replace.
+	state := regexp.MustCompile("in [tT]erraform state")
+	thisProvider := regexp.MustCompile("this Terraform Provider")
+	provisioners := regexp.MustCompile("Linode Instances can also use provisioners.\n\n?")
+	suchAs := regexp.MustCompile(", such as [tT]erraform,")
+	inTf := regexp.MustCompile("in Terraform.")
+	itself := regexp.MustCompile("for Terraform itself")
+	return tfbridge.DocsEdit{
+		Path: "*",
+		Edit: func(_ string, b []byte) ([]byte, error) {
+			b = linodeGuide.ReplaceAllLiteral(b, nil)
+			b = provisioners.ReplaceAllLiteral(b, nil)
+			b = thisProvider.ReplaceAllLiteral(b, []byte("this provider"))
+			b = state.ReplaceAllLiteral(b, []byte("in Pulumi state"))
+			b = suchAs.ReplaceAllLiteral(b, []byte(", such as Pulumi,"))
+			b = inTf.ReplaceAllLiteral(b, []byte("in the provider"))
+			b = itself.ReplaceAllLiteral(b, []byte("for the provider itself"))
+			return b, nil
+		},
+	}
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -100,6 +117,11 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "linode",
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
+		DocRules: &tfbridge.DocRuleInfo{
+			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+				return append(defaults, stripTfFromDocs())
+			},
+		},
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"url": {
@@ -118,44 +140,16 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		IgnoreMappings: []string{
 			"linode_instance_config", // Mapping causes a panic due to duplicate types
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. An example
-			// is below.
-			"linode_image": {
-				Tok: makeResource(mainMod, "Image"),
-			},
-			"linode_instance": {
-				Tok: makeResource(mainMod, "Instance"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"specs": {
-						MaxItemsOne: ref(true),
-					},
-					"backups": {
-						MaxItemsOne: ref(true),
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"schedule": {
-									MaxItemsOne: ref(true),
-								},
-							},
-						},
-					},
-				},
-			},
 			"linode_domain": {
-				Tok: makeResource(mainMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"domain": {
 						CSharpName: "DomainName",
 					},
 				},
-			},
-			"linode_domain_record": {
-				Tok: makeResource(mainMod, "DomainRecord"),
 			},
 			"linode_nodebalancer": {
 				Tok: makeResource(mainMod, "NodeBalancer"),
@@ -167,119 +161,32 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "NodeBalancerNode"),
 			},
 			"linode_rdns": {
-				Tok: makeResource(mainMod, "Rdns"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"rdns": {
-						CSharpName: "RdnsName",
-					},
+					"rdns": {CSharpName: "RdnsName"},
 				},
 			},
 			"linode_sshkey": {
 				Tok: makeResource(mainMod, "SshKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"ssh_key": {
-						CSharpName: "SshKeyName",
-					},
+					"ssh_key": {CSharpName: "SshKeyName"},
 				},
 			},
 			"linode_stackscript": {
 				Tok: makeResource(mainMod, "StackScript"),
 			},
-			"linode_volume": {
-				Tok: makeResource(mainMod, "Volume"),
-			},
-			"linode_object_storage_bucket": {
-				Tok: makeResource(mainMod, "ObjectStorageBucket"),
-			},
-			"linode_object_storage_key": {
-				Tok: makeResource(mainMod, "ObjectStorageKey"),
-			},
-			"linode_lke_cluster":              {Tok: makeResource(mainMod, "LkeCluster")},
-			"linode_firewall":                 {Tok: makeResource(mainMod, "Firewall")},
-			"linode_object_storage_object":    {Tok: makeResource(mainMod, "ObjectStorageObject")},
-			"linode_instance_ip":              {Tok: makeResource(mainMod, "InstanceIp")},
-			"linode_user":                     {Tok: makeResource(mainMod, "User")},
-			"linode_firewall_device":          {Tok: makeResource(mainMod, "FirewallDevice")},
-			"linode_ipv6_range":               {Tok: makeResource(mainMod, "Ipv6Range")},
-			"linode_database_mysql":           {Tok: makeResource(mainMod, "DatabaseMysql")},
-			"linode_database_postgresql":      {Tok: makeResource(mainMod, "DatabasePostgresql")},
-			"linode_database_access_controls": {Tok: makeResource(mainMod, "DatabaseAccessControls")},
-			"linode_instance_shared_ips":      {Tok: makeResource(mainMod, "InstanceSharedIps")},
-			"linode_instance_disk":            {Tok: makeResource(mainMod, "InstanceDisk")},
 			"linode_token": {
-				Tok: makeResource(mainMod, "Token"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"token": {CSharpName: "ApiToken"},
 				},
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"linode_vlans":   {Tok: makeDataSource(mainMod, "getVlans")},
-			"linode_account": {Tok: makeDataSource(mainMod, "getAccount")},
-			"linode_domain":  {Tok: makeDataSource(mainMod, "getDomain")},
-			"linode_image":   {Tok: makeDataSource(mainMod, "getImage")},
-			"linode_instance_type": {
-				Tok: makeDataSource(mainMod, "getInstanceType"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"price": {
-						MaxItemsOne: ref(true),
-					},
-					"addons": {
-						MaxItemsOne: ref(true),
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"backups": {
-									MaxItemsOne: ref(true),
-									Elem: &tfbridge.SchemaInfo{
-										Fields: map[string]*tfbridge.SchemaInfo{
-											"price": {
-												MaxItemsOne: ref(true),
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-			"linode_networking_ip": {Tok: makeDataSource(mainMod, "getNetworkingIp")},
-			"linode_profile": {
-				Tok: makeDataSource(mainMod, "getProfile"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"referrals": {
-						MaxItemsOne: ref(true),
-					},
-				},
-			},
-			"linode_region": {Tok: makeDataSource(mainMod, "getRegion")},
-			"linode_sshkey": {Tok: makeDataSource(mainMod, "getSshKey")},
-			"linode_user":   {Tok: makeDataSource(mainMod, "getUser")},
-			"linode_object_storage_cluster": {
-				Tok: makeDataSource(mainMod, "getObjectStorageCluster"),
-			},
-			"linode_stackscript":            {Tok: makeDataSource(mainMod, "getStackScript")},
-			"linode_domain_record":          {Tok: makeDataSource(mainMod, "getDomainRecord")},
-			"linode_volume":                 {Tok: makeDataSource(mainMod, "getVolume")},
-			"linode_lke_cluster":            {Tok: makeDataSource(mainMod, "getLkeCluster")},
-			"linode_firewall":               {Tok: makeDataSource(mainMod, "getFirewall")},
-			"linode_images":                 {Tok: makeDataSource(mainMod, "getImages")},
-			"linode_instance_backups":       {Tok: makeDataSource(mainMod, "getInstanceBackups")},
-			"linode_instances":              {Tok: makeDataSource(mainMod, "getInstances")},
-			"linode_kernel":                 {Tok: makeDataSource(mainMod, "getKernel")},
-			"linode_nodebalancer":           {Tok: makeDataSource(mainMod, "getNodeBalancer")},
-			"linode_nodebalancer_config":    {Tok: makeDataSource(mainMod, "getNodeBalancerConfig")},
-			"linode_nodebalancer_node":      {Tok: makeDataSource(mainMod, "getNodeBalancerNode")},
-			"linode_instance_types":         {Tok: makeDataSource(mainMod, "getInstanceTypes")},
-			"linode_stackscripts":           {Tok: makeDataSource(mainMod, "getStackScripts")},
-			"linode_database_engines":       {Tok: makeDataSource(mainMod, "getDatabaseEngines")},
-			"linode_database_mysql_backups": {Tok: makeDataSource(mainMod, "getDatabaseMysqlBackups")},
-			"linode_databases":              {Tok: makeDataSource(mainMod, "getDatabases")},
-			"linode_database_backups":       {Tok: makeDataSource(mainMod, "getDatabaseBackups")},
-			"linode_database_mysql":         {Tok: makeDataSource(mainMod, "getDatabaseMysql")},
-			"linode_database_postgresql":    {Tok: makeDataSource(mainMod, "getDatabasePostgresql")},
-			"linode_ipv6_range":             {Tok: makeDataSource(mainMod, "getIpv6Range")},
-			"linode_domain_zonefile":        {Tok: makeDataSource(mainMod, "getDomainZonefile")},
+			"linode_sshkey":              {Tok: makeDataSource(mainMod, "getSshKey")},
+			"linode_stackscript":         {Tok: makeDataSource(mainMod, "getStackScript")},
+			"linode_nodebalancer":        {Tok: makeDataSource(mainMod, "getNodeBalancer")},
+			"linode_nodebalancer_config": {Tok: makeDataSource(mainMod, "getNodeBalancerConfig")},
+			"linode_nodebalancer_node":   {Tok: makeDataSource(mainMod, "getNodeBalancerNode")},
+			"linode_stackscripts":        {Tok: makeDataSource(mainMod, "getStackScripts")},
 			"linode_object_storage_bucket": {
 				Tok:  makeDataSource(mainMod, "getLinodeObjectStorageBucket"),
 				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},

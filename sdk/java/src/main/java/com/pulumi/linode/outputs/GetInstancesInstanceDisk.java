@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceDisk {
+    /**
+     * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * 
+     */
     private String filesystem;
     /**
      * @return The ID of the disk in the Linode API.
@@ -28,6 +32,10 @@ public final class GetInstancesInstanceDisk {
     private Integer size;
 
     private GetInstancesInstanceDisk() {}
+    /**
+     * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * 
+     */
     public String filesystem() {
         return this.filesystem;
     }

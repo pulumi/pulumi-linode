@@ -119,8 +119,6 @@ import javax.annotation.Nullable;
  *  $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
  * ```
  * 
- *  The Linode Guide, [Import Existing Infrastructure to Terraform](https://www.linode.com/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/), offers resource importing examples for various Linode resource types.
- * 
  */
 @ResourceType(type="linode:index/instanceDisk:InstanceDisk")
 public class InstanceDisk extends com.pulumi.resources.CustomResource {
