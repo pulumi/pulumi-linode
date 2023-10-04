@@ -73,10 +73,17 @@ func makeResource(mod string, res string) tokens.Type {
 // which won't help our users.
 func stripLinodeGuide() tfbridge.DocsEdit {
 	linodeGuide := regexp.MustCompile("The Linode Guide[^\n]*[tT]erraform[^\n]*\n\n?")
+	state := regexp.MustCompile("in [tT]erraform state")
+	thisProvider := regexp.MustCompile("this Terraform Provider")
+	provisioners := regexp.MustCompile("Linode Instances can also use provisioners.\n\n?")
 	return tfbridge.DocsEdit{
 		Path: "*",
-		Edit: func(_ string, bytes []byte) ([]byte, error) {
-			return linodeGuide.ReplaceAllLiteral(bytes, nil), nil
+		Edit: func(_ string, b []byte) ([]byte, error) {
+			b = linodeGuide.ReplaceAllLiteral(b, nil)
+			b = provisioners.ReplaceAllLiteral(b, nil)
+			b = thisProvider.ReplaceAllLiteral(b, []byte("this provider"))
+			b = state.ReplaceAllLiteral(b, []byte("in Pulumi state"))
+			return b, nil
 		},
 	}
 }
