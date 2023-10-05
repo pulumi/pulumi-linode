@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddon;
 import com.pulumi.linode.inputs.GetInstanceTypesTypePrice;
+import com.pulumi.linode.inputs.GetInstanceTypesTypeRegionPrice;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -120,6 +121,13 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
         return this.prices;
     }
 
+    @Import(name="regionPrices", required=true)
+    private List<GetInstanceTypesTypeRegionPrice> regionPrices;
+
+    public List<GetInstanceTypesTypeRegionPrice> regionPrices() {
+        return this.regionPrices;
+    }
+
     /**
      * The monthly outbound transfer amount, in MB.
      * 
@@ -161,6 +169,7 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
         this.memory = $.memory;
         this.networkOut = $.networkOut;
         this.prices = $.prices;
+        this.regionPrices = $.regionPrices;
         this.transfer = $.transfer;
         this.vcpus = $.vcpus;
     }
@@ -267,6 +276,15 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
             return prices(List.of(prices));
         }
 
+        public Builder regionPrices(List<GetInstanceTypesTypeRegionPrice> regionPrices) {
+            $.regionPrices = regionPrices;
+            return this;
+        }
+
+        public Builder regionPrices(GetInstanceTypesTypeRegionPrice... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
+
         /**
          * @param transfer The monthly outbound transfer amount, in MB.
          * 
@@ -298,6 +316,7 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
             $.memory = Objects.requireNonNull($.memory, "expected parameter 'memory' to be non-null");
             $.networkOut = Objects.requireNonNull($.networkOut, "expected parameter 'networkOut' to be non-null");
             $.prices = Objects.requireNonNull($.prices, "expected parameter 'prices' to be non-null");
+            $.regionPrices = Objects.requireNonNull($.regionPrices, "expected parameter 'regionPrices' to be non-null");
             $.transfer = Objects.requireNonNull($.transfer, "expected parameter 'transfer' to be non-null");
             $.vcpus = Objects.requireNonNull($.vcpus, "expected parameter 'vcpus' to be non-null");
             return $;

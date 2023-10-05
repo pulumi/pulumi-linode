@@ -18,12 +18,12 @@ public final class FirewallOutbound {
      */
     private String action;
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     private @Nullable List<String> ipv4s;
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     private @Nullable List<String> ipv6s;
@@ -52,14 +52,14 @@ public final class FirewallOutbound {
         return this.action;
     }
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     public List<String> ipv4s() {
         return this.ipv4s == null ? List.of() : this.ipv4s;
     }
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
     public List<String> ipv6s() {

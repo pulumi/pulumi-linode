@@ -5,16 +5,21 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.GetInstanceTypesTypeAddonBackupPrice;
+import com.pulumi.linode.outputs.GetInstanceTypesTypeAddonBackupRegionPrice;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesTypeAddonBackup {
     private List<GetInstanceTypesTypeAddonBackupPrice> prices;
+    private List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices;
 
     private GetInstanceTypesTypeAddonBackup() {}
     public List<GetInstanceTypesTypeAddonBackupPrice> prices() {
         return this.prices;
+    }
+    public List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices() {
+        return this.regionPrices;
     }
 
     public static Builder builder() {
@@ -27,10 +32,12 @@ public final class GetInstanceTypesTypeAddonBackup {
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypesTypeAddonBackupPrice> prices;
+        private List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices;
         public Builder() {}
         public Builder(GetInstanceTypesTypeAddonBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prices = defaults.prices;
+    	      this.regionPrices = defaults.regionPrices;
         }
 
         @CustomType.Setter
@@ -41,9 +48,18 @@ public final class GetInstanceTypesTypeAddonBackup {
         public Builder prices(GetInstanceTypesTypeAddonBackupPrice... prices) {
             return prices(List.of(prices));
         }
+        @CustomType.Setter
+        public Builder regionPrices(List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices) {
+            this.regionPrices = Objects.requireNonNull(regionPrices);
+            return this;
+        }
+        public Builder regionPrices(GetInstanceTypesTypeAddonBackupRegionPrice... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
         public GetInstanceTypesTypeAddonBackup build() {
             final var o = new GetInstanceTypesTypeAddonBackup();
             o.prices = prices;
+            o.regionPrices = regionPrices;
             return o;
         }
     }

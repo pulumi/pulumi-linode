@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupPrice;
+import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupRegionPrice;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,10 +21,18 @@ public final class GetInstanceTypesTypeAddonBackup extends com.pulumi.resources.
         return this.prices;
     }
 
+    @Import(name="regionPrices", required=true)
+    private List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices;
+
+    public List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices() {
+        return this.regionPrices;
+    }
+
     private GetInstanceTypesTypeAddonBackup() {}
 
     private GetInstanceTypesTypeAddonBackup(GetInstanceTypesTypeAddonBackup $) {
         this.prices = $.prices;
+        this.regionPrices = $.regionPrices;
     }
 
     public static Builder builder() {
@@ -53,8 +62,18 @@ public final class GetInstanceTypesTypeAddonBackup extends com.pulumi.resources.
             return prices(List.of(prices));
         }
 
+        public Builder regionPrices(List<GetInstanceTypesTypeAddonBackupRegionPrice> regionPrices) {
+            $.regionPrices = regionPrices;
+            return this;
+        }
+
+        public Builder regionPrices(GetInstanceTypesTypeAddonBackupRegionPrice... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
+
         public GetInstanceTypesTypeAddonBackup build() {
             $.prices = Objects.requireNonNull($.prices, "expected parameter 'prices' to be non-null");
+            $.regionPrices = Objects.requireNonNull($.regionPrices, "expected parameter 'regionPrices' to be non-null");
             return $;
         }
     }

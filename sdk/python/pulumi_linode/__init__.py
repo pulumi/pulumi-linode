@@ -58,6 +58,7 @@ from .get_user import *
 from .get_users import *
 from .get_vlans import *
 from .get_volume import *
+from .get_volumes import *
 from .image import *
 from .instance import *
 from .instance_disk import *

@@ -50,11 +50,11 @@ export interface FirewallInbound {
      */
     action: pulumi.Input<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -77,11 +77,11 @@ export interface FirewallOutbound {
      */
     action: pulumi.Input<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -885,6 +885,7 @@ export interface GetInstanceTypesType {
      */
     networkOut?: number;
     prices?: inputs.GetInstanceTypesTypePrice[];
+    regionPrices?: inputs.GetInstanceTypesTypeRegionPrice[];
     /**
      * The monthly outbound transfer amount, in MB.
      */
@@ -922,6 +923,7 @@ export interface GetInstanceTypesTypeArgs {
      */
     networkOut?: pulumi.Input<number>;
     prices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypePriceArgs>[]>;
+    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeRegionPriceArgs>[]>;
     /**
      * The monthly outbound transfer amount, in MB.
      */
@@ -942,10 +944,12 @@ export interface GetInstanceTypesTypeAddonArgs {
 
 export interface GetInstanceTypesTypeAddonBackup {
     prices: inputs.GetInstanceTypesTypeAddonBackupPrice[];
+    regionPrices: inputs.GetInstanceTypesTypeAddonBackupRegionPrice[];
 }
 
 export interface GetInstanceTypesTypeAddonBackupArgs {
     prices: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupPriceArgs>[]>;
+    regionPrices: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupRegionPriceArgs>[]>;
 }
 
 export interface GetInstanceTypesTypeAddonBackupPrice {
@@ -958,6 +962,24 @@ export interface GetInstanceTypesTypeAddonBackupPriceArgs {
     monthly: pulumi.Input<number>;
 }
 
+export interface GetInstanceTypesTypeAddonBackupRegionPrice {
+    hourly: number;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: string;
+    monthly: number;
+}
+
+export interface GetInstanceTypesTypeAddonBackupRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: pulumi.Input<string>;
+    monthly: pulumi.Input<number>;
+}
+
 export interface GetInstanceTypesTypePrice {
     hourly: number;
     monthly: number;
@@ -965,6 +987,24 @@ export interface GetInstanceTypesTypePrice {
 
 export interface GetInstanceTypesTypePriceArgs {
     hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetInstanceTypesTypeRegionPrice {
+    hourly: number;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: string;
+    monthly: number;
+}
+
+export interface GetInstanceTypesTypeRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    /**
+     * The ID representing the Linode Type.
+     */
+    id: pulumi.Input<string>;
     monthly: pulumi.Input<number>;
 }
 
@@ -2456,6 +2496,122 @@ export interface GetVlansVlanArgs {
      * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
      */
     region?: pulumi.Input<string>;
+}
+
+export interface GetVolumesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVolumesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVolumesVolume {
+    /**
+     * When this Volume was created.
+     */
+    created?: string;
+    /**
+     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+     */
+    filesystemPath?: string;
+    /**
+     * The unique ID of this Volume.
+     */
+    id: number;
+    /**
+     * This Volume's label is for display purposes only.
+     */
+    label?: string;
+    /**
+     * If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+     */
+    linodeId?: number;
+    /**
+     * The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    region?: string;
+    /**
+     * The Volume's size, in GiB.
+     */
+    size?: number;
+    /**
+     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
+     */
+    status?: string;
+    /**
+     * An array of tags applied to this object.
+     */
+    tags?: string[];
+    /**
+     * When this Volume was last updated.
+     */
+    updated?: string;
+}
+
+export interface GetVolumesVolumeArgs {
+    /**
+     * When this Volume was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+     */
+    filesystemPath?: pulumi.Input<string>;
+    /**
+     * The unique ID of this Volume.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * This Volume's label is for display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+     */
+    linodeId?: pulumi.Input<number>;
+    /**
+     * The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The Volume's size, in GiB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * An array of tags applied to this object.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this Volume was last updated.
+     */
+    updated?: pulumi.Input<string>;
 }
 
 export interface InstanceAlerts {

@@ -75,6 +75,7 @@ export interface GetInstanceTypeResult {
      */
     readonly networkOut: number;
     readonly price: outputs.GetInstanceTypePrice;
+    readonly regionPrices: outputs.GetInstanceTypeRegionPrice[];
     /**
      * The monthly outbound transfer amount, in MB.
      */

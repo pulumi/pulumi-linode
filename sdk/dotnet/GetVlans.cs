@@ -12,6 +12,10 @@ namespace Pulumi.Linode
     public static class GetVlans
     {
         /// <summary>
+        /// &gt; **Beta Notice** VLANs are currently available through early access.
+        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To learn more, see the early access documentation.
+        /// 
         /// Provides details about Linode VLANs.
         /// 
         /// {{% examples %}}
@@ -76,6 +80,10 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Beta Notice** VLANs are currently available through early access.
+        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To learn more, see the early access documentation.
+        /// 
         /// Provides details about Linode VLANs.
         /// 
         /// {{% examples %}}

@@ -22,7 +22,7 @@ class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
     """
-    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, transfer=None, vcpus=None):
+    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, region_prices=None, transfer=None, vcpus=None):
         if addons and not isinstance(addons, dict):
             raise TypeError("Expected argument 'addons' to be a dict")
         pulumi.set(__self__, "addons", addons)
@@ -47,6 +47,9 @@ class GetInstanceTypeResult:
         if price and not isinstance(price, dict):
             raise TypeError("Expected argument 'price' to be a dict")
         pulumi.set(__self__, "price", price)
+        if region_prices and not isinstance(region_prices, list):
+            raise TypeError("Expected argument 'region_prices' to be a list")
+        pulumi.set(__self__, "region_prices", region_prices)
         if transfer and not isinstance(transfer, int):
             raise TypeError("Expected argument 'transfer' to be a int")
         pulumi.set(__self__, "transfer", transfer)
@@ -113,6 +116,11 @@ class GetInstanceTypeResult:
         return pulumi.get(self, "price")
 
     @property
+    @pulumi.getter(name="regionPrices")
+    def region_prices(self) -> Sequence['outputs.GetInstanceTypeRegionPriceResult']:
+        return pulumi.get(self, "region_prices")
+
+    @property
     @pulumi.getter
     def transfer(self) -> int:
         """
@@ -143,6 +151,7 @@ class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
             memory=self.memory,
             network_out=self.network_out,
             price=self.price,
+            region_prices=self.region_prices,
             transfer=self.transfer,
             vcpus=self.vcpus)
 
@@ -183,6 +192,7 @@ def get_instance_type(id: Optional[str] = None,
         memory=pulumi.get(__ret__, 'memory'),
         network_out=pulumi.get(__ret__, 'network_out'),
         price=pulumi.get(__ret__, 'price'),
+        region_prices=pulumi.get(__ret__, 'region_prices'),
         transfer=pulumi.get(__ret__, 'transfer'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
 

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// &gt; **Beta Notice** IPv6 sharing is currently available through early access.
+    /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+    /// To learn more, see the early access documentation.
+    /// 
+    /// &gt; **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.
+    /// 
+    /// Manages IPs shared to a Linode instance.
+    /// </summary>
     [LinodeResourceType("linode:index/instanceSharedIps:InstanceSharedIps")]
     public partial class InstanceSharedIps : global::Pulumi.CustomResource
     {

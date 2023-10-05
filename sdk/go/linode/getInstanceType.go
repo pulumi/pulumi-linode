@@ -73,8 +73,9 @@ type GetInstanceTypeResult struct {
 	// The amount of RAM included in this Linode Type.
 	Memory int `pulumi:"memory"`
 	// The Mbits outbound bandwidth allocation.
-	NetworkOut int                  `pulumi:"networkOut"`
-	Price      GetInstanceTypePrice `pulumi:"price"`
+	NetworkOut   int                          `pulumi:"networkOut"`
+	Price        GetInstanceTypePrice         `pulumi:"price"`
+	RegionPrices []GetInstanceTypeRegionPrice `pulumi:"regionPrices"`
 	// The monthly outbound transfer amount, in MB.
 	Transfer int `pulumi:"transfer"`
 	// The number of VCPU cores this Linode Type offers.
@@ -163,6 +164,10 @@ func (o GetInstanceTypeResultOutput) NetworkOut() pulumi.IntOutput {
 
 func (o GetInstanceTypeResultOutput) Price() GetInstanceTypePriceOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypePrice { return v.Price }).(GetInstanceTypePriceOutput)
+}
+
+func (o GetInstanceTypeResultOutput) RegionPrices() GetInstanceTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypeRegionPrice { return v.RegionPrices }).(GetInstanceTypeRegionPriceArrayOutput)
 }
 
 // The monthly outbound transfer amount, in MB.

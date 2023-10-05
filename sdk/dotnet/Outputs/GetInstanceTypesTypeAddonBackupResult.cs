@@ -14,11 +14,16 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceTypesTypeAddonBackupResult
     {
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupPriceResult> Prices;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupRegionPriceResult> RegionPrices;
 
         [OutputConstructor]
-        private GetInstanceTypesTypeAddonBackupResult(ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupPriceResult> prices)
+        private GetInstanceTypesTypeAddonBackupResult(
+            ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupPriceResult> prices,
+
+            ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupRegionPriceResult> regionPrices)
         {
             Prices = prices;
+            RegionPrices = regionPrices;
         }
     }
 }

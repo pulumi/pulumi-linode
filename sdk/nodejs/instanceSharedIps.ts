@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Beta Notice** IPv6 sharing is currently available through early access.
+ * To use early access resources, the `apiVersion` provider argument must be set to `v4beta`.
+ * To learn more, see the early access documentation.
+ *
+ * > **Notice** This resource should only be defined once per-instance and should not be used alongside the `sharedIpv4` field in `linode.Instance`.
+ *
+ * Manages IPs shared to a Linode instance.
+ */
 export class InstanceSharedIps extends pulumi.CustomResource {
     /**
      * Get an existing InstanceSharedIps resource's state with the given name, ID, and optional extra

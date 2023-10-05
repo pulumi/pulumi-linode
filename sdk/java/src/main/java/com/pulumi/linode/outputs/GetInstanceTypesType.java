@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.GetInstanceTypesTypeAddon;
 import com.pulumi.linode.outputs.GetInstanceTypesTypePrice;
+import com.pulumi.linode.outputs.GetInstanceTypesTypeRegionPrice;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,7 @@ public final class GetInstanceTypesType {
      */
     private Integer networkOut;
     private List<GetInstanceTypesTypePrice> prices;
+    private List<GetInstanceTypesTypeRegionPrice> regionPrices;
     /**
      * @return The monthly outbound transfer amount, in MB.
      * 
@@ -105,6 +107,9 @@ public final class GetInstanceTypesType {
     public List<GetInstanceTypesTypePrice> prices() {
         return this.prices;
     }
+    public List<GetInstanceTypesTypeRegionPrice> regionPrices() {
+        return this.regionPrices;
+    }
     /**
      * @return The monthly outbound transfer amount, in MB.
      * 
@@ -137,6 +142,7 @@ public final class GetInstanceTypesType {
         private Integer memory;
         private Integer networkOut;
         private List<GetInstanceTypesTypePrice> prices;
+        private List<GetInstanceTypesTypeRegionPrice> regionPrices;
         private Integer transfer;
         private Integer vcpus;
         public Builder() {}
@@ -150,6 +156,7 @@ public final class GetInstanceTypesType {
     	      this.memory = defaults.memory;
     	      this.networkOut = defaults.networkOut;
     	      this.prices = defaults.prices;
+    	      this.regionPrices = defaults.regionPrices;
     	      this.transfer = defaults.transfer;
     	      this.vcpus = defaults.vcpus;
         }
@@ -201,6 +208,14 @@ public final class GetInstanceTypesType {
             return prices(List.of(prices));
         }
         @CustomType.Setter
+        public Builder regionPrices(List<GetInstanceTypesTypeRegionPrice> regionPrices) {
+            this.regionPrices = Objects.requireNonNull(regionPrices);
+            return this;
+        }
+        public Builder regionPrices(GetInstanceTypesTypeRegionPrice... regionPrices) {
+            return regionPrices(List.of(regionPrices));
+        }
+        @CustomType.Setter
         public Builder transfer(Integer transfer) {
             this.transfer = Objects.requireNonNull(transfer);
             return this;
@@ -220,6 +235,7 @@ public final class GetInstanceTypesType {
             o.memory = memory;
             o.networkOut = networkOut;
             o.prices = prices;
+            o.regionPrices = regionPrices;
             o.transfer = transfer;
             o.vcpus = vcpus;
             return o;

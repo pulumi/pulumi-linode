@@ -228,14 +228,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask format.\n"
+                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.\n"
                 },
                 "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask format.\n"
+                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.\n"
                 },
                 "label": {
                     "type": "string",
@@ -268,14 +268,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask format.\n"
+                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.\n"
                 },
                 "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask format.\n"
+                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.\n"
                 },
                 "label": {
                     "type": "string",
@@ -2935,11 +2935,18 @@
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceTypeAddonsBackupPrice:getInstanceTypeAddonsBackupPrice"
                     }
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypeAddonsBackupRegionPrice:getInstanceTypeAddonsBackupRegionPrice"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "prices"
+                "prices",
+                "regionPrices"
             ],
             "language": {
                 "nodejs": {
@@ -2967,6 +2974,31 @@
                 }
             }
         },
+        "linode:index/getInstanceTypeAddonsBackupRegionPrice:getInstanceTypeAddonsBackupRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Label used to identify instance type\n"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getInstanceTypePrice:getInstanceTypePrice": {
             "properties": {
                 "hourly": {
@@ -2979,6 +3011,31 @@
             "type": "object",
             "required": [
                 "hourly",
+                "monthly"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceTypeRegionPrice:getInstanceTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Label used to identify instance type\n"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
                 "monthly"
             ],
             "language": {
@@ -3049,6 +3106,12 @@
                         "$ref": "#/types/linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice"
                     }
                 },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypeRegionPrice:getInstanceTypesTypeRegionPrice"
+                    }
+                },
                 "transfer": {
                     "type": "integer",
                     "description": "The monthly outbound transfer amount, in MB.\n"
@@ -3068,6 +3131,7 @@
                 "memory",
                 "networkOut",
                 "prices",
+                "regionPrices",
                 "transfer",
                 "vcpus"
             ],
@@ -3100,11 +3164,18 @@
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice"
                     }
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceTypesTypeAddonBackupRegionPrice:getInstanceTypesTypeAddonBackupRegionPrice"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "prices"
+                "prices",
+                "regionPrices"
             ]
         },
         "linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice": {
@@ -3122,6 +3193,26 @@
                 "monthly"
             ]
         },
+        "linode:index/getInstanceTypesTypeAddonBackupRegionPrice:getInstanceTypesTypeAddonBackupRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID representing the Linode Type.\n"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ]
+        },
         "linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice": {
             "properties": {
                 "hourly": {
@@ -3134,6 +3225,26 @@
             "type": "object",
             "required": [
                 "hourly",
+                "monthly"
+            ]
+        },
+        "linode:index/getInstanceTypesTypeRegionPrice:getInstanceTypesTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID representing the Linode Type.\n"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
                 "monthly"
             ]
         },
@@ -5342,6 +5453,97 @@
             "language": {
                 "nodejs": {
                     "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getVolumesFilter:getVolumesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVolumesVolume:getVolumesVolume": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "When this Volume was created.\n"
+                },
+                "filesystemPath": {
+                    "type": "string",
+                    "description": "The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID of this Volume.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "This Volume's label is for display purposes only.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The Volume's size, in GiB.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags applied to this object.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When this Volume was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "filesystemPath",
+                "id",
+                "label",
+                "linodeId",
+                "region",
+                "size",
+                "status",
+                "tags",
+                "updated"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         }
@@ -7957,6 +8159,7 @@
             }
         },
         "linode:index/instanceSharedIps:InstanceSharedIps": {
+            "description": "\u003e **Beta Notice** IPv6 sharing is currently available through early access.\nTo use early access resources, the `api_version` provider argument must be set to `v4beta`.\nTo learn more, see the early access documentation.\n\n\u003e **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.\n\nManages IPs shared to a Linode instance.\n",
             "properties": {
                 "addresses": {
                     "type": "array",
@@ -11599,6 +11802,12 @@
                     "price": {
                         "$ref": "#/types/linode:index/getInstanceTypePrice:getInstanceTypePrice"
                     },
+                    "regionPrices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getInstanceTypeRegionPrice:getInstanceTypeRegionPrice"
+                        }
+                    },
                     "transfer": {
                         "type": "integer",
                         "description": "The monthly outbound transfer amount, in MB.\n"
@@ -11618,6 +11827,7 @@
                     "memory",
                     "networkOut",
                     "price",
+                    "regionPrices",
                     "transfer",
                     "vcpus"
                 ]
@@ -13238,7 +13448,7 @@
             }
         },
         "linode:index/getVlans:getVlans": {
-            "description": "Provides details about Linode VLANs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n    rootPass: \"bogusPassword$\",\n    interfaces: [{\n        purpose: \"vlan\",\n        label: \"my-vlan\",\n    }],\n});\nconst my-vlans = linode.getVlans({\n    filters: [{\n        name: \"label\",\n        values: [\"my-vlan\"],\n    }],\n});\nexport const vlanLinodes = my_vlans.then(my_vlans =\u003e my_vlans.vlans?.[0]?.linodes);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    interfaces=[linode.InstanceInterfaceArgs(\n        purpose=\"vlan\",\n        label=\"my-vlan\",\n    )])\nmy_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(\n    name=\"label\",\n    values=[\"my-vlan\"],\n)])\npulumi.export(\"vlanLinodes\", my_vlans.vlans[0].linodes)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myInstance = new Linode.Instance(\"myInstance\", new()\n    {\n        Label = \"my_instance\",\n        Image = \"linode/ubuntu18.04\",\n        Region = \"us-southeast\",\n        Type = \"g6-standard-1\",\n        RootPass = \"bogusPassword$\",\n        Interfaces = new[]\n        {\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"vlan\",\n                Label = \"my-vlan\",\n            },\n        },\n    });\n\n    var my_vlans = Linode.GetVlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVlansFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-vlan\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vlanLinodes\"] = my_vlans.Apply(my_vlans =\u003e my_vlans.Apply(getVlansResult =\u003e getVlansResult.Vlans[0]?.Linodes)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:    pulumi.String(\"my_instance\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-standard-1\"),\n\t\t\tRootPass: pulumi.String(\"bogusPassword$\"),\n\t\t\tInterfaces: linode.InstanceInterfaceArray{\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose: pulumi.String(\"vlan\"),\n\t\t\t\t\tLabel:   pulumi.String(\"my-vlan\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_vlans, err := linode.GetVlans(ctx, \u0026linode.GetVlansArgs{\n\t\t\tFilters: []linode.GetVlansFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-vlan\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vlanLinodes\", my_vlans.Vlans[0].Linodes)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceArgs;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myInstance = new Instance(\"myInstance\", InstanceArgs.builder()        \n            .label(\"my_instance\")\n            .image(\"linode/ubuntu18.04\")\n            .region(\"us-southeast\")\n            .type(\"g6-standard-1\")\n            .rootPass(\"bogusPassword$\")\n            .interfaces(InstanceInterfaceArgs.builder()\n                .purpose(\"vlan\")\n                .label(\"my-vlan\")\n                .build())\n            .build());\n\n        final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()\n            .filters(GetVlansFilterArgs.builder()\n                .name(\"label\")\n                .values(\"my-vlan\")\n                .build())\n            .build());\n\n        ctx.export(\"vlanLinodes\", my_vlans.vlans()[0].linodes());\n    }\n}\n```\n```yaml\nresources:\n  myInstance:\n    type: linode:Instance\n    properties:\n      label: my_instance\n      image: linode/ubuntu18.04\n      region: us-southeast\n      type: g6-standard-1\n      rootPass: bogusPassword$\n      interfaces:\n        - purpose: vlan\n          label: my-vlan\nvariables:\n  my-vlans:\n    fn::invoke:\n      Function: linode:getVlans\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-vlan\noutputs:\n  vlanLinodes: ${[\"my-vlans\"].vlans[0].linodes}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `label`\n\n* `region`\n",
+            "description": "\u003e **Beta Notice** VLANs are currently available through early access.\nTo use early access resources, the `api_version` provider argument must be set to `v4beta`.\nTo learn more, see the early access documentation.\n\nProvides details about Linode VLANs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myInstance = new linode.Instance(\"myInstance\", {\n    label: \"my_instance\",\n    image: \"linode/ubuntu18.04\",\n    region: \"us-southeast\",\n    type: \"g6-standard-1\",\n    rootPass: \"bogusPassword$\",\n    interfaces: [{\n        purpose: \"vlan\",\n        label: \"my-vlan\",\n    }],\n});\nconst my-vlans = linode.getVlans({\n    filters: [{\n        name: \"label\",\n        values: [\"my-vlan\"],\n    }],\n});\nexport const vlanLinodes = my_vlans.then(my_vlans =\u003e my_vlans.vlans?.[0]?.linodes);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"myInstance\",\n    label=\"my_instance\",\n    image=\"linode/ubuntu18.04\",\n    region=\"us-southeast\",\n    type=\"g6-standard-1\",\n    root_pass=\"bogusPassword$\",\n    interfaces=[linode.InstanceInterfaceArgs(\n        purpose=\"vlan\",\n        label=\"my-vlan\",\n    )])\nmy_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(\n    name=\"label\",\n    values=[\"my-vlan\"],\n)])\npulumi.export(\"vlanLinodes\", my_vlans.vlans[0].linodes)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myInstance = new Linode.Instance(\"myInstance\", new()\n    {\n        Label = \"my_instance\",\n        Image = \"linode/ubuntu18.04\",\n        Region = \"us-southeast\",\n        Type = \"g6-standard-1\",\n        RootPass = \"bogusPassword$\",\n        Interfaces = new[]\n        {\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"vlan\",\n                Label = \"my-vlan\",\n            },\n        },\n    });\n\n    var my_vlans = Linode.GetVlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVlansFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-vlan\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vlanLinodes\"] = my_vlans.Apply(my_vlans =\u003e my_vlans.Apply(getVlansResult =\u003e getVlansResult.Vlans[0]?.Linodes)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"myInstance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:    pulumi.String(\"my_instance\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu18.04\"),\n\t\t\tRegion:   pulumi.String(\"us-southeast\"),\n\t\t\tType:     pulumi.String(\"g6-standard-1\"),\n\t\t\tRootPass: pulumi.String(\"bogusPassword$\"),\n\t\t\tInterfaces: linode.InstanceInterfaceArray{\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose: pulumi.String(\"vlan\"),\n\t\t\t\t\tLabel:   pulumi.String(\"my-vlan\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_vlans, err := linode.GetVlans(ctx, \u0026linode.GetVlansArgs{\n\t\t\tFilters: []linode.GetVlansFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-vlan\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vlanLinodes\", my_vlans.Vlans[0].Linodes)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceArgs;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myInstance = new Instance(\"myInstance\", InstanceArgs.builder()        \n            .label(\"my_instance\")\n            .image(\"linode/ubuntu18.04\")\n            .region(\"us-southeast\")\n            .type(\"g6-standard-1\")\n            .rootPass(\"bogusPassword$\")\n            .interfaces(InstanceInterfaceArgs.builder()\n                .purpose(\"vlan\")\n                .label(\"my-vlan\")\n                .build())\n            .build());\n\n        final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()\n            .filters(GetVlansFilterArgs.builder()\n                .name(\"label\")\n                .values(\"my-vlan\")\n                .build())\n            .build());\n\n        ctx.export(\"vlanLinodes\", my_vlans.vlans()[0].linodes());\n    }\n}\n```\n```yaml\nresources:\n  myInstance:\n    type: linode:Instance\n    properties:\n      label: my_instance\n      image: linode/ubuntu18.04\n      region: us-southeast\n      type: g6-standard-1\n      rootPass: bogusPassword$\n      interfaces:\n        - purpose: vlan\n          label: my-vlan\nvariables:\n  my-vlans:\n    fn::invoke:\n      Function: linode:getVlans\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-vlan\noutputs:\n  vlanLinodes: ${[\"my-vlans\"].vlans[0].linodes}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `label`\n\n* `region`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getVlans.\n",
                 "properties": {
@@ -13370,6 +13580,66 @@
                     "status",
                     "tags",
                     "updated"
+                ]
+            }
+        },
+        "linode:index/getVolumes:getVolumes": {
+            "description": "Provides information about Linode volumes that match a set of filters.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-volumes = linode.getVolumes({\n    filters: [{\n        name: \"label\",\n        values: [\"test-volume\"],\n    }],\n});\nexport const volumes = filtered_volumes.then(filtered_volumes =\u003e filtered_volumes.volumes);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_volumes = linode.get_volumes(filters=[linode.GetVolumesFilterArgs(\n    name=\"label\",\n    values=[\"test-volume\"],\n)])\npulumi.export(\"volumes\", filtered_volumes.volumes)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_volumes = Linode.GetVolumes.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVolumesFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"test-volume\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"volumes\"] = filtered_volumes.Apply(filtered_volumes =\u003e filtered_volumes.Apply(getVolumesResult =\u003e getVolumesResult.Volumes)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_volumes, err := linode.GetVolumes(ctx, \u0026linode.GetVolumesArgs{\n\t\t\tFilters: []linode.GetVolumesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test-volume\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"volumes\", filtered_volumes.Volumes)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVolumesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()\n            .filters(GetVolumesFilterArgs.builder()\n                .name(\"label\")\n                .values(\"test-volume\")\n                .build())\n            .build());\n\n        ctx.export(\"volumes\", filtered_volumes.volumes());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-volumes:\n    fn::invoke:\n      Function: linode:getVolumes\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - test-volume\noutputs:\n  volumes: ${[\"filtered-volumes\"].volumes}\n```\n\n## Filterable Fields\n\n* `label`\n\n* `tags`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVolumes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumesFilter:getVolumesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    },
+                    "volumes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumesVolume:getVolumesVolume"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVolumes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumesFilter:getVolumesFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique ID of this Volume.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "volumes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumesVolume:getVolumesVolume"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
                 ]
             }
         }

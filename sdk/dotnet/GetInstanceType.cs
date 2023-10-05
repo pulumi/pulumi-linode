@@ -143,6 +143,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int NetworkOut;
         public readonly Outputs.GetInstanceTypePriceResult Price;
+        public readonly ImmutableArray<Outputs.GetInstanceTypeRegionPriceResult> RegionPrices;
         /// <summary>
         /// The monthly outbound transfer amount, in MB.
         /// </summary>
@@ -170,6 +171,8 @@ namespace Pulumi.Linode
 
             Outputs.GetInstanceTypePriceResult price,
 
+            ImmutableArray<Outputs.GetInstanceTypeRegionPriceResult> regionPrices,
+
             int transfer,
 
             int vcpus)
@@ -182,6 +185,7 @@ namespace Pulumi.Linode
             Memory = memory;
             NetworkOut = networkOut;
             Price = price;
+            RegionPrices = regionPrices;
             Transfer = transfer;
             Vcpus = vcpus;
         }

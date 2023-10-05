@@ -120,7 +120,14 @@ class InstanceSharedIps(pulumi.CustomResource):
                  linode_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a InstanceSharedIps resource with the given unique name, props, and options.
+        > **Beta Notice** IPv6 sharing is currently available through early access.
+        To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        To learn more, see the early access documentation.
+
+        > **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `Instance`.
+
+        Manages IPs shared to a Linode instance.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The set of IPs to share with the Linode.
@@ -133,7 +140,14 @@ class InstanceSharedIps(pulumi.CustomResource):
                  args: InstanceSharedIpsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a InstanceSharedIps resource with the given unique name, props, and options.
+        > **Beta Notice** IPv6 sharing is currently available through early access.
+        To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        To learn more, see the early access documentation.
+
+        > **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `Instance`.
+
+        Manages IPs shared to a Linode instance.
+
         :param str resource_name: The name of the resource.
         :param InstanceSharedIpsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
