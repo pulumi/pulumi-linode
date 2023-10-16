@@ -70,7 +70,7 @@ type Token struct {
 	// The date this Token was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
-	Expiry pulumi.StringPtrOutput `pulumi:"expiry"`
+	Expiry pulumi.StringOutput `pulumi:"expiry"`
 	// A label for the Token.
 	Label pulumi.StringPtrOutput `pulumi:"label"`
 	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
@@ -281,8 +281,8 @@ func (o TokenOutput) Created() pulumi.StringOutput {
 }
 
 // When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
-func (o TokenOutput) Expiry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Expiry }).(pulumi.StringPtrOutput)
+func (o TokenOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Expiry }).(pulumi.StringOutput)
 }
 
 // A label for the Token.

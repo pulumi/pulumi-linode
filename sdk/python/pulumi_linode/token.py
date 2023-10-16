@@ -358,7 +358,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expiry(self) -> pulumi.Output[Optional[str]]:
+    def expiry(self) -> pulumi.Output[str]:
         """
         When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
         """

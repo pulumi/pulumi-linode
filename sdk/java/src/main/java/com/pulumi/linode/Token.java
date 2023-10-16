@@ -91,14 +91,14 @@ public class Token extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="expiry", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expiry;
+    private Output<String> expiry;
 
     /**
      * @return When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with &#39;null&#39; as their expiry and will never expire unless revoked.
      * 
      */
-    public Output<Optional<String>> expiry() {
-        return Codegen.optional(this.expiry);
+    public Output<String> expiry() {
+        return this.expiry;
     }
     /**
      * A label for the Token.
