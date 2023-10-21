@@ -9847,6 +9847,7 @@
             },
             "required": [
                 "created",
+                "expiry",
                 "scopes",
                 "token"
             ],
