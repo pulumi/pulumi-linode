@@ -35,11 +35,19 @@ class InstanceIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             linode_id: pulumi.Input[int],
+             linode_id: Optional[pulumi.Input[int]] = None,
              apply_immediately: Optional[pulumi.Input[bool]] = None,
              public: Optional[pulumi.Input[bool]] = None,
              rdns: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if linode_id is None:
+            raise TypeError("Missing 'linode_id' argument")
+        if apply_immediately is None and 'applyImmediately' in kwargs:
+            apply_immediately = kwargs['applyImmediately']
+
         _setter("linode_id", linode_id)
         if apply_immediately is not None:
             _setter("apply_immediately", apply_immediately)
@@ -149,7 +157,15 @@ class _InstanceIpState:
              region: Optional[pulumi.Input[str]] = None,
              subnet_mask: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apply_immediately is None and 'applyImmediately' in kwargs:
+            apply_immediately = kwargs['applyImmediately']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if subnet_mask is None and 'subnetMask' in kwargs:
+            subnet_mask = kwargs['subnetMask']
+
         if address is not None:
             _setter("address", address)
         if apply_immediately is not None:
@@ -309,22 +325,6 @@ class InstanceIp(pulumi.CustomResource):
 
         Manages a Linode instance IP.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo_instance = linode.Instance("fooInstance",
-            image="linode/alpine3.16",
-            label="foobar-test",
-            type="g6-nanode-1",
-            region="us-east")
-        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
-            linode_id=foo_instance.id,
-            public=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
@@ -344,22 +344,6 @@ class InstanceIp(pulumi.CustomResource):
         > **NOTICE:** This resource will reboot the specified instance following IP allocation.
 
         Manages a Linode instance IP.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo_instance = linode.Instance("fooInstance",
-            image="linode/alpine3.16",
-            label="foobar-test",
-            type="g6-nanode-1",
-            region="us-east")
-        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
-            linode_id=foo_instance.id,
-            public=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceIpArgs args: The arguments to use to populate this resource's properties.

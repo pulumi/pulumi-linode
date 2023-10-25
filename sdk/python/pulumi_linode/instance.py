@@ -114,7 +114,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
              alerts: Optional[pulumi.Input['InstanceAlertsArgs']] = None,
              authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -139,7 +139,37 @@ class InstanceArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              watchdog_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if authorized_keys is None and 'authorizedKeys' in kwargs:
+            authorized_keys = kwargs['authorizedKeys']
+        if authorized_users is None and 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if backups_enabled is None and 'backupsEnabled' in kwargs:
+            backups_enabled = kwargs['backupsEnabled']
+        if boot_config_label is None and 'bootConfigLabel' in kwargs:
+            boot_config_label = kwargs['bootConfigLabel']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if resize_disk is None and 'resizeDisk' in kwargs:
+            resize_disk = kwargs['resizeDisk']
+        if root_pass is None and 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if shared_ipv4s is None and 'sharedIpv4s' in kwargs:
+            shared_ipv4s = kwargs['sharedIpv4s']
+        if stackscript_data is None and 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if stackscript_id is None and 'stackscriptId' in kwargs:
+            stackscript_id = kwargs['stackscriptId']
+        if swap_size is None and 'swapSize' in kwargs:
+            swap_size = kwargs['swapSize']
+        if watchdog_enabled is None and 'watchdogEnabled' in kwargs:
+            watchdog_enabled = kwargs['watchdogEnabled']
+
         _setter("region", region)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -677,7 +707,43 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              watchdog_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_keys is None and 'authorizedKeys' in kwargs:
+            authorized_keys = kwargs['authorizedKeys']
+        if authorized_users is None and 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if backups_enabled is None and 'backupsEnabled' in kwargs:
+            backups_enabled = kwargs['backupsEnabled']
+        if boot_config_label is None and 'bootConfigLabel' in kwargs:
+            boot_config_label = kwargs['bootConfigLabel']
+        if has_user_data is None and 'hasUserData' in kwargs:
+            has_user_data = kwargs['hasUserData']
+        if host_uuid is None and 'hostUuid' in kwargs:
+            host_uuid = kwargs['hostUuid']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if resize_disk is None and 'resizeDisk' in kwargs:
+            resize_disk = kwargs['resizeDisk']
+        if root_pass is None and 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if shared_ipv4s is None and 'sharedIpv4s' in kwargs:
+            shared_ipv4s = kwargs['sharedIpv4s']
+        if stackscript_data is None and 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if stackscript_id is None and 'stackscriptId' in kwargs:
+            stackscript_id = kwargs['stackscriptId']
+        if swap_size is None and 'swapSize' in kwargs:
+            swap_size = kwargs['swapSize']
+        if watchdog_enabled is None and 'watchdogEnabled' in kwargs:
+            watchdog_enabled = kwargs['watchdogEnabled']
+
         if alerts is not None:
             _setter("alerts", alerts)
         if authorized_keys is not None:
@@ -1216,26 +1282,6 @@ class Instance(pulumi.CustomResource):
         For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 
         ## Example Usage
-        ### Simple Linode Instance
-
-        The following example shows how one might use this resource to configure a Linode instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            group="foo",
-            image="linode/ubuntu18.04",
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="terr4form-test",
-            swap_size=256,
-            tags=["foo"],
-            type="g6-standard-1")
-        ```
 
         ## Import
 
@@ -1304,26 +1350,6 @@ class Instance(pulumi.CustomResource):
         For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 
         ## Example Usage
-        ### Simple Linode Instance
-
-        The following example shows how one might use this resource to configure a Linode instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            group="foo",
-            image="linode/ubuntu18.04",
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="terr4form-test",
-            swap_size=256,
-            tags=["foo"],
-            type="g6-standard-1")
-        ```
 
         ## Import
 
@@ -1392,11 +1418,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            if alerts is not None and not isinstance(alerts, InstanceAlertsArgs):
-                alerts = alerts or {}
-                def _setter(key, value):
-                    alerts[key] = value
-                InstanceAlertsArgs._configure(_setter, **alerts)
+            alerts = _utilities.configure(alerts, InstanceAlertsArgs, True)
             __props__.__dict__["alerts"] = alerts
             __props__.__dict__["authorized_keys"] = authorized_keys
             __props__.__dict__["authorized_users"] = authorized_users

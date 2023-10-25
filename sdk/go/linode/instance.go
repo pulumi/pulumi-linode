@@ -17,46 +17,6 @@ import (
 // For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 //
 // ## Example Usage
-// ### Simple Linode Instance
-//
-// The following example shows how one might use this resource to configure a Linode instance.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
-//				AuthorizedKeys: pulumi.StringArray{
-//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
-//				},
-//				Group:     pulumi.String("foo"),
-//				Image:     pulumi.String("linode/ubuntu18.04"),
-//				Label:     pulumi.String("simple_instance"),
-//				PrivateIp: pulumi.Bool(true),
-//				Region:    pulumi.String("us-central"),
-//				RootPass:  pulumi.String("terr4form-test"),
-//				SwapSize:  pulumi.Int(256),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo"),
-//				},
-//				Type: pulumi.String("g6-standard-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

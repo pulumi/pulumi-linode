@@ -45,13 +45,27 @@ class StackScriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             images: pulumi.Input[Sequence[pulumi.Input[str]]],
-             label: pulumi.Input[str],
-             script: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input[str]] = None,
              is_public: Optional[pulumi.Input[bool]] = None,
              rev_note: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rev_note is None and 'revNote' in kwargs:
+            rev_note = kwargs['revNote']
+
         _setter("description", description)
         _setter("images", images)
         _setter("label", label)
@@ -202,7 +216,21 @@ class _StackScriptState:
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]] = None,
              user_gravatar_id: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deployments_active is None and 'deploymentsActive' in kwargs:
+            deployments_active = kwargs['deploymentsActive']
+        if deployments_total is None and 'deploymentsTotal' in kwargs:
+            deployments_total = kwargs['deploymentsTotal']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rev_note is None and 'revNote' in kwargs:
+            rev_note = kwargs['revNote']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+        if user_gravatar_id is None and 'userGravatarId' in kwargs:
+            user_gravatar_id = kwargs['userGravatarId']
+
         if created is not None:
             _setter("created", created)
         if deployments_active is not None:
@@ -406,39 +434,6 @@ class StackScript(pulumi.CustomResource):
 
         For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo_stack_script = linode.StackScript("fooStackScript",
-            label="foo",
-            description="Installs a Package",
-            script=\"\"\"#!/bin/bash
-        # <UDF name="package" label="System Package to Install" example="nginx" default="">
-        apt-get -q update && apt-get -q -y install $PACKAGE
-        \"\"\",
-            images=[
-                "linode/ubuntu18.04",
-                "linode/ubuntu16.04lts",
-            ],
-            rev_note="initial version")
-        foo_instance = linode.Instance("fooInstance",
-            image="linode/ubuntu18.04",
-            label="foo",
-            region="us-east",
-            type="g6-nanode-1",
-            authorized_keys=["..."],
-            root_pass="...",
-            stackscript_id=foo_stack_script.id,
-            stackscript_data={
-                "package": "nginx",
-            })
-        ```
-
         ## Import
 
         Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
@@ -468,39 +463,6 @@ class StackScript(pulumi.CustomResource):
         Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
 
         For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo_stack_script = linode.StackScript("fooStackScript",
-            label="foo",
-            description="Installs a Package",
-            script=\"\"\"#!/bin/bash
-        # <UDF name="package" label="System Package to Install" example="nginx" default="">
-        apt-get -q update && apt-get -q -y install $PACKAGE
-        \"\"\",
-            images=[
-                "linode/ubuntu18.04",
-                "linode/ubuntu16.04lts",
-            ],
-            rev_note="initial version")
-        foo_instance = linode.Instance("fooInstance",
-            image="linode/ubuntu18.04",
-            label="foo",
-            region="us-east",
-            type="g6-nanode-1",
-            authorized_keys=["..."],
-            root_pass="...",
-            stackscript_id=foo_stack_script.id,
-            stackscript_data={
-                "package": "nginx",
-            })
-        ```
 
         ## Import
 

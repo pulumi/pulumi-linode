@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
  * Provides information about a Linode account.
  *
  * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access account details.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const account = linode.getAccount({});
- * ```
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -85,17 +74,6 @@ export interface GetAccountResult {
  * Provides information about a Linode account.
  *
  * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access account details.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const account = linode.getAccount({});
- * ```
  */
 export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(getAccount(opts))

@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode users that match a set of filters.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filtered-users = linode.getUsers({
- *     filters: [{
- *         name: "username",
- *         values: ["test-user"],
- *     }],
- * });
- * export const users = filtered_users.then(filtered_users => filtered_users.users);
- * ```
- *
  * ## Filterable Fields
  *
  * * `username`
@@ -79,19 +66,6 @@ export interface GetUsersResult {
 }
 /**
  * Provides information about Linode users that match a set of filters.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filtered-users = linode.getUsers({
- *     filters: [{
- *         name: "username",
- *         values: ["test-user"],
- *     }],
- * });
- * export const users = filtered_users.then(filtered_users => filtered_users.users);
- * ```
  *
  * ## Filterable Fields
  *

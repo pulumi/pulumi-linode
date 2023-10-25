@@ -43,13 +43,27 @@ class NodeBalancerNodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             config_id: pulumi.Input[int],
-             label: pulumi.Input[str],
-             nodebalancer_id: pulumi.Input[int],
+             address: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[int]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             nodebalancer_id: Optional[pulumi.Input[int]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if nodebalancer_id is None and 'nodebalancerId' in kwargs:
+            nodebalancer_id = kwargs['nodebalancerId']
+        if nodebalancer_id is None:
+            raise TypeError("Missing 'nodebalancer_id' argument")
+
         _setter("address", address)
         _setter("config_id", config_id)
         _setter("label", label)
@@ -176,7 +190,13 @@ class _NodeBalancerNodeState:
              nodebalancer_id: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if nodebalancer_id is None and 'nodebalancerId' in kwargs:
+            nodebalancer_id = kwargs['nodebalancerId']
+
         if address is not None:
             _setter("address", address)
         if config_id is not None:

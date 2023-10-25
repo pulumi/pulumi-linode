@@ -8,19 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode instance type
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode Instance type.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const default = linode.getInstanceType({
- *     id: "g6-standard-2",
- * });
- * ```
  */
 export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> {
 
@@ -87,19 +74,6 @@ export interface GetInstanceTypeResult {
 }
 /**
  * Provides information about a Linode instance type
- *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode Instance type.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const default = linode.getInstanceType({
- *     id: "g6-standard-2",
- * });
- * ```
  */
 export function getInstanceTypeOutput(args: GetInstanceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeResult> {
     return pulumi.output(args).apply((a: any) => getInstanceType(a, opts))

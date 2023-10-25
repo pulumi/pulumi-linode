@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
- *
- * ## Example Usage
- *
- * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foo = linode.getSshKey({
- *     label: "foo",
- * });
- * ```
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
 
@@ -63,19 +50,6 @@ export interface GetSshKeyResult {
 }
 /**
  * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
- *
- * ## Example Usage
- *
- * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foo = linode.getSshKey({
- *     label: "foo",
- * });
- * ```
  */
 export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getSshKey(a, opts))

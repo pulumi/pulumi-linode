@@ -55,9 +55,9 @@ class InstanceDiskInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
-             linode_id: pulumi.Input[int],
-             size: pulumi.Input[int],
+             label: Optional[pulumi.Input[str]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             size: Optional[pulumi.Input[int]] = None,
              authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              filesystem: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,27 @@ class InstanceDiskInitArgs:
              root_pass: Optional[pulumi.Input[str]] = None,
              stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              stackscript_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if linode_id is None:
+            raise TypeError("Missing 'linode_id' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if authorized_keys is None and 'authorizedKeys' in kwargs:
+            authorized_keys = kwargs['authorizedKeys']
+        if authorized_users is None and 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if root_pass is None and 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if stackscript_data is None and 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if stackscript_id is None and 'stackscriptId' in kwargs:
+            stackscript_id = kwargs['stackscriptId']
+
         _setter("label", label)
         _setter("linode_id", linode_id)
         _setter("size", size)
@@ -273,7 +293,21 @@ class _InstanceDiskState:
              stackscript_id: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_keys is None and 'authorizedKeys' in kwargs:
+            authorized_keys = kwargs['authorizedKeys']
+        if authorized_users is None and 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if root_pass is None and 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if stackscript_data is None and 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if stackscript_id is None and 'stackscriptId' in kwargs:
+            stackscript_id = kwargs['stackscriptId']
+
         if authorized_keys is not None:
             _setter("authorized_keys", authorized_keys)
         if authorized_users is not None:
@@ -481,48 +515,6 @@ class InstanceDisk(pulumi.CustomResource):
 
         **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
 
-        ## Example Usage
-
-        Creating a simple 512 MB Linode Instance Disk:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="my-instance",
-            type="g6-standard-1",
-            region="us-southeast")
-        boot = linode.InstanceDisk("boot",
-            label="boot",
-            linode_id=my_instance.id,
-            size=512,
-            filesystem="ext4")
-        ```
-
-        Creating a complex bootable Instance Disk:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="my-instance",
-            type="g6-standard-1",
-            region="us-southeast")
-        boot = linode.InstanceDisk("boot",
-            label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.disk,
-            image="linode/ubuntu20.04",
-            root_pass="myc00lpass!",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            stackscript_id=12345,
-            stackscript_data={
-                "my_var": "my_value",
-            })
-        ```
-
         ## Import
 
         Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
@@ -556,48 +548,6 @@ class InstanceDisk(pulumi.CustomResource):
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
 
         **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
-
-        ## Example Usage
-
-        Creating a simple 512 MB Linode Instance Disk:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="my-instance",
-            type="g6-standard-1",
-            region="us-southeast")
-        boot = linode.InstanceDisk("boot",
-            label="boot",
-            linode_id=my_instance.id,
-            size=512,
-            filesystem="ext4")
-        ```
-
-        Creating a complex bootable Instance Disk:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="my-instance",
-            type="g6-standard-1",
-            region="us-southeast")
-        boot = linode.InstanceDisk("boot",
-            label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.disk,
-            image="linode/ubuntu20.04",
-            root_pass="myc00lpass!",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            stackscript_id=12345,
-            stackscript_data={
-                "my_var": "my_value",
-            })
-        ```
 
         ## Import
 

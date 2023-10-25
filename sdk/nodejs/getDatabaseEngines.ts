@@ -8,54 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Managed Database engines that match a set of filters.
- *
- * ## Example Usage
- *
- * Get information about all Linode Managed Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all = linode.getDatabaseEngines({});
- * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
- * ```
- *
- * Get information about all Linode MySQL Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = linode.getDatabaseEngines({
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * });
- * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
- * ```
- *
- * Create a Linode MySQL Database using the latest support MySQL version:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = linode.getDatabaseEngines({
- *     latest: true,
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * });
- * const myDb = new linode.DatabaseMysql("myDb", {
- *     label: "mydb",
- *     engineId: mysql.then(mysql => mysql.engines?.[0]?.id),
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- * });
- * ```
  */
 export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseEnginesResult> {
     args = args || {};
@@ -108,54 +60,6 @@ export interface GetDatabaseEnginesResult {
 }
 /**
  * Provides information about Linode Managed Database engines that match a set of filters.
- *
- * ## Example Usage
- *
- * Get information about all Linode Managed Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all = linode.getDatabaseEngines({});
- * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
- * ```
- *
- * Get information about all Linode MySQL Database engines:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = linode.getDatabaseEngines({
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * });
- * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
- * ```
- *
- * Create a Linode MySQL Database using the latest support MySQL version:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const mysql = linode.getDatabaseEngines({
- *     latest: true,
- *     filters: [{
- *         name: "engine",
- *         values: ["mysql"],
- *     }],
- * });
- * const myDb = new linode.DatabaseMysql("myDb", {
- *     label: "mydb",
- *     engineId: mysql.then(mysql => mysql.engines?.[0]?.id),
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- * });
- * ```
  */
 export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseEnginesResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseEngines(a, opts))

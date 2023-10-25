@@ -57,7 +57,7 @@ class ImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
+             label: Optional[pulumi.Input[str]] = None,
              cloud_init: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_id: Optional[pulumi.Input[int]] = None,
@@ -65,7 +65,21 @@ class ImageArgs:
              file_path: Optional[pulumi.Input[str]] = None,
              linode_id: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if cloud_init is None and 'cloudInit' in kwargs:
+            cloud_init = kwargs['cloudInit']
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if file_hash is None and 'fileHash' in kwargs:
+            file_hash = kwargs['fileHash']
+        if file_path is None and 'filePath' in kwargs:
+            file_path = kwargs['filePath']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+
         _setter("label", label)
         if cloud_init is not None:
             _setter("cloud_init", cloud_init)
@@ -283,7 +297,23 @@ class _ImageState:
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vendor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_init is None and 'cloudInit' in kwargs:
+            cloud_init = kwargs['cloudInit']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if file_hash is None and 'fileHash' in kwargs:
+            file_hash = kwargs['fileHash']
+        if file_path is None and 'filePath' in kwargs:
+            file_path = kwargs['filePath']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+
         if capabilities is not None:
             _setter("capabilities", capabilities)
         if cloud_init is not None:

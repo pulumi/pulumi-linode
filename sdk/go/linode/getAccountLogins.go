@@ -14,51 +14,6 @@ import (
 
 // Provides information about Linode account logins that match a set of filters.
 //
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about a Linode account login.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			filtered_account_logins, err := linode.GetAccountLogins(ctx, &linode.GetAccountLoginsArgs{
-//				Filters: []linode.GetAccountLoginsFilter{
-//					{
-//						Name: "restricted",
-//						Values: []string{
-//							"true",
-//						},
-//					},
-//					{
-//						Name: "username",
-//						Values: []string{
-//							"myUsername",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*int
-//			for _, val0 := range filtered_account_logins.Logins {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("loginIds", splat0)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Filterable Fields
 //
 // * `ip`

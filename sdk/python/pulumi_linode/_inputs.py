@@ -140,12 +140,28 @@ class DatabaseMysqlUpdatesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_week: pulumi.Input[str],
-             duration: pulumi.Input[int],
-             frequency: pulumi.Input[str],
-             hour_of_day: pulumi.Input[int],
+             day_of_week: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             hour_of_day: Optional[pulumi.Input[int]] = None,
              week_of_month: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if day_of_week is None:
+            raise TypeError("Missing 'day_of_week' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if frequency is None:
+            raise TypeError("Missing 'frequency' argument")
+        if hour_of_day is None and 'hourOfDay' in kwargs:
+            hour_of_day = kwargs['hourOfDay']
+        if hour_of_day is None:
+            raise TypeError("Missing 'hour_of_day' argument")
+        if week_of_month is None and 'weekOfMonth' in kwargs:
+            week_of_month = kwargs['weekOfMonth']
+
         _setter("day_of_week", day_of_week)
         _setter("duration", duration)
         _setter("frequency", frequency)
@@ -218,12 +234,28 @@ class DatabasePostgresqlUpdatesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day_of_week: pulumi.Input[str],
-             duration: pulumi.Input[int],
-             frequency: pulumi.Input[str],
-             hour_of_day: pulumi.Input[int],
+             day_of_week: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             hour_of_day: Optional[pulumi.Input[int]] = None,
              week_of_month: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if day_of_week is None:
+            raise TypeError("Missing 'day_of_week' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if frequency is None:
+            raise TypeError("Missing 'frequency' argument")
+        if hour_of_day is None and 'hourOfDay' in kwargs:
+            hour_of_day = kwargs['hourOfDay']
+        if hour_of_day is None:
+            raise TypeError("Missing 'hour_of_day' argument")
+        if week_of_month is None and 'weekOfMonth' in kwargs:
+            week_of_month = kwargs['weekOfMonth']
+
         _setter("day_of_week", day_of_week)
         _setter("duration", duration)
         _setter("frequency", frequency)
@@ -308,7 +340,11 @@ class FirewallDeviceArgs:
              label: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+
         if entity_id is not None:
             _setter("entity_id", entity_id)
         if id is not None:
@@ -410,13 +446,21 @@ class FirewallInboundArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             label: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ports: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("action", action)
         _setter("label", label)
         _setter("protocol", protocol)
@@ -529,13 +573,21 @@ class FirewallOutboundArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             label: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ports: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("action", action)
         _setter("label", label)
         _setter("protocol", protocol)
@@ -643,7 +695,15 @@ class InstanceAlertsArgs:
              network_in: Optional[pulumi.Input[int]] = None,
              network_out: Optional[pulumi.Input[int]] = None,
              transfer_quota: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_in is None and 'networkIn' in kwargs:
+            network_in = kwargs['networkIn']
+        if network_out is None and 'networkOut' in kwargs:
+            network_out = kwargs['networkOut']
+        if transfer_quota is None and 'transferQuota' in kwargs:
+            transfer_quota = kwargs['transferQuota']
+
         if cpu is not None:
             _setter("cpu", cpu)
         if io is not None:
@@ -722,7 +782,9 @@ class InstanceBackupsArgs:
              available: Optional[pulumi.Input[bool]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              schedule: Optional[pulumi.Input['InstanceBackupsScheduleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if available is not None:
             _setter("available", available)
         if enabled is not None:
@@ -780,7 +842,9 @@ class InstanceBackupsScheduleArgs:
              _setter: Callable[[Any, Any], None],
              day: Optional[pulumi.Input[str]] = None,
              window: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if day is not None:
             _setter("day", day)
         if window is not None:
@@ -853,7 +917,7 @@ class InstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
+             label: Optional[pulumi.Input[str]] = None,
              comments: Optional[pulumi.Input[str]] = None,
              devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
              helpers: Optional[pulumi.Input['InstanceConfigHelpersArgs']] = None,
@@ -863,7 +927,19 @@ class InstanceConfigArgs:
              root_device: Optional[pulumi.Input[str]] = None,
              run_level: Optional[pulumi.Input[str]] = None,
              virt_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if root_device is None and 'rootDevice' in kwargs:
+            root_device = kwargs['rootDevice']
+        if run_level is None and 'runLevel' in kwargs:
+            run_level = kwargs['runLevel']
+        if virt_mode is None and 'virtMode' in kwargs:
+            virt_mode = kwargs['virtMode']
+
         _setter("label", label)
         if comments is not None:
             _setter("comments", comments)
@@ -1040,7 +1116,9 @@ class InstanceConfigDevicesArgs:
              sdf: Optional[pulumi.Input['InstanceConfigDevicesSdfArgs']] = None,
              sdg: Optional[pulumi.Input['InstanceConfigDevicesSdgArgs']] = None,
              sdh: Optional[pulumi.Input['InstanceConfigDevicesSdhArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if sda is not None:
             _setter("sda", sda)
         if sdb is not None:
@@ -1157,7 +1235,15 @@ class InstanceConfigDevicesSdaArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1225,7 +1311,15 @@ class InstanceConfigDevicesSdbArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1293,7 +1387,15 @@ class InstanceConfigDevicesSdcArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1361,7 +1463,15 @@ class InstanceConfigDevicesSddArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1429,7 +1539,15 @@ class InstanceConfigDevicesSdeArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1497,7 +1615,15 @@ class InstanceConfigDevicesSdfArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1565,7 +1691,15 @@ class InstanceConfigDevicesSdgArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1633,7 +1767,15 @@ class InstanceConfigDevicesSdhArgs:
              disk_id: Optional[pulumi.Input[int]] = None,
              disk_label: Optional[pulumi.Input[str]] = None,
              volume_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_label is None and 'diskLabel' in kwargs:
+            disk_label = kwargs['diskLabel']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if disk_label is not None:
@@ -1708,7 +1850,15 @@ class InstanceConfigHelpersArgs:
              modules_dep: Optional[pulumi.Input[bool]] = None,
              network: Optional[pulumi.Input[bool]] = None,
              updatedb_disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if devtmpfs_automount is None and 'devtmpfsAutomount' in kwargs:
+            devtmpfs_automount = kwargs['devtmpfsAutomount']
+        if modules_dep is None and 'modulesDep' in kwargs:
+            modules_dep = kwargs['modulesDep']
+        if updatedb_disabled is None and 'updatedbDisabled' in kwargs:
+            updatedb_disabled = kwargs['updatedbDisabled']
+
         if devtmpfs_automount is not None:
             _setter("devtmpfs_automount", devtmpfs_automount)
         if distro is not None:
@@ -1801,7 +1951,11 @@ class InstanceConfigInterfaceArgs:
              ipam_address: Optional[pulumi.Input[str]] = None,
              label: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ipam_address is None and 'ipamAddress' in kwargs:
+            ipam_address = kwargs['ipamAddress']
+
         if ipam_address is not None:
             _setter("ipam_address", ipam_address)
         if label is not None:
@@ -1890,8 +2044,8 @@ class InstanceDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
-             size: pulumi.Input[int],
+             label: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
              authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              filesystem: Optional[pulumi.Input[str]] = None,
@@ -1901,7 +2055,25 @@ class InstanceDiskArgs:
              root_pass: Optional[pulumi.Input[str]] = None,
              stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              stackscript_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if authorized_keys is None and 'authorizedKeys' in kwargs:
+            authorized_keys = kwargs['authorizedKeys']
+        if authorized_users is None and 'authorizedUsers' in kwargs:
+            authorized_users = kwargs['authorizedUsers']
+        if read_only is None and 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+        if root_pass is None and 'rootPass' in kwargs:
+            root_pass = kwargs['rootPass']
+        if stackscript_data is None and 'stackscriptData' in kwargs:
+            stackscript_data = kwargs['stackscriptData']
+        if stackscript_id is None and 'stackscriptId' in kwargs:
+            stackscript_id = kwargs['stackscriptId']
+
         _setter("label", label)
         _setter("size", size)
         if authorized_keys is not None:
@@ -2079,7 +2251,11 @@ class InstanceInterfaceArgs:
              ipam_address: Optional[pulumi.Input[str]] = None,
              label: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ipam_address is None and 'ipamAddress' in kwargs:
+            ipam_address = kwargs['ipamAddress']
+
         if ipam_address is not None:
             _setter("ipam_address", ipam_address)
         if label is not None:
@@ -2136,7 +2312,11 @@ class InstanceMetadataArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if user_data is not None:
             _setter("user_data", user_data)
 
@@ -2171,7 +2351,9 @@ class InstanceSpecsArgs:
              memory: Optional[pulumi.Input[int]] = None,
              transfer: Optional[pulumi.Input[int]] = None,
              vcpus: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if disk is not None:
             _setter("disk", disk)
         if memory is not None:
@@ -2233,7 +2415,11 @@ class LkeClusterControlPlaneArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              high_availability: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if high_availability is None and 'highAvailability' in kwargs:
+            high_availability = kwargs['highAvailability']
+
         if high_availability is not None:
             _setter("high_availability", high_availability)
 
@@ -2276,12 +2462,18 @@ class LkeClusterPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              autoscaler: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']] = None,
              id: Optional[pulumi.Input[int]] = None,
              nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("count", count)
         _setter("type", type)
         if autoscaler is not None:
@@ -2365,9 +2557,15 @@ class LkeClusterPoolAutoscalerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: pulumi.Input[int],
-             min: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max: Optional[pulumi.Input[int]] = None,
+             min: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
+
         _setter("max", max)
         _setter("min", min)
 
@@ -2419,7 +2617,11 @@ class LkeClusterPoolNodeArgs:
              id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if id is not None:
             _setter("id", id)
         if instance_id is not None:
@@ -2483,7 +2685,9 @@ class NodeBalancerConfigNodeStatusArgs:
              _setter: Callable[[Any, Any], None],
              down: Optional[pulumi.Input[int]] = None,
              up: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if down is not None:
             _setter("down", down)
         if up is not None:
@@ -2534,10 +2738,20 @@ class NodeBalancerTransferArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: pulumi.Input[float],
-             out: pulumi.Input[float],
-             total: pulumi.Input[float],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             in_: Optional[pulumi.Input[float]] = None,
+             out: Optional[pulumi.Input[float]] = None,
+             total: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if in_ is None and 'in' in kwargs:
+            in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if out is None:
+            raise TypeError("Missing 'out' argument")
+        if total is None:
+            raise TypeError("Missing 'total' argument")
+
         _setter("in_", in_)
         _setter("out", out)
         _setter("total", total)
@@ -2596,9 +2810,17 @@ class ObjectStorageBucketCertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+
         _setter("certificate", certificate)
         _setter("private_key", private_key)
 
@@ -2658,13 +2880,21 @@ class ObjectStorageBucketLifecycleRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              abort_incomplete_multipart_upload_days: Optional[pulumi.Input[int]] = None,
              expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs']] = None,
              id: Optional[pulumi.Input[str]] = None,
              noncurrent_version_expiration: Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']] = None,
              prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if abort_incomplete_multipart_upload_days is None and 'abortIncompleteMultipartUploadDays' in kwargs:
+            abort_incomplete_multipart_upload_days = kwargs['abortIncompleteMultipartUploadDays']
+        if noncurrent_version_expiration is None and 'noncurrentVersionExpiration' in kwargs:
+            noncurrent_version_expiration = kwargs['noncurrentVersionExpiration']
+
         _setter("enabled", enabled)
         if abort_incomplete_multipart_upload_days is not None:
             _setter("abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
@@ -2771,7 +3001,11 @@ class ObjectStorageBucketLifecycleRuleExpirationArgs:
              date: Optional[pulumi.Input[str]] = None,
              days: Optional[pulumi.Input[int]] = None,
              expired_object_delete_marker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expired_object_delete_marker is None and 'expiredObjectDeleteMarker' in kwargs:
+            expired_object_delete_marker = kwargs['expiredObjectDeleteMarker']
+
         if date is not None:
             _setter("date", date)
         if days is not None:
@@ -2830,8 +3064,12 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             days: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if days is None:
+            raise TypeError("Missing 'days' argument")
+
         _setter("days", days)
 
     @property
@@ -2867,10 +3105,20 @@ class ObjectStorageKeyBucketAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
-             cluster: pulumi.Input[str],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("bucket_name", bucket_name)
         _setter("cluster", cluster)
         _setter("permissions", permissions)
@@ -2941,13 +3189,31 @@ class StackScriptUserDefinedFieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: pulumi.Input[str],
-             example: pulumi.Input[str],
-             label: pulumi.Input[str],
-             many_of: pulumi.Input[str],
-             name: pulumi.Input[str],
-             one_of: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default: Optional[pulumi.Input[str]] = None,
+             example: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             many_of: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             one_of: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if example is None:
+            raise TypeError("Missing 'example' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if many_of is None and 'manyOf' in kwargs:
+            many_of = kwargs['manyOf']
+        if many_of is None:
+            raise TypeError("Missing 'many_of' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if one_of is None and 'oneOf' in kwargs:
+            one_of = kwargs['oneOf']
+        if one_of is None:
+            raise TypeError("Missing 'one_of' argument")
+
         _setter("default", default)
         _setter("example", example)
         _setter("label", label)
@@ -3041,9 +3307,15 @@ class UserDomainGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3079,9 +3351,15 @@ class UserFirewallGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3149,7 +3427,33 @@ class UserGlobalGrantsArgs:
              add_volumes: Optional[pulumi.Input[bool]] = None,
              cancel_account: Optional[pulumi.Input[bool]] = None,
              longview_subscription: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_access is None and 'accountAccess' in kwargs:
+            account_access = kwargs['accountAccess']
+        if add_databases is None and 'addDatabases' in kwargs:
+            add_databases = kwargs['addDatabases']
+        if add_domains is None and 'addDomains' in kwargs:
+            add_domains = kwargs['addDomains']
+        if add_firewalls is None and 'addFirewalls' in kwargs:
+            add_firewalls = kwargs['addFirewalls']
+        if add_images is None and 'addImages' in kwargs:
+            add_images = kwargs['addImages']
+        if add_linodes is None and 'addLinodes' in kwargs:
+            add_linodes = kwargs['addLinodes']
+        if add_longview is None and 'addLongview' in kwargs:
+            add_longview = kwargs['addLongview']
+        if add_nodebalancers is None and 'addNodebalancers' in kwargs:
+            add_nodebalancers = kwargs['addNodebalancers']
+        if add_stackscripts is None and 'addStackscripts' in kwargs:
+            add_stackscripts = kwargs['addStackscripts']
+        if add_volumes is None and 'addVolumes' in kwargs:
+            add_volumes = kwargs['addVolumes']
+        if cancel_account is None and 'cancelAccount' in kwargs:
+            cancel_account = kwargs['cancelAccount']
+        if longview_subscription is None and 'longviewSubscription' in kwargs:
+            longview_subscription = kwargs['longviewSubscription']
+
         if account_access is not None:
             _setter("account_access", account_access)
         if add_databases is not None:
@@ -3297,9 +3601,15 @@ class UserImageGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3335,9 +3645,15 @@ class UserLinodeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3373,9 +3689,15 @@ class UserLongviewGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3411,9 +3733,15 @@ class UserNodebalancerGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3449,9 +3777,15 @@ class UserStackscriptGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3487,9 +3821,15 @@ class UserVolumeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[int],
-             permissions: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[pulumi.Input[int]] = None,
+             permissions: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("permissions", permissions)
 
@@ -3532,10 +3872,18 @@ class GetAccountLoginsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -3606,13 +3954,27 @@ class GetAccountLoginsLoginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datetime: str,
-             id: int,
-             ip: str,
-             restricted: bool,
-             status: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             datetime: Optional[str] = None,
+             id: Optional[int] = None,
+             ip: Optional[str] = None,
+             restricted: Optional[bool] = None,
+             status: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datetime is None:
+            raise TypeError("Missing 'datetime' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if restricted is None:
+            raise TypeError("Missing 'restricted' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("datetime", datetime)
         _setter("id", id)
         _setter("ip", ip)
@@ -3713,11 +4075,21 @@ class GetDatabaseBackupsBackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             id: int,
-             label: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created: Optional[str] = None,
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("created", created)
         _setter("id", id)
         _setter("label", label)
@@ -3792,10 +4164,18 @@ class GetDatabaseBackupsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -3858,10 +4238,18 @@ class GetDatabaseEnginesEngineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: str,
-             id: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             engine: Optional[str] = None,
+             id: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("engine", engine)
         _setter("id", id)
         _setter("version", version)
@@ -3923,10 +4311,18 @@ class GetDatabaseEnginesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -3989,10 +4385,18 @@ class GetDatabaseMysqlBackupsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -4096,24 +4500,74 @@ class GetDatabasesDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_lists: Sequence[str],
-             cluster_size: int,
-             created: str,
-             encrypted: bool,
-             engine: str,
-             host_primary: str,
-             host_secondary: str,
-             id: int,
-             instance_uri: str,
-             label: str,
-             region: str,
-             replication_type: str,
-             ssl_connection: bool,
-             status: str,
-             type: str,
-             updated: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allow_lists: Optional[Sequence[str]] = None,
+             cluster_size: Optional[int] = None,
+             created: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             engine: Optional[str] = None,
+             host_primary: Optional[str] = None,
+             host_secondary: Optional[str] = None,
+             id: Optional[int] = None,
+             instance_uri: Optional[str] = None,
+             label: Optional[str] = None,
+             region: Optional[str] = None,
+             replication_type: Optional[str] = None,
+             ssl_connection: Optional[bool] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             updated: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if allow_lists is None:
+            raise TypeError("Missing 'allow_lists' argument")
+        if cluster_size is None and 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if cluster_size is None:
+            raise TypeError("Missing 'cluster_size' argument")
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if host_primary is None and 'hostPrimary' in kwargs:
+            host_primary = kwargs['hostPrimary']
+        if host_primary is None:
+            raise TypeError("Missing 'host_primary' argument")
+        if host_secondary is None and 'hostSecondary' in kwargs:
+            host_secondary = kwargs['hostSecondary']
+        if host_secondary is None:
+            raise TypeError("Missing 'host_secondary' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_uri is None and 'instanceUri' in kwargs:
+            instance_uri = kwargs['instanceUri']
+        if instance_uri is None:
+            raise TypeError("Missing 'instance_uri' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if replication_type is None:
+            raise TypeError("Missing 'replication_type' argument")
+        if ssl_connection is None and 'sslConnection' in kwargs:
+            ssl_connection = kwargs['sslConnection']
+        if ssl_connection is None:
+            raise TypeError("Missing 'ssl_connection' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if updated is None:
+            raise TypeError("Missing 'updated' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("allow_lists", allow_lists)
         _setter("cluster_size", cluster_size)
         _setter("created", created)
@@ -4354,10 +4808,18 @@ class GetDatabasesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -4420,10 +4882,18 @@ class GetFirewallsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -4515,21 +4985,49 @@ class GetFirewallsFirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             disabled: bool,
-             id: int,
-             inbound_policy: str,
-             label: str,
-             linodes: Sequence[int],
-             nodebalancers: Sequence[int],
-             outbound_policy: str,
-             status: str,
-             tags: Sequence[str],
-             updated: str,
+             created: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             id: Optional[int] = None,
+             inbound_policy: Optional[str] = None,
+             label: Optional[str] = None,
+             linodes: Optional[Sequence[int]] = None,
+             nodebalancers: Optional[Sequence[int]] = None,
+             outbound_policy: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             updated: Optional[str] = None,
              devices: Optional[Sequence['GetFirewallsFirewallDeviceArgs']] = None,
              inbounds: Optional[Sequence['GetFirewallsFirewallInboundArgs']] = None,
              outbounds: Optional[Sequence['GetFirewallsFirewallOutboundArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inbound_policy is None and 'inboundPolicy' in kwargs:
+            inbound_policy = kwargs['inboundPolicy']
+        if inbound_policy is None:
+            raise TypeError("Missing 'inbound_policy' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linodes is None:
+            raise TypeError("Missing 'linodes' argument")
+        if nodebalancers is None:
+            raise TypeError("Missing 'nodebalancers' argument")
+        if outbound_policy is None and 'outboundPolicy' in kwargs:
+            outbound_policy = kwargs['outboundPolicy']
+        if outbound_policy is None:
+            raise TypeError("Missing 'outbound_policy' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if updated is None:
+            raise TypeError("Missing 'updated' argument")
+
         _setter("created", created)
         _setter("disabled", disabled)
         _setter("id", id)
@@ -4728,12 +5226,26 @@ class GetFirewallsFirewallDeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_id: int,
-             id: int,
-             label: str,
-             type: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_id: Optional[int] = None,
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             type: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("entity_id", entity_id)
         _setter("id", id)
         _setter("label", label)
@@ -4816,13 +5328,27 @@ class GetFirewallsFirewallInboundArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             ipv4s: Sequence[str],
-             ipv6s: Sequence[str],
-             label: str,
-             ports: str,
-             protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             action: Optional[str] = None,
+             ipv4s: Optional[Sequence[str]] = None,
+             ipv6s: Optional[Sequence[str]] = None,
+             label: Optional[str] = None,
+             ports: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if ipv4s is None:
+            raise TypeError("Missing 'ipv4s' argument")
+        if ipv6s is None:
+            raise TypeError("Missing 'ipv6s' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("action", action)
         _setter("ipv4s", ipv4s)
         _setter("ipv6s", ipv6s)
@@ -4912,13 +5438,27 @@ class GetFirewallsFirewallOutboundArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             ipv4s: Sequence[str],
-             ipv6s: Sequence[str],
-             label: str,
-             ports: str,
-             protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             action: Optional[str] = None,
+             ipv4s: Optional[Sequence[str]] = None,
+             ipv6s: Optional[Sequence[str]] = None,
+             label: Optional[str] = None,
+             ports: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if ipv4s is None:
+            raise TypeError("Missing 'ipv4s' argument")
+        if ipv6s is None:
+            raise TypeError("Missing 'ipv6s' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("action", action)
         _setter("ipv4s", ipv4s)
         _setter("ipv6s", ipv6s)
@@ -5004,10 +5544,18 @@ class GetImagesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -5098,20 +5646,52 @@ class GetImagesImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capabilities: Sequence[str],
-             created: str,
-             created_by: str,
-             deprecated: bool,
-             description: str,
-             expiry: str,
-             id: str,
-             is_public: bool,
-             label: str,
-             size: int,
-             status: str,
-             type: str,
-             vendor: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             capabilities: Optional[Sequence[str]] = None,
+             created: Optional[str] = None,
+             created_by: Optional[str] = None,
+             deprecated: Optional[bool] = None,
+             description: Optional[str] = None,
+             expiry: Optional[str] = None,
+             id: Optional[str] = None,
+             is_public: Optional[bool] = None,
+             label: Optional[str] = None,
+             size: Optional[int] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             vendor: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capabilities is None:
+            raise TypeError("Missing 'capabilities' argument")
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if deprecated is None:
+            raise TypeError("Missing 'deprecated' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expiry is None:
+            raise TypeError("Missing 'expiry' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if is_public is None:
+            raise TypeError("Missing 'is_public' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vendor is None:
+            raise TypeError("Missing 'vendor' argument")
+
         _setter("capabilities", capabilities)
         _setter("created", created)
         _setter("created_by", created_by)
@@ -5297,10 +5877,18 @@ class GetInstanceTypesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -5384,18 +5972,48 @@ class GetInstanceTypesTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addons: Sequence['GetInstanceTypesTypeAddonArgs'],
-             class_: str,
-             disk: int,
-             id: str,
-             label: str,
-             memory: int,
-             network_out: int,
-             prices: Sequence['GetInstanceTypesTypePriceArgs'],
-             region_prices: Sequence['GetInstanceTypesTypeRegionPriceArgs'],
-             transfer: int,
-             vcpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             addons: Optional[Sequence['GetInstanceTypesTypeAddonArgs']] = None,
+             class_: Optional[str] = None,
+             disk: Optional[int] = None,
+             id: Optional[str] = None,
+             label: Optional[str] = None,
+             memory: Optional[int] = None,
+             network_out: Optional[int] = None,
+             prices: Optional[Sequence['GetInstanceTypesTypePriceArgs']] = None,
+             region_prices: Optional[Sequence['GetInstanceTypesTypeRegionPriceArgs']] = None,
+             transfer: Optional[int] = None,
+             vcpus: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if addons is None:
+            raise TypeError("Missing 'addons' argument")
+        if class_ is None and 'class' in kwargs:
+            class_ = kwargs['class']
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if network_out is None and 'networkOut' in kwargs:
+            network_out = kwargs['networkOut']
+        if network_out is None:
+            raise TypeError("Missing 'network_out' argument")
+        if prices is None:
+            raise TypeError("Missing 'prices' argument")
+        if region_prices is None and 'regionPrices' in kwargs:
+            region_prices = kwargs['regionPrices']
+        if region_prices is None:
+            raise TypeError("Missing 'region_prices' argument")
+        if transfer is None:
+            raise TypeError("Missing 'transfer' argument")
+        if vcpus is None:
+            raise TypeError("Missing 'vcpus' argument")
+
         _setter("addons", addons)
         _setter("class_", class_)
         _setter("disk", disk)
@@ -5543,8 +6161,12 @@ class GetInstanceTypesTypeAddonArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backups: Sequence['GetInstanceTypesTypeAddonBackupArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backups: Optional[Sequence['GetInstanceTypesTypeAddonBackupArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backups is None:
+            raise TypeError("Missing 'backups' argument")
+
         _setter("backups", backups)
 
     @property
@@ -5570,9 +6192,17 @@ class GetInstanceTypesTypeAddonBackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgs'],
-             region_prices: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             prices: Optional[Sequence['GetInstanceTypesTypeAddonBackupPriceArgs']] = None,
+             region_prices: Optional[Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if prices is None:
+            raise TypeError("Missing 'prices' argument")
+        if region_prices is None and 'regionPrices' in kwargs:
+            region_prices = kwargs['regionPrices']
+        if region_prices is None:
+            raise TypeError("Missing 'region_prices' argument")
+
         _setter("prices", prices)
         _setter("region_prices", region_prices)
 
@@ -5608,9 +6238,15 @@ class GetInstanceTypesTypeAddonBackupPriceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hourly: float,
-             monthly: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hourly: Optional[float] = None,
+             monthly: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hourly is None:
+            raise TypeError("Missing 'hourly' argument")
+        if monthly is None:
+            raise TypeError("Missing 'monthly' argument")
+
         _setter("hourly", hourly)
         _setter("monthly", monthly)
 
@@ -5651,10 +6287,18 @@ class GetInstanceTypesTypeAddonBackupRegionPriceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hourly: float,
-             id: str,
-             monthly: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hourly: Optional[float] = None,
+             id: Optional[str] = None,
+             monthly: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hourly is None:
+            raise TypeError("Missing 'hourly' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if monthly is None:
+            raise TypeError("Missing 'monthly' argument")
+
         _setter("hourly", hourly)
         _setter("id", id)
         _setter("monthly", monthly)
@@ -5703,9 +6347,15 @@ class GetInstanceTypesTypePriceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hourly: float,
-             monthly: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hourly: Optional[float] = None,
+             monthly: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hourly is None:
+            raise TypeError("Missing 'hourly' argument")
+        if monthly is None:
+            raise TypeError("Missing 'monthly' argument")
+
         _setter("hourly", hourly)
         _setter("monthly", monthly)
 
@@ -5746,10 +6396,18 @@ class GetInstanceTypesTypeRegionPriceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hourly: float,
-             id: str,
-             monthly: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hourly: Optional[float] = None,
+             id: Optional[str] = None,
+             monthly: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hourly is None:
+            raise TypeError("Missing 'hourly' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if monthly is None:
+            raise TypeError("Missing 'monthly' argument")
+
         _setter("hourly", hourly)
         _setter("id", id)
         _setter("monthly", monthly)
@@ -5805,10 +6463,18 @@ class GetInstancesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -5871,10 +6537,18 @@ class GetKernelsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -5954,16 +6628,36 @@ class GetKernelsKernelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             architecture: str,
-             built: str,
-             deprecated: bool,
-             id: str,
-             kvm: bool,
-             label: str,
-             pvops: bool,
-             version: str,
-             xen: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             architecture: Optional[str] = None,
+             built: Optional[str] = None,
+             deprecated: Optional[bool] = None,
+             id: Optional[str] = None,
+             kvm: Optional[bool] = None,
+             label: Optional[str] = None,
+             pvops: Optional[bool] = None,
+             version: Optional[str] = None,
+             xen: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if architecture is None:
+            raise TypeError("Missing 'architecture' argument")
+        if built is None:
+            raise TypeError("Missing 'built' argument")
+        if deprecated is None:
+            raise TypeError("Missing 'deprecated' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if kvm is None:
+            raise TypeError("Missing 'kvm' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if pvops is None:
+            raise TypeError("Missing 'pvops' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if xen is None:
+            raise TypeError("Missing 'xen' argument")
+
         _setter("architecture", architecture)
         _setter("built", built)
         _setter("deprecated", deprecated)
@@ -6100,10 +6794,18 @@ class GetNodebalancersFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -6189,18 +6891,44 @@ class GetNodebalancersNodebalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_conn_throttle: int,
-             created: str,
-             hostname: str,
-             id: int,
-             ipv4: str,
-             ipv6: str,
-             label: str,
-             region: str,
-             tags: Sequence[str],
-             transfers: Sequence['GetNodebalancersNodebalancerTransferArgs'],
-             updated: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_conn_throttle: Optional[int] = None,
+             created: Optional[str] = None,
+             hostname: Optional[str] = None,
+             id: Optional[int] = None,
+             ipv4: Optional[str] = None,
+             ipv6: Optional[str] = None,
+             label: Optional[str] = None,
+             region: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             transfers: Optional[Sequence['GetNodebalancersNodebalancerTransferArgs']] = None,
+             updated: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_conn_throttle is None and 'clientConnThrottle' in kwargs:
+            client_conn_throttle = kwargs['clientConnThrottle']
+        if client_conn_throttle is None:
+            raise TypeError("Missing 'client_conn_throttle' argument")
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ipv4 is None:
+            raise TypeError("Missing 'ipv4' argument")
+        if ipv6 is None:
+            raise TypeError("Missing 'ipv6' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if transfers is None:
+            raise TypeError("Missing 'transfers' argument")
+        if updated is None:
+            raise TypeError("Missing 'updated' argument")
+
         _setter("client_conn_throttle", client_conn_throttle)
         _setter("created", created)
         _setter("hostname", hostname)
@@ -6363,10 +7091,20 @@ class GetNodebalancersNodebalancerTransferArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: float,
-             out: float,
-             total: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             in_: Optional[float] = None,
+             out: Optional[float] = None,
+             total: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if in_ is None and 'in' in kwargs:
+            in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if out is None:
+            raise TypeError("Missing 'out' argument")
+        if total is None:
+            raise TypeError("Missing 'total' argument")
+
         _setter("in_", in_)
         _setter("out", out)
         _setter("total", total)
@@ -6425,9 +7163,15 @@ class GetRegionResolverArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4: str,
-             ipv6: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ipv4: Optional[str] = None,
+             ipv6: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ipv4 is None:
+            raise TypeError("Missing 'ipv4' argument")
+        if ipv6 is None:
+            raise TypeError("Missing 'ipv6' argument")
+
         _setter("ipv4", ipv4)
         _setter("ipv6", ipv6)
 
@@ -6476,10 +7220,18 @@ class GetRegionsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -6549,13 +7301,25 @@ class GetRegionsRegionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capabilities: Sequence[str],
-             country: str,
-             id: str,
-             label: str,
-             status: str,
+             capabilities: Optional[Sequence[str]] = None,
+             country: Optional[str] = None,
+             id: Optional[str] = None,
+             label: Optional[str] = None,
+             status: Optional[str] = None,
              resolvers: Optional[Sequence['GetRegionsRegionResolverArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capabilities is None:
+            raise TypeError("Missing 'capabilities' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
         _setter("capabilities", capabilities)
         _setter("country", country)
         _setter("id", id)
@@ -6648,9 +7412,15 @@ class GetRegionsRegionResolverArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4: str,
-             ipv6: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ipv4: Optional[str] = None,
+             ipv6: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ipv4 is None:
+            raise TypeError("Missing 'ipv4' argument")
+        if ipv6 is None:
+            raise TypeError("Missing 'ipv6' argument")
+
         _setter("ipv4", ipv4)
         _setter("ipv6", ipv6)
 
@@ -6699,10 +7469,18 @@ class GetSshkeysFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -6768,11 +7546,21 @@ class GetSshkeysSshkeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             label: str,
-             ssh_key: str,
+             created: Optional[str] = None,
+             label: Optional[str] = None,
+             ssh_key: Optional[str] = None,
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+
         _setter("created", created)
         _setter("label", label)
         _setter("ssh_key", ssh_key)
@@ -6848,10 +7636,18 @@ class GetStackScriptsFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -6947,21 +7743,63 @@ class GetStackScriptsStackscriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             deployments_active: int,
-             deployments_total: int,
-             description: str,
-             id: str,
-             images: Sequence[str],
-             is_public: bool,
-             label: str,
-             rev_note: str,
-             script: str,
-             updated: str,
-             user_defined_fields: Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs'],
-             user_gravatar_id: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created: Optional[str] = None,
+             deployments_active: Optional[int] = None,
+             deployments_total: Optional[int] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             images: Optional[Sequence[str]] = None,
+             is_public: Optional[bool] = None,
+             label: Optional[str] = None,
+             rev_note: Optional[str] = None,
+             script: Optional[str] = None,
+             updated: Optional[str] = None,
+             user_defined_fields: Optional[Sequence['GetStackScriptsStackscriptUserDefinedFieldArgs']] = None,
+             user_gravatar_id: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if deployments_active is None and 'deploymentsActive' in kwargs:
+            deployments_active = kwargs['deploymentsActive']
+        if deployments_active is None:
+            raise TypeError("Missing 'deployments_active' argument")
+        if deployments_total is None and 'deploymentsTotal' in kwargs:
+            deployments_total = kwargs['deploymentsTotal']
+        if deployments_total is None:
+            raise TypeError("Missing 'deployments_total' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if is_public is None:
+            raise TypeError("Missing 'is_public' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if rev_note is None and 'revNote' in kwargs:
+            rev_note = kwargs['revNote']
+        if rev_note is None:
+            raise TypeError("Missing 'rev_note' argument")
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if updated is None:
+            raise TypeError("Missing 'updated' argument")
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+        if user_defined_fields is None:
+            raise TypeError("Missing 'user_defined_fields' argument")
+        if user_gravatar_id is None and 'userGravatarId' in kwargs:
+            user_gravatar_id = kwargs['userGravatarId']
+        if user_gravatar_id is None:
+            raise TypeError("Missing 'user_gravatar_id' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("created", created)
         _setter("deployments_active", deployments_active)
         _setter("deployments_total", deployments_total)
@@ -7175,13 +8013,31 @@ class GetStackScriptsStackscriptUserDefinedFieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: str,
-             example: str,
-             label: str,
-             many_of: str,
-             name: str,
-             one_of: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default: Optional[str] = None,
+             example: Optional[str] = None,
+             label: Optional[str] = None,
+             many_of: Optional[str] = None,
+             name: Optional[str] = None,
+             one_of: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if example is None:
+            raise TypeError("Missing 'example' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if many_of is None and 'manyOf' in kwargs:
+            many_of = kwargs['manyOf']
+        if many_of is None:
+            raise TypeError("Missing 'many_of' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if one_of is None and 'oneOf' in kwargs:
+            one_of = kwargs['oneOf']
+        if one_of is None:
+            raise TypeError("Missing 'one_of' argument")
+
         _setter("default", default)
         _setter("example", example)
         _setter("label", label)
@@ -7282,10 +8138,18 @@ class GetUserDatabaseGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7347,10 +8211,18 @@ class GetUserDomainGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7412,10 +8284,18 @@ class GetUserFirewallGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7477,10 +8357,18 @@ class GetUserImageGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7542,10 +8430,18 @@ class GetUserLinodeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7607,10 +8503,18 @@ class GetUserLongviewGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7672,10 +8576,18 @@ class GetUserNodebalancerGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7737,10 +8649,18 @@ class GetUserStackscriptGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7802,10 +8722,18 @@ class GetUserVolumeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -7867,10 +8795,18 @@ class GetUsersFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -7968,25 +8904,91 @@ class GetUsersUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_grants: Sequence['GetUsersUserDatabaseGrantArgs'],
-             domain_grants: Sequence['GetUsersUserDomainGrantArgs'],
-             email: str,
-             firewall_grants: Sequence['GetUsersUserFirewallGrantArgs'],
-             global_grants: Sequence['GetUsersUserGlobalGrantArgs'],
-             id: str,
-             image_grants: Sequence['GetUsersUserImageGrantArgs'],
-             linode_grants: Sequence['GetUsersUserLinodeGrantArgs'],
-             longview_grants: Sequence['GetUsersUserLongviewGrantArgs'],
-             nodebalancer_grants: Sequence['GetUsersUserNodebalancerGrantArgs'],
-             password_created: str,
-             restricted: bool,
-             ssh_keys: Sequence[str],
-             stackscript_grants: Sequence['GetUsersUserStackscriptGrantArgs'],
-             tfa_enabled: bool,
-             username: str,
-             verified_phone_number: str,
-             volume_grants: Sequence['GetUsersUserVolumeGrantArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             database_grants: Optional[Sequence['GetUsersUserDatabaseGrantArgs']] = None,
+             domain_grants: Optional[Sequence['GetUsersUserDomainGrantArgs']] = None,
+             email: Optional[str] = None,
+             firewall_grants: Optional[Sequence['GetUsersUserFirewallGrantArgs']] = None,
+             global_grants: Optional[Sequence['GetUsersUserGlobalGrantArgs']] = None,
+             id: Optional[str] = None,
+             image_grants: Optional[Sequence['GetUsersUserImageGrantArgs']] = None,
+             linode_grants: Optional[Sequence['GetUsersUserLinodeGrantArgs']] = None,
+             longview_grants: Optional[Sequence['GetUsersUserLongviewGrantArgs']] = None,
+             nodebalancer_grants: Optional[Sequence['GetUsersUserNodebalancerGrantArgs']] = None,
+             password_created: Optional[str] = None,
+             restricted: Optional[bool] = None,
+             ssh_keys: Optional[Sequence[str]] = None,
+             stackscript_grants: Optional[Sequence['GetUsersUserStackscriptGrantArgs']] = None,
+             tfa_enabled: Optional[bool] = None,
+             username: Optional[str] = None,
+             verified_phone_number: Optional[str] = None,
+             volume_grants: Optional[Sequence['GetUsersUserVolumeGrantArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_grants is None and 'databaseGrants' in kwargs:
+            database_grants = kwargs['databaseGrants']
+        if database_grants is None:
+            raise TypeError("Missing 'database_grants' argument")
+        if domain_grants is None and 'domainGrants' in kwargs:
+            domain_grants = kwargs['domainGrants']
+        if domain_grants is None:
+            raise TypeError("Missing 'domain_grants' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if firewall_grants is None and 'firewallGrants' in kwargs:
+            firewall_grants = kwargs['firewallGrants']
+        if firewall_grants is None:
+            raise TypeError("Missing 'firewall_grants' argument")
+        if global_grants is None and 'globalGrants' in kwargs:
+            global_grants = kwargs['globalGrants']
+        if global_grants is None:
+            raise TypeError("Missing 'global_grants' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_grants is None and 'imageGrants' in kwargs:
+            image_grants = kwargs['imageGrants']
+        if image_grants is None:
+            raise TypeError("Missing 'image_grants' argument")
+        if linode_grants is None and 'linodeGrants' in kwargs:
+            linode_grants = kwargs['linodeGrants']
+        if linode_grants is None:
+            raise TypeError("Missing 'linode_grants' argument")
+        if longview_grants is None and 'longviewGrants' in kwargs:
+            longview_grants = kwargs['longviewGrants']
+        if longview_grants is None:
+            raise TypeError("Missing 'longview_grants' argument")
+        if nodebalancer_grants is None and 'nodebalancerGrants' in kwargs:
+            nodebalancer_grants = kwargs['nodebalancerGrants']
+        if nodebalancer_grants is None:
+            raise TypeError("Missing 'nodebalancer_grants' argument")
+        if password_created is None and 'passwordCreated' in kwargs:
+            password_created = kwargs['passwordCreated']
+        if password_created is None:
+            raise TypeError("Missing 'password_created' argument")
+        if restricted is None:
+            raise TypeError("Missing 'restricted' argument")
+        if ssh_keys is None and 'sshKeys' in kwargs:
+            ssh_keys = kwargs['sshKeys']
+        if ssh_keys is None:
+            raise TypeError("Missing 'ssh_keys' argument")
+        if stackscript_grants is None and 'stackscriptGrants' in kwargs:
+            stackscript_grants = kwargs['stackscriptGrants']
+        if stackscript_grants is None:
+            raise TypeError("Missing 'stackscript_grants' argument")
+        if tfa_enabled is None and 'tfaEnabled' in kwargs:
+            tfa_enabled = kwargs['tfaEnabled']
+        if tfa_enabled is None:
+            raise TypeError("Missing 'tfa_enabled' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if verified_phone_number is None and 'verifiedPhoneNumber' in kwargs:
+            verified_phone_number = kwargs['verifiedPhoneNumber']
+        if verified_phone_number is None:
+            raise TypeError("Missing 'verified_phone_number' argument")
+        if volume_grants is None and 'volumeGrants' in kwargs:
+            volume_grants = kwargs['volumeGrants']
+        if volume_grants is None:
+            raise TypeError("Missing 'volume_grants' argument")
+
         _setter("database_grants", database_grants)
         _setter("domain_grants", domain_grants)
         _setter("email", email)
@@ -8213,10 +9215,18 @@ class GetUsersUserDatabaseGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8278,10 +9288,18 @@ class GetUsersUserDomainGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8343,10 +9361,18 @@ class GetUsersUserFirewallGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8434,19 +9460,69 @@ class GetUsersUserGlobalGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_access: str,
-             add_databases: bool,
-             add_domains: bool,
-             add_firewalls: bool,
-             add_images: bool,
-             add_linodes: bool,
-             add_longview: bool,
-             add_nodebalancers: bool,
-             add_stackscripts: bool,
-             add_volumes: bool,
-             cancel_account: bool,
-             longview_subscription: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account_access: Optional[str] = None,
+             add_databases: Optional[bool] = None,
+             add_domains: Optional[bool] = None,
+             add_firewalls: Optional[bool] = None,
+             add_images: Optional[bool] = None,
+             add_linodes: Optional[bool] = None,
+             add_longview: Optional[bool] = None,
+             add_nodebalancers: Optional[bool] = None,
+             add_stackscripts: Optional[bool] = None,
+             add_volumes: Optional[bool] = None,
+             cancel_account: Optional[bool] = None,
+             longview_subscription: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_access is None and 'accountAccess' in kwargs:
+            account_access = kwargs['accountAccess']
+        if account_access is None:
+            raise TypeError("Missing 'account_access' argument")
+        if add_databases is None and 'addDatabases' in kwargs:
+            add_databases = kwargs['addDatabases']
+        if add_databases is None:
+            raise TypeError("Missing 'add_databases' argument")
+        if add_domains is None and 'addDomains' in kwargs:
+            add_domains = kwargs['addDomains']
+        if add_domains is None:
+            raise TypeError("Missing 'add_domains' argument")
+        if add_firewalls is None and 'addFirewalls' in kwargs:
+            add_firewalls = kwargs['addFirewalls']
+        if add_firewalls is None:
+            raise TypeError("Missing 'add_firewalls' argument")
+        if add_images is None and 'addImages' in kwargs:
+            add_images = kwargs['addImages']
+        if add_images is None:
+            raise TypeError("Missing 'add_images' argument")
+        if add_linodes is None and 'addLinodes' in kwargs:
+            add_linodes = kwargs['addLinodes']
+        if add_linodes is None:
+            raise TypeError("Missing 'add_linodes' argument")
+        if add_longview is None and 'addLongview' in kwargs:
+            add_longview = kwargs['addLongview']
+        if add_longview is None:
+            raise TypeError("Missing 'add_longview' argument")
+        if add_nodebalancers is None and 'addNodebalancers' in kwargs:
+            add_nodebalancers = kwargs['addNodebalancers']
+        if add_nodebalancers is None:
+            raise TypeError("Missing 'add_nodebalancers' argument")
+        if add_stackscripts is None and 'addStackscripts' in kwargs:
+            add_stackscripts = kwargs['addStackscripts']
+        if add_stackscripts is None:
+            raise TypeError("Missing 'add_stackscripts' argument")
+        if add_volumes is None and 'addVolumes' in kwargs:
+            add_volumes = kwargs['addVolumes']
+        if add_volumes is None:
+            raise TypeError("Missing 'add_volumes' argument")
+        if cancel_account is None and 'cancelAccount' in kwargs:
+            cancel_account = kwargs['cancelAccount']
+        if cancel_account is None:
+            raise TypeError("Missing 'cancel_account' argument")
+        if longview_subscription is None and 'longviewSubscription' in kwargs:
+            longview_subscription = kwargs['longviewSubscription']
+        if longview_subscription is None:
+            raise TypeError("Missing 'longview_subscription' argument")
+
         _setter("account_access", account_access)
         _setter("add_databases", add_databases)
         _setter("add_domains", add_domains)
@@ -8622,10 +9698,18 @@ class GetUsersUserImageGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8687,10 +9771,18 @@ class GetUsersUserLinodeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8752,10 +9844,18 @@ class GetUsersUserLongviewGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8817,10 +9917,18 @@ class GetUsersUserNodebalancerGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8882,10 +9990,18 @@ class GetUsersUserStackscriptGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -8947,10 +10063,18 @@ class GetUsersUserVolumeGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             label: str,
-             permissions: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             permissions: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("id", id)
         _setter("label", label)
         _setter("permissions", permissions)
@@ -9012,10 +10136,18 @@ class GetVlansFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -9081,11 +10213,21 @@ class GetVlansVlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             label: str,
-             linodes: Sequence[int],
-             region: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created: Optional[str] = None,
+             label: Optional[str] = None,
+             linodes: Optional[Sequence[int]] = None,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linodes is None:
+            raise TypeError("Missing 'linodes' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+
         _setter("created", created)
         _setter("label", label)
         _setter("linodes", linodes)
@@ -9160,10 +10302,18 @@ class GetVolumesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("name", name)
         _setter("values", values)
         if match_by is not None:
@@ -9247,17 +10397,43 @@ class GetVolumesVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             filesystem_path: str,
-             id: int,
-             label: str,
-             linode_id: int,
-             region: str,
-             size: int,
-             status: str,
-             tags: Sequence[str],
-             updated: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created: Optional[str] = None,
+             filesystem_path: Optional[str] = None,
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             linode_id: Optional[int] = None,
+             region: Optional[str] = None,
+             size: Optional[int] = None,
+             status: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             updated: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if filesystem_path is None and 'filesystemPath' in kwargs:
+            filesystem_path = kwargs['filesystemPath']
+        if filesystem_path is None:
+            raise TypeError("Missing 'filesystem_path' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if linode_id is None:
+            raise TypeError("Missing 'linode_id' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if updated is None:
+            raise TypeError("Missing 'updated' argument")
+
         _setter("created", created)
         _setter("filesystem_path", filesystem_path)
         _setter("id", id)

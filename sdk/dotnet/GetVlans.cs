@@ -18,58 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// Provides details about Linode VLANs.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myInstance = new Linode.Instance("myInstance", new()
-        ///     {
-        ///         Label = "my_instance",
-        ///         Image = "linode/ubuntu18.04",
-        ///         Region = "us-southeast",
-        ///         Type = "g6-standard-1",
-        ///         RootPass = "bogusPassword$",
-        ///         Interfaces = new[]
-        ///         {
-        ///             new Linode.Inputs.InstanceInterfaceArgs
-        ///             {
-        ///                 Purpose = "vlan",
-        ///                 Label = "my-vlan",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     var my_vlans = Linode.GetVlans.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetVlansFilterInputArgs
-        ///             {
-        ///                 Name = "label",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "my-vlan",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vlanLinodes"] = my_vlans.Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `label`
@@ -86,58 +34,6 @@ namespace Pulumi.Linode
         /// 
         /// Provides details about Linode VLANs.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myInstance = new Linode.Instance("myInstance", new()
-        ///     {
-        ///         Label = "my_instance",
-        ///         Image = "linode/ubuntu18.04",
-        ///         Region = "us-southeast",
-        ///         Type = "g6-standard-1",
-        ///         RootPass = "bogusPassword$",
-        ///         Interfaces = new[]
-        ///         {
-        ///             new Linode.Inputs.InstanceInterfaceArgs
-        ///             {
-        ///                 Purpose = "vlan",
-        ///                 Label = "my-vlan",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     var my_vlans = Linode.GetVlans.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetVlansFilterInputArgs
-        ///             {
-        ///                 Name = "label",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "my-vlan",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vlanLinodes"] = my_vlans.Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `label`

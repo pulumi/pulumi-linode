@@ -12,59 +12,6 @@ namespace Pulumi.Linode
     /// <summary>
     /// Manages a Linode User.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Create an unrestricted user:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var john = new Linode.User("john", new()
-    ///     {
-    ///         Email = "john@acme.io",
-    ///         Username = "john123",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a restricted user with grants:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fooser = new Linode.User("fooser", new()
-    ///     {
-    ///         Email = "cool@acme.io",
-    ///         GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
-    ///         {
-    ///             AddImages = true,
-    ///             AddLinodes = true,
-    ///         },
-    ///         LinodeGrants = new[]
-    ///         {
-    ///             new Linode.Inputs.UserLinodeGrantArgs
-    ///             {
-    ///                 Id = 12345,
-    ///                 Permissions = "read_write",
-    ///             },
-    ///         },
-    ///         Restricted = true,
-    ///         Username = "cooluser123",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Global Grants
     /// 
     /// * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)

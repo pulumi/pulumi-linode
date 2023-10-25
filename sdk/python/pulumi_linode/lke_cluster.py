@@ -47,13 +47,27 @@ class LkeClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             k8s_version: pulumi.Input[str],
-             label: pulumi.Input[str],
-             pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
-             region: pulumi.Input[str],
+             k8s_version: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if k8s_version is None and 'k8sVersion' in kwargs:
+            k8s_version = kwargs['k8sVersion']
+        if k8s_version is None:
+            raise TypeError("Missing 'k8s_version' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if pools is None:
+            raise TypeError("Missing 'pools' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+
         _setter("k8s_version", k8s_version)
         _setter("label", label)
         _setter("pools", pools)
@@ -196,7 +210,17 @@ class _LkeClusterState:
              region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_endpoints is None and 'apiEndpoints' in kwargs:
+            api_endpoints = kwargs['apiEndpoints']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if dashboard_url is None and 'dashboardUrl' in kwargs:
+            dashboard_url = kwargs['dashboardUrl']
+        if k8s_version is None and 'k8sVersion' in kwargs:
+            k8s_version = kwargs['k8sVersion']
+
         if api_endpoints is not None:
             _setter("api_endpoints", api_endpoints)
         if control_plane is not None:
@@ -358,46 +382,6 @@ class LkeCluster(pulumi.CustomResource):
         """
         Manages an LKE cluster.
 
-        ## Example Usage
-
-        Creating a basic LKE cluster:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
-            label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                count=3,
-                type="g6-standard-2",
-            )],
-            region="us-central",
-            tags=["prod"])
-        ```
-
-        Creating an LKE cluster with autoscaler:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
-            k8s_version="1.21",
-            region="us-central",
-            tags=["prod"],
-            pools=[linode.LkeClusterPoolArgs(
-                type="g6-standard-2",
-                count=3,
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    min=3,
-                    max=10,
-                ),
-            )])
-        ```
-
         ## Import
 
         LKE Clusters can be imported using the `id`, e.g.
@@ -427,46 +411,6 @@ class LkeCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an LKE cluster.
-
-        ## Example Usage
-
-        Creating a basic LKE cluster:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
-            label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                count=3,
-                type="g6-standard-2",
-            )],
-            region="us-central",
-            tags=["prod"])
-        ```
-
-        Creating an LKE cluster with autoscaler:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
-            k8s_version="1.21",
-            region="us-central",
-            tags=["prod"],
-            pools=[linode.LkeClusterPoolArgs(
-                type="g6-standard-2",
-                count=3,
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    min=3,
-                    max=10,
-                ),
-            )])
-        ```
 
         ## Import
 
@@ -510,11 +454,7 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LkeClusterArgs.__new__(LkeClusterArgs)
 
-            if control_plane is not None and not isinstance(control_plane, LkeClusterControlPlaneArgs):
-                control_plane = control_plane or {}
-                def _setter(key, value):
-                    control_plane[key] = value
-                LkeClusterControlPlaneArgs._configure(_setter, **control_plane)
+            control_plane = _utilities.configure(control_plane, LkeClusterControlPlaneArgs, True)
             __props__.__dict__["control_plane"] = control_plane
             if k8s_version is None and not opts.urn:
                 raise TypeError("Missing required property 'k8s_version'")

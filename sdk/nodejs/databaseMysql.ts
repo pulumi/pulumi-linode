@@ -12,47 +12,6 @@ import * as utilities from "./utilities";
  *
  * Please keep in mind that Managed Databases can take up to an hour to provision.
  *
- * ## Example Usage
- *
- * Creating a simple MySQL database instance:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foobar = new linode.DatabaseMysql("foobar", {
- *     engineId: "mysql/8.0.30",
- *     label: "mydatabase",
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- * });
- * ```
- *
- * Creating a complex MySQL database instance:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foobar = new linode.DatabaseMysql("foobar", {
- *     allowLists: ["0.0.0.0/0"],
- *     clusterSize: 3,
- *     encrypted: true,
- *     engineId: "mysql/8.0.30",
- *     label: "mydatabase",
- *     region: "us-southeast",
- *     replicationType: "asynch",
- *     sslConnection: true,
- *     type: "g6-nanode-1",
- *     updates: {
- *         dayOfWeek: "saturday",
- *         duration: 1,
- *         frequency: "monthly",
- *         hourOfDay: 22,
- *         weekOfMonth: 2,
- *     },
- * });
- * ```
  * ## updates
  *
  * The following arguments are supported in the `updates` specification block:

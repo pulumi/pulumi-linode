@@ -9,38 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode Cloud Firewalls that match a set of filters.
  *
- * ## Example Usage
- *
- * Get information about all Linode Cloud Firewalls with a certain label and visibility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific = linode.getFirewalls({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-firewalls"],
- *         },
- *         {
- *             name: "tags",
- *             values: ["my-tag"],
- *         },
- *     ],
- * });
- * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
- * ```
- *
- * Get information about all Linode images associated with the current token:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all = linode.getFirewalls({});
- * export const firewallIds = all.then(all => all.firewalls.map(__item => __item.id));
- * ```
  * ## Firewall Rule
  *
  * * `label` - The label of this rule for display purposes only.
@@ -121,38 +89,6 @@ export interface GetFirewallsResult {
 /**
  * Provides information about Linode Cloud Firewalls that match a set of filters.
  *
- * ## Example Usage
- *
- * Get information about all Linode Cloud Firewalls with a certain label and visibility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific = linode.getFirewalls({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-firewalls"],
- *         },
- *         {
- *             name: "tags",
- *             values: ["my-tag"],
- *         },
- *     ],
- * });
- * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
- * ```
- *
- * Get information about all Linode images associated with the current token:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all = linode.getFirewalls({});
- * export const firewallIds = all.then(all => all.firewalls.map(__item => __item.id));
- * ```
  * ## Firewall Rule
  *
  * * `label` - The label of this rule for display purposes only.

@@ -16,63 +16,6 @@ import (
 // Manages a Linode Firewall Device.
 //
 // **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
-//				Label: pulumi.String("my_firewall"),
-//				Inbounds: linode.FirewallInboundArray{
-//					&linode.FirewallInboundArgs{
-//						Label:    pulumi.String("http"),
-//						Action:   pulumi.String("ACCEPT"),
-//						Protocol: pulumi.String("TCP"),
-//						Ports:    pulumi.String("80"),
-//						Ipv4s: pulumi.StringArray{
-//							pulumi.String("0.0.0.0/0"),
-//						},
-//						Ipv6s: pulumi.StringArray{
-//							pulumi.String("::/0"),
-//						},
-//					},
-//				},
-//				InboundPolicy:  pulumi.String("DROP"),
-//				OutboundPolicy: pulumi.String("ACCEPT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-//				Label:  pulumi.String("my_instance"),
-//				Region: pulumi.String("us-southeast"),
-//				Type:   pulumi.String("g6-standard-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewFirewallDevice(ctx, "myDevice", &linode.FirewallDeviceArgs{
-//				FirewallId: myFirewall.ID(),
-//				EntityId:   myInstance.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FirewallDevice struct {
 	pulumi.CustomResourceState
 

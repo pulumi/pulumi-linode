@@ -90,17 +90,6 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
     """
     Provides information about Linode volumes that match a set of filters.
 
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_volumes = linode.get_volumes(filters=[linode.GetVolumesFilterArgs(
-        name="label",
-        values=["test-volume"],
-    )])
-    pulumi.export("volumes", filtered_volumes.volumes)
-    ```
-
     ## Filterable Fields
 
     * `label`
@@ -135,17 +124,6 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Provides information about Linode volumes that match a set of filters.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_volumes = linode.get_volumes(filters=[linode.GetVolumesFilterArgs(
-        name="label",
-        values=["test-volume"],
-    )])
-    pulumi.export("volumes", filtered_volumes.volumes)
-    ```
 
     ## Filterable Fields
 

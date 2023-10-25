@@ -56,8 +56,8 @@ class ObjectStorageBucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             label: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
              access_key: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
@@ -65,7 +65,21 @@ class ObjectStorageBucketArgs:
              lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if cors_enabled is None and 'corsEnabled' in kwargs:
+            cors_enabled = kwargs['corsEnabled']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("cluster", cluster)
         _setter("label", label)
         if access_key is not None:
@@ -253,7 +267,17 @@ class _ObjectStorageBucketState:
              lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if cors_enabled is None and 'corsEnabled' in kwargs:
+            cors_enabled = kwargs['corsEnabled']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if acl is not None:
@@ -419,42 +443,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
         """
         Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Object Storage Bucket:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        primary = linode.get_object_storage_cluster(id="us-east-1")
-        foobar = linode.ObjectStorageBucket("foobar",
-            cluster=primary.id,
-            label="mybucket")
-        ```
-
-        Creating an Object Storage Bucket with Lifecycle rules:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        mykey = linode.ObjectStorageKey("mykey", label="image-access")
-        mybucket = linode.ObjectStorageBucket("mybucket",
-            access_key=mykey.access_key,
-            secret_key=mykey.secret_key,
-            cluster="us-east-1",
-            label="mybucket",
-            lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(
-                id="my-rule",
-                enabled=True,
-                abort_incomplete_multipart_upload_days=5,
-                expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(
-                    date="2021-06-21",
-                ),
-            )])
-        ```
-
         ## Import
 
         Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
@@ -487,42 +475,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Object Storage Bucket:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        primary = linode.get_object_storage_cluster(id="us-east-1")
-        foobar = linode.ObjectStorageBucket("foobar",
-            cluster=primary.id,
-            label="mybucket")
-        ```
-
-        Creating an Object Storage Bucket with Lifecycle rules:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        mykey = linode.ObjectStorageKey("mykey", label="image-access")
-        mybucket = linode.ObjectStorageBucket("mybucket",
-            access_key=mykey.access_key,
-            secret_key=mykey.secret_key,
-            cluster="us-east-1",
-            label="mybucket",
-            lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(
-                id="my-rule",
-                enabled=True,
-                abort_incomplete_multipart_upload_days=5,
-                expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(
-                    date="2021-06-21",
-                ),
-            )])
-        ```
 
         ## Import
 
@@ -571,11 +523,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["acl"] = acl
-            if cert is not None and not isinstance(cert, ObjectStorageBucketCertArgs):
-                cert = cert or {}
-                def _setter(key, value):
-                    cert[key] = value
-                ObjectStorageBucketCertArgs._configure(_setter, **cert)
+            cert = _utilities.configure(cert, ObjectStorageBucketCertArgs, True)
             __props__.__dict__["cert"] = cert
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")

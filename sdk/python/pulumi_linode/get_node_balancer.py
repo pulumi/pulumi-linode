@@ -164,15 +164,6 @@ def get_node_balancer(id: Optional[int] = None,
     """
     Provides details about a Linode NodeBalancer.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_nodebalancer = linode.get_node_balancer(id=123)
-    ```
-
 
     :param int id: The NodeBalancer's ID.
     """
@@ -200,15 +191,6 @@ def get_node_balancer_output(id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """
     Provides details about a Linode NodeBalancer.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_nodebalancer = linode.get_node_balancer(id=123)
-    ```
 
 
     :param int id: The NodeBalancer's ID.

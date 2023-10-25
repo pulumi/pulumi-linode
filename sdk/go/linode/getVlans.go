@@ -18,55 +18,6 @@ import (
 //
 // Provides details about Linode VLANs.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
-//				Label:    pulumi.String("my_instance"),
-//				Image:    pulumi.String("linode/ubuntu18.04"),
-//				Region:   pulumi.String("us-southeast"),
-//				Type:     pulumi.String("g6-standard-1"),
-//				RootPass: pulumi.String("bogusPassword$"),
-//				Interfaces: linode.InstanceInterfaceArray{
-//					&linode.InstanceInterfaceArgs{
-//						Purpose: pulumi.String("vlan"),
-//						Label:   pulumi.String("my-vlan"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			my_vlans, err := linode.GetVlans(ctx, &linode.GetVlansArgs{
-//				Filters: []linode.GetVlansFilter{
-//					{
-//						Name: "label",
-//						Values: []string{
-//							"my-vlan",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vlanLinodes", my_vlans.Vlans[0].Linodes)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Filterable Fields
 //
 // * `label`

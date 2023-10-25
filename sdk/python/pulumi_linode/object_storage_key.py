@@ -33,9 +33,15 @@ class ObjectStorageKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
+             label: Optional[pulumi.Input[str]] = None,
              bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if bucket_accesses is None and 'bucketAccesses' in kwargs:
+            bucket_accesses = kwargs['bucketAccesses']
+
         _setter("label", label)
         if bucket_accesses is not None:
             _setter("bucket_accesses", bucket_accesses)
@@ -101,7 +107,15 @@ class _ObjectStorageKeyState:
              label: Optional[pulumi.Input[str]] = None,
              limited: Optional[pulumi.Input[bool]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if bucket_accesses is None and 'bucketAccesses' in kwargs:
+            bucket_accesses = kwargs['bucketAccesses']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if bucket_accesses is not None:
@@ -187,17 +201,6 @@ class ObjectStorageKey(pulumi.CustomResource):
         """
         Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Object Storage Key.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.ObjectStorageKey("foo", label="image-access")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
@@ -213,17 +216,6 @@ class ObjectStorageKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to create an Object Storage Key.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.ObjectStorageKey("foo", label="image-access")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageKeyArgs args: The arguments to use to populate this resource's properties.

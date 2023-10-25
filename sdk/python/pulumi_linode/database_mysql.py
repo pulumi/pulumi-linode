@@ -63,17 +63,37 @@ class DatabaseMysqlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine_id: pulumi.Input[str],
-             label: pulumi.Input[str],
-             region: pulumi.Input[str],
-             type: pulumi.Input[str],
+             engine_id: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cluster_size: Optional[pulumi.Input[int]] = None,
              encrypted: Optional[pulumi.Input[bool]] = None,
              replication_type: Optional[pulumi.Input[str]] = None,
              ssl_connection: Optional[pulumi.Input[bool]] = None,
              updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if engine_id is None and 'engineId' in kwargs:
+            engine_id = kwargs['engineId']
+        if engine_id is None:
+            raise TypeError("Missing 'engine_id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if cluster_size is None and 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if ssl_connection is None and 'sslConnection' in kwargs:
+            ssl_connection = kwargs['sslConnection']
+
         _setter("engine_id", engine_id)
         _setter("label", label)
         _setter("region", region)
@@ -320,7 +340,29 @@ class _DatabaseMysqlState:
              updated: Optional[pulumi.Input[str]] = None,
              updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if ca_cert is None and 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if cluster_size is None and 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if engine_id is None and 'engineId' in kwargs:
+            engine_id = kwargs['engineId']
+        if host_primary is None and 'hostPrimary' in kwargs:
+            host_primary = kwargs['hostPrimary']
+        if host_secondary is None and 'hostSecondary' in kwargs:
+            host_secondary = kwargs['hostSecondary']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if root_username is None and 'rootUsername' in kwargs:
+            root_username = kwargs['rootUsername']
+        if ssl_connection is None and 'sslConnection' in kwargs:
+            ssl_connection = kwargs['sslConnection']
+
         if allow_lists is not None:
             _setter("allow_lists", allow_lists)
         if ca_cert is not None:
@@ -633,45 +675,6 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
-        ## Example Usage
-
-        Creating a simple MySQL database instance:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
-            type="g6-nanode-1")
-        ```
-
-        Creating a complex MySQL database instance:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysql("foobar",
-            allow_lists=["0.0.0.0/0"],
-            cluster_size=3,
-            encrypted=True,
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
-            replication_type="asynch",
-            ssl_connection=True,
-            type="g6-nanode-1",
-            updates=linode.DatabaseMysqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
-        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:
@@ -727,45 +730,6 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
-        ## Example Usage
-
-        Creating a simple MySQL database instance:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
-            type="g6-nanode-1")
-        ```
-
-        Creating a complex MySQL database instance:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysql("foobar",
-            allow_lists=["0.0.0.0/0"],
-            cluster_size=3,
-            encrypted=True,
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
-            replication_type="asynch",
-            ssl_connection=True,
-            type="g6-nanode-1",
-            updates=linode.DatabaseMysqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
-        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:
@@ -843,11 +807,7 @@ class DatabaseMysql(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if updates is not None and not isinstance(updates, DatabaseMysqlUpdatesArgs):
-                updates = updates or {}
-                def _setter(key, value):
-                    updates[key] = value
-                DatabaseMysqlUpdatesArgs._configure(_setter, **updates)
+            updates = _utilities.configure(updates, DatabaseMysqlUpdatesArgs, True)
             __props__.__dict__["updates"] = updates
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["created"] = None

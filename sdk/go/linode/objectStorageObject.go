@@ -16,38 +16,6 @@ import (
 // Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 //
 // ## Example Usage
-// ### Uploading plaintext to a bucket
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
-//				Bucket:          pulumi.String("my-bucket"),
-//				Cluster:         pulumi.String("us-east-1"),
-//				Key:             pulumi.String("my-object"),
-//				SecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),
-//				AccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),
-//				Content:         pulumi.String("This is the content of the Object..."),
-//				ContentType:     pulumi.String("text/plain"),
-//				ContentLanguage: pulumi.String("en"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
 

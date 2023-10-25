@@ -14,44 +14,6 @@ import (
 
 // Provides information about Linode regions that match a set of filters.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			filtered_regions, err := linode.GetRegions(ctx, &linode.GetRegionsArgs{
-//				Filters: []linode.GetRegionsFilter{
-//					{
-//						Name: "status",
-//						Values: []string{
-//							"ok",
-//						},
-//					},
-//					{
-//						Name: "capabilities",
-//						Values: []string{
-//							"NodeBalancers",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("regions", filtered_regions.Regions)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Filterable Fields
 //
 // * `status`

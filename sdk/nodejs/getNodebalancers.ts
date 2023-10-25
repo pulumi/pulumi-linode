@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode NodeBalancers that match a set of filters.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-nodebalancers = linode.getNodebalancers({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-nodebalancer"],
- *         },
- *         {
- *             name: "region",
- *             values: ["us-iad"],
- *         },
- *     ],
- * });
- * export const nodebalancerId = specific_nodebalancers.then(specific_nodebalancers => specific_nodebalancers.nodebalancers?.[0]?.id);
- * ```
  * ## Filterable Fields
  *
  * * `label`
@@ -91,28 +69,6 @@ export interface GetNodebalancersResult {
 /**
  * Provides information about Linode NodeBalancers that match a set of filters.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-nodebalancers = linode.getNodebalancers({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-nodebalancer"],
- *         },
- *         {
- *             name: "region",
- *             values: ["us-iad"],
- *         },
- *     ],
- * });
- * export const nodebalancerId = specific_nodebalancers.then(specific_nodebalancers => specific_nodebalancers.nodebalancers?.[0]?.id);
- * ```
  * ## Filterable Fields
  *
  * * `label`

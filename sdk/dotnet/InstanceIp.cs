@@ -15,33 +15,6 @@ namespace Pulumi.Linode
     /// &gt; **NOTICE:** This resource will reboot the specified instance following IP allocation.
     /// 
     /// Manages a Linode instance IP.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fooInstance = new Linode.Instance("fooInstance", new()
-    ///     {
-    ///         Image = "linode/alpine3.16",
-    ///         Label = "foobar-test",
-    ///         Type = "g6-nanode-1",
-    ///         Region = "us-east",
-    ///     });
-    /// 
-    ///     var fooInstanceIp = new Linode.InstanceIp("fooInstanceIp", new()
-    ///     {
-    ///         LinodeId = fooInstance.Id,
-    ///         Public = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [LinodeResourceType("linode:index/instanceIp:InstanceIp")]
     public partial class InstanceIp : global::Pulumi.CustomResource

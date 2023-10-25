@@ -13,56 +13,12 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
-        ///     {
-        ///         LinodeId = 123,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceNetworkingResult> InvokeAsync(GetInstanceNetworkingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
-        ///     {
-        ///         LinodeId = 123,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceNetworkingResult> Invoke(GetInstanceNetworkingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingInvokeArgs(), options.WithDefaults());

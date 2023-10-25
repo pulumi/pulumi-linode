@@ -14,51 +14,6 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode account logins that match a set of filters.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode account login.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
-        ///             {
-        ///                 Name = "restricted",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "true",
-        ///                 },
-        ///             },
-        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
-        ///             {
-        ///                 Name = "username",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "myUsername",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["loginIds"] = filtered_account_logins.Apply(filtered_account_logins =&gt; filtered_account_logins.Apply(getAccountLoginsResult =&gt; getAccountLoginsResult.Logins).Select(__item =&gt; __item.Id).ToList()),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `ip`
@@ -73,51 +28,6 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode account logins that match a set of filters.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode account login.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
-        ///             {
-        ///                 Name = "restricted",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "true",
-        ///                 },
-        ///             },
-        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
-        ///             {
-        ///                 Name = "username",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "myUsername",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["loginIds"] = filtered_account_logins.Apply(filtered_account_logins =&gt; filtered_account_logins.Apply(getAccountLoginsResult =&gt; getAccountLoginsResult.Logins).Select(__item =&gt; __item.Id).ToList()),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `ip`

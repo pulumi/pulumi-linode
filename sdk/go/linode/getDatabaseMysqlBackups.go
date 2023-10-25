@@ -15,68 +15,6 @@ import (
 // > **NOTICE:** This data source has been deprecated in favor of `getDatabaseBackups`.
 //
 // Provides information about Linode MySQL Database Backups that match a set of filters.
-//
-// ## Example Usage
-//
-// Get information about all backups for a MySQL database:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseMysqlBackups(ctx, &linode.GetDatabaseMysqlBackupsArgs{
-//				DatabaseId: 12345,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Get information about all automatic MySQL Database Backups:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetDatabaseMysqlBackups(ctx, &linode.GetDatabaseMysqlBackupsArgs{
-//				DatabaseId: 12345,
-//				Filters: []linode.GetDatabaseMysqlBackupsFilter{
-//					{
-//						Name: "type",
-//						Values: []string{
-//							"auto",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatabaseMysqlBackups(ctx *pulumi.Context, args *GetDatabaseMysqlBackupsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseMysqlBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseMysqlBackupsResult

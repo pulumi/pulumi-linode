@@ -32,10 +32,24 @@ class DatabaseAccessControlsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
-             database_id: pulumi.Input[int],
-             database_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             database_id: Optional[pulumi.Input[int]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if allow_lists is None:
+            raise TypeError("Missing 'allow_lists' argument")
+        if database_id is None and 'databaseId' in kwargs:
+            database_id = kwargs['databaseId']
+        if database_id is None:
+            raise TypeError("Missing 'database_id' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+
         _setter("allow_lists", allow_lists)
         _setter("database_id", database_id)
         _setter("database_type", database_type)
@@ -101,7 +115,15 @@ class _DatabaseAccessControlsState:
              allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              database_id: Optional[pulumi.Input[int]] = None,
              database_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if database_id is None and 'databaseId' in kwargs:
+            database_id = kwargs['databaseId']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+
         if allow_lists is not None:
             _setter("allow_lists", allow_lists)
         if database_id is not None:
@@ -158,30 +180,6 @@ class DatabaseAccessControls(pulumi.CustomResource):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
 
-        ## Example Usage
-
-        Grant a Linode access to a database:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="myinstance",
-            region="us-southeast",
-            type="g6-nanode-1",
-            image="linode/alpine3.14")
-        my_db = linode.DatabaseMysql("my-db",
-            label="mydatabase",
-            engine_id="mysql/8.0.30",
-            region="us-southeast",
-            type="g6-nanode-1")
-        my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
-            database_type="mysql",
-            allow_lists=[my_instance.ip_address])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
@@ -196,30 +194,6 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
-
-        ## Example Usage
-
-        Grant a Linode access to a database:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("my-instance",
-            label="myinstance",
-            region="us-southeast",
-            type="g6-nanode-1",
-            image="linode/alpine3.14")
-        my_db = linode.DatabaseMysql("my-db",
-            label="mydatabase",
-            engine_id="mysql/8.0.30",
-            region="us-southeast",
-            type="g6-nanode-1")
-        my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
-            database_type="mysql",
-            allow_lists=[my_instance.ip_address])
-        ```
 
         :param str resource_name: The name of the resource.
         :param DatabaseAccessControlsArgs args: The arguments to use to populate this resource's properties.

@@ -32,10 +32,20 @@ class Ipv6RangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             prefix_length: pulumi.Input[int],
+             prefix_length: Optional[pulumi.Input[int]] = None,
              linode_id: Optional[pulumi.Input[int]] = None,
              route_target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if prefix_length is None:
+            raise TypeError("Missing 'prefix_length' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if route_target is None and 'routeTarget' in kwargs:
+            route_target = kwargs['routeTarget']
+
         _setter("prefix_length", prefix_length)
         if linode_id is not None:
             _setter("linode_id", linode_id)
@@ -119,7 +129,17 @@ class _Ipv6RangeState:
              range: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              route_target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_bgp is None and 'isBgp' in kwargs:
+            is_bgp = kwargs['isBgp']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if route_target is None and 'routeTarget' in kwargs:
+            route_target = kwargs['routeTarget']
+
         if is_bgp is not None:
             _setter("is_bgp", is_bgp)
         if linode_id is not None:
@@ -230,22 +250,7 @@ class Ipv6Range(pulumi.CustomResource):
                  route_target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_instance = linode.Instance("foobarInstance",
-            label="my-linode",
-            image="linode/alpine3.14",
-            type="g6-nanode-1",
-            region="us-southeast")
-        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
-            linode_id=foobar_instance.id,
-            prefix_length=64)
-        ```
-
+        Create a Ipv6Range resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
@@ -259,22 +264,7 @@ class Ipv6Range(pulumi.CustomResource):
                  args: Ipv6RangeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_instance = linode.Instance("foobarInstance",
-            label="my-linode",
-            image="linode/alpine3.14",
-            type="g6-nanode-1",
-            region="us-southeast")
-        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
-            linode_id=foobar_instance.id,
-            prefix_length=64)
-        ```
-
+        Create a Ipv6Range resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param Ipv6RangeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

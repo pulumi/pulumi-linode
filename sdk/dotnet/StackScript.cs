@@ -14,55 +14,6 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fooStackScript = new Linode.StackScript("fooStackScript", new()
-    ///     {
-    ///         Label = "foo",
-    ///         Description = "Installs a Package",
-    ///         Script = @"#!/bin/bash
-    /// # &lt;UDF name=""package"" label=""System Package to Install"" example=""nginx"" default=""""&gt;
-    /// apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
-    /// ",
-    ///         Images = new[]
-    ///         {
-    ///             "linode/ubuntu18.04",
-    ///             "linode/ubuntu16.04lts",
-    ///         },
-    ///         RevNote = "initial version",
-    ///     });
-    /// 
-    ///     var fooInstance = new Linode.Instance("fooInstance", new()
-    ///     {
-    ///         Image = "linode/ubuntu18.04",
-    ///         Label = "foo",
-    ///         Region = "us-east",
-    ///         Type = "g6-nanode-1",
-    ///         AuthorizedKeys = new[]
-    ///         {
-    ///             "...",
-    ///         },
-    ///         RootPass = "...",
-    ///         StackscriptId = fooStackScript.Id,
-    ///         StackscriptData = 
-    ///         {
-    ///             { "package", "nginx" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.

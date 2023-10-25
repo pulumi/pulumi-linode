@@ -11,28 +11,6 @@ import * as utilities from "./utilities";
  *
  * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode StackScript.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-stackscripts = linode.getStackScripts({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-cool-stackscript"],
- *         },
- *         {
- *             name: "is_public",
- *             values: ["false"],
- *         },
- *     ],
- * });
- * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
- * ```
  * ## Filterable Fields
  *
  * * `deploymentsActive`
@@ -107,28 +85,6 @@ export interface GetStackScriptsResult {
  *
  * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode StackScript.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-stackscripts = linode.getStackScripts({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-cool-stackscript"],
- *         },
- *         {
- *             name: "is_public",
- *             values: ["false"],
- *         },
- *     ],
- * });
- * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
- * ```
  * ## Filterable Fields
  *
  * * `deploymentsActive`

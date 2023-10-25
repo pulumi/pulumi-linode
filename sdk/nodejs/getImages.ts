@@ -9,38 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode images that match a set of filters.
  *
- * ## Example Usage
- *
- * Get information about all Linode images with a certain label and visibility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-images = linode.getImages({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["Debian 11"],
- *         },
- *         {
- *             name: "is_public",
- *             values: ["true"],
- *         },
- *     ],
- * });
- * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
- * ```
- *
- * Get information about all Linode images associated with the current token:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all-images = linode.getImages({});
- * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
- * ```
  * ## Filterable Fields
  *
  * * `createdBy`
@@ -113,38 +81,6 @@ export interface GetImagesResult {
 /**
  * Provides information about Linode images that match a set of filters.
  *
- * ## Example Usage
- *
- * Get information about all Linode images with a certain label and visibility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const specific-images = linode.getImages({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["Debian 11"],
- *         },
- *         {
- *             name: "is_public",
- *             values: ["true"],
- *         },
- *     ],
- * });
- * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
- * ```
- *
- * Get information about all Linode images associated with the current token:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all-images = linode.getImages({});
- * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
- * ```
  * ## Filterable Fields
  *
  * * `createdBy`

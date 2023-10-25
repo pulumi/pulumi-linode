@@ -43,13 +43,21 @@ class VolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
+             label: Optional[pulumi.Input[str]] = None,
              linode_id: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              source_volume_id: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if source_volume_id is None and 'sourceVolumeId' in kwargs:
+            source_volume_id = kwargs['sourceVolumeId']
+
         _setter("label", label)
         if linode_id is not None:
             _setter("linode_id", linode_id)
@@ -183,7 +191,15 @@ class _VolumeState:
              source_volume_id: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filesystem_path is None and 'filesystemPath' in kwargs:
+            filesystem_path = kwargs['filesystemPath']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if source_volume_id is None and 'sourceVolumeId' in kwargs:
+            source_volume_id = kwargs['sourceVolumeId']
+
         if filesystem_path is not None:
             _setter("filesystem_path", filesystem_path)
         if label is not None:
@@ -317,56 +333,6 @@ class Volume(pulumi.CustomResource):
 
         For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobaz = linode.Instance("foobaz",
-            root_pass="3X4mp13",
-            type="g6-nanode-1",
-            region="us-west",
-            tags=["foobaz"])
-        foobar = linode.Volume("foobar",
-            label="foo-volume",
-            region=foobaz.region,
-            linode_id=foobaz.id)
-        ```
-
-        Volumes can also be attached using the Linode Instance config device map.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.Instance("foo",
-            configs=[linode.InstanceConfigArgs(
-                devices=linode.InstanceConfigDevicesArgs(
-                    sda=linode.InstanceConfigDevicesSdaArgs(
-                        volume_id=123,
-                    ),
-                ),
-                kernel="linode/latest-64bit",
-                label="boot-existing-volume",
-            )],
-            region="us-east",
-            type="g6-nanode-1")
-        ```
-
-        Volumes may also be cloned from existing volumes.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.Volume("foobar",
-            label="my-cloned-volume",
-            source_volume_id=12345)
-        ```
-
         ## Import
 
         Linodes Volumes can be imported using the Linode Volume `id`, e.g.
@@ -396,56 +362,6 @@ class Volume(pulumi.CustomResource):
         Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
 
         For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobaz = linode.Instance("foobaz",
-            root_pass="3X4mp13",
-            type="g6-nanode-1",
-            region="us-west",
-            tags=["foobaz"])
-        foobar = linode.Volume("foobar",
-            label="foo-volume",
-            region=foobaz.region,
-            linode_id=foobaz.id)
-        ```
-
-        Volumes can also be attached using the Linode Instance config device map.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foo = linode.Instance("foo",
-            configs=[linode.InstanceConfigArgs(
-                devices=linode.InstanceConfigDevicesArgs(
-                    sda=linode.InstanceConfigDevicesSdaArgs(
-                        volume_id=123,
-                    ),
-                ),
-                kernel="linode/latest-64bit",
-                label="boot-existing-volume",
-            )],
-            region="us-east",
-            type="g6-nanode-1")
-        ```
-
-        Volumes may also be cloned from existing volumes.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.Volume("foobar",
-            label="my-cloned-volume",
-            source_volume_id=12345)
-        ```
 
         ## Import
 

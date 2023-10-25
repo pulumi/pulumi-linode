@@ -14,56 +14,6 @@ import (
 )
 
 // Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
-//
-// ## Example Usage
-//
-// Grant a Linode access to a database:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
-//				Label:  pulumi.String("myinstance"),
-//				Region: pulumi.String("us-southeast"),
-//				Type:   pulumi.String("g6-nanode-1"),
-//				Image:  pulumi.String("linode/alpine3.14"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewDatabaseMysql(ctx, "my-db", &linode.DatabaseMysqlArgs{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/8.0.30"),
-//				Region:   pulumi.String("us-southeast"),
-//				Type:     pulumi.String("g6-nanode-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewDatabaseAccessControls(ctx, "my-access", &linode.DatabaseAccessControlsArgs{
-//				DatabaseId:   my_db.ID(),
-//				DatabaseType: pulumi.String("mysql"),
-//				AllowLists: pulumi.StringArray{
-//					my_instance.IpAddress,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DatabaseAccessControls struct {
 	pulumi.CustomResourceState
 

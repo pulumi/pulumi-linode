@@ -47,7 +47,13 @@ class NodeBalancerArgs:
              label: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_conn_throttle is None and 'clientConnThrottle' in kwargs:
+            client_conn_throttle = kwargs['clientConnThrottle']
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+
         if client_conn_throttle is not None:
             _setter("client_conn_throttle", client_conn_throttle)
         if firewall_id is not None:
@@ -180,7 +186,13 @@ class _NodeBalancerState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transfers: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_conn_throttle is None and 'clientConnThrottle' in kwargs:
+            client_conn_throttle = kwargs['clientConnThrottle']
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+
         if client_conn_throttle is not None:
             _setter("client_conn_throttle", client_conn_throttle)
         if created is not None:
@@ -354,21 +366,6 @@ class NodeBalancer(pulumi.CustomResource):
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a NodeBalancer.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
-            label="mynodebalancer",
-            region="us-east",
-            tags=["foobar"])
-        ```
-
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -396,21 +393,6 @@ class NodeBalancer(pulumi.CustomResource):
         """
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a NodeBalancer.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
-            label="mynodebalancer",
-            region="us-east",
-            tags=["foobar"])
-        ```
 
         ## Import
 

@@ -77,15 +77,6 @@ def get_instance_networking(linode_id: Optional[int] = None,
     """
     Provides details about the networking configuration of an Instance.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    example = linode.get_instance_networking(linode_id=123)
-    ```
-
 
     :param int linode_id: The Linode instance's ID.
     """
@@ -106,15 +97,6 @@ def get_instance_networking_output(linode_id: Optional[pulumi.Input[int]] = None
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceNetworkingResult]:
     """
     Provides details about the networking configuration of an Instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    example = linode.get_instance_networking(linode_id=123)
-    ```
 
 
     :param int linode_id: The Linode instance's ID.

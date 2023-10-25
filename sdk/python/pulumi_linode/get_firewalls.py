@@ -90,36 +90,6 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all Linode Cloud Firewalls with a certain label and visibility:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    specific = linode.get_firewalls(filters=[
-        linode.GetFirewallsFilterArgs(
-            name="label",
-            values=["my-firewalls"],
-        ),
-        linode.GetFirewallsFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
-    ])
-    pulumi.export("firewallId", specific.firewalls[0].id)
-    ```
-
-    Get information about all Linode images associated with the current token:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all = linode.get_firewalls()
-    pulumi.export("firewallIds", [__item.id for __item in all.firewalls])
-    ```
     ## Firewall Rule
 
     * `label` - The label of this rule for display purposes only.
@@ -185,36 +155,6 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all Linode Cloud Firewalls with a certain label and visibility:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    specific = linode.get_firewalls(filters=[
-        linode.GetFirewallsFilterArgs(
-            name="label",
-            values=["my-firewalls"],
-        ),
-        linode.GetFirewallsFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
-    ])
-    pulumi.export("firewallId", specific.firewalls[0].id)
-    ```
-
-    Get information about all Linode images associated with the current token:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all = linode.get_firewalls()
-    pulumi.export("firewallIds", [__item.id for __item in all.firewalls])
-    ```
     ## Firewall Rule
 
     * `label` - The label of this rule for display purposes only.

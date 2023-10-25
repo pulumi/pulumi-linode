@@ -14,47 +14,6 @@ import (
 
 // Provides information about Linode NodeBalancers that match a set of filters.
 //
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about a Linode NodeBalancer.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			specific_nodebalancers, err := linode.GetNodebalancers(ctx, &linode.GetNodebalancersArgs{
-//				Filters: []linode.GetNodebalancersFilter{
-//					{
-//						Name: "label",
-//						Values: []string{
-//							"my-nodebalancer",
-//						},
-//					},
-//					{
-//						Name: "region",
-//						Values: []string{
-//							"us-iad",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nodebalancerId", specific_nodebalancers.Nodebalancers[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Filterable Fields
 //
 // * `label`

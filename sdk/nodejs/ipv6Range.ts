@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foobarInstance = new linode.Instance("foobarInstance", {
- *     label: "my-linode",
- *     image: "linode/alpine3.14",
- *     type: "g6-nanode-1",
- *     region: "us-southeast",
- * });
- * const foobarIpv6Range = new linode.Ipv6Range("foobarIpv6Range", {
- *     linodeId: foobarInstance.id,
- *     prefixLength: 64,
- * });
- * ```
- */
 export class Ipv6Range extends pulumi.CustomResource {
     /**
      * Get an existing Ipv6Range resource's state with the given name, ID, and optional extra
