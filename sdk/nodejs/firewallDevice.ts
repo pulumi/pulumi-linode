@@ -8,6 +8,36 @@ import * as utilities from "./utilities";
  * Manages a Linode Firewall Device.
  *
  * **NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `linodes` may cause device conflicts.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myFirewall = new linode.Firewall("myFirewall", {
+ *     label: "my_firewall",
+ *     inbounds: [{
+ *         label: "http",
+ *         action: "ACCEPT",
+ *         protocol: "TCP",
+ *         ports: "80",
+ *         ipv4s: ["0.0.0.0/0"],
+ *         ipv6s: ["::/0"],
+ *     }],
+ *     inboundPolicy: "DROP",
+ *     outboundPolicy: "ACCEPT",
+ * });
+ * const myInstance = new linode.Instance("myInstance", {
+ *     label: "my_instance",
+ *     region: "us-southeast",
+ *     type: "g6-standard-1",
+ * });
+ * const myDevice = new linode.FirewallDevice("myDevice", {
+ *     firewallId: myFirewall.id,
+ *     entityId: myInstance.id,
+ * });
+ * ```
  */
 export class FirewallDevice extends pulumi.CustomResource {
     /**

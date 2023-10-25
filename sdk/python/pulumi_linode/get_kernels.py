@@ -90,6 +90,25 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
     """
     Provides information about Linode Kernels that match a set of filters.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Kernel.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_kernels = linode.get_kernels(filters=[
+        linode.GetKernelsFilterArgs(
+            name="label",
+            values=["my-kernel"],
+        ),
+        linode.GetKernelsFilterArgs(
+            name="architecture",
+            values=["x86_64"],
+        ),
+    ])
+    ```
     ## Filterable Fields
 
     * `id`
@@ -137,6 +156,25 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     """
     Provides information about Linode Kernels that match a set of filters.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Kernel.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_kernels = linode.get_kernels(filters=[
+        linode.GetKernelsFilterArgs(
+            name="label",
+            values=["my-kernel"],
+        ),
+        linode.GetKernelsFilterArgs(
+            name="architecture",
+            values=["x86_64"],
+        ),
+    ])
+    ```
     ## Filterable Fields
 
     * `id`

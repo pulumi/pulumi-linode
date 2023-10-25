@@ -14,6 +14,49 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-ssh",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "ssh_key",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "RSA-6522525",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `id`
@@ -28,6 +71,49 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-ssh",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "ssh_key",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "RSA-6522525",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `id`

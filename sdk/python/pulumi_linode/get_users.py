@@ -90,6 +90,17 @@ def get_users(filters: Optional[Sequence[pulumi.InputType['GetUsersFilterArgs']]
     """
     Provides information about Linode users that match a set of filters.
 
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_users = linode.get_users(filters=[linode.GetUsersFilterArgs(
+        name="username",
+        values=["test-user"],
+    )])
+    pulumi.export("users", filtered_users.users)
+    ```
+
     ## Filterable Fields
 
     * `username`
@@ -132,6 +143,17 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     Provides information about Linode users that match a set of filters.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_users = linode.get_users(filters=[linode.GetUsersFilterArgs(
+        name="username",
+        values=["test-user"],
+    )])
+    pulumi.export("users", filtered_users.users)
+    ```
 
     ## Filterable Fields
 

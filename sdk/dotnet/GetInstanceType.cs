@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode instance type
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Instance type.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
+        ///     {
+        ///         Id = "g6-standard-2",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypeResult> InvokeAsync(GetInstanceTypeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args ?? new GetInstanceTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode instance type
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Instance type.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
+        ///     {
+        ///         Id = "g6-standard-2",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypeResult> Invoke(GetInstanceTypeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypeResult>("linode:index/getInstanceType:getInstanceType", args ?? new GetInstanceTypeInvokeArgs(), options.WithDefaults());

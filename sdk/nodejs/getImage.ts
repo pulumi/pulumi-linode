@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode image
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode image.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const k8Master = linode.getImage({
+ *     id: "linode/debian8",
+ * });
+ * ```
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
 
@@ -75,6 +88,19 @@ export interface GetImageResult {
 }
 /**
  * Provides information about a Linode image
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode image.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const k8Master = linode.getImage({
+ *     id: "linode/debian8",
+ * });
+ * ```
  */
 export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
     return pulumi.output(args).apply((a: any) => getImage(a, opts))

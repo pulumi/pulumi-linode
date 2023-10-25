@@ -13,6 +13,32 @@ import (
 )
 
 // Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+//
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access information about a Linode LKE Version.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetLkeVersions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLkeVersions(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLkeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeVersionsResult

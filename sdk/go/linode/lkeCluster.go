@@ -15,6 +15,86 @@ import (
 
 // Manages an LKE cluster.
 //
+// ## Example Usage
+//
+// Creating a basic LKE cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				K8sVersion: pulumi.String("1.21"),
+//				Label:      pulumi.String("my-cluster"),
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Count: pulumi.Int(3),
+//						Type:  pulumi.String("g6-standard-2"),
+//					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating an LKE cluster with autoscaler:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.21"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
+//							Min: pulumi.Int(3),
+//							Max: pulumi.Int(10),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // LKE Clusters can be imported using the `id`, e.g.

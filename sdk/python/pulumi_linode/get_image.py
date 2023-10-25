@@ -184,6 +184,17 @@ def get_image(id: Optional[str] = None,
     """
     Provides information about a Linode image
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode image.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    k8_master = linode.get_image(id="linode/debian8")
+    ```
+
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
     """
@@ -213,6 +224,17 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about a Linode image
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode image.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    k8_master = linode.get_image(id="linode/debian8")
+    ```
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.

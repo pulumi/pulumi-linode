@@ -325,6 +325,22 @@ class InstanceIp(pulumi.CustomResource):
 
         Manages a Linode instance IP.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/alpine3.16",
+            label="foobar-test",
+            type="g6-nanode-1",
+            region="us-east")
+        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
+            linode_id=foo_instance.id,
+            public=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
@@ -344,6 +360,22 @@ class InstanceIp(pulumi.CustomResource):
         > **NOTICE:** This resource will reboot the specified instance following IP allocation.
 
         Manages a Linode instance IP.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/alpine3.16",
+            label="foobar-test",
+            type="g6-nanode-1",
+            region="us-east")
+        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
+            linode_id=foo_instance.id,
+            public=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceIpArgs args: The arguments to use to populate this resource's properties.

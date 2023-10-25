@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Volume.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Volume.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Linode.GetVolume.Invoke(new()
+        ///     {
+        ///         Id = 1234567,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("linode:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode Volume.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Volume.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Linode.GetVolume.Invoke(new()
+        ///     {
+        ///         Id = 1234567,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("linode:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());

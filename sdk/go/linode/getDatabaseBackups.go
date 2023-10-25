@@ -13,6 +13,70 @@ import (
 )
 
 // Provides information about Linode Database Backups that match a set of filters.
+//
+// ## Example Usage
+//
+// Get information about all backups for a MySQL database:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseBackups(ctx, &linode.GetDatabaseBackupsArgs{
+//				DatabaseId:   12345,
+//				DatabaseType: "mysql",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all automatic PostgreSQL Database Backups:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDatabaseBackups(ctx, &linode.GetDatabaseBackupsArgs{
+//				DatabaseId:   12345,
+//				DatabaseType: "postgresql",
+//				Filters: []linode.GetDatabaseBackupsFilter{
+//					{
+//						Name: "type",
+//						Values: []string{
+//							"auto",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseBackups(ctx *pulumi.Context, args *GetDatabaseBackupsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseBackupsResult

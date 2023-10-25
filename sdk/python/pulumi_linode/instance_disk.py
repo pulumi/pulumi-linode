@@ -515,6 +515,48 @@ class InstanceDisk(pulumi.CustomResource):
 
         **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
 
+        ## Example Usage
+
+        Creating a simple 512 MB Linode Instance Disk:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=512,
+            filesystem="ext4")
+        ```
+
+        Creating a complex bootable Instance Disk:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs.disk,
+            image="linode/ubuntu20.04",
+            root_pass="myc00lpass!",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            stackscript_id=12345,
+            stackscript_data={
+                "my_var": "my_value",
+            })
+        ```
+
         ## Import
 
         Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
@@ -548,6 +590,48 @@ class InstanceDisk(pulumi.CustomResource):
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
 
         **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
+
+        ## Example Usage
+
+        Creating a simple 512 MB Linode Instance Disk:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=512,
+            filesystem="ext4")
+        ```
+
+        Creating a complex bootable Instance Disk:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs.disk,
+            image="linode/ubuntu20.04",
+            root_pass="myc00lpass!",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            stackscript_id=12345,
+            stackscript_data={
+                "my_var": "my_value",
+            })
+        ```
 
         ## Import
 

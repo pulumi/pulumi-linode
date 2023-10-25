@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Object Storage Cluster
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const primary = linode.getObjectStorageCluster({
+ *     id: "us-east-1",
+ * });
+ * ```
  */
 export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> {
 
@@ -49,6 +62,19 @@ export interface GetObjectStorageClusterResult {
 }
 /**
  * Provides information about a Linode Object Storage Cluster
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const primary = linode.getObjectStorageCluster({
+ *     id: "us-east-1",
+ * });
+ * ```
  */
 export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectStorageClusterResult> {
     return pulumi.output(args).apply((a: any) => getObjectStorageCluster(a, opts))

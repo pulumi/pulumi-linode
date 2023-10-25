@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+ *
+ * ## Example Usage
+ *
+ * The following example shows how the resource might be used to obtain additional information about a Linode region.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const region = linode.getRegion({
+ *     id: "us-east",
+ * });
+ * ```
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
 
@@ -54,6 +67,19 @@ export interface GetRegionResult {
 }
 /**
  * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+ *
+ * ## Example Usage
+ *
+ * The following example shows how the resource might be used to obtain additional information about a Linode region.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const region = linode.getRegion({
+ *     id: "us-east",
+ * });
+ * ```
  */
 export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
     return pulumi.output(args).apply((a: any) => getRegion(a, opts))

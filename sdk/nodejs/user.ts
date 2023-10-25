@@ -9,6 +9,40 @@ import * as utilities from "./utilities";
 /**
  * Manages a Linode User.
  *
+ * ## Example Usage
+ *
+ * Create an unrestricted user:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const john = new linode.User("john", {
+ *     email: "john@acme.io",
+ *     username: "john123",
+ * });
+ * ```
+ *
+ * Create a restricted user with grants:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooser = new linode.User("fooser", {
+ *     email: "cool@acme.io",
+ *     globalGrants: {
+ *         addImages: true,
+ *         addLinodes: true,
+ *     },
+ *     linodeGrants: [{
+ *         id: 12345,
+ *         permissions: "read_write",
+ *     }],
+ *     restricted: true,
+ *     username: "cooluser123",
+ * });
+ * ```
  * ## Global Grants
  *
  * * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)

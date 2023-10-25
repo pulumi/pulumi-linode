@@ -102,6 +102,26 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
 
     **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode StackScript.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_stackscripts = linode.get_stack_scripts(filters=[
+        linode.GetStackScriptsFilterArgs(
+            name="label",
+            values=["my-cool-stackscript"],
+        ),
+        linode.GetStackScriptsFilterArgs(
+            name="is_public",
+            values=["false"],
+        ),
+    ])
+    pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
+    ```
     ## Filterable Fields
 
     * `deployments_active`
@@ -159,6 +179,26 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
 
     **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode StackScript.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_stackscripts = linode.get_stack_scripts(filters=[
+        linode.GetStackScriptsFilterArgs(
+            name="label",
+            values=["my-cool-stackscript"],
+        ),
+        linode.GetStackScriptsFilterArgs(
+            name="is_public",
+            values=["false"],
+        ),
+    ])
+    pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
+    ```
     ## Filterable Fields
 
     * `deployments_active`

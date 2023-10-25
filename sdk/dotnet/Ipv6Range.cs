@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarInstance = new Linode.Instance("foobarInstance", new()
+    ///     {
+    ///         Label = "my-linode",
+    ///         Image = "linode/alpine3.14",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-southeast",
+    ///     });
+    /// 
+    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobarIpv6Range", new()
+    ///     {
+    ///         LinodeId = foobarInstance.Id,
+    ///         PrefixLength = 64,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [LinodeResourceType("linode:index/ipv6Range:Ipv6Range")]
     public partial class Ipv6Range : global::Pulumi.CustomResource
     {

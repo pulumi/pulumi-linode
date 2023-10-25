@@ -13,6 +13,57 @@ namespace Pulumi.Linode
     /// Manages a Linode Firewall Device.
     /// 
     /// **NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `linodes` may cause device conflicts.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myFirewall = new Linode.Firewall("myFirewall", new()
+    ///     {
+    ///         Label = "my_firewall",
+    ///         Inbounds = new[]
+    ///         {
+    ///             new Linode.Inputs.FirewallInboundArgs
+    ///             {
+    ///                 Label = "http",
+    ///                 Action = "ACCEPT",
+    ///                 Protocol = "TCP",
+    ///                 Ports = "80",
+    ///                 Ipv4s = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///                 Ipv6s = new[]
+    ///                 {
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///         InboundPolicy = "DROP",
+    ///         OutboundPolicy = "ACCEPT",
+    ///     });
+    /// 
+    ///     var myInstance = new Linode.Instance("myInstance", new()
+    ///     {
+    ///         Label = "my_instance",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-standard-1",
+    ///     });
+    /// 
+    ///     var myDevice = new Linode.FirewallDevice("myDevice", new()
+    ///     {
+    ///         FirewallId = myFirewall.Id,
+    ///         EntityId = myInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [LinodeResourceType("linode:index/firewallDevice:FirewallDevice")]
     public partial class FirewallDevice : global::Pulumi.CustomResource

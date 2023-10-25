@@ -9,6 +9,48 @@ import * as utilities from "./utilities";
 /**
  * Manages an LKE cluster.
  *
+ * ## Example Usage
+ *
+ * Creating a basic LKE cluster:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     k8sVersion: "1.21",
+ *     label: "my-cluster",
+ *     pools: [{
+ *         count: 3,
+ *         type: "g6-standard-2",
+ *     }],
+ *     region: "us-central",
+ *     tags: ["prod"],
+ * });
+ * ```
+ *
+ * Creating an LKE cluster with autoscaler:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.21",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 3,
+ *         autoscaler: {
+ *             min: 3,
+ *             max: 10,
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * LKE Clusters can be imported using the `id`, e.g.

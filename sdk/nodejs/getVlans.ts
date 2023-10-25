@@ -13,6 +13,31 @@ import * as utilities from "./utilities";
  *
  * Provides details about Linode VLANs.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myInstance = new linode.Instance("myInstance", {
+ *     label: "my_instance",
+ *     image: "linode/ubuntu18.04",
+ *     region: "us-southeast",
+ *     type: "g6-standard-1",
+ *     rootPass: "bogusPassword$",
+ *     interfaces: [{
+ *         purpose: "vlan",
+ *         label: "my-vlan",
+ *     }],
+ * });
+ * const my-vlans = linode.getVlans({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["my-vlan"],
+ *     }],
+ * });
+ * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
+ * ```
  * ## Filterable Fields
  *
  * * `label`
@@ -64,6 +89,31 @@ export interface GetVlansResult {
  *
  * Provides details about Linode VLANs.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myInstance = new linode.Instance("myInstance", {
+ *     label: "my_instance",
+ *     image: "linode/ubuntu18.04",
+ *     region: "us-southeast",
+ *     type: "g6-standard-1",
+ *     rootPass: "bogusPassword$",
+ *     interfaces: [{
+ *         purpose: "vlan",
+ *         label: "my-vlan",
+ *     }],
+ * });
+ * const my-vlans = linode.getVlans({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["my-vlan"],
+ *     }],
+ * });
+ * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
+ * ```
  * ## Filterable Fields
  *
  * * `label`

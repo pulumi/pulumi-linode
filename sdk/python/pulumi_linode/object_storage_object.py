@@ -786,6 +786,22 @@ class ObjectStorageObject(pulumi.CustomResource):
         Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 
         ## Example Usage
+        ### Uploading plaintext to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            cluster="us-east-1",
+            key="my-object",
+            secret_key=linode_object_storage_key["my_key"]["secret_key"],
+            access_key=linode_object_storage_key["my_key"]["access_key"],
+            content="This is the content of the Object...",
+            content_type="text/plain",
+            content_language="en")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -818,6 +834,22 @@ class ObjectStorageObject(pulumi.CustomResource):
         Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 
         ## Example Usage
+        ### Uploading plaintext to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            cluster="us-east-1",
+            key="my-object",
+            secret_key=linode_object_storage_key["my_key"]["secret_key"],
+            access_key=linode_object_storage_key["my_key"]["access_key"],
+            content="This is the content of the Object...",
+            content_type="text/plain",
+            content_language="en")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageObjectArgs args: The arguments to use to populate this resource's properties.

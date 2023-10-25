@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode image
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode image.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var k8Master = Linode.GetImage.Invoke(new()
+        ///     {
+        ///         Id = "linode/debian8",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode image
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode image.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var k8Master = Linode.GetImage.Invoke(new()
+        ///     {
+        ///         Id = "linode/debian8",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("linode:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());

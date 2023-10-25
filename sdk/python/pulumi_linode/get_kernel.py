@@ -139,6 +139,17 @@ def get_kernel(id: Optional[str] = None,
     """
     Provides information about a Linode kernel
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode kernel.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    latest = linode.get_kernel(id="linode/latest-64bit")
+    ```
+
 
     :param str id: The unique ID of this Kernel.
     """
@@ -164,6 +175,17 @@ def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelResult]:
     """
     Provides information about a Linode kernel
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode kernel.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    latest = linode.get_kernel(id="linode/latest-64bit")
+    ```
 
 
     :param str id: The unique ID of this Kernel.

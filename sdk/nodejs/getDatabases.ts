@@ -8,6 +8,33 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Managed Databases that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode Managed Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all = linode.getDatabases({});
+ * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
+ * ```
+ *
+ * Get information about all Linode MySQL Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const mysql = linode.getDatabases({
+ *     filters: [{
+ *         name: "engine",
+ *         values: ["mysql"],
+ *     }],
+ * });
+ * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
+ * ```
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     args = args || {};
@@ -52,6 +79,33 @@ export interface GetDatabasesResult {
 }
 /**
  * Provides information about Linode Managed Databases that match a set of filters.
+ *
+ * ## Example Usage
+ *
+ * Get information about all Linode Managed Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all = linode.getDatabases({});
+ * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
+ * ```
+ *
+ * Get information about all Linode MySQL Databases:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const mysql = linode.getDatabases({
+ *     filters: [{
+ *         name: "engine",
+ *         values: ["mysql"],
+ *     }],
+ * });
+ * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
+ * ```
  */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getDatabases(a, opts))

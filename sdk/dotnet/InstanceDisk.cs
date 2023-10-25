@@ -14,6 +14,74 @@ namespace Pulumi.Linode
     /// 
     /// **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a simple 512 MB Linode Instance Disk:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Type = "g6-standard-1",
+    ///         Region = "us-southeast",
+    ///     });
+    /// 
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = 512,
+    ///         Filesystem = "ext4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a complex bootable Instance Disk:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Type = "g6-standard-1",
+    ///         Region = "us-southeast",
+    ///     });
+    /// 
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs.Disk),
+    ///         Image = "linode/ubuntu20.04",
+    ///         RootPass = "myc00lpass!",
+    ///         AuthorizedKeys = new[]
+    ///         {
+    ///             "ssh-rsa AAAA...Gw== user@example.local",
+    ///         },
+    ///         StackscriptId = 12345,
+    ///         StackscriptData = 
+    ///         {
+    ///             { "my_var", "my_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.

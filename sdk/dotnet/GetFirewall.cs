@@ -13,12 +13,56 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a Linode Firewall.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
+        ///     {
+        ///         Id = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFirewallResult> InvokeAsync(GetFirewallArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a Linode Firewall.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
+        ///     {
+        ///         Id = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithDefaults());

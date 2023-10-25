@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode LKE Version.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = linode.getLkeVersions({});
+ * ```
  */
 export function getLkeVersions(opts?: pulumi.InvokeOptions): Promise<GetLkeVersionsResult> {
 
@@ -28,6 +39,17 @@ export interface GetLkeVersionsResult {
 }
 /**
  * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode LKE Version.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = linode.getLkeVersions({});
+ * ```
  */
 export function getLkeVersionsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeVersionsResult> {
     return pulumi.output(getLkeVersions(opts))

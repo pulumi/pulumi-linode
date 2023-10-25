@@ -11,6 +11,22 @@ import * as utilities from "./utilities";
  *
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooToken = new linode.Token("fooToken", {
+ *     expiry: "2100-01-02T03:04:05Z",
+ *     label: "token",
+ *     scopes: "linodes:read_only",
+ * });
+ * const fooInstance = new linode.Instance("fooInstance", {});
+ * ```
+ *
  * ## Import
  *
  * Linodes Tokens can be imported using the Linode Token `id`, e.g.

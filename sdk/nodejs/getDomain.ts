@@ -6,6 +6,22 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode domain.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode domain.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getDomain({
+ *     id: 1234567,
+ * });
+ * const bar = linode.getDomain({
+ *     domain: "bar.example.com",
+ * });
+ * ```
  */
 export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     args = args || {};
@@ -94,6 +110,22 @@ export interface GetDomainResult {
 }
 /**
  * Provides information about a Linode domain.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode domain.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getDomain({
+ *     id: 1234567,
+ * });
+ * const bar = linode.getDomain({
+ *     domain: "bar.example.com",
+ * });
+ * ```
  */
 export function getDomainOutput(args?: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
     return pulumi.output(args).apply((a: any) => getDomain(a, opts))

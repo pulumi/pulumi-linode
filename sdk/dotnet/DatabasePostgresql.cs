@@ -15,6 +15,66 @@ namespace Pulumi.Linode
     /// 
     /// Please keep in mind that Managed Databases can take up to an hour to provision.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a simple PostgreSQL database instance:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
+    ///     {
+    ///         EngineId = "postgresql/13.2",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a complex PostgreSQL database instance:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
+    ///     {
+    ///         AllowLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Encrypted = true,
+    ///         EngineId = "postgresql/13.2",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         ReplicationCommitType = "remote_write",
+    ///         ReplicationType = "semi_synch",
+    ///         SslConnection = true,
+    ///         Type = "g6-nanode-1",
+    ///         Updates = new Linode.Inputs.DatabasePostgresqlUpdatesArgs
+    ///         {
+    ///             DayOfWeek = "saturday",
+    ///             Duration = 1,
+    ///             Frequency = "monthly",
+    ///             HourOfDay = 22,
+    ///             WeekOfMonth = 2,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## updates
     /// 
     /// The following arguments are supported in the `updates` specification block:

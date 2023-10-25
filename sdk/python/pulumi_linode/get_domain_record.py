@@ -183,6 +183,20 @@ def get_domain_record(domain_id: Optional[int] = None,
     """
     Provides information about a Linode Domain Record.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Domain Record.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
+        name="www")
+    ```
+
 
     :param int domain_id: The associated domain's unique ID.
     :param int id: The unique ID of the Domain Record.
@@ -217,6 +231,20 @@ def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
     Provides information about a Linode Domain Record.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Domain Record.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
+        name="www")
+    ```
 
 
     :param int domain_id: The associated domain's unique ID.

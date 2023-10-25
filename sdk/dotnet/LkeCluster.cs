@@ -12,6 +12,77 @@ namespace Pulumi.Linode
     /// <summary>
     /// Manages an LKE cluster.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a basic LKE cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         K8sVersion = "1.21",
+    ///         Label = "my-cluster",
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Count = 3,
+    ///                 Type = "g6-standard-2",
+    ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating an LKE cluster with autoscaler:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.21",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
+    ///                 {
+    ///                     Min = 3,
+    ///                     Max = 10,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// LKE Clusters can be imported using the `id`, e.g.

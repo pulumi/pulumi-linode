@@ -15,6 +15,32 @@ import (
 // Provides information about a Linode account.
 //
 // This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+//
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access account details.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult

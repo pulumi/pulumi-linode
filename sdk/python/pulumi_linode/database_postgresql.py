@@ -750,6 +750,46 @@ class DatabasePostgresql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
+        ## Example Usage
+
+        Creating a simple PostgreSQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresql("foobar",
+            engine_id="postgresql/13.2",
+            label="mydatabase",
+            region="us-southeast",
+            type="g6-nanode-1")
+        ```
+
+        Creating a complex PostgreSQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresql("foobar",
+            allow_lists=["0.0.0.0/0"],
+            cluster_size=3,
+            encrypted=True,
+            engine_id="postgresql/13.2",
+            label="mydatabase",
+            region="us-southeast",
+            replication_commit_type="remote_write",
+            replication_type="semi_synch",
+            ssl_connection=True,
+            type="g6-nanode-1",
+            updates=linode.DatabasePostgresqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
+        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:
@@ -810,6 +850,46 @@ class DatabasePostgresql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
+        ## Example Usage
+
+        Creating a simple PostgreSQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresql("foobar",
+            engine_id="postgresql/13.2",
+            label="mydatabase",
+            region="us-southeast",
+            type="g6-nanode-1")
+        ```
+
+        Creating a complex PostgreSQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresql("foobar",
+            allow_lists=["0.0.0.0/0"],
+            cluster_size=3,
+            encrypted=True,
+            engine_id="postgresql/13.2",
+            label="mydatabase",
+            region="us-southeast",
+            replication_commit_type="remote_write",
+            replication_type="semi_synch",
+            ssl_connection=True,
+            type="g6-nanode-1",
+            updates=linode.DatabasePostgresqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
+        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:

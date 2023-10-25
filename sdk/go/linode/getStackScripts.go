@@ -16,6 +16,47 @@ import (
 //
 // **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
 //
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access information about a Linode StackScript.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			specific_stackscripts, err := linode.GetStackScripts(ctx, &linode.GetStackScriptsArgs{
+//				Filters: []linode.GetStackScriptsFilter{
+//					{
+//						Name: "label",
+//						Values: []string{
+//							"my-cool-stackscript",
+//						},
+//					},
+//					{
+//						Name: "is_public",
+//						Values: []string{
+//							"false",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("stackscriptId", specific_stackscripts.Stackscripts[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Filterable Fields
 //
 // * `deploymentsActive`

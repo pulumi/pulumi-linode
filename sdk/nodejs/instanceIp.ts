@@ -10,6 +10,24 @@ import * as utilities from "./utilities";
  * > **NOTICE:** This resource will reboot the specified instance following IP allocation.
  *
  * Manages a Linode instance IP.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooInstance = new linode.Instance("fooInstance", {
+ *     image: "linode/alpine3.16",
+ *     label: "foobar-test",
+ *     type: "g6-nanode-1",
+ *     region: "us-east",
+ * });
+ * const fooInstanceIp = new linode.InstanceIp("fooInstanceIp", {
+ *     linodeId: fooInstance.id,
+ *     "public": true,
+ * });
+ * ```
  */
 export class InstanceIp extends pulumi.CustomResource {
     /**

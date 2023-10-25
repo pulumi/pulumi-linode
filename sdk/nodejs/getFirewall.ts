@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a Linode Firewall.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-firewall = linode.getFirewall({
+ *     id: 123,
+ * });
+ * ```
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
 
@@ -81,6 +92,17 @@ export interface GetFirewallResult {
 }
 /**
  * Provides details about a Linode Firewall.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-firewall = linode.getFirewall({
+ *     id: 123,
+ * });
+ * ```
  */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
     return pulumi.output(args).apply((a: any) => getFirewall(a, opts))

@@ -12,6 +12,71 @@ namespace Pulumi.Linode
     /// <summary>
     /// Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example shows how one might use this resource to create an Object Storage Bucket:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
+    ///     {
+    ///         Id = "us-east-1",
+    ///     });
+    /// 
+    ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
+    ///     {
+    ///         Cluster = primary.Apply(getObjectStorageClusterResult =&gt; getObjectStorageClusterResult.Id),
+    ///         Label = "mybucket",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating an Object Storage Bucket with Lifecycle rules:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mykey = new Linode.ObjectStorageKey("mykey", new()
+    ///     {
+    ///         Label = "image-access",
+    ///     });
+    /// 
+    ///     var mybucket = new Linode.ObjectStorageBucket("mybucket", new()
+    ///     {
+    ///         AccessKey = mykey.AccessKey,
+    ///         SecretKey = mykey.SecretKey,
+    ///         Cluster = "us-east-1",
+    ///         Label = "mybucket",
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs
+    ///             {
+    ///                 Id = "my-rule",
+    ///                 Enabled = true,
+    ///                 AbortIncompleteMultipartUploadDays = 5,
+    ///                 Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs
+    ///                 {
+    ///                     Date = "2021-06-21",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.

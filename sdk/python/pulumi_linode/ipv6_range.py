@@ -250,7 +250,22 @@ class Ipv6Range(pulumi.CustomResource):
                  route_target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Ipv6Range resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_instance = linode.Instance("foobarInstance",
+            label="my-linode",
+            image="linode/alpine3.14",
+            type="g6-nanode-1",
+            region="us-southeast")
+        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
+            linode_id=foobar_instance.id,
+            prefix_length=64)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
@@ -264,7 +279,22 @@ class Ipv6Range(pulumi.CustomResource):
                  args: Ipv6RangeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ipv6Range resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_instance = linode.Instance("foobarInstance",
+            label="my-linode",
+            image="linode/alpine3.14",
+            type="g6-nanode-1",
+            region="us-southeast")
+        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
+            linode_id=foobar_instance.id,
+            prefix_length=64)
+        ```
+
         :param str resource_name: The name of the resource.
         :param Ipv6RangeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

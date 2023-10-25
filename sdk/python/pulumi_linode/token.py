@@ -206,6 +206,21 @@ class Token(pulumi.CustomResource):
 
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
+            label="token",
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
+        ```
+
         ## Import
 
         Linodes Tokens can be imported using the Linode Token `id`, e.g.
@@ -234,6 +249,21 @@ class Token(pulumi.CustomResource):
         It is common for the provider itself to be configured with broadly scoped Personal Access Tokens.  Provisioning scripts or tools configured within a Linode Instance should follow the principle of least privilege to afford only the required roles for tools to perform their necessary tasks.  The `Token` resource allows for the management of Personal Access Tokens with scopes mirroring or narrowing the scope of the parent token.
 
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
+            label="token",
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
+        ```
 
         ## Import
 

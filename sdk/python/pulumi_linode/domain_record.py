@@ -485,6 +485,25 @@ class DomainRecord(pulumi.CustomResource):
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            type="master",
+            domain="foobar.example",
+            soa_email="example@foobar.example")
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
+
         ## Import
 
         Linodes Domain Records can be imported using the Linode Domain `id` followed by the Domain Record `id` separated by a comma, e.g.
@@ -518,6 +537,25 @@ class DomainRecord(pulumi.CustomResource):
         """
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            type="master",
+            domain="foobar.example",
+            soa_email="example@foobar.example")
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
 
         ## Import
 

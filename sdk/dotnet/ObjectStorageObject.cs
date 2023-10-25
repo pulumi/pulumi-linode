@@ -13,6 +13,30 @@ namespace Pulumi.Linode
     /// Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
     /// 
     /// ## Example Usage
+    /// ### Uploading plaintext to a bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     {
+    ///         Bucket = "my-bucket",
+    ///         Cluster = "us-east-1",
+    ///         Key = "my-object",
+    ///         SecretKey = linode_object_storage_key.My_key.Secret_key,
+    ///         AccessKey = linode_object_storage_key.My_key.Access_key,
+    ///         Content = "This is the content of the Object...",
+    ///         ContentType = "text/plain",
+    ///         ContentLanguage = "en",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageObject:ObjectStorageObject")]
     public partial class ObjectStorageObject : global::Pulumi.CustomResource

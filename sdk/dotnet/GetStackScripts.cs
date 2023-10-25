@@ -16,6 +16,51 @@ namespace Pulumi.Linode
         /// 
         /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode StackScript.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-cool-stackscript",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stackscriptId"] = specific_stackscripts.Apply(specific_stackscripts =&gt; specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult.Stackscripts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `deployments_active`
@@ -44,6 +89,51 @@ namespace Pulumi.Linode
         /// 
         /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode StackScript.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-cool-stackscript",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stackscriptId"] = specific_stackscripts.Apply(specific_stackscripts =&gt; specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult.Stackscripts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `deployments_active`

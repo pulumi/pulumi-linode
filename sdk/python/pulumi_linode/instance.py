@@ -1282,6 +1282,26 @@ class Instance(pulumi.CustomResource):
         For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 
         ## Example Usage
+        ### Simple Linode Instance
+
+        The following example shows how one might use this resource to configure a Linode instance.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        web = linode.Instance("web",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            group="foo",
+            image="linode/ubuntu18.04",
+            label="simple_instance",
+            private_ip=True,
+            region="us-central",
+            root_pass="terr4form-test",
+            swap_size=256,
+            tags=["foo"],
+            type="g6-standard-1")
+        ```
 
         ## Import
 
@@ -1350,6 +1370,26 @@ class Instance(pulumi.CustomResource):
         For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
 
         ## Example Usage
+        ### Simple Linode Instance
+
+        The following example shows how one might use this resource to configure a Linode instance.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        web = linode.Instance("web",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            group="foo",
+            image="linode/ubuntu18.04",
+            label="simple_instance",
+            private_ip=True,
+            region="us-central",
+            root_pass="terr4form-test",
+            swap_size=256,
+            tags=["foo"],
+            type="g6-standard-1")
+        ```
 
         ## Import
 

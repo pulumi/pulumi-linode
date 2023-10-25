@@ -574,6 +574,29 @@ class Domain(pulumi.CustomResource):
         Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            type="master",
+            domain="foobar.example",
+            soa_email="example@foobar.example",
+            tags=[
+                "foo",
+                "bar",
+            ])
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
+
         ## Import
 
         Linodes Domains can be imported using the Linode Domain `id`, e.g.
@@ -609,6 +632,29 @@ class Domain(pulumi.CustomResource):
         """
         Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar_domain = linode.Domain("foobarDomain",
+            type="master",
+            domain="foobar.example",
+            soa_email="example@foobar.example",
+            tags=[
+                "foo",
+                "bar",
+            ])
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id,
+            name="www",
+            record_type="CNAME",
+            target="foobar.example")
+        ```
 
         ## Import
 

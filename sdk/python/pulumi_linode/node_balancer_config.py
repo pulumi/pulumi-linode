@@ -760,6 +760,30 @@ class NodeBalancerConfig(pulumi.CustomResource):
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-east",
+            client_conn_throttle=20)
+        foofig = linode.NodeBalancerConfig("foofig",
+            nodebalancer_id=foobar.id,
+            port=8088,
+            protocol="http",
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
+        ```
+
         ## Import
 
         NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
@@ -797,6 +821,30 @@ class NodeBalancerConfig(pulumi.CustomResource):
         """
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-east",
+            client_conn_throttle=20)
+        foofig = linode.NodeBalancerConfig("foofig",
+            nodebalancer_id=foobar.id,
+            port=8088,
+            protocol="http",
+            check="http",
+            check_path="/foo",
+            check_attempts=3,
+            check_timeout=30,
+            stickiness="http_cookie",
+            algorithm="source")
+        ```
 
         ## Import
 

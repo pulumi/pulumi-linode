@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
 /**
  * Provides information about a Linode MySQL Database.
  *
+ * ## Example Usage
+ *
+ * Get information about a MySQL database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-db = linode.getDatabaseMysql({
+ *     id: 12345,
+ * });
+ * ```
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:
@@ -139,6 +151,18 @@ export interface GetDatabaseMysqlResult {
 /**
  * Provides information about a Linode MySQL Database.
  *
+ * ## Example Usage
+ *
+ * Get information about a MySQL database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-db = linode.getDatabaseMysql({
+ *     id: 12345,
+ * });
+ * ```
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:

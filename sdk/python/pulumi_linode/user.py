@@ -594,6 +594,38 @@ class User(pulumi.CustomResource):
         """
         Manages a Linode User.
 
+        ## Example Usage
+
+        Create an unrestricted user:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        john = linode.User("john",
+            email="john@acme.io",
+            username="john123")
+        ```
+
+        Create a restricted user with grants:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        fooser = linode.User("fooser",
+            email="cool@acme.io",
+            global_grants=linode.UserGlobalGrantsArgs(
+                add_images=True,
+                add_linodes=True,
+            ),
+            linode_grants=[linode.UserLinodeGrantArgs(
+                id=12345,
+                permissions="read_write",
+            )],
+            restricted=True,
+            username="cooluser123")
+        ```
         ## Global Grants
 
         * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
@@ -652,6 +684,38 @@ class User(pulumi.CustomResource):
         """
         Manages a Linode User.
 
+        ## Example Usage
+
+        Create an unrestricted user:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        john = linode.User("john",
+            email="john@acme.io",
+            username="john123")
+        ```
+
+        Create a restricted user with grants:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        fooser = linode.User("fooser",
+            email="cool@acme.io",
+            global_grants=linode.UserGlobalGrantsArgs(
+                add_images=True,
+                add_linodes=True,
+            ),
+            linode_grants=[linode.UserLinodeGrantArgs(
+                id=12345,
+                permissions="read_write",
+            )],
+            restricted=True,
+            username="cooluser123")
+        ```
         ## Global Grants
 
         * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)

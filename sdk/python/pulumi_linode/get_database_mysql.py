@@ -297,6 +297,16 @@ def get_database_mysql(database_id: Optional[int] = None,
     """
     Provides information about a Linode MySQL Database.
 
+    ## Example Usage
+
+    Get information about a MySQL database:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_db = linode.get_database_mysql(id=12345)
+    ```
     ## updates
 
     The following arguments are exported by the `updates` specification block:
@@ -353,6 +363,16 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]]
     """
     Provides information about a Linode MySQL Database.
 
+    ## Example Usage
+
+    Get information about a MySQL database:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_db = linode.get_database_mysql(id=12345)
+    ```
     ## updates
 
     The following arguments are exported by the `updates` specification block:

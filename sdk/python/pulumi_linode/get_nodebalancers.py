@@ -90,6 +90,26 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
     """
     Provides information about Linode NodeBalancers that match a set of filters.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_nodebalancers = linode.get_nodebalancers(filters=[
+        linode.GetNodebalancersFilterArgs(
+            name="label",
+            values=["my-nodebalancer"],
+        ),
+        linode.GetNodebalancersFilterArgs(
+            name="region",
+            values=["us-iad"],
+        ),
+    ])
+    pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
+    ```
     ## Filterable Fields
 
     * `label`
@@ -135,6 +155,26 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     """
     Provides information about Linode NodeBalancers that match a set of filters.
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_nodebalancers = linode.get_nodebalancers(filters=[
+        linode.GetNodebalancersFilterArgs(
+            name="label",
+            values=["my-nodebalancer"],
+        ),
+        linode.GetNodebalancersFilterArgs(
+            name="region",
+            values=["us-iad"],
+        ),
+    ])
+    pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
+    ```
     ## Filterable Fields
 
     * `label`

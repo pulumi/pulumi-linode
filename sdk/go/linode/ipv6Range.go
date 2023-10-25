@@ -13,6 +13,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
+//				Label:  pulumi.String("my-linode"),
+//				Image:  pulumi.String("linode/alpine3.14"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("us-southeast"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewIpv6Range(ctx, "foobarIpv6Range", &linode.Ipv6RangeArgs{
+//				LinodeId:     foobarInstance.ID(),
+//				PrefixLength: pulumi.Int(64),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Ipv6Range struct {
 	pulumi.CustomResourceState
 

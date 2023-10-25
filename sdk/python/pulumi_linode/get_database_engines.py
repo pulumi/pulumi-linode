@@ -100,6 +100,49 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     """
     Provides information about Linode Managed Database engines that match a set of filters.
 
+    ## Example Usage
+
+    Get information about all Linode Managed Database engines:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all = linode.get_database_engines()
+    pulumi.export("engineIds", [__item.id for __item in all.engines])
+    ```
+
+    Get information about all Linode MySQL Database engines:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    mysql = linode.get_database_engines(filters=[linode.GetDatabaseEnginesFilterArgs(
+        name="engine",
+        values=["mysql"],
+    )])
+    pulumi.export("engineIds", [__item.id for __item in mysql.engines])
+    ```
+
+    Create a Linode MySQL Database using the latest support MySQL version:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    mysql = linode.get_database_engines(latest=True,
+        filters=[linode.GetDatabaseEnginesFilterArgs(
+            name="engine",
+            values=["mysql"],
+        )])
+    my_db = linode.DatabaseMysql("myDb",
+        label="mydb",
+        engine_id=mysql.engines[0].id,
+        region="us-southeast",
+        type="g6-nanode-1")
+    ```
+
 
     :param bool latest: If true, only the latest engine version will be returned.
            
@@ -134,6 +177,49 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
     """
     Provides information about Linode Managed Database engines that match a set of filters.
+
+    ## Example Usage
+
+    Get information about all Linode Managed Database engines:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all = linode.get_database_engines()
+    pulumi.export("engineIds", [__item.id for __item in all.engines])
+    ```
+
+    Get information about all Linode MySQL Database engines:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    mysql = linode.get_database_engines(filters=[linode.GetDatabaseEnginesFilterArgs(
+        name="engine",
+        values=["mysql"],
+    )])
+    pulumi.export("engineIds", [__item.id for __item in mysql.engines])
+    ```
+
+    Create a Linode MySQL Database using the latest support MySQL version:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    mysql = linode.get_database_engines(latest=True,
+        filters=[linode.GetDatabaseEnginesFilterArgs(
+            name="engine",
+            values=["mysql"],
+        )])
+    my_db = linode.DatabaseMysql("myDb",
+        label="mydb",
+        engine_id=mysql.engines[0].id,
+        region="us-southeast",
+        type="g6-nanode-1")
+    ```
 
 
     :param bool latest: If true, only the latest engine version will be returned.

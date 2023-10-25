@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Domain Zonefile.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     {
+        ///         DomainId = 3150401,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainZonefileResult> InvokeAsync(GetDomainZonefileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode Domain Zonefile.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     {
+        ///         DomainId = 3150401,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainZonefileResult> Invoke(GetDomainZonefileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
