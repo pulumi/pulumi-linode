@@ -9,6 +9,46 @@ import * as utilities from "./utilities";
 /**
  * Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this resource to create an Object Storage Bucket:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const primary = linode.getObjectStorageCluster({
+ *     id: "us-east-1",
+ * });
+ * const foobar = new linode.ObjectStorageBucket("foobar", {
+ *     cluster: primary.then(primary => primary.id),
+ *     label: "mybucket",
+ * });
+ * ```
+ *
+ * Creating an Object Storage Bucket with Lifecycle rules:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const mykey = new linode.ObjectStorageKey("mykey", {label: "image-access"});
+ * const mybucket = new linode.ObjectStorageBucket("mybucket", {
+ *     accessKey: mykey.accessKey,
+ *     secretKey: mykey.secretKey,
+ *     cluster: "us-east-1",
+ *     label: "mybucket",
+ *     lifecycleRules: [{
+ *         id: "my-rule",
+ *         enabled: true,
+ *         abortIncompleteMultipartUploadDays: 5,
+ *         expiration: {
+ *             date: "2021-06-21",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.

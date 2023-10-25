@@ -14,6 +14,51 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode NodeBalancers that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_nodebalancers = Linode.GetNodebalancers.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-nodebalancer",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-iad",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodebalancerId"] = specific_nodebalancers.Apply(specific_nodebalancers =&gt; specific_nodebalancers.Apply(getNodebalancersResult =&gt; getNodebalancersResult.Nodebalancers[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `label`
@@ -36,6 +81,51 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode NodeBalancers that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_nodebalancers = Linode.GetNodebalancers.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-nodebalancer",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-iad",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodebalancerId"] = specific_nodebalancers.Apply(specific_nodebalancers =&gt; specific_nodebalancers.Apply(getNodebalancersResult =&gt; getNodebalancersResult.Nodebalancers[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `label`

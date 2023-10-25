@@ -57,6 +57,17 @@ class AwaitableGetLkeVersionsResult(GetLkeVersionsResult):
 def get_lke_versions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeVersionsResult:
     """
     Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode LKE Version.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_lke_versions()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -71,5 +82,16 @@ def get_lke_versions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 def get_lke_versions_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeVersionsResult]:
     """
     Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode LKE Version.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_lke_versions()
+    ```
     """
     ...

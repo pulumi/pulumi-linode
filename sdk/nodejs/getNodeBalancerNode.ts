@@ -6,6 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a Linode NodeBalancer node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-node = linode.getNodeBalancerNode({
+ *     configId: 789,
+ *     id: 123,
+ *     nodebalancerId: 456,
+ * });
+ * ```
  */
 export function getNodeBalancerNode(args: GetNodeBalancerNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerNodeResult> {
 
@@ -65,6 +78,19 @@ export interface GetNodeBalancerNodeResult {
 }
 /**
  * Provides details about a Linode NodeBalancer node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my-node = linode.getNodeBalancerNode({
+ *     configId: 789,
+ *     id: 123,
+ *     nodebalancerId: 456,
+ * });
+ * ```
  */
 export function getNodeBalancerNodeOutput(args: GetNodeBalancerNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerNodeResult> {
     return pulumi.output(args).apply((a: any) => getNodeBalancerNode(a, opts))

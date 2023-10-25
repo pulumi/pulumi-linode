@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode kernel
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var latest = Linode.GetKernel.Invoke(new()
+        ///     {
+        ///         Id = "linode/latest-64bit",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKernelResult> InvokeAsync(GetKernelArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about a Linode kernel
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var latest = Linode.GetKernel.Invoke(new()
+        ///     {
+        ///         Id = "linode/latest-64bit",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKernelResult> Invoke(GetKernelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithDefaults());

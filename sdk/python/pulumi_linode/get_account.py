@@ -190,6 +190,17 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     Provides information about a Linode account.
 
     This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access account details.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    account = linode.get_account()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -217,5 +228,16 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     Provides information about a Linode account.
 
     This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access account details.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    account = linode.get_account()
+    ```
     """
     ...

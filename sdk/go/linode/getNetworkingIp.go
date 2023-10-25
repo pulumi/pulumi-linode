@@ -13,6 +13,34 @@ import (
 )
 
 // Provides information about a Linode Networking IP Address
+//
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetNetworkingIp(ctx, &linode.GetNetworkingIpArgs{
+//				Address: "162.159.27.72",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetworkingIp(ctx *pulumi.Context, args *GetNetworkingIpArgs, opts ...pulumi.InvokeOption) (*GetNetworkingIpResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkingIpResult

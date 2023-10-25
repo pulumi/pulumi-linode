@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode volumes that match a set of filters.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered-volumes = linode.getVolumes({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["test-volume"],
+ *     }],
+ * });
+ * export const volumes = filtered_volumes.then(filtered_volumes => filtered_volumes.volumes);
+ * ```
+ *
  * ## Filterable Fields
  *
  * * `label`
@@ -58,6 +71,19 @@ export interface GetVolumesResult {
 }
 /**
  * Provides information about Linode volumes that match a set of filters.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered-volumes = linode.getVolumes({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["test-volume"],
+ *     }],
+ * });
+ * export const volumes = filtered_volumes.then(filtered_volumes => filtered_volumes.volumes);
+ * ```
  *
  * ## Filterable Fields
  *

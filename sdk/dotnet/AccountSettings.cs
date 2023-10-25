@@ -12,6 +12,26 @@ namespace Pulumi.Linode
     /// <summary>
     /// Manages the settings of a Linode account.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example shows how one might use this resource to change their Linode account settings.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = new Linode.AccountSettings("myaccount", new()
+    ///     {
+    ///         BackupsEnabled = true,
+    ///         LongviewSubscription = "longview-40",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Additional Results
     /// 
     /// * `managed` - Enables monitoring for connectivity, response, and total request time.

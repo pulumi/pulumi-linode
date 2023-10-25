@@ -13,6 +13,34 @@ import (
 )
 
 // Provides information about a Linode Domain Zonefile.
+//
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetDomainZonefile(ctx, &linode.GetDomainZonefileArgs{
+//				DomainId: 3150401,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDomainZonefile(ctx *pulumi.Context, args *GetDomainZonefileArgs, opts ...pulumi.InvokeOption) (*GetDomainZonefileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainZonefileResult

@@ -14,6 +14,38 @@ import (
 
 // Provides information about Linode users that match a set of filters.
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			filtered_users, err := linode.GetUsers(ctx, &linode.GetUsersArgs{
+//				Filters: []linode.GetUsersFilter{
+//					{
+//						Name: "username",
+//						Values: []string{
+//							"test-user",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("users", filtered_users.Users)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Filterable Fields
 //
 // * `username`

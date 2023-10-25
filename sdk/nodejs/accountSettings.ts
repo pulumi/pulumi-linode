@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * Manages the settings of a Linode account.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this resource to change their Linode account settings.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myaccount = new linode.AccountSettings("myaccount", {
+ *     backupsEnabled: true,
+ *     longviewSubscription: "longview-40",
+ * });
+ * ```
  * ## Additional Results
  *
  * * `managed` - Enables monitoring for connectivity, response, and total request time.

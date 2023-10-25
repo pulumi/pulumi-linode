@@ -15,6 +15,65 @@ namespace Pulumi.Linode
     /// 
     /// Please keep in mind that Managed Databases can take up to an hour to provision.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a simple MySQL database instance:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysql("foobar", new()
+    ///     {
+    ///         EngineId = "mysql/8.0.30",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a complex MySQL database instance:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysql("foobar", new()
+    ///     {
+    ///         AllowLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Encrypted = true,
+    ///         EngineId = "mysql/8.0.30",
+    ///         Label = "mydatabase",
+    ///         Region = "us-southeast",
+    ///         ReplicationType = "asynch",
+    ///         SslConnection = true,
+    ///         Type = "g6-nanode-1",
+    ///         Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs
+    ///         {
+    ///             DayOfWeek = "saturday",
+    ///             Duration = 1,
+    ///             Frequency = "monthly",
+    ///             HourOfDay = 22,
+    ///             WeekOfMonth = 2,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## updates
     /// 
     /// The following arguments are supported in the `updates` specification block:

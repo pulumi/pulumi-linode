@@ -14,6 +14,47 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode Kernels that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredKernels = Linode.GetKernels.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-kernel",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "architecture",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "x86_64",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `id`
@@ -38,6 +79,47 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode Kernels that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredKernels = Linode.GetKernels.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-kernel",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "architecture",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "x86_64",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `id`

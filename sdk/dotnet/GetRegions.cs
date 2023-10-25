@@ -14,6 +14,43 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode regions that match a set of filters.
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "ok",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "capabilities",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "NodeBalancers",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regions"] = filtered_regions.Apply(filtered_regions =&gt; filtered_regions.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///     };
+        /// });
+        /// ```
         /// 
         /// ## Filterable Fields
         /// 
@@ -29,6 +66,43 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode regions that match a set of filters.
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "ok",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "capabilities",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "NodeBalancers",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regions"] = filtered_regions.Apply(filtered_regions =&gt; filtered_regions.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///     };
+        /// });
+        /// ```
         /// 
         /// ## Filterable Fields
         /// 

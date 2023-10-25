@@ -434,6 +434,39 @@ class StackScript(pulumi.CustomResource):
 
         For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_stack_script = linode.StackScript("fooStackScript",
+            label="foo",
+            description="Installs a Package",
+            script=\"\"\"#!/bin/bash
+        # <UDF name="package" label="System Package to Install" example="nginx" default="">
+        apt-get -q update && apt-get -q -y install $PACKAGE
+        \"\"\",
+            images=[
+                "linode/ubuntu18.04",
+                "linode/ubuntu16.04lts",
+            ],
+            rev_note="initial version")
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/ubuntu18.04",
+            label="foo",
+            region="us-east",
+            type="g6-nanode-1",
+            authorized_keys=["..."],
+            root_pass="...",
+            stackscript_id=foo_stack_script.id,
+            stackscript_data={
+                "package": "nginx",
+            })
+        ```
+
         ## Import
 
         Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
@@ -463,6 +496,39 @@ class StackScript(pulumi.CustomResource):
         Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
 
         For more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo_stack_script = linode.StackScript("fooStackScript",
+            label="foo",
+            description="Installs a Package",
+            script=\"\"\"#!/bin/bash
+        # <UDF name="package" label="System Package to Install" example="nginx" default="">
+        apt-get -q update && apt-get -q -y install $PACKAGE
+        \"\"\",
+            images=[
+                "linode/ubuntu18.04",
+                "linode/ubuntu16.04lts",
+            ],
+            rev_note="initial version")
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/ubuntu18.04",
+            label="foo",
+            region="us-east",
+            type="g6-nanode-1",
+            authorized_keys=["..."],
+            root_pass="...",
+            stackscript_id=foo_stack_script.id,
+            stackscript_data={
+                "package": "nginx",
+            })
+        ```
 
         ## Import
 

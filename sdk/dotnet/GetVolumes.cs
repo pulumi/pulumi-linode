@@ -14,6 +14,35 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode volumes that match a set of filters.
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_volumes = Linode.GetVolumes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVolumesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test-volume",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["volumes"] = filtered_volumes.Apply(filtered_volumes =&gt; filtered_volumes.Apply(getVolumesResult =&gt; getVolumesResult.Volumes)),
+        ///     };
+        /// });
+        /// ```
         /// 
         /// ## Filterable Fields
         /// 
@@ -27,6 +56,35 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode volumes that match a set of filters.
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_volumes = Linode.GetVolumes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVolumesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test-volume",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["volumes"] = filtered_volumes.Apply(filtered_volumes =&gt; filtered_volumes.Apply(getVolumesResult =&gt; getVolumesResult.Volumes)),
+        ///     };
+        /// });
+        /// ```
         /// 
         /// ## Filterable Fields
         /// 

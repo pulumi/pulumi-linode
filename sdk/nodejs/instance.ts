@@ -11,6 +11,27 @@ import * as utilities from "./utilities";
  * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
  *
  * ## Example Usage
+ * ### Simple Linode Instance
+ *
+ * The following example shows how one might use this resource to configure a Linode instance.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const web = new linode.Instance("web", {
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *     group: "foo",
+ *     image: "linode/ubuntu18.04",
+ *     label: "simple_instance",
+ *     privateIp: true,
+ *     region: "us-central",
+ *     rootPass: "terr4form-test",
+ *     swapSize: 256,
+ *     tags: ["foo"],
+ *     type: "g6-standard-1",
+ * });
+ * ```
  *
  * ## Import
  *

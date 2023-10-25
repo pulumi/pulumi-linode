@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode regions that match a set of filters.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered-regions = linode.getRegions({
+ *     filters: [
+ *         {
+ *             name: "status",
+ *             values: ["ok"],
+ *         },
+ *         {
+ *             name: "capabilities",
+ *             values: ["NodeBalancers"],
+ *         },
+ *     ],
+ * });
+ * export const regions = filtered_regions.then(filtered_regions => filtered_regions.regions);
+ * ```
+ *
  * ## Filterable Fields
  *
  * * `status`
@@ -45,6 +64,25 @@ export interface GetRegionsResult {
 }
 /**
  * Provides information about Linode regions that match a set of filters.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered-regions = linode.getRegions({
+ *     filters: [
+ *         {
+ *             name: "status",
+ *             values: ["ok"],
+ *         },
+ *         {
+ *             name: "capabilities",
+ *             values: ["NodeBalancers"],
+ *         },
+ *     ],
+ * });
+ * export const regions = filtered_regions.then(filtered_regions => filtered_regions.regions);
+ * ```
  *
  * ## Filterable Fields
  *

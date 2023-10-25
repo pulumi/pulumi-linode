@@ -16,6 +16,49 @@ import (
 // Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
 // For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
 //
+// ## Example Usage
+//
+// The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
+//				Type:     pulumi.String("master"),
+//				Domain:   pulumi.String("foobar.example"),
+//				SoaEmail: pulumi.String("example@foobar.example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewDomainRecord(ctx, "foobarDomainRecord", &linode.DomainRecordArgs{
+//				DomainId:   foobarDomain.ID(),
+//				Name:       pulumi.String("www"),
+//				RecordType: pulumi.String("CNAME"),
+//				Target:     pulumi.String("foobar.example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Linodes Domains can be imported using the Linode Domain `id`, e.g.

@@ -14,6 +14,70 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode Cloud Firewalls that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode Cloud Firewalls with a certain label and visibility:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific = Linode.GetFirewalls.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetFirewallsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-firewalls",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetFirewallsFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firewallId"] = specific.Apply(getFirewallsResult =&gt; getFirewallsResult.Firewalls[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode images associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetFirewalls.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firewallIds"] = all.Apply(getFirewallsResult =&gt; getFirewallsResult.Firewalls).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Firewall Rule
         /// 
         /// * `label` - The label of this rule for display purposes only.
@@ -56,6 +120,70 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode Cloud Firewalls that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode Cloud Firewalls with a certain label and visibility:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific = Linode.GetFirewalls.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetFirewallsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-firewalls",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetFirewallsFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firewallId"] = specific.Apply(getFirewallsResult =&gt; getFirewallsResult.Firewalls[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode images associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetFirewalls.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firewallIds"] = all.Apply(getFirewallsResult =&gt; getFirewallsResult.Firewalls).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Firewall Rule
         /// 
         /// * `label` - The label of this rule for display purposes only.

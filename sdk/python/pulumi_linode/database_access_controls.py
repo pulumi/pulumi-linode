@@ -180,6 +180,30 @@ class DatabaseAccessControls(pulumi.CustomResource):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
 
+        ## Example Usage
+
+        Grant a Linode access to a database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="myinstance",
+            region="us-southeast",
+            type="g6-nanode-1",
+            image="linode/alpine3.14")
+        my_db = linode.DatabaseMysql("my-db",
+            label="mydatabase",
+            engine_id="mysql/8.0.30",
+            region="us-southeast",
+            type="g6-nanode-1")
+        my_access = linode.DatabaseAccessControls("my-access",
+            database_id=my_db.id,
+            database_type="mysql",
+            allow_lists=[my_instance.ip_address])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
@@ -194,6 +218,30 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
+
+        ## Example Usage
+
+        Grant a Linode access to a database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="myinstance",
+            region="us-southeast",
+            type="g6-nanode-1",
+            image="linode/alpine3.14")
+        my_db = linode.DatabaseMysql("my-db",
+            label="mydatabase",
+            engine_id="mysql/8.0.30",
+            region="us-southeast",
+            type="g6-nanode-1")
+        my_access = linode.DatabaseAccessControls("my-access",
+            database_id=my_db.id,
+            database_type="mysql",
+            allow_lists=[my_instance.ip_address])
+        ```
 
         :param str resource_name: The name of the resource.
         :param DatabaseAccessControlsArgs args: The arguments to use to populate this resource's properties.

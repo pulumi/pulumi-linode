@@ -67,6 +67,23 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     """
     Provides information about Linode regions that match a set of filters.
 
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_regions = linode.get_regions(filters=[
+        linode.GetRegionsFilterArgs(
+            name="status",
+            values=["ok"],
+        ),
+        linode.GetRegionsFilterArgs(
+            name="capabilities",
+            values=["NodeBalancers"],
+        ),
+    ])
+    pulumi.export("regions", filtered_regions.regions)
+    ```
+
     ## Filterable Fields
 
     * `status`
@@ -93,6 +110,23 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides information about Linode regions that match a set of filters.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered_regions = linode.get_regions(filters=[
+        linode.GetRegionsFilterArgs(
+            name="status",
+            values=["ok"],
+        ),
+        linode.GetRegionsFilterArgs(
+            name="capabilities",
+            values=["NodeBalancers"],
+        ),
+    ])
+    pulumi.export("regions", filtered_regions.regions)
+    ```
 
     ## Filterable Fields
 

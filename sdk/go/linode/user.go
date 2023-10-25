@@ -15,6 +15,72 @@ import (
 
 // Manages a Linode User.
 //
+// ## Example Usage
+//
+// Create an unrestricted user:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
+//				Email:    pulumi.String("john@acme.io"),
+//				Username: pulumi.String("john123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a restricted user with grants:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
+//				Email: pulumi.String("cool@acme.io"),
+//				GlobalGrants: &linode.UserGlobalGrantsArgs{
+//					AddImages:  pulumi.Bool(true),
+//					AddLinodes: pulumi.Bool(true),
+//				},
+//				LinodeGrants: linode.UserLinodeGrantArray{
+//					&linode.UserLinodeGrantArgs{
+//						Id:          pulumi.Int(12345),
+//						Permissions: pulumi.String("read_write"),
+//					},
+//				},
+//				Restricted: pulumi.Bool(true),
+//				Username:   pulumi.String("cooluser123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Global Grants
 //
 // * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)

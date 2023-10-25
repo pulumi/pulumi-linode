@@ -18,6 +18,42 @@ import (
 // > **NOTICE:** This resource will reboot the specified instance following IP allocation.
 //
 // Manages a Linode instance IP.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/alpine3.16"),
+//				Label:  pulumi.String("foobar-test"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("us-east"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceIp(ctx, "fooInstanceIp", &linode.InstanceIpArgs{
+//				LinodeId: fooInstance.ID(),
+//				Public:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type InstanceIp struct {
 	pulumi.CustomResourceState
 

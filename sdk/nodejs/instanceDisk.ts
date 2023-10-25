@@ -9,6 +9,52 @@ import * as utilities from "./utilities";
  *
  * **NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.
  *
+ * ## Example Usage
+ *
+ * Creating a simple 512 MB Linode Instance Disk:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     type: "g6-standard-1",
+ *     region: "us-southeast",
+ * });
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id,
+ *     size: 512,
+ *     filesystem: "ext4",
+ * });
+ * ```
+ *
+ * Creating a complex bootable Instance Disk:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     type: "g6-standard-1",
+ *     region: "us-southeast",
+ * });
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id,
+ *     size: my_instance.specs.apply(specs => specs.disk),
+ *     image: "linode/ubuntu20.04",
+ *     rootPass: "myc00lpass!",
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ *     stackscriptId: 12345,
+ *     stackscriptData: {
+ *         my_var: "my_value",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.

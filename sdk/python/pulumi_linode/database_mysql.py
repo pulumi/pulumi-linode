@@ -675,6 +675,45 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
+        ## Example Usage
+
+        Creating a simple MySQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysql("foobar",
+            engine_id="mysql/8.0.30",
+            label="mydatabase",
+            region="us-southeast",
+            type="g6-nanode-1")
+        ```
+
+        Creating a complex MySQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysql("foobar",
+            allow_lists=["0.0.0.0/0"],
+            cluster_size=3,
+            encrypted=True,
+            engine_id="mysql/8.0.30",
+            label="mydatabase",
+            region="us-southeast",
+            replication_type="asynch",
+            ssl_connection=True,
+            type="g6-nanode-1",
+            updates=linode.DatabaseMysqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
+        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:
@@ -730,6 +769,45 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
+        ## Example Usage
+
+        Creating a simple MySQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysql("foobar",
+            engine_id="mysql/8.0.30",
+            label="mydatabase",
+            region="us-southeast",
+            type="g6-nanode-1")
+        ```
+
+        Creating a complex MySQL database instance:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysql("foobar",
+            allow_lists=["0.0.0.0/0"],
+            cluster_size=3,
+            encrypted=True,
+            engine_id="mysql/8.0.30",
+            label="mydatabase",
+            region="us-southeast",
+            replication_type="asynch",
+            ssl_connection=True,
+            type="g6-nanode-1",
+            updates=linode.DatabaseMysqlUpdatesArgs(
+                day_of_week="saturday",
+                duration=1,
+                frequency="monthly",
+                hour_of_day=22,
+                week_of_month=2,
+            ))
+        ```
         ## updates
 
         The following arguments are supported in the `updates` specification block:

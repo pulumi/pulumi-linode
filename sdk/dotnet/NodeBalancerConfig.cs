@@ -13,6 +13,41 @@ namespace Pulumi.Linode
     /// Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
     /// For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     {
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
+    ///         ClientConnThrottle = 20,
+    ///     });
+    /// 
+    ///     var foofig = new Linode.NodeBalancerConfig("foofig", new()
+    ///     {
+    ///         NodebalancerId = foobar.Id,
+    ///         Port = 8088,
+    ///         Protocol = "http",
+    ///         Check = "http",
+    ///         CheckPath = "/foo",
+    ///         CheckAttempts = 3,
+    ///         CheckTimeout = 30,
+    ///         Stickiness = "http_cookie",
+    ///         Algorithm = "source",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.

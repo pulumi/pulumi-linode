@@ -14,6 +14,29 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode PostgreSQL Database.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about a PostgreSQL database:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
+        ///     {
+        ///         Id = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## updates
         /// 
         /// The following arguments are exported by the `updates` specification block:
@@ -34,6 +57,29 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode PostgreSQL Database.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about a PostgreSQL database:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
+        ///     {
+        ///         Id = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## updates
         /// 
         /// The following arguments are exported by the `updates` specification block:

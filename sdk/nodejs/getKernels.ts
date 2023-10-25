@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode Kernels that match a set of filters.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode Kernel.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filteredKernels = linode.getKernels({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: ["my-kernel"],
+ *         },
+ *         {
+ *             name: "architecture",
+ *             values: ["x86_64"],
+ *         },
+ *     ],
+ * });
+ * ```
  * ## Filterable Fields
  *
  * * `id`
@@ -71,6 +92,27 @@ export interface GetKernelsResult {
 /**
  * Provides information about Linode Kernels that match a set of filters.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode Kernel.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filteredKernels = linode.getKernels({
+ *     filters: [
+ *         {
+ *             name: "label",
+ *             values: ["my-kernel"],
+ *         },
+ *         {
+ *             name: "architecture",
+ *             values: ["x86_64"],
+ *         },
+ *     ],
+ * });
+ * ```
  * ## Filterable Fields
  *
  * * `id`

@@ -14,6 +14,70 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode images that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode images with a certain label and visibility:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_images = Linode.GetImages.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Debian 11",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageId"] = specific_images.Apply(specific_images =&gt; specific_images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode images associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_images = Linode.GetImages.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageIds"] = all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `created_by`
@@ -40,6 +104,70 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode images that match a set of filters.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get information about all Linode images with a certain label and visibility:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_images = Linode.GetImages.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Debian 11",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageId"] = specific_images.Apply(specific_images =&gt; specific_images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode images associated with the current token:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_images = Linode.GetImages.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageIds"] = all_images.Apply(all_images =&gt; all_images.Apply(getImagesResult =&gt; getImagesResult.Images).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Filterable Fields
         /// 
         /// * `created_by`

@@ -104,6 +104,17 @@ class AwaitableGetAccountSettingsResult(GetAccountSettingsResult):
 def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSettingsResult:
     """
     Provides information about Linode account settings.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about Linode account settings.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_account_settings()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -122,5 +133,16 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSettingsResult]:
     """
     Provides information about Linode account settings.
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about Linode account settings.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    example = linode.get_account_settings()
+    ```
     """
     ...

@@ -215,6 +215,18 @@ class AccountSettings(pulumi.CustomResource):
         """
         Manages the settings of a Linode account.
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to change their Linode account settings.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        myaccount = linode.AccountSettings("myaccount",
+            backups_enabled=True,
+            longview_subscription="longview-40")
+        ```
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.
@@ -236,6 +248,18 @@ class AccountSettings(pulumi.CustomResource):
         """
         Manages the settings of a Linode account.
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to change their Linode account settings.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        myaccount = linode.AccountSettings("myaccount",
+            backups_enabled=True,
+            longview_subscription="longview-40")
+        ```
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.

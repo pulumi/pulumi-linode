@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode Instance types that match a set of filters.
  *
+ * ## Example Usage
+ *
+ * Get information about all Linode Instance types with a certain number of VCPUs:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific-types = linode.getInstanceTypes({
+ *     filters: [{
+ *         name: "vcpus",
+ *         values: ["2"],
+ *     }],
+ * });
+ * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
+ * ```
+ *
+ * Get information about all Linode Instance types:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-types = linode.getInstanceTypes({});
+ * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
+ * ```
  * ## Filterable Fields
  *
  * * `class`
@@ -71,6 +97,32 @@ export interface GetInstanceTypesResult {
 /**
  * Provides information about Linode Instance types that match a set of filters.
  *
+ * ## Example Usage
+ *
+ * Get information about all Linode Instance types with a certain number of VCPUs:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific-types = linode.getInstanceTypes({
+ *     filters: [{
+ *         name: "vcpus",
+ *         values: ["2"],
+ *     }],
+ * });
+ * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
+ * ```
+ *
+ * Get information about all Linode Instance types:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all-types = linode.getInstanceTypes({});
+ * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
+ * ```
  * ## Filterable Fields
  *
  * * `class`

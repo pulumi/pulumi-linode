@@ -19,6 +19,40 @@ import (
 //
 // For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
 //
+// ## Example Usage
+//
+// The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewToken(ctx, "fooToken", &linode.TokenArgs{
+//				Expiry: pulumi.String("2100-01-02T03:04:05Z"),
+//				Label:  pulumi.String("token"),
+//				Scopes: pulumi.String("linodes:read_only"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstance(ctx, "fooInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Linodes Tokens can be imported using the Linode Token `id`, e.g.

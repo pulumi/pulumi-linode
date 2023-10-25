@@ -14,6 +14,34 @@ import (
 
 // Manages the settings of a Linode account.
 //
+// ## Example Usage
+//
+// The following example shows how one might use this resource to change their Linode account settings.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewAccountSettings(ctx, "myaccount", &linode.AccountSettingsArgs{
+//				BackupsEnabled:       pulumi.Bool(true),
+//				LongviewSubscription: pulumi.String("longview-40"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Additional Results
 //
 // * `managed` - Enables monitoring for connectivity, response, and total request time.

@@ -13,6 +13,32 @@ import (
 )
 
 // Provides details about an LKE Cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupLkeCluster(ctx, &linode.LookupLkeClusterArgs{
+//				Id: 123,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLkeCluster(ctx *pulumi.Context, args *LookupLkeClusterArgs, opts ...pulumi.InvokeOption) (*LookupLkeClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLkeClusterResult

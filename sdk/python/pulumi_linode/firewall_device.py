@@ -217,6 +217,33 @@ class FirewallDevice(pulumi.CustomResource):
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_firewall = linode.Firewall("myFirewall",
+            label="my_firewall",
+            inbounds=[linode.FirewallInboundArgs(
+                label="http",
+                action="ACCEPT",
+                protocol="TCP",
+                ports="80",
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["::/0"],
+            )],
+            inbound_policy="DROP",
+            outbound_policy="ACCEPT")
+        my_instance = linode.Instance("myInstance",
+            label="my_instance",
+            region="us-southeast",
+            type="g6-standard-1")
+        my_device = linode.FirewallDevice("myDevice",
+            firewall_id=my_firewall.id,
+            entity_id=my_instance.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] entity_id: The unique ID of the entity to attach.
@@ -233,6 +260,33 @@ class FirewallDevice(pulumi.CustomResource):
         Manages a Linode Firewall Device.
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_firewall = linode.Firewall("myFirewall",
+            label="my_firewall",
+            inbounds=[linode.FirewallInboundArgs(
+                label="http",
+                action="ACCEPT",
+                protocol="TCP",
+                ports="80",
+                ipv4s=["0.0.0.0/0"],
+                ipv6s=["::/0"],
+            )],
+            inbound_policy="DROP",
+            outbound_policy="ACCEPT")
+        my_instance = linode.Instance("myInstance",
+            label="my_instance",
+            region="us-southeast",
+            type="g6-standard-1")
+        my_device = linode.FirewallDevice("myDevice",
+            firewall_id=my_firewall.id,
+            entity_id=my_instance.id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param FirewallDeviceInitArgs args: The arguments to use to populate this resource's properties.

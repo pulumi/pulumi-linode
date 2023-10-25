@@ -13,12 +13,60 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a Linode NodeBalancer node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
+        ///     {
+        ///         ConfigId = 789,
+        ///         Id = 123,
+        ///         NodebalancerId = 456,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeBalancerNodeResult> InvokeAsync(GetNodeBalancerNodeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a Linode NodeBalancer node.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
+        ///     {
+        ///         ConfigId = 789,
+        ///         Id = 123,
+        ///         NodebalancerId = 456,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeBalancerNodeResult> Invoke(GetNodeBalancerNodeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerNodeResult>("linode:index/getNodeBalancerNode:getNodeBalancerNode", args ?? new GetNodeBalancerNodeInvokeArgs(), options.WithDefaults());

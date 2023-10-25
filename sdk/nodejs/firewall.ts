@@ -9,6 +9,66 @@ import * as utilities from "./utilities";
 /**
  * Manages a Linode Firewall.
  *
+ * ## Example Usage
+ *
+ * Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myInstance = new linode.Instance("myInstance", {
+ *     label: "my_instance",
+ *     image: "linode/ubuntu18.04",
+ *     region: "us-southeast",
+ *     type: "g6-standard-1",
+ *     rootPass: "bogusPassword$",
+ *     swapSize: 256,
+ * });
+ * const myFirewall = new linode.Firewall("myFirewall", {
+ *     label: "my_firewall",
+ *     inbounds: [
+ *         {
+ *             label: "allow-http",
+ *             action: "ACCEPT",
+ *             protocol: "TCP",
+ *             ports: "80",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["::/0"],
+ *         },
+ *         {
+ *             label: "allow-https",
+ *             action: "ACCEPT",
+ *             protocol: "TCP",
+ *             ports: "443",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["::/0"],
+ *         },
+ *     ],
+ *     inboundPolicy: "DROP",
+ *     outbounds: [
+ *         {
+ *             label: "reject-http",
+ *             action: "DROP",
+ *             protocol: "TCP",
+ *             ports: "80",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["::/0"],
+ *         },
+ *         {
+ *             label: "reject-https",
+ *             action: "DROP",
+ *             protocol: "TCP",
+ *             ports: "443",
+ *             ipv4s: ["0.0.0.0/0"],
+ *             ipv6s: ["::/0"],
+ *         },
+ *     ],
+ *     outboundPolicy: "ACCEPT",
+ *     linodes: [myInstance.id],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Firewalls can be imported using the `id`, e.g.

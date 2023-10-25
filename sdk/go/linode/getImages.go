@@ -14,6 +14,76 @@ import (
 
 // Provides information about Linode images that match a set of filters.
 //
+// ## Example Usage
+//
+// Get information about all Linode images with a certain label and visibility:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			specific_images, err := linode.GetImages(ctx, &linode.GetImagesArgs{
+//				Filters: []linode.GetImagesFilter{
+//					{
+//						Name: "label",
+//						Values: []string{
+//							"Debian 11",
+//						},
+//					},
+//					{
+//						Name: "is_public",
+//						Values: []string{
+//							"true",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("imageId", specific_images.Images[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Get information about all Linode images associated with the current token:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all_images, err := linode.GetImages(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range all_images.Images {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("imageIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Filterable Fields
 //
 // * `createdBy`

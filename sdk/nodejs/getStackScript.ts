@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a specific Linode StackScript.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode StackScript.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myStackscript = linode.getStackScript({
+ *     id: "355872",
+ * });
+ * ```
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
 
@@ -87,6 +100,19 @@ export interface GetStackScriptResult {
 }
 /**
  * Provides details about a specific Linode StackScript.
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode StackScript.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myStackscript = linode.getStackScript({
+ *     id: "355872",
+ * });
+ * ```
  */
 export function getStackScriptOutput(args: GetStackScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptResult> {
     return pulumi.output(args).apply((a: any) => getStackScript(a, opts))

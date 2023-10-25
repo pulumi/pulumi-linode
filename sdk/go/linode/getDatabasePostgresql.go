@@ -14,6 +14,33 @@ import (
 
 // Provides information about a Linode PostgreSQL Database.
 //
+// ## Example Usage
+//
+// Get information about a PostgreSQL database:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.LookupDatabasePostgresql(ctx, &linode.LookupDatabasePostgresqlArgs{
+//				Id: pulumi.IntRef(12345),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## updates
 //
 // The following arguments are exported by the `updates` specification block:

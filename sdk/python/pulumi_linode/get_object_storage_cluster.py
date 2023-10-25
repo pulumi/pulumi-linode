@@ -94,6 +94,17 @@ def get_object_storage_cluster(id: Optional[str] = None,
     """
     Provides information about a Linode Object Storage Cluster
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    primary = linode.get_object_storage_cluster(id="us-east-1")
+    ```
+
 
     :param str id: The unique ID of this cluster.
     """
@@ -115,6 +126,17 @@ def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
     Provides information about a Linode Object Storage Cluster
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    primary = linode.get_object_storage_cluster(id="us-east-1")
+    ```
 
 
     :param str id: The unique ID of this cluster.
